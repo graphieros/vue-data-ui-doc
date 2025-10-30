@@ -968,6 +968,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showTotal', def: true, type: 'checkbox', label: ['total', 'is', 'show'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.totalTranslation', def: 'Total', type: 'text', label: ['total', 'label', 'is', 'translation'], category: 'tooltip'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: ['textContent'], category: 'title'},
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'title'},
@@ -1089,6 +1091,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.grid.y.axisLabels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['scale', 'labels', 'is', 'fontSize'], category: 'grid'},
                     { key: 'style.chart.grid.y.axisLabels.bold', def: false, type: 'checkbox', label: ['scale', 'labels', 'is', 'bold'], category: 'grid'},
                     { key: 'style.chart.grid.y.axisLabels.rounding', def: 0, min: 0, max: 6, type: 'number', label: ['scale', 'labels', 'is', 'rounding'], category: 'grid'},
+
+                    { key: 'style.chart.grid.frame.show', def: false, type: 'checkbox', label: ['frame', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.frame.stroke', def: '#E1E5E8', type: 'color', label: ['frame', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.frame.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['frame', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.grid.frame.strokeLinecap', def: 'round', type: 'select', options: ['round', 'square', 'butt'], label: ['frame', 'is', 'strokeLinecap'], category: 'grid'},
+                    { key: 'style.chart.grid.frame.strokeDasharray', def: 0, type: 'number', min: 0, max: 100, label: ['frame', 'is', 'strokeDasharray'], category: 'grid'},
 
                 ]
             },
@@ -3467,6 +3475,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.bars.gap', def: 12, type: 'number', min: 0, max: 100, label: 'spacing', category: 'general' },
                     { key: 'style.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
                     { key: 'style.animation.speedMs', def: 500, type: 'range', min: 0, max: 1000, label: ['animation', 'is', 'speed'], category: 'general'},
+
+                    { key: 'style.labels.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'labels'},
                     { key: 'style.labels.value.color', def: '#1A1A1A', type: 'color', label: ['value', 'is', 'textColor'], category: 'labels' },
                     { key: 'style.labels.value.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['value', 'is', 'fontSize'], category: 'labels' },
                     { key: 'style.labels.value.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['value', 'is', 'min', 'fontSize'], category: 'labels' },
@@ -3475,11 +3485,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.labels.value.prefix', def: '', type: 'text', label: ['value', 'is', 'prefix'], category: 'labels' },
                     { key: 'style.labels.value.suffix', def: '', type: 'text', label: ['value', 'is', 'suffix'], category: 'labels' },
                     { key: 'style.labels.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['value', 'is', 'offsetY'], category: 'labels' },
+                    { key: 'style.labels.valueLabel.show', def: true, type: 'checkbox', label: ['value', 'labels', 'is', 'show'], category: 'labels'},
                     { key: 'style.labels.valueLabel.color', def: '#1A1A1A', type: 'color', label: ['value', 'labels', 'is', 'textColor'], category: 'labels' },
                     { key: 'style.labels.valueLabel.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['value', 'labels', 'is', 'fontSize'], category: 'labels' },
                     { key: 'style.labels.valueLabel.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['value', 'labels', 'is', 'min', 'fontSize'], category: 'labels' },
                     { key: 'style.labels.valueLabel.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'labels', 'is', 'rounding'], category: 'labels' },
                     { key: 'style.labels.valueLabel.bold', def: false, type: 'checkbox', label: ['value', 'labels', 'is', 'bold'], category: 'labels' },
+
+                    { key: 'style.labels.timeLabel.show', def: true, type: 'checkbox', label: ['period', 'labels', 'is', 'show'], category: 'labels'},
                     { key: 'style.labels.timeLabel.color', def: '#1A1A1A', type: 'color', label: ['period', 'labels', 'is', 'textColor'], category: 'labels' },
                     { key: 'style.labels.timeLabel.fontSize', def: 12, type: 'number', min: 6, max: 48, label: ['period', 'labels', 'is', 'fontSize'], category: 'labels' },
                     { key: 'style.labels.timeLabel.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['period', 'labels', 'is', 'min', 'fontSize'], category: 'labels' },

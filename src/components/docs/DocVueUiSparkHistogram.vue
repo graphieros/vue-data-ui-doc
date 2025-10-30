@@ -176,6 +176,7 @@ const config = ref({
     },
     labels: {
       value: {
+        show: true,
         fontSize: 24,
         minFontSize: 6,
         color: "#2D353C",
@@ -186,6 +187,7 @@ const config = ref({
         offsetY: -4
       },
       valueLabel: {
+        show: true,
         fontSize: 24,
         minFontSize: 6,
         color: "#2D353C",
@@ -193,6 +195,7 @@ const config = ref({
         rounding: 0
       },
       timeLabel: {
+        show: true,
         fontSize: 24,
         minFontSize: 6,
         color: "#2D353C",
@@ -258,6 +261,7 @@ const darkModeConfig = ref({
     },
     labels: {
       value: {
+        show: true,
         fontSize: 24,
         color: "#CCCCCC",
         bold: true,
@@ -267,12 +271,14 @@ const darkModeConfig = ref({
         offsetY: -4
       },
       valueLabel: {
+        show: true,
         fontSize: 24,
         color: "#777777",
         bold: false,
         rounding: 0
       },
       timeLabel: {
+        show: true,
         fontSize: 24,
         color: "#CCCCCC",
         bold: false
@@ -541,12 +547,14 @@ function goToPage(route) {
       </BaseDetails>
       <BaseDetails attr="labels" :level="2" title="style.labels">
         <BaseDetails attr="timeLabel" :level="3" title="style.labels.timeLabel">
+          <BaseAttr name="show" attr="style.labels.timeLabel.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="fontSize" attr="style.labels.timeLabel.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="minFontSize" attr="style.labels.timeLabel.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.labels.timeLabel.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="bold" attr="style.labels.timeLabel.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="value" :level="3" title="style.labels.value">
+          <BaseAttr name="show" attr="style.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="fontSize" attr="style.labels.value.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="minFontSize" attr="style.labels.value.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.labels.value.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -565,6 +573,7 @@ function goToPage(route) {
           </div>
         </BaseDetails>
         <BaseDetails attr="valueLabel" :level="3" title="style.labels.valueLabel">
+          <BaseAttr name="show" attr="style.labels.valueLabel.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="fontSize" attr="style.labels.valueLabel.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="minFontSize" attr="style.labels.valueLabel.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.labels.valueLabel.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

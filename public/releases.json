@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 3.5.1",
+    "date": "2025-10-30",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Show totals on top of bars instead of top of chart",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Improve layout to avoid labels from overflowing the svg; add config attributes to show/hide labels",
+        "link": "/docs#vue-ui-sparkhistogram"
+      },
+      {
+        "component": "All charts with built-in annotator",
+        "description": "Add slots to customize icons in annotator menu",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.5.0",
     "date": "2025-10-28",
     "updates": [

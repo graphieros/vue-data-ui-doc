@@ -229,7 +229,9 @@ const config = ref({
                 smoothForce: 0.18,
                 smoothSnapThreshold: 0.25,
                 useDefaultTimeFormat: true,
-                timeFormat: 'yyyy-MM-dd HH:mm:ss'
+                timeFormat: 'yyyy-MM-dd HH:mm:ss',
+                showTotal: true,
+                totalTranslation: 'Total'
             },
             highlighter: {
                 color: "#2D353C",
@@ -266,6 +268,14 @@ const config = ref({
                 }
             },
             grid: {
+                frame: {
+                    show: false,
+                    stroke: '#E1E5E8',
+                    strokeWidth: 2,
+                    strokeLinecap: 'round',
+                    strokeLinejoin: 'round',
+                    strokeDasharray: 0,
+                },
                 scale: {
                     ticks: 10,
                     scaleMin: null,
@@ -498,7 +508,9 @@ const darkModeConfig = ref({
                 smoothForce: 0.18,
                 smoothSnapThreshold: 0.25,
                 useDefaultTimeFormat: true,
-                timeFormat: 'yyyy-MM-dd HH:mm:ss'
+                timeFormat: 'yyyy-MM-dd HH:mm:ss',
+                showTotal: true,
+                totalTranslation: 'Total'
             },
             highlighter: {
                 color: "#e1e5e8",
@@ -535,6 +547,14 @@ const darkModeConfig = ref({
                 }
             },
             grid: {
+                frame: {
+                    show: false,
+                    stroke: '#6A6A6A',
+                    strokeWidth: 2,
+                    strokeLinecap: 'round',
+                    strokeLinejoin: 'round',
+                    strokeDasharray: 0,
+                },
                 scale: {
                     ticks: 10,
                     scaleMin: null,
@@ -1071,6 +1091,8 @@ function freestyle({ drawingArea, data }) {
                         <BaseAttr name="smoothSnapThreshold" attr="style.chart.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="useDefaultTimeFormat" attr="style.chart.tooltip.useDefaultTimeFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="timeFormat" attr="style.chart.tooltip.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="showTotal" attr="style.chart.tooltip.showTotal" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="totalTranslation" attr="style.chart.tooltip.totalTranslation" type="text" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="highlighter" :level="3" title="style.chart.highlighter">
                         <BaseAttr name="color" attr="style.chart.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1115,6 +1137,14 @@ function freestyle({ drawingArea, data }) {
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="grid" :level="3" title="style.chart.grid">
+                        <BaseDetails attr="frame" :level="4" title="style.chart.grid.frame">
+                            <BaseAttr name="show" attr="style.chart.grid.frame.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="stroke" attr="style.chart.grid.frame.stroke" type="color" defaultVal="'#E1E5E8'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeWidth" attr="style.chart.grid.frame.strokeWidth" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeLinecap" attr="style.chart.grid.frame.strokeLinecap" type="text" defaultVal="round" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeLinejoin" attr="style.chart.grid.frame.strokeLinejoin" type="text" defaultVal="round" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeDasharray" attr="style.chart.grid.frame.strokeDasharray" type="number" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
                         <BaseDetails attr="scale" :level="4" title="style.chart.grid.scale">
                             <BaseAttr name="ticks" attr="style.chart.grid.scale.ticks" type="select" defaultVal="10" :options="[2, 5, 10, 20]" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="scaleMin" attr="style.chart.grid.scale.scaleMin" type="number" defaultVal="null" :min="-10000" :max="10000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
