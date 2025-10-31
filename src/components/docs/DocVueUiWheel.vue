@@ -24,6 +24,7 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
+import CuteLink from "../CuteLink.vue";
 
 const mainConfig = useConfig()
 
@@ -312,6 +313,14 @@ function goToPage(route) {
           targetMaker="VueUiWheel"
           :configSource="mainConfig.vue_ui_wheel"
         />
+        
+        <!-- <CuteLink
+          path="/examples/categories"
+          hash="vue-ui-wheel"
+          target="wheel-less-gradient-pie-plain"
+        >
+          TEST
+        </CuteLink> -->
 
         <div :class="`transition-all mx-auto max-w-[450px]`">
           <DocSnapper

@@ -2826,7 +2826,7 @@ export default function useExamples() {
                         percentage: {
                             show: true,
                             fontSize: 100,
-                            rounding: 1,
+                            rounding: 0,
                             bold: true,
                             offsetX: 12,
                             offsetY: -16,
@@ -8991,6 +8991,103 @@ export default function useExamples() {
                     es: "Menos degradado, marcas rectangulares 3D con profundidad",
                     ko: "그라디언트를 줄인, 깊이감 있는 3D 직사각형 눈금",
                     ar: "تدرّج لوني أقل، علامات مستطيلة ثلاثية الأبعاد بعمق"
+                }
+            },
+            // WHEEL SQUARED TICKS 3D DONUT SHAPED GRADIENT
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value,
+                    style: {
+                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style,
+                        chart: {
+                            ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart,
+                            layout: {
+                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout,
+                                percentage: {
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.percentage,
+                                    fontSize: 48,
+                                    offsetY: -6
+                                },
+                                wheel: {
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel,
+                                    ticks: {
+                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel.ticks,
+                                        spacingRatio3d: 1,
+                                        sizeRatio: 0.7,
+                                        depth3d: 20,
+                                        gradient: {
+                                            show: true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-less-gradient-donut-gradient',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Donut shaped with gradient",
+                    fr: "En forme de beignet avec dégradé",
+                    pt: "Em forma de donut com gradiente",
+                    de: "Donutförmig mit Farbverlauf",
+                    zh: "带有渐变的甜甜圈形状",
+                    jp: "グラデーション付きのドーナツ形状",
+                    es: "Con forma de rosquilla con degradado",
+                    ko: "그라데이션이 있는 도넛 모양",
+                    ar: "بشكل دونات مع تدرج لوني"
+                }
+            },
+            // WHEEL SQUARED TICKS 3D DONUT SHAPED PLAIN
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value,
+                    style: {
+                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style,
+                        chart: {
+                            ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart,
+                            layout: {
+                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout,
+                                percentage: {
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.percentage,
+                                    fontSize: 48,
+                                    offsetY: -20,
+                                    strokeWidth: 3
+                                },
+                                wheel: {
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel,
+                                    ticks: {
+                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel.ticks,
+                                        spacingRatio3d: 1,
+                                        sizeRatio: 0,
+                                        depth3d: 20,
+                                        gradient: {
+                                            show: false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-less-gradient-pie-plain',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Pie shaped with plain color",
+                    fr: "En forme de tarte avec couleur unie",
+                    pt: "Em forma de torta com cor lisa",
+                    de: "Kuchenförmig mit einfarbiger Füllung",
+                    zh: "纯色饼状图形",
+                    jp: "単色のパイ形状",
+                    es: "Con forma de pastel de color liso",
+                    ko: "단색 파이 모양",
+                    ar: "بشكل فطيرة بلون موحد"
                 }
             },
             // WHEEL BACKGROUND

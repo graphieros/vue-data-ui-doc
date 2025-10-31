@@ -371,6 +371,41 @@ function closeDialogExample() {
     showDialogExample.value = false;
 }
 
+function scrollToId(id, { smooth = true, offset = 0 } = {}) {
+    const el = document.getElementById(id)
+    if (!el) return false
+
+    const elementTop = el.getBoundingClientRect().top + window.scrollY
+    const targetY = elementTop - offset
+
+    window.scrollTo({
+        top: targetY,
+        behavior: smooth ? 'smooth' : 'auto',
+    })
+
+    return true
+}
+
+async function maybeScrollToNextTag() {
+    const next = typeof route.query.next === 'string' ? route.query.next : null
+    if (!next) return
+
+    await nextTick()
+    setTimeout(() => {
+        let tries = 0;
+        const maxTries = 12;
+        const interval = setInterval(() => {
+            const ok = scrollToId(next, { smooth: false, offset: 380 });
+            tries += 1;
+            if (ok || tries >= maxTries) clearInterval(interval);
+        }, 100);
+    }, 0);
+}
+
+onMounted(() => {
+    maybeScrollToNextTag()
+});
+
 </script>
 
 <template>

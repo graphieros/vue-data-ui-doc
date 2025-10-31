@@ -1391,48 +1391,103 @@ const trendConfig = computed(() => {
 })
 
 const uselessWords = ref([
-  "A",
-  "IT",
-  "SO",
-  "AT",
-  "ARE",
-  "A",
-  "IN",
-  "OR",
-  "NOT",
   "0",
   "1",
-  "IF",
-  "AND",
-  "BY",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "A",
+  "ALL",
   "AN",
-  "S",
-  "D",
-  "IS",
-  "FOR",
+  "AND",
+  "ANY",
+  "ARE",
   "AS",
-  "HAS",
+  "AT",
   "BE",
-  "TO",
-  "THE",
+  "BIG",
+  "BY",
+  "D",
+  "FOR",
+  "FROM",
+  "GIVEN",
+  "HAS",
+  "IF",
+  "IN",
+  "IS",
+  "IT",
+  "ITS",
+  "MORE",
+  "NAN",
+  "NO",
+  "NON",
+  "NOT",
+  "NOW",
   "OF",
   "ON",
-  "NO",
-  "WHEN"
-])
+  "ONLY",
+  "OR",
+  "S",
+  "SAME",
+  "SO",
+  "SOME",
+  "T",
+  "THE",
+  "TO",
+  "TOO",
+  "USE",
+  "WHEN",
+  "WITH",
+]);
+
+function singularize(sentence) {
+  const words = sentence.split(' ');
+  return words.map(word => {
+    if ([
+      "TS",
+      "HAS",
+      "IS",
+      "AXIS",
+      "CSS",
+      "XAXIS",
+      "YAXIS"
+    ].includes(word.toUpperCase())) {
+      return word
+    } else {
+      return /s$/i.test(word) ? word.slice(0, -1) : word;
+    }
+  }).join(' ');
+}
 
 const wordCloudDataset = computed(() => {
-  const source = staticReleases.map(r => {
-    if(!r.updates || !r.updates.length) return ''
-    return r.updates.map(u => u.description + ' ').join(' ') + ' '
-  }).join(' ')
-  return createWordCloudDatasetFromPlainText(source).filter(ds => {
-    if(!uselessWords.value.includes(ds.name.toUpperCase())) {
-      return ds
-    }
-  }).sort((a, b) => b.value - a.value).filter(el => el.value > 1)
-})
+  const source = staticReleases
+    .map(r => {
+      if (!r.updates || !r.updates.length) return "";
+      return r.updates.map(u => singularize(u.description) + " ").join(" ") + " ";
+    })
+    .join(" ");
 
+  const raw = createWordCloudDatasetFromPlainText(source);
+  const mergedMap = raw.reduce((acc, { name, value }) => {
+    const key = name.trim().toLowerCase();
+    if (!key) return acc;
+    if (!acc[key]) {
+      acc[key] = { name, value: 0 };
+    }
+    acc[key].value += value;
+    return acc;
+  }, {});
+
+  return Object.values(mergedMap)
+    .filter(ds => !uselessWords.value.includes(ds.name.toUpperCase()))
+    .sort((a, b) => b.value - a.value)
+    .filter(el => el.value > 3);
+});
 
 function makeColors({ colorStart, iterations, force }) {
   let color = colorStart;
@@ -1447,6 +1502,7 @@ function makeColors({ colorStart, iterations, force }) {
 const wordCloudConfig = computed(() => {
   return {
     userOptions: { show: false},
+    // customPalette: isDarkMode.value ? ['#42d392', '#5f8aee'] : ['#1d915d', '#1d3e54'],
     customPalette: makeColors({
       colorStart: '#607D8B',
       colorEnd: 'red',
@@ -1514,8 +1570,8 @@ table: {
         height: 500,
         width: 500,
         words: {
-          proximity: 20,
-          packingWeight: 20,
+          proximity: 10,
+          // packingWeight: 20,
           color: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
           usePalette: true,
           selectedStroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
