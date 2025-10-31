@@ -17,6 +17,10 @@ const props = defineProps({
     padding: {
         type: String,
         default: 'p-4'
+    },
+    focused: {
+        type: Boolean,
+        default: false,
     }
 });
 
@@ -41,6 +45,7 @@ const background = computed(() => {
         ${padding}
         ${rounding}
         ${borderRight}
+        ${focused ? 'border-2 border-app-green dark:border-app-green' : ''}
         shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]
         `"
     >

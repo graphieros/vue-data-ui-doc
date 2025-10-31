@@ -4184,6 +4184,7 @@ export default function useExamples() {
                 component: 'VueUiChord',
                 icon: 'chartChord',
                 link: 'vue-ui-chord',
+                id: 'chord-classic',
                 description: {
                     en: 'Basic rendering',
                     fr: 'Rendu de base',
@@ -4215,6 +4216,7 @@ export default function useExamples() {
                 component: 'VueUiChord',
                 icon: 'chartChord',
                 link: 'vue-ui-chord',
+                id: 'chord-spaced',
                 description: {
                     en: 'Spaced',
                     fr: 'Espacé',
@@ -4247,6 +4249,7 @@ export default function useExamples() {
                 component: 'VueUiChord',
                 icon: 'chartChord',
                 link: 'vue-ui-chord',
+                id: 'chord-donut',
                 description: {
                     en: 'Donut-like',
                     fr: 'En forme de beignet',
@@ -4264,6 +4267,7 @@ export default function useExamples() {
                 dataset: DATASET_CHORD_BASIC.value,
                 config: CONFIG_CHORD_BASE.value,
                 component: 'VueUiChord',
+                id: 'chord-patterns',
                 icon: 'chartChord',
                 link: 'vue-ui-chord',
                 tags: ['#pattern'],
@@ -4298,6 +4302,7 @@ export default function useExamples() {
                 icon: 'chartChord',
                 link: 'vue-ui-chord',
                 chartBackground: true,
+                id: 'chord-background',
                 tags: ['#chart-background'],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
@@ -4323,6 +4328,7 @@ export default function useExamples() {
                 component: 'VueUiRidgeline',
                 icon: 'chartRidgeline',
                 link: 'vue-ui-ridgeline',
+                id: 'ridgeline-classic',
                 description: {
                     en: 'Basic rendering',
                     fr: 'Rendu de base',
@@ -4342,6 +4348,7 @@ export default function useExamples() {
                 component: 'VueUiRidgeline',
                 icon: 'chartRidgeline',
                 link: 'vue-ui-ridgeline',
+                id: 'ridgeline-categories',
                 description: {
                     en: 'Multiple series per datapoint',
                     fr: 'Séries multiples par point de données',
@@ -4373,6 +4380,7 @@ export default function useExamples() {
                 component: 'VueUiRidgeline',
                 icon: 'chartRidgeline',
                 link: 'vue-ui-ridgeline',
+                id: 'ridgeline-condensed',
                 description: {
                     en: 'Condensed rows',
                     fr: 'Rangées condensées',
@@ -4385,7 +4393,7 @@ export default function useExamples() {
                     ar: 'صفوف مكثفة'
                 }
             },
-            // RIDGELINE CLASSIC
+            // RIDGELINE LIVE
             {
                 dataset: DATASET_RIDGELINE_LIVE_DATA.value,
                 config: {
@@ -4413,6 +4421,7 @@ export default function useExamples() {
                 component: 'VueUiRidgeline',
                 icon: 'chartRidgeline',
                 link: 'vue-ui-ridgeline',
+                id: 'ridgeline-live',
                 description: {
                     en: "Frequent data update",
                     fr: "Mise à jour fréquente des données",
@@ -4432,6 +4441,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-globe',
                 description: {
                     en: 'Globe projection',
                     fr: 'Projection du globe',
@@ -4454,6 +4464,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-mercator',
                 description: {
                     en: 'Mercator projection',
                     fr: 'Projection de Mercator',
@@ -4476,6 +4487,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-aitoff',
                 description: {
                     en: 'Aitoff projection',
                     fr: 'Projection Aitoff',
@@ -4498,6 +4510,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-azimutal',
                 description: {
                     en: 'Azimuthal equidistant projection',
                     fr: 'Projection azimutale équidistante',
@@ -4520,6 +4533,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-bonne',
                 description: {
                     en: 'Bonne projection',
                     fr: 'Projection de Bonne',
@@ -4542,6 +4556,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-equirectangular',
                 description: {
                     en: 'Equirectangular projection',
                     fr: 'Projection équirectangulaire',
@@ -4564,6 +4579,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-gallpeters',
                 description: {
                     en: 'Gall Peters projection',
                     fr: 'Projection Gall-Peters',
@@ -4586,6 +4602,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-hammer',
                 description: {
                     en: 'Hammer projection',
                     fr: 'Projection Hammer',
@@ -4608,6 +4625,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-mollweide',
                 description: {
                     en: 'Mollweide projection',
                     fr: 'Projection Mollweide',
@@ -4630,6 +4648,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-robinson',
                 description: {
                     en: 'Robinson projection',
                     fr: 'Projection Robinson',
@@ -4652,6 +4671,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-sinusioidal',
                 description: {
                     en: 'Sinusoidal projection',
                     fr: 'Projection sinusoïdale',
@@ -4674,6 +4694,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-grinten',
                 description: {
                     en: 'Van Der Grinten projection',
                     fr: 'Projection Van Der Grinten',
@@ -4696,6 +4717,7 @@ export default function useExamples() {
                 component: 'VueUiWorld',
                 icon: 'world',
                 link: 'vue-ui-world',
+                id: 'world-winkeltripel',
                 description: {
                     en: 'Winkel Tripel projection',
                     fr: 'Projection Winkel Tripel',
@@ -4806,7 +4828,7 @@ export default function useExamples() {
                 config: BASE_XY_CONFIG.value,
                 component: 'VueUiXy',
                 icon: 'chartLine',
-                id: 'line-incomplete',
+                id: 'null-linked',
                 link: 'vue-ui-xy',
                 description: {
                     en: 'With incomplete data (null values) linked',
@@ -4832,7 +4854,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiXy',
                 icon: 'chartLine',
-                id: 'line-incomplete',
+                id: 'null-cut',
                 link: 'vue-ui-xy',
                 description: {
                     en: 'With incomplete data (null values) cut',
@@ -5387,7 +5409,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiXy',
                 icon: 'chartLine',
-                id: 'xy-background',
+                id: 'xy-background-pattern',
                 link: 'vue-ui-xy',
                 chartBackgroundPattern: true,
                 tags: ['#chart-background'],
@@ -6185,7 +6207,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiDonut',
                 icon: 'chartDonut',
-                id: 'pie',
+                id: 'donut-pie',
                 link: 'vue-ui-donut',
                 description: {
                     en: 'Pie chart',
@@ -7465,7 +7487,7 @@ export default function useExamples() {
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
                 component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
-                id: 'vertical-bar-basic',
+                id: 'horizontal-bar-basic',
                 link: 'vue-ui-horizontal-bar',
                 description: {
                     en: 'Sorted horizontal histogram',
@@ -7485,7 +7507,7 @@ export default function useExamples() {
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
                 component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
-                id: 'vertical-bar-mixed',
+                id: 'horizontal-bar-mixed',
                 link: 'vue-ui-horizontal-bar',
                 description: {
                     en: 'Positive and negative values',
@@ -7522,7 +7544,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
-                id: 'vertical-bar-no-gap-no-gradient',
+                id: 'horizontal-bar-no-gap-no-gradient',
                 link: 'vue-ui-horizontal-bar',
                 description: {
                     en: 'No gap, no gradient',
@@ -7559,7 +7581,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
-                id: 'vertical-bar-no-gap-no-gradient-inverse-sort',
+                id: 'horizontal-bar-no-gap-no-gradient-inverse-sort',
                 link: 'vue-ui-horizontal-bar',
                 description: {
                     en: 'Thinner bars, inverse sort',
@@ -7579,7 +7601,7 @@ export default function useExamples() {
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
                 component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
-                id: 'vertical-bar-background',
+                id: 'horizontal-bar-background',
                 link: 'vue-ui-horizontal-bar',
                 chartBackground: true,
                 tags: ['#chart-background'],
@@ -7606,7 +7628,7 @@ export default function useExamples() {
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
                 component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
-                id: 'vertical-bar-pattern',
+                id: 'horizontal-bar-pattern',
                 link: 'vue-ui-horizontal-bar',
                 tags: ['#pattern'],
                 slot: `<template #pattern="{ seriesIndex, patternId }">
@@ -7638,7 +7660,7 @@ export default function useExamples() {
                 config: CONFIG_HEATMAP_BASIC.value,
                 component: 'VueUiHeatmap',
                 icon: 'chartHeatmap',
-                id: 'basic-heatmap',
+                id: 'heatmap-basic',
                 link: 'vue-ui-heatmap',
                 description: {
                     en: 'Basic heatmap chart',
@@ -7697,7 +7719,7 @@ export default function useExamples() {
                 config: CONFIG_GAUGE_BASE.value,
                 component: 'VueUiGauge',
                 icon: 'chartGauge',
-                id: 'basic-gauge',
+                id: 'gauge-basic',
                 link: 'vue-ui-gauge',
                 description: {
                     en: 'Basic gauge chart',

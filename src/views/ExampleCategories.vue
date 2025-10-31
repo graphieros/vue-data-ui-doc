@@ -17,6 +17,7 @@ import { useMakerStore } from "../stores/maker";
 import BaseCard from "../components/BaseCard.vue";
 import BaseLazy from "../components/BaseLazy.vue";
 import BaseSuspense from "../components/BaseSuspense.vue";
+import CopyLink from "../components/CopyLink.vue";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -492,12 +493,12 @@ onMounted(() => {
                             <div class="w-full h-[700px]"/>
                         </BaseCard>
                     </template>
-                    <BaseCard>
+                    <BaseCard :focused="router.currentRoute.value.fullPath.endsWith(`categories?next=${example.id}#${example.link}`)">
                         <div dir="auto" class="bg-gray-200 rounded-2xl dark:bg-[rgb(35,35,35)] p-4">
                             <div class="flex flex-row gap-4 place-items-center">
-                                <div class="flex flex-row gap-2 place-items-center pb-5 border-b w-fit border-app-blue dark:border-[#6A6A6A]">
+                                <div class="flex flex-row gap-2 place-items-center pb-5 w-fit">
                                     <VueUiIcon :name="example.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                                    <h2 class="text-gray-800 dark:text-[#1F77B4]">{{ example.component }}</h2>
+                                    <h2 class="font-inter-medium text-gray-800 dark:text-[#1F77B4]">{{ example.component }}</h2>
                                 </div>
                                 <BaseDocHeaderActions
                                     :defaultConfig="false"
@@ -517,6 +518,10 @@ onMounted(() => {
                                         </div>
                                     </template>
                                 </BaseDocHeaderActions>
+                                <CopyLink 
+                                    v-if="example.id"
+                                    :link="`https://vue-data-ui.graphieros.com/examples/categories?next=${example.id}#${example.link}`"
+                                />
                             </div>
                             <p class="text-sm dark:text-[#9dcbeb]">{{  example.description[store.lang] }}</p>
         

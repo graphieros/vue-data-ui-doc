@@ -71,7 +71,7 @@ function copyToClipboard(conf) {
 </script>
 
 <template>
-    <div :class="`flex flex-row gap-4 w-full my-4 ${justify}`">
+    <div :class="`flex flex-row gap-4 w-full my-4 ${justify} flex-wrap`">
         <div class="relative" v-if="defaultConfig">
             <FlexibleTooltip position="bottom" :content="translations.docs.copyDefaultConfig[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
                 <button @click="copyToClipboard(configSource)" class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
