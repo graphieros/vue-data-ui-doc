@@ -70,7 +70,7 @@ const config = computed(() => {
         style: {
             backgroundColor: 'transparent',
             star: {
-                inactiveColor: isDarkMode.value ? '#3A3A3A': '#6A6A6A'
+                inactiveColor: isDarkMode.value ? '#3A3A3A': '#CCCCCC'
             },
             rating: {
                 show: false
