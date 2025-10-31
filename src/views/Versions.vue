@@ -1455,7 +1455,9 @@ function singularize(sentence) {
       "AXIS",
       "CSS",
       "XAXIS",
-      "YAXIS"
+      "YAXIS",
+      "SHOWSERIES",
+      "SERIES"
     ].includes(word.toUpperCase())) {
       return word
     } else {

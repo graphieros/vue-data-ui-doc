@@ -1,3 +1,7 @@
 Link to a specific example:
 
 https://vue-data-ui.graphieros.com/examples/categories?next=wheel-less-gradient-pie-plain#vue-ui-wheel
+
+Add toast notifications for store.copy:
+
+> have store.copy receive content and show 2 lines ellipsed of it
