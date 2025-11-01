@@ -5,10 +5,18 @@ const config = useConfig()
 export function searchInConfig(searchTerm) {
     const results = [];
 
-    function getType(value) {
+    function getType(value, key) {
         if (Array.isArray(value)) return "Array";
         if (typeof value === "function") return "Function";
-        if (value === null) return "null | Function";
+        if (value === null) {
+            if ([
+                "endIndex",
+                "startIndex",
+            ].includes(key)) {
+                return "null | number";
+            }
+            return "null | Function";
+        }
         if (value instanceof Date) return "date";
         if (typeof value === "object") return "Object";
         return typeof value;
@@ -25,7 +33,7 @@ export function searchInConfig(searchTerm) {
                         path: fullPath,
                         shortPath: newPath,
                         value: obj[key] === null ? 'null' : obj[key],
-                        type: getType(obj[key]),
+                        type: getType(obj[key], key),
                         route: objName.replaceAll("_", "-"),
                         componentName: formatString(objName)
                     });

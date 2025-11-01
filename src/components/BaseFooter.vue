@@ -9,10 +9,10 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const gizmoConfig = computed(() => {
     return {
-        color: '#5f8bee',
-        textColor: isDarkMode.value ? '#5f8bee' : '#1A1A1A',
-        gradientColor: isDarkMode.value ? '#3658a8' : '#a5b9e8',
-        stroke: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
+        color: '#1f77b4',
+        textColor: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+        gradientColor: isDarkMode.value ? '#1f77b4' : '#a5b9e8',
+        stroke: isDarkMode.value ? '#5c7e96' : '#1d3e54',
         formatter: ({value}) => {
             return value.toFixed(1) + '%'
         }

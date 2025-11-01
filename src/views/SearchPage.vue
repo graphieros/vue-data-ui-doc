@@ -56,11 +56,12 @@ const accordionConfig = computed(() => {
         open: false,
         maxHeight: 10000,
         head: {
-        backgroundColor: 'transparent',
-        useArrowSlot: true
+            iconColor: '#5f8aee',
+            backgroundColor: 'transparent',
+            useArrowSlot: true
         },
         body: {
-        backgroundColor: 'transparent'
+            backgroundColor: 'transparent'
         }
     }
     })
@@ -69,12 +70,13 @@ const accordionConfig = computed(() => {
         open: false,
         maxHeight: 10000,
         head: {
-        backgroundColor: 'transparent',
-        useArrowSlot: true
+            iconColor: '#5f8aee',
+            backgroundColor: 'transparent',
+            useArrowSlot: true
         },
         body: {
-        backgroundColor: 'transparent',
-        color: '#CCCCCC'
+            backgroundColor: 'transparent',
+            color: '#CCCCCC'
         }
     }
 })
@@ -257,8 +259,8 @@ ${indentSpace}}`;
                 </template>
     
                 <template #title="{ color }">
-                    <VueUiIcon :name="iconMap[res.componentName]" stroke="#666666"/>
-                    <span>{{ res.componentName }}: </span>
+                    <VueUiIcon :name="iconMap[res.componentName]" stroke="#8A8A8A"/>
+                    <span class="font-inter-medium text-gray-500 dark:text-[#8A8A8A]">{{ res.componentName }}: </span>
                     <code
                     v-html="
                         res.shortPath.replace(
