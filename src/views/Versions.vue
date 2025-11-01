@@ -1489,7 +1489,8 @@ const wordCloudDataset = computed(() => {
   return Object.values(mergedMap)
     .filter(ds => !uselessWords.value.includes(ds.name.toUpperCase()))
     .sort((a, b) => b.value - a.value)
-    .filter(el => el.value > 3);
+    .filter(el => el.value > 3)
+    .map(el => ({ ...el, name: el.name }))
 });
 
 function makeColors({ colorStart, iterations, force }) {
@@ -1574,8 +1575,7 @@ table: {
         height: 500,
         width: 500,
         words: {
-          proximity: 10,
-          // packingWeight: 20,
+          proximity: 0,
           color: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
           usePalette: true,
           selectedStroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
