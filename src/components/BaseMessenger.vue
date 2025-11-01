@@ -8,30 +8,27 @@ import { CheckIcon, ExclamationCircleIcon } from "vue-tabler-icons";
 const store = useMainStore();
 const { messages: storeMessages } = storeToRefs(store);
 
-// Local mirror to control per-item UI state (paused, visible, etc.)
 const messages = ref([]);
-const timers = new Map();        // id -> timeout id
-const remaining = new Map();     // id -> remaining ms
-const startedAt = new Map();     // id -> timestamp when (re)started
+const timers = new Map();
+const remaining = new Map();
+const startedAt = new Map();
 
 const DEFAULT_DURATION = 4000;
-const EXIT_ANIM_MS = 200; // match leave-active duration
+const EXIT_ANIM_MS = 200;
 
 watch(
     storeMessages,
     async (list) => {
-        // Normalize and keep stable references by id
         const next = list.map((m) => ({
             id: m.id,
-            type: m.type ?? "success",     // 'success' | 'error' | etc.
+            type: m.type ?? "success",
             content: m.content ?? "",
             visible: m.visible ?? true,
             duration: typeof m.duration === "number" ? m.duration : DEFAULT_DURATION,
-            autoClose: m.autoClose !== false, // default true
+            autoClose: m.autoClose !== false,
             paused: false,
         }));
 
-        // Preserve paused/visible flags across updates
         const prevMap = new Map(messages.value.map((m) => [m.id, m]));
         next.forEach((m) => {
             const prev = prevMap.get(m.id);
@@ -45,14 +42,12 @@ watch(
 
         await nextTick();
 
-        // Schedule timers for new items
         for (const m of messages.value) {
             if (m.autoClose && !timers.has(m.id)) {
                 startTimer(m.id, m.duration);
             }
         }
 
-        // Clear timers for removed items
         for (const [id] of timers) {
             if (!next.find((m) => m.id === id)) {
                 clearTimer(id);
@@ -108,7 +103,6 @@ function closeById(id) {
     if (!m) return;
     m.visible = false;
     clearTimer(id);
-    // Remove from store after leave animation for smoothness
     setTimeout(() => store.deleteMessage(id), EXIT_ANIM_MS);
 }
 
@@ -117,7 +111,9 @@ function deleteMessage(m) {
 }
 
 onBeforeUnmount(() => {
-    for (const [id] of timers) clearTimer(id);
+    for (const [id] of timers) {
+        clearTimer(id);
+    }
 });
 </script>
 
