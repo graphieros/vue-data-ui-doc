@@ -2052,7 +2052,7 @@ async function impactPatch() {
 </script>
 
 <template>
-    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true, 'versions': true}"/>
+    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true, 'versions': true, 'small-zoom': true}"/>
     
       <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
@@ -2336,7 +2336,21 @@ async function impactPatch() {
     </div>
 </template>
 
+<style scoped>
+:deep(.vue-data-ui-zoom) {
+  width: 100% !important;
+  max-width: clamp(200px, 70%, 800px) !important;
+  margin: 0 auto !important;
+}
+
+:deep(.vue-data-ui-refresh-button) {
+  top: -8px !important;
+  left: calc(100% + 36px) !important;
+}
+</style>
+
 <style>
+
 .treemap-icon svg {
   height: unset;
   width: 50%;

@@ -585,6 +585,7 @@ const stackbarConfig = computed(() => {
                 legend: {
                     backgroundColor: 'transparent',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    position: 'top'
                 },
                 title: {
                     text: 'Satisfaction survey, ratings breakdown',
@@ -1014,6 +1015,7 @@ const xyConfig = computed(() => {
             },
             legend: {
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                position: 'top'
             },
             title: {
                 text: 'Satisfaction survey history',
@@ -1617,3 +1619,16 @@ function selectHeatmapCell(cell) {
         </div>
     </div>
 </template>
+
+<style scoped>
+:deep(.vue-data-ui-zoom) {
+    width: 100% !important;
+    max-width: clamp(200px, 70%, 800px) !important;
+    margin: 0 auto !important;
+}
+
+:deep(.vue-data-ui-refresh-button) {
+    top: -8px !important;
+    left: calc(100% + 36px) !important;
+}
+</style>
