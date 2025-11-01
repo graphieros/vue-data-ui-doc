@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.5.2",
+    "date": "2025-11-01",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Set strictPixelPadding to true by default and increase default word spacing",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 3.5.1",
     "date": "2025-10-30",
     "updates": [

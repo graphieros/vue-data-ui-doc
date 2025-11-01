@@ -73,6 +73,7 @@ const config = ref({
     loading: false,
     responsive: false,
     theme: "",
+    strictPixelPadding: true,
     customPalette: makeColors({
         colorStart: '#5f8aee',
         iterations: 200,
@@ -195,6 +196,7 @@ const darkModeConfig = ref({
     loading: false,
     responsive: false,
     theme: "",
+    strictPixelPadding: true,
     customPalette: makeColors({
         colorStart: '#5f8aee',
         iterations: 200,
@@ -488,6 +490,7 @@ function goToPage(route) {
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
+        <BaseAttr name="strictPixelPadding" attr="strictPixelPadding" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />

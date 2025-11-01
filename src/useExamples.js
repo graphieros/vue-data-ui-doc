@@ -2309,6 +2309,7 @@ export default function useExamples() {
     //-------------- VUE-UI-WORD-CLOUD --------------//
     const CONFIG_WORD_WLOUD_BASIC = computed(() => {
         return {
+            strictPixelPadding: true,
             table: TABLE.value,
             style: {
                 chart: {

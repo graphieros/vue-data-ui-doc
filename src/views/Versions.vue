@@ -1505,6 +1505,7 @@ function makeColors({ colorStart, iterations, force }) {
 const wordCloudConfig = computed(() => {
   return {
     userOptions: { show: false},
+    strictPixelPadding: true,
     // customPalette: isDarkMode.value ? ['#42d392', '#5f8aee'] : ['#1d915d', '#1d3e54'],
     customPalette: makeColors({
       colorStart: '#607D8B',
