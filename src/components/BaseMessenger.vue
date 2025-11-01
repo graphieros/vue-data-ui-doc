@@ -1,11 +1,12 @@
 <script setup>
-import { ref, watch, onBeforeUnmount, nextTick } from "vue";
+import { ref, watch, onBeforeUnmount, nextTick, computed } from "vue";
 import { storeToRefs } from "pinia";
 import { useMainStore } from "../stores";
 import BaseCard from "./BaseCard.vue";
 import { CheckIcon, ExclamationCircleIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 const { messages: storeMessages } = storeToRefs(store);
 
 const messages = ref([]);
@@ -135,14 +136,14 @@ onBeforeUnmount(() => {
                 ]" role="status" @mouseenter="onMouseEnter(message)" @mouseleave="onMouseLeave(message)">
 
                 <CheckIcon v-if="message.type === 'success'"
-                    class="absolute left-3 top-1/2 -translate-y-1/2 opacity-80 text-app-green-dark" />
+                    class="absolute left-3 top-1/2 -translate-y-1/2 opacity-80 text-app-green-dark" stroke-width="3" />
                 <ExclamationCircleIcon v-else-if="message.type === 'error'"
                     class="absolute left-3 top-1/2 -translate-y-1/2 opacity-80 text-app-red" />
 
                 <button
-                    class="absolute right-2 top-2 grid place-items-center h-7 w-7 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] bg-app-green-light"
+                    class="absolute right-2 top-2 grid place-items-center h-7 w-7 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] bg-app-green-light dark:bg-[#3A3A3A] dark:shadow-[inset_0_2px_2px_#87e6bb,0_4px_6px_rgba(0,0,0,0.1)] hover:dark:bg-[#2A2A2A] transition-colors"
                     @click="deleteMessage(message)" aria-label="Dismiss notification">
-                    <VueUiIcon name="close" :size="18" stroke="#1A1A1A" />
+                    <VueUiIcon name="close" :size="18" :stroke="isDarkMode ? '#87e6bb' : '#1A1A1A'" />
                 </button>
 
                 <p class="text-xs leading-tight pl-2 pr-8">
@@ -150,13 +151,13 @@ onBeforeUnmount(() => {
                 </p>
 
                 <!-- Progress bar -->
-                <div class="absolute left-0 bottom-0 h-1 w-full overflow-hidden rounded-b-xl"
+                <div class="absolute left-0 bottom-0 h-[6px] w-full overflow-hidden rounded-b-xl"
                     :class="message.type === 'error' ? 'bg-red-500/10' : 'bg-emerald-500/10'">
                     <div class="h-full" :class="[
                         'progress',
                         'rounded-full',
                         message.paused ? 'progress--paused' : '',
-                        message.type === 'error' ? 'bg-app-red' : 'bg-app-green-dark'
+                        message.type === 'error' ? 'bg-app-red' : 'bg-gradient-to-r from-app-green to-app-green-dark'
                     ]" :style="{ '--duration': (message.duration || 0) + 'ms' }" aria-hidden="true" />
                 </div>
             </BaseCard>
@@ -168,7 +169,7 @@ onBeforeUnmount(() => {
 .toast-enter-from,
 .toast-leave-to {
     opacity: 0;
-    transform: translateY(8px) scale(0.98);
+    transform: translateY(8px) scale(0.9);
 }
 
 .toast-enter-active,
