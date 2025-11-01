@@ -32,7 +32,7 @@ export function searchInConfig(searchTerm) {
                     results.push({
                         path: fullPath,
                         shortPath: newPath,
-                        value: obj[key] === null ? 'null' : obj[key],
+                        value: obj[key] === null ? null : obj[key],
                         type: getType(obj[key], key),
                         route: objName.replaceAll("_", "-"),
                         componentName: formatString(objName)
