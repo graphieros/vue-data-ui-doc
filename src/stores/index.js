@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { createUid } from "../components/maker/lib";
 
 export const useMainStore = defineStore("main", {
     state: () => {
@@ -15,6 +16,8 @@ export const useMainStore = defineStore("main", {
             isMenuOpen: false,
             isDarkMode: true,
             isCopy: false,
+            isMessage: false,
+            messages: [],
             isFetching: false,
             customColors: [],
             npmDownloads: [],
@@ -4380,11 +4383,23 @@ export const useMainStore = defineStore("main", {
         }
     },
     actions: {
-        copy(){
+        copy({ message, type } = { message: '', type: 'success'}){
             this.isCopy = true;
+            if (!!message) {
+                this.isMessage = true;
+                this.messages.push({
+                    id: createUid(),
+                    content: message,
+                    visible: true,
+                    type
+                });
+            }
             setTimeout(() => {
                 this.isCopy = false;
             }, 1000);
+        },
+        deleteMessage(id) {
+            this.messages = this.messages.filter(m => m.id !== id)
         }
     }
 })

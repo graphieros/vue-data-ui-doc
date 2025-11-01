@@ -9,6 +9,7 @@ import HelpCenter from "./components/helpCenter/HelpCenter.vue";
 import BaseFooter from "./components/BaseFooter.vue";
 import FootInfo from "./components/FootInfo.vue";
 import useFetch from "./useFetch";
+import BaseMessenger from "./components/BaseMessenger.vue";
 
 const store = useMainStore();
 const router = useRouter();
@@ -160,6 +161,7 @@ const showUnderlay = computed(() => {
   </div>
   <!-- <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/> -->
   <BaseFooter v-if="!['/'].includes(currentRoute)"/>
+  <BaseMessenger/>
 </template>
 
 <style>

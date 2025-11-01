@@ -8,18 +8,21 @@ const props = defineProps({
     link: {
         type: String,
         default: ''
+    },
+    enableMessenger: {
+        type: Boolean,
+        default: true
     }
 })
 
 const store = useMainStore();
-const isDarkMode = computed(() => store.isDarkMode);
 
 async function copyToClipboard(conf) {
     const text = typeof conf === "string" ? conf : JSON.stringify(conf, null, 2);
     if (window.isSecureContext && navigator.clipboard?.writeText) {
         try {
             await navigator.clipboard.writeText(text);
-            store.copy();
+            store.copy({ message: props.enableMessenger ? text : '', type: 'success'});
             return true;
         } catch (err) {
             console.warn("Clipboard API failed, using fallback:", err);
@@ -43,7 +46,7 @@ async function copyToClipboard(conf) {
         document.body.removeChild(textarea);
 
         if (ok) {
-            store.copy();
+            store.copy({ message: props.enableMessenger ? text : '', type: 'success'});
             return true;
         }
         console.error("document.execCommand('copy') returned false");
