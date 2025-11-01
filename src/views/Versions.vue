@@ -1449,15 +1449,16 @@ function singularize(sentence) {
   const words = sentence.split(' ');
   return words.map(word => {
     if ([
-      "TS",
+      "AXIS",
+      "CLASSES",
+      "CSS",
       "HAS",
       "IS",
-      "AXIS",
-      "CSS",
+      "SERIES",
+      "SHOWSERIES",
+      "TS",
       "XAXIS",
       "YAXIS",
-      "SHOWSERIES",
-      "SERIES"
     ].includes(word.toUpperCase())) {
       return word
     } else {
