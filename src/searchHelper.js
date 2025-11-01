@@ -11,7 +11,19 @@ export function searchInConfig(searchTerm) {
         if (value === null) {
             if ([
                 "endIndex",
+                "height",
+                "hideUnderPercentage",
+                "hideUnderValue",
+                "max",
+                "min",
+                "scaleMax",
+                "scaleMin",
                 "startIndex",
+                "width",
+                "yBottom",
+                "yTop",
+                "zoomEndIndex",
+                "zoomStartIndex",
             ].includes(key)) {
                 return "null | number";
             }
