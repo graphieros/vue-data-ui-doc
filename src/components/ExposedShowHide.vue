@@ -40,8 +40,8 @@ const content = computed(() => {
 </script>
 
 <template>
-    <div class="flex flex-col my-4 py-4 border-t border-gray-500">
-        <code class="text-xl">hideSeries / showSeries</code>
+    <div class="flex flex-col mt-4 py-4">
+        <code class="text-xl text-[#559AD3] dark:text-[#DCDCAA]">hideSeries / showSeries</code>
         <div class="text-gray-500">{{ translations.docs.emits.showHideSeries[store.lang] }}</div>
     </div>
     <CodeParser :content="content" language="javascript"/>

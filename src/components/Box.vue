@@ -263,7 +263,7 @@ const menuItems = computed(() => {
         {
             name: menuTranslations.value.emits[store.lang],
             icon: 'func',
-            color: isDarkMode.value ? '#CCCCCC' : '#FFFFFF',
+            color: isDarkMode.value ? '#DCDCAA' : '#FFFFFF',
             active: props.showEmits,
             order: 2
         },
