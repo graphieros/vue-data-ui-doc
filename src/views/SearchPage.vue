@@ -278,7 +278,7 @@ ${indentSpace}}`;
                     <div class="p-4 rounded">
                         <CodeParser :content="jsonToJsObject(res.value)" language="javascript" @copy="store.copy()">
                             <template #color v-if="res.type === 'string' && res.value.includes('#')">
-                                <div :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
+                                <div :style="`background:${res.value}`" class="h-10 w-10 rounded-full border border-gray-400 mr-6"/>
                             </template>
                         </CodeParser>
                     </div>
