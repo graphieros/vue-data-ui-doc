@@ -112,32 +112,32 @@ const datasetRefContent = computed(() => {
                 <label for="useTS">{{ translations.useTs[store.lang] }}</label><input type="checkbox" v-model="isTs" id="useTS">
             </div>
             <div class="bg-black text-gray-400 p-2 sm:p-6 rounded relative">
-                <button title="Copy" class="text-app-green absolute right-4 top-4" @click="copyContent"><CopyIcon/></button>
+                <button title="Copy" class="text-[#6A6A6A] absolute right-4 top-4" @click="copyContent"><CopyIcon/></button>
 <pre>
 <code class="text-xs" ref="codeContent">
-&lt;script setup<span v-if="isTs"> lang="ts"</span>&gt;
-    import { ref } from "vue";<span v-if="isTs">
-    import <span v-pre>{
-        </span>VueDataUi,<span v-if="selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '').replace(excl5, '').length">
-        type {{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '').replace(excl5, '') }}, 
-        </span>type {{ selectedComponent.types.config }} <span v-pre>
-    }</span> from "vue-data-ui";
-    import "vue-data-ui/style.css";
+&lt;<span class="code-html">script</span> <span class="code-attr">setup</span><span v-if="isTs"> <span class="code-attr">lang</span>=<span class="code-string">"ts"</span></span>&gt;
+    <span class="code-key">import</span> { <span class="code-attr">ref</span> } <span class="code-key">from</span> <span class="code-string">"vue"</span>;<span v-if="isTs">
+    <span class="code-key">import</span> <span v-pre>{
+        </span><span class="code-attr">VueDataUi</span>,<span v-if="selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '').replace(excl5, '').length">
+        <span class="code-key">type</span> <span class="code-attr">{{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '').replace(excl5, '') }}</span>, 
+        </span><span class="code-key">type</span> <span class="code-attr">{{ selectedComponent.types.config }}</span> <span v-pre>
+    }</span> <span class="code-key">from</span> <span class="code-string">"vue-data-ui"</span>;
+    <span class="code-key">import</span> <span class="code-string">"vue-data-ui/style.css"</span>;
     </span>
-    <span v-if="!isTs">import { VueDataUi } from "vue-data-ui";
-    import "vue-data-ui/style.css";
+    <span v-if="!isTs"><span class="code-key">import</span> { <span class="code-attr">VueDataUi</span> } <span class="code-key">from</span> <span class="code-string">"vue-data-ui"</span>;
+    <span class="code-key">import</span> <span class="code-string">"vue-data-ui/style.css"</span>;
     </span>
-    const dataset = ref<span v-if="isTs"><{{ selectedComponent.types.dataset }}></span>();
-    const config = ref<span v-if="isTs"><{{ selectedComponent.types.config }}></span>();
-&lt;/script&gt;
+    <span class="code-html">const</span> <span class="code-attr">dataset</span> = <span class="code-fn">ref</span><span v-if="isTs"><<span class="code-type">{{ selectedComponent.types.dataset.includes('[]') ? selectedComponent.types.dataset.replace('[]', '') : selectedComponent.types.dataset}}</span><span>{{ selectedComponent.types.dataset.includes('[]') ? '[]' : '' }}</span>></span>();
+    <span class="code-html">const</span> <span class="code-attr">config</span> = <span class="code-fn">ref</span><span v-if="isTs"><<span class="code-type">{{ selectedComponent.types.config }}</span>></span>();
+&lt;/<span class="code-html">script</span>&gt;
 
-&lt;template&gt;
-    &lt;VueDataUi
-        component="{{ selectedComponent.name }}"
-        :dataset="dataset"
-        :config="config"
+&lt;<span class="code-html">template</span>&gt;
+    &lt;<span class="code-html">VueDataUi</span>
+        <span class="code-attr">component</span>="<span class="code-string">{{ selectedComponent.name }}</span>"
+        :<span class="code-attr">dataset</span>="<span class="code-attr">dataset</span>"
+        :<span class="code-attr">config</span>="<span class="code-attr">config</span>"
     /&gt;
-&lt;/template&gt;
+&lt;/<span class="code-html">template</span>&gt;
 </code>
 </pre>
             </div>
@@ -322,5 +322,29 @@ const datasetRefContent = computed(() => {
 <style scoped>
 table.schema td {
     text-align:center !important;
+}
+
+.code-key {
+    color: #B37BAE;
+}
+
+.code-html {
+    color: #559AD3;
+}
+
+.code-attr {
+    color: #9cdcfe;
+}
+
+.code-string {
+    color: #CD9077;
+}
+
+.code-fn {
+    color: #DCDCAA;
+}
+
+.code-type {
+    color: #4dc6ae;
 }
 </style>
