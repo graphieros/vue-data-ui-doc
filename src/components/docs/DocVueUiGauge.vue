@@ -517,7 +517,7 @@ function goToPage(route) {
                 <div class="w-full overflow-x-auto">
 
         <CodeParser
-            language="javascript"
+            language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
             :title="translations.docs.datastructure[store.lang]"
