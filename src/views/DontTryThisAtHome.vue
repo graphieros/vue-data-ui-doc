@@ -36,7 +36,7 @@ const crumbs = ref([
             {{ translations.docs.dontTryThisAtHome[store.lang] }}
         </h1>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A]">
+    <div class="max-w-[800px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A]">
         <TreemapXy/>
     </div>
 </template>

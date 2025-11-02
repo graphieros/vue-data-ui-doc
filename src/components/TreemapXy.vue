@@ -159,7 +159,7 @@ const config = computed(() => {
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         height: 600,
         width: 800,
-        padding: { top: 0, right: 6, bottom: 12, left: 6 },
+        padding: { top: 0, right: 0, bottom: 0, left: 0 },
         layout: {
           sorted: true,
           rects: {
@@ -262,9 +262,9 @@ const xyConfig = computed(() => {
         show: false,
       },
       padding: {
-        top: 5,
-        bottom: 5,
-        left: 36
+        top: 0,
+        bottom: 0,
+        left: 0
       },
       zoom: {
         show: false,
@@ -283,7 +283,7 @@ const xyConfig = computed(() => {
     </div>
     <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="config">
       <template #rect="{ rect }">
-        <div :style="{ width: '100%', height: 'calc(100% - 50px)' }">
+        <div :style="{ width: '100%', height: '100%' }">
           <VueDataUi
             component="VueUiXy"
             :dataset="sparklines[rect.name]?.dataset"
