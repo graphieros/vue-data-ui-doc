@@ -43,6 +43,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "csv",
                 "description": "Triggers csv download.",
                 "icon": "excel"
@@ -66,23 +71,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             }
         ],
         "exposed": [
@@ -158,6 +163,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "csv",
                 "description": "Triggers csv download.",
                 "icon": "excel"
@@ -181,23 +191,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             }
         ],
         "exposed": [
@@ -292,6 +302,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "csv",
                 "description": "Triggers csv download.",
                 "icon": "excel"
@@ -315,23 +330,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             }
         ],
         "exposed": [
@@ -413,6 +428,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "csv",
                 "description": "Triggers csv download.",
                 "icon": "excel"
@@ -436,27 +456,27 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             },
             {
                 "name": "zoom-label",
-                "description": "Use this slot to customize the content of the zoom circle label"
+                "description": "customize the content of the zoom circle label"
             }
         ],
         "exposed": [
@@ -542,6 +562,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "csv",
                 "description": "Triggers csv download.",
                 "icon": "excel"
@@ -575,31 +600,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ],
         "exposed": [
@@ -691,6 +716,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "csv",
                 "description": "Triggers csv download.",
                 "icon": "excel"
@@ -714,23 +744,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ],
         "exposed": [
@@ -806,6 +836,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
@@ -819,23 +854,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ],
         "exposed": [
@@ -889,11 +924,11 @@
             },
             {
                 "name": "comment-before",
-                "description": "Use this slot to add content before the kpi value."
+                "description": "add content before the kpi value."
             },
             {
                 "name": "comment-after",
-                "description": "Use this slot to add content after the kpi value."
+                "description": "add content after the kpi value."
             }
         ]
     },
@@ -953,6 +988,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -1000,39 +1040,39 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "plot-comment",
-                "description": "Use this slot to display plot comments"
+                "description": "display plot comments"
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             }
         ]
     },
@@ -1157,19 +1197,19 @@
         "slots": [
             {
                 "name": "caption",
-                "description": "Use this slot to customize the caption content."
+                "description": "customize the caption content."
             },
             {
                 "name": "th",
-                "description": "Use this slot to customize the header cells."
+                "description": "customize the header cells."
             },
             {
                 "name": "td",
-                "description": "Use this slot to customize the body cells"
+                "description": "customize the body cells"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             }
         ]
     },
@@ -1229,6 +1269,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -1273,31 +1318,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             }
         ]
     },
@@ -1374,6 +1419,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -1405,6 +1455,10 @@
                 "description": "Emits the current visible series when selecting a legend item."
             },
             {
+                "name": "selectTimeLabel",
+                "description": "Emits the datapoints, index and time label when clicking a time label"
+            },
+            {
                 "name": "selectX",
                 "description": "Emits the current visible series at the selected x index when clicking on the chart."
             }
@@ -1427,6 +1481,10 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
@@ -1441,48 +1499,132 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ],
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "reset-action",
-                "description": "Use this slot to customize the reset button of the zoom slider."
+                "description": "customize the reset button of the zoom slider."
             },
             {
                 "name": "plot-comment",
-                "description": "Use this slot to display plot comments"
+                "description": "display plot comments"
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
+            },
+            {
+                "name": "bar-gradient",
+                "description": "inject a custom defs element to apply gradients on bar types"
+            },
+            {
+                "name": "time-label",
+                "description": "inject custom text elements to customize time labels"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionStack",
+                "description": "customize the context menu stack icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -1527,6 +1669,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -1571,27 +1718,27 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ],
         "examples": [
@@ -1639,6 +1786,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
@@ -1662,19 +1814,19 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -1744,6 +1896,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -1794,39 +1951,39 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "cell",
-                "description": "Use this slot to customize cells rendering"
+                "description": "customize cells rendering"
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             }
         ]
     },
@@ -1921,6 +2078,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -1980,35 +2142,35 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             }
         ]
     },
@@ -2095,6 +2257,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -2149,35 +2316,35 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "rect",
-                "description": "Use this slot to customize treemap cell contents."
+                "description": "customize treemap cell contents."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2220,6 +2387,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
@@ -2243,19 +2415,19 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2305,6 +2477,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
@@ -2328,19 +2505,19 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2616,6 +2793,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -2670,27 +2852,27 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2740,15 +2922,15 @@
         "slots": [
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             }
         ]
     },
@@ -2855,19 +3037,19 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "before",
-                "description": "Use this slot to customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value."
+                "description": "customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value."
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2977,11 +3159,11 @@
         "slots": [
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3017,11 +3199,11 @@
         "slots": [
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3071,15 +3253,15 @@
         "slots": [
             {
                 "name": "data-label",
-                "description": "Use this slot to customize data labels."
+                "description": "customize data labels."
             },
             {
                 "name": "title",
-                "description": "Use this slot to customize the chart's title"
+                "description": "customize the chart's title"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             }
         ],
         "emits": [
@@ -3127,11 +3309,11 @@
         "slots": [
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3255,6 +3437,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -3299,31 +3486,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3407,6 +3594,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -3457,35 +3649,35 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3708,6 +3900,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
@@ -3731,19 +3928,19 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3864,6 +4061,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -3914,31 +4116,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3989,6 +4191,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
@@ -4018,27 +4225,27 @@
         "slots": [
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4163,6 +4370,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -4230,31 +4442,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4325,6 +4537,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -4375,31 +4592,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4496,6 +4713,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -4559,31 +4781,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4634,6 +4856,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -4674,23 +4901,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5049,6 +5276,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -5102,27 +5334,27 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5313,6 +5545,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -5353,27 +5590,27 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ],
         "emits": [
@@ -5434,6 +5671,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
@@ -5457,27 +5699,27 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5553,6 +5795,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -5607,31 +5854,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5707,6 +5954,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -5747,23 +5999,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5868,6 +6120,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -5914,27 +6171,27 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "reset-action",
-                "description": "Use this slot to customize the reset button of the zoom slider."
+                "description": "customize the reset button of the zoom slider."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6004,6 +6261,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -6067,43 +6329,43 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "dataLabel",
-                "description": "Use this slot to customize the looks of data labels."
+                "description": "customize the looks of data labels."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "plot-comment",
-                "description": "Use this slot to display plot comments"
+                "description": "display plot comments"
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
-                "description": "Use this slot to customize datapoints with patterns"
+                "description": "customize datapoints with patterns"
             }
         ]
     },
@@ -6215,6 +6477,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -6269,23 +6536,23 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6469,6 +6736,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -6509,35 +6781,35 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "reset-action",
-                "description": "Use this slot to customize the reset button of the zoom slider."
+                "description": "customize the reset button of the zoom slider."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6624,6 +6896,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -6660,31 +6937,31 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6770,6 +7047,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -6802,19 +7084,19 @@
         "slots": [
             {
                 "name": "svg",
-                "description": "Use this slot to inject any svg element on the top layer of the chart."
+                "description": "inject any svg element on the top layer of the chart."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6900,6 +7182,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -6963,35 +7250,35 @@
         "slots": [
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "reset-action",
-                "description": "Use this slot to customize the reset button of the zoom slider."
+                "description": "customize the reset button of the zoom slider."
             },
             {
                 "name": "plot-comment",
-                "description": "Use this slot to display plot comments"
+                "description": "display plot comments"
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             },
             {
                 "name": "chart-background",
-                "description": "Use this slot to customize the chart background (gradient, image...)"
+                "description": "customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -7062,6 +7349,11 @@
                 "icon": "image"
             },
             {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -7130,27 +7422,27 @@
         "slots": [
             {
                 "name": "legend",
-                "description": "Use this slot to create a custom legend."
+                "description": "create a custom legend."
             },
             {
                 "name": "tooltip-before",
-                "description": "Use this slot to inject content on the top area of the tooltip."
+                "description": "inject content on the top area of the tooltip."
             },
             {
                 "name": "tooltip-after",
-                "description": "Use this slot to inject content on the bottom area of the tooltip."
+                "description": "inject content on the bottom area of the tooltip."
             },
             {
                 "name": "reset-action",
-                "description": "Use this slot to customize the reset button of the zoom slider."
+                "description": "customize the reset button of the zoom slider."
             },
             {
                 "name": "watermark",
-                "description": "Use this slot to display a watermark"
+                "description": "display a watermark"
             },
             {
                 "name": "source",
-                "description": "Use this slot to add a chart caption content"
+                "description": "add a chart caption content"
             }
         ]
     }

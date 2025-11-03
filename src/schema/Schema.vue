@@ -90,18 +90,32 @@ const datasetRefContent = computed(() => {
 <template>
     <div class="schema p-4 w-full max-w-[600px]">
         <div class="mb-4 flex flex-row gap-4">
-            <VueUiIcon :name="selectedComponent.icon" :stroke="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
-            <div class="text-xl">{{ selectedComponent.name }}</div>
+            <VueUiIcon :name="selectedComponent.icon" :stroke="isDarkMode ? '#559AD3' : '#6A6A6A'"/>
+            <div class="text-xl font-inter-medium dark:text-[#9cdcfe]">{{ selectedComponent.name }}</div>
         </div>
         <div class="mb-4">
             <BaseText :label="translations.overview.description[store.lang]" :text="translations.docs.tooltips[selectedComponent.description][store.lang]" />
             <div class="flex flew-row gap-2 place-items-center">
-                <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" /> 
-                <button title="Copy" class="dark:text-app-green" @click="copyToClipboard(selectedComponent.types.dataset)"><CopyIcon/></button>
+                <BaseText 
+                    v-if="selectedComponent.props.includes('dataset')" 
+                    label="Dataset TS type" 
+                >
+                    <code>
+                        <span class="dark:text-[#4dc6ae]">{{ selectedComponent.types.dataset.includes('[]') ? selectedComponent.types.dataset.replaceAll('[]', '') : selectedComponent.types.dataset }}</span>
+                        <span class="text-[#8A8A8A]" v-if="selectedComponent.types.dataset.includes('[]')">[]</span>
+                    </code>
+                </BaseText>
+                <button title="Copy" class="dark:text-[#9A9A9A]" @click="copyToClipboard(selectedComponent.types.dataset)"><CopyIcon/></button>
             </div>
             <div class="flex flew-row gap-2 place-items-center">
-                <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type" isCode :text="selectedComponent.types.config" />
-                <button title="Copy" class="dark:text-app-green" @click="copyToClipboard(selectedComponent.types.config)"><CopyIcon/></button>
+                <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type">
+                    <code>
+                        <span class="dark:text-[#4dc6ae]">
+                            {{ selectedComponent.types.config }}
+                        </span>
+                    </code>
+                </BaseText>
+                <button title="Copy" class="dark:text-[#9A9A9A]" @click="copyToClipboard(selectedComponent.types.config)"><CopyIcon/></button>
             </div>
             <div class="mt-8" v-if="showLink">
                 <DocLink :to="selectedComponent.path.replace('/docs#', '')"/>
@@ -145,7 +159,7 @@ const datasetRefContent = computed(() => {
         </div>
 
         <table class="schema table-auto border-collapse border border-slate-500 my-4 w-full">
-            <caption class="caption-top py-4 text-left">
+            <caption class="caption-top py-4 text-left text-xl font-inter-medium">
                 {{ translations.overview.features[store.lang] }}
             </caption>
             <thead>
@@ -198,7 +212,7 @@ const datasetRefContent = computed(() => {
         </div>
 
         <table v-if="selectedComponent.userOptions" class="table-auto border-collapse border border-slate-500 my-4 w-full">
-            <caption class="caption-top py-4 text-left">
+            <caption class="caption-top py-4 text-left text-xl font-inter-medium">
                 {{ translations.overview.userOptions[store.lang] }}
             </caption>
             <thead>
@@ -222,7 +236,7 @@ const datasetRefContent = computed(() => {
         </table>
 
         <table v-if="selectedComponent.slots" class="table-auto border-collapse border border-slate-500 my-4 w-full">
-            <caption class="caption-top py-4 text-left">
+            <caption class="caption-top py-4 text-left text-xl font-inter-medium">
                 Slots
             </caption>
             <thead>
@@ -244,7 +258,7 @@ const datasetRefContent = computed(() => {
         </table>
 
         <table v-if="selectedComponent.emits" class="table-auto border-collapse border border-slate-500 my-4 w-full">
-            <caption class="caption-top py-4 text-left">
+            <caption class="caption-top py-4 text-left text-xl font-inter-medium">
                 Emits
             </caption>
             <thead>
@@ -266,7 +280,7 @@ const datasetRefContent = computed(() => {
         </table>
 
         <table v-if="selectedComponent.exposed" class="table-auto border-collapse border border-slate-500 my-4 w-full">
-            <caption class="caption-top py-4 text-left">
+            <caption class="caption-top py-4 text-left text-xl font-inter-medium">
                 {{ translations.overview.exposedMethods[store.lang] }}
             </caption>
             <thead>
@@ -287,7 +301,7 @@ const datasetRefContent = computed(() => {
             </tbody>
         </table>
 
-        <div class="mb-2">{{ translations.overview.basicRendering[store.lang] }}</div>
+        <div class="mb-2 text-xl font-inter-medium mt-8">{{ translations.overview.basicRendering[store.lang] }}</div>
         <div :class="`w-full mx-auto p-4 bg-white ${selectedComponent.chartSize ? `max-w-[${selectedComponent.chartSize}px]` : ''}`" v-for="example in selectedComponent.examples">
             <VueDataUi :component="selectedComponent.name" :dataset="example.dataset" :config="example.config"/>
         </div>
