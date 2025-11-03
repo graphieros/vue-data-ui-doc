@@ -70,6 +70,39 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                customFormat: {
+                    en: 'How to use the "customFormat" config attributes:',
+                    fr: 'Comment utiliser les attributs de configuration "customFormat" :',
+                    pt: 'Como usar os atributos de configuração "customFormat":',
+                    de: 'So verwenden Sie die "customFormat"-Konfigurationsattribute:',
+                    zh: '如何使用 "customFormat" 配置属性：',
+                    jp: '"customFormat" 設定属性の使用方法：',
+                    es: 'Cómo usar los atributos de configuración "customFormat":',
+                    ko: '"customFormat" 구성 속성을 사용하는 방법:',
+                    ar: 'كيفية استخدام سمات التكوين "customFormat":'
+                },
+                customFormatArgs: {
+                    en: 'Use args to build your custom content',
+                    fr: 'Utilisez les arguments pour créer votre contenu personnalisé',
+                    pt: 'Use argumentos para criar seu conteúdo personalizado',
+                    de: 'Verwenden Sie Argumente, um Ihren benutzerdefinierten Inhalt zu erstellen',
+                    zh: '使用参数构建自定义内容',
+                    jp: '引数を使用してカスタムコンテンツを作成します',
+                    es: 'Usa argumentos para crear tu contenido personalizado',
+                    ko: '인수를 사용하여 사용자 지정 콘텐츠를 만드세요',
+                    ar: 'استخدم الوسائط لبناء المحتوى المخصص الخاص بك'
+                },
+                customFormatCss: {
+                    en: 'Using custom mode, the tooltip will be headless. Target the following css class to apply custom styles:',
+                    fr: 'En mode personnalisé, l’infobulle sera sans structure. Ciblez la classe CSS suivante pour appliquer vos styles personnalisés :',
+                    pt: 'No modo personalizado, a dica de ferramenta será sem estrutura. Aponte para a seguinte classe CSS para aplicar estilos personalizados:',
+                    de: 'Im benutzerdefinierten Modus ist das Tooltip strukturlos. Ziel ist es, die folgende CSS-Klasse anzusprechen, um benutzerdefinierte Stile anzuwenden:',
+                    zh: '在自定义模式下，提示框将无结构。请针对以下 CSS 类应用自定义样式：',
+                    jp: 'カスタムモードでは、ツールチップは構造を持ちません。以下のCSSクラスをターゲットにしてカスタムスタイルを適用します：',
+                    es: 'En modo personalizado, el tooltip no tendrá estructura. Apunta a la siguiente clase CSS para aplicar estilos personalizados:',
+                    ko: '사용자 지정 모드에서는 툴팁에 구조가 없습니다. 다음 CSS 클래스를 지정하여 사용자 지정 스타일을 적용하세요:',
+                    ar: 'في الوضع المخصص، ستكون أداة التلميح بدون بنية. استهدف فئة CSS التالية لتطبيق الأنماط المخصصة:'
+                },
                 xyInterLinePairs: {
                     en: `since v3.0.5 - Reference line series names by pairs, for example: [['serie A', 'serie B'], ['serie C', 'serie D']] to color interline areas. The names must be identical to the dataset serie names.`,
                     fr: `depuis la v3.0.5 - Référencez les noms des séries de lignes par paires, par exemple : [['série A', 'série B'], ['série C', 'série D']] pour colorer les zones interlignes. Les noms doivent être identiques à ceux du jeu de données.`,

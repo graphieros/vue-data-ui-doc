@@ -877,6 +877,12 @@ function freestyle({ drawingArea, data }) {
   return paths;
 }
 
+const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, config }) => {
+    // ${translations.value.customFormatArgs[store.lang]}
+    const content = "My custom content";
+    return \`<div>\${content}</div>\`;
+}`);
+
 </script>
 
 <template>
@@ -1466,37 +1472,19 @@ function freestyle({ drawingArea, data }) {
             </BaseSlotDocumenter>
             </template>
             <template #tab4>
-                <pre>
-<code>
-<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+<h3 class="mb-4">{{ translations.customFormat[store.lang] }}</h3>
+                <code class="text-gray-500 dark:text-[#8A8A8A]">config.style.chart.tooltip.customFormat</code>
+                <CodeParser
+                    class="mt-4"
+                    language="javascript"
+                    :content="customFormatCode"
+                />
 
-customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
-    <span class="text-gray-400">// use args to build your custom content</span>
-    const content = "My custom content";
-    return `&lt;div&gt;${content}&lt;/div&gt;`
-}
-</code>
-</pre> 
-Using custom mode, the tooltip will be headless.
-Target the following css class to apply custom styles:
-<pre>
-<code>
-.vue-data-ui-custom-tooltip
-</code>
-</pre>
-
-<pre>
-<code>
-    &lt;VueUiStackbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #reset-action="{ reset }"&gt;
-            &lt;button @click="reset()"&gt;Refresh&lt;/button&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWordCloud&gt;
-</code>
-</pre>
+                <h3 class="my-4">{{ translations.customFormatCss[store.lang] }}</h3>
+                <CodeParser
+                    language="css"
+                    content=".vue-data-ui-custom-tooltip{ }"
+                />
             </template>
             <template #tab6>
                 <ThemesVueUiStackbar/>

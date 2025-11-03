@@ -1309,6 +1309,13 @@ function getObjectByY(arr, type = 'max') {
         return current?.y > selected?.y ? current : selected;
     });
 }
+
+const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, config, bars, lines, plots }) => {
+    // ${translations.value.customFormatArgs[store.lang]}
+    const content = "My custom content";
+    return \`<div>\${content}</div>\`;
+}`);
+
 </script>
 
 <template>
@@ -2114,25 +2121,19 @@ function getObjectByY(arr, type = 'max') {
             </template>
 
             <template #tab4>
-<pre>
-<code>
-<span class="text-gray-400">config.chart.tooltip.customFormat</span>
+<h3 class="mb-4">{{ translations.customFormat[store.lang] }}</h3>
+                <code class="text-gray-500 dark:text-[#8A8A8A]">config.chart.tooltip.customFormat</code>
+                <CodeParser
+                    class="mt-4"
+                    language="javascript"
+                    :content="customFormatCode"
+                />
 
-customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config, bars, lines, plots</span> }) => {
-    <span class="text-gray-400">// use args to build your custom content</span>
-    const content = "My custom content";
-    return `&lt;div&gt;${content}&lt;/div&gt;`
-}
-
-</code>
-</pre>            
-Using custom mode, the tooltip will be headless.
-Target the following css class to apply custom styles:
-<pre>
-<code>
-.vue-data-ui-custom-tooltip
-</code>
-</pre>
+                <h3 class="my-4">{{ translations.customFormatCss[store.lang] }}</h3>
+                <CodeParser
+                    language="css"
+                    content=".vue-data-ui-custom-tooltip{ }"
+                />
             </template>
 
             <template #tab5>
