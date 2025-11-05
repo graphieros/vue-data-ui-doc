@@ -205,6 +205,8 @@ ${indentSpace}}`;
     return formatValue(json, indent);
 }
 
+// TODO: make path copiable
+
 </script>
 
 <template>
