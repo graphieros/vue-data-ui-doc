@@ -717,6 +717,13 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'proportions', 'partToAWhole', 'distribution', 'dataOverTime'],
                 singleTaxinomy: 'partToAWhole'
             },
+            VueUiStackline: {
+                icon: 'chartStackline',
+                link: '/docs#vue-ui-stackline',
+                description: translations.value.docs.tooltips.stackline[store.lang],
+                taxinomy: ['comparisons', 'proportions', 'partToAWhole', 'distribution', 'dataOverTime'],
+                singleTaxinomy: 'partToAWhole'
+            },
             VueUiFunnel: {
                 icon: 'chartFunnel',
                 link: '/docs#vue-ui-funnel',

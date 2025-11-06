@@ -1565,6 +1565,103 @@ export default function useExamples() {
         { period: 'T19', value: 55 },
     ]);
 
+        //-------------- VUE-UI-STACKLINE --------------//
+    const CONFIG_STACKLINE_BASE = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    zoom: {
+                        minimap: {
+                            show: true,
+                            indicatorColor: colors.value.textColor,
+                        }
+                    },
+                    grid: {
+                        x: {
+                            axisColor: colors.value.gridStroke,
+                            axisName: {
+                                text: 'xAxis',
+                                color: colors.value.textColor
+                            },
+                            timeLabels: {
+                                color: colors.value.textColor,
+                                values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9']
+                            }
+                        },
+                        y: {
+                            axisColor: colors.value.gridStroke,
+                            axisName: {
+                                text: 'yAxis',
+                                color: colors.value.textColor
+                            },
+                            axisLabels: {
+                                color: colors.value.textColor
+                            }
+                        }
+                    },
+                    highlighter: {
+                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                        opacity: 5
+                    },
+                    legend: {
+                        position: 'top',
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddintLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                    lines: {
+                        totalValues: {
+                            color: colors.value.textColor
+                        },
+                        dataLabels: {
+                            color: colors.value.textColor
+                        }
+                    },
+                }
+            }
+        }
+    });
+
+        const DATASET_STACKLINE_BASIC = ref([
+        {
+            name: "Serie 1",
+            series: [19, 20.07, 30, 40, 50, 60, 12, 20, 25, 19],
+            shape: 'square'
+        },
+        {
+            name: "Serie 2",
+            series: [13, 8, 9, 13, 25, 27, 17, 12, 25, 13],
+            shape: 'pentagon'
+        },
+        {
+            name: "Serie 3",
+            series: [13, 10, 9, 13, 25, 19, 6, 18, 20, 32],
+            shape: 'triangle'
+        },
+        {
+            name: "Serie 4",
+            series: [25, 23, 9, 13, 25, 31, 19, 13, 12, 14],
+            shape: 'star'
+        },
+    ])
+
     //-------------- VUE-UI-STACKBAR --------------//
     const CONFIG_STACKBAR_BASE = computed(() => {
         return {
@@ -1633,6 +1730,8 @@ export default function useExamples() {
             }
         }
     });
+
+
 
     const DATASET_STACKBAR_BASIC = ref([
         {
@@ -6814,6 +6913,149 @@ export default function useExamples() {
                     es: "Con un tooltip",
                     ko: "툴팁 포함",
                     ar: "مع تلميح الأدوات"
+                }
+            },
+            // STACKLINE BASIC
+            {
+                dataset: DATASET_STACKLINE_BASIC.value, 
+                config: CONFIG_STACKLINE_BASE.value,
+                component: 'VueUiStackline',
+                icon: 'chartStackline',
+                id: 'stack-line-basic',
+                link: 'vue-ui-stackline',
+                description: {
+                    en: 'Basic stacked line chart',
+                    fr: 'Graphique en lignes empilées de base',
+                    pt: 'Gráfico de linhas empilhadas básico',
+                    de: 'Einfaches gestapeltes Liniendiagramm',
+                    zh: '基础堆叠折线图',
+                    jp: '基本的な積み上げ折れ線グラフ',
+                    es: 'Gráfico de líneas apiladas básico',
+                    ko: '기본 누적 선형 차트',
+                    ar: 'مخطط خطي مكدس أساسي'
+                }
+            },
+            // STACKLINE DISTRIBUTED
+            {
+                dataset: DATASET_STACKLINE_BASIC.value, 
+                config: {
+                    ...CONFIG_STACKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_STACKLINE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKLINE_BASE.value.style.chart,
+                            lines: {
+                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                distributed: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackline',
+                icon: 'chartStackline',
+                id: 'stack-line-distributed',
+                link: 'vue-ui-stackline',
+                description: {
+                    en: 'Distributed stacked line chart',
+                    fr: 'Graphique en lignes empilées distribuées',
+                    pt: 'Gráfico de linhas empilhadas distribuídas',
+                    de: 'Verteiltes gestapeltes Liniendiagramm',
+                    zh: '分布式堆叠折线图',
+                    jp: '分布型積み上げ折れ線グラフ',
+                    es: 'Gráfico de líneas apiladas distribuidas',
+                    ko: '분포형 누적 선형 차트',
+                    ar: 'مخطط خطي مكدس موزع'
+                }
+            },
+            // STACKLINE SMOOTH WITH GRID
+            {
+                dataset: DATASET_STACKLINE_BASIC.value, 
+                config: {
+                    ...CONFIG_STACKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_STACKLINE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKLINE_BASE.value.style.chart,
+                            lines: {
+                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                smooth: true,
+                            },
+                            grid: {
+                                ...CONFIG_STACKLINE_BASE.value.style.chart.grid,
+                                x: {
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.x,
+                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
+                                    showHorizontalLines: true
+                                },
+                                y: {
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.y,
+                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
+                                    showVerticalLines: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackline',
+                icon: 'chartStackline',
+                id: 'stack-line-smooth-grid',
+                link: 'vue-ui-stackline',
+                description: {
+                    en: 'Smooth lines with grid',
+                    fr: 'Lignes lissées avec grille',
+                    pt: 'Linhas suaves com grade',
+                    de: 'Geglättete Linien mit Gitter',
+                    zh: '带网格的平滑折线',
+                    jp: 'グリッド付きのスムーズな折れ線',
+                    es: 'Líneas suaves con cuadrícula',
+                    ko: '그리드가 있는 부드러운 선형 차트',
+                    ar: 'خطوط سلسة مع شبكة'
+                }
+            },
+            // STACKLINE SMOOTH DISTRIBUTED WITH GRID
+            {
+                dataset: DATASET_STACKLINE_BASIC.value, 
+                config: {
+                    ...CONFIG_STACKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_STACKLINE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKLINE_BASE.value.style.chart,
+                            lines: {
+                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                distributed: true,
+                                smooth: true,
+                            },
+                            grid: {
+                                ...CONFIG_STACKLINE_BASE.value.style.chart.grid,
+                                x: {
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.x,
+                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
+                                    showHorizontalLines: true
+                                },
+                                y: {
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.y,
+                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
+                                    showVerticalLines: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackline',
+                icon: 'chartStackline',
+                id: 'stack-line-smooth-grid-distributed',
+                link: 'vue-ui-stackline',
+                description: {
+                    en: 'Smooth distributed lines with grid',
+                    fr: 'Lignes lissées distribuées avec grille',
+                    pt: 'Linhas suaves distribuídas com grade',
+                    de: 'Geglättete verteilte Linien mit Gitter',
+                    zh: '带网格的平滑分布折线',
+                    jp: 'グリッド付きのスムーズな分布型折れ線',
+                    es: 'Líneas suaves distribuidas con cuadrícula',
+                    ko: '그리드가 있는 부드러운 분포형 선형 차트',
+                    ar: 'خطوط سلسة موزعة مع شبكة'
                 }
             },
             // STACKBAR BASIC

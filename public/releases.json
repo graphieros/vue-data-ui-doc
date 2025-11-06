@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.6.0",
+    "date": "2025-11-06",
+    "updates": [
+      {
+        "component": "VueUiStackline",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-stackline"
+      }
+    ]
+  },
+  {
     "version": "v 3.5.2",
     "date": "2025-11-01",
     "updates": [

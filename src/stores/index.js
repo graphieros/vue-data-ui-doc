@@ -2039,6 +2039,17 @@ export const useMainStore = defineStore("main", {
                             ko: "게이지 차트의 공간 효율적인 대안.",
                             ar: "بديل موفر للمساحة عن المخططات المقياسية."
                         },
+                        stackline: {
+                            en: 'Visualize cumulative totals on stacked lines, to easily compare parts of a whole across different categories.',
+                            fr: 'Visualisez les totaux cumulatifs sur des lignes empilées pour comparer facilement les parties d’un tout entre différentes catégories.',
+                            pt: 'Visualize totais cumulativos em linhas empilhadas para comparar facilmente partes de um todo em diferentes categorias.',
+                            de: 'Visualisieren Sie kumulative Summen auf gestapelten Linien, um Teile eines Ganzen über verschiedene Kategorien hinweg einfach zu vergleichen.',
+                            zh: '通过堆叠折线可视化累计总量，以便轻松比较不同类别中整体的各个部分。',
+                            jp: '積み上げ折れ線で累積合計を可視化し、さまざまなカテゴリ間で全体の構成要素を簡単に比較できます。',
+                            es: 'Visualiza los totales acumulativos en líneas apiladas para comparar fácilmente las partes de un todo entre diferentes categorías.',
+                            ko: '누적 합계를 누적 선으로 시각화하여 다양한 범주에서 전체의 부분을 쉽게 비교할 수 있습니다.',
+                            ar: 'اعرض الإجماليات التراكمية على خطوط مكدسة لمقارنة الأجزاء من الكل عبر فئات مختلفة بسهولة.'
+                        },
                         stackbarBig: {
                             en: 'Visualize cumulative totals on stacked bars, to easily compare parts of a whole across different categories.',
                             fr: 'Visualisez les totaux cumulatifs sur des barres empilées, pour comparer facilement les parties d’un tout à travers différentes catégories.',

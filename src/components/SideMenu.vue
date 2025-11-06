@@ -218,6 +218,16 @@ const smallMenu = ref([
         component: 'Stackbar'
     },
     {
+        route: '/docs#vue-ui-stackline',
+        icon: 'chartStackline',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Stackline',
+        thumb: new URL('../assets/thumb_stack_line.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_stack_line_light.png', import.meta.url).href,
+        component: 'Stackline'
+    },
+    {
         route: '/docs#vue-ui-donut-evolution',
         icon: 'chartDonutEvolution',
         cssClasses: '',
@@ -717,6 +727,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-candlestick', componentName: 'Candlestick', icon: 'chartCandlestick' },
             {route: '/docs#vue-ui-age-pyramid', componentName: 'AgePyramid', icon: 'chartAgePyramid' },
             {route: '/docs#vue-ui-stackbar', componentName: 'Stackbar', icon: 'chartStackbar' },
+            {route: '/docs#vue-ui-stackline', componentName: 'Stackline', icon: 'chartStackline' },
             {route: '/docs#vue-ui-funnel', componentName: 'Funnel', icon: 'chartFunnel' },
             {route: '/docs#vue-ui-history-plot', componentName: 'HistoryPlot', icon: 'chartHistoryPlot' },
             {route: '/docs#vue-ui-ridgeline', componentName: 'Ridgeline', icon: 'chartRidgeline' },

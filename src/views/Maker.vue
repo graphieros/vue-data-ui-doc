@@ -51,6 +51,7 @@ const MakerCirclePack = defineAsyncComponent(() => import('../components/maker/M
 const MakerWorld = defineAsyncComponent(() => import('../components/maker/MakerVueUiWorld.vue'));
 const MakerVueUiRidgeline = defineAsyncComponent(() => import('../components/maker/MakerVueUiRidgeline.vue'));
 const MakerChord = defineAsyncComponent(() => import('../components/maker/MakerChord.vue'));
+const MakerStackline = defineAsyncComponent(() => import('../components/maker/MakerVueUiStackline.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -101,6 +102,7 @@ const options = ref([
     { component: markRaw(MakerCarouselTable), key: 'vue_ui_carousel_table', name: "VueUiCarouselTable", icon: "carouselTable", thumb: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href, description: translations.value.docs.tooltips.carouselTable},
     { component: markRaw(MakerGizmo), key: 'vue_ui_gizmo', name: "VueUiGizmo", icon: "battery", thumb: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href, description: translations.value.docs.tooltips.gizmo},
     { component: markRaw(MakerStackbar), key: 'vue_ui_stackbar', name: "VueUiStackbar", icon: "chartStackbar", thumb: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stackbarBig},
+    { component: markRaw(MakerStackline), key: 'vue_ui_stackline', name: "VueUiStackline", icon: "chartStackline", thumb: new URL('../assets/thumb_stack_line_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stackline},
     { component: markRaw(MakerBullet), key: 'vue_ui_bullet', name: "VueUiBullet", icon: "chartBullet", thumb: new URL('../assets/thumb_bullet_light.png', import.meta.url).href, description: translations.value.docs.tooltips.bullet},
     { component: markRaw(MakerFunnel), key: 'vue_ui_funnel', name: "VueUiFunnel", icon: "chartFunnel", thumb: new URL('../assets/thumb_funnel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.funnel},
     { component: markRaw(MakerHistoryPlot), key: 'vue_ui_history_plot', name: "VueUiHistoryPlot", icon: "chartHistoryPlot", thumb: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.historyPlot},
@@ -114,7 +116,7 @@ const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
 const selectedComponent = ref("VueUiXy")
 
 onMounted(() => {
-    if(!localStorage.currentChart) {π
+    if(!localStorage.currentChart) {        
         localStorage.setItem('currentChart', 'VueUiXy')
     } else {
         selectedChart.value = options.value.find(item => item.name === localStorage.currentChart);

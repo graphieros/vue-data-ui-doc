@@ -165,6 +165,7 @@ const charts = ref({
     VueUiCandlestick: { name: 'VueUiCandlestick', icon: 'chartCandlestick', link: '/docs#vue-ui-candlestick' },
     VueUiAgePyramid: { name: 'VueUiAgePyramid', icon: 'chartAgePyramid', link: '/docs#vue-ui-age-pyramid'},
     VueUiStackbar: { name: 'VueUiStackbar', icon: 'chartStackbar', link: '/docs#vue-ui-stackbar'},
+    VueUiStackline: { name: 'VueUiStackline', icon: 'chartStackline', link: '/docs#vue-ui-stackline'},
     VueUiDonutEvolution: { name: 'VueUiDonutEvolution', icon: 'chartDonutEvolution', link: '/docs#vue-ui-donut-evolution'},
     VueUiDonut: { name: 'VueUiDonut', icon: 'chartDonut', link: '/docs#vue-ui-donut'},
     VueUiNestedDonuts: { name: 'VueUiNestedDonuts', icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts'},
@@ -196,7 +197,7 @@ const items = ref([
     {
         name: 'tooltip',
         icon: 'tooltip',
-        charts: ['VueUiQuickChart', 'VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot']
+        charts: ['VueUiQuickChart', 'VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot']
     },
     {
         name: 'pdf',
@@ -206,7 +207,7 @@ const items = ref([
     {
         name: 'csv',
         icon: 'excel',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
+        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
     },
     {
         name: 'img',
@@ -221,12 +222,12 @@ const items = ref([
     {
         name: 'table',
         icon:  'tableOpen',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
+        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
     },
     {
         name: 'labels',
         icon: 'labelOpen',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiParallelCoordinatePlot', 'VueUiStackbar', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiQuadrant', 'VueUiMolecule', 'VueUiStripPlot']
+        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiParallelCoordinatePlot', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiQuadrant', 'VueUiMolecule', 'VueUiStripPlot']
     },
     {
         name: 'stack',

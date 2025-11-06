@@ -260,6 +260,17 @@ export const useMakerStore = defineStore('maker', {
                     ar: 'انسخ المكون بالكامل'
                 },
                 categories: {
+                    lines: {
+                        en: 'Line',
+                        fr: "Ligne",
+                        pt: "Linha",
+                        de: "Linie",
+                        zh: "线",
+                        jp: "ライン",
+                        es: "Linea",
+                        ko: "선",
+                        ar: 'خط'
+                    },
                     zoom: {
                         en: 'Zoom',
                         fr: 'Zoom',

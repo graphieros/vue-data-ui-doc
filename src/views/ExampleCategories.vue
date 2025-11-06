@@ -111,6 +111,15 @@ const categories = computed(() => {
             raterId: 'vue_ui_stackbar'
         },
         {
+            link: 'vue-ui-stackline',
+            icon: 'chartStackline',
+            component: 'VueUiStackline',
+            thumb: new URL('../assets/thumb_stack_line.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_stack_line_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.stackline,
+            raterId: 'vue_ui_stackline'
+        },
+        {
             link: 'vue-ui-world',
             icon: 'world',
             component: 'VueUiWorld',

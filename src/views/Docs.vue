@@ -77,6 +77,7 @@ const DocVueUiTimer = defineAsyncComponent(() => import('../components/docs/DocV
 const DocVueUiCarouselTable = defineAsyncComponent(() => import('../components/docs/DocVueUiCarouselTable.vue'));
 const DocVueUiGizmo = defineAsyncComponent(() => import('../components/docs/DocVueUiGizmo.vue'));
 const DocVueUiStackbar = defineAsyncComponent(() => import('../components/docs/DocVueUiStackbar.vue'));
+const DocVueUiStackline = defineAsyncComponent(() => import('../components/docs/DocVueUiStackline.vue'));
 const DocVueUiBullet = defineAsyncComponent(() => import('../components/docs/DocVueUiBullet.vue'));
 const DocVueUiFunnel = defineAsyncComponent(() => import('../components/docs/DocVueUiFunnel.vue'));
 const DocVueUiHistoryPlot = defineAsyncComponent(() => import('../components/docs/DocVueUiHistoryPlot.vue'));
@@ -249,6 +250,18 @@ const menuItems = computed(() => [
         type: ['xy'],
         thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
+    {
+        name: "Stackline",
+        icon: "chartStackline",
+        tooltip: translations.value.docs.tooltips.stackline[store.lang],
+        link: "/docs#vue-ui-stackline",
+        type: ['xy'],
+        thumb: new URL('../assets/thumb_stack_line.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_stack_line_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
@@ -1202,6 +1215,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiStackbar :key="`stackbar_${stackbarKey}`" v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-stackbar'" @forceDocReload="stackbarKey += 1" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiStackline v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-stackline'" />
             </Transition>
             <Transition name="fade">
                 <DocVueUiBullet v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-bullet'" />

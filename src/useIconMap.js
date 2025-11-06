@@ -65,6 +65,7 @@ export function useIconMap(componentName) {
         VueUiWorld: 'world',
         VueUiRidgeline: 'chartRidgeline',
         VueUiChord: 'chartChord',
+        VueUiStackline: 'chartStackline',
         ['Utility functions']: 'func'
     }
     return mapping[componentName] || 'clipBoard';
@@ -136,7 +137,8 @@ export function isValidComponent(content) {
         'VueUiWorld',
         'VueUiRidgeline',
         'VueUiChord',
-        'Utility functions'
+        'Utility functions',
+        'VueUiStackline'
     ];
 
     return valid.includes(content);

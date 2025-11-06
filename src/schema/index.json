@@ -1076,6 +1076,154 @@
             }
         ]
     },
+    "vue_ui_stackline": {
+        "name": "VueUiStackline",
+        "icon": "chartStackline",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-stackline",
+        "path": "/docs#vue-ui-stackline",
+        "description": "stackline",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "responsive": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiStacklineConfig",
+            "dataset": "VueUiStacklineDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "series": [19, 20.07, 30, 40, 60, 25]
+                    },
+                    {
+                        "name": "Serie 2",
+                        "series": [13, 8, 9, 13, 25, 27]
+                    },
+                    {
+                        "name": "Serie 3",
+                        "series": [24, 16, 20, 14, 8, 55]
+                    }
+                ],
+                "config": {}
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            },
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "plot-comment",
+                "description": "display plot comments"
+            },
+            {
+                "name": "watermark",
+                "description": "display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "pattern",
+                "description": "customize datapoints with patterns"
+            }
+        ]
+    },
     "vue_ui_gizmo": {
         "name": "VueUiGizmo",
         "icon": "battery",
