@@ -8,6 +8,7 @@ import { FilterXIcon, ZoomCancelIcon } from 'vue-tabler-icons';
 import CodeParser from '../components/customization/CodeParser.vue';
 import ConfirmCopy from '../components/ConfirmCopy.vue';
 import BaseCard from '../components/BaseCard.vue';
+import BaseTextCopy from '../components/BaseTextCopy.vue';
 
 const store = useMainStore();
 const route = useRoute();
@@ -173,7 +174,8 @@ const iconMap = ref({
     VueUiRidgeline: 'chartRidgeline',
     VueUiChord: 'chartChord',
     VueUiWorld: 'world',
-    VueUiCarouselTable: 'carouselTable'
+    VueUiCarouselTable: 'carouselTable',
+    VueUiStackline: 'chartStackline'
 })
 
 function jsonToJsObject(json, indent = 0, colorAuto=false) {
@@ -263,14 +265,16 @@ ${indentSpace}}`;
                 <template #title="{ color }">
                     <VueUiIcon :name="iconMap[res.componentName]" stroke="#8A8A8A"/>
                     <span class="font-inter-medium text-gray-500 dark:text-[#8A8A8A]">{{ res.componentName }}: </span>
-                    <code
-                    v-html="
-                        res.shortPath.replace(
-                        searchTerm,
-                        `<span class='text-app-blue font-black'>${searchTerm}</span>`
-                        )
-                    "
-                    ></code>
+                    <BaseTextCopy :value="res.shortPath">
+                        <code
+                        v-html="
+                            res.shortPath.replace(
+                            searchTerm,
+                            `<span class='text-app-blue font-black'>${searchTerm}</span>`
+                            )
+                        "
+                        ></code>
+                    </BaseTextCopy>
                 </template>
     
                 <template #content>

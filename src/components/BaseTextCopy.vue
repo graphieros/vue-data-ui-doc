@@ -66,7 +66,7 @@ function onLeave() {
         </span>
 
         <button ref="btnEl" class="bct-popover" type="button" :aria-label="ariaLabel" title="Copy" @mousedown.prevent
-            @click="copyToClipboard">
+            @click.prevent="copyToClipboard">
             <CopyIcon class="text-gray-400 dark:text-[#8A8A8A]" />
         </button>
     </div>
