@@ -7,6 +7,7 @@ import { VueDataUi, VueUiSparkHistogram } from "vue-data-ui";
 import mockStats from './mockStats.json'
 import { createUid, fillEmptyDays } from "./maker/lib";
 import BaseCard from "./BaseCard.vue";
+import { getCumulativeAverage } from "vue-data-ui";
 
 const { utils } = colorBridge();
 
@@ -482,7 +483,7 @@ const latestItems = computed(() => {
         }))
 });
 
-const stackbarData = computed(() => {
+const stackData = computed(() => {
     const stripped = stats.value.map(s => ({
         ...s,
         created_at: s.created_at.split(' ')[0]
@@ -520,16 +521,36 @@ const stackbarData = computed(() => {
     const arr = [];
     for (let i = 1; i <= 5; i += 1) {
         arr.push({
-            name: Array(i).fill('⭐').join(''),
+            name: String(i),
             series: t.map(series => series[i]),
-            color: colors[i - 1]
+            color: colors[i - 1],
+            shape: 'star'
         });
     }
-    return arr;
+
+    const cumulativeAvg = getCumulativeAverage({ values: arr.reduce((acc, curr) => {
+        curr.series.forEach((value, i) => {
+            acc[i] = (acc[i] || 0) + (value || 0);
+        });
+        return acc;
+    }, [])})
+
+    console.log(cumulativeAvg)
+
+    return [
+        ...arr,
+        {
+            name: 'Nb. votes / day cumul. avg.',
+            series: cumulativeAvg,
+            shape: 'diamond',
+            color: isDarkMode.value ? '#9A9A9A' : '#6A6A6A',
+            standalone: true
+        }
+    ];
 });
 
 
-const stackbarConfig = computed(() => {
+const stacklineConfig = computed(() => {
     return {
         events: {
             datapointEnter: ({ seriesIndex }) => {
@@ -545,15 +566,21 @@ const stackbarConfig = computed(() => {
                 backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 height: 300,
-                bars: {
-                    strokeWidth: 0,
+                lines: {
+                    smooth: true,
+                    strokeWidth: 1,
                     distributed: false,
-                    gapRatio: 0,
+                    areaOpacity: 70,
                     totalValues: {
                         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                     },
                     dataLabels: {
-                        show: false
+                        show: false,
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    },
+                    dot: {
+                        radius: 3,
+                        strokeWidth: 1
                     }
                 },
                 grid: {
@@ -602,6 +629,7 @@ const stackbarConfig = computed(() => {
                     backgroundOpacity: 20,
                     borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    roundingValue: 1,
                 },
                 zoom: {
                     color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
@@ -1313,6 +1341,8 @@ function selectHeatmapCell(cell) {
     selectedDate.value = getDateFromAxis(cell);
 }
 
+const stackComponent = ref('VueUiStackbar');
+
 </script>
 
 <template>
@@ -1387,7 +1417,11 @@ function selectHeatmapCell(cell) {
                 <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDataset" :config="xyConfig" />
             </div>
             <div class="p-4">
-                <VueUiStackbar :selectedXIndex="selectedXIndex" :dataset="stackbarData" :config="stackbarConfig" />
+                <VueUiStackline
+                    :dataset="stackData" 
+                    :config="stacklineConfig"
+                    :selectedXIndex="selectedXIndex"
+                />
             </div>
         </BaseCard>
     
