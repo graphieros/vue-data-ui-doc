@@ -1639,7 +1639,7 @@ export default function useExamples() {
         }
     });
 
-        const DATASET_STACKLINE_BASIC = ref([
+    const DATASET_STACKLINE_BASIC = ref([
         {
             name: "Serie 1",
             series: [19, 20.07, 30, 40, 50, 60, 12, 20, 25, 19],
@@ -1659,6 +1659,33 @@ export default function useExamples() {
             name: "Serie 4",
             series: [25, 23, 9, 13, 25, 31, 19, 13, 12, 14],
             shape: 'star'
+        },
+    ]);
+
+    const DATASET_STACKLINE_MIXED = ref([
+        {
+            name: "Serie A",
+            series: [13, 8, 9, 13, 25, 27],
+            color: '#98df8a',
+            shape: 'star'
+        },
+        {
+            name: "Serie B",
+            series: [13, 10, 9, 13, 25, 19],
+            color: '#2ca02c',
+            shape: 'star'
+        },
+        {
+            name: "Serie C",
+            series: [-19, -20.07, -30, -40, -50, -60],
+            shape: 'triangle',
+            color: '#ff7f0e'
+        },
+        {
+            name: "Serie D",
+            series: [-25, -23, -9, -13, -25, -31],
+            shape: 'triangle',
+            color: '#d62728'
         },
     ])
 
@@ -1730,7 +1757,6 @@ export default function useExamples() {
             }
         }
     });
-
 
 
     const DATASET_STACKBAR_BASIC = ref([
@@ -7056,6 +7082,71 @@ export default function useExamples() {
                     es: 'Líneas suaves distribuidas con cuadrícula',
                     ko: '그리드가 있는 부드러운 분포형 선형 차트',
                     ar: 'خطوط سلسة موزعة مع شبكة'
+                }
+            },
+            // STACKLINE MIXED
+            {
+                dataset: DATASET_STACKLINE_MIXED.value, 
+                config: {
+                    ...CONFIG_STACKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_STACKLINE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKLINE_BASE.value.style.chart,
+                            lines: {
+                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                smooth: true,
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackline',
+                icon: 'chartStackline',
+                id: 'stack-line-mixed',
+                link: 'vue-ui-stackline',
+                description: {
+                    en: 'Positive and negative values',
+                    fr: 'Valeurs positives et négatives',
+                    pt: 'Valores positivos e negativos',
+                    de: 'Positive und negative Werte',
+                    zh: '正值和负值',
+                    jp: '正の値と負の値',
+                    es: 'Valores positivos y negativos',
+                    ko: '양수와 음수',
+                    ar: 'قيم موجبة وسالبة'
+                }
+            },
+            // STACKLINE MIXED
+            {
+                dataset: DATASET_STACKLINE_MIXED.value, 
+                config: {
+                    ...CONFIG_STACKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_STACKLINE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKLINE_BASE.value.style.chart,
+                            lines: {
+                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                smooth: true,
+                                distributed: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackline',
+                icon: 'chartStackline',
+                id: 'stack-line-mixed-distributed',
+                link: 'vue-ui-stackline',
+                description: {
+                    en: 'Positive and negative values, distributed',
+                    fr: 'Valeurs positives et négatives, distribuées',
+                    pt: 'Valores positivos e negativos, distribuídos',
+                    de: 'Positive und negative Werte, verteilt',
+                    zh: '正值和负值，分布显示',
+                    jp: '正と負の値の分布表示',
+                    es: 'Valores positivos y negativos, distribuidos',
+                    ko: '양수와 음수 값, 분포형',
+                    ar: 'قيم موجبة وسالبة، موزعة'
                 }
             },
             // STACKBAR BASIC
