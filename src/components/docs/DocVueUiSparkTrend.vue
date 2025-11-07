@@ -228,7 +228,7 @@ function goToPage(route) {
             :configSource="mainConfig.vue_ui_spark_trend"
         />
 
-        <div :class="`transition-all mx-auto w-1/2 max-w-[350px]`">
+        <div :class="`transition-all mx-auto w-full sm:w-1/2 sm:max-w-[400px]`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

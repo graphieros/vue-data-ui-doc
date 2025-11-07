@@ -650,7 +650,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
             :configSource="mainConfig.vue_ui_molecule"
         />
 
-        <div class="mx-auto w-1/2">
+        <div class="mx-auto w-full sm:w-1/2">
             <BaseCard>
                 <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </BaseCard>

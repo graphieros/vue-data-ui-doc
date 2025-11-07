@@ -480,7 +480,7 @@ function goToPage(route) {
             :configSource="mainConfig.vue_ui_gauge"
         />
 
-        <div class="w-3/4 mx-auto flex flex-row gap-2">
+        <div class="w-full sm:w-3/4 mx-auto flex flex-row gap-2">
             
             <div :class="`transition-all mx-auto w-full`">
                 <DocSnapper

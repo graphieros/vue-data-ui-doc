@@ -1332,7 +1332,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             :configSource="mainConfig.vue_ui_xy"
         />
 
-        <div :class="`doc-whart-wrapper transition-all mx-auto w-2/3`">
+        <div :class="`doc-whart-wrapper transition-all mx-auto w-full sm:w-2/3`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

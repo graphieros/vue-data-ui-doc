@@ -583,7 +583,7 @@ const customFormatCode = ref(`customFormat: ({ serie, seriesIndex, series, confi
         />
 
         <div
-            :class="`transition-all mx-auto w-3/4`">
+            :class="`transition-all mx-auto w-full sm:w-3/4`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

@@ -495,7 +495,7 @@ function goToPage(route) {
           :configSource="mainConfig.vue_ui_sparkline"
         />
 
-        <div :class="`transition-all mx-auto w-1/2`">
+        <div :class="`transition-all mx-auto w-full sm:w-1/2`">
           <DocSnapper
             :isFixed="isFixed"
             :disabled="!isFixed || isMobile"

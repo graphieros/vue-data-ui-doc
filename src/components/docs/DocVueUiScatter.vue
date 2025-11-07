@@ -772,7 +772,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
           :configSource="mainConfig.vue_ui_scatter"
         />
 
-        <div :class="`transition-all mx-auto w-2/3`">
+        <div :class="`transition-all mx-auto w-full sm:w-2/3`">
           <DocSnapper
             :isFixed="isFixed"
             :disabled="!isFixed || isMobile"

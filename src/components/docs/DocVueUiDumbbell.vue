@@ -563,7 +563,7 @@ function goToPage(route) {
             :configSource="mainConfig.vue_ui_dumbbell"
         />
 
-        <div :class="`transition-all mx-auto w-3/4`">
+        <div :class="`transition-all mx-auto w-full sm:w-3/4`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

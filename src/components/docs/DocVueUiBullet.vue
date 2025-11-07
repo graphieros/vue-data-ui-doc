@@ -405,7 +405,7 @@ function goToPage(route) {
         />
 
         <div
-            :class="`transition-all mx-auto w-3/4`">
+            :class="`transition-all mx-auto w-full sm:w-3/4`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

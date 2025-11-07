@@ -286,7 +286,7 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <BaseDocHeaderActions targetLink="vue-ui-smiley" :configSource="mainConfig.vue_ui_smiley" />
 
-        <div :class="`transition-all mx-auto w-[200px]`">
+        <div :class="`transition-all mx-auto w-full sm:w-[300px]`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

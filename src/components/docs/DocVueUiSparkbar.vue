@@ -278,7 +278,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
             :configSource="mainConfig.vue_ui_sparkbar"
         />
 
-        <div :class="`transition-all mx-auto w-1/2`">
+        <div :class="`transition-all mx-auto w-full sm:w-1/2`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

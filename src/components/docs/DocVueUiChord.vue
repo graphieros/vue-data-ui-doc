@@ -418,7 +418,7 @@ function goToPage(route) {
             :configSource="mainConfig.vue_ui_chord"
         />
 
-        <div :class="`transition-all mx-auto w-2/3`">
+        <div :class="`transition-all mx-auto w-full sm:w-2/3`">
             <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
                 @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
                 <BaseCard>

@@ -270,7 +270,7 @@ const { configCode, showAllConfig } = useConfigCode()
         <BaseDocHeaderActions targetLink="vue-ui-rating" :configSource="mainConfig.vue_ui_rating" />
 
         
-        <div :class="`transition-all mx-auto w-[200px]`">
+        <div :class="`transition-all mx-auto w-full sm:w-[300px]`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
