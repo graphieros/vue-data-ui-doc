@@ -13,17 +13,17 @@ const isDarkMode = computed(() => store.isDarkMode);
 const dataset = ref([
   {
     name: "Charts",
-    values: [37],
+    values: [42],
     color: shiftHue({ hexColor: '#5f8aee', force: 0})
   },
   {
     name: 'Mini charts',
-    values: [10],
+    values: [8],
     color: shiftHue({ hexColor: '#5f8aee', force: -0.05})
   },
   {
     name: "Utilities",
-    values: [9],
+    values: [8],
     color: shiftHue({ hexColor: '#5f8aee', force: -0.1})
   },
   {
@@ -82,11 +82,12 @@ const config = computed(() => {
       fontFamily: "inherit",
       chart: {
         useGradient: true,
-        height: 500,
+        height: 360,
+        width: 512,
         gradientIntensity: 20,
         backgroundColor: 'transparent',
         color: "#2D353C",
-        padding: { top: 12 },
+        padding: { top: 0, left: 0, bottom: -24, right: 0 },
         layout: {
           curvedMarkers: true,
           labels: {
@@ -117,7 +118,8 @@ const config = computed(() => {
             },
           },
           donut: {
-            strokeWidth: 24,
+            strokeWidth: 44,
+            radiusRatio: 0.4,
             borderWidth: 2,
             useShadow: true,
             shadowColor: "#2D353C",
@@ -126,13 +128,13 @@ const config = computed(() => {
           },
         },
         legend: {
-          show: false,
+          show: true,
           bold: false,
           backgroundColor: "transparent",
-          color: isDarkMode.value ? '#6A6A6A' : '#6A6A6A',
-          fontSize: 14,
+          color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A',
+          fontSize: 12,
           roundingValue: 0,
-          roundingPercentage: 0,
+          roundingPercentage: 1,
         },
         tooltip: {
           show: true,
