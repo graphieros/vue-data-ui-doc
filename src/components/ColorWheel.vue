@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineEmits, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useMainStore } from '../stores'
 import { adaptColorToBackground } from './maker/lib';
 import BaseBubbles from './BaseBubbles.vue';
