@@ -23,6 +23,18 @@ const props = defineProps({
     id: {
         type: String,
         default: ''
+    },
+    withRange: {
+        type: Boolean,
+        default: true,
+    },
+    withTextInput: {
+        type: Boolean,
+        default: true
+    },
+    wrapperTw: {
+        type: String,
+        default: ''
     }
 })
 
@@ -166,7 +178,7 @@ function hslToRgb(h, s, l) {
 </script>
 
 <template>
-    <BaseCard padding="0" type="light">
+    <BaseCard padding="0" type="light" :class="wrapperTw">
         <div class="inline-flex flex-col flex-wrap px-2 mt-2 pb-2">
             <label class="text-xs text-black dark:text-white">{{ label }}</label>
             <div class="color-picker flex flex-row">
@@ -197,13 +209,14 @@ function hslToRgb(h, s, l) {
                         <input ref="myColorInput" type="color"  v-model="hexColor" @input="updateColorFromHex" class="hidden-input"/>
                     </button>
                     
-                    <div class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                    <div v-if="withRange" class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
                         <input aria-label="Alpha channel" type="range" class="w-full accent-app-blue" v-model="alpha" min="0" max="1" step="0.01" @input="updateColorFromAlpha" />
                     </div>
                 </div>
-                <input :aria-labelledby="labelId" :id="id" type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
+                <input v-if="withTextInput" :aria-labelledby="labelId" :id="id" type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
             </div>
         </div>
+        <slot/>
     </BaseCard>
 </template>
 

@@ -1,11 +1,13 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { useMainStore } from "../stores";
 import { useRoute, useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import DashboardGold from "../dashboards/DashboardGold.vue";
 import DashboardHealth from "../dashboards/DashboardHealth.vue";
 import DashboardIT from "../dashboards/DashboardIT.vue";
+import DashboardMonochrome from "../dashboards/DashboardMonochrome.vue";
+import { adaptColorToBackground } from "../components/maker/lib";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -70,13 +72,24 @@ function updateHash(link) {
     setTimeout(updateCrumb, 100)
 }
 
+const baseColor = ref('#1f77b4')
+
 const themes = computed(() => {
     return [
         { link: 'gold', name: 'Gold', backgroundColor: '#fff8e1', color: '#424242' },
         { link: 'life-expectancy', name: 'Life expectancy', backgroundColor: '#f6f6fb', color: '#50606C' },
         { link: 'it-industry', name: 'IT industry', backgroundColor: '#f6f6fb', color: '#50606C' },
+        { link: 'monochrome', name: 'Monochrome', backgroundColor: baseColor.value, color: adaptColorToBackground(baseColor.value) },
     ]
 })
+
+watch(() => selectedLink.value, () => {
+    baseColor.value = '#1f77b4';
+})
+
+function changeBaseColor(c) {
+    baseColor.value = c;
+}
 
 </script>
 
@@ -108,4 +121,5 @@ const themes = computed(() => {
     <DashboardHealth v-if="selectedLink === 'life-expectancy'"/>
     <DashboardGold v-if="selectedLink === 'gold'"/>
     <DashboardIT v-if="selectedLink ===  'it-industry'"/>
+    <DashboardMonochrome v-if="selectedLink === 'monochrome'" @changeBaseColor="changeBaseColor" />
 </template>
