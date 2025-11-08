@@ -122,6 +122,7 @@ const iconMap = ref({
     VueUiXy: 'chartLine',
     VueUiXyCanvas: 'chartLine',
     VueUiVerticalBar: 'chartVerticalBar',
+    VueUiHorizontalBar: 'chartVerticalBar',
     VueUiParallelCoordinatePlot: 'chartParallelCoordinatePlot',
     VueUiFlow: 'chartFlow',
     VueUiCandlestick: 'chartCandlestick',

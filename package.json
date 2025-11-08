@@ -21,7 +21,7 @@
     "prismjs": "^1.29.0",
     "ssh2": "^1.16.0",
     "target-highlight": "^0.1.0",
-    "vue": "^3.5.23",
+    "vue": "^3.5.24",
     "vue-data-ui": "^3.6.0",
     "vue-data-ui-cli": "^3.0.11",
     "vue-hi-code": "^1.5.4",
@@ -34,6 +34,6 @@
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.6.2",
-    "vite": "^7.1.12"
+    "vite": "^7.2.2"
   }
 }

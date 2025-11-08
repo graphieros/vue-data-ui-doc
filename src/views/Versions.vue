@@ -1713,7 +1713,7 @@ const KPIS = computed(() => {
     ...el,
     displayName: {
       stargazers_count: 'Stars',
-      open_issues_count: 'Issues',
+      open_issues_count: 'Issues / Pull requests',
       subscribers_count: 'Subscribers',
       forks_count: 'Forks'
     }[el.key]
@@ -2106,7 +2106,7 @@ async function impactPatch() {
                         </template>
                     </VueDataUi>
                     </a>
-                  <div class="absolute -top-4 left-0 text-xs text-gray-600 dark:text-[#7A7A7A]">{{ kpi.displayName }}</div>
+                  <div class="absolute -top-4 left-0 text-xs text-gray-600 dark:text-[#9A9A9A]">{{ kpi.displayName }}</div>
                   </button>
                 </div>
               </BaseCard>

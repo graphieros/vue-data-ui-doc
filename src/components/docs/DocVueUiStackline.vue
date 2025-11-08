@@ -232,7 +232,10 @@ const config = ref({
             },
             highlighter: {
                 color: "#2D353C",
-                opacity: 5
+                opacity: 5,
+                useLine: false,
+                lineDasharray: 2,
+                lineWidth: 1
             },
             lines: {
                 useArea: true,
@@ -522,7 +525,10 @@ const darkModeConfig = ref({
             },
             highlighter: {
                 color: "#e1e5e8",
-                opacity: 5
+                opacity: 5,
+                useLine: false,
+                lineDasharray: 2,
+                lineWidth: 1
             },
             lines: {
                 useArea: true,
@@ -1117,6 +1123,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     <BaseDetails attr="highlighter" :level="3" title="style.chart.highlighter">
                         <BaseAttr name="color" attr="style.chart.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="opacity" attr="style.chart.highlighter.opacity" type="range" defaultVal="5" :min="0" :max="30" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useLine" attr="style.chart.highlighter.useLine" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                        <BaseAttr name="lineDasharray" attr="style.chart.highlighter.lineDasharray" type="number" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="lineWidth" attr="style.chart.highlighter.lineWidth" type="number" defaultVal="1" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="lines" :level="3" title="style.chart.lines">
                         <BaseAttr name="useArea" attr="style.chart.lines.useArea" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
