@@ -14,6 +14,7 @@ import Downloads from "../components/Downloads.vue";
 import { BugIcon, GitForkIcon, StarFilledIcon, ToolIcon, UserHeartIcon } from "vue-tabler-icons";
 import BaseCard from "../components/BaseCard.vue";
 import BaseLazy from "../components/BaseLazy.vue";
+import BackgroundPattern from "../components/BackgroundPattern.vue";
 
 const globalConfig = useConfig()
 
@@ -2048,11 +2049,10 @@ async function impactPatch() {
   patch.value.ver = String(Math.max(...patch.value.available.map(n => +n)));
 }
 
-
 </script>
 
 <template>
-    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true, 'versions': true, 'small-zoom': true}"/>
+  <div :class="{'vdui': isDarkMode, 'pointer-events-none': true, 'versions': true, 'small-zoom': true}"/>
     
       <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
