@@ -517,5 +517,9 @@ function changeBaseColor() {
                 </Suspense>
             </div>
         </div>
+
+        <div class="mt-6 hover:underline text-xl">
+            <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/dashboards/DashboardMonochrome.vue" target="_blank">View source code</a>
+        </div>
     </BaseCard>
 </template>
