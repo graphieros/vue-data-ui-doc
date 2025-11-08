@@ -8,6 +8,7 @@ import { lightenColor } from "vue-data-ui";
 import BaseColorInput from "../components/BaseColorInput.vue";
 import { adaptColorToBackground } from "../components/maker/lib";
 import { convertColorToHex } from "../components/maker/lib";
+import ColorWheel from "../components/ColorWheel.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -425,20 +426,56 @@ function changeBaseColor() {
     emit('changeBaseColor', baseColor.value)
 }
 
+const translations = ref({
+    clickToSpin: {
+        en: 'Click to spin',
+        fr: 'Cliquez pour faire tourner',
+        pt: 'Clique para girar',
+        de: 'Klicken, um zu drehen',
+        zh: '点击旋转',
+        jp: 'クリックして回転',
+        es: 'Haz clic para girar',
+        ko: '클릭하여 돌리기',
+        ar: 'انقر للدوران'
+    },
+    selectColor: {
+        en: 'Or just select a color (less playful)',
+        fr: 'Ou sélectionnez simplement une couleur (moins ludique)',
+        pt: 'Ou apenas escolha uma cor (menos divertido)',
+        de: 'Oder wähle einfach eine Farbe (weniger verspielt)',
+        zh: '或直接选择一种颜色（不那么有趣）',
+        jp: 'または色を選択するだけ（あまり遊び心がない）',
+        es: 'O simplemente elige un color (menos divertido)',
+        ko: '또는 색상을 직접 선택하세요 (덜 재미있음)',
+        ar: 'أو اختر لونًا فقط (أقل مرحًا)'
+    }
+})
+
 </script>
 
 <template>
     <BaseCard class="max-w-[1200px] mx-auto p-4 mt-12">
-        <BaseCard class="w-fit mb-4" type="light">
-            <div class="flex flex-row flex-wrap gap-4">
-                <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#1f77b4]" @click="setBaseColor('#1f77b4')"/>
-                <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#9467bd]" @click="setBaseColor('#9467bd')"/>
-                <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#393b79]" @click="setBaseColor('#393b79')"/>
-                <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#d62728]" @click="setBaseColor('#d62728')"/>
-                <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#ff7f0e]" @click="setBaseColor('#ff7f0e')"/>
-                <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#2ca02c]" @click="setBaseColor('#2ca02c')"/>
-            </div>
-        </BaseCard>
+        <div class="flex flex-row place-items-center justify-center flex-wrap gap-4">
+            <BaseCard class="w-fit mb-4" type="light">
+                <div class="mb-4 text-center">
+                    {{ translations.clickToSpin[store.lang] }}
+                </div>
+                <ColorWheel @result="c => setBaseColor(c)"/>
+            </BaseCard>
+            <BaseCard class="w-fit mb-4" type="light">
+                <div class="mb-2">
+                    {{ translations.selectColor[store.lang] }}
+                </div>
+                <div class="flex flex-row flex-wrap gap-4">
+                    <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#200d0d] transition-all h-[48px] w-[48px] rounded-md bg-[#1f77b4]" @click="setBaseColor('#1f77b4')"/>
+                    <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#9467bd]" @click="setBaseColor('#9467bd')"/>
+                    <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#393b79]" @click="setBaseColor('#393b79')"/>
+                    <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#d62728]" @click="setBaseColor('#d62728')"/>
+                    <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#ff7f0e]" @click="setBaseColor('#ff7f0e')"/>
+                    <button class="hover:outline hover:outline-[#1A1A1A] dark:hover:outline-[#CCCCCC] transition-all h-[48px] w-[48px] rounded-md bg-[#2ca02c]" @click="setBaseColor('#2ca02c')"/>
+                </div>
+            </BaseCard>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-6">
         
             <div class="col-span-1 sm:col-span-2 rounded-md grid grid-cols-1 sm:grid-cols-3 gap-4 sm:max-h-[300px]">
