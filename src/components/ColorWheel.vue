@@ -228,21 +228,4 @@ function onSpinEnd() {
     stroke-width: 4;
     stroke-linejoin: round;
 }
-
-.tap-hint {
-    position: absolute;
-    bottom: -2.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.95rem;
-    color: #6b7280;
-    /* gray-500 */
-    letter-spacing: 0.2px;
-    pointer-events: none;
-}
-
-/* Click feedback when not spinning */
-.color-wheel[aria-disabled="false"]:active .wheel {
-    filter: brightness(1.03);
-}
 </style>
