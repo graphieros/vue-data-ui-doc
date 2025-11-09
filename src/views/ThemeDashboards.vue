@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, onMounted, watch, markRaw } from "vue";
 import { useMainStore } from "../stores";
 import { useRoute, useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
@@ -8,6 +8,8 @@ import DashboardHealth from "../dashboards/DashboardHealth.vue";
 import DashboardIT from "../dashboards/DashboardIT.vue";
 import DashboardMonochrome from "../dashboards/DashboardMonochrome.vue";
 import { adaptColorToBackground } from "../components/maker/lib";
+import BasePageMenu from "../components/BasePageMenu.vue";
+import { ChevronUpIcon, CurrencyEuroIcon, DeviceDesktopAnalyticsIcon, LeafIcon, PaintIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -76,10 +78,10 @@ const baseColor = ref('#1f77b4')
 
 const themes = computed(() => {
     return [
-        { link: 'gold', name: 'Gold', backgroundColor: '#fff8e1', color: '#424242' },
-        { link: 'life-expectancy', name: 'Life expectancy', backgroundColor: '#f6f6fb', color: '#50606C' },
-        { link: 'it-industry', name: 'IT industry', backgroundColor: '#f6f6fb', color: '#50606C' },
-        { link: 'monochrome', name: 'Monochrome', backgroundColor: baseColor.value, color: adaptColorToBackground(baseColor.value) },
+        { link: 'gold', name: 'Gold', backgroundColor: '#fff8e1', color: '#424242', icon: markRaw(CurrencyEuroIcon) },
+        { link: 'life-expectancy', name: 'Life expectancy', backgroundColor: '#f6f6fb', color: '#50606C', icon: markRaw(LeafIcon) },
+        { link: 'it-industry', name: 'IT industry', backgroundColor: '#f6f6fb', color: '#50606C', icon: markRaw(DeviceDesktopAnalyticsIcon) },
+        { link: 'monochrome', name: 'Monochrome', backgroundColor: baseColor.value, color: adaptColorToBackground(baseColor.value), icon: markRaw(PaintIcon) },
     ]
 })
 
@@ -98,25 +100,30 @@ function changeBaseColor(c) {
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative mt-12">
         <h1 class="text-[36px] text-center">Theme dashboards</h1>
     </div>
-    <div class="flex place-items-center mx-auto max-w-[1000px] justify-center">
-        <div class="mt-4 flex flex-row gap-4 flex-wrap justify-center">
-            <button 
-                v-for="theme in themes"
-                @click="updateHash(theme.link)"
+
+    <BasePageMenu :items="themes" class="max-w-[1200px] mx-auto mt-6">
+        <template #item="{ item }">
+            <button
+                :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between relative`"
+                @click="updateHash(item.link)"
                 :style="{
-                    backgroundColor: theme.backgroundColor,
-                    color: theme.color,
-                    border: `1px solid ${theme.color}`
+                    backgroundColor: item.backgroundColor,
+                    color: item.color,
+                    opacity: selectedLink === item.link ? 1 : 0.6
                 }"
-                class="px-4 py-2 rounded-md opacity-90 hover:opacity-100 transition-opacity flex flex-row place-items-center gap-2"
             >
-                <span v-if="selectedLink === theme.link">⬤</span>
-                <span>
-                    {{ theme.name }}
-                </span>
+                <div class="h-fit w-fit flex place-items-center justify-center">
+                    <component :is="item.icon" :color="item.color" :size="isMobile ? 22 : 32" :stroke-width="1.5"/>
+                </div>
+                <div class="text-sm" :style="{
+                    lineHeight: isMobile ? '16px' : '20px',
+                }">
+                    {{ item.name }}
+                </div>
+                <ChevronUpIcon v-if="selectedLink === item.link" class="absolute -bottom-[20px] left-1/2 -translate-x-1/2 text-[#1A1A1A] dark:text-[#CCCCCC]"/>
             </button>
-        </div>
-    </div>
+        </template>
+    </BasePageMenu>
 
     <DashboardHealth v-if="selectedLink === 'life-expectancy'"/>
     <DashboardGold v-if="selectedLink === 'gold'"/>
