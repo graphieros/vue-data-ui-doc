@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, markRaw, onMounted } from "vue";
 import { useMainStore } from "../stores";
 import SvgSlot from "../components/customization/SvgSlot.vue";
 import LegendSlot from "../components/customization/LegendSlot.vue";
@@ -15,15 +15,17 @@ import BaseCrumbs from "../components/BaseCrumbs.vue";
 import SourceSlot from "../components/customization/SourceSlot.vue";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import ComposedComponents from "../components/customization/ComposedComponents.vue";
-import { BulbIcon } from "vue-tabler-icons";
+import { BulbIcon, CategoryIcon, CubeUnfoldedIcon, ExternalLinkIcon, GridPatternIcon, ListIcon, MathFunctionIcon, Menu2Icon, MicroscopeIcon, PaletteIcon, RegisteredIcon, SvgIcon, TextCaptionIcon, TooltipIcon } from "vue-tabler-icons";
 import Patterns from "../components/customization/Patterns.vue";
 import ColorBridgeIcon from "../components/maker/ColorBridgeIcon.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseCard from "../components/BaseCard.vue";
+import BasePageMenu from "../components/BasePageMenu.vue";
+import useMobile from "../useMobile";
 
 const store = useMainStore();
-
 const router = useRouter();
+const { isMobile } = useMobile();
 
 const currentRoute = computed(() => {
   return router.currentRoute.value.fullPath;
@@ -36,56 +38,101 @@ const translations = computed(() => {
 const isDarkMode = computed(() => store.isDarkMode);
 
 const selectedMenu = ref("svgSlot");
+
+function isSelected(item, index) {
+  return currentRoute.value === item.link || (index === 0 && currentRoute.value === '/customization');
+}
+
 const menu = ref([
-  { name: "svgSlot", label: "#svg slot", link: "/customization#svg-slot" },
+  { 
+    name: "svgSlot", 
+    label: "#svg slot", 
+    link: "/customization#svg-slot",
+    icon: markRaw(SvgIcon)
+  },
   {
     name: "legendSlot",
     label: "#legend slot",
     link: "/customization#legend-slot",
+    icon: markRaw(ListIcon)
   },
   {
     name: "tooltipSlot",
     label: "tooltip slots",
     link: "/customization#tooltip-slot",
+    icon: markRaw(TooltipIcon)
   },
   {
     name: "otherSlots",
     label: "other slots",
     link: "/customization#other-slots",
+    icon: markRaw(CubeUnfoldedIcon)
   },
-  { name: "colorPalette", label: "palette", link: "/customization#palette" },
-  { name: "menuSlots", label: "menu slots", link: "/customization#menu-slots" },
+  { 
+    name: "colorPalette", 
+    label: "palette", 
+    link: "/customization#palette",
+    icon: markRaw(PaletteIcon)
+  },
+  { 
+    name: "menuSlots", 
+    label: "menu slots", 
+    link: "/customization#menu-slots",
+    icon: markRaw(Menu2Icon)
+  },
   {
     name: "customMenu",
     label: "custom menu",
     link: "/customization#custom-menu",
+    icon: markRaw(CategoryIcon)
   },
   {
     name: "watermark",
     label: "watermark",
     link: "/customization#watermark-slot",
+    icon: markRaw(RegisteredIcon)
   },
   {
     name: "formatter",
     label: "formatter",
     link: "/customization#formatter",
+    icon: markRaw(MathFunctionIcon)
   },
   {
     name: "source",
     label: "source",
     link: "/customization#source",
+    icon: markRaw(TextCaptionIcon)
   },
   {
     name: 'experiments',
     label: 'Component ideas',
-    link: '/customization#experiments'
+    link: '/customization#experiments',
+    icon: markRaw(BulbIcon)
   },
   {
     name: 'patterns',
     label: 'Patterns',
-    link: '/customization#patterns'
+    link: '/customization#patterns',
+    icon: markRaw(GridPatternIcon)
+  },
+  {
+    name: 'colorBridge',
+    label: 'Color Bridge',
+    link: 'https://color-bridge.graphieros.com/',
+    icon: ''
   }
 ]);
+
+watch(() => router.currentRoute.value, (v) => {
+  const hash = router.currentRoute.value.hash;
+  if (!hash) {
+    selectedMenu.value  = 'svgSlot';
+  } else {
+      const currentMenu = menu.value.find(el => el.link.split('#')[1] === hash.replaceAll('#', ''));
+  selectedMenu.value = currentMenu.name || 'svgSlot'
+  }
+}, { immediate: true })
 
 const docsCrumbs = ref([
     {
@@ -120,7 +167,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <BaseCrumbs :tree="docsCrumbs" noMargin/>
   <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
 
-  <div class="my-12 w-full mx-auto text-center">
+  <div class="my-12 w-full mx-auto text-center max-w-[1200px]">
 
     <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
       <VueUiIcon class="hidden md:block" name="palette" :size="80" :strokeWidth="0.8" :stroke="isDarkMode ? '#de8b37' : '#de8b37'"/>
@@ -129,31 +176,33 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
       </h1>
     </div>
 
-    <BaseCard class="my-12 w-fit mx-auto" rounding="rounded-3xl">
-      <div class="place-items-center justify-center grid grid-cols-2 sm:grid-cols-3 gap-2">        
-        <router-link v-for="(menuItem, i) in menu" :to="menuItem.link" class="w-full">
+    <BasePageMenu :items="menu">
+      <template #item="{ item, index }">
+        <component :is="item.link.startsWith('http') ? 'a' : 'router-link'" :to="item.link" :target="item.link.startsWith('http') ? '_blank' : '_self'" :href="item.link">
           <button
-            :class="`w-full transition-colors rounded-full py-2 px-4 flex flex-row gap-2 place-items-center ${
-              currentRoute === menuItem.link ||
-              (i === 0 && currentRoute === '/customization')
-                ? 'bg-[#de8b3720] text-[#de8b37] border-b border-[#de8b37]'
-                : 'hover:bg-[#de8b3720] bg-gray-50 dark:bg-[#3A3A3A]'
-            } shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
-            @click="selectedMenu = menuItem.name"
+              :class="`relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${isSelected(item, index) ? 'bg-[#FBFBFB] dark:bg-[#de8b3750]' : 'bg-white dark:bg-[#de8b3720] hover:bg-[#FBFBFB] dark:hover:bg-[#de8b3730] '} transition-colors`"
+              @click="selectedMenu = item.name"
           >
-            <BulbIcon v-if="menuItem.name === 'experiments'" class="text-black dark:text-app-gold"/>
-            {{ menuItem.label }}
+              <div class="h-fit w-fit flex place-items-center justify-center relative">
+                  <ColorBridgeIcon v-if="item.name === 'colorBridge'"/>
+                  <component v-else :is="item.icon" :color="isDarkMode ? item.name === 'experiments' ? '#fdd663' : '#de8b37' : '#1A1A1A'" :size="isMobile ? 22 : 32" :stroke-width="1.5"/>
+                </div>
+                <ExternalLinkIcon v-if="item.name === 'colorBridge'" class="absolute top-1 right-1" :size="18"/>
+              <div class="text-sm" :style="{
+                  lineHeight: isMobile ? '16px' : '20px'
+              }">
+                  {{ item.label }}
+              </div>
           </button>
-        </router-link>
-        <button class="w-full transition-colors rounded-full py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#de8b3720] bg-gray-100 dark:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
-          <a href="https://color-bridge.graphieros.com/" target="_blank" class="flex flex-row gap-2 place-items-center">
-            <ColorBridgeIcon/> Color Bridge
-          </a>
-        </button>
-      </div>
-    </BaseCard>
-
+        </component>
+      </template>
+    </BasePageMenu>
   </div>
+
+  <h2 class="text-center text-4xl font-inter-medium w-full mx-auto max-w-[1200px]">
+    {{ menu.find(el => el.name === selectedMenu).label }}
+  </h2>
+
   <SvgSlot
     v-if="
       currentRoute === '/customization#svg-slot' ||

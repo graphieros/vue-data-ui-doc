@@ -8,12 +8,15 @@ import ExampleKpi from "../components/examples/ExampleKpi.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import { SkullIcon } from "vue-tabler-icons";
+import BasePageMenu from "../components/BasePageMenu.vue";
+import useMobile from "../useMobile";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
 const lang = computed(() => store.lang);
 const isDarkMode = computed(() => store.isDarkMode);
 const currentMenu = ref('mini')
+const { isMobile } = useMobile()
 
 onMounted(() => {
     window.scrollTo(0,0)
@@ -29,6 +32,72 @@ const crumbs = ref([
     }
 ]);
 
+const menuItems = computed(() => ([
+    {
+        name: translations.value.sideMenu.miniCharts[store.lang],
+        icon: 'chartSparkline',
+        callback: () => currentMenu.value = 'mini',
+        link: '#',
+        selected: currentMenu.value === 'mini'
+    },
+    {
+        name: translations.value.sideMenu.charts[store.lang],
+        icon: 'dashboard',
+        callback: () => currentMenu.value = 'charts',
+        link: '#',
+        selected: currentMenu.value === 'charts'
+    },
+    {
+        name: 'KPI',
+        icon: 'kpiBox',
+        callback: () => currentMenu.value = 'kpi',
+        link: '#',
+        selected: currentMenu.value === 'kpi'
+    },
+    {
+        name: translations.value.docs.moreExamples[store.lang],
+        icon: 'clipboardLine',
+        callback: () => {},
+        link: '/examples/categories',
+        selected: currentMenu.value === 'categories'
+    },
+    {
+        name: translations.value.docs.themeDashboards[store.lang],
+        icon: 'dashboard',
+        callback: () => {},
+        link: '/examples/theme-dashboards',
+        selected: currentMenu.value === 'theme-dashboards'
+    },
+    {
+        name: translations.value.docs.loadingStates[store.lang],
+        icon: 'skeleton',
+        callback: () => {},
+        link: '/examples/loading-states',
+        selected: currentMenu.value === 'loading-states'
+    },
+    {
+        name: translations.value.docs.dontTryThisAtHome[store.lang],
+        icon: 'moodWink',
+        callback: () => {},
+        link: '/examples/dont-try-this-at-home',
+        selected: currentMenu.value === 'dont-try-this-at-home'
+    },
+    {
+        name: 'Game of Life',
+        icon: 'skull',
+        callback: () => {},
+        link: '/examples/game-of-life',
+        selected: currentMenu.value === 'game-of-life'
+    },
+    {
+        name: translations.value.docs.configFlow[store.lang],
+        icon: 'chartFlow',
+        callback: () => {},
+        link: '/examples/config-flows',
+        selected: currentMenu.value === 'config-flows'
+    },
+]))
+
 </script>
 
 <template>
@@ -42,108 +111,26 @@ const crumbs = ref([
             <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.examples[lang] }}</h1>
         </div>
 
-        <div class="place-items-center justify-center mt-10 flex-wrap border border-[#de693750] rounded-md p-4 w-fit mx-auto grid grid-cols-2 sm:grid-cols-3 gap-2">
-            <ExampleButton @click="currentMenu = 'mini'" :selected="currentMenu === 'mini'" :isDarkMode="isDarkMode" class="w-full">
-                <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="chartSparkline" :stroke="currentMenu === 'mini' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        {{ translations.sideMenu.miniCharts[lang] }}
-                    </span>
-                </div>
-            </ExampleButton>
-            <ExampleButton @click="currentMenu = 'charts'" :selected="currentMenu === 'charts'" :isDarkMode="isDarkMode" class="w-full">
-                <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="dashboard" :stroke="currentMenu === 'charts' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        {{ translations.sideMenu.charts[lang] }}
-                    </span>
-                </div>
-            </ExampleButton>
-            <ExampleButton @click="currentMenu = 'kpi'" :selected="currentMenu === 'kpi'" :isDarkMode="isDarkMode" class="w-full">
-                <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="kpiBox" :stroke="currentMenu === 'kpi' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        KPI
-                    </span>
-                </div>
-            </ExampleButton>
-            <RouterLink to="/examples/categories" class="w-full">
-                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
-                    <svg class="absolute top-0.5 right-0.5" v-if="selected" viewBox="0 0 10 10" height="8" width="8">
-                        <circle cx="5.5" cy="6" r="5" :fill="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
-                        <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#1A1A1A' : '#F3F4F6'"/>
-                    </svg>
-                    <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="clipboardLine" :stroke="currentMenu === 'kpi' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        {{ translations.docs.moreExamples[store.lang] }}
-                    </span>
-                </div>
-                </button>
-            </RouterLink>
-            <RouterLink to="/examples/theme-dashboards" class="w-full">
-                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
-                    <svg class="absolute top-0.5 right-0.5" v-if="selected" viewBox="0 0 10 10" height="8" width="8">
-                        <circle cx="5.5" cy="6" r="5" :fill="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
-                        <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#1A1A1A' : '#F3F4F6'"/>
-                    </svg>
-                    <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="dashboard" :stroke="currentMenu === 'kpi' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        {{ translations.docs.themeDashboards[store.lang] }}
-                    </span>
-                </div>
-                </button>
-            </RouterLink>
-            <RouterLink to="/examples/loading-states" class="w-full">
-                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
-                    <svg class="absolute top-0.5 right-0.5" v-if="selected" viewBox="0 0 10 10" height="8" width="8">
-                        <circle cx="5.5" cy="6" r="5" :fill="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
-                        <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#1A1A1A' : '#F3F4F6'"/>
-                    </svg>
-                    <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="skeleton" :stroke="currentMenu === 'loadingStates' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        {{ translations.docs.loadingStates[store.lang] }}
-                    </span>
-                </div>
-                </button>
-            </RouterLink>
-            <RouterLink to="/examples/dont-try-this-at-home" class="w-full">
-                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
-                    <svg class="absolute top-0.5 right-0.5" v-if="selected" viewBox="0 0 10 10" height="8" width="8">
-                        <circle cx="5.5" cy="6" r="5" :fill="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
-                        <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#1A1A1A' : '#F3F4F6'"/>
-                    </svg>
-                    <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="moodWink" :stroke="currentMenu === 'dontTryThisAtHome' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        {{ translations.docs.dontTryThisAtHome[store.lang] }}
-                    </span>
-                </div>
-                </button>
-            </RouterLink>
-            <RouterLink to="/examples/config-flows" class="w-full">
-                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
-                    <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon name="chartFlow" :stroke="currentMenu === 'configFlow' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        {{ translations.docs.configFlow[store.lang] }}
-                    </span>
-                </div>
-                </button>
-            </RouterLink>
-            <RouterLink to="/examples/game-of-life" class="w-full">
-                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
-                    <div class="flex flex-row gap-2 place-items-center">
-                    <SkullIcon :color=" isDarkMode ? '#de6937' : '#1A1A1A'"/>
-                    <span>
-                        Game of Life
-                    </span>
-                </div>
-                </button>
-            </RouterLink>
-        </div>
+        <BasePageMenu :items="menuItems">
+            <template #item="{item}">
+                <RouterLink :to="item.link">
+                    <button
+                        :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${item.selected ? 'bg-[#FBFBFB] dark:bg-[#de693750]' : 'bg-white dark:bg-[#de693720] hover:bg-[#FBFBFB] dark:hover:bg-[#de693730] '} transition-colors`"
+                        @click="item.callback()"
+                    >
+                        <div class="h-fit w-fit flex place-items-center justify-center">
+                            <SkullIcon v-if="item.icon === 'skull'" :color="isDarkMode ? '#de6937' : '#1A1A1A'" :size="isMobile ? 22 : 32" :stroke-width="1.5"/>
+                            <VueUiIcon v-else :name="item.icon" stroke="#de6937" :size="isMobile ? 20 : 28"/>
+                        </div>
+                        <div class="text-sm" :style="{
+                            lineHeight: isMobile ? '16px' : '20px'
+                        }">
+                            {{ item.name }}
+                        </div>
+                    </button>
+                </RouterLink>
+            </template>
+        </BasePageMenu>
 
         <ExampleSpark v-if="currentMenu === 'mini'"/>
         <ExampleCharts v-if="currentMenu === 'charts'" />
