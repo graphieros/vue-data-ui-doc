@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import { BrandGithubFilledIcon, CheckIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, StarFilledIcon } from "vue-tabler-icons";
@@ -8,6 +8,7 @@ import staticReleases from "../../public/releases.json"
 import { useConfig } from "../assets/useConfig";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseBubbles from "../components/BaseBubbles.vue";
+import BackgroundPattern from "../components/BackgroundPattern.vue";
 
 const configs = useConfig()
 
@@ -509,13 +510,29 @@ const carouselConfig = computed(() => {
 }
 })
 
+const isNarrow = ref(false)
+
+function updateSize() {
+  isNarrow.value = window.innerHeight > window.innerWidth
+}
+
+onMounted(() => {
+  updateSize()
+  window.addEventListener('resize', updateSize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateSize)
+})
+
 </script>
 
 <template>
     <!-- <div v-if="!isDarkMode" class="underlay-paper"></div>
     <div v-if="isDarkMode" class="underlay-paper--dark"></div> -->
     <div class="underlay">
-  <svg class="w-full h-full">
+      <BackgroundPattern v-if="isDarkMode"/>
+  <svg class="w-full h-full" v-else>
     <defs>
       <!-- make the pattern tile exactly 50×50 units -->
       <pattern
@@ -561,7 +578,7 @@ const carouselConfig = computed(() => {
           </template>
       </VueUiCarouselTable>
         
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col lg:flex-row justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]">
+        <div :class="`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col ${isNarrow ? '' : 'lg:flex-row'} justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]`">
     <div class="flex flex-col gap-6 max-w-[360px] justify-center place-items-center text-center">
         <h1 style="font-family: InterBold" class="text-[48px]">
             <!-- <span class="">Vue </span> -->
