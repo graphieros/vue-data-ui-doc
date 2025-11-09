@@ -180,7 +180,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
       <template #item="{ item, index }">
         <component :is="item.link.startsWith('http') ? 'a' : 'router-link'" :to="item.link" :target="item.link.startsWith('http') ? '_blank' : '_self'" :href="item.link">
           <button
-              :class="`relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${isSelected(item, index) ? 'bg-[#FBFBFB] dark:bg-[#de8b3750]' : 'bg-white dark:bg-[#de8b3720] hover:bg-[#FBFBFB] dark:hover:bg-[#de8b3730] '} transition-colors`"
+              :class="`relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${isSelected(item, index) ? 'bg-[#efb376] dark:bg-[#de8b3750]' : 'bg-white dark:bg-[#de8b3720] hover:bg-[#FBFBFB] dark:hover:bg-[#de8b3730] '} transition-colors`"
               @click="selectedMenu = item.name"
           >
               <div class="h-fit w-fit flex place-items-center justify-center relative">

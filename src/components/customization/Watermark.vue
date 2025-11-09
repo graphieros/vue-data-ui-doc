@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import CodeParser from "./CodeParser.vue";
 import ConfirmCopy from "../ConfirmCopy.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 
@@ -446,18 +447,20 @@ const codeWatermarkPrintOnly = ref(`<!-- ${comment2.value[store.lang]} -->
         <div class="my-6" dir="auto">
           {{ title[store.lang] }}
         </div>
-        <VueUiDonut
-          :dataset="dataset"
-          :config="isDarkMode ? darkModeConfig : config"
-        >
-          <template #watermark="{ isPrinting }">
-            <div
-              class="text-gray-500 -rotate-12 text-[90px] opacity-30 mx-auto"
-            >
-              WATERMARK
-            </div>
-          </template>
-        </VueUiDonut>
+        <BaseCard>
+          <VueUiDonut
+            :dataset="dataset"
+            :config="isDarkMode ? darkModeConfig : config"
+          >
+            <template #watermark="{ isPrinting }">
+              <div
+                class="text-gray-500 -rotate-12 text-[90px] opacity-30 mx-auto"
+              >
+                WATERMARK
+              </div>
+            </template>
+          </VueUiDonut>
+        </BaseCard>
         <div class="my-6 w-full bg-[#2A2A2A] text-gray-300 p-4 rounded-md text-xs overflow-auto">
           <CodeParser :content="codeWatermarkAlways" language="html" @copy="store.copy()"/>
           <CodeParser :content="codeWatermarkPrintOnly" language="html" @copy="store.copy()"/>

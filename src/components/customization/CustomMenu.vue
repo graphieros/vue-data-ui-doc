@@ -139,7 +139,7 @@ const code2 = ref(`<template>
 </script>
 
 <template>
-    <div class="text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
+    <div class="text-left mt-12 w-5/6 mx-auto mb-12 max-w-[1200px]">
         If you prefer not to use the charts' built-in user options menu, but need to create your own:
 
         <div class="mt-6 text-lg">

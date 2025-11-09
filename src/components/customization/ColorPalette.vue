@@ -9,6 +9,7 @@ import ColorBridgeIcon from "../maker/ColorBridgeIcon.vue";
 import { useFeatures } from "../../useFeatures";
 import { CheckIcon } from "vue-tabler-icons";
 import ComponentsTable from "../docs/ComponentsTable.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -150,11 +151,11 @@ const description = ref({
 <template>
     <ConfirmCopy />
 
-    <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
+    <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 max-w-[1200px] mx-auto mb-12">
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
-        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+        <BaseCard class="w-full mb-6">
             <CodeParser :content="codeContent.default" language="javascript" @copy="store.copy()" />
-        </div>
+        </BaseCard>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
                 v-for="(color, i) in palette">
@@ -171,9 +172,9 @@ const description = ref({
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+        <BaseCard class="w-full mt-12 mb-6">
             <CodeParser :content="codeContent.celebration" language="javascript" @copy="store.copy()" />
-        </div>
+        </BaseCard>
 
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
@@ -191,9 +192,10 @@ const description = ref({
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+        <BaseCard class="w-full mt-12 mb-6">
             <CodeParser :content="codeContent.celebrationNight" language="javascript" @copy="store.copy()" />
-        </div>
+        </BaseCard>
+
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
                 v-for="(color, i) in getPalette('celebrationNight')">
@@ -210,9 +212,11 @@ const description = ref({
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+
+        <BaseCard class="w-full mt-12 mb-6">
             <CodeParser :content="codeContent.zen" language="javascript" @copy="store.copy()" />
-        </div>
+        </BaseCard>
+
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
                 v-for="(color, i) in getPalette('zen')">
@@ -229,9 +233,11 @@ const description = ref({
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+
+        <BaseCard class="w-full mt-12 mb-6">
             <CodeParser :content="codeContent.concrete" language="javascript" @copy="store.copy()" />
-        </div>
+        </BaseCard>
+
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
                 v-for="(color, i) in getPalette('concrete')">
@@ -248,9 +254,10 @@ const description = ref({
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+        <BaseCard class="w-full mt-12 mb-6">
             <CodeParser :content="codeContent.hack" language="javascript" @copy="store.copy()" />
-        </div>
+        </BaseCard>
+
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
                 v-for="(color, i) in getPalette('hack')">
@@ -273,10 +280,11 @@ const description = ref({
             <div class="flex flex-row justify-center mt-6">
                 <code>npm i color-bridge</code>
             </div>
-            <div
-                class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+
+            <BaseCard class="w-full my-6">
                 <CodeParser :content="colorBridgeCode" language="javascript" @copy="store.copy()" />
-            </div>
+            </BaseCard>
+
             <div class="flex flex-row justify-center mt-6">
                 <button
                     class="py-2 px-5 rounded flex flew-row place-items-center gap-2 bg-gray-200 dark:bg-[#FFFFFF20] shadow-md hover:shadow-lg transition-all">

@@ -538,27 +538,6 @@ const code = ref(`<template>
     {{ translations.customization.tooltipSlot[store.lang] }}
   </div>
 
-  <ComponentsTable :cols="['Component', 'Tooltip']" class="mx-auto">
-      <template #th="{ col }">
-          {{ col }}
-      </template>
-
-      <template #Component="{ row }">
-          <div class="flex flex-row gap-2 place-items-center">
-              <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
-              <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
-                  <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
-              </RouterLink>
-          </div>
-      </template>
-
-      <template #Tooltip="{ row }">
-          <div class="w-full h-full flex justify-center" :style="{ background: row.tooltip ? '#42d39230' : 'transparent'}">
-              <CheckIcon v-if="row.tooltip" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
-          </div>
-      </template>
-  </ComponentsTable>
-
   <BaseCustomizationBox>
     <template #code>
       <CodeParser :content="code" language="html" @copy="store.copy()"/>
@@ -582,4 +561,25 @@ const code = ref(`<template>
       </VueDataUi>
     </template>
   </BaseCustomizationBox>
+
+    <ComponentsTable :cols="['Component', 'Tooltip']" class="mx-auto">
+      <template #th="{ col }">
+          {{ col }}
+      </template>
+
+      <template #Component="{ row }">
+          <div class="flex flex-row gap-2 place-items-center">
+              <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
+              <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
+                  <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+              </RouterLink>
+          </div>
+      </template>
+
+      <template #Tooltip="{ row }">
+          <div class="w-full h-full flex justify-center" :style="{ background: row.tooltip ? '#42d39230' : 'transparent'}">
+              <CheckIcon v-if="row.tooltip" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+          </div>
+      </template>
+  </ComponentsTable>
 </template>

@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 import { useMainStore } from "../../stores";
 import CodeParser from "./CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -40,25 +41,8 @@ const configDonut = ref({
         {{ translations.formatter[store.lang] }}
     </div>
 
-    <div
-      class="max-w-[1200px] flex flex-col lg:flex-row gap-4 justify-center place-items-center mx-auto bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md shadow-md"
-      style="width: calc(100% - 48px)"
-    >
-      <div
-        class="bg-black p-4 text-gray-300 text-xs w-full overflow-auto rounded-md"
-      >
-        <CodeParser :content="code" language="javascript" @copy="store.copy()"/>
-      </div>
-  </div>
-
-    <div
-      class="max-w-[1200px] flex flex-col lg:flex-row gap-4 justify-center place-items-center mx-auto bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md shadow-md"
-      style="width: calc(100% - 48px)"
-    >
-      <div
-        class="bg-black p-4 text-gray-300 text-xs w-full overflow-auto rounded-md"
-      >
-        <CodeParser :content="codeConfig" language="javascript" @copy="store.copy()"/>
-      </div>
-  </div>
+    <BaseCard class="max-w-[1200px] mx-auto">
+      <CodeParser :content="code" language="javascript" @copy="store.copy()"/>
+      <CodeParser class="mt-4" :content="codeConfig" language="javascript" @copy="store.copy()"/>
+    </BaseCard>
 </template>

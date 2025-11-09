@@ -115,12 +115,12 @@ const menuItems = computed(() => ([
             <template #item="{item}">
                 <RouterLink :to="item.link">
                     <button
-                        :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${item.selected ? 'bg-[#FBFBFB] dark:bg-[#de693750]' : 'bg-white dark:bg-[#de693720] hover:bg-[#FBFBFB] dark:hover:bg-[#de693730] '} transition-colors`"
+                        :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${item.selected ? 'bg-[#de6937] dark:bg-[#de693750] text-white' : 'bg-white dark:bg-[#de693720] hover:bg-[#FBFBFB] dark:hover:bg-[#de693730]'} transition-colors`"
                         @click="item.callback()"
                     >
                         <div class="h-fit w-fit flex place-items-center justify-center">
-                            <SkullIcon v-if="item.icon === 'skull'" :color="isDarkMode ? '#de6937' : '#1A1A1A'" :size="isMobile ? 22 : 32" :stroke-width="1.5"/>
-                            <VueUiIcon v-else :name="item.icon" stroke="#de6937" :size="isMobile ? 20 : 28"/>
+                            <SkullIcon v-if="item.icon === 'skull'" :color="item.selected ? '#FFFFFF' : '#de6937'" :size="isMobile ? 22 : 32" :stroke-width="1.5"/>
+                            <VueUiIcon v-else :name="item.icon" :stroke="item.selected ? '#FFFFFF' : '#de6937'" :size="isMobile ? 20 : 28"/>
                         </div>
                         <div class="text-sm" :style="{
                             lineHeight: isMobile ? '16px' : '20px'
