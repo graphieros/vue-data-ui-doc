@@ -18,6 +18,8 @@ import BaseCard from "../components/BaseCard.vue";
 import BaseLazy from "../components/BaseLazy.vue";
 import BaseSuspense from "../components/BaseSuspense.vue";
 import CopyLink from "../components/CopyLink.vue";
+import BackgroundPattern from "../components/BackgroundPattern.vue";
+import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 
 const { examples } = useExamples()
 const store = useMainStore()

@@ -9,6 +9,7 @@ import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css"
 import BaseCard from "../components/BaseCard.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
+import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 
 
 const store = useMainStore();
@@ -173,7 +174,16 @@ const fncsyIntro = ref({
 </script>
 
 <template>
-    <!-- <BackgroundPattern v-if="isDarkMode"/> -->
+    <BackgroundPattern>
+        <template #defs>
+            <BaseMenuPattern
+                menu="installation"
+                id="pat"
+                stroke="#5f8bee"
+                patternTransform="scale(0.2)"
+            />
+        </template>
+    </BackgroundPattern>
     <div class="flex flex-col place-content-center place-items-center text-center my-12 z-10">
         <div class="fixed top-0 left-0 h-screen w-screen z-0 pointer-events-none" style="opacity:0.4">
             <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>

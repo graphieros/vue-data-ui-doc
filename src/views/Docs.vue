@@ -20,6 +20,8 @@ import CodeParser from "../components/customization/CodeParser.vue";
 import { useIconMap } from "../useIconMap";
 import IconSettings from "../components/IconSettings.vue";
 import BaseCard from "../components/BaseCard.vue";
+import BackgroundPattern from "../components/BackgroundPattern.vue";
+import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1040,6 +1042,16 @@ const stackbarKey = ref(0);
 </script>
 
 <template>
+    <BackgroundPattern v-if="isDarkMode">
+        <template #defs>
+            <BaseMenuPattern
+                menu="docs"
+                id="pat"
+                stroke="#42d392"
+                patternTransform="scale(0.2)"
+            />
+        </template>
+    </BackgroundPattern>
     <BaseCrumbs :tree="docsCrumbs" class="z-20"/>
     
     <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>

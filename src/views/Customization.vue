@@ -22,6 +22,8 @@ import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseCard from "../components/BaseCard.vue";
 import BasePageMenu from "../components/BasePageMenu.vue";
 import useMobile from "../useMobile";
+import BackgroundPattern from "../components/BackgroundPattern.vue";
+import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 
 const store = useMainStore();
 const router = useRouter();
@@ -164,6 +166,17 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
 </script>
 
 <template>
+  <BackgroundPattern v-if="isDarkMode">
+        <template #defs>
+            <BaseMenuPattern
+                menu="customization"
+                id="pat"
+                stroke="#de8b37"
+                patternTransform="scale(0.5) rotate(45)"
+                strokeWidth="0.5"
+            />
+        </template>
+    </BackgroundPattern>
   <BaseCrumbs :tree="docsCrumbs" noMargin/>
   <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
 
@@ -180,7 +193,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
       <template #item="{ item, index }">
         <component :is="item.link.startsWith('http') ? 'a' : 'router-link'" :to="item.link" :target="item.link.startsWith('http') ? '_blank' : '_self'" :href="item.link">
           <button
-              :class="`relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${isSelected(item, index) ? 'bg-[#efb376] dark:bg-[#de8b3750]' : 'bg-white dark:bg-[#de8b3720] hover:bg-[#FBFBFB] dark:hover:bg-[#de8b3730] '} transition-colors`"
+              :class="`relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${isSelected(item, index) ? 'bg-gradient-to-b from-[#efb376] to-[#de8b37] dark:from-[#de8b3770] dark:to-[#de8b3720]' : 'bg-white dark:bg-[#de8b3715] hover:bg-[#FBFBFB] dark:hover:bg-[#de8b3730] '} transition-colors`"
               @click="selectedMenu = item.name"
           >
               <div class="h-fit w-fit flex place-items-center justify-center relative">

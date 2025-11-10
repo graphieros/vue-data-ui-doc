@@ -10,6 +10,8 @@ import ChartSeeker from "../components/ChartSeeker.vue";
 import { SkullIcon } from "vue-tabler-icons";
 import BasePageMenu from "../components/BasePageMenu.vue";
 import useMobile from "../useMobile";
+import BackgroundPattern from "../components/BackgroundPattern.vue";
+import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -101,6 +103,17 @@ const menuItems = computed(() => ([
 </script>
 
 <template>
+    <BackgroundPattern v-if="isDarkMode">
+        <template #defs>
+            <BaseMenuPattern
+                menu="examples"
+                id="pat"
+                stroke="#de6937"
+                patternTransform="scale(0.15) rotate(0)"
+                strokeWidth="2"
+            />
+        </template>
+    </BackgroundPattern>
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
 
     <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
@@ -115,7 +128,7 @@ const menuItems = computed(() => ([
             <template #item="{item}">
                 <RouterLink :to="item.link">
                     <button
-                        :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${item.selected ? 'bg-[#de6937] dark:bg-[#de693750] text-white' : 'bg-white dark:bg-[#de693720] hover:bg-[#FBFBFB] dark:hover:bg-[#de693730]'} transition-colors`"
+                        :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${item.selected ? 'bg-gradient-to-b from-[#f18a5e] to-[#de6937] dark:from-[#de693780] dark:to-[#de693720] text-white' : 'bg-white dark:bg-[#de693715] hover:bg-[#FBFBFB] dark:hover:bg-[#de693730]'} transition-colors`"
                         @click="item.callback()"
                     >
                         <div class="h-fit w-fit flex place-items-center justify-center">

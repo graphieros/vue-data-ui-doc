@@ -8,6 +8,8 @@ import BaseCrumbs from "../components/BaseCrumbs.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import Rater from "../components/Rater.vue";
 import BaseCard from "../components/BaseCard.vue";
+import BackgroundPattern from "../components/BackgroundPattern.vue";
+import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 
 const MakerXy = defineAsyncComponent(() => import('../components/maker/MakerXy.vue'));
 const MakerDonut = defineAsyncComponent(() => import('../components/maker/MakerDonut.vue'));
@@ -166,6 +168,16 @@ const crumbs = computed(() => {
 </script>
 
 <template>
+    <BackgroundPattern>
+        <template #defs>
+            <BaseMenuPattern
+                menu="builder"
+                id="pat"
+                stroke="#ffe59690"
+                patternTransform="scale(0.2)"
+            />
+        </template>
+    </BackgroundPattern>
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
     <ConfirmCopy />
 

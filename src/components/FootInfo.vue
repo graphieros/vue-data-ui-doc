@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import { useRouter } from "vue-router";
 import BaseCard from "./BaseCard.vue";
 import FncsyAd from "./FncsyAd.vue";
+import { ChevronDownIcon, ChevronUpIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const router = useRouter()
@@ -118,8 +119,9 @@ s
             </div>
 
             <div class="flex flex-col sm:flex-row gap-6 flex-wrap" dir="auto">
-                <div class="flex flex-col place-items-center justify-center gap-2" v-for="menuItem in menuItems">
-                    <a :class="`text-black dark:text-app-blue hover:underline px-2 rounded-md ${isSelected(menuItem.link) ? 'bg-[#5f8aee30] shadow-md border-b border-app-blue' : ''}`" :href="menuItem.link">
+                <div class="flex flex-col place-items-center justify-center gap-2 relative" v-for="menuItem in menuItems">
+                    <ChevronUpIcon v-if="isSelected(menuItem.link)" class="absolute -bottom-[17px] left-1/2 -translate-x-1/2 text-app-blue dark:text-app-green" />
+                    <a :class="`text-black dark:text-app-blue hover:underline px-2 rounded-md ${isSelected(menuItem.link) ? 'shadow-md border-b border-app-blue' : ''}`" :href="menuItem.link">
                         <div class="flex flex-row place-items-center gap-2">
                             <VueUiIcon v-if="menuItem.icon" :name="menuItem.icon" :size="18" :stroke="isDarkMode ? '#CCCCCC' : '#6A6A6A'"/>
                             {{ menuItem.title }} 

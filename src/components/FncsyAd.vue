@@ -148,7 +148,7 @@ const soMuchMore = ref({
                     <div class="flex flex-col">
                         <div class="flex flex-row gap-2 place-items-center">
                             <img src="../assets/fncsy-logo.webp" height="64" width="64"/>
-                            <code class="text-app-green-dark text-[32px]">FNCSY</code>
+                            <code class="text-app-green-dark dark:text-app-green text-[32px]">FNCSY</code>
                         </div>
                         <code class="text-xl">{{ freeProductionReady[store.lang] }}</code>
                     </div>
@@ -156,7 +156,7 @@ const soMuchMore = ref({
             </a>
 
             <div class="flex flex-col sm:grid sm:grid-cols-3 gap-4 my-4">
-                <a href="https://fncsy.com/image-to-pixel-art" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-white rounded-md transition-colors">
+                <a href="https://fncsy.com/image-to-pixel-art" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
                 <BaseCard type="light">
                     <div class="flex flex-col place-items-center sm:h-[140px]">
                         <span class="text-[24px] sm:text-[48px]">
@@ -168,7 +168,7 @@ const soMuchMore = ref({
                     </div>
                 </BaseCard>
             </a>
-            <a href="https://fncsy.com/steganography" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-white rounded-md transition-colors">
+            <a href="https://fncsy.com/steganography" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
                 <BaseCard type="light">
                     <div class="flex flex-col place-items-center sm:h-[140px]">
                         <span class="text-[24px] sm:text-[48px]">
@@ -180,7 +180,7 @@ const soMuchMore = ref({
                     </div>
                 </BaseCard>
             </a>
-            <a href="https://fncsy.com/dead-link-checker" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-white rounded-md transition-colors">
+            <a href="https://fncsy.com/dead-link-checker" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
                 <BaseCard type="light">
                     <div class="flex flex-col place-items-center sm:h-[140px]">
                         <span class="text-[24px] sm:text-[48px]">
