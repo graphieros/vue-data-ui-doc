@@ -188,7 +188,7 @@ const crumbs = computed(() => {
             <div class="relative h-[80px] w-[80px] hidden md:block">
                 <VueUiIcon name="boxes" :size="80" :strokeWidth="0.8" class="absolute lushicon top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="isDarkMode ? '#5f8aee60' : '#5f8aee'"/>
             </div>
-            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
+            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center" style="letter-spacing: -1px;">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 
         <BaseCard class="w-full max-w-[500px] mx-auto my-12">

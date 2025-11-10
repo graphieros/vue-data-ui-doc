@@ -494,7 +494,7 @@ const wheelConfig = computed(() => {
 <template>
   <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
   <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
-    <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">
+    <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center" style="letter-spacing: -1px;">
       {{ translations.menu.about[store.lang] }}
     </h1>
 

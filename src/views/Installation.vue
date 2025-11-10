@@ -184,9 +184,9 @@ const fncsyIntro = ref({
             />
         </template>
     </BackgroundPattern>
-    <div class="flex flex-col place-content-center place-items-center text-center my-12 z-10">
+    <div class="flex flex-col place-content-center place-items-center text-center mb-12 z-10">
         <div class="fixed top-0 left-0 h-screen w-screen z-0 pointer-events-none" style="opacity:0.4">
-            <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
+            <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(at top left, #5f8bee, transparent) !important' : 'background:radial-gradient(at top, #FFFFFF, transparent)'"/>
         </div>
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <div class="relative w-[80px] h-[80px]">
@@ -194,7 +194,7 @@ const fncsyIntro = ref({
                 <VueUiIcon name="starFill" :size="60" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.2 })"/>
                 <VueUiIcon name="starFill" :size="30" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.4 })"/>
             </div>
-            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center z-10">
+            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center z-10" style="letter-spacing: -1px;">
                 {{ translations.menu.installation[store.lang] }}
             </h1>
         </div>

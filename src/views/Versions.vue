@@ -2061,8 +2061,8 @@ async function impactPatch() {
     <div :class="`pt-9 sm:pt-24 overflow-x-hidden`">
         <div :class="``">
           <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
-            <VueUiIcon name="vueDataUi" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#42d392' : '#1d915d'"/>
-            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
+            <img data-cy="header-logo" src="../assets/logo3.png" class="h-14" />
+            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center" style="letter-spacing: -1px;">{{ translations.menu.versions[store.lang] }}</h1>
           </div>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 

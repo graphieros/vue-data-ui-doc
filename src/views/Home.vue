@@ -581,9 +581,9 @@ onBeforeUnmount(() => {
         
         <div :class="`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col ${isNarrow ? '' : 'lg:flex-row'} justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]`">
     <div class="flex flex-col gap-6 max-w-[360px] justify-center place-items-center text-center">
-        <h1 style="font-family: InterBold" class="text-[48px]">
+        <h1 style="font-family: InterBold" class="text-[49px]">
             <!-- <span class="">Vue </span> -->
-            <span class="bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent">Vue Data UI</span>
+            <span class="bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent" style="letter-spacing: -1px;">Vue Data UI</span>
         </h1>
         <p class="text-board-2 text-xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
 
@@ -598,7 +598,7 @@ onBeforeUnmount(() => {
           <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-full">
             <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-full text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
               <BrandGithubFilledIcon class="dark:text-gray-200"/>
-              <span>
+              <span style="letter-spacing: 1px;">
                 {{ translations.github[store.lang] }}
               </span>
               <div class="w-[25px]" v-if="store.isFetching">              
@@ -694,6 +694,7 @@ onBeforeUnmount(() => {
                     patternTransform="scale(0.25) rotate(-36.5)"
                   />
                 </template>
+
                 <template #plot-comment="{ plot }">
                   <div
                     v-if="!plot.firstLoad"
@@ -710,7 +711,7 @@ onBeforeUnmount(() => {
                       ${plot.patternIndex === 4 ? 'mt-[32px] -mr-2 leading-3' : ''}
                     `"
                   >
-                    <div :class="`text-[#3A3A3A] dark:text-[#CCCCCC] font-inter-medium text-[12px] sm:text-[16px] ${plot.patternIndex === 4 ? 'pb-2' : ''}`">{{ plot.name }}</div>
+                    <div :class="`text-[#3A3A3A] dark:text-[#CCCCCC] font-inter-medium text-[12px] sm:text-[16px] ${plot.patternIndex === 4 ? 'pb-2' : ''}`" style="letter-spacing: -1px;">{{ plot.name }}</div>
                     {{ getPlotLabel(plot) }}
                   </div>
                 </template>
@@ -734,7 +735,7 @@ onBeforeUnmount(() => {
       <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-full">
         <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-full text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
           <BrandGithubFilledIcon/>
-          <span>
+          <span style="letter-spacing: 1px">
             {{ translations.github[store.lang] }}
           </span>
           <div class="w-[25px]" v-if="store.isFetching">              
