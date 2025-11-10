@@ -271,11 +271,11 @@ const message = ref({
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
             <router-link data-cy="link-home" to="/" v-if="!isHome">
                 <div class="flex flex-row gap-3">
-                    <div data-cy="header-app-name" class="flex flex-row gap-3 w-full whitespace-nowrap">
-                        <img data-cy="header-logo" src="../assets/logo3.png" class="h-5" />
-                        <span>Vue Data UI</span>
+                    <div data-cy="header-app-name" class="flex flex-row gap-3 w-full whitespace-nowrap align-center">
+                        <img data-cy="header-logo" src="../assets/logo3.png" class="h-5 mt-1" />
+                        <span class="font-inter-medium text-lg text-[#3A3A3A] dark:text-[#AFAFAF]" style="letter-spacing: -1px;">Vue Data UI</span>
                     </div>
-                    <div class="h-[20px] flex flex-row align-center sm:ml-4">
+                    <div class="h-[20px] flex flex-row align-center sm:ml-5 mt-1">
                         <svg style="height:100%" viewBox="-6 -6 22 22">
                             <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
