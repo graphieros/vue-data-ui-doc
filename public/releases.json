@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.7.0",
+    "date": "2025-11-12",
+    "updates": [
+      {
+        "component": "All components supporting themes",
+        "description": "Add dark theme and improve themes management",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.6.0",
     "date": "2025-11-06",
     "updates": [

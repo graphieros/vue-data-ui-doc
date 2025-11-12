@@ -210,14 +210,15 @@ const chartKeys = computed(() => {
 const configSelect = ref('vue_ui_xy');
 const schemaSelect = ref('vue_ui_xy');
 const themeSelect = ref("vue_ui_xy");
+const selectedTheme = ref(null)
 
 const selectedConfig = computed(() => {
     return getVueDataUiConfig(configSelect.value)
 });
 
-const selectedTheme = computed(() => {
-    return getThemeConfig(themeSelect.value)
-});
+watch(themeSelect, async (type) => {
+    selectedTheme.value = await getThemeConfig(type)
+}, { immediate: true })
 
 const menuItems = computed(() => [
     {
@@ -1367,7 +1368,7 @@ const stackbarKey = ref(0);
                 language="javascript"
                 :content="`
     import { getThemeConfig } from 'vue-data-ui';
-    const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = getThemeConfig('${configSelect}')
+    const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = await getThemeConfig('${configSelect}')
                 `"
                 @copy="store.copy()"
             />

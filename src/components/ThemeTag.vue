@@ -13,7 +13,12 @@ const themes = ref({
     default: {
         backgroundColor: "#FFFFFF",
         color: '#1A1A1A',
-        fill: '#FFFFFF'
+        fill: '#2D353C'
+    },
+    dark: {
+        backgroundColor: "#1A1A1A",
+        color: "#CCCCCC",
+        fill: "#CCCCCC"
     },
     zen: {
         backgroundColor: "#fbfafa",

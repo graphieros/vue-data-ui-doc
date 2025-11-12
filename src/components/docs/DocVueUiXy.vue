@@ -162,6 +162,7 @@ const monthValues = computed(() => {
 });
 
 const config = ref({
+    theme: '',
     debug: true,
     loading: false,
     events: {
@@ -584,6 +585,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    theme: '',
     downsample: {
         threshold: 1095
     },
@@ -1436,7 +1438,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
-        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'dark' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="showTable" attr="showTable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />

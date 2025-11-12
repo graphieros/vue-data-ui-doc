@@ -53,6 +53,11 @@ const config = ref({
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: ''}" />
         </div>
         <div class="w-full shadow-md">
+            <ThemeTag type="dark"/>
+            <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'dark'}" />
+            <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'dark'}" />
+        </div>
+        <div class="w-full shadow-md">
             <ThemeTag type="zen"/>
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'zen'}" />
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'zen'}" />

@@ -3,8 +3,8 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import CodeParser from "../customization/CodeParser.vue";
 import ThemeTag from "../ThemeTag.vue";
-import { getThemeConfig } from "vue-data-ui";
 import { CopyIcon } from "vue-tabler-icons";
+import { getThemeConfig } from "vue-data-ui";
 
 const props = defineProps({
     component: {
@@ -61,28 +61,34 @@ const code = ref(`const config = ref({
 
 const themes = computed(() => {
     return [
-        { name: 'default', config: getThemeConfig(props.componentTheme).default },
-        { name: 'zen', config: getThemeConfig(props.componentTheme).zen, backgroundColor: '#fbfafa', color: '#8A9892', accent: '#B9B99D' },
-        { name: 'concrete', config: getThemeConfig(props.componentTheme).concrete, backgroundColor: '#f6f6fb', color: '#50606C', accent: '#4A6A75' },
-        { name: 'hack', config: getThemeConfig(props.componentTheme).hack, backgroundColor: '#1A1A1A', color: '#99AA99', accent: '#009900' },
-        { name: 'celebration', config: getThemeConfig(props.componentTheme).celebration, backgroundColor: '#FFF8E1', color: '#424242', accent: '#D32F2F' },
-        { name: 'celebrationNight', config: getThemeConfig(props.componentTheme).celebrationNight, backgroundColor: '#1E1E1E', color: '#BDBDBD', accent: '#D32F2F' },
+        { name: 'default' },
+        { name: 'dark', config: {}, backgroundColor: '#1A1A1A', color: '#CCCCCC', accent: '#CCCCCC' },
+        { name: 'zen', config: {}, backgroundColor: '#fbfafa', color: '#8A9892', accent: '#B9B99D' },
+        { name: 'concrete',config: {}, backgroundColor: '#f6f6fb', color: '#50606C', accent: '#4A6A75' },
+        { name: 'hack',config: {}, backgroundColor: '#1A1A1A', color: '#99AA99', accent: '#009900' },
+        { name: 'celebration',config: {}, backgroundColor: '#FFF8E1', color: '#424242', accent: '#D32F2F' },
+        { name: 'celebrationNight',config: {}, backgroundColor: '#1E1E1E', color: '#BDBDBD', accent: '#D32F2F' },
     ]
 })
 
-function copyToClipboard(conf) {
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = JSON.stringify(conf);
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-    store.copy();
+async function copyToClipboard(theme) {
+    const thisConf = await getThemeConfig(props.componentTheme);
+    if (thisConf[theme.name]) {
+        const conf = thisConf[theme.name];
+        let selBox = document.createElement('textarea');
+        selBox.style.position = 'fixed';
+        selBox.style.left = '0';
+        selBox.style.top = '0';
+        selBox.style.opacity = '0';
+        selBox.value = JSON.stringify(conf);
+        document.body.appendChild(selBox);
+        selBox.focus();
+        selBox.select();
+        document.execCommand('copy');
+        document.body.removeChild(selBox);
+        store.copy();
+    } 
+
 }
 
 </script>
@@ -104,7 +110,7 @@ function copyToClipboard(conf) {
                         backgroundColor: theme.backgroundColor,
                         color: theme.color,
                     }"
-                    @click="copyToClipboard(theme.config)"
+                    @click="copyToClipboard(theme)"
                 >
                     <CopyIcon :color="theme.accent"/>
                     {{ translations.copyTheme[store.lang] }}
