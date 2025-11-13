@@ -641,7 +641,7 @@ const stacklineConfig = computed(() => {
                         frameColor: isDarkMode.value ? '#4A4A4A' : '#CCCCCC'
                     },
                     preview: {
-                        enable: false
+                        enable: true
                     }
                 }
             }
