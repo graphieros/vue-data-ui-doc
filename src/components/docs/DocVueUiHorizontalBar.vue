@@ -24,6 +24,7 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import { useRouter } from "vue-router";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -601,9 +602,8 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     <div>
       <BaseDocTitle name="VueUiHorizontalBar" />
 
-      <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-          {{ translations.docs.tooltips.verticalBar[store.lang] }}
-      </p>
+      <BaseDocDescription :text="translations.docs.tooltips.verticalBar[store.lang]"/>
+
       <div class="mx-auto max-w-[500px] rounded-xl text-md text-[#c2410c] dark:text-app-orange p-4 border border-app-orange flex bg-[#ff370010] gap-4">
         <div class="h-[40px] w-[40px]">
           <VueUiIcon name="circleExclamation" stroke="#ff6600"/>

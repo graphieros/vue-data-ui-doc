@@ -26,6 +26,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import UcBullet from "../useCases/uc-bullet.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -394,9 +395,7 @@ function goToPage(route) {
     <div>
         <BaseDocTitle name="VueUiBullet" />
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.bullet[store.lang] }}
-        </p>
+        <BaseDocDescription :text="translations.docs.tooltips.bullet[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-bullet"

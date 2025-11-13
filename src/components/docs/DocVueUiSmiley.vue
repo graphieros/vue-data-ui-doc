@@ -15,6 +15,7 @@ import DocSnapper from "../DocSnapper.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -278,11 +279,10 @@ const { configCode, showAllConfig } = useConfigCode()
     <div>
         <BaseDocTitle name="VueUiSmiley" />
 
-        <h2 class="text-center text-gray-500">
+        <BaseDocDescription>
             {{ translations.docs.comments.smiley.p1[store.lang] }}<br><br>
             {{ translations.docs.comments.rating.p2[store.lang] }}
-        </h2>
-
+        </BaseDocDescription>
 
         <BaseDocHeaderActions targetLink="vue-ui-smiley" :configSource="mainConfig.vue_ui_smiley" />
 

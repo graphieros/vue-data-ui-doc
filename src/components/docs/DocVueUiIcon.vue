@@ -7,6 +7,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import ConfirmCopy from "../ConfirmCopy.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -274,9 +275,7 @@ const code = computed(() => {
     <div>
         <BaseDocTitle name="VueUiIcon" />
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.icon[store.lang] }}
-        </p>
+        <BaseDocDescription :text="translations.docs.tooltips.icon[store.lang]" />
 
         <BaseCard>
             <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">{{ translations.docs.tooltips.iconUserOptions[store.lang] }}</p>

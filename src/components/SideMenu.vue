@@ -828,7 +828,6 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-digits', componentName: 'Digits', icon: 'digit8' },
             { route: '/docs#vue-ui-cursor', componentName: 'Cursor', icon: 'cursor' },
             { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },
-            { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
             { route: '/docs#utility-functions', componentName: translations.value.utilityFunctions[store.lang], icon: 'func' },
         ],
         icon: 'func'

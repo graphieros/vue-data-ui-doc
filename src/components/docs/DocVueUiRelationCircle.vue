@@ -23,6 +23,7 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -455,9 +456,7 @@ function goToPage(route) {
   <div>
     <BaseDocTitle name="VueUiRelationCircle" />
 
-    <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.relationCircle[store.lang] }}
-        </p>
+    <BaseDocDescription :text="translations.docs.tooltips.relationCircle[store.lang]" />
 
     <BaseDocHeaderActions
       targetLink="vue-ui-relation-circle"

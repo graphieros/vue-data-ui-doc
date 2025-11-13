@@ -27,6 +27,7 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -1000,9 +1001,7 @@ function goToPage(route) {
     <div>
         <BaseDocTitle name="VueUiRidgeline" />
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.ridgeline[store.lang] }}
-        </p>
+        <BaseDocDescription :text="translations.docs.tooltips.ridgeline[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-ridgeline"

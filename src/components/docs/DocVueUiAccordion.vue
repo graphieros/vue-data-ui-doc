@@ -10,6 +10,7 @@ import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig();
 
@@ -135,9 +136,7 @@ const slotContent = ref(`
     <div>
         <BaseDocTitle name="VueUiAccordion" />
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.accordion[store.lang] }}
-        </p>
+        <BaseDocDescription :text="translations.docs.tooltips.accordion[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-accordion"

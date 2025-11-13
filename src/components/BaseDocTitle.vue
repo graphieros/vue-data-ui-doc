@@ -36,7 +36,7 @@ const imp = useImportMap(props.name);
             :strokeWidth="1.5" 
         />
         <BaseTextCopy>
-            <span><span v-if="!universal">VueUi</span><span class="text-black dark:text-app-blue">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
+            <span class="sm:text-4xl" style="letter-spacing: -1px;"><span v-if="!universal">VueUi</span><span class="text-black dark:text-app-blue">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
         </BaseTextCopy>
     </h1>
     <div v-if="!!imp" class="w-fit mx-auto imp mb-2">

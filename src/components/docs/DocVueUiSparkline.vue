@@ -26,6 +26,7 @@ import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseCard from "../BaseCard.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -483,208 +484,207 @@ function goToPage(route) {
 </script>
 
 <template>
-    <div>
-      <BaseDocTitle name="VueUiSparkline"/>
-      <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-          {{ translations.docs.tooltips.sparkline[store.lang] }}
-      </p>
+  <div>
+    <BaseDocTitle name="VueUiSparkline"/>
 
-        <BaseDocHeaderActions
-          targetLink="vue-ui-sparkline"
-          targetMaker="VueUiSparkline"
-          :configSource="mainConfig.vue_ui_sparkline"
-        />
+    <BaseDocDescription :text="translations.docs.tooltips.sparkline[store.lang]" />
 
-        <div :class="`transition-all mx-auto w-full sm:w-1/2`">
-          <DocSnapper
-            :isFixed="isFixed"
-            :disabled="!isFixed || isMobile"
-            @fixChart="fixChart"
-            @resetDefault="resetDefault"
-            @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-          >
-            <BaseCard>
-              <VueUiSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-              </VueUiSparkline>
-            </BaseCard>
-          </DocSnapper>
-          <BaseRandomButton @click="randomizeData"/>
-        </div>
-
-        <div class="w-full flex justify-center mt-6">
-            <BaseViewExampleButton link="/examples/categories#vue-ui-sparkline"/>
-        </div>
-
-        <Rater itemId="vue_ui_sparkline" />
-
-        <BaseMigrationInfo
-            debug 
-            padding
-        />
-
-        <Box ref="box" :showDatetimeFormatter="true" showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
-            <template v-slot:tab0>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-
-    <CodeParser
-      language="typescript"
-      @copy="store.copy()"
-      :title="translations.docs.datastructure[store.lang]"
-      :content="`type VueUiSparklineDatasetItem = {
-  period: string
-  value: number
-}
-      `"
-      class="my-6"
+    <BaseDocHeaderActions
+      targetLink="vue-ui-sparkline"
+      targetMaker="VueUiSparkline"
+      :configSource="mainConfig.vue_ui_sparkline"
     />
 
-                <div class="w-full overflow-x-auto">
-    <CodeParser
-      language="typescript"
-      @copy="store.copy()"
-      :content="codeDataset"
-      :title="translations.docs.example[store.lang]"
-    />              
-                </div>
-                </div>
-            </template>
-            <template v-slot:tab1>
-                <div class="w-full overflow-x-auto">
-                  <div class="flex gap-2">
-                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
-                    <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-                </div>
-                <div class="mt-4">
-                  TS type: <code class="text-app-blue">VueUiSparklineConfig</code>
-                </div>
+    <div :class="`transition-all mx-auto w-full sm:w-1/2`">
+      <DocSnapper
+        :isFixed="isFixed"
+        :disabled="!isFixed || isMobile"
+        @fixChart="fixChart"
+        @resetDefault="resetDefault"
+        @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+      >
+        <BaseCard>
+          <VueUiSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+          </VueUiSparkline>
+        </BaseCard>
+      </DocSnapper>
+      <BaseRandomButton @click="randomizeData"/>
+    </div>
+
+    <div class="w-full flex justify-center mt-6">
+        <BaseViewExampleButton link="/examples/categories#vue-ui-sparkline"/>
+    </div>
+
+    <Rater itemId="vue_ui_sparkline" />
+
+    <BaseMigrationInfo
+        debug 
+        padding
+    />
+
+    <Box ref="box" :showDatetimeFormatter="true" showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
+        <template v-slot:tab0>
+            <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+
+<CodeParser
+  language="typescript"
+  @copy="store.copy()"
+  :title="translations.docs.datastructure[store.lang]"
+  :content="`type VueUiSparklineDatasetItem = {
+period: string
+value: number
+}
+  `"
+  class="my-6"
+/>
+
+            <div class="w-full overflow-x-auto">
+<CodeParser
+  language="typescript"
+  @copy="store.copy()"
+  :content="codeDataset"
+  :title="translations.docs.example[store.lang]"
+/>              
+            </div>
+            </div>
+        </template>
+        <template v-slot:tab1>
+            <div class="w-full overflow-x-auto">
+              <div class="flex gap-2">
+                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
+                <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+            </div>
+            <div class="mt-4">
+              TS type: <code class="text-app-blue">VueUiSparklineConfig</code>
+            </div>
 
 <div class="my-4">
-    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+Toggle tree view: <input type="checkbox" v-model="showAllConfig">
 </div>
 
 <code ref="configCode">
-  <BaseDetails attr="const config: VueUiSparklineConfig" equal>
-    <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
-    <BaseAttr inactive name="debug" defaultVal="false"/>
-    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
-    <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    <BaseDetails attr="events" :level="1">
-      <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
-      <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
-      <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
-    </BaseDetails>
-    <BaseDetails attr="downsample" :level="1">
-        <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="1095" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
-    </BaseDetails>
-    <BaseDetails attr="style" :level="1">
-      <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
-      <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      <BaseAttr name="chartWidth" attr="style.chartWidth" type="number" defaultVal="290" :min="100" :max="400" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      <BaseAttr name="scaleMin" attr="style.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62 - Force the min scale"/>
-      <BaseAttr name="scaleMax" attr="style.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62 - Force the max scale"/>
-      <BaseDetails attr="padding" :level="2" title="style.padding">
-        <BaseAttr name="top" attr="style.padding.top" type="number" defaultVal="12" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
-        <BaseAttr name="right" attr="style.padding.right" type="number" defaultVal="0" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
-        <BaseAttr name="bottom" attr="style.padding.bottom" type="number" defaultVal="3" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
-        <BaseAttr name="left" attr="style.padding.left" type="number" defaultVal="0" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
-      </BaseDetails>
-      <BaseDetails attr="animation" :level="2" title="style.animation">
-        <BaseAttr name="show" attr="style.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-        <BaseAttr name="animationFrames" attr="style.animation.animationFrames" type="number" defaultVal="60" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-      </BaseDetails>
-      <BaseDetails attr="area" :level="2" title="style.area">
-        <BaseAttr name="show" attr="style.area.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="useGradient" attr="style.area.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="opacity" attr="style.area.opacity" type="number" defaultVal="30" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="color" attr="style.area.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      </BaseDetails>
-      <BaseDetails attr="bar" :level="2" title="style.bar">
-        <BaseAttr name="borderRadius" attr="style.bar.borderRadius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="color" attr="style.bar.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      </BaseDetails>
-      <BaseDetails attr="dataLabel" :level="2" title="style.dataLabel">
-        <BaseAttr name="show" attr="style.dataLabel.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="position" attr="style.dataLabel.position" type="select" defaultVal="left" :options="['left', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-        <BaseAttr name="offsetX" attr="style.dataLabel.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="offsetY" attr="style.dataLabel.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="fontSize" attr="style.dataLabel.fontSize" type="number" defaultVal="20" :min="8" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="bold" attr="style.dataLabel.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="color" attr="style.dataLabel.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="roundingValue" attr="style.dataLabel.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="valueType" attr="style.dataLabel.valueType" type="select" defaultVal="latest" :options="['latest', 'sum', 'average']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-        <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <div class="flex flex-row gap-2 place-items-center">
-            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
-            <div class="min-w-[200px]">
-                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
-                    Go to page
-                </BaseTabLink>
-            </div>
-        </div>
-        <BaseDetails attr="datetimeFormatter" :level="6" title="style.dataLabel.datetimeFormatter">
-          <BaseAttr name="enable" attr="style.dataLabel.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr name="locale" attr="style.dataLabel.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr name="useUTC" attr="style.dataLabel.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr name="januaryAsYear" attr="style.dataLabel.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseDetails attr="options" :level="7" title="style.dataLabel.datetimeFormatter.options">
-              <BaseAttr name="year" attr="style.dataLabel.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-              <BaseAttr name="month" attr="style.dataLabel.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-              <BaseAttr name="day" attr="style.dataLabel.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-              <BaseAttr name="minute" attr="style.dataLabel.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-              <BaseAttr name="second" attr="style.dataLabel.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          </BaseDetails>
-      </BaseDetails>
-      </BaseDetails>
-      <BaseDetails attr="line" :level="2" title="style.line">
-        <BaseAttr name="color" attr="style.line.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="strokeWidth" attr="style.line.strokeWidth" type="number" defaultVal="3" :min="0.1" :max="10" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="smooth" attr="style.line.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      </BaseDetails>
-      <BaseDetails attr="plot" :level="2" title="style.plot">
-        <BaseAttr name="show" attr="style.plot.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="radius" attr="style.plot.radius" type="number" defaultVal="4" :min="1" :max="20" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="stroke" attr="style.plot.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="strokeWidth" attr="style.plot.strokeWidth" type="number" defaultVal="1" :min="0" :max="10" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      </BaseDetails>
-      <BaseDetails attr="title" :level="2" title="style.title">
-        <BaseAttr name="show" attr="style.title.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="textAlign" attr="style.title.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-        <BaseAttr name="color" attr="style.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="fontSize" attr="style.title.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="bold" attr="style.title.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="text" attr="style.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-      </BaseDetails>
-      <BaseDetails attr="tooltip" :level="2" title="style.tooltip">
-        <BaseAttr name="show" attr="style.tooltip.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="fontSize" attr="style.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="color" attr="style.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="backgroundColor" attr="style.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="offsetY" attr="style.tooltip.offsetY" type="number" :min="-30" :max="30" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="borderWidth" attr="style.tooltip.borderWidth" type="number" :min="0" :max="12" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="borderRadius" attr="style.tooltip.borderRadius" type="number" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="backgroundOpacity" attr="style.tooltip.backgroundOpacity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      </BaseDetails>
-      <BaseDetails attr="verticalIndicator" :level="2" title="style.verticalIndicator">
-        <BaseAttr name="show" attr="style.verticalIndicator.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="strokeWidth" attr="style.verticalIndicator.strokeWidth" type="number" defaultVal="1.5" :min="0.1" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="color" attr="style.verticalIndicator.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="strokeDasharray" attr="style.verticalIndicator.strokeDasharray" type="number" defaultVal="3" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      </BaseDetails>
-      <BaseDetails attr="zeroLine" :level="2" title="style.zeroLine">
-        <BaseAttr name="color" attr="style.zeroLine.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="strokeWidth" attr="style.zeroLine.strokeWidth" type="number" defaultVal="1" :min="0.1" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      </BaseDetails>
-    </BaseDetails>
+<BaseDetails attr="const config: VueUiSparklineConfig" equal>
+<BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+<BaseAttr inactive name="debug" defaultVal="false"/>
+<BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+<BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+<BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+<BaseDetails attr="events" :level="1">
+  <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+  <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+  <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+</BaseDetails>
+<BaseDetails attr="downsample" :level="1">
+    <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="1095" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+</BaseDetails>
+<BaseDetails attr="style" :level="1">
+  <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
+  <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  <BaseAttr name="chartWidth" attr="style.chartWidth" type="number" defaultVal="290" :min="100" :max="400" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  <BaseAttr name="scaleMin" attr="style.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62 - Force the min scale"/>
+  <BaseAttr name="scaleMax" attr="style.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62 - Force the max scale"/>
+  <BaseDetails attr="padding" :level="2" title="style.padding">
+    <BaseAttr name="top" attr="style.padding.top" type="number" defaultVal="12" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
+    <BaseAttr name="right" attr="style.padding.right" type="number" defaultVal="0" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
+    <BaseAttr name="bottom" attr="style.padding.bottom" type="number" defaultVal="3" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
+    <BaseAttr name="left" attr="style.padding.left" type="number" defaultVal="0" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
   </BaseDetails>
+  <BaseDetails attr="animation" :level="2" title="style.animation">
+    <BaseAttr name="show" attr="style.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseAttr name="animationFrames" attr="style.animation.animationFrames" type="number" defaultVal="60" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+  </BaseDetails>
+  <BaseDetails attr="area" :level="2" title="style.area">
+    <BaseAttr name="show" attr="style.area.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="useGradient" attr="style.area.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="opacity" attr="style.area.opacity" type="number" defaultVal="30" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="color" attr="style.area.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+  <BaseDetails attr="bar" :level="2" title="style.bar">
+    <BaseAttr name="borderRadius" attr="style.bar.borderRadius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="color" attr="style.bar.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+  <BaseDetails attr="dataLabel" :level="2" title="style.dataLabel">
+    <BaseAttr name="show" attr="style.dataLabel.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="position" attr="style.dataLabel.position" type="select" defaultVal="left" :options="['left', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseAttr name="offsetX" attr="style.dataLabel.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="offsetY" attr="style.dataLabel.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="fontSize" attr="style.dataLabel.fontSize" type="number" defaultVal="20" :min="8" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="bold" attr="style.dataLabel.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="color" attr="style.dataLabel.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="roundingValue" attr="style.dataLabel.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="valueType" attr="style.dataLabel.valueType" type="select" defaultVal="latest" :options="['latest', 'sum', 'average']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <div class="flex flex-row gap-2 place-items-center">
+        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+        <div class="min-w-[200px]">
+            <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                Go to page
+            </BaseTabLink>
+        </div>
+    </div>
+    <BaseDetails attr="datetimeFormatter" :level="6" title="style.dataLabel.datetimeFormatter">
+      <BaseAttr name="enable" attr="style.dataLabel.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="locale" attr="style.dataLabel.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="useUTC" attr="style.dataLabel.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="januaryAsYear" attr="style.dataLabel.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseDetails attr="options" :level="7" title="style.dataLabel.datetimeFormatter.options">
+          <BaseAttr name="year" attr="style.dataLabel.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="month" attr="style.dataLabel.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="day" attr="style.dataLabel.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="minute" attr="style.dataLabel.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="second" attr="style.dataLabel.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      </BaseDetails>
+  </BaseDetails>
+  </BaseDetails>
+  <BaseDetails attr="line" :level="2" title="style.line">
+    <BaseAttr name="color" attr="style.line.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="strokeWidth" attr="style.line.strokeWidth" type="number" defaultVal="3" :min="0.1" :max="10" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="smooth" attr="style.line.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+  <BaseDetails attr="plot" :level="2" title="style.plot">
+    <BaseAttr name="show" attr="style.plot.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="radius" attr="style.plot.radius" type="number" defaultVal="4" :min="1" :max="20" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="stroke" attr="style.plot.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="strokeWidth" attr="style.plot.strokeWidth" type="number" defaultVal="1" :min="0" :max="10" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+  <BaseDetails attr="title" :level="2" title="style.title">
+    <BaseAttr name="show" attr="style.title.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="textAlign" attr="style.title.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseAttr name="color" attr="style.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="fontSize" attr="style.title.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="bold" attr="style.title.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="text" attr="style.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+  </BaseDetails>
+  <BaseDetails attr="tooltip" :level="2" title="style.tooltip">
+    <BaseAttr name="show" attr="style.tooltip.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="fontSize" attr="style.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="color" attr="style.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="backgroundColor" attr="style.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="offsetY" attr="style.tooltip.offsetY" type="number" :min="-30" :max="30" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="borderWidth" attr="style.tooltip.borderWidth" type="number" :min="0" :max="12" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="borderRadius" attr="style.tooltip.borderRadius" type="number" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="backgroundOpacity" attr="style.tooltip.backgroundOpacity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+  <BaseDetails attr="verticalIndicator" :level="2" title="style.verticalIndicator">
+    <BaseAttr name="show" attr="style.verticalIndicator.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="strokeWidth" attr="style.verticalIndicator.strokeWidth" type="number" defaultVal="1.5" :min="0.1" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="color" attr="style.verticalIndicator.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="strokeDasharray" attr="style.verticalIndicator.strokeDasharray" type="number" defaultVal="3" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+  <BaseDetails attr="zeroLine" :level="2" title="style.zeroLine">
+    <BaseAttr name="color" attr="style.zeroLine.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+    <BaseAttr name="strokeWidth" attr="style.zeroLine.strokeWidth" type="number" defaultVal="1" :min="0.1" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+</BaseDetails>
+</BaseDetails>
 </code>
-                
-                </div>
-            </template>
+            
+            </div>
+        </template>
 
-            <template #tab2>
+        <template #tab2>
 @selectDatapoint<br><br>
 
 {{ translations.docs.emits.selectDatapoint[store.lang] }}
@@ -692,76 +692,75 @@ function goToPage(route) {
 <pre>
 <code>
 &lt;template&gt;
-  &lt;VueUiSparkline
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
+&lt;VueUiSparkline
+:dataset="dataset"
+:config="config"
+@selectDatapoint="selectDatapoint"
+/&gt;
 &lt;/template&gt;
 
 &lt;script setup lang="ts"&gt;
-  function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparklineDatasetItem, index: number }) {
-    console.log({ datapoint, index })
-  }
+function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparklineDatasetItem, index: number }) {
+console.log({ datapoint, index })
+}
 &lt;/script&gt;
 </code>
 </pre>
 
-            </template>
+        </template>
 
-            
-            <template #tab3>
-              <BaseSlotDocumenter
-                    componentName="VueUiSparkline"
-                    :types="[
-                        'svg',
-                        'before',
-                        'source',
-                        'chart-background'
-                    ]" 
-                />
-            </template>
-
-            <template #tab5>
-              <ucSparkline/>
-            </template>
-
-            <template #tab6>
-              <ThemesVueUiSparkline />
-            </template>
-
-            <template #tab7>
-              <ResponsiveUnit minHeight="100px" height="150px">
-                <template #chart>
-                  <VueUiSparkline 
-                    :dataset="dataset" 
-                    :config="isDarkMode ? 
-                      {
-                        ...mutableConfigDarkMode,
-                        responsive: true
-                      } 
-                      : {
-                        ...mutableConfig,
-                        responsive: true
-                        }" 
-                    :key="key"
-                  />
-                </template>
-              </ResponsiveUnit>
-            </template>
-
-            <template #tab10>
-                <DatetimeFormatterDoc
-                    path="style.dataLabel.datetimeFormatter"
-                />
-            </template>
-        </Box>
-
-        <!-- <DocJsonConfigAccordion>
-          <template #content>
-            <CodeParser :content="currentConfig" language="javascript"/>
-          </template>
-        </DocJsonConfigAccordion> -->
         
-    </div>
+        <template #tab3>
+          <BaseSlotDocumenter
+                componentName="VueUiSparkline"
+                :types="[
+                    'svg',
+                    'before',
+                    'source',
+                    'chart-background'
+                ]" 
+            />
+        </template>
+
+        <template #tab5>
+          <ucSparkline/>
+        </template>
+
+        <template #tab6>
+          <ThemesVueUiSparkline />
+        </template>
+
+        <template #tab7>
+          <ResponsiveUnit minHeight="100px" height="150px">
+            <template #chart>
+              <VueUiSparkline 
+                :dataset="dataset" 
+                :config="isDarkMode ? 
+                  {
+                    ...mutableConfigDarkMode,
+                    responsive: true
+                  } 
+                  : {
+                    ...mutableConfig,
+                    responsive: true
+                    }" 
+                :key="key"
+              />
+            </template>
+          </ResponsiveUnit>
+        </template>
+
+        <template #tab10>
+            <DatetimeFormatterDoc
+                path="style.dataLabel.datetimeFormatter"
+            />
+        </template>
+    </Box>
+
+    <!-- <DocJsonConfigAccordion>
+        <template #content>
+          <CodeParser :content="currentConfig" language="javascript"/>
+        </template>
+      </DocJsonConfigAccordion> -->
+  </div>
 </template>

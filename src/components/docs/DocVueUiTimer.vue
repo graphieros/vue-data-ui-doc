@@ -14,6 +14,7 @@ import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -252,9 +253,7 @@ const { configCode, showAllConfig } = useConfigCode()
     <div class="overflow-x-auto">
         <BaseDocTitle name="VueUiTimer" />
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.timer[store.lang] }}
-        </p>
+        <BaseDocDescription :text="translations.docs.tooltips.timer[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-timer"

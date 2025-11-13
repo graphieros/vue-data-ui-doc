@@ -10,6 +10,7 @@ import DocSnapper from "../DocSnapper.vue";
 import BaseDropdown from "../BaseDropdown.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const  mainConfig = useConfig()
 
@@ -395,9 +396,7 @@ function fixChart() {
     <div>
       <BaseDocTitle name="VueUiSkeleton" />
 
-        <h2 class="text-center text-gray-500">
-            {{ translations.docs.comments.skeleton.p1[store.lang] }}<br><br>
-        </h2>
+      <BaseDocDescription :text="translations.docs.comments.skeleton.p1[store.lang]" />
 
         <BaseDocHeaderActions
           targetLink="vue-ui-skeleton"

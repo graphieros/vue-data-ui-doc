@@ -12,6 +12,7 @@ import BaseButtonSparkline from "../BaseButtonSparkline.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -169,9 +170,7 @@ const { configCode, showAllConfig } = useConfigCode()
     <div>
         <BaseDocTitle name="VueUiDashboard" />
 
-        <div class="w-full max-w-[300px] mx-auto text-gray-500 text-center">
-            {{ translations.docs.comments.dashboard.p1[store.lang] }}
-        </div>
+        <BaseDocDescription :text="translations.docs.comments.dashboard.p1[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-dashboard"

@@ -26,6 +26,7 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -922,10 +923,8 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 <template>
     <div>
         <BaseDocTitle name="VueUiStackline"/>
-
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.stackline[store.lang] }}
-        </p>
+        
+        <BaseDocDescription :text="translations.docs.tooltips.stackline[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-stackline"

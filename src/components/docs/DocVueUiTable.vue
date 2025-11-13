@@ -14,6 +14,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -816,9 +817,7 @@ const { configCode, showAllConfig } = useConfigCode();
     <div>
         <BaseDocTitle name="VueUiTable" />
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-4 text-center">
-                {{ translations.docs.tooltips.table[store.lang] }}
-            </p>
+        <BaseDocDescription :text="translations.docs.tooltips.table[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-table"

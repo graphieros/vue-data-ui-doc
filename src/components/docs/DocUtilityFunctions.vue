@@ -6,6 +6,7 @@ import BaseColorInput from "../BaseColorInput.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const store = useMainStore();
 
@@ -298,9 +299,8 @@ const bindings = useObjectBindings(donutConfig);
             <VueUiIcon name="func" stroke="#42d392" :strokeWidth="1.5" />
             <span><span class="text-black dark:text-app-blue-light">{{ translations.utilityFunctions[store.lang] }}</span></span>
         </h1>
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.utilityFunctionsDescription[store.lang] }}
-        </p>
+
+        <BaseDocDescription :text="translations.utilityFunctionsDescription[store.lang]" />
 
             <BaseCard>
                 <div class="p-4" dir="auto">

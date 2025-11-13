@@ -6,6 +6,7 @@ import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -121,9 +122,7 @@ const isActive = ref(true);
         <div style="min-height:100vh">
             <BaseDocTitle name="VueUiCursor"/>
 
-            <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-                {{ translations.docs.tooltips.cursor[store.lang] }}
-            </p>
+            <BaseDocDescription :text="translations.docs.tooltips.cursor[store.lang]" />
 
             <BaseDocHeaderActions
                 targetLink="vue-ui-cursor"

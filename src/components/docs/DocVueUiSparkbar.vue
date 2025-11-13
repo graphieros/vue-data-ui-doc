@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseDocDescription from "../BaseDocDescription.vue";
 
 const mainConfig = useConfig()
 
@@ -268,9 +269,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
     <div>
         <BaseDocTitle name="VueUiSparkbar"/>
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.sparkbar[store.lang] }}
-        </p>
+        <BaseDocDescription :text="translations.docs.tooltips.sparkbar[store.lang]" />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-sparkbar"
