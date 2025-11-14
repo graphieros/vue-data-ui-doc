@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.7.2",
+    "date": "2025-11-14",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Fix legend.bold not applied",
+        "link": "/docs#vue-ui-3d-bar"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Expose the generateSvg method",
+        "link": "/docs#vue-ui-relation-circle"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.1",
     "date": "2025-11-14",
     "updates": [
