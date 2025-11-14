@@ -208,12 +208,76 @@
             {
                 "name": "pattern",
                 "description": "customize datapoints with patterns"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ],
         "exposed": [
             {
                 "name": "getData",
                 "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
             },
             {
                 "name": "generatePdf",
@@ -228,12 +292,24 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "emits": [
@@ -384,7 +460,7 @@
         "description": "circlePack",
         "hasThemes": true,
         "hasSlots": true,
-        "hasEmits": false,
+        "hasEmits": true,
         "hasExposed": true,
         "responsive": false,
         "props": [
@@ -453,6 +529,12 @@
                 "icon": "annotator"
             }
         ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            }
+        ],
         "slots": [
             {
                 "name": "svg",
@@ -477,12 +559,76 @@
             {
                 "name": "zoom-label",
                 "description": "customize the content of the zoom circle label"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ],
         "exposed": [
             {
                 "name": "getData",
                 "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
             },
             {
                 "name": "generatePdf",
@@ -497,8 +643,20 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ]
     },
@@ -625,6 +783,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ],
         "exposed": [
@@ -633,12 +851,20 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
             {
                 "name": "generateImage",
                 "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
             },
             {
                 "name": "generateCsv",
@@ -655,6 +881,22 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ]
     },
@@ -761,6 +1003,62 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ],
         "exposed": [
@@ -769,12 +1067,28 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
             {
                 "name": "generateImage",
                 "description": "Triggers image download."
+            },
+            {
+                "name": "toggleTable",
+                "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ]
     },
@@ -788,7 +1102,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "dataset",
             "config"
@@ -871,6 +1185,58 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ],
         "exposed": [
@@ -879,12 +1245,28 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
             {
                 "name": "generateImage",
                 "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ]
     },
@@ -1015,6 +1397,14 @@
         ],
         "exposed": [
             {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -1025,6 +1415,30 @@
             {
                 "name": "generateImage",
                 "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ],
         "emits": [
@@ -1035,6 +1449,14 @@
             {
                 "name": "selectLegend",
                 "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectTimeLabel",
+                "description": "Emits the datapoints, index and time label when clicking a time label"
+            },
+            {
+                "name": "selectX",
+                "description": "Emits the current visible series at the selected x index when clicking on the chart."
             }
         ],
         "slots": [
@@ -1073,6 +1495,70 @@
             {
                 "name": "pattern",
                 "description": "customize datapoints with patterns"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -1163,6 +1649,14 @@
         ],
         "exposed": [
             {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -1173,6 +1667,30 @@
             {
                 "name": "generateImage",
                 "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ],
         "emits": [
@@ -1183,6 +1701,14 @@
             {
                 "name": "selectLegend",
                 "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectTimeLabel",
+                "description": "Emits the datapoints, index and time label when clicking a time label"
+            },
+            {
+                "name": "selectX",
+                "description": "Emits the current visible series at the selected x index when clicking on the chart."
             }
         ],
         "slots": [
@@ -1221,6 +1747,70 @@
             {
                 "name": "pattern",
                 "description": "customize datapoints with patterns"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -1371,7 +1961,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "dataset",
             "config"
@@ -1443,6 +2033,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -1461,7 +2055,16 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
+
         ],
         "slots": [
             {
@@ -1491,6 +2094,66 @@
             {
                 "name": "legend",
                 "description": "create a custom legend."
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -1617,6 +2280,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -1631,6 +2298,14 @@
             {
                 "name": "generateSvg",
                 "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             },
             {
                 "name": "toggleTable",
@@ -2076,6 +2751,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -2088,12 +2767,24 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -2132,6 +2823,66 @@
             {
                 "name": "pattern",
                 "description": "customize datapoints with patterns"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -2263,6 +3014,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -2285,6 +3040,26 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "recalculateHeight",
+                "description": "Force a reflow to reset the height of the chart"
+            },
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ],
         "slots": [
@@ -2319,6 +3094,70 @@
             {
                 "name": "pattern",
                 "description": "customize datapoints with patterns"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -2441,6 +3280,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -2453,12 +3296,24 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -2493,6 +3348,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -3033,7 +3948,7 @@
         "hasThemes": true,
         "hasSlots": true,
         "hasEmits": true,
-        "hasExposed": false,
+        "hasExposed": true,
         "responsive": false,
         "props": [
             "config",
@@ -3065,6 +3980,16 @@
             {
                 "name": "selectDatapoint",
                 "description": "Emits selected datapoint on click."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ],
         "slots": [
@@ -3774,6 +4699,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -3786,12 +4715,24 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -3826,6 +4767,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -4301,7 +5302,7 @@
         "hasThemes": true,
         "hasSlots": true,
         "hasEmits": true,
-        "hasExposed": false,
+        "hasExposed": true,
         "responsive": true,
         "props": [
             "config",
@@ -4368,6 +5369,26 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers the toggling of tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
             }
         ],
         "slots": [
@@ -4394,6 +5415,58 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -4717,6 +5790,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -4729,12 +5806,24 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -4765,6 +5854,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -4902,6 +6051,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -4914,6 +6067,10 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
@@ -4924,6 +6081,14 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -4954,6 +6119,70 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -5516,7 +6745,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -5715,6 +6944,14 @@
         ],
         "exposed": [
             {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -5727,12 +6964,24 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -5759,6 +7008,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ],
         "emits": [
@@ -5836,12 +7145,28 @@
         ],
         "exposed": [
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
             {
                 "name": "generateImage",
                 "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -5868,6 +7193,58 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -5881,7 +7258,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -5979,6 +7356,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -5991,12 +7372,24 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -6027,6 +7420,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -6177,7 +7630,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -6300,6 +7753,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -6312,8 +7769,20 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -6340,6 +7809,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -6450,6 +7979,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -6462,6 +7995,10 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
@@ -6472,6 +8009,14 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -6514,6 +8059,70 @@
             {
                 "name": "pattern",
                 "description": "customize datapoints with patterns"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -6712,7 +8321,7 @@
         "description": "candlestick",
         "hasThemes": true,
         "hasSlots": true,
-        "hasEmits": false,
+        "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
         "props": [
@@ -6904,7 +8513,17 @@
                 "icon": "annotator"
             }
         ],
+        "emits": [
+            {
+                "name": "selectX",
+                "description": "Emits the current visible series at the selected x index when clicking on the chart."
+            }
+        ],
         "exposed": [
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
             {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
@@ -6924,6 +8543,14 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -6958,6 +8585,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -7066,6 +8753,10 @@
         ],
         "exposed": [
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -7080,6 +8771,14 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
             }
         ],
         "slots": [
@@ -7110,6 +8809,66 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -7371,6 +9130,10 @@
                 "description": "Returns the full formatted dataset."
             },
             {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
                 "name": "generatePdf",
                 "description": "Triggers pdf download."
             },
@@ -7383,6 +9146,10 @@
                 "description": "Triggers image download."
             },
             {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
             },
@@ -7393,6 +9160,22 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ],
         "slots": [
@@ -7427,6 +9210,70 @@
             {
                 "name": "chart-background",
                 "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     },
@@ -7531,12 +9378,20 @@
             {
                 "name": "selectLegend",
                 "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectX",
+                "description": "Emits the current visible series at the selected x index when clicking on the chart."
             }
         ],
         "exposed": [
             {
                 "name": "getData",
                 "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
             },
             {
                 "name": "generatePdf",
@@ -7565,6 +9420,22 @@
             {
                 "name": "toggleTooltip",
                 "description": "Triggers toggling of the tooltip visibility"
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "hideSeries",
+                "description": "Hide a given series programmatically"
+            },
+            {
+                "name": "showSeries",
+                "description": "Show a given series programmatically"
             }
         ],
         "slots": [
@@ -7591,6 +9462,66 @@
             {
                 "name": "source",
                 "description": "add a chart caption content"
+            },
+            {
+                "name": "optionTooltip",
+                "description": "customize the context menu tooltip icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionTable",
+                "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
+            },
+            {
+                "name": "optionStack",
+                "description": "customize the context menu stack icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
             }
         ]
     }
