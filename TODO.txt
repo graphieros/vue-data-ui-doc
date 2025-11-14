@@ -1,0 +1,3 @@
+Schema:
+- Add icons next to categories
+- Translate content

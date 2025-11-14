@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.7.1",
+    "date": "2025-11-14",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add missing radiusRatio type definition",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Expose the generateSvg method",
+        "link": "/docs#vue-ui-relation-circle"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.0",
     "date": "2025-11-12",
     "updates": [
