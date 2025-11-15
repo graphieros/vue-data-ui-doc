@@ -579,13 +579,13 @@ onBeforeUnmount(() => {
           </template>
       </VueUiCarouselTable>
         
-        <div :class="`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col ${isNarrow ? '' : 'lg:flex-row'} justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]`">
-    <div class="flex flex-col gap-6 max-w-[360px] justify-center place-items-center text-center">
+        <div :class="`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col ${isNarrow ? '' : 'lg:flex-row'} justify-center place-items-center sm:gap-[80px] w-full max-w-[1450px]`">
+    <div class="flex flex-col gap-6 max-w-[360px] sm:max-w-[450px] justify-center place-items-center text-center">
         <h1 style="font-family: InterBold" class="text-[49px]">
             <!-- <span class="">Vue </span> -->
             <span class="bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent" style="letter-spacing: -1px;">Vue Data UI</span>
         </h1>
-        <p class="text-board-2 text-xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
+        <p class="font-inter-medium text-board-2 text-2xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
 
         <div class="flex flex-row gap-2 text-gray-500 relative" :title="componentsLen + ' components'">
           {{ componentTranslation[store.lang] }}: 
