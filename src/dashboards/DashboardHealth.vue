@@ -147,13 +147,17 @@ const CONFIG_VERTICAL_BAR = computed(() => {
     return {
         style: {
             chart: {
+                width: 1000,
+                height: 650,
                 layout: {
                     bars: {
                         sort: 'none',
                         paddingRight: 32,
-                        height: 10,
+                        nameLabels: {
+                            fontSize: 18,
+                        },
                         dataLabels: {
-                            fontSize: 10,
+                            fontSize: 18,
                             value: {
                                 roundingValue: 2,
                                 suffix: ' million',

@@ -1148,6 +1148,8 @@ const verticalBarConfig = computed(() => {
             chart: {
                 backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                height: 1300,
+                width: 800,
                 layout: {
                     bars: {
                         borderRadius: 1,
@@ -1163,12 +1165,11 @@ const verticalBarConfig = computed(() => {
                                 roundingValue: 1
                             }
                         },
-                        height: 16,
                         offsetX: 150,
                         nameLabels: {
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                             offsetX: -12,
-                            fontSize: 10
+                            fontSize: 14
                         }
                     },
                     highlighter: {
