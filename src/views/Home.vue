@@ -585,7 +585,7 @@ onBeforeUnmount(() => {
             <!-- <span class="">Vue </span> -->
             <span class="bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent" style="letter-spacing: -1px;">Vue Data UI</span>
         </h1>
-        <p class="font-inter-medium text-board-2 text-2xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
+        <p class="font-inter-medium text-board-2 text-xl sm:text-2xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
 
         <div class="flex flex-row gap-2 text-gray-500 relative" :title="componentsLen + ' components'">
           {{ componentTranslation[store.lang] }}: 
