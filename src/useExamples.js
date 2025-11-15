@@ -2073,7 +2073,9 @@ export default function useExamples() {
                             opacity: 5
                         },
                         separators: {
-                            color: colors.value.gridStroke
+                            show: true,
+                            color: colors.value.gridStroke,
+                            strokeWidth: 1
                         }
                     },
                     legend: {

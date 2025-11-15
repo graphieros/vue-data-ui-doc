@@ -95,7 +95,6 @@ const dataset = ref([
 const config = ref({
   debug: false,
   loading: false,
-  autoSize: true,
   responsive: false,
   useCssAnimation: true,
   events: {
@@ -108,12 +107,13 @@ const config = ref({
     chart: {
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
+      width: 512,
+      height: 316,
       layout: {
         bars: {
           sort: "desc",
           useStroke: false,
           strokeWidth: 2,
-          height: 32,
           gap: 6,
           borderRadius: 4,
           offsetX: 64,
@@ -277,7 +277,6 @@ const config = ref({
 const darkModeConfig = ref({
   debug: false,
   loading: false,
-  autoSize: true,
   responsive: false,
   useCssAnimation: true,
   events: {
@@ -290,12 +289,13 @@ const darkModeConfig = ref({
     chart: {
       backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
+      width: 512,
+      height: 316,
       layout: {
         bars: {
           sort: "desc",
           useStroke: false,
           strokeWidth: 2,
-          height: 32,
           gap: 6,
           borderRadius: 4,
           offsetX: 64,
@@ -341,7 +341,7 @@ const darkModeConfig = ref({
         },
         separators: {
           show: true,
-          color: "#343434",
+          color: "#5A5A5A",
           strokeWidth: 1
         }
       },
@@ -680,7 +680,6 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
     <BaseAttr inactive name="debug" defaultVal="false"/>
     <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    <BaseAttr name="autoSize" attr="autoSize" type="checkbox" defaultVal="true"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
     <BaseDetails attr="events" :level="1">
       <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
@@ -690,6 +689,8 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseDetails attr="chart" :level="2" title="style.chart">
+        <BaseAttr name="width" attr="style.chart.width" defaultVal="512" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
+        <BaseAttr name="height" attr="style.chart.height" defaultVal="316" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
         <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseDetails attr="layout" :level="3" title="style.chart.layout">
@@ -697,7 +698,6 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <BaseAttr name="sort" attr="style.chart.layout.bars.sort" type="select" defaultVal="desc" :options="['desc', 'asc', 'none']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="The 'none' option is supported since v2.4.69"/>
             <BaseAttr name="useStroke" attr="style.chart.layout.bars.useStroke" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="strokeWidth" attr="style.chart.layout.bars.strokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="height" attr="style.chart.layout.bars.height" type="number" defaultVal="32" :min="1" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="gap" attr="style.chart.layout.bars.gap" type="number" defaultVal="6" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="borderRadius" attr="style.chart.layout.bars.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="offsetX" attr="style.chart.layout.bars.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

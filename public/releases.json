@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 3.7.3",
+    "date": "2025-11-15",
+    "updates": [
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Add width and height config attributes, fix sizing issues in responsive mode",
+        "link": "/docs#vue-ui-horizontal-bar"
+      },
+      {
+        "component": "VueUiCirclePack",
+        "description": "Add responsive mode; fix unpredictable sizing",
+        "link": "/docs#vue-ui-circle-pack"
+      },
+      {
+        "component": "VueUiSparkbar",
+        "description": "Add css classes to target data labels",
+        "link": "/docs#vue-ui-sparkbar"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.2",
     "date": "2025-11-14",
     "updates": [

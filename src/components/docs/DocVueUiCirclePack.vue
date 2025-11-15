@@ -52,6 +52,7 @@ const isDarkMode = computed(() => {
 const dataset = ref(makeDs({ qty: 24, maxVal: 1000 }));
 
 const config = ref({
+    responsive: false,
     debug: false,
     loading: false,
     theme: "",
@@ -112,6 +113,8 @@ const config = ref({
     style: {
         fontFamily: "inherit",
         chart: {
+            width: 512,
+            height: 316,
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
             title: {
@@ -187,6 +190,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    responsive: false,
     debug: false,
     loading: false,
     theme: "",
@@ -247,6 +251,8 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
+            width: 512,
+            height: 316,
             backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             title: {
@@ -435,7 +441,7 @@ function goToPage(route) {
         <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
             @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
                 <BaseCard>
-                    <div class="w-full min-h-[500px]">
+                    <div class="w-full">
                         <VueDataUi component="VueUiCirclePack" :dataset="mutableDataset"
                         :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
                         <template #plot-comment="{ plot }">
@@ -456,7 +462,7 @@ function goToPage(route) {
             debug 
         />
 
-    <Box ref="box" showEmits showSlots showThemes showCallbacks showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
+    <Box ref="box" showResponsive showEmits showSlots showThemes showCallbacks showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
         <template #tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -496,6 +502,7 @@ function goToPage(route) {
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br></span>
         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
+        <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
@@ -504,6 +511,8 @@ function goToPage(route) {
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
+                <BaseAttr name="width" attr="style.chart.width" defaultVal="512" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
+                <BaseAttr name="height" attr="style.chart.height" defaultVal="316" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
                 <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                
                 <BaseAttr name="color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.color" defaultVal="#2D353C"/>
                 <BaseDetails attr="circles" :level="3" title="style.chart.circles">
@@ -765,6 +774,22 @@ function goToPage(route) {
 
         <template #tab6>
             <ThemesVueUiCirclePack :dataset="dataset"/>
+        </template>
+
+        <template #tab7>
+            <ResponsiveUnit height="500px">
+                <template #chart>
+                    <VueDataUi
+                        component="VueUiCirclePack"
+                        :dataset="dataset"
+                        :config="
+                            isDarkMode 
+                            ? { ...mutableConfigDarkMode, responsive: true }
+                            : { ...mutableConfig, responsive: true }
+                        "
+                    />
+                </template>
+            </ResponsiveUnit>
         </template>
 
         <template #tab8>
