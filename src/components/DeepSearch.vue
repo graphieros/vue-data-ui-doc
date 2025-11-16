@@ -218,6 +218,9 @@ function closeList() {
           <XIcon />
         </button>
       </div>
+      <div v-if="showSuggestions && filteredSuggestions.length" class="font-inter-medium text-[14px] absolute top-0 -mt-[330px] left-7 rounded-t-lg tabular-nums bg-white dark:bg-[#3A3A3A] text-black dark:text-[#CCCCCC] w-fit px-2 py-1">
+        {{ filteredSuggestions.length }} results
+      </div>
       <ul
         v-if="showSuggestions && filteredSuggestions.length"
         v-click-outside="closeList"

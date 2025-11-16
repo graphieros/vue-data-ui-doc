@@ -44,6 +44,7 @@ const config = computed(() => {
             useGradient: true,
             gradientIntensity: 40,
             fillOpacity: 90,
+            offsetX: 0,
             underlayerColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
             dataLabels: {
               color: isDarkMode.value ? '#8A8A8A' : '#1A1A1A',

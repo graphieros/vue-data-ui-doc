@@ -444,18 +444,18 @@ export function useConfig() {
                     },
                     dataLabels: {
                         hideAboveMaxSerieLength: 62,
+                        offsetY: 0,
                         show: true,
                         hideEmptyValues: true,
+                        hideUnderValue: null,
                         hideEmptyPercentages: true,
+                        hideUnderPercentage: null,
                         color: COLOR_BLACK,
                         fontSize: FONT._14,
                         bold: false,
                         rounding: 0,
                         prefix: '',
                         suffix: '',
-                        offsetY: 0,
-                        hideUnderValue: null,
-                        hideUnderPercentage: null,
                         formatter: null
                     }
                 },
@@ -2090,7 +2090,7 @@ export function useConfig() {
     const vue_ui_vertical_bar = { // v3 renamed to _horizontal_ (yet still works)
         debug: false, // v3
         loading: false, // v3
-        autoSize: true, // v3
+        autoSize: true, // Legacy - removed
         responsive: false,
         theme: '',
         customPalette: [],
@@ -2105,12 +2105,14 @@ export function useConfig() {
             chart: {
                 backgroundColor: COLOR_WHITE,
                 color: COLOR_BLACK,
+                width: 512,
+                height: 316,
                 layout: {
                     bars: {
                         sort: SORT.DESC,
                         useStroke: false,
                         strokeWidth: 2,
-                        height: 32,
+                        height: 32, // legacy - unused now
                         gap: 6,
                         borderRadius: 4,
                         offsetX: 64,
@@ -6325,6 +6327,7 @@ export function useConfig() {
     const vue_ui_circle_pack = {
         debug: false, // v3
         loading: false, // v3
+        responsive: false,
         events: { // v3
             datapointEnter: null, // v3
             datapointLeave: null, // v3
@@ -6360,6 +6363,8 @@ export function useConfig() {
                 backgroundColor: COLOR_WHITE,
                 color: COLOR_BLACK,
                 title: TITLE,
+                width: 512,
+                height: 316,
                 circles: {
                     stroke: COLOR_WHITE,
                     strokeWidth: 1,

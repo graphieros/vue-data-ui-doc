@@ -1,7 +1,7 @@
 [
   {
-    "version": "v 3.7.4",
-    "date": "2025-11-15",
+    "version": "v 3.7.5",
+    "date": "2025-11-16",
     "updates": [
       {
         "component": "VueUiHorizontalBar",
