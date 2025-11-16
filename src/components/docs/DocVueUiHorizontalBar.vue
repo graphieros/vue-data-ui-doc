@@ -700,7 +700,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <BaseAttr name="strokeWidth" attr="style.chart.layout.bars.strokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="gap" attr="style.chart.layout.bars.gap" type="number" defaultVal="6" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="borderRadius" attr="style.chart.layout.bars.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="offsetX" attr="style.chart.layout.bars.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="offsetX" attr="style.chart.layout.bars.offsetX" type="number" defaultVal="12" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="useGradient" attr="style.chart.layout.bars.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="gradientIntensity" attr="style.chart.layout.bars.gradientIntensity" type="range" defaultVal="20" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="fillOpacity" attr="style.chart.layout.bars.fillOpacity" type="range" defaultVal="90" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

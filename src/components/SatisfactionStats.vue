@@ -1154,6 +1154,7 @@ const verticalBarConfig = computed(() => {
                     bars: {
                         borderRadius: 1,
                         gap: 2,
+                        offsetX: 12,
                         dataLabels: {
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                             offsetX: 8,

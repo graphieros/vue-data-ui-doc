@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.7.6",
+    "date": "2025-11-16",
+    "updates": [
+      {
+        "component": "VueUiCirclePack",
+        "description": "Add tooltip",
+        "link": "/docs#vue-ui-circle-pack"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.5",
     "date": "2025-11-16",
     "updates": [

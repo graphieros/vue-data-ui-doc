@@ -132,9 +132,26 @@ const config = ref({
                     bold: false,
                 },
             },
+            tooltip: {
+                show: true,
+                color: "#1A1A1A",
+                backgroundColor: "#F3F4F6",
+                fontSize: 14,
+                customFormat: null,
+                borderRadius: 4,
+                borderColor:"#e1e5e8",
+                borderWidth: 1,
+                backgroundOpacity: 30,
+                position: "center",
+                offsetY: 24,
+                smooth: true,
+                smoothForce: 0.18,
+                smoothSnapThreshold: 0.25
+            },
             circles: {
                 stroke: "#f3f4f6",
                 strokeWidth: 1,
+                selectedShadowColor: '#1A1A1A',
                 gradient: {
                     show: true,
                     intensity: 40,
@@ -159,31 +176,6 @@ const config = ref({
                         offsetY: 0,
                     },
                 },
-                zoom: {
-                    show: true,
-                    shadowForce: 1,
-                    opacity: 0.8,
-                    animationFrameMs: 200,
-                    zoomRatio: 1,
-                    label: {
-                        name: {
-                            fontSize: 14,
-                            bold: false,
-                            offsetY: 0,
-                            color: "auto",
-                        },
-                        value: {
-                            fontSize: 14,
-                            bold: false,
-                            offsetY: 0,
-                            rounding: 0,
-                            prefix: "",
-                            suffix: "",
-                            formatter: null,
-                            color: "auto",
-                        },
-                    },
-                },
             },
         },
     },
@@ -201,7 +193,7 @@ const darkModeConfig = ref({
         keepStateOnChartLeave: true,
         position: "right",
         buttons: {
-            tooltip: false,
+            tooltip: true,
             pdf: true,
             csv: true,
             img: true,
@@ -214,6 +206,7 @@ const darkModeConfig = ref({
             annotator: true,
         },
         buttonTitles: {
+            tooltip: "Toggle tooltip",
             open: "Open options",
             close: "Close options",
             pdf: "Download PDF",
@@ -270,9 +263,26 @@ const darkModeConfig = ref({
                     bold: false,
                 },
             },
+            tooltip: {
+                show: true,
+                color: "#CCCCCC",
+                backgroundColor: "#1A1A1A",
+                fontSize: 14,
+                customFormat: null,
+                borderRadius: 4,
+                borderColor:"#3A3A3A",
+                borderWidth: 1,
+                backgroundOpacity: 30,
+                position: "center",
+                offsetY: 24,
+                smooth: true,
+                smoothForce: 0.18,
+                smoothSnapThreshold: 0.25
+            },
             circles: {
                 stroke: "#3A3A3A",
                 strokeWidth: 1,
+                selectedShadowColor: '#CCCCCC',
                 gradient: {
                     show: true,
                     intensity: 40,
@@ -295,31 +305,6 @@ const darkModeConfig = ref({
                         formatter: null,
                         bold: false,
                         offsetY: 0,
-                    },
-                },
-                zoom: {
-                    show: true,
-                    shadowForce: 1,
-                    opacity: 0.8,
-                    animationFrameMs: 200,
-                    zoomRatio: 1,
-                    label: {
-                        name: {
-                            fontSize: 14,
-                            bold: false,
-                            offsetY: 0,
-                            color: "auto",
-                        },
-                        value: {
-                            fontSize: 14,
-                            bold: false,
-                            offsetY: 0,
-                            rounding: 0,
-                            prefix: "",
-                            suffix: "",
-                            formatter: null,
-                            color: "auto",
-                        },
                     },
                 },
             },
@@ -424,6 +409,12 @@ function goToPage(route) {
     router.push(route)
 }
 
+const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, config }) => {
+    // ${translations.value.customFormatArgs[store.lang]}
+    const content = "My custom content";
+    return \`<div>\${content}</div>\`;
+}`);
+
 </script>
 
 <template>
@@ -462,7 +453,7 @@ function goToPage(route) {
             debug 
         />
 
-    <Box ref="box" showResponsive showEmits showSlots showThemes showCallbacks showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
+    <Box ref="box" showResponsive showEmits showSlots showTooltip showThemes showCallbacks showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
         <template #tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -528,12 +519,12 @@ function goToPage(route) {
                             <BaseAttr name="fontSizeRatio" attr="style.chart.circles.labels.name.fontSizeRatio" type="number" defaultVal="1" :min="0" :max="2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="bold" attr="style.chart.circles.labels.name.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="offsetY" attr="style.chart.circles.labels.name.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr name="color" attr="style.chart.circles.labels.name.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.chart.circles.labels.name.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="'auto' adapts text color to background"/>
                         </BaseDetails>
                         <BaseDetails attr="value" :level="5" title="style.chart.circles.labels.value">
                             <BaseAttr name="show" attr="style.chart.circles.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="fontSizeRatio" attr="style.chart.circles.labels.value.fontSizeRatio" type="number" defaultVal="1" :min="0" :max="2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr name="color" attr="style.chart.circles.labels.value.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.chart.circles.labels.value.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="'auto' adapts text color to background"/>
                             <BaseAttr name="rounding" attr="style.chart.circles.labels.value.rounding" type="number" defaultVal="0"  :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="prefix" attr="style.chart.circles.labels.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="suffix" attr="style.chart.circles.labels.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -547,38 +538,6 @@ function goToPage(route) {
                                     </BaseTabLink>
                                 </div>
                             </div>
-                        </BaseDetails>
-                    </BaseDetails>
-                    <BaseDetails attr="zoom" :level="4" title="style.chart.circles.zoom">
-                        <BaseAttr name="show" attr="style.chart.circles.zoom.show" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="shadowForce" attr="style.chart.circles.zoom.shadowForce" type="range" defaultVal="1" in="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="opacity" attr="style.chart.circles.zoom.opacity" type="range" defaultVal="0.8" :min="0.5" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="animationFrameMs" attr="style.chart.circles.zoom.animationFrameMs" type="range" defaultVal="200" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="zoomRatio" attr="style.chart.circles.zoom.zoomRatio" type="range" defaultVal="1" :min="0" :max="1.5" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseDetails attr="label" :level="5" title="style.chart.circles.zoom.label">
-                            <BaseDetails attr="name" :level="6" title="style.chart.circles.zoom.label.name">
-                                <BaseAttr name="fontSize" attr="style.chart.circles.zoom.label.name.fontSize" type="number" defaultVal="14" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="bold" attr="style.chart.circles.zoom.label.name.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="color" attr="style.chart.circles.zoom.label.name.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="offsetY" attr="style.chart.circles.zoom.label.name.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            </BaseDetails>
-                            <BaseDetails attr="value" :level="6" title="style.chart.circles.zoom.label.value">
-                                <BaseAttr name="fontSize" attr="style.chart.circles.zoom.label.value.fontSize" type="number" defaultVal="14" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="bold" attr="style.chart.circles.zoom.label.value.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="color" attr="style.chart.circles.zoom.label.value.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="offsetY" attr="style.chart.circles.zoom.label.value.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="rounding" attr="style.chart.circles.zoom.label.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="prefix" attr="style.chart.circles.zoom.label.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="suffix" attr="style.chart.circles.zoom.label.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <div class="flex flex-row gap-2 place-items-center">
-                                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
-                                    <div class="min-w-[200px]">
-                                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
-                                            Go to page
-                                        </BaseTabLink>
-                                    </div>
-                                </div>
-                            </BaseDetails>
                         </BaseDetails>
                     </BaseDetails>
                 </BaseDetails>
@@ -596,6 +555,29 @@ function goToPage(route) {
                         <BaseAttr name="fontSize" attr="style.chart.title.subtitle.fontSize" type="number" defaultVal="20" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseAttr name="bold" attr="style.chart.title.subtitle.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     </BaseDetails>
+                </BaseDetails>
+                <BaseDetails attr="tooltip" :level="3" title="style.chart.tooltip">
+                    <BaseAttr name="show" attr="style.chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="backgroundColor" attr="style.chart.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.chart.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="fontSize" attr="style.chart.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                        <div class="min-w-[200px]">
+                            <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                                Check out 'Custom tooltip' tab
+                            </BaseTabLink>
+                        </div>
+                    </div>
+                    <BaseAttr name="borderRadius" attr="style.chart.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderColor" attr="style.chart.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderWidth" attr="style.chart.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="backgroundOpacity" attr="style.chart.tooltip.backgroundOpacity" type="number" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="offsetY" attr="style.chart.tooltip.offsetY" type="number" defaultVal="24" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smooth" attr="style.chart.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smoothForce" attr="style.chart.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smoothSnapThreshold" attr="style.chart.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>
@@ -771,6 +753,22 @@ function goToPage(route) {
                 ]" 
             />
         </template>
+
+            <template #tab4>
+                <h3 class="mb-4">{{ translations.customFormat[store.lang] }}</h3>
+                <code class="text-gray-500 dark:text-[#8A8A8A]">config.style.chart.tooltip.customFormat</code>
+                <CodeParser
+                    class="mt-4"
+                    language="javascript"
+                    :content="customFormatCode"
+                />
+
+                <h3 class="my-4">{{ translations.customFormatCss[store.lang] }}</h3>
+                <CodeParser
+                    language="css"
+                    content=".vue-data-ui-custom-tooltip{ }"
+                />
+            </template>
 
         <template #tab6>
             <ThemesVueUiCirclePack :dataset="dataset"/>
