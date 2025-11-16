@@ -2310,7 +2310,7 @@ async function impactPatch() {
                                             <a class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
                                               <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
                                               {{ update.component }}</a>
-                                          <span v-else-if="update.component" class="text-app-blue flex flex-row gap-2 flex-wrap">
+                                          <span v-else-if="update.component" class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap">
                                             <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
                                             {{ update.component }}
                                           </span>
