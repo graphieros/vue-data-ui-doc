@@ -1460,6 +1460,9 @@ function singularize(sentence) {
       "TS",
       "XAXIS",
       "YAXIS",
+      "HARMLESS",
+      "PROGRESS",
+      "MESS"
     ].includes(word.toUpperCase())) {
       return word
     } else {
@@ -2049,6 +2052,30 @@ async function impactPatch() {
   patch.value.ver = String(Math.max(...patch.value.available.map(n => +n)));
 }
 
+const circlePackConfig = computed(() => {
+  return {
+    userOptions: {
+      show: false,
+    },
+    style: {
+      chart: {
+        width: 512,
+        height: 512,
+        backgroundColor: 'transparent',
+        circles: {
+          stroke: 'transparent'
+        },
+        tooltip: {
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          backgroundOpacity: 70,
+          borderColor: isDarkMode.value ? '#4A4A4A' : '#CCCCCC'
+        },
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -2255,6 +2282,7 @@ async function impactPatch() {
                   </VueUiSparkline>
                   <div style="height: 48px"/>
                   <div class="w-full" v-if="showWC">
+                    <VueDataUi v-if="done" component="VueUiCirclePack" :dataset="wordCloudDataset" :config="circlePackConfig" />
                     <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right mt-3 pl-2">
