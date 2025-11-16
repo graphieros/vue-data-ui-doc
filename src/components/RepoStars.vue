@@ -33,16 +33,14 @@ const config = computed(() => {
       chart: {
         backgroundColor: 'transparent',
         color: isDarkMode.value ? '#8A8A8A' : '#1A1A1A',
+        height: 130,
         layout: {
           bars: {
             sort: "desc",
             useStroke: false,
             strokeWidth: 2,
-            height: 36,
             gap: 3,
             borderRadius: 1,
-            offsetX: 128,
-            paddingRight: 24,
             useGradient: true,
             gradientIntensity: 40,
             fillOpacity: 90,
