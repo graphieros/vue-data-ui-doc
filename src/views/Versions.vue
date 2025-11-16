@@ -2299,26 +2299,30 @@ async function impactPatch() {
                       </template>
                     </div>
                       <ul>
-                          <li v-for="log in filteredVersions" class="border-l border-gray-500 mb-4">
-                            <div class="bg-gray-200 dark:bg-[#FFFFFF10] pl-6 py-2 mb-2">
-                              {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
-                            </div>
+                        <li v-for="log in filteredVersions" class="mb-4">
+                            <BaseCard type="light">
+                              <div class="pt-2 pb-4 mb-6 font-inter-medium text-2xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6">
+                                {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
+                              </div>
                               <div class="pl-6" v-if="log.updates">
                                   <template v-for="update in log.updates">
-                                      <div class="text-gray-500">
-                                            <a class="text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
-                                              <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                      <div class="text-gray-500 dark:text-[#CCCCCC]">
+                                            <a class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
+                                              <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
                                               {{ update.component }}</a>
                                           <span v-else-if="update.component" class="text-app-blue flex flex-row gap-2 flex-wrap">
-                                            <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                            <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
                                             {{ update.component }}
                                           </span>
-                                          {{ update.description }}
+                                          <div class="pl-8">
+                                            {{ update.description }}
+                                          </div>
                                       </div>
                                       <br>
                                   </template>
                               </div>
-                          </li>
+                            </BaseCard>
+                        </li>
                       </ul>
                   </div>
                 </BaseCard>

@@ -160,7 +160,10 @@ const datasetRefContent = computed(() => {
 
         <table class="schema table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left text-xl font-inter-medium">
-                {{ translations.overview.features[store.lang] }}
+                <div class="flex flex-row place-items-center gap-2">
+                    <VueUiIcon name="settings" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" />
+                    {{ translations.overview.features[store.lang] }}
+                </div>
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
@@ -213,7 +216,10 @@ const datasetRefContent = computed(() => {
 
         <table v-if="selectedComponent.userOptions" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left text-xl font-inter-medium">
-                {{ translations.overview.userOptions[store.lang] }}
+                <div class="flex flex-row place-items-center gap-2">
+                    <VueUiIcon name="legend" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" />
+                    {{ translations.overview.userOptions[store.lang] }}
+                </div>
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
@@ -237,7 +243,10 @@ const datasetRefContent = computed(() => {
 
         <table v-if="selectedComponent.slots" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left text-xl font-inter-medium">
-                Slots
+                <div class="flex flex-row place-items-center gap-2">
+                    <VueUiIcon name="skeleton" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" />
+                    Slots
+                </div>
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
@@ -259,7 +268,10 @@ const datasetRefContent = computed(() => {
 
         <table v-if="selectedComponent.emits" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left text-xl font-inter-medium">
-                Emits
+                <div class="flex flex-row place-items-center gap-2">
+                    <VueUiIcon name="func" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" />
+                    Emits
+                </div>
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
@@ -281,7 +293,10 @@ const datasetRefContent = computed(() => {
 
         <table v-if="selectedComponent.exposed" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left text-xl font-inter-medium">
-                {{ translations.overview.exposedMethods[store.lang] }}
+                <div class="flex flex-row place-items-center gap-2">
+                    <VueUiIcon name="func" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" />
+                    {{ translations.overview.exposedMethods[store.lang] }}
+                </div>
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
@@ -301,7 +316,12 @@ const datasetRefContent = computed(() => {
             </tbody>
         </table>
 
-        <div class="mb-2 text-xl font-inter-medium mt-8">{{ translations.overview.basicRendering[store.lang] }}</div>
+        <div class="mb-2 text-xl font-inter-medium mt-8">
+            <div class="flex flex-row place-items-center gap-2">
+                <VueUiIcon name="dashboard" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" />
+                {{ translations.overview.basicRendering[store.lang] }}
+            </div>
+        </div>
         <div :class="`w-full mx-auto p-4 bg-white ${selectedComponent.chartSize ? `max-w-[${selectedComponent.chartSize}px]` : ''}`" v-for="example in selectedComponent.examples">
             <VueDataUi :component="selectedComponent.name" :dataset="example.dataset" :config="example.config"/>
         </div>
