@@ -2322,6 +2322,13 @@ const circlePackConfig = computed(() => {
                 <div v-if="!enableSem" class="flex flex-row place-items-center gap-2 mb-6 pl-4 tabular-nums">
                   <span class="text-gray-500 dark:text-[#8A8A8A]">Logs:</span> <span class="font-inter-medium">{{ filteredVersions.length }}</span>
                 </div>
+
+                <div v-if="!enableSem && versionComponent === 'vue_ui_vertical_bar'" class="flex flex-row gap-2 place-items-center pl-4 mb-6">
+                  <VueUiIcon name="circleExclamation" :stroke="isDarkMode ? '#ff6600' : '#ff3700'"/>
+                  <span class="text-app-red dark:text-app-orange">
+                    This component was renamed to <code>VueUiHorizontalBar</code> in v3
+                  </span>
+                </div>
   
                 <div class="w-full max-h-[500px] overflow-y-auto p-4">
                     <ul>
@@ -2332,7 +2339,7 @@ const circlePackConfig = computed(() => {
                             </div>
                             <div class="pl-6" v-if="log.updates">
                                 <template v-for="update in log.updates">
-                                    <div :class="`text-gray-500 dark:text-[#CCCCCC] ${convertComponent(versionComponent) === update.component ? 'border-l-2 border-app-green p-4 bg-[#CCCCCC] dark:bg-[#FFFFFF10]' : ''}`">
+                                    <div :class="`text-gray-500 dark:text-[#CCCCCC]`">
                                           <a class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
                                             <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
                                             {{ update.component }}</a>
