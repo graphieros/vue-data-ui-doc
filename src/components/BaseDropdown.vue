@@ -7,7 +7,7 @@ import BaseCard from "./BaseCard.vue";
 
 const props = defineProps({
     id: { type: String, required: true },
-    value: { type: String, required: true },
+    value: { type: [String, null], required: true },
     options: {
         type: Array,
         required: true,

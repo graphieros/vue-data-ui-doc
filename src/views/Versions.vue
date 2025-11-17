@@ -11,16 +11,23 @@ import { shiftHue } from '../components/maker/lib'
 import RepoStars from "../components/RepoStars.vue";
 import { darkenColor, lightenColor } from "vue-data-ui";
 import Downloads from "../components/Downloads.vue";
-import { BugIcon, GitForkIcon, StarFilledIcon, ToolIcon, UserHeartIcon } from "vue-tabler-icons";
+import { BugIcon, GitForkIcon, StarFilledIcon, ToolIcon, UserHeartIcon, XIcon } from "vue-tabler-icons";
 import BaseCard from "../components/BaseCard.vue";
 import BaseLazy from "../components/BaseLazy.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
+import BaseDropdown from "../components/BaseDropdown.vue";
+import { useIconMapUnderscore } from "../useIconMapUnderscore";
 
 const globalConfig = useConfig()
 
 const store = useMainStore();
 const translations = computed(() => store.translations)
 const showWC = ref(false);
+const versionComponent = ref(null);
+
+const chartKeys = computed(() => {
+  return Object.keys(globalConfig).toSorted();
+})
 
 const step = ref(0);
 watch(() => store.isDarkMode, (val) => {
@@ -2001,6 +2008,76 @@ function setSem() {
   patch.value.ver = pa;
 }
 
+function convertComponent(c) {
+  return {
+    vue_ui_sparkline: 'VueUiSparkline',
+    vue_ui_sparkbar: 'VueUiSparkbar',
+    vue_ui_sparkstackbar: 'VueUiSparkStackbar',
+    vue_ui_sparkhistogram: 'VueUiSparkHistogram',
+    vue_ui_sparkgauge: 'VueUiSparkgauge',
+    vue_ui_spark_trend: 'VueUiSparkTrend',
+    vue_ui_gizmo: 'VueUiGizmo',
+    vue_ui_kpi: 'VueUiKpi',
+    vue_ui_quick_chart: 'VueUiQuickChart',
+    vue_ui_xy: 'VueUiXy',
+    vue_ui_xy_canvas: 'VueUiXyCanvas',
+    vue_ui_horizontal_bar: 'VueUiHorizontalBar',
+    vue_ui_vertical_bar: 'VueUiVerticalBar',
+    vue_ui_parallel_coordinate_plot: 'VueUiParallelCoordinatePlot',
+    vue_ui_flow: 'VueUiFlow',
+    vue_ui_candlestick: 'VueUiCandlestick',
+    vue_ui_age_pyramid: 'VueUiAgePyramid',
+    vue_ui_stackbar: 'VueUiStackbar',
+    vue_ui_stackline: 'VueUiStackline',
+    vue_ui_funnel: 'VueUiFunnel',
+    vue_ui_history_plot: 'VueUiHistoryPlot',
+    vue_ui_ridgeline: 'VueUiRidgeline',
+    vue_ui_donut: 'VueUiDonut',
+    vue_ui_nested_donuts: 'VueUiNestedDonuts',
+    vue_ui_waffle: 'VueUiWaffle',
+    vue_ui_heatmap: 'VueUiHeatmap',
+    vue_ui_treemap: 'VueUiTreemap',
+    vue_ui_rings: 'VueUiRings',
+    vue_ui_galaxy: 'VueUiGalaxy',
+    vue_ui_donut_evolution: 'VueUiDonutEvolution',
+    vue_ui_circle_pack: 'VueUiCirclePack',
+    vue_ui_gauge: 'VueUiGauge',
+    vue_ui_bullet: 'VueUiBullet',
+    vue_ui_onion: 'VueUiOnion',
+    vue_ui_wheel: 'VueUiWheel',
+    vue_ui_tiremarks: 'VueUiTiremarks',
+    vue_ui_thermometer: 'VueUiThermometer',
+    vue_ui_timer: 'VueUiTimer',
+    vue_ui_word_cloud: 'VueUiWordCloud',
+    vue_ui_relation_circle: 'VueUiRelationCircle',
+    vue_ui_chord: 'VueUiChord',
+    vue_ui_radar: 'VueUiRadar',
+    vue_ui_mood_radar: 'VueUiMoodRadar',
+    vue_ui_quadrant: 'VueUiQuadrant',
+    vue_ui_chestnut: 'VueUiChestnut',
+    vue_ui_scatter: 'VueUiScatter',
+    vue_ui_molecule: 'VueUiMolecule',
+    vue_ui_strip_plot: 'VueUiStripPlot',
+    vue_ui_dumbbell: 'VueUiDumbbell',
+    vue_ui_world: 'VueUiWorld',
+    vue_ui_3d_bar: 'VueUi3dBar',
+    vue_ui_table_sparkline: 'VueUiTableSparkline',
+    vue_ui_table_heatmap: 'VueUiTableHeatmap',
+    vue_ui_table: 'VueUiTable',
+    vue_ui_carousel_table: 'VueUiCarouselTable',
+    vue_ui_rating: 'VueUiRating',
+    vue_ui_smiley: 'VueUiSmiley',
+    vue_ui_accordion: 'VueUiAccordion',
+    vue_ui_skeleton: 'VueUiSkeleton',
+    vue_ui_dashboard: 'VueUiDashboard',
+    vue_ui_annotator: 'VueUiAnnotator',
+    vue_ui_icon: 'VueUiIcon',
+    vue_ui_digits: 'VueUiDigits',
+    vue_ui_cursor: 'VueUiCursor',
+    vue_ui_mini_loader: 'VueUiMiniLoader'
+  }[c];
+}
+
 const filteredVersions = computed(() => {
   const maj = Number(major.value.ver);
   const min = Number(minor.value.ver);
@@ -2031,7 +2108,20 @@ const filteredVersions = computed(() => {
 
   patch.value.available = Array.from(new Set(patches)).sort((a, b) => a - b);
 
-  if (!enableSem.value) return versionsList.value;
+  if (!enableSem.value) {
+    if (!versionComponent.value) {
+      return versionsList.value
+    } else {
+      const comp = convertComponent(versionComponent.value)
+
+      return versionsList.value
+        .filter(v => (v?.updates || []).some(u => (u?.component || '') === comp))
+        .map(v => ({
+          ...v,
+          updates: (v.updates || []).filter(u => (u?.component || '') === comp)
+        }))
+    }
+  }
 
   return parsed
     .filter(p => p.major === maj && p.minor === min && p.patch === pat)
@@ -2075,7 +2165,6 @@ const circlePackConfig = computed(() => {
     }
   }
 })
-
 </script>
 
 <template>
@@ -2138,6 +2227,130 @@ const circlePackConfig = computed(() => {
                 </div>
               </BaseCard>
             </div>
+
+            <div class="mx-auto max-w-[800px] px-6">
+              <BaseCard class="max-w-[800px] mx-auto mt-6">
+                <div class="w-full p-4 text-[24px]">
+                  Changelog    
+                </div>
+  
+                <div class="flex flex-row gap-2 mb-2 pl-4">
+                    <label>
+                      Filter by version
+                      <input type="checkbox" v-model="enableSem" @change="resetSem">
+                    </label>
+                    <template v-if="enableSem">
+                      <label>
+                        Major
+                        <select v-model="major.ver" class="w-[64px]" @change="impactMinor">
+                          <option v-for="o in major.available">{{ o }}</option>
+                        </select>
+                      </label>
+                      <label>
+                        Minor
+                        <select v-model="minor.ver" class="w-[64px]" @change="impactPatch">
+                          <option v-for="o in minor.available">{{ o }}</option>
+                        </select>
+                      </label>
+                      <label>
+                        Patch
+                        <select v-model="patch.ver" class="w-[64px]">
+                          <option v-for="o in patch.available">{{ o }}</option>
+                        </select>
+                      </label>
+                    </template>
+                  </div>
+  
+                <div class="flex flex-row place-items-center gap-2 mb-2 pl-4" v-if="!enableSem">
+                  <label for="versionComponent" @click="openDropdown">Filter by component</label>
+                  <BaseDropdown
+                    :options="chartKeys.map(k => {
+                        return {
+                            name: k,
+                            icon: useIconMapUnderscore(k)
+                        }
+                    })"
+                    v-model:value="versionComponent"
+                    background="bg-white dark:bg-[#1A1A1A]"
+                    optionTarget="name"
+                    additionalOptionTarget="name"
+                    id="versionComponent"
+                  >
+                      <template #selected="{ selectedOption }">
+                          <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                              <div class="h-[24px] w-[24px] flex place-items-center">
+                                  <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                              </div>
+                              <div class="text-[17px]">
+                                  <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                  <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                              </div>
+                          </div>
+                          <div v-else class="text-left flex flex-row gap-2 place-items-center">
+                            <div class="h-[24px] w-[24px] flex place-items-center">
+                                  <VueUiIcon name="dashboard" :size="24" stroke="#5f8aee" />
+                              </div>
+                              <div class="text-[17px]">
+                                  <span :class=" 'dark:text-app-blue-light'">All components</span>
+                              </div>
+                          </div>
+                      </template>
+                      <template #option="{ option, selected, current }">
+                          <div class="text-left flex flex-row gap-2 place-items-center">
+                              <div class="h-[20px] w-[20px] flex place-items-center">
+                                  <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                              </div>
+                              <div>
+                                  <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                  <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                              </div>
+                          </div>
+                      </template>
+                  </BaseDropdown>
+                  <button
+                    :disabled="!versionComponent"
+                    class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full dark:bg-[#3A3A3A] hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                    @click="versionComponent = null"
+                  >
+                  <XIcon />
+                </button>
+                </div>
+
+                <div v-if="!enableSem" class="flex flex-row place-items-center gap-2 mb-6 pl-4">
+                  <span class="text-gray-500 dark:text-[#8A8A8A]">Logs:</span> <span class="font-inter-medium">{{ filteredVersions.length }}</span>
+                </div>
+  
+                <div class="w-full max-h-[500px] overflow-y-auto p-4">
+                    <ul>
+                      <li v-for="log in filteredVersions" :class="`mb-4`">
+                          <BaseCard type="light">
+                            <div class="pt-2 pb-4 mb-6 font-inter-medium text-2xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6">
+                              {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
+                            </div>
+                            <div class="pl-6" v-if="log.updates">
+                                <template v-for="update in log.updates">
+                                    <div :class="`text-gray-500 dark:text-[#CCCCCC] ${convertComponent(versionComponent) === update.component ? 'border-l-2 border-app-green p-4 bg-[#CCCCCC] dark:bg-[#FFFFFF10]' : ''}`">
+                                          <a class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
+                                            <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
+                                            {{ update.component }}</a>
+                                        <span v-else-if="update.component" class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap">
+                                          <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
+                                          {{ update.component }}
+                                        </span>
+                                        <div class="pl-8">
+                                          {{ update.description }}
+                                        </div>
+                                    </div>
+                                    <br>
+                                </template>
+                            </div>
+                          </BaseCard>
+                      </li>
+                    </ul>
+                </div>
+              </BaseCard>
+            </div>
+
 
 
             <div class="max-w-[800px] mx-auto px-6">
@@ -2290,68 +2503,6 @@ const circlePackConfig = computed(() => {
                         </div>
                       </template>
                     </VueDataUi>
-                  </div>
-                </BaseCard>
-
-
-
-                <BaseCard class="max-w-[800px] mx-auto mt-6">
-                  <div class="w-full p-4 text-[24px]">
-                    Changelog    
-                  </div>
-                  <div class="w-full max-h-[500px] overflow-y-auto p-4">
-                    <div class="flex flex-row gap-2 mb-6">
-                      <label>
-                        Filter by version
-                        <input type="checkbox" v-model="enableSem" @change="resetSem">
-                      </label>
-                      <template v-if="enableSem">
-                        <label>
-                          Major
-                          <select v-model="major.ver" class="w-[64px]" @change="impactMinor">
-                            <option v-for="o in major.available">{{ o }}</option>
-                          </select>
-                        </label>
-                        <label>
-                          Minor
-                          <select v-model="minor.ver" class="w-[64px]" @change="impactPatch">
-                            <option v-for="o in minor.available">{{ o }}</option>
-                          </select>
-                        </label>
-                        <label>
-                          Patch
-                          <select v-model="patch.ver" class="w-[64px]">
-                            <option v-for="o in patch.available">{{ o }}</option>
-                          </select>
-                        </label>
-                      </template>
-                    </div>
-                      <ul>
-                        <li v-for="log in filteredVersions" class="mb-4">
-                            <BaseCard type="light">
-                              <div class="pt-2 pb-4 mb-6 font-inter-medium text-2xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6">
-                                {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
-                              </div>
-                              <div class="pl-6" v-if="log.updates">
-                                  <template v-for="update in log.updates">
-                                      <div class="text-gray-500 dark:text-[#CCCCCC]">
-                                            <a class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
-                                              <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
-                                              {{ update.component }}</a>
-                                          <span v-else-if="update.component" class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap">
-                                            <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
-                                            {{ update.component }}
-                                          </span>
-                                          <div class="pl-8">
-                                            {{ update.description }}
-                                          </div>
-                                      </div>
-                                      <br>
-                                  </template>
-                              </div>
-                            </BaseCard>
-                        </li>
-                      </ul>
                   </div>
                 </BaseCard>
 
