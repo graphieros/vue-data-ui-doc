@@ -84,7 +84,7 @@ const options = ref({
     },
     categoryItems: {
         name: 'category',
-        color: '#42d392'
+        color: '#8A8A8A'
     },
     dataset: {
         categories: [],
@@ -129,16 +129,20 @@ function saveConfigToLocalStorage() {
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_donut.model))
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_radar.model))
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
     if(!localStorage.radarConfig) {
-        localStorage.setItem('radarConfig', {})
+        localStorage.setItem('radarConfig', {});
+        localStorage.setItem('radarDataset', []);
+        localStorage.setItem('radarCategories', []);
     }
-    saveConfigToLocalStorage()
+    saveConfigToLocalStorage();
+    saveDatasetToLocalStorage();
+    saveCategoriesToLocalStorage();
     step.value += 1;
 }
 

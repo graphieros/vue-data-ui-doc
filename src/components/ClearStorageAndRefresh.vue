@@ -25,11 +25,13 @@ function nuke() {
         localStorage.removeItem(props.keyConfig)
     }
     if(!!localStorage[props.keyDataset]) {
-        localStorage.removeItem(props.keyDataset)
+        localStorage.removeItem(props.keyDataset);
+        if (props.keyDataset === 'radarDataset') {
+            localStorage.removeItem('radarCategories');
+        }
     }
     nextTick(() => location.reload())
 }
-
 </script>
 
 <template>

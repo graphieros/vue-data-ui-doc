@@ -902,15 +902,20 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_stackbar: {
                 dataset: [
                     {
-                        name: 'Series 1',
+                        name: 'Series A',
                         series: [10, 20, 30],
-                        color: '#5f8aee'
+                        color: '#1f77b4'
                     },
                     {
-                        name: 'Series 2',
+                        name: 'Series B',
                         series: [20, 40, 60],
-                        color: '#42d392'
-                    }
+                        color: '#aec7e8'
+                    },
+                    {
+                        name: 'Series C',
+                        series: [40, 80, 120],
+                        color: '#ff7f0e'
+                    },
                 ],
                 model: [
                     { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
@@ -1105,15 +1110,22 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_stackline: {
                 dataset: [
                     {
-                        name: 'Series 1',
-                        series: [20, 20, 30],
+                        name: 'Series A',
+                        series: [10, 20, 30],
                         color: '#1f77b4',
                         shape: 'circle',
                         standalone: false
                     },
                     {
-                        name: 'Series 2',
+                        name: 'Series B',
                         series: [20, 40, 60],
+                        color: '#aec7e8',
+                        shape: 'circle',
+                        standalone: false
+                    },
+                    {
+                        name: 'Series C',
+                        series: [40, 80, 120],
                         color: '#ff7f0e',
                         shape: 'circle',
                         standalone: false
@@ -1932,19 +1944,19 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_donut: {
                 dataset: [
                     {
-                        name: "series 1",
+                        name: "series A",
                         values: [100],
                         color: '#1f77b4',
                         id: "111"
                     },
                     {
-                        name: "series 2",
+                        name: "series B",
                         values: [50],
                         color: '#aec7e8',
                         id: "222"
                     },
                     {
-                        name: "series 3",
+                        name: "series C",
                         values: [25],
                         color: '#ff7f0e',
                         id: "333"
@@ -2110,15 +2122,21 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_waffle: {
                 dataset: [
                     {
-                        name: "series 1",
+                        name: "series A",
                         values: [60],
-                        color: '#42d392',
+                        color: '#1f77b4',
                         id: "111"
                     },
                     {
-                        name: "series 2",
+                        name: "series B",
                         values: [40],
-                        color: '#6376DD',
+                        color: '#aec7e8',
+                        id: "222"
+                    },
+                    {
+                        name: "series C",
+                        values: [30],
+                        color: '#ff7f0e',
                         id: "222"
                     }
                 ],
@@ -2231,32 +2249,32 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_radar: {
                 categories: [
                     {
-                        name: 'category 1',
-                        color: '#42d392',
+                        name: 'category A',
+                        color: '#1f77b4',
                         id: '111'
                     },
                     {
-                        name: 'category 2',
-                        color: '#6376DD',
+                        name: 'category B',
+                        color: '#aec7e8',
                         id: '222'
                     },
                 ],
                 dataset: [
                     {
                         name: 'series 1',
-                        values: [50, 10],
+                        values: [50, 80],
                         id: '111',
                         target: 100,
                     },
                     {
                         name: 'series 2',
-                        values: [30, 20],
+                        values: [30, 70],
                         id: '222',
                         target: 100
                     },
                     {
                         name: 'series 3',
-                        values: [30, 18],
+                        values: [30, 48],
                         id: '333',
                         target: 100
                     },
@@ -2359,18 +2377,26 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 dataset: [
                     {
                         from: 0,
-                        to: 5,
-                        color: "#6376DD",
+                        to: 3,
+                        color: "#d62728",
                         id: "111",
                         name: 'Label 1',
                         nameOffsetRatio: 1
                     },
                     {
-                        from: 5,
-                        to: 10,
-                        color: "#42d392",
+                        from: 3,
+                        to: 7,
+                        color: "#ff7f0e",
                         id: "222",
                         name: 'Label 2',
+                        nameOffsetRatio: 1
+                    },
+                    {
+                        from: 7,
+                        to: 10,
+                        color: "#2ca02c",
+                        id: "333",
+                        name: 'Label 3',
                         nameOffsetRatio: 1
                     }
                 ],
@@ -2471,7 +2497,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         name: 'Serie 1',
                         percentage: 66.667,
                         value: 150,
-                        color: "#42d392",
+                        color: "#1f77b4",
                         prefix: '$',
                         suffix: '',
                         id: '111'
@@ -2480,7 +2506,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         name: 'Serie 2',
                         percentage: 33.334,
                         value: 130,
-                        color: "#5f8bee",
+                        color: "#aec7e8",
                         prefix: '',
                         suffix: '€',
                         id: '222'
@@ -2489,7 +2515,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         name: 'Serie 3',
                         percentage: 62,
                         value: 12,
-                        color: "#ff6400",
+                        color: "#ff7f0e",
                         prefix: '',
                         suffix: 'K€',
                         id: '333'
@@ -3095,7 +3121,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.bars.strokeWidth', def: 2, type: 'number', min: 0, max: 48, step: 0.1, label: ['border', 'is', 'thickness'], category: 'bars' },
                     { key: 'style.chart.layout.bars.gap', def: 6, type: 'number', min: 0, max: 48, label: 'spacing', category: 'bars' },
                     { key: 'style.chart.layout.bars.borderRadius', def: 4, type: 'number', min: 0, max: 32, label: 'borderRadius', category: 'bars' },
-                    { key: 'style.chart.layout.bars.offsetX', def: 64, type: 'number', min: -64, max: 200, label: 'offsetX', category: 'bars' },
+                    { key: 'style.chart.layout.bars.offsetX', def: 12, type: 'number', min: -64, max: 200, label: 'offsetX', category: 'bars' },
                     { key: 'style.chart.layout.bars.paddingRight', def: 0, type: 'number', min: 0, max: 200, label: ['spacing', 'is', 'right'], category: 'bars' },
                     { key: 'style.chart.layout.bars.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'bars' },
                     { key: 'style.chart.layout.bars.gradientIntensity', def: 20, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'bars' },
@@ -3437,21 +3463,21 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_sparkstackbar: {
                 dataset: [
                     {
-                        name: 'S1',
+                        name: 'Series A',
                         value: 256,
-                        color: '#6376DD',
+                        color: '#1f77b4',
                         id: '1'
                     },
                     {
-                        name: 'S2',
+                        name: 'Series B',
                         value: 128,
-                        color: '#42d392',
+                        color: '#aec7e8',
                         id: '2'
                     },
                     {
-                        name: 'S3',
+                        name: 'Series C',
                         value: 64,
-                        color: '#ff6400',
+                        color: '#ff7f0e',
                         id: '3'
                     }
                 ],
@@ -3514,7 +3540,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         prefix: '',
                         suffix: '%',
                         rounding: 1,
-                        color: '#6376DD',
+                        color: '#1f77b4',
                         id: '1',
                         target: null
                     },
@@ -3524,7 +3550,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         prefix: '',
                         suffix: '%',
                         rounding: 1,
-                        color: '#42d392',
+                        color: '#aec7e8',
                         id: '2',
                         target: null
                     },
@@ -3534,7 +3560,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         prefix: '',
                         suffix: '%',
                         rounding: 1,
-                        color: '#ff6400',
+                        color: '#ff7f0e',
                         id: '3',
                         target: null
                     },
@@ -3737,19 +3763,19 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {
                         name: 'Serie 1',
                         values: [0, 1, 2, 3, 5, 8, 13, 21],
-                        color: '#6376DD',
+                        color: '#1f77b4',
                         id: '1'
                     },
                     {
                         name: 'Serie 2',
                         values: [8, 12, 13, 25, 31, 42, 1, 9],
-                        color: '#42d392',
+                        color: '#aec7e8',
                         id: '2'
                     },
                     {
                         name: 'Serie 3',
                         values: [12, 15, 2, 8, 16, 12, 19, 13],
-                        color: '#ff6400',
+                        color: '#ff7f0e',
                         id: '3'
                     },
                 ],
@@ -3869,19 +3895,19 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_rings: {
                 dataset: [
                     {
-                        name: 'Serie 1',
+                        name: 'Serie A',
                         values: [100],
-                        color: '#6376DD'
+                        color: '#1f77b4'
                     },
                     {
-                        name: 'Serie 2',
+                        name: 'Serie B',
                         values: [200],
-                        color: "#42d392",
+                        color: "#aec7e8",
                     },
                     {
-                        name: 'Serie 3',
+                        name: 'Serie C',
                         values: [300],
-                        color: "#ff6400",
+                        color: "#ff7f0e",
                     }
                 ],
                 model: [
@@ -3963,7 +3989,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 dataset: [
                     {
                         name: "Series 1",
-                        color: "#42d392",
+                        color: "#1f77b4",
                         id: '01',
                         shape: 'circle',
                         values: [
@@ -4206,8 +4232,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.centerSlit.width', def: 20, type: 'number', min: 0, max: 100, label: ['spacing', 'is', 'horizontal'], category: 'datapoints' },
                     { key: 'style.layout.bars.gap', def: 2, type: 'number', min: 0, max: 24, step: 0.1, label: ['spacing', 'is', 'vertical'], category: 'datapoints' },
                     { key: 'style.layout.bars.borderRadius', def: 2, type: 'number', min: 0, max: 48, label: 'borderRadius', category: 'datapoints' },
-                    { key: 'style.layout.bars.left.color', def: '#ff6400', type: 'color', label: ['left', 'is', 'color'], category: 'datapoints' },
-                    { key: 'style.layout.bars.right.color', def: '#6376DD', type: 'color', label: ['right', 'is', 'color'], category: 'datapoints' },
+                    { key: 'style.layout.bars.left.color', def: '#ff7f0e', type: 'color', label: ['left', 'is', 'color'], category: 'datapoints' },
+                    { key: 'style.layout.bars.right.color', def: '#1f77b4', type: 'color', label: ['right', 'is', 'color'], category: 'datapoints' },
                     { key: 'style.layout.bars.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'datapoints' },
                     { key: 'style.layout.bars.gradient.underlayer', def: '#FFFFFF', type: 'color', label: ['gradient', 'is', 'backgroundColor'], category: 'datapoints' },
                     { key: 'style.layout.bars.gradient.intensity', def: 60, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'datapoints' },
@@ -4465,23 +4491,23 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     percentage: 66.5,
                     series: [
                         {
-                            name: 'Serie 1',
+                            name: 'Serie A',
                             value: 128,
-                            color: '#5f8bee',
+                            color: '#1f77b4',
                             id: "1",
                             breakdown:[]
                         },
                         {
-                            name: 'Serie 2',
+                            name: 'Serie B',
                             value: 64,
-                            color: '#42d392',
+                            color: '#aec7e8',
                             id: '2',
                             breakdown: []
                         },
                         {
-                            name: 'Serie 3',
+                            name: 'Serie C',
                             value: 32,
-                            color: '#ff6400',
+                            color: '#ff7f0e',
                             id: '3',
                             breakdown: []
                         }
@@ -4566,13 +4592,13 @@ export const useDefaultDataStore = defineStore('defaultData', {
                             {
                                 name: 'Serie 1',
                                 values: [125],
-                                color: '#6376DD',
+                                color: '#1f77b4',
                                 id: '11'
                             },
                             {
                                 name: 'Serie 2',
                                 values: [98],
-                                color: '#42d392',
+                                color: '#aec7e8',
                                 id: '12'
                             },
                         ]
@@ -4584,13 +4610,13 @@ export const useDefaultDataStore = defineStore('defaultData', {
                             {
                                 name: 'Serie 1',
                                 values: [12],
-                                color: '#6376DD',
+                                color: '#1f77b4',
                                 id: '21'
                             },
                             {
                                 name: 'Serie 2',
                                 values: [27],
-                                color: '#42d392',
+                                color: '#aec7e8',
                                 id: '22'
                             },
                         ]
@@ -4753,20 +4779,20 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_galaxy: {
                 dataset: [
                     {
-                        name: "Serie 1",
-                        color: "#5f8bee",
+                        name: "Serie A",
+                        color: "#1f77b4",
                         values: [100],
                         id: "1"
                     },
                     {
-                        name: "Serie 2",
-                        color: "#42d392",
+                        name: "Serie B",
+                        color: "#aec7e8",
                         values: [200],
                         id: "2"
                     },
                     {
-                        name: "Serie 1",
-                        color: "#ff6400",
+                        name: "Serie C",
+                        color: "#ff7f0e",
                         values: [300, 1],
                         id: "3"
                     },
@@ -4884,7 +4910,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {
                         id: '1',
                         name: "Category 1",
-                        color: '#42d392',
+                        color: '#2ca02c',
                         plots: [
                             {
                                 name: "C1 P1",
@@ -4905,7 +4931,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                     {
                         id: '2',
-                        color: '#ff6400',
+                        color: '#ff7f0e',
                         name: "Category 2",
                         plots: [
                             {
