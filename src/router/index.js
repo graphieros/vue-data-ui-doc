@@ -110,4 +110,33 @@ const router = createRouter({
     routes,
 });
 
+router.onError((error) => {
+    const message = (error && error.message) || "";
+
+    const chunkFailedPatterns = [
+        /Loading chunk \d+ failed/i,
+        /ChunkLoadError/i,
+        /Failed to fetch dynamically imported module/i,
+        /Failed to load module script/i,
+        /Importing a module script failed/i
+    ];
+
+    const isChunkError = chunkFailedPatterns.some((pattern) =>
+        pattern.test(message)
+    );
+
+    if (!isChunkError) {
+        return;
+    }
+
+    const alreadyReloaded = sessionStorage.getItem("chunk-reload-done");
+
+    if (!alreadyReloaded) {
+        sessionStorage.setItem("chunk-reload-done", "true");
+        window.location.reload();
+    } else {
+        console.error("Chunk load error occurred again after reload.", error);
+    }
+});
+
 export default router;
