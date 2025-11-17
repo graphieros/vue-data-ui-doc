@@ -2230,14 +2230,14 @@ const circlePackConfig = computed(() => {
 
             <div class="mx-auto max-w-[800px] px-6">
               <BaseCard class="max-w-[800px] mx-auto mt-6">
-                <div class="w-full p-4 text-[24px]">
+                <div class="w-full p-4 text-[24px] font-inter-medium">
                   Changelog    
                 </div>
   
                 <div class="flex flex-row gap-2 mb-2 pl-4">
-                    <label>
+                    <label class="text-gray-500 dark:text-[#8A8A8A] mr-2">
                       Filter by version
-                      <input type="checkbox" v-model="enableSem" @change="resetSem">
+                      <input type="checkbox" v-model="enableSem" @change="resetSem" class="ml-2">
                     </label>
                     <template v-if="enableSem">
                       <label>
@@ -2262,7 +2262,7 @@ const circlePackConfig = computed(() => {
                   </div>
   
                 <div class="flex flex-row place-items-center gap-2 mb-2 pl-4" v-if="!enableSem">
-                  <label for="versionComponent" @click="openDropdown">Filter by component</label>
+                  <label for="versionComponent" @click="openDropdown" class="text-gray-500 dark:text-[#8A8A8A]">Filter by component</label>
                   <BaseDropdown
                     :options="chartKeys.map(k => {
                         return {
@@ -2316,7 +2316,7 @@ const circlePackConfig = computed(() => {
                 </button>
                 </div>
 
-                <div v-if="!enableSem" class="flex flex-row place-items-center gap-2 mb-6 pl-4">
+                <div v-if="!enableSem" class="flex flex-row place-items-center gap-2 mb-6 pl-4 tabular-nums">
                   <span class="text-gray-500 dark:text-[#8A8A8A]">Logs:</span> <span class="font-inter-medium">{{ filteredVersions.length }}</span>
                 </div>
   
@@ -2324,7 +2324,7 @@ const circlePackConfig = computed(() => {
                     <ul>
                       <li v-for="log in filteredVersions" :class="`mb-4`">
                           <BaseCard type="light">
-                            <div class="pt-2 pb-4 mb-6 font-inter-medium text-2xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6">
+                            <div class="pt-2 pb-4 mb-6 font-inter-medium text-2xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums">
                               {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
                             </div>
                             <div class="pl-6" v-if="log.updates">
