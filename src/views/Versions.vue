@@ -2261,59 +2261,62 @@ const circlePackConfig = computed(() => {
                     </template>
                   </div>
   
-                <div class="flex flex-row place-items-center gap-2 mb-2 pl-4" v-if="!enableSem">
+                <div class="flex flex-col sm:flex-row sm:place-items-center gap-2 mb-2 pl-4" v-if="!enableSem">
                   <label for="versionComponent" @click="openDropdown" class="text-gray-500 dark:text-[#8A8A8A]">Filter by component</label>
-                  <BaseDropdown
-                    :options="chartKeys.map(k => {
-                        return {
-                            name: k,
-                            icon: useIconMapUnderscore(k)
-                        }
-                    })"
-                    v-model:value="versionComponent"
-                    background="bg-white dark:bg-[#1A1A1A]"
-                    optionTarget="name"
-                    additionalOptionTarget="name"
-                    id="versionComponent"
-                  >
-                      <template #selected="{ selectedOption }">
-                          <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                  <div class="flex flex-row gap-2 place-items-center">
+                    <BaseDropdown
+                      :options="chartKeys.map(k => {
+                          return {
+                              name: k,
+                              icon: useIconMapUnderscore(k)
+                          }
+                      })"
+                      :width="250"
+                      v-model:value="versionComponent"
+                      background="bg-white dark:bg-[#1A1A1A]"
+                      optionTarget="name"
+                      additionalOptionTarget="name"
+                      id="versionComponent"
+                    >
+                        <template #selected="{ selectedOption }">
+                            <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center overflow-x-hidden">
+                                <div class="h-[24px] w-[24px] flex place-items-center">
+                                    <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                                </div>
+                                <div class="text-[17px]">
+                                    <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                    <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                                </div>
+                            </div>
+                            <div v-else class="text-left flex flex-row gap-2 place-items-center">
                               <div class="h-[24px] w-[24px] flex place-items-center">
-                                  <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
-                              </div>
-                              <div class="text-[17px]">
-                                  <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                  <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
-                              </div>
-                          </div>
-                          <div v-else class="text-left flex flex-row gap-2 place-items-center">
-                            <div class="h-[24px] w-[24px] flex place-items-center">
-                                  <VueUiIcon name="dashboard" :size="24" stroke="#5f8aee" />
-                              </div>
-                              <div class="text-[17px]">
-                                  <span :class=" 'dark:text-app-blue-light'">All components</span>
-                              </div>
-                          </div>
-                      </template>
-                      <template #option="{ option, selected, current }">
-                          <div class="text-left flex flex-row gap-2 place-items-center">
-                              <div class="h-[20px] w-[20px] flex place-items-center">
-                                  <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
-                              </div>
-                              <div>
-                                  <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                  <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
-                              </div>
-                          </div>
-                      </template>
-                  </BaseDropdown>
-                  <button
-                    :disabled="!versionComponent"
-                    class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full dark:bg-[#3A3A3A] hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
-                    @click="versionComponent = null"
-                  >
-                  <XIcon />
-                </button>
+                                    <VueUiIcon name="dashboard" :size="24" stroke="#5f8aee" />
+                                </div>
+                                <div class="text-[17px]">
+                                    <span :class=" 'dark:text-app-blue-light'">All components</span>
+                                </div>
+                            </div>
+                        </template>
+                        <template #option="{ option, selected, current }">
+                            <div class="text-left flex flex-row gap-2 place-items-center">
+                                <div class="h-[20px] w-[20px] flex place-items-center">
+                                    <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                                </div>
+                                <div>
+                                    <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                    <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                                </div>
+                            </div>
+                        </template>
+                    </BaseDropdown>
+                    <button
+                      :disabled="!versionComponent"
+                      class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full dark:bg-[#3A3A3A] hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                      @click="versionComponent = null"
+                    >
+                    <XIcon />
+                  </button>
+                  </div>
                 </div>
 
                 <div v-if="!enableSem" class="flex flex-row place-items-center gap-2 mb-6 pl-4 tabular-nums">
@@ -2324,7 +2327,7 @@ const circlePackConfig = computed(() => {
                     <ul>
                       <li v-for="log in filteredVersions" :class="`mb-4`">
                           <BaseCard type="light">
-                            <div class="pt-2 pb-4 mb-6 font-inter-medium text-2xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums">
+                            <div class="pt-2 pb-4 mb-6 font-inter-medium text-xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums">
                               {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
                             </div>
                             <div class="pl-6" v-if="log.updates">
