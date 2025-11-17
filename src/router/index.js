@@ -110,6 +110,15 @@ const router = createRouter({
     routes,
 });
 
+let lastTargetFullPath = null;
+
+router.beforeEach((to, from, next) => {
+    lastTargetFullPath = to.fullPath;
+    next();
+});
+
+let chunkReloadedOnce = false;
+
 router.onError((error) => {
     const message = (error && error.message) || "";
 
@@ -129,14 +138,20 @@ router.onError((error) => {
         return;
     }
 
-    const alreadyReloaded = sessionStorage.getItem("chunk-reload-done");
-
-    if (!alreadyReloaded) {
-        sessionStorage.setItem("chunk-reload-done", "true");
-        window.location.reload();
-    } else {
+    if (chunkReloadedOnce) {
         console.error("Chunk load error occurred again after reload.", error);
+        return;
     }
+
+    chunkReloadedOnce = true;
+
+    const targetUrl =
+        lastTargetFullPath ||
+        window.location.pathname +
+            window.location.search +
+            window.location.hash;
+
+    window.location.assign(targetUrl);
 });
 
 export default router;
