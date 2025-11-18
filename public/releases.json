@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.7.7",
+    "date": "2025-11-18",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Improve the algorithm to avoid blocking the main thread during word placement",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.6",
     "date": "2025-11-16",
     "updates": [
