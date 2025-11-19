@@ -9,23 +9,24 @@ import CodeParser from '../components/customization/CodeParser.vue';
 import ConfirmCopy from '../components/ConfirmCopy.vue';
 import BaseCard from '../components/BaseCard.vue';
 import BaseTextCopy from '../components/BaseTextCopy.vue';
+import BaseDropdown from '../components/BaseDropdown.vue';
 
 const store = useMainStore();
 const route = useRoute();
 const router = useRouter();
 const searchTerm = computed(() => route.query.q || '')
-const selectedComponent = computed({
-    get: () => {
-        return route.query.f || ''
-    },
-    set: v => {
-        return v
-    }
+
+const selectedComponent = ref('Filter by component');
+
+onMounted(() => {
+    selectedComponent.value = route.query.f || 'Filter by component';
 })
+
 const searchResults = ref([]);
 const hasResults = ref(false);
 const translations = computed(() => store.translations)
 const isDarkMode = computed(() => store.isDarkMode);
+const componentSearch = ref(null);
 
 const props = defineProps({
     query: String
@@ -100,14 +101,17 @@ function filterComponents(v) {
 }
 
 function clearFilter(v) {
-    selectedComponent.value = '';
+    selectedComponent.value = 'Filter by component';
     router.replace({ query: {
         q: searchTerm.value
-    }})
+    }});
+    if (componentSearch.value) {
+        componentSearch.value.clearSearch();
+    }
 }
 
 const filteredResults = computed(() => {
-    if (!selectedComponent.value) return searchResults.value.sort((a, b) => a.componentName.localeCompare(b.componentName));
+    if (!selectedComponent.value || selectedComponent.value === 'Filter by component') return searchResults.value.sort((a, b) => a.componentName.localeCompare(b.componentName));
     return searchResults.value.filter(r => r.componentName === selectedComponent.value)
 })
 
@@ -208,7 +212,9 @@ ${indentSpace}}`;
     return formatValue(json, indent);
 }
 
-// TODO: make path copiable
+function updateSelectedComponent(c) {
+    selectedComponent.value = c
+}
 
 </script>
 
@@ -229,20 +235,56 @@ ${indentSpace}}`;
         </h1>
 
         <div class="flex flex-row gap-2 mb-12">
-            <select
+            <BaseDropdown
+                ref="componentSearch"
                 v-if="(searchTerm || showSuggestions) && availableComponents.length > 1"
-                v-model="selectedComponent"
-                class="p-2 h-[40px] !rounded-full border border-gray-600 text-black shadow-[inset_0_2px_6px_#6A6A6A,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#000000,0_4px_6px_rgba(0,0,0,0.5)]"
-                @change="filterComponents"
+                :options="[
+                    {
+                        name: 'Filter by component',
+                        translation: 'All components',
+                        icon: 'clipBoard'
+                    },
+                    ...availableComponents.map(c => ({
+                        name: c,
+                        translation: c,
+                        icon: iconMap[c]
+                    }))
+                ]"
+                v-model:value="selectedComponent"
+                @change="updateSelectedComponent"
+                background="bg-white dark:bg-[#1A1A1A]"
+                option-target="name"
+                additional-option-target="name"
+                id="componentSelect"
             >
-                <option value="" disabled selected>
-                    {{ store.translations.search.componentSelect[store.lang] }}
-                </option>
-                <option v-for="el in availableComponents" class="text-left">{{ el }}</option>
-            </select>
+                <template #selected="{ selectedOption }">
+                    <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                        <div class="h-[24px] w-[24px] flex place-items-center">
+                            <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                        </div>
+                        <div class="text-[17px]">
+                            <span v-if="selectedOption.name !== 'Filter by component'" class="text-gray-500 dark:text-app-blue">VueUi</span>
+                            <span v-if="selectedOption.name !== 'Filter by component'" :class="'dark:text-app-blue-light font-inter-medium'">{{ selectedOption.name.replaceAll('VueUi', '') }}</span>
+                            <span v-else :class="'dark:text-app-blue-light'">{{ selectedOption.name }}</span>
+                        </div>
+                    </div>
+                </template>
+                <template #option="{ option, selected, current }">
+                    <div class="text-left flex flex-row gap-2 place-items-center">
+                        <div class="h-[20px] w-[20px] flex place-items-center">
+                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                        </div>
+                        <div>
+                            <span v-if="option.name !== 'Filter by component'" class="text-gray-500 dark:text-app-blue">VueUi</span>
+                            <span v-if="option.name !== 'Filter by component'" :class="selected || current ? `text-white font-inter-medium`: 'dark:text-app-blue-light font-inter-medium'">{{ option.translation.replaceAll('VueUi', '') }}</span>
+                            <span v-else :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.translation }}</span>
+                        </div>
+                    </div>
+                </template>
+            </BaseDropdown>
     
             <button
-                v-if="selectedComponent"
+                v-if="selectedComponent !== 'Filter by component'"
                 class="h-[40px] w-[40px] flex place-items-center justify-center rounded-full hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                 @click="clearFilter"
             >
@@ -280,20 +322,22 @@ ${indentSpace}}`;
     
                 <template #content>
                     <div class="flex flex-col w-full">
-                    <div>Type: <code class="text-app-blue">{{ res.type }}</code></div>
-                    {{ translations.search.defaultValue[store.lang] }} :
-                    <div class="p-4 rounded">
-                        <CodeParser :content="jsonToJsObject(res.value)" language="javascript" @copy="store.copy()">
-                            <template #color v-if="res.type === 'string' && res.value.includes('#')">
-                                <div :style="`background:${res.value}`" class="h-10 w-10 rounded-full border border-gray-400 mr-6"/>
-                            </template>
-                        </CodeParser>
-                    </div>
-                    <router-link :to="`/docs#${res.route}`">
-                        <div class="hover:underline dark:text-app-green font-black mt-2">
-                        {{ translations.search.viewComponent[store.lang] }}
+                        <div class="pl-6">Type: <code class="text-app-blue">{{ res.type }}</code></div>
+                        <div class="pl-6">
+                            {{ translations.search.defaultValue[store.lang] }} :
                         </div>
-                    </router-link>
+                        <div class="p-4 rounded">
+                            <CodeParser :content="jsonToJsObject(res.value)" language="javascript" @copy="store.copy()">
+                                <template #color v-if="res.type === 'string' && res.value.includes('#')">
+                                    <div :style="`background:${res.value}`" class="h-10 w-10 rounded-full border border-gray-400 mr-6"/>
+                                </template>
+                            </CodeParser>
+                        </div>
+                        <router-link :to="`/docs#${res.route}`">
+                            <div class="hover:underline dark:text-app-green font-black mt-2 pl-6">
+                            {{ translations.search.viewComponent[store.lang] }}
+                            </div>
+                        </router-link>
                     </div>
     
                 </template>

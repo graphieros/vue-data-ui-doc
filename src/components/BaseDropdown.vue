@@ -117,6 +117,14 @@ const availableOptions = computed(() => {
 
 const searchModel = ref('');
 
+function clearSearch() {
+    searchModel.value = '';
+}
+
+defineExpose({
+    clearSearch
+});
+
 </script>
 
 <template>
