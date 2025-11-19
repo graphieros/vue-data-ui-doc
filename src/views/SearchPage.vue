@@ -275,7 +275,7 @@ function updateSelectedComponent(c) {
                             <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
                         </div>
                         <div>
-                            <span v-if="option.name !== 'Filter by component'" class="text-gray-500 dark:text-app-blue">VueUi</span>
+                            <span v-if="option.name !== 'Filter by component'" :class="selected || current ? 'text-white' : 'text-gray-500 dark:text-app-blue'">VueUi</span>
                             <span v-if="option.name !== 'Filter by component'" :class="selected || current ? `text-white font-inter-medium`: 'dark:text-app-blue-light font-inter-medium'">{{ option.translation.replaceAll('VueUi', '') }}</span>
                             <span v-else :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.translation }}</span>
                         </div>
