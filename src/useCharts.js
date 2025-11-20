@@ -309,7 +309,7 @@ export default function useCharts() {
                 link: '/docs#vue-ui-world',
                 description: translations.value.docs.tooltips.world[store.lang],
                 taxinomy: ['maps'],
-                singleTaxinomy: 'maps'
+                singleTaxinomy: 'maps',
             },
             VueUiXy: {
                 icon: 'chartLine',
@@ -675,9 +675,9 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'proportions', 'hierarchy', 'partToAWhole'],
                 singleTaxinomy: 'hierarchy'
             },
-            VueUiVerticalBar: {
+            VueUiHorizontalBar: {
                 icon: 'chartVerticalBar',
-                link: '/docs#vue-ui-vertical-bar',
+                link: '/docs#vue-ui-horizontal-bar',
                 description: translations.value.docs.tooltips.verticalBar[store.lang],
                 taxinomy: ['comparisons', 'proportions'],
                 singleTaxinomy: 'comparisons'

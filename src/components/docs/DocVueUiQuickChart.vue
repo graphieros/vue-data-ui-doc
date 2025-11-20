@@ -156,6 +156,7 @@ const config = ref({
     donutRadiusRatio: 0.4,
     donutShowTotal: true,
     donutStrokeWidth: 2,
+    donutStroke: '#FFFFFF',
     donutThicknessRatio: 0.18,
     donutTotalLabelFontSize: 24,
     donutTotalLabelOffsetY: 0,
@@ -306,6 +307,7 @@ const darkModeConfig = ref({
     donutRadiusRatio: 0.4,
     donutShowTotal: true,
     donutStrokeWidth: 2,
+    donutStroke: '#2A2A2A',
     donutThicknessRatio: 0.18,
     donutTotalLabelFontSize: 24,
     donutTotalLabelOffsetY: 0,
@@ -919,6 +921,7 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
             <BaseAttr name="donutCurvedMarkers" attr="donutCurvedMarkers" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutShowTotal" attr="donutShowTotal" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutStrokeWidth" attr="donutStrokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="donutStroke" attr="donutStroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutThicknessRatio" attr="donutThicknessRatio" type="range" defaultVal="0.18" :min="0.01" :max="0.4" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutTotalLabelFontSize" attr="donitTotalLabelFontSize" type="number" defaultVal="24" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutTotalLabelText" attr="donutTotalLabelText" type="text" defaultVal="Total" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -398,7 +398,8 @@ const historyPlotConfig = computed(() => {
                     },
                     labels: {
                         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                        offsetY: 6
+                        offsetY: 6,
+                        fontSize: 10
                     }
                 },
                 title: {

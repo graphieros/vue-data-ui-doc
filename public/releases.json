@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.7.8",
+    "date": "2025-11-19",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix wrong offsetX of #plot-comment slots on bar types",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Set donutStroke on themes for donut variant",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.7",
     "date": "2025-11-18",
     "updates": [

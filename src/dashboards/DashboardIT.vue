@@ -42,7 +42,7 @@ const DATASET_XY_IT_SPENDING = computed(() => {
             type: 'bar',
             dataLabels: true,
             comments: ['', '', '', '', '', '', '', '', 'Global financial crisis', '', '', '', '', '', '', '', '', '', '', '', 'Pandemic impact']
-        }
+        },
     ]
 });
 

@@ -152,7 +152,7 @@ const CONFIG_VERTICAL_BAR = computed(() => {
                 layout: {
                     bars: {
                         sort: 'none',
-                        paddingRight: 32,
+                        paddingRight: 64,
                         nameLabels: {
                             fontSize: 18,
                         },
