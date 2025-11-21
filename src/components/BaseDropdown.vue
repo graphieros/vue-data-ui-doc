@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, nextTick, onBeforeUnmount, toRefs } from "vue";
+import { ref, computed, nextTick, onBeforeUnmount, toRefs, onMounted, watch } from "vue";
 import vClickOutside from "../directives/vClickOutside";
 import { SearchIcon, XIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
@@ -40,7 +40,13 @@ const props = defineProps({
 });
 
 const store = useMainStore();
-const translations = computed(() => store.translations)
+const rootInput = ref(null);
+
+function fokkus() {
+    if (rootInput.value) {
+        rootInput.value.focus();
+    }
+}
 
 const emit = defineEmits(["update:value", "change"]);
 
@@ -121,6 +127,11 @@ function clearSearch() {
     searchModel.value = '';
 }
 
+watch(() => isOpen.value, async (v) => {
+    await nextTick()
+    v && fokkus()
+})
+
 defineExpose({
     clearSearch
 });
@@ -160,7 +171,7 @@ defineExpose({
             >
                 <li v-if="search" class="sticky top-0 bg-inherit py-1 shadow-md">
                     <div class="w-full flex flex-row mt-1 mb-1 px-2 gap-2 place-items-center peer relative">
-                        <input class="dd-search-input peer w-full h-[36px] transition-colors" style="padding-left:36px" type="text" v-model="searchModel"/>
+                        <input ref="rootInput" class="dd-search-input peer w-full h-[36px] transition-colors" style="padding-left:36px" type="text" v-model="searchModel"/>
                         <SearchIcon class="peer-focus:text-app-blue peer-hover:text-app-blue absolute left-4 transition-colors"/>
                         <button @click="searchModel = ''" :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`">
                             <XIcon class="text-gray-500 peer-focus:text-app-blue peer-hover:text-app-blue hover:text-app-blue transition-colors"/>
