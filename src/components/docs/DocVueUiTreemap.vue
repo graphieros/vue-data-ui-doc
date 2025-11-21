@@ -134,6 +134,42 @@ const dataset = ref(
                 },
             ]
         },
+        {
+            name: "Parent 4",
+            value: 30,
+            children: [
+                {
+                    name: "P4 C1",
+                    value: 10,
+                },
+                {
+                    name: 'P4 C2',
+                    value: 15
+                },
+                {
+                    name: 'P4 C3',
+                    value: 5,
+                },
+            ]
+        },
+        {
+            name: "Parent 5",
+            value: 30,
+            children: [
+                {
+                    name: "P5 C1",
+                    value: 10,
+                },
+                {
+                    name: 'P5 C2',
+                    value: 15
+                },
+                {
+                    name: 'P5 C3',
+                    value: 5,
+                },
+            ]
+        },
     ]
 )
 
@@ -200,6 +236,16 @@ const config = ref({
                         stroke: "#f3f4f6",
                         strokeWidth: 1,
                         unselectedOpacity: 0.6
+                    },
+                    group: {
+                        stroke: '#A1A1A1',
+                        strokeWidth: 1,
+                        useSeriesBackgroundColor: false,
+                        backgroundLighterRatio: 0.4,
+                        label: {
+                            adaptColorToBackground: false,
+                            color: '#1A1A1A'
+                        }
                     }
                 },
                 labels: {
@@ -353,6 +399,16 @@ const darkModeConfig = ref({
                         stroke: "#2A2A2A",
                         strokeWidth: 1,
                         unselectedOpacity: 0.6
+                    },
+                    group: {
+                        stroke: '#8A8A8A',
+                        strokeWidth: 1,
+                        useSeriesBackgroundColor: false,
+                        backgroundLighterRatio: 0.4,
+                        label: {
+                            adaptColorToBackground: false,
+                            color: '#CCCCCC'
+                        }
                     }
                 },
                 labels: {
@@ -715,6 +771,16 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                             <BaseAttr name="stroke" attr="style.chart.layout.rects.selected.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="strokeWidth" attr="style.chart.layout.rects.selected.strokeWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="unselectedOpacity" attr="style.chart.layout.rects.selected.unselectedOpacity" type="range" defaultVal="0.6" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                        <BaseDetails attr="group" :level="5" title="style.chart.layout.rects.group">
+                            <BaseAttr name="stroke" attr="style.chart.layout.rects.group.stroke" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeWidth" attr="style.chart.layout.rects.group.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="useSeriesBackgroundColor" attr="style.chart.layout.rects.group.useSeriesBackgroundColor" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="backgroundLighterRatio" attr="style.chart.layout.rects.group.backgroundLighterRatio" type="range" defaultVal="0.4" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseDetails attr="label" :level="6" title="styme.chart.layout.rects.group.label">
+                                <BaseAttr name="adaptColorToBackground" attr="style.chart.layout.rects.group.label.adaptColorToBackground" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="color" attr="style.chart.layout.rects.group.label.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            </BaseDetails>
                         </BaseDetails>
                     </BaseDetails>
                 </BaseDetails>

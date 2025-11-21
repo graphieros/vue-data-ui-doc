@@ -3795,6 +3795,42 @@ export default function useExamples() {
                 },
             ]
         },
+        {
+            name: "Parent 4",
+            value: 30,
+            children: [
+                {
+                    name: "P4 C1",
+                    value: 10,
+                },
+                {
+                    name: 'P4 C2',
+                    value: 15
+                },
+                {
+                    name: 'P4 C3',
+                    value: 5,
+                },
+            ]
+        },
+        {
+            name: "Parent 5",
+            value: 30,
+            children: [
+                {
+                    name: "P5 C1",
+                    value: 10,
+                },
+                {
+                    name: 'P5 C2',
+                    value: 15
+                },
+                {
+                    name: 'P5 C3',
+                    value: 5,
+                },
+            ]
+        },
     ]);
 
     const CONFIG_TREEMAP_BASIC = computed(() => {
@@ -3813,6 +3849,9 @@ export default function useExamples() {
                             stroke: colors.value.bg,
                             selected: {
                                 stroke: colors.value.bg
+                            },
+                            group: {
+                                stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
                             }
                         }
                     },
@@ -10389,7 +10428,27 @@ export default function useExamples() {
             // TREEMAP BASIC
             { 
                 dataset: DATASET_TREEMAP_BASIC.value, 
-                config: CONFIG_TREEMAP_BASIC.value,
+                config: {
+                    ...CONFIG_TREEMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_TREEMAP_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_TREEMAP_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                rects: {
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    group: {
+                                        stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
+                                        label: {
+                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 component: 'VueUiTreemap',
                 icon: 'chartTreemap',
                 id: 'treemap-basic',
@@ -10406,7 +10465,7 @@ export default function useExamples() {
                     ar: "مخطط شجري أساسي"
                 }
             },
-            // TREEMAP SPACED
+            // TREEMAP ROUNDED CORNERS
             { 
                 dataset: DATASET_TREEMAP_BASIC.value, 
                 config: {
@@ -10420,6 +10479,12 @@ export default function useExamples() {
                                 rects: {
                                     ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
                                     borderRadius: 24,
+                                    group: {
+                                        strokeWidth: 0,
+                                        label: {
+                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -10427,7 +10492,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiTreemap',
                 icon: 'chartTreemap',
-                id: 'treemap-spaced',
+                id: 'treemap-rounded-corners',
                 link: 'vue-ui-treemap',
                 description: {
                     en: "Rounded corners",
@@ -10457,6 +10522,12 @@ export default function useExamples() {
                                     colorRatio: 0.4,
                                     gradient: {
                                         show: false,
+                                    },
+                                    group: {
+                                        stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
+                                        label: {
+                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                                        }
                                     }
                                 }
                             }
@@ -10478,6 +10549,48 @@ export default function useExamples() {
                     ko: "그라데이션 없음",
                     ar: "بدون تدرج"
                 }
+            },
+            // TREEMAP WITH GROUP BG
+            { 
+                dataset: DATASET_TREEMAP_BASIC.value, 
+                config: {
+                    ...CONFIG_TREEMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_TREEMAP_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_TREEMAP_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                rects: {
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    colorRatio: 0,
+                                    gradient: {
+                                        show: false,
+                                    },
+                                    group: {
+                                        useSeriesBackgroundColor: true,
+                                        backgroundLighterRatio: 0.2,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiTreemap',
+                icon: 'chartTreemap',
+                id: 'treemap-no-gradient-with-group-bg',
+                link: 'vue-ui-treemap',
+                description: {
+                    en: "With group background color",
+                    fr: "Avec couleur d’arrière-plan de groupe",
+                    pt: "Com cor de fundo do grupo",
+                    de: "Mit Gruppenhintergrundfarbe",
+                    zh: "带有分组背景颜色",
+                    jp: "グループの背景色付き",
+                    es: "Con color de fondo del grupo",
+                    ko: "그룹 배경색 포함",
+                    ar: "مع لون خلفية المجموعة"
+                    }
             },
             // BASIC HISTORY PLOT
             { 
