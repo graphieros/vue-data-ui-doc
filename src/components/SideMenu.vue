@@ -862,7 +862,7 @@ const sideMenuItems = computed(() => {
         <ChevronRightIcon class="text-black dark:text-app-blue animate-ping sm:animate-none" />
     </button>
 
-    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_114px)] bg-gray-300 dark:bg-black overflow-y-auto border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-20`">
+    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_114px)] bg-gray-300 dark:bg-black overflow-y-auto overflow-x-hidden border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-20`">
     <template v-if="isOpen">
         <div class="mt-8 flex flex-col gap-3">
             <RouterLink to="/universal-component">

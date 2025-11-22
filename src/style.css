@@ -46,6 +46,18 @@ html.dark {
   background: rgb(26,26,26);
 }
 
+html.dark * {
+  scrollbar-color: #5A5A5A transparent;
+}
+
+html:not(.dark) aside {
+  scrollbar-color: #EFEFEF transparent;
+}
+
+html.dark aside {
+  scrollbar-color: #3A3A3A transparent;
+}
+
 html ::-webkit-scrollbar {
   width: 8px;
 }

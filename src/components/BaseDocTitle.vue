@@ -29,14 +29,15 @@ const imp = useImportMap(props.name);
 </script>
 
 <template>
-    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-gray-400 dark:text-gray-600 mb-2 text-2xl mt-12">
+    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue-mid dark:text-gray-600 mb-2 text-2xl mt-12">
         <VueUiIcon 
             :name="useIconMap(name)" 
-            :stroke="isDarkMode ? '#5f8aee' : '#8A8A8A'" 
-            :strokeWidth="1.5" 
+            :stroke="isDarkMode ? '#5f8aee' : '#3456a3'" 
+            :strokeWidth="isDarkMode ? 1.5 : 1.9"
+            :size="32"
         />
         <BaseTextCopy>
-            <span class="sm:text-4xl" style="letter-spacing: -1px;"><span v-if="!universal">VueUi</span><span class="text-black dark:text-app-blue">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
+            <span class="sm:text-4xl" style="letter-spacing: -1px;"><span v-if="!universal">VueUi</span><span class="text-app-blue-dark-mid dark:text-app-blue">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
         </BaseTextCopy>
     </h1>
     <div v-if="!!imp" class="w-fit mx-auto imp mb-2">
