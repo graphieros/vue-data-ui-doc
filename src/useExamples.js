@@ -1264,7 +1264,7 @@ export default function useExamples() {
                     color: colors.value.textColor,
                     showPercentage: false,
                     borderColor: colors.value.gridStroke,
-                    backgroundOpacity: 30
+                    backgroundOpacity: 70
                 },
                 highlighter: {
                     color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
@@ -1380,7 +1380,7 @@ export default function useExamples() {
                         color: colors.value.textColor,
                         showPercentage: false,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30,
+                        backgroundOpacity: 70,
                         showPercentage: true,
                     },
                     title: {
@@ -1624,7 +1624,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                     lines: {
                         totalValues: {
@@ -1746,7 +1746,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                     bars: {
                         totalValues: {
@@ -1828,7 +1828,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                 }
             }
@@ -2032,7 +2032,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                     title: {
                         text: 'Title',
@@ -2086,7 +2086,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                     title: {
                         text: 'Title',
@@ -2254,7 +2254,7 @@ export default function useExamples() {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     borderColor: colors.value.gridStroke,
-                    backgroundOpacity: 30
+                    backgroundOpacity: 70
                 },
                 title: {
                     text: 'Title',
@@ -2403,7 +2403,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                 }
             }
@@ -2446,7 +2446,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30,
+                        backgroundOpacity: 70,
                     },
                     title: {
                         text: 'Title',
@@ -2757,7 +2757,7 @@ export default function useExamples() {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     borderColor: colors.value.gridStroke,
-                    backgroundOpacity: 30
+                    backgroundOpacity: 70
                 },
             }
         }
@@ -3181,7 +3181,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                 }
             }
@@ -3265,7 +3265,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                 }
             }
@@ -3399,7 +3399,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                 }
             }
@@ -3863,7 +3863,13 @@ export default function useExamples() {
                         subtitle: {
                             text: 'Subtitle',
                         }
-                    }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 70
+                    },
                 }
             }
         }
@@ -3908,7 +3914,7 @@ export default function useExamples() {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                     title: {
                         text: 'Title',
@@ -3995,7 +4001,7 @@ export default function useExamples() {
                         color: colors.value.textColor,
                         showPercentage: false,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 30
+                        backgroundOpacity: 70
                     },
                 }
             }
@@ -4137,7 +4143,7 @@ export default function useExamples() {
                                     borderColor:"#3A3A3A",
                                     borderWidth: 1,
                                     fontSize: 14,
-                                    backgroundOpacity: 30,
+                                    backgroundOpacity: 70,
                                     position: "center",
                                     offsetY: 24,
                                     showTimeLabel: true
