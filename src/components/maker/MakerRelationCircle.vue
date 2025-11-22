@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
@@ -13,6 +13,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -190,11 +192,22 @@ function getRelationNodes(relationIds) {
             </Transition>
         </div>
         
-        <details open>
+        <BaseCard>
+            <details open>
                 <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
                 <div class="flex flex-col gap-2">
-                    <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-                        <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
+                    <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+
+                        <BaseButton
+                            color="error"
+                            :size="6"
+                            fab
+                            @click="deleteDatasetItem(ds.id)"
+                            tw="absolute -top-1 -left-4"
+                        >
+                            <XIcon size="16" />
+                        </BaseButton>
+
                         <table>
                             <tbody>
                                 <tr> 
@@ -223,15 +236,21 @@ function getRelationNodes(relationIds) {
                                         <div class="flex flex-col gap-2 ml-4">
                                             <label class="text-xs">{{ makerTranslations.activeRelations[store.lang] }}</label>
                                             <div class="flex flex-row gap-2 max-w-[800px] flex-wrap">
-                                                <div v-for="relation in getRelationNodes(ds.relations)" class="p-1 pl-4 pr-10 bg-gray-100 dark:bg-[#FFFFFF20] rounded-full relative shadow-md flex flex-row gap-2 place-items-center">
+                                                <div v-for="relation in getRelationNodes(ds.relations)" class="p-1 pl-4 pr-2 bg-gray-100 dark:bg-[#FFFFFF20] rounded-full relative shadow-md flex flex-row gap-2 place-items-center">
                                                     <div class="flex flex-col gap-1">
                                                         <label class="text-xs text-left">{{ makerTranslations.labels.weight[store.lang] }}</label>
                                                         <input class="w-[72px] tabular-nums" type="number" :min="0" v-model="ds.weights[ds.relations.indexOf(relation.id)]" @change="saveDatasetToLocalStorage">
                                                     </div>
                                                     <div>{{ relation.label }}</div>
-                                                    <button class="absolute right-3 top-1/2 -translate-y-1/2" @click="removeRelation(ds, relation.id)">
-                                                        <VueUiIcon name="close" stroke="#ff6400" :size="18"/>
-                                                    </button>
+
+                                                    <BaseButton
+                                                        color="error"
+                                                        :size="4"
+                                                        fab
+                                                        @click="removeRelation(ds, relation.id)"
+                                                    >
+                                                        <XIcon size="12" />
+                                                    </BaseButton>
                                                 </div>
                                             </div>
                                         </div>
@@ -242,11 +261,19 @@ function getRelationNodes(relationIds) {
                     </div>
                 </div>
                 <div class="flex flex-row gap-4 mt-4 mb-6">
-                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                    </Tooltip>
+                    <BaseButton
+                        color="success" 
+                        fab
+                        :size="10"
+                        @click="addDatasetItem"
+                        :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                        tooltip-position="right"
+                    >
+                        <PlusIcon/>
+                    </BaseButton>
                 </div>
             </details>
+        </BaseCard>
         
             <details open class="mt-6" v-if="makerTranslations.labels">
                 <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, AlertTriangleIcon, CheckIcon } from "vue-tabler-icons"
+import { PlusIcon, AlertTriangleIcon, CheckIcon, XIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import Tooltip from "../../components/FlexibleTooltip.vue";
@@ -13,6 +13,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -168,11 +170,22 @@ const finalConfig = computed(() => {
             </Transition>
         </div>
         
-        <details open>
+        <BaseCard>
+            <details open>
                 <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
                 <div class="flex flex-col gap-2">
-                    <div v-for="(ds, i) in currentDataset" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
-                        <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
+                    <div v-for="(ds, i) in currentDataset" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
+
+                        <BaseButton
+                            color="error"
+                            :size="6"
+                            fab
+                            @click="deleteDatasetItem(ds.id)"
+                            tw="absolute -top-1 -left-4"
+                        >
+                            <XIcon size="16" />
+                        </BaseButton>
+
                         <table>
                             <thead>
                                 <tr>
@@ -194,9 +207,14 @@ const finalConfig = computed(() => {
                                         </div>
                                     </td>
                                     <td>
-                                        <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
-                                            <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id})"><PlusIcon/></button>
-                                        </Tooltip>
+                                        <BaseButton 
+                                            color="success" 
+                                            fab
+                                            @click="pushValueToSeries({ value: 0, id: ds.id})"
+                                            :tooltip="translations.maker.tooltips.addData[store.lang]"
+                                        >
+                                            <PlusIcon/>
+                                        </BaseButton>
                                     </td>
                                 </tr>
                             </tbody>
@@ -204,11 +222,19 @@ const finalConfig = computed(() => {
                     </div>
                 </div>
                 <div class="flex flex-row gap-4 mt-4 mb-6">
-                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                    </Tooltip>
+                    <BaseButton
+                        color="success" 
+                        fab
+                        :size="10"
+                        @click="addDatasetItem"
+                        :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                        tooltip-position="right"
+                    >
+                        <PlusIcon/>
+                    </BaseButton>
                 </div>
             </details>
+        </BaseCard>
         
             <details open class="mt-6" v-if="makerTranslations.labels">
                 <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

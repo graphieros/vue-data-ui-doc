@@ -12,6 +12,7 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -120,13 +121,16 @@ const finalConfig = computed(() => {
 
         </div>
     
-        <details open>
-            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-            <div class="flex flex-col gap-2">
-                <textarea class="p-4 bg-white dark:bg-[#2A2A2A] h-[200px] rounded-md" v-model="datasetItems" @change="step += 1"></textarea>
-            </div>
-        </details>
-    
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                <div class="flex flex-col gap-2">
+                    <textarea v-if="isDarkMode" class="p-4 !bg-[#1A1A1A] h-[200px] rounded-md" v-model="datasetItems" @change="step += 1"></textarea>
+                    <textarea v-else class="p-4 !bg-white h-[200px] rounded-md" v-model="datasetItems" @change="step += 1"></textarea>
+                </div>
+            </details>
+        </BaseCard>
+
     
         <details open class="mt-6" v-if="makerTranslations.labels">
             <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

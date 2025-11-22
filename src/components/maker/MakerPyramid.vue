@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
@@ -13,6 +13,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -162,37 +164,56 @@ const finalConfig = computed(() => {
             </Transition>
             </div>
         
-            <details open>
-                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-                <div class="flex flex-col gap-2">
-                    <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
-                        <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.period[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ makerTranslations.labels.age[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ makerTranslations.labels.left[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ makerTranslations.labels.right[store.lang] }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="h-[36px]" type="text" v-model="ds[0]" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="h-[36px]" type="number" v-model="ds[1]" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="h-[36px]" type="number" v-model="ds[2]" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="h-[36px]" type="number" v-model="ds[3]" @change="saveDatasetToLocalStorage"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <BaseCard>
+                <details open>
+                    <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                    <div class="flex flex-col gap-2">
+                        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
+
+                            <BaseButton
+                                color="error"
+                                :size="6"
+                                fab
+                                @click="deleteDatasetItem(i)"
+                                tw="absolute -top-1 -left-4"
+                            >
+                                <XIcon size="16" />
+                            </BaseButton>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.period[store.lang] }}</th>
+                                        <th class="text-left text-xs">{{ makerTranslations.labels.age[store.lang] }}</th>
+                                        <th class="text-left text-xs">{{ makerTranslations.labels.left[store.lang] }}</th>
+                                        <th class="text-left text-xs">{{ makerTranslations.labels.right[store.lang] }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input class="h-[36px]" type="text" v-model="ds[0]" @change="saveDatasetToLocalStorage"></td>
+                                        <td><input class="h-[36px]" type="number" v-model="ds[1]" @change="saveDatasetToLocalStorage"></td>
+                                        <td><input class="h-[36px]" type="number" v-model="ds[2]" @change="saveDatasetToLocalStorage"></td>
+                                        <td><input class="h-[36px]" type="number" v-model="ds[3]" @change="saveDatasetToLocalStorage"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="flex flex-row gap-4 mt-4 mb-6">
-                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                    </Tooltip>
-                </div>
-            </details>
+                    <div class="flex flex-row gap-4 mt-4 mb-6">
+                        <BaseButton 
+                            color="success" 
+                            fab
+                            :size="10"
+                            @click="addDatasetItem"
+                            :tooltip="translations.maker.tooltips.addData[store.lang]"
+                            tooltip-position="right"
+                        >
+                            <PlusIcon/>
+                        </BaseButton>
+                    </div>
+                </details>
+            </BaseCard>
         
             <details open class="mt-6" v-if="makerTranslations.labels">
                 <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { convertArrayToObject, copyComponent } from "./lib.js"
@@ -14,6 +14,8 @@ import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
 import { getPalette } from "vue-data-ui";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -150,48 +152,72 @@ function addDatasetItem() {
             </Transition>
         </div>
 
-        <details open>
-            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-            <div class="flex flex-col gap-2">
-                <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th v-for="(ds, i) in datasetItems.matrix">
-                                    <div class="relative pt-6 flex flex-col">
-                                        <button v-if="datasetItems.matrix.length > 2" tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-0 left-1" /></button>
-                                        <input type="color" v-model="datasetItems.colors[i]" class="w-[100px]"/>
-                                        <input type="text" v-model="datasetItems.labels[i]" class="w-[100px]"/>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(ds, i) in datasetItems.matrix">
-                                <td>
-                                    <div class="flex flex-row">
-                                        <button v-if="datasetItems.matrix.length > 2" tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer mr-3" /></button>
-                                        <input type="color" v-model="datasetItems.colors[i]" class="w-[100px]"/>
-                                        <input type="text" v-model="datasetItems.labels[i]" class="w-[100px]"/>
-                                    </div>
-                                </td>
-                                <td v-for="(cell, j) in ds" :style="{
-                                    background: i === j ? datasetItems.colors[j] : ''
-                                }">
-                                    <input type="number" :min="0" v-model="datasetItems.matrix[i][j]" class="w-[100px]"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="flex flex-row gap-4 mt-7 mb-6">
-                        <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                            <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                        </Tooltip>
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                <div class="flex flex-col gap-2">
+                    <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th v-for="(ds, i) in datasetItems.matrix">
+                                        <div class="relative pt-6 flex flex-col">
+                                            <BaseButton
+                                                color="error"
+                                                :size="4"
+                                                fab
+                                                @click="deleteDatasetItem(i)"
+                                                class="mb-2 ml-1"
+                                            >
+                                                <XIcon size="12" />
+                                            </BaseButton>
+                                            <input type="color" v-model="datasetItems.colors[i]" class="w-[100px]"/>
+                                            <input type="text" v-model="datasetItems.labels[i]" class="w-[100px]"/>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(ds, i) in datasetItems.matrix">
+                                    <td>
+                                        <div class="flex flex-row align-center place-items-center gap-2">
+                                            <BaseButton
+                                                color="error"
+                                                :size="4"
+                                                fab
+                                                @click="deleteDatasetItem(i)"
+                                            >
+                                                <XIcon size="12" />
+                                            </BaseButton>
+                                            <input type="color" v-model="datasetItems.colors[i]" class="w-[100px]"/>
+                                            <input type="text" v-model="datasetItems.labels[i]" class="w-[100px]"/>
+                                        </div>
+                                    </td>
+                                    <td v-for="(cell, j) in ds" :style="{
+                                        background: i === j ? datasetItems.colors[j] : ''
+                                    }">
+                                        <input type="number" :min="0" v-model="datasetItems.matrix[i][j]" class="w-[100px]"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="flex flex-row gap-4 mt-7 mb-6">
+                            <BaseButton
+                                color="success" 
+                                fab
+                                :size="10"
+                                @click="addDatasetItem"
+                                :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                                tooltip-position="right"
+                            >
+                                <PlusIcon/>
+                            </BaseButton>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </details>
+            </details>
+        </BaseCard>
 
         <details open class="mt-6" v-if="makerTranslations.labels">
             <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

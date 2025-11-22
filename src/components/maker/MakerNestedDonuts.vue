@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
@@ -13,6 +13,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -174,63 +176,97 @@ const finalConfig = computed(() => {
             </Transition>
         </div>
     
-        <details open>
-            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-            <div class="flex flex-col gap-2">
-                <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
-                    <button v-if="datasetItems.length > 1" tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                                <th class="text-left text-xs" v-for="(s, j) in ds.series"><span class="pl-2">{{ makerTranslations.labels.series[store.lang] }}</span></th>
-                                <th/>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                                <td v-for="(s, j) in ds.series">
-                                    <div class="flex flex-col gap-2 p-4 mx-2 rounded-md shadow-md relative" :style="`background:${s.color}33`">
-                                        <button v-if="ds.series.length > 1" tabindex="0" @click="deleteSeriesItem(ds.id, s.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 right-1" /></button>
-                                        <div class="flex flex-row place-items-center gap-2">
-                                            <div class="flex flex-col gap-1">
-                                                <label class="text-xs">
-                                                    {{ makerTranslations.labels.color[store.lang] }}
-                                                </label>
-                                                <input type="color" v-model="s.color">
-                                            </div>
-                                            <div class="flex flex-col gap-1">
-                                                <label class="text-xs">
-                                                    {{ makerTranslations.labels.name[store.lang] }}
-                                                </label>
-                                                <input class="h-[36px]" type="text" v-model="s.name">
-                                            </div>
-                                            <div class="flex flex-col gap-1">
-                                                <label class="text-xs">
-                                                    {{ makerTranslations.labels.value[store.lang] }}
-                                                </label>
-                                                <input class="h-[36px] w-[64px]" type="number" v-model="s.values[0]">
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                <div class="flex flex-col gap-2">
+                    <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
+
+                        <BaseButton
+                            color="error"
+                            :size="6"
+                            fab
+                            @click="deleteDatasetItem(ds.id)"
+                            tw="absolute -top-1 -left-4"
+                        >
+                            <XIcon size="16" />
+                        </BaseButton>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                    <th class="text-left text-xs" v-for="(s, j) in ds.series"><span class="pl-2">{{ makerTranslations.labels.series[store.lang] }}</span></th>
+                                    <th/>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                    <td v-for="(s, j) in ds.series">
+                                        <div class="flex flex-col gap-2 p-4 mx-2 rounded-md shadow-md relative" :style="`background:${s.color}33`">
+
+                                            <BaseButton
+                                                color="error"
+                                                :size="4"
+                                                fab
+                                                @click="deleteSeriesItem(ds.id, s.id)"
+                                                tw="absolute -top-2 -left-2"
+                                            >
+                                                <XIcon size="12" />
+                                            </BaseButton> 
+
+                                            <div class="flex flex-row place-items-center gap-2">
+                                                <div class="flex flex-col gap-1">
+                                                    <label class="text-xs">
+                                                        {{ makerTranslations.labels.color[store.lang] }}
+                                                    </label>
+                                                    <input type="color" v-model="s.color">
+                                                </div>
+                                                <div class="flex flex-col gap-1">
+                                                    <label class="text-xs">
+                                                        {{ makerTranslations.labels.name[store.lang] }}
+                                                    </label>
+                                                    <input class="h-[36px]" type="text" v-model="s.name">
+                                                </div>
+                                                <div class="flex flex-col gap-1">
+                                                    <label class="text-xs">
+                                                        {{ makerTranslations.labels.value[store.lang] }}
+                                                    </label>
+                                                    <input class="h-[36px] w-[64px]" type="number" v-model="s.values[0]">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSeriesItem(ds.id)"><PlusIcon/></button>
-                                    </Tooltip>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                    <td>
+                                        <BaseButton
+                                            color="success"
+                                            fab
+                                            @click="addSeriesItem(ds.id)"
+                                            :tooltip="translations.maker.tooltips.addData[store.lang]"
+                                        >
+                                            <PlusIcon/>
+                                        </BaseButton>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-row gap-4 mt-4 mb-6">
-                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                </Tooltip>
-            </div>
-        </details>
+                <div class="flex flex-row gap-4 mt-4 mb-6">
+                    <BaseButton
+                        color="success" 
+                        fab
+                        :size="10"
+                        @click="addDatasetItem"
+                        :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                        tooltip-position="right"
+                    >
+                        <PlusIcon/>
+                    </BaseButton>
+                </div>
+            </details>
+        </BaseCard>
     
         <details open class="mt-6" v-if="makerTranslations.labels">
             <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

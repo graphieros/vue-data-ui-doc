@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
@@ -13,6 +13,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -178,32 +180,41 @@ function deleteSubSerie(parentId, serieId) {
         </Transition>
       </div>
       
-      <details open>
-          <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-          <div class="flex flex-col gap-2">
-              <div class="flex flex-row gap-3 place-items-center">
-                  <label for="stack_mode">Stack mode</label>
-                  <input type="checkbox" v-model="isStack" @change="step += 1">
-              </div>
-              <div v-if="!isStack" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
-                  <table>
-                      <thead>
+    <BaseCard>
+        <details open>
+            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+            <div class="flex flex-col gap-2">
+                <div class="flex flex-row gap-3 place-items-center">
+                    <label for="stack_mode">Stack mode</label>
+                    <input type="checkbox" v-model="isStack" @change="step += 1">
+                </div>
+                <div v-if="!isStack" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
+                    <table>
+                        <thead>
                         <tr>
                             <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.percentage[store.lang] }}</th>
                         </tr>
-                      </thead>
-                      <tbody>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td><input class="w-[82px]" min="0" max="100" type="number" v-model="dataset.percentage" @change="saveDatasetToLocalStorage">%</td>
                         </tr>
-                      </tbody>
-                  </table>
-              </div>
-              <div class="flex flex-col gap-2" v-if="isStack">
-                  <div v-for="(ds, i) in datasetItems" :key="ds.id" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-                      <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                      <table>
-                          <thead>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-col gap-2" v-if="isStack">
+                    <div v-for="(ds, i) in datasetItems" :key="ds.id" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+                        <BaseButton
+                            color="error"
+                            :size="6"
+                            fab
+                            @click="deleteDatasetItem(ds.id)"
+                            tw="absolute -top-1 -left-4"
+                        >
+                            <XIcon size="16" />
+                        </BaseButton>
+                        <table>
+                            <thead>
                             <tr>
                                 <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
                                 <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
@@ -211,15 +222,25 @@ function deleteSubSerie(parentId, serieId) {
                                 <th class="text-left text-xs">{{ makerTranslations.labels.breakdown[store.lang] }}</th>
                                 <th></th>
                             </tr>
-                          </thead>
-                          <tbody>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
                                 <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
                                 <td><input class="h-[36px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
                                 <td class="flex flex-row gap-2 place-items-center">
                                     <div class="flex flex-col gap-2 place-items-center relative" v-for="sub in ds.breakdown" :key="sub.id">
-                                        <button tabindex="0" @click="deleteSubSerie(ds.id, sub.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-1 left-2" /></button>
+                                        <div class="flex flex-row justify-start w-full pl-10">
+                                            <BaseButton
+                                                color="error"
+                                                :size="4"
+                                                fab
+                                                @click="deleteSubSerie(ds.id, sub.id)"
+                                            >
+                                                <XIcon size="12" />
+                                            </BaseButton> 
+                                        </div>
+
                                         <div class="flex flex-row gap-2 place-items-center">
                                             <label class="text-xs">{{ makerTranslations.labels.name[store.lang] }}</label>
                                             <input class="h-[36px]" type="text" v-model="sub.name">
@@ -231,22 +252,35 @@ function deleteSubSerie(parentId, serieId) {
                                     </div>
                                 </td>
                                 <td>
-                                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSubSerie(ds.id)"><PlusIcon/></button>
-                                    </Tooltip>
+                                    <BaseButton
+                                        color="success"
+                                        fab
+                                        @click="addSubSerie(ds.id)"
+                                        :tooltip="translations.maker.tooltips.addData[store.lang]"
+                                    >
+                                        <PlusIcon/>
+                                    </BaseButton>
                                 </td>
                             </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-              <div class="flex flex-row gap-4 mt-4 mb-6">
-                  <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                      <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                  </Tooltip>
-              </div>
-          </div>
-      </details>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-4 mt-4 mb-6" v-if="isStack">
+                <BaseButton
+                    color="success" 
+                    fab
+                    :size="10"
+                    @click="addDatasetItem"
+                    :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                    tooltip-position="right"
+                >
+                    <PlusIcon/>
+                </BaseButton>
+                </div>
+            </div>
+        </details>
+    </BaseCard>
       
       <details open class="mt-6" v-if="makerTranslations.labels">
               <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

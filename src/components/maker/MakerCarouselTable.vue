@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
@@ -14,6 +14,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -157,57 +159,102 @@ const colDeleteIndexIndicator = ref(null);
             </Transition>
         </div>
     
-        <details open>
-            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-            <div class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md overflow-x-auto">
-                {{ makerTranslations.tableHeader[store.lang] }}
-                <table class="table-auto border-collapse border border-slate-500 my-4 w-full">
-                    <thead>
-                        <tr>
-                            <th v-for="(h,i) in currentDataset.head" :class="`relative border border-gray-400 p-2 ${i === colDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]' }`">
-                                <div class="flex flex-col gap-2 place-items-center">
-                                    <label :for="`th_${i}`" class="w-full">th index {{ i }}</label>
-                                    <input :id="`th_${i}`" type="text" v-model="currentDataset.head[i]" class="pl-2 h-[40px]">
-                                </div>
-                                <button tabindex="0" @click="deleteCol(i)" @mouseenter="colDeleteIndexIndicator = i" @mouseleave="colDeleteIndexIndicator = null"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1 z-10"/></button>
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-                <div class="flex flex-row gap-4">
-                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addCol"><PlusIcon/></button>
-                    </Tooltip>
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                <div class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md overflow-x-auto">
+                    {{ makerTranslations.tableHeader[store.lang] }}
+                    <table class="table-auto border-collapse border border-slate-500 my-4 w-full">
+                        <thead>
+                            <tr>
+                                <th v-for="(h,i) in currentDataset.head" :class="`relative border border-gray-400 p-2 ${i === colDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]' }`">
+                                    <div class="flex flex-col gap-2 place-items-center">
+                                        <label :for="`th_${i}`" class="w-full">th index {{ i }}</label>
+                                        <input :id="`th_${i}`" type="text" v-model="currentDataset.head[i]" class="pl-2 h-[40px]">
+                                    </div>
+                                    <div class="absolute top-2 left-2 z-10">
+                                        <BaseButton
+                                            @mouseenter="colDeleteIndexIndicator = i" 
+                                            @mouseleave="colDeleteIndexIndicator = null"
+                                            color="error"
+                                            :size="6"
+                                            fab
+                                            @click="deleteCol(i)"
+                                        >
+                                            <XIcon size="16" />
+                                        </BaseButton>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="flex flex-row gap-4">
+                        <BaseButton
+                            color="success" 
+                            fab
+                            :size="10"
+                            @click="addCol"
+                            :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                            tooltip-position="right"
+                        >
+                            <PlusIcon/>
+                        </BaseButton>
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md mt-4 overflow-x-auto">
-                {{ makerTranslations.tableBody[store.lang] }}
-                <table class="table-auto border-collapse border border-slate-500 my-4 w-full">
-                    <thead>
-                        <tr v-for="(row, i) in currentDataset.body" class="relative">
-                            <td>
-                                <div class="w-full flex place-items-center justify-center">
-                                    <button tabindex="0" @click="deleteRow(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer" @mouseenter="rowDeleteIndexIndicator = i" @mouseleave="rowDeleteIndexIndicator = null" /></button>
-                                </div>
-                            </td>
-                            <td v-for="(td, j) in row" :class="`relative border border-gray-400 p-2 ${ i === rowDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]'}`">
-                                <input v-model="currentDataset.body[i][j]" class="pl-2 h-[40px]">
-                            </td>
-                            <td>
-                                <div class="w-full flex place-items-center justify-center">
-                                    <button tabindex="0" @click="deleteRow(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer" @mouseenter="rowDeleteIndexIndicator = i" @mouseleave="rowDeleteIndexIndicator = null" /></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </thead>
-                </table>
-                <div class="flex flex-row gap-4">
-                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addRow"><PlusIcon/></button>
-                    </Tooltip>
+                <div class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md mt-4 overflow-x-auto">
+                    {{ makerTranslations.tableBody[store.lang] }}
+                    <table class="table-auto border-collapse border border-slate-500 my-4 w-full">
+                        <thead>
+                            <tr v-for="(row, i) in currentDataset.body" class="relative">
+                                <td>
+                                    <div class="w-full flex place-items-center justify-center">
+                                        <BaseButton
+                                            @mouseenter="rowDeleteIndexIndicator = i" 
+                                            @mouseleave="rowDeleteIndexIndicator = null"
+                                            color="error"
+                                            :size="6"
+                                            fab
+                                            @click="deleteRow(i)"
+                                        >
+                                            <XIcon size="16" />
+                                        </BaseButton>
+                                    </div>
+                                </td>
+                                <td v-for="(td, j) in row" :class="`relative border border-gray-400 p-2 ${ i === rowDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]'}`">
+                                    <input v-model="currentDataset.body[i][j]" class="pl-2 h-[40px]">
+                                </td>
+                                <td>
+                                    <div class="w-full flex place-items-center justify-center">
+                                        <BaseButton
+                                            @mouseenter="rowDeleteIndexIndicator = i" 
+                                            @mouseleave="rowDeleteIndexIndicator = null"
+                                            color="error"
+                                            :size="6"
+                                            fab
+                                            @click="deleteRow(i)"
+                                        >
+                                            <XIcon size="16" />
+                                        </BaseButton>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="flex flex-row gap-4">
+                        <BaseButton
+                            color="success" 
+                            fab
+                            :size="10"
+                            @click="addRow"
+                            :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                            tooltip-position="right"
+                        >
+                            <PlusIcon/>
+                        </BaseButton>
+                    </div>
                 </div>
-            </div>
-        </details>
+            </details>
+        </BaseCard>
     
         <details open class="mt-6" v-if="makerTranslations.labels">
             <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

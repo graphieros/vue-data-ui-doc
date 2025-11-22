@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, AlertTriangleIcon } from "vue-tabler-icons"
+import { PlusIcon, AlertTriangleIcon, XIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
@@ -12,6 +12,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseCard from "../BaseCard.vue";
+import BaseButton from "../Base/BaseButton.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -186,59 +188,96 @@ const finalConfig = computed(() => {
             </Transition>
         </div>
 
-        <details open>
-            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-
-            <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 mb-2`" :style="`background:${ds.color}30`">
-                <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="text-left text-xs h-[40px] px-2">Series name</th>
-                            <th class="text-left text-xs h-[40px] px-2">Color</th>
-                            <th class="text-left text-xs h-[40px] px-2">Shape</th>
-                            <th class="text-left text-xs h-[40px] px-2">Standalone</th>
-                            <th class="text-left text-xs h-[40px] px-2">Items</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" v-model="datasetItems[i].name" @change="saveDatasetToLocalStorage"></td>
-                            <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                            <td>
-                                <select v-model="datasetItems[i].shape" @change="saveDatasetToLocalStorage">
-                                    <option>circle</option>
-                                    <option>triangle</option>
-                                    <option>square</option>
-                                    <option>diamond</option>
-                                    <option>pentagon</option>
-                                    <option>hexagon</option>
-                                    <option>star</option>
-                                </select>
-                            </td>
-                            <td><input type="checkbox" v-model="datasetItems[i].standalone"></input></td>
-                            <td class="bg-[#FFFFFF10] p-2 rounded-md flex flex-row place-items-center">
-                                <div v-for="(item, j) in ds.series" class="flex flex-row gap-2 place-items-center justify-center">
-                                    <div class="flex flex-col p-2 bg-[#FFFFFF10]">
-                                        <button tabindex="0" @click="deleteValue(i,j)"><VueUiIcon name="close" stroke="#ff6400" :size="24" class="cursor-pointer" /></button>
-                                        <div class="flex flex-col">
-                                            <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'style.chart.grid.x.timeLabels.values').def[j]" /></label>
-                                            <input @change="saveConfigToLocalStorage" class="w-full" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'style.chart.grid.x.timeLabels.values').def[j]">
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <label :for="`item_${i}_${j}`" class="text-xs mr-2">Value</label>
-                                            <input :id="`item_${i}_${j}`" type="number" v-model="datasetItems[i].series[j]" @change="saveDatasetToLocalStorage">
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+    
+                <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3 mb-2`" :style="`background:${ds.color}30`">
+                    <BaseButton
+                        color="error"
+                        :size="6"
+                        fab
+                        @click="deleteDatasetItem(i)"
+                        tw="absolute -top-1 -left-4"
+                    >
+                        <XIcon size="16" />
+                    </BaseButton>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left text-xs h-[40px] px-2">Series name</th>
+                                <th class="text-left text-xs h-[40px] px-2">Color</th>
+                                <th class="text-left text-xs h-[40px] px-2">Shape</th>
+                                <th class="text-left text-xs h-[40px] px-2">Standalone</th>
+                                <th class="text-left text-xs h-[40px] px-2">Items</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" v-model="datasetItems[i].name" @change="saveDatasetToLocalStorage"></td>
+                                <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                                <td>
+                                    <select v-model="datasetItems[i].shape" @change="saveDatasetToLocalStorage">
+                                        <option>circle</option>
+                                        <option>triangle</option>
+                                        <option>square</option>
+                                        <option>diamond</option>
+                                        <option>pentagon</option>
+                                        <option>hexagon</option>
+                                        <option>star</option>
+                                    </select>
+                                </td>
+                                <td><input type="checkbox" v-model="datasetItems[i].standalone"></input></td>
+                                <td class="bg-[#FFFFFF10] p-2 rounded-md flex flex-row place-items-center">
+                                    <div v-for="(item, j) in ds.series" class="flex flex-row gap-2 place-items-center justify-center">
+                                        <div class="flex flex-col p-2 bg-[#FFFFFF10]">
+                                            <BaseButton
+                                                color="error"
+                                                :size="4"
+                                                fab
+                                                @click="deleteValue(i,j)"
+                                                class="mb-2"
+                                            >
+                                                <XIcon size="12" />
+                                            </BaseButton>
+                                            <div class="flex flex-col">
+                                                <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'style.chart.grid.x.timeLabels.values').def[j]" /></label>
+                                                <input @change="saveConfigToLocalStorage" class="w-full" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'style.chart.grid.x.timeLabels.values').def[j]">
+                                            </div>
+                                            <div class="flex flex-col">
+                                                <label :for="`item_${i}_${j}`" class="text-xs mr-2">Value</label>
+                                                <input :id="`item_${i}_${j}`" type="number" v-model="datasetItems[i].series[j]" @change="saveDatasetToLocalStorage">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button class="h-[40px] w-[40px] ml-2 rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addValue(i, j)"><PlusIcon/></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <button class="mt-6 h-[40px] w-[40px] ml-2 rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSeries()"><PlusIcon/></button>
-        </details>
+                                    <BaseButton
+                                        color="success"
+                                        fab
+                                        @click="addValue(i, j)"
+                                        :tooltip="translations.maker.tooltips.addData[store.lang]"
+                                        class="ml-2"
+                                    >
+                                        <PlusIcon/>
+                                    </BaseButton>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-row gap-4 mt-4 mb-6">
+                    <BaseButton
+                        color="success" 
+                        fab
+                        :size="10"
+                        @click="addSeries"
+                        :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                        tooltip-position="right"
+                    >
+                        <PlusIcon/>
+                    </BaseButton>
+                </div>
+            </details>
+        </BaseCard>
 
         <details open class="mt-12" v-if="makerTranslations.labels">
             <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

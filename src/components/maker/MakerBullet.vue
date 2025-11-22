@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { convertArrayToObject, copyComponent } from "./lib.js"
@@ -13,6 +13,8 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseCard from "../BaseCard.vue";
+import BaseButton from "../Base/BaseButton.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -161,45 +163,62 @@ function randomizeValue() {
                 </BaseMakerChart>
             </Transition>
         </div>
-
-        <details open>
-            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-            <div class="flex flex-col gap-2">
-                <div class="flex flex-row gap-2 place-items-center">
-                    <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="randomizeValue">Random value</button> : {{ dataset.value.toFixed(2) }}
+        
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                <div class="flex flex-col gap-2">
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="randomizeValue">Random value</button> : {{ dataset.value.toFixed(2) }}
+                    </div>
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <label for="target">Target:</label>
+                        <input type="number" v-model="dataset.target" @change="saveDatasetToLocalStorage">
+                    </div>
+                    <div v-for="(ds, i) in dataset.segments" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+                        <BaseButton
+                            color="error"
+                            :size="6"
+                            fab
+                            @click="deleteSegment(i)"
+                            tw="absolute -top-1 -left-4"
+                        >
+                            <XIcon size="16" />
+                        </BaseButton>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.name[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.color[store.lang] }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input class="h-[36px]" type="text" v-model="dataset.segments[i].name" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].from" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].to" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input type="color" v-model="dataset.segments[i].color" @change="saveDatasetToLocalStorage"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="flex flex-row gap-2 place-items-center">
-                    <label for="target">Target:</label>
-                    <input type="number" v-model="dataset.target" @change="saveDatasetToLocalStorage">
+                <div class="flex flex-row gap-4 mt-4 mb-6">
+                    <BaseButton
+                        color="success" 
+                        fab
+                        :size="10"
+                        @click="addSegment"
+                        :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                        tooltip-position="right"
+                    >
+                        <PlusIcon/>
+                    </BaseButton>
                 </div>
-                <div v-for="(ds, i) in dataset.segments" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-                    <button tabindex="0" @click="deleteSegment(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.name[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.color[store.lang] }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input class="h-[36px]" type="text" v-model="dataset.segments[i].name" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].from" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].to" @change="saveDatasetToLocalStorage"></td>
-                                <td><input type="color" v-model="dataset.segments[i].color" @change="saveDatasetToLocalStorage"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="flex flex-row gap-4 mt-4 mb-6">
-                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSegment"><PlusIcon/></button>
-                </Tooltip>
-            </div>
-        </details>
+            </details>
+        </BaseCard>
 
         <details open class="mt-6" v-if="makerTranslations.labels">
                 <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
