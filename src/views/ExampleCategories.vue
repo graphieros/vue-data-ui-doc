@@ -489,6 +489,12 @@ onMounted(() => {
                     </div>
                 </template>
             </BaseDropdown>
+            <div class="w-full flex flex-row gap-2 justify-center place-items-center">
+                <span class="font-inter-medium text-xl text-app-blue-dark-mid dark:text-app-blue">
+                    {{ filteredExamples.length }}
+                </span>
+                <span class="font-inter-medium text-[#4A4A4A] dark:text-[#8A8A8A]">{{ translations.menu.examples[store.lang]  }}</span>
+            </div>
         </div>
         <div v-if="selectedType" class="text-gray-500 mx-auto max-w-[60ch]" dir="auto">{{ selectedType.description[store.lang] }}</div>
     </div>
