@@ -20,6 +20,7 @@ import BaseSuspense from "../components/BaseSuspense.vue";
 import CopyLink from "../components/CopyLink.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
+import { VueUiIcon } from "vue-data-ui";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -539,7 +540,7 @@ onMounted(() => {
                             <div v-if="example.tags && example.tags.length" class="flex flex-row gap-2 place-items-center flex-wrap my-2">
                                 <div>Slots used:</div>
                                 <div v-for="tag in example.tags">
-                                    <div class="text-xs px-2 py-0.5 bg-gradient-to-br from-[#6fe8b2] to-app-green text-black rounded-full">
+                                    <div class="font-inter-medium text-xs px-2 py-0.5 bg-gradient-to-br from-[#6fe8b2] to-app-green text-black rounded-full">
                                         {{ tag }}
                                     </div>
                                 </div>
@@ -565,6 +566,68 @@ onMounted(() => {
                             <template #default>
                                 <div class="w-full p-4 example-wrapper">
                                     <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
+
+                                        <template #group-label="{ group }" v-if="example.component === 'VueUiTreemap' && example.useGroupLabelSlot">
+                                            <div style="width:100%; height:100%; text-align:left; padding: 6px 12px">
+                                                <div class="flex flex-row gap-2 place-items-center align-center">
+                                                    <VueUiIcon v-if="group.name === 'Parent 2'" :stroke="group.color" name="moodLaughing"/>
+                                                    <VueUiIcon v-if="group.name === 'Parent 1'" :stroke="group.color" name="moodNeutral"/>
+                                                    <VueUiIcon v-if="group.name === 'Parent 3'" :stroke="group.color" name="moodSad"/>
+                                                    <VueUiIcon v-if="group.name === 'Parent 4'" :stroke="group.color" name="moodSurprised"/>
+                                                    <VueUiIcon v-if="group.name === 'Parent 5'" :stroke="group.color" name="moodWink"/>
+                                                    {{ group.name }} : <span class="font-inter-medium">{{ group.value }}</span>
+                                                </div>
+                                            </div>
+                                        </template>
+
+                                        <template #rect="{ rect, shouldShow, textColor }" v-if="example.component === 'VueUiTreemap' && example.useRectSlot">
+                                            <div v-if="rect.name.includes('P2')" style="width: 100%; height: 100%; position:relative">
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
+                                                    {{ rect.value }}
+                                                </div>
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
+                                                    {{ rect.name }}
+                                                </div>
+                                                <VueUiIcon style="width:100%; height:100%;" name="moodLaughing" :stroke="textColor"/>
+                                            </div>
+                                            <div v-if="rect.name.includes('P1')" style="width: 100%; height: 100%; position:relative">
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
+                                                    {{ rect.value }}
+                                                </div>
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
+                                                    {{ rect.name }}
+                                                </div>
+                                                <VueUiIcon style="width:100%; height:100%;" name="moodNeutral" :stroke="textColor"/>
+                                            </div>
+                                            <div v-if="rect.name.includes('P3')" style="width: 100%; height: 100%; position:relative">
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
+                                                    {{ rect.value }}
+                                                </div>
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
+                                                    {{ rect.name }}
+                                                </div>
+                                                <VueUiIcon style="width:100%; height:100%;" name="moodSad" :stroke="textColor"/>
+                                            </div>
+                                            <div v-if="rect.name.includes('P4')" style="width: 100%; height: 100%; position:relative">
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
+                                                    {{ rect.value }}
+                                                </div>
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
+                                                    {{ rect.name }}
+                                                </div>
+                                                <VueUiIcon style="width:100%; height:100%;" name="moodSurprised" :stroke="textColor"/>
+                                            </div>
+                                            <div v-if="rect.name.includes('P5')" style="width: 100%; height: 100%; position:relative">
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
+                                                    {{ rect.value }}
+                                                </div>
+                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
+                                                    {{ rect.name }}
+                                                </div>
+                                                <VueUiIcon style="width:100%; height:100%;" name="moodWink" :stroke="textColor"/>
+                                            </div>
+                                        </template>
+
                                         <template #area-gradient="{ series, id }" v-if="example.customGradient">
                                             <linearGradient :id="id" x1="0" x2="0" y1="0" y2="1">
                                                 <stop offset="0%" :stop-color="series.color"/>

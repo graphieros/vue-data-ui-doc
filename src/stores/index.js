@@ -946,6 +946,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    groupLabel: {
+                        en: "Use this slot to customize the group label",
+                        fr: "Utilisez ce slot pour personnaliser le libellé du groupe",
+                        pt: "Use este slot para personalizar o rótulo do grupo",
+                        de: "Verwenden Sie diesen Slot, um die Gruppenbezeichnung anzupassen",
+                        zh: "使用此插槽自定义组标签",
+                        jp: "このスロットを使用してグループラベルをカスタマイズします",
+                        es: "Usa este slot para personalizar la etiqueta del grupo",
+                        ko: "이 슬롯을 사용하여 그룹 레이블을 사용자 지정합니다",
+                        ar: "استخدم هذه الفتحة لتخصيص تسمية المجموعة"
+                    },
                     annotatorActions: {
                         en: 'The content of the annotator menu can be customized using the provided slots.',
                         fr: 'Le contenu du menu d’annotation peut être personnalisé à l’aide des slots fournis.',

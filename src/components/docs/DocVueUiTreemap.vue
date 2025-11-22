@@ -1027,6 +1027,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     :types="[
                         'svg',
                         'rect',
+                        'group-label',
                         'legend',
                         'tooltip-before',
                         'tooltip-after',

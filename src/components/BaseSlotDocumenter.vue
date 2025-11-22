@@ -281,6 +281,19 @@ const items = computed(() => {
     </${props.componentName}>
             `
         },
+        {
+            names: ['group-label'],
+            description: translations.value.slots.groupLabel[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #group-label="{ group }">
+            <div>
+                {{ group.name }}: {{ group.value }}    
+            </div>
+        </template>
+    </${props.componentName}>
+            `
+        },
         { 
             names: ['pattern'], 
             description: translations.value.slots.pattern[store.lang],
@@ -531,7 +544,7 @@ function copyToClipboard(conf) {
         <template v-for="item in items" >
             <div v-if="isVisible(item.names)" class="mb-4">
                 <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">
-                    <div v-for="tag in item.names" class="bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow">
+                    <div v-for="tag in item.names" class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow">
                         #{{ tag === 'annotator-actions' ? 'annotator-action-xxx' : tag === 'user-menu' ? 'menuIcon, #optionXxx'  : tag.replaceAll('_', '').replaceAll('-circlePack', '') }}
                     </div>
                 </div>

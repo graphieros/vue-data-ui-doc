@@ -3936,28 +3936,28 @@ export default function useExamples() {
                     axes: {
                         x: {
                             labels: {
-                                color: colors.value.grey,
+                                color: colors.value.textColor,
                                 prefix: '$'
                             },
                             name: {
                                 text: 'Average revenue',
-                                color: colors.value.grey
+                                color: colors.value.textColor
                             }
                         },
                         y: {
                             labels: {
-                                color: colors.value.grey
+                                color: colors.value.textColor
                             },
                             name: {
                                 text: 'Average satisfaction',
-                                color: colors.value.grey
+                                color: colors.value.textColor
                             }
                         }
                     },
                     plots: {
                         stroke: colors.value.bg,
                         labels: {
-                            color: colors.value.grey
+                            color: colors.value.textColor
                         }
                     }
                 }
@@ -10591,6 +10591,98 @@ export default function useExamples() {
                     ko: "그룹 배경색 포함",
                     ar: "مع لون خلفية المجموعة"
                     }
+            },
+            // TREEMAP #RECT SLOT
+            { 
+                dataset: DATASET_TREEMAP_BASIC.value, 
+                config: {
+                    ...CONFIG_TREEMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_TREEMAP_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_TREEMAP_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                rects: {
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    group: {
+                                        stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
+                                        label: {
+                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiTreemap',
+                icon: 'chartTreemap',
+                id: 'treemap-slot-rect',
+                link: 'vue-ui-treemap',
+                useRectSlot: true,
+                tags: ['#rect'],
+                slot: `<template #rect="{ rect, shouldShow, fontSize, isZoom, textColor }">
+                <div>{{ rect.name }}</div>
+            </template>`,
+                description: {
+                    en: "Using the #rect slot",
+                    fr: "Utiliser le slot #rect",
+                    pt: "Usando o slot #rect",
+                    de: "Den #rect-Slot verwenden",
+                    zh: "使用 #rect 插槽",
+                    jp: "#rect スロットを使用",
+                    es: "Usando el slot #rect",
+                    ko: "#rect 슬롯 사용",
+                    ar: "استخدام فتحة #rect"
+                }
+            },
+            // TREEMAP #GROUP-LABEL SLOT
+            { 
+                dataset: DATASET_TREEMAP_BASIC.value, 
+                config: {
+                    ...CONFIG_TREEMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_TREEMAP_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_TREEMAP_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                rects: {
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    group: {
+                                        stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
+                                        label: {
+                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiTreemap',
+                icon: 'chartTreemap',
+                id: 'treemap-slot-rect',
+                link: 'vue-ui-treemap',
+                useGroupLabelSlot: true,
+                tags: ['#group-label'],
+                slot: `<template #group-label="{ group }">
+                <div>
+                    {{ group.name }}: {{ group.value }}
+                </div>
+            </template>`,
+                description: {
+                    en: "Using the #group slot",
+                    fr: "Utiliser le slot #group",
+                    pt: "Usando o slot #group",
+                    de: "Den #group-Slot verwenden",
+                    zh: "使用 #group 插槽",
+                    jp: "#group スロットを使用",
+                    es: "Usando el slot #group",
+                    ko: "#group 슬롯 사용",
+                    ar: "استخدام فتحة #group"
+                }
             },
             // BASIC HISTORY PLOT
             { 
