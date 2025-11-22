@@ -11,6 +11,9 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import { VueUiDigits } from "vue-data-ui";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -136,27 +139,32 @@ function randomVal() {
                 </Transition>
             </div>
         
-            <details open>
-                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-                <div class="flex flex-col gap-2">
-                    <div  :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF12]`">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.percentage[store.lang] }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="randomVal">Random value</button> : {{ currentDataset.percentage.toFixed(2) }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <BaseCard>
+                <details open>
+                    <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+    
+                    <div class="flex flex-row place-items-center gap-2">
+                        <BaseButton
+                            @click="randomVal"
+                            tw="px-3 py-4 font-inter-medium !rounded-full w-[200px]"
+                        >
+                            Random value
+                        </BaseButton>
+                        <div class="h-[40px]">
+                            <VueUiDigits
+                                :dataset="Number(currentDataset.percentage.toFixed(1))"
+                                :config="{
+                                    backgroundColor: 'transparent',
+                                    digits: {
+                                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                        skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
+                                    }
+                                }"
+                            />
+                        </div>
                     </div>
-                </div>
-            </details>
+                </details>
+            </BaseCard>
         
             <details open class="mt-6" v-if="makerTranslations.labels">
                 <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>

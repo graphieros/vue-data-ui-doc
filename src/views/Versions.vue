@@ -1579,7 +1579,7 @@ table: {
   }
 },
     style: {
-      fontFamily: 'InterMedium',
+      fontFamily: 'Inter',
       chart: {
         color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
         backgroundColor: 'transparent',

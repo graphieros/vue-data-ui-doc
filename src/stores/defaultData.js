@@ -3099,8 +3099,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { name: 'Serie A', value: 55, color: '#1f77b4', children: [], id: '111' },
                     { name: 'Serie B', value: 34, color: '#aec7e8', children: [], id: '222' },
                     { name: 'Serie C', value: 21, color: '#ff7f0e', children: [], id: '333' },
-                    { name: 'Serie D', value: 13, color: '#ffbb78', children: [], id: '333' },
-                    { name: 'Serie E', value: 8, color: '#2ca02c', children: [], id: '333' },
+                    { name: 'Serie D', value: 13, color: '#ffbb78', children: [], id: '444' },
+                    { name: 'Serie E', value: 8, color: '#2ca02c', children: [], id: '555' },
                 ],
                 model: [
                     { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },

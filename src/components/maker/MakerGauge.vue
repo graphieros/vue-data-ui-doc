@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js";
@@ -13,11 +13,14 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
+import BaseButton from "../Base/BaseButton.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
 const clearStep = ref(0);
+const isDarkMode = computed(() => store.isDarkMode);
 
 const { isFixed, step, chart, fixChart } = useMaker();
 
@@ -172,54 +175,92 @@ function randomVal() {
         </Transition>
     </div>
 
-    <details open>
-        <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-row gap-4 place-items-center pl-16">
-                <div class="flex flex-col gap-2">
-                    <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
-                    <tbody>
-                        <tr>
-                            <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="makeRandomVal">Random value</button> : {{ currentValue }}
-                        </tr>
-                    </tbody>
+    <BaseCard>
+        <details open>
+            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+            <div class="flex flex-col gap-2">
+                <div class="flex flex-row gap-4 place-items-center pl-0">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
+                        <tbody>
+                            <tr>
+                                <div class="flex flex-row place-items-center gap-2">
+                                    <BaseButton
+                                        @click="makeRandomVal"
+                                        tw="px-3 py-4 font-inter-medium !rounded-full w-[200px]"
+                                    >
+                                        Random value
+                                    </BaseButton>
+                                    <div class="h-[40px]">
+                                        <VueUiDigits
+                                            :dataset="Number(currentValue.toFixed(1))"
+                                            :config="{
+                                                backgroundColor: 'transparent',
+                                                digits: {
+                                                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                                    skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
+                                                }
+                                            }"
+                                        />
+                                    </div>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
+                <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+    
+                    <BaseButton
+                        color="error"
+                        :size="6"
+                        fab
+                        @click="deleteDatasetItem(ds.id)"
+                        tw="absolute -top-2 -left-4"
+                    >
+                        <XIcon size="16" />
+                    </BaseButton>
+    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.name[store.lang] }}</th>
+                                <th class="text-left text-xs">name offset ratio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="number" v-model="ds.from" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="number" v-model="ds.to" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                <td>
+                                    <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                                        <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ ds.nameOffsetRatio }}</div>
+                                        <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="ds.nameOffsetRatio" :min="0.5" :max="1.3" :step="0.01" class="accent-app-blue z-0" @change="saveDatasetToLocalStorage">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-                <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.name[store.lang] }}</th>
-                            <th class="text-left text-xs">name offset ratio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="number" v-model="ds.from" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="number" v-model="ds.to" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                            <td>
-                                <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                                    <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ ds.nameOffsetRatio }}</div>
-                                    <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="ds.nameOffsetRatio" :min="0.5" :max="1.3" :step="0.01" class="accent-app-blue z-0" @change="saveDatasetToLocalStorage">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="flex flex-row gap-4 mt-4 mb-6">
+                <BaseButton 
+                    color="success" 
+                    fab
+                    :size="10"
+                    @click="addDatasetItem"
+                    :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                    tooltip-position="right"
+                >
+                    <PlusIcon/>
+                </BaseButton>
             </div>
-        </div>
-        <div class="flex flex-row gap-4 mt-4 mb-6">
-            <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-            </Tooltip>
-        </div>
-    </details>
+        </details>
+    </BaseCard>
 
     <details open class="mt-6" v-if="makerTranslations.labels">
         <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
