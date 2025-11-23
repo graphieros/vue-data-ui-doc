@@ -19,6 +19,11 @@
         "link": "/docs#vue-ui-molecule"
       },
       {
+        "component": "VueUiMolecule",
+        "description": "Fix annotator drawing feature not working",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
         "component": "VueUiParallelCoordinatePlot",
         "description": "Fix series shapes not reflected in legend",
         "link": "/docs#vue-ui-parallel-coordinate-plot"
