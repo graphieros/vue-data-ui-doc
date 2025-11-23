@@ -9,7 +9,7 @@ const props = defineProps({
     color: { type: String, default: 'primary' },
     padding: { type: String, default: 'p1'},
     size: { type: Number, default: 6 },
-    tw: { type: String, default: '' }
+    tw: { type: String, default: '' },
 });
 
 const emit = defineEmits('click');

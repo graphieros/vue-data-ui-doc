@@ -288,7 +288,7 @@ const message = ref({
 
             <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
                 <router-link data-cy="link-installation" to="/installation" @mouseenter="closeDocsMenu">
-                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/installation')
+                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/installation')
                                 ? 'text-black dark:text-app-blue hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
@@ -299,7 +299,7 @@ const message = ref({
                 <div class="relative" @keydown.esc="closeDocsMenu">
                     <router-link data-cy="link-docs" to="/docs" @mouseover="openDocMenu" @click.stop="toggleDocMenu" @focus="openDocMenu">
                         <div 
-                            :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/docs')
+                            :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/docs')
                                     ? 'text-black dark:text-app-green hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                     : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                                 }`"
@@ -357,7 +357,7 @@ const message = ref({
                     </Transition>
                 </div>
                 <router-link data-cy="link-docs" to="/chart-builder"  @mouseenter="closeDocsMenu">
-                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
+                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
                                 ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
@@ -366,7 +366,7 @@ const message = ref({
                     </span>
                 </router-link>
                 <router-link data-cy="link-customization" to="/customization"  @mouseenter="closeDocsMenu">
-                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/customization')
+                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/customization')
                                 ? 'text-black dark:text-[#de8b37] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-[#de8b37] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
@@ -375,7 +375,7 @@ const message = ref({
                     </span>
                 </router-link>
                 <router-link to="/examples"  @mouseenter="closeDocsMenu">
-                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/examples')
+                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/examples')
                                 ? 'text-black dark:text-[#de6937] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-[#de6937] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
@@ -384,7 +384,7 @@ const message = ref({
                     </span>
                 </router-link>
                 <router-link data-cy="link-versions" to="/versions"  @mouseenter="closeDocsMenu">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/versions')
+                    <span :class="`font-inter-medium py-1 px-2 rounded-xl ${isSelected('/versions')
                                 ? 'text-black dark:text-[#CCCCCC] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
@@ -392,7 +392,7 @@ const message = ref({
                     </span>
                 </router-link>
                 <router-link data-cy="link-about" to="/about"  @mouseenter="closeDocsMenu">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/about')
+                    <span :class="`font-inter-medium py-1 px-2 rounded-xl ${isSelected('/about')
                                 ? 'text-black dark:text-[#CCCCCC] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">

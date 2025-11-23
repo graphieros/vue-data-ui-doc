@@ -1,18 +1,20 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
-import { VueUiDigits, VueUiKpi, VueUiXyCanvas } from "vue-data-ui";
+import { VueUiKpi, VueUiXyCanvas } from "vue-data-ui";
 import "vue-data-ui/style.css";
 import { useMainStore } from "../stores";
 import { SkullIcon } from "vue-tabler-icons";
+import BaseCard from "../components/BaseCard.vue";
+import BaseDigit from "../components/Base/BaseDigit.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const isRunning = ref(false);
 const RAF = ref(null);
-const delay = ref(60);
+const delay = ref(0);
 const generations = ref(0);
-const SIZE = ref(100);
+const SIZE = ref(200);
 const size = computed(() => ({ x: SIZE.value, y: SIZE.value }));
 const width = computed(() => size.value.x);
 const height = computed(() => size.value.y);
@@ -23,6 +25,22 @@ let off = null;
 let offCtx = null;
 const current = ref(makeCells(width.value, height.value, false));
 const next = ref(makeCells(width.value, height.value, false));
+
+const livingCount = ref(0);
+
+// history of full boards (Uint8Array snapshots) for local oscillator detection
+const HISTORY_DEPTH = 4;
+const history = ref([]);
+
+// per-cell "age" of unchanged alive state
+const STABLE_THRESHOLD = 4; // generations before we consider a cell "stale"
+const stableAge = ref(makeStableAge(width.value, height.value));
+
+// per-cell oscillator mask: 1 = locally period-2 oscillator, 0 = not
+const oscillatorMask = ref(new Uint8Array(width.value * height.value));
+
+const hasStalled = ref(false);
+
 let lastTickTime = 0;
 
 function makeCells(w, h, rand = false) {
@@ -33,6 +51,10 @@ function makeCells(w, h, rand = false) {
         }
     }
     return arr;
+}
+
+function makeStableAge(w, h) {
+    return new Uint16Array(w * h);
 }
 
 function idx(x, y) {
@@ -60,16 +82,70 @@ function neighborsCount(x, y, grid) {
     return sum;
 }
 
+function isBoardEmpty1D(grid) {
+    for (let i = 0; i < grid.length; i += 1) {
+        if (grid[i] !== 0) return false;
+    }
+    return true;
+}
+
+function recordHistory() {
+    if (history.value.length >= HISTORY_DEPTH) {
+        history.value.shift();
+    }
+    history.value.push(current.value.slice());
+}
+
+// if last 4 states are 0,1,0,1 or 1,0,1,0 => mark as oscillator.
+function computeOscillatorMask() {
+    const hist = history.value;
+    const len = hist.length;
+    const cells = current.value.length;
+
+    let mask = oscillatorMask.value;
+    if (mask.length !== cells) {
+        mask = new Uint8Array(cells);
+        oscillatorMask.value = mask;
+    } else {
+        mask.fill(0);
+    }
+
+    if (len < 4) return;
+
+    const g0 = hist[len - 4];
+    const g1 = hist[len - 3];
+    const g2 = hist[len - 2];
+    const g3 = hist[len - 1];
+
+    for (let i = 0; i < cells; i += 1) {
+        const a = g0[i],
+            b = g1[i],
+            c = g2[i],
+            d = g3[i];
+        if (
+            (a === 0 && b === 1 && c === 0 && d === 1) ||
+            (a === 1 && b === 0 && c === 1 && d === 0)
+        ) {
+            mask[i] = 1;
+        }
+    }
+}
+
 function step() {
     const w = width.value;
     const h = height.value;
     const src = current.value;
     let dst = next.value;
-    let living = 0;
 
     if (dst.length !== src.length) {
         next.value = makeCells(w, h, false);
         dst = next.value;
+    }
+
+    let ageArr = stableAge.value;
+    if (ageArr.length !== src.length) {
+        ageArr = makeStableAge(w, h);
+        stableAge.value = ageArr;
     }
 
     for (let y = 0; y < h; y += 1) {
@@ -78,37 +154,69 @@ function step() {
             const i = rowBase + x;
             const live = src[i];
             const n = neighborsCount(x, y, src);
-            dst[i] = (live ? n === 2 || n === 3 : n === 3) ? 1 : 0;
-            living += dst[i];
+
+            const newVal = (live ? n === 2 || n === 3 : n === 3) ? 1 : 0;
+            dst[i] = newVal;
+
+            if (newVal === 1) {
+                if (newVal === live) {
+                    // alive and unchanged
+                    ageArr[i] = Math.min(ageArr[i] + 1, 65535);
+                } else {
+                    // newly alive or revived
+                    ageArr[i] = 0;
+                }
+            } else {
+                // dead cell => no age
+                ageArr[i] = 0;
+            }
         }
     }
 
     current.value = dst;
     next.value = src;
     generations.value += 1;
-    livingCount.value = living;
+
+    recordHistory();
+    computeOscillatorMask();
+
+    const grid = current.value;
+    const osc = oscillatorMask.value;
+    let dynamicLiving = 0;
+
+    for (let i = 0; i < grid.length; i += 1) {
+        if (grid[i] === 1 && ageArr[i] < STABLE_THRESHOLD && !osc[i]) {
+            dynamicLiving += 1;
+        }
+    }
+
+    livingCount.value = dynamicLiving;
     dataset.value.push({
         period: generations.value,
-        value: living,
+        value: dynamicLiving,
     });
+
+    if (dynamicLiving === 0 || isBoardEmpty1D(grid)) {
+        hasStalled.value = true;
+        pause();
+    } else {
+        hasStalled.value = false;
+    }
 }
 
 function start() {
     if (isRunning.value) return;
 
-    // If board is stalled or empty, seed with a fresh random state
     if (hasStalled.value || livingCount.value === 0) {
         hasStalled.value = false;
-        makeRand(); // pauses, seeds random, draws, clears chart
+        makeRand();
 
-        // ensure livingCount reflects the new seed immediately
         let sum = 0;
         const grid = current.value;
-        for (let i = 0; i < grid.length; i++) sum += grid[i];
+        for (let i = 0; i < grid.length; i += 1) sum += grid[i];
         livingCount.value = sum;
     }
 
-    // Start the loop from current (hand-drawn or random) state
     isRunning.value = true;
     lastTickTime = 0;
     RAF.value = requestAnimationFrame(loop);
@@ -128,17 +236,27 @@ function clearChart() {
 function reset() {
     pause();
     current.value = makeCells(width.value, height.value, false);
+    next.value = makeCells(width.value, height.value, false);
+    stableAge.value = makeStableAge(width.value, height.value);
+    oscillatorMask.value = new Uint8Array(width.value * height.value);
     draw();
     clearChart();
     livingCount.value = 0;
+    history.value = [];
+    hasStalled.value = false;
 }
 
 function makeRand() {
     pause();
     current.value = makeCells(width.value, height.value, true);
+    next.value = makeCells(width.value, height.value, false);
+    stableAge.value = makeStableAge(width.value, height.value);
+    oscillatorMask.value = new Uint8Array(width.value * height.value);
     draw();
     clearChart();
     recomputeLivingCount();
+    history.value = [];
+    hasStalled.value = false;
 }
 
 function setCellByClientPos(clientX, clientY) {
@@ -159,6 +277,11 @@ function setCellByClientPos(clientX, clientY) {
     current.value = clone;
     livingCount.value += nextVal - prev;
 
+    history.value = [];
+    hasStalled.value = false;
+    stableAge.value[i] = 0;
+    oscillatorMask.value[i] = 0;
+
     draw();
 }
 
@@ -178,15 +301,15 @@ const livingColor = computed(() => {
             r: 131,
             g: 164,
             b: 242,
-            a: 255
-        }
+            a: 255,
+        };
     } else {
         return {
             r: 49,
             g: 64,
             b: 99,
-            a: 255
-        }
+            a: 255,
+        };
     }
 });
 
@@ -196,24 +319,22 @@ const deadColor = computed(() => {
             r: 42,
             g: 42,
             b: 42,
-            a: 255
-        }
+            a: 255,
+        };
     } else {
         return {
             r: 255,
             g: 255,
             b: 255,
-            a: 255
-        }
+            a: 255,
+        };
     }
-})
-
-const livingCount = ref(0);
+});
 
 function recomputeLivingCount() {
     const grid = current.value;
     let sum = 0;
-    for (let i = 0; i < grid.length; i++) sum += grid[i];
+    for (let i = 0; i < grid.length; i += 1) sum += grid[i];
     livingCount.value = sum;
 }
 
@@ -257,7 +378,6 @@ function draw() {
     ctx.drawImage(off, 0, 0, cssW, cssH);
     ctx.restore();
 }
-
 
 function initCanvases() {
     const el = canvasEl.value;
@@ -313,8 +433,18 @@ onMounted(() => {
 watch([width, height], () => {
     pause();
     current.value = makeCells(width.value, height.value, false);
+    next.value = makeCells(width.value, height.value, false);
+    stableAge.value = makeStableAge(width.value, height.value);
+    oscillatorMask.value = new Uint8Array(width.value * height.value);
     draw();
     livingCount.value = 0;
+    history.value = [];
+    hasStalled.value = false;
+});
+
+const max = computed(() => {
+    if (!dataset.value.length) return 100;
+    return Math.max(...dataset.value.map((d) => d.value));
 });
 
 const chartConfig = computed(() => {
@@ -373,8 +503,8 @@ const chartConfig = computed(() => {
         style: {
             fontFamily: "Inter",
             chart: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                color: isDarkMode.value ? '#8A8A8A' : '#4A4A4A',
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                color: isDarkMode.value ? "#8A8A8A" : "#4A4A4A",
                 aspectRatio: "16 / 9",
                 stacked: false,
                 stackGap: 20,
@@ -389,16 +519,27 @@ const chartConfig = computed(() => {
                     show: false,
                 },
                 zoom: { show: false },
+                title: {
+                    text:
+                        (hasStalled.value || !isRunning.value) && dataset.value.length > 0
+                            ? "Full history"
+                            : dataset.value.length === 0
+                                ? "Click start to play"
+                                : "Running...",
+                    color: isDarkMode.value ? "#8A8A8A" : "#4A4A4A",
+                    textAlign: "left",
+                    paddingLeft: 68,
+                },
                 grid: {
                     y: {
                         showAxis: true,
-                        axisColor: isDarkMode.value ? '#5A5A5A' : '#4A4A4A',
+                        axisColor: isDarkMode.value ? "#5A5A5A" : "#4A4A4A",
                         axisThickness: 2,
                         axisName: "Live cells",
                         axisLabels: {
                             show: true,
                             fontSizeRatio: 1,
-                            color: isDarkMode.value ? '#6A6A6A' :  '#4A4A4A',
+                            color: isDarkMode.value ? "#6A6A6A" : "#4A4A4A",
                             offsetX: 0,
                             rounding: 1,
                             prefix: "",
@@ -407,19 +548,19 @@ const chartConfig = computed(() => {
                         },
                         verticalLines: {
                             show: true,
-                            color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                            color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                             hideUnderXLength: 20,
                             position: "middle",
                         },
                     },
                     x: {
                         showAxis: true,
-                        axisColor: isDarkMode.value ? '#5A5A5A' : '#4A4A4A',
+                        axisColor: isDarkMode.value ? "#5A5A5A" : "#4A4A4A",
                         axisThickness: 2,
                         axisName: "Iterations",
                         horizontalLines: {
                             show: true,
-                            color: isDarkMode.value ? '#3A3A3A' : '#CCCCCC',
+                            color: isDarkMode.value ? "#3A3A3A" : "#CCCCCC",
                             alternate: true,
                             opacity: 20,
                         },
@@ -444,12 +585,16 @@ const chartConfig = computed(() => {
                             },
                             rotation: 0,
                             offsetY: 30,
-                            color: isDarkMode.value ? '#6A6A6A' :  '#4A4A4A',
+                            color: isDarkMode.value ? "#6A6A6A" : "#4A4A4A",
                             modulo: 12,
                             bold: false,
                         },
                     },
-                    zeroLine: { show: true, color: isDarkMode.value ? '#5A5A5A' : '#4A4A4A', dashed: true },
+                    zeroLine: {
+                        show: true,
+                        color: isDarkMode.value ? "#5A5A5A" : "#4A4A4A",
+                        dashed: true,
+                    },
                 },
                 line: { plots: { show: false, radiusRatio: 1 } },
                 bar: { gradient: { show: true } },
@@ -472,7 +617,7 @@ const kpiConfig = computed(() => {
             debug: false,
             animationFrames: 60,
             animationValueStart: 0,
-            backgroundColor: "#2A2A2A",
+            backgroundColor: "transparent",
             fontFamily: "inherit",
             layoutClass: "w-[150px]",
             prefix: "",
@@ -502,7 +647,7 @@ const kpiConfig = computed(() => {
             debug: false,
             animationFrames: 60,
             animationValueStart: 0,
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "transparent",
             fontFamily: "inherit",
             layoutClass: "w-[150px]",
             prefix: "",
@@ -529,96 +674,87 @@ const kpiConfig = computed(() => {
         };
     }
 });
-
-const digitsConfig = computed(() => {
-    if (isDarkMode.value) {
-        return {"height":"20px","width":null,"backgroundColor":"#1A1A1A","digits":{"color":"#83a4f2","skeletonColor":"#3A3A3A"}}
-    } else {
-        return {"height":"20px","width":null,"backgroundColor":"#FFFFFF","digits":{"color":"#314063","skeletonColor":"#E1E5E8"}}
-    }
-})
-
-
-function lastNIdentical(arr, n) {
-    if (n <= 0 || arr.length < n) return false;
-    const last = arr[arr.length - 1];
-    for (let i = arr.length - n; i < arr.length; i++) {
-        if (arr[i] !== last) return false;
-    }
-    return true;
-}
-
-const vals = computed(() => dataset.value.map(d => d.value))
-
-const isFlat = computed(() => {
-    if (vals.value.length < 30) return false;
-    return lastNIdentical(vals.value, 30)
-});
-
-
-const hasStalled = ref(false);
-watch(() => isFlat.value, (bool) => {
-    bool && pause();
-    hasStalled.value = isFlat.value;
-});
-
 </script>
 
 <template>
-    <h1 class="text-center mt-12 text-2xl">Conway's Game of Life</h1>
-    <div
-        class="flex flex-row align-center gap-4 flex-wrap justify-center max-w-[1200px] mx-auto p-2 bg-white dark:bg-[#2A2A2A] mt-12">
-        <VueUiKpi :dataset="generations" :config="kpiConfig"/>
-        <VueUiKpi :dataset="livingCount" :config="{
-            ...kpiConfig,
-            title: 'Cell count'
-        }"/>
+    <h1 class="font-inter-medium text-center mt-12 text-2xl mb-6">
+        Conway's Game of Life
+    </h1>
+    <BaseCard class="max-w-[1200px] mx-auto">
+        <div
+            class="flex flex-row align-center gap-4 flex-wrap justify-center max-w-[1200px] mx-auto p-2 bg-gray-100 dark:bg-[#2A2A2A]">
+            <VueUiKpi :dataset="generations" :config="kpiConfig" />
+            <VueUiKpi :dataset="livingCount" :config="{
+                ...kpiConfig,
+                title: 'Cell count',
+            }" />
 
-        <div class="flex flex-row align-center gap-4 self-center">
-            <button class="py-2 px-4 h-[40px] bg-[#FFFFFF10] disabled:opacity-45" @click="start" :disabled="isRunning">START</button>
-            <button class="py-2 px-4 h-[40px] bg-[#FFFFFF10]" @click="pause">PAUSE</button>
-            <button class="py-2 px-4 h-[40px] bg-[#FFFFFF10]" @click="reset">RESET</button>
-            <button class="py-2 px-4 h-[40px] bg-[#FFFFFF10]" @click="makeRand">RAND</button>
+            <div class="flex flex-row align-center gap-4 self-center">
+                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10] disabled:opacity-45"
+                    @click="start" :disabled="isRunning">
+                    START
+                </button>
+                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]" @click="pause">
+                    PAUSE
+                </button>
+                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]" @click="reset">
+                    RESET
+                </button>
+                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]" @click="makeRand">
+                    RAND
+                </button>
+            </div>
+
+            <label class="py-2 flex flex-col gap-2">
+                Delay (ms):
+                <input type="range" class="accent-app-blue" min="0" max="200" v-model.number="delay" />
+                <BaseDigit :value="delay" />
+            </label>
+
+            <label class="py-2 flex flex-col gap-2">
+                Size:
+                <input type="range" class="accent-app-blue" :min="100" :max="300" :step="10" v-model.number="SIZE" />
+                <BaseDigit :value="SIZE" />
+            </label>
         </div>
 
-        <label class="py-2 flex flex-col gap-2">
-            Delay (ms):
-            <input type="range" class="accent-app-blue" min="0" max="200" v-model.number="delay" />
-            <VueUiDigits :dataset="delay" :config="digitsConfig"/>
-        </label>
-
-        <label class="py-2 flex flex-col gap-2">
-            Size:
-            <input type="range" class="accent-app-blue" :min="100" :max="300" :step="10" v-model.number="SIZE" />
-            <VueUiDigits :dataset="SIZE" :config="digitsConfig"/>
-        </label>
-    </div>
-
-    <div class="flex flex-row max-w-[1200px] mx-auto relative p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A]">
-        <canvas ref="canvasEl" class="w-full max-w-[400px] border border-[#CCCCCC] dark:border-[#4A4A4A]" />
-        <div class="w-full">
-            <VueUiXyCanvas :dataset="[
-                {
-                    name: 'Generations',
-                    series: dataset.map((d) => d.value),
-                    type: 'line',
-                    smooth: true,
-                    dataLabels: false,
-                    color: '#5f8aee',
-                    useArea: true
+        <div class="flex flex-row max-w-[1200px] mx-auto relative p-4 bg-gray-100 dark:bg-[#2A2A2A]">
+            <canvas ref="canvasEl"
+                class="w-full max-w-[400px] border border-[#CCCCCC] dark:border-[#4A4A4A] rounded-l-lg p-4 bg-white dark:bg-[#2A2A2A]" />
+            <div
+                class="bg-white dark:bg-[#2A2A2A] w-full border border-[#CCCCCC] dark:border-[#4A4A4A] p-2 rounded-r-lg">
+                <VueUiXyCanvas :dataset="[
+                    {
+                        name: 'Generations',
+                        series:
+                            hasStalled || !isRunning
+                                ? dataset.map((d) => d.value)
+                                : dataset.map((d) => d.value).slice(-301),
+                        type: 'line',
+                        smooth: true,
+                        dataLabels: false,
+                        color: '#5f8aee',
+                        useArea: true,
+                    },
+                ]" :config="{
+            ...chartConfig,
+            style: {
+                ...chartConfig.style,
+                chart: {
+                    ...chartConfig.style.chart,
+                    scale: {
+                        ...chartConfig.style.chart.scale,
+                        max,
+                    },
                 },
-                {
-                    name: 'Generations',
-                    series: dataset.map((d) => d.value),
-                    type: 'line',
-                    smooth: true,
-                    dataLabels: false,
-                    color: '#5f8aee',
-                },
-            ]" :config="chartConfig" />
+            },
+        }" />
+            </div>
+            <SkullIcon v-if="hasStalled"
+                class="animate-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center"
+                size="64" />
         </div>
-        <SkullIcon v-if="hasStalled" class="animate-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center" size="64"/>
-    </div>
+    </BaseCard>
 </template>
 
 <style scoped>
