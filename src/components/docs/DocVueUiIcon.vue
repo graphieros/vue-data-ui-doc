@@ -49,6 +49,8 @@ const icons = ref([
     "tableOpen",
     "tooltip",
     "unstack",
+    "zoomLock",
+    "zoomUnlock"
 ]);
 
 const specialIcons = ref([
@@ -153,6 +155,8 @@ const specialIcons = ref([
     "lambda",
     "lap",
     "legend",
+    "lock",
+    "unlock",
     "minimap",
     "moodEmbarrassed",
     "moodFlat",

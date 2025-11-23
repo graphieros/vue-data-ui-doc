@@ -84,7 +84,12 @@ const cb = ref({
         ${TAB.value}`,
     svg: `svg: ({ dataUrl, blob, text, url }) => {
             ${TAB.value}console.log({ dataUrl, blob, text, url });
-        ${TAB.value}},`,
+        ${TAB.value}},
+        ${TAB.value}`,
+    zoom: `zoom: () => {
+            ${TAB.value}// Do something
+        ${TAB.value}},
+        ${TAB.value}`,
 })
 
 const cbs = computed(() => {

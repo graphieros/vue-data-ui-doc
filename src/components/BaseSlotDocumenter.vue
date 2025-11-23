@@ -481,6 +481,9 @@ const items = computed(() => {
         <template #optionAnnotator="{ isAnnotator }">
             <MyPenIcon/>
         </template>
+        <template #optionZoom="{ isZoomLocked }">
+            <MyZoomIcon />
+        </template>
     </${props.componentName}>
             `
         },

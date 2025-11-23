@@ -2457,6 +2457,9 @@ export default function useExamples() {
                             text: 'Subtitle'
                         }
                     },
+                    zoom: {
+                        show: false
+                    }
                 }
             }
         }

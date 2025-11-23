@@ -1,5 +1,36 @@
 [
   {
+    "version": "v 3.7.10",
+    "date": "2025-11-23",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Add zoom lock user option",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Add zoom lock user option",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Fix links disappearing when config changes dynamically",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Fix series shapes not reflected in legend",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add new icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.9",
     "date": "2025-11-21",
     "updates": [

@@ -1596,6 +1596,9 @@ table: {
           color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
           backgroundOpacity: 0
         },
+        zoom: {
+          show: false,
+        }
       }
     }
   }
