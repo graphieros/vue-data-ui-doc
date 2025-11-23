@@ -21,6 +21,7 @@ import CopyLink from "../components/CopyLink.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import { VueUiIcon } from "vue-data-ui";
+import BaseDigit from "../components/Base/BaseDigit.vue";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -504,7 +505,7 @@ onMounted(() => {
     <div class="min-h-[1000px]">
         <!-- EXAMPLES DISPLAY -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 sm:mt-6">
-            <div v-for="example in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full" :id="example.id">
+            <div v-for="(example, i) in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full" :id="example.id">
                 <BaseLazy>
                     <template #placeholder>
                         <BaseCard>
@@ -541,7 +542,12 @@ onMounted(() => {
                                     :link="`https://vue-data-ui.graphieros.com/examples/categories?next=${example.id}#${example.link}`"
                                 />
                             </div>
-                            <p class="text-sm dark:text-[#9dcbeb]">{{  example.description[store.lang] }}</p>
+                            
+                            <div class="flex flex-row gap-1 place-items-center align-center">
+                                <BaseDigit :value="i+1" :color="isDarkMode ? '#579ecf' : undefined"/>
+                                <div class="text-gray-500 dark:text-[#6A6A6A]">•</div>
+                                <p class="dark:text-[#9dcbeb]">{{  example.description[store.lang] }}</p>
+                            </div>
         
                             <div v-if="example.tags && example.tags.length" class="flex flex-row gap-2 place-items-center flex-wrap my-2">
                                 <div>Slots used:</div>
