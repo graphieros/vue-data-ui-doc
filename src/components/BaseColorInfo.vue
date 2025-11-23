@@ -7,6 +7,10 @@ const props = defineProps({
     color: {
         type: String,
         default: '#FFFFFF'
+    },
+    tooltipPosition: {
+        type: String,
+        default: 'top'
     }
 })
 
@@ -25,7 +29,7 @@ function copyColor() {
 
 <template>
     <span class="relative" @click="copyColor">
-        <FlexibleTooltip position="top" :content="color" width="w-fit min-w-[80px]" delay="delay-150" >
+        <FlexibleTooltip :position="tooltipPosition" :content="color" width="w-fit min-w-[80px]" delay="delay-150" >
             <template #before>
                 <CopyIcon/>
             </template>

@@ -76,7 +76,7 @@ const props = defineProps({
     indent: {
         type: Boolean,
         default: false,
-    }
+    },
 })
 
 const emit = defineEmits(['change'])
@@ -163,51 +163,66 @@ const translatedTooltip = computed(() => {
 <template>
     <div :class="`relative min-h-[32px] py-1 ${indent ? 'ml-6' : ''}`" @mouseenter="isSelected=true" @mouseout="isSelected=false">
         <FlexibleTooltip position="top" :mute="!translatedTooltip" :content="translatedTooltip" width="min-w-[100px] max-w-[300px]" opacity="group-hover:opacity-[0.9]">
-            <label :for="`i_${id}`" :id="id" class="pr-1">{{ name }}:</label>
-            <span v-if="inactive" class="ml-1">
-                {{ defaultVal }}
-            </span>
-            <template v-else>
-                <template v-if="type === 'number'">
-                    <BaseNumberInput v-model:value="nestedAttribute" :min="min" :max="max" :step="step" @change="emit('change')" :labelId="id" :id="`i_${id}`"/>
-                </template>
-                <template v-if="type === 'text'">
-                    <input type="text" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
-                </template>
-                <template v-if="type === 'color'">
-                    <BaseColorInput v-if="rgba" v-model:value="nestedAttribute" @change="emit('change')" :labelId="id" :id="`i_${id}`"/>
-                    <input :aria-labelledby="id" v-else type="color" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
-                </template>
-                <template v-if="type === 'range'">
-                    <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                        <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ nestedAttribute }}</div>
-                        <input :id="`i_${id}`" :aria-labelledby="id" :title="nestedAttribute" type="range" v-model="nestedAttribute" :min="min" :max="max" :step="step" class="accent-app-blue z-10" @change="emit('change')">
-                    </div>
-                </template>
-                <template v-if="type === 'checkbox'">
-                    <input
-                        :aria-labelledby="id" 
-                        :id="`i_${id}`"
-                        type="checkbox" 
-                        :checked="nestedAttribute === true" 
-                        @change="nestedAttribute = $event.target.checked; emit('change')"
-                        class="accent-app-blue"
-                    />
-                </template>
-                <template v-if="type === 'select'">
-                    <select :value="nestedAttribute" @change="updateSelectValue" class="h-[28px]" :id="`i_${id}`" :aria-labelledby="id">
-                        <option v-for="o in options" :key="o" :value="o">{{ o }}</option>
-                    </select>
-                </template>
-                <span dir="auto" class="pl-2 text-gray-600 dark:text-gray-400"> 
-                    <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span> 
-                    <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
-                    <span class="ml-4">
-                        <BaseColorInfo v-if="type === 'color'" :color="defaultVal"/>
-                    </span>
+            <div class="flex flex-row flex-wrap gap-2 align-center place-items-center">
+                <label :for="`i_${id}`" :id="id" class="pr-1">{{ name }}:</label>
+                <span v-if="inactive" class="ml-1">
+                    {{ defaultVal }}
                 </span>
-            </template>
-            <BaseComment v-if="comment">{{ comment }}</BaseComment>
+                <template v-else>
+                    <template v-if="type === 'number'">
+                        <BaseNumberInput v-model:value="nestedAttribute" :min="min" :max="max" :step="step" @change="emit('change')" :labelId="id" :id="`i_${id}`"/>
+                    </template>
+                    <template v-if="type === 'text'">
+                        <input type="text" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
+                    </template>
+                    <template v-if="type === 'color'">
+                        <BaseColorInput v-if="rgba" v-model:value="nestedAttribute" @change="emit('change')" :labelId="id" :id="`i_${id}`">
+                            <template #before>
+                                <BaseComment v-if="comment">{{ comment }}</BaseComment>
+                            </template>
+                            <template #after>
+                                <div class="pl-2 text-gray-600 dark:text-gray-400 flex flex-row place-items-center align-center" dir="auto">
+                                    <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span> 
+                                    <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
+                                    <span class="ml-4">
+                                        <BaseColorInfo v-if="type === 'color'" :color="defaultVal" tooltipPosition="right"/>
+                                    </span>
+                                </div>
+                            </template>
+                        </BaseColorInput>
+                        <input :aria-labelledby="id" v-else type="color" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
+                    </template>
+                    <template v-if="type === 'range'">
+                        <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                            <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ nestedAttribute }}</div>
+                            <input :id="`i_${id}`" :aria-labelledby="id" :title="nestedAttribute" type="range" v-model="nestedAttribute" :min="min" :max="max" :step="step" class="accent-app-blue z-10" @change="emit('change')">
+                        </div>
+                    </template>
+                    <template v-if="type === 'checkbox'">
+                        <input
+                            :aria-labelledby="id" 
+                            :id="`i_${id}`"
+                            type="checkbox" 
+                            :checked="nestedAttribute === true" 
+                            @change="nestedAttribute = $event.target.checked; emit('change')"
+                            class="accent-app-blue"
+                        />
+                    </template>
+                    <template v-if="type === 'select'">
+                        <select :value="nestedAttribute" @change="updateSelectValue" class="h-[28px]" :id="`i_${id}`" :aria-labelledby="id">
+                            <option v-for="o in options" :key="o" :value="o">{{ o }}</option>
+                        </select>
+                    </template>
+                    <span dir="auto" class="pl-2 text-gray-600 dark:text-gray-400" v-if="!rgba"> 
+                        <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span> 
+                        <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
+                        <span class="ml-4">
+                            <BaseColorInfo v-if="type === 'color'" :color="defaultVal"/>
+                        </span>
+                    </span>
+                </template>
+            </div>
+            <BaseComment v-if="comment && !rgba">{{ comment }}</BaseComment>
             <Transition name="fade">
                 <button
                     class="h-[24px] w-[24px] absolute flex -left-[26px] top-1/2 -translate-y-1/2 place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white dark:border-black"

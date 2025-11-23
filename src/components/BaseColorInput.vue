@@ -1,6 +1,5 @@
-
 <script setup>
-import { ref, computed, watch, toRefs, onMounted, nextTick } from 'vue'
+import { ref, computed, watch, toRefs, onMounted, onBeforeUnmount } from 'vue'
 import { adaptColorToBackground } from './maker/lib';
 import vClickOutside from "../directives/vClickOutside"
 import { convertColorToHex } from '../useNestedProp';
@@ -34,7 +33,7 @@ const props = defineProps({
     },
     wrapperTw: {
         type: String,
-        default: ''
+        default: 'w-fit'
     }
 })
 
@@ -61,9 +60,14 @@ const defaultPalette = ref([
     '#00CED1',
 ]);
 
+const open = ref(false);
+const pickerButton = ref(null)
+const pickerPosition = ref({ top: 0, left: 0 })
+const pickerRef = ref(null)
+
 const to = ref(null)
 
-function close(_e){
+function close() {
     if (to.value) {
         clearTimeout(to.value)
     }
@@ -72,7 +76,53 @@ function close(_e){
     }, 0)
 }
 
-const open = ref(false);
+function updatePickerPosition() {
+    if (!pickerButton.value) return
+
+    const rect = pickerButton.value.getBoundingClientRect()
+    pickerPosition.value = {
+        top: rect.bottom + 4,
+        left: rect.left + rect.width / 2
+    }
+}
+
+function openPicker() {
+    updatePickerPosition()
+    open.value = true
+}
+
+function handleDocumentClick(e) {
+    if (!open.value) return
+
+    const dialogEl = pickerRef.value
+    const buttonEl = pickerButton.value
+
+    if (!dialogEl) return
+
+    // If click is inside dialog, ignore
+    if (dialogEl.contains(e.target)) {
+        return
+    }
+
+    // If click is on the button, ignore
+    if (buttonEl && buttonEl.contains(e.target)) {
+        return
+    }
+
+    open.value = false
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', updatePickerPosition, true)
+    window.addEventListener('resize', updatePickerPosition)
+    document.addEventListener('click', handleDocumentClick)
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('scroll', updatePickerPosition, true)
+    window.removeEventListener('resize', updatePickerPosition)
+    document.removeEventListener('click', handleDocumentClick)
+})
 
 parseModelValue(value.value)
 
@@ -89,14 +139,18 @@ watch(value, (newValue) => {
 const rgbaColor = computed(() => {
     const [r, g, b] = hexToRgb(hexColor.value)
     return `rgba(${r}, ${g}, ${b}, ${alpha.value})`
-})
+});
 
 const colorValue = ref(rgbaColor.value)
+const updatingFromTextInput = ref(false)
 
 watch(rgbaColor, (newColor) => {
-    colorValue.value = newColor
+    if (!updatingFromTextInput.value) {
+        colorValue.value = newColor
+    }
     emit('update:value', newColor)
     emit('change')
+    updatingFromTextInput.value = false
 })
 
 function setColor(c) {
@@ -116,38 +170,102 @@ function updateColorFromAlpha() {
     emit('change')
 }
 
-function updateColorFromInput() {
-    const input = colorValue.value.trim()
-    if (input.startsWith('rgba')) {
-        const match = input.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),\s*(\d(\.\d+)?)\)/)
-        if (match) {
-            hexColor.value = rgbToHex(+match[1], +match[2], +match[3])
-            alpha.value = +match[4]
-        }
-    } else if (input.startsWith('hsla')) {
-        const match = input.match(/hsla?\((\d+),\s*(\d+)%,\s*(\d+)%,\s*(\d(\.\d+)?)\)/)
-        if (match) {
-            const [r, g, b] = hslToRgb(+match[1], +match[2], +match[3])
-            hexColor.value = rgbToHex(r, g, b)
-            alpha.value = +match[4]
-        }
-    } else if (input.startsWith('#')) {
-        hexColor.value = input.slice(0, 7)
-        alpha.value = parseFloat(input.slice(7)) || 1
+function parseHexColorInput(input) {
+    let hex = input.trim();
+
+    if (!hex.startsWith('#')) return null;
+    hex = hex.slice(1);
+
+    if (![3, 4, 6, 8].includes(hex.length)) return null;
+    if (!/^[0-9a-fA-F]+$/.test(hex)) return null;
+
+    if (hex.length === 3 || hex.length === 4) {
+        hex = hex.split('').map(ch => ch + ch).join('');
     }
-    emit('update:value', rgbaColor.value)
+
+    let a = 1;
+
+    if (hex.length === 8) {
+        const rgbHex = hex.slice(0, 6);
+        const aHex = hex.slice(6);
+        const aInt = parseInt(aHex, 16);
+
+        if (!Number.isNaN(aInt)) {
+            a = +(aInt / 255).toFixed(2);
+        }
+
+        hex = rgbHex;
+    }
+
+    return {
+        hex: `#${hex.toUpperCase()}`,
+        alpha: a
+    };
 }
 
-function parseModelValue(value) {
-    if (value.startsWith('rgba')) {
-        const match = value.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),\s*(\d(\.\d+)?)\)/)
+function updateColorFromInput() {
+    updatingFromTextInput.value = true
+    const input = colorValue.value.trim()
+
+    // Accept both rgb and rgba
+    if (input.startsWith('rgba') || input.startsWith('rgb')) {
+        const match = input.match(
+            /rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:\s*,\s*(\d?\.?\d+))?\s*\)/
+        )
         if (match) {
-            hexColor.value = rgbToHex(+match[1], +match[2], +match[3])
-            alpha.value = +match[4]
+            const r = +match[1]
+            const g = +match[2]
+            const b = +match[3]
+            const a = match[4] !== undefined ? +match[4] : 1
+
+            hexColor.value = rgbToHex(r, g, b)
+            alpha.value = a
         }
-    } else if (value.startsWith('#')) {
-        hexColor.value = value.slice(0, 7)
-        alpha.value = parseFloat(value.slice(7)) || 1
+    } else if (input.startsWith('hsla') || input.startsWith('hsl')) {
+        const match = input.match(
+            /hsla?\(\s*(\d+)\s*,\s*(\d+)%,\s*(\d+)%(?:\s*,\s*(\d?\.?\d+))?\s*\)/
+        )
+        if (match) {
+            const [r, g, b] = hslToRgb(+match[1], +match[2], +match[3])
+            const a = match[4] !== undefined ? +match[4] : 1
+
+            hexColor.value = rgbToHex(r, g, b)
+            alpha.value = a
+        }
+    } else if (input.startsWith('#')) {
+        const parsed = parseHexColorInput(input)
+        if (parsed) {
+            hexColor.value = parsed.hex
+            alpha.value = parsed.alpha
+        } else {
+            return
+        }
+    }
+}
+
+function parseModelValue(val) {
+    const input = val.trim()
+
+    // Accept both rgb and rgba
+    if (input.startsWith('rgba') || input.startsWith('rgb')) {
+        const match = input.match(
+            /rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:\s*,\s*(\d?\.?\d+))?\s*\)/
+        )
+        if (match) {
+            const r = +match[1]
+            const g = +match[2]
+            const b = +match[3]
+            const a = match[4] !== undefined ? +match[4] : 1
+
+            hexColor.value = rgbToHex(r, g, b)
+            alpha.value = a
+        }
+    } else if (input.startsWith('#')) {
+        const parsed = parseHexColorInput(input)
+        if (parsed) {
+            hexColor.value = parsed.hex
+            alpha.value = parsed.alpha
+        }
     }
 }
 
@@ -180,41 +298,100 @@ function hslToRgb(h, s, l) {
 <template>
     <BaseCard padding="0" type="light" :class="wrapperTw">
         <div class="inline-flex flex-col flex-wrap px-2 mt-2 pb-2">
+            <slot name="before"/>
             <label class="text-xs text-black dark:text-white">{{ label }}</label>
             <div class="color-picker flex flex-row">
                 <div class="flex flex-col place-items-center">
     
-                    <button class="h-[20px] my-1 w-[110px] relative rounded-lg " :style="{ background: rgbaColor }" @click="open = true" v-click-outside="close" @keydown.esc="close">
+                    <button
+                        ref="pickerButton"
+                        class="h-[20px] my-1 w-[110px] relative rounded-lg outline outline-[#CCCCCC] dark:outline-[#5A5A5A] hover:!outline-app-blue dark:hover:!outline-[#8A8A8A] !transition-colors"
+                        :style="{ background: rgbaColor }"
+                        @click="openPicker"
+                        @keydown.esc="close"
+                    >
+                        <input
+                            ref="myColorInput"
+                            type="color"
+                            v-model="hexColor"
+                            @input="updateColorFromHex"
+                            class="hidden-input"
+                        />
+                    </button>
+
+                    <Teleport to="body">
                         <Transition name="picker">
-                            <div v-if="open" class="absolute top-[100%] left-1/2 -translate-x-1/2 color-picker-dialog bg-white dark:bg-[#2A2A2A]">
-                                <div 
-                                    v-for="c in defaultPalette" 
-                                    class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
-                                    :style="{ 
-                                        backgroundColor: c,
-                                    }" 
-                                    @click="() => setColor(c)"
-                                />
-                                <div class="my-color-picker-option-empty" @click="triggerColorPicker" :style="{
-                                    background: value
-                                }">
-                                    <VueUiIcon name="palette" :stroke="adaptColorToBackground(convertColorToHex(value))" :size="20"/>
+                            <div
+                                v-if="open"
+                                ref="pickerRef"
+                                class="fixed z-[2147483647] -translate-x-1/2"
+                                :style="{
+                                    top: pickerPosition.top + 'px',
+                                    left: pickerPosition.left + 'px'
+                                }"
+                            >
+                                <div class="color-picker-dialog bg-white dark:bg-[#2A2A2A]">
+                                    <button 
+                                        v-for="c in defaultPalette" 
+                                        :key="c"
+                                        class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
+                                        :style="{ backgroundColor: c }" 
+                                        @click="() => setColor(c)"
+                                    />
+                                    <div
+                                        class="my-color-picker-option-empty"
+                                        @click="triggerColorPicker"
+                                        :style="{ background: value }"
+                                    >
+                                        <VueUiIcon
+                                            name="palette"
+                                            :stroke="adaptColorToBackground(convertColorToHex(value))"
+                                            :size="20"
+                                        />
+                                    </div>
+                                    <div/>
+                                    <button
+                                        @click="close"
+                                        class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors"
+                                    >
+                                        <VueUiIcon
+                                            name="close"
+                                            :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                                        />
+                                    </button>
                                 </div>
-                                <div/>
-                                <button @click="close" class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors">
-                                    <VueUiIcon name="close" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                                </button>
                             </div>
                         </Transition>
-                        <input ref="myColorInput" type="color"  v-model="hexColor" @input="updateColorFromHex" class="hidden-input"/>
-                    </button>
+                    </Teleport>
                     
-                    <div v-if="withRange" class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                        <input aria-label="Alpha channel" type="range" class="w-full accent-app-blue" v-model="alpha" min="0" max="1" step="0.01" @input="updateColorFromAlpha" />
+                    <div
+                        v-if="withRange"
+                        class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md dark:border-t dark:border-[#6A6A6A]"
+                    >
+                        <input
+                            aria-label="Alpha channel"
+                            type="range"
+                            class="w-full accent-app-blue"
+                            v-model="alpha"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            @input="updateColorFromAlpha"
+                        />
                     </div>
                 </div>
-                <input v-if="withTextInput" :aria-labelledby="labelId" :id="id" type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
+                <input
+                    v-if="withTextInput"
+                    :aria-labelledby="labelId"
+                    :id="id"
+                    type="text"
+                    class="text-xs h-[36px] w-[200px]"
+                    v-model="colorValue"
+                    @input="updateColorFromInput"
+                    placeholder="Enter RGBA / HSLA / HEX"
+                />
             </div>
+            <slot name="after"/>
         </div>
         <slot/>
     </BaseCard>
@@ -275,12 +452,12 @@ input[type="range"] {
 
 .picker-enter-active,
 .picker-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .picker-enter-from,
 .picker-leave-to {
-  opacity: 0;
-  transform: translateY(-40px) translateX(-50%) scale(1,0.7);
+    opacity: 0;
+    transform: translateY(-40px) translateX(-50%) scale(1,0.7);
 }
 </style>

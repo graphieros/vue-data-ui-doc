@@ -206,8 +206,9 @@ const config = ref({
     selector: {
       stroke: "#5f8bee",
       borderRadius: 12,
-      strokeWidth: 2,
-      strokeDasharray: 0
+      strokeWidth: 0,
+      strokeDasharray: 0,
+      fill: '#2D353C10'
     },
     title: {
       textAlign: "left",
@@ -288,8 +289,9 @@ const darkModeConfig = ref({
     selector: {
       stroke: "#5f8bee",
       borderRadius: 12,
-      strokeWidth: 2,
-      strokeDasharray: 0
+      strokeWidth: 0,
+      strokeDasharray: 0,
+      fill: '#FFFFFF10'
     },
     title: {
       textAlign: "left",
@@ -594,6 +596,7 @@ function goToPage(route) {
         <BaseAttr name="strokeWidth" attr="style.selector.strokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="strokeDasharray" attr="style.selector.strokeDasharray" type="range" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="borderRadius" attr="style.selector.borderRadius" type="range" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="fill" attr="style.selector.fill" rgba type="color" defaultVal="#2D353C10" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Recommended: use a transparent color" />
       </BaseDetails>
       <BaseDetails attr="title" :level="2" title="style.title">
         <BaseAttr name="textAlign" attr="style.title.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
