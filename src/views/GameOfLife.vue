@@ -28,8 +28,7 @@ const next = ref(makeCells(width.value, height.value, false));
 
 const livingCount = ref(0);
 
-// history of full boards (Uint8Array snapshots) for local oscillator detection
-const HISTORY_DEPTH = 4;
+const HISTORY_DEPTH = 16;
 const history = ref([]);
 
 // per-cell "age" of unchanged alive state
@@ -96,7 +95,32 @@ function recordHistory() {
     history.value.push(current.value.slice());
 }
 
-// if last 4 states are 0,1,0,1 or 1,0,1,0 => mark as oscillator.
+function boardsEqual(a, b) {
+    if (!a || !b || a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i += 1) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
+}
+
+// detect if the current board matches any earlier board in history
+// => still life or oscillator (period <= HISTORY_DEPTH - 1)
+function hasGlobalLoop() {
+    const hist = history.value;
+    const len = hist.length;
+    if (len < 2) return false;
+
+    const cur = hist[len - 1];
+    for (let k = 1; k < len; k += 1) {
+        const past = hist[len - 1 - k];
+        if (boardsEqual(cur, past)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// if last 4 states are 0,1,0,1 or 1,0,1,0 => mark as local period-2 oscillator.
 function computeOscillatorMask() {
     const hist = history.value;
     const len = hist.length;
@@ -130,6 +154,8 @@ function computeOscillatorMask() {
         }
     }
 }
+
+/* ---------- simulation step ---------- */
 
 function step() {
     const w = width.value;
@@ -196,9 +222,16 @@ function step() {
         value: dynamicLiving,
     });
 
-    if (dynamicLiving === 0 || isBoardEmpty1D(grid)) {
+    const inLoop = hasGlobalLoop();
+
+    // game is "stalled" when:
+    // - no dynamic cells left, OR
+    // - board completely empty, OR
+    // - we are in a repeated board state (still life / oscillator)
+    if (dynamicLiving === 0 || isBoardEmpty1D(grid) || inLoop) {
         hasStalled.value = true;
         pause();
+        livingCount.value = 0;
     } else {
         hasStalled.value = false;
     }
