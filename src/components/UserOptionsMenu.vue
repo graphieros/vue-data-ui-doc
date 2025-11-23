@@ -151,6 +151,17 @@ const t = ref({
         es: "Abre el anotador integrado",
         ko: "내장된 주석 도구를 엽니다",
         ar: "يفتح أداة التعليق المدمجة"
+    },
+    zoom: {
+        en: 'Lock or unlock the pan zoom feature',
+        fr: 'Verrouiller ou déverrouiller la fonctionnalité de déplacement et zoom',
+        pt: 'Bloquear ou desbloquear o recurso de pan e zoom',
+        de: 'Die Pan- und Zoomfunktion sperren oder entsperren',
+        zh: '锁定或解锁平移和缩放功能',
+        jp: 'パンおよびズーム機能をロックまたは解除する',
+        es: 'Bloquear o desbloquear la función de desplazamiento y zoom',
+        ko: '이동 및 확대/축소 기능을 잠그거나 해제합니다',
+        ar: 'قفل أو فتح ميزة التحريك والتكبير'
     }
 })
 
@@ -248,6 +259,11 @@ const items = ref([
         name: 'annotator',
         icon: 'annotator',
         charts: Object.keys(charts.value)
+    },
+    {
+        name: 'zoom',
+        icon: 'zoomLock',
+        charts: ['VueUiWordCloud', 'VueUiMolecule']
     }
 ])
 

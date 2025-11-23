@@ -2570,6 +2570,11 @@
                 "name": "Annotator",
                 "description": "Toggles the annotator mode",
                 "icon": "annotator"
+            },
+            {
+                "name": "Zoom",
+                "description": "Toggles the pan zoom lock feature",
+                "icon": "zoomLock"
             }
         ],
         "exposed": [
@@ -2612,6 +2617,10 @@
             {
                 "name": "toggleFullscreen",
                 "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "toggleZoom",
+                "description": "Triggers toggling of the pan zoom lock feature"
             }
         ],
         "slots": [
@@ -2674,6 +2683,10 @@
             {
                 "name": "optionAnnotator",
                 "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "optionZoom",
+                "description": "customize the context menu zoom lock icon"
             },
             {
                 "name": "annotator-action-close",
@@ -7372,6 +7385,11 @@
                 "name": "Annotator",
                 "description": "Toggles the annotator mode",
                 "icon": "annotator"
+            },
+            {
+                "name": "Zoom",
+                "description": "Toggles the pan zoom lock feature",
+                "icon": "zoomLock"
             }
         ],
         "emits": [
@@ -7424,6 +7442,10 @@
             {
                 "name": "toggleFullscreen",
                 "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "toggleZoom",
+                "description": "Triggers toggling of the pan zoom lock feature"
             }
         ],
         "slots": [
@@ -7490,6 +7512,10 @@
             {
                 "name": "optionAnnotator",
                 "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "optionZoom",
+                "description": "customize the context menu zoom lock icon"
             },
             {
                 "name": "annotator-action-close",
