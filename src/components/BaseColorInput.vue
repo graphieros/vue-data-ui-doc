@@ -350,36 +350,38 @@ function hslToRgb(h, s, l) {
                                     left: pickerPosition.left + 'px'
                                 }"
                             >
-                                <div class="color-picker-dialog bg-white dark:bg-[#2A2A2A]">
-                                    <button 
-                                        v-for="c in defaultPalette" 
-                                        :key="c"
-                                        class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
-                                        :style="{ backgroundColor: c }" 
-                                        @click="() => setColor(c)"
-                                    />
-                                    <div
-                                        class="my-color-picker-option-empty"
-                                        @click="triggerColorPicker"
-                                        :style="{ background: value }"
-                                    >
-                                        <VueUiIcon
-                                            name="palette"
-                                            :stroke="adaptColorToBackground(convertColorToHex(value))"
-                                            :size="20"
+                                <BaseCard type="light" padding="p-2">
+                                    <div class="color-picker-dialog bg-transparent">
+                                        <button 
+                                            v-for="c in defaultPalette" 
+                                            :key="c"
+                                            class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
+                                            :style="{ backgroundColor: c }" 
+                                            @click="() => setColor(c)"
                                         />
+                                        <div
+                                            class="my-color-picker-option-empty"
+                                            @click="triggerColorPicker"
+                                            :style="{ background: value }"
+                                        >
+                                            <VueUiIcon
+                                                name="palette"
+                                                :stroke="adaptColorToBackground(convertColorToHex(value))"
+                                                :size="20"
+                                            />
+                                        </div>
+                                        <div/>
+                                        <button
+                                            @click="close"
+                                            class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors"
+                                        >
+                                            <VueUiIcon
+                                                name="close"
+                                                :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                                            />
+                                        </button>
                                     </div>
-                                    <div/>
-                                    <button
-                                        @click="close"
-                                        class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors"
-                                    >
-                                        <VueUiIcon
-                                            name="close"
-                                            :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
-                                        />
-                                    </button>
-                                </div>
+                                </BaseCard>
                             </div>
                         </Transition>
                     </Teleport>
@@ -437,7 +439,7 @@ input[type="range"] {
 
 .color-picker-dialog {
     border-radius: 0px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    /* box-shadow: 0 6px 12px rgba(0,0,0,0.3); */
     display: grid;
     gap: 6px;
     grid-template-columns: 32px 32px 32px;
@@ -447,7 +449,7 @@ input[type="range"] {
 
 .color-picker-option {
     align-items:center;
-    border-radius: 0px;
+    border-radius: 3px;
     display: flex;
     height: 32px;
     justify-content: center;
@@ -462,6 +464,8 @@ input[type="range"] {
     display: flex;
     align-items:center;
     justify-content:center;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .hidden-input {

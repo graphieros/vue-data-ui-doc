@@ -25,7 +25,7 @@ const props = defineProps({
     forceLight: {
         type: Boolean,
         default: false,
-    }
+    },
 });
 
 const background = computed(() => {
