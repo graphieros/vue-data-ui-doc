@@ -1,7 +1,6 @@
 <script setup>
-import { ref, computed, watch, toRefs, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch, toRefs, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { adaptColorToBackground } from './maker/lib';
-import vClickOutside from "../directives/vClickOutside"
 import { convertColorToHex } from '../useNestedProp';
 import { useMainStore } from '../stores';
 import BaseCard from './BaseCard.vue';
@@ -64,6 +63,7 @@ const open = ref(false);
 const pickerButton = ref(null)
 const pickerPosition = ref({ top: 0, left: 0 })
 const pickerRef = ref(null)
+const pickerPlacement = ref('below') // 'below' | 'above'
 
 const to = ref(null)
 
@@ -76,19 +76,40 @@ function close() {
     }, 0)
 }
 
+/**
+ * Position the picker above or below the button depending on viewport space.
+ * While open, this is called on scroll/resize to keep it anchored.
+ * Also used before first open to avoid the top-left bug.
+ */
 function updatePickerPosition() {
     if (!pickerButton.value) return
 
-    const rect = pickerButton.value.getBoundingClientRect()
+    const buttonRect = pickerButton.value.getBoundingClientRect()
+    const pickerEl = pickerRef.value
+    const estimatedHeight = 220 // fallback in case ref is not ready
+    const pickerHeight = pickerEl?.offsetHeight ?? estimatedHeight
+
+    const spaceBelow = window.innerHeight - buttonRect.bottom
+    const spaceAbove = buttonRect.top
+
+    // Prefer below when possible; otherwise above
+    const placeBelow = spaceBelow >= pickerHeight || spaceBelow >= spaceAbove
+    pickerPlacement.value = placeBelow ? 'below' : 'above'
+
+    const top = placeBelow
+        ? buttonRect.bottom + 4
+        : Math.max(4, buttonRect.top - pickerHeight - 4)
+
     pickerPosition.value = {
-        top: rect.bottom + 4,
-        left: rect.left + rect.width / 2
+        top,
+        left: buttonRect.left + buttonRect.width / 2
     }
 }
 
-function openPicker() {
-    updatePickerPosition()
-    open.value = true
+async function openPicker() {
+    open.value = true;
+    await nextTick();
+    updatePickerPosition();
 }
 
 function handleDocumentClick(e) {
@@ -99,7 +120,6 @@ function handleDocumentClick(e) {
 
     if (!dialogEl) return
 
-    // If click is inside dialog, ignore
     if (dialogEl.contains(e.target)) {
         return
     }
@@ -320,7 +340,7 @@ function hslToRgb(h, s, l) {
                     </button>
 
                     <Teleport to="body">
-                        <Transition name="picker">
+                        <Transition :name="pickerPlacement === 'above' ? 'picker-top' : 'picker-bottom'">
                             <div
                                 v-if="open"
                                 ref="pickerRef"
@@ -450,14 +470,25 @@ input[type="range"] {
     visibility: hidden;
 }
 
-.picker-enter-active,
-.picker-leave-active {
+.picker-bottom-enter-active,
+.picker-bottom-leave-active {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.picker-enter-from,
-.picker-leave-to {
+.picker-bottom-enter-from,
+.picker-bottom-leave-to {
     opacity: 0;
     transform: translateY(-40px) translateX(-50%) scale(1,0.7);
+}
+
+.picker-top-enter-active,
+.picker-top-leave-active {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.picker-top-enter-from,
+.picker-top-leave-to {
+    opacity: 0;
+    transform: translateY(40px) translateX(-50%) scale(1,0.7);
 }
 </style>
