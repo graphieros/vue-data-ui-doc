@@ -5138,6 +5138,7 @@ export default function useExamples() {
                                         text: 'Good',
                                         fontSize: 18,
                                         offsetX: 2,
+                                        offsetY: -4,
                                         backgroundColor: '#42d39290',
                                         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                                         padding: { top: 8 },
@@ -5160,6 +5161,7 @@ export default function useExamples() {
                                         text: 'Bad',
                                         fontSize: 18,
                                         offsetX: -2,
+                                        offsetY: -4,
                                         position: 'end',
                                         textAnchor: 'end',
                                         backgroundColor: '#ff660090',
@@ -5185,7 +5187,8 @@ export default function useExamples() {
                                         text: 'Neutral',
                                         fontSize: 18,
                                         offsetX: 2,
-                                        backgroundColor: '#CCCCCC90',
+                                        offsetY: -4,
+                                        backgroundColor: '#CCCCCC50',
                                         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                                         padding: { top: 8 },
                                         border: {
@@ -5196,6 +5199,9 @@ export default function useExamples() {
                                         stroke: '#CCCCCC',
                                         strokeWidth: 2,
                                         strokeDasharray: 5
+                                    },
+                                    area: {
+                                        opacity: isDarkMode.value ? 10 : 30
                                     }
                                 }
                             },
