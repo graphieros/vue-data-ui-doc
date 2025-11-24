@@ -232,7 +232,8 @@ const heatmapConfig = computed(() => {
             legend: { show: false },
             title: {
                 text: 'Number of votes per day',
-                color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                bold: true,
                 textAlign: 'center',
                 subtitle: {
                     text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
@@ -404,7 +405,8 @@ const historyPlotConfig = computed(() => {
                 },
                 title: {
                     text: 'Monthly average rating & number of votes',
-                    color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    bold: true,
                     textAlign: 'center',
                     subtitle: {
                         text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
@@ -617,7 +619,8 @@ const stacklineConfig = computed(() => {
                 },
                 title: {
                     text: 'Satisfaction survey, ratings breakdown',
-                    color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    bold: true,
                     textAlign: 'left',
                     paddingLeft: 12,
                     subtitle: {
@@ -875,7 +878,7 @@ const sparkHistogramDataset = computed(() => {
 const sparkHistogramConfig = computed(() => {
     return {
         style: {
-            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+            backgroundColor: 'transparent',
             bars: {
                 shape: 'star',
                 colors: {
@@ -897,12 +900,14 @@ const sparkHistogramConfig = computed(() => {
             },
             selector: {
                 stroke: isDarkMode.value ? '#fdd663' : '#bd992f',
-                strokeWidth: 1,
+                strokeWidth: 0,
                 strokeDasharray: 3,
+                fill: isDarkMode.value ? '#FFFFFF10' : '#CCCCCC30'
             },
             title: {
                 text: 'Voting intensity',
-                color: isDarkMode.value ? '#1f77b4' : '#1A1A1A',
+                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                bold: true,
                 fontSize: 20,
                 subtitle: {
                     text: 'Last 15 days',
@@ -1048,7 +1053,8 @@ const xyConfig = computed(() => {
             },
             title: {
                 text: 'Satisfaction survey history',
-                color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                bold: true,
                 textAlign: 'left',
                 paddingLeft: 12,
                 subtitle: {
@@ -1185,7 +1191,8 @@ const verticalBarConfig = computed(() => {
                 },
                 title: {
                     text: 'Component satisfaction ranking',
-                    color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    bold: true,
                     textAlign: 'center',
                     subtitle: {
                         text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
