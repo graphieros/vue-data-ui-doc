@@ -48,6 +48,7 @@ const background = computed(() => {
 
 <template>
     <div :class="`
+        base-card
         ${background}
         ${padding}
         ${rounding}

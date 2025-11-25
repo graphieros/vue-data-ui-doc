@@ -331,16 +331,16 @@ function loop(ts) {
 const livingColor = computed(() => {
     if (isDarkMode.value) {
         return {
-            r: 131,
-            g: 164,
-            b: 242,
+            r: 74,
+            g: 74,
+            b: 74,
             a: 255,
         };
     } else {
         return {
-            r: 49,
-            g: 64,
-            b: 99,
+            r: 200,
+            g: 200,
+            b: 200,
             a: 255,
         };
     }
@@ -385,9 +385,30 @@ function draw() {
     const data = img.data;
     const grid = current.value;
 
+    const ageArr = stableAge.value;
+    const osc = oscillatorMask.value;
+
+    // color for "real" live cells (dynamic, non-stale, non-oscillator)
+    const dynamicColor = isDarkMode.value ? { r: 66, g: 211, b: 146, a: 255 } : { r: 95, g: 138, b: 238, a: 255 };
+
     for (let i = 0, p = 0; i < grid.length; i += 1, p += 4) {
-        const cellAlive = grid[i] === 1;
-        const color = cellAlive ? livingColor.value : deadColor.value;
+        const alive = grid[i] === 1;
+
+        let color;
+
+        if (
+            alive &&
+            ageArr.length === grid.length &&
+            osc.length === grid.length &&
+            ageArr[i] < STABLE_THRESHOLD &&
+            !osc[i]
+        ) {
+            color = dynamicColor;
+        } else if (alive) {
+            color = livingColor.value;
+        } else {
+            color = deadColor.value;
+        }
 
         data[p] = color.r;
         data[p + 1] = color.g;
@@ -671,7 +692,7 @@ const kpiConfig = computed(() => {
             analogDigits: {
                 show: true,
                 height: 40,
-                color: "#6376DD",
+                color: "#42d392",
                 skeletonColor: "#2A2A2A",
             },
         };
@@ -766,7 +787,7 @@ const kpiConfig = computed(() => {
                         type: 'line',
                         smooth: true,
                         dataLabels: false,
-                        color: '#5f8aee',
+                        color: isDarkMode ? '#42d392' : '#5f8aee',
                         useArea: true,
                     },
                 ]" :config="{
