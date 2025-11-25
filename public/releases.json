@@ -1,4 +1,20 @@
 [
+    {
+    "version": "v 3.7.11",
+    "date": "2025-11-25",
+    "updates": [
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Fix legend value & percentage not showing when animation is disabled",
+        "link": "/docs#vue-ui-sparkstackbar"
+      },
+      {
+        "component": "Vue version",
+        "description": "Bump Vue from 3.5.24 to 3.5.25",
+        "link": ""
+      }
+    ]
+  },
   {
     "version": "v 3.7.10",
     "date": "2025-11-23",
