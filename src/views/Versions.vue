@@ -17,6 +17,7 @@ import BaseLazy from "../components/BaseLazy.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import { useIconMapUnderscore } from "../useIconMapUnderscore";
+import BaseScroll from "../components/Base/BaseScroll.vue";
 
 const globalConfig = useConfig()
 
@@ -1520,64 +1521,20 @@ const wordCloudConfig = computed(() => {
     strictPixelPadding: true,
     // customPalette: isDarkMode.value ? ['#42d392', '#5f8aee'] : ['#1d915d', '#1d3e54'],
     customPalette: makeColors({
-      colorStart: '#607D8B',
-      colorEnd: 'red',
-      iterations: 1000,
-      force: 0.02
+      colorStart: isDarkMode.value ? '#42d392' : '#607D8B',
+      iterations: 500,
+      force: 0.00059
     }),
-//     customPalette: [
-//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
-//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
-//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
-//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
-//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
-//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
-//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
-//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
-//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
-//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
-//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
-//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
-//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
-//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
-//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
-//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
-//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
-//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
-//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
-//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
-//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
-//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
-//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
-//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
-//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
-//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40",
-//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
-//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
-//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
-//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
-//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40",
-//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
-//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
-//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
-//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
-//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40",
-//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
-//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
-//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
-//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
-//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40"
-// ],
-table: {
-  th: {
-    backgroundColor: 'transparent',
-    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-  },
-  td: {
-    backgroundColor: 'transparent',
-    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-  }
-},
+    table: {
+      th: {
+        backgroundColor: 'transparent',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+      },
+      td: {
+        backgroundColor: 'transparent',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+      }
+    },
     style: {
       fontFamily: 'Inter',
       chart: {
@@ -2332,9 +2289,9 @@ const circlePackConfig = computed(() => {
                     This component was renamed to <code>VueUiHorizontalBar</code> in v3
                   </span>
                 </div>
-  
-                <div class="w-full max-h-[500px] overflow-y-auto p-4">
-                    <ul>
+
+                <BaseScroll class="w-full max-h-[500px] p-4 overflow-auto" :fadeColor="isDarkMode ? '#2A2A2A' : '#f3f4f6'">
+                  <ul>
                       <li v-for="log in filteredVersions" :class="`mb-4`">
                           <BaseCard type="light">
                             <div class="pt-2 pb-4 mb-6 font-inter-medium text-xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums">
@@ -2360,7 +2317,7 @@ const circlePackConfig = computed(() => {
                           </BaseCard>
                       </li>
                     </ul>
-                </div>
+                </BaseScroll>
               </BaseCard>
             </div>
 

@@ -525,7 +525,7 @@ const stackData = computed(() => {
     for (let i = 1; i <= 5; i += 1) {
         arr.push({
             name: String(i),
-            series: t.map(series => series[i]),
+            series: t.map(series => series[i]).map(n => n === 0 ? null : n),
             color: colors[i - 1],
             shape: 'star'
         });
@@ -537,8 +537,6 @@ const stackData = computed(() => {
         });
         return acc;
     }, [])})
-
-    console.log(cumulativeAvg)
 
     return [
         ...arr,
