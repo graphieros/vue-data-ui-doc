@@ -532,8 +532,8 @@ onBeforeUnmount(() => {
     <!-- <div v-if="!isDarkMode" class="underlay-paper"></div>
     <div v-if="isDarkMode" class="underlay-paper--dark"></div> -->
     <div class="underlay">
-      <BackgroundPattern v-if="isDarkMode"/>
-  <svg class="w-full h-full" v-else>
+      <!-- <BackgroundPattern v-if="isDarkMode"/> -->
+  <svg class="w-full h-full">
     <defs>
       <!-- make the pattern tile exactly 50×50 units -->
       <pattern
