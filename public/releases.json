@@ -1,4 +1,25 @@
 [
+  {
+    "version": "v 3.7.12",
+    "date": "2025-11-27",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Fix scale offsetX not applied from config",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "Built-in dialogs",
+        "description": "Change css class to avoid conflicts with UI libraries, and improve accessibility features",
+        "link": ""
+      },
+      {
+        "component": "VueUiStackline",
+        "description": "Treat null values as zero in area computation to fix discontinuous fills when null values are present in a series",
+        "link": "/docs#vue-ui-stackline"
+      }
+    ]
+  },
     {
     "version": "v 3.7.11",
     "date": "2025-11-25",
