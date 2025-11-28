@@ -3,7 +3,7 @@ import { computed, watch, ref } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
-import { VueDataUi, VueUiSparkHistogram } from "vue-data-ui";
+import { shiftColorHue, VueDataUi, VueUiSparkHistogram } from "vue-data-ui";
 import mockStats from './mockStats.json'
 import { createUid, fillEmptyDays } from "./maker/lib";
 import BaseCard from "./BaseCard.vue";
@@ -1124,13 +1124,10 @@ const xyConfig = computed(() => {
 
 const verticalBarDataset = computed(() => {
     return ratings.value.sort((a, b) => b.raters - a.raters).map((r, i) => {
+        const comp = r.name.split('_').map(w => capitalizeFirstLetter(w)).join('')
         return {
-            name: `${r.name
-                .split('_')
-                .map((w, _i) => {
-                    return capitalizeFirstLetter(w);
-                })
-                .join('')} ( ${r.raters} )`,
+            name: `${comp} ( ${r.raters} )`,
+            component: comp,
             value: r.average,
             raters: r.raters
         }
@@ -1145,6 +1142,120 @@ const verticalBarDataset = computed(() => {
                 })
             }
         })
+});
+
+function getColorFromRating(rating) {
+    const minimumRating = 1;
+    const maximumRating = 5;
+    const badColorHexadecimal = "#fc5603";
+    const goodColorHexadecimal = "#1F77B4";
+    const clampedRating = Math.min(Math.max(rating, minimumRating), maximumRating);
+    const interpolationFactor = (clampedRating - minimumRating) / (maximumRating - minimumRating);
+    const startColor = convertHexadecimalToRedGreenBlue(badColorHexadecimal);
+    const endColor = convertHexadecimalToRedGreenBlue(goodColorHexadecimal);
+    const red = Math.round(
+        startColor.red + (endColor.red - startColor.red) * interpolationFactor
+    );
+    const green = Math.round(
+        startColor.green + (endColor.green - startColor.green) * interpolationFactor
+    );
+    const blue = Math.round(
+        startColor.blue + (endColor.blue - startColor.blue) * interpolationFactor
+    );
+
+    return convertRedGreenBlueToHexadecimal({ red, green, blue });
+}
+
+function convertHexadecimalToRedGreenBlue(hexadecimal) {
+    let cleanHexadecimal = hexadecimal.trim();
+
+    if (cleanHexadecimal.startsWith("#")) {
+        cleanHexadecimal = cleanHexadecimal.slice(1);
+    }
+
+    if (cleanHexadecimal.length !== 6) {
+        throw new Error("Hexadecimal color must be in the format RRGGBB or #RRGGBB");
+    }
+
+    const red = parseInt(cleanHexadecimal.slice(0, 2), 16);
+    const green = parseInt(cleanHexadecimal.slice(2, 4), 16);
+    const blue = parseInt(cleanHexadecimal.slice(4, 6), 16);
+
+    return { red, green, blue };
+}
+
+function convertRedGreenBlueToHexadecimal(redGreenBlue) {
+    const { red, green, blue } = redGreenBlue;
+
+    return (
+        "#" +
+        convertComponentToHexadecimal(red) +
+        convertComponentToHexadecimal(green) +
+        convertComponentToHexadecimal(blue)
+    );
+}
+
+function convertComponentToHexadecimal(component) {
+    const clampedComponent = Math.min(255, Math.max(0, component));
+    const hexadecimalComponent = clampedComponent.toString(16);
+
+    return hexadecimalComponent.length === 1
+        ? "0" + hexadecimalComponent
+        : hexadecimalComponent;
+}
+
+
+const treemapDataset = computed(() => {
+    return verticalBarDataset.value.map((d, i) => {
+        return {
+            name: `${d.component} (${d.value.toFixed(1)})`,
+            value: d.raters,
+            average: d.value,
+        }
+    }).toSorted((a, b) => b.value - a.value ).map((d, i) => {
+        return {
+            ...d,
+            color: getColorFromRating(d.average)
+        }
+    })
+});
+
+const treemapConfig = computed(() => {
+    return {
+        userOptions: { show: false },
+        style: {
+            chart: {
+                height: 700,
+                backgroundColor: 'transparent',
+                legend: { show: false },
+                layout: {
+                    labels: {
+                        prefix: '',
+                    },
+                    rects: {
+                        stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                        gradient: { show: false }
+                    }
+                },
+                title: {
+                    text: 'Breakdown by number of ratings',
+                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    bold: true,
+                    textAlign: 'left',
+                    subtitle: {
+                        text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
+                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
+                    }
+                },
+                tooltip: {
+                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    backgroundOpacity: 20,
+                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                },
+            }
+        }
+    }
 })
 
 const verticalBarConfig = computed(() => {
@@ -1546,6 +1657,17 @@ const stackComponent = ref('VueUiStackbar');
         <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
             <div class="p-4">
                 <VueDataUi component="VueUiHistoryPlot" :dataset="historyPlotDataset" :config="historyPlotConfig" />
+            </div>
+        </BaseCard>
+
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <VueDataUi 
+                    component="VueUiTreemap"
+                    :dataset="treemapDataset"
+                    :config="treemapConfig"
+                >
+                </VueDataUi>
             </div>
         </BaseCard>
     
