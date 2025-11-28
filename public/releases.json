@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.7.13",
+    "date": "2025-11-27",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add missing themes for donut in dialog",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.12",
     "date": "2025-11-27",
     "updates": [
