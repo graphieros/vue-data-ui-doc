@@ -1225,6 +1225,7 @@ const treemapConfig = computed(() => {
         userOptions: { show: false },
         style: {
             chart: {
+                width: 1200,
                 height: 700,
                 backgroundColor: 'transparent',
                 legend: { show: false },
