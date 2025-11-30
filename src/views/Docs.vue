@@ -1368,7 +1368,7 @@ const stackbarKey = ref(0);
                 language="javascript"
                 :content="`
     import { getThemeConfig } from 'vue-data-ui';
-    const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = await getThemeConfig('${configSelect}')
+    const ${themeSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = await getThemeConfig('${themeSelect}')
                 `"
                 @copy="store.copy()"
             />
