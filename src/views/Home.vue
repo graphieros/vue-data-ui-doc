@@ -10,6 +10,7 @@ import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseBubbles from "../components/BaseBubbles.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
+import Fireworks from "../components/special/Fireworks.vue";
 
 const configs = useConfig()
 
@@ -287,8 +288,21 @@ const componentTranslation = ref({
 })
 
 const specialOccasion = computed(() => {
-  return [1200, 1250, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 7500, 10000].includes(store.stars);
-})
+  const starTrigger =
+    [1200, 1250, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000,
+      2500, 3000, 3500, 4000, 4500, 5000, 7500, 10000].includes(store.stars);
+
+  const today = new Date();
+  const month = today.getMonth();
+  const day = today.getDate();
+
+  const isSpecialDate =
+    (month === 0 && day === 1)  || // January 1
+    (month === 4 && day === 1)  || // May 1
+    (month === 6 && day === 14); // July 14
+
+  return starTrigger || isSpecialDate;
+});
 
 function getPlotLabel(plot) {
   return plot.comment
@@ -727,7 +741,7 @@ onBeforeUnmount(() => {
             <BaseSpinner />
           </template>
         </Suspense>
-        <BaseBubbles v-if="specialOccasion" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/>
+        <!-- <BaseBubbles v-if="specialOccasion" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/> -->
         
     </div>
 
@@ -768,6 +782,8 @@ onBeforeUnmount(() => {
       </div>
     </a>
 </div>
+
+<Fireworks v-if="specialOccasion" />
 
 <button @click="changeTheme" id="themeToggle" class=" flex place-items-center place-content-end w-full py-1 pr-4 text-center absolute top-3 right-2">
   <BrightnessUpIcon v-if="isDarkMode" class="text-chalk"/>
