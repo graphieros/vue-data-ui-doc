@@ -1024,6 +1024,13 @@ function handleSearchEnter() {
                         @keydown.up.prevent="moveSearchSelection(-1)"
                         @keydown.enter.prevent="handleSearchEnter"
                     />
+                    <button
+                        v-if="searchInputQuery"
+                        class="absolute top-[7px] right-3 rounded-full w-7 h-7 flex items-center hover:bg-white hover:shadow transition-all dark:hover:bg-[#3A3A3A] p-1 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                        @click="searchInputQuery = ''"
+                    >
+                        <VueUiIcon name="close" :size="20" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'"/>
+                    </button>
 
                     <ul
                         v-if="isSearchMenuOpen && filteredSideMenuItems.length"
@@ -1040,13 +1047,15 @@ function handleSearchEnter() {
                             "
                             @mousedown.prevent="goToMenuItem(item)"
                         >
-                            <div class="flex flex-row items-center gap-2">
-                                <VueUiIcon :name="item.icon" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'" class="w-4 h-4" />
-                                <span class="font-inter-medium"><span class="text-[#BBBBBB] dark:text-[#5A5A5A]">VueUi</span>{{ item.label }}</span>
+                            <div class="flex flex-col">
+                                <div class="flex flex-row items-center gap-2">
+                                    <VueUiIcon :name="item.icon" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'" class="w-4 h-4" />
+                                    <span class="font-inter-medium"><span class="text-[#BBBBBB] dark:text-[#5A5A5A]">VueUi</span>{{ item.label }}</span>
+                                </div>
+                                <span class="text-xs text-gray-500 dark:text-gray-400 pl-6">
+                                    {{ item.groupTitle }}
+                                </span>
                             </div>
-                            <span class="text-xs text-gray-500 dark:text-gray-400">
-                                {{ item.groupTitle }}
-                            </span>
                         </li>
                     </ul>
                 </div>
