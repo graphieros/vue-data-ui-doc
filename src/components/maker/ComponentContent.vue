@@ -266,10 +266,10 @@ function toggleStorage() {
     
         <div class="relative p-3 rounded-xl border border-transparent hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20] transition-colors mb-12" ref="compContent">
             <div>
-                <CodeParser content="<script setup>" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
+                <CodeParser content="<script setup>" language="html" :withCopy="false" noPointerEvents borderRadius="none"/>
                 <CodeParser :content="generatedScript" language="javascript" :withCopy="false" noPointerEvents borderRadius="none"/>
-                <CodeParser content="</script>" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
-                <CodeParser :content="generatedTemplate" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
+                <CodeParser content="</script>" language="html" :withCopy="false" noPointerEvents borderRadius="none"/>
+                <CodeParser :content="generatedTemplate" language="html" :withCopy="false" noPointerEvents borderRadius="none"/>
             </div>
             <button @click="copyComponent" class="cursor-pointer absolute top-4 right-4 flex flex-row place-items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors">
                 <CopyIcon class="text-app-blue" />

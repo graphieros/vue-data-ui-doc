@@ -651,6 +651,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 sideMenu: {
+                    searchPlaceholder: {
+                        en: 'Search a component',
+                        fr: 'Rechercher un composant',
+                        pt: 'Pesquisar um componente',
+                        de: 'Eine Komponente suchen',
+                        zh: '搜索组件',
+                        jp: 'コンポーネントを検索',
+                        es: 'Buscar un componente',
+                        ko: '컴포넌트 검색',
+                        ar: 'ابحث عن مكوّن'
+                    },
                     lineAndBars: {
                         en: `Lines and bars`,
                         fr: `Lignes et barres`,
