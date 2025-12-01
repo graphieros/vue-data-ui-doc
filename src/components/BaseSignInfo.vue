@@ -1,6 +1,8 @@
 <script setup>
     import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
+import BaseCard from "./BaseCard.vue";
+import { AmpersandIcon, MinusVerticalIcon, SquareRoundedMinusIcon, SquareRoundedPlusFilledIcon, SquareRoundedPlusIcon } from "vue-tabler-icons";
 
 defineProps({
     /**
@@ -54,19 +56,26 @@ const translations = ref({
 </script>
 
 <template>
-    <div 
-        class="rounded-full flex flex-row gap-2 w-full bg-app-green-light-extra dark:bg-[#42d39220] p-4 mb-4 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]" 
-        v-if="['positiveOnly', 'positiveOrNegativeOnly'].includes(type)"
-    >
-        <VueUiIcon name="moodWink" stroke="#42d392"/>
-        <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+    <BaseCard class="flex flex-row gap-2 mb-2 w-fit mx-auto flex-wrap justify-center align-center place-items-center" v-if="['positiveOnly', 'positiveOrNegativeOnly', 'both'].includes(type)">
+        <BaseCard>
+            <div class="flex flex-row flex-nowrap">
+                <template v-if="type === 'both'">
+                    <SquareRoundedPlusIcon color="#42d392"/>
+                    <AmpersandIcon/>
+                    <SquareRoundedMinusIcon color="#ff6600"/>
+                </template>
+                <template v-if="type === 'positiveOnly'">
+                    <SquareRoundedPlusIcon color="#42d392"/>
+                </template>
+                <template v-if="type === 'positiveOrNegativeOnly'">
+                    <SquareRoundedPlusIcon color="#42d392"/>
+                    <MinusVerticalIcon/>
+                    <SquareRoundedMinusIcon color="#ff6600"/>
+                </template>
+            </div>
+        </BaseCard>
         <span dir="auto">{{ translations[type][store.lang] }}</span>
-    </div>
-    <div v-else-if="type === 'both'" class="rounded-full flex flex-row gap-2 w-full bg-app-green-light-extra dark:bg-[#42d39220] p-4 mb-4 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
-        <VueUiIcon name="smiley" stroke="#42d392"/>
-        <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-        <span dir="auto">{{ translations.both[store.lang] }}</span>
-    </div>
+    </BaseCard>
 </template>
 
 <style scoped>

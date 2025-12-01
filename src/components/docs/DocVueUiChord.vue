@@ -438,7 +438,7 @@ function goToPage(route) {
             debug 
         />
 
-        <Box ref="box" showEmits showSlots showThemes showResponsive showCallbacks showPatterns signInfo="postiveOnly" schema="vue_ui_chord">
+        <Box ref="box" showEmits showSlots showThemes showResponsive showCallbacks showPatterns signInfo="positiveOnly" schema="vue_ui_chord">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
