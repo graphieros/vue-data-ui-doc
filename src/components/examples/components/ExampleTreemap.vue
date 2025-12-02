@@ -33,14 +33,17 @@ const types = ref({
         'vue_ui_mood_radar',
         'vue_ui_molecule',
         'vue_ui_nested_donuts',
-        'vue_ui_galaxy'
+        'vue_ui_galaxy',
+        'vue_ui_stackbar',
+        'vue_ui_stackline',
     ],
     mini: [
         'vue_ui_sparkline',
         'vue_ui_sparkbar',
         'vue_ui_sparkstackbar',
         'vue_ui_sparkhistogram',
-        'vue_ui_sparkgauge'
+        'vue_ui_sparkgauge',
+        'vue_ui_spark_trend'
     ],
     combined: [
         'vue_ui_chestnut',
@@ -48,7 +51,9 @@ const types = ref({
     ],
     tables: [
         'vue_ui_table',
-        'vue_ui_table_sparkline'
+        'vue_ui_table_sparkline',
+        'vue_ui_table_heatmap',
+        'vue_ui_carousel_table'
     ],
     rating: [
         'vue_ui_rating',
@@ -161,10 +166,19 @@ const config = computed(() => {
                         stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
                         strokeWidth: 1,
                         borderRadius: 0,
-                        colorRatio: 0.3,
+                        colorRatio: 0,
                         gradient: {
-                            show: true,
+                            show: false,
                             intensity: 30
+                        },
+                        group: {
+                            stroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                            useSeriesBackgroundColor: true,
+                            backgroundLighterRatio: 0.2,
+                            label: {
+                                adaptColorToBackground: true,
+                                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                            }
                         },
                         selected: {
                             stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
@@ -174,9 +188,9 @@ const config = computed(() => {
                     },
                     labels: {
                         showDefaultLabels: true,
-                        fontSize: 16,
-                        minFontSize: 8,
-                        hideUnderProportion: 0.02,
+                        fontSize: 12,
+                        minFontSize: 4,
+                        hideUnderProportion: 0,
                         prefix: "Attrs: ",
                         suffix: "",
                         rounding: 0
