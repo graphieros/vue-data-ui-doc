@@ -260,7 +260,7 @@ const tableConfig = computed(() => {
                 </template>
 
                 <template #head="{ value, rowIndex, type }">
-                    <div class="text-xs">
+                    <div class="text-xs tabular-nums">
                         {{ value }}
                     </div>
                 </template>
@@ -273,25 +273,25 @@ const tableConfig = computed(() => {
                 </template>
                 <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
                     <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:${color};color:${textColor}`"
-                        class="relative">
+                        class="relative tabular-nums">
                         {{ value }}
                     </div>
                 </template>
                 <template #sum="{ value }">
                     <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                        class="bg-gray-200 dark:bg-[#3A3A3A]">
+                        class="bg-gray-200 dark:bg-[#3A3A3A] tabular-nums font-inter-bold">
                         {{ value }}
                     </div>
                 </template>
                 <template #average="{ value }">
                     <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                        class="bg-gray-200 dark:bg-[#3A3A3A]">
+                        class="bg-gray-200 dark:bg-[#3A3A3A] tabular-nums font-inter-bold">
                         {{ value.toFixed(1) }}
                     </div>
                 </template>
                 <template #median="{ value }">
                     <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                        class="bg-gray-200 dark:bg-[#3A3A3A]">
+                        class="bg-gray-200 dark:bg-[#3A3A3A] tabular-nums font-inter-bold">
                         {{ value.toFixed(1) }}
                     </div>
                 </template>
