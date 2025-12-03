@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.7.15",
+    "date": "2025-12-03",
+    "updates": [
+      {
+        "component": "VueUiFlow",
+        "description": "Add config option to show smooth links between nodes",
+        "link": "/docs#vue-ui-flow"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.14",
     "date": "2025-11-29",
     "updates": [

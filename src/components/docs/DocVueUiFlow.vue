@@ -263,6 +263,7 @@ const config = ref({
                 width: 40,
                 labels: {
                     show: true,
+                    showValue: true,
                     fontSize: 14,
                     abbreviation: {
                         use: true,
@@ -279,7 +280,8 @@ const config = ref({
             links: {
                 opacity: 0.8,
                 stroke: "#FFFFFF",
-                strokeWidth: 1
+                strokeWidth: 1,
+                smooth: true
             }
         }
     },
@@ -452,6 +454,7 @@ const darkModeConfig = ref({
                 width: 40,
                 labels: {
                     show: true,
+                    showValue: true,
                     fontSize: 14,
                     abbreviation: {
                         use: true,
@@ -468,7 +471,8 @@ const darkModeConfig = ref({
             links: {
                 opacity: 0.8,
                 stroke: "#1A1A1A",
-                strokeWidth: 1
+                strokeWidth: 1,
+                smooth: true,
             }
         }
     },
@@ -688,6 +692,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                     <BaseAttr name="opacity" attr="style.chart.links.opacity" type="range" defaultVal="0.8" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="stroke" attr="style.chart.links.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="strokeWidth" attr="style.chart.links.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smooth" attr="style.chart.links.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="nodes" :level="3" title="style.chart.nodes">
                     <BaseAttr name="gap" attr="style.chart.nodes.gap" type="number" defaultVal="10" :min="0" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -696,6 +701,8 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                     <BaseAttr name="strokeWdith" attr="style.chart.nodes.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="borderRadius" attr="style.chart.nodes.borderRadius" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="labels" :level="4" title="style.chart.nodes.labels">
+                        <BaseAttr name="show" attr="style.chart.nodes.labels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="showValue" attr="style.chart.nodes.labels.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.nodes.labels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="prefix" attr="style.chart.node.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="suffix" attr="style.chart.node.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

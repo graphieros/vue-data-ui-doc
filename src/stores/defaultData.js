@@ -1631,6 +1631,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'style.chart.nodes.width', def: 40, type: 'number', min: 10, max: 100, label: ['width'], category: 'datapoints'},
                     { key: 'style.chart.nodes.labels.show', def: true, type: 'checkbox', label: ['labels', 'is', 'show'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.labels.showValue', def: true, type: 'checkbox', label: ['labels', 'value', 'is', 'show'], category: 'datapoints'},
                     { key: 'style.chart.nodes.labels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'datapoints' },
                     { key: 'style.chart.nodes.labels.abbreviation.use', def: true, type: 'checkbox', label: ['abbreviation', 'is', 'use'], category: 'datapoints'},
                     { key: 'style.chart.nodes.labels.abbreviation.length', def: 3, type: 'number', min: 1, max: 12, label: ['abbreviation', 'is', 'length'], category: 'datapoints'},
@@ -1644,6 +1645,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.links.opacity', def: 0.8, type: 'number', min: 0, max: 1, step: 0.01, label: ['link', 'is', 'opacity'], category: 'datapoints'},
                     { key: 'style.chart.links.stroke', def: '#FFFFFF', type: 'color', label: ['link', 'border', 'is', 'color'], category: 'datapoints'},
                     { key: 'style.chart.links.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['link', 'border', 'is', 'thickness'], category: 'datapoints'},
+                    { key: 'style.chart.links.smooth', def: true, type: 'checkbox', label: ['link', 'is', 'smooth'], category: 'datapoints'},
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.columnNames.source', def: 'Source', type: 'text', label: ['columnName', 'is', 'source'], category: 'table' },
