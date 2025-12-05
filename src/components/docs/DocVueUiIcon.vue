@@ -282,11 +282,11 @@ const code = computed(() => {
         <BaseDocDescription :text="translations.docs.tooltips.icon[store.lang]" />
 
         <BaseCard>
-            <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">{{ translations.docs.tooltips.iconUserOptions[store.lang] }}</p>
+            <p class="mx-auto w-full text-md text-black dark:text-[#CCCCCC] mb-2 text-left font-inter-medium">{{ translations.docs.tooltips.iconUserOptions[store.lang] }}</p>
             <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
                 <div v-for="icon in icons">
                     <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:scale-125 hover:bg-[#00000010] dark:hover:bg-[#00000020] transition-all" @click="selectIcon(icon)">
-                        <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
+                        <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
                         <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
                     </div>
                 </div>
@@ -295,14 +295,14 @@ const code = computed(() => {
 
 
         <BaseCard class="mt-6">
-            <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-                    {{ translations.docs.tooltips.iconSpecial[store.lang] }}
+            <p class="mx-auto w-full text-md text-black dark:text-[#CCCCCC] mb-2 text-left font-inter-medium">
+                {{ translations.docs.tooltips.iconSpecial[store.lang] }}
             </p>
     
             <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
                 <div v-for="icon in specialIcons">
                     <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:bg-[#00000010] dark:hover:bg-[#FFFFFF03] hover:scale-125 transition-all" @click="selectIcon(icon)">
-                        <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
+                        <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
                         <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
                     </div>
                 </div>
