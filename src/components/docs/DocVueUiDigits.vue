@@ -10,6 +10,9 @@ import DocSnapper from "../DocSnapper.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import { useConfigCode } from "../../useConfigCode";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
 
 const mainConfig = useConfig()
 
@@ -33,23 +36,25 @@ const isDarkMode = computed(() => {
 const dataset = ref(299792458);
 
 const config = ref({
-  height: "100%",
-  width: null,
-  backgroundColor: "#F3F4F6",
-  digits: {
-    color: "#2D353C",
-    skeletonColor: "#e1e5e8"
-  }
+    height: "100%",
+    width: null,
+    backgroundColor: "#F3F4F6",
+    digits: {
+        color: "#2D353C",
+        skeletonColor: "#e1e5e8",
+        thickness: 1
+    }
 });
 
 const darkModeConfig = ref({
-  height: "100%",
-  width: null,
-  backgroundColor: "#2A2A2A",
-  digits: {
-    color: "#42d392",
-    skeletonColor: "#3A3A3A"
-  }
+    height: "100%",
+    width: null,
+    backgroundColor: "#2A2A2A",
+    digits: {
+        color: "#42d392",
+        skeletonColor: "#3A3A3A",
+        thickness: 1
+    }
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -86,6 +91,7 @@ function fixChart() {
     store.docSnap = !store.docSnap;
 } 
 
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 
@@ -138,19 +144,24 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                 <div class="mt-4">
                     TS type: <code class="text-app-blue">VueUiDigitsConfig</code>
                 </div>
-<pre>
-<code>
-const <span class="text-app-blue">config: VueUiDigitsConfig</span> = {
-    height: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.height"><input v-else type="text" v-model="mutableConfig.height">, (type: string; default: "100%")
-    width: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.width"><input v-else type="text" v-model="mutableConfig.width">, (type: string; default: null)
-    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">, (default: "#FFFFFF")
-    digits: {
-        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.digits.color"><input v-else type="color" v-model="mutableConfig.digits.color">, (default: "#2D353C")
-        skeletonColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.digits.skeletonColor"><input v-else type="color" v-model="mutableConfig.digits.skeletonColor"> (default: "#e1e5e8")
-    }
-}
+
+<div class="my-4">
+    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+    <BaseDetails attr="const config: VueUiDigitsConfig" equal>
+        <BaseAttr name="height" attr="height" type="text" defaultVal="'100%'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="width" attr="width" type="text" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="digits">
+            <BaseAttr name="color" attr="digits.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="skeletonColor" attr="digits.skeletonColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="thickness" attr="digits.thickness" type="range" defaultVal="1" :min="0.1" :max="3" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </BaseDetails>
+    </BaseDetails>
 </code>
-</pre>   
+
             </template>
         </Box>
     </div>

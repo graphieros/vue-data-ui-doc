@@ -7,6 +7,9 @@ import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import { useConfigCode } from "../../useConfigCode";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
 
 const mainConfig = useConfig()
 
@@ -114,6 +117,8 @@ function fixChart() {
 
 const isActive = ref(true);
 
+const { configCode, showAllConfig } = useConfigCode()
+
 </script>
 
 <template>
@@ -154,40 +159,46 @@ const isActive = ref(true);
                         </div>
                     
                     <div class="mt-4">
-                      TS type: <code class="text-app-blue">VueUiCursorConfig</code>
+                        TS type: <code class="text-app-blue">VueUiCursorConfig</code>
                     </div>
-                    <div class="overflow-x-auto">
-    <pre>
-    <code>
-    const <span class="text-black dark:text-app-blue">config: VueUiCursorConfig</span> = {
-        bubbleEffect: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bubbleEffect" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bubbleEffect" @change="forceChartUpdate()">, (default: true) 
-        bubbleEffectColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.bubbleEffectColor"><input v-else type="color" v-model="mutableConfig.bubbleEffectColor">, (default: "#FFFFFF")
-        bubbleEffectOpacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="1" step="0.01" v-model="mutableConfigDarkMode.bubbleEffectOpacity"><input v-else type="range" class="accent-app-blue" min="0" max="1" step="0.01" v-model="mutableConfig.bubbleEffectOpacity">, (default: 0.1)
-        centerCircleColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.centerCircleColor"><input v-else type="color" v-model="mutableConfig.centerCircleColor">, (default: "#FFFFFF")
-        centerCircleOpacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="1" step="0.01" v-model="mutableConfigDarkMode.centerCircleOpacity"><input v-else type="range" class="accent-app-blue" min="0" max="1" step="0.01" v-model="mutableConfig.centerCircleOpacity">, (default: 0.1),
-        centerCircleDasharray: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" step="1" v-model="mutableConfigDarkMode.centerCircleDasharray"><input v-else type="range" class="accent-app-blue" min="0" max="100" step="1" v-model="mutableConfig.centerCircleDasharray">, (default: 0),
-        centerCircleRadius: 50,
-        centerCircleStroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.centerCircleStroke"><input v-else type="color" v-model="mutableConfig.centerCircleStroke">, (default: "#CCCCCC")
-        centerCircleStrokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="12" step="0.01" v-model="mutableConfigDarkMode.centerCircleStrokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" step="0.01" v-model="mutableConfig.centerCircleStrokeWidth">, (default: 0.5),
-        coordinatesColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.coordinatesColor"><input v-else type="color" v-model="mutableConfig.coordinatesColor">, (default: "#CCCCCC")
-        coordinatesFontSize: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="6" max="48" step="1" v-model="mutableConfigDarkMode.coordinatesFontSize"><input v-else type="range" class="accent-app-blue" min="6" max="48" step="1" v-model="mutableConfig.coordinatesFontSize">, (default: 10),
-        coordinatesOffset: 0
-        crosshairDasharray: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" step="1" v-model="mutableConfigDarkMode.crosshairDasharray"><input v-else type="range" class="accent-app-blue" min="0" max="100" step="1" v-model="mutableConfig.crosshairDasharray">, (default: 0),
-        crosshairStroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.crosshairStroke"><input v-else type="color" v-model="mutableConfig.crosshairStroke">, (default: "#CCCCCC")
-        crosshairStrokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="12" step="0.01" v-model="mutableConfigDarkMode.crosshairStrokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" step="0.01" v-model="mutableConfig.crosshairStrokeWidth">, (default: 0.5),
-        intersectCirclesFill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.intersectCirclesFill"><input v-else type="color" v-model="mutableConfig.intersectCirclesFill">, (default: "#CCCCCC")
-        intersectCirclesRadius: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="12" step="0.01" v-model="mutableConfigDarkMode.intersectCirclesRadius"><input v-else type="range" class="accent-app-blue" min="0" max="12" step="0.01" v-model="mutableConfig.intersectCirclesRadius">, (default: 2),
-        isLoading: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.isLoading" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.isLoading" @change="forceChartUpdate()">, (default: false) 
-        parentId: "", // By default will attach to the first div of your page.
-        showCenterCircle: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showCenterCircle" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showCenterCircle" @change="forceChartUpdate()">, (default: true) 
-        showCoordinates: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showCoordinates" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showCoordinates" @change="forceChartUpdate()">, (default: true) 
-        showCrosshair: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showCrosshair" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showCrosshair" @change="forceChartUpdate()">, (default: true) 
-        showIntersectCircles: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showIntersectCircles" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showIntersectCircles" @change="forceChartUpdate()">, (default: true) 
-        useWaveOnClick: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useWaveOnClick" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useWaveOnClick" @change="forceChartUpdate()">, (default: true) 
-    }
-    </code>
-    </pre>                    
-                    </div>
+
+<div class="my-4">
+    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+    <BaseDetails attr="const config: VueUiCursorConfig" equal>
+        <BaseAttr name="bubbleEffect" attr="bubbleEffect" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="bubbleEffectColor" attr="bubbleEffectColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="bubbleEffectOpacity" attr="bubbleEffectOpacity" type="range" defaultVal="0.1" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
+        <BaseAttr name="showCenterCircle" attr="showCenterCircle" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="centerCircleColor" attr="circleCenterColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="centerCircleDasharray" attr="centerCircleDasharray" type="range" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="centerCircleOpacity" attr="centerCircleOpacity" type="range" defaultVal="0" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="centerCircleRadius" attr="centerCircleRadius" type="range" defaultVal="50" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="centerCircleStroke" attr="centerCircleStroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="centerCircleStrokeWidth" attr="centerCircleStrokeWidth" type="range" defaultVal="0.5" :min="0" :max="24" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
+        <BaseAttr name="showCoordinates" attr="showCoordinates" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="coordinatesColor" attr="coordinatesColor" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="coordinatesFontSize" attr="coordinatesFontSize" type="range" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="coordinatesOffset" attr="coordinatesOffset" type="range" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
+        <BaseAttr name="showCrosshair" attr="showCrosshair" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="crosshairDasharray" attr="crosshairDasharray" type="range" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="crosshairStroke" attr="crosshairStroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="crosshairStrokeWidth" attr="crosshairStrokeWidth" type="range" defaultVal="0.5" :min="0" :max="24" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
+        <BaseAttr name="showIntersectCircles" attr="showIntersectCircles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="intersectCirclesFill" attr="intersectCirclesFill" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="intersectCirclesRadius" attr="intersectCirclesRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="isLoading" attr="isLoading" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr inactive name="parentId" attr="parentId" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Use an id to only show the cursor on a specific element" />
+        <BaseAttr name="useWaveOnClick" attr="useWaveOnClick" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    </BaseDetails>
+</code>
+
                 </template>
             </Box>
         </div>

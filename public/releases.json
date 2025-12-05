@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 3.7.16",
+    "date": "2025-12-05",
+    "updates": [
+      {
+        "component": "VueUiCursor",
+        "description": "Fix crosshair issue when centerCircleRadius is updated dynamically",
+        "link": "/docs#vue-ui-cursor"
+      },
+      {
+        "component": "VueUiDigits",
+        "description": "Add a config attribute to control digit thickness",
+        "link": "/docs#vue-ui-digits"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add 'triangleInformation' & 'triangleExclamation' icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 3.7.15",
     "date": "2025-12-03",
     "updates": [
