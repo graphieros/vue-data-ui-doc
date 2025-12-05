@@ -150,7 +150,8 @@ const digitConfigStars = computed(() => {
     backgroundColor: 'transparent',
     digits: {
       color: isDarkMode.value ? '#fdd663' : '#1A1A1A',
-      skeletonColor: isDarkMode.value ? '#2A2A2A' : '#e1e5e8'
+      skeletonColor: isDarkMode.value ? '#2A2A2A' : '#e1e5e8',
+      thickness: 1.8
     }
   }
 })

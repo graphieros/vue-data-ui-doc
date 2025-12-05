@@ -39,7 +39,7 @@ const config = computed(() => {
     "style": {
         "fontFamily": "inherit",
         "chart": {
-            "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+            "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#f3f4f6',
             "color": isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             "animation": {
                 "use": true,

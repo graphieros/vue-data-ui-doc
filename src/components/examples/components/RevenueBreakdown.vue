@@ -18,7 +18,7 @@ const config = computed(() => {
         },
         "style": {
             "chart": {
-                "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#f3f4f6',
                 "color": isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 "useGradient": true,
                 "gradientIntensity": 40,
@@ -55,7 +55,7 @@ const config = computed(() => {
                 },
                 "legend": {
                     "show": true,
-                    "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                    "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#f3f4f6',
                     "color": isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                     "fontSize": 14,
                     "bold": false,

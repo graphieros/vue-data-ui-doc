@@ -14,7 +14,7 @@ const config = computed(() => {
     "useCssAnimation": true,
     "chart": {
         "fontFamily": "inherit",
-        "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#f3f4f6',
         "color": isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         "height": 600,
         "width": 1000,
