@@ -604,7 +604,7 @@ onBeforeUnmount(() => {
         <div class="flex flex-row gap-2 text-gray-500 relative" :title="componentsLen + ' components'">
           {{ componentTranslation[store.lang] }}: 
           <div class="h-[22px]">
-            <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#647EFF' : '#1A1A1A' }  }"/>
+            <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#647EFF' : '#6A6A6A', thickness: 2 }  }"/>
           </div>
         </div>
 
@@ -658,9 +658,9 @@ onBeforeUnmount(() => {
                 <div class="h-full flex flex-col">
                   <div class="h-full flex flex-row place-items-center justify-center">
                     <svg style="height:100%" viewBox="-6 -6 22 22">
-                      <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#6A6A6A'" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
+                    <VueUiDigits v-for="d in digits" :config="{...digitsConfigVersion, digits: {...digitsConfigVersion.digits, thickness: 1.7, color: isDarkMode ? '#42d392' : '#6A6A6A' }}" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
                   </div>
                 </div>
               </template>

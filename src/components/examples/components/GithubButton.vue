@@ -15,7 +15,8 @@ const digitConfig = computed(() => {
         backgroundColor: isDarkMode.value ? "#1A1A1A" : "#F3F4F6",
         digits: {
             color: isDarkMode.value ? "#fdd663" : "#2D353C",
-            skeletonColor: isDarkMode.value ? "#3A3A3A": "#e1e5e8"
+            skeletonColor: isDarkMode.value ? "#3A3A3A": "#e1e5e8",
+            thickness: 2
         }
     }
 })
@@ -26,7 +27,8 @@ const digitConfigIssues = computed(() => {
         backgroundColor: isDarkMode.value ? "#1A1A1A" : "#F3F4F6",
         digits: {
             color: isDarkMode.value ? "#5f8aee" : "#2D353C",
-            skeletonColor: isDarkMode.value ? "#3A3A3A": "#e1e5e8"
+            skeletonColor: isDarkMode.value ? "#3A3A3A": "#e1e5e8",
+            thickness: 2
         }
     }
 })

@@ -63,6 +63,7 @@ const digitsConfigVersion = computed(() => {
         digits: {
             color: isDarkMode.value ? "#42d392" : "#1A1A1A",
             skeletonColor: isDarkMode.value ? "#FFFFFF10" : "#1A1A1A16",
+            thickness: 1.8
         },
     };
 });
@@ -277,7 +278,7 @@ const message = ref({
                     </div>
                     <div class="h-[20px] flex flex-row align-center sm:ml-5 mt-1">
                         <svg style="height:100%" viewBox="-6 -6 22 22">
-                            <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <VueUiDigits v-for="d in lastVersion" :config="digitsConfigVersion"
                             :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.5rem]' : ''" />
