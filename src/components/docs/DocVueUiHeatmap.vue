@@ -637,7 +637,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiHeatmapConfig" equal>
-      <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+      <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
       <BaseDetails attr="style" :level="1">
         <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

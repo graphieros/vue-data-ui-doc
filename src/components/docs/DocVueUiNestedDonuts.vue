@@ -619,7 +619,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiNestedDonutsConfig" equal>
         <span>responsive: false; <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
         <BaseAttr inactive name="debug" defaultVal="false"/>
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -425,7 +425,7 @@ function goToPage(route) {
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiTableSparklineConfig" equal>
-    <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+    <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>colNames: [], <BaseComment>{{ translations.docs.example[store.lang] }} : ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE"]</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <span>fontFamily: "inherit",</span>

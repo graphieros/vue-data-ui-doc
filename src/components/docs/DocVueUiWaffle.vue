@@ -516,7 +516,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <span>responsive: false; <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
         <BaseAttr inactive name="debug" defaultVal="false"/>
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>useCustomCells: false, <BaseComment>{{ translations.customization.otherSlots.waffle[store.lang] }}</BaseComment></span>

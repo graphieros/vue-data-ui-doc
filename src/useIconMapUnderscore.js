@@ -64,7 +64,8 @@ export function useIconMapUnderscore(componentName) {
         vue_ui_world: 'world',
         vue_ui_ridgeline: 'chartRidgeline',
         vue_ui_chord: 'chartChord',
-        vue_ui_stackline: 'chartStackline'
+        vue_ui_stackline: 'chartStackline',
+        vue_ui_dag: 'chartDag'
     }
     return mapping[componentName] || 'clipBoard';
 }

@@ -1,4 +1,223 @@
 {
+    "vue_ui_dag": {
+        "name": "VueUiDag",
+        "icon": "chartDag",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-dag",
+        "path":"/docs#vue-ui-dag",
+        "description": "dag",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "reponsive": false,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiDagConfig",
+            "dataset": "VueUiDagDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "nodes": [
+                        { "id": "A", "label": "A" },
+                        { "id": "B", "label": "B" },
+                        { "id": "C", "label": "C" },
+                        { "id": "D", "label": "D" }
+                    ],
+                    "edges": [
+                        { "from": "A", "to": "B" },
+                        { "from": "B", "to": "A" },
+                        { "from": "B", "to": "A" },
+                        { "from": "C", "to": "A" },
+                        { "from": "B", "to": "D" },
+                        { "from": "C", "to": "D" },
+                        { "from": "D", "to": "A" }
+                    ]
+                }
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
+            },
+            {
+                "name": "Zoom",
+                "description": "Toggles the pan zoom lock feature",
+                "icon": "zoomLock"
+            }
+        ],
+        "emits": [
+            {
+                "name": "onNodeClick",
+                "description": "Returns the data of the clicked node"
+            },
+            {
+                "name": "onMidpointEnter",
+                "description": "Returns the edge of the hovered midpoint"
+            },
+            {
+                "name": "onMidpointLeave",
+                "description": "Emitted when leaving a midpoint"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "toggleZoom",
+                "description": "Triggers toggling of the pan zoom lock feature"
+            },
+            {
+                "name": "zoomIn",
+                "description": "Triggers zoom in"
+            },
+            {
+                "name": "zoomOut",
+                "description": "Triggers zoom out"
+            },
+            {
+                "name": "resetZoom",
+                "description": "Triggers a reset of the zoom to 100%"
+            },
+            {
+                "name": "switchOrientation",
+                "description": "Triggers a change of the graph orientation"
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "source",
+                "description": "add a chart caption content"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "optionZoom",
+                "description": "customize the context menu zoom lock icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
+            },
+            {
+                "name": "node-label",
+                "description": "customize node contents"
+            },
+            {
+                "name": "node-label",
+                "description": "customize the node label"
+            },
+            {
+                "name": "node",
+                "description": "customize the node content"
+            },
+            {
+                "name": "tooltip-midpoint",
+                "description": "customize the contents of the midpoint tooltip"
+            },
+            {
+                "name": "tooltip-node",
+                "description": "customize the contents of the node tooltip"
+            }
+        ]
+    },
     "vue_ui_chord": {
         "name": "VueUiChord",
         "icon": "chartChord",

@@ -513,6 +513,58 @@ const items = computed(() => {
         </template>
     </${props.componentName}>
             `
+        },
+        {
+            names: ['node'],
+            description: translations.value.slots.node[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #node="{ node }">
+            <!-- Content will be injected inside a foreignObject -->
+            <div style="width: 100%; height: 100%">
+                {{ node }}
+            </div>
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
+            names: ['node-label'],
+            description: translations.value.slots.nodeLabel[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #node-label="{ node }">
+            <!-- Content will be injected inside a svg text element -->
+                ID: {{ node.id }}
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
+            names: ['tooltip-node'],
+            description: translations.value.slots.tooltipNode[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #tooltip-node="{ node, layoutData }">
+                <div style="border: 1px solid red">
+                    {{ node }}
+                </div>
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
+            names: ['tooltip-midpoint'],
+            description: translations.value.slots.tooltipMidpoint[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #tooltip-node="{ edge, layoutData }">
+                <div style="border: 1px solid red">
+                    {{ edge }}
+                </div>
+        </template>
+    </${props.componentName}>
+            `
         }
     ]
 })

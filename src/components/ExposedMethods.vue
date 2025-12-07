@@ -43,6 +43,11 @@ const methodMap = computed(() => {
         resumeAnimation: { name: 'resumeAnimation', description: translations.value.docs.emits.resumeAnimation[store.lang] },
         toggleReadonly: { name: 'toggleReadonly', description: translations.value.docs.emits.rating.toggleReadonly[store.lang] },
         autoSize: { name: 'autoSize', description: translations.value.docs.emits.autoSize[store.lang] },
+        resetZoom: { name: 'resetZoom', description: translations.value.docs.emits.resetZoom[store.lang]},
+        zoomIn: { name: 'zoomIn', description: translations.value.docs.emits.zoomIn[store.lang]},
+        zoomOut: { name: 'zoomOut', description: translations.value.docs.emits.zoomOut[store.lang]},
+        switchDirection: { name: 'switchDirection', description: translations.value.docs.emits.switchDirection[store.lang]},
+        getData: { name: 'getData', description: translations.value.docs.emits.getData[store.lang]}
     }
 })
 

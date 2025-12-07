@@ -676,7 +676,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 
 <code ref="configCode">
   <BaseDetails attr="const config:VueUiHorizontalBarConfig" equal>
-    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+    <span>theme: "", ("dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
     <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
     <BaseAttr inactive name="debug" defaultVal="false"/>
     <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>

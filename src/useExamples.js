@@ -53,6 +53,62 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-DAG --------------//
+    const DATASET_DAG_BASIC = ref({
+        nodes: [
+            { id: "A", label: "A",},
+            { id: "B", label: "B",},
+            { id: "C", label: "C",},
+            { id: "D", label: "D" },
+        ],
+        edges: [
+            { from: "A", to: "B",},
+            { from: "B", to: "A" },
+            { from: "B", to: "A" },
+            { from: "C", to: "A" },
+            { from: "B", to: "D" },
+            { from: "C", to: "D" },
+            { from: "D", to: "A" },
+        ]
+    })
+
+    const DATASET_DAG_SPECIAL = ref({
+        nodes: [
+            { id: "A", label: "A",},
+            { id: "B", label: "B",},
+            { id: "C", label: "C", backgroundColor: '#FF0000', color: '#FFFFFF'},
+            { id: "D", label: "D" },
+        ],
+        edges: [
+            { from: "A", to: "B",},
+            { from: "B", to: "A" },
+            { from: "B", to: "A" },
+            { from: "C", to: "A", color: '#FF0000'},
+            { from: "B", to: "D" },
+            { from: "C", to: "D", color: '#FF0000' },
+            { from: "D", to: "A" },
+        ]
+    });
+
+
+    const CONFIG_DAG_BASIC = computed(() => ({
+        theme: isDarkMode.value ? 'dark' : '',
+        style: {
+            chart: {
+                nodes: {
+                    tooltip: { showOnClick: true }
+                },
+                midpoints: {
+                    show: true
+                },
+                zoom: {
+                    active: false
+                }
+            }
+        }
+    }))
+
+
     //-------------- VUE-UI-RIDGELINE --------------//
 
     let raf_ridgline = ref(null);
@@ -10452,6 +10508,77 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
                     ar: "مع خلفية مخصصة"
+                }
+            },
+            // DAG BASIC
+            {
+                dataset: DATASET_DAG_BASIC.value,
+                config: CONFIG_DAG_BASIC.value,
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-basic',
+                link: 'vue-ui-dag',
+                description: {
+                    en: 'Basic DAG chart',
+                    fr: 'Diagramme DAG simple',
+                    pt: 'Gráfico DAG básico',
+                    de: 'Grundlegendes DAG-Diagramm',
+                    zh: '基础 DAG 图表',
+                    jp: '基本的 DAG チャート',
+                    es: 'Gráfico DAG básico',
+                    ko: '기본 DAG 차트',
+                    ar: 'مخطط DAG أساسي'
+                }
+            },
+            // DAG SPECIAL
+            {
+                dataset: DATASET_DAG_SPECIAL.value,
+                config: CONFIG_DAG_BASIC.value,
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-special',
+                link: 'vue-ui-dag',
+                description: {
+                    en: 'With individual colors',
+                    fr: 'Avec des couleurs individuelles',
+                    pt: 'Com cores individuais',
+                    de: 'Mit individuellen Farben',
+                    zh: '具有单独颜色',
+                    jp: '個別の色付き',
+                    es: 'Con colores individuales',
+                    ko: '개별 색상 포함',
+                    ar: 'مع ألوان فردية'
+                }
+            },
+            // DAG STRAIGHT EDGES
+            {
+                dataset: DATASET_DAG_BASIC.value,
+                config: {
+                    ...CONFIG_DAG_BASIC.value,
+                    style: {
+                        ...CONFIG_DAG_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_DAG_BASIC.value.style.chart,
+                            layout: {
+                                curvedEdges: false
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-straight-edges',
+                link: 'vue-ui-dag',
+                description: {
+                    en: 'DAG with straight edges',
+                    fr: 'DAG avec arêtes droites',
+                    pt: 'DAG com arestas retas',
+                    de: 'DAG mit geraden Kanten',
+                    zh: '具有直边的DAG',
+                    jp: '直線エッジのあるDAG',
+                    es: 'DAG con aristas rectas',
+                    ko: '직선 간선을 가진 DAG',
+                    ar: 'رسم DAG بحواف مستقيمة'
                 }
             },
             // FUNNEL BASIC

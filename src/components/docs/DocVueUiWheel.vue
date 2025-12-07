@@ -391,7 +391,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
     <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
     <BaseAttr inactive name="debug" defaultVal="false"/>
     <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+    <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <BaseAttr name="layout" attr="layout" type="select" defaultVal="classic" :options="['classic', '3d']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.2.1"/>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>

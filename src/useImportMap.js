@@ -67,7 +67,8 @@ export function useImportMap(c) {
         VueUiWorld: 'vue-ui-world',
         VueUiRidgeline: 'vue-ui-ridgeline',
         VueUiChord: 'vue-ui-chord',
-        VueUiStackline: 'vue-ui-stackline'
+        VueUiStackline: 'vue-ui-stackline',
+        VueUiDag: 'vue-ui-dag'
     }
     return mapping[c] ? {
         classic: `import { ${c} } from "vue-data-ui";`,

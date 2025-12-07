@@ -491,7 +491,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     <BaseDetails attr="const config: VueUiCirclePackConfig" equal>
         <BaseAttr inactive name="debug" defaultVal="false"/>
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br></span>
+        <span>theme: "", ("dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br></span>
         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseDetails attr="events" :level="1">

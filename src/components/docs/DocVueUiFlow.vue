@@ -672,7 +672,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
         <BaseAttr inactive name="debug" defaultVal="false"/>
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+        <span>theme: "", ("dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: [],<BaseComment>string[]</BaseComment></span>
         <span>nodeCategories: {},<BaseComment>{{ additionalTranslations.nodeCategories[store.lang] }}</BaseComment></span>
         <span>nodeCategoryColors: {},<BaseComment>{{ additionalTranslations.nodeCategoryColors[store.lang] }}</BaseComment></span>

@@ -88,6 +88,7 @@ const DocVueUiCirclePack = defineAsyncComponent(() => import('../components/docs
 const DocVueUiWorld = defineAsyncComponent(() => import('../components/docs/DocVueUiWorld.vue'));
 const DocVueUiRidgeline = defineAsyncComponent(() => import('../components/docs/DocVueUiRidgeline.vue'));
 const DocVueUiChord = defineAsyncComponent(() => import('../components/docs/DocVueUiChord.vue'));
+const DocVueUiDag = defineAsyncComponent(() => import('../components/docs/DocVueUiDag.vue'));
 
 const mainConfig = useConfig()
 
@@ -388,6 +389,18 @@ const menuItems = computed(() => [
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
+    },
+    {
+        name: "Dag",
+        icon: "chartDag",
+        tooltip: translations.value.docs.tooltips.dag[store.lang],
+        link: "/docs#vue-ui-dag",
+        type: "misc",
+        thumb: new URL('../assets/thumb_dag.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_dag_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: false,
+        hasLegend: false
     },
     {
         name: "Gauge",
@@ -1255,6 +1268,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiChord v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-chord'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiDag v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-dag'" />
             </Transition>
 
             <Transition name="fade">

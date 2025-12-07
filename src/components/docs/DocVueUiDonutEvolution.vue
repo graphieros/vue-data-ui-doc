@@ -733,7 +733,7 @@ function goToPage(route) {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiDonutEvolutionConfig" equal>
-        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
         <BaseAttr inactive name="debug" defaultVal="false"/>
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>

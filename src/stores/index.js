@@ -957,6 +957,53 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    node: {
+                        en: 'Use this slot to customize node content',
+                        fr: 'Utilisez ce slot pour personnaliser le contenu du nœud.',
+                        pt: 'Use este slot para personalizar o conteúdo do nó.',
+                        de: 'Verwenden Sie diesen Slot, um den Inhalt des Knotens anzupassen.',
+                        zh: '使用此插槽自定义节点内容。',
+                        jp: 'このスロットを使用してノードの内容をカスタマイズします。',
+                        es: 'Use este slot para personalizar el contenido del nodo.',
+                        ko: '이 슬롯을 사용하여 노드 콘텐츠를 커스터마이즈합니다.',
+                        ar: 'استخدم هذا الحيز لتخصيص محتوى العقدة.'
+                    },
+
+                    nodeLabel: {
+                        en: 'Use this slot to customize the node label',
+                        fr: 'Utilisez ce slot pour personnaliser le libellé du nœud.',
+                        pt: 'Use este slot para personalizar o rótulo do nó.',
+                        de: 'Verwenden Sie diesen Slot, um die Knotenbeschriftung anzupassen.',
+                        zh: '使用此插槽自定义节点标签。',
+                        jp: 'このスロットを使用してノードラベルをカスタマイズします。',
+                        es: 'Use este slot para personalizar la etiqueta del nodo.',
+                        ko: '이 슬롯을 사용하여 노드 레이블을 커스터마이즈합니다.',
+                        ar: 'استخدم هذا الحيز لتخصيص تسمية العقدة.'
+                    },
+
+                    tooltipNode: {
+                        en: 'Use this slot to customize the node tooltip content',
+                        fr: 'Utilisez ce slot pour personnaliser le contenu de l’infobulle du nœud.',
+                        pt: 'Use este slot para personalizar o conteúdo da tooltip do nó.',
+                        de: 'Verwenden Sie diesen Slot, um den Inhalt der Knotentooltip anzupassen.',
+                        zh: '使用此插槽自定义节点提示内容。',
+                        jp: 'このスロットを使用してノードツールチップの内容をカスタマイズします。',
+                        es: 'Use este slot para personalizar el contenido del tooltip del nodo.',
+                        ko: '이 슬롯을 사용하여 노드 툴팁 내용을 커스터마이즈합니다.',
+                        ar: 'استخدم هذا الحيز لتخصيص محتوى التلميح الخاص بالعقدة.'
+                    },
+
+                    tooltipMidpoint: {
+                        en: 'Use this slot to customize the midpoint tooltip content',
+                        fr: 'Utilisez ce slot pour personnaliser le contenu de l’infobulle du point médian.',
+                        pt: 'Use este slot para personalizar o conteúdo da tooltip do ponto médio.',
+                        de: 'Verwenden Sie diesen Slot, um den Inhalt der Tooltip des Mittelpunktes anzupassen.',
+                        zh: '使用此插槽自定义中点提示内容。',
+                        jp: 'このスロットを使用して中点ツールチップの内容をカスタマイズします。',
+                        es: 'Use este slot para personalizar el contenido del tooltip del punto medio.',
+                        ko: '이 슬롯을 사용하여 중점 툴팁 내용을 커스터마이즈합니다.',
+                        ar: 'استخدم هذا الحيز لتخصيص محتوى تلميح نقطة المنتصف.'
+                    },
                     groupLabel: {
                         en: "Use this slot to customize the group label",
                         fr: "Utilisez ce slot pour personnaliser le libellé du groupe",
@@ -2028,6 +2075,17 @@ export const useMainStore = defineStore("main", {
                         ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
                     },
                     tooltips: {
+                        dag: {
+                            en: 'Visualize any directed graph structure, including workflows or system architectures, even when cycles are present.',
+                            fr: 'Visualisez toute structure de graphe orienté, y compris des flux de travail ou des architectures système, même en présence de cycles.',
+                            pt: 'Visualize qualquer estrutura de grafo direcionado, incluindo fluxos de trabalho ou arquiteturas de sistema, mesmo quando há ciclos.',
+                            de: 'Visualisieren Sie jede gerichtete Graphstruktur, einschließlich Workflows oder Systemarchitekturen, selbst wenn Zyklen vorhanden sind.',
+                            zh: '可视化任何有向图结构，包括工作流程或系统架构，即使存在循环也不受影响。',
+                            jp: 'ワークフローやシステムアーキテクチャなど、サイクルが存在しても任意の有向グラフ構造を可視化できます。',
+                            es: 'Visualice cualquier estructura de grafo dirigido, incluidos flujos de trabajo o arquitecturas de sistema, incluso cuando existen ciclos.',
+                            ko: '워크플로우나 시스템 아키텍처 등, 사이클이 있어도 모든 방향성 그래프 구조를 시각화할 수 있습니다.',
+                            ar: 'يمكنك عرض أي بنية رسم بياني موجه، بما في ذلك مسارات العمل أو هياكل الأنظمة، حتى عند وجود دورات.'
+                        },
                         historyPlot: {
                             en: 'Visualize the dynamic journey of two variables over time, with every point telling a story of change and connection in two-dimensional space.',
                             fr: 'Visualisez le parcours dynamique de deux variables dans le temps, chaque point racontant une histoire de changement et de connexion dans un espace bidimensionnel.',
@@ -2876,6 +2934,64 @@ export const useMainStore = defineStore("main", {
                         ar: 'يمكنك تجاوز CSS (راجع ملف style.css الموجود في الحزمة)'
                     },
                     emits: {
+                        getData: {
+                            en: 'Call this method from the parent component to get the graph data',
+                            fr: 'Appelez cette méthode depuis le composant parent pour obtenir les données du graphe.',
+                            pt: 'Chame este método a partir do componente pai para obter os dados do grafo.',
+                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um die Graphdaten abzurufen.',
+                            zh: '从父组件调用此方法以获取图数据。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、グラフデータを取得します。',
+                            es: 'Llame a este método desde el componente padre para obtener los datos del grafo.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 그래프 데이터를 가져옵니다.',
+                            ar: 'استدعِ هذه الدالة من المكوّن الأب للحصول على بيانات الرسم البياني.'
+                        },
+                        resetZoom: {
+                            en: 'Call this method from the parent component to reset zoom to 100%',
+                            fr: 'Appelez cette méthode depuis le composant parent pour réinitialiser le zoom à 100 %.',
+                            pt: 'Chame este método a partir do componente pai para redefinir o zoom para 100%.',
+                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um den Zoom auf 100 % zurückzusetzen.',
+                            zh: '从父组件调用此方法可将缩放重置为 100%。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、ズームを100％にリセットします。',
+                            es: 'Llame a este método desde el componente padre para restablecer el zoom al 100%.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 줌을 100%로 초기화합니다.',
+                            ar: 'استدعِ هذه الدالة من المكوّن الأب لإعادة التكبير إلى 100٪.'
+                        },
+
+                        zoomIn: {
+                            en: 'Call this method from the parent component to zoom in',
+                            fr: 'Appelez cette méthode depuis le composant parent pour effectuer un zoom avant.',
+                            pt: 'Chame este método a partir do componente pai para aumentar o zoom.',
+                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um hinein zu zoomen.',
+                            zh: '从父组件调用此方法可放大视图。',
+                            jp: '親コンポーネントからこのメソッドを呼び出してズームインします。',
+                            es: 'Llame a este método desde el componente padre para acercar.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 확대합니다.',
+                            ar: 'استدعِ هذه الدالة من المكوّن الأب للتكبير.'
+                        },
+
+                        zoomOut: {
+                            en: 'Call this method from the parent component to zoom out',
+                            fr: 'Appelez cette méthode depuis le composant parent pour effectuer un zoom arrière.',
+                            pt: 'Chame este método a partir do componente pai para reduzir o zoom.',
+                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um heraus zu zoomen.',
+                            zh: '从父组件调用此方法可缩小视图。',
+                            jp: '親コンポーネントからこのメソッドを呼び出してズームアウトします。',
+                            es: 'Llame a este método desde el componente padre para alejar.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 축소합니다.',
+                            ar: 'استدعِ هذه الدالة من المكوّن الأب للتصغير.'
+                        },
+
+                        switchDirection: {
+                            en: 'Call this method from the parent component to switch the direction of the graph',
+                            fr: 'Appelez cette méthode depuis le composant parent pour changer la direction du graphe.',
+                            pt: 'Chame este método a partir do componente pai para alterar a direção do grafo.',
+                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um die Richtung des Graphen zu wechseln.',
+                            zh: '从父组件调用此方法可切换图的方向。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、グラフの方向を切り替えます。',
+                            es: 'Llame a este método desde el componente padre para cambiar la dirección del grafo.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 그래프의 방향을 전환합니다.',
+                            ar: 'استدعِ هذه الدالة من المكوّن الأب لتغيير اتجاه الرسم البياني.'
+                        },
                         toggleTable: {
                             en: 'Call this method from the parent component to toggle the visibility of the data table.',
                             fr: `Appelez cette méthode à partir du composant parent pour basculer la visibilité de la table de données.`,

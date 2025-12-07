@@ -822,7 +822,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 
           <code ref="configCode">
             <BaseDetails attr="const config: VueUiXyCanvasConfig" equal>
-              <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+              <span>theme: "", ("dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
               <span
                 >customPalette: [];
                 <span class="text-app-blue text-xs">// string[]</span></span
