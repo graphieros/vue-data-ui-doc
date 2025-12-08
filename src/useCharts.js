@@ -472,6 +472,27 @@ export default function useCharts() {
                 taxinomy: ['uiTools'],
                 singleTaxinomy: 'uiTools'
             },
+            VueUiDag: {
+                icon: 'chartDag',
+                link: '/docs#vue-ui-dag',
+                description: translations.value.docs.tooltips.dag[store.lang],
+                taxinomy: ['hierarchy'],
+                singleTaxinomy: 'hierarchy'
+            },
+            VueUiTreemap: {
+                icon: 'chartTreemap',
+                link: '/docs#vue-ui-treemap',
+                description: translations.value.docs.tooltips.treemap[store.lang],
+                taxinomy: ['comparisons', 'proportions', 'hierarchy', 'partToAWhole'],
+                singleTaxinomy: 'hierarchy'
+            },
+            VueUiCirclePack: {
+                icon: 'chartCirclePack',
+                link: '/docs#vue-ui-circle-pack',
+                description: translations.value.docs.tooltips.circlePack[store.lang],
+                taxinomy: ['proportions', 'hierarchy'],
+                singleTaxinomy: 'hierarchy'
+            },
             VueUiMolecule: {
                 icon: 'chartCluster',
                 link: '/docs#vue-ui-molecule',
@@ -668,13 +689,6 @@ export default function useCharts() {
                 taxinomy: ['range'],
                 singleTaxinomy: 'range'
             },
-            VueUiTreemap: {
-                icon: 'chartTreemap',
-                link: '/docs#vue-ui-treemap',
-                description: translations.value.docs.tooltips.treemap[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'hierarchy', 'partToAWhole'],
-                singleTaxinomy: 'hierarchy'
-            },
             VueUiHorizontalBar: {
                 icon: 'chartVerticalBar',
                 link: '/docs#vue-ui-horizontal-bar',
@@ -745,13 +759,6 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'dataOverTime'],
                 singleTaxinomy: 'dataOverTime'
             },
-            VueUiCirclePack: {
-                icon: 'chartCirclePack',
-                link: '/docs#vue-ui-circle-pack',
-                description: translations.value.docs.tooltips.circlePack[store.lang],
-                taxinomy: ['proportions', 'hierarchy'],
-                singleTaxinomy: 'hierarchy'
-            }
         }
     })
 

@@ -90,6 +90,24 @@ export default function useExamples() {
         ]
     });
 
+    const DATASET_DAG_CUSTOM = ref({
+        nodes: [
+            { id: "A", label: "A", icon: 'computer', color: '#ff3700'},
+            { id: "B", label: "B", icon: 'home', color: '#1d915d'},
+            { id: "C", label: "C", icon: 'robot', color: '#ff8c00'},
+            { id: "D", label: "D", icon: 'world', color: '#5f8aee'},
+        ],
+        edges: [
+            { from: "A", to: "B",},
+            { from: "B", to: "A" },
+            { from: "B", to: "A" },
+            { from: "C", to: "A" },
+            { from: "B", to: "D" },
+            { from: "C", to: "D" },
+            { from: "D", to: "A" },
+        ]
+    })
+
 
     const CONFIG_DAG_BASIC = computed(() => ({
         theme: isDarkMode.value ? 'dark' : '',
@@ -100,6 +118,29 @@ export default function useExamples() {
                 },
                 midpoints: {
                     show: true
+                },
+                zoom: {
+                    active: false
+                }
+            }
+        }
+    }))
+
+    const CONFIG_DAG_CUSTOM = computed(() => ({
+        theme: isDarkMode.value ? 'dark' : '',
+        style: {
+            chart: {
+                layout: {
+                    nodeWidth: 24,
+                    nodeHeight: 24,
+                    rankSeparation: 32.6,
+                },
+                nodes: {
+                    tooltip: { showOnClick: true }
+                },
+                midpoints: {
+                    show: true,
+                    radius: 2.5
                 },
                 zoom: {
                     active: false
@@ -10579,6 +10620,42 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: 'DAG con aristas rectas',
                     ko: '직선 간선을 가진 DAG',
                     ar: 'رسم DAG بحواف مستقيمة'
+                }
+            },
+            // DAG CUSTOM NODES
+            {
+                dataset: DATASET_DAG_CUSTOM.value,
+                config: CONFIG_DAG_CUSTOM.value,
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-custom-nodes',
+                link: 'vue-ui-dag',
+                customNode:true,
+                slot: `<template #node="{ node }">
+                    <div :style="{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: isDarkMode ? '1px solid #4A4A4A' : '1px solid #CCCCCC',
+                        padding: '0.3rem',
+                        borderRadius: '50%',
+                        backgroundColor: isDarkMode ? '#2A2A2A' : node.original.color
+                    }">
+                        <VueUiIcon :name="node.original.icon" :stroke="isDarkMode ? node.original.color : '#FFFFFF'"/>
+                    </div>
+                </template>`,
+                description: {
+                    en: 'With custom node content',
+                    fr: 'Avec un contenu de nœud personnalisé',
+                    pt: 'Com conteúdo de nó personalizado',
+                    de: 'Mit benutzerdefiniertem Knoteninhalte',
+                    zh: '具有自定义节点内容',
+                    jp: 'カスタムノードコンテンツ付き',
+                    es: 'Con contenido de nodo personalizado',
+                    ko: '사용자 지정 노드 콘텐츠 포함',
+                    ar: 'مع محتوى عقدة مخصص'
                 }
             },
             // FUNNEL BASIC

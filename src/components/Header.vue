@@ -329,26 +329,25 @@ const message = ref({
                                         :content="`${item.description}`" 
                                         width="w-fit min-w-[200px]" 
                                         delay="delay-150"
-                                        :alwaysBlue="true"
                                     >
                                     <template #before-inside>
                                         <div class="h-[32px] w-[32px]">
-                                            <VueUiIcon :name="item.icon" :size="32" :stroke="isDarkMode ? '#1A1A1A' : '#5f8aee'"/>
+                                            <VueUiIcon :name="item.icon" :size="32" :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'"/>
                                         </div>
                                     </template>
                                     <RouterLink :to="item.link" @click="closeDocsMenu">
                                         <div class="flex flex-row place-items-center py-1 gap-2 relative">
                                             <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse">
-                                                <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#5f8aee'"/>
+                                                <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#83a4f2'"/>
                                             </svg>
                                             <div class="h-[16px] w-[16px]">
-                                                <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
+                                                <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'"/>
                                             </div>
                                             <div 
                                                 :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-inter-medium cursor-default hover:no-underline' : ''}`"
                                             >
                                                 <span class="text-gray-500">VueUi</span>
-                                                <span>{{ item.name.replaceAll('VueUi', '') }}</span>
+                                                <span class="font-inter-medium">{{ item.name.replaceAll('VueUi', '') }}</span>
                                             </div>
                                         </div>
                                     </RouterLink>
