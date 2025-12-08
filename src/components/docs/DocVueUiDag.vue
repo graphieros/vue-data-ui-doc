@@ -385,6 +385,7 @@ function goToPage(route) {
 
         <BaseDocHeaderActions
             targetLink="vue-ui-dag"
+            targetMaker="VueUiDag"
             :configSource="mainConfig.vue_ui_dag"
         />
 

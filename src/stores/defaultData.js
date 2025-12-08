@@ -3,6 +3,112 @@ import { defineStore } from "pinia";
 export const useDefaultDataStore = defineStore('defaultData', {
     state: () => {
         return {
+            vue_ui_dag: {
+                dataset: {
+                    nodes: [
+                        { id: "fd275806-8680-4225-9b9b-31efc58a7720", label: "Node 0",},
+                        { id: "aa301c5b-0b34-4bd1-909f-da80a4fb5c58", label: "Node 1",},
+                        { id: "28fcad54-192d-419c-8c36-899f35195067", label: "Node 2",},
+                        // { id: "D", label: "D" },
+                    ],
+                    edges: [
+                        { from: "fd275806-8680-4225-9b9b-31efc58a7720", to: "aa301c5b-0b34-4bd1-909f-da80a4fb5c58",},
+                        { from: "fd275806-8680-4225-9b9b-31efc58a7720", to: "28fcad54-192d-419c-8c36-899f35195067" },
+                        { from: "aa301c5b-0b34-4bd1-909f-da80a4fb5c58", to: "28fcad54-192d-419c-8c36-899f35195067" },
+                        // { from: "B", to: "A" },
+                        // { from: "C", to: "A" },
+                        // { from: "B", to: "D" },
+                        // { from: "C", to: "D" },
+                        // { from: "D", to: "A" },
+                    ]
+                },
+                model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
+                    { key: 'theme', def: 'default', type: 'select', label: 'theme', options: ['default', 'celebration', 'celebrationNight', 'zen', 'hack', 'concrete'], category: 'general'},
+                    { key: 'zoom.active', def: true, type: 'checkbox', label: ['zoom', 'is', 'active'], category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: ['fontFamily'], category: 'general'},
+
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'userOptions' },
+                    { key: 'userOptions.keepStateOnChartLeave', def: true, type: 'checkbox', label: ['user options', 'is', 'keep state on leave'], category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.pdf', def: false, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.zoom', def: true, type: 'checkbox', label: ['button', 'zoom', 'is', 'show'], category: 'userOptions'},
+
+                    {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.zoom', def: 'Toggle zoom lock', type: 'text', label: ['button', 'zoom', 'title', 'is', 'textContent'], category: 'userOptions'},
+
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title' },
+                    { key: 'style.chart.title.textAlign', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'textAlign', category: 'title'},
+                    { key: 'style.chart.title.paddingLeft', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'left'], category: 'title'},
+                    { key: 'style.chart.title.paddingRight', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'right'], category: 'title'},
+
+                    { key: 'style.chart.title.subtitle.text', def: 'Subtitle', type: 'text', label: 'textContent', category: 'subtitle' },
+                    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle' },
+                    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'subtitle' },
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
+
+                    { key: 'style.chart.layout.rankDirection', def: 'TB', type: 'select', label: ['orientation'], options: ['TB', 'LR', 'BT', 'RL'], category: 'layout'},
+                    { key: 'style.chart.layout.rankSeparation', def: 60, type: 'range', label: ['rank', 'is', 'separation'], min: 10, max: 100, step: 1,category: 'layout'},
+                    { key: 'style.chart.layout.nodeSeparation', def: 50, type: 'range', label: ['node', 'is', 'separation'], min: 10, max: 100, step: 1,category: 'layout'},
+                    { key: 'style.chart.layout.edgeSeparation', def: 30, type: 'range', label: ['edge', 'is', 'separation'], min: 10, max: 100, step: 1,category: 'layout'},
+                    { key: 'style.chart.layout.nodeWidth', def: 100, type: 'range', label: ['node', 'is', 'width'], min: 40, max: 200, step: 1, category: 'layout'},
+                    { key: 'style.chart.layout.nodeHeight', def: 40, type: 'range', label: ['node', 'is', 'height'], min: 20, max: 100, step: 1, category: 'layout'},
+                    { key: 'style.chart.layout.curvedEdges', def: true, type: 'checkbox', label: ['edge', 'is', 'curved'], category: 'layout' },
+                    { key: 'style.chart.layout.padding', def: 48, type: 'number', label: ['padding'], min: 10, max: 200, step: 2, category: 'layout'},
+                    { key: 'style.chart.layout.arrowShape', def: 'vee', type: 'select', options: ['undirected', 'normal', 'vee'], label: ['arrow', 'is', 'shape'], category: 'layout'},
+                    { key: 'style.chart.layout.arrowSize', def: 8, type: 'number', label: ['arrow', 'is', 'size'], min: 4, max: 12, category: 'layout'},
+                    { key: 'style.chart.layout.align', def: '', type: 'select', options: ['', 'UR', 'UL', 'DR', 'DL'], label: ['alignment'], category: 'layout'},
+
+                    { key: 'style.chart.nodes.stroke', def: '#CCCCCC', type: 'color', label: ['border', 'is', 'color'], category: 'nodes'},
+                    { key: 'style.chart.nodes.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'nodes'},
+                    { key: 'style.chart.nodes.borderRadius', def: 3, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'nodes'},
+                    { key: 'style.chart.nodes.backgroundColor', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'nodes'},
+                    { key: 'style.chart.nodes.labels.color', def: '#1A1A1A', type: 'color', label: ['label', 'is', 'textColor'], category: 'nodes'},
+                    { key: 'style.chart.nodes.labels.fontSize', def: 12, type: 'number', min: 6, max: 24, label: ['label', 'is', 'fontSize'], category: 'nodes'},
+                    { key: 'style.chart.nodes.labels.bold', def: false, type: 'checkbox', label: ['label', 'is', 'bold'], category: 'nodes'},
+                    { key: 'style.chart.nodes.tooltip.showOnClick', def: true, type: 'checkbox', label: ['tooltip', 'is', 'showOnClick'], category: 'nodes'},
+                    { key: 'style.chart.ndoes.tooltip.backgroundColor', def: '#E1E5E8', type: 'color', label: ['tooltip', 'is', 'backgroundColor'], category: 'nodes'},
+                    { key: 'style.chart.nodes.tooltip.color', def: '#1A1A1A', type: 'color', label: ['tooltip', 'is', 'textColor'], category: 'nodes'},
+                    { key: 'style.chart.nodes.tooltip.maxWidth', def: '300px', type: 'text', label: ['tooltip', 'is', 'max width'], category: 'nodes'},
+
+                    { key: 'style.chart.edges.stroke', def: '#CCCCCC', type: 'color', label: ['line', 'is', 'color'], category: 'edges'},
+                    { key: 'style.chart.edges.strokeWidth', def: 1, type: 'number', min: 1, max: 12, label: ['line', 'is', 'thickness'], category: 'edges'},
+
+                    { key: 'style.chart.midpoints.show', def: true, type: 'checkbox', label: 'show', category: 'midpoints'},
+                    { key: 'style.chart.midpoints.radius', def: 4, type: 'number', min: 2, max: 12, label: 'radius', category: 'midpoints'},
+                    { key: 'style.chart.midpoints.stroke', def: '#CCCCCC', type: 'color', label: ['border', 'is', 'color'], category: 'midpoints'},
+                    { key: 'style.chart.midpoints.fill', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'midpoints'},
+                    { key: 'style.chart.midpoints.strokeWidth', def: 1, type: 'number', min: 1, max: 4, label: ['border', 'is', 'thickness'], category: 'midpoints'},
+                    { key: 'style.chart.midpoints.tooltip.maxWidth', def: '300px', type: 'text', label: ['tooltip', 'is', 'max width'], category: 'midpoints'},
+                    { key: 'style.chart.midpoints.tooltip.backgroundColor', def: '#E1E5E8', type: 'color', label: ['tooltip', 'is', 'backgroundColor'], category: 'midpoints'},
+                    { key: 'style.chart.midpoints.tooltip.color', def: '#1A1A1A', type: 'color', label: ['tooltip', 'is', 'textColor'], category: 'midpoints'},
+
+                    { key: 'style.chart.controls.show', def: true, type: 'checkbox', label: 'show', category: 'controls'},
+                    { key: 'style.chart.controls.position', def: 'bottom', type: 'select', options: ['top', 'bottom'], category: 'controls'},
+                    { key: 'style.chart.controls.backgroundColor', def: '#E1E5E8', type: 'color', label: 'backgroundColor', category: 'controls'},
+                    { key: 'style.chart.controls.buttonColor', def: '#E1E5E8', type: 'color', label: ['button', 'is', 'backgroundColor'], category: 'controls'},
+                    { key: 'style.chart.controls.color', def: '#1A1A1A', type: 'color', label: ['button', 'is', 'textColor'], category: 'controls'},
+                    { key: 'style.chart.controls.fontSize', def: 14, type: 'number', min: 8, max: 24, label: ['fontSize'], category: 'controls'},
+                    { key: 'style.chart.controls.border', def: '1px solid #CCCCCC', type: 'text', label: ['border'], category: 'controls'},
+                    { key: 'style.chart.controls.padding', def: '0.5rem', type: 'text', label: ['padding'], category: 'controls'},
+                    { key: 'style.chart.controls.borderRadius', def: '0.25rem', type: 'text', label: ['border', 'is', 'radius'], category: 'controls'}
+                ]
+            },
             vue_ui_chord: {
                 dataset: {
                     matrix: [

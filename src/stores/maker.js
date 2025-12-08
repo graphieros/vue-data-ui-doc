@@ -260,6 +260,61 @@ export const useMakerStore = defineStore('maker', {
                     ar: 'انسخ المكون بالكامل'
                 },
                 categories: {
+                    controls: {
+                        en: 'Zoom controls',
+                        fr: 'Contrôles de zoom',
+                        pt: 'Controles de zoom',
+                        de: 'Zoomsteuerung',
+                        zh: '缩放控件',
+                        jp: 'ズームコントロール',
+                        es: 'Controles de zoom',
+                        ko: '줌 컨트롤',
+                        ar: 'عناصر التحكم في التكبير'
+                    },
+                    midpoints: {
+                        en: 'Midpoints',
+                        fr: 'Points intermédiaires',
+                        pt: 'Pontos intermediários',
+                        de: 'Zwischenpunkte',
+                        zh: '中点',
+                        jp: '中間点',
+                        es: 'Puntos intermedios',
+                        ko: '중간 지점',
+                        ar: 'النقاط الوسطى'
+                    },
+                    edges: {
+                        en: 'Edges',
+                        fr: 'Arêtes',
+                        pt: 'Arestas',
+                        de: 'Kanten',
+                        zh: '边',
+                        jp: 'エッジ',
+                        es: 'Aristas',
+                        ko: '엣지',
+                        ar: 'الحواف'
+                    },
+                    nodes: {
+                        en: 'Nodes',
+                        fr: 'Nœuds',
+                        pt: 'Nós',
+                        de: 'Knoten',
+                        zh: '节点',
+                        jp: 'ノード',
+                        es: 'Nodos',
+                        ko: '노드',
+                        ar: 'العُقَد'
+                    },
+                    layout: {
+                        en: 'Layout',
+                        fr: 'Disposition',
+                        pt: 'Layout',
+                        de: 'Layout',
+                        zh: '布局',
+                        jp: 'レイアウト',
+                        es: 'Diseño',
+                        ko: '레이아웃',
+                        ar: 'التخطيط'
+                    },
                     lines: {
                         en: 'Line',
                         fr: "Ligne",

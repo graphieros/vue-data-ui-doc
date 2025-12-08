@@ -54,6 +54,7 @@ const MakerWorld = defineAsyncComponent(() => import('../components/maker/MakerV
 const MakerVueUiRidgeline = defineAsyncComponent(() => import('../components/maker/MakerVueUiRidgeline.vue'));
 const MakerChord = defineAsyncComponent(() => import('../components/maker/MakerChord.vue'));
 const MakerStackline = defineAsyncComponent(() => import('../components/maker/MakerVueUiStackline.vue'));
+const MakerDag = defineAsyncComponent(() => import('../components/maker/MakerDag.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -112,6 +113,7 @@ const options = ref([
     { component: markRaw(MakerWorld), key: 'vue_ui_world', name: 'VueUiWorld', icon: 'world', thumb: new URL('../assets/thumb_world_light.png', import.meta.url).href, description: translations.value.docs.tooltips.world },
     { component: markRaw(MakerVueUiRidgeline), key: 'vue_ui_ridgeline', name: 'VueUiRidgeline', icon: 'chartRidgeline', thumb: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href, description: translations.value.docs.tooltips.ridgeline },
     { component: markRaw(MakerChord), key: 'vue_ui_chord', name: 'VueUiChord', icon: 'chartChord', thumb: new URL('../assets/thumb_chord_light.png', import.meta.url).href, description: translations.value.docs.tooltips.chord },
+    { component: markRaw(MakerDag), key: 'vue_ui_dag', name: 'VueUiDag', icon: 'chartDag', thumb: new URL('../assets/thumb_dag_light.png', import.meta.url).href, description: translations.value.docs.tooltips.dag },
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});

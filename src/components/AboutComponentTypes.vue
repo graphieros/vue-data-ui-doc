@@ -13,7 +13,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 const dataset = ref([
   {
     name: "Charts",
-    values: [42],
+    values: [43],
     color: shiftHue({ hexColor: '#5f8aee', force: 0})
   },
   {
