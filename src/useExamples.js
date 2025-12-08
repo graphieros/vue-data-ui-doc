@@ -142,6 +142,9 @@ export default function useExamples() {
                     show: true,
                     radius: 2.5
                 },
+                edges: {
+                    strokeWidth: 0.6
+                },
                 zoom: {
                     active: false
                 }
