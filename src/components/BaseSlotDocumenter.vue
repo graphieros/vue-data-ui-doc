@@ -529,6 +529,21 @@ const items = computed(() => {
             `
         },
         {
+            names: ['free-node-label'],
+            description: translations.value.slots.freeNodeLabel[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #free-node-label="{ node }">
+            <!-- Content will be injected inside a svg G element -->
+            <!-- Use this to place the label below the node, for example -->
+            <text :x="node.x" :y="node.y + node.height" fill="black">
+                {{ node.label }}
+            </text>
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
             names: ['node-label'],
             description: translations.value.slots.nodeLabel[store.lang],
             snippet: `

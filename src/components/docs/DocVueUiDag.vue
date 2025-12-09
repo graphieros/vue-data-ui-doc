@@ -598,6 +598,7 @@ function goToPage(route) {
                         'annotator-actions',
                         'node',
                         'node-label',
+                        'free-node-label',
                         'tooltip-node',
                         'tooltip-midpoint'
                     ]" 

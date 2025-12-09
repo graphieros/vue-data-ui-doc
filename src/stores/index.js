@@ -968,7 +968,17 @@ export const useMainStore = defineStore("main", {
                         ko: '이 슬롯을 사용하여 노드 콘텐츠를 커스터마이즈합니다.',
                         ar: 'استخدم هذا الحيز لتخصيص محتوى العقدة.'
                     },
-
+                    freeNodeLabel: {
+                        en: 'Use this slot to customize the node label in a g element, for example to place the label below the node, even add other svg elements',
+                        fr: 'Utilisez cet emplacement pour personnaliser le libellé du nœud dans un élément g, par exemple pour placer le libellé sous le nœud ou ajouter d’autres éléments svg',
+                        pt: 'Use este slot para personalizar o rótulo do nó em um elemento g, por exemplo, para posicionar o rótulo abaixo do nó ou até adicionar outros elementos svg',
+                        de: 'Verwenden Sie diesen Slot, um das Knotenlabel in einem g-Element anzupassen, zum Beispiel um das Label unter dem Knoten zu platzieren oder weitere svg-Elemente hinzuzufügen',
+                        zh: '使用此插槽来自定义 g 元素中的节点标签，例如将标签放在节点下方，甚至添加其他 svg 元素',
+                        jp: 'このスロットを使用すると、g 要素内のノードラベルをカスタマイズできます。たとえば、ラベルをノードの下に配置したり、他の svg 要素を追加したりできます',
+                        es: 'Use este espacio para personalizar la etiqueta del nodo en un elemento g, por ejemplo para colocar la etiqueta debajo del nodo o incluso añadir otros elementos svg',
+                        ko: '이 슬롯을 사용하면 g 요소에서 노드 레이블을 사용자 지정할 수 있습니다. 예를 들어 레이블을 노드 아래에 배치하거나 다른 svg 요소를 추가할 수도 있습니다',
+                        ar: 'استخدم هذه الفتحة لتخصيص وسم العقدة داخل عنصر g، على سبيل المثال لوضع الوسم أسفل العقدة أو حتى إضافة عناصر svg أخرى',
+                    },
                     nodeLabel: {
                         en: 'Use this slot to customize the node label',
                         fr: 'Utilisez ce slot pour personnaliser le libellé du nœud.',
