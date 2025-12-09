@@ -108,7 +108,6 @@ export default function useExamples() {
         ]
     })
 
-
     const CONFIG_DAG_BASIC = computed(() => ({
         theme: isDarkMode.value ? 'dark' : '',
         style: {
@@ -10592,6 +10591,68 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: 'Con colores individuales',
                     ko: '개별 색상 포함',
                     ar: 'مع ألوان فردية'
+                }
+            },
+            // DAG BASIC - LR
+            {
+                dataset: DATASET_DAG_BASIC.value,
+                config: {
+                    ...CONFIG_DAG_BASIC.value,
+                    style: {
+                        ...CONFIG_DAG_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_DAG_BASIC.value.style.chart,
+                            layout: {
+                                rankDirection: 'LR'
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-basic-LR',
+                link: 'vue-ui-dag',
+                description: {
+                    en: 'Basic DAG chart - Left to right',
+                    fr: 'Diagramme DAG basique - De gauche à droite',
+                    pt: 'Gráfico DAG básico - Da esquerda para a direita',
+                    de: 'Grundlegendes DAG-Diagramm – Von links nach rechts',
+                    zh: '基础DAG图——从左到右',
+                    jp: '基本的DAGチャート – 左から右へ',
+                    es: 'Gráfico DAG básico – De izquierda a derecha',
+                    ko: '기본 DAG 차트 – 왼쪽에서 오른쪽으로',
+                    ar: 'مخطط DAG أساسي – من اليسار إلى اليمين'
+                }
+            },
+            // DAG SPECIAL - LR
+            {
+                dataset: DATASET_DAG_SPECIAL.value,
+                config: {
+                    ...CONFIG_DAG_BASIC.value,
+                    style: {
+                        ...CONFIG_DAG_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_DAG_BASIC.value.style.chart,
+                            layout: {
+                                rankDirection: 'LR'
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-special-LR',
+                link: 'vue-ui-dag',
+                description: {
+                    en: 'With individual colors - Left to right',
+                    fr: 'Avec des couleurs individuelles – De gauche à droite',
+                    pt: 'Com cores individuais – Da esquerda para a direita',
+                    de: 'Mit individuellen Farben – Von links nach rechts',
+                    zh: '具有独立颜色——从左到右',
+                    jp: '個別の色付き – 左から右へ',
+                    es: 'Con colores individuales – De izquierda a derecha',
+                    ko: '개별 색상 적용 – 왼쪽에서 오른쪽으로',
+                    ar: 'مع ألوان فردية – من اليسار إلى اليمين'
                 }
             },
             // DAG STRAIGHT EDGES
