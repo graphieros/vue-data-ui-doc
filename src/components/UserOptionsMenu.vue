@@ -201,7 +201,8 @@ const charts = ref({
     VueUiStripPlot: { name: 'VueUiStripPlot', icon: 'chartStripPlot', link: '/docs#vue-ui-strip-plot'},
     VueUiDumbbell: { name: 'VueUiDumbbell', icon: 'chartDumbbell', link: '/docs#vue-ui-dumbbell'},
     VueUi3dBar: { name: 'VueUi3dBar', icon: 'chart3dBar', link: '/docs#vue-ui-3d-bar'},
-    VueUiCirclePack: { name: 'VueUiCirclePack', icon: 'chartCirclePack', link: '/docs#vue-ui-circle-pack'}
+    VueUiCirclePack: { name: 'VueUiCirclePack', icon: 'chartCirclePack', link: '/docs#vue-ui-circle-pack'},
+    VueUiDag: { name: 'VueUiDag', icon: 'chartDag', link: '/docs#vue-ui-dag'}
 })
 
 const items = ref([
@@ -263,7 +264,7 @@ const items = ref([
     {
         name: 'zoom',
         icon: 'zoomLock',
-        charts: ['VueUiWordCloud', 'VueUiMolecule']
+        charts: ['VueUiWordCloud', 'VueUiMolecule', 'VueUiDag']
     }
 ])
 
