@@ -138,7 +138,7 @@ const soMuchMore = ref({
 </script>
 
 <template>
-    <div class="ml-12 sm:mx-auto max-w-[1400px] sm:px-20">
+    <div class="ml-12 sm:mx-auto max-w-[1400px] px-12 sm:px-20">
         <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4">
             {{ fncsyIntro[store.lang] }}
         </div>
@@ -158,7 +158,7 @@ const soMuchMore = ref({
 
             <div class="flex flex-col sm:flex-row sm:justify-center gap-4 my-4">
                 <a href="https://fncsy.com/image-to-pixel-art" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
-                    <BaseCard type="light" class="max-w-[200px]">
+                    <BaseCard type="light" class="sm:max-w-[200px]">
                         <div class="flex flex-col place-items-center sm:h-[140px]">
                             <span class="text-[24px] sm:text-[48px]">
                                 🎮
@@ -170,7 +170,7 @@ const soMuchMore = ref({
                     </BaseCard>
                 </a>
                 <a href="https://fncsy.com/steganography" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
-                    <BaseCard type="light" class="max-w-[200px]">
+                    <BaseCard type="light" class="sm:max-w-[200px]">
                         <div class="flex flex-col place-items-center sm:h-[140px]">
                             <span class="text-[24px] sm:text-[48px]">
                                 🕵️
@@ -182,7 +182,7 @@ const soMuchMore = ref({
                     </BaseCard>
                 </a>
                 <a href="https://fncsy.com/dead-link-checker" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
-                    <BaseCard type="light" class="max-w-[200px]">
+                    <BaseCard type="light" class="sm:max-w-[200px]">
                         <div class="flex flex-col place-items-center sm:h-[140px]">
                             <span class="text-[24px] sm:text-[48px]">
                                 🔗
