@@ -136,6 +136,8 @@ const config = ref({
         chart: {
             backgroundColor: '#F3F4F6',
             color: '#1A1A1A',
+            width: null,
+            height: null,
             layout: {
                 rankDirection: 'TB',
                 rankSeparation: 60,
@@ -252,6 +254,8 @@ const darkModeConfig = ref({
         chart: {
             backgroundColor: '#1A1A1A',
             color: '#CCCCCC',
+            width: null,
+            height: null,
             layout: {
                 rankDirection: 'TB',
                 rankSeparation: 60,
@@ -409,7 +413,7 @@ function goToPage(route) {
         
         <Rater itemId="vue_ui_dag" />
 
-        <Box ref="box" showEmits showSlots showThemes showCallbacks schema="vue_ui_dag">
+        <Box ref="box" showEmits showSlots showThemes showCallbacks showResponsive schema="vue_ui_dag">
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
                     <CodeParser
@@ -484,6 +488,8 @@ function goToPage(route) {
             <BaseDetails attr="chart" title="style.chart" :level="2">
                 <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="null" inactive/>
+                <BaseAttr name="height" attr="style.chart.height" type="number" defaultVal="null" inactive/>
                 <BaseDetails attr="layout" title="style.chart.layout" :level="3">
                     <BaseAttr name="rankDirection" attr="style.chart.layout.rankDirection" type="select" defaultVal="TB" :options="['TB', 'RL', 'BT', 'RL']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                     <BaseAttr name="rankSeparation" attr="style.chart.layout.rankSeparation" type="number" defaultVal="60" :min="10" :max="100" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
@@ -600,6 +606,22 @@ function goToPage(route) {
 
             <template #tab6>
                 <ThemesVueUiDag/>
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="500px">
+                    <template #chart>
+                        <VueUiDag :dataset="dataset" :config="
+                            isDarkMode ? {
+                                ...mutableConfigDarkMode,
+                                responsive: true
+                            } : {
+                                ...mutableConfig,
+                                responsive: true
+                            }
+                        "/>
+                    </template>
+                </ResponsiveUnit>
             </template>
 
             <template #tab11>

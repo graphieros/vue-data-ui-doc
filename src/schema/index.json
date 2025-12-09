@@ -9,7 +9,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
-        "reponsive": false,
+        "reponsive": true,
         "props": [
             "dataset",
             "config"
