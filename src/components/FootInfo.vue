@@ -108,7 +108,7 @@ s
 <template>
     <div :class="`flex-col mt-12 justify-center py-12 border-t ${isDarkMode ? 'bg-gradient-to-r from-transparent to-[#FFFFFF10] border-[#2A2A2A]' : 'bg-gray-150'}   ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`">
 
-        <div :class="`mx-auto max-w-[800px] flex flex-col sm:flex-row gap-12 place-items-center justify-center`">
+        <div :class="`mx-auto w-full flex flex-col sm:flex-row gap-12 place-items-center justify-center pb-8 border-b border-gray-400 dark:border-[#4A4A4A]`">
             <div class="flex flex-col gap-2 place-items-center justify-center min-w-[200px]">
                 <img data-cy="header-logo" src="../assets/logo3.png" class="h-12" />
                 <span>Vue Data UI</span>
@@ -120,8 +120,7 @@ s
 
             <div class="flex flex-col sm:flex-row gap-6 flex-wrap" dir="auto">
                 <div class="flex flex-col place-items-center justify-center gap-2 relative" v-for="menuItem in menuItems">
-                    <ChevronUpIcon v-if="isSelected(menuItem.link)" class="absolute -bottom-[17px] left-1/2 -translate-x-1/2 text-app-blue dark:text-app-green" />
-                    <a :class="`text-black dark:text-app-blue hover:underline px-2 rounded-md ${isSelected(menuItem.link) ? 'shadow-md border-b border-app-blue' : ''}`" :href="menuItem.link">
+                    <a :class="`text-black dark:text-app-blue hover:underline px-2 pb-1 ${isSelected(menuItem.link) ? 'shadow-md border-b border-app-blue' : ''}`" :href="menuItem.link">
                         <div class="flex flex-row place-items-center gap-2">
                             <VueUiIcon v-if="menuItem.icon" :name="menuItem.icon" :size="18" :stroke="isDarkMode ? '#CCCCCC' : '#6A6A6A'"/>
                             {{ menuItem.title }} 
@@ -134,7 +133,6 @@ s
                     </a>
                 </div>
             </div>
-
         </div>
 
         <FncsyAd/>

@@ -5,6 +5,7 @@ import BaseCard from "./BaseCard.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
+const isMenuOpen = computed(() => store.isMenuOpen);
 
 const fncsy = ref({
     en: `<span class="text-app-green-dark dark:text-app-green">Save Hours of Work</span> with
@@ -137,12 +138,12 @@ const soMuchMore = ref({
 </script>
 
 <template>
-    <div class="ml-12 sm:mx-auto max-w-[800px] px-8">
+    <div class="ml-12 sm:mx-auto max-w-[1400px] sm:px-20">
         <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4">
             {{ fncsyIntro[store.lang] }}
         </div>
 
-        <BaseCard class="mt-2 max-w-[800px]">
+        <BaseCard class="mt-2 w-full max-w-[1200px]">
             <a href="https://fncsy.com/" target="_blank">
                 <div class="flex flex-row gap-2 place-items-center justify-start">
                     <div class="flex flex-col">
@@ -155,50 +156,54 @@ const soMuchMore = ref({
                 </div>
             </a>
 
-            <div class="flex flex-col sm:grid sm:grid-cols-3 gap-4 my-4">
+            <div class="flex flex-col sm:flex-row sm:justify-center gap-4 my-4">
                 <a href="https://fncsy.com/image-to-pixel-art" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
-                <BaseCard type="light">
-                    <div class="flex flex-col place-items-center sm:h-[140px]">
-                        <span class="text-[24px] sm:text-[48px]">
-                            🎮
-                        </span>
-                        <code class="text-center">
-                            {{ pixel[store.lang] }}
-                        </code>
-                    </div>
-                </BaseCard>
-            </a>
-            <a href="https://fncsy.com/steganography" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
-                <BaseCard type="light">
-                    <div class="flex flex-col place-items-center sm:h-[140px]">
-                        <span class="text-[24px] sm:text-[48px]">
-                            🕵️
-                        </span>
-                        <code class="text-center">
-                            {{ stegano[store.lang] }}
-                        </code>
-                    </div>
-                </BaseCard>
-            </a>
-            <a href="https://fncsy.com/dead-link-checker" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
-                <BaseCard type="light">
-                    <div class="flex flex-col place-items-center sm:h-[140px]">
-                        <span class="text-[24px] sm:text-[48px]">
-                            🔗
-                        </span>
-                        <code class="text-center">
-                            {{ broken[store.lang] }}
-                        </code>
-                    </div>
-                </BaseCard>
-            </a>
+                    <BaseCard type="light" class="max-w-[200px]">
+                        <div class="flex flex-col place-items-center sm:h-[140px]">
+                            <span class="text-[24px] sm:text-[48px]">
+                                🎮
+                            </span>
+                            <code class="text-center">
+                                {{ pixel[store.lang] }}
+                            </code>
+                        </div>
+                    </BaseCard>
+                </a>
+                <a href="https://fncsy.com/steganography" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
+                    <BaseCard type="light" class="max-w-[200px]">
+                        <div class="flex flex-col place-items-center sm:h-[140px]">
+                            <span class="text-[24px] sm:text-[48px]">
+                                🕵️
+                            </span>
+                            <code class="text-center">
+                                {{ stegano[store.lang] }}
+                            </code>
+                        </div>
+                    </BaseCard>
+                </a>
+                <a href="https://fncsy.com/dead-link-checker" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-app-green rounded-md transition-colors">
+                    <BaseCard type="light" class="max-w-[200px]">
+                        <div class="flex flex-col place-items-center sm:h-[140px]">
+                            <span class="text-[24px] sm:text-[48px]">
+                                🔗
+                            </span>
+                            <code class="text-center">
+                                {{ broken[store.lang] }}
+                            </code>
+                        </div>
+                    </BaseCard>
+                </a>
             </div>
 
-            <code class="text-xl">{{ soMuchMore[store.lang] }}</code><br><br>
-            <a href="https://fncsy.com/" target="_blank">
-                <code class="text-left" v-html="fncsy[store.lang]"/>
-            </a>
+            <div class="text-center w-full">
+                <code class="text-xl">{{ soMuchMore[store.lang] }}</code><br><br>
+            </div>
 
+            <div class="w-full mx-auto">
+                <a href="https://fncsy.com/" target="_blank">
+                    <code class="text-left" v-html="fncsy[store.lang]"/>
+                </a>
+            </div>
         </BaseCard>
     </div>
 </template>
