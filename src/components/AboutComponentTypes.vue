@@ -95,6 +95,7 @@ const config = computed(() => {
               show: true,
               useLabelSlots: false,
               hideUnderValue: 5,
+              smallArcClusterThreshold: 0,
               prefix: "",
               suffix: "",
             },

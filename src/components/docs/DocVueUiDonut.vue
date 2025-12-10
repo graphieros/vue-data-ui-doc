@@ -83,7 +83,7 @@ const darkModeConfig = ref({
         durationMs: 500,
     },
     startAnimation: {
-        show: true,
+        show: false,
         durationMs: 1000,
         staggerMs: 50
     },
@@ -110,7 +110,10 @@ const darkModeConfig = ref({
                         useLabelSlots: false,
                         hideUnderValue: 3,
                         prefix: "",
-                        suffix: ""
+                        suffix: "",
+                        smallArcClusterThreshold: 8,
+                        smallArcClusterFontSize: 12,
+                        oneLine: false,
                     },
                     value: {
                         rounding: 0,
@@ -307,7 +310,7 @@ const config = ref({
         durationMs: 500,
     },
     startAnimation: {
-        show: true,
+        show: false,
         durationMs: 1000,
         staggerMs: 50
     },
@@ -334,7 +337,10 @@ const config = ref({
                         useLabelSlots: false,
                         hideUnderValue: 3,
                         prefix: "",
-                        suffix: ""
+                        suffix: "",
+                        smallArcClusterThreshold: 8,
+                        smallArcClusterFontSize: 12,
+                        oneLine: false,
                     },
                     value: {
                         rounding: 0,
@@ -914,6 +920,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                             <BaseAttr name="hideUnderValue" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.labels.dataLabels.hideUnderValue" :min="0" :max="10" defaultVal="3" :comment="translations.docs.comments.donut.hideUnderValue[store.lang]"/>
                             <BaseAttr name="prefix" :light="mutableConfig" :dark="mutableConfigDarkMode" type="text" attr="style.chart.layout.labels.dataLabels.prefix" defaultVal="''"/>
                             <BaseAttr name="suffix" :light="mutableConfig" :dark="mutableConfigDarkMode" type="text" attr="style.chart.layout.labels.dataLabels.suffix" defaultVal="''"/>
+                            <BaseAttr name="smallArcClusterThreshold" attr="style.chart.layout.labels.dataLabels.smallArcClusterThreshold" type="number" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" defaultVal="8" comment="Show labels on the side for arcs under this percentage"/>
+                            <BaseAttr name="smallArcClusterFontSize" attr="style.chart.layout.labels.dataLabels.smallArcClusterFontSize" type="number" defaultVal="12" :min="6" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Font size for labels of small arcs"/>
+                            <BaseAttr name="oneLine" attr="style.chart.layout.labels.dataLabels.oneLine" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                         <BaseDetails attr="value" :level="5" title="style.chart.layout.labels.value">
                             <BaseAttr name="show" attr="style.chart.layout.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.8.4",
+    "date": "2025-12-10",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add options to display non overlapping data labels for small arcs",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "Built-in chart annotator",
+        "description": "Fix caret not showing in text mode",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.8.3",
     "date": "2025-12-10",
     "updates": [
