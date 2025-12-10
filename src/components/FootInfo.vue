@@ -108,7 +108,7 @@ const fncsy = ref({
 </script>
 s
 <template>
-    <div :class="`flex-col mt-12 justify-center py-12 border-t ${isDarkMode ? 'bg-gradient-to-r from-transparent to-[#FFFFFF10] border-[#2A2A2A]' : 'bg-gray-150'}   ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`">
+    <div :class="`flex-col mt-12 justify-center py-12 border-t ${isDarkMode ? 'bg-[#1A1A1A] border-[#2A2A2A]' : 'bg-gray-300'}   ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`">
 
         <div v-if="!isMobile" :class="`mx-auto w-full flex flex-col sm:flex-row gap-12 place-items-center justify-center pb-8 border-b border-gray-400 dark:border-[#4A4A4A]`">
             <div class="flex flex-col gap-2 place-items-center justify-center min-w-[200px]">

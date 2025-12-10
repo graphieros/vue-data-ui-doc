@@ -139,11 +139,11 @@ const soMuchMore = ref({
 
 <template>
     <div class="ml-12 sm:mx-auto max-w-[1400px] px-12 sm:px-20">
-        <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4">
+        <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC]">
             {{ fncsyIntro[store.lang] }}
         </div>
 
-        <BaseCard class="mt-2 w-full max-w-[1200px]">
+        <BaseCard type="dark" class="mt-2 w-full max-w-[1200px]">
             <a href="https://fncsy.com/" target="_blank">
                 <div class="flex flex-row gap-2 place-items-center justify-start">
                     <div class="flex flex-col">
