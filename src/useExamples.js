@@ -92,10 +92,10 @@ export default function useExamples() {
 
     const DATASET_DAG_CUSTOM = ref({
         nodes: [
-            { id: "A", label: "A", icon: 'computer', color: '#ff3700'},
-            { id: "B", label: "B", icon: 'home', color: '#1d915d'},
-            { id: "C", label: "C", icon: 'robot', color: '#ff8c00'},
-            { id: "D", label: "D", icon: 'world', color: '#5f8aee'},
+            { id: "A", label: "Computer", icon: 'computer', color: '#ff3700'},
+            { id: "B", label: "Home", icon: 'home', color: '#1d915d'},
+            { id: "C", label: "Robot", icon: 'robot', color: '#ff8c00'},
+            { id: "D", label: "World", icon: 'world', color: '#5f8aee'},
         ],
         edges: [
             { from: "A", to: "B",},

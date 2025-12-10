@@ -759,6 +759,11 @@ onMounted(() => {
                                                 <VueUiIcon :name="node.original.icon" :stroke="isDarkMode ? node.original.color : '#FFFFFF'"/>
                                             </div>
                                         </template>
+                                        <template #free-node-label="{ node }" v-if="example.customNode">
+                                            <text :x="node.x" :y="node.y + node.height - 5" :fill="isDarkMode ? '#CCCCCC' : '#1A1A1A'" font-size="6" text-anchor="middle">
+                                                {{ node.label }}
+                                            </text>
+                                        </template>
                                     </VueDataUi>
                                 </div>
                             </template>

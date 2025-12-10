@@ -519,7 +519,7 @@ const items = computed(() => {
             description: translations.value.slots.node[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
-        <template #node="{ node }">
+        <template #node="{ node, orientation }">
             <!-- Content will be injected inside a foreignObject -->
             <div style="width: 100%; height: 100%">
                 {{ node }}
@@ -533,7 +533,7 @@ const items = computed(() => {
             description: translations.value.slots.freeNodeLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
-        <template #free-node-label="{ node }">
+        <template #free-node-label="{ node, orientation }">
             <!-- Content will be injected inside a svg G element -->
             <!-- Use this to place the label below the node, for example -->
             <text :x="node.x" :y="node.y + node.height" fill="black">
