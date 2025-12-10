@@ -1492,7 +1492,7 @@ export default function useExamples() {
                         }
                     },
                     layout: {
-                        curvedMarkers: true,
+                        curvedMarkers: false,
                         donut: {
                             strokeWidth: 64,
                         },
@@ -1543,6 +1543,10 @@ export default function useExamples() {
             {
                 name: 'Series 4',
                 values: [12.5]
+            },
+            {
+                name: 'Series 5',
+                values: [10]
             },
         ]
     });

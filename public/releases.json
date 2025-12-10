@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.8.5",
+    "date": "2025-12-10",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improve animation performance, fade out data labels during series segregation",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 3.8.4",
     "date": "2025-12-10",
     "updates": [

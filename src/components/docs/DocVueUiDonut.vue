@@ -83,7 +83,7 @@ const darkModeConfig = ref({
         durationMs: 500,
     },
     startAnimation: {
-        show: false,
+        show: true,
         durationMs: 1000,
         staggerMs: 50
     },
@@ -310,7 +310,7 @@ const config = ref({
         durationMs: 500,
     },
     startAnimation: {
-        show: false,
+        show: true,
         durationMs: 1000,
         staggerMs: 50
     },
