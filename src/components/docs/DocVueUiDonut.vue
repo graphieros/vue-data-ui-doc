@@ -52,15 +52,17 @@ const dataset = ref([
     {
         name: "Serie 1",
         values: [100],
+        color: '#ff7f0e'
     },
     {
         name: "Serie 2",
-        values: [200]
+        values: [200],
+        color: '#aec7e8'
     },
     {
         name: "Serie 3",
         values: [300, 1],
-        comment: "A comment for this specific datapoint"
+        color: '#1f77b4'
     },
 ]);
 
@@ -103,12 +105,12 @@ const darkModeConfig = ref({
                 left: 0
             },
             layout: {
-                curvedMarkers: true,
+                curvedMarkers: false,
                 labels: {
                     dataLabels: {
                         show: true,
                         useLabelSlots: false,
-                        hideUnderValue: 3,
+                        hideUnderValue: 0,
                         prefix: "",
                         suffix: "",
                         smallArcClusterThreshold: 8,
@@ -330,12 +332,12 @@ const config = ref({
                 left: 0
             },
             layout: {
-                curvedMarkers: true,
+                curvedMarkers: false,
                 labels: {
                     dataLabels: {
                         show: true,
                         useLabelSlots: false,
-                        hideUnderValue: 3,
+                        hideUnderValue: 0,
                         prefix: "",
                         suffix: "",
                         smallArcClusterThreshold: 8,
@@ -533,7 +535,7 @@ function resetDefault() {
 function randomizeData() {
     mutableDataset.value[0].values = [Math.random()*100];
     mutableDataset.value[1].values = [Math.random()*200];
-    mutableDataset.value[2].values = [Math.random()*300];
+    mutableDataset.value[2].values = [Math.random()*500];
 }
 
 function forceChartUpdate() {
@@ -901,7 +903,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     <BaseAttr name="offsetY" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.comments.offsetY" :min="-50" :max="50" defaultVal="0"/>
                 </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
-                    <BaseAttr name="curvedMarkers" attr="style.chart.layout.curvedMarkers" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="curvedMarkers" attr="style.chart.layout.curvedMarkers" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseDetails attr="donut" :level="4" title="style.chart.layout.donut">
                         <BaseAttr name="radiusRatio" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.radiusRatio" :min="0.1" :max="0.5" :step="0.01" defaultVal="0.3"/>
                         <BaseAttr name="strokeWidth" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.strokeWidth" :min="6" :max="100" defaultVal="55"/>
