@@ -1497,11 +1497,14 @@ export default function useExamples() {
                             strokeWidth: 64,
                         },
                         labels: {
+                            dataLabels: {
+                                hideUnderValue: 0,
+                            },
                             percentage: {
                                 color: colors.value.textColor,
                             },
                             name: {
-                                color: '#6A6A6A'
+                                color: colors.value.textColor
                             },
                             hollow: {
                                 average: {
@@ -1548,6 +1551,14 @@ export default function useExamples() {
                 name: 'Series 5',
                 values: [10]
             },
+            {
+                name: 'Series 5',
+                values: [6]
+            },
+            {
+                name: 'Series 7',
+                values: [3]
+            },
         ]
     });
 
@@ -1571,6 +1582,18 @@ export default function useExamples() {
             {
                 name: 'Series 4',
                 values: [12.5]
+            },
+            {
+                name: 'Series 6',
+                values: [10]
+            },
+            {
+                name: 'Series 5',
+                values: [6]
+            },
+            {
+                name: 'Series 7',
+                values: [3]
             },
         ]
     });
@@ -6896,13 +6919,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 dataset: DATASET_DONUT_BASIC.value.map((ds,i) => {
                     return {
                         ...ds,
-                        color: i === 0
-                            ? '#36206e'
-                            : i === 1
-                            ? '#594087'
-                            : i === 2
-                            ? '#8350a3'
-                            : '#ad66bd'
+                        color: shiftHue('#1f77b4', -(i * DATASET_DONUT_BASIC.value.length / 200))
                     }
                 }),
                 config: {
