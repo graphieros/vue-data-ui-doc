@@ -2,41 +2,30 @@
 import { computed, ref } from "vue";
 import { useMainStore } from "../stores";
 import colorBridge from "color-bridge";
+import { useMenuItems } from "./useMenuItems";
 
 const { utils } = colorBridge();
-
 const { shiftHue } = utils();
-
+const { menuItems, menuCategories } = useMenuItems();
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
-const dataset = ref([
-  {
-    name: "Charts",
-    values: [43],
-    color: shiftHue({ hexColor: '#5f8aee', force: 0})
-  },
-  {
-    name: 'Mini charts',
-    values: [8],
-    color: shiftHue({ hexColor: '#5f8aee', force: -0.05})
-  },
-  {
-    name: "Utilities",
-    values: [8],
-    color: shiftHue({ hexColor: '#5f8aee', force: -0.1})
-  },
-  {
-    name: "Tables",
-    values: [4],
-    color: shiftHue({ hexColor: '#5f8aee', force: -0.17})
-  },
-  {
-    name: "Rating",
-    values: [2],
-    color: shiftHue({ hexColor: '#5f8aee', force: -0.25})
-  },
-]);
+const dataset = computed(() => {
+  let color = 0;
+  return menuCategories.value.map((c) => {
+    const count = menuItems.value.filter(item => item.type === c.filterBy).length;
+    return {
+      name: c.title,
+      values: [count],
+      count,
+    }
+  }).toSorted((a, b) => b.count - a.count).map((item, i) => {
+    return {
+      ...item,
+      color: shiftHue({ hexColor: '#5f8aee', force: color - ((i / menuCategories.value.length) / 4)})
+    }
+  })
+});
 
 const datasetBar = computed(() => {
   return {
@@ -59,7 +48,7 @@ const configBar = computed(() => ({
       }
     }
   }
-}))
+}));
 
 /**
  * This is the default config.
@@ -89,13 +78,13 @@ const config = computed(() => {
         color: "#2D353C",
         padding: { top: 0, left: 0, bottom: -24, right: 0 },
         layout: {
-          curvedMarkers: true,
+          curvedMarkers: false,
           labels: {
             dataLabels: {
               show: true,
               useLabelSlots: false,
-              hideUnderValue: 5,
-              smallArcClusterThreshold: 0,
+              hideUnderValue: 0,
+              smallArcClusterThreshold: 8,
               prefix: "",
               suffix: "",
             },
@@ -133,7 +122,7 @@ const config = computed(() => {
           bold: false,
           backgroundColor: "transparent",
           color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A',
-          fontSize: 12,
+          fontSize: 10,
           roundingValue: 0,
           roundingPercentage: 1,
         },
