@@ -3,9 +3,11 @@ import { computed, ref } from "vue";
 import { useMainStore } from "../stores";
 import colorBridge from "color-bridge";
 import { useMenuItems } from "./useMenuItems";
+import useMobile from "../useMobile";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
+const { isMobile, isTablet } = useMobile();
 const { menuItems, menuCategories } = useMenuItems();
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -118,7 +120,7 @@ const config = computed(() => {
           },
         },
         legend: {
-          show: true,
+          show: !isMobile.value && !isTablet.value,
           bold: false,
           backgroundColor: "transparent",
           color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A',

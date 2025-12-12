@@ -6618,6 +6618,44 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: 'مخطط دائري أساسي'
                 }
             },
+            // DONUT SMALL HIDDEN
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_DONUT_BASE.value.style.chart.layout,
+                                labels: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    dataLabels: {
+                                        ...CONFIG_DONUT_BASE.value.style.chart.layout.labels.dataLabels,
+                                        hideUnderValue: 8
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-basic-small-hidden',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'Datalabels hidden for small arcs',
+                    fr: 'Étiquettes de données masquées pour les petits arcs',
+                    pt: 'Rótulos de dados ocultados para arcos pequenos',
+                    de: 'Datenbeschriftungen für kleine Bögen ausgeblendet',
+                    zh: '小弧段隐藏数据标签',
+                    jp: '小さなアークではデータラベルが非表示になります',
+                    es: 'Etiquetas de datos ocultas para arcos pequeños',
+                    ko: '작은 호에서는 데이터 레이블이 숨겨집니다',
+                    ar: 'إخفاء تسميات البيانات للأقواس الصغيرة'
+                }
+            },
             // DONUT COMMENTS
             {
                 dataset: DATASET_DONUT_COMMENT.value,
