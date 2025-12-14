@@ -125,6 +125,17 @@ const config = ref({
             zoom: {
                 show: true,
             },
+            controls: {
+                position: 'bottom',
+                show: true,
+                backgroundColor: '#F3F4F6',
+                buttonColor: '#F3F4F6',
+                color: '#1A1A1A',
+                fontSize: 14,
+                border: '1px solid #CCCCCC',
+                padding: '0.5rem',
+                borderRadius: '0.25rem'
+            },
             words: {
                 maxFontSize: 100,
                 minFontSize: 20,
@@ -249,6 +260,17 @@ const darkModeConfig = ref({
             width: 1000,
             zoom: {
                 show: true,
+            },
+            controls: {
+                position: 'bottom',
+                show: true,
+                backgroundColor: '#2A2A2A',
+                buttonColor: '#2A2A2A',
+                color: '#CCCCCC',
+                fontSize: 14,
+                border: '1px solid #3A3A3A',
+                padding: '0.5rem',
+                borderRadius: '0.25rem'
             },
             words: {
                 maxFontSize: 100,
@@ -510,6 +532,16 @@ function goToPage(route) {
                 <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="512" :min="300" :max="2000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                     <BaseAttr name="show" attr="style.chart.zoom.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+                <BaseDetails attr="controls" title="style.chart.controls" :level="3">
+                    <BaseAttr name="show" attr="style.chart.controls.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.controls.position" type="select" defaultVal="'bottom'" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="backgroundColor" attr="style.chart.controls.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.chart.controls.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="fontSize" attr="style.chart.controls.fontSize" type="number" defaultVal="14" :min="8" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="border" attr="style.chart.controls.border" type="text" defaultVal="'1px solid #CCCCCC'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="padding" attr="style.chart.controls.padding" type="text" defaultVal="'0.5rem'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderRadius" attr="style.chart.controls.borderRadius" type="text" defaultVal="'0.25rem'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

@@ -1542,6 +1542,17 @@ const wordCloudConfig = computed(() => {
         backgroundColor: 'transparent',
         height: 500,
         width: 500,
+        controls: {
+            position: 'bottom',
+            show: true,
+            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#E1E5E8',
+            buttonColor: isDarkMode.value ? '#2A2A2A' : '#E1E5E8',
+            color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
+            fontSize: 14,
+            border: `1px solid ${isDarkMode.value ? '#4A4A4A' : '#CCCCCC'}`,
+            padding: '0.5rem',
+            borderRadius: '0.25rem'
+        },
         words: {
           proximity: 0,
           color: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
@@ -2034,7 +2045,9 @@ function convertComponent(c) {
     vue_ui_icon: 'VueUiIcon',
     vue_ui_digits: 'VueUiDigits',
     vue_ui_cursor: 'VueUiCursor',
-    vue_ui_mini_loader: 'VueUiMiniLoader'
+    vue_ui_mini_loader: 'VueUiMiniLoader',
+    vue_ui_dag: 'VueUiDag',
+    vue_ui_geo: 'VueUiGeo'
   }[c];
 }
 

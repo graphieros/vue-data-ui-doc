@@ -2574,6 +2574,17 @@ export default function useExamples() {
                         borderColor: colors.value.gridStroke,
                         backgroundOpacity: 70,
                     },
+                    controls: {
+                        position: 'bottom',
+                        show: true,
+                        backgroundColor: colors.value.bg,
+                        buttonColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        fontSize: 14,
+                        border: `1px solid ${colors.value.gridStroke}`,
+                        padding: '0.5rem',
+                        borderRadius: '0.25rem'
+                    },
                     title: {
                         text: 'Title',
                         color: colors.value.textColor,

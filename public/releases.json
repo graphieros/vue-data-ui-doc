@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.9.2",
+    "date": "2025-12-14",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Add optional zoom controls",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 3.9.1",
     "date": "2025-12-14",
     "updates": [
