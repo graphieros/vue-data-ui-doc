@@ -304,6 +304,13 @@ export default function useCharts() {
 
     const taxinomy = computed(() => {
         return {
+            VueUiGeo: {
+                icon: 'chartGeo',
+                link: '/docs#vue-ui-geo',
+                description: translations.value.docs.tooltips.geo[store.lang],
+                taxinomy: ['maps'],
+                singleTaxinomy: 'maps',
+            },
             VueUiWorld: {
                 icon: 'world',
                 link: '/docs#vue-ui-world',

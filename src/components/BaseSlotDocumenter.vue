@@ -269,6 +269,17 @@ const items = computed(() => {
             `
         },
         {
+            names: ['datapoint'],
+            description: translations.value.slots.datapoint[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #datapoint="{ point, onPointEnter, onPointLeave, onPointClick, highlighted }">
+            <circle :cx="point.x" :cy="point.y" :r="1" :fill="point.fill" @click="onPointClick(point)"/>
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
             names: ['rect'],
             description: translations.value.slots.rect[store.lang],
             snippet: `

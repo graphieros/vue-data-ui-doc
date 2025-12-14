@@ -17,6 +17,12 @@ const props = defineProps({
     },
 })
 
+const params = computed(() => {
+    return {
+        focusLocation: '[-12, 24], { animated: true }'
+    }[props.name] ?? ''
+})
+
 const content = computed(() => {
     return `
     import { ref } from "vue";
@@ -26,7 +32,7 @@ const content = computed(() => {
 
     function ${props.name}()  {
         if (${props.component}Ref.value) {
-            ${props.component}Ref.value.${props.name}();
+            ${props.component}Ref.value.${props.name}(${params.value});
         }
     }
 `

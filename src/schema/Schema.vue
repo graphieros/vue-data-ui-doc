@@ -8,6 +8,7 @@ import "prismjs/themes/prism-okaidia.css"
 import DocLink from "../components/DocLink.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import CodeParser from "../components/customization/CodeParser.vue";
+import FRANCE from "../resources/FRANCE.json"
 
 const store = useMainStore()
 
@@ -142,7 +143,7 @@ const datasetRefContent = computed(() => {
     <span class="code-key">import</span> <span class="code-string">"vue-data-ui/style.css"</span>;
     </span>
     <span class="code-html">const</span> <span class="code-attr">dataset</span> = <span class="code-fn">ref</span><span v-if="isTs"><<span class="code-type">{{ selectedComponent.types.dataset.includes('[]') ? selectedComponent.types.dataset.replace('[]', '') : selectedComponent.types.dataset}}</span><span>{{ selectedComponent.types.dataset.includes('[]') ? '[]' : '' }}</span>></span>();
-    <span class="code-html">const</span> <span class="code-attr">config</span> = <span class="code-fn">ref</span><span v-if="isTs"><<span class="code-type">{{ selectedComponent.types.config }}</span>></span>();
+    <span class="code-html">const</span> <span class="code-attr">config</span> = <span class="code-fn">ref</span><span v-if="isTs"><span class="code-type">{{ selectedComponent.types.config }}</span></span>();
 &lt;/<span class="code-html">script</span>&gt;
 
 &lt;<span class="code-html">template</span>&gt;
@@ -323,7 +324,14 @@ const datasetRefContent = computed(() => {
             </div>
         </div>
         <div :class="`w-full mx-auto p-4 bg-white ${selectedComponent.chartSize ? `max-w-[${selectedComponent.chartSize}px]` : ''}`" v-for="example in selectedComponent.examples">
-            <VueDataUi :component="selectedComponent.name" :dataset="example.dataset" :config="example.config"/>
+            <VueDataUi :component="selectedComponent.name" :dataset="example.dataset" :config="{
+                ...example.config,
+                ...(selectedComponent.name === 'VueUiGeo' ? {
+                    map: {
+                        geoJson: FRANCE
+                    }
+                } : {})
+            }"/>
         </div>
 
         <VueDataUi 

@@ -670,6 +670,18 @@ export function useMenuItems() {
             hasLegend: true
         },
         {
+            name: "Geo",
+            icon: "chartGeo",
+            tooltip: translations.value.docs.tooltips.geo[store.lang],
+            link: "/docs#vue-ui-geo",
+            type: ['misc'],
+            thumb: new URL('../assets/thumb_geo.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_geo_light.png', import.meta.url).href,
+            hasSlot: true,
+            hasTableCss: false,
+            hasLegend: false
+        },
+        {
             name: "WordCloud",
             icon: "chartWordCloud",
             tooltip: translations.value.docs.tooltips.wordCloud[store.lang],

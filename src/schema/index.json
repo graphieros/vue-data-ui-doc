@@ -1,4 +1,209 @@
 {
+    "vue_ui_geo": {
+        "name": "VueUiGeo",
+        "icon": "chartGeo",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-geo",
+        "path":"/docs#vue-ui-geo",
+        "description": "geo",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "responsive": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiGeoConfig",
+            "dataset": "VueUiGeoDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Paris",
+                        "coordinates": [2.3522, 48.8566],
+                        "description": "Capital of France",
+                        "color": "#E63946",
+                        "radius": 1
+                    },
+                    {
+                        "name": "Lyon",
+                        "coordinates": [4.8357, 45.7640],
+                        "description": "Auvergne-Rhône-Alpes",
+                        "color": "#457B9D",
+                        "radius": 1
+                    },
+                    {
+                        "name": "Marseille",
+                        "coordinates": [5.3698, 43.2965],
+                        "description": "Provence-Alpes-Côte d’Azur",
+                        "color": "#2A9D8F",
+                        "radius": 1
+                    },
+                    {
+                        "name": "Bordeaux",
+                        "coordinates": [-0.5792, 44.8378],
+                        "description": "Nouvelle-Aquitaine",
+                        "color": "#F4A261",
+                        "radius": 1
+                    },
+                    {
+                        "name": "Lille",
+                        "coordinates": [3.0573, 50.6292],
+                        "description": "Hauts-de-France",
+                        "color": "#8D99AE",
+                        "radius": 1
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
+            },
+            {
+                "name": "Zoom",
+                "description": "Toggles the pan zoom lock feature",
+                "icon": "zoomLock"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "toggleZoom",
+                "description": "Triggers toggling of the pan zoom lock feature"
+            },
+            {
+                "name": "zoomIn",
+                "description": "Triggers zoom in"
+            },
+            {
+                "name": "zoomOut",
+                "description": "Triggers zoom out"
+            },
+            {
+                "name": "resetZoom",
+                "description": "Triggers a reset of the zoom to 100%"
+            },
+            {
+                "name": "focusLocation",
+                "description": "Center the map on specific geo coordinates"
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "source",
+                "description": "add a chart caption content"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "optionZoom",
+                "description": "customize the context menu zoom lock icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
+            },
+            {
+                "name": "datapoint",
+                "description": "customize datapoints by injecting svg elements"
+            }
+        ]
+    },
     "vue_ui_dag": {
         "name": "VueUiDag",
         "icon": "chartDag",

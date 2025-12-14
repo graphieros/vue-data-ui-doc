@@ -957,6 +957,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    datapoint: {
+                        en: 'Use this slot to customize datapoints by injecting svg elements.',
+                        fr: 'Utilisez ce slot pour personnaliser les points de données en injectant des éléments SVG.',
+                        pt: 'Use este slot para personalizar os pontos de dados inserindo elementos SVG.',
+                        de: 'Verwenden Sie diesen Slot, um Datenpunkte durch das Einfügen von SVG-Elementen anzupassen.',
+                        zh: '使用此插槽通过注入 SVG 元素来自定义数据点。',
+                        jp: 'このスロットを使用して、SVG 要素を挿入することでデータポイントをカスタマイズできます。',
+                        es: 'Utilice este slot para personalizar los puntos de datos insertando elementos SVG.',
+                        ko: '이 슬롯을 사용하여 SVG 요소를 삽입함으로써 데이터 포인트를 사용자 정의할 수 있습니다.',
+                        ar: 'استخدم هذا الـ slot لتخصيص نقاط البيانات عن طريق إدراج عناصر SVG.',
+                    },
                     node: {
                         en: 'Use this slot to customize node content',
                         fr: 'Utilisez ce slot pour personnaliser le contenu du nœud.',
@@ -2085,6 +2096,17 @@ export const useMainStore = defineStore("main", {
                         ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
                     },
                     tooltips: {
+                        geo: {
+                            en: 'Render any GeoJSON map and plot custom data points with full interaction and zoom control.',
+                            fr: 'Afficher n’importe quelle carte GeoJSON et tracer des points de données personnalisés avec interactions complètes et contrôle du zoom.',
+                            pt: 'Renderize qualquer mapa GeoJSON e plote pontos de dados personalizados com interação completa e controle de zoom.',
+                            de: 'Beliebige GeoJSON-Karten darstellen und benutzerdefinierte Datenpunkte mit vollständiger Interaktion und Zoom-Steuerung visualisieren.',
+                            zh: '渲染任意 GeoJSON 地图，并绘制自定义数据点，支持完整交互和缩放控制。',
+                            jp: '任意の GeoJSON マップを描画し、完全なインタラクションとズーム制御付きでカスタムデータポイントを表示します。',
+                            es: 'Renderiza cualquier mapa GeoJSON y muestra puntos de datos personalizados con interacción completa y control de zoom.',
+                            ko: '모든 GeoJSON 지도를 렌더링하고 완전한 상호작용 및 줌 제어를 통해 사용자 정의 데이터 포인트를 표시합니다.',
+                            ar: 'عرض أي خريطة GeoJSON ورسم نقاط بيانات مخصّصة مع تفاعل كامل والتحكم في التكبير.'
+                        },
                         dag: {
                             en: 'Visualize any directed graph structure, including workflows or system architectures, even when cycles are present.',
                             fr: 'Visualisez toute structure de graphe orienté, y compris des flux de travail ou des architectures système, même en présence de cycles.',
@@ -2944,6 +2966,50 @@ export const useMainStore = defineStore("main", {
                         ar: 'يمكنك تجاوز CSS (راجع ملف style.css الموجود في الحزمة)'
                     },
                     emits: {
+                        toggleAnnotator: {
+                            en: 'Call this method from the parent to open or close the built-in annotator.',
+                            fr: 'Appelez cette méthode depuis le composant parent pour ouvrir ou fermer l’annotateur intégré.',
+                            pt: 'Chame este método a partir do componente pai para abrir ou fechar o anotador integrado.',
+                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um den integrierten Annotator zu öffnen oder zu schließen.',
+                            zh: '从父组件调用此方法以打开或关闭内置标注工具。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、内蔵アノテーターを開閉します。',
+                            es: 'Llame a este método desde el componente padre para abrir o cerrar el anotador integrado.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 내장 주석 도구를 열거나 닫습니다.',
+                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لفتح أو إغلاق أداة التعليق المدمجة.',
+                        },
+                        toggleTooltip: {
+                            en: 'Call this method from the parent to disable or enable the tooltip.',
+                            fr: 'Appelez cette méthode depuis le composant parent pour activer ou désactiver l’infobulle.',
+                            pt: 'Chame este método a partir do componente pai para ativar ou desativar o tooltip.',
+                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um den Tooltip zu aktivieren oder zu deaktivieren.',
+                            zh: '从父组件调用此方法以启用或禁用提示框。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、ツールチップを有効または無効にします。',
+                            es: 'Llame a este método desde el componente padre para activar o desactivar el tooltip.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 툴팁을 활성화하거나 비활성화합니다.',
+                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لتمكين أو تعطيل التلميح.',
+                        },
+                        toggleFullscreen: {
+                            en: 'Call this method from the parent to toggle fullscreen mode.',
+                            fr: 'Appelez cette méthode depuis le composant parent pour activer ou désactiver le mode plein écran.',
+                            pt: 'Chame este método a partir do componente pai para alternar o modo de tela cheia.',
+                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um den Vollbildmodus umzuschalten.',
+                            zh: '从父组件调用此方法以切换全屏模式。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、全画面モードを切り替えます。',
+                            es: 'Llame a este método desde el componente padre para alternar el modo de pantalla completa.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 전체 화면 모드를 전환합니다.',
+                            ar: 'استدعِ هذه الطريقة من المكوّن الأب للتبديل إلى وضع ملء الشاشة أو الخروج منه.',
+                        },
+                        focusLocation: {
+                            en: 'Call this method from the parent to focus the map on specific coordinates.',
+                            fr: 'Appelez cette méthode depuis le composant parent pour centrer la carte sur des coordonnées spécifiques.',
+                            pt: 'Chame este método a partir do componente pai para centralizar o mapa em coordenadas específicas.',
+                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um die Karte auf bestimmte Koordinaten zu zentrieren.',
+                            zh: '从父组件调用此方法以将地图聚焦到指定坐标。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、指定した座標に地図をフォーカスします。',
+                            es: 'Llame a este método desde el componente padre para centrar el mapa en coordenadas específicas.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 지도를 특정 좌표로 이동합니다.',
+                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لتركيز الخريطة على إحداثيات محددة.',
+                        },
                         getData: {
                             en: 'Call this method from the parent component to get the graph data',
                             fr: 'Appelez cette méthode depuis le composant parent pour obtenir les données du graphe.',

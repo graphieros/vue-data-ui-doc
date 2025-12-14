@@ -68,6 +68,7 @@ export function useIconMap(componentName) {
         VueUiChord: 'chartChord',
         VueUiStackline: 'chartStackline',
         VueUiDag: 'chartDag',
+        VueUiGeo: 'chartGeo',
         ['Utility functions']: 'func'
     }
     return mapping[componentName] || 'clipBoard';

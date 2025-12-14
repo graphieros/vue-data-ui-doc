@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.9.0",
+    "date": "2025-12-14",
+    "updates": [
+      {
+        "component": "VueUiGeo",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-geo"
+      }
+    ]
+  },
+  {
     "version": "v 3.8.5",
     "date": "2025-12-10",
     "updates": [

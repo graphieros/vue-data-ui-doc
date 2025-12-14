@@ -83,6 +83,7 @@ const specialIcons = ref([
     "chartFunnel",
     "chartGalaxy",
     "chartGauge",
+    "chartGeo",
     "chartHeatmap",
     "chartHistoryPlot",
     "chartLine",

@@ -90,6 +90,7 @@ const DocVueUiWorld = defineAsyncComponent(() => import('../components/docs/DocV
 const DocVueUiRidgeline = defineAsyncComponent(() => import('../components/docs/DocVueUiRidgeline.vue'));
 const DocVueUiChord = defineAsyncComponent(() => import('../components/docs/DocVueUiChord.vue'));
 const DocVueUiDag = defineAsyncComponent(() => import('../components/docs/DocVueUiDag.vue'));
+const DocVueUiGeo = defineAsyncComponent(() => import('../components/docs/DocVueUiGeo.vue'));
 
 const mainConfig = useConfig()
 
@@ -492,6 +493,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiDag v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-dag'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiGeo v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-geo'" />
             </Transition>
 
             <Transition name="fade">
