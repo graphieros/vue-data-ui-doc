@@ -118,7 +118,7 @@ const filteredResults = computed(() => {
 const iconMap = ref({
     VueUiSparkline: 'chartSparkline',
     VueUiSparkbar: 'chartSparkbar',
-    VueUiSoarkStackbar: 'chartSparkStackbar',
+    VueUiSparkStackbar: 'chartSparkStackbar',
     VueUiSparkHistogram: 'chartSparkHistogram',
     VueUiSparkgauge: 'chartGauge',
     VueUiSparkTrend: 'trend',
@@ -180,7 +180,9 @@ const iconMap = ref({
     VueUiChord: 'chartChord',
     VueUiWorld: 'world',
     VueUiCarouselTable: 'carouselTable',
-    VueUiStackline: 'chartStackline'
+    VueUiStackline: 'chartStackline',
+    VueUiDag: 'chartDag',
+    VueUiGeo: 'chartGeo'
 })
 
 function jsonToJsObject(json, indent = 0, colorAuto=false) {
