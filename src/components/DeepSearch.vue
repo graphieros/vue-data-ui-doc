@@ -175,7 +175,7 @@ const accordionConfigDarkMode = computed(() => {
 function formatSuggestion(word) {
     const escapedSearchTerm = searchTerm.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'i');
-    return word.replace(regex, '<span style="background:#42d39250;">$1</span>');
+    return word.replace(regex, '<span class="font-inter-medium bg-app-blue-light dark:bg-app-blue text-black">$1</span>');
 }
 
 function closeList() {
@@ -195,8 +195,9 @@ function closeList() {
         <div class="anim-wrapper w-[280px] rounded-full -mt-[1px]">
           <input
             @input="handleInput"
+            @click.stop="handleInput"
             type="text"
-            class="font-inter-medium inner p-2 !pl-4 h-[36px] !rounded-full text-black dark:text-[#CCCCCC] focus:outline-app-green w-[280px] bg-white dark:bg-[#2A2A2A] shadow-[inset_0_2px_6px_#8A8A8A,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_#000000,0_4px_6px_rgba(0,0,0,0.5)]"
+            class="font-inter-medium inner p-2 !pl-4 h-[36px] !rounded-full text-black dark:text-[#CCCCCC] focus:outline-app-blue w-[280px] bg-white dark:bg-[#2A2A2A] shadow-[inset_0_2px_6px_#8A8A8A,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_#000000,0_4px_6px_rgba(0,0,0,0.5)]"
             style="text-align: left !important"
             v-model="searchTerm"
             :placeholder="store.translations.search.placeholder[store.lang]"
@@ -230,7 +231,7 @@ function closeList() {
           tabindex="0"
           v-for="(suggestion, i) in filteredSuggestions"
           :id="`suggestion-${i}`"
-          class="px-2 py-1 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-green text-black dark:text-gray-300 dark:hover:text-black focus:bg-gray-200 dark:focus:bg-app-green dark:focus:text-black"
+          class="px-2 py-1 cursor-pointer hover:bg-gray-200 dark:hover:bg-[#5f8aee30] text-black dark:text-gray-300 focus:bg-gray-200 dark:focus:bg-app-green dark:focus:text-black"
           @click="selectSuggestion(suggestion)"
           @keyup.enter="selectSuggestion(suggestion)"
         >

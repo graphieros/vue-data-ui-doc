@@ -179,6 +179,7 @@ const specialIcons = ref([
     "ratio",
     "resize",
     "restart",
+    "revert",
     "robot",
     "save",
     "screenshot",
