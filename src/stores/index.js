@@ -1013,7 +1013,17 @@ export const useMainStore = defineStore("main", {
                         ko: '이 슬롯을 사용하여 노드 툴팁 내용을 커스터마이즈합니다.',
                         ar: 'استخدم هذا الحيز لتخصيص محتوى التلميح الخاص بالعقدة.'
                     },
-
+                    backgroundPattern: {
+                        en: 'Use this slot to customize the background pattern using svg elements',
+                        fr: 'Utilisez ce slot pour personnaliser le motif de fond à l’aide d’éléments SVG',
+                        pt: 'Use este slot para personalizar o padrão de fundo usando elementos SVG',
+                        de: 'Verwenden Sie diesen Slot, um das Hintergrundmuster mithilfe von SVG-Elementen anzupassen',
+                        zh: '使用此插槽通过 SVG 元素自定义背景图案',
+                        jp: 'SVG 要素を使用して背景パターンをカスタマイズするには、このスロットを使用してください',
+                        es: 'Use este slot para personalizar el patrón de fondo utilizando elementos SVG',
+                        ko: 'SVG 요소를 사용하여 배경 패턴을 사용자 지정하려면 이 슬롯을 사용하세요',
+                        ar: 'استخدم هذا الموضع لتخصيص نمط الخلفية باستخدام عناصر SVG'
+                    },
                     tooltipMidpoint: {
                         en: 'Use this slot to customize the midpoint tooltip content',
                         fr: 'Utilisez ce slot pour personnaliser le contenu de l’infobulle du point médian.',

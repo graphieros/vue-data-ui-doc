@@ -90,6 +90,24 @@ export default function useExamples() {
         ]
     });
 
+        const DATASET_DAG_ANIMATED = ref({
+        nodes: [
+            { id: "A", label: "A", backgroundColor: '#5f8aee'},
+            { id: "B", label: "B", backgroundColor: '#5f8aee'},
+            { id: "C", label: "C", backgroundColor: '#FF0000', color: '#FFFFFF'},
+            { id: "D", label: "D" },
+        ],
+        edges: [
+            { from: "A", to: "B", color: '#5f8aee', animated: true },
+            { from: "B", to: "A", color: '#5f8aee', animated: true },
+            { from: "B", to: "A" },
+            { from: "C", to: "A", color: '#FF0000', animated: true },
+            { from: "B", to: "D" },
+            { from: "C", to: "D", color: '#FF0000', animated: true },
+            { from: "D", to: "A" },
+        ]
+    });
+
     const DATASET_DAG_CUSTOM = ref({
         nodes: [
             { id: "A", label: "Computer", icon: 'computer', color: '#ff3700'},
@@ -120,7 +138,16 @@ export default function useExamples() {
                 },
                 zoom: {
                     active: false
-                }
+                },
+                title: {
+                    text: 'Title',
+                    color: colors.value.textColor,
+                    textAlign: 'left',
+                    paddingLeft: 24,
+                    subtitle: {
+                        text: 'Subtitle'
+                    }
+                },
             }
         }
     }))
@@ -146,7 +173,16 @@ export default function useExamples() {
                 },
                 zoom: {
                     active: false
-                }
+                },
+                title: {
+                    text: 'Title',
+                    color: colors.value.textColor,
+                    textAlign: 'left',
+                    paddingLeft: 24,
+                    subtitle: {
+                        text: 'Subtitle'
+                    }
+                },
             }
         }
     }))
@@ -10661,6 +10697,58 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: 'Con colores individuales',
                     ko: '개별 색상 포함',
                     ar: 'مع ألوان فردية'
+                }
+            },
+            // DAG ANIMATED EDGES
+            {
+                dataset: DATASET_DAG_ANIMATED.value,
+                config: CONFIG_DAG_BASIC.value,
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-animated-edges',
+                link: 'vue-ui-dag',
+                description: {
+                    en: 'With animated edges',
+                    fr: 'Avec des arêtes animées',
+                    pt: 'Com arestas animadas',
+                    de: 'Mit animierten Kanten',
+                    zh: '带有动画边',
+                    jp: 'アニメーションするエッジ付き',
+                    es: 'Con aristas animadas',
+                    ko: '애니메이션 엣지 포함',
+                    ar: 'مع حواف متحركة'
+                }
+            },
+            // DAG WITH BACKGROUND PATTERN
+            {
+                dataset: DATASET_DAG_BASIC.value,
+                config: {
+                    ...CONFIG_DAG_BASIC.value,
+                    style: {
+                        ...CONFIG_DAG_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_DAG_BASIC.value.style.chart,
+                            backgroundPattern: {
+                                show: true,
+                                dotColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDag',
+                icon: 'chartDag',
+                id: 'dag-background-pattern',
+                link: 'vue-ui-dag',
+                description: {
+                    en: 'With background pattern enabled',
+                    fr: 'Avec motif de fond activé',
+                    pt: 'Com padrão de fundo ativado',
+                    de: 'Mit aktiviertem Hintergrundmuster',
+                    zh: '启用背景图案',
+                    jp: '背景パターン有効',
+                    es: 'Con patrón de fondo activado',
+                    ko: '배경 패턴 활성화',
+                    ar: 'مع تفعيل نمط الخلفية'
                 }
             },
             // DAG BASIC - LR

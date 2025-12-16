@@ -131,7 +131,10 @@ function addNode() {
 function addEdge() {
     datasetItems.value.edges.push({
         from: '0',
-        to: '0'
+        to: '0',
+        animated: false,
+        dasharray: '2 6',
+        animationDurationMs: 1000,
     });
     saveDatasetToLocalStorage();
 }
@@ -225,6 +228,10 @@ function deleteEdge(edge) {
                                     <option v-for="nodeId in allNodeIds" :value="nodeId">{{ datasetItems.nodes.find(n => n.id === nodeId).label }}</option>
                                 </select>
                                 (id: <code class="text-[10px]">{{ edge.to }}</code>)
+                            </label>
+                            <label>
+                                <span class="font-inter-medium mr-2">animated</span>
+                                <input type="checkbox" v-model="edge.animated" @change="saveDatasetToLocalStorage"/>
                             </label>
                             <BaseButton
                                 color="error"

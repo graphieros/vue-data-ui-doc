@@ -591,6 +591,19 @@ const items = computed(() => {
         </template>
     </${props.componentName}>
             `
+        },
+        {
+            names: ['background-pattern'],
+            description: translations.value.slots.backgroundPattern[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #background-pattern="{ x, y, color }">
+            <!-- Display a cross pattern instead of the default dot grid -->
+            <line :x1="x - 2" :x2="x + 2" :y1="y" :y2="y" :stroke="color" stroke-width="0.5"/>
+            <line :x1="x" :x2="x" :y1="y - 2" :y2="y + 2" :stroke="color" stroke-width="0.5"/>
+        </template>  
+    </${props.componentName}>
+            `
         }
     ]
 })

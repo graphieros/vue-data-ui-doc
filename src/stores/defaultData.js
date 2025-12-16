@@ -27,9 +27,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'theme', def: 'default', type: 'select', label: 'theme', options: ['default', 'celebration', 'celebrationNight', 'zen', 'hack', 'concrete'], category: 'general'},
                     { key: 'zoom.active', def: true, type: 'checkbox', label: ['zoom', 'is', 'active'], category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: ['fontFamily'], category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'general'},
-                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: ['fontFamily'], category: 'general'},
+                    { key: 'style.chart.backgroundPattern.show', def: false, type: 'checkbox', label: ['background', 'pattern', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.backgroundPattern.spacingRatio', def: 3, type: 'number', min: 1, max: 5, step: 0.1, label: ['background', 'pattern', 'spacing', 'is', 'ratio'], category: 'general'},
+                    { key: 'style.chart.backgroundPattern.dotRadiusRatio', def: 5, type: 'number', min: 1, max: 10, step: 0.5, label: ['background', 'pattern', 'dot', 'radius', 'is', 'ratio'], category: 'general'},
+                    { key: 'style.chart.backgroundPattern.dotColor', def: '#E1E5E8', type: 'color', label: ['background', 'pattern', 'dot', 'is',' color'], category: 'general'},
+                    { key: 'style.chart.backgroundPattern.opacity', def: 1, type: 'range', min: 0, max: 1, step: 0.1, label: ['background', 'pattern', 'is', 'opacity'], category: 'general'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'userOptions' },
@@ -88,6 +93,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'style.chart.edges.stroke', def: '#CCCCCC', type: 'color', label: ['line', 'is', 'color'], category: 'edges'},
                     { key: 'style.chart.edges.strokeWidth', def: 1, type: 'number', min: 1, max: 12, label: ['line', 'is', 'thickness'], category: 'edges'},
+                    { key: 'style.chart.edges.animations.dasharray', def: '2 6', type: 'text', label: ['line', 'animation', 'is', 'dasharray'], category: 'edges'},
+                    { key: 'style.chart.edges.animations.animationDurationMs', def: 1000, type: 'number', min: 0, max: 2000, step: 100, label: ['line', 'animation', 'is', 'duration'], category: 'edges'},
 
                     { key: 'style.chart.midpoints.show', def: true, type: 'checkbox', label: 'show', category: 'midpoints'},
                     { key: 'style.chart.midpoints.radius', def: 4, type: 'number', min: 2, max: 12, label: 'radius', category: 'midpoints'},

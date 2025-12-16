@@ -138,6 +138,13 @@ const config = ref({
             color: '#1A1A1A',
             width: null,
             height: null,
+            backgroundPattern: {
+                show: false,
+                spacingRatio: 3,
+                dotRadiusRatio: 5,
+                dotColor: '#E1E5E8',
+                opacity: 1,
+            },
             layout: {
                 rankDirection: 'TB',
                 rankSeparation: 60,
@@ -170,7 +177,11 @@ const config = ref({
             },
             edges: {
                 stroke: '#8A8A8A',
-                strokeWidth: 1
+                strokeWidth: 1,
+                animations: {
+                    dasharray: '2 6',
+                    animationDurationMs: 1000
+                }
             },
             midpoints: {
                 show: true,
@@ -256,6 +267,13 @@ const darkModeConfig = ref({
             color: '#CCCCCC',
             width: null,
             height: null,
+            backgroundPattern: {
+                show: false,
+                spacingRatio: 3,
+                dotRadiusRatio: 5,
+                dotColor: '#3A3A3A',
+                opacity: 1,
+            },
             layout: {
                 rankDirection: 'TB',
                 rankSeparation: 60,
@@ -288,7 +306,11 @@ const darkModeConfig = ref({
             },
             edges: {
                 stroke: '#6A6A6A',
-                strokeWidth: 1
+                strokeWidth: 1,
+                animations: {
+                    dasharray: '2 6',
+                    animationDurationMs: 1000
+                }
             },
             midpoints: {
                 show: true,
@@ -490,6 +512,13 @@ function goToPage(route) {
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="null" inactive/>
                 <BaseAttr name="height" attr="style.chart.height" type="number" defaultVal="null" inactive/>
+                <BaseDetails attr="backgroundPattern" title="style.chart.backgroundPattern" :level="3">
+                    <BaseAttr name="show" attr="style.chart.backgroundPattern.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="spacingRatio" attr="style.chart.backgroundPattern.spacingRatio" type="range" defaultVal="3" :min="1" :max="5" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="dotRadiusRatio" attr="style.chart.backgroundPattern.dotRadiusRatio" type="range" defaultVal="5" :min="1" :max="10" :step="1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="dotColor" attr="style.chart.backgroundPattern.dotColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="opacity" attr="style.chart.backgroundPattern.opacity" type="range" defaultVal="1" :min="0" :max="1" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                </BaseDetails>
                 <BaseDetails attr="layout" title="style.chart.layout" :level="3">
                     <BaseAttr name="rankDirection" attr="style.chart.layout.rankDirection" type="select" defaultVal="TB" :options="['TB', 'RL', 'BT', 'RL']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                     <BaseAttr name="rankSeparation" attr="style.chart.layout.rankSeparation" type="number" defaultVal="60" :min="10" :max="100" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
@@ -523,6 +552,10 @@ function goToPage(route) {
                 <BaseDetails attr="edges" title="style.chart.edges" :level="3">
                     <BaseAttr name="stroke" attr="style.chart.edges.stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="strokeWidth" attr="style.chart.edges.strokeWidth" type="number" defaultVal="1" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="animations" :level="4" title="style.chart.edges.animations">
+                        <BaseAttr name="dasharray" attr="style.chart.edges.animations.dasharray" type="text" defaultVal="'2 6'" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Can also be set individually in dataset.edges"/>
+                        <BaseAttr name="animationDurationMs" attr="style.chart.edges.animations.animationDurationMs" type="number" defaultVal="1000" :min="0" :max="5000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Can also be set individually in dataset.edges" />
+                    </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="midpoints" title="style.chart.midpoints" :level="3">
                     <BaseAttr name="show" attr="style.chart.midpoints.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Tip: use the #tooltip-midpoint slot to customize tooltip content"/>
@@ -591,6 +624,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiDag"
                     :types="[
+                        'background-pattern',
                         'svg',
                         'watermark',
                         'source',

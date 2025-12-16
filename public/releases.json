@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.9.5",
+    "date": "2025-12-16",
+    "updates": [
+      {
+        "component": "VueUiDag",
+        "description": "Add optional animated edges; add optional background pattern",
+        "link": "/docs#vue-ui-dag"
+      }
+    ]
+  },
+  {
     "version": "v 3.9.4",
     "date": "2025-12-16",
     "updates": [
