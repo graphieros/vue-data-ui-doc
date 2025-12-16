@@ -1,5 +1,27 @@
 [
   {
+    "version": "v 3.9.4",
+    "date": "2025-12-16",
+    "updates": [
+      {
+        "component": "VueUiBullet",
+        "description": "Fix config height & width not reactive; fix cropped legend in responsive mode",
+        "link": "/docs#vue-ui-bullet"
+      }
+    ]
+  },
+  {
+    "version": "v 3.9.3",
+    "date": "2025-12-15",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improve small labels layout",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 3.9.2",
     "date": "2025-12-14",
     "updates": [

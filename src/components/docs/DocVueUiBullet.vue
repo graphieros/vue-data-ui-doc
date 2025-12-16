@@ -524,7 +524,7 @@ function goToPage(route) {
                 <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="height" attr="style.chart.height" type="range" defaultVal="96" :min="64" :max="128" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="width" attr="style.chart.width" type="range" defaultVal="600" :min="400" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="width" attr="style.chart.width" type="range" defaultVal="600" :min="400" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
                     <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
