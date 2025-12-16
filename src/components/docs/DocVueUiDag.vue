@@ -91,7 +91,11 @@ const dsTypeCode = ref(`type VueUiDagNode = {
 type VueUiDagEdge = {
     from: string;
     to: string;
-    color?: string; // set a specific stroke color for a given edge
+    color?: string;
+    animated?: boolean;
+    dasharray?: \`\${number} \${number}\`;
+    animationDurationMs?: number;
+    animationDirection?: 1 | -1;
 }
 
 type VueUiDagDataset = {
