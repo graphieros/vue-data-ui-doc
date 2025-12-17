@@ -93,9 +93,9 @@ type VueUiDagEdge = {
     to: string;
     color?: string;
     animated?: boolean;
-    dasharray?: \`\${number} \${number}\`;
-    animationDurationMs?: number;
-    animationDirection?: 1 | -1;
+    dasharray?: \`\${number} \${number}\`; // If not provided, defaults to config
+    animationDurationMs?: number; // If not provided, defaults to config
+    animationDirection?: 1 | -1; // If not provided, animates towards the arrow
 }
 
 type VueUiDagDataset = {

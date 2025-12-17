@@ -710,7 +710,7 @@ function goToPage(route) {
             </template>
 
             <template #tab7>
-                <ResponsiveUnit height="200px" minHeight="150px">
+                <ResponsiveUnit height="248px" minHeight="150px">
                     <template #chart>
                         <VueDataUi
                             component="VueUiBullet"
