@@ -8,6 +8,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import ConfirmCopy from "../ConfirmCopy.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseAutoComplete from "../Base/BaseAutoComplete.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -277,6 +278,18 @@ const code = computed(() => {
         stroke="${ isDarkMode.value ? '#CCCCCC' : '#1A1A1A'}"
     />
     `
+});
+
+const search = ref('');
+
+const filteredIcons = computed(() => {
+    if (!search.value) return icons.value;
+    return icons.value.filter(icon => icon.includes(search.value));
+});
+
+const filteredSpecialIcons = computed(() => {
+    if (!search.value) return specialIcons.value;
+    return specialIcons.value.filter(icon => icon.includes(search.value));
 })
 
 </script>
@@ -287,10 +300,14 @@ const code = computed(() => {
 
         <BaseDocDescription :text="translations.docs.tooltips.icon[store.lang]" />
 
+        <div class="w-fit mx-auto mt-6 mb-12">
+            <BaseAutoComplete v-model="search" :items="[...icons, ...specialIcons]"/>
+        </div>
+
         <BaseCard>
             <p class="mx-auto w-full text-md text-black dark:text-[#CCCCCC] mb-2 text-left font-inter-medium">{{ translations.docs.tooltips.iconUserOptions[store.lang] }}</p>
             <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
-                <div v-for="icon in icons">
+                <div v-for="icon in filteredIcons">
                     <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:scale-125 hover:bg-[#00000010] dark:hover:bg-[#00000020] transition-all" @click="selectIcon(icon)">
                         <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
                         <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
@@ -306,7 +323,7 @@ const code = computed(() => {
             </p>
     
             <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
-                <div v-for="icon in specialIcons">
+                <div v-for="icon in filteredSpecialIcons">
                     <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:bg-[#00000010] dark:hover:bg-[#FFFFFF03] hover:scale-125 transition-all" @click="selectIcon(icon)">
                         <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
                         <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>

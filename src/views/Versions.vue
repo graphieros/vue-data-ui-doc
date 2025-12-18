@@ -144,13 +144,13 @@ const usableWeekData = computed(() => {
 const heatmapConfig = computed(() => {
   return {
   style: {
-    backgroundColor: 'transparent',
+    backgroundColor: isDarkMode.value ? '#2A2A2A' : 'transparent',
     color: "#2D353C",
     fontFamily: "inherit",
     layout: {
-      height: 180,
+      height: 160,
       padding: {
-        top: 0
+        top: 0,
       },
       cells: {
         height: 24,
@@ -182,8 +182,8 @@ const heatmapConfig = computed(() => {
         },
         colors: {
           hot: isDarkMode.value ? "#42d392" : '#1f77b4',
-          cold: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
-          underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+          cold: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+          underlayer: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
         },
         spacing: 0,
         selected: {
