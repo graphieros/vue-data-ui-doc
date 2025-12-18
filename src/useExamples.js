@@ -61,52 +61,52 @@ export default function useExamples() {
     const data_france = [
   {
     name: "Paris",
-    coordinates: [2.3522, 48.8566],
+    coordinates: [2.333333, 48.8666667],
     population: 2175000
   },
   {
     name: "Marseille",
-    coordinates: [5.3698, 43.2965],
+    coordinates: [5.4, 43.299999],
     population: 873000
   },
   {
     name: "Lyon",
-    coordinates: [4.8357, 45.7640],
+    coordinates: [4.85, 45.75],
     population: 537000
   },
   {
     name: "Toulouse",
-    coordinates: [1.4442, 43.6047],
+    coordinates: [1.43333, 43.5999998],
     population: 502000
   },
   {
     name: "Nice",
-    coordinates: [7.2619, 43.7102],
+    coordinates: [7.25, 43.700001],
     population: 338000
   },
   {
     name: "Nantes",
-    coordinates: [-1.5536, 47.2184],
-    population: 325000
+    coordinates: [-1.55448, 47.21811],
+    population: 325070
   },
   {
     name: "Montpellier",
-    coordinates: [3.8767, 43.6119],
+    coordinates: [3.862038, 43.62505],
     population: 300000
   },
   {
     name: "Strasbourg",
-    coordinates: [7.7521, 48.5734],
+    coordinates: [7.75, 48.583328],
     population: 286000
   },
   {
     name: "Bordeaux",
-    coordinates: [-0.5792, 44.8378],
-    population: 264000
+    coordinates: [-0.580816, 44.836151],
+    population: 265328
   },
   {
     name: "Lille",
-    coordinates: [3.0573, 50.6292],
+    coordinates: [3.066667, 50.633333],
     population: 236000
   }
 ]
