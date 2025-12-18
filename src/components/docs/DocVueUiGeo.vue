@@ -476,6 +476,10 @@ const codeDataset = ref(`const dataset: VueUiDagDataset = [
             </DocSnapper>
         </div>
 
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-geo"/>
+        </div>
+
         <Rater itemId="vue_ui_geo" />
 
         <Box ref="box" showEmits showSlots showThemes showCallbacks showResponsive schema="vue_ui_geo">

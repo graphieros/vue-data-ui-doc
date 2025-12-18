@@ -18,7 +18,7 @@ export function useIconMapUnderscore(componentName) {
         vue_ui_galaxy: 'chartGalaxy',
         vue_ui_gauge: 'chartGauge',
         vue_ui_heatmap: 'chartHeatmap',
-        vue_ui_icon: 'smiley',
+        vue_ui_icon: 'icons',
         vue_ui_kpi: 'kpiBox',
         vue_ui_mini_loader: 'chartWheel',
         vue_ui_molecule: 'chartCluster',

@@ -141,6 +141,15 @@ const categories = computed(() => {
             description: translations.value.docs.tooltips.dag,
             raterId: 'vue_ui_dag'
         },
+        {
+            link: 'vue-ui-geo',
+            icon: 'chartGeo',
+            component: 'VueUiGeo',
+            thumb: new URL('../assets/thumb_geo.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_geo_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.geo,
+            raterId: 'vue_ui_geo'
+        },
         { 
             link: 'vue-ui-nested-donuts', 
             icon: 'chartNestedDonuts', 
@@ -763,6 +772,20 @@ onMounted(() => {
                                             <text :x="node.x" :y="node.y + node.height - 5" :fill="isDarkMode ? '#CCCCCC' : '#1A1A1A'" font-size="6" text-anchor="middle">
                                                 {{ node.label }}
                                             </text>
+                                        </template>
+
+                                        <!-- Source slot -->
+                                        <template #source v-if="example.dataDisclaimer">
+                                            <div class="mt-4 text-xs pb-2">
+                                                <div class="flex flex-col align-start">
+                                                    <span>
+                                                        {{ example.dataDisclaimer }}
+                                                    </span>
+                                                    <a class="text-app-blue-dark dark:text-app-blue underline" target="_blank" v-if="example.outsideLink" :href="example.outsideLink">
+                                                        This geoJson map was generated on mapscaping.com
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </template>
                                     </VueDataUi>
                                 </div>

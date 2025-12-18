@@ -3,6 +3,8 @@ import { useMainStore } from "./stores";
 import { getCumulativeAverage, mergeConfigs } from "vue-data-ui";
 import { shiftHue } from "./components/maker/lib";
 import colorBridge from "color-bridge";
+import FRANCE from "../src/resources/FRANCE.json";
+import CHINA from "../src/resources/CHINA.json";
 
 // nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
 
@@ -52,6 +54,196 @@ export default function useExamples() {
             },
         }
     })
+
+    
+    
+    //-------------- VUE-UI-GEO --------------//
+    const data_france = [
+  {
+    name: "Paris",
+    coordinates: [2.3522, 48.8566],
+    population: 2175000
+  },
+  {
+    name: "Marseille",
+    coordinates: [5.3698, 43.2965],
+    population: 873000
+  },
+  {
+    name: "Lyon",
+    coordinates: [4.8357, 45.7640],
+    population: 537000
+  },
+  {
+    name: "Toulouse",
+    coordinates: [1.4442, 43.6047],
+    population: 502000
+  },
+  {
+    name: "Nice",
+    coordinates: [7.2619, 43.7102],
+    population: 338000
+  },
+  {
+    name: "Nantes",
+    coordinates: [-1.5536, 47.2184],
+    population: 325000
+  },
+  {
+    name: "Montpellier",
+    coordinates: [3.8767, 43.6119],
+    population: 300000
+  },
+  {
+    name: "Strasbourg",
+    coordinates: [7.7521, 48.5734],
+    population: 286000
+  },
+  {
+    name: "Bordeaux",
+    coordinates: [-0.5792, 44.8378],
+    population: 264000
+  },
+  {
+    name: "Lille",
+    coordinates: [3.0573, 50.6292],
+    population: 236000
+  }
+]
+
+    const DATASET_GEO_FRANCE = computed(() => {
+        const max = Math.max(...data_france.map(c => c.population));
+
+        const baseRadius = 5;
+        return data_france.map(c => ({
+            name: c.name,
+            coordinates: c.coordinates,
+            radius: c.population / max * baseRadius,
+            description: `Population: ${(c.population / 1000000).toFixed(1)} M`,
+            color: '#5f8aee90'
+        }))
+    })
+
+    const CONFIG_GEO_FRANCE = computed(() => ({
+        theme: isDarkMode.value ? 'dark' : '',
+        map: {
+            geoJson: FRANCE
+        },
+        style: {
+            chart: {
+                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                territory: {
+                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                },
+                points: {
+                    labels: {
+                        fontSizeRatio: 1,
+                    }
+                },
+                title: {
+                    textAlign: 'left',
+                    text: 'France',
+                    subtitle: {
+                        text: '10 most populated cities'
+                    }
+                }
+            },
+        }
+    }))
+
+    const data_china = [
+        {
+            name: "Shanghai",
+            coordinates: [121.4737, 31.2304],
+            population: 30482100
+        },
+        {
+            name: "Beijing",
+            coordinates: [116.4074, 39.9042],
+            population: 22596500
+        },
+        {
+            name: "Chongqing",
+            coordinates: [106.5516, 29.563],
+            population: 18171200
+        },
+        {
+            name: "Guangzhou",
+            coordinates: [113.2644, 23.1291],
+            population: 14878700
+        },
+        {
+            name: "Tianjin",
+            coordinates: [117.2, 39.1333],
+            population: 14704100
+        },
+        {
+            name: "Shenzhen",
+            coordinates: [114.0579, 22.5431],
+            population: 13545400
+        },
+        {
+            name: "Nanjing",
+            coordinates: [118.7969, 32.0603],
+            population: 10174900
+        },
+        {
+            name: "Chengdu",
+            coordinates: [104.0665, 30.5728],
+            population: 9998870
+        },
+        {
+            name: "Wuhan",
+            coordinates: [114.3054, 30.5928],
+            population: 8986480
+        },
+        {
+            name: "Hangzhou",
+            coordinates: [120.1551, 30.2741],
+            population:  8591040
+        }
+]
+
+    const DATASET_GEO_CHINA = computed(() => {
+        const max = Math.max(...data_china.map(c => c.population));
+
+        const baseRadius = 10;
+        return data_china.map(c => ({
+            name: c.name,
+            coordinates: c.coordinates,
+            radius: c.population / max * baseRadius,
+            description: `Population: ${(c.population / 1000000).toFixed(1)} M`,
+            color: '#ff370090'
+        }))
+    })
+
+
+    const CONFIG_GEO_CHINA = computed(() => ({
+        theme: isDarkMode.value ? 'dark' : '',
+        map: {
+            geoJson: CHINA
+        },
+        style: {
+            chart: {
+                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                territory: {
+                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                },
+                points: {
+                    labels: {
+                        fontSizeRatio: 2,
+                    }
+                },
+                title: {
+                    textAlign: 'left',
+                    text: 'China',
+                    subtitle: {
+                        text: '10 most populated cities'
+                    }
+                }
+            }
+        }
+    }))
 
     //-------------- VUE-UI-DAG --------------//
     const DATASET_DAG_BASIC = ref({
@@ -4709,6 +4901,50 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
 
     const examples = computed(() => {
         return [
+            // GEO FRANCE
+            {
+                dataset: DATASET_GEO_FRANCE.value,
+                config: CONFIG_GEO_FRANCE,
+                component: 'VueUiGeo',
+                icon: 'chartGeo',
+                link: 'vue-ui-geo',
+                id: 'geo-france',
+                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
+                outsideLink: 'https://mapscaping.com/geojson-every-country-in-the-world/',
+                description: {
+                    en: 'Plotting a dataset on a geoJson map of France',
+                    fr: 'Représentation d’un jeu de données sur une carte GeoJSON de la France',
+                    pt: 'Representação de um conjunto de dados em um mapa GeoJSON da França',
+                    de: 'Darstellung eines Datensatzes auf einer GeoJSON-Karte von Frankreich',
+                    zh: '在法国的 GeoJSON 地图上绘制数据集',
+                    jp: 'フランスの GeoJSON マップ上にデータセットをプロットする',
+                    es: 'Representación de un conjunto de datos en un mapa GeoJSON de Francia',
+                    ko: '프랑스 GeoJSON 지도에 데이터 세트를 표시',
+                    ar: 'تمثيل مجموعة بيانات على خريطة GeoJSON لفرنسا'
+                }
+            },
+            // GEO CHINA
+            {
+                dataset: DATASET_GEO_CHINA.value,
+                config: CONFIG_GEO_CHINA,
+                component: 'VueUiGeo',
+                icon: 'chartGeo',
+                link: 'vue-ui-geo',
+                id: 'geo-china',
+                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
+                outsideLink: 'https://mapscaping.com/geojson-every-country-in-the-world/',
+                description: {
+                    en: 'Plotting a dataset on a geoJson map of China',
+                    fr: 'Représentation d’un jeu de données sur une carte GeoJSON de la Chine',
+                    pt: 'Representação de um conjunto de dados em um mapa GeoJSON da China',
+                    de: 'Darstellung eines Datensatzes auf einer GeoJSON-Karte von China',
+                    zh: '在中国的 GeoJSON 地图上绘制数据集',
+                    jp: '中国の GeoJSON マップ上にデータセットをプロットする',
+                    es: 'Representación de un conjunto de datos en un mapa GeoJSON de China',
+                    ko: '중국 GeoJSON 지도에 데이터 세트를 표시',
+                    ar: 'تمثيل مجموعة بيانات على خريطة GeoJSON للصين'
+                }
+            },
             // CHORD CLASSIC
             {
                 dataset: DATASET_CHORD_BASIC.value,

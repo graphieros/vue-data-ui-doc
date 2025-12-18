@@ -566,7 +566,7 @@ export function useMenuItems() {
         },
         {
             name: "Icon",
-            icon: "smiley",
+            icon: "icons",
             tooltip: translations.value.docs.tooltips.icon[store.lang],
             link: "/docs#vue-ui-icon",
             type: "tool",
