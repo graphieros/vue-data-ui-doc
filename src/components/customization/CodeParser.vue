@@ -75,7 +75,7 @@ const config = computed(() => {
             'VueUiSparklineConfig',
             'VueUiSparkbarDatasetItem',
             'VueUiSparkbarConfig',
-            'VueUiSparkStackBarDatasetItem',
+            'VueUiSparkStackbarDatasetItem',
             'VueUiSparkStackbarConfig',
             'VueUiSparkHistogramDatasetItem',
             'VueUiSparkHistogramConfig',
@@ -184,7 +184,12 @@ const config = computed(() => {
             'VueUiDigitsConfig',
             'VueUiCursorConfig',
             'VueUiMiniLoaderConfig',
-            'VueUiKpiConfig'
+            'VueUiKpiConfig',
+            'VueUiDagNode',
+            'VueUiDagEdge',
+            'VueUiDagDataset',
+            'VueUiGeoDatasetItem',
+            'VueUiStacklineDatasetItem'
         ]
     }
 });

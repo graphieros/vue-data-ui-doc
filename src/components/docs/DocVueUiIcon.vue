@@ -324,12 +324,12 @@ const search = ref('');
 
 const filteredIcons = computed(() => {
     if (!search.value) return icons.value;
-    return icons.value.filter(icon => icon.includes(search.value));
+    return icons.value.filter(icon => (icon.toUpperCase()).includes(search.value.toUpperCase()));
 });
 
 const filteredSpecialIcons = computed(() => {
     if (!search.value) return specialIcons.value;
-    return specialIcons.value.filter(icon => icon.includes(search.value));
+    return specialIcons.value.filter(icon => (icon.toUpperCase()).includes(search.value.toUpperCase()));
 })
 
 </script>

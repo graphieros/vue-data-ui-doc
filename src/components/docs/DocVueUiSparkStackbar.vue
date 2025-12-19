@@ -322,7 +322,7 @@ function goToPage(route) {
     language="typescript"
     @copy="store.copy()"
     :title="translations.docs.datastructure[store.lang]"
-    :content="`type VueUiSparkStackBarDatasetItem = {
+    :content="`type VueUiSparkStackbarDatasetItem = {
   name: string
   value: number
   color?: string

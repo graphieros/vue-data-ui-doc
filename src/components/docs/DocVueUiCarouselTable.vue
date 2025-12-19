@@ -369,7 +369,7 @@ const dsTypeCode = ref(`type VueUiCarouselTableDataset = {
     body: Array<Array<number | string>>
 }`)
 
-const dsExample = ref(`const dataset = {
+const dsExample = ref(`const dataset: VueUiCarouselTableDataset = {
     head: ["col1", "col2", "col3", "col4", "col5"],
     body: [
         [10000, 1000, 100, 10, 0],

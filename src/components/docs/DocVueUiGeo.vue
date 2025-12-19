@@ -412,7 +412,7 @@ const dsTypeCode = ref(`type VueUiGeoDatasetItem = {
     radius?: number;
 }`);
 
-const codeDataset = ref(`const dataset: VueUiDagDataset = [
+const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
     {
         name: "Paris",
         coordinates: [2.3522, 48.8566], // longitude, latitude
