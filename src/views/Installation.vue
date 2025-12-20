@@ -41,28 +41,28 @@ const codeParserConfig = computed(() => {
 })
 
 const mainCodeContent = computed(() => {
-    return `import { createApp } from 'vue'
-import App from "./App.vue" 
-import "vue-data-ui/style.css" // ${translations.value.installation.comments.includeCss[store.lang]}
+    return `import { createApp } from 'vue';
+import App from "./App.vue"; 
+import "vue-data-ui/style.css"; // ${translations.value.installation.comments.includeCss[store.lang]}
 
 // ${translations.value.installation.comments.global[store.lang]}
-import { VueUiRadar } from "vue-data-ui"
+import { VueUiRadar } from "vue-data-ui";
 
-// Since v3.2.0 treeshake import:
+// Since v3.2.0 treeshake import (recommended):
 import VueUiXy from "vue-data-ui/vue-ui-xy";
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.component("VueUiRadar", VueUiRadar)
-app.component("VueUiXy", VueUiXy)
-app.mount('#app')
+app.component("VueUiRadar", VueUiRadar);
+app.component("VueUiXy", VueUiXy);
+app.mount('#app');
 `
 });
 
 const componentContent = computed(() => {
     return `// ${translations.value.installation.comments.import[store.lang]}
 import { VueUiRadar } from "vue-data-ui"; // not treeshaken
-import VueUiXy from "vue-data-ui/vue-ui-xy"; // treeshaken
+import VueUiXy from "vue-data-ui/vue-ui-xy"; // treeshaken (recommended)
 
 // With Typescript:
 import { ref } from "vue";
