@@ -139,7 +139,7 @@ const config = ref({
     map: {
         geoJson: FRANCE,
         center: [0, 0],
-        fitPadding: 0,
+        fitPadding: 24,
     },
     events: {
         datapointEnter: null,
@@ -163,6 +163,7 @@ const config = ref({
                 stroke: '#D0D4D8',
                 strokeWidth: 1,
                 hover: {
+                    enabledWhenEmpty: false,
                     fill: '#E7E1EE',
                     stroke: '#CCCCCC',
                     strokeWidth: 1.5
@@ -267,7 +268,7 @@ const darkModeConfig = ref({
     map: {
         geoJson: FRANCE,
         center: [0, 0],
-        fitPadding: 0,
+        fitPadding: 24,
     },
     events: {
         datapointEnter: null,
@@ -291,6 +292,7 @@ const darkModeConfig = ref({
                 stroke: '#5A5A5A',
                 strokeWidth: 1,
                 hover: {
+                    enabledWhenEmpty: false,
                     fill: '#3A3A3A',
                     stroke: '#6A6A6A',
                     strokeWidth: 1.5
@@ -576,6 +578,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                     <BaseAttr name="stroke" attr="style.chart.territory.stroke" type="color" defaultVal="#D0D4D8" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="strokeWidth" attr="style.chart.territory.strokeWidth" type="number" defaultVal="1" :min="0.1" :max="6" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="hover" :level="4" title="style.chart.territory.hover">
+                        <BaseAttr name="enabledWhenEmpty" attr="style.chart.territory.hover.enabledWhenEmpty" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fill" attr="style.chart.territory.hover.fill" type="color" defaultVal="#E7E1EE" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="stroke" attr="style.chart.territory.hover.stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="strokeWidth" attr="style.chart.territory.hover.strokeWidth" type="number" defaultVal="1.5" :min="0.1" :max="6" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -782,7 +782,7 @@ onMounted(() => {
                                                         {{ example.dataDisclaimer }}
                                                     </span>
                                                     <a class="text-app-blue-dark dark:text-app-blue underline" target="_blank" v-if="example.outsideLink" :href="example.outsideLink">
-                                                        This geoJson map was generated on mapscaping.com
+                                                        Link to map source
                                                     </a>
                                                 </div>
                                             </div>

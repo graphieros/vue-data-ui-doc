@@ -127,7 +127,8 @@ export default function useExamples() {
     const CONFIG_GEO_FRANCE = computed(() => ({
         theme: isDarkMode.value ? 'dark' : '',
         map: {
-            geoJson: FRANCE
+            geoJson: FRANCE,
+            fitPadding: 24
         },
         style: {
             chart: {
@@ -221,13 +222,17 @@ export default function useExamples() {
     const CONFIG_GEO_CHINA = computed(() => ({
         theme: isDarkMode.value ? 'dark' : '',
         map: {
-            geoJson: CHINA
+            geoJson: CHINA,
+            fitPadding: 24
         },
         style: {
             chart: {
                 backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
                 territory: {
                     fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    hover: {
+                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                    }
                 },
                 points: {
                     labels: {
@@ -4904,7 +4909,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             // GEO FRANCE
             {
                 dataset: DATASET_GEO_FRANCE.value,
-                config: CONFIG_GEO_FRANCE,
+                config: CONFIG_GEO_FRANCE.value,
                 component: 'VueUiGeo',
                 icon: 'chartGeo',
                 link: 'vue-ui-geo',
@@ -4926,13 +4931,13 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             // GEO CHINA
             {
                 dataset: DATASET_GEO_CHINA.value,
-                config: CONFIG_GEO_CHINA,
+                config: CONFIG_GEO_CHINA.value,
                 component: 'VueUiGeo',
                 icon: 'chartGeo',
                 link: 'vue-ui-geo',
                 id: 'geo-china',
                 dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
-                outsideLink: 'https://mapscaping.com/geojson-every-country-in-the-world/',
+                outsideLink: 'https://github.com/longwosion/geojson-map-china/blob/master/china.json',
                 description: {
                     en: 'Plotting a dataset on a geoJson map of China',
                     fr: 'Représentation d’un jeu de données sur une carte GeoJSON de la Chine',
