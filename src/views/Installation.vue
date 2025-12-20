@@ -61,11 +61,11 @@ app.mount('#app');
 
 const componentContent = computed(() => {
     return `// ${translations.value.installation.comments.import[store.lang]}
+import { ref } from "vue";
 import { VueUiRadar } from "vue-data-ui"; // not treeshaken
 import VueUiXy from "vue-data-ui/vue-ui-xy"; // treeshaken (recommended)
 
 // With Typescript:
-import { ref } from "vue";
 import {
     VueUiRadar,
     type VueUiRadarDataset,
