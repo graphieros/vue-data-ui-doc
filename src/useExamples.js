@@ -5,6 +5,8 @@ import { shiftHue } from "./components/maker/lib";
 import colorBridge from "color-bridge";
 import FRANCE from "../src/resources/FRANCE.json";
 import CHINA from "../src/resources/CHINA.json";
+import BRAZIL from "../src/resources/BRAZIL.json";
+import ITALY from "../src/resources/ITALY.json";
 
 // nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
 
@@ -119,7 +121,7 @@ export default function useExamples() {
             name: c.name,
             coordinates: c.coordinates,
             radius: c.population / max * baseRadius,
-            description: `Population: ${(c.population / 1000000).toFixed(1)} M`,
+            description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
             color: '#5f8aee90'
         }))
     })
@@ -153,7 +155,7 @@ export default function useExamples() {
                 }
             },
         }
-    }))
+    }));
 
     const data_china = [
         {
@@ -216,7 +218,7 @@ export default function useExamples() {
             name: c.name,
             coordinates: c.coordinates,
             radius: c.population / max * baseRadius,
-            description: `Population: ${(c.population / 1000000).toFixed(1)} M`,
+            description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
             color: '#ff370090'
         }))
     })
@@ -251,7 +253,201 @@ export default function useExamples() {
                 }
             }
         }
-    }))
+    }));
+
+    const data_brazil = [
+        {
+            name: "São Paulo",
+            coordinates: [-46.6333, -23.5505],
+            population: 11904961
+        },
+        {
+            name: "Rio de Janeiro",
+            coordinates: [-43.1729, -22.9068],
+            population: 6730729
+        },
+        {
+            name: "Brasília",
+            coordinates: [-47.8825, -15.7942],
+            population: 5300108
+        },
+        {
+            name: "Fortaleza",
+            coordinates: [-38.5229, -3.7319],
+            population: 2304400
+        },
+        {
+            name: "Salvador",
+            coordinates: [-38.5014, -12.9777],
+            population: 2292740
+        },
+        {
+            name: "Belo Horizonte",
+            coordinates: [-43.9352, -19.9208],
+            population: 2316200
+        },
+        {
+            name: "Manaus",
+            coordinates: [-60.0212, -3.1190],
+            population: 2302600
+        },
+        {
+            name: "Curitiba",
+            coordinates: [-49.2643, -25.4284],
+            population: 1825000
+        },
+        {
+            name: "Recife",
+            coordinates: [-34.8799, -8.0476],
+            population: 1617000
+        },
+        {
+            name: "Goiânia",
+            coordinates: [-49.2643, -16.6869],
+            population: 1527367
+        }
+    ]
+
+    const DATASET_GEO_BRAZIL = computed(() => {
+        const max = Math.max(...data_brazil.map(c => c.population));
+
+        const baseRadius = 10;
+        return data_brazil.map(c => ({
+            name: c.name,
+            coordinates: c.coordinates,
+            radius: c.population / max * baseRadius,
+            description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
+            color: '#42d39290'
+        }))
+    })
+
+    const CONFIG_GEO_BRAZIL = computed(() => ({
+        theme: isDarkMode.value ? 'dark' : '',
+        map: {
+            geoJson: BRAZIL,
+            fitPadding: 24
+        },
+        style: {
+            chart: {
+                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                territory: {
+                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    hover: {
+                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                    }
+                },
+                points: {
+                    labels: {
+                        fontSizeRatio: 2.5,
+                    }
+                },
+                title: {
+                    textAlign: 'left',
+                    text: 'Brazil',
+                    subtitle: {
+                        text: '10 most populated cities'
+                    }
+                }
+            }
+        }
+    }));
+
+    const data_italy = [
+        {
+            name: "Rome",
+            coordinates: [12.4964, 41.9028],
+            population: 2746984
+        },
+        {
+            name: "Milan",
+            coordinates: [9.1895, 45.4642],
+            population: 1366155
+        },
+        {
+            name: "Naples",
+            coordinates: [14.2681, 40.8518],
+            population: 908082
+        },
+        {
+            name: "Turin",
+            coordinates: [7.6675, 45.0703],
+            population: 856745
+        },
+        {
+            name: "Palermo",
+            coordinates: [13.3615, 38.1157],
+            population: 625956
+        },
+        {
+            name: "Genoa",
+            coordinates: [8.9463, 44.4056],
+            population: 563947
+        },
+        {
+            name: "Bologna",
+            coordinates: [11.3426, 44.4949],
+            population: 390734
+        },
+        {
+            name: "Florence",
+            coordinates: [11.2558, 43.7696],
+            population: 362353
+        },
+        {
+            name: "Bari",
+            coordinates: [16.8719, 41.1171],
+            population: 315473
+        },
+        {
+            name: "Catania",
+            coordinates: [15.0873, 37.5022],
+            population: 297517
+        }
+    ];
+
+    const DATASET_GEO_ITALY = computed(() => {
+        const max = Math.max(...data_italy.map(c => c.population));
+
+        const baseRadius = 3;
+        return data_italy.map(c => ({
+            name: c.name,
+            coordinates: c.coordinates,
+            radius: c.population / max * baseRadius,
+            description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
+            color: '#1f77b490'
+        }))
+    })
+
+    const CONFIG_GEO_ITALY = computed(() => ({
+        theme: isDarkMode.value ? 'dark' : '',
+        map: {
+            geoJson: ITALY,
+            fitPadding: 24
+        },
+        style: {
+            chart: {
+                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                territory: {
+                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    hover: {
+                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                    }
+                },
+                points: {
+                    labels: {
+                        fontSizeRatio: 1,
+                    }
+                },
+                title: {
+                    textAlign: 'left',
+                    text: 'Italy',
+                    subtitle: {
+                        text: '10 most populated cities'
+                    }
+                }
+            }
+        }
+    }));
 
     //-------------- VUE-UI-DAG --------------//
     const DATASET_DAG_BASIC = ref({
@@ -4951,6 +5147,50 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: 'Representación de un conjunto de datos en un mapa GeoJSON de China',
                     ko: '중국 GeoJSON 지도에 데이터 세트를 표시',
                     ar: 'تمثيل مجموعة بيانات على خريطة GeoJSON للصين'
+                }
+            },
+            // GEO BRAZIL
+            {
+                dataset: DATASET_GEO_BRAZIL.value,
+                config: CONFIG_GEO_BRAZIL.value,
+                component: 'VueUiGeo',
+                icon: 'chartGeo',
+                link: 'vue-ui-geo',
+                id: 'geo-brazil',
+                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
+                outsideLink: 'https://exploratory.io/map',
+                description: {
+                    en: "Plotting a dataset on a geoJson map of Brazil",
+                    fr: "Représentation d’un jeu de données sur une carte GeoJSON du Brésil",
+                    pt: "Representação de um conjunto de dados em um mapa GeoJSON do Brasil",
+                    de: "Darstellung eines Datensatzes auf einer GeoJSON-Karte von Brasilien",
+                    zh: "在巴西的 GeoJSON 地图上绘制数据集",
+                    jp: "ブラジルの GeoJSON マップ上にデータセットをプロットする",
+                    es: "Representación de un conjunto de datos en un mapa GeoJSON de Brasil",
+                    ko: "브라질 GeoJSON 지도에 데이터 세트를 표시",
+                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON للبرازيل"
+                }
+            },
+            // GEO ITALY
+            {
+                dataset: DATASET_GEO_ITALY.value,
+                config: CONFIG_GEO_ITALY.value,
+                component: 'VueUiGeo',
+                icon: 'chartGeo',
+                link: 'vue-ui-geo',
+                id: 'geo-brazil',
+                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
+                outsideLink: 'https://simplemaps.com/gis/country/it',
+                description: {
+                    en: "Plotting a dataset on a geoJson map of Italy",
+                    fr: "Représentation d’un jeu de données sur une carte GeoJSON d'Italie",
+                    pt: "Representação de um conjunto de dados em um mapa GeoJSON da Itália",
+                    de: "Darstellung eines Datensatzes auf einer GeoJSON-Karte von Italien",
+                    zh: "在意大利的 GeoJSON 地图上绘制数据集",
+                    jp: "イタリアの GeoJSON マップ上にデータセットをプロットする",
+                    es: "Representación de un conjunto de datos en un mapa GeoJSON de Italia",
+                    ko: "이탈리아 GeoJSON 지도에 데이터 세트를 표시",
+                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON لإيطاليا"
                 }
             },
             // CHORD CLASSIC
