@@ -135,6 +135,9 @@ export default function useExamples() {
                 backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
                 territory: {
                     fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    hover: {
+                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                    }
                 },
                 points: {
                     labels: {
