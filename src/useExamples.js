@@ -508,8 +508,8 @@ export default function useExamples() {
         nodes: [
             { id: "A", label: "Computer", icon: 'computer', color: '#ff3700'},
             { id: "B", label: "Home", icon: 'home', color: '#1d915d'},
-            { id: "C", label: "Robot", icon: 'robot', color: '#ff8c00'},
-            { id: "D", label: "World", icon: 'world', color: '#5f8aee'},
+            { id: "C", label: "Person", icon: 'person', color: '#ff8c00'},
+            { id: "D", label: "Network", icon: 'network', color: '#5f8aee'},
         ],
         edges: [
             { from: "A", to: "B",},
@@ -518,7 +518,7 @@ export default function useExamples() {
             { from: "C", to: "A" },
             { from: "B", to: "D" },
             { from: "C", to: "D" },
-            { from: "D", to: "A" },
+            { from: "D", to: "A" }
         ]
     })
 
