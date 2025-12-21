@@ -2203,7 +2203,8 @@ const circlePackConfig = computed(() => {
 
             <div class="mx-auto max-w-[800px] px-6">
               <BaseCard class="max-w-[800px] mx-auto mt-6">
-                <div class="w-full p-4 text-[24px] font-inter-medium">
+                <div class="w-full p-4 text-[24px] font-inter-medium flex flex-row gap-2 place-items-center">
+                  <VueUiIcon name="legend" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
                   Changelog    
                 </div>
   
