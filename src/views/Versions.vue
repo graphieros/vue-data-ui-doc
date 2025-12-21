@@ -1846,7 +1846,7 @@ const carouselConfig = computed(() => {
             },
             style: {
                 backgroundColor: isDarkMode.value ? "#3A3A3A" : '#FFFFFF',
-                color: isDarkMode.value ? "#8A8A8A" : '#1A1A1A',
+                color: isDarkMode.value ? "#CCCCCC" : '#1A1A1A',
                 boxShadow: "0px 6px 12px -6px #1A1A1A"
             },
             th: {
@@ -1870,7 +1870,7 @@ const carouselConfig = computed(() => {
         }
     },
     tbody: {
-        backgroundColor: isDarkMode.value ? "#2A2A2A" : '#F3F4F6',
+        backgroundColor: isDarkMode.value ? "#2A2A2A" : '#FFFFFF',
         tr: {
             visible: 1,
             height: 32,
@@ -1879,12 +1879,12 @@ const carouselConfig = computed(() => {
                 color: "#2D353C"
             },
             style: {
-                backgroundColor: isDarkMode.value ? "#4A4A4A" : '#E1E5E8',
+                backgroundColor: isDarkMode.value ? "#4A4A4A" : '#FFFFFF',
                 color: isDarkMode.value ? "#CCCCCC" : '#1A1A1A'
             },
             td: {
                 alternateColor: true,
-                alternateOpacity: 0.8,
+                alternateOpacity: 1,
                 border: {
                     size: 0,
                     color: "#2D353C"
@@ -1898,7 +1898,7 @@ const carouselConfig = computed(() => {
                 style: {
                     fontVariantNumeric: "tabular-nums",
                     textAlign: "left",
-                    backgroundColor: isDarkMode.value ? "#2A2A2A" : '#E1E5E8'
+                    backgroundColor: isDarkMode.value ? "#1A1A1A" : '#FFFFFF'
                 }
             }
         }
@@ -2138,13 +2138,40 @@ const circlePackConfig = computed(() => {
     }
   }
 })
+
+const digitsConfigVersion = computed(() => {
+    return {
+        backgroundColor: "transparent",
+        digits: {
+            color: isDarkMode.value ? "#42d392" : "#1A1A1A",
+            skeletonColor: isDarkMode.value ? "#FFFFFF10" : "#1A1A1A16",
+            thickness: 1.8
+        },
+    };
+});
+
 </script>
 
 <template>
   <div :class="{'vdui': isDarkMode, 'pointer-events-none': true, 'versions': true, 'small-zoom': true}"/>
     
       <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
-        <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
+        <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig">
+          <template #td="{ td, colIndex }">
+            <div v-if="colIndex === 1" class="h-[18px] flex flex-row align-center">
+              <VueUiDigits v-for="d in td.replaceAll('v ', '')"
+                :config="digitsConfigVersion"
+                :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.5rem]' : ''" />
+            </div>
+            <div v-else-if="colIndex === 2" class="flex flex-row gap-2 place-items-center">
+              <VueUiIcon :name="useIconMap(td)" :size="16" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'"/>
+              <span>{{ td }}</span>
+            </div>
+            <span v-else>
+              {{ td }}
+            </span>
+          </template>
+        </VueUiCarouselTable>
       </div>
     <!-- <SideMenu @toggle="toggleMenu"/> -->
     <div :class="`pt-9 sm:pt-24 overflow-x-hidden`">
