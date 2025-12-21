@@ -213,6 +213,17 @@ export const useMainStore = defineStore("main", {
                     ko: '유틸리티 함수 문서를 확인하세요',
                     ar: 'تحقق من وثائق دوال المرافق'
                 },
+                useCurvedMarkers: {
+                    en: 'Use curved markers',
+                    fr: 'Utiliser des marqueurs courbes',
+                    pt: 'Usar marcadores curvos',
+                    de: 'Gekrümmte Markierungen verwenden',
+                    zh: '使用弧形标记',
+                    jp: '曲線マーカーを使用',
+                    es: 'Usar marcadores curvos',
+                    ko: '곡선 마커 사용',
+                    ar: 'استخدام علامات منحنية'
+                },
                 utilityFunctionsUsed: {
                     en: 'Utility functions used',
                     fr: 'Fonctions utilitaires utilisées',

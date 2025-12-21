@@ -23,7 +23,7 @@ import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import { VueUiIcon } from "vue-data-ui";
 import BaseDigit from "../components/Base/BaseDigit.vue";
 
-const { examples } = useExamples()
+const { examples, curvedMarkers } = useExamples()
 const store = useMainStore()
 const makerStore = useMakerStore()
 const isDarkMode = computed(() => store.isDarkMode); 
@@ -590,11 +590,17 @@ onMounted(() => {
                             <RouterLink :to="`/docs#utility-functions`" v-if="example.utilityFunctions && example.utilityFunctions.length">
                                 <a class="text-app-blue underline text-sm">{{ translations.checkUtilityFunctions[store.lang] }}</a>
                             </RouterLink>
+                            <div v-if="example.toggleCurvedMarkers" class="mt-2 text-right">
+                                <label>
+                                    {{ translations.useCurvedMarkers[store.lang] }}
+                                    <input type="checkbox" v-model="curvedMarkers"/>
+                                </label>
+                            </div>
                         </div>
                         
                         <BaseSuspense>
                             <template #default>
-                                <div class="w-full p-4 example-wrapper">
+                                <div class="w-full p-4 example-wrapper">                            
                                     <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
 
                                         <template #group-label="{ group }" v-if="example.component === 'VueUiTreemap' && example.useGroupLabelSlot">

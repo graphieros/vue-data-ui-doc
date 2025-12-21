@@ -1895,6 +1895,8 @@ export default function useExamples() {
 
     //-------------- VUE-UI-DONUT------------- //
 
+    const curvedMarkers = ref(false); // exported
+
     const CONFIG_DONUT_BASE = computed(() => {
         return {
             table: TABLE.value,
@@ -1924,7 +1926,7 @@ export default function useExamples() {
                         }
                     },
                     layout: {
-                        curvedMarkers: false,
+                        curvedMarkers: curvedMarkers.value,
                         donut: {
                             strokeWidth: 64,
                         },
@@ -7137,6 +7139,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 icon: 'chartDonut',
                 id: 'donut-basic',
                 link: 'vue-ui-donut',
+                toggleCurvedMarkers: true,
                 description: {
                     en: 'Basic donut chart',
                     fr: 'Graphique en anneau de base',
@@ -7175,6 +7178,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 icon: 'chartDonut',
                 id: 'donut-basic-small-hidden',
                 link: 'vue-ui-donut',
+                toggleCurvedMarkers: true,
                 description: {
                     en: 'Datalabels hidden for small arcs',
                     fr: 'Étiquettes de données masquées pour les petits arcs',
@@ -7203,6 +7207,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     }
                 },
                 component: 'VueUiDonut',
+                toggleCurvedMarkers: true,
                 icon: 'chartDonut',
                 id: 'donut-comment',
                 link: 'vue-ui-donut',
@@ -7265,6 +7270,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 icon: 'chartDonut',
                 id: 'donut-pie',
                 link: 'vue-ui-donut',
+                toggleCurvedMarkers: true,
                 description: {
                     en: 'Pie chart',
                     fr: 'Diagramme circulaire',
@@ -7335,6 +7341,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 icon: 'chartDonut',
                 id: 'pie-no-gradient',
                 link: 'vue-ui-donut',
+                toggleCurvedMarkers: true,
                 description: {
                     en: 'Pie chart, no gradient',
                     fr: 'Graphique en secteurs, sans dégradé',
@@ -7388,6 +7395,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 icon: 'chartDonut',
                 id: 'donut-thin',
                 link: 'vue-ui-donut',
+                toggleCurvedMarkers: true,
                 description: {
                     en: "Donut with lower fat",
                     fr: "Donut avec moins de gras",
@@ -7423,6 +7431,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 icon: 'chartDonut',
                 id: 'donut-shadow',
                 link: 'vue-ui-donut',
+                toggleCurvedMarkers: true,
                 description: {
                     en: 'With shadow',
                     fr: 'Avec ombre',
@@ -7471,6 +7480,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 icon: 'chartDonut',
                 id: 'pie-shadow',
                 link: 'vue-ui-donut',
+                toggleCurvedMarkers: true,
                 description: {
                     en: 'Pie chart with shadow',
                     fr: 'Graphique en secteurs avec ombre',
@@ -7535,6 +7545,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 component: 'VueUiDonut',
                 icon: 'chartDonut',
                 id: 'donut-bg',
+                toggleCurvedMarkers: true,
                 link: 'vue-ui-donut',
                 tags: ['#chart-background'],
                 slot: `<template #chart-background>
@@ -7563,6 +7574,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 id: 'donut-pattern',
                 link: 'vue-ui-donut',
                 multiPattern: true,
+                toggleCurvedMarkers: true,
                 tags: ['#pattern'],
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
@@ -11910,7 +11922,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
     })
 
     return {
-        examples
+        examples,
+        curvedMarkers
     }
 
 }
