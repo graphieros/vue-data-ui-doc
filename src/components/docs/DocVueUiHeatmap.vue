@@ -80,6 +80,12 @@ const config = ref({
         bottom: 0,
         left: 0
       },
+      crosshairs: {
+          show: false,
+          stroke: '#1A1A1A',
+          strokeWidth: 1,
+          strokeDasharray: 0,
+      },  
       cells: {
         rowTotal: {
           value: {
@@ -258,6 +264,7 @@ const config = ref({
     }
   }
 });
+
 const darkModeConfig = ref({
   style: {
     backgroundColor: "#2A2A2A",
@@ -272,6 +279,12 @@ const darkModeConfig = ref({
         bottom: 0,
         left: 0
       },
+      crosshairs: {
+          show: false,
+          stroke: '#CCCCCC',
+          strokeWidth: 1,
+          strokeDasharray: 0,
+      }, 
       cells: {
         rowTotal: {
           value: {
@@ -645,6 +658,12 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseDetails attr="layout" :level="2" title="style.layout">
           <BaseAttr name="width" attr="style.layout.width" type="number" defaultVal="1000" :min="300" :max="2000" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="height" attr="style.layout.height" type="number" defaultVal="300" :min="100" :max="2000" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseDetails attr="crosshairs" :level="3" title="style.layout.crosshairs">
+            <BaseAttr name="show" attr="style.layout.crosshairs.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="stroke" attr="style.layout.crosshairs.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeWidth" attr="style.layout.crosshairs.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeDasharray" attr="style.layout.crosshairs.strokeDasharray" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          </BaseDetails>
           <BaseDetails attr="cells" :level="3" title="style.layout.cells">
             <BaseAttr name="height" attr="style.layout.cells.height" type="number" defaultVal="36" :min="16" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="spacing" attr="style.layout.cells.spacing" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

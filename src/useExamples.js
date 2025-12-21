@@ -8971,6 +8971,40 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: 'بدون فجوة'
                 }
             },
+            // HEATMAP BASIC
+            { 
+                dataset: DATASET_HEATMAP_BASE.value, 
+                config: {
+                    ...CONFIG_HEATMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_HEATMAP_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_HEATMAP_BASIC.value.style.layout,
+                            crosshairs: {
+                                show: true,
+                                stroke: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                strokeWidth: 2,
+                                strokeDasharray: 4
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiHeatmap',
+                icon: 'chartHeatmap',
+                id: 'heatmap-crosshairs',
+                link: 'vue-ui-heatmap',
+                description: {
+                    en: 'With crosshairs',
+                    fr: 'Avec lignes de repérage',
+                    pt: 'Com linhas de referência',
+                    de: 'Mit Fadenkreuzlinien',
+                    zh: '带有十字参考线',
+                    jp: 'クロスヘア付き',
+                    es: 'Con líneas de referencia',
+                    ko: '십자 기준선 포함',
+                    ar: 'مع خطوط إرشادية'
+                }
+            },
             // GAUGE BASIC
             { 
                 dataset: DATASET_GAUGE_BASIC.value, 

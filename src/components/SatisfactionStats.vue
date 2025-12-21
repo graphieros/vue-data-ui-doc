@@ -183,6 +183,11 @@ const heatmapConfig = computed(() => {
                 padding: {
                     top: 6,
                 },
+                crosshairs: {
+                    show: true,
+                    stroke: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    strokeDasharray: 4,
+                },
                 cells: {
                     rowTotal: {
                         value: {

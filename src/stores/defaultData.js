@@ -3403,6 +3403,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.padding.right', def: 12, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'right'], category: 'general' },
                     { key: 'style.layout.padding.bottom', def: 0, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'bottom'], category: 'general' },
                     { key: 'style.layout.padding.left', def: 0, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'left'], category: 'general' },
+
+                    { key: 'style.layout.crosshairs.show', def: false, type: 'checkbox', label: ['crosshairs', 'is', 'show'], category: 'general'},
+                    { key: 'style.layout.crosshairs.stroke', def: '#1A1A1A', type: 'color', label: ['crosshairs', 'is', 'color'], category: 'general'},
+                    { key: 'style.layout.crosshairs.strokeWidth', def: 1, type: 'number', min: 0.1, max: 6, step: 0.1, label: ['crosshairs', 'is', 'thickness'], category: 'general'},
+                    { key: 'style.layout.crosshairs.strokeDasharray', def: 0, type: 'number', min: 0, max: 12, label: ['crosshairs', 'is', 'thickness'], category: 'general'},
+
                     { key: 'style.layout.cells.value.show', def: true, type: 'checkbox', label: ['cell', 'value', 'is', 'show'], category: 'general' },
                     { key: 'style.layout.cells.value.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['cell', 'is', 'fontSize'], category: 'general' },
                     { key: 'style.layout.cells.value.roundingValue', def: 0, type: 'number', min: 0, max: 3, label: ['cell', 'is', 'valueRounding'], category: 'general' },
