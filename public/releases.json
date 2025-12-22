@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.9.12",
+    "date": "2025-12-22",
+    "updates": [
+      {
+        "component": "VueUiGeo",
+        "description": "Place #svg slot inside the main G transformed element",
+        "link": "/docs#vue-ui-geo"
+      }
+    ]
+  },
+  {
     "version": "v 3.9.11",
     "date": "2025-12-21",
     "updates": [

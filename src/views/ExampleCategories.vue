@@ -438,6 +438,23 @@ onMounted(() => {
     maybeScrollToNextTag()
 });
 
+function makeMapLinks({ data }) {
+    const { projectedPoints } = data;
+    if (!projectedPoints) return '';
+
+    const centerPoint = projectedPoints.find(p => p.name === 'Paris');
+    const otherPoints = [...projectedPoints].filter(p => p.name !== 'Paris');
+
+    return otherPoints.map(p => {
+        return {
+            x1: centerPoint.x,
+            x2: p.x,
+            y1: centerPoint.y,
+            y2: p.y
+        }
+    });
+}
+
 </script>
 
 <template>
@@ -601,7 +618,7 @@ onMounted(() => {
                         <BaseSuspense>
                             <template #default>
                                 <div class="w-full p-4 example-wrapper">                            
-                                    <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
+                                    <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">                            
 
                                         <template #group-label="{ group }" v-if="example.component === 'VueUiTreemap' && example.useGroupLabelSlot">
                                             <div style="width:100%; height:100%; text-align:left; padding: 6px 12px">
@@ -792,6 +809,21 @@ onMounted(() => {
                                                     </a>
                                                 </div>
                                             </div>
+                                        </template>
+
+                                        <!-- VueUiGeo slots -->
+                                        <template #svg="{ svg }" v-if="example.customGeo">
+                                            <line 
+                                                v-for="link in makeMapLinks(svg)"
+                                                :x1="link.x1"
+                                                :y1="link.y1"
+                                                :x2="link.x2"
+                                                :y2="link.y2"
+                                                stroke="#d62728"
+                                                stroke-width="0.1"
+                                                stroke-linecap="round"
+                                                style="pointer-events:none"
+                                            />
                                         </template>
                                     </VueDataUi>
                                 </div>

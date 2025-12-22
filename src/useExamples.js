@@ -5195,6 +5195,59 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: "تمثيل مجموعة بيانات على خريطة GeoJSON لإيطاليا"
                 }
             },
+            // GEO FRANCE WITH CUSTOM SVG ELEMENTS
+            {
+                dataset: DATASET_GEO_FRANCE.value,
+                config: CONFIG_GEO_FRANCE.value,
+                component: 'VueUiGeo',
+                icon: 'chartGeo',
+                link: 'vue-ui-geo',
+                id: 'geo-france-with-custom-features',
+                customGeo: true,
+                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
+                outsideLink: 'https://mapscaping.com/geojson-every-country-in-the-world/',
+                tags: ["#svg"],
+                slot: `<template #svg="{ svg }">
+                <!--
+                    function makeMapLinks({ data }) {
+                        const { projectedPoints } = data;
+                        if (!projectedPoints) return '';
+
+                        const centerPoint = projectedPoints.find(p => p.name === 'Paris');
+                        const otherPoints = [...projectedPoints].filter(p => p.name !== 'Paris');
+
+                        return otherPoints.map(p => {
+                            return {
+                                x1: centerPoint.x,
+                                x2: p.x,
+                                y1: centerPoint.y,
+                                y2: p.y
+                            }
+                        });
+                    }
+                -->
+                <line 
+                    v-for="link in makeMapLinks(svg)"
+                    :x1="link.x1"
+                    :y1="link.y1"
+                    :x2="link.x2"
+                    :y2="link.y2"
+                    stroke="red"
+                    stroke-width="0.1"
+                />
+            </template>`,
+                description: {
+                    en: 'Leveraging the #svg slot to add svg elements',
+                    fr: 'Exploiter le slot #svg pour ajouter des éléments SVG',
+                    pt: 'Aproveitar o slot #svg para adicionar elementos SVG',
+                    de: 'Nutzung des #svg-Slots zum Hinzufügen von SVG-Elementen',
+                    zh: '利用 #svg 插槽添加 SVG 元素',
+                    jp: '#svg スロットを活用して SVG 要素を追加する',
+                    es: 'Aprovechar el slot #svg para añadir elementos SVG',
+                    ko: '#svg 슬롯을 활용하여 SVG 요소를 추가하기',
+                    ar: 'الاستفادة من فتحة #svg لإضافة عناصر SVG'
+                }
+            },
             // CHORD CLASSIC
             {
                 dataset: DATASET_CHORD_BASIC.value,
