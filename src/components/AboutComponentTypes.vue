@@ -47,6 +47,7 @@ const configBar = computed(() => ({
       color: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
       legend: {
         color: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
+        fontSize: 7
       }
     }
   }

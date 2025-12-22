@@ -183,7 +183,7 @@ export function useMenuItems() {
             icon: "chartDag",
             tooltip: translations.value.docs.tooltips.dag[store.lang],
             link: "/docs#vue-ui-dag",
-            type: "misc",
+            type: "graphs",
             thumb: new URL('../assets/thumb_dag.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_dag_light.png', import.meta.url).href,
             hasSlot: true,
@@ -630,7 +630,7 @@ export function useMenuItems() {
             thumb: new URL('../assets/thumb_molecule.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_molecule_light.png', import.meta.url).href,
             link: "/docs#vue-ui-molecule",
-            type: "misc",
+            type: "graphs",
             hasSlot: true,
             hasTableCss: false,
         },
@@ -698,7 +698,7 @@ export function useMenuItems() {
             icon: "chartFlow",
             tooltip: translations.value.docs.tooltips.flow[store.lang],
             link: "/docs#vue-ui-flow",
-            type: "xy",
+            type: "graphs",
             thumb: new URL('../assets/thumb_flow.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_flow_light.png', import.meta.url).href,
             hasSlot: true,
@@ -779,6 +779,10 @@ export function useMenuItems() {
         {
             filterBy: 'radar',
             title: translations.value.sideMenu.radars[store.lang]
+        },
+        {
+            filterBy: 'graphs',
+            title: translations.value.sideMenu.graphs[store.lang]
         },
         {
             filterBy: 'misc',
