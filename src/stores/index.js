@@ -662,6 +662,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 sideMenu: {
+                    graphs: {
+                        en: 'Graphs',
+                        fr: 'Graphes',
+                        pt: 'Grafos',
+                        de: 'Graphen',
+                        zh: '图',
+                        jp: 'グラフ',
+                        es: 'Grafos',
+                        ko: '그래프',
+                        ar: 'رسوم بيانية'
+                    },
                     searchPlaceholder: {
                         en: 'Search a component',
                         fr: 'Rechercher un composant',

@@ -753,8 +753,7 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-parallel-coordinate-plot",
                     componentName: "ParallelCoordinatePlot",
                     icon: "chartParallelCoordinatePlot",
-                },
-                { route: "/docs#vue-ui-flow", componentName: "Flow", icon: "chartFlow" },
+                },            
                 { route: "/docs#vue-ui-candlestick", componentName: "Candlestick", icon: "chartCandlestick" },
                 { route: "/docs#vue-ui-age-pyramid", componentName: "AgePyramid", icon: "chartAgePyramid" },
                 { route: "/docs#vue-ui-stackbar", componentName: "Stackbar", icon: "chartStackbar" },
@@ -803,6 +802,15 @@ const sideMenuItems = computed(() => {
             icon: "chartWordCloud",
         },
         {
+            title: translations.value.sideMenu.graphs[store.lang],
+            items: [
+                { route: "/docs#vue-ui-dag", componentName: "Dag", icon: "chartDag" },
+                { route: "/docs#vue-ui-flow", componentName: "Flow", icon: "chartFlow" },
+                { route: "/docs#vue-ui-molecule", componentName: "Molecule", icon: "chartCluster" },
+            ],
+            icon: 'chartDag'
+        },
+        {
             title: translations.value.sideMenu.radars[store.lang],
             items: [
                 { route: "/docs#vue-ui-radar", componentName: "Radar", icon: "chartRadar" },
@@ -815,13 +823,11 @@ const sideMenuItems = computed(() => {
             items: [
                 { route: "/docs#vue-ui-quadrant", componentName: "Quadrant", icon: "chartQuadrant" },
                 { route: "/docs#vue-ui-chestnut", componentName: "Chestnut", icon: "chartChestnut" },
-                { route: "/docs#vue-ui-scatter", componentName: "Scatter", icon: "chartScatter" },
-                { route: "/docs#vue-ui-molecule", componentName: "Molecule", icon: "chartCluster" },
+                { route: "/docs#vue-ui-scatter", componentName: "Scatter", icon: "chartScatter" },        
                 { route: "/docs#vue-ui-strip-plot", componentName: "StripPlot", icon: "chartStripPlot" },
                 { route: "/docs#vue-ui-dumbbell", componentName: "Dumbbell", icon: "chartDumbbell" },
                 { route: "/docs#vue-ui-world", componentName: "World", icon: "world" },
-                { route: "/docs#vue-ui-geo", componentName: "Geo", icon: "chartGeo" },
-                { route: "/docs#vue-ui-dag", componentName: "Dag", icon: "chartDag" },
+                { route: "/docs#vue-ui-geo", componentName: "Geo", icon: "chartGeo" },                
             ],
             icon: "chartScatter",
         },
