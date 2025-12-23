@@ -186,6 +186,9 @@ const config = ref({
                         color: '#1A1A1A'
                     },
                     yAxis: {
+                        scaleMin: null,
+                        scaleMax: null,
+                        autoScale: false,
                         dataLabels: {
                             show: true,
                             fontSize: 10,
@@ -439,6 +442,9 @@ const darkModeConfig = ref({
                         color: '#CCCCCC'
                     },
                     yAxis: {
+                        scaleMin: null,
+                        scaleMax: null,
+                        autoScale: false,
                         dataLabels: {
                             show: true,
                             fontSize: 10,
@@ -830,6 +836,9 @@ function goToPage(route) {
                             </BaseDetails>
                         </BaseDetails>
                         <BaseDetails attr="yAxis" :level="5" title="style.chart.layout.grid.yAxis">
+                            <BaseAttr name="autoScale" attr="style.chart.layout.grid.yAxis.autoScale" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr inactive name="scaleMin" defaultVal="null"/>
+                            <BaseAttr inactive name="scaleMax" defaultVal="null"/>
                             <BaseDetails attr="dataLabels" :level="6" title="style.chart.layout.grid.yAxis.dataLabels">
                                 <BaseAttr name="show" attr="style.chart.layout.grid.yAxis.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="fontSize" attr="style.chart.layout.grid.yAxis.dataLabels.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

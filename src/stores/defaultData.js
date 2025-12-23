@@ -2172,6 +2172,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
+                    { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -2215,6 +2218,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['show', 'on', 'hover'], category: 'userOptions' },
@@ -2308,6 +2314,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'tooltip'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
@@ -2319,6 +2328,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
+                    { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -2673,9 +2685,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: 'offsetY', category: 'labels' },
                     { key: 'style.chart.layout.labels.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.show', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'labels' },
-                    { key: 'style.chart.layout.labels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'general'},
-                    { key: 'style.chart.layout.labels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'general'},
-                    { key: 'style.chart.layout.labels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'general'},
+                    { key: 'style.chart.layout.labels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'labels'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -2697,6 +2709,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend' },
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend' },
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
+                    { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -2725,6 +2740,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['show', 'on', 'hover'], category: 'userOptions' },
@@ -3944,6 +3962,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.grid.axis.fontSize', def: 12, type: 'number', min: 8, max: 48, label: ['axis', 'labels', 'is', 'fontSize'], category: 'grid'},
                     { key: 'style.chart.layout.grid.axis.color', def: '#1A1A1A', type: 'color', label: ['axis', 'labels', 'is', 'color'], category: 'grid'},
 
+                    { key: 'style.chart.layout.grid.yAxis.autoScale', def: false, type: 'checkbox', label: ['yAxis', 'scale', 'is', 'auto'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.yAxis.scaleMin', def: null, type: 'number', min: 0, max: 1000000, label: ['yAxis', 'scale', 'is', 'min'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.yAxis.scaleMax', def: null, type: 'number', min: 0, max: 1000000, label: ['yAxis', 'scale', 'is', 'max'], category: 'grid'},
                     { key: 'style.chart.layout.grid.yAxis.dataLabels.show', def: true, type: 'checkbox', label: ['yAxisLabel', 'is', 'show'], category: 'grid' },
                     { key: 'style.chart.layout.grid.yAxis.dataLabels.color', def: '#1A1A1A', type: 'color', label: ['yAxisLabel', 'is', 'textColor'], category: 'grid' },
                     { key: 'style.chart.layout.grid.yAxis.dataLabels.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['yAxisLabel', 'is', 'fontSize'], category: 'grid' },
@@ -4827,6 +4848,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
+                    { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -4858,6 +4882,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'tooltip'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },

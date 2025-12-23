@@ -157,7 +157,10 @@ const isDarkMode = computed(() => {
                     offsetY: 24,
                     smooth: true,
                     smoothForce: 0.18,
-                    smoothSnapThreshold: 0.25
+                    smoothSnapThreshold: 0.25,
+                    showValueFirst: true,
+                    usePercentageParens: true,
+                    useValueParens: false,
                 },
                 legend: {
                     show: true,
@@ -169,7 +172,10 @@ const isDarkMode = computed(() => {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom'
+                    position: 'bottom',
+                    showValueFirst: true,
+                    usePercentageParens: true,
+                    useValueParens: false,
                 }
             }
         },
@@ -310,7 +316,10 @@ const isDarkMode = computed(() => {
                     offsetY: 24,
                     smooth: true,
                     smoothForce: 0.18,
-                    smoothSnapThreshold: 0.25
+                    smoothSnapThreshold: 0.25,
+                    showValueFirst: true,
+                    usePercentageParens: true,
+                    useValueParens: false,
                 },
                 legend: {
                     show: true,
@@ -322,7 +331,10 @@ const isDarkMode = computed(() => {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom'
+                    position: 'bottom',
+                    showValueFirst: true,
+                    usePercentageParens: true,
+                    useValueParens: false,
                 }
             }
         },
@@ -584,6 +596,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="legend" :level="3" title="style.chart.legend">
+                    <BaseAttr name="showValueFirst" attr="style.chart.legend.showValueFirst" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="usePercentageParens" attr="style.chart.legend.usePercentageParens" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="useValueParens" attr="style.chart.legend.useValueParens" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="show" attr="style.chart.legend.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="backgroundColor" attr="style.chart.legend.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -611,6 +626,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="tooltip" :level="3" title="style.chart.tooltip">
+                    <BaseAttr name="showValueFirst" attr="style.chart.tooltip.showValueFirst" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="usePercentageParens" attr="style.chart.tooltip.usePercentageParens" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="useValueParens" attr="style.chart.tooltip.useValueParens" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="show" attr="style.chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="backgroundColor" attr="style.chart.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="style.chart.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

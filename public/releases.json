@@ -1,6 +1,17 @@
 [
+    {
+    "version": "v 3.9.15",
+    "date": "2025-12-23",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add scaleMin, scaleMax, autoScale yAxis config",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
   {
-    "version": "v 3.9.13",
+    "version": "v 3.9.14",
     "date": "2025-12-23",
     "updates": [
       {
