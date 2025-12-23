@@ -234,6 +234,9 @@ const configDonutMenu = computed(() => {
                     shadowColor: '#000000'
                   },
                     labels: {
+                      dataLabels: {
+                        usePercentageParens: false
+                      },
                       value: {
                         show: false,
                       },

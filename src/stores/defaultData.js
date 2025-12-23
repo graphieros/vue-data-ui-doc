@@ -2112,6 +2112,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.dataLabels.oneLine', def: false, type: 'checkbox', label: ['One line label'], category: 'labels'},
                     { key: 'style.chart.layout.labels.dataLabels.smallArcClusterThreshold', def: 8, type: 'number', min: 0, max: 12, label: ['side labels threshold'], category: 'labels'},
                     { key: 'style.chart.layout.labels.dataLabels.smallArcClusterFontSize', def: 12, type: 'number', min: 8, max: 16, label: ['side labels', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'labels'},
 
                     { key: 'style.chart.layout.labels.value.show', def: true, type: 'checkbox', label: 'showValue', category: 'labels' },
                     { key: 'style.chart.layout.labels.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'valueRounding', category: 'labels' },
@@ -2341,6 +2344,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.captions.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['caption', 'percentage', 'is', 'rounding'], category: 'labels' },
                     { key: 'style.chart.layout.labels.captions.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['caption', 'is', 'offsetX'], category: 'labels' },
                     { key: 'style.chart.layout.labels.captions.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['caption', 'is', 'offsetY'], category: 'labels' },
+
+                    { key: 'style.chart.layout.labels.dataLabels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'labels'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['show', 'on', 'hover'], category: 'userOptions' },
@@ -2666,6 +2673,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: 'offsetY', category: 'labels' },
                     { key: 'style.chart.layout.labels.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.show', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'labels' },
+                    { key: 'style.chart.layout.labels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'general'},
+                    { key: 'style.chart.layout.labels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'general'},
+                    { key: 'style.chart.layout.labels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'general'},
+
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
                     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
@@ -4045,6 +4056,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.chart.layout.labels.dataLabels.prefix', def: '', type: 'text', label: ['labels', 'is', 'prefix'], category: 'general' },
                     { key: 'style.chart.layout.labels.dataLabels.suffix', def: '', type: 'text', label: ['labels', 'is', 'suffix'], category: 'general' },
+                    { key: 'style.chart.layout.labels.dataLabels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'general'},
+                    { key: 'style.chart.layout.labels.dataLabels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'general'},
+                    { key: 'style.chart.layout.labels.dataLabels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'general'},
+                    
                     { key: 'style.chart.layout.rings.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'datapoints' },
                     { key: 'style.chart.layout.rings.strokeWidth', def: 2, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: "datapoints" },
                     { key: 'style.chart.layout.rings.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'datapoints' },
@@ -4789,6 +4804,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.dataLabels.boldPercentage', def: false, type: 'checkbox', label: ['percentage', 'is', 'bold'], category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'labels' },
+                    { key: 'style.chart.layout.labels.dataLabels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'labels'},
+
                     { key: 'style.chart.layout.donut.strokeWidth', def: 200, type: 'range', min: 100, max: 200, label: 'width', category: 'donut' },
                     { key: 'style.chart.layout.donut.borderWidth', def: 2, type: 'range', min: 0, max: 24, step: 0.1, label: ['border', 'is', 'thickness'], category: 'donut' },
                     { key: 'style.chart.layout.donut.spacingRatio', def: 0.5, type: 'range', min: 0.1, max: 1, step: 0.01, label: 'spacing', category: 'donut' },
@@ -4935,6 +4954,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.arcs.offsetX', def: 0, type: 'number', min: -100, max: 100, label: 'offsetX', category: 'donut'},
                     { key: 'style.chart.layout.arcs.offsetY', def: 0, type: 'number', min: -100, max: 100, label: 'offsetY', category: 'donut'},
                     { key: 'style.chart.layout.arcs.hoverEffect.show', def: true, type: 'checkbox', label: ['hoverEffect', 'is', 'show'], category: 'donut'},
+
+                    { key: 'style.chart.layout.labels.dataLabels.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'general'},
+                    { key: 'style.chart.layout.labels.dataLabels.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'general'},
+                    { key: 'style.chart.layout.labels.dataLabels.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'general'},
+
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
                     { key: 'style.chart.layout.arcs.hoverEffect.multiplicator', def: 1.1, type: 'number', min: 1, max: 1.4, step: 0.01, label: ['hoverEffect', 'is', 'thickness'], category: 'donut'},
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},

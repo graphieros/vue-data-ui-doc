@@ -144,6 +144,9 @@ const config = ref({
                     width: 0.62,
                 },
                 labels: {
+                    showValueFirst: true,
+                    usePercentageParens: true,
+                    useValueParens: false,
                     show: true,
                     fontSize: 14,
                     minFontSize: 6,
@@ -287,6 +290,9 @@ const darkModeConfig = ref({
                     width: 0.62,
                 },
                 labels: {
+                    showValueFirst: true,
+                    usePercentageParens: true,
+                    useValueParens: false,
                     show: true,
                     fontSize: 14,
                     minFontSize: 6,
@@ -612,6 +618,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         <BaseAttr name="width" attr="style.chart.layout.gutter.width" type="range" defaultVal="0.62" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
+                        <BaseAttr name="showValueFirst" attr="style.chart.layout.labels.showValueFirst" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="usePercentageParens" attr="style.chart.layout.labels.usePercentageParens" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useValueParens" attr="style.chart.layout.labels.useValueParens" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="show" attr="style.chart.layout.labels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.layout.labels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="minFontSize" attr="style.chart.layout.labels.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

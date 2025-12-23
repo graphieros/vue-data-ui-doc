@@ -91,6 +91,9 @@ const config = ref({
         },
         labels: {
           dataLabels: {
+            showValueFirst: true,
+            usePercentageParens: true,
+            useValueParens: false,
             prefix: "",
             suffix: ""
           }
@@ -229,6 +232,9 @@ const darkModeConfig = ref({
         },
         labels: {
           dataLabels: {
+            showValueFirst: true,
+            usePercentageParens: true,
+            useValueParens: false,
             prefix: "",
             suffix: ""
           }
@@ -545,6 +551,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
           </BaseDetails>
           <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
             <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">
+              <BaseAttr name="showValueFirst" attr="style.chart.layout.labels.dataLabels.showValueFirst" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="usePercentageParens" attr="style.chart.layout.labels.dataLabels.usePercentageParens" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="useValueParens" attr="style.chart.layout.labels.dataLabels.useValueParens" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="prefix" attr="style.chart.layout.labels.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="suffix" attr="style.chart.layout.labels.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <div class="flex flex-row gap-2 place-items-center">

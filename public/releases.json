@@ -1,5 +1,41 @@
 [
   {
+    "version": "v 3.9.13",
+    "date": "2025-12-23",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add config to swap value & percentage in labels and manage their parens",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add config to swap value & percentage in labels and manage their parens",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add config to swap value & percentage in labels and manage their parens",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Add config to swap value & percentage in labels and manage their parens",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Add config to swap value & percentage in labels and manage their parens",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Add config to swap value & percentage in labels and manage their parens",
+        "link": "/docs#vue-ui-rings"
+      }
+    ]
+  },
+  {
     "version": "v 3.9.12",
     "date": "2025-12-22",
     "updates": [

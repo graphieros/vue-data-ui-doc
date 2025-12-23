@@ -185,6 +185,9 @@ const darkModeConfig = ref({
             layout: {
                 labels: {
                     dataLabels: {
+                        showValueFirst: true,
+                        usePercentageParens: true,
+                        useValueParens: false,
                         show: true,
                         prefix: "",
                         suffix: "",
@@ -360,6 +363,9 @@ const config = ref({
             layout: {
                 labels: {
                     dataLabels: {
+                        showValueFirst: true,
+                        usePercentageParens: true,
+                        useValueParens: false,
                         show: true,
                         prefix: "",
                         suffix: "",
@@ -668,6 +674,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     </BaseDetails>
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">
+                            <BaseAttr name="showValueFirst" attr="style.chart.layout.labels.dataLabels.showValueFirst" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="usePercentageParens" attr="style.chart.layout.labels.dataLabels.usePercentageParens" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="useValueParens" attr="style.chart.layout.labels.dataLabels.useValueParens" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="show" attr="style.chart.layout.labels.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="hideUnderValue" attr="style.chart.layout.labels.dataLabels.hideUnderValue" type="number" defaultVal="3" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" :comment="translations.docs.comments.donut.hideUnderValue[store.lang]"/>
                             <BaseAttr name="prefix" attr="style.chart.layout.labels.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

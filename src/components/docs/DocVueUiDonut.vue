@@ -108,6 +108,9 @@ const darkModeConfig = ref({
                 curvedMarkers: false,
                 labels: {
                     dataLabels: {
+                        showValueFirst: true,
+                        usePercentageParens: true,
+                        useValueParens: false,
                         show: true,
                         useLabelSlots: false,
                         hideUnderValue: 0,
@@ -335,6 +338,9 @@ const config = ref({
                 curvedMarkers: false,
                 labels: {
                     dataLabels: {
+                        showValueFirst: true,
+                        usePercentageParens: true,
+                        useValueParens: false,
                         show: true,
                         useLabelSlots: false,
                         hideUnderValue: 0,
@@ -925,6 +931,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                             <BaseAttr name="smallArcClusterThreshold" attr="style.chart.layout.labels.dataLabels.smallArcClusterThreshold" type="number" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" defaultVal="8" comment="Show labels on the side for arcs under this percentage"/>
                             <BaseAttr name="smallArcClusterFontSize" attr="style.chart.layout.labels.dataLabels.smallArcClusterFontSize" type="number" defaultVal="12" :min="6" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Font size for labels of small arcs"/>
                             <BaseAttr name="oneLine" attr="style.chart.layout.labels.dataLabels.oneLine" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="showValueFirst" attr="style.chart.layout.labels.dataLabels.showValueFirst" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="usePercentageParens" attr="style.chart.layout.labels.dataLabels.usePercentageParens" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="useValueParens" attr="style.chart.layout.labels.dataLabels.useValueParens" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                         <BaseDetails attr="value" :level="5" title="style.chart.layout.labels.value">
                             <BaseAttr name="show" attr="style.chart.layout.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
