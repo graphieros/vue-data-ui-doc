@@ -150,7 +150,8 @@ const config = ref({
             color: "#1A1A1A",
             bold: false,
             fontSize: 10,
-            offsetX: 0
+            offsetX: 0,
+            paddingBottom: 0,
           }
         },
         highlighter: {
@@ -332,7 +333,8 @@ const darkModeConfig = ref({
             color: "#CCCCCC",
             bold: false,
             fontSize: 10,
-            offsetX: 0
+            offsetX: 0,
+            paddingBottom: 0
           }
         },
         highlighter: {
@@ -742,6 +744,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
               <BaseAttr name="bold" attr="style.chart.layout.bars.parentLabels.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="fontSize" attr="style.chart.layout.bars.parentLabels.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="offsetX" attr="style.chart.layout.bars.parentLabels.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="paddingBottom" attr="style.chart.layout.bars.parentLabels.paddingBottom" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
           </BaseDetails>
           <BaseDetails attr="highlighter" :level="4" title="style.chart.layout.highlighter">

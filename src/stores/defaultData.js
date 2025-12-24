@@ -3295,6 +3295,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.bars.parentLabels.fontSize', def: 10, type: 'number', min: 6, max: 42, label: ['parent', 'name', 'is', 'fontSize'], category: 'serieLabels' },
                     { key: 'style.chart.layout.bars.parentLabels.bold', def: false, type: 'checkbox', label: ['parent', 'name', 'is', 'bold'], category: 'serieLabels' },
                     { key: 'style.chart.layout.bars.parentLabels.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['parent', 'name', 'is', 'offsetX'], category: 'serieLabels' },
+                    { key: 'style.chart.layout.bars.parentLabels.paddingBottom', def: 0, type: 'number', min: -100, max: 100, label: ['parent', 'name', 'is', 'padding', 'bottom'], category: 'serieLabels' },
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
                     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },

@@ -1,5 +1,16 @@
 [
     {
+    "version": "v 3.9.16",
+    "date": "2025-12-24",
+    "updates": [
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Enable mutliline series name labels using line breaks",
+        "link": "/docs#vue-ui-horizontal-bar"
+      }
+    ]
+  },
+    {
     "version": "v 3.9.15",
     "date": "2025-12-23",
     "updates": [
