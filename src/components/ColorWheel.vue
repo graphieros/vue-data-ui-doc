@@ -4,12 +4,19 @@ import { useMainStore } from '../stores'
 import { adaptColorToBackground } from './maker/lib';
 import BaseBubbles from './BaseBubbles.vue';
 
+const props = defineProps({
+    radius: {
+        type: Number,
+        default: 200
+    },
+})
+
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const emit = defineEmits(['result'])
 
-const size = ref(200)
+const size = ref(props.radius)
 const showLabels = ref(true) 
 const sliceStroke = computed(() => isDarkMode.value ? '#4A4A4A' : '#CCCCCC')
 const sliceStrokeWidth = 1

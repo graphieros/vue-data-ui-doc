@@ -4,6 +4,8 @@ import { adaptColorToBackground } from './maker/lib';
 import { convertColorToHex } from '../useNestedProp';
 import { useMainStore } from '../stores';
 import BaseCard from './BaseCard.vue';
+import { getPalette } from 'vue-data-ui';
+import ThemeTag from './ThemeTag.vue';
 
 const props = defineProps({
     value: {
@@ -42,7 +44,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const { value } = toRefs(props)
 const hexColor = ref('#000000') 
-const alpha = ref(1) 
+const alpha = ref(1);
 
 const defaultPalette = ref([
     '#000000',
@@ -57,7 +59,43 @@ const defaultPalette = ref([
     '#800080',
     '#FF1493',
     '#00CED1',
-]);
+])
+
+const palette = ref(defaultPalette.value);
+const selectedPalette = ref('base')
+
+const themePalettes = computed(() => {
+    const baseColor = {
+        default: '#2A2A2A',
+        zen: '#B9B99D',
+        concrete: '#4A6A75',
+        base: '#000000',
+        hack: '#009900',
+        celebration: '#D32F2F',
+    }
+
+    const p = [
+        'default',
+        'celebration',
+        'zen',
+        'concrete',
+        'hack',
+    ].map(theme => {
+        return {
+            name: theme,
+            palette: getPalette(theme),
+            grid: '32px 32px 32px 32px 32px 32px',
+            accent: baseColor[theme]
+        }
+    });
+
+    return [{
+        name: 'base',
+        palette: defaultPalette.value,
+        grid: '32px 32px 32px 32px',
+        accent: baseColor.base
+    }, ...p]
+});
 
 const open = ref(false);
 const pickerButton = ref(null)
@@ -313,6 +351,14 @@ function hslToRgb(h, s, l) {
         l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)))
     return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)]
 }
+
+const grid = ref('32px 32px 32px 32px');
+
+function setPalette(p) {
+    palette.value = p.palette;
+    grid.value = p.grid;
+    selectedPalette.value = p.name;
+}
 </script>
 
 <template>
@@ -351,35 +397,49 @@ function hslToRgb(h, s, l) {
                                 }"
                             >
                                 <BaseCard type="light" padding="p-2">
-                                    <div class="color-picker-dialog bg-transparent">
-                                        <button 
-                                            v-for="c in defaultPalette" 
-                                            :key="c"
-                                            class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
-                                            :style="{ backgroundColor: c }" 
-                                            @click="() => setColor(c)"
-                                        />
-                                        <div
-                                            class="my-color-picker-option-empty"
-                                            @click="triggerColorPicker"
-                                            :style="{ background: value }"
-                                        >
-                                            <VueUiIcon
-                                                name="palette"
-                                                :stroke="adaptColorToBackground(convertColorToHex(value))"
-                                                :size="20"
-                                            />
+                                    <div class="flex flex-col">
+                                        <div class="flex flex-row flex-wrap max-w-[150px] p-1 gap-1 text-xs justify-center mx-auto">
+                                            <button v-for="p in themePalettes" @click="setPalette(p)" class="pl-1 pr-2 bg-white shadow-md dark:bg-[#5A5A5A] text-black dark:text-[#FFFFFF] rounded-full flex flex-row place-items-center gap-1" :style="{
+                                                outline: selectedPalette === p.name ? isDarkMode ? '1px solid white' : '1px solid #2A2A2A' : undefined
+                                            }">
+                                                <svg class="rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)]" viewBox="0 0 10 10" height="10" width="10"><circle cx="5" cy="5" r="5" :fill="p.accent"/></svg>
+                                                {{ p.name }}
+                                            </button>
                                         </div>
-                                        <div/>
-                                        <button
-                                            @click="close"
-                                            class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors"
-                                        >
-                                            <VueUiIcon
-                                                name="close"
-                                                :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                                        <div class="color-picker-dialog bg-transparent" :style="{
+                                            gridTemplateColumns: grid
+                                        }">
+                                            <button 
+                                                v-for="c in palette" 
+                                                :key="c"
+                                                class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
+                                                :style="{ backgroundColor: c }" 
+                                                @click="() => setColor(c)"
                                             />
-                                        </button>
+                                            <div
+                                                class="my-color-picker-option-empty"
+                                                @click="triggerColorPicker"
+                                                :style="{ background: value }"
+                                            >
+                                                <VueUiIcon
+                                                    name="palette"
+                                                    :stroke="adaptColorToBackground(convertColorToHex(value))"
+                                                    :size="20"
+                                                />
+                                            </div>
+                                            <div/>
+                                            <div class="absolute -top-3 -right-3 bg-white dark:bg-[#2A2A2A] shadow-md rounded-full">
+                                                <button
+                                                    @click="close"
+                                                    class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors"
+                                                >
+                                                    <VueUiIcon
+                                                        name="close"
+                                                        :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                                                    />
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </BaseCard>
                             </div>
@@ -442,7 +502,6 @@ input[type="range"] {
     /* box-shadow: 0 6px 12px rgba(0,0,0,0.3); */
     display: grid;
     gap: 6px;
-    grid-template-columns: 32px 32px 32px;
     padding: 6px;
     z-index: 1;
 }
