@@ -79,6 +79,7 @@ const config = ref({
     chart: {
       backgroundColor: "#F3F4F6",
       color: "#2D353C",
+      size: 360,
       layout: {
         labels: {
           dataLabels: {
@@ -86,7 +87,22 @@ const config = ref({
             usePercentageParens: true,
             useValueParens: false,
             prefix: "",
-            suffix: ""
+            suffix: "",
+            show: true,
+            offsetX: 0,
+            fontSize: 12,
+            color: '#1A1A1A',
+            bold: false,
+            roundingValue: 0,
+            roundingPercentage: 0,
+            showValue: true,
+            showPercentage: true,
+            markers: {
+              stroke: '#8A8A8A',
+              strokeWidth: 1,
+              radius: 3,
+              position: 'right'
+            }
           }
         },
         rings: {
@@ -215,6 +231,7 @@ const darkModeConfig = ref({
     chart: {
       backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
+      size: 360,
       layout: {
         labels: {
           dataLabels: {
@@ -222,7 +239,22 @@ const darkModeConfig = ref({
             usePercentageParens: true,
             useValueParens: false,
             prefix: "",
-            suffix: ""
+            suffix: "",
+            show: false,
+            offsetX: 0,
+            fontSize: 12,
+            color: '#CCCCCC',
+            bold: false,
+            roundingValue: 0,
+            roundingPercentage: 0,
+            showValue: true,
+            showPercentage: true,
+            markers: {
+              stroke: '#8A8A8A',
+              strokeWidth: 1,
+              radius: 3,
+              position: 'right'
+            }
           }
         },
         rings: {
@@ -544,6 +576,21 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                       </BaseTabLink>
                   </div>
               </div>
+              <BaseAttr name="show" attr="style.chart.layout.labels.dataLabels.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="showValue" attr="style.chart.layout.labels.dataLabels.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="showPercentage" attr="style.chart.layout.labels.dataLabels.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="offsetX" attr="style.chart.layout.labels.dataLabels.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="fontSize" attr="style.chart.layout.labels.dataLabels.fontSize" type="number" defaultVal="12" :min="8" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="bold" attr="style.chart.layout.labels.dataLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+              <BaseAttr name="roundingValue" attr="style.chart.layout.labels.dataLabels.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="roundingPercentage" attr="style.chart.layout.labels.dataLabels.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseDetails attr="markers" :level="6" title="style.chart.layout.labels.dataLabels.markers">
+                <BaseComment>Markers are visible when dataLabels.show is true</BaseComment>
+                <BaseAttr name="stroke" attr="style.chart.layout.labels.dataLabels.markers.stroke" type="color" defaultVal="#8A8A8A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="strokeWidth" attr="style.chart.layout.labels.dataLabels.markers.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="radius" attr="style.chart.layout.labels.dataLabels.markers.radius" type="number" defaultVal="3" :min="0" :max="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="position" attr="style.chart.layout.labels.dataLabels.markers.position" type="select" :options="['left', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
             </BaseDetails>
           </BaseDetails>
           <BaseDetails attr="rings" :level="4" title="style.chart.layout.rings">

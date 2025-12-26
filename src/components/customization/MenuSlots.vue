@@ -29,6 +29,7 @@ const code0 = ref(`const config = ref({
         pdf: true,
         csv: true,
         img: true,
+        svg: true,
         table: true,
         labels: true,
         sort: true,

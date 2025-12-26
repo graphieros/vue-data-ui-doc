@@ -1,15 +1,26 @@
 [
     {
-    "version": "v 3.9.16",
-    "date": "2025-12-24",
-    "updates": [
-      {
-        "component": "VueUiHorizontalBar",
-        "description": "Enable mutliline series name labels using line breaks",
-        "link": "/docs#vue-ui-horizontal-bar"
-      }
-    ]
-  },
+      "version": "v 3.9.17",
+      "date": "2025-12-26",
+      "updates": [
+        {
+          "component": "VueUiRings",
+          "description": "Add optional ring data labels, enable mutliline labels",
+          "link": "/docs#vue-ui-rings"
+        }
+      ]
+    },
+    {
+      "version": "v 3.9.16",
+      "date": "2025-12-24",
+      "updates": [
+        {
+          "component": "VueUiHorizontalBar",
+          "description": "Enable mutliline series name labels using line breaks",
+          "link": "/docs#vue-ui-horizontal-bar"
+        }
+      ]
+    },
     {
     "version": "v 3.9.15",
     "date": "2025-12-23",

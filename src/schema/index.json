@@ -5513,6 +5513,11 @@
                 "icon": "svg"
             },
             {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
                 "name": "table",
                 "description": "Toggles data table visibility.",
                 "icon": "tableOpen"
@@ -5562,6 +5567,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleLabels",
+                "description": "Triggers toggling of the data labels visibility"
             },
             {
                 "name": "toggleTooltip",
@@ -5636,6 +5645,10 @@
             {
                 "name": "optionTable",
                 "description": "customize the context menu table icon"
+            },
+            {
+                "name": "optionLabels",
+                "description": "customize the context menu labels icon"
             },
             {
                 "name": "optionFullscreen",
