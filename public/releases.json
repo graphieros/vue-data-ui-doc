@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.9.18",
+      "date": "2025-12-27",
+      "updates": [
+        {
+          "component": "VueUiIcon",
+          "description": "Add #exp and #sub slots to display exp and or sub icons",
+          "link": "/docs#vue-ui-icon"
+        }
+      ]
+    },
+    {
       "version": "v 3.9.17",
       "date": "2025-12-26",
       "updates": [

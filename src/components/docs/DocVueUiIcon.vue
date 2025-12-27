@@ -330,7 +330,53 @@ const filteredIcons = computed(() => {
 const filteredSpecialIcons = computed(() => {
     if (!search.value) return specialIcons.value;
     return specialIcons.value.filter(icon => (icon.toUpperCase()).includes(search.value.toUpperCase()));
-})
+});
+
+const baseCodeExample = ref(`<VueUiIcon
+    name="moodHappy"
+    :size="24"
+    stroke="#1A1A1A"
+    :strokeWidth="1.5"
+    :isSpin="false"
+/>`);
+
+const slotsExample = ref(`<VueUiIcon name="database">
+    <template #exp>
+        <VueUiIcon name="direction" stroke="#5f8aee" />
+    </template>
+    <template #sub>
+        <VueUiIcon name="key" stroke="#42d392" />
+    </template>
+</VueUiIcon>    
+`);
+
+const expExample = ref(`<VueUiIcon name="database">
+    <template #exp>
+        <VueUiIcon name="cloud" stroke="#5f8aee" />
+    </template>
+</VueUiIcon>    
+`)
+
+const subExample = ref(`<VueUiIcon name="database">
+    <template #sub>
+        <VueUiIcon name="download" stroke="#5f8aee" />
+    </template>
+</VueUiIcon>    
+`)
+
+const expAnimExample = ref(`<VueUiIcon name="database">
+    <template #exp>
+        <VueUiIcon name="direction" stroke="#42d392" :isSpin="true" spin-duration="1s"/>
+    </template>
+</VueUiIcon>    
+`)
+
+const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-duration="5s">
+    <template #exp>
+        <VueUiIcon name="square" stroke="#42d392" :isSpin="true" spin-duration="1s"/>
+    </template>
+</VueUiIcon>    
+`)
 
 </script>
 
@@ -343,6 +389,10 @@ const filteredSpecialIcons = computed(() => {
         <div class="w-fit mx-auto mt-6 mb-12">
             <BaseAutoComplete v-model="search" :items="[...icons, ...specialIcons]"/>
         </div>
+
+        <BaseCard class="mb-6">
+            <CodeParser title="Usage" language="html" :content="baseCodeExample"/>
+        </BaseCard>
 
         <BaseCard>
             <p class="mx-auto w-full text-md text-black dark:text-[#CCCCCC] mb-2 text-left font-inter-medium">{{ translations.docs.tooltips.iconUserOptions[store.lang] }}</p>
@@ -371,6 +421,67 @@ const filteredSpecialIcons = computed(() => {
                 </div>
             </div>
         </BaseCard>
+
+        <BaseCard class="mt-6 mb-2">
+            You can nest icons in <code class="text-app-green-dark dark:text-app-green">exp</code> and | or <code class="text-app-green-dark dark:text-app-green">sub</code> slots:
+            <div class="flex flex-row gap-4 place-items-center my-2">
+                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
+                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                        <template #exp>
+                            <VueUiIcon name="cloud" :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'" />
+                        </template>
+                    </VueUiIcon>
+                </BaseCard>
+                <CodeParser language="html" :content="expExample"/>
+            </div>
+
+            <div class="flex flex-row gap-4 place-items-center my-2">
+                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
+                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                        <template #sub>
+                            <VueUiIcon name="download" :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'" />
+                        </template>
+                    </VueUiIcon>
+                </BaseCard>
+                <CodeParser language="html" :content="subExample"/>
+            </div>
+
+            <div class="flex flex-row gap-4 place-items-center my-2">
+                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
+                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                        <template #exp>
+                            <VueUiIcon name="direction" :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'"/>
+                        </template>
+                        <template #sub>
+                            <VueUiIcon name="key" :stroke="isDarkMode ? '#42d392' : '#1d915d'" />
+                        </template>
+                    </VueUiIcon>
+                </BaseCard>
+                <CodeParser language="html" :content="slotsExample"/>
+            </div>
+
+            <div class="flex flex-row gap-4 place-items-center my-2">
+                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
+                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                        <template #exp>
+                            <VueUiIcon name="direction" :stroke="isDarkMode ? '#42d392' : '#1d915d'" :isSpin="true" />
+                        </template>
+                    </VueUiIcon>
+                </BaseCard>
+                <CodeParser language="html" :content="expAnimExample"/>
+            </div>
+
+            <div class="flex flex-row gap-4 place-items-center my-2">
+                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
+                    <VueUiIcon name="square" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" :isSpin="true" spin-duration="5s">
+                        <template #exp>
+                            <VueUiIcon name="square" :stroke="isDarkMode ? '#42d392' : '#1d915d'" :isSpin="true" />
+                        </template>
+                    </VueUiIcon>
+                </BaseCard>
+                <CodeParser language="html" :content="fancyAnimExample"/>
+            </div>
+        </BaseCard>
         
         <dialog id="iconDialog"  :class="`glass fixed h-screen max-h-[450px] w-full max-w-[400px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]`">
             <div class="z-10 w-full text-2xl sticky top-0 font-black">
@@ -395,19 +506,5 @@ const filteredSpecialIcons = computed(() => {
             </div>
             <ConfirmCopy />
         </dialog>
-
-        <div class="w-full text-center my-12">
-
-<code>
-    &lt;<span class="text-app-green">VueUiIcon</span>
-        name="moodHappy"
-        :size="24"
-        stroke="#1A1A1A"
-        :strokeWidth="1.5"
-        :isSpin="false"
-    /&gt;
-</code>
-          
-        </div>
     </div>
 </template>
