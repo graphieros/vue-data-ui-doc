@@ -531,8 +531,8 @@ function goToPage(route) {
   @copy="store.copy()"
   :title="translations.docs.datastructure[store.lang]"
   :content="`type VueUiSparklineDatasetItem = {
-period: string
-value: number
+  period: string
+  value: number
 }
   `"
   class="my-6"
