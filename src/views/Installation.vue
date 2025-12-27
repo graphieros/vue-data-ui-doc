@@ -121,9 +121,11 @@ const universalComponentTemplateContent = computed(() => {
         </div>
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <div class="relative w-[80px] h-[80px]">
-                <VueUiIcon name="starFill" :size="80" :strokeWidth="0.8" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" stroke="#5f8bee"/>
-                <VueUiIcon name="starFill" :size="60" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.2 })"/>
-                <VueUiIcon name="starFill" :size="30" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.4 })"/>
+                <VueUiIcon :size="40" name="starFill" stroke="#5f8bee" :is-spin="true" spinDuration="10s">
+                    <template #exp>
+                        <VueUiIcon name="starFill" :is-spin="true" spinDuration="5s" stroke="#83a4f2"/>
+                    </template>
+                </VueUiIcon>
             </div>
             <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center z-10" style="letter-spacing: -1px;">
                 {{ translations.menu.installation[store.lang] }}
