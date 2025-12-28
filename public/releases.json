@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.9.20",
+      "date": "2025-12-28",
+      "updates": [
+        {
+          "component": "VueUiIcon",
+          "description": "Add new icons",
+          "link": "/docs#vue-ui-icon"
+        }
+      ]
+    },
+    {
       "version": "v 3.9.19",
       "date": "2025-12-27",
       "updates": [
