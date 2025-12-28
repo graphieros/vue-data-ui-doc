@@ -7,6 +7,7 @@ import { useConfig } from "../assets/useConfig";
 import { BrandGithubFilledIcon, CheckIcon } from "vue-tabler-icons";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseCard from "../components/BaseCard.vue";
+import ContributorsBars from "../components/ContributorsBars.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -598,6 +599,7 @@ const wheelConfig = computed(() => {
             <img :src="contributor.avatar_url" class="rounded-full w-10 h-10"/>
           </div>
         </div>
+        <ContributorsBars/>
       </BaseCard>
       
       <BaseCard type="light" class="mt-10">

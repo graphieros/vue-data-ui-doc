@@ -92,7 +92,6 @@ function fetchContributors() {
   return useFetch({
     url: 'https://api.github.com/repos/graphieros/vue-data-ui/contributors',
     _then: (data) => {
-      console.log(data)
       store.contributors = data.filter(d => d.login !== 'dependabot[bot]')
     }
   })
