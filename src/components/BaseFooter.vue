@@ -52,7 +52,7 @@ const KPIS = computed(() => {
                 icon: key === 'stargazers_count'
                     ? 'starFill'
                     : key === 'forks_count'
-                        ? 'chartDag'
+                        ? 'fork'
                         : key === 'open_issues_count'
                             ? 'binary'
                             : key === 'subscribers_count'

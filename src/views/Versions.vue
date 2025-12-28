@@ -1670,13 +1670,13 @@ const KPIS = computed(() => {
         value: store.pack[key],
         link: `https://github.com/graphieros/vue-data-ui/${kpiLinks.value[key]}`,
         icon: key === 'stargazers_count'
-          ? StarFilledIcon
+          ? 'starFill'
           : key === 'forks_count'
-            ? GitForkIcon
+            ? 'fork'
             : key === 'open_issues_count'
-              ? ToolIcon
+              ? 'wrench'
               : key === 'subscribers_count'
-                ? UserHeartIcon
+                ? 'person'
                 : ''
         ,
         color: key === 'stargazers_count'
@@ -2207,18 +2207,8 @@ const digitsConfigVersion = computed(() => {
                       >
                         <template #title>
                           <div class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.5,1.5)">
-                            <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.3)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                            <VueUiIcon :name="kpi.icon" :stroke="lightenColor(kpi.color, 0.3)" :size="20" :stroke-width="1"/>
                           </div>
-                          <div v-if="kpi.name === 'stargazers count'" class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.1,1.1)">
-                            <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                          </div>
-                          <div v-if="kpi.name === 'stargazers count'" class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(0.3,0.3)">
-                            <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.5)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                          </div>
-                          <div v-else class="thin-icon absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.5, 1.5)">
-                            <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                          </div>
-                          
                         </template>
                     </VueDataUi>
                     </a>
