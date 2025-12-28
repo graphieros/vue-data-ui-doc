@@ -12,7 +12,7 @@ const props = defineProps({
     tw: { type: String, default: '' },
 });
 
-const emit = defineEmits('click');
+const emit = defineEmits(['click']);
 const button = ref(null);
 
 const styles = ref({
@@ -27,7 +27,7 @@ const commonStyle = computed(() => {
 });
 
 const mergedStyle = computed(() => {
-    return `${commonStyle.value} ${styles.value[props.color]} ${props.fab ? `rounded-full w-${props.size}` : 'rounded-md'} ${props.tw}`
+    return `${commonStyle.value} ${styles.value[props.color] || props.color} ${props.fab ? `rounded-full w-${props.size}` : 'rounded-md'} ${props.tw}`
 });
 
 function gellyClick() {

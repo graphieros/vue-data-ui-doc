@@ -1,9 +1,13 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import CodeParser from "./CodeParser.vue";
 import { useMainStore } from "../../stores";
+import BaseCard from "../BaseCard.vue";
+import BaseButton from "../Base/BaseButton.vue";
 
 const store = useMainStore()
+
+const isDarkMode = computed(() => store.isDarkMode);
 
 const dataset = ref([
     {
@@ -18,10 +22,6 @@ const dataset = ref([
         name: 'Serie 3',
         values: [32]
     },
-    {
-        name: 'Serie 4',
-        values: [16]
-    }
 ]);
 
 const config = ref({
@@ -44,9 +44,9 @@ const config = ref({
             }
         }
     }
-})
+});
 
-const donutChart = ref(null)
+const donutChart = ref(null);
 
 function generatePdf() {
     donutChart.value.generatePdf();
@@ -60,21 +60,30 @@ function generateCsv() {
     donutChart.value.generateCsv();
 }
 
+const areLabelsEnabled = ref(true);
 function toggleLabels() {
+    areLabelsEnabled.value = !areLabelsEnabled.value;
     donutChart.value.toggleLabels();
 }
 
+const isTableOpen = ref(false);
 function toggleTable() {
+    isTableOpen.value = !isTableOpen.value;
     donutChart.value.toggleTable();
 }
 
+const isTooltipEnabled = ref(true);
 function toggleTooltip() {
+    isTooltipEnabled.value = !isTooltipEnabled.value;
     donutChart.value.toggleTooltip();
 }
 
+const isAnnotatorOpen = ref(false);
 function toggleAnnotator() {
+    isAnnotatorOpen.value = !isAnnotatorOpen.value;
     donutChart.value.toggleAnnotator();
 }
+
 
 const code0 = ref(`const config = ref({
     userOptions: {
@@ -86,6 +95,49 @@ const code0 = ref(`const config = ref({
 
 const code1 = ref(`// The ref used on the chart component
 const donutChart = ref(null);
+
+// Use your own dark/light theme detection
+const store = useMainStore()
+const isDarkMode = computed(() => store.isDarkMode);
+
+// VueUiDonut dataset
+const dataset = ref([
+    {
+        name: 'Serie 1',
+        values: [128]
+    },
+    {
+        name: 'Serie 2',
+        values: [64]
+    },
+    {
+        name: 'Serie 3',
+        values: [32]
+    },
+]);
+
+// Basic VueUiDonut config
+const config = ref({
+    userOptions: {
+        show: false
+    },
+    style: {
+        chart: {
+            layout: {
+                curvedMarkers: true,
+                donut: {
+                    strokeWidth: 64
+                }
+            },
+            title: {
+                text: 'Title',
+                subtitle: {
+                    text: 'Subtitle'
+                }
+            }
+        }
+    }
+});
 
 // Declare the methods used for the custom menu
 function generatePdf() {
@@ -100,41 +152,81 @@ function generateCsv() {
     donutChart.value.generateCsv();
 }
 
+// To render different icons depending on the labels state
+const areLabelsEnabled = ref(true);
+
 function toggleLabels() {
+    areLabelsEnabled.value = !areLabelsEnabled.value;
     donutChart.value.toggleLabels();
 }
 
+// To render different icons depending on the table state
+const isTableOpen = ref(false);
 function toggleTable() {
+    isTableOpen.value = !isTableOpen.value;
     donutChart.value.toggleTable();
 }
 
+// To render different icons depending on the tooltip state
+const isTooltipEnabled = ref(false);
+
 function toggleTooltip() {
+    isTooltipEnabled.value = !isTooltipEnabled.value;
     donutChart.value.toggleTooltip();
 }
 
+// To render different icons depending on the annotator state
+const isAnnotatorOpen = ref(false);
 function toggleAnnotator() {
+    isAnnotatorOpen.value = !isAnnotatorOpen.value;
     donutChart.value.toggleAnnotator();
 }
+
+// Assuming tailwind css is used
+const commonButtonStyle = 'bg-gray-50 dark:bg-[#2A2A2A] hover:bg-white dark:hover:bg-[#1A1A1A] transition-colors';
 `)
 
 const code2 = ref(`<template>
-<div class="my-menu">
-    <button @click="toggleTooltip">VIEW TOOLTIP</button>
-    <button @click="generatePdf">PDF</button>
-    <button @click="generateImage">IMG</button>
-    <button @click="generateCsv">CSV</button>
-    <button @click="toggleTable">VIEW TABLE</button>
-    <button @click="toggleLabels">VIEW LABELS</button>
-    <button @click="toggleAnnotator">TOGGLE ANNOTATOR</button>
-</div>
+    <!-- Assuming you alreeady have a card and a button components -->
+    <BaseCard class="mb-2 w-fit mx-auto">
+        <div class="flex flex-row flex-wrap">
+            <BaseButton @click="toggleTooltip" :size="12" padding="p-3" tw="rounded-r-[0px]" :color="commonButtonStyle" tooltip="Show tooltip">
+                <VueUiIcon :name="isTooltipEnabled ? 'tooltip' : 'tooltipDisabled'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+            </BaseButton>
 
-<VueUiDonut
-    ref="donutChart"
-    :config="config"
-    :dataset="dataset"
-/>
+            <BaseButton @click="toggleLabels" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Show labels">
+                <VueUiIcon :name="areLabelsEnabled ? 'labelOpen' : 'labelClose'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+            </BaseButton>
+
+            <BaseButton @click="toggleTable" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Toggle data table">
+                <VueUiIcon :name="isTableOpen ? 'tableOpen' : 'tableClose'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+            </BaseButton>
+
+            <BaseButton @click="generatePdf" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Download PDF">
+                <VueUiIcon name="pdf" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+            </BaseButton>
+
+            <BaseButton @click="generateImage" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Download PNG">
+                <VueUiIcon name="image" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+            </BaseButton>
+
+            <BaseButton @click="generateCsv" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Download CSV">
+                <VueUiIcon name="csv" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+            </BaseButton>
+
+            <BaseButton @click="toggleAnnotator" :size="12" padding="p-3" tw="rounded-l-[0]" :color="commonButtonStyle" tooltip="Toggle annotator">
+                <VueUiIcon :name="isAnnotatorOpen ? 'annotator' : 'annotatorDisabled'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+            </BaseButton>
+        </div>
+    </BaseCard>
+
+    <BaseCard type="light">
+        <VueUiDonut ref="donutChart" :dataset="dataset" :config="config"/>
+    </BaseCard>
 </template>`
 )
+
+const commonButtonStyle = 'bg-gray-50 dark:bg-[#2A2A2A] hover:bg-white dark:hover:bg-[#1A1A1A] transition-colors';
 
 </script>
 
@@ -168,16 +260,41 @@ const code2 = ref(`<template>
 <div class="p-4 bg-gray-200 dark:bg-[#FFFFFF10]">
     Example:
     <div class="w-full">
-        <div class="p-2 my-4 flex flex-row flex-wrap gap-4 bg-gray-300 dark:bg-[#FFFFFF10]">
-            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleTooltip">TOGGLE TOOLTIP</button>
-            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleLabels">TOGGLE LABELS</button>
-            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleTable">TOGGLE TABLE</button>
-            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generatePdf">PDF</button>
-            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generateImage">IMG</button>
-            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generateCsv">CSV</button>
-            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleAnnotator">TOGGLE ANNOTATOR</button>
-        </div>
-        <VueUiDonut ref="donutChart" :dataset="dataset" :config="config"/>
+        <BaseCard class="mb-2 w-fit mx-auto">
+            <div class="flex flex-row flex-wrap">
+                <BaseButton @click="toggleTooltip" :size="12" padding="p-3" tw="rounded-r-[0px]" :color="commonButtonStyle" tooltip="Show tooltip">
+                    <VueUiIcon :name="isTooltipEnabled ? 'tooltip' : 'tooltipDisabled'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+                </BaseButton>
+
+                <BaseButton @click="toggleLabels" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Show labels">
+                    <VueUiIcon :name="areLabelsEnabled ? 'labelOpen' : 'labelClose'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+                </BaseButton>
+
+                <BaseButton @click="toggleTable" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Toggle data table">
+                    <VueUiIcon :name="isTableOpen ? 'tableOpen' : 'tableClose'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+                </BaseButton>
+
+                <BaseButton @click="generatePdf" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Download PDF">
+                    <VueUiIcon name="pdf" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+                </BaseButton>
+
+                <BaseButton @click="generateImage" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Download PNG">
+                    <VueUiIcon name="image" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+                </BaseButton>
+
+                <BaseButton @click="generateCsv" :size="12" padding="p-3" tw="rounded-[0]" :color="commonButtonStyle" tooltip="Download CSV">
+                    <VueUiIcon name="csv" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+                </BaseButton>
+
+                <BaseButton @click="toggleAnnotator" :size="12" padding="p-3" tw="rounded-l-[0]" :color="commonButtonStyle" tooltip="Toggle annotator">
+                    <VueUiIcon :name="isAnnotatorOpen ? 'annotator' : 'annotatorDisabled'" :stroke="isDarkMode ? '#83a4f2' : '#3456a3'"/>
+                </BaseButton>
+            </div>
+        </BaseCard>
+
+        <BaseCard type="light">
+            <VueUiDonut ref="donutChart" :dataset="dataset" :config="config"/>
+        </BaseCard>
     </div>
 </div>
     </div>

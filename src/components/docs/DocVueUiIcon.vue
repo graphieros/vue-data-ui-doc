@@ -49,6 +49,7 @@ const icons = ref([
     "tableDialogOpen",
     "tableOpen",
     "tooltip",
+    "tooltipDisabled",
     "unstack",
     "zoomLock",
     "zoomUnlock"
