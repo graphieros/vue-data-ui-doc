@@ -1,4 +1,6 @@
-# vue-data-ui documentation website
+# Vue Data UI official documentation website
+
+<img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/1e242a76-ed4d-4604-ae99-959789469aaf" />
 
 <p>
 Vue Data UI is a Vue 3 data visualization components library.
