@@ -15,7 +15,9 @@ const translations = computed(() => {
   return store.translations;
 });
 
-const contributors = ref(null);
+const contributors = computed(() => {
+  return store.contributors;
+})
 
 // onMounted(() => {
 //   window.scrollTo(0,0)
@@ -586,6 +588,17 @@ const wheelConfig = computed(() => {
               to="/docs#vue-ui-table">VueUiTable</router-link></span>.
         </p>
       </div>
+
+      <BaseCard type="light" class="mt-10" v-if="contributors.length">
+        <div class="w-full text-app-blue dark:text-app-blue-light font-inter-medium text-2xl mb-4">
+          {{ translations.about.contributors[store.lang] }}
+        </div>
+        <div class="flex flex-row flex-wrap gap-4 justify-center">
+          <div v-for="contributor in contributors">
+            <img :src="contributor.avatar_url" class="rounded-full w-10 h-10"/>
+          </div>
+        </div>
+      </BaseCard>
       
       <BaseCard type="light" class="mt-10">
         <div class="w-full text-app-blue dark:text-app-blue-light font-inter-medium text-2xl">
