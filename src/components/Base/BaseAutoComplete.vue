@@ -204,11 +204,13 @@ onBeforeUnmount(() => {
                     transition-colors
                     hover:bg-gray-100
                     dark:hover:bg-neutral-800
+                    flex flex-row gap-2
                 "
                 :class="{
                     'bg-gray-100 dark:bg-neutral-800': index === activeIndex
                 }"
             >
+                <slot name="before" v-bind="{ suggestion }"></slot>
                 <span v-html="highlightSuggestion(suggestion, model)"></span>
             </li>
         </ul>

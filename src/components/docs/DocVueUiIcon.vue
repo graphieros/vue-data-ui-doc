@@ -410,7 +410,11 @@ const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-durat
         <BaseDocDescription :text="translations.docs.tooltips.icon[store.lang]" />
 
         <div class="w-fit mx-auto mt-6 mb-12">
-            <BaseAutoComplete v-model="search" :items="[...icons, ...specialIcons]"/>
+            <BaseAutoComplete v-model="search" :items="[...icons, ...specialIcons]">
+                <template #before="{ suggestion }">
+                    <VueUiIcon :name="suggestion" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
+                </template>
+            </BaseAutoComplete>
         </div>
 
         <BaseCard class="mb-6">
