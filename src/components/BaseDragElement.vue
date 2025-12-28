@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick, watch } from "vue";
+import { ref, onMounted, onUnmounted, nextTick, watch, computed } from "vue";
 import { GripHorizontalIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
+import BaseClip from "./Base/BaseClip.vue";
 
 const props = defineProps({
     snapOnResize: {
@@ -27,6 +28,10 @@ const props = defineProps({
     width: {
         type: String,
         default: ''
+    },
+    clip: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -35,6 +40,7 @@ const store = useMainStore();
 const draggableElement = ref(null);
 const isDragging = ref(false);
 const isInteracting = ref(false);
+const isDarkMode = computed(() => store.isDarkMode);
 
 const resizeThreshold = 12;
 
@@ -161,6 +167,7 @@ onUnmounted(() => {
         'rounded-xl'
     ]" style="z-index: 1000" @mousedown="startDrag" @touchstart="startDrag">
         <div class="relative flex-none">
+            <BaseClip v-if="clip" tw="w-[20px] absolute -top-[58px] right-0 z-100" :color="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
             <slot name="header"/>
             <GripHorizontalIcon class="absolute -top-8 left-1/2 -translate-x-1/2" size="20" />
             <div @mousedown="isInteracting = true" @mouseup="isInteracting = false"

@@ -857,6 +857,8 @@ const stackbarKey = ref(0);
                 snap-on-load 
                 v-show="store.docSnap && router.currentRoute.value.fullPath.includes('/docs#vue')"
                 backgroundColor="bg-gray-150 dark:bg-[#242424]"
+                clip
+                :startTop="170"
             >
                 <div id="docSnap" class="max-w-[350px] max-h-[800px] overflow-hidden rounded-xl pb-2"/>
             </BaseDragElement>
