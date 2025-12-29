@@ -52,9 +52,39 @@ function fetchGithubStats() {
     url: 'https://api.github.com/repos/graphieros/vue-data-ui',
     _then: (data) => {
       store.stars = data.stargazers_count;
+      if (![null, undefined].includes(localStorage.stars)) {
+        localStorage.stars = data.stargazers_count;
+      } else {
+        localStorage.setItem('stars', data.stargazers_count);
+      }
+
       store.issues = data.open_issues_count;
+      if (![null, undefined].includes(localStorage.issues)) {
+        localStorage.issues = data.open_issues_count;
+      } else {
+        localStorage.setItem('issues', data.open_issues_count);
+      }
+
       store.pack = data;
+      if (![null, undefined].includes(localStorage.pack)) {
+        localStorage.pack = JSON.stringify(data);
+      } else {
+        localStorage.setItem('pack', JSON.stringify(data));
+      }
+
       store.repos.library = data;
+    },
+    _onError: () => {
+      if (![null, undefined].includes(localStorage.stars)) {
+        store.stars = Number(localStorage.stars);
+      }
+      if (![null, undefined].includes(localStorage.issues)) {
+        store.issues = Number(localStorage.issues);
+      }
+      if (![null, undefined].includes(localStorage.pack)) {
+        store.pack = JSON.parse(localStorage.pack);
+        store.repos.library = JSON.parse(localStorage.pack);
+      }
     }
   })
 }
@@ -92,7 +122,17 @@ function fetchContributors() {
   return useFetch({
     url: 'https://api.github.com/repos/graphieros/vue-data-ui/contributors',
     _then: (data) => {
-      store.contributors = data.filter(d => d.login !== 'dependabot[bot]')
+      store.contributors = data?.filter(d => d?.login !== 'dependabot[bot]');
+      if (![null, undefined].includes('contributors')) {
+        localStorage.contributors = JSON.stringify(data?.filter(d => d?.login !== 'dependabot[bot]'));
+      } else {
+        localStorage.setItem('contributors', JSON.stringify(data?.filter(d => d?.login !== 'dependabot[bot]')));
+      }
+    },
+    _onError: () => {
+      if (![null, undefined].includes(localStorage.contributors)) {
+        store.contributors = JSON.parse(localStorage.contributors);
+      }
     }
   })
 }

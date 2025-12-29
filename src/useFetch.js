@@ -1,6 +1,6 @@
 import { useMainStore } from "./stores";
 
-export default async function useFetch({ url, _then = () => {}, _finally = () => {} }) {
+export default async function useFetch({ url, _then = () => {}, _finally = () => {}, _onError = () => {} }) {
     const store = useMainStore();
 
     store.isFetching = true;
@@ -14,7 +14,8 @@ export default async function useFetch({ url, _then = () => {}, _finally = () =>
         })
         .then(_then)
         .catch(error => {
-            console.error(`There was a problem fetching data:`, error)
+            console.error(`There was a problem fetching data:`, error);
+            _onError && _onError();
         })
         .finally(() => {
             store.isFetching = false;
