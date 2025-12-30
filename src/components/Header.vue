@@ -51,7 +51,8 @@ const lastVersion = computed(() => {
      \\/ ${releases[0].version}
      
 
-Vue Data UI is an open source library.
+Vue Data UI is an open source library.\n\n
+Contributions are welcome.\n\n
 Feel free to make it better with us ^^
      `);
     return releases[0].version.replace("v", "").split("").slice(1);

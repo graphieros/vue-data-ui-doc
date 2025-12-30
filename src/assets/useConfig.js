@@ -102,6 +102,7 @@ export function useConfig() {
         backdropFilter: true, // v3
         smoothForce: 0.18,
         smoothSnapThreshold: 0.25,
+        teleportTo: 'body' // or any other css selector (used in the `to` attr of the Teleport component)
     }
 
     const AXIS_DATE_FORMATTER = {
@@ -3227,6 +3228,7 @@ export function useConfig() {
         titleBold: true,
         titleFontSize: FONT._16,
         titleTextAlign: 'center',
+        tooltipTeleportTo: 'body',
         tooltipCustomFormat: null,
         tooltipBackgroundOpacity: 100,
         tooltipBorderRadius: 4,
@@ -3597,7 +3599,8 @@ export function useConfig() {
             table: true,
             fullscreen: true,
             annotator: true,
-            svg: true
+            svg: true,
+            labels: true,
         }),
         table: {
             ...TABLE,

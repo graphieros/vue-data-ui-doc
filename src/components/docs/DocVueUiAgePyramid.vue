@@ -746,6 +746,7 @@ const config = ref({
       }
     },
     tooltip: {
+      teleportTo: 'body',
       show: true,
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
@@ -910,6 +911,7 @@ const darkModeConfig = ref({
       }
     },
     tooltip: {
+      teleportTo: 'body',
       show: true,
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
@@ -1232,6 +1234,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="tooltip" :level="2" title="style.tooltip">
+        <BaseAttr inactive name="teleportTo" defaultVal="'body'" comment="Sets the 'to' attr of the Teleport Vue component"/>
         <BaseAttr name="show" attr="style.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="backgroundColor" attr="style.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="color" attr="style.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -202,6 +202,7 @@ const config = ref({
     titleBold: true,
     titleFontSize: 16,
     titleTextAlign: "center",
+    tooltipTeleportTo: 'body',
     tooltipCustomFormat: null,
     tooltipBorderRadius: 4,
     tooltipBorderColor: '#e1e5e8',
@@ -353,6 +354,7 @@ const darkModeConfig = ref({
     titleBold: true,
     titleFontSize: 16,
     titleTextAlign: "center",
+    tooltipTeleportTo: 'body',
     tooltipCustomFormat: null,
     tooltipBorderRadius: 4,
     tooltipBorderColor: '#3A3A3A',
@@ -995,6 +997,7 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
                 </BaseTabLink>
             </div>
         </div>
+        <BaseAttr inactive name="tooltipTeleportTo" defaultVal="'body'" comment="Sets the 'to' attr of the Teleport Vue component"/>
         <BaseAttr name="tooltipBorderRadius" attr="tooltipBorderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="tooltipBorderColor" attr="tooltipBorderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="tooltipBorderWidth" attr="tooltipBorderWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
