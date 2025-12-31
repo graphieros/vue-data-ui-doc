@@ -126,6 +126,7 @@ const specialIcons = ref([
     "chartWaffle",
     "chartWheel",
     "chartWordCloud",
+    "check",
     "chip", 
     "chipAi", 
     "chipBinary", 
@@ -168,6 +169,7 @@ const specialIcons = ref([
     "direction",
     "document", 
     "download", 
+    "doubleCheck",
     "focus", 
     "folder", 
     "folderFill", 
@@ -220,6 +222,7 @@ const specialIcons = ref([
     "person", 
     "pie", 
     "pin", 
+    "plug",
     "plus", 
     "printer",
     "ratio",
@@ -243,6 +246,10 @@ const specialIcons = ref([
     "smiley",
     "sort",
     "sortReverse",
+    "spinner1",
+    "spinner2",
+    "spinner3",
+    "spinner4",
     "sql", 
     "sqlQuery", 
     "sqlSearch", 
@@ -263,8 +270,10 @@ const specialIcons = ref([
     "triangleExclamation",
     "triangleFill",
     "triangleInformation",
+    "twig",
     "unlock",
     "unpin", 
+    "unplug",
     "upload", 
     "vueDataUi",
     "wifi", 
@@ -390,7 +399,7 @@ const subExample = ref(`<VueUiIcon name="database">
 
 const expAnimExample = ref(`<VueUiIcon name="database">
     <template #exp>
-        <VueUiIcon name="direction" stroke="#42d392" :isSpin="true" spin-duration="1s"/>
+        <VueUiIcon name="spinner2" stroke="#42d392" :isSpin="true" spin-duration="1s"/>
     </template>
 </VueUiIcon>    
 `)
@@ -492,7 +501,7 @@ const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-durat
                 <BaseCard class="flex place-items-center justify-center h-fit" type="light">
                     <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
                         <template #exp>
-                            <VueUiIcon name="direction" :stroke="isDarkMode ? '#42d392' : '#1d915d'" :isSpin="true" />
+                            <VueUiIcon name="spinner2" :stroke="isDarkMode ? '#42d392' : '#1d915d'" :isSpin="true" />
                         </template>
                     </VueUiIcon>
                 </BaseCard>

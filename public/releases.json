@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.9.22",
+      "date": "2025-12-31",
+      "updates": [
+        {
+          "component": "UserOptions",
+          "description": "Place drawer inside a popover when supported",
+          "link": ""
+        }
+      ]
+    },
+    {
       "version": "v 3.9.21",
       "date": "2025-12-30",
       "updates": [

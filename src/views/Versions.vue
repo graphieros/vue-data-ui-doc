@@ -1517,7 +1517,18 @@ function makeColors({ colorStart, iterations, force }) {
 
 const wordCloudConfig = computed(() => {
   return {
-    userOptions: { show: false},
+    userOptions: {
+      show: true,
+      buttons: {
+        tooltip: false,
+        pdf: false,
+        csv: false,
+        img: false,
+        table: false,
+        svg: false,
+        annotator: false,
+      }
+    },
     strictPixelPadding: true,
     // customPalette: isDarkMode.value ? ['#42d392', '#5f8aee'] : ['#1d915d', '#1d3e54'],
     customPalette: makeColors({
