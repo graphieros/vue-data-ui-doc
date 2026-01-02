@@ -585,6 +585,8 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
     <div>
         <BaseDocTitle name="VueUiBump" />
 
+        <BaseDocDescription :text="translations.docs.tooltips.bump[store.lang]" />
+
         <BaseDocHeaderActions 
             targetLink="vue-ui-bump"
             targetMaker="VueUiBump"
