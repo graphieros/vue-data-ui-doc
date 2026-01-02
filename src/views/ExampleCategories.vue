@@ -232,6 +232,15 @@ const categories = computed(() => {
             raterId: 'vue_ui_wheel'
         },
         {
+            link: 'vue-ui-bump',
+            icon: 'chartBump',
+            component: 'VueUiBump',
+            thumb: new URL('../assets/thumb_bump.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_bump_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.bump,
+            raterId: 'vue_ui_bump'
+        },
+        {
             link: 'vue-ui-sparkhistogram',
             icon: 'chartSparkHistogram',
             component: 'VueUiSparkHistogram',

@@ -766,6 +766,13 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'dataOverTime'],
                 singleTaxinomy: 'dataOverTime'
             },
+            VueUiBump: {
+                icon: 'chartBump',
+                link: '/docs#vue-ui-bump',
+                description: translations.value.docs.tooltips.bump[store.lang],
+                taxinomy: ['dataOverTime'],
+                singleTaxinomy: 'dataOverTime'
+            },
         }
     })
 

@@ -7,6 +7,7 @@ import FRANCE from "../src/resources/FRANCE.json";
 import CHINA from "../src/resources/CHINA.json";
 import BRAZIL from "../src/resources/BRAZIL.json";
 import ITALY from "../src/resources/ITALY.json";
+import { treeShake } from "./useNestedProp";
 
 // nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
 
@@ -57,7 +58,69 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-BUMP --------------//
     
+    const DATASET_BUMP_DEFAULT = ref([
+    {
+        name: "Series A",
+        values: [120, 135, 155, 175, 210, 245, 275, 305, 330, 350],
+    },
+    {
+        name: "Series B",
+        values: [65, 74, 86, 102, 125, 150, 175, 205, 235, 260],
+    },
+    {
+        name: "Series C",
+        values: [90, 92, 94, 96, 98, 100, 102, 104, 106, 108],
+    },
+    {
+        name: "Series D",
+        values: [6, 9, 14, 23, 38, 56, 76, 98, 120, 145],
+    },
+    {
+        name: "Series E",
+        values: [52, 54.5, 57, 60, 64, 69, 74, 80, 86, 92],
+    },
+]);
+
+const CONFIG_BUMP_CLASSIC = computed(() => {
+    return {
+        style: {
+            chart: {
+                backgroundColor: colors.value.bg,
+                color: colors.value.textColor,
+                title: {
+                    text: 'Title',
+                    color: colors.value.textColor,
+                    textAlign: 'left',
+                    paddingLeft: 6,
+                    subtitle: {
+                        text: 'Subtitle'
+                    }
+                },
+                layout: {
+                    timeLabels: {
+                        color: colors.value.textColor,
+                    },
+                    lines: {
+                        coatingColor: colors.value.bg
+                    },
+                    plots: {
+                        stroke: colors.value.bg,
+                        labels: {
+                            fontSize: 16
+                        }
+                    },
+                    nameLabels: {
+                        color: colors.value.textColor,
+                        fontSize: 18
+                    }
+                }
+            }
+        }
+    }
+})
+
     
     //-------------- VUE-UI-GEO --------------//
     const data_france = [
@@ -11969,6 +12032,107 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
                     ar: "مع خلفية مخصصة"
+                }
+            },
+            // BUMP VALUES
+            { 
+                dataset: DATASET_BUMP_DEFAULT.value, 
+                config: CONFIG_BUMP_CLASSIC.value,
+                component: 'VueUiBump',
+                icon: 'chartBump',
+                id: 'bump-values',
+                link: 'vue-ui-bump',
+                description: {
+                    en: 'Basic bump chart with values',
+                    fr: 'Graphique de type bump basique avec valeurs',
+                    pt: 'Gráfico bump básico com valores',
+                    de: 'Einfaches Bump-Diagramm mit Werten',
+                    zh: '带数值的基础跃迁图',
+                    jp: '値を含む基本的なバンプチャート',
+                    es: 'Gráfico bump básico con valores',
+                    ko: '값이 포함된 기본 범프 차트',
+                    ar: 'مخطط بامب أساسي مع قيم'
+                }
+            },
+            // BUMP RANKS
+            { 
+                dataset: DATASET_BUMP_DEFAULT.value, 
+                config: {
+                    ...CONFIG_BUMP_CLASSIC.value,
+                    style: {
+                        ...CONFIG_BUMP_CLASSIC.value.style,
+                        chart: {
+                            ...CONFIG_BUMP_CLASSIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_BUMP_CLASSIC.value.style.chart.layout,
+                                plots: {
+                                    ...CONFIG_BUMP_CLASSIC.value.style.chart.layout.plots,
+                                    radius: 16,
+                                    labels: {
+                                        displayedValue: 'rank',
+                                        fontSize: 16
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiBump',
+                icon: 'chartBump',
+                id: 'bump-ranking',
+                link: 'vue-ui-bump',
+                description: {
+                    en: 'Basic bump chart with ranks',
+                    fr: 'Graphique de type bump basique avec rangs',
+                    pt: 'Gráfico bump básico com classificações',
+                    de: 'Einfaches Bump-Diagramm mit Rängen',
+                    zh: '带排名的基础跃迁图',
+                    jp: '順位を含む基本的なバンプチャート',
+                    es: 'Gráfico bump básico con clasificaciones',
+                    ko: '순위가 포함된 기본 범프 차트',
+                    ar: 'مخطط بامب أساسي مع مراتب'
+                }
+            },
+            // BUMP RANKS DENSE
+            { 
+                dataset: DATASET_BUMP_DEFAULT.value, 
+                config: {
+                    ...CONFIG_BUMP_CLASSIC.value,
+                    style: {
+                        ...CONFIG_BUMP_CLASSIC.value.style,
+                        chart: {
+                            ...CONFIG_BUMP_CLASSIC.value.style.chart,
+                            height: 200,
+                            layout: {
+                                ...CONFIG_BUMP_CLASSIC.value.style.chart.layout,
+                                timeLabels: {
+                                    ...CONFIG_BUMP_CLASSIC.value.style.chart.layout.timeLabels,
+                                    offsetY: 12
+                                },
+                                plots: {
+                                    ...CONFIG_BUMP_CLASSIC.value.style.chart.layout.plots,
+                                    labels: {
+                                        displayedValue: 'rank'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiBump',
+                icon: 'chartBump',
+                id: 'bump-ranking-dense',
+                link: 'vue-ui-bump',
+                description: {
+                    en: 'Dense bump chart with ranks',
+                    fr: 'Graphique de type bump dense avec rangs',
+                    pt: 'Gráfico bump denso com classificações',
+                    de: 'Dichtes Bump-Diagramm mit Rängen',
+                    zh: '带排名的密集跃迁图',
+                    jp: '順位を含む密集したバンプチャート',
+                    es: 'Gráfico bump denso con clasificaciones',
+                    ko: '순위가 포함된 밀집 범프 차트',
+                    ar: 'مخطط بامب كثيف مع مراتب'
                 }
             },
         ]

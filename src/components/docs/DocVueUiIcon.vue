@@ -83,6 +83,7 @@ const specialIcons = ref([
     "chartAgePyramid",
     "chartBar",
     "chartBullet",
+    "chartBump",
     "chartCandlestick",
     "chartChestnut",
     "chartChord",

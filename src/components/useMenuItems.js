@@ -249,6 +249,18 @@ export function useMenuItems() {
             hasLegend: true
         },
         {
+            name: "Bump",
+            icon: "chartBump",
+            tooltip: translations.value.docs.tooltips.bump[store.lang],
+            link: "/docs#vue-ui-bump",
+            type: ['xy'],
+            thumb: new URL('../assets/thumb_bump.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_bump_light.png', import.meta.url).href,
+            hasSlot: true,
+            hasTableCss: true,
+            hasLegend: false
+        },
+        {
             name: "Onion",
             icon: "chartOnion",
             tooltip: translations.value.docs.tooltips.onion[store.lang],

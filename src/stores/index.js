@@ -2129,6 +2129,17 @@ export const useMainStore = defineStore("main", {
                         ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
                     },
                     tooltips: {
+                        bump: {
+                            en: 'Visualize rank positions over time.',
+                            fr: 'Visualisez les positions de classement au fil du temps.',
+                            pt: 'Visualize as posições de classificação ao longo do tempo.',
+                            de: 'Visualisieren Sie Rangpositionen im Zeitverlauf.',
+                            zh: '可视化排名随时间的变化。',
+                            jp: '時間の経過に伴う順位の変化を可視化します。',
+                            es: 'Visualice las posiciones de clasificación a lo largo del tiempo.',
+                            ko: '시간에 따른 순위 변화를 시각화하세요.',
+                            ar: 'اعرض مراكز الترتيب عبر الزمن.'
+                        },
                         geo: {
                             en: 'Render any GeoJSON map and plot custom data points with full interaction and zoom control.',
                             fr: 'Afficher n’importe quelle carte GeoJSON et tracer des points de données personnalisés avec interactions complètes et contrôle du zoom.',

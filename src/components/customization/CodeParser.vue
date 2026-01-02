@@ -189,7 +189,9 @@ const config = computed(() => {
             'VueUiDagEdge',
             'VueUiDagDataset',
             'VueUiGeoDatasetItem',
-            'VueUiStacklineDatasetItem'
+            'VueUiStacklineDatasetItem',
+            'VueUiBumpConfig',
+            'VueUiBumpDatasetItem'
         ]
     }
 });
