@@ -182,7 +182,8 @@ const iconMap = ref({
     VueUiCarouselTable: 'carouselTable',
     VueUiStackline: 'chartStackline',
     VueUiDag: 'chartDag',
-    VueUiGeo: 'chartGeo'
+    VueUiGeo: 'chartGeo',
+    VueUiBump: 'chartBump'
 })
 
 function jsonToJsObject(json, indent = 0, colorAuto=false) {

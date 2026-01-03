@@ -203,7 +203,8 @@ const charts = ref({
     VueUi3dBar: { name: 'VueUi3dBar', icon: 'chart3dBar', link: '/docs#vue-ui-3d-bar'},
     VueUiCirclePack: { name: 'VueUiCirclePack', icon: 'chartCirclePack', link: '/docs#vue-ui-circle-pack'},
     VueUiDag: { name: 'VueUiDag', icon: 'chartDag', link: '/docs#vue-ui-dag'},
-    VueUiGeo: { name: 'VueUiGeo', icon: 'chartGeo', link: '/docs#vue-ui-geo'}
+    VueUiGeo: { name: 'VueUiGeo', icon: 'chartGeo', link: '/docs#vue-ui-geo'},
+    VueUiBump: { name: 'VueUiBump', icon: 'chartBump', link: '/docs#vue-ui-bump'}
 })
 
 const items = ref([
