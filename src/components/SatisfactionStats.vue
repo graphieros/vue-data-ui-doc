@@ -8,6 +8,7 @@ import mockStats from './mockStats.json'
 import { createUid, fillEmptyDays } from "./maker/lib";
 import BaseCard from "./BaseCard.vue";
 import { getCumulativeAverage } from "vue-data-ui";
+import BumpStats from "./BumpStats.vue";
 
 const { utils } = colorBridge();
 
@@ -1786,6 +1787,7 @@ const stackComponent = ref('VueUiStackbar');
                 }
             }" />
         </div>
+        <BumpStats :stats="stats" v-if="ratings.length"/>
     </div>
 </template>
 
