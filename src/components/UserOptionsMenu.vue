@@ -221,7 +221,7 @@ const items = ref([
     {
         name: 'csv',
         icon: 'excel',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
+        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack', 'VueUiBump']
     },
     {
         name: 'img',
@@ -236,7 +236,7 @@ const items = ref([
     {
         name: 'table',
         icon:  'tableOpen',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
+        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack', 'VueUiBump']
     },
     {
         name: 'labels',
