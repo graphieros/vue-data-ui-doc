@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import colorBridge from "color-bridge";
 import { useMenuItems } from "./useMenuItems";
 import useMobile from "../useMobile";
+import { VueUiNestedDonuts } from "vue-data-ui";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -15,8 +16,10 @@ const isDarkMode = computed(() => store.isDarkMode);
 const dataset = computed(() => {
   let color = 0;
   return menuCategories.value.map((c) => {
-    const count = menuItems.value.filter(item => item.type === c.filterBy).length;
+    const items = menuItems.value.filter(item => item.type === c.filterBy || item.type.includes(c.filterBy));
+    const count = items.length;
     return {
+      items,
       name: c.title,
       values: [count],
       count,
@@ -24,10 +27,78 @@ const dataset = computed(() => {
   }).toSorted((a, b) => b.count - a.count).map((item, i) => {
     return {
       ...item,
+      items: item.items.map(n => ({
+        ...n,
+        color: shiftHue({ hexColor: '#5f8aee', force: color - ((i / menuCategories.value.length) / 4)})
+      })),
       color: shiftHue({ hexColor: '#5f8aee', force: color - ((i / menuCategories.value.length) / 4)})
     }
   })
 });
+
+const nestedDataset = computed(() => {
+  return [
+    {
+      name: 'Chart types',
+      series: dataset.value
+    },
+    {
+      name: 'Charts',
+      series: dataset.value.flatMap(d => d.items).map(item => {
+        return {
+          name: item.name,
+          values: [1],
+          color: item.color
+        }
+      })
+    }
+  ]
+});
+
+const nestedConfig = computed(() => ({
+  userOptions: { show: false },
+  style: {
+    chart: {
+      backgroundColor: 'transparent',
+      layout: {
+        donut: {
+          borderColor: isDarkMode.value ? '#2A2A2A' : '#F1F1F1',
+          borderColorAuto: false,
+          spacingRatio: 0.8
+        },
+        labels: {
+          dataLabels: {
+            show: false,
+            useSerieColor: isDarkMode.value,
+            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            donutNameOffsetY: -6
+          }
+        }
+      },
+      legend: {
+        show: false,
+      },
+      tooltip: {
+          showAllItemsAtIndex: false,
+          show: true,
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+          fontSize: 14,
+          customFormat: null,
+          borderRadius: 4,
+          borderColor: isDarkMode.value ? '#3A3A3A' : '#e1e5e8',
+          borderWidth: 1,
+          backgroundOpacity: 40,
+          position: "center",
+          offsetY: 24,
+          showValue: true,
+          showPercentage: true,
+          roundingValue: 0,
+          roundingPercentage: 0,
+        },
+    }
+  }
+}))
 
 const datasetBar = computed(() => {
   return {
@@ -186,5 +257,8 @@ const config = computed(() => {
         :dataset="datasetBar"
         :config="configBar"
       />
+    </div>
+    <div class="mx-auto max-w-[500px]">
+      <VueUiNestedDonuts :dataset="nestedDataset" :config="nestedConfig"/>
     </div>
 </template>
