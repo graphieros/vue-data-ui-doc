@@ -47,7 +47,8 @@ const configBar = computed(() => ({
       color: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
       legend: {
         color: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
-        fontSize: 7
+        fontSize: 7,
+        hideUnderPercentage: 0
       }
     }
   }
@@ -112,7 +113,7 @@ const config = computed(() => {
           },
           donut: {
             strokeWidth: 44,
-            radiusRatio: 0.4,
+            radiusRatio: 0.35,
             borderWidth: 2,
             useShadow: true,
             shadowColor: "#2D353C",
