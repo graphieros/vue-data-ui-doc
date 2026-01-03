@@ -2058,7 +2058,8 @@ function convertComponent(c) {
     vue_ui_cursor: 'VueUiCursor',
     vue_ui_mini_loader: 'VueUiMiniLoader',
     vue_ui_dag: 'VueUiDag',
-    vue_ui_geo: 'VueUiGeo'
+    vue_ui_geo: 'VueUiGeo',
+    vue_ui_bump: 'VueUiBump'
   }[c];
 }
 
