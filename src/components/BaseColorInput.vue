@@ -72,6 +72,8 @@ const themePalettes = computed(() => {
         base: '#000000',
         hack: '#009900',
         celebration: '#D32F2F',
+        minimal: '#454862',
+        minimalDark: '#65698E'
     }
 
     const p = [
@@ -80,6 +82,8 @@ const themePalettes = computed(() => {
         'zen',
         'concrete',
         'hack',
+        'minimal',
+        'minimalDark'
     ].map(theme => {
         return {
             name: theme,

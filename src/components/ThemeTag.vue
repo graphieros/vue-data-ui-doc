@@ -45,6 +45,16 @@ const themes = ref({
         color: "#BDBDBD",
         fill: "#D32F2F"
     },
+    minimal: {
+        backgroundColor: '#FFFFFF',
+        color: '#1A1A1A',
+        fill: '#454862'
+    },
+    minimalDark: {
+        backgroundColor: '#1A1A1A',
+        color: '#CCCCCC',
+        fill: '#65698E'
+    }
 })
 
 </script>

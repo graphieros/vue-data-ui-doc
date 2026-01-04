@@ -82,5 +82,15 @@ const config = ref({
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'celebrationNight'}" />
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'celebrationNight'}" />
         </div>
+        <div class="w-full shadow-md">
+            <ThemeTag type="minimal"/>
+            <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'minimal'}" />
+            <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'minimal'}" />
+        </div>
+        <div class="w-full shadow-md">
+            <ThemeTag type="minimalDark"/>
+            <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'minimalDark'}" />
+            <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'minimalDark'}" />
+        </div>
     </div>
 </template>

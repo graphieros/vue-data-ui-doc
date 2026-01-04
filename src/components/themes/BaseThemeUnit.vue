@@ -68,6 +68,8 @@ const themes = computed(() => {
         { name: 'hack',config: {}, backgroundColor: '#1A1A1A', color: '#99AA99', accent: '#009900' },
         { name: 'celebration',config: {}, backgroundColor: '#FFF8E1', color: '#424242', accent: '#D32F2F' },
         { name: 'celebrationNight',config: {}, backgroundColor: '#1E1E1E', color: '#BDBDBD', accent: '#D32F2F' },
+        { name: 'minimal', config: {}, backgroundColor: '#FFFFFF', color: '#1A1A1A', accent: '#454862'},
+        { name: 'minimalDark', config: {}, backgroundColor: '#1A1A1A', color: '#CCCCCC', accent: '#65698E'},
     ]
 })
 

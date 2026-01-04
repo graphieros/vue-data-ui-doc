@@ -50,6 +50,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  autoSize: true,
     style: {
         chart: {
             title: {

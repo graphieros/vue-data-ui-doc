@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.10.1",
+      "date": "2026-01-04",
+      "updates": [
+        {
+          "component": "All components with themes",
+          "description": "Add 'minimal' & 'minimalDark' themes",
+          "link": ""
+        }
+      ]
+    },
+    {
       "version": "v 3.10.0",
       "date": "2026-01-02",
       "updates": [
