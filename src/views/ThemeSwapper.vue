@@ -57,6 +57,11 @@ const crumbs = ref([
 ]);
 
 const currentTheme = ref('default');
+
+onMounted(() => {
+    currentTheme.value = isDarkMode.value ? 'dark' : 'default'
+})
+
 const step = ref(0);
 
 const code = computed(() => {
@@ -73,11 +78,16 @@ function selectTheme(theme) {
 const DATASET_XY = ref([
     {
         name: 'Series A',
-        series: [0, 1, 1, 2, 3, 5, 8, 13, 21],
+        series: [0, 0.5, 0.5, 1, 1.5, 2.5, 4, 6.5, 10.5],
         type: 'bar'
     },
     {
         name: 'Series B',
+        series: [0, 1, 1, 2, 3, 5, 8, 13, 21],
+        type: 'bar'
+    },
+    {
+        name: 'Series C',
         series: [0, 3, 3, 5, 6, 8, 11, 16, 24],
         type: 'line',
         smooth: true
@@ -94,6 +104,11 @@ const CONFIG_XY = computed(() => {
                 paddingLeft: 12,
                 subtitle: {
                     text: 'Subtitle'
+                }
+            },
+            zoom: {
+                minimap: {
+                    show: true
                 }
             }
         }
@@ -301,6 +316,91 @@ const CONFIG_WORD_CLOUD = computed(() => {
     }
 })
 
+function makeSparklineDs(n) {
+    const arr = [];
+    for (let i = 0; i < n; i += 1) {
+        arr.push({
+            period: `Period ${i}`,
+            value: Math.random() * 10
+        })
+    }
+    return arr;
+} 
+
+const DATASET_SPARKLINE = ref(makeSparklineDs(24));
+
+const CONFIG_SPARKLINE = computed(() => {
+    return {
+        theme: currentTheme.value,
+        style: {
+            chartWidth: 400,
+            title: {
+                text: 'Title',
+                fontSize: 20
+            },
+            dataLabel: {
+                fontSize: 48
+            },
+            line: {
+                smooth: true
+            },
+            tooltip: {
+                show: true
+            }
+        }
+    }
+});
+
+const CONFIG_SPARKLINE_BAR = computed(() => {
+    return {
+        theme: currentTheme.value,
+        type: 'bar',
+        style: {
+            chartWidth: 400,
+            title: {
+                text: 'Title',
+                fontSize: 20
+            },
+            dataLabel: {
+                fontSize: 48
+            },
+            tooltip: {
+                show: true
+            }
+        }
+    }
+})
+
+const DATASET_SPARKLINE_BAR = ref(makeSparklineDs(12));
+
+const DATASET_SPARKSTACKBAR = ref([
+    {
+        name: 'A',
+        value: 128
+    },
+    {
+        name: 'B',
+        value: 36
+    },
+    {
+        name: 'C',
+        value: 16
+    }
+]);
+
+const CONFIG_SPARKSTACKBAR = computed(() => {
+    return {
+        theme: currentTheme.value,
+        style: {
+            animation: {
+                show: false,
+            },
+            title: {
+                text: 'Title'
+            }
+        }
+    }
+});
 </script>
 
 <template>
@@ -348,6 +448,24 @@ const CONFIG_WORD_CLOUD = computed(() => {
 
         <BaseCard class="mt-6">
             <div class="grid grid-cols-2 gap-4">
+                <div class="col-span-2 grid grid-cols-3 gap-4">
+                    <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
+                        <div style="display:flex; align-items:center; height: 100%; width:100%">
+                            <VueUiSparkline :dataset="DATASET_SPARKLINE" :config="CONFIG_SPARKLINE" />
+                        </div>
+                    </BaseCard>
+                    <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
+                        <div style="display:flex; align-items:center; height: 100%; width: 100%;">
+                            <VueUiSparkStackbar :dataset="DATASET_SPARKSTACKBAR" :config="CONFIG_SPARKSTACKBAR" />
+                        </div>
+                    </BaseCard>
+                    <BaseCard class="w-full flex flex-row !align-center" :backgroundColor="background[currentTheme]">
+                        <div style="display:flex; align-items:center; height: 100%; width: 100%;">
+                            <VueUiSparkline :dataset="DATASET_SPARKLINE_BAR" :config="CONFIG_SPARKLINE_BAR"/>
+                        </div>
+                    </BaseCard>
+                </div>
+
                 <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
                     <VueUiXy :dataset="DATASET_XY" :config="CONFIG_XY" :key="`donut_${step}`"/>
                 </BaseCard>

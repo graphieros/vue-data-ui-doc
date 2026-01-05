@@ -1,5 +1,26 @@
 [
     {
+      "version": "v 3.10.3",
+      "date": "2026-01-05",
+      "updates": [
+        {
+          "component": "VueUiSparkStackbar",
+          "description": "Improve config definitions for some themes",
+          "link": "/docs#vue-ui-sparkstackbar"
+        },
+        {
+          "component": "VueUiSparkline",
+          "description": "Improve config definitions for some themes",
+          "link": "/docs#vue-ui-sparkline"
+        },
+        {
+          "component": "VueUiWordCloud",
+          "description": "Improve config definitions for some themes",
+          "link": "/docs#vue-ui-word-cloud"
+        }
+      ]
+    },
+    {
       "version": "v 3.10.2",
       "date": "2026-01-05",
       "updates": [
