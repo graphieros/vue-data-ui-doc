@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.10.2",
+      "date": "2026-01-05",
+      "updates": [
+        {
+          "component": "VueUiStackline",
+          "description": "Fix wrong bottom legend placement",
+          "link": "/docs#vue-ui-stackline"
+        }
+      ]
+    },
+    {
       "version": "v 3.10.1",
       "date": "2026-01-04",
       "updates": [
