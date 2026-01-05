@@ -100,6 +100,11 @@ const routes = [
         }
     },
     {
+        path: '/examples/themes',
+        name: 'Built-in themes',
+        component: () => import('../views/ThemeSwapper.vue')
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

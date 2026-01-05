@@ -98,6 +98,13 @@ const menuItems = computed(() => ([
         link: '/examples/config-flows',
         selected: currentMenu.value === 'config-flows'
     },
+    {
+        name: translations.value.builtInThemes[store.lang],
+        icon: 'palette',
+        callback: () => {},
+        link: '/examples/themes',
+        selected: currentMenu.value === 'themes'
+    }
 ]))
 
 </script>

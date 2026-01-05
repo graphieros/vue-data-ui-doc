@@ -71,6 +71,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                builtInThemes: {
+                    en: 'Built-in themes',
+                    fr: 'Thèmes intégrés',
+                    pt: 'Temas integrados',
+                    de: 'Integrierte Themen',
+                    zh: '内置主题',
+                    jp: '組み込みテーマ',
+                    es: 'Temas integrados',
+                    ko: '내장 테마',
+                    ar: 'سمات مدمجة'
+                },
                 customFormat: {
                     en: 'How to use the "customFormat" config attributes:',
                     fr: 'Comment utiliser les attributs de configuration "customFormat" :',
