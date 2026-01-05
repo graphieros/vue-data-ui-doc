@@ -26,9 +26,16 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    backgroundColor: {
+        type: String,
+        default: ''
+    }
 });
 
 const background = computed(() => {
+    if (props.backgroundColor) {
+        return props.backgroundColor;
+    }
     if (props.type === 'light') {
         return 'bg-gray-50 dark:bg-[#3A3A3A]'
     }

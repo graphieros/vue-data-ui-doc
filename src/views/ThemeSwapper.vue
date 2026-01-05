@@ -26,6 +26,18 @@ const themes = [
     'hack'
 ];
 
+const background = {
+    default: 'bg-[#FFFFFF]',
+    dark: 'bg-[#1A1A1A]',
+    minimal: 'bg-[#FFFFFF]',
+    minimalDark: 'bg-[#1A1A1A]',
+    celebration: 'bg-[#FFF8E1]',
+    celebrationNight: 'bg-[#1E1E1E]',
+    zen: 'bg-[#fbfafa]',
+    concrete: 'bg-[#f6f6fb]',
+    hack: 'bg-[#1A1A1A]'
+}
+
 onMounted(() => {
     window.scrollTo(0,0)
 });
@@ -336,22 +348,22 @@ const CONFIG_WORD_CLOUD = computed(() => {
 
         <BaseCard class="mt-6">
             <div class="grid grid-cols-2 gap-4">
-                <BaseCard class="w-full">
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
                     <VueUiXy :dataset="DATASET_XY" :config="CONFIG_XY" :key="`donut_${step}`"/>
                 </BaseCard>
-                <BaseCard class="w-full">
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
                     <VueUiDonut :dataset="DATASET_DONUT" :config="CONFIG_DONUT" :key="`xy_${step}`"/>
                 </BaseCard>
-                <BaseCard class="w-full">
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
                     <VueUiStackline :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackline_${step}`"/>
                 </BaseCard>
-                <BaseCard class="w-full">
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
                     <VueUiStackbar :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackbar_${step}`"/>
                 </BaseCard>
-                <BaseCard class="w-full">
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
                     <VueUiBump :dataset="DATASET_BUMP" :config="CONFIG_BUMP" :key="`bump_${step}`"/>
                 </BaseCard>
-                <BaseCard class="w-full">
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
                     <VueUiWordCloud :dataset="DATASET_WORD_CLOUD" :config="CONFIG_WORD_CLOUD" :key="`wordcloud_${step}`"/>
                 </BaseCard>
             </div>
