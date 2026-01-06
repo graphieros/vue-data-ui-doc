@@ -93,7 +93,7 @@ const menuItems = computed(() => ([
     },
     {
         name: translations.value.docs.configFlow[store.lang],
-        icon: 'chartFlow',
+        icon: 'chartDag',
         callback: () => {},
         link: '/examples/config-flows',
         selected: currentMenu.value === 'config-flows'

@@ -5,6 +5,8 @@ import useFlows from "../flows";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import { useMakerStore } from "../stores/maker";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
+import BaseConfigViewer from "../components/Base/BaseConfigViewer.vue";
+import { getVueDataUiConfig } from "vue-data-ui";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -33,13 +35,76 @@ const crumbs = ref([
 
 
 const flows = useFlows();
-const selectedComponent = ref('VueUiFlow');
+const selectedComponent = ref('vue_ui_xy');
 
-const options = ref([
-    { name: 'VueUiFlow', icon: 'chartFlow'},
-    { name: 'VueUiXy', icon: 'chartLine'},
-    { name: 'VueUiDonut', icon: 'chartDonut'}
-    ])
+const options = Object.entries({
+    vue_ui_bullet: 'chartBullet',
+    vue_ui_3d_bar: 'chart3dBar',
+    vue_ui_accordion: 'accordion',
+    vue_ui_age_pyramid: 'chartAgePyramid',
+    vue_ui_annotator: 'annotator',
+    vue_ui_candlestick: 'chartCandlestick',
+    vue_ui_carousel_table: 'carouselTable',
+    vue_ui_chestnut: 'chartChestnut',
+    vue_ui_dashboard: 'dashboard',
+    vue_ui_digits: 'digit8',
+    vue_ui_donut: 'chartDonut',
+    vue_ui_donut_evolution: 'chartDonutEvolution',
+    vue_ui_dumbbell: 'chartDumbbell',
+    vue_ui_flow: 'chartFlow',
+    vue_ui_galaxy: 'chartGalaxy',
+    vue_ui_gauge: 'chartGauge',
+    vue_ui_heatmap: 'chartHeatmap',
+    vue_ui_kpi: 'kpiBox',
+    vue_ui_mini_loader: 'chartWheel',
+    vue_ui_molecule: 'chartCluster',
+    vue_ui_mood_radar: 'chartMoodRadar',
+    vue_ui_nested_donuts: 'chartNestedDonuts',
+    vue_ui_onion: 'chartOnion',
+    vue_ui_parallel_coordinate_plot: 'chartParallelCoordinatePlot',
+    vue_ui_quadrant: 'chartQuadrant',
+    vue_ui_quick_chart: 'vueDataUi',
+    vue_ui_radar: 'chartRadar',
+    vue_ui_rating: 'star',
+    vue_ui_relation_circle: 'chartRelationCircle',
+    vue_ui_rings: 'chartRings',
+    vue_ui_scatter: 'chartScatter',
+    vue_ui_screenshot: 'screenshot',
+    vue_ui_skeleton: 'skeleton',
+    vue_ui_smiley: 'smiley',
+    vue_ui_sparkhistogram: 'chartSparkHistogram',
+    vue_ui_sparkstackbar: 'chartSparkStackbar',
+    vue_ui_spark_trend: 'trend',
+    vue_ui_sparkbar: 'chartSparkbar',
+    vue_ui_sparkgauge: 'chartGauge',
+    vue_ui_sparkline: 'chartSparkline',
+    vue_ui_strip_plot: 'chartStripPlot',
+    vue_ui_table: 'chartTable',
+    vue_ui_table_heatmap: 'chartTable',
+    vue_ui_table_sparkline: 'chartTableSparkline',
+    vue_ui_thermometer: 'chartThermometer',
+    vue_ui_timer: 'lap',
+    vue_ui_tiremarks: 'chartTiremarks',
+    vue_ui_treemap: 'chartTreemap',
+    vue_ui_vertical_bar: 'chartVerticalBar',
+    vue_ui_horizontal_bar: 'chartVerticalBar',
+    vue_ui_waffle: 'chartWaffle',
+    vue_ui_wheel: 'chartWheel',
+    vue_ui_word_cloud: 'chartWordCloud',
+    vue_ui_xy: 'chartLine',
+    vue_ui_xy_canvas: 'chartLine',
+    vue_ui_gizmo: 'battery',
+    vue_ui_stackbar: 'chartStackbar',
+    vue_ui_funnel: 'chartFunnel',
+    vue_ui_history_plot: 'chartHistoryPlot',
+    vue_ui_world: 'world',
+    vue_ui_ridgeline: 'chartRidgeline',
+    vue_ui_chord: 'chartChord',
+    vue_ui_stackline: 'chartStackline',
+    vue_ui_dag: 'chartDag',
+    vue_ui_geo: 'chartGeo',
+    vue_ui_bump: 'chartBump'
+}).map(([name, icon]) => ({ name, icon }));
 
 const config = computed(() => {
     return {
@@ -102,17 +167,21 @@ const dataset = computed(() => {
 
 const description = computed(() => {
     return {
-        en: 'Showcasing examples of the VueUiFlow chart describing some Vue Data UI components config objects.',
-        fr: 'Présentation d’exemples du diagramme VueUiFlow décrivant quelques objets de configuration des composants UI de données Vue.',
-        pt: 'Apresentando exemplos do diagrama VueUiFlow que descreve alguns objetos de configuração de componentes de IU de dados do Vue.',
-        de: 'Beispiele für das VueUiFlow-Diagramm, das einige Konfigurationsobjekte von Vue Data UI-Komponenten beschreibt.',
-        zh: '展示 VueUiFlow 图表示例，描述一些 Vue 数据 UI 组件的配置对象。',
-        jp: 'VueデータUIコンポーネントの設定オブジェクトを説明するVueUiFlowチャートの例を紹介します。',
-        es: 'Mostrando ejemplos del diagrama VueUiFlow que describen algunos objetos de configuración de componentes de UI de datos de Vue.',
-        ko: 'Vue 데이터 UI 컴포넌트 구성 객체를 설명하는 VueUiFlow 차트 예시를 보여줍니다.',
-        ar: 'عرض أمثلة لمخطط VueUiFlow يصف بعض كائنات تكوين مكونات واجهة المستخدم الخاصة ببيانات Vue.'
+        en: 'Showcasing examples of the VueUiDag chart describing some Vue Data UI components config objects.',
+        fr: 'Présentation d’exemples du diagramme VueUiDag décrivant quelques objets de configuration des composants UI de données Vue.',
+        pt: 'Apresentando exemplos do diagrama VueUiDag que descreve alguns objetos de configuração de componentes de IU de dados do Vue.',
+        de: 'Beispiele für das VueUiDag-Diagramm, das einige Konfigurationsobjekte von Vue Data UI-Komponenten beschreibt.',
+        zh: '展示 VueUiDag 图表示例，描述一些 Vue 数据 UI 组件的配置对象。',
+        jp: 'VueデータUIコンポーネントの設定オブジェクトを説明するVueUiDagチャートの例を紹介します。',
+        es: 'Mostrando ejemplos del diagrama VueUiDag que describen algunos objetos de configuración de componentes de UI de datos de Vue.',
+        ko: 'Vue 데이터 UI 컴포넌트 구성 객체를 설명하는 VueUiDag 차트 예시를 보여줍니다.',
+        ar: 'عرض أمثلة لمخطط VueUiDag يصف بعض كائنات تكوين مكونات واجهة المستخدم الخاصة ببيانات Vue.'
     }
 })
+
+const DAG_OBJ = computed(() => {
+    return getVueDataUiConfig(selectedComponent.value);
+});
 
 </script>
 
@@ -120,7 +189,7 @@ const description = computed(() => {
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
     <div class="mt-12">
         <div class="w-full flex flex-col gap-4 place-items-center justify-center my-3">
-            <VueUiIcon name="chartFlow" :size="64" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#de6937' : '#de6937'"/>
+            <VueUiIcon name="chartDag" :size="64" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#de6937' : '#de6937'"/>
             <h1 class="text-[48px] sm:text-[64px] text-center">{{ translations.docs.configFlow[store.lang] }}</h1>
             <article>
                 <p class="text-md">
@@ -165,8 +234,8 @@ const description = computed(() => {
             </div>
         </div>
 
-        <div style="min-width: 300px; max-width: 90%; resize: horizontal; overflow: auto; background: white" class="mx-auto">
-            <VueDataUi component="VueUiFlow" :dataset="dataset" :config="config"/>
+        <div style="min-width: 300px; max-width: 90%; resize: horizontal; overflow: auto; background: transparent" class="mx-auto">
+            <BaseConfigViewer :config="DAG_OBJ"/>
         </div>
     </div>
 </template>

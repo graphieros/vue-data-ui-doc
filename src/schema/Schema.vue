@@ -9,6 +9,8 @@ import DocLink from "../components/DocLink.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import CodeParser from "../components/customization/CodeParser.vue";
 import FRANCE from "../resources/FRANCE.json"
+import { getVueDataUiConfig } from "vue-data-ui";
+import BaseConfigViewer from "../components/Base/BaseConfigViewer.vue";
 
 const store = useMainStore()
 
@@ -45,6 +47,7 @@ onMounted(() => {
     Prism.highlightAll()
 })
 
+const CONFIG_OBJ = computed(() => getVueDataUiConfig(props.component));
 
 // TODO: add tables for emits & exposed methods
 
