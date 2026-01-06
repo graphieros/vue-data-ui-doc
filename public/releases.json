@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.10.4",
+      "date": "2026-01-06",
+      "updates": [
+        {
+          "component": "VueUiXy",
+          "description": "Fix bars in minimap not expanding width when segregating other bar series",
+          "link": "/docs#vue-ui-xy"
+        }
+      ]
+    },
+    {
       "version": "v 3.10.3",
       "date": "2026-01-05",
       "updates": [
