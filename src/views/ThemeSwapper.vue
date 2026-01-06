@@ -8,6 +8,7 @@ import { useMainStore } from "../stores";
 import BaseCard from "../components/BaseCard.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
 import { useRoute, useRouter } from "vue-router";
+import ConfirmCopy from "../components/ConfirmCopy.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -469,7 +470,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
         </div>
 
         <div class="max-w-[300px] mx-auto mt-6">
-            <CodeParser language="javascript" :content="code"/>
+            <CodeParser language="javascript" :content="code" @copy="store.copy()"/>
         </div>
 
         <BaseCard class="mt-6">
@@ -521,4 +522,5 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
             </div>
         </BaseCard>
     </div>
+    <ConfirmCopy/>
 </template>
