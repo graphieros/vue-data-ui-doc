@@ -473,45 +473,52 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
         </div>
 
         <BaseCard class="mt-6">
-            <div class="grid grid-cols-2 gap-4">
-                <div class="col-span-2 grid grid-cols-3 gap-4">
-                    <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                        <div style="display:flex; align-items:center; height: 100%; width:100%">
-                            <VueUiSparkline :dataset="DATASET_SPARKLINE" :config="CONFIG_SPARKLINE" />
-                        </div>
-                    </BaseCard>
-                    <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                        <div style="display:flex; align-items:center; height: 100%; width: 100%;">
-                            <VueUiSparkStackbar :dataset="DATASET_SPARKSTACKBAR" :config="CONFIG_SPARKSTACKBAR" />
-                        </div>
-                    </BaseCard>
-                    <BaseCard class="w-full flex flex-row !align-center" :backgroundColor="background[currentTheme]">
-                        <div style="display:flex; align-items:center; height: 100%; width: 100%;">
-                            <VueUiSparkline :dataset="DATASET_SPARKLINE_BAR" :config="CONFIG_SPARKLINE_BAR"/>
-                        </div>
-                    </BaseCard>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- On mobile: 1 column and span 1. On sm+: span both columns and use 3 columns inside -->
+                <div class="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
+                    <div class="flex items-center h-full w-full">
+                    <VueUiSparkline :dataset="DATASET_SPARKLINE" :config="CONFIG_SPARKLINE" />
+                    </div>
+                </BaseCard>
+
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
+                    <div class="flex items-center h-full w-full">
+                    <VueUiSparkStackbar :dataset="DATASET_SPARKSTACKBAR" :config="CONFIG_SPARKSTACKBAR" />
+                    </div>
+                </BaseCard>
+
+                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
+                    <div class="flex items-center h-full w-full">
+                    <VueUiSparkline :dataset="DATASET_SPARKLINE_BAR" :config="CONFIG_SPARKLINE_BAR" />
+                    </div>
+                </BaseCard>
                 </div>
 
                 <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <VueUiXy :dataset="DATASET_XY" :config="CONFIG_XY" :key="`donut_${step}`"/>
+                <VueUiXy :dataset="DATASET_XY" :config="CONFIG_XY" :key="`donut_${step}`" />
                 </BaseCard>
+
                 <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <VueUiDonut :dataset="DATASET_DONUT" :config="CONFIG_DONUT" :key="`xy_${step}`"/>
+                <VueUiDonut :dataset="DATASET_DONUT" :config="CONFIG_DONUT" :key="`xy_${step}`" />
                 </BaseCard>
+
                 <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <VueUiStackline :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackline_${step}`"/>
+                <VueUiStackline :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackline_${step}`" />
                 </BaseCard>
+
                 <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <VueUiStackbar :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackbar_${step}`"/>
+                <VueUiStackbar :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackbar_${step}`" />
                 </BaseCard>
+
                 <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <VueUiBump :dataset="DATASET_BUMP" :config="CONFIG_BUMP" :key="`bump_${step}`"/>
+                <VueUiBump :dataset="DATASET_BUMP" :config="CONFIG_BUMP" :key="`bump_${step}`" />
                 </BaseCard>
+
                 <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <VueUiWordCloud :dataset="DATASET_WORD_CLOUD" :config="CONFIG_WORD_CLOUD" :key="`wordcloud_${step}`"/>
+                <VueUiWordCloud :dataset="DATASET_WORD_CLOUD" :config="CONFIG_WORD_CLOUD" :key="`wordcloud_${step}`" />
                 </BaseCard>
             </div>
         </BaseCard>
-
     </div>
 </template>
