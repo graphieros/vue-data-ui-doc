@@ -183,6 +183,11 @@ const CONFIG_STACKLINE = computed(() => {
                     subtitle: {
                         text: 'Subtitle'
                     }
+                },
+                zoom: {
+                    minimap: {
+                        show: true
+                    }
                 }
             }
         }
