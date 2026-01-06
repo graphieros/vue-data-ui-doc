@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
@@ -7,12 +7,15 @@ import useMobile from "../useMobile";
 import { useMainStore } from "../stores";
 import BaseCard from "../components/BaseCard.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
+import { useRoute, useRouter } from "vue-router";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
 const lang = computed(() => store.lang);
 const isDarkMode = computed(() => store.isDarkMode);
-const { isMobile } = useMobile()
+const { isMobile } = useMobile();
+const router = useRouter();
+const route = useRoute();
 
 const themes = [
     'default',
@@ -58,9 +61,15 @@ const crumbs = ref([
 
 const currentTheme = ref('default');
 
-onMounted(() => {
-    currentTheme.value = isDarkMode.value ? 'dark' : 'default'
-})
+watch(() => router.currentRoute.value, (r) => {
+    const hash = router.currentRoute.value.hash;
+    if (!hash) {
+        currentTheme.value = isDarkMode.value ? 'dark' : 'default'
+    } else {
+        currentTheme.value = hash.replaceAll('#', '');
+    }
+}, { immediate: true })
+
 
 const step = ref(0);
 
@@ -73,6 +82,11 @@ const code = computed(() => {
 function selectTheme(theme) {
     currentTheme.value = theme;
     step.value += 1;
+    router.push({
+        path: route.path,
+        query: route.query,
+        hash: `#${theme}`
+    })
 }
 
 const DATASET_XY = ref([
