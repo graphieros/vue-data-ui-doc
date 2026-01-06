@@ -174,7 +174,9 @@ const specialIcons = ref([
     "download", 
     "focus", 
     "folder", 
-    "folderFill", 
+    "folderFill",
+    "folderOpen",
+    "folderOpenFill", 
     "fork", 
     "frameLine",
     "func",
@@ -197,6 +199,8 @@ const specialIcons = ref([
     "lap",
     "laptop", 
     "legend",
+    "lightBulbOn",
+    "lightBulbOff",
     "lineUp", 
     "lock",
     "magnify",
@@ -267,6 +271,7 @@ const specialIcons = ref([
     "starFill",
     "stop",
     "sun", 
+    "tag",
     "target", 
     "text",
     "trash",
@@ -292,7 +297,7 @@ const specialIcons = ref([
     "zeroToNine", 
     "zoomMinus",
     "zoomPlus",
-])
+]);
 
 const selectedIcon = ref("smiley")
 
