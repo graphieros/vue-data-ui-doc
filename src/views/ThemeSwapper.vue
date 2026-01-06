@@ -56,6 +56,9 @@ const crumbs = ref([
     },
     {
         description: 'Themes'
+    },
+    {
+        description: 'default'
     }
 ]);
 
@@ -68,6 +71,7 @@ watch(() => router.currentRoute.value, (r) => {
     } else {
         currentTheme.value = hash.replaceAll('#', '');
     }
+    crumbs.value.at(-1).description = currentTheme.value;
 }, { immediate: true })
 
 
