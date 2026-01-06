@@ -7,6 +7,11 @@
           "component": "VueUiXy",
           "description": "Fix bars in minimap not expanding width when segregating other bar series",
           "link": "/docs#vue-ui-xy"
+        },
+        {
+          "component": "VueUiXyCanvas",
+          "description": "Fix bars in minimap not expanding width when segregating other bar series",
+          "link": "/docs#vue-ui-xy-canvas"
         }
       ]
     },
