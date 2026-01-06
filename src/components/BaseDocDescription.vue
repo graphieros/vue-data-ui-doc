@@ -5,4 +5,5 @@
             {{ text }}
         </slot>
     </p>
+    <slot name="after"/>
 </template>

@@ -299,6 +299,8 @@ const specialIcons = ref([
     "zoomPlus",
 ]);
 
+const count = computed(() => specialIcons.value.length + icons.value.length);
+
 const selectedIcon = ref("smiley")
 
 function useModal(state) {
@@ -429,7 +431,16 @@ const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-durat
     <div>
         <BaseDocTitle name="VueUiIcon" />
 
-        <BaseDocDescription :text="translations.docs.tooltips.icon[store.lang]" />
+        <BaseDocDescription :text="translations.docs.tooltips.icon[store.lang]">
+            <template #after>
+                <div class="mx-auto flex flex-row gap-1 justify-center text-xl">
+                    <span class="text-app-blue font-inter-medium">
+                        {{ count }}
+                    </span>
+                    <span>icons</span>
+                </div>
+            </template>
+        </BaseDocDescription>
 
         <div class="w-fit mx-auto mt-6 mb-12">
             <BaseAutoComplete v-model="search" :items="[...icons, ...specialIcons]">
