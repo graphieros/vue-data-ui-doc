@@ -200,7 +200,10 @@ const CONFIG_STACKLINE = computed(() => {
                     paddingLeft: 12,
                     subtitle: {
                         text: 'Subtitle'
-                    }
+                    },
+                },
+                bars: {
+                    distributed: true
                 },
                 zoom: {
                     minimap: {
