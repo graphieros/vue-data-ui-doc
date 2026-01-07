@@ -245,6 +245,15 @@ const cfg = computed(() => {
                     backgroundColor: isDarkMode.value ? '#2A2A2A' : undefined,
                     tooltip: {
                         showOnClick: true,
+                    },
+                    selected: {
+                        stroke: isDarkMode.value ? '#42d392' : '#ff3700',
+                        strokeWidth: 2,
+                        backgroundColor: isDarkMode.value ? '#42d39290' : '#ff370030',
+                        labelColor: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                        downstreamEdges: {
+                            stroke: isDarkMode.value ? '#42d392' : '#ff3700',
+                        }
                     }
                 },
                 edges: {
@@ -252,7 +261,10 @@ const cfg = computed(() => {
                 },
                 midpoints: {
                     show: true,
-                    radius: 8
+                    radius: 8,
+                    selectedEdge: {
+                        stroke: isDarkMode.value ? '#42d392' : '#ff3700',
+                    }
                 },
                 controls: {
                     position: 'top'

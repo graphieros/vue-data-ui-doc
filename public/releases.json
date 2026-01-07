@@ -1,5 +1,21 @@
 [
     {
+      "version": "v 3.10.5",
+      "date": "2026-01-07",
+      "updates": [
+        {
+          "component": "VueUiDag",
+          "description": "Add config options to style edges and nodes when selected",
+          "link": "/docs#vue-ui-dag"
+        },
+        {
+          "component": "VueUiIcon",
+          "description": "Add new icons",
+          "link": "/docs#vue-ui-icon"
+        }
+      ]
+    },
+    {
       "version": "v 3.10.4",
       "date": "2026-01-06",
       "updates": [

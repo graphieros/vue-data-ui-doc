@@ -177,6 +177,20 @@ const config = ref({
                     backgroundColor: '#3A3A3A',
                     color: '#CCCCCC',
                     maxWidth: '300px'
+                },
+                selected: {
+                    stroke: null,
+                    strokeWidth: null,
+                    backgroundColor: null,
+                    labelColor: null,
+                    downstreamEdges: {
+                        stroke: null,
+                        animated: null,
+                    },
+                    upstreamEdges: {
+                        stroke: null,
+                        animated: null,
+                    }
                 }
             },
             edges: {
@@ -197,6 +211,10 @@ const config = ref({
                     maxWidth: '300px',
                     backgroundColor: '#3A3A3A',
                     color: '#CCCCCC'
+                },
+                selectedEdge: {
+                    stroke: null,
+                    animated: null,
                 }
             },
             controls: {
@@ -306,6 +324,20 @@ const darkModeConfig = ref({
                     backgroundColor: '#2A2A2A',
                     color: '#CCCCCC',
                     maxWidth: '300px'
+                },
+                selected: {
+                    stroke: null,
+                    strokeWidth: null,
+                    backgroundColor: null,
+                    labelColor: null,
+                    downstreamEdges: {
+                        stroke: null,
+                        animated: null,
+                    },
+                    upstreamEdges: {
+                        stroke: null,
+                        animated: null,
+                    }
                 }
             },
             edges: {
@@ -326,6 +358,10 @@ const darkModeConfig = ref({
                     maxWidth: '300px',
                     backgroundColor: '#2A2A2A',
                     color: '#CCCCCC'
+                },
+                selectedEdge: {
+                    stroke: null,
+                    animated: null,
                 }
             },
             controls: {
@@ -552,6 +588,20 @@ function goToPage(route) {
                         <BaseAttr name="color" attr="style.chart.nodes.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="maxWidth" attr="style.chart.nodes.tooltip.maxWidth" type="text" defaultVal="'300px'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
+                    <BaseDetails attr="selected" title="style.chart.nodes.selected" :level="4">
+                        <BaseAttr name="stroke" attr="style.chart.nodes.selected.stroke" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.nodes.selected.strokeWidth" type="number" defaultVal="null" :min="1" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="backgroundColor" attr="style.chart.nodes.selected.backgroundColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="labelColor" attr="style.chart.nodes.selected.labelColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="downstreamEdges" title="style.chart.nodes.selected.downstreamEdges" :level="5">
+                            <BaseAttr name="stroke" attr="style.chart.nodes.selected.downstreamEdges.stroke" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="animated" attr="style.chart.nodes.selected.downstreamEdges.animated" type="checkbox" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                        <BaseDetails attr="upstreamEdges" title="style.chart.nodes.selected.upstreamEdges" :level="5">
+                            <BaseAttr name="stroke" attr="style.chart.nodes.selected.upstreamEdges.stroke" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="animated" attr="style.chart.nodes.selected.upstreamEdges.animated" type="checkbox" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                    </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="edges" title="style.chart.edges" :level="3">
                     <BaseAttr name="stroke" attr="style.chart.edges.stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -571,6 +621,10 @@ function goToPage(route) {
                         <BaseAttr name="maxWidth" attr="style.chart.midpoints.tooltip.maxWidth" type="text" defaultVal="'300px'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="backgroundColor" attr="style.chart.midpoints.tooltip.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.midpoints.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="selectedEdge" title="style.chart.midpoints.selectedEdge" :level="4">
+                        <BaseAttr name="stroke" attr="style.chart.midpoints.selectedEdge.stroke" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="animated" attr="style.chart.midpoints.selectedEdge.animated" type="checkbox" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="controls" title="style.chart.controls" :level="3">
