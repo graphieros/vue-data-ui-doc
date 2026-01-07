@@ -684,6 +684,7 @@ const sparklineConfig = ref({
   style: {
     backgroundColor: "#F3F4F6",
     fontFamily: "inherit",
+    chartWidth: 350,
     line: {
       color: "#42d392",
       strokeWidth: 1,
@@ -691,6 +692,7 @@ const sparklineConfig = ref({
     },
     bar: {
       borderRadius: 1,
+      color: '#5f8aee'
     },
     zeroLine: {
       color: "#505050",
@@ -728,6 +730,10 @@ const sparklineConfig = ref({
       useGradient: true,
       opacity: 30,
       color: "#42d392"
+    },
+    tooltip: {
+      show: true,
+      backgroundOpacity: 30,
     }
   }
 });
@@ -736,6 +742,7 @@ const darkModeSparklineConfig = ref({
   style: {
     backgroundColor: "transparent",
     fontFamily: "inherit",
+    chartWidth: 350,
     line: {
       color: "#42d392",
       strokeWidth: 1,
@@ -780,6 +787,12 @@ const darkModeSparklineConfig = ref({
       useGradient: true,
       opacity: 30,
       color: "#42d392"
+    },
+    tooltip: {
+      show: true,
+      backgroundColor: '#1A1A1A',
+      color: '#CCCCCC',
+      backgroundOpacity: 30,
     }
   }
 });
@@ -2402,6 +2415,10 @@ const digitsConfigVersion = computed(() => {
                               ...darkModeSparklineConfig.style.line, 
                               color: '#5f8bee'
                             }, 
+                            bar: {
+                              ...darkModeSparklineConfig.style.bar,
+                              color: '#5f8bee',
+                            },
                             area: {
                               ...darkModeSparklineConfig.style.area, 
                               color: '#5f8bee'
