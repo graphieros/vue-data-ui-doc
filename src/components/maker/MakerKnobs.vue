@@ -130,7 +130,10 @@ function getKeyTranslation(key) {
     </div>
     <div class="flex flex-col gap-2 my-4 overflow-visible" v-for="(category, c) in categories" :id="category.key" :style="{ scrollMarginTop : '80px'}">
         <BaseCard type="medium">
-            <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC] mb-4">{{ category.title }}</h4> 
+            <div class="flex flex-row place-items-center gap-3 mb-4">
+                <VueUiIcon name="knobs" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
+                <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]">{{ category.title }}</h4> 
+            </div>
             <div class="flex flex-row gap-4 place-items-center flex-wrap">
                 <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
                     <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }} <br v-if="getKeyTranslation(knob.key)"/><span v-if="getKeyTranslation(knob.key) && typeof getKeyTranslation(knob.key) === 'string' && typeof getLabel(knob.label) === 'string' && getKeyTranslation(knob.key).toUpperCase() !== getLabel(knob.label).toUpperCase()" class="text-xs text-gray-500">({{ getKeyTranslation(knob.key) }})</span></label>

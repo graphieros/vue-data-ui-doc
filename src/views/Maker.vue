@@ -283,24 +283,53 @@ const crumbs = computed(() => {
             </div>
         </BaseCard>
 
-        <BaseCard class="w-fit mx-auto" rounding="rounded-full">
+        <BaseCard class="w-fit mx-auto mb-4" rounding="rounded-xl sm:rounded-full">
             <div class="w-full">
-                    <div class="font-bold flex flex-col sm:flex-row gap-4 justify-center place-items-center bg-gray-200 dark:bg-[#FFFFFF10] w-fit mx-auto p-4 rounded-full">
-                        <div class="py-2 px-4">1. {{ makerTranslations.steps.one[store.lang] }}</div>
-                        <div class="hidden sm:block">
-                            <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg" />
+                    <div class="font-bold flex flex-col sm:flex-row gap-4 justify-center place-items-center bg-gray-200 dark:bg-[#FFFFFF10] w-fit mx-auto p-4 rounded-md sm:rounded-full">
+                        <div class="flex flex-col place-items-center">
+                            <VueUiIcon name="numbers" :size="36" :strokeWidth="1" :stroke="isDarkMode ? '#42D392' : '#3456a3'">
+                                <template #exp>
+                                    <VueUiIcon name="wrench" :stroke="isDarkMode ? '#8A8A8A' : '#6A6A6A'"/>
+                                </template>
+                            </VueUiIcon>
+                            <div class="flex flex-row place-items-center">
+                                <div class="py-2 px-4">1. {{ makerTranslations.steps.one[store.lang] }}</div>
+                                <div class="hidden sm:block">
+                                    <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" class="drop-shadow-lg" />
+                                </div>
+                            </div>
                         </div>
+
                         <div class="sm:hidden">
-                            <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
+                            <VueUiIcon name="arrowBottom" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" class="drop-shadow-lg"/>
                         </div>
-                        <div class="py-2 px-4">2. {{ makerTranslations.steps.two[store.lang] }}</div>
-                        <div class="hidden sm:block">
-                            <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg"/>
+
+                        <div class="flex flex-col place-items-center">
+                            <VueUiIcon name="knobs" :size="36" :strokeWidth="0.8" :stroke="isDarkMode ? '#42D392' : '#3456a3'">
+                                <template #exp>
+                                    <VueUiIcon name="settings" :stroke="isDarkMode ? '#8A8A8A' : '#6A6A6A'"/>
+                                </template>
+                            </VueUiIcon>
+                            <div class="flex flex-row place-items-center">
+                                <div class="py-2 px-4">2. {{ makerTranslations.steps.two[store.lang] }}</div>
+                                <div class="hidden sm:block">
+                                    <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" class="drop-shadow-lg"/>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="sm:hidden">
-                            <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
+                            <VueUiIcon name="arrowBottom" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'" class="drop-shadow-lg"/>
                         </div>
-                        <div class="py-2 px-4">3. {{ makerTranslations.steps.three[store.lang] }}</div>
+
+                        <div class="flex flex-col place-items-center">
+                            <VueUiIcon name="boxes" :size="36" :strokeWidth="0.8" :stroke="isDarkMode ? '#42D392' : '#3456a3'">
+                                <template #exp>
+                                    <VueUiIcon name="copy" :stroke="isDarkMode ? '#8A8A8A' : '#6A6A6A'"/>
+                                </template>
+                            </VueUiIcon>
+                            <div class="py-2 px-4">3. {{ makerTranslations.steps.three[store.lang] }}</div>
+                        </div>
                     </div>
     
             </div>
