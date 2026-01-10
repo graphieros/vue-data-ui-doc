@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useMainStore } from "../stores";
-import { SearchIcon, XIcon, InfoCircleIcon } from "vue-tabler-icons";
+import { XIcon, InfoCircleIcon } from "vue-tabler-icons";
 import {useConfig} from "../assets/useConfig";
 import Prism from "prismjs"
 import { useRouter } from "vue-router";
@@ -209,7 +209,7 @@ function closeList() {
           class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full dark:bg-[#2A2A2A] hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:border-app-green text-black dark:text-app-green dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
           @click="search"
         >
-          <SearchIcon />
+          <VueUiIcon name="magnify" :stroke="isDarkMode ? '#87e6bb' : '#1A1A1A'" :size="20"/>
         </button>
         <button
           v-if="searchTerm || showSuggestions"
@@ -273,7 +273,7 @@ function closeList() {
             class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:border-app-green text-black dark:text-app-green dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
             @click="search"
           >
-            <SearchIcon />
+            <VueUiIcon name="magnify" :stroke="isDarkMode ? '#87e6bb' : '#1A1A1A'" :size="20"/>
           </button>
           <button
             v-if="searchTerm || showSuggestions"

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue";
-import { ChevronLeftIcon, ChevronRightIcon, SearchIcon } from "vue-tabler-icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import LinkTooltip from "../components/LinkTooltip.vue";
 import DynamicTooltip from "./DynamicTooltip.vue";
@@ -1050,7 +1050,7 @@ function handleSearchEnter() {
 
                 <!-- INPUT WITH AUTOCOMPLETE -->
                 <div class="relative mb-2">
-                    <SearchIcon class="absolute top-2.5 left-3" :color="isDarkMode ? '#83a4f2' : '#8A8A8A'"/>
+                    <VueUiIcon name="magnify" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'" class="absolute top-3 left-3" :size="20"/>
                     <input
                         ref="componentSearch"
                         v-model="searchInputQuery"

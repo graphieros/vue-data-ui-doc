@@ -1,6 +1,6 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, ref } from "vue";
-import { SearchIcon } from "vue-tabler-icons";
+import { useMainStore } from "../../stores";
 
 const props = defineProps({
     items: {
@@ -25,6 +25,9 @@ const props = defineProps({
         default: "searchInput",
     },
 });
+
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const model = defineModel({ type: String, default: "" });
 
@@ -184,7 +187,7 @@ onBeforeUnmount(() => {
     <div class="autocomplete">
         <label v-if="label" class="label" :for="inputId">{{ label }}</label>
 
-        <SearchIcon class="absolute top-1/2 -translate-y-1/2 left-2" />
+        <VueUiIcon name="magnify" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="absolute top-1/2 -translate-y-1/2 left-2.5" :size="20"/>
 
         <input :id="inputId" ref="inputElement" type="search" class="input pl-6 !rounded-md" :placeholder="placeholder"
             autocomplete="off" role="combobox" aria-autocomplete="list" :aria-expanded="String(isOpen)"

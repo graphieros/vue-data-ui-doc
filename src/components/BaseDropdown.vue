@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, nextTick, onBeforeUnmount, toRefs, onMounted, watch } from "vue";
 import vClickOutside from "../directives/vClickOutside";
-import { SearchIcon, XIcon } from "vue-tabler-icons";
+import { XIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import BaseCard from "./BaseCard.vue";
 
@@ -40,6 +40,7 @@ const props = defineProps({
 });
 
 const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 const rootInput = ref(null);
 
 function fokkus() {
@@ -172,7 +173,7 @@ defineExpose({
                 <li v-if="search" class="sticky top-0 bg-inherit py-1 shadow-md">
                     <div class="w-full flex flex-row mt-1 mb-1 px-2 gap-2 place-items-center peer relative">
                         <input ref="rootInput" class="dd-search-input peer w-full h-[36px] transition-colors" style="padding-left:36px" type="text" v-model="searchModel"/>
-                        <SearchIcon class="peer-focus:text-app-blue peer-hover:text-app-blue absolute left-4 transition-colors"/>
+                        <VueUiIcon name="magnify" :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'" class="absolute left-4" :size="20"/>
                         <button @click="searchModel = ''" :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`">
                             <XIcon class="text-gray-500 peer-focus:text-app-blue peer-hover:text-app-blue hover:text-app-blue transition-colors"/>
                         </button>
