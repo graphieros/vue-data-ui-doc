@@ -142,9 +142,11 @@ const abbrLen = ref(5);
 const mergeConfigsContent = ref(`import { mergeConfigs } from "vue-data-ui";
 
 const objA = ref({
+    bar: 'BAR'
     foo: {
         propA: 'A',
-        propB: 'B'
+        propB: 'B',
+        propC: null
     }
 });
 
@@ -161,7 +163,7 @@ const merged = computed(() => {
 });
 
 /*
-* Result: both objects are merged
+* Result: both objects are merged, preserving the unchanged attributes from the original
 *   {
 *       bar: 'ZZZ',
 *       foo: {
@@ -175,7 +177,7 @@ const merged = computed(() => {
 
 const getVueDataUiConfigAndMergeConfigsContent = ref(`import { getVueDataUiConfig, mergeConfigs } from "vue-data-ui";
 
-// Get the default config and set color options
+// Get the default config and set color options for a given component
 const customTheme = getVueDataUiConfig("vue_ui_xy", {
     colorBackground: "#1A1A1A",
     colorTextPrimary: "#CD9077",
@@ -389,8 +391,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard>
                 <div class="p-4" dir="auto">
-                    <code class="text-lg">useObjectBindings</code>
-                    <p class="text-gray-500">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
+                    <code class="text-xl">useObjectBindings</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
                 </div>
 
                 <div class="p-4 overflow-auto">
@@ -422,8 +424,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
-                    <code class="lext-lg">mergeConfigs</code>
-                    <p class="text-gray-500">{{ utilityTranslations.mergeConfigs[store.lang] }}</p>
+                    <code class="text-xl">mergeConfigs</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.mergeConfigs[store.lang] }}</p>
                 </div>
 
                 <div class="p-4 overflow-auto">
@@ -431,8 +433,8 @@ const bindings = useObjectBindings(donutConfig);
                 </div>
 
                 <div class="p-4" dir="auto">
-                    <code class="lext-lg">getVueDataUiConfig + mergeConfigs</code>
-                    <p class="text-gray-500">{{ utilityTranslations.mergeConfigsExample[store.lang] }}</p>
+                    <code class="text-xl">getVueDataUiConfig + mergeConfigs</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.mergeConfigsExample[store.lang] }}</p>
                 </div>
 
                 <div class="p-4 overflow-auto">
@@ -442,8 +444,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
-                        <code class="text-lg">abbreviate</code>
-                        <p class="text-gray-500">{{ utilityTranslations.abbreviate[store.lang] }}</p>
+                        <code class="text-xl">abbreviate</code>
+                        <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.abbreviate[store.lang] }}</p>
                     </div>
 
 
@@ -470,10 +472,10 @@ const bindings = useObjectBindings(donutConfig);
             </BaseCard>
 
             <BaseCard class="mt-6">
-                        <div class="p-4" dir="auto">
-            <code class="text-lg">darkenColor</code>
-            <p class="text-gray-500">{{ utilityTranslations.darkenColor[store.lang] }}</p>
-        </div>
+                <div class="p-4" dir="auto">
+                    <code class="text-xl">darkenColor</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.darkenColor[store.lang] }}</p>
+                </div>
 
 
     <div class="p-4 overflow-auto">
@@ -501,8 +503,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
-                    <code class="text-lg">lightenColor</code>
-                    <p class="text-gray-500">{{ utilityTranslations.lightenColor[store.lang] }}</p>
+                    <code class="text-xl">lightenColor</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.lightenColor[store.lang] }}</p>
                 </div>
 
                 <div class="p-4 overflow-auto">
@@ -527,8 +529,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
-                    <code class="text-lg">shiftColorHue</code>
-                    <p class="text-gray-500">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
+                    <code class="text-xl">shiftColorHue</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
                 </div>
 
                 <div class="p-4 overflow-auto">
@@ -555,8 +557,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
-                    <code class="text-lg">createTSpans</code>
-                    <p class="text-gray-500">{{ utilityTranslations.createTSpans[store.lang] }}</p>
+                    <code class="text-xl">createTSpans</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.createTSpans[store.lang] }}</p>
                 </div>
 
                 <div class="p-4 overflow-auto">
@@ -567,8 +569,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
-                    <code class="text-lg">getCumulativeAverage</code>
-                    <p class="text-gray-500">{{ utilityTranslations.getCumulativeAverage[store.lang] }}</p>
+                    <code class="text-xl">getCumulativeAverage</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.getCumulativeAverage[store.lang] }}</p>
                 </div>
                 <div class="p-4 overflow-auto">
                     <CodeParser :content="getCumulativeAverageTemplate" language="javascript" @copy="store.copy()"/>
@@ -577,8 +579,8 @@ const bindings = useObjectBindings(donutConfig);
 
             <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
-                    <code class="text-lg">getCumulativeMedian</code>
-                    <p class="text-gray-500">{{ utilityTranslations.getCumulativeMedian[store.lang] }}</p>
+                    <code class="text-xl">getCumulativeMedian</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.getCumulativeMedian[store.lang] }}</p>
                 </div>
                 <div class="p-4 overflow-auto">
                     <CodeParser :content="getCumulativeMedianTemplate" language="javascript" @copy="store.copy()"/>
