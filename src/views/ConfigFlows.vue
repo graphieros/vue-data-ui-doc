@@ -213,7 +213,6 @@ const DAG_OBJ = computed(() => {
                                 <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
                             </div>
                             <div class="text-xl">
-                                <span :class="'text-gray-500 dark:text-app-blue'">VueUi</span>
                                 <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('VueUi', '') }}</span>
                             </div>
                         </div>
@@ -224,7 +223,6 @@ const DAG_OBJ = computed(() => {
                                 <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
                             </div>
                             <div>
-                                <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
                                 <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('VueUi', '') }}</span>
                             </div>
                         </div>
