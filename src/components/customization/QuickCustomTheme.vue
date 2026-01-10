@@ -12,9 +12,10 @@ const store = useMainStore();
 const dataset = ref([
     {
         name: 'Series A',
-        series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
+        series: [0, 1, 1, 2, 3, 5],
         type: 'line',
         useArea: true,
+        smooth: true
     }
 ])
 
@@ -97,9 +98,10 @@ const config = computed(() => {
 const dataset = ref([
     {
         name: "Series A",
-        series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
+        series: [0, 1, 1, 2, 3, 5],
         type: "line",
-        useArea: true
+        useArea: true,
+        smooth: true
     }
 ]);
 \</script\>
@@ -128,7 +130,7 @@ const presentation = ref({
     <div class="mx-auto max-w-[1250px] px-6 mt-6">
         <h2 class="text-center mx-auto max-w-[60ch] mb-6">{{ presentation[store.lang] }}</h2>
         <BaseCard class="sm:flex sm:flex-col gap-4">
-            <div class="sm:flex sm:flex-row gap-4 place-content-center justify-center mb-4 sm:mb-2">
+            <div class="sm:flex sm:flex-row gap-4 place-content-center place-items-center justify-center mb-4 sm:mb-2">
                 <div class="w-full sm:w-1/2 flex flex-col gap-4 place-items-center justify-center mb-4 sm:mb-0">
                     <BaseColorInput labelAsCode v-model:value="knobs.colorBackground" label="colorBackground" labelId="colorBackground"/>
                     <BaseColorInput labelAsCode v-model:value="knobs.colorTextPrimary" label="colorTextPrimary" labelId="colorTextPrimary"/>
@@ -140,7 +142,7 @@ const presentation = ref({
                         <VueUiIcon name="refresh" stroke="#1A1A1A"/>
                     </BaseButton>
                 </div>
-                <BaseCard class="w-full sm:w-1/2" :style="`backgroundColor: ${knobs.colorBackground} !important;`">
+                <BaseCard class="w-full h-fit sm:w-1/2 flex flex-row place-items-center justify-center" :style="`backgroundColor: ${knobs.colorBackground} !important;`">
                     <VueUiXy :dataset="dataset" :config="config"/>
                 </BaseCard>
             </div>
