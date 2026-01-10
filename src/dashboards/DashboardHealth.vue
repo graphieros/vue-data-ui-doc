@@ -8,7 +8,7 @@ const store = useMainStore();
 const YEARS = computed(() => {
     let year = 2000;
     const arr = []
-    for (let i = 0; i < 25; i += 1) {
+    for (let i = 0; i < 26; i += 1) {
         arr.push(year);
         year += 1;
     }
@@ -42,10 +42,12 @@ const DATASET_LIFE_EXPECTANCY = ref([
             71.9,
             70.9,
             72.6,
-            73.2
+            73.2,
+            73.33,
+            73.49
         ],
         type: 'line',
-    }
+    },
 ]);
 
 const CONFIG_XY = computed(() => {
