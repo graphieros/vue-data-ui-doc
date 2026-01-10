@@ -83,34 +83,44 @@ function copyContent(color) {
 const codeContent = computed(() => {
     return {
         default: `
-        // default palette
-        import { getPalette } from "vue-data-ui";
-        const palette = getPalette();
+    // default palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette();
         `,
         celebration: `
-        // celebration palette
-        import { getPalette } from "vue-data-ui";
-        const palette = getPalette('celebration');
+    // celebration palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette('celebration');
         `,
         celebrationNight: `
-        // celebrationNight palette
-        import { getPalette } from "vue-data-ui";
-        const palette = getPalette('celebrationNight');
+    // celebrationNight palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette('celebrationNight');
         `,
         zen: `
-        // zen palette
-        import { getPalette } from "vue-data-ui";
-        const palette = getPalette('zen');
+    // zen palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette('zen');
         `,
         concrete: `
-        // concrete palette
-        import { getPalette } from "vue-data-ui";
-        const palette = getPalette('concrete');
+    // concrete palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette('concrete');
         `,
         hack: `
-        // hack palette
-        import { getPalette } from "vue-data-ui";
-        const palette = getPalette('hack');
+    // hack palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette('hack');
+        `,
+        minimal: `
+    // minimal palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette('minimal');
+        `,
+        minimalDark: `
+    // minimalDark palette
+    import { getPalette } from "vue-data-ui";
+    const palette = getPalette('minimalDark');
         `,
     };
 });
@@ -153,126 +163,30 @@ const description = ref({
 
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 max-w-[1200px] mx-auto mb-12">
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
-        <BaseCard class="w-full mb-6">
-            <CodeParser :content="codeContent.default" language="javascript" @copy="store.copy()" />
-        </BaseCard>
-        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
-                v-for="(color, i) in palette">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
-                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
-                    @click="() => copyContent(color)">
-                    {{ color.toUpperCase() }}
-                    <div class="absolute top-0 left-1 text-xs">
-                        {{ i }}
+
+        <BaseCard v-for="palette in Object.keys(codeContent)" class="my-4">
+            <h2 class="mb-2 font-inter-medium text-xl pl-2">
+                <code>
+                    {{ palette }}
+                </code>
+            </h2>
+            <CodeParser :content="codeContent[palette]" language="javascript" @copy="store.copy()" />
+            <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center mt-4">
+                <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                    v-for="(color, i) in getPalette(palette)">
+                    <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+                        class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
+                        @click="() => copyContent(color)">
+                        {{ color.toUpperCase() }}
+                        <div class="absolute top-0 left-1 text-xs">
+                            {{ i }}
+                        </div>
+                        <div
+                            class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                     </div>
-                    <div
-                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                 </div>
             </div>
-        </div>
-
-        <BaseCard class="w-full mt-12 mb-6">
-            <CodeParser :content="codeContent.celebration" language="javascript" @copy="store.copy()" />
         </BaseCard>
-
-        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
-                v-for="(color, i) in getPalette('celebration')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
-                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
-                    @click="() => copyContent(color)">
-                    {{ color.toUpperCase() }}
-                    <div class="absolute top-0 left-1 text-xs">
-                        {{ i }}
-                    </div>
-                    <div
-                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
-                </div>
-            </div>
-        </div>
-
-        <BaseCard class="w-full mt-12 mb-6">
-            <CodeParser :content="codeContent.celebrationNight" language="javascript" @copy="store.copy()" />
-        </BaseCard>
-
-        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
-                v-for="(color, i) in getPalette('celebrationNight')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
-                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
-                    @click="() => copyContent(color)">
-                    {{ color.toUpperCase() }}
-                    <div class="absolute top-0 left-1 text-xs">
-                        {{ i }}
-                    </div>
-                    <div
-                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
-                </div>
-            </div>
-        </div>
-
-
-        <BaseCard class="w-full mt-12 mb-6">
-            <CodeParser :content="codeContent.zen" language="javascript" @copy="store.copy()" />
-        </BaseCard>
-
-        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
-                v-for="(color, i) in getPalette('zen')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
-                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
-                    @click="() => copyContent(color)">
-                    {{ color.toUpperCase() }}
-                    <div class="absolute top-0 left-1 text-xs">
-                        {{ i }}
-                    </div>
-                    <div
-                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
-                </div>
-            </div>
-        </div>
-
-
-        <BaseCard class="w-full mt-12 mb-6">
-            <CodeParser :content="codeContent.concrete" language="javascript" @copy="store.copy()" />
-        </BaseCard>
-
-        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
-                v-for="(color, i) in getPalette('concrete')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
-                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
-                    @click="() => copyContent(color)">
-                    {{ color.toUpperCase() }}
-                    <div class="absolute top-0 left-1 text-xs">
-                        {{ i }}
-                    </div>
-                    <div
-                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
-                </div>
-            </div>
-        </div>
-
-        <BaseCard class="w-full mt-12 mb-6">
-            <CodeParser :content="codeContent.hack" language="javascript" @copy="store.copy()" />
-        </BaseCard>
-
-        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
-                v-for="(color, i) in getPalette('hack')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
-                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
-                    @click="() => copyContent(color)">
-                    {{ color.toUpperCase() }}
-                    <div class="absolute top-0 left-1 text-xs">
-                        {{ i }}
-                    </div>
-                    <div
-                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
-                </div>
-            </div>
-        </div>
 
         <div class="mt-12 bg-[#FFFFFF10] w-full p-4">
             <h2 class="text-2xl mb-4">Color Bridge</h2>
