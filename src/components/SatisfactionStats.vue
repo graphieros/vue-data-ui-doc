@@ -928,7 +928,7 @@ const xyDataset = computed(() => {
         return [
             {
                 name: 'Average rating',
-                series: history.value.averagePerDay,
+                series: history.value.averagePerDay.slice(1),
                 type: 'line',
                 smooth: true,
                 scaleMin: 0,
@@ -939,7 +939,7 @@ const xyDataset = computed(() => {
             },
             {
                 name: 'Cumulative average',
-                series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage),
+                series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage).slice(1),
                 type: 'line',
                 smooth: true,
                 scaleMin: 0,
@@ -951,7 +951,7 @@ const xyDataset = computed(() => {
             },
             {
                 name: 'Number of daily votes',
-                series: history.value.ratingsPerDay,
+                series: history.value.ratingsPerDay.slice(1),
                 type: 'bar',
                 scaleSteps: 5,
                 color: '#aec7e8'
@@ -963,7 +963,7 @@ const xyDataset = computed(() => {
         return [
             {
                 name: selectedComponent.value,
-                series: averagePerDay,
+                series: averagePerDay.slice(1),
                 type: 'line',
                 smooth: true,
                 scaleMin: 0,
@@ -974,13 +974,26 @@ const xyDataset = computed(() => {
             },
             {
                 name: 'Number of daily votes',
-                series: ratingsPerDay,
+                series: ratingsPerDay.slice(1),
                 type: 'bar',
                 scaleSteps: 5,
                 color: '#aec7e8'
             },
         ]
     }
+});
+
+const xyDatasetCumAvg = computed(() => {
+    return [
+        {
+            name: 'Cumulative rating average',
+            series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage).slice(1),
+            type: 'line',
+            smooth: true,
+            suffix: ' ⭐',
+            color: '#ff7f0e',
+        },
+    ]
 })
 
 const cutNullValues = ref(false);
@@ -1099,6 +1112,146 @@ const xyConfig = computed(() => {
         },
         bar: {
             periodGap: 0.01,
+        },
+        line: {
+            cutNullValues: cutNullValues.value,
+            radius: 4,
+            useGradient: false,
+            strokeWidth: 1.5,
+            dot: {
+                useSerieColor: false,
+                fill: isDarkMode.value ? '#AEC7E8' : '#FFFFFF',
+                strokeWidth: 2
+            },
+            labels: {
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+            }
+        },
+        table: {
+            showSum: false,
+            th: {
+                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+            },
+            td: {
+                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+            },
+        }
+    }
+})
+
+const xyConfigCumAvg = computed(() => {
+    const result = xyDatasetCumAvg.value[0].series
+        .filter(n => n != null)
+
+    return {
+        events: {
+            datapointEnter: ({ seriesIndex }) => {
+                if (selectedComponent.value !== ALL_COMPONENTS) return;
+                selectedXIndex.value = seriesIndex;
+            },
+            datapointLeave: () => {
+                selectedXIndex.value = undefined;
+            }
+        },
+        chart: {
+            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            height: 300,
+            padding: {
+                top: 24,
+            },
+            grid: {
+                labels: {
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    yAxis: {
+                        labelWidth: 32,
+                        scaleLabelOffsetX: 0,
+                        scaleValueOffsetX: 4,
+                        scaleMin: Math.min(...result),
+                        commonScaleSteps: 5
+                    },
+                    xAxisLabels: {
+                        values: history.value.dates,
+                        show: true,
+                        datetimeFormatter: {
+                            enable: true
+                        },
+                        showOnlyAtModulo: 12,
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    }
+                }
+            },
+            highlightArea: [
+                {
+                    show: true,
+                    from: area.value.from,
+                    to: area.value.to,
+                    color: '#42d392',
+                    opacity: isDarkMode.value ? 12 : 20,
+                    caption: {
+                        text: 'v.3',
+                        fontFamily: 'inherit',
+                        width: 'auto',
+                        padding: 3,
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        fontSize: 20,
+                        bold: false,
+                        offsetY: -36,
+                        textAlign: 'center'
+                    }
+                },
+            ],
+            highlighter: {
+                color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                useLine: true,
+            },
+            legend: {
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                position: 'top'
+            },
+            title: {
+                text: 'Satisfaction survey history',
+                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                bold: true,
+                textAlign: 'left',
+                paddingLeft: 12,
+                subtitle: {
+                    text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
+                    color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
+                }
+            },
+            tooltip: {
+                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                backgroundOpacity: 20,
+                borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                showPercentage: false,
+                roundingValue: 2,
+                useDefaultTimeFormat: false,
+                timeFormat: 'yyyy-MM-dd',
+                roundingValue: 3
+            },
+            userOptions: {
+                buttons: {
+                    labels: false,
+                    table: false,
+                }
+            },
+            zoom: {
+                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                highlightColor: '#1F77B4',
+                useDefaultFormat: false,
+                timeFormat: 'yyyy-MM-dd',
+                focusOnDrag: true,
+                focusRangeRatio: 0.15,
+                minimap: {
+                    show: true,
+                }
+                // startIndex: history.value.averagePerDay.length - 14,
+                // endIndex: history.value.averagePerDay.length - 1
+            }
         },
         line: {
             cutNullValues: cutNullValues.value,
@@ -1540,6 +1693,7 @@ const stackComponent = ref('VueUiStackbar');
                     </label>
                 </div>
                 <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDataset" :config="xyConfig" />
+                <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDatasetCumAvg" :config="xyConfigCumAvg" />
             </div>
             <div class="p-4">
                 <VueUiStackline
