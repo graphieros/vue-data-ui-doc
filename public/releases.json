@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.11.0",
+      "date": "2026-01-10",
+      "updates": [
+        {
+          "component": "Quick custom theme",
+          "description": "Improve getVueDataUiConfig utility to create quick custom themes",
+          "link": ""
+        }
+      ]
+    },
+    {
       "version": "v 3.10.5",
       "date": "2026-01-07",
       "updates": [

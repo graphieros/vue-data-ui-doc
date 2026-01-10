@@ -6,7 +6,7 @@ const props = defineProps({
     colorClasses: {
         type: String,
         default: "bg-gradient-to-br from-app-green to-app-blue text-white dark:text-black hover:from-app-blue hover:to-app-green"
-    }
+    },
 })
 
 const btn = ref(null)

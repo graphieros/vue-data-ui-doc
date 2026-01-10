@@ -15,7 +15,7 @@ import BaseCrumbs from "../components/BaseCrumbs.vue";
 import SourceSlot from "../components/customization/SourceSlot.vue";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import ComposedComponents from "../components/customization/ComposedComponents.vue";
-import { BulbIcon, CategoryIcon, CubeUnfoldedIcon, ExternalLinkIcon, GridPatternIcon, ListIcon, MathFunctionIcon, Menu2Icon, MicroscopeIcon, PaletteIcon, RegisteredIcon, SvgIcon, TextCaptionIcon, TooltipIcon } from "vue-tabler-icons";
+import { BulbIcon, CategoryIcon, CubeUnfoldedIcon, ExternalLinkIcon, GridPatternIcon, ListIcon, MathFunctionIcon, Menu2Icon, MicroscopeIcon, PaletteIcon, RegisteredIcon, SvgIcon, TextCaptionIcon, ToolIcon, TooltipIcon } from "vue-tabler-icons";
 import Patterns from "../components/customization/Patterns.vue";
 import ColorBridgeIcon from "../components/maker/ColorBridgeIcon.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
@@ -24,6 +24,7 @@ import BasePageMenu from "../components/BasePageMenu.vue";
 import useMobile from "../useMobile";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
+import QuickCustomTheme from "../components/customization/QuickCustomTheme.vue";
 
 const store = useMainStore();
 const router = useRouter();
@@ -39,13 +40,19 @@ const translations = computed(() => {
 
 const isDarkMode = computed(() => store.isDarkMode);
 
-const selectedMenu = ref("svgSlot");
+const selectedMenu = ref("quickCustomTheme");
 
 function isSelected(item, index) {
   return currentRoute.value === item.link || (index === 0 && currentRoute.value === '/customization');
 }
 
 const menu = ref([
+  { 
+    name: "quickCustomTheme", 
+    label: "Quick custom theme", 
+    link: "/customization#quick-custom-theme",
+    icon: markRaw(ToolIcon)
+  },
   { 
     name: "svgSlot", 
     label: "#svg slot", 
@@ -129,10 +136,10 @@ const menu = ref([
 watch(() => router.currentRoute.value, (v) => {
   const hash = router.currentRoute.value.hash;
   if (!hash) {
-    selectedMenu.value  = 'svgSlot';
+    selectedMenu.value = 'quickCustomTheme';
   } else {
       const currentMenu = menu.value.find(el => el.link.split('#')[1] === hash.replaceAll('#', ''));
-  selectedMenu.value = currentMenu.name || 'svgSlot'
+  selectedMenu.value = currentMenu.name || 'quickCustomTheme'
   }
 }, { immediate: true })
 
@@ -166,7 +173,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
 </script>
 
 <template>
-  <BackgroundPattern v-if="isDarkMode">
+  <!-- <BackgroundPattern v-if="isDarkMode">
         <template #defs>
             <BaseMenuPattern
                 menu="customization"
@@ -176,7 +183,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
                 strokeWidth="0.5"
             />
         </template>
-    </BackgroundPattern>
+    </BackgroundPattern> -->
   <BaseCrumbs :tree="docsCrumbs" noMargin/>
   <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
 
@@ -216,13 +223,9 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
     {{ menu.find(el => el.name === selectedMenu).label }}
   </h2>
 
-  <SvgSlot
-    v-if="
-      currentRoute === '/customization#svg-slot' ||
-      currentRoute === '/customization'
-    "
-  />
+  <QuickCustomTheme v-if="currentRoute === '/customization#quick-custom-theme' || currentRoute === '/customization'"/>
 
+  <SvgSlot v-if="currentRoute === '/customization#svg-slot'"/>
   <LegendSlot v-if="currentRoute === '/customization#legend-slot'" />
   <TooltipSlot v-if="currentRoute === '/customization#tooltip-slot'" />
   <OtherSlots v-if="currentRoute === '/customization#other-slots'" />
@@ -234,6 +237,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <SourceSlot v-if="currentRoute === '/customization#source'"/>
   <Patterns v-if="currentRoute === '/customization#patterns'"/>
   <ComposedComponents v-if="currentRoute === '/customization#experiments'" />
+
 
   <ChartSeeker class="mt-12"/>
   <ConfirmCopy/>

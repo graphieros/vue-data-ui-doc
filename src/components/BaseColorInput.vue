@@ -35,6 +35,10 @@ const props = defineProps({
     wrapperTw: {
         type: String,
         default: 'w-fit'
+    },
+    labelAsCode: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -369,7 +373,8 @@ function setPalette(p) {
     <BaseCard padding="0" type="light" :class="wrapperTw">
         <div class="inline-flex flex-col flex-wrap px-2 mt-2 pb-2">
             <slot name="before"/>
-            <label class="text-xs text-black dark:text-white">{{ label }}</label>
+            <code v-if="labelAsCode" class="text-black dark:text-[#CCCCCC]">{{ label }}</code>
+            <label v-else class="text-xs text-black dark:text-white">{{ label }}</label>
             <div class="color-picker flex flex-row">
                 <div class="flex flex-col place-items-center">
     
