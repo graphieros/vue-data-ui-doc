@@ -15,6 +15,28 @@ const translations = computed(() => store.translations);
 onMounted(() => store.docSnap = false);
 
 const utilityTranslations = ref({
+    mergeConfigs: {
+        en: 'Use the `mergeConfigs` utility to deeply merge a default config with a user config. Attributes provided in the user config will surgically override the default config, while preserving all other attributes of the original object.',
+        fr: 'Utilisez l’utilitaire `mergeConfigs` pour fusionner en profondeur une configuration par défaut avec une configuration utilisateur. Les attributs fournis dans la configuration utilisateur remplacent précisément ceux de la configuration par défaut, tout en préservant tous les autres attributs de l’objet original.',
+        pt: 'Use o utilitário `mergeConfigs` para mesclar profundamente uma configuração padrão com uma configuração do usuário. Os atributos fornecidos na configuração do usuário substituem de forma precisa os da configuração padrão, preservando todos os outros atributos do objeto original.',
+        de: 'Verwenden Sie das Hilfsprogramm `mergeConfigs`, um eine Standardkonfiguration tiefgehend mit einer Benutzerkonfiguration zusammenzuführen. In der Benutzerkonfiguration angegebene Attribute überschreiben gezielt die Standardkonfiguration, während alle anderen Attribute des ursprünglichen Objekts erhalten bleiben.',
+        zh: '使用 `mergeConfigs` 工具将默认配置与用户配置进行深度合并。用户配置中提供的属性会精确地覆盖默认配置中的对应属性，同时保留原始对象中的所有其他属性。',
+        jp: '`mergeConfigs` ユーティリティを使用して、デフォルト設定とユーザー設定を深くマージします。ユーザー設定で指定された属性はデフォルト設定を正確に上書きし、元のオブジェクトの他のすべての属性は保持されます。',
+        es: 'Utiliza la utilidad `mergeConfigs` para combinar en profundidad una configuración predeterminada con una configuración del usuario. Los atributos proporcionados en la configuración del usuario sobrescriben de forma precisa los de la configuración predeterminada, conservando todos los demás atributos del objeto original.',
+        ko: '`mergeConfigs` 유틸리티를 사용하여 기본 구성과 사용자 구성을 깊게 병합합니다. 사용자 구성에 제공된 속성은 기본 구성을 정확하게 덮어쓰며, 원본 객체의 다른 모든 속성은 그대로 유지됩니다.',
+        ar: 'استخدم الأداة `mergeConfigs` لدمج الإعدادات الافتراضية مع إعدادات المستخدم بشكل عميق. تقوم الخصائص الموفرة في إعدادات المستخدم باستبدال الخصائص المقابلة بدقة، مع الحفاظ على جميع الخصائص الأخرى للكائن الأصلي.'
+    },
+    mergeConfigsExample: {
+        en: 'Use `mergeConfigs` together with `getVueDataUiConfig` to quickly setup custom themes, by providing a set of general colors.',
+        fr: 'Utilisez `mergeConfigs` conjointement avec `getVueDataUiConfig` pour configurer rapidement des thèmes personnalisés en fournissant un ensemble de couleurs générales.',
+        pt: 'Use `mergeConfigs` junto com `getVueDataUiConfig` para configurar rapidamente temas personalizados, fornecendo um conjunto de cores gerais.',
+        de: 'Verwenden Sie `mergeConfigs` zusammen mit `getVueDataUiConfig`, um benutzerdefinierte Themes schnell einzurichten, indem Sie einen Satz allgemeiner Farben bereitstellen.',
+        zh: '将 `mergeConfigs` 与 `getVueDataUiConfig` 结合使用，通过提供一组通用颜色来快速设置自定义主题。',
+        jp: '`mergeConfigs` を `getVueDataUiConfig` と組み合わせて使用することで、一般的なカラーパレットを指定し、カスタムテーマを素早く設定できます。',
+        es: 'Utiliza `mergeConfigs` junto con `getVueDataUiConfig` para configurar rápidamente temas personalizados proporcionando un conjunto de colores generales.',
+        ko: '`mergeConfigs`를 `getVueDataUiConfig`와 함께 사용하여 일반적인 색상 세트를 제공함으로써 사용자 정의 테마를 빠르게 설정할 수 있습니다.',
+        ar: 'استخدم `mergeConfigs` مع `getVueDataUiConfig` لإعداد سمات مخصصة بسرعة من خلال توفير مجموعة من الألوان العامة.'
+    },
     useObjectBindings: {
         en: 'useObjectBindings is a composable that flattens a reactive object into a set of refs (one for each “leaf” property) so you can easily bind to deeply nested values by their string paths.',
         fr: 'useObjectBindings est un composable qui aplatit un objet réactif en un ensemble de refs (une pour chaque propriété « feuille ») afin que vous puissiez facilement lier des valeurs profondément imbriquées via leurs chemins sous forme de chaîne.',
@@ -116,6 +138,69 @@ const strengthHue = ref(0.1);
 
 const abbrSource = ref('lorem ipsum dolor sit amet');
 const abbrLen = ref(5);
+
+const mergeConfigsContent = ref(`import { mergeConfigs } from "vue-data-ui";
+
+const objA = ref({
+    foo: {
+        propA: 'A',
+        propB: 'B'
+    }
+});
+
+const merged = computed(() => {
+    return mergeConfigs({
+        defaultConfig: objA.value,
+        userConfig: {
+            bar: 'ZZZ',
+            foo: {
+                propC: 'C'
+            }
+        }
+    })
+});
+
+/*
+* Result: both objects are merged
+*   {
+*       bar: 'ZZZ',
+*       foo: {
+*           propA: 'A',
+*           propB: 'B',
+*           propC: 'C'
+*       }
+*   }
+*/
+`);
+
+const getVueDataUiConfigAndMergeConfigsContent = ref(`import { getVueDataUiConfig, mergeConfigs } from "vue-data-ui";
+
+// Get the default config and set color options
+const customTheme = getVueDataUiConfig("vue_ui_xy", {
+    colorBackground: "#1A1A1A",
+    colorTextPrimary: "#CD9077",
+    colorTextSecondary: "#825848",
+    colorGrid: "#CD9077",
+    colorBorder: "#CD9077",
+});
+
+const config = computed(() => {
+    // Use the \`mergeConfigs\` utility to set additional configurations while preserving your theme
+    return mergeConfigs({
+        defaultConfig: customTheme,
+        userConfig: {
+            chart: {
+                title: {
+                    text: "Title",
+                    subtitle: {
+                        text: "Subtitle",
+                    },
+                },
+            },
+        },
+    });
+});
+`)
 
 const abbreviated = computed(() => {
     return abbreviate({
@@ -332,6 +417,26 @@ const bindings = useObjectBindings(donutConfig);
                             Check out where this solution came from
                         </a>
                     </div>
+                </div>
+            </BaseCard>
+
+            <BaseCard class="mt-6">
+                <div class="p-4" dir="auto">
+                    <code class="lext-lg">mergeConfigs</code>
+                    <p class="text-gray-500">{{ utilityTranslations.mergeConfigs[store.lang] }}</p>
+                </div>
+
+                <div class="p-4 overflow-auto">
+                    <CodeParser :content="mergeConfigsContent" language="javascript" @copy="store.copy()"/>
+                </div>
+
+                <div class="p-4" dir="auto">
+                    <code class="lext-lg">getVueDataUiConfig + mergeConfigs</code>
+                    <p class="text-gray-500">{{ utilityTranslations.mergeConfigsExample[store.lang] }}</p>
+                </div>
+
+                <div class="p-4 overflow-auto">
+                    <CodeParser :content="getVueDataUiConfigAndMergeConfigsContent" language="javascript" @copy="store.copy()"/>
                 </div>
             </BaseCard>
 
