@@ -1,5 +1,26 @@
 [
     {
+      "version": "v 3.11.1",
+      "date": "2026-01-11",
+      "updates": [
+        {
+          "component": "VueUiXy",
+          "description": "Apply scaleMin and scaleMax on the zoom minimap when provided in config",
+          "link": "/docs#vue-ui-xy"
+        },
+        {
+          "component": "VueUiCandlestick",
+          "description": "Apply scaleMin and scaleMax on the zoom minimap when provided in config",
+          "link": "/docs#vue-ui-candlestick"
+        },
+        {
+          "component": "VueUiIcon",
+          "description": "Add new icons",
+          "link": "/docs#vue-ui-icon"
+        }
+      ]
+    },
+    {
       "version": "v 3.11.0",
       "date": "2026-01-10",
       "updates": [

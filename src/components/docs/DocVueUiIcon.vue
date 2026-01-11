@@ -55,6 +55,7 @@ const icons = ref([
     "bucketFill", 
     "bucketRecycle", 
     "building",
+    "calendar",
     "carouselTable",
     "chart3dBar",
     "chartAgePyramid",
@@ -150,6 +151,7 @@ const icons = ref([
     "doubleCheck",
     "doubleSpark",
     "download", 
+    "envelope",
     "excel",
     "exitFullscreen",
     "focus", 
@@ -273,6 +275,7 @@ const icons = ref([
     "tableOpen",
     "tag",
     "target", 
+    "test",
     "text",
     "tooltip",
     "tooltipDisabled",
@@ -301,7 +304,7 @@ const icons = ref([
     "zoomLock",
     "zoomMinus",
     "zoomPlus",
-    "zoomUnlock"
+    "zoomUnlock",
 ]);
 const specialIcons = ref([
 ]);
