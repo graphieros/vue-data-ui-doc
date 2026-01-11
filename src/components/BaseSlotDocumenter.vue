@@ -635,6 +635,7 @@ function copyToClipboard(conf) {
 
 <template>
     <div class="w-full flex flex-col gap-2">
+        <slot name="additional"/>
         <template v-for="item in items" >
             <div v-if="isVisible(item.names)" class="mb-4">
                 <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">

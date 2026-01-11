@@ -25,6 +25,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import FlexibleTooltip from "../FlexibleTooltip.vue";
 
 const mainConfig = useConfig()
 
@@ -693,6 +694,16 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     return \`<div>\${content}</div>\`;
 }`);
 
+const datapointSlot = ref(`
+    <VueUiQuadrant :dataset="dataset" :config="config">
+        <template #datapoint="{ datapoint }">
+            <GoogleIcon v-if="datapoint.name === 'google'"/>
+            <!-- Etc. -->
+        </template>
+    </VueUiQuadrant>
+    
+`);
+
 </script>
 
 <template>
@@ -1168,7 +1179,30 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         'user-menu',
                         'annotator-actions'
                     ]" 
-                />
+                >
+                <template #additional>
+                    <div class="mb-4">
+                                <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">
+                                            <div  class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow">
+                                                {{ 'datapoint' }}
+                                            </div>
+                                        </div>
+                                        <div class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6">{{ translations.slots.datapoint[store.lang] }}</div>
+                        <div class="bg-gray-200 dark:bg-[#1A1A1A] overflow-auto rounded-b-2xl relative shadow">
+                            <div class="absolute top-1 right-1">
+                                <button class="flex place-items-center justify-center p-1 rounded-full hover:bg-[#42d39230] transition-colors" @click="() => copyToClipboard(datapointSlot)">
+                                    <CopyIcon class="text-[#3A3A3A] dark:text-app-green" />
+                                </button>
+                            </div>
+                            <CodeParser
+                                language="html"
+                                :content="datapointSlot"
+                                @copy="store.copy()"
+                            />
+                        </div>                
+                    </div>
+                </template>
+            </BaseSlotDocumenter>
             </template>
             <template #tab4>
 <h3 class="mb-4">{{ translations.customFormat[store.lang] }}</h3>

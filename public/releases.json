@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.11.2",
+      "date": "2026-01-11",
+      "updates": [
+        {
+          "component": "VueUiQuadrant",
+          "description": "Add #datapoint scoped slot",
+          "link": "/docs#vue-ui-quadrant"
+        }
+      ]
+    },
+    {
       "version": "v 3.11.1",
       "date": "2026-01-11",
       "updates": [

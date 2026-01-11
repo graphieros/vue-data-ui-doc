@@ -4008,6 +4008,35 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
         }
     });
 
+    const DATASET_QUADRANT_TECH = ref([
+        {
+            name: 'China',
+            shape: 'circle',
+            color: '#EE1C25',
+            series: [
+                { name: "Tencent", x: 7, y: 6 },
+                { name: "Alibaba", x: 6, y: 2 },
+                { name: "ByteDance", x: 2, y: 7 },
+                { name: "Huawei", x: -6, y: 6 },
+                { name: "Baidu", x: -5, y: 2 },
+                { name: "Xiaomi", x: -6, y: -3 }
+            ]
+        },
+        {
+            name: 'USA',
+            shape: 'circle',
+            color: '#005288',
+            series: [
+                { name: "Apple", x: 6, y: 4 },
+                { name: "Microsoft", x: 5, y: 6 },
+                { name: "Google", x: -2, y: 5 },
+                { name: "NVIDIA", x: 4, y: -1 },
+                { name: "Amazon", x: -3, y: -2 },
+                { name: "Meta", x: -1, y: 2 },
+            ]
+        }
+    ]);
+
     const DATASET_QUADRANT_BASE = ref([
         {
         name: "Startups",
@@ -10751,6 +10780,80 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: "Con algoritmo de envoltura de regalos",
                     ko: "선물 포장 알고리즘 포함",
                     ar: "مع خوارزمية التغليف الهدي"
+                }
+            },
+            // QUADRANT PRACTICAL
+            { 
+                dataset: DATASET_QUADRANT_TECH.value, 
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_QUADRANT_BASIC.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                layout: {
+                                    grid: {
+                                        xAxis: {
+                                            min: 10,
+                                            max: 10
+                                        },
+                                        yAxis: {
+                                            min: 10,
+                                            max: 10
+                                        },
+                                        graduations: {
+                                            roundingForce: 0
+                                        }
+                                    },
+                                    labels: {
+                                        plotLabels: {
+                                            show: false,
+                                        },
+                                        quadrantLabels: {
+                                            tl: {
+                                                text: 'Visionaries',
+                                                color: colors.value.textColor
+                                            },
+                                            tr: {
+                                                text: 'Leaders',
+                                                color: colors.value.textColor
+                                            },
+                                            br: {
+                                                text: 'Challengers',
+                                                color: colors.value.textColor
+                                            },
+                                            bl: {
+                                                text: 'Niche players',
+                                                color: colors.value.textColor
+                                            },
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiQuadrant',
+                icon: 'chartQuadrant',
+                id: 'quadrant-tech',
+                link: 'vue-ui-quadrant',
+                customQuadrant: true,
+                tags: ["#datapoint"],
+                slot: `<template #datapoint="{ datapoint }">
+                <div style="width:100%;height:100%;overflow:visible">
+                    <GoogleIcon v-if="datapoint.name.toUpperCase() === 'GOOGLE'" />
+                    <!-- display other icons following the same conditioning -->
+                </div>
+                `,
+                description: {
+                    en: "Practical example",
+                    fr: "Exemple pratique",
+                    pt: "Exemplo prático",
+                    de: "Praktisches Beispiel",
+                    zh: "实际示例",
+                    jp: "実践的な例",
+                    es: "Ejemplo práctico",
+                    ko: "실용적인 예시",
+                    ar: "مثال عملي"
                 }
             },
             // QUADRANT WITH AREAS, BACKGROUND
