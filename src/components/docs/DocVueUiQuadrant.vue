@@ -697,11 +697,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 const datapointSlot = ref(`
     <VueUiQuadrant :dataset="dataset" :config="config">
         <template #datapoint="{ datapoint }">
-            <GoogleIcon v-if="datapoint.name === 'google'"/>
-            <!-- Etc. -->
+            <div style="width: 100%; height: 100%; overflow: visible;">
+                <GoogleIcon v-if="datapoint.name === 'google'"/>
+                <!-- Etc. -->
+            </div>
         </template>
     </VueUiQuadrant>
-    
+
 `);
 
 </script>
@@ -1184,7 +1186,7 @@ const datapointSlot = ref(`
                     <div class="mb-4">
                                 <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">
                                             <div  class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow">
-                                                {{ 'datapoint' }}
+                                                {{ '#datapoint' }}
                                             </div>
                                         </div>
                                         <div class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6">{{ translations.slots.datapoint[store.lang] }}</div>
