@@ -901,15 +901,15 @@ export const useMainStore = defineStore("main", {
                     ar: `يمكنك تطبيق أحد السمات المتاحة على جميع المخططات. ما عليك سوى تعيين خاصية الإعدادات 'theme' إلى '' أو 'dark' أو 'zen' أو 'hack' أو 'concrete' أو 'celebration' أو 'celebrationNight'. يمكن جلب كائنات السمة عبر استيراد دالة الأداة getThemeConfig واستدعائها بشكل غير متزامن مع تمرير المفتاح المطابق للمكوّن كوسيط.`
                 },
                 getConfig: {
-                    en: "Since version v.1.9.93 you can get any configuration object by importing and calling the getVueDataUiConfig function, passing as a parameter the key corresponding to the component.",
-                    fr: "Depuis la version v.1.9.93 vous pouvez obtenir n'importe quel objet de configuration en important et en appelant la fonction getVueDataUiConfig, en passant en paramètre la clé correspondant au composant.",
-                    pt: "Desde a versão v.1.9.93 você pode obter qualquer objeto de configuração importando e chamando a função getVueDataUiConfig, passando como parâmetro a chave correspondente ao componente.",
-                    de: "Seit Version v.1.9.93 können Sie jedes Konfigurationsobjekt erhalten, indem Sie die Funktion getVueDataUiConfig importieren und aufrufen und dabei als Parameter den der Komponente entsprechenden Schlüssel übergeben.",
-                    zh: "从 v.1.9.93 版本开始，您可以通过导入并调用 getVueDataUiConfig 函数来获取任何配置对象，并将与组件对应的键作为参数传递。",
-                    jp: "バージョン v.1.9.93 以降、getVueDataUiConfig 関数をインポートして呼び出し、コンポーネントに対応するキーをパラメータとして渡すことで、任意の構成オブジェクトを取得できます。",
-                    es: "Desde la versión v.1.9.93 se puede obtener cualquier objeto de configuración importando y llamando a la función getVueDataUiConfig, pasando como parámetro la clave correspondiente al componente.",
-                    ko: "버전 v.1.9.93부터 getVueDataUiConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 구성 개체를 얻을 수 있습니다.",
-                    ar: `منذ الإصدار v.1.9.93، يمكنك الحصول على أي كائن تكوين عن طريق الاستيراد واستدعاء دالة getVueDataUiConfig، مع تمرير المفتاح المقابل للمكون كمعامل`
+                    en: "Get any configuration object by importing and calling the getVueDataUiConfig function, passing as a parameter the key corresponding to the component. You can also quickly define a custom theme using optional color parameters.",
+                    fr: "Obtenez n’importe quel objet de configuration en important et en appelant la fonction getVueDataUiConfig, en passant en paramètre la clé correspondant au composant. Vous pouvez également définir rapidement un thème personnalisé à l’aide de paramètres de couleur optionnels.",
+                    pt: "Obtenha qualquer objeto de configuração importando e chamando a função getVueDataUiConfig, passando como parâmetro a chave correspondente ao componente. Você também pode definir rapidamente um tema personalizado usando parâmetros de cor opcionais.",
+                    de: "Rufen Sie ein beliebiges Konfigurationsobjekt ab, indem Sie die Funktion getVueDataUiConfig importieren und aufrufen und dabei den dem Komponentenschlüssel entsprechenden Parameter übergeben. Sie können außerdem schnell ein benutzerdefiniertes Thema mit optionalen Farbparametern definieren.",
+                    zh: "通过导入并调用 getVueDataUiConfig 函数来获取任意配置对象，并将对应组件的键作为参数传入。您还可以使用可选的颜色参数快速定义自定义主题。",
+                    jp: "対応するコンポーネントのキーをパラメータとして渡し、getVueDataUiConfig 関数をインポートして呼び出すことで、任意の設定オブジェクトを取得できます。また、任意のカラー パラメータを使用してカスタムテーマを素早く定義することもできます。",
+                    es: "Obtén cualquier objeto de configuración importando y llamando a la función getVueDataUiConfig, pasando como parámetro la clave correspondiente al componente. También puedes definir rápidamente un tema personalizado usando parámetros de color opcionales.",
+                    ko: "해당 컴포넌트에 대응하는 키를 매개변수로 전달하여 getVueDataUiConfig 함수를 가져와 호출하면 어떤 설정 객체든 얻을 수 있습니다. 또한 선택적 색상 매개변수를 사용해 사용자 정의 테마를 빠르게 정의할 수 있습니다.",
+                    ar: "احصل على أي كائن إعدادات عن طريق استيراد الدالة getVueDataUiConfig واستدعائها، مع تمرير المفتاح المقابل للمكوّن كمعامل. يمكنك أيضًا تعريف سمة مخصصة بسرعة باستخدام معاملات ألوان اختيارية."
                 },
                 viewSelectedTheme: {
                     en: "View selected themes",

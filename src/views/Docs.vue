@@ -23,6 +23,7 @@ import BaseCard from "../components/BaseCard.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import { useMenuItems } from "../components/useMenuItems";
+import BaseColorInput from "../components/BaseColorInput.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -216,10 +217,6 @@ const schemaSelect = ref('vue_ui_xy');
 const themeSelect = ref("vue_ui_xy");
 const selectedTheme = ref(null)
 
-const selectedConfig = computed(() => {
-    return getVueDataUiConfig(configSelect.value)
-});
-
 watch(themeSelect, async (type) => {
     selectedTheme.value = await getThemeConfig(type)
 }, { immediate: true })
@@ -275,6 +272,35 @@ onMounted(() => {
 });
 
 const stackbarKey = ref(0);
+
+const colorTheme = ref({
+    colorBackground: '#FFFFFF',
+    colorTextPrimary: '#2D353C',
+    colorTextSecondary: '#A1A1A1',
+    colorGrid: '#E1E5E8',
+    colorBorder: '#E1E5E8'
+})
+
+const getVueDataUiConfigCode = computed(() => {
+    return `import { getVueDataUiConfig } from "vue-data-ui";
+
+// Get the default config for a given component:
+const ${configSelect.value.replace('vue_ui_', '').replace('3d', 'three_d')}_config_default = getVueDataUiConfig("${configSelect.value}");    
+
+// Get the config for a given component with your custom theme colors:
+const ${configSelect.value.replace('vue_ui_', '').replace('3d', 'three_d')}_config_custom = getVueDataUiConfig("${configSelect.value}", {
+    colorBackground: "${colorTheme.value.colorBackground}",
+    colorTextPrimary: "${colorTheme.value.colorTextPrimary}",
+    colorTextSecondary: "${colorTheme.value.colorTextSecondary}",
+    colorGrid: "${colorTheme.value.colorGrid}",
+    colorBorder: "${colorTheme.value.colorBorder}"
+});    
+`
+});
+
+const selectedConfig = computed(() => {
+    return getVueDataUiConfig(configSelect.value, colorTheme.value)
+});
 
 </script>
 
@@ -690,12 +716,10 @@ const stackbarKey = ref(0);
     <BaseCard class="w-full max-w-[1000px] mt-6 z-2">
         <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center p-4">
             <div dir="auto" class="mb-4">{{ translations.getConfig[store.lang] }}</div>
+
             <CodeParser
                 language="javascript"
-                :content="`
-    import { getVueDataUiConfig } from 'vue-data-ui';
-    const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_config = getVueDataUiConfig('${configSelect}')
-                `"
+                :content="getVueDataUiConfigCode"
                 @copy="store.copy()"
             />
     
