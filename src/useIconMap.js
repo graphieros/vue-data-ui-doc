@@ -70,6 +70,8 @@ export function useIconMap(componentName) {
         VueUiDag: 'chartDag',
         VueUiGeo: 'chartGeo',
         VueUiBump: 'chartBump',
+        VueUiSparkstackbar: 'chartSparkStackbar',
+        VueUiSparkhistogram: 'chartSparkHistogram',
         ['Utility functions']: 'func'
     }
     return mapping[componentName] || 'clipBoard';
@@ -145,7 +147,8 @@ export function isValidComponent(content) {
         'Utility functions',
         'VueUiStackline',
         'VueUiDag',
-        'VueUiBump'
+        'VueUiBump',
+        'VueUiSparkstackbar'
     ];
 
     return valid.includes(content);
