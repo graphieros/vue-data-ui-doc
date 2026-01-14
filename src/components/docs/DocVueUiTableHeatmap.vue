@@ -262,6 +262,64 @@ function goToPage(route) {
     router.push(route)
 }
 
+const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
+    <template #caption>
+        <div style="width: 100%; height: 40px" class="pb-8 font-black text-2xl text-left pl-2">
+            TITLE
+        </div>
+    </template>
+
+    <template #head="{ value, rowIndex, type }">
+        <div class="text-black dark:text-gray-300">
+            {{ value }}
+        </div>
+    </template>
+
+    <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
+        <div :style="\`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:\${isResponsive ? 'bold' : 'normal'}\`"
+            class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
+            {{ value }}
+        </div>
+    </template>
+
+    <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
+        <div :style="\`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:\${color};color:\${textColor}\`"
+            class="relative">
+            {{ value }}
+        </div>
+    </template>
+
+    <!-- Optional -->
+    <template #sum="{ value }">
+        <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+            class="bg-gray-200 dark:bg-[#2A2A2A]">
+            {{ value }}
+        </div>
+    </template>
+
+    <!-- Optional -->
+    <template #average="{ value }">
+        <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+            class="bg-gray-200 dark:bg-[#2A2A2A]">
+            {{ value.toFixed(1) }}
+        </div>
+    </template>
+
+    <!-- Optional -->
+    <template #median="{ value }">
+        <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+            class="bg-gray-200 dark:bg-[#2A2A2A]">
+            {{ value.toFixed(1) }}
+        </div>
+    </template>
+
+    <!-- Optional -->
+    <template #source>
+        <div>Source: Lorem ipsum...</div>
+    </template>
+</VueUiTableHeatmap>
+`)
+
 </script>
 
 <template>
@@ -282,48 +340,48 @@ function goToPage(route) {
                     <template #default>
                         <VueDataUi component="VueUiTableHeatmap" :dataset="dataset"
                             :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                            <template #caption>
-                                <div style="width: 100%; height: 40px" class="pb-8 font-black text-2xl text-left pl-2">
-                                    TITLE
-                                </div>
-                            </template>
-            
-                            <template #head="{ value, rowIndex, type }">
-                                <div class="text-black dark:text-gray-300">
-                                    {{ value }}
-                                </div>
-                            </template>
-            
-                            <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
-                                <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:${isResponsive ? 'bold' : 'normal'}`"
-                                    class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
-                                    {{ value }}
-                                </div>
-                            </template>
-                            <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
-                                <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:${color};color:${textColor}`"
-                                    class="relative">
-                                    {{ value }}
-                                </div>
-                            </template>
-                            <template #sum="{ value }">
-                                <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                                    class="bg-gray-200 dark:bg-[#2A2A2A]">
-                                    {{ value }}
-                                </div>
-                            </template>
-                            <template #average="{ value }">
-                                <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                                    class="bg-gray-200 dark:bg-[#2A2A2A]">
-                                    {{ value.toFixed(1) }}
-                                </div>
-                            </template>
-                            <template #median="{ value }">
-                                <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                                    class="bg-gray-200 dark:bg-[#2A2A2A]">
-                                    {{ value.toFixed(1) }}
-                                </div>
-                            </template>
+    <template #caption>
+        <div style="width: 100%; height: 40px" class="pb-8 font-black text-2xl text-left pl-2">
+            TITLE
+        </div>
+    </template>
+
+    <template #head="{ value, rowIndex, type }">
+        <div class="text-black dark:text-gray-300">
+            {{ value }}
+        </div>
+    </template>
+
+    <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
+        <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:${isResponsive ? 'bold' : 'normal'}`"
+            class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
+            {{ value }}
+        </div>
+    </template>
+    <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
+        <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:${color};color:${textColor}`"
+            class="relative">
+            {{ value }}
+        </div>
+    </template>
+    <template #sum="{ value }">
+        <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+            class="bg-gray-200 dark:bg-[#2A2A2A]">
+            {{ value }}
+        </div>
+    </template>
+    <template #average="{ value }">
+        <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+            class="bg-gray-200 dark:bg-[#2A2A2A]">
+            {{ value.toFixed(1) }}
+        </div>
+    </template>
+    <template #median="{ value }">
+        <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+            class="bg-gray-200 dark:bg-[#2A2A2A]">
+            {{ value.toFixed(1) }}
+        </div>
+    </template>
                         </VueDataUi>
                     </template>
     
@@ -447,59 +505,13 @@ function goToPage(route) {
                     <li>#sum</li>
                     <li>#average</li>
                     <li>#median</li>
+                    <li>#source</li>
                 </ul>
-                <code class="dark:text-gray-400">
-                    &lt;VueUiTableHeatmap<br>
-                    &nbsp;&nbsp;:dataset="dataset"<br>
-                    &nbsp;&nbsp;:config="config"<br>
-                    &gt;<br>
-
-                    &nbsp;&nbsp;&lt;template #caption&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;TITLE&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-
-                    &nbsp;&nbsp;&lt;template #head="{ value, rowIndex, type }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-
-                    &nbsp;&nbsp;&lt;template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-
-                    &nbsp;&nbsp;&lt;template #cell="{ value, rowIndex, colIndex, type, color, textColor, isResponsive }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-
-                    &nbsp;&nbsp;&lt;template #sum="{ value, rowIndex, isResponsive }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-
-                    &nbsp;&nbsp;&lt;template #average="{ value, rowIndex, isResponsive }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-
-                    &nbsp;&nbsp;&lt;template #median="{ value, rowIndex, isResponsive }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-                    &lt;/VueUiTableHeatmap&gt;
-                </code>
-
-                <div class="text-gray-500 mt-6">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiTableHeatmap
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiXy&gt;
-</code>
-</pre>
+                <CodeParser
+                    language="html"
+                    :content="codeSlots"
+                    @copy="store.copy()"
+                />
             </template>
 
             <template #tab11>
