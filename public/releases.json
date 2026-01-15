@@ -1,5 +1,21 @@
 [
     {
+      "version": "v 3.11.3",
+      "date": "2026-01-15",
+      "updates": [
+        {
+          "component": "VueUiIcon",
+          "description": "Add new icons",
+          "link": "/docs#vue-ui-icon"
+        },
+        {
+          "component": "All charts with user options menu",
+          "description": "Update menu icons",
+          "link": ""
+        }
+      ]
+    },
+    {
       "version": "v 3.11.2",
       "date": "2026-01-11",
       "updates": [
