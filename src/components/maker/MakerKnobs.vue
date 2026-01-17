@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount, nextTick, watch } from "vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import { useMainStore } from "../../stores";
 import { useMakerStore } from "../../stores/maker";
@@ -102,6 +102,62 @@ function getKeyTranslation(key) {
     return useAttrMapping(attr);
 }
     
+
+const observer = ref(null);
+
+function updateSelectedCategoryFromScroll(entries) {
+    const visibleEntries = entries
+        .filter((entry) => entry.isIntersecting)
+        .map((entry) => ({
+            id: entry.target.id,
+            top: entry.boundingClientRect.top,
+        }))
+        .sort((a, b) => a.top - b.top);
+
+    if (!visibleEntries.length) return;
+
+    selectedCategory.value = visibleEntries[0].id;
+}
+
+async function setupCategoryObserver() {
+    if (observer.value) observer.value.disconnect();
+
+        observer.value = new IntersectionObserver(updateSelectedCategoryFromScroll, {
+            root: null,
+            rootMargin: "-160px 0px -70% 0px",
+            threshold: 0,
+        });
+
+    props.categories.forEach((category) => {
+        const element = document.getElementById(category.key);
+        if (element) observer.value.observe(element);
+    });
+}
+
+onMounted(async () => {
+    await nextTick();
+    setupCategoryObserver();
+});
+
+onBeforeUnmount(() => {
+    if (observer.value) observer.value.disconnect();
+});
+
+async function bindObserver() {
+    await nextTick();
+    setupCategoryObserver();
+}
+
+onMounted(() => {
+    bindObserver();
+});
+
+watch(
+    () => props.categories.map(c => c.key).join("|"),
+    () => {
+        bindObserver();
+    }
+);
 </script>
 
 <template>
@@ -131,7 +187,7 @@ function getKeyTranslation(key) {
     <div class="flex flex-col gap-2 my-4 overflow-visible" v-for="(category, c) in categories" :id="category.key" :style="{ scrollMarginTop : '80px'}">
         <BaseCard type="medium">
             <div class="flex flex-row place-items-center gap-3 mb-4">
-                <VueUiIcon name="knobs" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
+                <VueUiIcon name="sliders" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
                 <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]">{{ category.title }}</h4> 
             </div>
             <div class="flex flex-row gap-4 place-items-center flex-wrap">

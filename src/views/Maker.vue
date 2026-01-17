@@ -288,7 +288,7 @@ const crumbs = computed(() => {
             <div class="w-full">
                     <div class="font-bold flex flex-col sm:flex-row gap-4 justify-center place-items-center bg-gray-200 dark:bg-[#FFFFFF10] w-fit mx-auto p-4 rounded-md sm:rounded-full">
                         <div class="flex flex-col place-items-center">
-                            <VueUiIcon name="numbers" :size="36" :strokeWidth="1" :stroke="isDarkMode ? '#42D392' : '#3456a3'">
+                            <VueUiIcon name="numbers" :size="36" :strokeWidth="1.5" :stroke="isDarkMode ? '#42D392' : '#3456a3'">
                                 <template #exp>
                                     <VueUiIcon name="wrench" :stroke="isDarkMode ? '#8A8A8A' : '#6A6A6A'"/>
                                 </template>
@@ -306,7 +306,7 @@ const crumbs = computed(() => {
                         </div>
 
                         <div class="flex flex-col place-items-center">
-                            <VueUiIcon name="knobs" :size="36" :strokeWidth="0.8" :stroke="isDarkMode ? '#42D392' : '#3456a3'">
+                            <VueUiIcon name="sliders" :size="36" :strokeWidth="1" :stroke="isDarkMode ? '#42D392' : '#3456a3'">
                                 <template #exp>
                                     <VueUiIcon name="settings" :stroke="isDarkMode ? '#8A8A8A' : '#6A6A6A'"/>
                                 </template>
