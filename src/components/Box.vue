@@ -269,7 +269,7 @@ const menuItems = computed(() => {
         },
         {
             name: menuTranslations.value.slots[store.lang],
-            icon: 'skeleton',
+            icon: 'puzzleFill',
             color: isDarkMode.value ? '#ff6600' : '#FFFFFF',
             active: props.showSlots,
             order: 3

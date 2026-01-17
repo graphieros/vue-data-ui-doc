@@ -1,5 +1,16 @@
 [
     {
+      "version": "v 3.11.4",
+      "date": "2026-01-17",
+      "updates": [
+        {
+          "component": "VueUiTreemap",
+          "description": "Fix extra dataset attributes not passed to #rect slot when zoom is active",
+          "link": "/docs#vue-ui-treemap"
+        }
+      ]
+    },
+    {
       "version": "v 3.11.3",
       "date": "2026-01-15",
       "updates": [

@@ -643,50 +643,17 @@ function makeMapLinks({ data }) {
                                         </template>
 
                                         <template #rect="{ rect, shouldShow, textColor }" v-if="example.component === 'VueUiTreemap' && example.useRectSlot">
-                                            <div v-if="rect.name.includes('P2')" style="width: 100%; height: 100%; position:relative">
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
-                                                    {{ rect.value }}
-                                                </div>
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
-                                                    {{ rect.name }}
-                                                </div>
-                                                <VueUiIcon style="width:100%; height:100%;" name="moodLaughing" :stroke="textColor"/>
-                                            </div>
-                                            <div v-if="rect.name.includes('P1')" style="width: 100%; height: 100%; position:relative">
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
-                                                    {{ rect.value }}
-                                                </div>
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
-                                                    {{ rect.name }}
-                                                </div>
-                                                <VueUiIcon style="width:100%; height:100%;" name="moodNeutral" :stroke="textColor"/>
-                                            </div>
-                                            <div v-if="rect.name.includes('P3')" style="width: 100%; height: 100%; position:relative">
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
-                                                    {{ rect.value }}
-                                                </div>
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
-                                                    {{ rect.name }}
-                                                </div>
-                                                <VueUiIcon style="width:100%; height:100%;" name="moodSad" :stroke="textColor"/>
-                                            </div>
-                                            <div v-if="rect.name.includes('P4')" style="width: 100%; height: 100%; position:relative">
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
-                                                    {{ rect.value }}
-                                                </div>
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
-                                                    {{ rect.name }}
-                                                </div>
-                                                <VueUiIcon style="width:100%; height:100%;" name="moodSurprised" :stroke="textColor"/>
-                                            </div>
-                                            <div v-if="rect.name.includes('P5')" style="width: 100%; height: 100%; position:relative">
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, top: '-6px', left: 0 }">
-                                                    {{ rect.value }}
-                                                </div>
-                                                <div class="font-inter-medium" :style="{ position: 'absolute', color: textColor, bottom: '-24px', left: 0 }">
-                                                    {{ rect.name }}
-                                                </div>
-                                                <VueUiIcon style="width:100%; height:100%;" name="moodWink" :stroke="textColor"/>
+                                            <div xmlns="http://www.w3.org/1999/xhtml" style="height:100%;width:100%">
+                                                <img 
+                                                    :src="rect.url"
+                                                    :style="{
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        objectFit: 'cover',
+                                                        transition: 'opacity 0.3s',
+                                                        opacity: rect.isSelected ? 1 : 0.6
+                                                    }"
+                                                />
                                             </div>
                                         </template>
 
@@ -1010,8 +977,7 @@ function makeMapLinks({ data }) {
 
 <style>
 .example-wrapper .vue-ui-treemap-cell {
-    padding-left: 12px;
-    padding-top: 6px;
+    padding: 0 !important;
 }
 
 .bg-pattern-dark {

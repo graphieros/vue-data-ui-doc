@@ -244,6 +244,8 @@ const icons = ref([
     "plus", 
     "pointer",
     "printer",
+    "puzzle",
+    "puzzleFill",
     "ratio",
     "recycle",
     "resize",
