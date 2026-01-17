@@ -397,6 +397,26 @@ function goToPage(route) {
     router.push(route)
 }
 
+const slotCode = computed(() => {
+    return `<VueUiCarouselTable :dataset="dataset" :config="config">
+    <template #caption>
+        My custom caption
+    </template>
+    
+    <template #th="{ th, colIndex }">
+        {{ colIndex }} - {{ th }}
+    </template>
+
+    <template #td="{ td, colIndex, rowIndex }">
+        {{ colIndex }} - {{ rowIndex }} - {{ td }}
+    </template>
+
+    <template #source>
+        <div>Source: Lorem ipsum...</div>
+    </template>
+</VueUiCarouselTable>`
+});
+
 </script>
 
 <template>
@@ -630,44 +650,11 @@ function goToPage(route) {
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.slots.th[store.lang] }}</div>
                 <div><code>#td</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.slots.td[store.lang] }}</div>
-<pre>
-<code>
-    &lt;VueUiCarouselTable
-        :dataset="dataset"
-        :config="config"
-    &gt;
-        &lt;template #caption&gt;
-            My custom caption
-        &lt;/template&gt;
-        
-        &lt;template #th="{ th, colIndex }"&gt;
-            <span v-pre>{{ colIndex }} - {{ th }}</span>
-        &lt;/template&gt;
-
-        &lt;template #td="{ td, colIndex, rowIndex }"&gt;
-            <span v-pre>{{ colIndex }} - {{ rowIndex }} - {{ td }}</span>
-        &lt;/template&gt;
-    &lt;/VueUiCarouselTable&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiCarouselTable
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiCarouselTable&gt;
-</code>
-</pre>
+                <div><code>#source</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.slots.source[store.lang] }}</div>
                     
+
+            <CodeParser language="html" :content="slotCode" @copy="store.copy()"/>            
             </template>
 
             <template #tab11>
