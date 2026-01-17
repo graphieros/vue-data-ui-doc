@@ -78,7 +78,6 @@ const options = ref({
     datasetItems: {
         name: 'Name',
         value: 0,
-        color: '#CCCCCC'
     }
 })
 
