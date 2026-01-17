@@ -534,14 +534,16 @@ const selectedConfig = computed(() => {
                     <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-2 mt-4">
                         <div class="flex flex-row gap-4 place-items-center">
                             <IconSettings :size="80" stroke="#42d392" class="hidden md:block"/>
-                            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center" style="letter-spacing: -1px;">{{ translations.menu.docs[store.lang] }}</h1>
+                            <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
+                                {{ translations.menu.docs[store.lang] }}
+                            </h1>
                         </div>
                     </div>
     <div class="flex flex-col sm:flex-row place-items-center gap-2 justify-center w-full mx-auto">
         <div class="font-inter-medium flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6" style="letter-spacing: -1px;">
-            <div class="text-xl sm:text-4xl w-full text-end">1 import</div>
-            <div class="text-xl sm:text-4xl w-full text-end">3 props</div>
-            <div class="text-xl sm:text-4xl w-full text-end">{{ Object.keys(mainConfig).length }} components</div>
+            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-[#CCCCCC]">1 import</div>
+            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-[#CCCCCC]">3 props</div>
+            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-[#CCCCCC]">{{ Object.keys(mainConfig).length }} components</div>
         </div>
         
         <RouterLink class="w-[360px]" to="/universal-component">

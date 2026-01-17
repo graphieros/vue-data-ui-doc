@@ -128,7 +128,9 @@ const menuItems = computed(() => ([
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <VueUiIcon name="dashboard" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#de6937' : '#de6937'"/>
-            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center" style="letter-spacing: -1px;">{{ translations.menu.examples[lang] }}</h1>
+            <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
+                {{ translations.menu.examples[lang] }}
+            </h1>
         </div>
 
         <BasePageMenu :items="menuItems">

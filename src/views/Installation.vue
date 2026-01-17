@@ -121,13 +121,13 @@ const universalComponentTemplateContent = computed(() => {
         </div>
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <div class="relative w-[80px] h-[80px]">
-                <VueUiIcon :size="40" name="starFill" stroke="#5f8bee" :is-spin="true" spinDuration="10s">
+                <VueUiIcon :size="40" name="starFill" :stroke="isDarkMode ? '#42d392' : '#5f8bee'" :is-spin="true" spinDuration="10s">
                     <template #exp>
-                        <VueUiIcon name="starFill" :is-spin="true" spinDuration="5s" stroke="#83a4f2"/>
+                        <VueUiIcon name="starFill" :is-spin="true" spinDuration="5s" :stroke="isDarkMode ? '#87e6bb' : '#83a4f2'"/>
                     </template>
                 </VueUiIcon>
             </div>
-            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center z-10" style="letter-spacing: -1px;">
+            <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
                 {{ translations.menu.installation[store.lang] }}
             </h1>
         </div>

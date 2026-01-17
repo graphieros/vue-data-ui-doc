@@ -2203,7 +2203,9 @@ const digitsConfigVersion = computed(() => {
         <div :class="``">
           <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <img data-cy="header-logo" src="../assets/logo3.png" class="h-14" />
-            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center" style="letter-spacing: -1px;">{{ translations.menu.versions[store.lang] }}</h1>
+            <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
+              {{ translations.menu.versions[store.lang] }}
+            </h1>
           </div>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 

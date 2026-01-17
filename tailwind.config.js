@@ -43,7 +43,8 @@ export default {
         "primary-grey": "#376687",
         "primary-light": "#579ecf",
         "primary-light-grey": "#5c7e96",
-        "gray-150": "#ececee"
+        "gray-150": "#ececee",
+        "vue-blue": "#213547"
       }
     },
   },
