@@ -497,9 +497,14 @@ const wheelConfig = computed(() => {
 <template>
   <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
   <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
-    <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
-      {{ translations.menu.about[store.lang] }}
-    </h1>
+
+    <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
+      <VueUiIcon class="hidden md:block" name="microscope" :size="62" :strokeWidth="1.5" :stroke="isDarkMode ? '#8A8A8A' : '#8A8A8A'"/>
+      <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
+        {{ translations.menu.about[store.lang] }}
+      </h1>
+    </div>
+
 
     <div class="w-full mx-auto">
       <Suspense>

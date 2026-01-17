@@ -166,9 +166,12 @@ const description = ref({
 
         <BaseCard v-for="palette in Object.keys(codeContent)" class="my-4">
             <h2 class="mb-2 font-inter-medium text-xl pl-2">
-                <code>
-                    {{ palette }}
-                </code>
+                <div class="flex flex-row gap-2 align-center">
+                    <VueUiIcon name="colorPicker" :stroke="isDarkMode ? '#8A8A8A' : '#8A8A8A'"/>
+                    <code>
+                        {{ palette }}
+                    </code>
+                </div>
             </h2>
             <CodeParser :content="codeContent[palette]" language="javascript" @copy="store.copy()" />
             <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center mt-4">
