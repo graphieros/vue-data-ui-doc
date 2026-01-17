@@ -1,15 +1,8 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
-
-/**
- * DISCLAIMER:
- * 
- * This example will probably fail to render properly in Safari.
- * Safari cannot handle styles properly when HTML content is placed inside foreignObjects
- * 
- */
+import CodeParser from "./customization/CodeParser.vue";
 
 const store = useMainStore()
 const translations = computed(() => store.translations);
@@ -273,17 +266,26 @@ const xyConfig = computed(() => {
   }
 })
 
+const code = ref(`<VueUiTreemap :dataset="dataset" :config="config">
+    <template #rect="{ rect }">
+      <!-- IMPORTANT: xmlns url must be provided for all browsers to treat content as HTML -->
+      <div :style="{ width: '100%', height: '100%' }" xmlns="http://www.w3.org/1999/xhtml">
+        <VueUiXy
+          :dataset="lines[rect.name]?.dataset"
+          :config="lines[rect.nale]?.config"
+        />
+      </div>
+    </template>
+</VueUiTreemap>  
+`)
+
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <div v-if="store.isSafari">
-      You are using Safari, this is why the rendering sucks.
-      This is also why we named this section "Don't try this at home"...
-    </div>
     <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="config">
       <template #rect="{ rect }">
-        <div :style="{ width: '100%', height: '100%' }">
+        <div :style="{ width: '100%', height: '100%' }" xmlns="http://www.w3.org/1999/xhtml">
           <VueDataUi
             component="VueUiXy"
             :dataset="sparklines[rect.name]?.dataset"
@@ -292,6 +294,11 @@ const xyConfig = computed(() => {
         </div>
       </template>
     </VueDataUi>
+    <CodeParser
+      language="html"
+      :content="code"
+      @copy="store.copy()"
+    />
     <button class="py-1 px-4 bg-gray-100 dark:bg-[#FFFFFF20] hover:bg-gray-200 dark:hover:bg-[#FFFFFF30] transition-colors flex flex-row place-items-center gap-2 justify-center">
       <BrandGithubFilledIcon />
       <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/TreemapXy.vue" target="_blank">
