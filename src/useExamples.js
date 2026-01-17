@@ -12178,7 +12178,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 },
                 component: 'VueUiTreemap',
                 icon: 'chartTreemap',
-                id: 'treemap-slot-rect',
+                id: 'treemap-slot-group',
                 link: 'vue-ui-treemap',
                 useGroupLabelSlot: true,
                 tags: ['#group-label'],
