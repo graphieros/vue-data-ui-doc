@@ -25,6 +25,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import UcTreemap from "../useCases/uc-treemap.vue";
 
 const mainConfig = useConfig()
 
@@ -681,7 +682,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             padding
         />
 
-        <Box ref="box" showEmits showSlots showTooltip showCallbacks :showThemes="false" showResponsive schema="vue_ui_treemap" signInfo="positiveOnly">
+        <Box ref="box" showEmits showSlots showTooltip showCallbacks showUseCases :showThemes="false" showResponsive schema="vue_ui_treemap" signInfo="positiveOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -1058,6 +1059,10 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     language="css"
                     content=".vue-data-ui-custom-tooltip{ }"
                 /> 
+            </template>
+
+            <template #tab5>
+                <uc-treemap/>
             </template>
 
             <!-- <template #tab6>
