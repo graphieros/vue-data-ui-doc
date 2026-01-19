@@ -163,7 +163,7 @@ onUnmounted(() => {
         props.resizable ? 'resize overflow-hidden' : '',
         props.width ? props.width : '',
         'max-h-[calc(100vh-200px)]',
-        'shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]',
+        'shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#535c58,0_4px_6px_rgba(0,0,0,0.5)]',
         'rounded-xl'
     ]" style="z-index: 1000" @mousedown="startDrag" @touchstart="startDrag">
         <div class="relative flex-none">

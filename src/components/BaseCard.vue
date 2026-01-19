@@ -61,7 +61,7 @@ const background = computed(() => {
         ${rounding}
         ${borderRight}
         ${focused ? 'border-2 border-app-green dark:border-app-green' : ''}
-        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] ${!forceLight ? 'dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]' : ''}
+        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] ${!forceLight ? 'dark:shadow-[inset_0_2px_2px_#535c58,0_4px_6px_rgba(0,0,0,0.5)]' : ''}
         `"
     >
         <slot/>
