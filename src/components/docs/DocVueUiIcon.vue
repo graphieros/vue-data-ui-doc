@@ -328,10 +328,8 @@ const icons = ref([
     "zoomPlus",
     "zoomUnlock",
 ]);
-const specialIcons = ref([
-]);
 
-const count = computed(() => specialIcons.value.length + icons.value.length);
+const count = computed(() => icons.value.length);
 
 const selectedIcon = ref("smiley")
 
@@ -350,25 +348,25 @@ const currentIndex = ref(0);
 
 function previous() {
     if (currentIndex.value === 0) {
-        currentIndex.value = [...icons.value, ...specialIcons.value].length - 1;
+        currentIndex.value = [...icons.value].length - 1;
     } else {
         currentIndex.value -= 1;
     }
-    selectedIcon.value = [...icons.value, ...specialIcons.value][currentIndex.value];
+    selectedIcon.value = [...icons.value][currentIndex.value];
 }
 
 function next() {
-    if (currentIndex.value === [...icons.value,...specialIcons.value].length - 1) {
+    if (currentIndex.value === [...icons.value].length - 1) {
         currentIndex.value = 0;
     } else {
         currentIndex.value += 1;
     }
-    selectedIcon.value = [...icons.value, ...specialIcons.value][currentIndex.value];
+    selectedIcon.value = [...icons.value][currentIndex.value];
 }
 
 function selectIcon(icon) {
     selectedIcon.value = icon;
-    currentIndex.value = [...icons.value,...specialIcons.value].indexOf(icon);
+    currentIndex.value = [...icons.value].indexOf(icon);
     useModal("open");
 }
 
@@ -404,11 +402,6 @@ const search = ref('');
 const filteredIcons = computed(() => {
     if (!search.value) return icons.value;
     return icons.value.filter(icon => (icon.toUpperCase()).includes(search.value.toUpperCase()));
-});
-
-const filteredSpecialIcons = computed(() => {
-    if (!search.value) return specialIcons.value;
-    return specialIcons.value.filter(icon => (icon.toUpperCase()).includes(search.value.toUpperCase()));
 });
 
 const baseCodeExample = ref(`<VueUiIcon
@@ -475,7 +468,7 @@ const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-durat
         </BaseDocDescription>
 
         <div class="w-fit mx-auto mt-6 mb-12">
-            <BaseAutoComplete v-model="search" :items="[...icons, ...specialIcons]">
+            <BaseAutoComplete v-model="search" :items="[...icons]">
                 <template #before="{ suggestion }">
                     <VueUiIcon :name="suggestion" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
                 </template>
@@ -487,26 +480,9 @@ const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-durat
         </BaseCard>
 
         <BaseCard>
-            <p class="mx-auto w-full text-md text-black dark:text-[#CCCCCC] mb-2 text-left font-inter-medium">{{ translations.docs.tooltips.iconUserOptions[store.lang] }}</p>
             <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
                 <div v-for="icon in filteredIcons">
                     <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:scale-125 hover:bg-[#00000010] dark:hover:bg-[#00000020] transition-all" @click="selectIcon(icon)">
-                        <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                        <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
-                    </div>
-                </div>
-            </div>
-        </BaseCard>
-
-
-        <BaseCard class="mt-6">
-            <p class="mx-auto w-full text-md text-black dark:text-[#CCCCCC] mb-2 text-left font-inter-medium">
-                {{ translations.docs.tooltips.iconSpecial[store.lang] }}
-            </p>
-    
-            <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
-                <div v-for="icon in filteredSpecialIcons">
-                    <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:bg-[#00000010] dark:hover:bg-[#FFFFFF03] hover:scale-125 transition-all" @click="selectIcon(icon)">
                         <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
                         <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
                     </div>
