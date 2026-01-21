@@ -1,5 +1,26 @@
 [
     {
+      "version": "v 3.12.0",
+      "date": "2026-01-21",
+      "updates": [
+        {
+          "component": "Built-in chart annotator",
+          "description": "Add new 'arrow' and 'line' modes to draw straight lines with or without arrow heads",
+          "link": ""
+        },
+        {
+          "component": "Built-in chart annotator",
+          "description": "Prevent scrolling when drawing lines on touch screens",
+          "link": ""
+        },
+        {
+          "component": "VueUiIcon",
+          "description": "Add new icons",
+          "link": "/docs#vue-ui-icon"
+        }
+      ]
+    },
+    {
       "version": "v 3.11.4",
       "date": "2026-01-17",
       "updates": [
