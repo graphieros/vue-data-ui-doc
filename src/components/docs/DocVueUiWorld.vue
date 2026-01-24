@@ -320,7 +320,12 @@ const darkModeConfig = ref({
                 color: '#CCCCCC',
                 fontSize: 16,
                 bold:false,
-                position: 'bottom'
+                position: 'bottom',
+                selectAllToggle: {
+                    show: false,
+                    backgroundColor: '#3A3A3A',
+                    color: '#CCCCCC'
+                }
             },
             title: {
                 text: "GDP per country",
@@ -448,7 +453,12 @@ const config = ref({
                 color: '#1A1A1A',
                 fontSize: 16,
                 bold:false,
-                position: 'bottom'
+                position: 'bottom',
+                selectAllToggle: {
+                    show: false,
+                    backgroundColor: '#E1E5E8',
+                    color: '#1A1A1A'
+                }
             },
             territory: {
                 stroke: '#666666',
@@ -739,7 +749,12 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails attr="selectAllToggle" :level="4" title="style.chart.legend.selectAllToggle">
+                                        <BaseAttr name="show" attr="style.chart.legend.selectAllToggle.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="backgroundColor" attr="style.chart.legend.selectAllToggle.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="color" attr="style.chart.legend.selectAllToggle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    </BaseDetails>
                                 </BaseDetails>
                                 <BaseDetails attr="territory" :level="3" title="style.chart.territory">
                                     <BaseAttr name="stroke" attr="style.chart.territory.stroke" type="color" defaultVal="#666666" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

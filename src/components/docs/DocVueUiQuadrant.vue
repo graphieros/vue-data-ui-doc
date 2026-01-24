@@ -271,7 +271,12 @@ const config = ref({
                 backgroundColor: "#F3F4F6",
                 color: "#1A1A1A",
                 fontSize: 14,
-                position: 'bottom'
+                position: 'bottom',
+                selectAllToggle: {
+                    show: false,
+                    backgroundColor: '#E1E5E8',
+                    color: '#1A1A1A'
+                }
             }
         }
     },
@@ -477,7 +482,12 @@ const darkModeConfig = ref({
                 backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 fontSize: 14,
-                position: 'bottom'
+                position: 'bottom',
+                selectAllToggle: {
+                    show: false,
+                    backgroundColor: '#3A3A3A',
+                    color: '#CCCCCC'
+                }
             }
         }
     },
@@ -921,6 +931,11 @@ const datapointSlot = ref(`
                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                    <BaseDetails attr="selectAllToggle" :level="4" title="style.chart.legend.selectAllToggle">
+                        <BaseAttr name="show" attr="style.chart.legend.selectAllToggle.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="backgroundColor" attr="style.chart.legend.selectAllToggle.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.chart.legend.selectAllToggle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

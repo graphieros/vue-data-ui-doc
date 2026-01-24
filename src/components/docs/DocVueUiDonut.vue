@@ -208,6 +208,11 @@ const darkModeConfig = ref({
                     showValueFirst: true,
                     usePercentageParens: true,
                     useValueParens: false,
+                    selectAllToggle: {
+                        show: false,
+                        backgroundColor: '#3A3A3A',
+                        color: '#CCCCCC'
+                    }
                 },
             title: {
                 text: "Title",
@@ -445,6 +450,11 @@ const config = ref({
                     showValueFirst: true,
                     usePercentageParens: true,
                     useValueParens: false,
+                    selectAllToggle: {
+                        show: false,
+                        backgroundColor: '#E1E5E8',
+                        color: '#1A1A1A'
+                    }
                 },
             title: {
                 text: "Title",
@@ -1052,6 +1062,11 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     <BaseAttr name="showValue" attr="style.chart.legend.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="showPercentage" attr="style.chart.legend.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="selectAllToggle" :level="4" title="style.chart.legend.selectAllToggle">
+                        <BaseAttr name="show" attr="style.chart.legend.selectAllToggle.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="backgroundColor" attr="style.chart.legend.selectAllToggle.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.chart.legend.selectAllToggle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

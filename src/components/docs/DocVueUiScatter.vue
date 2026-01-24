@@ -243,7 +243,12 @@ const darkModeConfig = ref({
       fontSize: 12,
       bold: true,
       roundingValue: 0,
-      position: 'bottom'
+      position: 'bottom',
+      selectAllToggle: {
+        show: false,
+        backgroundColor: '#3A3A3A',
+        color: '#CCCCCC'
+      }
     },
     tooltip: {
       teleportTo: 'body',
@@ -479,7 +484,12 @@ const config = ref({
       fontSize: 12,
       bold: true,
       roundingValue: 0,
-      position: 'bottom'
+      position: 'bottom',
+      selectAllToggle: {
+          show: false,
+          backgroundColor: '#E1E5E8',
+          color: '#1A1A1A'
+      }
     },
     tooltip: {
       teleportTo: 'body',
@@ -998,6 +1008,11 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseAttr name="bold" attr="style.legend.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="roundingValue" attr="style.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="position" attr="style.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+        <BaseDetails attr="selectAllToggle" :level="3" title="style.legend.selectAllToggle">
+            <BaseAttr name="show" attr="style.legend.selectAllToggle.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="backgroundColor" attr="style.legend.selectAllToggle.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="color" attr="style.legend.selectAllToggle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="title" :level="3" title="style.title">
         <BaseAttr name="color" attr="style.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

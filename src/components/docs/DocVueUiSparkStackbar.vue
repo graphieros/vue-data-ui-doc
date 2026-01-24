@@ -79,7 +79,7 @@ const config = ref({
       }
     },
     legend: {
-        margin: "6px 0 0 0",
+      margin: "6px 0 0 0",
       textAlign: "left",
       show: true,
       fontSize: 12,
@@ -100,6 +100,11 @@ const config = ref({
         bold: true,
         color: "#2D353C",
         rounding: 1
+      },
+      selectAllToggle: {
+        show: false,
+        backgroundColor: '#E1E5E8',
+        color: '#1A1A1A'
       }
     },
     title: {
@@ -154,7 +159,7 @@ const darkModeConfig = ref({
       }
     },
     legend: {
-        margin: "6px 0 0 0",
+      margin: "6px 0 0 0",
       textAlign: "left",
       show: true,
       fontSize: 12,
@@ -175,6 +180,11 @@ const darkModeConfig = ref({
         bold: true,
         color: "#DDDDDD",
         rounding: 1
+      },
+      selectAllToggle: {
+        show: false,
+        backgroundColor: '#3A3A3A',
+        color: '#CCCCCC'
       }
     },
     title: {
@@ -411,6 +421,11 @@ function goToPage(route) {
                   </BaseTabLink>
               </div>
           </div>
+        </BaseDetails>
+        <BaseDetails attr="selectAllToggle" :level="3" title="style.legend.selectAllToggle">
+          <BaseAttr name="show" attr="style.legend.selectAllToggle.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="backgroundColor" attr="style.legend.selectAllToggle.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="color" attr="style.legend.selectAllToggle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="title" :level="2" title="style.title">

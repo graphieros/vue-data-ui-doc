@@ -1,248 +1,364 @@
 [
-    {
-      "version": "v 3.12.0",
-      "date": "2026-01-21",
-      "updates": [
-        {
-          "component": "Built-in chart annotator",
-          "description": "Add new 'arrow' and 'line' modes to draw straight lines with or without arrow heads",
-          "link": ""
-        },
-        {
-          "component": "Built-in chart annotator",
-          "description": "Prevent scrolling when drawing lines on touch screens",
-          "link": ""
-        },
-        {
-          "component": "VueUiIcon",
-          "description": "Add new icons",
-          "link": "/docs#vue-ui-icon"
-        }
-      ]
-    },
-    {
-      "version": "v 3.11.4",
-      "date": "2026-01-17",
-      "updates": [
-        {
-          "component": "VueUiTreemap",
-          "description": "Fix extra dataset attributes not passed to #rect slot when zoom is active",
-          "link": "/docs#vue-ui-treemap"
-        }
-      ]
-    },
-    {
-      "version": "v 3.11.3",
-      "date": "2026-01-15",
-      "updates": [
-        {
-          "component": "VueUiIcon",
-          "description": "Add new icons",
-          "link": "/docs#vue-ui-icon"
-        },
-        {
-          "component": "All charts with user options menu",
-          "description": "Update menu icons",
-          "link": ""
-        }
-      ]
-    },
-    {
-      "version": "v 3.11.2",
-      "date": "2026-01-11",
-      "updates": [
-        {
-          "component": "VueUiQuadrant",
-          "description": "Add #datapoint scoped slot",
-          "link": "/docs#vue-ui-quadrant"
-        }
-      ]
-    },
-    {
-      "version": "v 3.11.1",
-      "date": "2026-01-11",
-      "updates": [
-        {
-          "component": "VueUiXy",
-          "description": "Apply scaleMin and scaleMax on the zoom minimap when provided in config",
-          "link": "/docs#vue-ui-xy"
-        },
-        {
-          "component": "VueUiCandlestick",
-          "description": "Apply scaleMin and scaleMax on the zoom minimap when provided in config",
-          "link": "/docs#vue-ui-candlestick"
-        },
-        {
-          "component": "VueUiIcon",
-          "description": "Add new icons",
-          "link": "/docs#vue-ui-icon"
-        }
-      ]
-    },
-    {
-      "version": "v 3.11.0",
-      "date": "2026-01-10",
-      "updates": [
-        {
-          "component": "Quick custom theme",
-          "description": "Improve getVueDataUiConfig utility to create quick custom themes",
-          "link": ""
-        }
-      ]
-    },
-    {
-      "version": "v 3.10.5",
-      "date": "2026-01-07",
-      "updates": [
-        {
-          "component": "VueUiDag",
-          "description": "Add config options to style edges and nodes when selected",
-          "link": "/docs#vue-ui-dag"
-        },
-        {
-          "component": "VueUiIcon",
-          "description": "Add new icons",
-          "link": "/docs#vue-ui-icon"
-        }
-      ]
-    },
-    {
-      "version": "v 3.10.4",
-      "date": "2026-01-06",
-      "updates": [
-        {
-          "component": "VueUiXy",
-          "description": "Fix bars in minimap not expanding width when segregating other bar series",
-          "link": "/docs#vue-ui-xy"
-        },
-        {
-          "component": "VueUiXyCanvas",
-          "description": "Fix bars in minimap not expanding width when segregating other bar series",
-          "link": "/docs#vue-ui-xy-canvas"
-        }
-      ]
-    },
-    {
-      "version": "v 3.10.3",
-      "date": "2026-01-05",
-      "updates": [
-        {
-          "component": "VueUiSparkStackbar",
-          "description": "Improve config definitions for some themes",
-          "link": "/docs#vue-ui-sparkstackbar"
-        },
-        {
-          "component": "VueUiSparkline",
-          "description": "Improve config definitions for some themes",
-          "link": "/docs#vue-ui-sparkline"
-        },
-        {
-          "component": "VueUiWordCloud",
-          "description": "Improve config definitions for some themes",
-          "link": "/docs#vue-ui-word-cloud"
-        }
-      ]
-    },
-    {
-      "version": "v 3.10.2",
-      "date": "2026-01-05",
-      "updates": [
-        {
-          "component": "VueUiStackline",
-          "description": "Fix wrong bottom legend placement",
-          "link": "/docs#vue-ui-stackline"
-        }
-      ]
-    },
-    {
-      "version": "v 3.10.1",
-      "date": "2026-01-04",
-      "updates": [
-        {
-          "component": "All components with themes",
-          "description": "Add 'minimal' & 'minimalDark' themes",
-          "link": ""
-        }
-      ]
-    },
-    {
-      "version": "v 3.10.0",
-      "date": "2026-01-02",
-      "updates": [
-        {
-          "component": "VueUiBump",
-          "description": "Add new component",
-          "link": "/docs#vue-ui-bump"
-        }
-      ]
-    },
-    {
-      "version": "v 3.9.22",
-      "date": "2025-12-31",
-      "updates": [
-        {
-          "component": "UserOptions",
-          "description": "Place drawer inside a popover when supported",
-          "link": ""
-        }
-      ]
-    },
-    {
-      "version": "v 3.9.21",
-      "date": "2025-12-30",
-      "updates": [
-        {
-          "component": "All charts with tooltips",
-          "description": "Add teleportTo config attribute",
-          "link": ""
-        }
-      ]
-    },
-    {
-      "version": "v 3.9.20",
-      "date": "2025-12-28",
-      "updates": [
-        {
-          "component": "VueUiIcon",
-          "description": "Add new icons",
-          "link": "/docs#vue-ui-icon"
-        }
-      ]
-    },
-    {
-      "version": "v 3.9.19",
-      "date": "2025-12-27",
-      "updates": [
-        {
-          "component": "VueUiIcon",
-          "description": "Add #exp and #sub slots to display exp and or sub icons",
-          "link": "/docs#vue-ui-icon"
-        }
-      ]
-    },
-    {
-      "version": "v 3.9.17",
-      "date": "2025-12-26",
-      "updates": [
-        {
-          "component": "VueUiRings",
-          "description": "Add optional ring data labels, enable mutliline labels",
-          "link": "/docs#vue-ui-rings"
-        }
-      ]
-    },
-    {
-      "version": "v 3.9.16",
-      "date": "2025-12-24",
-      "updates": [
-        {
-          "component": "VueUiHorizontalBar",
-          "description": "Enable mutliline series name labels using line breaks",
-          "link": "/docs#vue-ui-horizontal-bar"
-        }
-      ]
-    },
-    {
+  {
+    "version": "v 3.13.0",
+    "date": "2026-01-21",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiHistoryPlot",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-history-plot"
+      },
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-horizontal-bar"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRidgeline",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-ridgeline"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-sparkstackbar"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiStackline",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-stackline"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiWorld",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-world"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add optional legend toggle feature",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
+    "version": "v 3.12.0",
+    "date": "2026-01-21",
+    "updates": [
+      {
+        "component": "Built-in chart annotator",
+        "description": "Add new 'arrow' and 'line' modes to draw straight lines with or without arrow heads",
+        "link": ""
+      },
+      {
+        "component": "Built-in chart annotator",
+        "description": "Prevent scrolling when drawing lines on touch screens",
+        "link": ""
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add new icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
+    "version": "v 3.11.4",
+    "date": "2026-01-17",
+    "updates": [
+      {
+        "component": "VueUiTreemap",
+        "description": "Fix extra dataset attributes not passed to #rect slot when zoom is active",
+        "link": "/docs#vue-ui-treemap"
+      }
+    ]
+  },
+  {
+    "version": "v 3.11.3",
+    "date": "2026-01-15",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Add new icons",
+        "link": "/docs#vue-ui-icon"
+      },
+      {
+        "component": "All charts with user options menu",
+        "description": "Update menu icons",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "version": "v 3.11.2",
+    "date": "2026-01-11",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add #datapoint scoped slot",
+        "link": "/docs#vue-ui-quadrant"
+      }
+    ]
+  },
+  {
+    "version": "v 3.11.1",
+    "date": "2026-01-11",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Apply scaleMin and scaleMax on the zoom minimap when provided in config",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Apply scaleMin and scaleMax on the zoom minimap when provided in config",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add new icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
+    "version": "v 3.11.0",
+    "date": "2026-01-10",
+    "updates": [
+      {
+        "component": "Quick custom theme",
+        "description": "Improve getVueDataUiConfig utility to create quick custom themes",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "version": "v 3.10.5",
+    "date": "2026-01-07",
+    "updates": [
+      {
+        "component": "VueUiDag",
+        "description": "Add config options to style edges and nodes when selected",
+        "link": "/docs#vue-ui-dag"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add new icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
+    "version": "v 3.10.4",
+    "date": "2026-01-06",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix bars in minimap not expanding width when segregating other bar series",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Fix bars in minimap not expanding width when segregating other bar series",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
+    "version": "v 3.10.3",
+    "date": "2026-01-05",
+    "updates": [
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Improve config definitions for some themes",
+        "link": "/docs#vue-ui-sparkstackbar"
+      },
+      {
+        "component": "VueUiSparkline",
+        "description": "Improve config definitions for some themes",
+        "link": "/docs#vue-ui-sparkline"
+      },
+      {
+        "component": "VueUiWordCloud",
+        "description": "Improve config definitions for some themes",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
+    "version": "v 3.10.2",
+    "date": "2026-01-05",
+    "updates": [
+      {
+        "component": "VueUiStackline",
+        "description": "Fix wrong bottom legend placement",
+        "link": "/docs#vue-ui-stackline"
+      }
+    ]
+  },
+  {
+    "version": "v 3.10.1",
+    "date": "2026-01-04",
+    "updates": [
+      {
+        "component": "All components with themes",
+        "description": "Add 'minimal' & 'minimalDark' themes",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "version": "v 3.10.0",
+    "date": "2026-01-02",
+    "updates": [
+      {
+        "component": "VueUiBump",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-bump"
+      }
+    ]
+  },
+  {
+    "version": "v 3.9.22",
+    "date": "2025-12-31",
+    "updates": [
+      {
+        "component": "UserOptions",
+        "description": "Place drawer inside a popover when supported",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "version": "v 3.9.21",
+    "date": "2025-12-30",
+    "updates": [
+      {
+        "component": "All charts with tooltips",
+        "description": "Add teleportTo config attribute",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "version": "v 3.9.20",
+    "date": "2025-12-28",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Add new icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
+    "version": "v 3.9.19",
+    "date": "2025-12-27",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Add #exp and #sub slots to display exp and or sub icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
+    "version": "v 3.9.17",
+    "date": "2025-12-26",
+    "updates": [
+      {
+        "component": "VueUiRings",
+        "description": "Add optional ring data labels, enable mutliline labels",
+        "link": "/docs#vue-ui-rings"
+      }
+    ]
+  },
+  {
+    "version": "v 3.9.16",
+    "date": "2025-12-24",
+    "updates": [
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Enable mutliline series name labels using line breaks",
+        "link": "/docs#vue-ui-horizontal-bar"
+      }
+    ]
+  },
+  {
     "version": "v 3.9.15",
     "date": "2025-12-23",
     "updates": [
@@ -544,7 +660,7 @@
       }
     ]
   },
-    {
+  {
     "version": "v 3.7.11",
     "date": "2025-11-25",
     "updates": [
@@ -2507,7 +2623,7 @@
       {
         "component": "Technical release",
         "description": "",
-        "link":""
+        "link": ""
       }
     ]
   },

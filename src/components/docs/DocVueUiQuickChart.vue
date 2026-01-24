@@ -169,6 +169,9 @@ const config = ref({
     legendIcon: "circleFill",
     legendIconSize: 12,
     legendPosition: 'bottom',
+    showLegendSelectAllToggle: false,
+    legendSelectAllToggleBackgroundColor: '#E1E5E8',
+    legendSelectAllToggleColor: '#1A1A1A',
     lineAnimated: true,
     lineSmooth: true,
     lineStrokeWidth: 2,
@@ -321,6 +324,9 @@ const darkModeConfig = ref({
     legendIcon: "circleFill",
     legendIconSize: 12,
     legendPosition: 'bottom',
+    showLegendSelectAllToggle: false,
+    legendSelectAllToggleBackgroundColor: '#3A3A3A',
+    legendSelectAllToggleColor: '#CCCCCC',
     lineAnimated: true,
     lineSmooth: true,
     lineStrokeWidth: 2,
@@ -945,6 +951,9 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
         <BaseAttr name="legendIcon" attr="legendIcon" type="select" defaultVal="circleFill" :options="icons" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendIconSize" attr="legendIconSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendPosition" attr="legendPosition" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="showLegendSelectAllToggle" attr="showLegendSelectAllToggle" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="legendSelectAllToggleBackgroundColor" attr="legendSelectAllToggleBackgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="legendSelectAllToggleColor" attr="legendSelectAllToggleColor" type="color" defaultVal="#2Z353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <div class="py-4 bg-gray-200 dark:bg-[#FFFFFF10] rounded-md px-4 pl-8 border-l border-black dark:border-app-blue my-2">
             <span class="font-black text-black dark:text-app-blue inline-flex gap-2"><VueUiIcon name="chartLine" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/> Line specific attributes:</span>
             <BaseAttr name="lineAnimated" attr="lineAnimated" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />

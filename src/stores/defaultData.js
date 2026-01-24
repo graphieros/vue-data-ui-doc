@@ -402,6 +402,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
                     { key: 'style.chart.legend.fontSize', def: 16, min: 8, max: 48, label: 'fontSize', type: 'number', category: 'legend'},
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -571,6 +574,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fontSize', def: 16, min: 8, max: 48, label: 'fontSize', type: 'number', category: 'legend'},
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.territory.stroke', def: '#666666', type: 'color', label: ['country', 'border', 'is', 'color'], category: 'general'},
                     { key: 'style.chart.territory.strokeWidth', def: 0.5, type: 'number', step:0.1, min: 0.1, max: 12, label: ['country', 'border', 'is', 'thickness'], category: 'general'},
@@ -876,6 +882,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'legend'},
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'userOptions' },
@@ -1232,6 +1241,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'legend'},
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
                     { key: 'style.chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
@@ -1445,6 +1457,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'legend'},
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
                     { key: 'style.chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
@@ -1791,6 +1806,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'legend'},
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip'},
                     { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
@@ -2051,6 +2069,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend' },
                     { key: 'chart.legend.fontSize', def: 16, type: 'number', min: 10, max: 36, label: 'fontSize', category: 'legend' },
                     { key: 'chart.legend.position', def: 'bottom', type: 'select', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'chart.title.show', def: true, type: 'checkbox', label: 'show', category: 'title' },
                     { key: 'chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
@@ -2297,6 +2318,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
                     { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
                     { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -2453,6 +2477,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
                     { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
                     { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -2595,6 +2622,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.bold', def: true, type: 'checkbox', label: 'bold', category: 'legend' },
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend' },
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -2834,6 +2864,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
                     { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
                     { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -3021,6 +3054,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fondSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend' },
                     { key: 'style.chart.legend.bold', def: true, type: 'checkbox', label: 'bold', category: 'legend' },
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -3440,6 +3476,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend' },
                     { key: 'style.chart.legend.prefix', def: '', type: 'text', label: 'prefix', category: 'legend' },
                     { key: 'style.chart.legend.suffix', def: '', type: 'text', label: 'suffix', category: 'legend' },
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
+
                     { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip' },
                     { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip' },
                     { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip' },
@@ -3783,6 +3823,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.legend.percentage.color', def: '#1A1A1A', type: 'color', label: ['percentage', 'is', 'textColor'], category: 'legend' },
                     { key: 'style.legend.percentage.rounding', def: 1, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend' },
                     { key: 'style.legend.percentage.bold', def: true, type: 'checkbox', label: ['percentage', 'is', 'bold'], category: 'legend' },
+                    { key: 'style.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.legend.selectAllToggle.color', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
+
                     { key: 'style.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.title.textAlign', def: 'left', type: 'select', options: ['left', 'center', 'right'], label: 'textAlign', category: 'title' },
                     { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -4138,6 +4182,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -4234,6 +4281,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -4441,6 +4491,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.legend.fontSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend' },
                     { key: 'style.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend' },
                     { key: 'style.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip' },
                     { key: 'style.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip' },
@@ -4989,6 +5042,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValueFirst', def: true, type: 'checkbox', label: ['value', 'is', 'show first'], category: 'legend'},
                     { key: 'style.chart.legend.usePercentageParens', def: true, type: 'checkbox', label: ['percentage', 'is', 'parens'], category: 'legend'},
                     { key: 'style.chart.legend.useValueParens', def: false, type: 'checkbox', label: ['value', 'is', 'parens'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
@@ -5135,6 +5191,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.position', def: 'bottom', type: 'select', label: 'position', options: ['top', 'bottom'], label: 'position', category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.show', def: false, type: 'checkbox', label: ['legend', 'toggle', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.backgroundColor', def: '#E1E5E8', type: 'color', label: ['legend', 'toggle', 'is', 'backgroundColor'], category: 'legend'},
+                    { key: 'style.chart.legend.selectAllToggle.color', def: '#1A1A1A', type: 'color', label: ['legend', 'toggle', 'is', 'textColor'], category: 'legend'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},

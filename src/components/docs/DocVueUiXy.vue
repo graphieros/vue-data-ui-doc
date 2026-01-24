@@ -406,7 +406,12 @@ const config = ref({
             show: true,
             color: "#1A1A1A",
             fontSize: 16,
-            position: 'bottom'
+            position: 'bottom',
+            selectAllToggle: {
+                show: false,
+                backgroundColor: '#E1E5E8',
+                color: '#1A1A1A'
+            }
         },
         title: {
             show:true,
@@ -829,7 +834,12 @@ const darkModeConfig = ref({
             show: true,
             color: "#c8c8c8",
             fontSize: 16,
-            position: 'bottom'
+            position: 'bottom',
+            selectAllToggle: {
+                show: false,
+                backgroundColor: '#3A3A3A',
+                color: '#CCCCCC'
+            }
         },
         title: {
             show:true,
@@ -1629,6 +1639,11 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 <BaseAttr name="color" attr="chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.legend.fontSize" type="number" defaultVal="14" :min="8" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="position" attr="chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="selectAllToggle" :level="3" title="chart.legend.selectAllToggle">
+                    <BaseAttr name="show" attr="chart.legend.selectAllToggle.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="backgroundColor" attr="chart.legend.selectAllToggle.backgroundColor" type="color" defaultVal="#e1e5e8" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="color" attr="chart.legend.selectAllToggle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="padding" :level="2" title="chart.padding">
                 <BaseAttr name="top" attr="chart.padding.top" type="number" defaultVal="0" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
