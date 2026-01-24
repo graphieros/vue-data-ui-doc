@@ -161,6 +161,19 @@ const darkModeConfig = ref({
       color: "#1f77b4",
       strokeWidth: 3,
       smooth: true,
+      pulse: {
+        show: false,
+        color: '#FFFFFF',
+        radius: 4,
+        durationMs: 4000,
+        easeing: 'ease-in-out',
+        cubicBezier: [0.45, 0.45, 0.55, 0.55],
+        trail: {
+          show: true,
+          length: 6,
+          opacity: 0.5
+        }
+      }
     },
     bar: {
       borderRadius: 3,
@@ -264,7 +277,20 @@ const config = ref({
     line: {
       color: "#1f77b4",
       strokeWidth: 3,
-      smooth: true
+      smooth: true,
+      pulse: {
+        show: false,
+        color: '#FFFFFF',
+        radius: 4,
+        durationMs: 4000,
+        easeing: 'ease-in-out',
+        cubicBezier: [0.45, 0.45, 0.55, 0.55],
+        trail: {
+          show: true,
+          length: 6,
+          opacity: 0.5
+        }
+      }
     },
     bar: {
       borderRadius: 3,
@@ -641,6 +667,18 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
     <BaseAttr name="color" attr="style.line.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="strokeWidth" attr="style.line.strokeWidth" type="number" defaultVal="3" :min="0.1" :max="10" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="smooth" attr="style.line.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseDetails attr="pulse" :level="3" title="style.line.pulse">
+      <BaseAttr name="show" attr="style.line.pulse.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+      <BaseAttr name="color" attr="style.line.pulse.color" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="radius" attr="style.line.pulse.radius" type="number" defaultVal="4" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="durationMs" attr="style.line.pulse.durationMs" type="number" defaultVal="4000" :min="1000" :max="5000" step="500" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="easing" attr="style.line.pulse.easing" type="select" defaultVal="ease-in-out" :options="['ease', 'ease-in', 'ease-out', 'ease-in-out']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseDetails attr="trail" :level="4" title="style.line.pulse.trail">
+        <BaseAttr name="show" attr="style.line.pulse.trail.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="length" attr="style.line.pulse.trail.length" type="number" :min="0" :max="24" defaultVal="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="opacity" attr="style.line.pulse.trail.opacity" type="number" :min="0" :max="1" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      </BaseDetails>
+    </BaseDetails>
   </BaseDetails>
   <BaseDetails attr="plot" :level="2" title="style.plot">
     <BaseAttr name="show" attr="style.plot.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

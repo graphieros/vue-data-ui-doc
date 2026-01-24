@@ -1,7 +1,18 @@
 [
   {
+    "version": "v 3.13.1",
+    "date": "2026-01-24",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add optional pulse in line mode",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 3.13.0",
-    "date": "2026-01-21",
+    "date": "2026-01-23",
     "updates": [
       {
         "component": "VueUiDonut",
