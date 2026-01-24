@@ -25,6 +25,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -507,6 +508,10 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <BaseRandomButton @click="randomizeData"/>
         </div>
 
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-rings"/>
+        </div>
+
         <Rater itemId="vue_ui_rings" />
 
         <BaseMigrationInfo
@@ -575,6 +580,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseDetails attr="layout" :level="3" title="style.chart.layout">
           <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
             <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">
+              <BaseAttr name="color" attr="style.chart.layout.labels.dataLabels.color" type="color" defaultVal="#2D252C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="showValueFirst" attr="style.chart.layout.labels.dataLabels.showValueFirst" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="usePercentageParens" attr="style.chart.layout.labels.dataLabels.usePercentageParens" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="useValueParens" attr="style.chart.layout.labels.dataLabels.useValueParens" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

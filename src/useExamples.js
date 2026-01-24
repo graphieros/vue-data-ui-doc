@@ -75,6 +75,66 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-RINGS --------------//
+    const DATASET_RINGS_BASIC = ref([
+        {
+            name: 'Series A',
+            values: [32],
+        },
+        {
+            name: 'Series B',
+            values: [16],
+        },
+        {
+            name: 'Series C',
+            values: [8],
+        },
+        {
+            name: 'Series D',
+            values: [4],
+        },
+        {
+            name: 'Series E',
+            values: [2],
+        },
+    ]);
+
+    const CONFIG_RINGS_BASE = computed(() => ({
+        useCssAnimation: true,
+        style: {
+            chart: {
+                backgroundColor: colors.value.bg,
+                color: colors.value.textColor,
+                layout: {
+                    rings: {
+                        stroke: colors.value.bg
+                    }
+                },
+                legend: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor
+                },
+                title: {
+                    text: 'Title',
+                    color: colors.value.textColor,
+                    textAlign: 'left',
+                    paddingLeft: 24,
+                    subtitle: {
+                        text: 'Subtitle'
+                    }
+                },
+                tooltip: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    showPercentage: false,
+                    borderColor: colors.value.gridStroke,
+                    backgroundOpacity: 70
+                },
+            }
+        }
+    }))
+
+
     //-------------- VUE-UI-BUMP --------------//
     
     const DATASET_BUMP_DEFAULT = ref([
@@ -12378,6 +12438,139 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: 'Gráfico bump denso con clasificaciones',
                     ko: '순위가 포함된 밀집 범프 차트',
                     ar: 'مخطط بامب كثيف مع مراتب'
+                }
+            },
+            // RINGS BASIC
+            { 
+                dataset: DATASET_RINGS_BASIC.value, 
+                config: CONFIG_RINGS_BASE.value,
+                component: 'VueUiRings',
+                icon: 'chartRings',
+                id: 'rings-basic',
+                link: 'vue-ui-rings',
+                description: {
+                    en: "Basic rings chart",
+                    fr: "Graphique en anneaux basique",
+                    pt: "Gráfico de anéis básico",
+                    de: "Einfaches Ringdiagramm",
+                    zh: "基础环形图",
+                    jp: "基本的なリングチャート",
+                    es: "Gráfico de anillos básico",
+                    ko: "기본 링 차트",
+                    ar: "مخطط حلقات أساسي"
+                }
+            },
+            // RINGS THICK NO GRADIENT NO SHADOW
+            { 
+                dataset: DATASET_RINGS_BASIC.value, 
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_RINGS_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                layout: {
+                                    rings: {
+                                        stroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                                        strokeWidth: 12,
+                                        useShadow: false,
+                                        gradient: {
+                                            show: false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiRings',
+                icon: 'chartRings',
+                id: 'rings-thick-no-gradient-no-shadow',
+                link: 'vue-ui-rings',
+                description: {
+                    en: "Thick borders, no gradient, no shadow",
+                    fr: "Bordures épaisses, sans dégradé, sans ombre",
+                    pt: "Bordas grossas, sem gradiente, sem sombra",
+                    de: "Dicke Ränder, kein Farbverlauf, kein Schatten",
+                    zh: "粗边框，无渐变，无阴影",
+                    jp: "太い境界線、グラデーションなし、影なし",
+                    es: "Bordes gruesos, sin degradado, sin sombra",
+                    ko: "두꺼운 테두리, 그라데이션 없음, 그림자 없음",
+                    ar: "حدود سميكة، بدون تدرج، بدون ظل"
+                }
+            },
+            // RINGS WITH DATA LABELS LEFT
+            { 
+                dataset: DATASET_RINGS_BASIC.value, 
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_RINGS_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                layout: {
+                                    labels: {
+                                        dataLabels: {
+                                            show: true,
+                                            color: colors.value.textColor,
+                                            markers: {
+                                                position: 'left'
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiRings',
+                icon: 'chartRings',
+                id: 'rings-with-labels-left',
+                link: 'vue-ui-rings',
+                description: {
+                    en: "With data labels on the left side",
+                    fr: "Avec des étiquettes de données sur le côté gauche",
+                    pt: "Com rótulos de dados no lado esquerdo",
+                    de: "Mit Datenbeschriftungen auf der linken Seite",
+                    zh: "左侧带有数据标签",
+                    jp: "左側にデータラベル付き",
+                    es: "Con etiquetas de datos en el lado izquierdo",
+                    ko: "왼쪽에 데이터 레이블 포함",
+                    ar: "مع تسميات البيانات على الجانب الأيسر"
+                }
+            },
+            // RINGS WITH DATA LABELS RIGHT
+            { 
+                dataset: DATASET_RINGS_BASIC.value, 
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_RINGS_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                layout: {
+                                    labels: {
+                                        dataLabels: {
+                                            show: true,
+                                            color: colors.value.textColor
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiRings',
+                icon: 'chartRings',
+                id: 'rings-with-labels-right',
+                link: 'vue-ui-rings',
+                description: {
+                    en: "With data labels on the right side",
+                    fr: "Avec des étiquettes de données sur le côté droit",
+                    pt: "Com rótulos de dados no lado direito",
+                    de: "Mit Datenbeschriftungen auf der rechten Seite",
+                    zh: "右侧带有数据标签",
+                    jp: "右側にデータラベル付き",
+                    es: "Con etiquetas de datos en el lado derecho",
+                    ko: "오른쪽에 데이터 레이블 포함",
+                    ar: "مع تسميات البيانات على الجانب الأيمن"
                 }
             },
         ]

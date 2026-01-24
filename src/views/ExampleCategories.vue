@@ -330,6 +330,15 @@ const categories = computed(() => {
             description: translations.value.docs.tooltips.chord,
             raterId: 'vue_ui_chord'
         },
+        {
+            link: 'vue-ui-rings',
+            icon: 'chartRings',
+            component: 'VueUiRings',
+            thumb: new URL('../assets/thumb_rings.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_rings_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.rings,
+            raterId: 'vue_ui_rings'
+        },
     ].map((c, i) => {
         return {
             ...c,
