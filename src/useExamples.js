@@ -8070,7 +8070,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         ...CONFIG_SPARKLINE_BASE.value.style,
                         line: {
                             ...CONFIG_SPARKLINE_BASE.value.style.line,
-                            smooth: true
+                            smooth: true,
                         }
                     }
                 },

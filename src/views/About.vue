@@ -8,6 +8,7 @@ import { BrandGithubFilledIcon, CheckIcon } from "vue-tabler-icons";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseCard from "../components/BaseCard.vue";
 import ContributorsBars from "../components/ContributorsBars.vue";
+import BaseSponsorCard from "../components/examples/components/BaseSponsorCard.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -537,6 +538,8 @@ const wheelConfig = computed(() => {
         </template>
       </Suspense>
     </div>
+
+    <BaseSponsorCard card tw="my-10 w-full"/>
 
     <!-- <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors"
       class="w-full mt-12 flex flex-row gap-4 place-items-center justify-center">

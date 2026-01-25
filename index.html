@@ -13,6 +13,18 @@
     <meta name="twitter:image" content="https://vue-data-ui.graphieros.com/logo.png">
     <meta property="og:url" content="https://vue-data-ui.graphieros.com">
     <meta property="og:type" content="website">
+    <meta
+  http-equiv="Content-Security-Policy"
+  content="
+    default-src 'self';
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
+    img-src 'self' data: https:;
+    style-src 'self' 'unsafe-inline';
+    frame-src 'self' https://github.com;
+  "
+/>
+
     <title>Vue Data UI</title>
     <script type="module" crossorigin src="./src/theme.js"></script>
   </head>
