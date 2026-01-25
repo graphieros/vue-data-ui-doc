@@ -7999,6 +7999,39 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: 'مخطط الشرارة الأساسي'
                 }
             },
+            // SPARKLINE WITH PULSE
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        style: {
+                            line: {
+                                pulse: {
+                                    show: true,
+                                    color: '#aec7e8',
+                                    radius: 2
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-with-pulse',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'We have a pulse',
+                    fr: 'Nous avons un pouls',
+                    pt: 'Temos um pulso',
+                    de: 'Wir haben einen Puls',
+                    zh: '我们有脉搏',
+                    jp: '脈がある',
+                    es: 'Tenemos pulso',
+                    ko: '맥박이 있습니다',
+                    ar: 'لدينا نبض'
+                }
+            },
             // SPARKLINE AREA
             {
                 dataset: DATASET_SPARKLINE.value,

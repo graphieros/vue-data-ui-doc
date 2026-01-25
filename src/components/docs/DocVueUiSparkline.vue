@@ -163,6 +163,7 @@ const darkModeConfig = ref({
       smooth: true,
       pulse: {
         show: false,
+        loop: true,
         color: '#FFFFFF',
         radius: 4,
         durationMs: 4000,
@@ -280,6 +281,7 @@ const config = ref({
       smooth: true,
       pulse: {
         show: false,
+        loop: true,
         color: '#FFFFFF',
         radius: 4,
         durationMs: 4000,
@@ -669,6 +671,7 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
     <BaseAttr name="smooth" attr="style.line.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseDetails attr="pulse" :level="3" title="style.line.pulse">
       <BaseAttr name="show" attr="style.line.pulse.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+      <BaseAttr name="loop" attr="style.line.pulse.loop" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
       <BaseAttr name="color" attr="style.line.pulse.color" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="radius" attr="style.line.pulse.radius" type="number" defaultVal="4" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="durationMs" attr="style.line.pulse.durationMs" type="number" defaultVal="4000" :min="1000" :max="5000" step="500" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

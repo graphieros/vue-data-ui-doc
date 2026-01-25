@@ -135,6 +135,14 @@ const thermoConfig = computed(() => {
                     },
                     line: {
                         strokeWidth: 1.6,
+                        pulse: {
+                            show: true,
+                            radius: 1,
+                            color: '#aec7e860',
+                            trail: {
+                                length: 2
+                            }
+                        }
                     },
                     plot: {
                         show: true,

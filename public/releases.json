@@ -1,7 +1,7 @@
 [
   {
-    "version": "v 3.13.1",
-    "date": "2026-01-24",
+    "version": "v 3.13.3",
+    "date": "2026-01-25",
     "updates": [
       {
         "component": "VueUiSparkline",

@@ -688,7 +688,10 @@ const sparklineConfig = ref({
     line: {
       color: "#42d392",
       strokeWidth: 1,
-      smooth: true
+      smooth: true,
+      pulse: {
+        show: true
+      }
     },
     bar: {
       borderRadius: 1,
@@ -746,7 +749,13 @@ const darkModeSparklineConfig = ref({
     line: {
       color: "#42d392",
       strokeWidth: 1,
-      smooth: true
+      smooth: true,
+      pulse: {
+        show: true,
+        radius: 1,
+        durationMs: 10000,
+        color: '#98df8a'
+      }
     },
     bar: {
       borderRadius: 1,
