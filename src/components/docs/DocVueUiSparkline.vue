@@ -164,8 +164,8 @@ const darkModeConfig = ref({
       pulse: {
         show: false,
         loop: true,
-        color: '#FFFFFF',
-        radius: 4,
+        color: '#aec7e880',
+        radius: 3,
         durationMs: 4000,
         easeing: 'ease-in-out',
         cubicBezier: [0.45, 0.45, 0.55, 0.55],
@@ -282,8 +282,8 @@ const config = ref({
       pulse: {
         show: false,
         loop: true,
-        color: '#FFFFFF',
-        radius: 4,
+        color: '#aec7e8',
+        radius: 3,
         durationMs: 4000,
         easeing: 'ease-in-out',
         cubicBezier: [0.45, 0.45, 0.55, 0.55],
@@ -509,6 +509,18 @@ function goToPage(route) {
     router.push(route)
 }
 
+const prefersReduced = ref({
+  en: 'Pulse animation will not show if prefers-reduced-motion',
+  fr: "L’animation de pulsation ne s’affichera pas si prefers-reduced-motion est activé",
+  pt: 'A animação de pulso não será exibida se prefers-reduced-motion estiver ativado',
+  de: 'Die Pulsanimation wird nicht angezeigt, wenn prefers-reduced-motion aktiviert ist',
+  zh: '如果启用了 prefers-reduced-motion，脉冲动画将不会显示',
+  jp: 'prefers-reduced-motion が有効な場合、パルスアニメーションは表示されません',
+  es: 'La animación de pulso no se mostrará si prefers-reduced-motion está activado',
+  ko: 'prefers-reduced-motion이 활성화된 경우 펄스 애니메이션이 표시되지 않습니다',
+  ar: 'لن يتم عرض حركة النبض إذا كان prefers-reduced-motion مفعّلًا'
+})
+
 </script>
 
 <template>
@@ -536,7 +548,15 @@ function goToPage(route) {
           </VueUiSparkline>
         </BaseCard>
       </DocSnapper>
-      <BaseRandomButton @click="randomizeData"/>
+      <div class="flex flex-row gap-2">
+        <BaseRandomButton @click="randomizeData"/>
+      </div>
+      <div class="flex flex-col justify-center mt-4 place-items-center text-[12px]">
+        <code class="text-[12px]">
+          <BaseAttr name="Show pulse" attr="style.line.pulse.show" defaultVal="false" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </code>
+        {{ prefersReduced[store.lang] }}
+      </div>
     </div>
 
     <div class="w-full flex justify-center mt-6">
