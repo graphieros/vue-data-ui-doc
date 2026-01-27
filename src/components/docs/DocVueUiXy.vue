@@ -56,7 +56,7 @@ const patternDataset = computed(() => {
     return [
     {
         name: "Series 1",
-        series: [ 12, 25, 32, 64, 34, 26, 12],
+        series: [ 12, 25, 32, 64, 34, 26, 12,],
         type: "bar",
         color: "rgb(95,139,238)",
         shape: 'circle',
@@ -90,7 +90,7 @@ const dataset = computed(() => {
     return [
     {
         name: "Series 1",
-        series: [ 12, 25, 32, 64, 34, 26],
+        series: [ 12, 25, 32, 64, 34, 26, 22, 20, 18, 15, 12],
         type: "bar",
         color: "#1f77b4",
         shape: 'circle',
@@ -98,7 +98,7 @@ const dataset = computed(() => {
     },
     {
         name: "Series 2",
-        series: [ 8, 20, 27, 48, 27, 20],
+        series: [ 8, 20, 27, 48, 27, 20, 21, 16, 12, 8, 5],
         type: "bar",
         color: "#aec7e8",
         shape: "star",
@@ -107,7 +107,7 @@ const dataset = computed(() => {
     },
     {
         name: "Series 3",
-        series: [75, 82, 80, null, 90, 97],
+        series: [90, 82, 80, null, 90, 97, null, 45, 80],
         type: "line",
         color: "#ff7f0e",
         useArea: false,
@@ -268,6 +268,7 @@ const config = ref({
         },
         zoom: {
             show: true,
+            maxWidth: 500,
             color: "#CCCCCC",
             highlightColor: "#4A4A4A",
             fontSize: 14,
@@ -697,6 +698,7 @@ const darkModeConfig = ref({
         },
         zoom: {
             show: true,
+            maxWidth: 500,
             color: "#6A6A6A",
             highlightColor: "#4A4A4A",
             fontSize: 14,
@@ -1763,6 +1765,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             </BaseDetails>
             <BaseDetails attr="zoom" :level="2" title="chart.zoom">
                 <BaseAttr name="show" attr="chart.zoom.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="maxWidth" attr="chart.zoom.maxWidth" type="number" defaultVal="null" :min="200" :max="800" :step="50" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.13.4"/>
                 <BaseAttr name="color" attr="chart.zoom.color" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="highlightColor" attr="chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.zoom.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

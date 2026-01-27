@@ -155,6 +155,7 @@ const config = ref({
       },
       zoom: {
         show: true,
+        maxWidth: 450,
         color: "#CCCCCC",
         highlightColor: "#4A4A4A",
         fontSize: 14,
@@ -416,6 +417,7 @@ const darkModeConfig = ref({
       },
       zoom: {
         show: true,
+        maxWidth: 450,
         color: "#6A6A6A",
         highlightColor: "#4A4A4A",
         fontSize: 14,
@@ -1827,6 +1829,19 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                       :light="mutableConfig"
                       :dark="mutableConfigDarkMode"
                       @change="forceChartUpdate()"
+                    />
+                    <BaseAttr
+                      name="maxWidth"
+                      attr="style.chart.zoom.maxWidth"
+                      type="number"
+                      defaultVal="null"
+                      :min="200"
+                      :max="800"
+                      :step="50"
+                      :light="mutableConfig"
+                      :dark="mutableConfigDarkMode"
+                      @change="forceChartUpdate()"
+                      comment="Since v3.13.4"
                     />
                     <BaseAttr
                       name="color"

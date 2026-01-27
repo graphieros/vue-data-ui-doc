@@ -1254,6 +1254,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.highlighter.opacity', def: 5, type: 'range', min: 0, max: 30, label: 'highlighterOpacity', category: 'highlight' },
 
                     { key: 'style.chart.zoom.show', def: true, type: 'checkbox', label: 'zoom', category: 'zoom' },
+                    { key: 'style.chart.zoom.maxWidth', def: 500, type: 'number', min: 200, max: 1000, label: ['zoom',  'is', 'maxWidth'], category: 'zoom'},
                     { key: 'style.chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'zoom'},
                     { key: 'style.chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'zoom'},
                     { key: 'style.chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'zoom'},
@@ -1473,6 +1474,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.highlighter.lineWidth', def: 1, type: 'range', min: 0, max: 12, label: ['line :', 'strokeWidth'], category: 'highlight' },
 
                     { key: 'style.chart.zoom.show', def: true, type: 'checkbox', label: 'zoom', category: 'zoom' },
+                    { key: 'style.chart.zoom.maxWidth', def: 500, type: 'number', min: 200, max: 1000, label: ['zoom',  'is', 'maxWidth'], category: 'zoom'},
                     { key: 'style.chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'zoom'},
                     { key: 'style.chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'zoom'},
                     { key: 'style.chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'zoom'},
@@ -1961,6 +1963,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.width', def: 1000, type: 'range', min: 300, max: 2000, label: 'width', category: 'general' },
 
                     { key: 'chart.zoom.show', def: true, type: 'checkbox', label: 'zoom', category: 'zoom' },
+                    { key: 'chart.zoom.maxWidth', def: 500, type: 'number', min: 200, max: 1000, step: 50, label: ['zoom',  'is', 'maxWidth'], category: 'zoom'},
                     { key: 'chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'zoom'},
                     { key: 'chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'zoom'},
                     { key: 'chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'zoom'},

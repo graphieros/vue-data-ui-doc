@@ -281,6 +281,7 @@ const config = ref({
         merged: false,
         frameColor: '#CCCCCC'
     },
+    zoomMaxWidth: 450,
     zoomStartIndex: null,
     zoomEndIndex: null,
     showUserOptionsOnChartHover: false,
@@ -436,6 +437,7 @@ const darkModeConfig = ref({
         merged: false,
         frameColor: '#6A6A6A'
     },
+    zoomMaxWidth: 450,
     zoomStartIndex: null,
     zoomEndIndex: null,
     showUserOptionsOnChartHover: false,
@@ -1063,6 +1065,7 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
             <BaseAttr name="xyShowScale" attr="xyShowScale" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="yAxisLabel" attr="yAxisLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomXy" attr="zoomXy" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="zoomMaxWidth" attr="zoomMaxWidth" type="number" defaultVal="null" :min="200" :max="800" :step="50" comment="Since v3.13.4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomColor" attr="zoomColor" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomHighlightColor" attr="zoomHighlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomFontSize" attr="zoomFontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

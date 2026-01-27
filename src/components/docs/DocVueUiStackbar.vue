@@ -184,6 +184,7 @@ const config = ref({
             },
             zoom: {
                 show: true,
+                maxWidth: 450,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -469,6 +470,7 @@ const darkModeConfig = ref({
             },
             zoom: {
                 show: true,
+                maxWidth: 450,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -1051,6 +1053,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     </BaseDetails>
                     <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                         <BaseAttr name="show" attr="style.chart.zoom.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="maxWidth" attr="style.chart.zoom.maxWidth" type="number" defaultVal="null" :min="200" :max="800" :step="50" comment="Since v3.13.4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.zoom.color" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="highlightColor" attr="style.chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.zoom.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

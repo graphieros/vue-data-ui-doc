@@ -1,5 +1,46 @@
 [
   {
+    "version": "v 3.13.4",
+    "date": "2026-01-27",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add optional max with for zoom component",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add optional max with for zoom component",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add optional max with for zoom component",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add optional max with for zoom component",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add optional max with for zoom component",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add optional max with for zoom component",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiStackline",
+        "description": "Add optional max with for zoom component",
+        "link": "/docs#vue-ui-stackline"
+      }
+    ]
+  },
+  {
     "version": "v 3.13.3",
     "date": "2026-01-25",
     "updates": [
