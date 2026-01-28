@@ -1,4 +1,15 @@
 [
+    {
+    "version": "v 3.13.5",
+    "date": "2026-01-28",
+    "updates": [
+      {
+        "component": "SlicerPreview",
+        "description": "Expose the side for each range handle of the zoom component",
+        "link": ""
+      }
+    ]
+  },
   {
     "version": "v 3.13.4",
     "date": "2026-01-27",
