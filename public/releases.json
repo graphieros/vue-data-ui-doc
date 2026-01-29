@@ -1,5 +1,16 @@
 [
     {
+    "version": "v 3.13.6",
+    "date": "2026-01-28",
+    "updates": [
+      {
+        "component": "Configs",
+        "description": "Add support for oklch colors",
+        "link": ""
+      }
+    ]
+  },
+    {
     "version": "v 3.13.5",
     "date": "2026-01-28",
     "updates": [
