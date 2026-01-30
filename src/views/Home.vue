@@ -656,7 +656,7 @@ onBeforeUnmount(() => {
             </button>
           </div>
           </a>
-          <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center mt-0.5" :title="'Version ' + staticReleases[0].version.replace('v', '')">
+           <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center mt-0.5" :title="'Version ' + staticReleases[0].version.replace('v', '')">
             <Suspense>
               <template #default>
                 <div class="h-full flex flex-col">
@@ -674,6 +674,34 @@ onBeforeUnmount(() => {
             </Suspense>
             <br>
         </div>
+        <!-- When we are ready -->
+          <!-- <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center mt-0.5">
+            <Suspense>
+              <template #default>
+                <a
+                  href="https://npmx.dev/vue-data-ui"
+                  target="_blank"
+                  class="flex border h-8 rounded-md shadow-md"
+                  title="View in npmx"
+                >
+                  <img
+                    src="../assets/npmx.svg"
+                    alt="npmx"
+                    class="h-full w-8"
+                  />
+                  <div
+                    class="h-full flex items-center bg-[#FAFAFA] text-[#0A0A0A] font-inter-medium px-2"
+                  >
+                    {{ digits.join('') }}
+                  </div>
+                </a>
+              </template>
+              <template #fallback>
+                <div class="min-h-[50px]"></div>
+              </template>
+            </Suspense>
+            <br>
+        </div> -->
           <div v-else class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
         </div>
     </div>
@@ -793,6 +821,7 @@ onBeforeUnmount(() => {
   <BrightnessUpIcon v-if="isDarkMode" class="text-chalk"/>
   <MoonIcon v-else class="text-board-2"/>
 </button>
+
 
 <svg :viewBox="viewBox" width="100%" class="bg-transparent absolute top-0 left-0 user-position pointer-events-none">
     <line :x1="clientPosition.x" :x2="clientPosition.x" :y1="0" :y2="clientPosition.y - targetSize" stroke="#616161" stroke-width="0.6" />
