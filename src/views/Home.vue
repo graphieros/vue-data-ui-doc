@@ -656,39 +656,23 @@ onBeforeUnmount(() => {
             </button>
           </div>
           </a>
-           <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center mt-0.5" :title="'Version ' + staticReleases[0].version.replace('v', '')">
-            <Suspense>
-              <template #default>
-                <div class="h-full flex flex-col">
-                  <div class="h-full flex flex-row place-items-center justify-center">
-                    <svg style="height:100%" viewBox="-6 -6 22 22">
-                      <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#6A6A6A'" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <VueUiDigits v-for="d in digits" :config="{...digitsConfigVersion, digits: {...digitsConfigVersion.digits, thickness: 1.7, color: isDarkMode ? '#42d392' : '#6A6A6A' }}" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
-                  </div>
-                </div>
-              </template>
-              <template #fallback>
-                <div class="min-h-[50px]"></div>
-              </template>
-            </Suspense>
-            <br>
-        </div>
         <!-- When we are ready -->
-          <!-- <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center mt-0.5">
+          <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center mt-0.5">
             <Suspense>
               <template #default>
                 <a
                   href="https://npmx.dev/vue-data-ui"
                   target="_blank"
-                  class="flex border h-8 rounded-md shadow-md"
+                  class="flex border h-8 rounded-md shadow-md overflow-hidden"
                   title="View in npmx"
                 >
-                  <img
-                    src="../assets/npmx.svg"
-                    alt="npmx"
-                    class="h-full w-8"
-                  />
+                  <div class="bg-[#0A0A0A] h-8 w-8 flex justify-center place-items-center">
+                    <img
+                      src="../assets/npmx.png"
+                      alt="npmx"
+                      class="w-5 h-5"
+                    />
+                  </div>
                   <div
                     class="h-full flex items-center bg-[#FAFAFA] text-[#0A0A0A] font-inter-medium px-2"
                   >
@@ -701,7 +685,7 @@ onBeforeUnmount(() => {
               </template>
             </Suspense>
             <br>
-        </div> -->
+        </div>
           <div v-else class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
         </div>
     </div>
