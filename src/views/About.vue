@@ -9,9 +9,12 @@ import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseCard from "../components/BaseCard.vue";
 import ContributorsBars from "../components/ContributorsBars.vue";
 import BaseSponsorCard from "../components/examples/components/BaseSponsorCard.vue";
+import PACKAGE from "../../package.json"
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
+
+const version = PACKAGE.dependencies['vue-data-ui'].replaceAll('^', '');
 
 const translations = computed(() => {
   return store.translations;
@@ -499,12 +502,32 @@ const wheelConfig = computed(() => {
   <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
   <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
 
-    <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
+    <div class="w-full flex flex-row gap-4 place-items-center justify-center mt-12">
       <VueUiIcon class="hidden md:block" name="microscope" :size="62" :strokeWidth="1.5" :stroke="isDarkMode ? '#8A8A8A' : '#8A8A8A'"/>
       <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
         {{ translations.menu.about[store.lang] }}
       </h1>
     </div>
+
+      <a
+        href="https://npmx.dev/vue-data-ui"
+        target="_blank"
+        class="flex border h-8 rounded-md shadow-md overflow-hidden mb-12"
+        title="View in npmx"
+      >
+        <div class="bg-[#0A0A0A] h-8 w-8 flex justify-center place-items-center">
+          <img
+            src="../assets/npmx.png"
+            alt="npmx"
+            class="w-5 h-5"
+          />
+        </div>
+        <div
+          class="h-full flex items-center bg-[#FAFAFA] text-[#0A0A0A] font-inter-medium px-2"
+        >
+          {{ version }}
+        </div>
+      </a>
 
 
     <div class="w-full mx-auto">
