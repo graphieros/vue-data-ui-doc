@@ -1,5 +1,21 @@
 [
     {
+    "version": "v 3.14.0",
+    "date": "2026-02-01",
+    "updates": [
+      {
+        "component": "i18n",
+        "description": "Ass support for all i18n locales for time labels using datetimeFormatter locale",
+        "link": ""
+      },
+      {
+        "component": "All components with built-in skeleton loaders",
+        "description": "Open skeleton loaders config & dataset for customization",
+        "link": ""
+      }
+    ]
+  },
+    {
     "version": "v 3.13.7",
     "date": "2026-01-30",
     "updates": [
