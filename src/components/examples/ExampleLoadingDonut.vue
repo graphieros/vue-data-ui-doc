@@ -9,7 +9,7 @@
     <!-- Use the watermark slot to display additional loading information, or a loading animation -->
     <template #watermark v-if="loading">
       <div>
-        <BaseBubbles 
+        <BaseBubbles
           class="mt-5"
           randomColor
           stroke="#FFFFFF40"
@@ -41,7 +41,7 @@ const loadingLabel = ref({
   pt: "Carregando...",
   de: "Laden...",
   zh: "加载中...",
-  jp: "読み込み中...",
+  ja: "読み込み中...",
   es: "Cargando...",
   ar: "جارٍ التحميل...",
   ko: "로딩 중..."

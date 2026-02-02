@@ -718,7 +718,7 @@ const innerTranslations = ref({
         pt: 'Este gráfico de linhas empilhadas possui uma opção de configuração para mostrar séries distribuídas. Nesse modo, todas as barras ocupam toda a altura do gráfico e exibem as proporções de cada ponto de dados.',
         de: 'Dieses gestapelte Liniendiagramm verfügt über eine Konfigurationsoption, um verteilte Reihen anzuzeigen. In diesem Modus nehmen alle Balken die gesamte Höhe des Diagramms ein und zeigen die Anteile jedes Datenpunkts.',
         zh: '此堆叠折线图具有显示分布系列的配置选项。在此模式下，所有条形都占据图表的全部高度，并显示每个数据点的比例。',
-        jp: 'この積み上げ折れ線グラフには、分布された系列を表示する設定オプションがあります。このモードでは、すべてのバーがグラフの全高さを占め、各データポイントの比率を表示します。',
+        ja: 'この積み上げ折れ線グラフには、分布された系列を表示する設定オプションがあります。このモードでは、すべてのバーがグラフの全高さを占め、各データポイントの比率を表示します。',
         es: 'Este gráfico de líneas apiladas tiene una opción de configuración para mostrar series distribuidas. En este modo, todas las barras ocupan toda la altura del gráfico y muestran las proporciones de cada punto de datos.',
         ko: '이 누적 선형 차트에는 분포된 시리즈를 표시하는 구성 옵션이 있습니다. 이 모드에서는 모든 막대가 차트의 전체 높이를 차지하며 각 데이터 포인트의 비율을 표시합니다.',
         ar: 'يحتوي هذا المخطط الخطي المكدس على خيار إعداد لعرض السلاسل الموزعة. في هذا الوضع، تشغل جميع الأعمدة الارتفاع الكامل للمخطط وتُظهر نسب كل نقطة بيانات.'
@@ -729,7 +729,7 @@ const innerTranslations = ref({
         pt: 'Alternar para o modo distribuído',
         de: 'Verteilten Modus umschalten',
         zh: '切换分布模式',
-        jp: '分布モードを切り替える',
+        ja: '分布モードを切り替える',
         es: 'Alternar modo distribuido',
         ko: '분포 모드 전환',
         ar: 'تبديل وضع التوزيع'
@@ -887,7 +887,7 @@ const freestyleTemplate = ref(`<VueUiStackline :config="config" :dataset="datase
     <template #svg="{ svg }">
         <g v-html="freestyle(svg)"/>
     </template>
-</VueUiStackline>    
+</VueUiStackline>
 `)
 
 function freestyle({ drawingArea, data }) {
@@ -937,7 +937,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 <template>
     <div>
         <BaseDocTitle name="VueUiStackline"/>
-        
+
         <BaseDocDescription :text="translations.docs.tooltips.stackline[store.lang]" />
 
         <BaseDocHeaderActions
@@ -985,7 +985,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         :content="dsTypeCode"
                         :title="translations.docs.datastructure[store.lang]"
                         class="my-6"
-                    /> 
+                    />
                 </div>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
@@ -993,7 +993,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         @copy="store.copy()"
                         :content="codeDataset"
                         :title="translations.docs.example[store.lang]"
-                    /> 
+                    />
                 </div>
             </template>
 
@@ -1456,7 +1456,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             }
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
-    </pre>  
+    </pre>
                 <ExposedMethods
                     component="VueUiStackline"
                     getImage
@@ -1487,7 +1487,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         'pattern',
                         'user-menu',
                         'annotator-actions'
-                    ]" 
+                    ]"
                 >
                 <!-- <template #after="item">
                     <div v-if="item.names.includes('svg')" class="p-6">
@@ -1550,11 +1550,11 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <template #tab7>
                 <ResponsiveUnit height="500px">
                     <template #chart>
-                        <VueDataUi 
-                            component="VueUiStackline" 
-                            :dataset="dataset" 
+                        <VueDataUi
+                            component="VueUiStackline"
+                            :dataset="dataset"
                             :config="
-                                isDarkMode 
+                                isDarkMode
                                     ? {
                                         ...mutableConfigDarkMode,
                                         responsive: true
@@ -1563,7 +1563,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                                         ...mutableConfig,
                                         responsive: true
                                     }
-                                " 
+                                "
                             :key="key"
                         />
                     </template>

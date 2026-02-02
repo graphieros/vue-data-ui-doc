@@ -63,7 +63,7 @@ const tooltipContent = ref({
     pt: 'Copiar o link deste exemplo',
     de: 'Link zu diesem Beispiel kopieren',
     zh: '复制此示例的链接',
-    jp: 'この例へのリンクをコピー',
+    ja: 'この例へのリンクをコピー',
     es: 'Copiar el enlace de este ejemplo',
     ko: '이 예제의 링크를 복사',
     ar: 'انسخ رابط هذا المثال'

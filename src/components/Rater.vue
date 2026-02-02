@@ -40,9 +40,9 @@ function submitRating() {
     fetch(apiUrl, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' 
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestData) 
+        body: JSON.stringify(requestData)
     })
     .then(response => response.json())
     .then(_data => {
@@ -105,14 +105,14 @@ const labels = computed(() => {
     return {
         r8: {
             en: "Submit",
-            fr: "Envoyer",       
-            pt: "Enviar",        
-            de: "Absenden",      
-            zh: "提交",           
-            jp: "送信",           
-            es: "Enviar",        
-            ko: "제출",           
-            ar: "إرسال"           
+            fr: "Envoyer",
+            pt: "Enviar",
+            de: "Absenden",
+            zh: "提交",
+            ja: "送信",
+            es: "Enviar",
+            ko: "제출",
+            ar: "إرسال"
         },
         thx: {
             en: 'Thank you!',
@@ -120,7 +120,7 @@ const labels = computed(() => {
             pt: 'Obrigado(a)!',
             de: 'Danke!',
             zh: '谢谢！',
-            jp: 'ありがとう！',
+            ja: 'ありがとう！',
             es: '¡Gracias!',
             ko: '고마워요!',
             ar: 'شُكرًا لك!'
@@ -131,7 +131,7 @@ const labels = computed(() => {
             pt: "Avalie este componente!",
             de: "Bewerten Sie diese Komponente!",
             zh: "为此组件评分！",
-            jp: "このコンポーネントを評価してください！",
+            ja: "このコンポーネントを評価してください！",
             es: "¡Califica este componente!",
             ko: "이 컴포넌트를 평가하세요!",
             ar: "قيّم هذا المكون!"
@@ -152,11 +152,11 @@ const labels = computed(() => {
             />
             <button
                 class="
-                    whitespace-nowrap 
-                    py-1 
-                    px-4 
-                    outline 
-                    rounded-full 
+                    whitespace-nowrap
+                    py-1
+                    px-4
+                    outline
+                    rounded-full
                     bg-gradient-to-br
                     disabled:from-[#8A8A8A]
                     disabled:to-[#9A9A9A]

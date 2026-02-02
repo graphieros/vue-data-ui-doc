@@ -30,7 +30,7 @@ const props = defineProps({
     attr: {
         type: String,
         default: ''
-    }, 
+    },
     defaultVal: {
         type: String,
         default: ''
@@ -147,7 +147,7 @@ const defaultValueTranslation = ref({
     pt: 'Valor padrão:',
     de: 'Standardwert:',
     zh: '默认值：',
-    jp: 'デフォルト値:',
+    ja: 'デフォルト値:',
     es: 'Valor predeterminado:',
     ar: 'القيمة الافتراضية:'
 })
@@ -182,7 +182,7 @@ const translatedTooltip = computed(() => {
                             </template>
                             <template #after>
                                 <div class="pl-2 text-gray-600 dark:text-gray-400 flex flex-row place-items-center align-center" dir="auto">
-                                    <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span> 
+                                    <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span>
                                     <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
                                     <span class="ml-4">
                                         <BaseColorInfo v-if="type === 'color'" :color="defaultVal" tooltipPosition="right"/>
@@ -200,10 +200,10 @@ const translatedTooltip = computed(() => {
                     </template>
                     <template v-if="type === 'checkbox'">
                         <input
-                            :aria-labelledby="id" 
+                            :aria-labelledby="id"
                             :id="`i_${id}`"
-                            type="checkbox" 
-                            :checked="nestedAttribute === true" 
+                            type="checkbox"
+                            :checked="nestedAttribute === true"
                             @change="nestedAttribute = $event.target.checked; emit('change')"
                             class="accent-app-blue"
                         />
@@ -213,8 +213,8 @@ const translatedTooltip = computed(() => {
                             <option v-for="o in options" :key="o" :value="o">{{ o }}</option>
                         </select>
                     </template>
-                    <span dir="auto" class="pl-2 text-gray-600 dark:text-gray-400" v-if="!rgba"> 
-                        <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span> 
+                    <span dir="auto" class="pl-2 text-gray-600 dark:text-gray-400" v-if="!rgba">
+                        <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span>
                         <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
                         <span class="ml-4">
                             <BaseColorInfo v-if="type === 'color'" :color="defaultVal"/>
@@ -226,7 +226,7 @@ const translatedTooltip = computed(() => {
             <Transition name="fade">
                 <button
                     class="h-[24px] w-[24px] absolute flex -left-[26px] top-1/2 -translate-y-1/2 place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white dark:border-black"
-                    v-if="showResetButton && type !== 'checkbox' && !inactive" 
+                    v-if="showResetButton && type !== 'checkbox' && !inactive"
                     @click="resetValue"
                 >
                     <RefreshDotIcon/>

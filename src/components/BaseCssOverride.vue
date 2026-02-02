@@ -16,7 +16,7 @@ const title = ref({
     pt: 'Aponte para essas classes CSS para personalizar ainda mais seu componente de gráfico',
     de: 'Zielen Sie auf diese CSS-Klassen, um Ihre Diagrammkomponente weiter anzupassen',
     zh: '定位这些 CSS 类以进一步自定义您的图表组件',
-    jp: 'これらの CSS クラスをターゲットにして、チャートコンポーネントをさらにカスタマイズします',
+    ja: 'これらのCSSクラスをターゲットにして、チャートコンポーネントをさらにカスタマイズします',
     es: 'Apunta a estas clases CSS para personalizar aún más tu componente de gráfico',
     ko: '이 CSS 클래스를 대상으로 하여 차트 구성 요소를 더욱 사용자 지정하세요'
 })

@@ -250,7 +250,7 @@ const defaultValueTranslation = ref({
     pt: 'Valor padrão:',
     de: 'Standardwert:',
     zh: '默认值：',
-    jp: 'デフォルト値:',
+    ja: 'デフォルト値:',
     es: 'Valor predeterminado:',
     ar: 'القيمة الافتراضية:'
 })
@@ -263,14 +263,14 @@ const { configCode, showAllConfig } = useConfigCode()
     <div>
         <BaseDocTitle name="VueUiRating" />
 
-        <BaseDocDescription>        
+        <BaseDocDescription>
             {{ translations.docs.comments.rating.p1[store.lang] }}<br><br>
             {{ translations.docs.comments.rating.p2[store.lang] }}
         </BaseDocDescription>
 
         <BaseDocHeaderActions targetLink="vue-ui-rating" :configSource="mainConfig.vue_ui_rating" />
 
-        
+
         <div :class="`transition-all mx-auto w-full sm:w-[300px]`">
             <DocSnapper
                 :isFixed="isFixed"
@@ -292,12 +292,12 @@ const { configCode, showAllConfig } = useConfigCode()
                             <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
                         </div>
                     </div>
-                    <VueUiRating 
-                        ref="rating" 
+                    <VueUiRating
+                        ref="rating"
                         :dataset="dataset"
-                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
-                        :key="key" 
-                        @rate="showRating" 
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+                        :key="key"
+                        @rate="showRating"
                     />
                 </BaseCard>
             </DocSnapper>
@@ -313,7 +313,7 @@ const { configCode, showAllConfig } = useConfigCode()
             :content="dsTypeCode"
             :title="translations.docs.datastructure[store.lang]"
             class="my-6"
-        />  
+        />
 
         <CodeParser
             language="typescript"
@@ -321,14 +321,14 @@ const { configCode, showAllConfig } = useConfigCode()
             :content="codeDataset1"
             :title="translations.docs.comments.rating.simpleRating[store.lang]"
             class="my-6"
-        />    
+        />
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="codeDataset2"
             :title="translations.docs.comments.rating.breakdown[store.lang]"
-        />    
+        />
                 </div>
             </template>
             <template v-slot:tab1>

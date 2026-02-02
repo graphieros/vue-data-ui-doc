@@ -29,7 +29,7 @@ const description = ref({
     pt: 'Você pode definir callbacks para todos os botões do menu do usuário.',
     de: 'Sie können Callbacks für alle Schaltflächen des Benutzermenüs festlegen.',
     zh: '您可以为用户菜单的所有按钮设置回调 (callbacks)。',
-    jp: 'ユーザーメニューのすべてのボタンにコールバックを設定できます。',
+    ja: 'ユーザーメニューのすべてのボタンにコールバックを設定できます。',
     es: 'Puedes establecer callbacks para todos los botones del menú de usuario.',
     ko: '사용자 메뉴의 모든 버튼에 콜백을 설정할 수 있습니다.',
     ar: 'يمكنك تعيين callbacks لجميع أزرار قائمة المستخدم.'
@@ -109,7 +109,7 @@ const codeChart = computed(() => {
                 ${cbs.value.map(c => c.content).join('')}
             }
         }
-    }    
+    }
 });`
 })
 

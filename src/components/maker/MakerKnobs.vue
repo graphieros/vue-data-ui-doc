@@ -50,7 +50,7 @@ const warningColorAlpha = ref({
     pt: "Cores transparentes são utilizáveis desde a v2.3.77",
     de: "Transparente Farben sind seit Version v2.3.77 verwendbar",
     zh: "自 v2.3.77 起可使用透明颜色",
-    jp: "v2.3.77から透明な色が使用可能です",
+    ja: "v2.3.77から透明な色が使用可能です",
     es: "Los colores transparentes son utilizables desde la v2.3.77",
     ko: "투명 색상은 v2.3.77부터 사용할 수 있습니다",
     ar: "الألوان الشفافة قابلة للاستخدام منذ الإصدار v2.3.77"
@@ -64,7 +64,7 @@ const useTransparencyLabel = ref({
     pt: "Use os antigos seletores de cores (antes da v2.3.77)",
     de: "Verwenden Sie die alten Farbwähler (vor v2.3.77)",
     zh: "使用旧版颜色选择器（v2.3.77之前）",
-    jp: "古いカラーピッカーを使用する（v2.3.77以前）",
+    ja: "古いカラーピッカーを使用する（v2.3.77以前）",
     es: "Usa los antiguos selectores de colores (antes de la v2.3.77)",
     ko: "구버전 색상 선택기 사용 (v2.3.77 이전)",
     ar: "استخدم أدوات اختيار الألوان القديمة (قبل الإصدار v2.3.77)"
@@ -76,7 +76,7 @@ const configCategoriesLabel = ref({
     pt: 'Categorias de configuração:',
     de: 'Konfigurationskategorien:',
     zh: '配置类别:',
-    jp: '設定カテゴリ:',
+    ja: '設定カテゴリ:',
     es: 'Categorías de configuración:',
     ko: '설정 범주:',
     ar: 'فئات التكوين:'
@@ -90,7 +90,7 @@ function scrollToId(id) {
     const elementPosition = element.getBoundingClientRect().top
     const offsetPosition = elementPosition + window.scrollY - headerOffset
     selectedCategory.value = id
-    
+
     window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -101,7 +101,7 @@ function getKeyTranslation(key) {
     const attr = key.split('.').at(-1);
     return useAttrMapping(attr);
 }
-    
+
 
 const observer = ref(null);
 
@@ -177,7 +177,7 @@ watch(
     </BaseCard>
     <div class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-gray-200 dark:bg-[#1A1A1A]" style="z-index:1000" dir="auto">
         <div>{{ configCategoriesLabel[store.lang] }}</div>
-        <button 
+        <button
             v-for="category in categories" @click="scrollToId(category.key)"
             :class="`text-xs py-1 px-2 rounded-full ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] hover:bg-[#1A1A1A20] dark:bg-[#FFFFFF10] hover:dark:bg-[#FFFFFF20]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
         >
@@ -188,13 +188,13 @@ watch(
         <BaseCard type="medium">
             <div class="flex flex-row place-items-center gap-3 mb-4">
                 <VueUiIcon name="sliders" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
-                <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]">{{ category.title }}</h4> 
+                <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]">{{ category.title }}</h4>
             </div>
             <div class="flex flex-row gap-4 place-items-center flex-wrap">
                 <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
                     <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }} <br v-if="getKeyTranslation(knob.key)"/><span v-if="getKeyTranslation(knob.key) && typeof getKeyTranslation(knob.key) === 'string' && typeof getLabel(knob.label) === 'string' && getKeyTranslation(knob.key).toUpperCase() !== getLabel(knob.label).toUpperCase()" class="text-xs text-gray-500">({{ getKeyTranslation(knob.key) }})</span></label>
                     <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type === 'color' && (useOldColorPickers || knob.old)" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
-    
+
                     <div class="flex place-items-center justify-start h-[40px]">
                         <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
                         <template v-if="knob.type === 'range'">

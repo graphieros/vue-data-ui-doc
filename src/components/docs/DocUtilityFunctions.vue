@@ -21,7 +21,7 @@ const utilityTranslations = ref({
         pt: 'Use o utilitário `mergeConfigs` para mesclar profundamente uma configuração padrão com uma configuração do usuário. Os atributos fornecidos na configuração do usuário substituem de forma precisa os da configuração padrão, preservando todos os outros atributos do objeto original.',
         de: 'Verwenden Sie das Hilfsprogramm `mergeConfigs`, um eine Standardkonfiguration tiefgehend mit einer Benutzerkonfiguration zusammenzuführen. In der Benutzerkonfiguration angegebene Attribute überschreiben gezielt die Standardkonfiguration, während alle anderen Attribute des ursprünglichen Objekts erhalten bleiben.',
         zh: '使用 `mergeConfigs` 工具将默认配置与用户配置进行深度合并。用户配置中提供的属性会精确地覆盖默认配置中的对应属性，同时保留原始对象中的所有其他属性。',
-        jp: '`mergeConfigs` ユーティリティを使用して、デフォルト設定とユーザー設定を深くマージします。ユーザー設定で指定された属性はデフォルト設定を正確に上書きし、元のオブジェクトの他のすべての属性は保持されます。',
+        ja: '`mergeConfigs` ユーティリティを使用して、デフォルト設定とユーザー設定を深くマージします。ユーザー設定で指定された属性はデフォルト設定を正確に上書きし、元のオブジェクトの他のすべての属性は保持されます。',
         es: 'Utiliza la utilidad `mergeConfigs` para combinar en profundidad una configuración predeterminada con una configuración del usuario. Los atributos proporcionados en la configuración del usuario sobrescriben de forma precisa los de la configuración predeterminada, conservando todos los demás atributos del objeto original.',
         ko: '`mergeConfigs` 유틸리티를 사용하여 기본 구성과 사용자 구성을 깊게 병합합니다. 사용자 구성에 제공된 속성은 기본 구성을 정확하게 덮어쓰며, 원본 객체의 다른 모든 속성은 그대로 유지됩니다.',
         ar: 'استخدم الأداة `mergeConfigs` لدمج الإعدادات الافتراضية مع إعدادات المستخدم بشكل عميق. تقوم الخصائص الموفرة في إعدادات المستخدم باستبدال الخصائص المقابلة بدقة، مع الحفاظ على جميع الخصائص الأخرى للكائن الأصلي.'
@@ -32,7 +32,7 @@ const utilityTranslations = ref({
         pt: 'Use `mergeConfigs` junto com `getVueDataUiConfig` para configurar rapidamente temas personalizados, fornecendo um conjunto de cores gerais.',
         de: 'Verwenden Sie `mergeConfigs` zusammen mit `getVueDataUiConfig`, um benutzerdefinierte Themes schnell einzurichten, indem Sie einen Satz allgemeiner Farben bereitstellen.',
         zh: '将 `mergeConfigs` 与 `getVueDataUiConfig` 结合使用，通过提供一组通用颜色来快速设置自定义主题。',
-        jp: '`mergeConfigs` を `getVueDataUiConfig` と組み合わせて使用することで、一般的なカラーパレットを指定し、カスタムテーマを素早く設定できます。',
+        ja: '`mergeConfigs` を `getVueDataUiConfig` と組み合わせて使用することで、一般的なカラーパレットを指定し、カスタムテーマを素早く設定できます。',
         es: 'Utiliza `mergeConfigs` junto con `getVueDataUiConfig` para configurar rápidamente temas personalizados proporcionando un conjunto de colores generales.',
         ko: '`mergeConfigs`를 `getVueDataUiConfig`와 함께 사용하여 일반적인 색상 세트를 제공함으로써 사용자 정의 테마를 빠르게 설정할 수 있습니다.',
         ar: 'استخدم `mergeConfigs` مع `getVueDataUiConfig` لإعداد سمات مخصصة بسرعة من خلال توفير مجموعة من الألوان العامة.'
@@ -43,7 +43,7 @@ const utilityTranslations = ref({
         pt: 'useObjectBindings é um composable que achata um objeto reativo em um conjunto de refs (uma para cada propriedade “folha”), para que você possa vincular facilmente valores profundamente aninhados pelos seus caminhos em string.',
         de: 'useObjectBindings ist ein Composable, das ein reaktives Objekt in ein Set von Refs (je eine für jede „Blatteigenschaft“) abflacht, sodass Sie tief verschachtelte Werte einfach anhand ihrer String-Pfade binden können.',
         zh: 'useObjectBindings 是一个可组合函数，它将一个响应式对象展平为一组 refs（针对每个“叶子”属性一个），这样您就可以通过字符串路径轻松绑定到深层嵌套的值。',
-        jp: 'useObjectBindings は、リアクティブオブジェクトを各“リーフ”プロパティごとに1つの ref を持つ一連の refs にフラット化するコンポーザブルで、文字列パスを使って深くネストされた値に簡単にバインドできるようにします。',
+        ja: 'useObjectBindings は、リアクティブオブジェクトを各「リーフ」プロパティごとに1つの ref を持つ一連の refs にフラット化するコンポーザブルで、文字列パスを使って深くネストされた値に簡単にバインドできるようにします。',
         es: 'useObjectBindings es un composable que aplana un objeto reactivo en un conjunto de refs (una por cada propiedad “hoja”) para que puedas enlazar fácilmente valores profundamente anidados mediante sus rutas de cadena de texto.',
         ko: 'useObjectBindings는 반응형 객체를 각 “리프” 속성마다 하나의 ref로 평탄화하는 composable로, 문자열 경로를 통해 깊이 중첩된 값에 쉽게 바인딩할 수 있게 해줍니다.',
         ar: 'useObjectBindings هو كومبوزابل يقوم بتحويل كائن تفاعلي إلى مجموعة من refs (واحدة لكل خاصية “ورقية”) لتتمكن من ربط القيم المتداخلة بعمق بسهولة عبر مساراتها النصية.'
@@ -54,7 +54,7 @@ const utilityTranslations = ref({
         pt: "Gerar abreviações para rótulos",
         de: "Abkürzungen für Beschriftungen erstellen",
         zh: "生成标签的缩写",
-        jp: "ラベルの略語を生成する",
+        ja: "ラベルの略語を生成する",
         es: "Generar abreviaturas para etiquetas",
         ko: "레이블에 대한 약어 생성",
         ar: "إنشاء اختصارات للتسميات"
@@ -65,7 +65,7 @@ const utilityTranslations = ref({
         pt: "Escurece uma cor por uma intensidade especificada",
         de: "Verdunkelt eine Farbe mit einer angegebenen Stärke",
         zh: "根据指定的强度使颜色变暗",
-        jp: "指定された強さで色を暗くする",
+        ja: "指定された強さで色を暗くする",
         es: "Oscurece un color con una intensidad específica",
         ko: "지정된 강도로 색상을 어둡게 만듭니다",
         ar: "يُغمّق اللون بقوة محددة"
@@ -76,7 +76,7 @@ const utilityTranslations = ref({
         pt: "Clareia uma cor por uma intensidade especificada",
         de: "Hellt eine Farbe mit einer angegebenen Stärke auf",
         zh: "根据指定的强度使颜色变亮",
-        jp: "指定された強さで色を明るくする",
+        ja: "指定された強さで色を明るくする",
         es: "Aclara un color con una intensidad específica",
         ko: "지정된 강도로 색상을 밝게 만듭니다",
         ar: "يفتح اللون بقوة محددة"
@@ -87,7 +87,7 @@ const utilityTranslations = ref({
         pt: "Altera o tom de uma cor por uma intensidade especificada",
         de: "Verschiebt den Farbton einer bestimmten Farbe mit einer angegebenen Stärke",
         zh: "根据指定的强度调整给定颜色的色调",
-        jp: "指定された強さで特定の色の色相をシフトします",
+        ja: "指定された強さで特定の色の色相をシフトします",
         es: "Ajusta el matiz de un color según una intensidad específica",
         ko: "지정된 강도로 주어진 색상의 색조를 변경합니다",
         ar: "يُغيّر درجة اللون للون معين بقوة محددة"
@@ -98,7 +98,7 @@ const utilityTranslations = ref({
         pt: "Crie elementos TSpan a partir de uma string para dividir o texto em várias linhas. A saída deve ser colocada com `v-html` dentro de um elemento `<text>` SVG.",
         de: "Erstellen Sie TSpan-Elemente aus einer Zeichenkette, um Text in mehrere Zeilen aufzubrechen. Die Ausgabe sollte mit `v-html` in einem SVG-`<text>`-Element platziert werden.",
         zh: "从字符串创建 TSpan 元素，以将文本拆分为多行。输出应使用 `v-html` 放置在 SVG `<text>` 元素内。",
-        jp: "文字列から TSpan 要素を作成して、テキストを複数行に分割します。出力は `v-html` を使用して SVG `<text>` 要素内に配置する必要があります。",
+        ja: "文字列から TSpan 要素を作成して、テキストを複数行に分割します。出力は `v-html` を使用して SVG `<text>` 要素内に配置する必要があります。",
         es: "Crea elementos TSpan a partir de una cadena para dividir el texto en varias líneas. La salida debe colocarse con `v-html` dentro de un elemento `<text>` SVG.",
         ko: "문자열에서 TSpan 요소를 생성하여 텍스트를 여러 줄로 나눕니다. 출력은 `v-html`을 사용하여 SVG `<text>` 요소 내에 배치해야 합니다.",
         ar: "قم بإنشاء عناصر TSpan من سلسلة نصية لتقسيم النص إلى عدة أسطر. يجب وضع الإخراج باستخدام `v-html` داخل عنصر `<text>` في SVG."
@@ -109,7 +109,7 @@ const utilityTranslations = ref({
         pt: 'A partir de um array de números, retorne um array de médias cumulativas',
         de: 'Aus einem Array von Zahlen ein Array kumulativer Durchschnitte zurückgeben',
         zh: '从数字数组返回累积平均值数组',
-        jp: '数値の配列から累積平均の配列を返す',
+        ja: '数値の配列から累積平均の配列を返す',
         es: 'A partir de un array de números, devuelve un array de promedios acumulados',
         ko: '숫자 배열에서 누적 평균 배열을 반환',
         ar: 'من مصفوفة أرقام، أعِد مصفوفة من المتوسطات التراكمية'
@@ -120,7 +120,7 @@ const utilityTranslations = ref({
         pt: 'A partir de um array de números, retorne um array de medianas cumulativas',
         de: 'Aus einem Array von Zahlen ein Array kumulativer Mediane zurückgeben',
         zh: '从数字数组返回累积中位数数组',
-        jp: '数値の配列から累積中央値の配列を返す',
+        ja: '数値の配列から累積中央値の配列を返す',
         es: 'A partir de un array de números, devuelve un array de medianas acumuladas',
         ko: '숫자 배열에서 누적 중앙값 배열을 반환',
         ar: 'من مصفوفة أرقام، أعِد مصفوفة من الوسيطات التراكمية'
@@ -291,7 +291,7 @@ const comments = ref({
         pt: 'Uso simples',
         de: 'Einfache Verwendung',
         zh: '简单用法',
-        jp: '簡単な使用方法',
+        ja: '簡単な使用方法',
         es: 'Uso simple',
         ko: '간단한 사용법',
         ar: 'استخدام بسيط'
@@ -302,7 +302,7 @@ const comments = ref({
         pt: 'Ignorar totalmente os valores inválidos',
         de: 'Ungültige Werte vollständig ignorieren',
         zh: '完全忽略无效值',
-        jp: '無効な値を完全に無視する',
+        ja: '無効な値を完全に無視する',
         es: 'Ignorar completamente los valores inválidos',
         ko: '잘못된 값을 완전히 무시',
         ar: 'تجاهل القيم غير الصالحة تمامًا'
@@ -313,7 +313,7 @@ const comments = ref({
         pt: 'Converter valores inválidos para zero',
         de: 'Ungültige Werte auf Null umwandeln',
         zh: '将无效值转换为零',
-        jp: '無効な値をゼロに変換する',
+        ja: '無効な値をゼロに変換する',
         es: 'Convertir valores inválidos a cero',
         ko: '잘못된 값을 0으로 변환',
         ar: 'تحويل القيم غير الصالحة إلى صفر'
@@ -411,8 +411,8 @@ const bindings = useObjectBindings(donutConfig);
                     >
                     </VueUiDonut>
                     <div class="mt-2">
-                        <a 
-                            href="https://github.com/graphieros/vue-data-ui/discussions/226" 
+                        <a
+                            href="https://github.com/graphieros/vue-data-ui/discussions/226"
                             target="_blank"
                             class="underline text-[14px] hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         >

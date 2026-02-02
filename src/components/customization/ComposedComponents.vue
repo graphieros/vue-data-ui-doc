@@ -18,7 +18,7 @@ const translations = computed(() => {
             pt: "Esta seção foi criada para fornecer ideias sobre como usar os componentes prontos ou compô-los de forma original.",
             de: "Dieser Abschnitt soll Ideen geben, wie Komponenten sofort einsatzbereit verwendet oder auf originelle Weise kombiniert werden können.",
             zh: "本节旨在提供如何直接使用组件或以原创方式组合它们的灵感。",
-            jp: "このセクションは、コンポーネントをそのまま使用する方法や、独自の方法で組み合わせるアイデアを提供することを目的としています。",
+            ja: "このセクションは、コンポーネントをそのまま使用する方法や、独自の方法で組み合わせるアイデアを提供することを目的としています。",
             es: "Esta sección está diseñada para proporcionar ideas sobre cómo usar componentes listos para usar o componerlos de manera original.",
             ko: "이 섹션은 구성 요소를 바로 사용하거나 독창적인 방식으로 구성하는 방법에 대한 아이디어를 제공하도록 설계되었습니다.",
             ar: "تم تصميم هذا القسم لتقديم أفكار حول كيفية استخدام المكونات مباشرة أو تركيبها بطريقة أصلية.",
@@ -29,7 +29,7 @@ const translations = computed(() => {
             pt: "Este componente consiste em um botão, exibindo um KPI, que ao ser clicado, mostra um gráfico sparkline dentro de um popover.",
             de: "Diese Komponente besteht aus einer Schaltfläche, die eine KPI anzeigt und beim Klicken ein Sparkline-Diagramm in einem Popover anzeigt.",
             zh: "该组件由一个按钮组成，显示一个KPI，点击后会在弹出框中显示一个折线图。",
-            jp: "このコンポーネントは、KPIを表示するボタンで構成され、クリックするとポップオーバー内にスパークラインチャートが表示されます。",
+            ja: "このコンポーネントは、KPIを表示するボタンで構成され、クリックするとポップオーバー内にスパークラインチャートが表示されます。",
             es: "Este componente consiste en un botón que muestra un KPI y, al hacer clic, muestra un gráfico sparkline dentro de un popover.",
             ko: "이 구성 요소는 KPI를 표시하는 버튼으로 구성되며, 클릭하면 팝오버 안에 스파크라인 차트를 표시합니다.",
             ar: "يتكون هذا المكون من زر يعرض مؤشر KPI، وعند النقر عليه، يعرض مخطط شرارة داخل نافذة منبثقة.",
@@ -40,7 +40,7 @@ const translations = computed(() => {
             pt: "Este componente consiste em um botão grande exibindo um gráfico que, ao ser clicado, mostra uma série de mini-gráficos em um popover",
             de: "Dieses Element besteht aus einer großen Schaltfläche, die ein Diagramm anzeigt und bei Klick eine Reihe von Sparklines in einem Popover zeigt",
             zh: "该组件由一个大型按钮组成，显示一个图表，点击后会在弹出框中显示一系列微型图表",
-            jp: "このコンポーネントは、大きなボタンで構成されており、チャートを表示し、クリックするとポップオーバー内に一連のスパークラインが表示されます",
+            ja: "このコンポーネントは、大きなボタンで構成されており、チャートを表示し、クリックするとポップオーバー内に一連のスパークラインが表示されます",
             es: "Este componente consta de un botón grande que muestra un gráfico y, al hacer clic, muestra una serie de gráficos en un popover",
             ko: "이 구성 요소는 차트를 표시하는 큰 버튼으로 구성되어 있으며 클릭하면 팝오버 안에 일련의 스파크라인이 표시됩니다",
             ar: "يتكون هذا المكون من زر كبير يعرض مخططًا وعند النقر عليه يعرض سلسلة من الرسومات الصغيرة داخل نافذة منبثقة"
@@ -51,7 +51,7 @@ const translations = computed(() => {
             pt: "Este componente consiste em uma série de mini-gráficos, ligados pelo índice selecionado atual ao passar o mouse",
             de: "Dieses Element besteht aus einer Reihe von Sparklines, die durch den aktuell ausgewählten Index bei Mausüberfahrt verbunden sind",
             zh: "该组件由一系列微型图表组成，通过鼠标悬停时的当前选定索引进行链接",
-            jp: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされています",
+            ja: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされています",
             es: "Este componente consta de una serie de gráficos, vinculados por el índice seleccionado actual al pasar el ratón",
             ko: "이 구성 요소는 일련의 스파크라인으로 구성되며, 마우스오버 시 현재 선택된 인덱스에 의해 연결됩니다",
             ar: "يتكون هذا المكون من سلسلة من الرسوم البيانية الصغيرة المرتبطة بالمؤشر المحدد حاليًا عند تحريك الماوس فوقها"
@@ -62,7 +62,7 @@ const translations = computed(() => {
             pt: "Este componente consiste em uma série de mini-gráficos, ligados pelo índice selecionado atual ao passar o mouse, com um gráfico de waffle mostrando a distribuição de todas as séries no índice selecionado.",
             de: "Dieses Element besteht aus einer Reihe von Sparklines, die durch den aktuell ausgewählten Index bei Mausüberfahrt verbunden sind, mit einem Waffeldiagramm, das die Aufschlüsselung aller Serien am ausgewählten Index zeigt.",
             zh: "该组件由一系列微型图表组成，通过鼠标悬停时的当前选定索引进行链接，并包含一个华夫图表显示所选索引处所有系列的细分。",
-            jp: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされ、選択されたインデックスで全シリーズの内訳を示すワッフルチャートが表示されます。",
+            ja: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされ、選択されたインデックスで全シリーズの内訳を示すワッフルチャートが表示されます。",
             es: "Este componente consta de una serie de gráficos, vinculados por el índice seleccionado actual al pasar el ratón, con un gráfico de waffle que muestra la descomposición de todas las series en el índice seleccionado.",
             ko: "이 구성 요소는 일련의 스파크라인으로 구성되며, 마우스오버 시 현재 선택된 인덱스에 의해 연결되고, 선택된 인덱스에서 모든 시리즈의 분포를 보여주는 와플 차트를 포함합니다.",
             ar: "يتكون هذا المكون من سلسلة من الرسوم البيانية الصغيرة المرتبطة بالمؤشر المحدد حاليًا عند تحريك الماوس فوقها، مع رسم بياني من نوع وافل يوضح توزيع جميع السلاسل عند المؤشر المحدد."
@@ -73,7 +73,7 @@ const translations = computed(() => {
             pt: "Este componente consiste em uma série de mini-gráficos, ligados pelo índice selecionado atual ao passar o mouse, com um gráfico de rosquinha mostrando a distribuição de todas as séries no índice selecionado.",
             de: "Dieses Element besteht aus einer Reihe von Sparklines, die durch den aktuell ausgewählten Index bei Mausüberfahrt verbunden sind, mit einem Donut-Diagramm, das die Aufschlüsselung aller Serien am ausgewählten Index zeigt.",
             zh: "该组件由一系列微型图表组成，通过鼠标悬停时的当前选定索引进行链接，并包含一个环形图显示所选索引处所有系列的细分。",
-            jp: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされ、選択されたインデックスで全シリーズの内訳を示すドーナツチャートが表示されます。",
+            ja: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされ、選択されたインデックスで全シリーズの内訳を示すドーナツチャートが表示されます。",
             es: "Este componente consta de una serie de gráficos, vinculados por el índice seleccionado actual al pasar el ratón, con un gráfico de dona que muestra la descomposición de todas las series en el índice seleccionado.",
             ko: "이 구성 요소는 일련의 스파크라인으로 구성되며, 마우스오버 시 현재 선택된 인덱스에 의해 연결되고, 선택된 인덱스에서 모든 시리즈의 분포를 보여주는 도넛 차트를 포함합니다.",
             ar: "يتكون هذا المكون من سلسلة من الرسوم البيانية الصغيرة المرتبطة بالمؤشر المحدد حاليًا عند تحريك الماوس فوقها، مع رسم بياني دائري يوضح توزيع جميع السلاسل عند المؤشر المحدد."
@@ -84,7 +84,7 @@ const translations = computed(() => {
             pt: "Veja como é feito",
             de: "Sehen Sie, wie es gemacht wird",
             zh: "看看它是如何制作的",
-            jp: "作り方を見てみましょう",
+            ja: "作り方を見てみましょう",
             es: "Mira cómo está hecho",
             ko: "어떻게 만들어졌는지 확인하세요",
             ar: "شاهد كيف تم صنعه",
@@ -394,24 +394,24 @@ const max = computed(() => {
                 </template>
 
                 <template #popover-content>
-                    <VueUiSparkline 
+                    <VueUiSparkline
                         :config="{
                             ...sparklineConfigUsers,
                             style: {
                                 ...sparklineConfigUsers.style,
                                 scaleMax: max
                             }
-                        }" 
+                        }"
                         :dataset="sparklineDatasetUsers"
                         @hoverIndex="hoverIndex"
                         class="-ml-1"
                         :selectedIndex="selectedIndex"
                     />
-                    <VueUiSparkline 
+                    <VueUiSparkline
                         component="VueUiSparkline"
                         :config="{
-                            ...sparklineConfigViewers, 
-                            type: 'line', 
+                            ...sparklineConfigViewers,
+                            type: 'line',
                             style: {
                                 ...sparklineConfigViewers.style,
                                 scaleMax: max,
@@ -420,21 +420,21 @@ const max = computed(() => {
                                     show: true
                                 }
                             }
-                        }" 
+                        }"
                         :dataset="sparklineDatasetViewers"
                         @hoverIndex="hoverIndex"
                         class="-ml-1"
                         :selectedIndex="selectedIndex"
                     />
-                    <VueUiSparkline 
+                    <VueUiSparkline
                         :config="{
-                            ...sparklineConfigSubscribers, 
+                            ...sparklineConfigSubscribers,
                             type: 'line',
                             style: {
                                 ...sparklineConfigSubscribers.style,
                                 scaleMax: max
                             }
-                        }" 
+                        }"
                         :dataset="sparklineDatasetSubscribers"
                         @hoverIndex="hoverIndex"
                         class="-ml-1"

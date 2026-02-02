@@ -118,7 +118,7 @@ const presentation = ref({
     pt: 'Configure rapidamente um tema personalizado fornecendo cores gerais usadas em fundos, rótulos e grades.',
     de: 'Richten Sie schnell ein benutzerdefiniertes Design ein, indem Sie allgemeine Farben für Hintergründe, Beschriftungen und Raster festlegen.',
     zh: '通过提供用于背景、标签和网格的通用颜色，快速设置自定义主题。',
-    jp: '背景、ラベル、グリッドに使用される一般的な色を指定して、カスタムテーマを素早く設定できます。',
+    ja: '背景、ラベル、グリッドに使用される一般的な色を指定して、カスタムテーマを素早く設定できます。',
     es: 'Configura rápidamente un tema personalizado proporcionando colores generales utilizados en fondos, etiquetas y cuadrículas.',
     ko: '배경, 레이블 및 그리드에 사용되는 일반 색상을 제공하여 사용자 정의 테마를 빠르게 설정할 수 있습니다.',
     ar: 'قم بإعداد سمة مخصصة بسرعة من خلال تحديد الألوان العامة المستخدمة في الخلفيات والتسميات والشبكات.'
@@ -137,7 +137,7 @@ const presentation = ref({
                     <BaseColorInput labelAsCode v-model:value="knobs.colorTextSecondary" label="colorTextSecondary" labelId="colorTextSecondary"/>
                     <BaseColorInput labelAsCode v-model:value="knobs.colorGrid" label="colorGrid" labelId="colorGrid"/>
                     <BaseColorInput labelAsCode v-model:value="knobs.colorBorder" label="colorBorder" labelId="colorBorder"/>
-                    
+
                     <BaseButton @click="reset" fab tw="p-0.5" tooltip="reset" tooltip-position="right">
                         <VueUiIcon name="refresh" stroke="#1A1A1A"/>
                     </BaseButton>

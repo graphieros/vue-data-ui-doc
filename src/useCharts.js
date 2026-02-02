@@ -13,7 +13,7 @@ export default function useCharts() {
                 pt: "dados ao longo do tempo",
                 de: "Daten im Laufe der Zeit",
                 zh: "随时间变化的数据",
-                jp: "時系列データ",
+                ja: "時系列データ",
                 es: "datos a lo largo del tiempo",
                 ko: "시간에 따른 데이터",
                 ar: "البيانات مع مرور الوقت"
@@ -24,7 +24,7 @@ export default function useCharts() {
                 pt: "proporções",
                 de: "Proportionen",
                 zh: "比例",
-                jp: "割合",
+                ja: "割合",
                 es: "proporciones",
                 ko: "비율",
                 ar: "النسب"
@@ -35,7 +35,7 @@ export default function useCharts() {
                 pt: "comparações",
                 de: "Vergleiche",
                 zh: "比较",
-                jp: "比較",
+                ja: "比較",
                 es: "comparaciones",
                 ko: "비교",
                 ar: "المقارنات"
@@ -46,7 +46,7 @@ export default function useCharts() {
                 pt: "classificação",
                 de: "Bewertung",
                 zh: "评分",
-                jp: "評価",
+                ja: "評価",
                 es: "clasificación",
                 ko: "평점",
                 ar: "التقييم"
@@ -57,7 +57,7 @@ export default function useCharts() {
                 pt: "tabelas de dados",
                 de: "Datentabellen",
                 zh: "数据表",
-                jp: "データテーブル",
+                ja: "データテーブル",
                 es: "tablas de datos",
                 ko: "데이터 테이블",
                 ar: "جداول البيانات"
@@ -68,7 +68,7 @@ export default function useCharts() {
                 pt: "relacionamentos",
                 de: "Beziehungen",
                 zh: "关系",
-                jp: "関係",
+                ja: "関係",
                 es: "relaciones",
                 ko: "관계",
                 ar: "العلاقات"
@@ -79,7 +79,7 @@ export default function useCharts() {
                 pt: "hierarquia",
                 de: "Hierarchie",
                 zh: "层级",
-                jp: "階層",
+                ja: "階層",
                 es: "jerarquía",
                 ko: "계층",
                 ar: "التسلسل الهرمي"
@@ -90,7 +90,7 @@ export default function useCharts() {
                 pt: "parte para um todo",
                 de: "Teil eines Ganzen",
                 zh: "整体的一部分",
-                jp: "全体の一部",
+                ja: "全体の一部",
                 es: "parte de un todo",
                 ko: "전체의 일부",
                 ar: "جزء من الكل"
@@ -101,7 +101,7 @@ export default function useCharts() {
                 pt: "distribuição",
                 de: "Verteilung",
                 zh: "分布",
-                jp: "分布",
+                ja: "分布",
                 es: "distribución",
                 ko: "분포",
                 ar: "التوزيع"
@@ -112,7 +112,7 @@ export default function useCharts() {
                 pt: "alcance",
                 de: "Bereich",
                 zh: "范围",
-                jp: "範囲",
+                ja: "範囲",
                 es: "rango",
                 ko: "범위",
                 ar: "النطاق"
@@ -123,7 +123,7 @@ export default function useCharts() {
                 pt: "semântico",
                 de: "semantisch",
                 zh: "语义",
-                jp: "セマンティック",
+                ja: "セマンティック",
                 es: "semántico",
                 ko: "의미론적",
                 ar: "الدلالي"
@@ -134,7 +134,7 @@ export default function useCharts() {
                 pt: "ferramentas UI",
                 de: "UI-Tools",
                 zh: "UI 工具",
-                jp: "UIツール",
+                ja: "UIツール",
                 es: "herramientas de UI",
                 ko: "UI 도구",
                 ar: "أدوات واجهة المستخدم"
@@ -145,7 +145,7 @@ export default function useCharts() {
                 pt: 'Mapas',
                 de: 'Karten',
                 zh: '地图',
-                jp: '地図',
+                ja: '地図',
                 es: 'Mapas',
                 ko: '지도',
                 ar: 'خرائط'
@@ -161,7 +161,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que mostram dados ao longo de um período para identificar tendências ou mudanças.",
                 de: "Visualisierungsmethoden, die Daten über einen Zeitraum hinweg anzeigen, um Trends oder Veränderungen zu erkennen.",
                 zh: "显示一段时间内数据的方法，用于发现趋势或变化。",
-                jp: "データを一定期間にわたって表示し、傾向や変化を見つけるための視覚化方法。",
+                ja: "データを一定期間にわたって表示し、傾向や変化を見つけるための視覚化方法。",
                 es: "Métodos de visualización que muestran datos a lo largo de un período para identificar tendencias o cambios.",
                 ko: "기간 동안 데이터를 보여주어 트렌드나 변화를 찾는 시각화 방법.",
                 ar: "طرق العرض التي تُظهر البيانات خلال فترة زمنية لتحديد الاتجاهات أو التغيرات."
@@ -172,7 +172,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que usam tamanho ou área para mostrar diferenças ou semelhanças entre valores ou partes de um todo.",
                 de: "Visualisierungsmethoden, die Größe oder Fläche verwenden, um Unterschiede oder Ähnlichkeiten zwischen Werten oder Teile eines Ganzen darzustellen.",
                 zh: "使用大小或面积来展示值之间的差异或相似性，或者部分与整体关系的方法。",
-                jp: "サイズや面積を使用して値の違いや類似性、または部分と全体を示す視覚化方法。",
+                ja: "サイズや面積を使用して値の違いや類似性、または部分と全体を示す視覚化方法。",
                 es: "Métodos de visualización que utilizan tamaño o área para mostrar diferencias o similitudes entre valores o partes de un todo.",
                 ko: "크기나 면적을 사용하여 값 간의 차이나 유사성을 나타내거나 전체의 일부를 보여주는 시각화 방법.",
                 ar: "طرق العرض التي تستخدم الحجم أو المساحة لإظهار الاختلافات أو التشابهات بين القيم أو بين أجزاء الكل."
@@ -183,7 +183,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que ajudam a mostrar as diferenças ou semelhanças entre valores.",
                 de: "Visualisierungsmethoden, die helfen, Unterschiede oder Ähnlichkeiten zwischen Werten aufzuzeigen.",
                 zh: "帮助展示值之间差异或相似性的方法。",
-                jp: "値の違いや類似性を示すための視覚化方法。",
+                ja: "値の違いや類似性を示すための視覚化方法。",
                 es: "Métodos de visualización que ayudan a mostrar las diferencias o similitudes entre valores.",
                 ko: "값 간의 차이점이나 유사성을 보여주는 시각화 방법.",
                 ar: "طرق العرض التي تساعد في إظهار الاختلافات أو التشابهات بين القيم."
@@ -194,7 +194,7 @@ export default function useCharts() {
                 pt: "Componentes de classificação para mostrar resultados ou pedir aos usuários que avaliem um tópico.",
                 de: "Bewertungskomponenten, um Ergebnisse anzuzeigen oder Benutzer aufzufordern, ein Thema zu bewerten.",
                 zh: "用于显示评分结果或要求用户对主题进行评分的组件。",
-                jp: "評価結果を表示したり、ユーザーにトピックを評価してもらうためのコンポーネント。",
+                ja: "評価結果を表示したり、ユーザーにトピックを評価してもらうためのコンポーネント。",
                 es: "Componentes de calificación para mostrar resultados o pedir a los usuarios que califiquen un tema.",
                 ko: "평가 결과를 표시하거나 사용자가 주제를 평가하도록 요청하는 구성 요소.",
                 ar: "مكونات التقييم لإظهار النتائج أو طلب تقييم المستخدمين لموضوع معين."
@@ -205,7 +205,7 @@ export default function useCharts() {
                 pt: "Componentes de tabela para organizar e destacar tendências em um conjunto de dados.",
                 de: "Tabellenkomponenten zur Organisation und Hervorhebung von Trends in einem Datensatz.",
                 zh: "用于组织和突出数据集中趋势的表格组件。",
-                jp: "データセットの傾向を整理し、強調するためのテーブルコンポーネント。",
+                ja: "データセットの傾向を整理し、強調するためのテーブルコンポーネント。",
                 es: "Componentes de tabla para organizar y resaltar tendencias en un conjunto de datos.",
                 ko: "데이터셋의 트렌드를 정리하고 강조하기 위한 테이블 구성 요소.",
                 ar: "مكونات الجداول لتنظيم وإبراز الاتجاهات في مجموعة البيانات."
@@ -216,7 +216,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que mostram relações e conexões entre os dados ou correlações entre duas ou mais variáveis.",
                 de: "Visualisierungsmethoden, die Beziehungen und Verbindungen zwischen Daten oder Korrelationen zwischen zwei oder mehr Variablen darstellen.",
                 zh: "展示数据之间关系或两个或多个变量之间相关性的方法。",
-                jp: "データ間の関係や接続、または2つ以上の変数間の相関を示す視覚化方法。",
+                ja: "データ間の関係や接続、または2つ以上の変数間の相関を示す視覚化方法。",
                 es: "Métodos de visualización que muestran relaciones y conexiones entre los datos o correlaciones entre dos o más variables.",
                 ko: "데이터 간의 관계와 연결 또는 두 개 이상의 변수 간의 상관관계를 보여주는 시각화 방법.",
                 ar: "طرق العرض التي تظهر العلاقات والروابط بين البيانات أو العلاقات بين متغيرين أو أكثر."
@@ -227,7 +227,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que mostram como os dados ou objetos são classificados e ordenados em uma organização ou sistema.",
                 de: "Visualisierungsmethoden, die zeigen, wie Daten oder Objekte in einer Organisation oder einem System geordnet und eingestuft sind.",
                 zh: "展示数据或对象如何在组织或系统中排序和排名的可视化方法。",
-                jp: "データやオブジェクトが組織やシステム内でどのようにランク付けおよび整理されているかを示す可視化方法。",
+                ja: "データやオブジェクトが組織やシステム内でどのようにランク付けおよび整理されているかを示す可視化方法。",
                 es: "Métodos de visualización que muestran cómo los datos u objetos están clasificados y ordenados en una organización o sistema.",
                 ko: "데이터나 객체가 조직이나 시스템 내에서 어떻게 계층화되고 정렬되는지를 보여주는 시각화 방법.",
                 ar: "طرق عرض البيانات التي توضح كيف يتم تصنيف وترتيب البيانات أو الكائنات في منظمة أو نظام."
@@ -238,7 +238,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que mostram parte (ou partes) de uma variável em relação ao total. Frequentemente usados para mostrar como algo é dividido.",
                 de: "Visualisierungsmethoden, die einen Teil (oder Teile) einer Variablen im Verhältnis zu ihrem Gesamtwert zeigen. Oft verwendet, um zu zeigen, wie etwas aufgeteilt ist.",
                 zh: "展示变量的一部分（或部分）与其总量的可视化方法。常用于展示某事物的划分方式。",
-                jp: "変数の一部（または複数部分）が全体に対してどのように構成されているかを示す可視化方法。何かの分割を示す際によく使用されます。",
+                ja: "変数の一部（または複数部分）が全体に対してどのように構成されているかを示す可視化方法。何かの分割を示す際によく使用されます。",
                 es: "Métodos de visualización que muestran parte (o partes) de una variable respecto a su total. A menudo se usan para mostrar cómo se divide algo.",
                 ko: "변수의 일부(또는 여러 부분)가 전체와 어떻게 연관되는지를 보여주는 시각화 방법. 무언가가 어떻게 나뉘어지는지를 보여줄 때 자주 사용됩니다.",
                 ar: "طرق عرض البيانات التي توضح جزء (أو أجزاء) من متغير بالنسبة إلى إجماليه. غالبًا ما تُستخدم لعرض كيفية تقسيم شيء ما."
@@ -249,7 +249,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que exibem frequência, como os dados se distribuem em um intervalo ou são agrupados.",
                 de: "Visualisierungsmethoden, die die Häufigkeit und Verteilung von Daten über ein Intervall oder deren Gruppierung anzeigen.",
                 zh: "展示频率、数据在区间内的分布或分组的可视化方法。",
-                jp: "頻度、データが区間内でどのように分布またはグループ化されているかを示す可視化方法。",
+                ja: "頻度、データが区間内でどのように分布またはグループ化されているかを示す可視化方法。",
                 es: "Métodos de visualización que muestran la frecuencia, cómo los datos se distribuyen en un intervalo o se agrupan.",
                 ko: "빈도 및 데이터가 간격에 따라 어떻게 분산되거나 그룹화되는지를 표시하는 시각화 방법.",
                 ar: "طرق عرض البيانات التي تعرض التردد وكيفية انتشار البيانات على فترة زمنية أو تجميعها."
@@ -260,7 +260,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que exibem as variações entre os limites superior e inferior em uma escala.",
                 de: "Visualisierungsmethoden, die die Variationen zwischen oberen und unteren Grenzwerten auf einer Skala anzeigen.",
                 zh: "展示标尺上上下限之间变化的可视化方法。",
-                jp: "スケールの上下限間の変動を表示する可視化方法。",
+                ja: "スケールの上下限間の変動を表示する可視化方法。",
                 es: "Métodos de visualización que muestran las variaciones entre los límites superior e inferior en una escala.",
                 ko: "스케일의 상한선과 하한선 간의 변화를 표시하는 시각화 방법.",
                 ar: "طرق عرض البيانات التي تعرض التغيرات بين الحدود العليا والسفلى على مقياس."
@@ -271,7 +271,7 @@ export default function useCharts() {
                 pt: "Métodos de visualização que revelam padrões e percepções de fontes textuais.",
                 de: "Visualisierungsmethoden, die Muster und Erkenntnisse aus Textquellen aufdecken.",
                 zh: "从文本来源中揭示模式和见解的可视化方法。",
-                jp: "テキスト情報からパターンや洞察を明らかにする可視化方法。",
+                ja: "テキスト情報からパターンや洞察を明らかにする可視化方法。",
                 es: "Métodos de visualización que revelan patrones e ideas a partir de fuentes textuales.",
                 ko: "텍스트 소스에서 패턴과 통찰력을 드러내는 시각화 방법.",
                 ar: "طرق عرض البيانات التي تكشف الأنماط والرؤى من المصادر النصية."
@@ -282,7 +282,7 @@ export default function useCharts() {
                 pt: "Ferramentas incríveis para melhorar sua interface de usuário.",
                 de: "Coole Tools, um Ihre Benutzeroberfläche aufzuwerten.",
                 zh: "提升用户界面的酷炫工具。",
-                jp: "UIをレベルアップさせるクールなツール。",
+                ja: "UIをレベルアップさせるクールなツール。",
                 es: "Herramientas geniales para mejorar tu interfaz de usuario.",
                 ko: "UI를 업그레이드할 멋진 도구들.",
                 ar: "أدوات رائعة لتحسين واجهة المستخدم الخاصة بك."
@@ -293,7 +293,7 @@ export default function useCharts() {
                 pt: "Mapas",
                 de: "Karten",
                 zh: "地图",
-                jp: "地図",
+                ja: "地図",
                 es: "Mapas",
                 ko: "지도",
                 ar: "خرائط"

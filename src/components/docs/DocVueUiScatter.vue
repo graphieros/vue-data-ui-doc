@@ -71,7 +71,7 @@ const scat2 = computed(() => {
 });
 
 const dataset = computed(() => {
-  
+
   return [
   {
     name: "Cluster 1",
@@ -600,7 +600,7 @@ const isFixed = ref(false);
 function fixChart() {
     isFixed.value = !isFixed.value;
     store.docSnap = !store.docSnap;
-} 
+}
 
 const { configCode, showAllConfig } = useConfigCode()
 
@@ -667,7 +667,7 @@ const performanceModeComment = ref({
     pt: 'Ative o modo de desempenho quando seu conjunto de dados for grande (> 1000) e quando você não quiser reduzir a amostragem dos dados. O modo de desempenho gerará um único nó DOM por série. Quando este modo estiver ativado, observe que plot.significance não terá efeito na opacidade do gráfico.',
     de: 'Aktivieren Sie den Leistungsmodus, wenn Ihr Datensatz groß ist (> 1000) und Sie die Daten nicht herunterstichproben möchten. Der Leistungsmodus generiert einen einzelnen DOM-Knoten pro Serie. Wenn dieser Modus aktiviert ist, beachten Sie, dass plot.significance keinen Einfluss auf die Transparenz des Plots hat.',
     zh: '当您的数据集很大（>1000）并且不希望对数据进行降采样时，请启用性能模式。性能模式将为每个系列生成一个 DOM 节点。启用此模式时，请注意 plot.significance 对绘图的不透明度将没有影响。',
-    jp: 'データセットが大きい場合（>1000）やデータをダウンサンプリングしたくない場合は、パフォーマンスモードを有効にしてください。パフォーマンスモードでは、シリーズごとに1つのDOMノードが生成されます。このモードを有効にすると、plot.significanceはプロットの不透明度に影響しないことに注意してください。',
+    ja: 'データセットが大きい場合（>1000）やデータをダウンサンプリングしたくない場合は、パフォーマンスモードを有効にしてください。パフォーマンスモードでは、シリーズごとに1つのDOMノードが生成されます。このモードを有効にすると、plot.significanceはプロットの不透明度に影響しないことに注意してください。',
     es: 'Active el modo de rendimiento cuando su conjunto de datos sea grande (> 1000) y cuando no desee reducir la muestra de los datos. El modo de rendimiento generará un solo nodo DOM por serie. Cuando este modo esté habilitado, tenga en cuenta que plot.significance no tendrá efecto en la opacidad del gráfico.',
     ko: '데이터셋이 크고 (>1000) 데이터를 다운샘플링하고 싶지 않을 때 성능 모드를 활성화하세요. 성능 모드는 시리즈당 하나의 DOM 노드를 생성합니다. 이 모드가 활성화되면 plot.significance는 플롯 불투명도에 영향을 주지 않습니다.',
     ar: 'قم بتمكين وضع الأداء عندما يكون حجم مجموعة البيانات كبيرًا (> 1000) وعندما لا ترغب في تقليل حجم البيانات. سيؤدي وضع الأداء إلى إنشاء عقدة DOM واحدة لكل سلسلة. عند تفعيل هذا الوضع، لاحظ أن plot.significance لن يكون له أي تأثير على شفافية المخطط.'
@@ -716,9 +716,9 @@ function freestyle({ drawingArea, data }) {
               fill="none"
           />
           <path
-              d="M\${p?.x - 20},\${p?.y} \${p?.x - 5},\${p?.y} 
-              M\${p?.x},\${p?.y - 20} \${p?.x},\${p?.y - 5} 
-              M\${p?.x + 20},\${p?.y} \${p?.x + 5},\${p?.y} 
+              d="M\${p?.x - 20},\${p?.y} \${p?.x - 5},\${p?.y}
+              M\${p?.x},\${p?.y - 20} \${p?.x},\${p?.y - 5}
+              M\${p?.x + 20},\${p?.y} \${p?.x + 5},\${p?.y}
               M\${p?.x},\${p?.y + 20} \${p?.x},\${p?.y + 5}"
               stroke="#FF0000"
           />
@@ -733,7 +733,7 @@ const freestyleTemplate = ref(`<VueUiScatter :dataset="dataset" :config="config"
   <template #svg="{ svg }">
     <g v-html="freestyle(svg)"/>
   <template>
-</VueUiScatter>  
+</VueUiScatter>
 `)
 
 function freestyle({ drawingArea, data }) {
@@ -805,7 +805,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 
         <BaseMigrationInfo
             cssAnimation
-            debug 
+            debug
             padding
         />
 
@@ -819,7 +819,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             :content="dsTypeCode"
             :title="translations.docs.datastructure[store.lang]"
             class="my-6"
-          />                
+          />
                 </div>
 
                 <div class="w-full overflow-x-auto">
@@ -828,7 +828,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             @copy="store.copy()"
             :content="codeDataset"
             :title="translations.docs.example[store.lang]"
-          />  
+          />
                 </div>
             </template>
             <template v-slot:tab1>
@@ -871,7 +871,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseDetails attr="axis" :level="3" title="style.layout.axis">
           <BaseAttr name="show" attr="style.layout.axis.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="stroke" attr="style.layout.axis.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr name="strokeWidth" attr="style.layout.axis.strokeWidth" type="range" defaultVal="1" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+          <BaseAttr name="strokeWidth" attr="style.layout.axis.strokeWidth" type="range" defaultVal="1" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="correlation" :level="3" title="style.layout.correlation">
           <BaseAttr name="show" attr="style.layout.correlation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -893,7 +893,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <BaseAttr name="fontSize" attr="style.layout.dataLabels.xAxis.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="color" attr="style.layout.dataLabels.xAxis.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="bold" attr="style.layout.dataLabels.xAxis.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="roundingValue" attr="style.layout.dataLabels.xAxis.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>            
+            <BaseAttr name="roundingValue" attr="style.layout.dataLabels.xAxis.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <!-- <BaseAttr name="offsetX" attr="style.layout.dataLabels.xAxis.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="offsetY" attr="style.layout.dataLabels.xAxis.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/> -->
           </BaseDetails>
@@ -903,7 +903,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <BaseAttr name="fontSize" attr="style.layout.dataLabels.yAxis.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="color" attr="style.layout.dataLabels.yAxis.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="bold" attr="style.layout.dataLabels.yAxis.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="roundingValue" attr="style.layout.dataLabels.yAxis.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>            
+            <BaseAttr name="roundingValue" attr="style.layout.dataLabels.yAxis.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <!-- <BaseAttr name="offsetX" attr="style.layout.dataLabels.yAxis.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="offsetY" attr="style.layout.dataLabels.yAxis.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/> -->
           </BaseDetails>
@@ -1007,7 +1007,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseAttr name="fontSize" attr="style.legend.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="bold" attr="style.legend.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="roundingValue" attr="style.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="position" attr="style.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+        <BaseAttr name="position" attr="style.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="selectAllToggle" :level="3" title="style.legend.selectAllToggle">
             <BaseAttr name="show" attr="style.legend.selectAllToggle.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="backgroundColor" attr="style.legend.selectAllToggle.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1037,7 +1037,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseAttr name="fontSize" attr="style.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="showShape" attr="style.tooltip.showShape" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="prefix" attr="style.tooltip.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr name="suffix" attr="style.tooltip.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />        
+        <BaseAttr name="suffix" attr="style.tooltip.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <div class="flex flex-row gap-2 place-items-center">
             <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
             <div class="min-w-[200px]">
@@ -1213,7 +1213,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                       'chart-background',
                       'user-menu',
                       'annotator-actions'
-                  ]" 
+                  ]"
               >
               <template #after="item">
                 <div v-if="item.names.includes('svg')" class="p-6">
@@ -1276,7 +1276,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 <CodeParser
                     language="css"
                     content=".vue-data-ui-custom-tooltip{ }"
-                />      
+                />
             </template>
 
             <template #tab5>
@@ -1290,19 +1290,19 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <template #tab7>
               <ResponsiveUnit>
                 <template #chart>
-                  <VueUiScatter 
-                    :dataset="dataset" 
+                  <VueUiScatter
+                    :dataset="dataset"
                     :config="
-                      isDarkMode 
+                      isDarkMode
                         ? {
                           ...mutableConfigDarkMode,
                           responsive: true
-                        } 
+                        }
                         : {
                           ...mutableConfig,
                           responsive: true
                         }
-                      " 
+                      "
                     :key="key"
                   />
                 </template>

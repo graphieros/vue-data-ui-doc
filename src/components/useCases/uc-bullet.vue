@@ -78,7 +78,7 @@ const config = computed(() => {
                     height: 76,
                     backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    legend: { 
+                    legend: {
                         show: i === 0,
                         position: 'top',
                         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
@@ -170,7 +170,7 @@ const config = computed(() => {
                     height: 76,
                     backgroundColor: '#FFFFFF',
                     color: '#1A1A1A',
-                    legend: { 
+                    legend: {
                         show: i === 0,
                         position: 'top',
                         color: '#1A1A1A'
@@ -210,7 +210,7 @@ const description = ref({
     pt: 'Múltiplas instâncias com configuração compartilhada',
     de: 'Mehrere Instanzen mit gemeinsamer Konfiguration',
     zh: '具有共享配置的多个实例',
-    jp: '共有設定を持つ複数のインスタンス',
+    ja: '共有設定を持つ複数のインスタンス',
     es: 'Múltiples instancias con configuración compartida',
     ko: '공유 설정을 사용하는 여러 인스턴스',
     ar: 'مثيلات متعددة بنفس الإعدادات'

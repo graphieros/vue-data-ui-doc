@@ -40,7 +40,7 @@ const title = computed(() => {
         pt: "O que você gostaria de exibir?",
         de: "Was möchten Sie anzeigen?",
         zh: "您想展示什么？",
-        jp: "何を表示しますか？",
+        ja: "何を表示しますか？",
         es: "¿Qué te gustaría mostrar?",
         ko: "무엇을 표시하시겠습니까?",
         ar: "ماذا تريد أن تعرض؟"
@@ -54,7 +54,7 @@ const cli = computed(() => {
         pt: "Use a ferramenta CLI oficial para criar um modelo",
         de: "Verwenden Sie das offizielle CLI-Tool, um eine Vorlage zu erstellen",
         zh: "使用官方CLI工具创建样板",
-        jp: "公式CLIツールを使用してボイラープレートを作成します",
+        ja: "公式CLIツールを使用してボイラープレートを作成します",
         es: "Utilice la herramienta CLI oficial para crear una plantilla",
         ko: "공식 CLI 도구를 사용하여 보일러플레이트를 생성하세요",
         ar: "استخدم أداة CLI الرسمية لإنشاء قالب"
@@ -87,12 +87,12 @@ const selectedIndex = ref(null);
                 <div class="flex flex-row flex-wrap gap-2 p-2 rounded-md mx-2 bg-gray-100 dark:bg-[#2A2A2A]">
                     <FlexibleTooltip
                         v-for="filter in filters"
-                        position="bottom" 
-                        :content="classificationDescription[filter.name][store.lang]" 
-                        width="w-fit min-w-[200px]" 
+                        position="bottom"
+                        :content="classificationDescription[filter.name][store.lang]"
+                        width="w-fit min-w-[200px]"
                         delay="delay-150"
                     >
-                    <button 
+                    <button
                         @click="() => updateFilters(filter)"
                         :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue text-black' : 'bg-gray-100 dark:bg-[#3A3A3A] hover:bg-gray-50 dark:hover:bg-[#4A4A4A]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
                     >
@@ -105,9 +105,9 @@ const selectedIndex = ref(null);
                 <div class="flex flex-row flex-wrap gap-4 w-full px-4">
                     <FlexibleTooltip
                         v-for="(chart, i) in charts"
-                        position="bottom" 
-                        :content="`${chart.description}`" 
-                        width="w-fit min-w-[200px]" 
+                        position="bottom"
+                        :content="`${chart.description}`"
+                        width="w-fit min-w-[200px]"
                         delay="delay-150"
                     >
                         <RouterLink :to="chart.link" @click="emit('click')">
@@ -133,7 +133,7 @@ const selectedIndex = ref(null);
                     </button>
                 </a>
             </div>
-    
+
             <div class="w-full">
                 <VueDataUi
                     component="VueUiAccordion"

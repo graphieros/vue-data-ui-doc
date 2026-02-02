@@ -35,7 +35,7 @@ const translations = computed(() => {
             pt: "Copie a configuração bruta do tema para inspiração",
             de: "Rohkonfiguration des Themas zur Inspiration kopieren",
             zh: "复制主题原始配置以获取灵感",
-            jp: "テーマの生設定をコピーしてインスピレーションを得る",
+            ja: "テーマの生設定をコピーしてインスピレーションを得る",
             es: "Copia la configuración cruda del tema para inspirarte",
             ko: "테마 원시 구성을 복사하여 영감을 얻으세요",
             ar: "نسخ التكوين الخام للنمط للإلهام"
@@ -46,7 +46,7 @@ const translations = computed(() => {
             pt: "Uso:",
             de: "Verwendung:",
             zh: "用法：",
-            jp: "使用方法：",
+            ja: "使用方法：",
             es: "Uso:",
             ko: "사용법:",
             ar: "الاستخدام:"
@@ -89,7 +89,7 @@ async function copyToClipboard(theme) {
         document.execCommand('copy');
         document.body.removeChild(selBox);
         store.copy();
-    } 
+    }
 
 }
 
@@ -103,9 +103,9 @@ async function copyToClipboard(theme) {
             <template v-if="theme.name !== 'default'">
                 <div class="bg-gray-150 dark:bg-[#3A3A3A] py-4 rounded-b ">
                     <div class="pl-3 mb-2">{{ translations.usage[store.lang] }}</div>
-                    <CodeParser :content="code.replace('#THEME#', theme.name)" language="javascript" @copy="store.copy()"/>              
+                    <CodeParser :content="code.replace('#THEME#', theme.name)" language="javascript" @copy="store.copy()"/>
                 </div>
-                <button 
+                <button
                     dir="auto"
                     class="mt-2 w-full py-2 px-6 rounded-full opacity-90 hover:opacity-100 transition-opacity flex flex-row place-items-center flex-wrap gap-2 justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                     :style="{

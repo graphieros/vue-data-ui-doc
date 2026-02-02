@@ -1173,7 +1173,7 @@ const timeFormatTranslation = ref({
     pt: 'Quando o datetimeFormatter está ativado, você também pode personalizar os rótulos de tempo para:',
     de: 'Wenn datetimeFormatter aktiviert ist, können Sie auch die Zeitbeschriftungen anpassen für:',
     zh: '启用 datetimeFormatter 后，您还可以自定义以下时间标签：',
-    jp: 'datetimeFormatter が有効な場合、時間ラベルをカスタマイズできます：',
+    ja: 'datetimeFormatter が有効な場合、時間ラベルをカスタマイズできます：',
     es: 'Cuando datetimeFormatter está habilitado, también puede personalizar las etiquetas de tiempo para:',
     ko: 'datetimeFormatter가 활성화되면 시간 레이블을 다음에 대해 사용자 정의할 수 있습니다:',
     ar: 'عند تفعيل datetimeFormatter، يمكنك أيضًا تخصيص تسميات الوقت لـ:'
@@ -1236,7 +1236,7 @@ function freestyle({ drawingArea, data }) {
 
 function getObjectByY(arr, type = 'max') {
     if (!Array.isArray(arr) || arr.length === 0) return null;
-    
+
     return arr.reduce((selected, current) => {
         if (type === 'min') {
             return current?.y < selected?.y ? current : selected;
@@ -1250,7 +1250,7 @@ const freestyleTemplate = ref(`<VueUiXy :dataset="dataset" :config="config">
         <!-- Injected content -->
         <g v-html="freestyle(svg)"/>
     </template>
-</VueUiXy>    
+</VueUiXy>
 `);
 
 const freestyleStyle = ref(`.flashy-pos {
@@ -1318,7 +1318,7 @@ function freestyle({ drawingArea, data }) {
 
 function getObjectByY(arr, type = 'max') {
     if (!Array.isArray(arr) || arr.length === 0) return null;
-    
+
     return arr.reduce((selected, current) => {
         if (type === 'min') {
             return current?.y < selected?.y ? current : selected;
@@ -1340,7 +1340,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseDocTitle name="VueUiXy" />
 
         <BaseDocDescription :text="translations.docs.tooltips.xy[store.lang]"/>
-        
+
         <BaseDocHeaderActions
             targetLink="vue-ui-xy"
             targetMaker="VueUiXy"
@@ -1372,11 +1372,11 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <Rater itemId="vue_ui_xy" />
         </div>
 
-        <BaseMigrationInfo 
+        <BaseMigrationInfo
             autoRotate
             cssAnimation
-            debug 
-            padding 
+            debug
+            padding
             xyTransitions
             zoomPreview
         />
@@ -1386,7 +1386,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <span class="dark:text-blue-300">
                 v2.1.52 : {{ translations.docs.comments.xy.individualScales[store.lang] }}
             </span>
-            
+
             <div class="w-full flex flex-row place-items-center justify-center gap-2 mt-2">
                 <input id="useCanvas" class="accent-app-blue" type="checkbox" @change="toggleUseIndividualScale">
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
@@ -1394,16 +1394,16 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         </div> -->
         <Box
             ref="box"
-            :showDatetimeFormatter="true" 
-            showEmits 
-            showSlots 
-            showTooltip 
-            showUseCases 
-            showThemes 
-            showResponsive 
+            :showDatetimeFormatter="true"
+            showEmits
+            showSlots
+            showTooltip
+            showUseCases
+            showThemes
+            showResponsive
             showPatterns
             showCallbacks
-            schema="vue_ui_xy" 
+            schema="vue_ui_xy"
             signInfo="both"
             >
             <template v-slot:tab0>
@@ -1415,7 +1415,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             :content="dsTypeCode"
             :title="translations.docs.datastructure[store.lang]"
             class="mt-6"
-        />     
+        />
             </div>
 
             <div class="w-full overflow-x-auto">
@@ -1424,7 +1424,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         @copy="store.copy()"
         :content="codeDataset"
         :title="translations.docs.example[store.lang]"
-    />  
+    />
             </div>
                 </template>
 
@@ -1601,7 +1601,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         <BaseAttr name="crosshairSize" attr="chart.grid.labels.yAxis.crosshairSize" type="number" defaultVal="6" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="zeroLine" :level="4" title="chart.grid.labels.zeroLine">
-                        <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 
+                        <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     </BaseDetails>
                 </BaseDetails>
             </BaseDetails>
@@ -1777,7 +1777,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         </BaseTabLink>
                     </div>
                 </div>
-                
+
                 <BaseAttr inactive name="startIndex" defaultVal="null" comment="Force zoom start index (number)"/>
                 <BaseAttr inactive name="endIndex" defaultVal="null" comment="Force zoom end index (number)"/>
                 <BaseAttr name="enableRangeHandles" attr="chart.zoom.enableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
@@ -1957,7 +1957,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>
-</code>                    
+</code>
                 </div>
             </template>
 
@@ -2099,7 +2099,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         'bar-gradient',
                         'user-menu',
                         'annotator-actions'
-                    ]" 
+                    ]"
                 >
                 <template #after="item">
                     <div v-if="item.names.includes('svg')" class="p-6">
@@ -2169,12 +2169,12 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <template #tab7>
                 <ResponsiveUnit height="600px">
                     <template #chart>
-                        <VueUiXy 
-                            :dataset="mutableDataset" 
+                        <VueUiXy
+                            :dataset="mutableDataset"
                             :config="
-                                isDarkMode 
+                                isDarkMode
                                     ? {
-                                        ...mutableConfigDarkMode, 
+                                        ...mutableConfigDarkMode,
                                         responsive: true,
                                         chart: {
                                             ...mutableConfigDarkMode.chart,
@@ -2182,9 +2182,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                                                 show: false,
                                             }
                                         }
-                                    } 
+                                    }
                                     : {
-                                        ...mutableConfig, 
+                                        ...mutableConfig,
                                         responsive: true,
                                         chart: {
                                             ...mutableConfig.chart,
@@ -2192,7 +2192,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                                                 show: false,
                                             }
                                         }
-                                    }" 
+                                    }"
                             :key="key"
                         />
                     </template>
@@ -2201,7 +2201,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 
             <template #tab8>
                 <VueUiXy :dataset="patternDataset" :config="
-                    isDarkMode ? 
+                    isDarkMode ?
                     {
                         ...mutableConfigDarkMode,
                         chart: {
@@ -2212,7 +2212,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                             ...mutableConfigDarkMode.line,
                             radius: 4
                         }
-                    } : 
+                    } :
                     {
                         ...mutableConfig,
                         chart: {
@@ -2223,7 +2223,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                             ...mutableConfig.line,
                             radius: 4
                         }
-                    }" 
+                    }"
                     :key="key">
                     <template #pattern="{ seriesIndex, patternId }">
                         <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="bubbles" stroke="blue" :strokeWidth="1" :scale="1"/>

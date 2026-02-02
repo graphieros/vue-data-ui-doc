@@ -350,11 +350,11 @@ const darkModeConfig = ref({
         raw: '#8B4513',
         component: '#1E90FF',
         manufacturing: '#FFD700',
-        assembly: '#FF8C00', 
+        assembly: '#FF8C00',
         distribution: '#A020F0',
         consumer: '#228B22',
-        endOfLife: '#B22222',  
-        secondary: '#20B2AA'        
+        endOfLife: '#B22222',
+        secondary: '#20B2AA'
     },
     userOptions: {
         show: true,
@@ -544,7 +544,7 @@ const additionalTranslations = computed(() => {
             pt: `Mapeie as chaves do conjunto de dados para categorias específicas (serão exibidas na legenda); exemplo: { Mining: 'component' }`,
             de: `Ordnen Sie die Schlüssel des Datensatzes bestimmten Kategorien zu (werden in der Legende angezeigt); Beispiel: { Mining: 'component' }`,
             zh: `将数据集键映射到特定类别（将出现在图例中）；示例：{ Mining: 'component' }`,
-            jp: `データセットのキーを特定のカテゴリにマッピングします（凡例に表示されます）；例: { Mining: 'component' }`,
+            ja: `データセットのキーを特定のカテゴリにマッピングします（凡例に表示されます）；例: { Mining: 'component' }`,
             es: `Mapear claves del conjunto de datos a categorías específicas (aparecerán en la leyenda); ejemplo: { Mining: 'component' }`,
             ko: `데이터셋 키를 특정 카테고리에 매핑합니다(범례에 표시됨); 예: { Mining: 'component' }`,
             ar: `قم بتعيين مفاتيح مجموعة البيانات إلى فئات محددة (ستظهر في وسيلة الإيضاح)؛ مثال: { Mining: 'component' }`
@@ -555,7 +555,7 @@ const additionalTranslations = computed(() => {
             pt: `Mapeie as categorias de nó para cores personalizadas; exemplo: { component: '#1E90FF' }`,
             de: `Ordnen Sie Knotenkategorien benutzerdefinierten Farben zu; Beispiel: { component: '#1E90FF' }`,
             zh: `将节点类别映射到自定义颜色；示例：{ component: '#1E90FF' }`,
-            jp: `ノードカテゴリをカスタムカラーにマッピングします；例: { component: '#1E90FF' }`,
+            ja: `ノードカテゴリをカスタムカラーにマッピングします；例: { component: '#1E90FF' }`,
             es: `Mapear categorías de nodos a colores personalizados; ejemplo: { component: '#1E90FF' }`,
             ko: `노드 카테고리를 사용자 지정 색상에 매핑합니다; 예: { component: '#1E90FF' }`,
             ar: `قم بتعيين فئات العقد إلى ألوان مخصصة؛ مثال: { component: '#1E90FF' }`
@@ -566,7 +566,7 @@ const additionalTranslations = computed(() => {
             pt: 'Uma legenda pode ser exibida se nodeCategories e nodeCategoryColors forem fornecidos.',
             de: 'Eine Legende kann angezeigt werden, wenn nodeCategories und nodeCategoryColors bereitgestellt werden.',
             zh: '如果提供了 nodeCategories 和 nodeCategoryColors，则可以显示图例。',
-            jp: 'nodeCategories と nodeCategoryColors が提供されている場合、凡例を表示できます。',
+            ja: 'nodeCategories と nodeCategoryColors が提供されている場合、凡例を表示できます。',
             es: 'Se puede mostrar una leyenda si se proporcionan nodeCategories y nodeCategoryColors.',
             ko: 'nodeCategories 및 nodeCategoryColors가 제공되면 범례를 표시할 수 있습니다.',
             ar: 'يمكن عرض وسيلة إيضاح إذا تم توفير nodeCategories و nodeCategoryColors.'
@@ -623,7 +623,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
         <Rater itemId="vue_ui_flow" />
 
         <BaseMigrationInfo
-            debug 
+            debug
             padding
         />
 
@@ -636,7 +636,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
             :title="translations.docs.datastructure[store.lang]"
             :content="dsTypeCode"
             class="my-6"
-        />  
+        />
 
 
                 <div class="w-full overflow-x-auto">
@@ -646,7 +646,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
         @copy="store.copy()"
         :content="codeDataset"
         :title="translations.docs.example[store.lang]"
-    />                  
+    />
                 </div>
             </template>
 
@@ -841,7 +841,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
         </BaseDetails>
     </BaseDetails>
 </code>
-            
+
             </template>
 
             <template #tab2>
@@ -934,7 +934,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                         'legend',
                         'user-menu',
                         'annotator-actions'
-                    ]" 
+                    ]"
                 />
             </template>
 
@@ -966,7 +966,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                             component="VueUiFlow"
                             :dataset="dataset"
                             :config="
-                                isDarkMode 
+                                isDarkMode
                                     ? {
                                         ...mutableConfigDarkMode,
                                         responsive: true
@@ -975,7 +975,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                                         ...mutableConfig,
                                         responsive: true
                                     }
-                                " 
+                                "
                         />
                     </template>
                 </ResponsiveUnit>
