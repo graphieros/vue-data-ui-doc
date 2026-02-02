@@ -154,7 +154,7 @@ function clean(text) {
     </div> -->
     <BaseCard>
         <div class="mt-4 w-full flex flex-col gap-2 max-h-[800px] overflow-y-auto p-2">
-    
+
             <h2 class="text-xl">Open issues</h2>
             <div v-if="issues.length === 0" class="flex flex-col gap-2 mb-5 place-items-center justify-center w-full">
                 <VueUiIcon name="wrench" :stroke="isDarkMode ? '#5A5A5A' : '#8A8A8A'" :size="36"/>
@@ -163,7 +163,7 @@ function clean(text) {
             <div v-for="issue in issues"
                 class="w-full rounded-md border border-gray-500 dark:border-[#3A3A3A] py-2 flex flex-col gap-2 bg-white dark:bg-[#1A1A1A]">
                 <div class="flex flex-row flex-wrap gap-2 pb-2 border-b border-gray-500 dark:border-[#3A3A3A] px-2">
-                    <FlexibleTooltip content="Open in Github" position="bottom">
+                    <FlexibleTooltip content="Open in GitHub" position="bottom">
                         <a :href="issue.html_url" target="_blank">
                             <button
                                 class="h-[48px] w-[48px] rounded-md border border-app-blue dark:border-app-green flex place-items-center justify-center bg-app-blue dark:bg-app-green">
@@ -193,7 +193,7 @@ function clean(text) {
                             <span class="text-xs">{{ issue.reactions[reaction.description] }}</span>
                         </div>
                     </template>
-    
+
                 </div>
             </div>
         </div>

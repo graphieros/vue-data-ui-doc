@@ -535,7 +535,7 @@ const wheelConfig = computed(() => {
         <template #default>
           <div class="flex flex-col">
               <div class="mx-auto max-w-[300px] w-full">
-                <a title="Github repository. Leave a star to support us :)" href="https://github.com/graphieros/vue-data-ui" target="_blank">
+                <a title="GitHub repository. Leave a star to support us :)" href="https://github.com/graphieros/vue-data-ui" target="_blank">
                   <VueUiWheel :dataset="wheelDataset" :config="wheelConfig">
                     <template #svg="{ svg }">
                       <text

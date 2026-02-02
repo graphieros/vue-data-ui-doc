@@ -131,7 +131,7 @@ s
                 </div>
                 <div class="flex flex-col place-items-center justify-center gap-2">
                     <a href="https://github.com/graphieros/vue-data-ui" target="_blank" class="text-black dark:text-app-blue hover:underline">
-                        Github
+                        GitHub
                     </a>
                 </div>
             </div>
