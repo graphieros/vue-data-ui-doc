@@ -245,7 +245,7 @@ const defaultValueTranslation = ref({
     pt: 'Valor padrão:',
     de: 'Standardwert:',
     zh: '默认值：',
-    jp: 'デフォルト値:',
+    ja: 'デフォルト値:',
     es: 'Valor predeterminado:',
     ar: 'القيمة الافتراضية:'
 })
@@ -307,12 +307,12 @@ const { configCode, showAllConfig } = useConfigCode()
                             <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
                         </div>
                     </div>
-                    <VueUiSmiley 
-                        ref="rating" 
+                    <VueUiSmiley
+                        ref="rating"
                         :dataset="dataset"
-                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
                         :key="key"
-                        @rate="showRating" 
+                        @rate="showRating"
                     />
                 </BaseCard>
             </DocSnapper>
@@ -328,7 +328,7 @@ const { configCode, showAllConfig } = useConfigCode()
             :content="dsTypeCode"
             :title="translations.docs.datastructure[store.lang]"
             class="my-6"
-        />  
+        />
 
         <CodeParser
             language="typescript"
@@ -336,14 +336,14 @@ const { configCode, showAllConfig } = useConfigCode()
             :content="codeDataset1"
             :title="translations.docs.comments.rating.simpleRating[store.lang]"
             class="my-6"
-        />    
+        />
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="codeDataset2"
             :title="translations.docs.comments.rating.breakdown[store.lang]"
-        />  
+        />
                 </div>
             </template>
 

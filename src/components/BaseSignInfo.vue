@@ -10,7 +10,7 @@ defineProps({
      */
     type: {
         type: String,
-        default: 'positiveOnly' 
+        default: 'positiveOnly'
     }
 })
 
@@ -24,7 +24,7 @@ const translations = ref({
         pt: `O conjunto de dados aceita apenas valores positivos`,
         de: `Datensatz akzeptiert nur positive Werte`,
         zh: `数据集仅接受正值`,
-        jp: `データセットは正の値のみを受け付けます`,
+        ja: `データセットは正の値のみを受け付けます`,
         es: `El conjunto de datos solo acepta valores positivos`,
         ko: `데이터 세트는 양수 값만 허용합니다`,
         ar: `يقبل مجموعة البيانات القيم الإيجابية فقط`
@@ -35,7 +35,7 @@ const translations = ref({
         pt: `O conjunto de dados aceita apenas valores positivos ou apenas valores negativos`,
         de: `Datensatz akzeptiert entweder nur positive oder nur negative Werte`,
         zh: `数据集仅接受正值或仅接受负值`,
-        jp: `データセットは正の値のみまたは負の値のみを受け付けます`,
+        ja: `データセットは正の値のみまたは負の値のみを受け付けます`,
         es: `El conjunto de datos solo acepta valores positivos o solo valores negativos`,
         ko: `데이터 세트는 양수 값만 또는 음수 값만 허용합니다`,
         ar: `يقبل مجموعة البيانات القيم الإيجابية فقط أو القيم السلبية فقط`
@@ -46,7 +46,7 @@ const translations = ref({
         pt: `O conjunto de dados aceita uma combinação de valores positivos e negativos`,
         de: `Datensatz akzeptiert eine Mischung aus positiven und negativen Werten`,
         zh: `数据集接受正值和负值的混合`,
-        jp: `データセットは正の値と負の値の混合を受け付けます`,
+        ja: `データセットは正の値と負の値の混合を受け付けます`,
         es: `El conjunto de datos acepta una combinación de valores positivos y negativos`,
         ko: `데이터 세트는 양수와 음수 값을 혼합하여 허용합니다`,
         ar: `يقبل مجموعة البيانات مزيجًا من القيم الإيجابية والسلبية`

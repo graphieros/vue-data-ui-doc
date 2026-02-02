@@ -16,7 +16,7 @@ const translations = computed(() => {
             pt: "Alguns componentes suportam o slot escopo #pattern, para personalizar ainda mais os pontos de dados. O componente VueUiPattern fornece 12 padrões prontos para uso.",
             de: "Einige Komponenten unterstützen den Scoped Slot #pattern, um Datenpunkte weiter anzupassen. Die VueUiPattern-Komponente bietet 12 fertige Muster, die Sie sofort verwenden können.",
             zh: "某些组件支持 #pattern 范围插槽，以进一步自定义数据点。VueUiPattern 组件提供了 12 种即用型模式，可供使用。",
-            jp: "一部のコンポーネントは #pattern スコープ付きスロットをサポートしており、データポイントをさらにカスタマイズできます。VueUiPattern コンポーネントには、すぐに使える 12 の既製パターンが用意されています。",
+            ja: "一部のコンポーネントは #pattern スコープ付きスロットをサポートしており、データポイントをさらにカスタマイズできます。VueUiPattern コンポーネントには、すぐに使える 12 の既製パターンが用意されています。",
             es: "Algunos componentes admiten el slot con alcance #pattern, para personalizar aún más los puntos de datos. El componente VueUiPattern proporciona 12 patrones prediseñados listos para usar.",
             ko: "일부 컴포넌트는 #pattern 범위 슬롯을 지원하여 데이터 포인트를 더욱 사용자 정의할 수 있습니다. VueUiPattern 컴포넌트는 즉시 사용할 수 있는 12개의 기본 패턴을 제공합니다.",
             ar: "بعض المكونات تدعم الفتحة المخصصة #pattern لتخصيص نقاط البيانات بشكل أكبر. يوفر مكون VueUiPattern 12 نمطًا جاهزًا للاستخدام مباشرة."
@@ -27,7 +27,7 @@ const translations = computed(() => {
             pt: "Os seguintes componentes suportam o slot #pattern:",
             de: "Die folgenden Komponenten unterstützen den #pattern-Slot:",
             zh: "以下组件支持 #pattern 插槽：",
-            jp: "以下のコンポーネントは #pattern スロットをサポートしています：",
+            ja: "以下のコンポーネントは #pattern スロットをサポートしています：",
             es: "Los siguientes componentes admiten el slot #pattern:",
             ko: "다음 구성 요소는 #pattern 슬롯을 지원합니다:",
             ar: "المكونات التالية تدعم الفتحة #pattern:"
@@ -38,7 +38,7 @@ const translations = computed(() => {
             pt: "Exemplo de um único padrão usado em todos os pontos de dados",
             de: "Beispiel für ein einzelnes Muster, das auf alle Datenpunkte angewendet wird",
             zh: "单一模式应用于所有数据点的示例",
-            jp: "すべてのデータポイントに使用される単一パターンの例",
+            ja: "すべてのデータポイントに使用される単一パターンの例",
             es: "Ejemplo de un patrón único usado en todos los puntos de datos",
             ko: "모든 데이터 포인트에 사용된 단일 패턴의 예",
             ar: "مثال على نمط واحد مستخدم على جميع نقاط البيانات"
@@ -49,7 +49,7 @@ const translations = computed(() => {
             pt: "Exemplo de padrões individuais usados para cada ponto de dados",
             de: "Beispiel für individuelle Muster, die für jeden Datenpunkt verwendet werden",
             zh: "每个数据点使用独立模式的示例",
-            jp: "各データポイントに使用される個別パターンの例",
+            ja: "各データポイントに使用される個別パターンの例",
             es: "Ejemplo de patrones individuales usados para cada punto de datos",
             ko: "각 데이터 포인트에 사용된 개별 패턴의 예",
             ar: "مثال على أنماط فردية مستخدمة لكل نقطة بيانات"
@@ -60,7 +60,7 @@ const translations = computed(() => {
             pt: "Os padrões são ideais se sua paleta de cores for monocromática.",
             de: "Muster sind ideal, wenn Ihre Farbpalette einfarbig ist.",
             zh: "如果您的色彩调色板是单色的，图案是理想的选择。",
-            jp: "パターンはカラーパレットが単色の場合に最適です。",
+            ja: "パターンはカラーパレットが単色の場合に最適です。",
             es: "Los patrones son ideales si tu paleta de colores es monocromática.",
             ko: "색상 팔레트가 단색인 경우 패턴이 이상적입니다.",
             ar: "الأنماط مثالية إذا كانت لوحة الألوان لديك أحادية اللون."
@@ -71,7 +71,7 @@ const translations = computed(() => {
             pt: 'Padrão personalizado',
             de: 'Benutzerdefiniertes Muster',
             zh: '自定义样式',
-            jp: 'カスタムパターン',
+            ja: 'カスタムパターン',
             es: 'Patrón personalizado',
             ko: '사용자 정의 패턴',
             ar: 'نمط مخصص'
@@ -577,7 +577,7 @@ const supportedComponents = computed(() => {
             {{ translations.supportedComponents[store.lang] }}
 
             <div class="flex flex-row gap-2 flex-wrap place-items-center justify-center mt-8 mb-12">
-                <FlexibleTooltip 
+                <FlexibleTooltip
                     v-for="c in supportedComponents"
                     position="bottom"
                     :content="c.name"
@@ -663,10 +663,10 @@ const supportedComponents = computed(() => {
                 <CodeParser :content="codeLimitedColors" language="html" @copy="store.copy()"/>
             </template>
             <template #chart>
-                <VueDataUi 
-                    component="VueUiDonut" 
-                    :dataset="datasetMonotone" 
-                    :config="isDarkMode 
+                <VueDataUi
+                    component="VueUiDonut"
+                    :dataset="datasetMonotone"
+                    :config="isDarkMode
                     ? {
                         ...darkModeConfig,
                         style: {
@@ -676,7 +676,7 @@ const supportedComponents = computed(() => {
                                 useGradient: false
                             }
                         }
-                    } 
+                    }
                     : {
                         ...config,
                         style: {

@@ -161,7 +161,7 @@ const title = ref({
     pt: 'Apenas imagens',
     de: 'Nur Bilder',
     zh: '仅图片',
-    jp: '画像のみ',
+    ja: '画像のみ',
     es: 'Solo imágenes',
     ko: '이미지만',
     ar: 'صور فقط'
@@ -330,8 +330,8 @@ const code = ref(`&lt;script setup&gt;
         <VueUiTreemap :dataset="dataset" :config="config">
             <template #rect="{ rect }">
                 <div style="height:100%; width: 100%">
-                    <img 
-                        :src="rect.url" 
+                    <img
+                        :src="rect.url"
                         :style="{
                             width: '100%',
                             height: '100%',
@@ -370,8 +370,8 @@ const code = ref(`&lt;script setup&gt;
         <VueUiTreemap :dataset="dataset" :config="config">
             <template #rect="{ rect }">
                 <div style="height:100%; width: 100%">
-                    <img 
-                        :src="rect.url" 
+                    <img
+                        :src="rect.url"
                         :style="{
                             width: '100%',
                             height: '100%',

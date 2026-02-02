@@ -692,7 +692,7 @@ const innerTranslations = ref({
         pt: 'Este gráfico de barras possui uma opção de configuração para mostrar barras distribuídas. Neste modo, todas as barras ocupam a altura total do gráfico e mostram as proporções de cada ponto de dados.',
         de: 'Dieses Balkendiagramm hat eine Konfigurationsoption, um verteilte Balken anzuzeigen. In diesem Modus nehmen alle Balken die volle Höhe des Diagramms ein und zeigen die Anteile jedes Datenpunkts.',
         zh: '该条形图有一个配置选项，可以显示分布的条形。在此模式下，所有条形占据图表的全部高度，并显示每个数据点的比例。',
-        jp: 'この棒グラフには、バーを分布表示するための設定オプションがあります。このモードでは、すべてのバーがグラフの全高を占め、各データポイントの割合を示します。',
+        ja: 'この棒グラフには、バーを分布表示するための設定オプションがあります。このモードでは、すべてのバーがグラフの全高を占め、各データポイントの割合を示します。',
         es: 'Este gráfico de barras tiene una opción de configuración para mostrar barras distribuidas. En este modo, todas las barras ocupan toda la altura del gráfico y muestran las proporciones de cada punto de datos.',
         ko: '이 막대 차트에는 분포된 막대를 표시하는 구성 옵션이 있습니다. 이 모드에서는 모든 막대가 차트의 전체 높이를 차지하며 각 데이터 포인트의 비율을 보여줍니다.',
         ar: 'يحتوي مخطط الأعمدة هذا على خيار تكوين لعرض الأعمدة الموزعة. في هذا الوضع، تأخذ جميع الأعمدة الارتفاع الكامل للمخطط وتعرض نسب كل نقطة بيانات.'
@@ -703,7 +703,7 @@ const innerTranslations = ref({
         pt: 'Alternar para o modo distribuído',
         de: 'Verteilten Modus umschalten',
         zh: '切换分布模式',
-        jp: '分布モードを切り替える',
+        ja: '分布モードを切り替える',
         es: 'Alternar modo distribuido',
         ko: '분포 모드 전환',
         ar: 'تبديل وضع التوزيع'
@@ -856,7 +856,7 @@ const freestyleTemplate = ref(`<VueUiStackbar :config="config" :dataset="dataset
     <template #svg="{ svg }">
         <g v-html="freestyle(svg)"/>
     </template>
-</VueUiStackbar>    
+</VueUiStackbar>
 `)
 
 function freestyle({ drawingArea, data }) {
@@ -913,7 +913,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             targetMaker="VueUiStackbar"
             :configSource="mainConfig.vue_ui_stackbar"
         />
-        
+
         <div
             :class="`transition-all mx-auto w-full sm:w-1/2`">
             <DocSnapper
@@ -934,7 +934,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <BaseViewExampleButton link="/examples/categories#vue-ui-stackbar"/>
         </div>
 
-        
+
         <div class="w-full mt-6 pt-6 border-t border-gray-500 max-w-[600px] mx-auto">
             <div dir="auto">{{ innerTranslations.distributed[store.lang] }}</div>
             <code class="mt-4 flex flex-row place-items-center gap-4">
@@ -944,13 +944,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 <BaseAttr name="orientation" attr="orientation" type="select" defaultVal="vertical" :options="['vertical', 'horizontal']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Since v2.3.45"/>
             </code>
         </div>
-        
+
         <Rater itemId="vue_ui_stackbar" />
 
         <BaseMigrationInfo
             autoRotate
             cssAnimation
-            debug 
+            debug
             padding
         />
 
@@ -964,7 +964,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             :content="dsTypeCode"
             :title="translations.docs.datastructure[store.lang]"
             class="my-6"
-        />  
+        />
                 </div>
 
                 <div class="w-full overflow-x-auto">
@@ -974,7 +974,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         @copy="store.copy()"
         :content="codeDataset"
         :title="translations.docs.example[store.lang]"
-    />                   
+    />
                 </div>
             </template>
 
@@ -1424,7 +1424,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             }
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
-    </pre>  
+    </pre>
                 <ExposedMethods
                     component="VueUiStackbar"
                     getImage
@@ -1454,7 +1454,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         'pattern',
                         'user-menu',
                         'annotator-actions'
-                    ]" 
+                    ]"
                 >
                 <template #after="item">
                     <div v-if="item.names.includes('svg')" class="p-6">
@@ -1514,11 +1514,11 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <template #tab7>
                 <ResponsiveUnit height="500px">
                     <template #chart>
-                        <VueDataUi 
-                            component="VueUiStackbar" 
-                            :dataset="dataset" 
+                        <VueDataUi
+                            component="VueUiStackbar"
+                            :dataset="dataset"
                             :config="
-                                isDarkMode 
+                                isDarkMode
                                     ? {
                                         ...mutableConfigDarkMode,
                                         responsive: true
@@ -1527,7 +1527,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                                         ...mutableConfig,
                                         responsive: true
                                     }
-                                " 
+                                "
                             :key="key"
                         />
                     </template>

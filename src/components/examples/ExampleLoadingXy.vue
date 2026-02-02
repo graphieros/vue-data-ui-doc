@@ -49,7 +49,7 @@ const loadingLabel = ref({
   pt: "Carregando...",
   de: "Laden...",
   zh: "加载中...",
-  jp: "読み込み中...",
+  ja: "読み込み中...",
   es: "Cargando...",
   ar: "جارٍ التحميل...",
   ko: "로딩 중..."

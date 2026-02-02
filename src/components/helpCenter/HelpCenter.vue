@@ -62,7 +62,7 @@ const linksTranslations = computed(() => {
             pt: "Relatar um problema com a biblioteca de componentes",
             de: "Ein Problem mit der Komponentenbibliothek melden",
             zh: "报告组件库的问题",
-            jp: "コンポーネントライブラリに関する問題を報告する",
+            ja: "コンポーネントライブラリに関する問題を報告する",
             es: "Reportar un problema con la biblioteca de componentes",
             ko: "컴포넌트 라이브러리 문제 보고",
             ar: "الإبلاغ عن مشكلة في مكتبة المكونات"
@@ -73,7 +73,7 @@ const linksTranslations = computed(() => {
             pt: "Relatar um problema neste site",
             de: "Ein Problem mit dieser Website melden",
             zh: "报告有关此网站的问题",
-            jp: "このウェブサイトに関する問題を報告する",
+            ja: "このウェブサイトに関する問題を報告する",
             es: "Reportar un problema con este sitio web",
             ko: "이 웹사이트 문제 신고",
             ar: "الإبلاغ عن مشكلة في هذا الموقع"
@@ -132,7 +132,7 @@ const linksTranslations = computed(() => {
             <router-link data-cy="link-docs" to="/docs">
                 <button
                 class="h-[40px] px-6 rounded-lg border border-app-green text-black dark:text-app-green hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:text-white hover:dark:text-white transition-colors" @click="closeDialog()">
-            
+
                 {{ translations.menu.docs[store.lang] }}
                 </button>
             </router-link>

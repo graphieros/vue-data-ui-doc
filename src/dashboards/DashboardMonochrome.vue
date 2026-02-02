@@ -260,7 +260,7 @@ SPARKLINE: {
                 width: 1500,
                 grid: {
                     scale: {
-                        scaleMax: 400 
+                        scaleMax: 400
                     },
                     x: {
                         axisColor: lightenColor(colors.value.BG, 0.3),
@@ -433,7 +433,7 @@ const translations = ref({
         pt: 'Clique para girar',
         de: 'Klicken, um zu drehen',
         zh: '点击旋转',
-        jp: 'クリックして回転',
+        ja: 'クリックして回転',
         es: 'Haz clic para girar',
         ko: '클릭하여 돌리기',
         ar: 'انقر للدوران'
@@ -444,7 +444,7 @@ const translations = ref({
         pt: 'Ou apenas escolha uma cor (menos divertido)',
         de: 'Oder wähle einfach eine Farbe (weniger verspielt)',
         zh: '或直接选择一种颜色（不那么有趣）',
-        jp: 'または色を選択するだけ（あまり遊び心がない）',
+        ja: 'または色を選択するだけ（あまり遊び心がない）',
         es: 'O simplemente elige un color (menos divertido)',
         ko: '또는 색상을 직접 선택하세요 (덜 재미있음)',
         ar: 'أو اختر لونًا فقط (أقل مرحًا)'
@@ -477,7 +477,7 @@ const translations = ref({
             </BaseCard>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-6">
-        
+
             <div class="col-span-1 sm:col-span-2 rounded-md grid grid-cols-1 sm:grid-cols-3 gap-4 sm:max-h-[300px]">
                 <div class="w-full h-full rounded-md" :style="{ background: baseColor }">
                     <Suspense>

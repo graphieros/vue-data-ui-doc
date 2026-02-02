@@ -100,7 +100,7 @@ const usableHeatmapData = computed(() => {
     const dayOfWeek = new Date(item.period).getDay();
     result[dayOfWeek].values.push(item.value);
   });
-  
+
 
   return result.map(r => {
     return {
@@ -506,11 +506,11 @@ function computeSumsByChunks(arr, chunkSize) {
 
 function getEverySeventhItem(inputArray) {
   const resultArray = [];
-  
+
   for (let i = 0; i < inputArray.length; i += 7) {
     resultArray.push(inputArray[i]);
   }
-  
+
   return resultArray;
 }
 
@@ -541,7 +541,7 @@ const config = computed(() => {
                 right: 0,
                 bottom: 0,
                 left: 0
-            },        
+            },
             grid: {
                 stroke: "#e1e5e8",
                 showVerticalLines: false,
@@ -1222,7 +1222,7 @@ const tableDataset = computed(() => {
         isSort: true,
         isSearch: false,
         isMultiselect: false,
-        isPercentage: false, 
+        isPercentage: false,
         rangeFilter: false,
       },
       {
@@ -1234,7 +1234,7 @@ const tableDataset = computed(() => {
         isSort: true,
         isSearch: false,
         isMultiselect: false,
-        isPercentage: false,  
+        isPercentage: false,
         rangeFilter: true,
       }
     ],
@@ -1753,7 +1753,7 @@ function convertVersionsToTreemap(ds) {
   return Object.entries(componentCountMap).map(([name, value], k) => ({ name, value})).sort((a, b) => b.value - a.value).map((el, i) => {
     return {
       ...el,
-      color: darkenColor(baseColor, i / 2 / total ) 
+      color: darkenColor(baseColor, i / 2 / total )
     }
   });
 }
@@ -1974,7 +1974,7 @@ const dogFood = ref({
   pt: "Um painel sobre os KPIs do Vue Data UI, utilizando a própria biblioteca :)",
   de: "Ein Dashboard zu Vue Data UI-KPIs, das die Bibliothek selbst testet :)",
   zh: "一个关于 Vue Data UI KPI 的仪表盘，自测库功能 :)",
-  jp: "Vue Data UI の KPI に関するダッシュボード、ライブラリを自分で試しています :)",
+  ja: "Vue Data UI の KPI に関するダッシュボード、ライブラリを自分で試しています :)",
   es: "Un panel sobre los KPIs de Vue Data UI, probando la biblioteca internamente :)",
   ar: "لوحة معلومات حول مؤشرات الأداء الرئيسية لـ Vue Data UI، تجربة المكتبة داخليًا :)"
 })
@@ -2188,7 +2188,7 @@ const digitsConfigVersion = computed(() => {
 
 <template>
   <div :class="{'vdui': isDarkMode, 'pointer-events-none': true, 'versions': true, 'small-zoom': true}"/>
-    
+
       <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig">
           <template #td="{ td, colIndex }">
@@ -2225,7 +2225,7 @@ const digitsConfigVersion = computed(() => {
                   <a :href="kpi.link" target="_blank" class="kpi-wrapper">
                       <VueDataUi
                         :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
-                        component="VueUiKpi" 
+                        component="VueUiKpi"
                         :dataset="kpi.value"
                         :config="{
                           backgroundColor: 'transparent',
@@ -2258,9 +2258,9 @@ const digitsConfigVersion = computed(() => {
               <BaseCard class="max-w-[800px] mx-auto mt-6">
                 <div class="w-full p-4 text-[24px] font-inter-medium flex flex-row gap-2 place-items-center">
                   <VueUiIcon name="legend" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
-                  Changelog    
+                  Changelog
                 </div>
-  
+
                 <div class="flex flex-row gap-2 mb-2 pl-4">
                     <label class="text-gray-500 dark:text-[#8A8A8A] mr-2">
                       Filter by version
@@ -2287,7 +2287,7 @@ const digitsConfigVersion = computed(() => {
                       </label>
                     </template>
                   </div>
-  
+
                 <div class="flex flex-col sm:flex-row sm:place-items-center gap-2 mb-2 pl-4" v-if="!enableSem">
                   <label for="versionComponent" @click="openDropdown" class="text-gray-500 dark:text-[#8A8A8A]">Filter by component</label>
                   <div class="flex flex-row gap-2 place-items-center">
@@ -2395,9 +2395,9 @@ const digitsConfigVersion = computed(() => {
                   <div class="max-w-[600px] mx-auto">
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
-                      <VueUiSparkline 
-                        v-if="!isLoadingLine && !!data" 
-                        :dataset="parsedData" 
+                      <VueUiSparkline
+                        v-if="!isLoadingLine && !!data"
+                        :dataset="parsedData"
                         :config="isDarkMode ? {
                           ...darkModeSparklineConfig,
                           style: {
@@ -2413,55 +2413,55 @@ const digitsConfigVersion = computed(() => {
                           </div>
                         </template>
                       </VueUiSparkline>
-                      <VueUiSparkline 
-                        v-if="!isLoadingLine && !!data" 
-                        :dataset="usableWeekData" 
+                      <VueUiSparkline
+                        v-if="!isLoadingLine && !!data"
+                        :dataset="usableWeekData"
                         :config="isDarkMode ? {
-                          ...darkModeSparklineConfig, 
-                          type: 'bar', 
+                          ...darkModeSparklineConfig,
+                          type: 'bar',
                           style: {
                             ...darkModeSparklineConfig.style,
                             scaleMax: Math.max(...usableWeekData.map(d => d.value)),
                             line: {
-                              ...darkModeSparklineConfig.style.line, 
+                              ...darkModeSparklineConfig.style.line,
                               color: '#5f8bee'
-                            }, 
+                            },
                             bar: {
                               ...darkModeSparklineConfig.style.bar,
                               color: '#5f8bee',
                             },
                             area: {
-                              ...darkModeSparklineConfig.style.area, 
+                              ...darkModeSparklineConfig.style.area,
                               color: '#5f8bee'
-                            }, 
+                            },
                             dataLabel: {
-                              ...darkModeSparklineConfig.style.dataLabel, 
+                              ...darkModeSparklineConfig.style.dataLabel,
                               color: '#5f8bee'
-                            }, 
+                            },
                             verticalIndicator: {
-                              ...darkModeSparklineConfig.style.verticalIndicator, 
+                              ...darkModeSparklineConfig.style.verticalIndicator,
                               color: '#42d392'
-                            }, 
+                            },
                             title: {
-                              ...darkModeSparklineConfig.style.title, 
+                              ...darkModeSparklineConfig.style.title,
                               text: 'Weekly downloads - Last 52 weeks'
                             }
                           }
                         } : {
-                          ...sparklineConfig, 
-                          type: 'bar', 
+                          ...sparklineConfig,
+                          type: 'bar',
                           style: {
-                            ...sparklineConfig.style, 
+                            ...sparklineConfig.style,
                             line: {
-                              ...sparklineConfig.style.line, 
+                              ...sparklineConfig.style.line,
                               color: '#5f8bee'
-                            }, 
+                            },
                             area: {
-                              ...sparklineConfig.style.area, 
+                              ...sparklineConfig.style.area,
                               color: '#5f8bee'
-                            }, 
+                            },
                             title: {
-                              ...sparklineConfig.style.title, 
+                              ...sparklineConfig.style.title,
                               text: 'Weekly downloads - Last 52 weeks'
                             }
                           }

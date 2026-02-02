@@ -42,14 +42,14 @@ function useMenu() {
 
 const lastVersion = computed(() => {
     console.log(`
-    
+
 \\ \\      /\\
  \\ \\    /  \\
   \\ \\  / /\\ \\
    \\ \\/ /
     \\  /
      \\/ ${releases[0].version}
-     
+
 
 Vue Data UI is an open source library.\n\n
 Contributions are welcome.\n\n
@@ -175,7 +175,7 @@ const languageOptions = ref([
     { value: "es", text: "Español" },
     { value: "pt", text: "Portugues" },
     { value: "zh", text: "中文" },
-    { value: "jp", text: "日本語" },
+    { value: "ja", text: "日本語" },
     { value: "ko", text: "한국인" },
     { value: "ar", text: "عربي"}
 ]);
@@ -209,7 +209,7 @@ const detailedDoc = ref({
         pt: "Documentação detalhada dos componentes",
         de: "Detaillierte Komponenten-Dokumentation",
         zh: "详细的组件文档",
-        jp: "詳細なコンポーネントドキュメント",
+        ja: "詳細なコンポーネントドキュメント",
         es: "Documentación detallada de los componentes",
         ko: "상세한 구성 요소 문서",
         ar: "توثيق مفصل للمكونات"
@@ -253,7 +253,7 @@ const message = ref({
     pt: 'Mesmo que sua empresa fature mais de 2 milhões de dólares por ano, o Vue Data UI continua GRATUITO',
     de: 'Auch wenn Ihr Unternehmen mehr als 2 Mio. $ pro Jahr verdient, bleibt Vue Data UI KOSTENLOS',
     zh: '即使您的公司每年收入超过200万美元，Vue Data UI仍然是免费的',
-    jp: '御社の年間売上が200万ドルを超えても、Vue Data UIは無料のままです',
+    ja: 'あなたの会社の年間売上が200万ドル以上あったとしても、Vue Data UIは「無料」のままです',
     es: 'Incluso si su empresa gana más de 2 millones de dólares al año, Vue Data UI sigue siendo GRATUITO',
     ko: '귀사의 연 매출이 200만 달러를 넘더라도 Vue Data UI는 여전히 무료입니다',
     ar: 'حتى إذا حققت شركتك أكثر من 2 مليون دولار سنويًا، يظل Vue Data UI مجانًا',
@@ -300,7 +300,7 @@ const message = ref({
                 </router-link>
                 <div class="relative" @keydown.esc="closeDocsMenu">
                     <router-link data-cy="link-docs" to="/docs" @mouseover="openDocMenu" @click.stop="toggleDocMenu" @focus="openDocMenu">
-                        <div 
+                        <div
                             :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/docs')
                                     ? 'text-black dark:text-app-green hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                     : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
@@ -311,7 +311,7 @@ const message = ref({
                         </div>
                     </router-link>
                     <Transition name="fade">
-                        <div 
+                        <div
                             v-if="isDocOpen"
                             v-click-outside="closeDocsMenu"
                             class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 pt-10 rounded-2xl bg-gray-200 dark:bg-[#242424] grid grid-cols-6 w-max gap-6 shadow-[inset_0_2px_2px_#FFFFFF,0_8px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_8px_12px_rgba(0,0,0,0.5)]"
@@ -326,9 +326,9 @@ const message = ref({
                                 <div class="text-s mb-4 font-inter-medium">{{ menu.category }}</div>
                                 <FlexibleTooltip
                                         v-for="(item, i) in menu.components"
-                                        position="bottom" 
-                                        :content="`${item.description}`" 
-                                        width="w-fit min-w-[200px]" 
+                                        position="bottom"
+                                        :content="`${item.description}`"
+                                        width="w-fit min-w-[200px]"
                                         delay="delay-150"
                                     >
                                     <template #before-inside>
@@ -344,7 +344,7 @@ const message = ref({
                                             <div class="h-[16px] w-[16px]">
                                                 <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'"/>
                                             </div>
-                                            <div 
+                                            <div
                                                 :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-inter-medium cursor-default hover:no-underline' : ''}`"
                                             >
                                                 <span class="text-gray-500">VueUi</span>
@@ -436,9 +436,9 @@ const message = ref({
                     <Menu2Icon />
                 </button>
                 <div id="mainDropdown"
-                    class="absolute top-full mt-2 right-0 rounded-lg w-[180px] text-right"
+                    class="absolute top-full mt-2 right-0 rounded-lg w-[14rem] text-right"
                     v-if="isOpen">
-                    <BaseCard type="dark">  
+                    <BaseCard type="dark">
                         <ul>
                             <HeaderDropdownItem
                                 v-for="item in dropdownItems"

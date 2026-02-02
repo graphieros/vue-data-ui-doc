@@ -171,7 +171,7 @@ const description = computed(() => {
         pt: 'Apresentando exemplos do diagrama VueUiDag que descreve alguns objetos de configuração de componentes de IU de dados do Vue.',
         de: 'Beispiele für das VueUiDag-Diagramm, das einige Konfigurationsobjekte von Vue Data UI-Komponenten beschreibt.',
         zh: '展示 VueUiDag 图表示例，描述一些 Vue 数据 UI 组件的配置对象。',
-        jp: 'VueデータUIコンポーネントの設定オブジェクトを説明するVueUiDagチャートの例を紹介します。',
+        ja: 'VueデータUIコンポーネントの設定オブジェクトを説明するVueUiDagチャートの例を紹介します。',
         es: 'Mostrando ejemplos del diagrama VueUiDag que describen algunos objetos de configuración de componentes de UI de datos de Vue.',
         ko: 'Vue 데이터 UI 컴포넌트 구성 객체를 설명하는 VueUiDag 차트 예시를 보여줍니다.',
         ar: 'عرض أمثلة لمخطط VueUiDag يصف بعض كائنات تكوين مكونات واجهة المستخدم الخاصة ببيانات Vue.'
@@ -199,7 +199,7 @@ const DAG_OBJ = computed(() => {
         <div class="w-fit mx-auto mb-12">
             <div class="flex flex-col gap-2">
                 <label for="chartType">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
-    
+
                 <BaseDropdown
                     :options="options"
                     v-model:value="selectedComponent"

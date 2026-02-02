@@ -15,7 +15,7 @@ const t = ref({
         pt: "Menu do gráfico",
         de: "Diagrammmenü",
         zh: "图表菜单",
-        jp: "チャートメニュー",
+        ja: "チャートメニュー",
         es: "Menú del gráfico",
         ko: "차트 메뉴",
         ar: "قائمة الرسم البياني"
@@ -26,7 +26,7 @@ const t = ref({
         pt: "Todos os gráficos oferecem um menu com um conjunto variável de ações, dependendo do tipo de gráfico. Este menu pode ser ocultado por meio da configuração, ou cada ação pode ser exibida ou ocultada. Também é possível personalizar a aparência do menu, caso prefira usar seus próprios ícones ou rótulos.",
         de: "Alle Diagramme bieten ein Menü mit einer variablen Reihe von Aktionen, abhängig vom Diagrammtyp. Dieses Menü kann über die Konfiguration ausgeblendet werden, oder jede Aktion kann ein- oder ausgeblendet werden. Es ist auch möglich, das Aussehen des Menüs anzupassen, wenn Sie lieber eigene Symbole oder Beschriftungen verwenden möchten.",
         zh: "所有图表都提供一个菜单，其中包含根据图表类型而变化的一组操作。此菜单可以通过配置隐藏，也可以显示或隐藏每个操作。如果您更喜欢使用自己的图标或标签，还可以自定义菜单的外观。",
-        jp: "すべてのチャートは、チャートの種類に応じて可変のアクションセットを含むメニューを提供します。このメニューは設定で非表示にすることができ、各アクションを個別に表示または非表示にすることも可能です。また、独自のアイコンやラベルを使用したい場合、メニューの外観をカスタマイズすることもできます。",
+        ja: "すべてのチャートは、チャートの種類に応じて可変のアクションセットを含むメニューを提供します。このメニューは設定で非表示にすることができ、各アクションを個別に表示または非表示にすることも可能です。また、独自のアイコンやラベルを使用したい場合、メニューの外観をカスタマイズすることもできます。",
         es: "Todos los gráficos ofrecen un menú con un conjunto variable de acciones, dependiendo del tipo de gráfico. Este menú puede ocultarse a través de la configuración, o cada acción puede mostrarse u ocultarse. También es posible personalizar la apariencia del menú si prefieres usar tus propios iconos o etiquetas.",
         ko: "모든 차트는 차트 유형에 따라 다양한 동작 세트를 포함하는 메뉴를 제공합니다. 이 메뉴는 설정을 통해 숨길 수 있으며 각 동작은 개별적으로 표시하거나 숨길 수 있습니다. 또한, 메뉴의 외형을 사용자 정의하여 자신만의 아이콘이나 레이블을 사용할 수도 있습니다.",
         ar: "تقدم جميع الرسوم البيانية قائمة تحتوي على مجموعة متنوعة من الإجراءات، حسب نوع الرسم البياني. يمكن إخفاء هذه القائمة من خلال الإعدادات، أو يمكن إظهار أو إخفاء كل إجراء بشكل منفصل. كما يمكن تخصيص مظهر القائمة إذا كنت تفضل استخدام الأيقونات أو التسميات الخاصة بك."
@@ -37,7 +37,7 @@ const t = ref({
         pt: "Alterna a visibilidade da dica de ferramenta",
         de: "Schaltet die Sichtbarkeit des Tooltips um",
         zh: "切换工具提示的可见性",
-        jp: "ツールチップの表示を切り替えます",
+        ja: "ツールチップの表示を切り替えます",
         es: "Alterna la visibilidad del tooltip",
         ko: "툴팁 가시성을 전환합니다",
         ar: "تبديل رؤية التلميحات"
@@ -48,7 +48,7 @@ const t = ref({
         pt: "Faz o download do gráfico em PDF",
         de: "Lädt das Diagramm als PDF herunter",
         zh: "将图表下载为 PDF",
-        jp: "チャートをPDFとしてダウンロードします",
+        ja: "チャートをPDFとしてダウンロードします",
         es: "Descarga el gráfico como PDF",
         ko: "차트를 PDF로 다운로드합니다",
         ar: "تنزيل الرسم البياني كملف PDF"
@@ -59,7 +59,7 @@ const t = ref({
         pt: "Faz o download do conjunto de dados em CSV",
         de: "Lädt den Datensatz als CSV herunter",
         zh: "将数据集下载为 CSV",
-        jp: "データセットをCSVとしてダウンロードします",
+        ja: "データセットをCSVとしてダウンロードします",
         es: "Descarga el conjunto de datos como CSV",
         ko: "데이터 세트를 CSV로 다운로드합니다",
         ar: "تنزيل مجموعة البيانات كملف CSV"
@@ -70,7 +70,7 @@ const t = ref({
         pt: "Faz o download do gráfico em PNG",
         de: "Lädt das Diagramm als PNG herunter",
         zh: "将图表下载为 PNG",
-        jp: "チャートをPNGとしてダウンロードします",
+        ja: "チャートをPNGとしてダウンロードします",
         es: "Descarga el gráfico como PNG",
         ko: "차트를 PNG로 다운로드합니다",
         ar: "تنزيل الرسم البياني كملف PNG"
@@ -81,7 +81,7 @@ const t = ref({
         pt: "Faz o download do gráfico em SVG",
         de: "Lädt das Diagramm als SVG herunter",
         zh: "将图表下载为 SVG",
-        jp: "チャートをSVGとしてダウンロードします",
+        ja: "チャートをSVGとしてダウンロードします",
         es: "Descarga el gráfico como SVG",
         ko: "차트를 SVG로 다운로드합니다",
         ar: "تنزيل الرسم البياني كملف SVG"
@@ -92,7 +92,7 @@ const t = ref({
         pt: "Alterna a visibilidade da tabela de dados",
         de: "Schaltet die Sichtbarkeit der Datentabelle um",
         zh: "切换数据表的可见性",
-        jp: "データテーブルの表示を切り替えます",
+        ja: "データテーブルの表示を切り替えます",
         es: "Alterna la visibilidad de la tabla de datos",
         ko: "데이터 테이블 가시성을 전환합니다",
         ar: "تبديل رؤية جدول البيانات"
@@ -103,7 +103,7 @@ const t = ref({
         pt: "Alterna a visibilidade dos rótulos de dados",
         de: "Schaltet die Sichtbarkeit der Datenbeschriftungen um",
         zh: "切换数据标签的可见性",
-        jp: "データラベルの表示を切り替えます",
+        ja: "データラベルの表示を切り替えます",
         es: "Alterna la visibilidad de las etiquetas de datos",
         ko: "데이터 레이블 가시성을 전환합니다",
         ar: "تبديل رؤية تسميات البيانات"
@@ -114,7 +114,7 @@ const t = ref({
         pt: "Alterna o modo de empilhamento",
         de: "Schaltet den Stapelmodus um",
         zh: "切换堆叠模式",
-        jp: "スタックモードを切り替えます",
+        ja: "スタックモードを切り替えます",
         es: "Alterna el modo de apilamiento",
         ko: "스택 모드를 전환합니다",
         ar: "تبديل وضع التكديس"
@@ -125,7 +125,7 @@ const t = ref({
         pt: "Alterna o modo de tela cheia",
         de: "Schaltet den Vollbildmodus um",
         zh: "切换全屏模式",
-        jp: "全画面モードを切り替えます",
+        ja: "全画面モードを切り替えます",
         es: "Alterna el modo de pantalla completa",
         ko: "전체 화면 모드를 전환합니다",
         ar: "تبديل وضع ملء الشاشة"
@@ -136,7 +136,7 @@ const t = ref({
         pt: "Inverte a ordem de classificação",
         de: "Kehrt die Sortierreihenfolge um",
         zh: "反转排序顺序",
-        jp: "並べ替え順序を反転します",
+        ja: "並べ替え順序を反転します",
         es: "Invierte el orden de clasificación",
         ko: "정렬 순서를 반전시킵니다",
         ar: "عكس ترتيب الفرز"
@@ -147,7 +147,7 @@ const t = ref({
         pt: "Abre o anotador integrado",
         de: "Öffnet den integrierten Anmerkungsbereich",
         zh: "打开内置注释工具",
-        jp: "組み込みの注釈ツールを開きます",
+        ja: "組み込みの注釈ツールを開きます",
         es: "Abre el anotador integrado",
         ko: "내장된 주석 도구를 엽니다",
         ar: "يفتح أداة التعليق المدمجة"
@@ -158,7 +158,7 @@ const t = ref({
         pt: 'Bloquear ou desbloquear o recurso de pan e zoom',
         de: 'Die Pan- und Zoomfunktion sperren oder entsperren',
         zh: '锁定或解锁平移和缩放功能',
-        jp: 'パンおよびズーム機能をロックまたは解除する',
+        ja: 'パンおよびズーム機能をロックまたは解除する',
         es: 'Bloquear o desbloquear la función de desplazamiento y zoom',
         ko: '이동 및 확대/축소 기능을 잠그거나 해제합니다',
         ar: 'قفل أو فتح ميزة التحريك والتكبير'
@@ -314,9 +314,9 @@ const items = ref([
                                 <div class="flex flex-row flex-wrap gap-2 max-w-[500px]">
                                     <FlexibleTooltip
                                         v-for="c in option.charts"
-                                        position="bottom" 
-                                        :content="charts[c].name" 
-                                        width="w-fit min-w-[120px]" 
+                                        position="bottom"
+                                        :content="charts[c].name"
+                                        width="w-fit min-w-[120px]"
                                         delay="delay-150"
                                     >
                                         <RouterLink :to="charts[c].link">

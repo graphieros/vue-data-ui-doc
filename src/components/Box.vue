@@ -114,7 +114,7 @@ const menuTranslations = computed(() => {
             pt: 'Conjunto de dados',
             de: 'Datensatz',
             zh: '数据集',
-            jp: 'データセット',
+            ja: 'データセット',
             es: 'Conjunto de datos',
             ko: '데이터셋',
             ar: 'مجموعة البيانات'
@@ -125,7 +125,7 @@ const menuTranslations = computed(() => {
             pt: 'Configuração',
             de: 'Konfiguration',
             zh: '配置',
-            jp: '設定',
+            ja: '設定',
             es: 'Configuración',
             ko: '구성',
             ar: 'إعدادات'
@@ -136,7 +136,7 @@ const menuTranslations = computed(() => {
             pt: 'Emissões e métodos expostos',
             de: 'Emits und exponierte Methoden',
             zh: '触发事件和暴露的方法',
-            jp: 'emitと公開メソッド',
+            ja: 'emitと公開メソッド',
             es: 'Emisiones y métodos expuestos',
             ko: '이벤트와 공개된 메서드',
             ar: 'الأحداث المنبعثة والوظائف المكشوفة'
@@ -147,7 +147,7 @@ const menuTranslations = computed(() => {
             pt: 'Slots',
             de: 'Slots',
             zh: '插槽',
-            jp: 'スロット',
+            ja: 'スロット',
             es: 'Slots',
             ko: '슬롯',
             ar: 'فتحات'
@@ -158,7 +158,7 @@ const menuTranslations = computed(() => {
             pt: 'Tooltip personalizada',
             de: 'Benutzerdefinierter Tooltip',
             zh: '自定义提示',
-            jp: 'カスタムツールチップ',
+            ja: 'カスタムツールチップ',
             es: 'Tooltip personalizado',
             ko: '사용자 정의 툴팁',
             ar: 'تولتيب مخصص'
@@ -169,7 +169,7 @@ const menuTranslations = computed(() => {
             pt: 'Casos de uso',
             de: 'Anwendungsfälle',
             zh: '用例',
-            jp: 'ユースケース',
+            ja: 'ユースケース',
             es: 'Casos de uso',
             ko: '사용 사례',
             ar: 'حالات الاستخدام'
@@ -180,7 +180,7 @@ const menuTranslations = computed(() => {
             pt: 'Temas',
             de: 'Themen',
             zh: '主题',
-            jp: 'テーマ',
+            ja: 'テーマ',
             es: 'Temas',
             ko: '테마',
             ar: 'السمات'
@@ -191,7 +191,7 @@ const menuTranslations = computed(() => {
             pt: 'Responsivo',
             de: 'Responsive',
             zh: '响应式',
-            jp: 'レスポンシブ',
+            ja: 'レスポンシブ',
             es: 'Responsivo',
             ko: '반응형',
             ar: 'متجاوب'
@@ -202,7 +202,7 @@ const menuTranslations = computed(() => {
             pt: "Padrões",
             de: "Muster",
             zh: "图案",
-            jp: "模様",
+            ja: "模様",
             es: "Patrones",
             ko: "패턴",
             ar: "أنماط"
@@ -213,7 +213,7 @@ const menuTranslations = computed(() => {
             pt: "Sobrescrever CSS",
             de: "CSS-Überschreibung",
             zh: "CSS 覆盖",
-            jp: "CSS オーバーライド",
+            ja: "CSS オーバーライド",
             es: "Anulación de CSS",
             ko: "CSS 재정의",
             ar: "تجاوز CSS"
@@ -224,7 +224,7 @@ const menuTranslations = computed(() => {
             pt: "Formatador de data e hora",
             de: "Datums- und Zeitformatierer",
             zh: "日期时间格式器",
-            jp: "日時フォーマッター",
+            ja: "日時フォーマッター",
             es: "Formateador de fecha y hora",
             ko: "날짜 및 시간 형식기",
             ar: "منسق التاريخ والوقت"
@@ -235,7 +235,7 @@ const menuTranslations = computed(() => {
             pt: 'Callbacks do menu do usuário',
             de: 'Callbacks des Benutzermenüs',
             zh: '用户菜单回调 (callbacks)',
-            jp: 'ユーザーメニューのコールバック',
+            ja: 'ユーザーメニューのコールバック',
             es: 'Callbacks del menú de usuario',
             ko: '사용자 메뉴 콜백',
             ar: 'Callbacks لقائمة المستخدم'
@@ -341,7 +341,7 @@ const patternTranslations = computed(() => {
                 pt: "Este componente suporta o slot #pattern. Veja como o gráfico fica com padrões:",
                 de: "Diese Komponente unterstützt den Slot #pattern. So sieht das Diagramm mit Mustern aus:",
                 zh: "此组件支持 #pattern 插槽。以下是带有图案的图表外观：",
-                jp: "このコンポーネントは #pattern スロットをサポートしています。パターンを適用した場合のチャートの見た目は以下の通りです:",
+                ja: "このコンポーネントは #pattern スロットをサポートしています。パターンを適用した場合のチャートの見た目は以下の通りです:",
                 es: "Este componente admite el slot #pattern. Así es como se ve el gráfico con patrones:",
                 ko: "이 구성 요소는 #pattern 슬롯을 지원합니다. 패턴이 적용된 차트의 모습은 다음과 같습니다:",
                 ar: "يدعم هذا المكون الفتحة #pattern. هكذا يبدو الرسم البياني مع الأنماط:"
@@ -352,7 +352,7 @@ const patternTranslations = computed(() => {
                 pt: "Mais informações sobre padrões",
                 de: "Mehr Informationen zu Mustern",
                 zh: "关于图案的更多信息",
-                jp: "パターンに関する詳細情報",
+                ja: "パターンに関する詳細情報",
                 es: "Más información sobre patrones",
                 ko: "패턴에 대한 추가 정보",
                 ar: "مزيد من المعلومات حول الأنماط"
@@ -366,7 +366,7 @@ const boxWrapper = ref(null);
 let io = null;
 
 onMounted(() => {
-    
+
     const root = document.querySelector("#root") || null;
 
     io = new IntersectionObserver(
@@ -409,8 +409,8 @@ function selectTabFromMini(order) {
 
 <template>
     <Transition name="fade">
-        <div 
-            v-if="!isMobile" 
+        <div
+            v-if="!isMobile"
             :class="`fixed top-[100px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-20 flex flex-col gap-2.5 p-2 transition-all`"
         >
             <FlexibleTooltip

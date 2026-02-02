@@ -62,10 +62,10 @@ const body = computed(() => {
             date,
             accueil,
             Number((Math.random() * 5).toFixed(1)),
-            Math.random() * 200, 
+            Math.random() * 200,
             '',
-            Math.random() * (Math.random() > 0.5 ? 150 : -30), 
-            Math.random() * 350 
+            Math.random() * (Math.random() > 0.5 ? 150 : -30),
+            Math.random() * 350
           ];
           items.push({td: data});
         }
@@ -83,11 +83,11 @@ const body = computed(() => {
       }
 
       function getRandomDate() {
-      const start = new Date(2023, 0, 1).getTime(); 
-      const end = new Date(2023, 11, 31).getTime(); 
-      const randomTime = Math.random() * (end - start) + start; 
+      const start = new Date(2023, 0, 1).getTime();
+      const end = new Date(2023, 11, 31).getTime();
+      const randomTime = Math.random() * (end - start) + start;
       const randomDate = new Date(randomTime);
-      const formattedDate = randomDate.toISOString().split('T')[0]; 
+      const formattedDate = randomDate.toISOString().split('T')[0];
       return formattedDate;
     }
       return generateRandomData();
@@ -754,7 +754,7 @@ const pageChangeCodeTemplate = ref(`<VueUiTable
 />`)
 
 const pageChangeCode = ref(`function onPageChange(pageData: VueUiTablePageChangeEvent) {
-    const { 
+    const {
         currentPage,
         totalPages,
         itemsPerPage,
@@ -791,7 +791,7 @@ const pageEventDescription = ref( {
     pt: 'Este evento é acionado ao usar os botões de paginação, bem como quando o número de itens por página é modificado.',
     de: 'Dieses Ereignis wird ausgelöst, wenn die Seitenschaltflächen verwendet werden oder wenn die Anzahl der Elemente pro Seite geändert wird.',
     zh: '当使用分页按钮或修改每页项目数时，会触发此事件。',
-    jp: 'ページネーションボタンを使用したとき、または1ページあたりの項目数が変更されたときに、このイベントが発火します。',
+    ja: 'ページネーションボタンを使用したとき、または1ページあたりの項目数が変更されたときに、このイベントが発火します。',
     es: 'Este evento se dispara al usar los botones de paginación, así como cuando se modifica el número de elementos por página.',
     ar: 'يتم تشغيل هذا الحدث عند استخدام أزرار الترقيم، وكذلك عند تعديل عدد العناصر لكل صفحة.',
     ko: '이 이벤트는 페이지네이션 버튼을 사용할 때와 페이지당 항목 수가 변경될 때 발생합니다.'
@@ -803,7 +803,7 @@ const timeFormatTranslation = ref({
     pt: 'Quando o datetimeFormatter está ativado, você também pode personalizar os rótulos de tempo para:',
     de: 'Wenn datetimeFormatter aktiviert ist, können Sie auch die Zeitbeschriftungen anpassen für:',
     zh: '启用 datetimeFormatter 后，您还可以自定义以下时间标签：',
-    jp: 'datetimeFormatter が有効な場合、時間ラベルをカスタマイズできます：',
+    ja: 'datetimeFormatter が有効な場合、時間ラベルをカスタマイズできます：',
     es: 'Cuando datetimeFormatter está habilitado, también puede personalizar las etiquetas de tiempo para:',
     ko: 'datetimeFormatter가 활성화되면 시간 레이블을 다음에 대해 사용자 정의할 수 있습니다:',
     ar: 'عند تفعيل datetimeFormatter، يمكنك أيضًا تخصيص تسميات الوقت لـ:'
@@ -823,21 +823,21 @@ const { configCode, showAllConfig } = useConfigCode();
             targetLink="vue-ui-table"
             :configSource="mainConfig.vue_ui_table"
         />
-    
+
         <BaseCard>
             <Suspense>
                 <template #default>
                     <VueUiTable :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`tablekey_${tableKey}`"/>
                 </template>
-        
+
                 <template #fallback>
                     <BaseSpinner/>
                 </template>
-            </Suspense>   
+            </Suspense>
         </BaseCard>
 
         <Rater itemId="vue_ui_table" />
-    
+
         <Box showEmits :showDatetimeFormatter="true">
             <template #tab2>
                 <p class="mb-4">{{ pageEventDescription[store.lang] }}</p>
@@ -871,9 +871,9 @@ const { configCode, showAllConfig } = useConfigCode();
             @copy="store.copy()"
             :content="dsTypeCode"
             class="my-6"
-        />  
+        />
                 </div>
-    
+
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x auto">
     <pre>
@@ -1048,9 +1048,9 @@ const { configCode, showAllConfig } = useConfigCode();
         ]
     ]
     </code>
-    </pre>            
+    </pre>
                 </div>
-    
+
             </template>
             <template v-slot:tab1>
                 <div class="flex gap-2">
@@ -1288,7 +1288,7 @@ const { configCode, showAllConfig } = useConfigCode();
             <BaseAttr name="xAxisLabels" attr="translations.xAxisLabels" type="text" defaultVal="'X axis labels'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
     </BaseDetails>
-</code>      
+</code>
             </template>
 
             <template #tab10>

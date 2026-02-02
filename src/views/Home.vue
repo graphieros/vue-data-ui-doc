@@ -20,7 +20,7 @@ function changeTheme() {
         localStorage.theme = "light";
         document.documentElement.classList.remove('dark');
         store.isDarkMode = false;
-        
+
     } else {
         localStorage.theme = "dark";
         document.documentElement.classList.add('dark');
@@ -89,7 +89,7 @@ function setClientPosition({ clientX, clientY, ...rest }) {
     clientPosition.value.x = clientX;
     clientPosition.value.y = clientY;
   }
-  
+
   function setFingerPosition(data) {
     clientPosition.value.x = data.targetTouches[0].clientX;
     clientPosition.value.y = data.targetTouches[0].clientY;
@@ -105,7 +105,7 @@ onMounted(() => {
     if (resizeContainer.value) {
         resizeObserver.observe(resizeContainer.value)
     }
-    
+
   fetch(versionsUrl.value, {
     method: 'GET',
     cache: 'default',
@@ -161,7 +161,7 @@ const digits = computed(() => {
 })
 
 const digitsConfigVersion = computed(() => {
-  
+
   return {
     backgroundColor: "transparent",
     digits: {
@@ -285,7 +285,7 @@ const componentTranslation = ref({
   pt: 'Componentes',
   de: 'Komponenten',
   zh: '成分',
-  jp: 'コンポーネント',
+  ja: 'コンポーネント',
   es: 'Componentes',
   ko: '구성요소',
   ar: 'عناصر'
@@ -320,7 +320,7 @@ const advantages = computed(() => {
       pt: 'Código aberto e gratuito',
       de: 'Open Source und kostenlos nutzbar',
       zh: '开源且免费使用',
-      jp: 'オープンソースで、無料で利用可能です',
+      ja: 'オープンソース、無料で利用可能',
       es: 'De código abierto y gratuito',
       ko: '오픈 소스이며 무료로 사용 가능합니다',
       ar: 'مفتوح المصدر ومجاني للاستخدام'
@@ -331,7 +331,7 @@ const advantages = computed(() => {
       pt: "Vue nativo, sem dependências em runtime",
       de: "Vue-nativ, keine Laufzeitabhängigkeiten",
       zh: "原生 Vue，无运行依赖",
-      jp: "Vueネイティブ、依存なし",
+      ja: "Vueネイティブ、ランタイム依存関係なし",
       es: "Vue nativo, sin dependencias",
       ko: "Vue 네이티브, 런타임 의존성 없음",
       ar: "مبني على Vue، دون تبعيات",
@@ -342,7 +342,7 @@ const advantages = computed(() => {
       pt: `${componentsLen.value} componentes prontos`,
       de: `${componentsLen.value} fertige Komponenten`,
       zh: `${componentsLen.value} 个组件`,
-      jp: `既製コンポーネント ${componentsLen.value} 個`,
+      ja: `${componentsLen.value} 個の既製コンポーネント`,
       es: `${componentsLen.value} componentes listos`,
       ko: `미리 제작된 컴포넌트 ${componentsLen.value}개`,
       ar: `${componentsLen.value} مكوّنات جاهزة`,
@@ -353,7 +353,7 @@ const advantages = computed(() => {
       pt: "Componente universal",
       de: "Universelle Komponente",
       zh: "通用组件",
-      jp: "ユニバーサルコンポーネント",
+      ja: "ユニバーサルコンポーネント",
       es: "Componente universal",
       ko: "범용 컴포넌트",
       ar: "مكوّن عام",
@@ -364,7 +364,7 @@ const advantages = computed(() => {
       pt: "Customização com slots",
       de: "Tiefgreifende Slot-Anpassung",
       zh: "插槽自定义",
-      jp: "スロットで柔軟カスタム",
+      ja: "スロットによる柔軟なカスタマイズ",
       es: "Personalización con slots",
       ko: "슬롯 기반 커스터마이징",
       ar: "تخصيص عبر الـ slot",
@@ -375,7 +375,7 @@ const advantages = computed(() => {
       pt: "Menu embutido para usuário final avançado",
       de: "Integriertes Menü für Endnutzer",
       zh: "内建终端用户功能菜单",
-      jp: "組み込みエンドユーザーメニュー",
+      ja: "組み込みエンドユーザーメニュー",
       es: "Menú integrado para el usuario final",
       ko: "엔드유저용 내장 메뉴",
       ar: "قائمة مدمجة للمستخدم النهائي",
@@ -386,7 +386,7 @@ const advantages = computed(() => {
       pt: "Widgets para interface de dashboard",
       de: "Widgets für Dashboard-Oberfläche",
       zh: "仪表盘界面组件",
-      jp: "ダッシュボードUI用ウィジェット",
+      ja: "ダッシュボードUI用ウィジェット",
       es: "Widgets para interfaz de dashboard",
       ko: "대시보드 UI용 위젯",
       ar: "عناصر واجهة للوحة التحكم",
@@ -397,7 +397,7 @@ const advantages = computed(() => {
       pt: "API de controle programável",
       de: "Programmierbare Steuerungs-API",
       zh: "可编程控制 API",
-      jp: "プログラマブル制御API",
+      ja: "プログラマブルなコントロールAPI",
       es: "API de control programático",
       ko: "프로그래밍 제어 API",
       ar: "واجهة تحكم برمجية",
@@ -408,7 +408,7 @@ const advantages = computed(() => {
       pt: "Responsivo e amigável ao móvel",
       de: "Responsiv und mobilfreundlich",
       zh: "响应式，适配移动端",
-      jp: "レスポンシブでモバイル対応",
+      ja: "レスポンシブでモバイル対応",
       es: "Responsivo y apto para móviles",
       ko: "반응형, 모바일 친화적",
       ar: "متجاوب ويدعم الجوال",
@@ -419,7 +419,7 @@ const advantages = computed(() => {
       pt: "Compatível com Nuxt",
       de: "Funktioniert mit Nuxt",
       zh: "兼容 Nuxt",
-      jp: "Nuxtに対応",
+      ja: "Nuxtに対応",
       es: "Funciona con Nuxt",
       ko: "Nuxt 호환 가능",
       ar: "يعمل مع Nuxt",
@@ -585,7 +585,7 @@ onBeforeUnmount(() => {
 
         <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
 
-        <VueUiCarouselTable 
+        <VueUiCarouselTable
           :dataset="carouselDataset"
           :config="carouselConfig"
           class="hidden sm:block mt-14 pointer-events-none"
@@ -596,7 +596,7 @@ onBeforeUnmount(() => {
             </div>
           </template>
       </VueUiCarouselTable>
-        
+
         <div :class="`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col ${isNarrow ? '' : 'lg:flex-row'} justify-center place-items-center sm:gap-[80px] w-full max-w-[1450px]`">
     <div class="flex flex-col gap-6 max-w-[360px] sm:max-w-[450px] justify-center place-items-center text-center">
         <h1 style="font-family: InterBold" class="text-[49px]">
@@ -606,7 +606,7 @@ onBeforeUnmount(() => {
         <p class="font-inter-medium text-board-2 text-xl sm:text-2xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
 
         <div class="flex flex-row gap-2 text-gray-500 relative" :title="componentsLen + ' components'">
-          {{ componentTranslation[store.lang] }}: 
+          {{ componentTranslation[store.lang] }}:
           <div class="h-[22px]">
             <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#647EFF' : '#6A6A6A', thickness: 2 }  }"/>
           </div>
@@ -619,8 +619,8 @@ onBeforeUnmount(() => {
               <span style="letter-spacing: 1px;">
                 {{ translations.github[store.lang] }}
               </span>
-              <div class="w-[25px]" v-if="store.isFetching">              
-                <VueUiMiniLoader 
+              <div class="w-[25px]" v-if="store.isFetching">
+                <VueUiMiniLoader
                   :config="{
                     onion: {
                       gutterColor: '#CCCCCC',
@@ -728,12 +728,12 @@ onBeforeUnmount(() => {
                 <template #plot-comment="{ plot }">
                   <div
                     v-if="!plot.firstLoad"
-                    dir="auto" 
-                    style="pointer-events: all !important;" 
-                    :title="plot.comment" @click="selectMenu({index: plot.patternIndex})" 
-                    :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.patternIndex === 2 ? 'center' : plot.textAlign};`" 
+                    dir="auto"
+                    style="pointer-events: all !important;"
+                    :title="plot.comment" @click="selectMenu({index: plot.patternIndex})"
+                    :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.patternIndex === 2 ? 'center' : plot.textAlign};`"
                     :class="`
-                      px-2 cursor-pointer 
+                      px-2 cursor-pointer
                       ${plot.patternIndex === 0 ? 'mt-[50px] -ml-2' : ''}
                       ${plot.patternIndex === 1 ? '-mt-[50px] -ml-2' : ''}
                       ${plot.patternIndex === 2 ? '-mt-[64px]' : ''}
@@ -746,7 +746,7 @@ onBeforeUnmount(() => {
                   </div>
                 </template>
               </VueUiDonut>
-              <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px] pointer-events-none"> 
+              <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px] pointer-events-none">
                 <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
                   <img data-cy="app-logo" src="../assets/logo3.png" alt="vue data ui logo" class="h-[48px] mx-auto drop-shadow-xl logo-shape mt-2 ml-1">
                 </div>
@@ -758,7 +758,7 @@ onBeforeUnmount(() => {
           </template>
         </Suspense>
         <!-- <BaseBubbles v-if="specialOccasion" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/> -->
-        
+
     </div>
 
     <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 lg:hidden mt-6">
@@ -768,8 +768,8 @@ onBeforeUnmount(() => {
           <span style="letter-spacing: 1px">
             {{ translations.github[store.lang] }}
           </span>
-          <div class="w-[25px]" v-if="store.isFetching">              
-            <VueUiMiniLoader 
+          <div class="w-[25px]" v-if="store.isFetching">
+            <VueUiMiniLoader
               :config="{
                 onion: {
                   gutterColor: '#CCCCCC',
@@ -843,7 +843,7 @@ onBeforeUnmount(() => {
               skeletonColor: 'transparent'
             }
           }"
-          
+
         />
       </div>
     </foreignObject>
@@ -864,7 +864,7 @@ onBeforeUnmount(() => {
             skeletonColor: 'transparent'
           }
         }"
-        
+
       />
     </foreignObject>
 
@@ -908,7 +908,7 @@ onBeforeUnmount(() => {
 </style>
 
 <style>
-.custom-styles 
+.custom-styles
 .vue-ui-donut svg {
     background: #FFFFFF00 !important;
 }
@@ -918,7 +918,7 @@ onBeforeUnmount(() => {
 .custom-styles .vue-ui-donut text {
     cursor: pointer;
 }
-.custom-styles 
+.custom-styles
 .vue-ui-donut {
     background: transparent !important;
 }

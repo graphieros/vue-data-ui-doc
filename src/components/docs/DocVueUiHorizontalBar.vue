@@ -477,7 +477,7 @@ const renameWarning = ref({
   pt: 'Este componente foi renomeado para VueUiHorizontalBar. Usar o antigo VueUiVerticalBar continuará funcionando na v3, mas recomendamos que você mude para o novo nome.',
   de: 'Diese Komponente wurde in VueUiHorizontalBar umbenannt. Die Verwendung von VueUiVerticalBar funktioniert in v3 weiterhin, wir empfehlen jedoch, zum neuen Namen zu wechseln.',
   zh: '该组件已重命名为 VueUiHorizontalBar。旧的 VueUiVerticalBar 在 v3 中仍可使用，但建议您切换到新名称。',
-  jp: 'このコンポーネントは VueUiHorizontalBar に名称変更されました。従来の VueUiVerticalBar も v3 では動作しますが、新しい名称への移行をおすすめします。',
+  ja: 'このコンポーネントは VueUiHorizontalBar に名称変更されました。従来の VueUiVerticalBar も v3 では動作しますが、新しい名称への移行をおすすめします。',
   es: 'Este componente pasó a llamarse VueUiHorizontalBar. El antiguo VueUiVerticalBar seguirá funcionando en la v3, pero te recomendamos cambiar al nuevo nombre.',
   ko: '이 컴포넌트는 VueUiHorizontalBar로 이름이 변경되었습니다. 기존 VueUiVerticalBar는 v3에서 계속 동작하지만, 새로운 이름으로 전환하길 권장합니다.',
   ar: 'تمت إعادة تسمية هذا المكوّن إلى VueUiHorizontalBar. سيستمر الاسم القديم VueUiVerticalBar بالعمل في الإصدار v3، لكن نوصي بالانتقال إلى الاسم الجديد.'
@@ -514,7 +514,7 @@ const isFixed = ref(false);
 function fixChart() {
     isFixed.value = !isFixed.value;
     store.docSnap = !store.docSnap;
-} 
+}
 
 const { configCode, showAllConfig } = useConfigCode()
 
@@ -522,11 +522,11 @@ function randomizeData() {
   dataset.value[0].children[0].value = Math.random() * 100;
   dataset.value[0].children[1].value = Math.random() * 65;
   dataset.value[0].value = dataset.value[0].children.map(c => c.value).reduce((a, b) => a + b, 0)
-  
+
   dataset.value[1].value = Math.random() * 300;
   dataset.value[2].value = Math.random() * 250;
   dataset.value[3].value = Math.random() * 200;
-  
+
   dataset.value[4].children[0].value = Math.random() * 100;
   dataset.value[4].children[1].value = Math.random() * 100;
   dataset.value[4].children[2].value = Math.random() * 100;
@@ -662,7 +662,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             :content="dsTypeCode"
             :title="translations.docs.datastructure[store.lang]"
             class="my-6"
-        />  
+        />
                 </div>
 
                 <div class="w-full overflow-x auto">
@@ -672,7 +672,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
       @copy="store.copy()"
       :content="codeDataset"
       :title="translations.docs.example[store.lang]"
-    />                
+    />
                 </div>
             </template>
             <template v-slot:tab1>
@@ -1028,7 +1028,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     'pattern',
                     'user-menu',
                     'annotator-actions'
-                  ]" 
+                  ]"
               />
             </template>
             <template #tab4>
@@ -1054,19 +1054,19 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             <template #tab7>
               <ResponsiveUnit>
                 <template #chart>
-                  <VueUiVerticalBar 
-                    :dataset="dataset" 
+                  <VueUiVerticalBar
+                    :dataset="dataset"
                     :config="
-                      isDarkMode 
+                      isDarkMode
                         ? {
                           ...mutableConfigDarkMode,
                           responsive: true
-                        } 
+                        }
                         : {
                           ...mutableConfig,
                           responsive: true
                         }
-                      " 
+                      "
                     :key="key"
                   />
                 </template>

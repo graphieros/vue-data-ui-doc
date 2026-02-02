@@ -37,7 +37,7 @@ const {
 
 /**
  * Idea: xy next to timeline. selectX highlights timeline item
- * 
+ *
  */
 
 const shareX = ref({
@@ -46,7 +46,7 @@ const shareX = ref({
     pt: 'Compartilhar o índice de tempo selecionado em várias instâncias de gráfico',
     de: 'Ausgewählten Zeitindex auf mehreren Diagramminstanzen teilen',
     zh: '在多个图表实例上共享所选时间索引',
-    jp: '選択した時間インデックスを複数のチャートインスタンスで共有する',
+    ja: '選択した時間インデックスを複数のチャートインスタンスで共有する',
     es: 'Compartir el índice de tiempo seleccionado en varias instancias de gráfico',
     ko: '선택한 시간 인덱스를 여러 차트 인스턴스에서 공유하기',
     ar: 'مشاركة فهرس الوقت المحدد عبر عدة مثيلات من المخططات'
@@ -58,7 +58,7 @@ const shareXDescription = ref({
     pt: `O VueUiXy possui uma prop especial "selectedXIndex", que pode ser usada junto com eventos de configuração para destacar o índice de tempo selecionado em vários gráficos.`,
     de: `VueUiXy verfügt über eine spezielle "selectedXIndex"-Prop, die zusammen mit Konfigurationsereignissen verwendet werden kann, um den ausgewählten Zeitindex in mehreren Diagrammen hervorzuheben.`,
     zh: `VueUiXy 有一个特殊的 "selectedXIndex" 属性，可以与配置事件一起使用，在多个图表上高亮显示所选的时间索引。`,
-    jp: `VueUiXy には特別な "selectedXIndex" プロパティがあり、設定イベントと併用して複数のチャートで選択した時間インデックスを強調表示できます。`,
+    ja: `VueUiXy には特別な "selectedXIndex" プロパティがあり、設定イベントと併用して複数のチャートで選択した時間インデックスを強調表示できます。`,
     es: `VueUiXy tiene una prop especial "selectedXIndex", que puede usarse junto con eventos de configuración para resaltar el índice de tiempo seleccionado en varios gráficos.`,
     ko: `VueUiXy에는 특별한 "selectedXIndex" prop이 있으며, 설정 이벤트와 함께 사용하여 여러 차트에서 선택된 시간 인덱스를 강조 표시할 수 있습니다.`,
     ar: `يمتلك VueUiXy خاصية خاصة تسمى "selectedXIndex"، ويمكن استخدامها مع أحداث الإعداد لتمييز فهرس الوقت المحدد عبر عدة مخططات.`
@@ -81,7 +81,7 @@ const shareXCodeTemplate = ref(`
             :selectedXIndex="selectedXIndex"
         />
     </div>
-</div>  
+</div>
 `);
 
 const shareXCodeJs = ref(`
@@ -193,14 +193,14 @@ const shareXCodeJs = ref(`
     <Tchernob/>
     <div class="my-4">
         <a
-            class="my-4 text-app-blue hover:underline" 
+            class="my-4 text-app-blue hover:underline"
             href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/useCases/Tchernob.vue" target="_blank">
             View component source code
         </a>
     </div>
 
     <hr class="mt-4 mb-8"/>
-    
+
     <UseCaseTitle>
         <template #title>
             {{ cases.XY_FIXED_SCALE.title[store.lang] }}
@@ -208,7 +208,7 @@ const shareXCodeJs = ref(`
     </UseCaseTitle>
     <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
-            component="VueUiXy" 
+            component="VueUiXy"
             :dataset="XY_FIXED_SCALE_DATASET"
             :config="XY_FIXED_SCALE_CONFIG"
         />
@@ -245,7 +245,7 @@ const shareXCodeJs = ref(`
             </template>
         </VueDataUi>
     </div>
-    
+
     <hr class="mt-4 mb-8"/>
 
     <UseCaseTitle>
@@ -258,7 +258,7 @@ const shareXCodeJs = ref(`
     </UseCaseTitle>
     <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
-            component="VueUiXy" 
+            component="VueUiXy"
             :dataset="XY_MULTIPLE_Y_AXES_DATASET"
             :config="XY_MULTIPLE_Y_AXES_CONFIG"
         />
@@ -308,7 +308,7 @@ const shareXCodeJs = ref(`
     </UseCaseTitle>
     <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
-            component="VueUiXy" 
+            component="VueUiXy"
             :dataset="XY_STACKED_DATASET"
             :config="XY_STACKED_CONFIG"
         />
@@ -358,7 +358,7 @@ const shareXCodeJs = ref(`
     </UseCaseTitle>
     <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
-            component="VueUiXy" 
+            component="VueUiXy"
             :dataset="XY_STACKED_DATASET_WITH_AUTOSCALE"
             :config="XY_STACKED_CONFIG"
         />

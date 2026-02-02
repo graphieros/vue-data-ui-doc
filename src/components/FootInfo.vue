@@ -42,7 +42,7 @@ const fncsyIntro = ref({
     pt: 'Confira ferramentas gratuitas incríveis oferecidas por nossos amigos em :',
     de: 'Schauen Sie sich tolle kostenlose Tools an, bereitgestellt von unseren Freunden bei :',
     zh: '来看看我们朋友提供的精彩免费工具：',
-    jp: '私たちの仲間が提供する素晴らしい無料ツールをご覧ください：',
+    ja: '私たちの仲間が提供する素晴らしい無料ツールをご覧ください',
     es: 'Descubre increíbles herramientas gratuitas proporcionadas por nuestros amigos en :',
     ko: '우리 친구들이 제공하는 멋진 무료 도구를 확인하세요 :',
     ar: 'اطّلع على أدوات مجانية رائعة مقدمة من أصدقائنا في :'
@@ -79,12 +79,12 @@ const fncsy = ref({
                 <br/>
                 <br/>
                 即刻获取 <span class="text-app-green-dark dark:text-app-green">可直接投入生产的工具</span>，创作者、设计师和开发人员都信赖。提取数据、生成二维码、转换货币、处理CSV数据、编码Base64、生成UUID、检查IP、计算子网、创建模式 — <span class="text-app-green-dark dark:text-app-green">全部只需几秒，完全免费</span>`,
-    jp: `<span class="text-app-green-dark dark:text-app-green">作業時間を大幅に節約</span>できる
+    ja: `<span class="text-app-green-dark dark:text-app-green">作業時間を大幅に節約</span>できる
                 スマートデジタルツール
                 複雑なセットアップに時間を無駄にしないでください。
                 <br/>
                 <br/>
-                すぐに利用可能な <span class="text-app-green-dark dark:text-app-green">本番環境対応ツール</span> にアクセス。クリエイター、デザイナー、開発者に信頼されています。スマートなパターンでデータを抽出、QRコードを生成、通貨を変換、CSVデータを変換、Base64をエンコード、UUIDを生成、IPを確認、サブネットを計算、パターンを作成 — <span class="text-app-green-dark dark:text-app-green">すべて数秒で、完全無料</span>`,
+                すぐに利用可能な<span class="text-app-green-dark dark:text-app-green">本番環境対応ツール</span>にアクセス。クリエイター、デザイナー、開発者に信頼されています。スマートなパターンでデータを抽出、QRコードを生成、通貨を変換、CSVデータを変換、Base64をエンコード、UUIDを生成、IPを確認、サブネットを計算、パターンを作成 — <span class="text-app-green-dark dark:text-app-green">すべて数秒で、完全無料</span>`,
     es: `<span class="text-app-green-dark dark:text-app-green">Ahorra horas de trabajo</span> con
                 herramientas digitales inteligentes
                 Deja de perder tiempo con configuraciones complejas.

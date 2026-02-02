@@ -515,7 +515,7 @@ const prefersReduced = ref({
   pt: 'A animação de pulso não será exibida se prefers-reduced-motion estiver ativado',
   de: 'Die Pulsanimation wird nicht angezeigt, wenn prefers-reduced-motion aktiviert ist',
   zh: '如果启用了 prefers-reduced-motion，脉冲动画将不会显示',
-  jp: 'prefers-reduced-motion が有効な場合、パルスアニメーションは表示されません',
+  ja: 'prefers-reduced-motion が有効な場合、パルスアニメーションは表示されません',
   es: 'La animación de pulso no se mostrará si prefers-reduced-motion está activado',
   ko: 'prefers-reduced-motion이 활성화된 경우 펄스 애니메이션이 표시되지 않습니다',
   ar: 'لن يتم عرض حركة النبض إذا كان prefers-reduced-motion مفعّلًا'
@@ -566,7 +566,7 @@ const prefersReduced = ref({
     <Rater itemId="vue_ui_sparkline" />
 
     <BaseMigrationInfo
-        debug 
+        debug
         padding
     />
 
@@ -592,7 +592,7 @@ const prefersReduced = ref({
   @copy="store.copy()"
   :content="codeDataset"
   :title="translations.docs.example[store.lang]"
-/>              
+/>
             </div>
             </div>
         </template>
@@ -741,7 +741,7 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
 </BaseDetails>
 </BaseDetails>
 </code>
-            
+
             </div>
         </template>
 
@@ -770,7 +770,7 @@ console.log({ datapoint, index })
 
         </template>
 
-        
+
         <template #tab3>
           <BaseSlotDocumenter
                 componentName="VueUiSparkline"
@@ -779,7 +779,7 @@ console.log({ datapoint, index })
                     'before',
                     'source',
                     'chart-background'
-                ]" 
+                ]"
             />
         </template>
 
@@ -794,17 +794,17 @@ console.log({ datapoint, index })
         <template #tab7>
           <ResponsiveUnit minHeight="100px" height="150px">
             <template #chart>
-              <VueUiSparkline 
-                :dataset="dataset" 
-                :config="isDarkMode ? 
+              <VueUiSparkline
+                :dataset="dataset"
+                :config="isDarkMode ?
                   {
                     ...mutableConfigDarkMode,
                     responsive: true
-                  } 
+                  }
                   : {
                     ...mutableConfig,
                     responsive: true
-                    }" 
+                    }"
                 :key="key"
               />
             </template>

@@ -188,7 +188,7 @@ const comment = ref({
   pt: 'Este conteúdo é colocado no slot padrão. Use o anotador para sobrepor anotações.',
   de: 'Dieser Inhalt befindet sich im Standard-Slot. Verwenden Sie den Annotator, um Anmerkungen zu überlagern.',
   zh: '此内容放置在默认插槽中。使用标注工具叠加注释。',
-  jp: 'このコンテンツはデフォルトスロット内に配置されています。アノテーションツールを使って注釈を重ねます。',
+  ja: 'このコンテンツはデフォルトスロット内に配置されています。アノテーションツールを使って注釈を重ねます。',
   es: 'Este contenido se coloca en el slot predeterminado. Use el anotador para superponer anotaciones.',
   ko: '이 콘텐츠는 기본 슬롯에 배치되어 있습니다. 주석 도구를 사용해 주석을 겹쳐 표시하세요.',
   ar: 'يوضع هذا المحتوى داخل الـslot الافتراضي. استخدم أداة التعليق التوضيحي لإضافة تعليقات متراكبة.'
@@ -201,7 +201,7 @@ function saveAnnotations(data) {
 }
 `);
 
-const exampleTemplate = ref(`<VueUiAnnotator 
+const exampleTemplate = ref(`<VueUiAnnotator
   :dataset="dataset"
   :config="config"
   @saveAnnotations="saveAnnotations"
@@ -239,10 +239,10 @@ const exampleTemplate = ref(`<VueUiAnnotator
 
         <BaseCard>
           <SuspenseWrapper :width="200" :height="200">
-            <VueUiAnnotator 
+            <VueUiAnnotator
               :dataset="{ shapes, lastSelectedShape }"
               :config="mutableConfig"
-              @toggleOpenState="toggleOpenState" 
+              @toggleOpenState="toggleOpenState"
               @saveAnnotations="saveAnnotations"
             >
                 <div class="flex flex-row gap-2 p-2 bg-gray-100 dark:bg-[#2A2A2A]">
@@ -277,7 +277,7 @@ const exampleTemplate = ref(`<VueUiAnnotator
       lastSelectedShape: {}
     }
 </code>
-</pre>            
+</pre>
             </div>
             {{ translations.docs.example[store.lang] }} :
             <div class="w-full overflow-x-auto">
@@ -355,7 +355,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
     }
 }
 </code>
-</pre>            
+</pre>
             </div>
           </template>
           <template #tab1>
@@ -459,7 +459,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
         isOpen: boolean,
     }
 </code>
-</pre>    
+</pre>
           <div class="border-t border-gray-500 pt-4"><code><b>@saveAnnotations</b></code></div>
             <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.comments.annotator.emits.saveAnnotations[store.lang] }}</div>
 <pre>
@@ -469,7 +469,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
         lastSelectedShape: {}
     }
 </code>
-</pre>    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.comments.annotator.emits.calledWhen[store.lang] }}</div>        
+</pre>    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.comments.annotator.emits.calledWhen[store.lang] }}</div>
           </template>
         </Box>
     </div>

@@ -107,7 +107,7 @@ const description = ref({
     pt: "Personalização das unidades de avaliação com os slots #layer-under e #layer-above.",
     de: "Anpassung von Bewertungseinheiten mit den Slots #layer-under und #layer-above.",
     zh: "使用 #layer-under 和 #layer-above 插槽自定义评分单元。",
-    jp: "#layer-under と #layer-above スロットで評価単位をカスタマイズします。",
+    ja: "#layer-underと#layer-aboveスロットで評価単位をカスタマイズします。",
     es: "Personalización de las unidades de calificación con los slots #layer-under y #layer-above.",
     ko: "#layer-under 및 #layer-above 슬롯으로 평가 단위를 사용자 지정합니다.",
     ar: "تخصيص وحدات التقييم باستخدام فتحات #layer-under و #layer-above."
@@ -138,7 +138,7 @@ const description = ref({
                 </template>
                 <!-- Second layer -->
                 <template #layer-above="{ value, size, hoveredValue, focusedValue }">
-                    <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">                            
+                    <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">
                         <path v-if="value === 1" :fill="colorsAbove_1[value]" :stroke="colorsAbove_1[value]" stroke-linecap="round"
                         d="M 0 5 L 10 4 L 10 6 L 0 5 Z"
                         :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
