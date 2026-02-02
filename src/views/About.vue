@@ -535,13 +535,13 @@ const wheelConfig = computed(() => {
         <template #default>
           <div class="flex flex-col">
               <div class="mx-auto max-w-[300px] w-full">
-                <a title="Github repository. Leave a star to support us :)" href="https://github.com/graphieros/vue-data-ui" target="_blank">
+                <a title="GitHub repository. Leave a star to support us :)" href="https://github.com/graphieros/vue-data-ui" target="_blank">
                   <VueUiWheel :dataset="wheelDataset" :config="wheelConfig">
                     <template #svg="{ svg }">
-                      <text 
-                        :x="svg.width/ 2" 
-                        :y="40" 
-                        text-anchor="middle" 
+                      <text
+                        :x="svg.width/ 2"
+                        :y="40"
+                        text-anchor="middle"
                         :fill="isDarkMode ? '#CCCCCC' : '#3A3A3A'"
                         :style="{
                           transform: 'scale(1, 1.7)'
@@ -609,7 +609,7 @@ const wheelConfig = computed(() => {
         <p class="my-3" dir="auto">
           {{ translations.about.p2[store.lang] }}
         </p>
-  
+
         <p class="my-3" dir="auto">
           {{ translations.about.p3[store.lang] }}
           <span class="text-black font-bold dark:text-app-green hover:underline"><router-link
@@ -632,7 +632,7 @@ const wheelConfig = computed(() => {
         </div>
         <ContributorsBars/>
       </BaseCard>
-      
+
       <BaseCard type="light" class="mt-10">
         <div class="w-full text-app-blue dark:text-app-blue-light font-inter-medium text-2xl">
           {{ translations.about.maintainers[store.lang] }}

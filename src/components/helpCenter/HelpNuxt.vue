@@ -18,15 +18,15 @@ const title = ref({
 })
 
 const content = ref({
-    en: "The link below will take you to a boilerplate Github repository where vue-data-ui is setup.",
-    fr: "Le lien ci-dessous vous mènera à un repo Github standard où vue-data-ui est setup.uxt",
-    pt: "O link abaixo o levará a um repositório padrão do Github onde vue-data-ui é setup.uxt",
-    de: "Der Link unten führt Sie zu einem Standard-Github-Repository, in dem vue-data-ui setup.uxt ist",
-    zh: "下面的链接将带您到样板 Github 存储库，其中 vue-data-ui 是 setup.uxt",
-    jp: "以下のリンクは、vue-data-ui が setup.uxt である定型的な Github リポジトリに移動します。",
-    es: "El siguiente enlace lo llevará a un repositorio estándar de Github donde vue-data-ui está setup.uxt",
-    ko: "아래 링크는 vue-data-ui가 setup.uxt인 상용구 Github 저장소로 이동합니다.",
-    ar: `سينقلك الرابط أدناه إلى مستودع Github النموذجي حيث تم إعداد vue-data-ui`
+    en: "The link below will take you to a boilerplate GitHub repository where vue-data-ui is setup.",
+    fr: "Le lien ci-dessous vous mènera à un repo GitHub standard où vue-data-ui est setup.uxt",
+    pt: "O link abaixo o levará a um repositório padrão do GitHub onde vue-data-ui é setup.uxt",
+    de: "Der Link unten führt Sie zu einem Standard-GitHub-Repository, in dem vue-data-ui setup.uxt ist",
+    zh: "下面的链接将带您到样板 GitHub 存储库，其中 vue-data-ui 是 setup.uxt",
+    jp: "以下のリンクは、vue-data-ui が setup.uxt である定型的な GitHub リポジトリに移動します。",
+    es: "El siguiente enlace lo llevará a un repositorio estándar de GitHub donde vue-data-ui está setup.uxt",
+    ko: "아래 링크는 vue-data-ui가 setup.uxt인 상용구 GitHub 저장소로 이동합니다.",
+    ar: `سينقلك الرابط أدناه إلى مستودع GitHub النموذجي حيث تم إعداد vue-data-ui`
 })
 
 </script>
@@ -45,7 +45,7 @@ const content = ref({
             <div class="px-[68px] mt-2">
                 <a href="https://github.com/graphieros/vue-data-ui-nuxt" class="underline" target="_blank">
                     Nuxt boilerplate
-                </a>    
+                </a>
             </div>
         </template>
     </HelpUnit>

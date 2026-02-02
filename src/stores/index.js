@@ -1609,14 +1609,14 @@ export const useMainStore = defineStore("main", {
                 },
                 nuxt: {
                     implementation: {
-                        en: "If you are using Nuxt, an example of installation is provided in this Github repository",
-                        fr: "Si vous utilisez Nuxt, un exemple d'installation est fourni dans ce dépôt Github",
-                        pt: "Se você estiver usando Nuxt, um exemplo de instalação é fornecido neste repositório Github",
-                        de: "Wenn Sie Nuxt verwenden, finden Sie in diesem Github-Repository ein Installationsbeispiel",
-                        zh: "如果您使用 Nuxt，则此 Github 存储库中提供了安装示例",
-                        jp: "Nuxt を使用している場合、インストールの例がこの Github リポジトリに提供されています。",
-                        es: "Si está utilizando Nuxt, se proporciona un ejemplo de instalación en este repositorio de Github",
-                        ko: "Nuxt를 사용하는 경우 Github 저장소에 설치 예가 제공됩니다.",
+                        en: "If you are using Nuxt, an example of installation is provided in this GitHub repository",
+                        fr: "Si vous utilisez Nuxt, un exemple d'installation est fourni dans ce dépôt GitHub",
+                        pt: "Se você estiver usando Nuxt, um exemplo de instalação é fornecido neste repositório GitHub",
+                        de: "Wenn Sie Nuxt verwenden, finden Sie in diesem GitHub-Repository ein Installationsbeispiel",
+                        zh: "如果您使用 Nuxt，则此 GitHub 存储库中提供了安装示例",
+                        jp: "Nuxt を使用している場合、インストールの例がこの GitHub リポジトリに提供されています。",
+                        es: "Si está utilizando Nuxt, se proporciona un ejemplo de instalación en este repositorio de GitHub",
+                        ko: "Nuxt를 사용하는 경우 GitHub 저장소에 설치 예가 제공됩니다.",
                         ar: 'GitHub إذا كنت تستخدم Nuxt، يتم توفير مثال على التثبيت في هذا المستودع على'
                     }
                 },
@@ -1632,14 +1632,14 @@ export const useMainStore = defineStore("main", {
                     ar: 'مكتبة مكونات Vue3 لتصور البيانات تمكّن المستخدمين لرواية البيانات بشكل بليغ'
                 },
                 github: {
-                    en: "Github repo",
-                    fr: "Github repo",
-                    pt: "Github repo",
-                    de: "Github-Repository",
-                    zh: "Github",
-                    jp: "Github",
-                    es: "Github",
-                    ko: "Github 저장소",
+                    en: "GitHub repo",
+                    fr: "GitHub repo",
+                    pt: "GitHub repo",
+                    de: "GitHub-Repository",
+                    zh: "GitHub",
+                    jp: "GitHub",
+                    es: "GitHub",
+                    ko: "GitHub 저장소",
                     ar: 'مستودع GitHub'
                 },
                 lightMode: {
@@ -1926,7 +1926,7 @@ export const useMainStore = defineStore("main", {
                         en: "Injecting an arrow element",
                         fr: "Injection d'un élément flèche",
                         pt: "Injetando um elemento de seta",
-                        de: "Ein Pfeilelement einfügen", 
+                        de: "Ein Pfeilelement einfügen",
                         zh: "注入箭头元素",
                         jp: "矢印要素の挿入",
                         es: "Inyectar un elemento de flecha",
@@ -2435,7 +2435,7 @@ export const useMainStore = defineStore("main", {
                             es: "Visualizar proporciones relativas, favoreciendo la visibilidad de valores pequeños.",
                             ko: "작은 값의 가시성에 유리하도록 상대적 비율을 시각화합니다.",
                             ar: 'تصور النسب النسبية، مع تفضيل رؤية القيم الصغيرة'
-                        },  
+                        },
                         nestedDonuts: {
                             en: "Visualize breakdowns of comparable series",
                             fr: "Visualisez les répartitions de séries comparables",
@@ -3566,7 +3566,7 @@ export const useMainStore = defineStore("main", {
                         es: "Ejemplo",
                         ko: "예",
                         ar: 'مثال'
-                    },                    
+                    },
                     comments: {
                         sparkbar: {
                             target: {
