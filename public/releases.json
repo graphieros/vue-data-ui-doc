@@ -1,5 +1,16 @@
 [
     {
+    "version": "v 3.14.4",
+    "date": "2026-02-03",
+    "updates": [
+      {
+        "component": "Built-in chart annotator",
+        "description": "Round the value of the pixel label",
+        "link": ""
+      }
+    ]
+  },
+    {
     "version": "v 3.14.3",
     "date": "2026-02-03",
     "updates": [
