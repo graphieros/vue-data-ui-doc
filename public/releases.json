@@ -1,6 +1,17 @@
 [
     {
-    "version": "v 3.14.0",
+    "version": "v 3.14.3",
+    "date": "2026-02-03",
+    "updates": [
+      {
+        "component": "Technical release",
+        "description": "Reduce package size (remove files for locales, using Intl instead)",
+        "link": ""
+      }
+    ]
+  },
+    {
+    "version": "v 3.14.2",
     "date": "2026-02-01",
     "updates": [
       {
