@@ -670,7 +670,7 @@ onBeforeUnmount(() => {
                     <img
                       src="../assets/npmx.png"
                       alt="npmx"
-                      class="w-5 h-5"
+                      class="w-5 h-5 -mt-0.5 ml-0.5"
                     />
                   </div>
                   <div

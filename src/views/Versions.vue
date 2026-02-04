@@ -690,7 +690,10 @@ const sparklineConfig = ref({
       strokeWidth: 1,
       smooth: true,
       pulse: {
-        show: true
+        show: true,
+        radius: 1,
+        durationMs: 10000,
+        color: '#5f8aee'
       }
     },
     bar: {
@@ -747,14 +750,19 @@ const darkModeSparklineConfig = ref({
     fontFamily: "inherit",
     chartWidth: 350,
     line: {
-      color: "#42d392",
+      color: "#6A6A6A",
       strokeWidth: 1,
       smooth: true,
       pulse: {
         show: true,
         radius: 1,
         durationMs: 10000,
-        color: '#98df8a'
+        color: '#42d392',
+        trail: {
+          show: true,
+          length: 12,
+          opacity: 1
+        }
       }
     },
     bar: {
@@ -773,7 +781,8 @@ const darkModeSparklineConfig = ref({
     verticalIndicator: {
       show: true,
       strokeWidth: 1.5,
-      strokeDasharray: 0
+      strokeDasharray: 0,
+      color: '#42d392',
     },
     dataLabel: {
       position: "left",
@@ -794,8 +803,8 @@ const darkModeSparklineConfig = ref({
     area: {
       show: true,
       useGradient: true,
-      opacity: 30,
-      color: "#42d392"
+      opacity: 5,
+      color: "#FFFFFF"
     },
     tooltip: {
       show: true,
