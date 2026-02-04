@@ -191,7 +191,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
 
     <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
       <VueUiIcon class="hidden md:block" name="palette" :size="80" :strokeWidth="0.8" :stroke="isDarkMode ? '#de8b37' : '#de8b37'"/>
-      <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'} z-10`" style="letter-spacing: -1px;">
+      <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'}`" style="letter-spacing: -1px;">
         {{ translations.menu.customization[store.lang] }}
       </h1>
     </div>
