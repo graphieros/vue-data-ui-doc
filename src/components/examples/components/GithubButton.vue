@@ -115,7 +115,7 @@ const thermoConfig = computed(() => {
         </div>
     </a>
 
-    <div class="w-[60px] h-[35px] fixed right-0 bottom-[122px]" v-if="store.npmDownloads.length">
+    <div class="w-[60px] h-[35px] fixed right-1 bottom-[122px]" v-if="store.npmDownloads.length">
         <VueUiSparkline
             :dataset="store.npmDownloads"
             :config="{
@@ -137,10 +137,11 @@ const thermoConfig = computed(() => {
                         strokeWidth: 1.6,
                         pulse: {
                             show: true,
-                            radius: 1,
-                            color: '#aec7e860',
+                            radius: 0.8,
+                            color: isDarkMode ? '#fdd663' : '#1A1A1A',
                             trail: {
-                                length: 2
+                                show: true,
+                                length: isDarkMode ? 40 : 10
                             }
                         }
                     },
@@ -174,7 +175,7 @@ const thermoConfig = computed(() => {
 
     <a v-if="issues" href="https://github.com/graphieros/vue-data-ui/issues" target="_blank" class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[235px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#5f8aee] hover:shadow-md bg-gradient-to-b from-[#8eabed] to-[#5f8aee]">
         <BrandGithubFilledIcon class="text-black" size="24"/>
-        <ToolIcon class="text-black dark:text-[#5f8aee] absolute top-0 -left-4" size="14"/>
+        <ToolIcon class="text-black dark:text-[#28292a] absolute top-0 -left-4" size="14"/>
         <div class="w-[10px] absolute -top-6">
             <VueDataUi component="VueUiDigits" :dataset="issues" :config="digitConfigIssues"/>
         </div>
