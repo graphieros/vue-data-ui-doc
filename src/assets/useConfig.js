@@ -286,6 +286,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_stackline = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         loading: false,
         debug: false,
         theme: '',
@@ -488,6 +490,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_stackbar = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         loading: false, // v3
         debug: false, // v3
         theme: '',
@@ -681,6 +685,8 @@ export function useConfig(options = {}) {
 
     // NOTE: Any update to this config will be reflected in VueUiRidgeline, which uses VueUiXy in its dialog.
     const vue_ui_xy = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         theme: '',
         responsive: false,
@@ -1017,6 +1023,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_donut = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         type: 'classic',
         loading: false, // v3
@@ -1196,6 +1204,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_treemap = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -1303,6 +1313,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_waffle = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -1405,6 +1417,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_radar = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -1497,6 +1511,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_quadrant = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -1647,6 +1663,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_gauge = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -1745,6 +1763,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_wheel = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -1813,6 +1833,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_tiremarks = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -2044,6 +2066,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_onion = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -2141,6 +2165,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_vertical_bar = { // v3 renamed to _horizontal_ (yet still works)
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         autoSize: true, // Legacy - removed
@@ -2273,6 +2299,8 @@ export function useConfig(options = {}) {
     const vue_ui_horizontal_bar = vue_ui_vertical_bar;
 
     const vue_ui_heatmap = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -2410,6 +2438,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_scatter = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -2586,6 +2616,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_candlestick = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         type: 'candlestick', // or 'ohlc'
         debug: false, // v3
         loading: false, // v3
@@ -2746,6 +2778,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_sparkline = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         theme: '',
@@ -2778,13 +2812,12 @@ export function useConfig(options = {}) {
                     color: COLOR_WHITE,
                     durationMs: 4000,
                     easing: 'ease-in-out',
-                    radius: 4,
+                    radius: 2,
                     cubicBezier: [0.45, 0.45, 0.55, 0.55],
                     trail: {
-                        show: true,
+                        show: false,
                         length: 6,
                         opacity: 0.75,
-                        strokeWidth: 3
                     }
                 },
             },
@@ -2852,6 +2885,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_sparkbar = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         events: { // v3
@@ -2918,6 +2953,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_sparkstackbar = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         events: { // v3
@@ -2983,6 +3020,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_sparkhistogram = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -3071,6 +3110,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_sparkgauge = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         theme: '',
@@ -3120,6 +3161,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_spark_trend = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -3178,6 +3221,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_quick_chart = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         events: { // v3
@@ -3328,6 +3373,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_age_pyramid = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -3439,6 +3486,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_relation_circle = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -3500,6 +3549,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_thermometer = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -3560,6 +3611,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_rings = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -3661,6 +3714,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_donut_evolution = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -3839,6 +3894,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_mood_radar = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -3929,6 +3986,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_molecule = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         events: { // v3
@@ -3984,6 +4043,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_nested_donuts = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -4105,6 +4166,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_galaxy = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -4193,6 +4256,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_strip_plot = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -4316,6 +4381,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_dumbbell = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -4483,6 +4550,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_3d_bar = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -4695,6 +4764,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_word_cloud = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -4778,6 +4849,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_xy_canvas = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false,
         loading: false,
         responsive: false,
@@ -4940,6 +5013,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_flow = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -5029,6 +5104,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_parallel_coordinate_plot = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -6076,6 +6153,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_gizmo = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
         type: 'battery', // battery | gauge
@@ -6271,6 +6350,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_history_plot = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -6515,6 +6596,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_world = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         events: { // v3
@@ -6604,6 +6687,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_ridgeline = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -6861,6 +6946,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_dag = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         loading: false,
         debug: false,
         responsive: false,
@@ -6977,6 +7064,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_geo = {
+        skeletonDataset: null,
+        skeletonConfig: null,
         loading: false,
         debug: false,
         responsive: false,
@@ -7061,6 +7150,8 @@ export function useConfig(options = {}) {
     }
 
     const vue_ui_bump = {
+        skeletonConfig: null,
+        skeletonDataset: null,
         loading: false,
         debug: false,
         responsive: false,
