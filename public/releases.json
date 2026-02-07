@@ -1,5 +1,16 @@
 [
     {
+    "version": "v 3.14.8",
+    "date": "2026-02-07",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Show dashed series in minimap",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+    {
     "version": "v 3.14.7",
     "date": "2026-02-05",
     "updates": [

@@ -622,12 +622,12 @@ const wheelConfig = computed(() => {
       </div>
 
       <BaseCard type="light" class="mt-10" v-if="contributors.length">
-        <div class="w-full text-app-blue dark:text-app-blue-light font-inter-medium text-2xl mb-4">
+        <div class="w-full text-app-blue dark:text-app-blue-light font-inter-medium text-2xl mb-6 text-center">
           {{ translations.about.contributors[store.lang] }}
         </div>
-        <div class="flex flex-row flex-wrap gap-4 justify-center">
+        <div class="flex flex-row flex-wrap gap-2 justify-center mx-auto max-w-[300px]">
           <div v-for="contributor in contributors">
-            <img :src="contributor.avatar_url" class="rounded-full w-10 h-10"/>
+            <img :src="contributor.avatar_url" :title="contributor.login" class="rounded-full w-10 h-10 border border-[#CCCCCC]"/>
           </div>
         </div>
         <ContributorsBars/>
