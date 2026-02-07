@@ -1,5 +1,16 @@
 [
     {
+    "version": "v 3.14.9",
+    "date": "2026-02-07",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add zoomStart, zoomEnd, zoomReset emits",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+    {
     "version": "v 3.14.8",
     "date": "2026-02-07",
     "updates": [
