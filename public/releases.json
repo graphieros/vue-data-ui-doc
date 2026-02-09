@@ -1,5 +1,16 @@
 [
-    {
+  {
+    "version": "v 3.14.10",
+    "date": "2026-02-09",
+    "updates": [
+      {
+        "component": "All charts with PNG and or SVG print options",
+        "description": "Expose isPrintingImg and isPrintingSvg bool in svg slot",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.14.9",
     "date": "2026-02-07",
     "updates": [
