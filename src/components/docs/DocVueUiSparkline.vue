@@ -165,13 +165,13 @@ const darkModeConfig = ref({
         show: false,
         loop: true,
         color: '#aec7e880',
-        radius: 3,
+        radius: 2,
         durationMs: 4000,
         easeing: 'ease-in-out',
         cubicBezier: [0.45, 0.45, 0.55, 0.55],
         trail: {
           show: true,
-          length: 6,
+          length: 12,
           opacity: 0.5
         }
       }
@@ -289,7 +289,7 @@ const config = ref({
         cubicBezier: [0.45, 0.45, 0.55, 0.55],
         trail: {
           show: true,
-          length: 6,
+          length: 12,
           opacity: 0.5
         }
       }

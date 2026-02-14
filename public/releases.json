@@ -1,5 +1,31 @@
 [
   {
+    "version": "v 3.15.0",
+    "date": "2026-02-13",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Cursor pointer is now opt-in for all included clickable items",
+        "link": ""
+      },
+      {
+        "component": "All components with user options context menu",
+        "description": "Add optional alt text copy feature",
+        "link": ""
+      },
+      {
+        "component": "Zoom minimap",
+        "description": "Improve handle and add config options for more handle customization",
+        "link": ""
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add optional dataset key to specify indexes to display as dashed lines (line types only)",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.14.10",
     "date": "2026-02-09",
     "updates": [

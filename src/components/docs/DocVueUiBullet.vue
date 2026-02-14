@@ -68,6 +68,7 @@ const config = ref({
         showOnChartHover: false,
         keepStateOnChartLeave: true,
         position: "right",
+        useCursorPointer: false,
         buttons: {
             tooltip: false,
             pdf: true,
@@ -192,6 +193,7 @@ const darkModeConfig = ref({
         showOnChartHover: false,
         keepStateOnChartLeave: true,
         position: "right",
+        useCursorPointer: false,
         buttons: {
             tooltip: false,
             pdf: true,
@@ -493,6 +495,7 @@ function goToPage(route) {
             <BaseAttr name="showOnChartHover" attr="userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="keepStateOnChartLeave" attr="userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['left', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="useCursorPointer" attr="userOptions.useCursorPointer" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
                 <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

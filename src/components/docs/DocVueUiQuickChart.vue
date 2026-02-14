@@ -137,6 +137,7 @@ const quickDatasetBar = ref([
 ])
 
 const config = ref({
+    useCursorPointer: false,
     debug: false,
     loading: false,
     responsive: false,
@@ -293,6 +294,7 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    useCursorPointer: false,
     debug: false,
     loading: false,
     responsive: false,
@@ -903,6 +905,7 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+        <BaseAttr name="useCursorPointer" attr="useCursorPointer" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>

@@ -3742,6 +3742,17 @@ export const useMainStore = defineStore("main", {
                                 ko: "스택 모드에서는 데이터 포인트의 최소 및 최대 값에 배율을 조화시키려고 시도합니다.",
                                 ar: 'في الوضع المكدس، سيحاول تنسيق المقياس مع قيم الحد الأدنى والحد الأقصى لنقطة البيانات'
                             },
+                            dashIndices: {
+                                en: 'Display segments as dashed lines for the provided indices. For line types only',
+                                fr: 'Afficher les segments en lignes pointillées pour les indices fournis. Uniquement pour les types ligne',
+                                pt: 'Exibir segmentos como linhas tracejadas para os índices fornecidos. Apenas para tipos de linha',
+                                de: 'Segmente für die angegebenen Indizes als gestrichelte Linien anzeigen. Nur für Linientypen',
+                                zh: '将指定索引的线段显示为虚线。仅适用于折线类型',
+                                ja: '指定されたインデックスのセグメントを破線で表示します。ラインタイプのみ対応',
+                                es: 'Mostrar los segmentos como líneas discontinuas para los índices proporcionados. Solo para tipos de línea',
+                                ko: '지정된 인덱스의 구간을 점선으로 표시합니다. 선 유형에만 적용됩니다',
+                                ar: 'عرض المقاطع كخطوط متقطعة للفهرس المحدد. لأنواع الخطوط فقط'
+                            },
                             stackRatio: {
                                 en: "In stacked mode, force the height ratio of a datapoint to take more height space on the chart",
                                 fr: "En mode empilé, forcez le rapport de hauteur d'un point de données à occuper plus d'espace en hauteur sur le graphique.",

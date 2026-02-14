@@ -213,7 +213,14 @@ const config = ref({
         indicatorColor: '#CCCCCC',
         verticalHandles: false,
         compact: true,
-        frameColor: '#8A8A8A'
+        frameColor: '#8A8A8A',
+        additionalHeight: 0, // increase the minimap's height
+        handleIconColor: null,
+        handleBorderWidth: 1,
+        handleBorderColor: null,
+        handleFill: null,
+        handleWidth: 20, // clamped from 20 to 40
+        handleType: 'grab', // 'empty' | 'chevron' | 'grab' | 'arrow'
       },
       preview: {
         enable: true,
@@ -278,6 +285,7 @@ const config = ref({
     showOnChartHover: false,
     keepStateOnChartLeave: true,
     position: 'right',
+    useCursorPointer: false,
     buttons: {
       tooltip: true,
       pdf: true,
@@ -456,7 +464,14 @@ const darkModeConfig = ref({
         indicatorColor: '#CCCCCC',
         verticalHandles: false,
         compact: true,
-        frameColor: '#6A6A6A'
+        frameColor: '#6A6A6A',
+        additionalHeight: 0, // increase the minimap's height
+        handleIconColor: null,
+        handleBorderWidth: 1,
+        handleBorderColor: null,
+        handleFill: null,
+        handleWidth: 20, // clamped from 20 to 40
+        handleType: 'grab', // 'empty' | 'chevron' | 'grab' | 'arrow'
       },
       preview: {
         enable: true,
@@ -521,6 +536,7 @@ const darkModeConfig = ref({
     showOnChartHover: false,
     keepStateOnChartLeave: true,
     position: 'right',
+    useCursorPointer: false,
     buttons: {
       tooltip: true,
       pdf: true,
@@ -976,6 +992,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
           <BaseAttr name="selectedColorOpacity" attr="style.zoom.minimap.selectedColorOpacity" type="range" defaultVal="0.2" :min="0" :max="0.8" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="indicatorColor" attr="style.zoom.minimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="frameColor" attr="style.zoom.minimap.frameColor" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="additionalHeight" attr="style.zoom.minimap.additionalHeight" type="number" defaultVal="0" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0" @change="forceChartUpdate"/>
+          <BaseAttr name="handleIconColor" attr="style.zoom.minimap.handleIconColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+          <BaseAttr name="handleBorderWidth" attr="style.zoom.minimap.handleBorderWidth" type="number" defaultVal="1" :min="0" :max="3" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+          <BaseAttr name="handleBorderColor" attr="style.zoom.minimap.handleBorderColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+          <BaseAttr name="handleFill" attr="style.zoom.minimap.handleFill" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+          <BaseAttr name="handleWidth" attr="style.zoom.minimap.handleWidth" type="number" defaultVal="20" :min="20" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+          <BaseAttr name="handleType" attr="style.zoom.minimap.handleType" type="select" defaultVal="grab" :options="['grab', 'chevron', 'arrow', 'empty']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
         </BaseDetails>
       </BaseDetails>
     </BaseDetails>
@@ -1010,6 +1033,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
       <BaseAttr name="showOnChartHover" attr="userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
       <BaseAttr name="keepStateOnChartLeave" attr="userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
       <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="useCursorPointer" attr="userOptions.useCursorPointer" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
         <BaseAttr name="tooltip" attr="userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />

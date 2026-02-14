@@ -115,7 +115,8 @@ const dataset = computed(() => {
         smooth: true,
         shape: "circle",
         scaleSteps: 5,
-        showSerieName: 'end'
+        showSerieName: 'end',
+        dashIndices: [6]
     },
 ]
 })
@@ -148,7 +149,8 @@ const codeDataset = ref(`const dataset: VueUiXyDatasetItem[] = [
         smooth: true,
         shape: "circle",
         scaleSteps: 5,
-        showSerieName: 'end'
+        showSerieName: 'end',
+        dashIndices: [5] // ${translations.value.docs.comments.xy.dashIndices[store.lang]}
     },
 ]`);
 
@@ -290,7 +292,14 @@ const config = ref({
                 verticalHandles: false,
                 compact: true,
                 merged: false,
-                frameColor: '#CCCCCC'
+                frameColor: '#CCCCCC',
+                additionalHeight: 0, // increase the minimap's height
+                handleIconColor: null,
+                handleBorderWidth: 1,
+                handleBorderColor: null,
+                handleFill: null,
+                handleWidth: 20, // clamped from 20 to 40
+                handleType: 'grab', // 'empty' | 'chevron' | 'grab' | 'arrow'
             },
             preview: {
                 enable: true,
@@ -454,6 +463,7 @@ const config = ref({
             smoothSnapThreshold: 0.25
         },
         userOptions: {
+            useCursorPointer: false,
             print: {
                 scale: 2,
                 orientation: 'auto',
@@ -472,7 +482,7 @@ const config = ref({
                 labels: true,
                 stack: true,
                 fullscreen: true,
-                annotator: true
+                annotator: true,
             },
             buttonTitles: {
                 open: "Open options",
@@ -720,7 +730,14 @@ const darkModeConfig = ref({
                 verticalHandles: false,
                 compact: true,
                 merged: false,
-                frameColor: '#6A6A6A'
+                frameColor: '#6A6A6A',
+                additionalHeight: 0,
+                handleIconColor: null,
+                handleBorderWidth: 1,
+                handleBorderColor: null,
+                handleFill: null,
+                handleWidth: 20,
+                handleType: 'grab',
             },
             preview: {
                 enable: true,
@@ -883,6 +900,7 @@ const darkModeConfig = ref({
             smoothSnapThreshold: 0.25
         },
         userOptions: {
+            useCursorPointer: false,
             print: {
                 scale: 2,
                 orientation: 'auto',
@@ -1126,6 +1144,7 @@ const dsTypeCode = computed(() => {
     showSerieName?: "start" | "end" // ${translations.value.docs.comments.xy.showSerieName[store.lang]}
     prefix?: string // since v2.3.83
     suffix?: string // since v2.3.83
+    dashIndices?: number[] // since v3.15.0 ${translations.value.docs.comments.xy.dashIndices[store.lang]}
 }`
 })
 
@@ -1726,6 +1745,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 <BaseAttr name="showOnChartHover" attr="chart.userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="keepStateOnChartLeave" attr="chart.userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="position" attr="chart.userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="useCursorPointer" attr="chart.userOptions.useCursorPointer" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="buttons" :level="3" title="chart.userOptions.buttons">
                     <BaseAttr name="tooltip" attr="chart.userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="pdf" attr="chart.userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -1807,6 +1827,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                     <BaseAttr name="compact" attr="chart.zoom.minimap.compact" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
                     <BaseAttr name="merged" attr="chart.zoom.minimap.merged" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
                     <BaseAttr name="frameColor" attr="chart.zoom.minimap.frameColor" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
+                    <BaseAttr name="additionalHeight" attr="chart.zoom.minimap.additionalHeight" type="number" defaultVal="0" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0" @change="forceChartUpdate"/>
+                    <BaseAttr name="handleIconColor" attr="chart.zoom.minimap.handleIconColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+                    <BaseAttr name="handleBorderWidth" attr="chart.zoom.minimap.handleBorderWidth" type="number" defaultVal="1" :min="0" :max="3" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+                    <BaseAttr name="handleBorderColor" attr="chart.zoom.minimap.handleBorderColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+                    <BaseAttr name="handleFill" attr="chart.zoom.minimap.handleFill" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+                    <BaseAttr name="handleWidth" attr="chart.zoom.minimap.handleWidth" type="number" defaultVal="20" :min="20" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
+                    <BaseAttr name="handleType" attr="chart.zoom.minimap.handleType" type="select" defaultVal="grab" :options="['grab', 'chevron', 'arrow', 'empty']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.0"/>
                 </BaseDetails>
                 <BaseDetails attr="preview" :level="3" title="chart.zoom.preview">
                     <BaseAttr name="enable" attr="chart.zoom.preview.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

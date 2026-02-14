@@ -39,6 +39,7 @@ const config = ref({
     type: "stopwatch",
     responsive: false,
     responsiveProportionalSizing: true,
+    useCursorPointer: false,
     style: {
         backgroundColor: "#F3F4F6",
         fontFamily: "inherit",
@@ -122,6 +123,7 @@ const config = ref({
 const darkModeConfig = ref({
     type: "stopwatch",
     responsive: false,
+    useCursorPointer: false,
     responsiveProportionalSizing: true,
     style: {
         backgroundColor: "#2A2A2A",
@@ -310,6 +312,7 @@ const { configCode, showAllConfig } = useConfigCode()
     <BaseDetails attr="const config: VueUiTimerConfig" equal>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
+        <BaseAttr name="useCursorPointer" attr="useCursorPointer" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseAttr name="backgroundColor" attr="style.backgroundColor"  type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />

@@ -1421,6 +1421,31 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         12, 25, 16, 24, 28, 44, 32, 19, 65, 67, 55, 34, 32, 67, 89
     ])
 
+    const LINESET_MONTHS = ref([
+        120, 130, 80, 90, 78, 100, 110, 120, 115, 100, 80, 105
+    ])
+
+    const DATASET_XY_ESTIMATES = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            series: LINESET_MONTHS.value,
+            dashIndices: [4, 5, 11]
+        }
+    ])
+
+    const DATASET_XY_ESTIMATES_SMOOTH = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            smooth: true,
+            series: LINESET_MONTHS.value,
+            dashIndices: [4, 5, 11]
+        }
+    ])
+
     const DATASET_XY_BASIC_LINE = ref([
         {
             name: 'Serie 1',
@@ -6230,6 +6255,46 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: 'Con datos incompletos (valores nulos) cortados',
                     ko: '불완전한 데이터(널 값)이 잘라짐',
                     ar: 'مع قطع البيانات غير المكتملة (القيم الفارغة)'
+                }
+            },
+            // XY SIGNALING ESTIMATIONS
+            {
+                dataset: DATASET_XY_ESTIMATES.value,
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-estimations',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'Straight line with estimations signaled as dashed segments',
+                    fr: 'Ligne droite avec estimations indiquées par des segments en pointillés',
+                    pt: 'Linha reta com estimativas indicadas como segmentos tracejados',
+                    de: 'Gerade Linie mit Schätzungen, die als gestrichelte Segmente dargestellt sind',
+                    zh: '带有虚线段表示预测值的直线',
+                    ja: '推定値を破線で示した直線',
+                    es: 'Línea recta con estimaciones indicadas como segmentos discontinuos',
+                    ko: '추정값이 점선 구간으로 표시된 직선',
+                    ar: 'خط مستقيم مع التقديرات المشار إليها بمقاطع متقطعة'
+                }
+            },
+            // XY SIGNALING ESTIMATIONS SMOOTH
+            {
+                dataset: DATASET_XY_ESTIMATES_SMOOTH.value,
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-estimations-smooth',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'Spline with estimations signaled as dashed segments',
+                    fr: 'Courbe lissée avec estimations signalées par des segments en pointillés',
+                    pt: 'Curva suavizada com estimativas sinalizadas por segmentos tracejados',
+                    de: 'Geglättete Kurve mit Schätzungen, die als gestrichelte Segmente dargestellt sind',
+                    zh: '平滑曲线图，预测部分以虚线段表示',
+                    ja: '推定値が破線で示されたスプライン曲線',
+                    es: 'Curva suavizada con estimaciones señaladas como segmentos discontinuos',
+                    ko: '추정값이 점선 구간으로 표시된 스플라인 곡선',
+                    ar: 'منحنى ناعم مع تقديرات مميزة بمقاطع متقطعة'
                 }
             },
             // XY MULTIBAR
