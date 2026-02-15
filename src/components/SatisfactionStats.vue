@@ -9,6 +9,7 @@ import { createUid, fillEmptyDays } from "./maker/lib";
 import BaseCard from "./BaseCard.vue";
 import { getCumulativeAverage } from "vue-data-ui";
 import BumpStats from "./BumpStats.vue";
+import BaseSpinner from "./BaseSpinner.vue";
 
 const { utils } = colorBridge();
 
@@ -20,8 +21,8 @@ const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const stats = computed(() => {
-    // return mockStats;
-    return store.ratings.breakdown;
+    return mockStats;
+    // return store.ratings.breakdown;
 })
 
 const selectedXIndex = ref(null);
@@ -1793,38 +1794,49 @@ const currentTab = ref('heatmap');
         </BaseCard>
 
         <BaseCard v-if="currentTab === 'ratings_history'" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <div class="flex flex-col gap-2 mb-4">
-                    <label>
-                        Cut null values
-                        <input type="checkbox" v-model="cutNullValues">
-                    </label>    
-                    <label class="flex flex-row gap-2 place-items-center w-full">
-                        History for:
-                        <button @click="goTo('prev')">
-                            <VueUiIcon name="arrowLeft" :size="16"/>
-                        </button>
-                        <select v-model="selectedComponent" class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner w-full max-w-[250px]">
-                            <option>All components</option>
-                            <option v-for="o in availableComponents">
-                                {{ o }}
-                            </option>
-                        </select>
-                        <button @click="goTo('next')">
-                            <VueUiIcon name="arrowRight" :size="16"/>
-                        </button>
-                    </label>
-                </div>
-                <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDataset" :config="xyConfig" />
-                <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDatasetCumAvg" :config="xyConfigCumAvg" />
-            </div>
-            <div class="p-4">
-                <VueUiStackline
-                    :dataset="stackData" 
-                    :config="stacklineConfig"
-                    :selectedXIndex="selectedXIndex"
-                />
-            </div>
+            <Suspense>
+                <template #default>
+                    <div>
+                        <div class="p-4">
+                            <div class="flex flex-col gap-2 mb-4">
+                                <label>
+                                    Cut null values
+                                    <input type="checkbox" v-model="cutNullValues">
+                                </label>    
+                                <label class="flex flex-row gap-2 place-items-center w-full">
+                                    History for:
+                                    <button @click="goTo('prev')">
+                                        <VueUiIcon name="arrowLeft" :size="16"/>
+                                    </button>
+                                    <select v-model="selectedComponent" class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner w-full max-w-[250px]">
+                                        <option>All components</option>
+                                        <option v-for="o in availableComponents">
+                                            {{ o }}
+                                        </option>
+                                    </select>
+                                    <button @click="goTo('next')">
+                                        <VueUiIcon name="arrowRight" :size="16"/>
+                                    </button>
+                                </label>
+                            </div>
+                            <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDataset" :config="xyConfig" />
+                            <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDatasetCumAvg" :config="xyConfigCumAvg" />
+                        </div>
+                        <div class="p-4">
+                            <VueUiStackline
+                                :dataset="stackData" 
+                                :config="stacklineConfig"
+                                :selectedXIndex="selectedXIndex"
+                            />
+                        </div>
+                    </div>
+                </template>
+                <template #fallback>
+                    <div class="h-[500px]">
+                        <BaseSpinner />
+                    </div>
+                </template>
+            </Suspense>
         </BaseCard>
     
         <BaseCard v-if="currentTab === 'sat_ranking'" class="w-full mt-6" type="light">
