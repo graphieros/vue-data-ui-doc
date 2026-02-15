@@ -21,8 +21,8 @@ const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const stats = computed(() => {
-    return mockStats;
-    // return store.ratings.breakdown;
+    // return mockStats;
+    return store.ratings.breakdown;
 })
 
 const selectedXIndex = ref(null);
