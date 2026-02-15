@@ -280,7 +280,14 @@ const config = ref({
         verticalHandles: false,
         compact: true,
         merged: false,
-        frameColor: '#CCCCCC'
+        frameColor: '#CCCCCC',
+        additionalHeight: 0, // increase the minimap's height
+        handleIconColor: null,
+        handleBorderWidth: 1,
+        handleBorderColor: null,
+        handleFill: null,
+        handleWidth: 20, // clamped from 20 to 40
+        handleType: 'grab', // 'empty' | 'chevron' | 'grab' | 'arrow'
     },
     zoomMaxWidth: 450,
     zoomStartIndex: null,
@@ -437,7 +444,14 @@ const darkModeConfig = ref({
         verticalHandles: false,
         compact: true,
         merged: false,
-        frameColor: '#6A6A6A'
+        frameColor: '#6A6A6A',
+        additionalHeight: 0, // increase the minimap's height
+        handleIconColor: null,
+        handleBorderWidth: 1,
+        handleBorderColor: null,
+        handleFill: null,
+        handleWidth: 20, // clamped from 20 to 40
+        handleType: 'grab', // 'empty' | 'chevron' | 'grab' | 'arrow'
     },
     zoomMaxWidth: 450,
     zoomStartIndex: null,
@@ -1087,6 +1101,13 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
                 <BaseAttr name="compact" attr="zoomMinimap.compact" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
                 <BaseAttr name="merged" attr="zoomMinimap.merged" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
                 <BaseAttr name="frameColor" attr="zoomMinimap.frameColor" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
+                <BaseAttr name="additionalHeight" attr="zoomMinimap.additionalHeight" type="number" defaultVal="0" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.1" @change="forceChartUpdate"/>
+                <BaseAttr name="handleIconColor" attr="zoomMinimap.handleIconColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.1"/>
+                <BaseAttr name="handleBorderWidth" attr="zoomMinimap.handleBorderWidth" type="number" defaultVal="1" :min="0" :max="3" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.1"/>
+                <BaseAttr name="handleBorderColor" attr="zoomMinimap.handleBorderColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.1"/>
+                <BaseAttr name="handleFill" attr="zoomMinimap.handleFill" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.1"/>
+                <BaseAttr name="handleWidth" attr="zoomMinimap.handleWidth" type="number" defaultVal="20" :min="20" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.1"/>
+                <BaseAttr name="handleType" attr="zoomMinimap.handleType" type="select" defaultVal="grab" :options="['grab', 'chevron', 'arrow', 'empty']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.15.1"/>
             </BaseDetails>
             <BaseAttr inactive name="zoomStartIndex" defaultVal="null" comment="number | null. Force zoom start index"/>
             <BaseAttr inactive name="zoomEndIndex" defaultVal="null" comment="number | null. Force zoom end index"/>
