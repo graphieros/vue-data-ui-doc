@@ -2227,179 +2227,180 @@ const digitsConfigVersion = computed(() => {
           </div>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
-          <div class="mx-auto max-w-[800px] px-6">
-            <BaseCard>
-              <div class="pt-2 flex flex-row flex-wrap align-center gap-4 justify-center place-content-center">
-                <button v-for="kpi in KPIS" :class="`relative w-full max-w-[150px] button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"  >
-                  <a :href="kpi.link" target="_blank" class="kpi-wrapper">
-                      <VueDataUi
-                        :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
-                        component="VueUiKpi"
-                        :dataset="kpi.value"
-                        :config="{
-                          backgroundColor: 'transparent',
-                          layoutClass: 'p-4 rounded-md shadow-md relative overflow-hidden',
-                          titleColor: '#1A1A1A',
-                          titleClass: 'text-left pl-1 capitalize',
-                          valueClass: 'tabular-nums pl-0 sm:pl-0 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
-                          analogDigits: {
-                            show: true,
-                            height: 32,
-                            color: lightenColor(kpi.color, 0.4),
-                            skeletonColor: '#1A1A1A20'
-                          }
-                        }"
-                      >
-                        <template #title>
-                          <div class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.5,1.5)">
-                            <VueUiIcon :name="kpi.icon" :stroke="lightenColor(kpi.color, 0.3)" :size="20" :stroke-width="1"/>
-                          </div>
-                        </template>
-                    </VueDataUi>
-                    </a>
-                  <div class="absolute -top-4 left-0 text-xs text-gray-600 dark:text-[#9A9A9A]">{{ kpi.displayName }}</div>
-                  </button>
-                </div>
-              </BaseCard>
+          <div class="mx-auto max-w-[800px] px-6">     
+              <BaseCard>
+                <div class="pt-2 flex flex-row flex-wrap align-center gap-4 justify-center place-content-center">
+                  <button v-for="kpi in KPIS" :class="`relative w-full max-w-[150px] button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"  >
+                    <a :href="kpi.link" target="_blank" class="kpi-wrapper">
+                        <VueDataUi
+                          :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
+                          component="VueUiKpi"
+                          :dataset="kpi.value"
+                          :config="{
+                            backgroundColor: 'transparent',
+                            layoutClass: 'p-4 rounded-md shadow-md relative overflow-hidden',
+                            titleColor: '#1A1A1A',
+                            titleClass: 'text-left pl-1 capitalize',
+                            valueClass: 'tabular-nums pl-0 sm:pl-0 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
+                            analogDigits: {
+                              show: true,
+                              height: 32,
+                              color: lightenColor(kpi.color, 0.4),
+                              skeletonColor: '#1A1A1A20'
+                            }
+                          }"
+                        >
+                          <template #title>
+                            <div class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.5,1.5)">
+                              <VueUiIcon :name="kpi.icon" :stroke="lightenColor(kpi.color, 0.3)" :size="20" :stroke-width="1"/>
+                            </div>
+                          </template>
+                      </VueDataUi>
+                      </a>
+                    <div class="absolute -top-4 left-0 text-xs text-gray-600 dark:text-[#9A9A9A]">{{ kpi.displayName }}</div>
+                    </button>
+                  </div>
+                </BaseCard>
             </div>
 
             <div class="mx-auto max-w-[800px] px-6">
-              <BaseCard class="max-w-[800px] mx-auto mt-6">
-                <div class="w-full p-4 text-[24px] font-inter-medium flex flex-row gap-2 place-items-center">
-                  <VueUiIcon name="legend" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
-                  Changelog
-                </div>
-
-                <div class="flex flex-row gap-2 mb-2 pl-4">
-                    <label class="text-gray-500 dark:text-[#8A8A8A] mr-2">
-                      Filter by version
-                      <input type="checkbox" v-model="enableSem" @change="resetSem" class="ml-2">
-                    </label>
-                    <template v-if="enableSem">
-                      <label>
-                        Major
-                        <select v-model="major.ver" class="w-[64px]" @change="impactMinor">
-                          <option v-for="o in major.available">{{ o }}</option>
-                        </select>
-                      </label>
-                      <label>
-                        Minor
-                        <select v-model="minor.ver" class="w-[64px]" @change="impactPatch">
-                          <option v-for="o in minor.available">{{ o }}</option>
-                        </select>
-                      </label>
-                      <label>
-                        Patch
-                        <select v-model="patch.ver" class="w-[64px]">
-                          <option v-for="o in patch.available">{{ o }}</option>
-                        </select>
-                      </label>
-                    </template>
+                <BaseCard class="max-w-[800px] mx-auto mt-6">
+                  <div class="w-full p-4 text-[24px] font-inter-medium flex flex-row gap-2 place-items-center">
+                    <VueUiIcon name="legend" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
+                    Changelog
                   </div>
-
-                <div class="flex flex-col sm:flex-row sm:place-items-center gap-2 mb-2 pl-4" v-if="!enableSem">
-                  <label for="versionComponent" @click="openDropdown" class="text-gray-500 dark:text-[#8A8A8A]">Filter by component</label>
-                  <div class="flex flex-row gap-2 place-items-center">
-                    <BaseDropdown
-                      :options="chartKeys.map(k => {
-                          return {
-                              name: k,
-                              icon: useIconMapUnderscore(k)
-                          }
-                      })"
-                      :width="250"
-                      v-model:value="versionComponent"
-                      background="bg-white dark:bg-[#1A1A1A]"
-                      optionTarget="name"
-                      additionalOptionTarget="name"
-                      id="versionComponent"
-                    >
-                        <template #selected="{ selectedOption }">
-                            <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center overflow-x-hidden">
+  
+                  <div class="flex flex-row gap-2 mb-2 pl-4">
+                      <label class="text-gray-500 dark:text-[#8A8A8A] mr-2">
+                        Filter by version
+                        <input type="checkbox" v-model="enableSem" @change="resetSem" class="ml-2">
+                      </label>
+                      <template v-if="enableSem">
+                        <label>
+                          Major
+                          <select v-model="major.ver" class="w-[64px]" @change="impactMinor">
+                            <option v-for="o in major.available">{{ o }}</option>
+                          </select>
+                        </label>
+                        <label>
+                          Minor
+                          <select v-model="minor.ver" class="w-[64px]" @change="impactPatch">
+                            <option v-for="o in minor.available">{{ o }}</option>
+                          </select>
+                        </label>
+                        <label>
+                          Patch
+                          <select v-model="patch.ver" class="w-[64px]">
+                            <option v-for="o in patch.available">{{ o }}</option>
+                          </select>
+                        </label>
+                      </template>
+                    </div>
+  
+                  <div class="flex flex-col sm:flex-row sm:place-items-center gap-2 mb-2 pl-4" v-if="!enableSem">
+                    <label for="versionComponent" @click="openDropdown" class="text-gray-500 dark:text-[#8A8A8A]">Filter by component</label>
+                    <div class="flex flex-row gap-2 place-items-center">
+                      <BaseDropdown
+                        :options="chartKeys.map(k => {
+                            return {
+                                name: k,
+                                icon: useIconMapUnderscore(k)
+                            }
+                        })"
+                        :width="250"
+                        v-model:value="versionComponent"
+                        background="bg-white dark:bg-[#1A1A1A]"
+                        optionTarget="name"
+                        additionalOptionTarget="name"
+                        id="versionComponent"
+                      >
+                          <template #selected="{ selectedOption }">
+                              <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center overflow-x-hidden">
+                                  <div class="h-[24px] w-[24px] flex place-items-center">
+                                      <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                                  </div>
+                                  <div class="text-[17px]">
+                                      <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                      <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                                  </div>
+                              </div>
+                              <div v-else class="text-left flex flex-row gap-2 place-items-center">
                                 <div class="h-[24px] w-[24px] flex place-items-center">
-                                    <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
-                                </div>
-                                <div class="text-[17px]">
-                                    <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                    <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
-                                </div>
-                            </div>
-                            <div v-else class="text-left flex flex-row gap-2 place-items-center">
-                              <div class="h-[24px] w-[24px] flex place-items-center">
-                                    <VueUiIcon name="dashboard" :size="24" stroke="#5f8aee" />
-                                </div>
-                                <div class="text-[17px]">
-                                    <span :class=" 'dark:text-app-blue-light'">All components</span>
-                                </div>
-                            </div>
-                        </template>
-                        <template #option="{ option, selected, current }">
-                            <div class="text-left flex flex-row gap-2 place-items-center">
-                                <div class="h-[20px] w-[20px] flex place-items-center">
-                                    <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
-                                </div>
-                                <div>
-                                    <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                    <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
-                                </div>
-                            </div>
-                        </template>
-                    </BaseDropdown>
-                    <button
-                      :disabled="!versionComponent"
-                      class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full dark:bg-[#3A3A3A] hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
-                      @click="versionComponent = null"
-                    >
-                    <XIcon />
-                  </button>
+                                      <VueUiIcon name="dashboard" :size="24" stroke="#5f8aee" />
+                                  </div>
+                                  <div class="text-[17px]">
+                                      <span :class=" 'dark:text-app-blue-light'">All components</span>
+                                  </div>
+                              </div>
+                          </template>
+                          <template #option="{ option, selected, current }">
+                              <div class="text-left flex flex-row gap-2 place-items-center">
+                                  <div class="h-[20px] w-[20px] flex place-items-center">
+                                      <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                                  </div>
+                                  <div>
+                                      <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                      <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                                  </div>
+                              </div>
+                          </template>
+                      </BaseDropdown>
+                      <button
+                        :disabled="!versionComponent"
+                        class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full dark:bg-[#3A3A3A] hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                        @click="versionComponent = null"
+                      >
+                      <XIcon />
+                    </button>
+                    </div>
                   </div>
-                </div>
-
-                <div v-if="!enableSem" class="flex flex-row place-items-center gap-2 mb-6 pl-4 tabular-nums">
-                  <span class="text-gray-500 dark:text-[#8A8A8A]">Logs:</span> <span class="font-inter-medium">{{ filteredVersions.length }}</span>
-                </div>
-
-                <div v-if="!enableSem && versionComponent === 'vue_ui_vertical_bar'" class="flex flex-row gap-2 place-items-center pl-4 mb-6">
-                  <VueUiIcon name="circleExclamation" :stroke="isDarkMode ? '#ff6600' : '#ff3700'"/>
-                  <span class="text-app-red dark:text-app-orange">
-                    This component was renamed to <code>VueUiHorizontalBar</code> in v3
-                  </span>
-                </div>
-
-                <BaseScroll class="w-full max-h-[500px] p-4 overflow-auto" :fadeColor="isDarkMode ? '#2A2A2A' : '#f3f4f6'">
-                  <ul>
-                      <li v-for="log in filteredVersions" :class="`mb-4`">
-                          <BaseCard type="light">
-                            <div class="pt-2 pb-4 mb-6 font-inter-medium text-xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums">
-                              {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
-                            </div>
-                            <div class="pl-6" v-if="log.updates">
-                                <template v-for="update in log.updates">
-                                    <div :class="`text-gray-500 dark:text-[#CCCCCC]`">
-                                          <a class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
+  
+                  <div v-if="!enableSem" class="flex flex-row place-items-center gap-2 mb-6 pl-4 tabular-nums">
+                    <span class="text-gray-500 dark:text-[#8A8A8A]">Logs:</span> <span class="font-inter-medium">{{ filteredVersions.length }}</span>
+                  </div>
+  
+                  <div v-if="!enableSem && versionComponent === 'vue_ui_vertical_bar'" class="flex flex-row gap-2 place-items-center pl-4 mb-6">
+                    <VueUiIcon name="circleExclamation" :stroke="isDarkMode ? '#ff6600' : '#ff3700'"/>
+                    <span class="text-app-red dark:text-app-orange">
+                      This component was renamed to <code>VueUiHorizontalBar</code> in v3
+                    </span>
+                  </div>
+  
+                  <BaseScroll class="w-full max-h-[500px] p-4 overflow-auto" :fadeColor="isDarkMode ? '#2A2A2A' : '#f3f4f6'">
+                    <ul>
+                        <li v-for="log in filteredVersions" :class="`mb-4`">
+                            <BaseCard type="light">
+                              <div class="pt-2 pb-4 mb-6 font-inter-medium text-xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums">
+                                {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
+                              </div>
+                              <div class="pl-6" v-if="log.updates">
+                                  <template v-for="update in log.updates">
+                                      <div :class="`text-gray-500 dark:text-[#CCCCCC]`">
+                                            <a class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
+                                              <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
+                                              {{ update.component }}</a>
+                                          <span v-else-if="update.component" class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap">
                                             <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
-                                            {{ update.component }}</a>
-                                        <span v-else-if="update.component" class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap">
-                                          <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
-                                          {{ update.component }}
-                                        </span>
-                                        <div class="pl-8">
-                                          {{ update.description }}
-                                        </div>
-                                    </div>
-                                    <br>
-                                </template>
-                            </div>
-                          </BaseCard>
-                      </li>
-                    </ul>
-                </BaseScroll>
-              </BaseCard>
+                                            {{ update.component }}
+                                          </span>
+                                          <div class="pl-8">
+                                            {{ update.description }}
+                                          </div>
+                                      </div>
+                                      <br>
+                                  </template>
+                              </div>
+                            </BaseCard>
+                        </li>
+                      </ul>
+                  </BaseScroll>
+                </BaseCard>
             </div>
 
 
 
             <div class="max-w-[800px] mx-auto px-6">
+              <BaseLazy>
                 <BaseCard class="mx-auto mt-6 max-w-[800px]">
                   <div class="max-w-[600px] mx-auto">
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
@@ -2483,20 +2484,21 @@ const digitsConfigVersion = computed(() => {
                       </VueUiSparkline>
                   </div>
                 </BaseCard>
+              </BaseLazy>
 
-
+              <BaseLazy>
                 <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <RepoStars />
                 </BaseCard>
+              </BaseLazy>
 
-
-
+              <BaseLazy>
                 <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <Downloads/>
                 </BaseCard>
+              </BaseLazy>
 
-
-
+              <BaseLazy>
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!!data && !isLoadingLine">
                   <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#2A2A2A' : '#F3F4F6' } }"/>
                   <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">
@@ -2507,9 +2509,9 @@ const digitsConfigVersion = computed(() => {
                       </template>
                   </VueDataUi>
                 </BaseCard>
+              </BaseLazy>
 
-
-
+              <BaseLazy>
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig">
@@ -2520,9 +2522,9 @@ const digitsConfigVersion = computed(() => {
                       </template>
                   </VueUiHeatmap>
                 </BaseCard>
+              </BaseLazy>
 
-
-
+              <BaseLazy>
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!isLoadingLine">
                   <VueDataUi v-if="xyDataset.length" component="VueUiXyCanvas" :dataset="xyDataset" :config="xyCanvasConfig" :key="`xystep_${step}`">
                     <template #source>
@@ -2532,9 +2534,9 @@ const digitsConfigVersion = computed(() => {
                       </template>
                   </VueDataUi>
                 </BaseCard>
+              </BaseLazy>
 
-
-
+              <BaseLazy>
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases">
                     <template #source>
@@ -2555,11 +2557,13 @@ const digitsConfigVersion = computed(() => {
                     </VueDataUi>
                   </div>
                 </BaseCard>
+              </BaseLazy>
 
+              <BaseLazy>
                 <BaseCard class="mx-auto max-w-[800px] mt-6" v-if="!isLoadingLine && !!data">
                   <VueUiTable :key="`table_${step}`" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
                 </BaseCard>
-
+              </BaseLazy>
 
                 <div class="w-full max-w-[800] mx-auto py-6">
                   <GithubIssues/>
