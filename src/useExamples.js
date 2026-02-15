@@ -2029,7 +2029,7 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     fontSize: 20,
                 },
                 zoom: {
-                    focusOnDrag: true,
+                    maxWidth: 500,
                     minimap: {
                         show: true,
                         lineColor: '#1F77B4',
@@ -2299,6 +2299,7 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     zoom: {
+                        maxWidth: 500,
                         minimap: {
                             show: true,
                             indicatorColor: colors.value.textColor,
@@ -2423,6 +2424,7 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     zoom: {
+                        maxWidth: 500,
                         minimap: {
                             show: true
                         }
