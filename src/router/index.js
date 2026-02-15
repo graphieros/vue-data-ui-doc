@@ -105,6 +105,11 @@ const routes = [
         component: () => import('../views/ThemeSwapper.vue')
     },
     {
+        path: '/customization/a11y',
+        name: 'a11y',
+        component: () => import('../views/A11y.vue')
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

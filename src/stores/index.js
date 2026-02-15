@@ -71,6 +71,41 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                a11y: {
+                    alt_menu: {
+                        en: 'Copy alt text',
+                        fr: 'Copier le texte alternatif de l\'image',
+                        pt: 'Copiar o texto alternativo da imagem',
+                        de: 'Alternativtext des Bildes kopieren',
+                        zh: '复制图片的替代文本',
+                        ja: '画像の代替テキストをコピー',
+                        es: 'Copiar el texto alternativo de la imagen',
+                        ko: '이미지 대체 텍스트 복사',
+                        ar: 'نسخ النص البديل للصورة'
+                    },
+                    copy_alt_text_description: {
+                        en: 'A `Copy alt text` button can be displayed in the charts context menus. By plugging it to a callback, it is possible to tailor alt texts for your charts derived from the dataset and configuration, that can be copied to the clipboard.',
+                        fr: 'Un bouton `Copier le texte alternatif` peut être affiché dans les menus contextuels des graphiques. En le reliant à une fonction de rappel, il est possible de personnaliser des textes alternatifs pour vos graphiques à partir du jeu de données et de la configuration, puis de les copier dans le presse-papiers.',
+                        pt: 'Um botão `Copiar texto alternativo` pode ser exibido nos menus de contexto dos gráficos. Ao vinculá-lo a uma função de retorno, é possível personalizar textos alternativos para seus gráficos a partir do conjunto de dados e da configuração e copiá-los para a área de transferência.',
+                        de: 'In den Kontextmenüs der Diagramme kann eine Schaltfläche `Alternativtext kopieren` angezeigt werden. Durch die Verknüpfung mit einer Callback-Funktion können Alternativtexte für Ihre Diagramme basierend auf Datensatz und Konfiguration erstellt und in die Zwischenablage kopiert werden.',
+                        zh: '可以在图表的上下文菜单中显示“复制替代文本”按钮。通过将其连接到回调函数，可以根据数据集和配置自定义图表的替代文本，并将其复制到剪贴板。',
+                        ja: '「代替テキストをコピー」ボタンをチャートのコンテキストメニューに表示できます。コールバック関数に接続することで、データセットや設定に基づいてチャートの代替テキストをカスタマイズし、クリップボードにコピーできます。',
+                        es: 'Se puede mostrar un botón `Copiar texto alternativo` en los menús contextuales de los gráficos. Al conectarlo a una función de devolución de llamada, es posible personalizar textos alternativos para sus gráficos a partir del conjunto de datos y la configuración, y copiarlos al portapapeles.',
+                        ko: '차트의 컨텍스트 메뉴에 `대체 텍스트 복사` 버튼을 표시할 수 있습니다. 콜백 함수에 연결하면 데이터셋과 구성에 기반하여 차트의 대체 텍스트를 사용자 지정하고 이를 클립보드에 복사할 수 있습니다.',
+                        ar: 'يمكن عرض زر `نسخ النص البديل` في القوائم السياقية للمخططات. من خلال ربطه بدالة رد نداء، يمكن تخصيص نصوص بديلة للمخططات استنادًا إلى مجموعة البيانات والإعدادات ونسخها إلى الحافظة.'
+                    },
+                    copy_alt_text_instructions: {
+                        en: `Try it out: open the chart's context menu, and click on the 'Copy alt text' button.`,
+                        fr: `Essayez : ouvrez le menu contextuel du graphique et cliquez sur le bouton « Copier le texte alternatif ».`,
+                        pt: `Experimente: abra o menu de contexto do gráfico e clique no botão "Copiar texto alternativo".`,
+                        de: `Probieren Sie es aus: Öffnen Sie das Kontextmenü des Diagramms und klicken Sie auf die Schaltfläche „Alternativtext kopieren“.`,
+                        zh: `试一试：打开图表的上下文菜单，然后点击“复制替代文本”按钮。`,
+                        ja: `試してみてください：チャートのコンテキストメニューを開き、「代替テキストをコピー」ボタンをクリックします。`,
+                        es: `Pruébelo: abra el menú contextual del gráfico y haga clic en el botón "Copiar texto alternativo".`,
+                        ko: `사용해 보세요: 차트의 컨텍스트 메뉴를 열고 "대체 텍스트 복사" 버튼을 클릭하세요.`,
+                        ar: `جرّب ذلك: افتح القائمة السياقية للمخطط وانقر على زر "نسخ النص البديل".`
+                    }
+                },
                 builtInThemes: {
                     en: 'Built-in themes',
                     fr: 'Thèmes intégrés',
@@ -4719,7 +4754,7 @@ export const useMainStore = defineStore("main", {
     },
     actions: {
         copy({ message, type } = { message: '', type: 'success'}){
-            this.isCopy = true;
+            
             if (!!message) {
                 this.isMessage = true;
                 this.messages.push({
@@ -4728,10 +4763,12 @@ export const useMainStore = defineStore("main", {
                     visible: true,
                     type
                 });
+            } else {
+                this.isCopy = true;
+                setTimeout(() => {
+                    this.isCopy = false;
+                }, 1000);
             }
-            setTimeout(() => {
-                this.isCopy = false;
-            }, 1000);
         },
         deleteMessage(id) {
             this.messages = this.messages.filter(m => m.id !== id)

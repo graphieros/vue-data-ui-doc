@@ -15,7 +15,7 @@ import BaseCrumbs from "../components/BaseCrumbs.vue";
 import SourceSlot from "../components/customization/SourceSlot.vue";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import ComposedComponents from "../components/customization/ComposedComponents.vue";
-import { BulbIcon, CategoryIcon, CubeUnfoldedIcon, ExternalLinkIcon, GridPatternIcon, ListIcon, MathFunctionIcon, Menu2Icon, MicroscopeIcon, PaletteIcon, RegisteredIcon, SvgIcon, TextCaptionIcon, ToolIcon, TooltipIcon } from "vue-tabler-icons";
+import { BulbIcon, CategoryIcon, CubeUnfoldedIcon, ExternalLinkIcon, GridPatternIcon, ListIcon, MathFunctionIcon, Menu2Icon, MicroscopeIcon, PaletteIcon, RegisteredIcon, SvgIcon, TextCaptionIcon, ToolIcon, TooltipIcon, AccessibleIcon } from "vue-tabler-icons";
 import Patterns from "../components/customization/Patterns.vue";
 import ColorBridgeIcon from "../components/maker/ColorBridgeIcon.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
@@ -47,6 +47,12 @@ function isSelected(item, index) {
 }
 
 const menu = ref([
+  {
+    name: 'a11y',
+    label: 'a11y',
+    link: '/customization/a11y',
+    icon: markRaw(AccessibleIcon)
+  },
   { 
     name: "quickCustomTheme", 
     label: "Quick custom theme", 

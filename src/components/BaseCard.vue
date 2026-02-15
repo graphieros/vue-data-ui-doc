@@ -37,13 +37,13 @@ const background = computed(() => {
         return props.backgroundColor;
     }
     if (props.type === 'light') {
-        return 'bg-gray-50 dark:bg-[#3A3A3A]'
+        return 'bg-gray-50 dark:bg-[#3A3A3A]' // gray-50: #f9fafb
     }
     if (props.type === 'medium') {
-        return 'bg-gray-100 dark:bg-[#2A2A2A]'
+        return 'bg-gray-100 dark:bg-[#2A2A2A]' // gray-100: #f3f4f6
     }
     if (props.type === 'dark') {
-        return 'bg-gray-200 dark:bg-[#242424]'
+        return 'bg-gray-200 dark:bg-[#242424]' // gray-200: #e5e7eb
     }
     if (props.type === 'success') {
         return 'bg-gradient-to-br from-app-green-light to-app-green'
