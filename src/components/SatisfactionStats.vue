@@ -1621,12 +1621,135 @@ function selectHeatmapCell(cell) {
 
 const stackComponent = ref('VueUiStackbar');
 
+const tabs = ref([
+    'latest_votes',
+    'voting_intensity',
+    'ratings_history',
+    'sat_ranking',
+    'rating_breakdown',
+    'heatmap',
+    'treemap',
+    'individual_components',
+    'bump'
+]);
+
+const tabTranslations = ref({
+    latest_votes: {
+        en: 'Latest votes',
+        fr: 'Derniers votes',
+        pt: 'Votos mais recentes',
+        de: 'Neueste Abstimmungen',
+        zh: '最新投票',
+        ja: '最新の投票',
+        es: 'Ultimos votos',
+        ko: '최신 투표',
+        ar: 'أحدث التصويتات',
+    },
+    voting_intensity: {
+        en: 'Voting intensity',
+        fr: 'Intensité des votes',
+        pt: 'Intensidade de votacao',
+        de: 'Intensitat der Abstimmungen',
+        zh: '投票强度',
+        ja: '投票の強度',
+        es: 'Intensidad de votacion',
+        ko: '투표 강도',
+        ar: 'شدة التصويت',
+    },
+    ratings_history: {
+        en: 'Ratings history',
+        fr: 'Historique des évaluations',
+        pt: 'Historico das avaliacoes',
+        de: 'Bewertungsverlauf',
+        zh: '评分历史',
+        ja: '評価履歴',
+        es: 'Historial de calificaciones',
+        ko: '평가 기록',
+        ar: 'سجل التقييمات',
+    },
+    sat_ranking: {
+        en: 'Satisfaction rankings',
+        fr: 'Classement de satisfaction',
+        pt: 'Classificacao de satisfacao',
+        de: 'Zufriedenheitsrangliste',
+        zh: '满意度排名',
+        ja: '満足度ランキング',
+        es: 'Clasificacion de satisfaccion',
+        ko: '만족도 순위',
+        ar: 'ترتيب الرضا',
+    },
+    rating_breakdown: {
+        en: 'Ratings breakdown',
+        fr: 'Répartition des évaluations',
+        pt: 'Distribuicao das avaliacoes',
+        de: 'Aufschlüsselung der Bewertungen',
+        zh: '评分细分',
+        ja: '評価の内訳',
+        es: 'Desglose de calificaciones',
+        ko: '평가 세부 내역',
+        ar: 'تفصيل التقييمات',
+    },
+    heatmap: {
+        en: 'Rating intensity heatmap',
+        fr: 'Carte thermique de l\'intensité des évaluations',
+        pt: 'Mapa de calor da intensidade das avaliacoes',
+        de: 'Heatmap der Bewertungsintensitat',
+        zh: '评分强度热力图',
+        ja: '評価強度ヒートマップ',
+        es: 'Mapa de calor de intensidad de calificaciones',
+        ko: '평가 강도 히트맵',
+        ar: 'خريطة حرارية لشدة التقييمات',
+    },
+    treemap: {
+        en: 'Ratings component treemap',
+        fr: 'Treemap des évaluations des composants',
+        pt: 'Treemap das avaliacoes dos componentes',
+        de: 'Treemap der Komponentenbewertungen',
+        zh: '组件评分树图',
+        ja: 'コンポーネント評価ツリーマップ',
+        es: 'Treemap de calificaciones por componente',
+        ko: '구성 요소별 평가 트리맵',
+        ar: 'خريطة شجرية لتقييمات المكونات',
+    },
+    individual_components: {
+        en: 'Per component ratings breakdown',
+        fr: 'Répartition des évaluations par composant',
+        pt: 'Distribuicao das avaliacoes por componente',
+        de: 'Aufschlüsselung der Bewertungen nach Komponente',
+        zh: '按组件划分的评分细分',
+        ja: 'コンポーネント別評価内訳',
+        es: 'Desglose de calificaciones por componente',
+        ko: '구성 요소별 평가 세부 내역',
+        ar: 'تفصيل التقييمات حسب المكون',
+    },
+    bump: {
+        en: 'Per component ratings intensity',
+        fr: 'Intensité des évaluations par composant',
+        pt: 'Intensidade das avaliacoes por componente',
+        de: 'Bewertungsintensitat pro Komponente',
+        zh: '按组件划分的评分强度',
+        ja: 'コンポーネント別評価強度',
+        es: 'Intensidad de calificaciones por componente',
+        ko: '구성 요소별 평가 강도',
+        ar: 'شدة التقييمات حسب المكون',
+    },
+})
+
+const currentTab = ref('heatmap');
+
 </script>
 
 <template>
-    <div class="mt-6">
+    <div class="mt-6" v-if="ratings.length">
 
-        <BaseCard v-if="ratings.length" class="w-full" type="light">
+    <BaseCard>
+        <div class="flex flex-row flex-wrap gap-2 px-2">
+            <button v-for="tab in tabs" @click="currentTab = tab" :class="`px-2 ${currentTab === tab ? 'bg-[#E1E5E8] dark:bg-[#4A4A4A] shadow-md' : 'hover:underline'} rounded`">
+                {{ tabTranslations[tab][store.lang] }}
+            </button>
+        </div>
+
+        <BaseCard v-if="currentTab === 'latest_votes'" class="w-full mt-6" type="light">
             <div class="p-4">
                 <div class="text-xl text-center mb-4 flex flex-col">
                     <span>Latest votes ({{ latestItems.length }})</span>
@@ -1663,13 +1786,13 @@ const stackComponent = ref('VueUiStackbar');
             </div>
         </BaseCard>
 
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+        <BaseCard v-if="currentTab === 'voting_intensity'" class="w-full mt-6" type="light">
             <div class="p-4">
                 <VueUiSparkHistogram :dataset="sparkHistogramDataset" :config="sparkHistogramConfig" />
             </div>
         </BaseCard>
 
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+        <BaseCard v-if="currentTab === 'ratings_history'" class="w-full mt-6" type="light">
             <div class="p-4">
                 <div class="flex flex-col gap-2 mb-4">
                     <label>
@@ -1704,13 +1827,13 @@ const stackComponent = ref('VueUiStackbar');
             </div>
         </BaseCard>
     
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+        <BaseCard v-if="currentTab === 'sat_ranking'" class="w-full mt-6" type="light">
             <div class="p-4">
                 <VueUiVerticalBar :dataset="verticalBarDataset" :config="verticalBarConfig" />
             </div>
         </BaseCard>
     
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+        <BaseCard v-if="currentTab === 'rating_breakdown'" class="w-full mt-6" type="light">
             <div class="p-4">
                 <div class="text-center text-xl">Ratings breakdown ({{ stats.length }} votes)</div>
                 <div class="flex flex-row place-items-center gap-2">
@@ -1809,19 +1932,13 @@ const stackComponent = ref('VueUiStackbar');
             </div>
         </BaseCard>
     
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+        <BaseCard v-if="currentTab === 'heatmap'" class="w-full mt-6" type="light">
             <div class="p-4">
                 <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" @selectDatapoint="selectHeatmapCell"/>
             </div>
         </BaseCard>
-    
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <VueDataUi component="VueUiHistoryPlot" :dataset="historyPlotDataset" :config="historyPlotConfig" />
-            </div>
-        </BaseCard>
 
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+        <BaseCard v-if="currentTab === 'treemap'" class="w-full mt-6" type="light">
             <div class="p-4">
                 <VueDataUi 
                     component="VueUiTreemap"
@@ -1832,116 +1949,122 @@ const stackComponent = ref('VueUiStackbar');
             </div>
         </BaseCard>
     
-    
-        <h2 v-if="ratings.length" class="mt-12 mb-3 text-xl text-center">
-            User ratings of individual components
-        </h2>
-    
-        <div class="flex flex-row place-items-center justify-center mb-6 gap-4">
-            <label class="flex flex-row gap-1 place-items-center cursor-pointer">
-                <span :class="`select-none ${detailSortMode === 'byVotes' ? 'text-app-blue' : ''}`">By votes</span>
-                <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byVotes">
-            </label>
-            <label class="flex flex-row gap-1 place-items-center cursor-pointer">
-                <span :class="`select-none ${detailSortMode === 'byRatings' ? 'text-app-blue' : ''}`">By ratings</span>
-                <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byRatings">
-            </label>
-        </div>
-    
-        <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
-            <ButtonSatisfactionBreakdown
-                v-for="c in individualRatings"
-                :key="c.id"
-                :dataset-gauge="{
-                value: c.average,
-                series: [
-                    { from: 1, to: 3, color: '#c97047' , name: 'BAD' },
-                    { from: 3, to: 4, color: '#FFDD00', name: 'ACCEPTABLE' },
-                    { from: 4, to: 5, color: '#54b840', name: 'VERY GOOD' }
-                ]
-            }" 
-                :total="c.raters"
-                :datasetRating="{ rating: c.average }"
-                :configRating="{
-                    readonly: true,
-                    style: {
-                        backgroundColor: 'transparent',
-                        star: {
-                            inactiveColor: 'transparent'
+        <template v-if="currentTab === 'individual_components'">
+            <h2 v-if="ratings.length" class="mt-12 mb-3 text-xl text-center">
+                User ratings of individual components
+            </h2>
+        
+            <div class="flex flex-row place-items-center justify-center mb-6 gap-4">
+                <label class="flex flex-row gap-1 place-items-center cursor-pointer">
+                    <span :class="`select-none ${detailSortMode === 'byVotes' ? 'text-app-blue' : ''}`">By votes</span>
+                    <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byVotes">
+                </label>
+                <label class="flex flex-row gap-1 place-items-center cursor-pointer">
+                    <span :class="`select-none ${detailSortMode === 'byRatings' ? 'text-app-blue' : ''}`">By ratings</span>
+                    <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byRatings">
+                </label>
+            </div>
+        
+            <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
+                <ButtonSatisfactionBreakdown
+                    v-for="c in individualRatings"
+                    :key="c.id"
+                    :dataset-gauge="{
+                    value: c.average,
+                    series: [
+                        { from: 1, to: 3, color: '#c97047' , name: 'BAD' },
+                        { from: 3, to: 4, color: '#FFDD00', name: 'ACCEPTABLE' },
+                        { from: 4, to: 5, color: '#54b840', name: 'VERY GOOD' }
+                    ]
+                }" 
+                    :total="c.raters"
+                    :datasetRating="{ rating: c.average }"
+                    :configRating="{
+                        readonly: true,
+                        style: {
+                            backgroundColor: 'transparent',
+                            star: {
+                                inactiveColor: 'transparent'
+                            }
                         }
-                    }
-                }"
-                :name="c.name
-                    .split('_')
-                    .map((w, _i) => {
-                        return capitalizeFirstLetter(w);
-                    })
-                    .join('')"
-            :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
-                userOptions: { show: false },
-                style: {
-                    chart: {
-                        backgroundColor: 'transparent',
-                        layout: {
-                            indicatorArc: {
-                                show: true,
-                                fill: isDarkMode ? '#4A4A4A' : '#E1E5E8',
-                                radius: 100
-                            },
-                            markers: {
-                                show: false,
-                            },
-                            pointer: {
-                                stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                                circle: {
-                                    radius: 18,
+                    }"
+                    :name="c.name
+                        .split('_')
+                        .map((w, _i) => {
+                            return capitalizeFirstLetter(w);
+                        })
+                        .join('')"
+                :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
+                    userOptions: { show: false },
+                    style: {
+                        chart: {
+                            backgroundColor: 'transparent',
+                            layout: {
+                                indicatorArc: {
+                                    show: true,
+                                    fill: isDarkMode ? '#4A4A4A' : '#E1E5E8',
+                                    radius: 100
+                                },
+                                markers: {
+                                    show: false,
+                                },
+                                pointer: {
                                     stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                                    color: isDarkMode ? '#5A5A5A' : '#8A8A8A'
+                                    circle: {
+                                        radius: 18,
+                                        stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                                        color: isDarkMode ? '#5A5A5A' : '#8A8A8A'
+                                    }
+                                },
+                                segmentNames: {
+                                    fontSize: 24
                                 }
                             },
-                            segmentNames: {
-                                fontSize: 24
+                            legend: {
+                                roundingValue: 2,
+                                fontSize: 63
+                            }
+                        }
+                    },
+                }" :config-xy="{
+                    ...ratingBreakdownBarConfig,
+                    chart: {
+                        ...ratingBreakdownBarConfig.chart,
+                        grid: {
+                            ...ratingBreakdownBarConfig.chart.grid,
+                            labels: {
+                                ...ratingBreakdownBarConfig.chart.grid.labels,
+                                xAxisLabels: {
+                                    ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
+                                    values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
+                                    fontSize: isDarkMode ? 24 : 36,
+                                    yOffset: isDarkMode ? 4 : -4
+                                }
                             }
                         },
-                        legend: {
-                            roundingValue: 2,
-                            fontSize: 63
-                        }
-                    }
-                },
-            }" :config-xy="{
-                ...ratingBreakdownBarConfig,
-                chart: {
-                    ...ratingBreakdownBarConfig.chart,
-                    grid: {
-                        ...ratingBreakdownBarConfig.chart.grid,
                         labels: {
-                            ...ratingBreakdownBarConfig.chart.grid.labels,
-                            xAxisLabels: {
-                                ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
-                                values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
-                                fontSize: isDarkMode ? 24 : 36,
-                                yOffset: isDarkMode ? 4 : -4
-                            }
+                            fontSize: 64
+                        },
+                        padding: {
+                            top: 100
                         }
                     },
-                    labels: {
-                        fontSize: 64
-                    },
-                    padding: {
-                        top: 100
+                    bar: {
+                        ...ratingBreakdownBarConfig.bar,
+                        labels: {
+                            ...ratingBreakdownBarConfig.bar.labels,
+                            offsetY: -36
+                        }
                     }
-                },
-                bar: {
-                    ...ratingBreakdownBarConfig.bar,
-                    labels: {
-                        ...ratingBreakdownBarConfig.bar.labels,
-                        offsetY: -36
-                    }
-                }
-            }" />
-        </div>
-        <BumpStats :stats="stats" v-if="ratings.length"/>
+                }" />
+            </div>
+        </template>
+    
+        <BumpStats :stats="stats" v-if="currentTab === 'bump'"/>
+    </BaseCard>
+
+    
+        
     </div>
 </template>
 
