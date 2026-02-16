@@ -47,17 +47,17 @@ function isSelected(item, index) {
 }
 
 const menu = ref([
-  {
-    name: 'a11y',
-    label: 'a11y',
-    link: '/customization/a11y',
-    icon: markRaw(AccessibleIcon)
-  },
   { 
     name: "quickCustomTheme", 
     label: "Quick custom theme", 
     link: "/customization#quick-custom-theme",
     icon: markRaw(ToolIcon)
+  },
+  {
+    name: 'a11y',
+    label: 'a11y',
+    link: '/customization/a11y',
+    icon: markRaw(AccessibleIcon)
   },
   { 
     name: "svgSlot", 
