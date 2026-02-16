@@ -141,7 +141,7 @@ const thermoConfig = computed(() => {
                             color: isDarkMode ? '#fdd663' : '#1A1A1A',
                             trail: {
                                 show: true,
-                                length: isDarkMode ? 40 : 10
+                                length: 45
                             }
                         }
                     },

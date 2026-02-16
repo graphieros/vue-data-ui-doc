@@ -698,7 +698,7 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
       <BaseAttr name="easing" attr="style.line.pulse.easing" type="select" defaultVal="ease-in-out" :options="['ease', 'ease-in', 'ease-out', 'ease-in-out']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseDetails attr="trail" :level="4" title="style.line.pulse.trail">
         <BaseAttr name="show" attr="style.line.pulse.trail.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="length" attr="style.line.pulse.trail.length" type="number" :min="0" :max="24" defaultVal="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="length" attr="style.line.pulse.trail.length" type="number" :min="0" :max="45" defaultVal="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="opacity" attr="style.line.pulse.trail.opacity" type="number" :min="0" :max="1" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
     </BaseDetails>

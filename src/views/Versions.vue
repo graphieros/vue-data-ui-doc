@@ -693,7 +693,10 @@ const sparklineConfig = ref({
         show: true,
         radius: 1,
         durationMs: 10000,
-        color: '#5f8aee'
+        color: '#5f8aee',
+        trail: {
+          length: 45
+        }
       }
     },
     bar: {
