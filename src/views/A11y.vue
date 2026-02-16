@@ -84,7 +84,7 @@ function createAltTextAndCopy({ dataset: dst, config: cfg }) {
     store.copy({ message: alt, type: 'success'});
 }
 
-const snippets = {
+const snippets = computed(() => ({
     replaceQueries: `// replaceQueries("Example of {name} chart with maximum value '{max}'", { name: "XY", max: "100" })
 function replaceQueries(template, values) {
     if (typeof template !== 'string' || !values) return '';
@@ -101,21 +101,24 @@ function replaceQueries(template, values) {
         endValue 
     });
     copyToClipboard(alt);
-    // use your success feedback thing here
+    // ${translations.value.a11y.use_success_feedback[store.lang]}
 }`,
     config: `const config = computed(() => ({
     chart: {
         userOptions: {
             buttons: {
-                altCopy: true, // enable the a11y button
+                altCopy: true, // ${translations.value.a11y.enable_a11y_button[store.lang]}
             },
             callbacks: {
                 altCopy: createAltTextAndCopy
             }
         }
     }
+}))`,
+    config_pointer: `const config = computed(() => ({
+    useCursorPointer: true, // ${translations.value.a11y.cursor_pointer_updated_at[store.lang]}
 }))`
-}
+}))
 
 const dataset = shallowRef([{
     name: 'Fibonacci',
@@ -178,30 +181,48 @@ const config = computed(() => ({
             </h1>
         </div>
 
-        <BaseCard>
-            <article dir="auto">
-                <h2 class="text-left font-inter-medium text-xl flex gap-2">
-                    <VueUiIcon name="accessibility" :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"/>
-                    {{ translations.a11y.alt_menu[store.lang] }}
-                </h2>
-                <p class="text-left my-4 max-w-[80ch]">
-                    {{ translations.a11y.copy_alt_text_description[store.lang] }}
-                </p>
-                <p class="text-left my-4 max-w-[80ch]">
-                    {{ translations.a11y.copy_alt_text_instructions[store.lang] }}
-                </p>
-            </article>
+        <div class="flex flex-col gap-6">
+            <!-- COPY ALT EXAMPLE -->
+            <BaseCard>
+                <article dir="auto">
+                    <h2 class="text-left font-inter-medium text-xl flex gap-2">
+                        <VueUiIcon name="accessibility" :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"/>
+                        {{ translations.a11y.alt_menu[store.lang] }}
+                    </h2>
+                    <p class="text-left my-4 max-w-[80ch]">
+                        {{ translations.a11y.copy_alt_text_description[store.lang] }}
+                    </p>
+                    <p class="text-left my-4 max-w-[80ch]">
+                        {{ translations.a11y.copy_alt_text_instructions[store.lang] }}
+                    </p>
+                </article>
+    
+                <div class="flex flex-col gap-4">
+                    <BaseCard class="max-w-[500px] mx-auto" type="light">
+                        <VueUiXy :dataset :config></VueUiXy>
+                    </BaseCard>
+                    
+                    <CodeParser language="javascript" :content="snippets.config" class="text-left"/>
+                    <CodeParser language="javascript" :content="snippets.createAltTextAndCopy" class="text-left"/>
+                    <CodeParser language="javascript" :content="snippets.replaceQueries" class="text-left"/>
+                </div>
+            </BaseCard>
+    
+            <!-- CURSOR POINTER OR NOT EXAMPLE -->
+            <BaseCard>
+                <article dir="auto">
+                    <h2 class="text-left font-inter-medium text-xl flex gap-2">
+                        <VueUiIcon name="pointer" :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"/>
+                        {{ translations.a11y.cursor_pointer[store.lang] }}
+                    </h2>
+                    <p class="text-left my-4 max-w-[80ch]">
+                        {{ translations.a11y.cursor_pointer_presentation[store.lang] }}
+                    </p>
+                </article>
+                <CodeParser language="javascript" :content="snippets.config_pointer" class="text-left"/>
+            </BaseCard>
+        </div>
 
-            <div class="flex flex-col gap-4">
-                <BaseCard class="max-w-[500px] mx-auto" type="light">
-                    <VueUiXy :dataset :config></VueUiXy>
-                </BaseCard>
-                
-                <CodeParser language="javascript" :content="snippets.config" class="text-left"/>
-                <CodeParser language="javascript" :content="snippets.createAltTextAndCopy" class="text-left"/>
-                <CodeParser language="javascript" :content="snippets.replaceQueries" class="text-left"/>
-            </div>
-        </BaseCard>
     </div>
     <ConfirmCopy />
 </template>

@@ -72,6 +72,39 @@ export const useMainStore = defineStore("main", {
             lang: "en",
             translations: {
                 a11y: {
+                    cursor_pointer: {
+                        en: `Opt-in 'cursor pointer'`,
+                        fr: `Activer le « cursor pointer »`,
+                        pt: `Ativar o "cursor pointer"`,
+                        de: `„Cursor: Pointer“ aktivieren`,
+                        zh: `启用“cursor: pointer”`,
+                        ja: `「cursor: pointer」を有効にする`,
+                        es: `Activar "cursor: pointer"`,
+                        ko: `"cursor: pointer" 활성화`,
+                        ar: `تفعيل "cursor: pointer"`
+                    },
+                    cursor_pointer_updated_at: {
+                        en: '`false` by default since v3.15.0',
+                        fr: '`false` par défaut depuis la v3.15.0',
+                        pt: '`false` por padrão desde a v3.15.0',
+                        de: '`false` ist seit v3.15.0 der Standardwert',
+                        zh: '自 v3.15.0 起默认值为 `false`',
+                        ja: 'v3.15.0 以降のデフォルト値は `false` です',
+                        es: '`false` por defecto desde la v3.15.0',
+                        ko: 'v3.15.0부터 기본값은 `false`입니다',
+                        ar: '`false` هو الإعداد الافتراضي منذ الإصدار v3.15.0'
+                    },
+                    cursor_pointer_presentation: {
+                        en: `Applying 'cursor: pointer' to clickable elements such as buttons is a design choice rather than a web standard requirement. Browsers already provide native interaction cues, and altering the cursor changes platform conventions. For this reason, we keep it opt-in, allowing teams to decide based on their design system and user experience goals.`,
+                        fr: `L’application de « cursor: pointer » aux éléments cliquables comme les boutons relève d’un choix de conception et non d’une exigence des standards du web. Les navigateurs fournissent déjà des indices d’interaction natifs, et modifier le curseur change les conventions de la plateforme. Pour cette raison, nous le laissons en option afin que chaque équipe décide selon son design system et ses objectifs d’expérience utilisateur.`,
+                        pt: `A aplicação de 'cursor: pointer' em elementos clicáveis, como botões, é uma escolha de design e não uma exigência dos padrões da web. Os navegadores já fornecem pistas de interação nativas, e alterar o cursor modifica as convenções da plataforma. Por isso, mantemos essa opção como opt-in, permitindo que cada equipe decida de acordo com seu design system e objetivos de experiência do usuário.`,
+                        de: `Die Verwendung von „cursor: pointer“ bei anklickbaren Elementen wie Buttons ist eine Gestaltungsentscheidung und keine Anforderung der Webstandards. Browser bieten bereits native Interaktionshinweise, und eine Änderung des Cursors beeinflusst Plattformkonventionen. Deshalb ist diese Option standardmäßig deaktiviert und kann je nach Designsystem und UX-Zielen aktiviert werden.`,
+                        zh: `在可点击元素（如按钮）上使用“cursor: pointer”是一种设计选择，而不是 Web 标准的强制要求。浏览器已经提供了原生的交互提示，修改光标会改变平台惯例。因此我们将其设为可选项，让团队根据自身的设计系统和用户体验目标自行决定。`,
+                        ja: `ボタンなどのクリック可能な要素に「cursor: pointer」を適用するかどうかは、Web標準の必須要件ではなくデザイン上の選択です。ブラウザはすでにネイティブの操作ヒントを提供しており、カーソルを変更することはプラットフォームの慣習を変えることになります。そのため、本設定はオプトインとし、デザインシステムやユーザー体験の方針に応じて選択できるようにしています。`,
+                        es: `Aplicar 'cursor: pointer' a elementos interactivos como los botones es una decisión de diseño y no un requisito de los estándares web. Los navegadores ya ofrecen señales de interacción nativas, y modificar el cursor altera las convenciones de la plataforma. Por ello, lo mantenemos como una opción opt-in, permitiendo que cada equipo decida según su sistema de diseño y objetivos de experiencia de usuario.`,
+                        ko: `'cursor: pointer'를 버튼과 같은 클릭 가능한 요소에 적용하는 것은 웹 표준의 필수 사항이 아니라 디자인 선택입니다. 브라우저는 이미 기본적인 상호작용 신호를 제공하며, 커서를 변경하면 플랫폼 관례가 달라집니다. 따라서 이 옵션은 기본 비활성화 상태로 두고, 디자인 시스템과 사용자 경험 목표에 따라 선택적으로 활성화할 수 있도록 합니다.`,
+                        ar: `إن تطبيق "cursor: pointer" على العناصر القابلة للنقر مثل الأزرار هو خيار تصميمي وليس متطلبًا من معايير الويب. توفر المتصفحات بالفعل إشارات تفاعل افتراضية، وتغيير شكل المؤشر يغيّر من أعراف المنصة. لذلك نجعل هذا السلوك اختياريًا، بحيث يمكن لكل فريق تفعيله وفقًا لنظام التصميم وأهداف تجربة المستخدم الخاصة به.`
+                    },
                     alt_menu: {
                         en: 'Copy alt text',
                         fr: 'Copier le texte alternatif de l\'image',
@@ -104,7 +137,29 @@ export const useMainStore = defineStore("main", {
                         es: `Pruébelo: abra el menú contextual del gráfico y haga clic en el botón "Copiar texto alternativo".`,
                         ko: `사용해 보세요: 차트의 컨텍스트 메뉴를 열고 "대체 텍스트 복사" 버튼을 클릭하세요.`,
                         ar: `جرّب ذلك: افتح القائمة السياقية للمخطط وانقر على زر "نسخ النص البديل".`
-                    }
+                    },
+                    enable_a11y_button: {
+                        en: 'enable the accessibility button',
+                        fr: 'activer le bouton d’accessibilité',
+                        pt: 'ativar o botão de acessibilidade',
+                        de: 'die Schaltfläche für Barrierefreiheit aktivieren',
+                        zh: '启用无障碍按钮',
+                        ja: 'アクセシビリティボタンを有効にする',
+                        es: 'activar el botón de accesibilidad',
+                        ko: '접근성 버튼 활성화',
+                        ar: 'تفعيل زر إمكانية الوصول'
+                    },
+                    use_success_feedback: {
+                        en: 'use your success feedback solution here',
+                        fr: 'utilisez ici votre solution de retour de succès',
+                        pt: 'use aqui sua solução de feedback de sucesso',
+                        de: 'verwenden Sie hier Ihre Erfolgsrückmeldungslösung',
+                        zh: '在此使用您的成功反馈方案',
+                        ja: 'ここで成功フィードバックの仕組みを使用してください',
+                        es: 'utilice aquí su solución de retroalimentación de éxito',
+                        ko: '여기에 성공 피드백 솔루션을 사용하세요',
+                        ar: 'استخدم هنا حل إشعار النجاح الخاص بك'
+                    },
                 },
                 builtInThemes: {
                     en: 'Built-in themes',
