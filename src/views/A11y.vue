@@ -202,9 +202,9 @@ const config = computed(() => ({
                         <VueUiXy :dataset :config></VueUiXy>
                     </BaseCard>
                     
-                    <CodeParser language="javascript" :content="snippets.config" class="text-left"/>
-                    <CodeParser language="javascript" :content="snippets.createAltTextAndCopy" class="text-left"/>
-                    <CodeParser language="javascript" :content="snippets.replaceQueries" class="text-left"/>
+                    <CodeParser language="javascript" :content="snippets.config" class="text-left" @copy="store.copy"/>
+                    <CodeParser language="javascript" :content="snippets.createAltTextAndCopy" class="text-left" @copy="store.copy"/>
+                    <CodeParser language="javascript" :content="snippets.replaceQueries" class="text-left" @copy="store.copy"/>
                 </div>
             </BaseCard>
     
@@ -219,7 +219,7 @@ const config = computed(() => ({
                         {{ translations.a11y.cursor_pointer_presentation[store.lang] }}
                     </p>
                 </article>
-                <CodeParser language="javascript" :content="snippets.config_pointer" class="text-left"/>
+                <CodeParser language="javascript" :content="snippets.config_pointer" class="text-left" @copy="store.copy"/>
             </BaseCard>
         </div>
 
