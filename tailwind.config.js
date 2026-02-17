@@ -45,7 +45,7 @@ export default {
         "primary-light-grey": "#5c7e96",
         "gray-150": "#ececee",
         "vue-blue": "#213547"
-      }
+      },
     },
   },
   plugins: [],
