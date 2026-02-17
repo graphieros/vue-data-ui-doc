@@ -7,6 +7,7 @@ import useMobile from "../useMobile";
 import BaseCard from "../components/BaseCard.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
+import BaseArrow from "../components/Base/BaseArrow.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -216,37 +217,12 @@ function listenTo(isOpen) {
                                 <VueUiIcon v-else name="close" :stroke="color"/>
                             </template>
                         </VueUiXy>
-                        <svg 
-                            class="animation-hounce [transform-box:fill-box] origin-center pointer-events-none absolute right-12" width="100" viewBox="0 0 100 10"
-                            :style="{
-                                top: isMenuOpen ? '136px' : '28px'
-                            }"
-                        >
-                            <defs>
-                                <marker
-                                    id="arrow-menu"
-                                    viewBox="0 0 10 10"
-                                    refX="5"
-                                    refY="5"
-                                    markerWidth="6"
-                                    markerHeight="6"
-                                    orient="auto-start-reverse"
-                                    :fill="isDarkMode ? '#ff3700' : '#a32300'"
-                                >
-                                    <path d="M 0 0 L 10 5 L 0 10 z" />
-                                </marker>
-                            </defs>
-                            <line
-                                :x1="0"
-                                :y1="5"
-                                :x2="90"
-                                :y2="5"
-                                stroke-linecap="round"
-                                stroke-width="2"
-                                :stroke="isDarkMode ? '#ff3700' : '#a32300'"
-                                marker-end="url(#arrow-menu)"
-                            />
-                        </svg>
+                        <BaseArrow
+                            :top="isMenuOpen ? '136px' : '28px'"
+                            right="48px"
+                            :color="isDarkMode ? '#ff3700' : '#a32300'"
+                            direction="right"
+                        />
                     </BaseCard>
                     
                     <CodeParser language="javascript" :content="snippets.config" class="text-left" @copy="store.copy"/>
