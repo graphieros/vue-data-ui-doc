@@ -111,6 +111,9 @@ function replaceQueries(template, values) {
             },
             callbacks: {
                 altCopy: createAltTextAndCopy
+            },
+            buttonTitles: {
+                altCopy: 'Copy alt text'
             }
         }
     }
