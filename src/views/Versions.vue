@@ -757,7 +757,7 @@ const darkModeSparklineConfig = ref({
       strokeWidth: 1,
       smooth: true,
       pulse: {
-        show: true,
+        show: false,
         radius: 1,
         durationMs: 10000,
         color: '#42d392',
