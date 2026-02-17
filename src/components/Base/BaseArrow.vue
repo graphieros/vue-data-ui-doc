@@ -13,13 +13,13 @@ const props = defineProps({
 
 const ID = ref(createUid());
 
-const animationOffset = computed(() => props.direction === 'right' ? '-10px' : '10px');
+const animationOffset = computed(() => props.direction === 'right' ? '-10px' : '100px');
 
 </script>
 
 <template>
 <svg 
-    :class="`[transform-box:fill-box] origin-center pointer-events-none absolute right-12 ${animated ? 'animation-hounce' : ''}`" 
+    :class="`overflow-visible [transform-box:fill-box] origin-center pointer-events-none absolute right-12 ${animated ? 'animation-hounce' : ''}`" 
     width="100" 
     viewBox="0 0 100 10"
     :style="{
@@ -36,10 +36,11 @@ const animationOffset = computed(() => props.direction === 'right' ? '-10px' : '
             refY="5"
             markerWidth="6"
             markerHeight="6"
-            :orient="direction === 'right' ? 'auto-start-reverse' : 'auto-start'"
+            :orient="direction === 'right' ? 'auto-start-reverse' : 'auto'"
             :fill="color"
         >
-            <path d="M 0 0 L 10 5 L 0 10 z" />
+            <path v-if="direction === 'right'" d="M 0 0 L 10 5 L 0 10 z" />
+            <path v-else d="M 10 0 L 0 5 L 10 10 Z" />
         </marker>
     </defs>
     <line
@@ -50,7 +51,8 @@ const animationOffset = computed(() => props.direction === 'right' ? '-10px' : '
         stroke-linecap="round"
         stroke-width="2"
         :stroke="color"
-        :marker-end="`url(#${ID})`"
+        :marker-end="direction === 'right' ? `url(#${ID})` : undefined"
+        :marker-start="direction === 'left' ? `url(#${ID})` : undefined"
     />
 </svg>
 </template>
