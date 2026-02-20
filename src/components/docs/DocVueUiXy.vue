@@ -1145,6 +1145,7 @@ const dsTypeCode = computed(() => {
     prefix?: string // since v2.3.83
     suffix?: string // since v2.3.83
     dashIndices?: number[] // since v3.15.0 ${translations.value.docs.comments.xy.dashIndices[store.lang]}
+    temperatureColors?: string[] // since v3.15.4 ${translations.value.docs.comments.xy.temperatureColors[store.lang]}
 }`
 })
 

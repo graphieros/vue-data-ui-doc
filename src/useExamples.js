@@ -6299,6 +6299,54 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: 'منحنى ناعم مع تقديرات مميزة بمقاطع متقطعة'
                 }
             },
+            // XY STRAIGHT WITH PATH GRADIENT
+            {
+                dataset: [{
+                    ...DATASET_XY_SINUSOID2.value[0],
+                    temperatureColors: ['#ff3700', '#5f8aee'],
+                    color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A'
+                }],
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-straight-path-gradient',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'Straight segments, with temperature colors',
+                    fr: 'Segments droits, avec couleurs de température',
+                    pt: 'Segmentos retos, com cores de temperatura',
+                    de: 'Gerade Segmente mit Temperaturfarben',
+                    zh: '直线段，带有温度颜色',
+                    ja: '直線セグメント（温度カラー付き）',
+                    es: 'Segmentos rectos, con colores de temperatura',
+                    ko: '직선 세그먼트, 온도 색상 적용',
+                    ar: 'مقاطع مستقيمة مع ألوان الحرارة'
+                }
+            },
+            // XY SMOOTH WITH PATH GRADIENT
+            {
+                dataset: [{
+                    ...DATASET_XY_SINUSOID2_SMOOTH.value[0],
+                    temperatureColors: ['#ff3700', '#5f8aee'],
+                    color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A'
+                }],
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-spline-path-gradient',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'Spline, with temperature colors',
+                    fr: 'Courbe lissée, avec couleurs de température',
+                    pt: 'Curva suavizada, com cores de temperatura',
+                    de: 'Spline-Kurve mit Temperaturfarben',
+                    zh: '平滑曲线，带有温度颜色',
+                    ja: 'スプライン曲線（温度カラー付き）',
+                    es: 'Curva suavizada, con colores de temperatura',
+                    ko: '스플라인 곡선, 온도 색상 적용',
+                    ar: 'منحنى سلس مع ألوان الحرارة'
+                }
+            },
             // XY MULTIBAR
             {
                 dataset: DATASET_XY_BASIC_MULTIBAR.value,

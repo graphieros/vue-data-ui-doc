@@ -3832,6 +3832,17 @@ export const useMainStore = defineStore("main", {
                                 ko: "스택 모드에서는 데이터 포인트의 최소 및 최대 값에 배율을 조화시키려고 시도합니다.",
                                 ar: 'في الوضع المكدس، سيحاول تنسيق المقياس مع قيم الحد الأدنى والحد الأقصى لنقطة البيانات'
                             },
+                            temperatureColors: {
+                                en: 'For line types only. Set an array of colors to use a gradient on the path.',
+                                fr: 'Uniquement pour les types ligne. Définissez un tableau de couleurs pour utiliser un dégradé sur le tracé.',
+                                pt: 'Apenas para tipos de linha. Defina um array de cores para usar um gradiente no traçado.',
+                                de: 'Nur für Linientypen. Legen Sie ein Array von Farben fest, um einen Farbverlauf auf der Linie zu verwenden.',
+                                zh: '仅适用于折线类型。设置一个颜色数组以在路径上使用渐变效果。',
+                                ja: 'ラインタイプのみ。パスにグラデーションを適用するための色配列を設定します。',
+                                es: 'Solo para tipos de línea. Establezca un arreglo de colores para usar un degradado en la línea.',
+                                ko: '라인 유형에만 해당합니다. 경로에 그라데이션을 적용하려면 색상 배열을 설정하세요.',
+                                ar: 'لأنواع الخطوط فقط. قم بتعيين مصفوفة من الألوان لاستخدام تدرج لوني على المسار.'
+                            },
                             dashIndices: {
                                 en: 'Display segments as dashed lines for the provided indices. For line types only',
                                 fr: 'Afficher les segments en lignes pointillées pour les indices fournis. Uniquement pour les types ligne',
