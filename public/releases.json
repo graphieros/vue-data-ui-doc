@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.15.3",
+    "date": "2026-02-20",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add gradient path option",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.2",
     "date": "2026-02-16",
     "updates": [

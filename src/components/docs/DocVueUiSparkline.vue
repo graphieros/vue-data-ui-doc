@@ -8,7 +8,6 @@ import ThemesVueUiSparkline from "../themes/ThemesVueUiSparkline.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
-import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfigCode } from "../../useConfigCode";
@@ -20,7 +19,6 @@ import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
-import DocJsonConfigAccordion from "./DocJsonConfigAccordion.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseCard from "../BaseCard.vue";
@@ -138,6 +136,14 @@ const darkModeConfig = ref({
   loading: false,
   responsive: false,
   type: 'line',
+  gradientPath: {
+    show: false,
+    segments: 256,
+    colors: {
+      high: '#34eb96',
+      low: '#eb4034',
+    }
+  },
   downsample: {
         threshold: 1095
     },
@@ -256,6 +262,14 @@ const config = ref({
   loading: false,
   responsive: false,
   type: 'line',
+  gradientPath: {
+    show: false,
+    segments: 256,
+    colors: {
+      high: '#34eb96',
+      low: '#eb4034',
+    }
+  },
   downsample: {
         threshold: 1095
     },
@@ -617,6 +631,14 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
 <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
 <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
 <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+<BaseDetails attr="gradientPath" :level="1">
+  <BaseAttr name="show" attr="gradientPath.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  <BaseAttr name="segments" attr="gradientPath.segments" type="number" defaultVal="256" :min="4" :max="256" :step="4" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="The number of additional DOM nodes the gradient path will add. Be aware of that"/>
+  <BaseDetails attr="colors" :level="2" title="gradientPath.colors">
+    <BaseAttr name="high" attr="gradientPath.colors.high" type="color" defaultVal="#34eb96" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="low" attr="gradientPath.colors.low" type="color" defaultVal="#eb4034" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  </BaseDetails>
+</BaseDetails>
 <BaseDetails attr="events" :level="1">
   <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
   <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>

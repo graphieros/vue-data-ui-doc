@@ -8190,6 +8190,81 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: 'خط سلس مع منطقة'
                 }
             },
+            // SPARKLINE GRADIENT
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        gradientPath: {
+                            show: true,
+                        },
+                        style: {
+                            line: {
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                            },
+                            verticalIndicator: {
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-gradient-path',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: "With a gradient path",
+                    fr: "Avec un tracé en dégradé",
+                    pt: "Com um traçado em gradiente",
+                    de: "Mit einem Verlaufspfad",
+                    zh: "带有渐变路径",
+                    ja: "グラデーション付きのパス",
+                    es: "Con un trazado en degradado",
+                    ko: "그라데이션 경로 포함",
+                    ar: "بمسار متدرج"
+                }
+            },
+            // SPARKLINE GRADIENT
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        gradientPath: {
+                            show: true,
+                        },
+                        style: {
+                            area: {
+                                show: true,
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                            },
+                            line: {
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                                smooth: true,
+                            },
+                            verticalIndicator: {
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-gradient-path-area-smooth',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: "With a gradient path and an area",
+                    fr: "Avec un tracé en dégradé et une zone",
+                    pt: "Com um traçado em gradiente e uma área",
+                    de: "Mit einem Verlaufspfad und einer Fläche",
+                    zh: "带有渐变路径和区域",
+                    ja: "グラデーション付きのパスとエリア",
+                    es: "Con un trazado en degradado y un área",
+                    ko: "그라데이션 경로와 영역 포함",
+                    ar: "بمسار متدرج ومنطقة"
+                }
+            },
             // SPARKLINE BAR
             {
                 dataset: DATASET_SPARKLINE.value,
