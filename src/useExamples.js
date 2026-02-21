@@ -6302,8 +6302,10 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             // XY STRAIGHT WITH PATH GRADIENT
             {
                 dataset: [{
-                    ...DATASET_XY_SINUSOID2.value[0],
-                    temperatureColors: ['#ff3700', '#5f8aee'],
+                    name: 'Serie 1',
+                    type: 'line',
+                    series: [5, 8, 3, 5, 2, 3, 1, 2, 0, 1, 0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5],
+                    temperatureColors: ['#ff3700', '#ff8c00', '#42d392', '#5f8aee'],
                     color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A'
                 }],
                 config: BASE_XY_CONFIG.value,
@@ -6326,8 +6328,11 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             // XY SMOOTH WITH PATH GRADIENT
             {
                 dataset: [{
-                    ...DATASET_XY_SINUSOID2_SMOOTH.value[0],
-                    temperatureColors: ['#ff3700', '#5f8aee'],
+                    name: 'Serie 1',
+                    type: 'line',
+                    smooth: true,
+                    series: [5, 8, 3, 5, 2, 3, 1, 2, 0, 1, 0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5],
+                    temperatureColors: ['#ff3700', '#ff8c00', '#42d392', '#5f8aee'],
                     color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A'
                 }],
                 config: BASE_XY_CONFIG.value,
