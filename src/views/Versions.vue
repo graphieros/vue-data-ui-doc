@@ -13,7 +13,6 @@ import { darkenColor, lightenColor } from "vue-data-ui";
 import Downloads from "../components/Downloads.vue";
 import { BugIcon, GitForkIcon, StarFilledIcon, ToolIcon, UserHeartIcon, XIcon } from "vue-tabler-icons";
 import BaseCard from "../components/BaseCard.vue";
-import BaseLazy from "../components/BaseLazy.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import { useIconMapUnderscore } from "../useIconMapUnderscore";
@@ -2403,7 +2402,7 @@ const digitsConfigVersion = computed(() => {
 
 
             <div class="max-w-[800px] mx-auto px-6">
-              <BaseLazy>
+
                 <BaseCard class="mx-auto mt-6 max-w-[800px]">
                   <div class="max-w-[600px] mx-auto">
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
@@ -2487,21 +2486,21 @@ const digitsConfigVersion = computed(() => {
                       </VueUiSparkline>
                   </div>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <RepoStars />
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <Downloads/>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!!data && !isLoadingLine">
                   <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#2A2A2A' : '#F3F4F6' } }"/>
                   <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">
@@ -2512,9 +2511,9 @@ const digitsConfigVersion = computed(() => {
                       </template>
                   </VueDataUi>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+   
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig">
@@ -2525,9 +2524,9 @@ const digitsConfigVersion = computed(() => {
                       </template>
                   </VueUiHeatmap>
                 </BaseCard>
-              </BaseLazy>
+    
 
-              <BaseLazy>
+ 
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!isLoadingLine">
                   <VueDataUi v-if="xyDataset.length" component="VueUiXyCanvas" :dataset="xyDataset" :config="xyCanvasConfig" :key="`xystep_${step}`">
                     <template #source>
@@ -2537,9 +2536,9 @@ const digitsConfigVersion = computed(() => {
                       </template>
                   </VueDataUi>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+  
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases">
                     <template #source>
@@ -2560,13 +2559,13 @@ const digitsConfigVersion = computed(() => {
                     </VueDataUi>
                   </div>
                 </BaseCard>
-              </BaseLazy>
+    
 
-              <BaseLazy>
+     
                 <BaseCard class="mx-auto max-w-[800px] mt-6" v-if="!isLoadingLine && !!data">
                   <VueUiTable :key="`table_${step}`" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
                 </BaseCard>
-              </BaseLazy>
+      
 
                 <div class="w-full max-w-[800] mx-auto py-6">
                   <GithubIssues/>
