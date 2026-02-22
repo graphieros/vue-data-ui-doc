@@ -2412,6 +2412,9 @@ const digitsConfigVersion = computed(() => {
                         :dataset="parsedData"
                         :config="isDarkMode ? {
                           ...darkModeSparklineConfig,
+                          temperatureColors: {
+                            show: true
+                          },
                           style: {
                             ...darkModeSparklineConfig.style,
                             scaleMax: Math.max(...parsedData.map(d => d.value))
