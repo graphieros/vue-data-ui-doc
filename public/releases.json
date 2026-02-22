@@ -1,11 +1,22 @@
 [
   {
+    "version": "v 3.15.5",
+    "date": "2026-02-20",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add support for temperature gradient path",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.4",
     "date": "2026-02-20",
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Add support for gradient path",
+        "description": "Add support for temperature gradient path",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -16,7 +27,7 @@
     "updates": [
       {
         "component": "VueUiSparkline",
-        "description": "Add gradient path option",
+        "description": "Add gradient path experimental option",
         "link": "/docs#vue-ui-sparkline"
       }
     ]

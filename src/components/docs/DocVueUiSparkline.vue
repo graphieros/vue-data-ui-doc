@@ -25,6 +25,7 @@ import BaseCard from "../BaseCard.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -143,6 +144,10 @@ const darkModeConfig = ref({
       high: '#34eb96',
       low: '#eb4034',
     }
+  },
+  temperatureColors: {
+    show: false,
+    colors: ['#34eb96', '#eb4034'],
   },
   downsample: {
         threshold: 1095
@@ -269,6 +274,10 @@ const config = ref({
       high: '#34eb96',
       low: '#eb4034',
     }
+  },
+  temperatureColors: {
+    show: false,
+    colors: ['#34eb96', '#eb4034'],
   },
   downsample: {
         threshold: 1095
@@ -631,7 +640,12 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
 <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
 <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
 <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+<BaseDetails attr="temperatureColors" :level="1">
+  <BaseAttr name="show" attr="temperatureColors.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+  <BaseAttr name="colors" inactive attr="colors" defaultVal="['#34eb96', '#eb4034']" comment="Any number of colors can be provided"/>
+</BaseDetails>
 <BaseDetails attr="gradientPath" :level="1">
+  <BaseComment>Experimental</BaseComment>
   <BaseAttr name="show" attr="gradientPath.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
   <BaseAttr name="segments" attr="gradientPath.segments" type="number" defaultVal="256" :min="4" :max="256" :step="4" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="The number of additional DOM nodes the gradient path will add. Be aware of that"/>
   <BaseDetails attr="colors" :level="2" title="gradientPath.colors">
