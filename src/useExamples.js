@@ -8243,6 +8243,47 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: 'خط سلس مع منطقة'
                 }
             },
+                        // SPARKLINE TERMPERATURE COLORS
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        temperatureColors: {
+                            show: true,
+                            colors: ['#ff3700', '#ff8c00', '#42d392', '#5f8aee']
+                        },
+                        style: {
+                            area: {
+                                show: true,
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                            },
+                            line: {
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                                smooth: true,
+                            },
+                            verticalIndicator: {
+                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-temperature-colors',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: "With temperature gradient colors",
+                    fr: "Avec des couleurs en dégradé de température",
+                    pt: "Com cores em gradiente de temperatura",
+                    de: "Mit Temperaturverlaufsfarben",
+                    zh: "带有温度渐变颜色",
+                    ja: "温度グラデーションカラー付き",
+                    es: "Con colores en degradado de temperatura",
+                    ko: "온도 그라데이션 색상 포함",
+                    ar: "بألوان متدرجة لدرجة الحرارة"
+                }
+            },
             // SPARKLINE GRADIENT
             {
                 dataset: DATASET_SPARKLINE.value,
@@ -8267,55 +8308,15 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 id: 'sparkline-gradient-path',
                 link: 'vue-ui-sparkline',
                 description: {
-                    en: "With a gradient path",
-                    fr: "Avec un tracé en dégradé",
-                    pt: "Com um traçado em gradiente",
-                    de: "Mit einem Verlaufspfad",
-                    zh: "带有渐变路径",
-                    ja: "グラデーション付きのパス",
-                    es: "Con un trazado en degradado",
-                    ko: "그라데이션 경로 포함",
-                    ar: "بمسار متدرج"
-                }
-            },
-            // SPARKLINE GRADIENT
-            {
-                dataset: DATASET_SPARKLINE.value,
-                config: mergeConfigs({
-                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
-                    userConfig: {
-                        gradientPath: {
-                            show: true,
-                        },
-                        style: {
-                            area: {
-                                show: true,
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
-                            },
-                            line: {
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-                                smooth: true,
-                            },
-                            verticalIndicator: {
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
-                            }
-                        }
-                    }
-                }),
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-gradient-path-area-smooth',
-                link: 'vue-ui-sparkline',
-                description: {
-                    en: "With a gradient path and an area",
-                    fr: "Avec un tracé en dégradé et une zone",
-                    pt: "Com um traçado em gradiente e uma área",
-                    de: "Mit einem Verlaufspfad und einer Fläche",
-                    zh: "带有渐变路径和区域",
-                    ja: "グラデーション付きのパスとエリア",
-                    es: "Con un trazado en degradado y un área",
-                    ko: "그라데이션 경로와 영역 포함",
-                    ar: "بمسار متدرج ومنطقة"
+                    en: "With a gradient path (experimental)",
+                    fr: "Avec un tracé en dégradé (expérimental)",
+                    pt: "Com um traçado em gradiente (experimental)",
+                    de: "Mit einem Verlaufspfad (experimentell)",
+                    zh: "带有渐变路径（实验性）",
+                    ja: "グラデーション付きのパス（実験的）",
+                    es: "Con un trazado en degradado (experimental)",
+                    ko: "그라데이션 경로 포함 (실험적)",
+                    ar: "بمسار متدرج (تجريبي)"
                 }
             },
             // SPARKLINE BAR
