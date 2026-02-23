@@ -2413,11 +2413,16 @@ const digitsConfigVersion = computed(() => {
                         :config="isDarkMode ? {
                           ...darkModeSparklineConfig,
                           temperatureColors: {
-                            show: true
+                            show: true,
+                            colors: ['#87e6bb', '#42d392', '#1d915d'],
                           },
                           style: {
                             ...darkModeSparklineConfig.style,
-                            scaleMax: Math.max(...parsedData.map(d => d.value))
+                            scaleMax: Math.max(...parsedData.map(d => d.value)),
+                            verticalIndicator: {
+                              ...darkModeSparklineConfig.style.verticalIndicator,
+                              color: '#6A6A6A'
+                            }
                           }
                           } : {
                             ...sparklineConfig
