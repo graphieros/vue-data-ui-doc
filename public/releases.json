@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.15.6",
+    "date": "2026-02-23",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix TS type errors",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiSparkline",
+        "description": "Fix TS type errors",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.5",
     "date": "2026-02-20",
     "updates": [
