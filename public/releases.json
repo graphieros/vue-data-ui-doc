@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.15.8",
+    "date": "2026-02-25",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improve TS types for UserOptions callbacks",
+        "link": ""
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.7",
     "date": "2026-02-25",
     "updates": [
