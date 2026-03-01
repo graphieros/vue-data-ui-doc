@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from "vue";
 import { useMainStore } from "../../stores";
 import { abbreviate, darkenColor, getVueDataUiConfig, lightenColor, shiftColorHue, useObjectBindings } from "vue-data-ui";
 import BaseColorInput from "../BaseColorInput.vue";
@@ -13,6 +13,7 @@ const store = useMainStore();
 
 const translations = computed(() => store.translations);
 const isDarkMode =  computed(() => store.isDarkMode);
+const isMenuOpen = computed(() => store.isMenuOpen);
 
 onMounted(() => store.docSnap = false);
 
@@ -460,254 +461,355 @@ const dataset = computed(() => ([
     `
 })
 
+const importSnippet = computed(() => `import {
+    abbreviate,
+    applyDataCorrection,
+    createTSpans,
+    darkenColor,
+    getCumulativeAverage,
+    getCumulativeMedian,
+    getVueDataUiConfig,
+    lightenColor,
+    mergeConfigs,
+    shiftColorHue,
+    useObjectBindings,
+} from "vue-data-ui/utils";`);
+
+const utilityMenu = [
+    'applyDataCorrection',
+    'useObjectBindings',
+    'mergeConfigs',
+    'getVueDataUiConfig',
+    'abbreviate',
+    'darkenColor',
+    'lightenColor',
+    'shiftColorHue',
+    'createTSpans',
+    'getCumulativeAverage',
+    'getCumulativeMedian',
+]
+
+const activeSectionId = ref("");
+let sectionObserver = null;
+
+function scrollToSection(sectionId) {
+    const sectionElement = document.getElementById(sectionId);
+    if (!sectionElement) return;
+
+    sectionElement.scrollIntoView({ block: "start" });
+    activeSectionId.value = sectionId;
+}
+
+function startSectionObserver() {
+    if (sectionObserver) sectionObserver.disconnect();
+
+    const sectionElements = utilityMenu
+        .map((sectionId) => document.getElementById(sectionId))
+        .filter(Boolean);
+
+    if (!sectionElements.length) return;
+
+    sectionObserver = new IntersectionObserver(
+        (entries) => {
+        const visibleEntries = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (!visibleEntries.length) return;
+
+        const topEntry = visibleEntries[0];
+        const sectionId = topEntry.target.id;
+        if (sectionId) activeSectionId.value = sectionId;
+        },
+        {
+            root: null,
+            rootMargin: "-140px 0px -60% 0px",
+            threshold: [0.1, 0.25, 0.5, 0.75],
+        }
+    );
+
+    sectionElements.forEach((element) => sectionObserver.observe(element));
+}
+
+onMounted(async () => {
+    await nextTick();
+    startSectionObserver();
+});
+
+onBeforeUnmount(() => {
+    if (sectionObserver) sectionObserver.disconnect();
+});
+
 </script>
 
 <template>
+    <div :class="`fixed top-[82px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-10 p-4 bg-[#FAFAFA] dark:bg-[#3A3A3A] shadow-md`" :style="{
+        width: isMenuOpen ? 'calc(100vw - 300px)' : 'calc(100vw - 60px)'
+    }">
+        <div class="flex flex-row flex-wrap gap-2 leading-[1px] pr-12 text-xs">
+            <div :class="`hover:shadow-md font-mono p-2 rounded-full transition-all ${link === activeSectionId ? 'bg-app-blue text-[#1A1A1A] shadow-md' : 'bg-gray-200 dark:bg-[#4A4A4A] hover:bg-gray-100 dark:hover:bg-[#5A5A5A]'}`" v-for="link in utilityMenu">
+                <a class="cursor-pointer" @click="scrollToSection(link)">{{ link }}</a>
+            </div>
+        </div>
+    </div>
+
     <div>
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue mb-2 text-2xl">
+        <h1 class="mt-[124px] flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue mb-2 text-2xl">
             <VueUiIcon name="func" stroke="#42d392" :strokeWidth="1.5" />
             <span><span class="text-black dark:text-app-blue-light">{{ translations.utilityFunctions[store.lang] }}</span></span>
         </h1>
 
-        <BaseDocDescription :text="translations.utilityFunctionsDescription[store.lang]" />
-            <BaseCard>
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">applyDataCorrection</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.applyDataCorrection[store.lang] }}</p>
+        <BaseDocDescription :text="translations.utilityFunctionsDescription[store.lang]"/>
 
-                    <div class="p-4 overflow-auto">
-                        <div class="flex flex-col gap-4 flex-wrap max-w-[600px] mx-auto mb-4">
-                            <label class="flex flex-col">
-                                <code>averageWindow ({{ _averageWindow }})</code>
-                                <code class="text-xs mb-2 text-gray-500 dark:text-[#8A8A8A]">{{ comments.averageWindow[store.lang] }}</code>
-                                <input v-model="_averageWindow" type="range" :min="0" :max="20" class="accent-app-blue">
-                            </label>
-                            <label class="flex flex-col">
-                                <code>smoothingTau ({{ _smoothingTau }})</code>
-                                <code class="text-xs mb-2 text-gray-500 dark:text-[#8A8A8A]">{{ comments.smoothingTau[store.lang] }}</code>
-                                <input v-model="_smoothingTau" type="range" :min="0" :max="20" class="accent-app-blue">
-                            </label>
-                        </div>
-                        <div class="mx-auto max-w-[600px] p-4 bg-white dark:bg-[#1A1A1A] rounded mb-4">                            
-                            <VueUiXy
-                                :dataset="xyDatasetCorrected"
-                                :config="xyConfig"
-                            />
-                        </div>
+        <BaseCard class="font-mono mt-12">
+            <div class="flex flex-row gap-2 align-center">
+                <VueUiIcon name="plug" :stroke="isDarkMode ? '#CCCCCC' : '#3A3A3A'"/>
+                <h2 class="text-xl">Importing utility functions</h2>
+            </div>
 
-                        <CodeParser language="javascript" :content="dataCorrectionCode" @copy="store.copy()"/>
-                    </div>
-                </div>
-            </BaseCard>
+            <p class="mt-2 px-8 text-gray-500 dark:text-app-blue-light font-inter">
+                All utility functions can be directly imported from "vue-data-ui"
+            </p>
+            <p class="mt-2 px-8 text-gray-500 dark:text-app-blue-light font-inter">
+                Since v3.15.9, utility functions and their types are treeshaken, and can be imported as:
+            </p>
 
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">useObjectBindings</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
-                </div>
+            <CodeParser class="mt-4" language="javascript" :content="importSnippet" @copy="store.copy()"/>
+            
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="applyDataCorrection">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">applyDataCorrection</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.applyDataCorrection[store.lang] }}</p>
 
                 <div class="p-4 overflow-auto">
-                    <CodeParser :content="bindingsContent" language="javascript" @copy="store.copy()"/>
-                    <CodeParser :content="bindingsTemplate" language="html" @copy="store.copy()" class="mt-4"/>
-                </div>
+                    <div class="flex flex-col gap-4 flex-wrap max-w-[600px] mx-auto mb-4">
+                        <label class="flex flex-col">
+                            <code>averageWindow ({{ _averageWindow }})</code>
+                            <code class="text-xs mb-2 text-gray-500 dark:text-[#8A8A8A]">{{ comments.averageWindow[store.lang] }}</code>
+                            <input v-model="_averageWindow" type="range" :min="0" :max="20" class="accent-app-blue">
+                        </label>
+                        <label class="flex flex-col">
+                            <code>smoothingTau ({{ _smoothingTau }})</code>
+                            <code class="text-xs mb-2 text-gray-500 dark:text-[#8A8A8A]">{{ comments.smoothingTau[store.lang] }}</code>
+                            <input v-model="_smoothingTau" type="range" :min="0" :max="20" class="accent-app-blue">
+                        </label>
+                    </div>
+                    <div class="mx-auto max-w-[600px] p-4 bg-white dark:bg-[#1A1A1A] rounded mb-4">                            
+                        <VueUiXy
+                            :dataset="xyDatasetCorrected"
+                            :config="xyConfig"
+                        />
+                    </div>
 
-                <div class="mx-auto max-w-[300px] my-4">
-                    <label class="flex flex-row gap-2">
-                        Background color:
-                        <input type="color" v-model="bindings['style.chart.backgroundColor'].value" class="mb-4">
-                    </label>
-                    <VueUiDonut
-                        :dataset="donutSet"
-                        :config="donutConfig"
+                    <CodeParser language="javascript" :content="dataCorrectionCode" @copy="store.copy()"/>
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="useObjectBindings">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">useObjectBindings</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
+            </div>
+
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="bindingsContent" language="javascript" @copy="store.copy()"/>
+                <CodeParser :content="bindingsTemplate" language="html" @copy="store.copy()" class="mt-4"/>
+            </div>
+
+            <div class="mx-auto max-w-[300px] my-4">
+                <label class="flex flex-row gap-2">
+                    Background color:
+                    <input type="color" v-model="bindings['style.chart.backgroundColor'].value" class="mb-4">
+                </label>
+                <VueUiDonut
+                    :dataset="donutSet"
+                    :config="donutConfig"
+                >
+                </VueUiDonut>
+                <div class="mt-2">
+                    <a
+                        href="https://github.com/graphieros/vue-data-ui/discussions/226"
+                        target="_blank"
+                        class="underline text-[14px] hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
-                    </VueUiDonut>
-                    <div class="mt-2">
-                        <a
-                            href="https://github.com/graphieros/vue-data-ui/discussions/226"
-                            target="_blank"
-                            class="underline text-[14px] hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >
-                            Check out where this solution came from
-                        </a>
+                        Check out where this solution came from
+                    </a>
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="mt-6">
+            <div class="p-4" dir="auto" id="mergeConfigs">
+                <code class="text-xl">mergeConfigs</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.mergeConfigs[store.lang] }}</p>
+            </div>
+
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="mergeConfigsContent" language="javascript" @copy="store.copy()"/>
+            </div>
+
+            <div class="p-4" dir="auto" id="getVueDataUiConfig">
+                <code class="text-xl">getVueDataUiConfig + mergeConfigs</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.mergeConfigsExample[store.lang] }}</p>
+            </div>
+
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="getVueDataUiConfigAndMergeConfigsContent" language="javascript" @copy="store.copy()"/>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="abbreviate">
+            <div class="p-4" dir="auto">
+                    <code class="text-xl">abbreviate</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.abbreviate[store.lang] }}</p>
+                </div>
+
+
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="abbrContent" language="javascript" @copy="store.copy()"/>
+            </div>
+
+            <div class="p-4 flex flex-col gap-2 w-full">
+                <div class="flex flex-col gap-1">
+                    <label for="abbrSource" class="text-xs">Text source:</label>
+                    <input id="abbrSource" type="text" v-model="abbrSource" class="w-full py-1">
+                </div>
+                <div class="flex flex-col gap-1 w-fit">
+                    <label class="text-xs" for="abbrLen">Abbrevation length:</label>
+                    <BaseNumberInput v-model:value="abbrLen" :min="1" :max="12" labelId="abbrLen"/>
+                </div>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <div>Result:</div>
+                    <div class="bg-gray-200 dark:bg-[#FFFFFF10] w-full py-1 px-2 rounded">
+                        {{ abbreviated }}
                     </div>
                 </div>
-            </BaseCard>
+            </div>
+        </BaseCard>
 
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">mergeConfigs</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.mergeConfigs[store.lang] }}</p>
-                </div>
-
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="mergeConfigsContent" language="javascript" @copy="store.copy()"/>
-                </div>
-
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">getVueDataUiConfig + mergeConfigs</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.mergeConfigsExample[store.lang] }}</p>
-                </div>
-
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="getVueDataUiConfigAndMergeConfigsContent" language="javascript" @copy="store.copy()"/>
-                </div>
-            </BaseCard>
-
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                        <code class="text-xl">abbreviate</code>
-                        <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.abbreviate[store.lang] }}</p>
-                    </div>
+        <BaseCard class="mt-6" id="darkenColor">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">darkenColor</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.darkenColor[store.lang] }}</p>
+            </div>
 
 
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="abbrContent" language="javascript" @copy="store.copy()"/>
-                </div>
-
-                <div class="p-4 flex flex-col gap-2 w-full">
-                    <div class="flex flex-col gap-1">
-                        <label for="abbrSource" class="text-xs">Text source:</label>
-                        <input id="abbrSource" type="text" v-model="abbrSource" class="w-full py-1">
-                    </div>
-                    <div class="flex flex-col gap-1 w-fit">
-                        <label class="text-xs" for="abbrLen">Abbrevation length:</label>
-                        <BaseNumberInput v-model:value="abbrLen" :min="1" :max="12" labelId="abbrLen"/>
-                    </div>
-                    <div class="flex flex-row gap-2 place-items-center">
-                        <div>Result:</div>
-                        <div class="bg-gray-200 dark:bg-[#FFFFFF10] w-full py-1 px-2 rounded">
-                            {{ abbreviated }}
-                        </div>
-                    </div>
-                </div>
-            </BaseCard>
-
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">darkenColor</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.darkenColor[store.lang] }}</p>
-                </div>
+<div class="p-4 overflow-auto">
+    <CodeParser :content="darkenContent" language="javascript" @copy="store.copy()"/>
+</div>
 
 
-    <div class="p-4 overflow-auto">
-        <CodeParser :content="darkenContent" language="javascript" @copy="store.copy()"/>
+    <div class="p-4 flex flex-col gap-2 w-fit">
+        <BaseColorInput v-model:value="colorDark" label="Color source" label-id="source-light"/>
+        <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+            <label for="range-dark" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Darken strength</label>
+            <input id="range-dark" type="range" v-model="strengthDark" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+        </div>
+        <div class="flex flex-row place-items-center gap-2">
+            Result: <div :style="{
+                background: darkenColor(colorDark, strengthDark),
+                height: '40px',
+                width: '40px'
+            }"/>
+        </div>
     </div>
+
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="lightenColor">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">lightenColor</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.lightenColor[store.lang] }}</p>
+            </div>
+
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="lightenContent" language="javascript" @copy="store.copy()"/>
+            </div>
+
+            <div class="p-4 flex flex-col gap-2 w-fit">
+                <BaseColorInput v-model:value="colorLight" label="Color source" label-id="source-light"/>
+                <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                    <label for="range-light" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Lighten strength</label>
+                    <input id="range-light" type="range" v-model="strengthLight" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+                </div>
+                <div class="flex flex-row place-items-center gap-2">
+                    Result: <div :style="{
+                        background: lightenColor(colorLight, strengthLight),
+                        height: '40px',
+                        width: '40px'
+                    }"/>
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="shiftColorHue">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">shiftColorHue</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
+            </div>
+
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="shiftColorContent" language="javascript" @copy="store.copy()"/>
+            </div>
 
 
         <div class="p-4 flex flex-col gap-2 w-fit">
-            <BaseColorInput v-model:value="colorDark" label="Color source" label-id="source-light"/>
+        <BaseColorInput v-model:value="colorHue" label="Color source" label-id="source-hue"/>
             <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                <label for="range-dark" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Darken strength</label>
-                <input id="range-dark" type="range" v-model="strengthDark" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+                <label for="range-hue" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Hue strength</label>
+                <BaseNumberInput v-model:value="strengthHue" :min="0" :max="1" :step="0.01"/>
             </div>
             <div class="flex flex-row place-items-center gap-2">
                 Result: <div :style="{
-                    background: darkenColor(colorDark, strengthDark),
+                    background: shiftColorHue(colorHue, strengthHue),
                     height: '40px',
                     width: '40px'
                 }"/>
             </div>
         </div>
 
-            </BaseCard>
+        </BaseCard>
 
-
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">lightenColor</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.lightenColor[store.lang] }}</p>
-                </div>
-
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="lightenContent" language="javascript" @copy="store.copy()"/>
-                </div>
-
-                <div class="p-4 flex flex-col gap-2 w-fit">
-                    <BaseColorInput v-model:value="colorLight" label="Color source" label-id="source-light"/>
-                    <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                        <label for="range-light" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Lighten strength</label>
-                        <input id="range-light" type="range" v-model="strengthLight" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
-                    </div>
-                    <div class="flex flex-row place-items-center gap-2">
-                        Result: <div :style="{
-                            background: lightenColor(colorLight, strengthLight),
-                            height: '40px',
-                            width: '40px'
-                        }"/>
-                    </div>
-                </div>
-            </BaseCard>
-
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">shiftColorHue</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
-                </div>
-
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="shiftColorContent" language="javascript" @copy="store.copy()"/>
-                </div>
-
-
-            <div class="p-4 flex flex-col gap-2 w-fit">
-            <BaseColorInput v-model:value="colorHue" label="Color source" label-id="source-hue"/>
-                <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                    <label for="range-hue" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Hue strength</label>
-                    <BaseNumberInput v-model:value="strengthHue" :min="0" :max="1" :step="0.01"/>
-                </div>
-                <div class="flex flex-row place-items-center gap-2">
-                    Result: <div :style="{
-                        background: shiftColorHue(colorHue, strengthHue),
-                        height: '40px',
-                        width: '40px'
-                    }"/>
-                </div>
+        <BaseCard class="mt-6" id="createTSpans">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">createTSpans</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.createTSpans[store.lang] }}</p>
             </div>
 
-            </BaseCard>
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="createTSpanContent" language="javascript" @copy="store.copy()"/>
+                <CodeParser :content="createTSpanTemplate" language="html" @copy="store.copy()"/>
+            </div>
+        </BaseCard>
 
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">createTSpans</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.createTSpans[store.lang] }}</p>
-                </div>
+        <BaseCard class="mt-6" id="getCumulativeAverage">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">getCumulativeAverage</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.getCumulativeAverage[store.lang] }}</p>
+            </div>
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="getCumulativeAverageTemplate" language="javascript" @copy="store.copy()"/>
+            </div>
+        </BaseCard>
 
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="createTSpanContent" language="javascript" @copy="store.copy()"/>
-                    <CodeParser :content="createTSpanTemplate" language="html" @copy="store.copy()"/>
-                </div>
-            </BaseCard>
-
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">getCumulativeAverage</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.getCumulativeAverage[store.lang] }}</p>
-                </div>
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="getCumulativeAverageTemplate" language="javascript" @copy="store.copy()"/>
-                </div>
-            </BaseCard>
-
-            <BaseCard class="mt-6">
-                <div class="p-4" dir="auto">
-                    <code class="text-xl">getCumulativeMedian</code>
-                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.getCumulativeMedian[store.lang] }}</p>
-                </div>
-                <div class="p-4 overflow-auto">
-                    <CodeParser :content="getCumulativeMedianTemplate" language="javascript" @copy="store.copy()"/>
-                </div>
-            </BaseCard>
-
-
-
-
-
-
-
-
-
-
-
+        <BaseCard class="mt-6" id="getCumulativeMedian">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">getCumulativeMedian</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.getCumulativeMedian[store.lang] }}</p>
+            </div>
+            <div class="p-4 overflow-auto">
+                <CodeParser :content="getCumulativeMedianTemplate" language="javascript" @copy="store.copy()"/>
+            </div>
+        </BaseCard>
 </div>
 
 </template>
+
+<style scoped>
+[id] {
+    scroll-margin-top: 175px;
+}
+</style>
