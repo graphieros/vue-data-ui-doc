@@ -17,10 +17,12 @@ import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import { useIconMapUnderscore } from "../useIconMapUnderscore";
 import BaseScroll from "../components/Base/BaseScroll.vue";
+import { useCompactNumberFormatter } from "../useCompactNumberFormatter";
 
 const globalConfig = useConfig()
-
 const store = useMainStore();
+const { formatCompactNumber } = useCompactNumberFormatter();
+
 const translations = computed(() => store.translations)
 const showWC = ref(false);
 const versionComponent = ref(null);
@@ -719,11 +721,15 @@ const sparklineConfig = ref({
     },
     dataLabel: {
       position: "left",
-      fontSize: 48,
+      fontSize: 32,
+      offsetY: 22,
       bold: true,
       color: "#1A1A1A",
       roundingValue: 1,
-      valueType: "latest"
+      valueType: "latest",
+      formatter: ({ value }) => {
+        return formatCompactNumber(value)
+      }
     },
     title: {
       show: true,
@@ -788,11 +794,15 @@ const darkModeSparklineConfig = ref({
     },
     dataLabel: {
       position: "left",
-      fontSize: 48,
+      fontSize: 32,
+      offsetY: 22,
       bold: true,
       color: "#42d392",
       roundingValue: 1,
-      valueType: "latest"
+      valueType: "latest",
+      formatter: ({ value }) => {
+        return formatCompactNumber(value)
+      }
     },
     title: {
       show: true,
@@ -2399,12 +2409,10 @@ const digitsConfigVersion = computed(() => {
                 </BaseCard>
             </div>
 
-
-
             <div class="max-w-[800px] mx-auto px-6">
 
                 <BaseCard class="mx-auto mt-6 max-w-[800px]">
-                  <div class="max-w-[600px] mx-auto">
+                  <div class="max-w-[600px] mx-auto tabular-nums">
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                       <VueUiSparkline
