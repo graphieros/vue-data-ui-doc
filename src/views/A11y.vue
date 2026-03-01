@@ -120,7 +120,10 @@ function replaceQueries(template, values) {
     }
 }))`,
     config_pointer: `const config = computed(() => ({
-    useCursorPointer: true, // ${translations.value.a11y.cursor_pointer_updated_at[store.lang]}
+    // ${translations.value.a11y.config_pointer_comment[store.lang]}
+    userOptions: {
+        useCursorPointer: true, // ${translations.value.a11y.cursor_pointer_updated_at[store.lang]}
+    }
 }))`
 }))
 

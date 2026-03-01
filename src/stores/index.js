@@ -72,6 +72,17 @@ export const useMainStore = defineStore("main", {
             lang: "en",
             translations: {
                 a11y: {
+                    config_pointer_comment: {
+                        en: 'In most components, the attribute is placed inside `userOptions`',
+                        fr: 'Dans la plupart des composants, l’attribut est placé à l’intérieur de `userOptions`',
+                        pt: 'Na maioria dos componentes, o atributo é colocado dentro de `userOptions`',
+                        de: 'In den meisten Komponenten wird das Attribut innerhalb von `userOptions` platziert',
+                        zh: '在大多数组件中，该属性放置在 `userOptions` 内部',
+                        ja: 'ほとんどのコンポーネントでは、この属性は `userOptions` の中に配置されます',
+                        es: 'En la mayoría de los componentes, el atributo se coloca dentro de `userOptions`',
+                        ko: '대부분의 컴포넌트에서 해당 속성은 `userOptions` 내부에 배치됩니다',
+                        ar: 'في معظم المكونات، يتم وضع السمة داخل `userOptions`'
+                    },
                     cursor_pointer: {
                         en: `Opt-in 'cursor pointer'`,
                         fr: `Activer le « cursor pointer »`,
