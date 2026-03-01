@@ -543,7 +543,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div :class="`fixed top-[82px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-10 p-4 bg-[#FAFAFA] dark:bg-[#3A3A3A] shadow-md`" :style="{
+    <div :class="`hidden lg:block fixed top-[82px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-10 p-4 bg-[#FAFAFA] dark:bg-[#3A3A3A] shadow-md`" :style="{
         width: isMenuOpen ? 'calc(100vw - 300px)' : 'calc(100vw - 60px)'
     }">
         <div class="flex flex-row flex-wrap gap-2 leading-[1px] pr-12 text-xs">
