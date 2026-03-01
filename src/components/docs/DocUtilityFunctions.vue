@@ -7,10 +7,12 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import { applyDataCorrection } from "vue-data-ui/utils";
 
 const store = useMainStore();
 
 const translations = computed(() => store.translations);
+const isDarkMode =  computed(() => store.isDarkMode);
 
 onMounted(() => store.docSnap = false);
 
@@ -124,6 +126,17 @@ const utilityTranslations = ref({
         es: 'A partir de un array de números, devuelve un array de medianas acumuladas',
         ko: '숫자 배열에서 누적 중앙값 배열을 반환',
         ar: 'من مصفوفة أرقام، أعِد مصفوفة من الوسيطات التراكمية'
+    },
+    applyDataCorrection: {
+        en: 'Applies a two-stage data correction pipeline to a numeric time series. This utility is designed for visual data refinement, where smoothness is required without distorting boundary values or shifting peaks and transitions.',
+        fr: "Applique un pipeline de correction des données en deux étapes à une série temporelle numérique. Cet utilitaire est conçu pour l'affinage visuel des données, lorsque la fluidité est requise sans déformer les valeurs aux limites ni déplacer les pics et les transitions.",
+        pt: 'Aplica um pipeline de correção de dados em duas etapas a uma série temporal numérica. Este utilitário foi projetado para refinamento visual de dados, quando é necessário suavidade sem distorcer valores de limite ou deslocar picos e transições.',
+        de: 'Wendet eine zweistufige Datenkorrektur-Pipeline auf eine numerische Zeitreihe an. Dieses Dienstprogramm dient der visuellen Datenverfeinerung, wenn Glättung erforderlich ist, ohne Randwerte zu verzerren oder Spitzen und Übergänge zu verschieben.',
+        zh: '对数值时间序列应用两阶段数据校正流程。该工具用于视觉数据优化，在需要平滑效果的同时，不会扭曲边界值或移动峰值和过渡。',
+        ja: '数値時系列に対して2段階のデータ補正パイプラインを適用します。このユーティリティは、境界値を歪めたりピークや遷移を移動させたりすることなく、滑らかさが求められる視覚的データ調整のために設計されています。',
+        es: 'Aplica una canalización de corrección de datos en dos etapas a una serie temporal numérica. Esta utilidad está diseñada para el refinamiento visual de datos, cuando se requiere suavidad sin distorsionar los valores límite ni desplazar picos y transiciones.',
+        ko: '숫자 시계열에 두 단계 데이터 보정 파이프라인을 적용합니다. 이 유틸리티는 경계 값을 왜곡하거나 피크 및 전환을 이동시키지 않으면서 부드러움이 필요한 시각적 데이터 정제를 위해 설계되었습니다.',
+        ar: 'يطبق خط معالجة لتصحيح البيانات من مرحلتين على سلسلة زمنية رقمية. تم تصميم هذه الأداة لتحسين عرض البيانات بصريًا عند الحاجة إلى السلاسة دون تشويه القيم الحدّية أو إزاحة القمم والانتقالات.'
     }
 })
 
@@ -317,6 +330,28 @@ const comments = ref({
         es: 'Convertir valores inválidos a cero',
         ko: '잘못된 값을 0으로 변환',
         ar: 'تحويل القيم غير الصالحة إلى صفر'
+    },
+    averageWindow: {
+        en: 'Bidirectional moving average. Blends a trailing (left-anchored) and leading (right-anchored) average by position so transitions from both fixed endpoints are smooth. First and last points are preserved.',
+        fr: "Moyenne mobile bidirectionnelle. Combine une moyenne rétrospective (ancrée à gauche) et une moyenne prospective (ancrée à droite) selon la position afin d'assurer des transitions fluides depuis les deux extrémités fixes. Les premier et dernier points sont conservés.",
+        pt: 'Média móvel bidirecional. Combina uma média retroativa (ancorada à esquerda) e uma média antecipada (ancorada à direita) conforme a posição, garantindo transições suaves a partir de ambas as extremidades fixas. O primeiro e o último pontos são preservados.',
+        de: 'Bidirektionaler gleitender Durchschnitt. Kombiniert einen nachlaufenden (links verankerten) und einen vorlaufenden (rechts verankerten) Durchschnitt positionsabhängig, sodass Übergänge von beiden festen Endpunkten aus glatt verlaufen. Der erste und letzte Punkt bleiben erhalten.',
+        zh: '双向移动平均。根据位置融合滞后（左锚定）和前向（右锚定）平均值，使从两个固定端点过渡更加平滑。首尾点保持不变。',
+        ja: '双方向移動平均。位置に応じて後方（左アンカー）平均と前方（右アンカー）平均を組み合わせ、両端の固定点からの遷移を滑らかにします。最初と最後の点は保持されます。',
+        es: 'Media móvil bidireccional. Combina una media retrospectiva (anclada a la izquierda) y una media prospectiva (anclada a la derecha) según la posición, de modo que las transiciones desde ambos extremos fijos sean suaves. Se conservan el primer y el último punto.',
+        ko: '양방향 이동 평균. 위치에 따라 후행(왼쪽 기준) 평균과 선행(오른쪽 기준) 평균을 결합하여 양쪽 고정 끝점에서의 전환이 부드럽게 이루어지도록 합니다. 첫 번째와 마지막 포인트는 유지됩니다.',
+        ar: 'متوسط متحرك ثنائي الاتجاه. يمزج بين متوسط متأخر (مرتكز إلى اليسار) ومتوسط متقدم (مرتكز إلى اليمين) حسب الموضع لضمان انتقالات سلسة من كلا الطرفين الثابتين. يتم الحفاظ على أول وآخر نقطة.'
+    },
+    smoothingTau: {
+        en: 'Forward-backward exponential smoothing (zero-phase). Smooths without introducing lag — preserves the dynamics/timing of trends. First and last points are preserved.',
+        fr: "Lissage exponentiel avant-arrière (phase nulle). Lisse les données sans introduire de décalage — préserve la dynamique et le timing des tendances. Les premier et dernier points sont conservés.",
+        pt: 'Suavização exponencial direta e inversa (fase zero). Suaviza sem introduzir atraso — preserva a dinâmica e o timing das tendências. O primeiro e o último pontos são preservados.',
+        de: 'Vorwärts-Rückwärts-Exponentielle Glättung (Nullphase). Glättet ohne Verzögerung einzuführen — bewahrt die Dynamik und das zeitliche Verhalten von Trends. Der erste und letzte Punkt bleiben erhalten.',
+        zh: '前向-后向指数平滑（零相位）。在不引入滞后的情况下进行平滑——保留趋势的动态和时序。首尾点保持不变。',
+        ja: '前後方向の指数平滑化（ゼロ位相）。遅延を生じさせることなく平滑化し、トレンドのダイナミクスやタイミングを保持します。最初と最後の点は保持されます。',
+        es: 'Suavizado exponencial hacia adelante y hacia atrás (fase cero). Suaviza sin introducir retraso — preserva la dinámica y el tiempo de las tendencias. Se conservan el primer y el último punto.',
+        ko: '전방-후방 지수 평활화(영위상). 지연을 발생시키지 않으면서 부드럽게 처리하여 추세의 동역학과 타이밍을 유지합니다. 첫 번째와 마지막 포인트는 유지됩니다.',
+        ar: 'تنعيم أسي أمامي-خلفي (طور صفري). يقوم بالتنعيم دون إدخال تأخير — يحافظ على ديناميكيات واتجاهات التوقيت. يتم الحفاظ على أول وآخر نقطة.'
     }
 })
 
@@ -378,6 +413,53 @@ const donutSet = ref([
 const donutConfig = ref(getVueDataUiConfig('vue_ui_donut'));
 const bindings = useObjectBindings(donutConfig);
 
+const _averageWindow = ref(0);
+const _smoothingTau = ref(0);
+
+const ds = [1, 2, 3, 4, 5, 100, 7, 8, 9, 10, 11, 12]
+
+const xyDatasetCorrected = computed(() => {
+    return [
+        {
+            name: 'Series A',
+            type: 'line',
+            series: applyDataCorrection(ds.map(d => ({ value: d })), { averageWindow: _averageWindow.value, smoothingTau: _smoothingTau.value }).map(d => d.value)
+        }
+    ]
+});
+
+const xyConfig = computed(() => {
+    return {
+        theme: isDarkMode.value ? 'dark' : '',
+        chart: {
+            userOptions: {
+                show: false,
+            },
+            zoom: {
+                show: false
+            }
+        }
+    }
+})
+
+const dataCorrectionCode = computed(() => {
+    return `import { applyDataCorrection } from "vue-data-ui/utils;
+
+const source = [1, 2, 3, 4, 5, 100, 7, 8, 9, 10, 11, 12];
+
+const dataset = computed(() => ([
+    {
+        name: 'Series A',
+        type: 'line',
+        series: applyDataCorrection(
+            ds.map(d => ({ value: d })), 
+            { averageWindow: ${_averageWindow.value}, smoothingTau: ${_smoothingTau.value} }
+        ).map(d => d.value)
+    }
+]))
+    `
+})
+
 </script>
 
 <template>
@@ -388,8 +470,37 @@ const bindings = useObjectBindings(donutConfig);
         </h1>
 
         <BaseDocDescription :text="translations.utilityFunctionsDescription[store.lang]" />
-
             <BaseCard>
+                <div class="p-4" dir="auto">
+                    <code class="text-xl">applyDataCorrection</code>
+                    <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.applyDataCorrection[store.lang] }}</p>
+
+                    <div class="p-4 overflow-auto">
+                        <div class="flex flex-col gap-4 flex-wrap max-w-[600px] mx-auto mb-4">
+                            <label class="flex flex-col">
+                                <code>averageWindow ({{ _averageWindow }})</code>
+                                <code class="text-xs mb-2 text-gray-500 dark:text-[#8A8A8A]">{{ comments.averageWindow[store.lang] }}</code>
+                                <input v-model="_averageWindow" type="range" :min="0" :max="20" class="accent-app-blue">
+                            </label>
+                            <label class="flex flex-col">
+                                <code>smoothingTau ({{ _smoothingTau }})</code>
+                                <code class="text-xs mb-2 text-gray-500 dark:text-[#8A8A8A]">{{ comments.smoothingTau[store.lang] }}</code>
+                                <input v-model="_smoothingTau" type="range" :min="0" :max="20" class="accent-app-blue">
+                            </label>
+                        </div>
+                        <div class="mx-auto max-w-[600px] p-4 bg-white dark:bg-[#1A1A1A] rounded mb-4">                            
+                            <VueUiXy
+                                :dataset="xyDatasetCorrected"
+                                :config="xyConfig"
+                            />
+                        </div>
+
+                        <CodeParser language="javascript" :content="dataCorrectionCode" @copy="store.copy()"/>
+                    </div>
+                </div>
+            </BaseCard>
+
+            <BaseCard class="mt-6">
                 <div class="p-4" dir="auto">
                     <code class="text-xl">useObjectBindings</code>
                     <p class="mt-2 text-gray-500 dark:text-app-blue-light">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
