@@ -138,7 +138,7 @@ const soMuchMore = ref({
 </script>
 
 <template>
-    <div class="ml-12 sm:mx-auto max-w-[1400px] px-12 sm:px-20">
+    <div class="ml-12 sm:mx-auto max-w-[1400px] px-12 sm:px-20 w-full" dir="auto">
         <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-2 place-items-center">
             <VueUiIcon name="externalLink" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
             {{ fncsyIntro[store.lang] }}
@@ -147,15 +147,15 @@ const soMuchMore = ref({
         <BaseCard type="dark" class="mt-2 w-full max-w-[1200px]">
             <a href="https://fncsy.com/" target="_blank">
                 <div class="flex flex-row gap-2 place-items-center justify-start">
-                    <div class="flex flex-col">
+                    <div class="flex flex-row flex-wrap place-items-center lg:gap-4">
                         <div class="flex flex-row gap-2 place-items-center">
-                            <img src="../assets/fncsy-logo.webp" height="64" width="64"/>
+                            <img src="../assets/fncsy-logo.webp" alt="Fncsy logo" height="64" width="64"/>
                             <code class="text-app-green-dark dark:text-app-green text-[32px]">FNCSY</code>
                         </div>
-                        <code class="text-xl">{{ freeProductionReady[store.lang] }}</code>
                     </div>
                 </div>
             </a>
+            <p class="font-inter-medium text-gray-500 px-4">{{freeProductionReady[store.lang] }}</p>
             <div class="flex flex-col lg:flex-row gap-12 place-items-center">
                 <div class="flex flex-col sm:justify-center mt-4 min-w-[300px]">
                     <a href="https://fncsy.com/image-to-pixel-art" target="_blank" class="hover:bg-gray-300 hover:dark:bg-[#FFFFFF10] rounded-md transition-colors px-2">

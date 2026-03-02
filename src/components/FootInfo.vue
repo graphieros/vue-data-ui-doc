@@ -6,6 +6,7 @@ import BaseCard from "./BaseCard.vue";
 import FncsyAd from "./FncsyAd.vue";
 import { ChevronDownIcon, ChevronUpIcon } from "vue-tabler-icons";
 import useMobile from "../useMobile";
+import NpmxAd from "./NpmxAd.vue";
 
 const store = useMainStore();
 const router = useRouter()
@@ -136,6 +137,8 @@ s
                 </div>
             </div>
         </div>
+
+        <NpmxAd />
 
         <FncsyAd/>
 
