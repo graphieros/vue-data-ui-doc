@@ -138,13 +138,13 @@ const soMuchMore = ref({
 </script>
 
 <template>
-    <div class="ml-12 sm:mx-auto max-w-[1400px] px-12 sm:px-20 w-full" dir="auto">
+    <div class="ml-12 sm:mx-auto max-w-[1000px] px-12 sm:px-20" dir="auto">
         <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-2 place-items-center">
             <VueUiIcon name="externalLink" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
             {{ fncsyIntro[store.lang] }}
         </div>
 
-        <BaseCard type="dark" class="mt-2 w-full max-w-[1200px]">
+        <BaseCard type="dark">
             <a href="https://fncsy.com/" target="_blank">
                 <div class="flex flex-row gap-2 place-items-center justify-start">
                     <div class="flex flex-row flex-wrap place-items-center lg:gap-4">

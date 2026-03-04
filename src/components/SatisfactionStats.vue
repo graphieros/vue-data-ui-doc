@@ -805,7 +805,7 @@ const area = computed(() => {
         }
     }
     return {
-        from: history.value.dates.indexOf('2025-08-24'),
+        from: history.value.dates.indexOf('2026-03-03'),
         to: history.value.dates.length - 1
     }
 })
@@ -1049,7 +1049,7 @@ const xyConfig = computed(() => {
                     color: '#42d392',
                     opacity: isDarkMode.value ? 12 : 20,
                     caption: {
-                        text: 'v.3',
+                        text: 'npmx launch',
                         fontFamily: 'inherit',
                         width: 'auto',
                         padding: 3,
@@ -1192,7 +1192,7 @@ const xyConfigCumAvg = computed(() => {
                     color: '#42d392',
                     opacity: isDarkMode.value ? 12 : 20,
                     caption: {
-                        text: 'v.3',
+                        text: 'npmx launch',
                         fontFamily: 'inherit',
                         width: 'auto',
                         padding: 3,
