@@ -2082,15 +2082,15 @@ export const useMainStore = defineStore("main", {
                             ar: 'منذ الإصدار 2.0.38، أصبح من الممكن استخدام المكون العالمي "VueDataUi" بدلاً من استيراد المكونات الفردية. عليك فقط تحديد اسم المكون في الدعائم:',
                         },
                         includeCss: {
-                            en: "Include the css",
-                            fr: "Inclure le css",
-                            pt: "Incluir o css",
-                            de: "Fügen Sie das CSS ein",
-                            zh: "包括CSS",
-                            ja: "CSSを含める",
-                            es: "incluir el css",
-                            ko: "CSS를 포함",
-                            ar: 'تضمين CSS'
+                            en: "Include the css. If you are using Nuxt, it is recommended to only include this import directly into the components that need it, and not in the nuxt config.",
+                            fr: "Inclure le CSS. Si vous utilisez Nuxt, il est recommandé d'inclure cet import uniquement dans les composants qui en ont besoin, et non dans la configuration Nuxt.",
+                            pt: "Incluir o CSS. Se você estiver usando Nuxt, recomenda-se incluir este import apenas diretamente nos componentes que precisam dele, e não na configuração do Nuxt.",
+                            de: "CSS einbinden. Wenn Sie Nuxt verwenden, wird empfohlen, diesen Import nur direkt in die Komponenten einzubinden, die ihn benötigen, und nicht in der Nuxt-Konfiguration.",
+                            zh: "包含 CSS。如果您使用 Nuxt，建议只在需要它的组件中直接引入此导入，而不是在 Nuxt 配置中引入。",
+                            ja: "CSS を含めます。Nuxt を使用している場合は、このインポートを Nuxt の設定ではなく、必要なコンポーネント内でのみ直接読み込むことを推奨します。",
+                            es: "Incluir el CSS. Si está utilizando Nuxt, se recomienda incluir esta importación solo directamente en los componentes que la necesiten y no en la configuración de Nuxt.",
+                            ko: "CSS를 포함합니다. Nuxt를 사용하는 경우 이 import는 Nuxt 설정이 아니라 필요한 컴포넌트에서만 직접 포함하는 것이 권장됩니다.",
+                            ar: "تضمين ملف CSS. إذا كنت تستخدم Nuxt، فمن المستحسن تضمين هذا الاستيراد فقط داخل المكونات التي تحتاجه مباشرةً، وليس في إعدادات Nuxt."
                         },
                         global: {
                             en: "You can declare Vue Data UI components globally",
