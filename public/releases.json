@@ -1,5 +1,41 @@
 [
   {
+    "version": "v 3.15.10",
+    "date": "2026-03-06",
+    "updates": [
+      {
+        "component": "VueUiAnnotator",
+        "description": "Refactor component to script setup",
+        "link": "/docs#vue-ui-annotator"
+      },
+      {
+        "component": "VueUiTable",
+        "description": "Refactor component to script setup",
+        "link": "/docs#vue-ui-table"
+      },
+      {
+        "component": "VueUiDag",
+        "description": "Add @rotate emit on orientation toggle",
+        "link": "/docs#vue-ui-dag"
+      },
+      {
+        "component": "VueUiCirclePack",
+        "description": "Add #circle scoped slot",
+        "link": "/docs#vue-ui-circle-pack"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Expose formatted dateLabel in tooltip customFormat",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add missing optional dashIndices in VueUiXyDatasetItem TS type",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.9",
     "date": "2026-02-28",
     "updates": [
