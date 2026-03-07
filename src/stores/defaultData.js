@@ -3425,6 +3425,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.separators.show', def: true, type: 'checkbox', label: ['separator', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.layout.separators.color', def: '#e1e5e8', type: 'color', label: ['separator', 'is', 'color'], category: 'general' },
                     { key: 'style.chart.layout.separators.strokeWidth', def: 1, type: 'number', min: 0, max: 24, step: 0.1, label: ['separator', 'is', 'thickness'], category: 'general' },
+
+                    { key: 'style.chart.layout.bars.rowColor', def: '#FFFFFF00', type: 'color', label: ['row', 'gutter', 'is', 'color'], category: 'bars'},
+                    { key: 'style.chart.layout.bars.rowRadius', def: 4, type: 'number', min: 0, max: 24, label: ['row', 'gutter', 'is', 'borderRadius'], category: 'bars'},
                     { key: 'style.chart.layout.bars.sort', def: 'desc', type: 'select', options: ['desc', 'asc'], label: 'sortingOrder', category: 'bars' },
                     { key: 'style.chart.layout.bars.useStroke', def: false, type: 'checkbox', label: ['border', 'is', 'show'], category: 'bars' },
                     { key: 'style.chart.layout.bars.strokeWidth', def: 2, type: 'number', min: 0, max: 48, step: 0.1, label: ['border', 'is', 'thickness'], category: 'bars' },

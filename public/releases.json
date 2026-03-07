@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.15.11",
+    "date": "2026-03-07",
+    "updates": [
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Add optional row gutter color and border radius config",
+        "link": "/docs#vue-ui-horizontal-bar"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.10",
     "date": "2026-03-06",
     "updates": [
