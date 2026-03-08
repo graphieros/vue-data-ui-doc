@@ -30,6 +30,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1990,45 +1991,35 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             </template>
 
             <template v-slot:tab2>
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
-    <pre>
-    <code>
-    [
-        {
-            name: string;
-            values: number[];
-            color: string;
-            type: "bar" | "line" | "plot"
-        },
-        {...}
-    ]
-    </code>
-    </pre>
+                <ComponentEmits
+                    component="VueUiXy"
+                    :names="[
+                        'selectLegend',
+                        'selectTimeLabel',
+                        'selectX',
+                        'zoomStart',
+                        'zoomEnd',
+                        'zoomReset',
+                        'copyAlt'
+                    ]"
+                />
 
-    <div><code><b>@selectTimeLabel</b></code></div>
-    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.selectTimeLabel[store.lang] }}</div>
+                <ExposedMethods
+                    component="VueUiXy"
+                    getImage
+                    showHideSeries
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable',
+                        'toggleStack',
+                        'toggleLabels'
+                    ]"
+                />
 
-                <div><code><b>@selectX</b></code></div>
-                <div class="text-gray-400 pl-5">{{  translations.docs.emits.xy.selectX[store.lang]  }}</div>
-    <pre>
-    <code>
-    {
-        dataset: [
-            {
-                name: string;
-                value: number;
-                color: string;
-                type: "bar" | "line" | "plot"
-            },
-            {...}
-        ],
-        index: number;
-        indexLabel: string;
-    }
-    </code>
-    </pre>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
     <pre>
@@ -2092,20 +2083,6 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     </code>
     </pre>
                 </div>
-                <ExposedMethods
-                    component="VueUiXy"
-                    getImage
-                    showHideSeries
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable',
-                        'toggleStack',
-                        'toggleLabels'
-                    ]"
-                />
             </template>
 
             <template #tab3>

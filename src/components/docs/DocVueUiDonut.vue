@@ -27,6 +27,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1186,43 +1187,30 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             </template>
 
             <template v-slot:tab2>
-                @selectDatapoint<br><br>
+                <ComponentEmits
+                    component="VueUiDonut"
+                    :names="[
+                        'selectDatapoint',
+                        'selectLegend',
+                        'copyAlt'
+                    ]"
+                />
 
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiDonut
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-  function selectDatapoint({ datapoint, index }: { datapoint: VueUiDonutDatasetItem, index: number }) {
-    console.log({ datapoint, index })
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
-    <pre>
-    <code>
-    [
-        {
-            name: string;
-            value: number;
-            color: string;
-        },
-        {...}
-    ]
-    </code>
-    </pre>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                <ExposedMethods
+                    component="VueUiDonut"
+                    getImage
+                    showHideSeries
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable',
+                        'toggleLabels',
+                        'autoSize'
+                    ]"
+                />
+                                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
     <pre>
@@ -1285,20 +1273,6 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <ExposedMethods
-                    component="VueUiDonut"
-                    getImage
-                    showHideSeries
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable',
-                        'toggleLabels',
-                        'autoSize'
-                    ]"
-                />
                 </div>
             </template>
 

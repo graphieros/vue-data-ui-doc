@@ -3482,6 +3482,50 @@ export const useMainStore = defineStore("main", {
                             }
                         },
                         xy: {
+                            zoomStart: {
+                                en: 'Emitted when the left handle of the zoom component is moved.',
+                                fr: 'Émis lorsque la poignée gauche du composant de zoom est déplacée.',
+                                pt: 'Emitido quando a alça esquerda do componente de zoom é movida.',
+                                de: 'Wird ausgelöst, wenn der linke Griff der Zoom-Komponente bewegt wird.',
+                                zh: '当缩放组件的左侧控制柄被移动时触发。',
+                                ja: 'ズームコンポーネントの左側ハンドルが移動したときに発行されます。',
+                                es: 'Emitido cuando se mueve el controlador izquierdo del componente de zoom.',
+                                ko: '줌 컴포넌트의 왼쪽 핸들이 이동될 때 발생합니다.',
+                                ar: 'يتم إصداره عند تحريك المقبض الأيسر لمكوّن التكبير.'
+                            },
+                            zoomEnd: {
+                                en: 'Emitted when the right handle of the zoom component is moved.',
+                                fr: 'Émis lorsque la poignée droite du composant de zoom est déplacée.',
+                                pt: 'Emitido quando a alça direita do componente de zoom é movida.',
+                                de: 'Wird ausgelöst, wenn der rechte Griff der Zoom-Komponente bewegt wird.',
+                                zh: '当缩放组件的右侧控制柄被移动时触发。',
+                                ja: 'ズームコンポーネントの右側ハンドルが移動したときに発行されます。',
+                                es: 'Emitido cuando se mueve el controlador derecho del componente de zoom.',
+                                ko: '줌 컴포넌트의 오른쪽 핸들이 이동될 때 발생합니다.',
+                                ar: 'يتم إصداره عند تحريك المقبض الأيمن لمكوّن التكبير.'
+                            },
+                            zoomReset: {
+                                en: 'Emitted when the reset button of the zoom component is clicked.',
+                                fr: 'Émis lorsque le bouton de réinitialisation du composant de zoom est cliqué.',
+                                pt: 'Emitido quando o botão de redefinição do componente de zoom é clicado.',
+                                de: 'Wird ausgelöst, wenn die Zurücksetzen-Schaltfläche der Zoom-Komponente angeklickt wird.',
+                                zh: '当点击缩放组件的重置按钮时触发。',
+                                ja: 'ズームコンポーネントのリセットボタンがクリックされたときに発行されます。',
+                                es: 'Emitido cuando se hace clic en el botón de restablecer del componente de zoom.',
+                                ko: '줌 컴포넌트의 재설정 버튼이 클릭될 때 발생합니다.',
+                                ar: 'يتم إصداره عند النقر على زر إعادة التعيين لمكوّن التكبير.'
+                            },
+                            copyAlt: {
+                                en: 'Emitted when the altCopy button in the chart\'s context menu is clicked.',
+                                fr: 'Émis lorsque le bouton altCopy du menu contextuel du graphique est cliqué.',
+                                pt: 'Emitido quando o botão altCopy no menu de contexto do gráfico é clicado.',
+                                de: 'Wird ausgelöst, wenn die altCopy-Schaltfläche im Kontextmenü des Diagramms angeklickt wird.',
+                                zh: '当点击图表上下文菜单中的 altCopy 按钮时触发。',
+                                ja: 'チャートのコンテキストメニュー内の altCopy ボタンがクリックされたときに発行されます。',
+                                es: 'Emitido cuando se hace clic en el botón altCopy en el menú contextual del gráfico.',
+                                ko: '차트의 컨텍스트 메뉴에서 altCopy 버튼이 클릭될 때 발생합니다.',
+                                ar: 'يتم إصداره عند النقر على زر altCopy في قائمة السياق الخاصة بالمخطط.'
+                            },
                             selectTimeLabel: {
                                 en: "returns the data associated with the selected time label",
                                 fr: "renvoie les données associées à l'étiquette temporelle sélectionnée",
