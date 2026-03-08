@@ -34,7 +34,7 @@ Translations are setup on a Pinia store (useMainStore), and serve translations f
 <li>Arabic</li>
 </ul>
 
-The quality of translations is probably varied, as most of them were AI generated.
+The quality of translations is probably varied, as some languages were AI generated.
 
 ### Features
 
