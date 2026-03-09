@@ -41,7 +41,8 @@ const content = computed(() => {
 </script>
 
 <template>
-    <div class="flex flex-col mt-4 py-4">
+    <div class="flex flex-col mt-4 py-4 gap-2">
+        <div class="text-xs bg-[#DCDCAA] text-[#1A1A1A] font-inter-medium px-2 py-0.5 rounded-full w-fit">EXPOSED METHOD</div>
         <code class="text-xl text-[#559AD3] dark:text-[#DCDCAA]">{{ name }}</code>
         <div class="text-gray-500">{{ description }}</div>
     </div>
