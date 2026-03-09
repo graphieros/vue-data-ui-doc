@@ -26,6 +26,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseComment from "../BaseComment.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -782,28 +783,13 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
         </template>
 
         <template #tab2>
-@selectDatapoint<br><br>
-
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-&lt;VueUiSparkline
-:dataset="dataset"
-:config="config"
-@selectDatapoint="selectDatapoint"
-/&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparklineDatasetItem, index: number }) {
-console.log({ datapoint, index })
-}
-&lt;/script&gt;
-</code>
-</pre>
-
+          <ComponentEmits
+            component="VueUiSparkline"
+            :names="[
+              'selectDatapoint',
+              'hoverIndex'
+            ]"
+          />
         </template>
 
 

@@ -19,7 +19,8 @@ const emitMap = computed(() => ({
     zoomStart: { name: 'zoomStart', description: translations.value.docs.emits.xy.zoomStart[store.lang] },
     zoomEnd: { name: 'zoomEnd', description: translations.value.docs.emits.xy.zoomEnd[store.lang] },
     zoomReset: { name: 'zoomReset', description: translations.value.docs.emits.xy.zoomReset[store.lang] },
-    copyAlt: { name: 'copyAlt', description: translations.value.docs.emits.xy.copyAlt[store.lang] }
+    copyAlt: { name: 'copyAlt', description: translations.value.docs.emits.xy.copyAlt[store.lang] },
+    hoverIndex: { name: 'hoverIndex', description: translations.value.docs.emits.hoverIndex[store.lang] }
 }))
 
 </script>

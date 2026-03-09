@@ -3301,6 +3301,17 @@ export const useMainStore = defineStore("main", {
                             ko: '리본을 클릭할 때 관련 데이터를 방출합니다.',
                             ar: 'يصدر البيانات ذات الصلة عند النقر على الشريط.'
                         },
+                        hoverIndex: {
+                            en: 'Emits the index of the current hovered datapoint.',
+                            fr: "Émet l'index du point de données actuellement survolé.",
+                            pt: "Emite o índice do ponto de dados atualmente em foco (hover).",
+                            de: "Gibt den Index des aktuell überfahrenen Datenpunkts aus.",
+                            zh: "发出当前悬停数据点的索引。",
+                            ja: "現在ホバーされているデータポイントのインデックスを出力します。",
+                            es: "Emite el índice del punto de datos actualmente sobrevolado.",
+                            ko: "현재 마우스를 올린 데이터 포인트의 인덱스를 전달합니다.",
+                            ar: "يُصدر فهرس نقطة البيانات التي يتم التحويم فوقها حاليًا."
+                        },
                         selectDatapoint: {
                             en: "Use this event on the component to get the selected datapoint and index on click",
                             fr: "Utilisez cet événement sur le composant pour obtenir le point de données et l'index sélectionnés en un clic",
