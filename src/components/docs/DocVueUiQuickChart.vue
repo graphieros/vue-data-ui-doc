@@ -23,6 +23,7 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1117,32 +1118,18 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
     </BaseDetails>
 </code>
             </template>
+            
             <template #tab2>
-                @selectDatapoint<br><br>
-
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiQuickChart
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-  function selectDatapoint({ datapoint}) {
-    console.log({ datapoint })
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
+                <ComponentEmits
+                    component="VueUiQuickChart"
+                    :names="[
+                        'selectDatapoint',
+                        'selectLegend',
+                        'copyAlt'
+                    ]"
+                />
             </template>
+
             <template #tab3>
                 <BaseSlotDocumenter
                     componentName="VueUiQuickChart"
