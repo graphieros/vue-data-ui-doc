@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -406,28 +407,10 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
             </template>
             
             <template #tab2>
-@selectDatapoint<br><br>
-
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiSparkbar
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-  function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparkbarDatasetItem, index: number }) {
-    console.log({ datapoint, index })
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
+                <ComponentEmits
+                    component="VueUiSparkline"
+                    :names="['selectDatapoint']"
+                />
             </template>
 
             <template #tab3>
