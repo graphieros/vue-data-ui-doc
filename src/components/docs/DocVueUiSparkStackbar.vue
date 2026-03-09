@@ -22,6 +22,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -463,33 +464,14 @@ function goToPage(route) {
               
             </template>
             <template #tab2>
-@selectDatapoint<br><br>
-
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiSparkStackbar
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-  function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparkStackBarDatasetItem, index: number }) {
-    console.log({ datapoint, index })
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
-<ExposedMethods
-  component="VueUiSparkStackbar"
-  showHideSeries
-/>
-
+              <ComponentEmits
+                    component="VueUiSparkline"
+                    :names="['selectDatapoint']"
+                />
+              <ExposedMethods
+                component="VueUiSparkStackbar"
+                showHideSeries
+              />
             </template>
 
             <template #tab3>
