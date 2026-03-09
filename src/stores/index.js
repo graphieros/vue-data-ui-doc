@@ -3132,7 +3132,119 @@ export const useMainStore = defineStore("main", {
                         ko: "CSS를 재정의할 수 있습니다(패키지의 styles.css 확인).",
                         ar: 'يمكنك تجاوز CSS (راجع ملف style.css الموجود في الحزمة)'
                     },
+                    emitted: {
+                        start: {
+                            en: 'Emitted when the timer is started.',
+                            fr: 'Émis lorsque le minuteur est démarré.',
+                            pt: 'Emitido quando o temporizador é iniciado.',
+                            de: 'Wird ausgelöst, wenn der Timer gestartet wird.',
+                            zh: '当计时器启动时触发。',
+                            ja: 'タイマーが開始されたときに発行されます。',
+                            es: 'Emitido cuando el temporizador se inicia.',
+                            ko: '타이머가 시작될 때 발생합니다.',
+                            ar: 'يتم إرساله عند بدء المؤقت.'
+                        },
+                        pause: {
+                            en: 'Emitted when the timer is paused.',
+                            fr: 'Émis lorsque le minuteur est mis en pause.',
+                            pt: 'Emitido quando o temporizador é pausado.',
+                            de: 'Wird ausgelöst, wenn der Timer pausiert wird.',
+                            zh: '当计时器暂停时触发。',
+                            ja: 'タイマーが一時停止されたときに発行されます。',
+                            es: 'Emitido cuando el temporizador se pausa.',
+                            ko: '타이머가 일시 중지될 때 발생합니다.',
+                            ar: 'يتم إرساله عند إيقاف المؤقت مؤقتًا.'
+                        },
+                        reset: {
+                            en: 'Emitted when the timer is reset.',
+                            fr: 'Émis lorsque le minuteur est réinitialisé.',
+                            pt: 'Emitido quando o temporizador é redefinido.',
+                            de: 'Wird ausgelöst, wenn der Timer zurückgesetzt wird.',
+                            zh: '当计时器被重置时触发。',
+                            ja: 'タイマーがリセットされたときに発行されます。',
+                            es: 'Emitido cuando el temporizador se restablece.',
+                            ko: '타이머가 초기화될 때 발생합니다.',
+                            ar: 'يتم إرساله عند إعادة ضبط المؤقت.'
+                        },
+                        restart: {
+                            en: 'Emitted when the timer is restarted.',
+                            fr: 'Émis lorsque le minuteur est redémarré.',
+                            pt: 'Emitido quando o temporizador é reiniciado.',
+                            de: 'Wird ausgelöst, wenn der Timer neu gestartet wird.',
+                            zh: '当计时器重新启动时触发。',
+                            ja: 'タイマーが再開始されたときに発行されます。',
+                            es: 'Emitido cuando el temporizador se reinicia.',
+                            ko: '타이머가 다시 시작될 때 발생합니다.',
+                            ar: 'يتم إرساله عند إعادة تشغيل المؤقت.'
+                        },
+                        lap: {
+                            en: 'Emitted when a lap is completed. Returns the array of laps in memory.',
+                            fr: 'Émis lorsqu’un tour est terminé. Renvoie le tableau des tours en mémoire.',
+                            pt: 'Emitido quando uma volta é concluída. Retorna o array de voltas em memória.',
+                            de: 'Wird ausgelöst, wenn eine Runde abgeschlossen ist. Gibt das Array der gespeicherten Runden zurück.',
+                            zh: '当完成一圈时触发。返回内存中的圈数数组。',
+                            ja: 'ラップが完了したときに発行されます。メモリ内のラップ配列を返します。',
+                            es: 'Emitido cuando se completa una vuelta. Devuelve el array de vueltas en memoria.',
+                            ko: '랩이 완료되면 발생합니다. 메모리에 저장된 랩 배열을 반환합니다.',
+                            ar: 'يتم إرساله عند إكمال لفة. يعيد مصفوفة اللفات المخزنة في الذاكرة.'
+                        },
+                    },
                     emits: {
+                        start: {
+                            en: 'Start the timer.',
+                            fr: 'Démarrer le minuteur.',
+                            pt: 'Iniciar o temporizador.',
+                            de: 'Timer starten.',
+                            zh: '启动计时器。',
+                            ja: 'タイマーを開始します。',
+                            es: 'Iniciar el temporizador.',
+                            ko: '타이머를 시작합니다.',
+                            ar: 'ابدأ المؤقت.'
+                        },
+                        pause: {
+                            en: 'Pause the timer.',
+                            fr: 'Mettre le minuteur en pause.',
+                            pt: 'Pausar o temporizador.',
+                            de: 'Timer pausieren.',
+                            zh: '暂停计时器。',
+                            ja: 'タイマーを一時停止します。',
+                            es: 'Pausar el temporizador.',
+                            ko: '타이머를 일시 중지합니다.',
+                            ar: 'إيقاف المؤقت مؤقتًا.'
+                        },
+                        reset: {
+                            en: 'Reset the timer.',
+                            fr: 'Réinitialiser le minuteur.',
+                            pt: 'Redefinir o temporizador.',
+                            de: 'Timer zurücksetzen.',
+                            zh: '重置计时器。',
+                            ja: 'タイマーをリセットします。',
+                            es: 'Restablecer el temporizador.',
+                            ko: '타이머를 초기화합니다.',
+                            ar: 'إعادة ضبط المؤقت.'
+                        },
+                        restart: {
+                            en: 'Resets and starts the timer.',
+                            fr: 'Réinitialise et démarre le minuteur.',
+                            pt: 'Redefine e inicia o temporizador.',
+                            de: 'Setzt den Timer zurück und startet ihn.',
+                            zh: '重置并启动计时器。',
+                            ja: 'タイマーをリセットして開始します。',
+                            es: 'Restablece e inicia el temporizador.',
+                            ko: '타이머를 초기화하고 시작합니다.',
+                            ar: 'يعيد ضبط المؤقت ويبدأه.'
+                        },
+                        lap: {
+                            en: 'Stores laps on click. Used as an emit, returns the laps as an array.',
+                            fr: 'Enregistre les tours au clic. Utilisé comme emit, renvoie les tours sous forme de tableau.',
+                            pt: 'Armazena voltas ao clicar. Usado como emit, retorna as voltas como um array.',
+                            de: 'Speichert Runden beim Klicken. Wird als Emit verwendet und gibt die Runden als Array zurück.',
+                            zh: '点击时记录分段时间。作为 emit 使用，返回一个包含分段时间的数组。',
+                            ja: 'クリック時にラップを保存します。emit として使用され、ラップを配列で返します。',
+                            es: 'Guarda las vueltas al hacer clic. Se usa como emit y devuelve las vueltas como un array.',
+                            ko: '클릭 시 랩을 저장합니다. emit으로 사용되며 랩을 배열로 반환합니다.',
+                            ar: 'يخزن اللفات عند النقر. يُستخدم كـ emit ويعيد اللفات كمصفوفة.'
+                        },
                         toggleAnnotator: {
                             en: 'Call this method from the parent to open or close the built-in annotator.',
                             fr: 'Appelez cette méthode depuis le composant parent pour ouvrir ou fermer l’annotateur intégré.',

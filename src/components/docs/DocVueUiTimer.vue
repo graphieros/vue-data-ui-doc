@@ -15,6 +15,8 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ExposedMethods from "../ExposedMethods.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -398,34 +400,26 @@ const { configCode, showAllConfig } = useConfigCode()
             </template>
             <!-- EMITS -->
             <template #tab2>
-                Exposed methods:
-
-                <ul>
-                    <li>. start</li>
-                    <li>. pause</li>
-                    <li>. reset</li>
-                    <li>. restart</li>
-                    <li>. lap</li>
-                </ul>
-
-<pre>
-<code>
-&lt;template&gt;
-    &lt;button @click="startTimer"&gt;START&lt;/button&gt;
-    &lt;VueUiTimer ref="timer" :config="config" /&gt;
-&lt;/template&gt;
-
-&lt;script setup&gt;
-    const timer = ref(null);
-
-    function startTimer() {
-        if (!timer.value) return;
-        timer.value.start();
-    }
-
-&lt;/script&gt;  
-</code>
-</pre>                
+                <ComponentEmits
+                    component="VueUiTimer"
+                    :names="[
+                        'start',
+                        'pause',
+                        'reset',
+                        'restart',
+                        'lap'
+                    ]"
+                />
+                <ExposedMethods
+                    component="VueUiTimer"
+                    :names="[
+                        'start',
+                        'pause',
+                        'reset',
+                        'restart',
+                        'lap'
+                    ]"
+                />            
             </template>
             <!-- SLOTS -->
             <template #tab3>

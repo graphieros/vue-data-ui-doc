@@ -24,8 +24,8 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
-import CuteLink from "../CuteLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -506,6 +506,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 </div>
             </template>
             <template #tab2>
+              <ComponentEmits
+                component="VueUiWheel"
+                :names="[
+                  'copyAlt'
+                ]"
+              />
               <ExposedMethods
                 component="VueUiWheel"
                 getImage

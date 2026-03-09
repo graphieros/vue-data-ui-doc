@@ -15,8 +15,15 @@ const contentTemplate = computed(() => `<${props.component}
 />
 `)
 
-const contentScript = computed(() => `function ${props.name}(args) {
-    console.log({ args });
+const noArgs = [
+    'start',
+    'pause',
+    'reset',
+    'restart'
+]
+
+const contentScript = computed(() => `function ${props.name}(${noArgs.includes(props.name) ? '' : 'args'}) {
+    ${noArgs.includes(props.name) ? '// do something' : 'console.log({ args });'}
 }`)
 
 </script>

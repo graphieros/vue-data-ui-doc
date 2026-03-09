@@ -6,7 +6,6 @@ import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
-import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
@@ -27,6 +26,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import UcBullet from "../useCases/uc-bullet.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -618,6 +618,22 @@ function goToPage(route) {
             </template>
 
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiBullet"
+                    :names="[
+                        'copyAlt'
+                    ]"
+                />
+                <ExposedMethods
+                    component="VueUiBullet"
+                    getImage
+                    :names="[
+                        'generatePdf',
+                        'generateImage',
+                        'generateSvg',
+                    ]"
+                />
+
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
@@ -681,15 +697,6 @@ function goToPage(route) {
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                    <ExposedMethods
-                        component="VueUiBullet"
-                        getImage
-                        :names="[
-                            'generatePdf',
-                            'generateImage',
-                            'generateSvg',
-                        ]"
-                    />
                 </div>
             </template>
 

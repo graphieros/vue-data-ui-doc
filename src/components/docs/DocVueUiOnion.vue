@@ -26,6 +26,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -809,97 +810,14 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 </div>
             </template>
             <template v-slot:tab2>
-                <div><code>@selectLegend</code></div>       
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.onion.selectLegend[store.lang] }}</div>
-<pre>
-<code>
-[
-    {
-        color: string;
-        id: string;
-        name: string;
-        path: {
-            active: string;
-            bgDashArray: string;
-            bgDashOffset: string;
-            dashArray: sring;
-            dashOffset: string;
-            fullOffset: number;
-        },
-        percentage: number;
-        prefix: string;
-        suffix: string;
-        radius: number;
-        value: number:
-    },
-    {...}
-]
-</code>
-</pre>
-<div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
-    <pre>
-    <span class="text-black dark:text-app-green">Using composition API:</span>
-    <code>
-        <span class="text-gray-400">&lt;script setup&gt;</span>
-            import { ref, onMounted } from "vue";
+                <ComponentEmits
+                    component="VueUiOnion"
+                    :names="[
+                        'selectLegend',
+                        'copyAlt'
+                    ]"
+                />
 
-            const onionChart = ref(null);
-            const onionDataset = ref([]);
-
-            onMounted(async () => {
-                onionDataset.value = await onionChart.value.getData();
-            });
-
-            const config = ref({
-                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
-            });
-            const dataset = ref([
-                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
-            ]);
-
-        <span class="text-gray-400">&lt;/script&gt;</span>
-
-        <span class="text-gray-400">&lt;template&gt;</span>
-            &lt;VueUiOnion
-                ref="onionChart"
-                :config="config"
-                :dataset="dataset"
-            /&gt;
-        <span class="text-gray-400">&lt;/template&gt;</span>
-    </code>
-    <span class="text-black dark:text-app-green">Using options API:</span>
-    <code>
-        <span class="text-gray-400">&lt;template&gt;</span>
-            &lt;VueUiOnion
-                ref="onionChart"
-                :config="config"
-                :dataset="dataset"
-            /&gt;
-        <span class="text-gray-400">&lt;/template&gt;</span>
-
-        <span class="text-gray-400">&lt;script&gt;</span>
-            export default {
-                data() {
-                    return {
-                        onionDataset: [],
-                        config: {
-                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
-                        },
-                        dataset: [
-                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
-                        ]
-                    }
-                },
-                async mounted () {
-                    this.onionDataset = await this.$refs.onionChart.getData();
-                }
-            }
-        <span class="text-gray-400">&lt;/script&gt;</span>
-    </code>
-    </pre>
-</div>
                 <ExposedMethods
                     component="VueUiOnion"
                     getImage
@@ -912,6 +830,71 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         'toggleTable'
                     ]"
                 />
+                
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                                    <div><code>getData</code></div>
+                                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
+                    <pre>
+                    <span class="text-black dark:text-app-green">Using composition API:</span>
+                    <code>
+                        <span class="text-gray-400">&lt;script setup&gt;</span>
+                            import { ref, onMounted } from "vue";
+
+                            const onionChart = ref(null);
+                            const onionDataset = ref([]);
+
+                            onMounted(async () => {
+                                onionDataset.value = await onionChart.value.getData();
+                            });
+
+                            const config = ref({
+                                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+                            });
+                            const dataset = ref([
+                                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+                            ]);
+
+                        <span class="text-gray-400">&lt;/script&gt;</span>
+
+                        <span class="text-gray-400">&lt;template&gt;</span>
+                            &lt;VueUiOnion
+                                ref="onionChart"
+                                :config="config"
+                                :dataset="dataset"
+                            /&gt;
+                        <span class="text-gray-400">&lt;/template&gt;</span>
+                    </code>
+                    <span class="text-black dark:text-app-green">Using options API:</span>
+                    <code>
+                        <span class="text-gray-400">&lt;template&gt;</span>
+                            &lt;VueUiOnion
+                                ref="onionChart"
+                                :config="config"
+                                :dataset="dataset"
+                            /&gt;
+                        <span class="text-gray-400">&lt;/template&gt;</span>
+
+                        <span class="text-gray-400">&lt;script&gt;</span>
+                            export default {
+                                data() {
+                                    return {
+                                        onionDataset: [],
+                                        config: {
+                                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+                                        },
+                                        dataset: [
+                                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+                                        ]
+                                    }
+                                },
+                                async mounted () {
+                                    this.onionDataset = await this.$refs.onionChart.getData();
+                                }
+                            }
+                        <span class="text-gray-400">&lt;/script&gt;</span>
+                    </code>
+                    </pre>
+                </div>
             </template>
 
             <template #tab3>

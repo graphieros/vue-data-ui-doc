@@ -20,7 +20,14 @@ const emitMap = computed(() => ({
     zoomEnd: { name: 'zoomEnd', description: translations.value.docs.emits.xy.zoomEnd[store.lang] },
     zoomReset: { name: 'zoomReset', description: translations.value.docs.emits.xy.zoomReset[store.lang] },
     copyAlt: { name: 'copyAlt', description: translations.value.docs.emits.xy.copyAlt[store.lang] },
-    hoverIndex: { name: 'hoverIndex', description: translations.value.docs.emits.hoverIndex[store.lang] }
+    hoverIndex: { name: 'hoverIndex', description: translations.value.docs.emits.hoverIndex[store.lang] },
+
+    // VueUiTimer specials
+    start: { name: 'start', description: translations.value.docs.emitted.start[store.lang] },
+    pause: { name: 'pause', description: translations.value.docs.emitted.pause[store.lang] },
+    reset: { name: 'reset', description: translations.value.docs.emitted.reset[store.lang] },
+    restart: { name: 'restart', description: translations.value.docs.emitted.restart[store.lang] },
+    lap: { name: 'lap', description: translations.value.docs.emitted.lap[store.lang] },
 }))
 
 </script>

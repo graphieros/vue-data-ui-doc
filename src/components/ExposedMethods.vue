@@ -51,7 +51,14 @@ const methodMap = computed(() => {
         zoomIn: { name: 'zoomIn', description: translations.value.docs.emits.zoomIn[store.lang]},
         zoomOut: { name: 'zoomOut', description: translations.value.docs.emits.zoomOut[store.lang]},
         switchDirection: { name: 'switchDirection', description: translations.value.docs.emits.switchDirection[store.lang]},
-        getData: { name: 'getData', description: translations.value.docs.emits.getData[store.lang]}
+        getData: { name: 'getData', description: translations.value.docs.emits.getData[store.lang]},
+        
+        // VueUiTimer specials:
+        start: { name: 'start', description: translations.value.docs.emits.start[store.lang] },
+        pause: { name: 'pause', description: translations.value.docs.emits.pause[store.lang] },
+        reset: { name: 'reset', description: translations.value.docs.emits.reset[store.lang] },
+        restart: { name: 'restart', description: translations.value.docs.emits.restart[store.lang] },
+        lap: { name: 'lap', description: translations.value.docs.emits.lap[store.lang] },
     }
 })
 

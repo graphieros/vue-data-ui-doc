@@ -19,7 +19,7 @@ const props = defineProps({
 
 const params = computed(() => {
     return {
-        focusLocation: '[-12, 24], { animated: true }'
+        focusLocation: '[-12, 24], { animated: true }',
     }[props.name] ?? ''
 })
 

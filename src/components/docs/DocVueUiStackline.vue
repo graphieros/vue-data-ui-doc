@@ -27,6 +27,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1377,48 +1378,32 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
             </template>
 
             <template #tab2>
-                                @selectDatapoint<br><br>
+                <ComponentEmits
+                    component="VueUiStackbar"
+                    :names="[
+                        'selectLegend',
+                        'selectDatapoint',
+                        'selectTimeLabel',
+                        'selectX',
+                        'copyAlt'
+                    ]"
+                />
 
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiStackline
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
+                <ExposedMethods
+                    component="VueUiStackline"
+                    getImage
+                    showHideSeries
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable',
+                        'toggleLabels'
+                    ]"
+                />
 
-&lt;script setup&gt;
-  function selectDatapoint({ datapoint, period }) {
-    console.log({ datapoint, period })
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
-    <pre>
-    <code>
-    [
-        {
-            name: string;
-            series: number[];
-            color: string;
-            ...
-        },
-        {...}
-    ]
-    </code>
-    </pre>
-
-                <div><code><b>@selectTimeLabel</b></code></div>
-                <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.selectTimeLabel[store.lang] }}</div>
-
-    <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
     <pre>
@@ -1481,19 +1466,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <ExposedMethods
-                    component="VueUiStackline"
-                    getImage
-                    showHideSeries
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable',
-                        'toggleLabels'
-                    ]"
-                />
+                
                 </div>
             </template>
 

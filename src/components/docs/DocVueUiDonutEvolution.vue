@@ -25,6 +25,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1001,22 +1002,27 @@ function goToPage(route) {
             </template>
 
             <template v-slot:tab2>
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
-    <pre>
-    <code>
-    [
-        {
-            color: string;
-            length: number;
-            name: string;
-            uid: string;
-            values: number[];
-        },
-        {...}
-    ]
-    </code>
-    </pre>
+                <ComponentEmits
+                    component="VueUiDonutEvolution"
+                    :names="[
+                        'selectLegend',
+                        'copyAlt'
+                    ]"
+                />
+
+                <ExposedMethods
+                    component="VueUiDonutEvolution"
+                    getImage
+                    showHideSeries
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable'
+                    ]"
+                />
+
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
@@ -1080,18 +1086,6 @@ function goToPage(route) {
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <ExposedMethods
-                    component="VueUiDonutEvolution"
-                    getImage
-                    showHideSeries
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable'
-                    ]"
-                />
                 </div>
             </template>
 

@@ -24,6 +24,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1324,6 +1325,12 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 
             </template>
             <template #tab2>
+              <ComponentEmits
+                component="VueUiAgePyramid"
+                :names="[
+                  'copyAlt'
+                ]"
+              />
               <ExposedMethods
                 component="VueUiAgePyramid"
                 getImage
