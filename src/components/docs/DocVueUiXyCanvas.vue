@@ -26,6 +26,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig();
 
@@ -2286,25 +2287,28 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 
       <!-- EMITS -->
       <template #tab2>
-        <div>
-          <code><b>@selectLegend</b></code>
-        </div>
-        <div class="text-gray-400 pl-5">
-          {{ translations.docs.emits.xy.selectLegend[store.lang] }}
-        </div>
-        <pre>
-    <code>
-    [
-        {
-            name: string;
-            values: number[];
-            color: string;
-            type: "bar" | "line" | "plot"
-        },
-        {...}
-    ]
-    </code>
-    </pre>
+        <ComponentEmits
+          component="VueUiXyCanvas"
+          :names="[
+            'selectLegend',
+            'selectX',
+            'copyAlt'
+          ]"
+        />
+
+        <ExposedMethods
+          component="VueUiXyCanvas"
+          getImage
+          showHideSeries
+          :names="[
+            'generatePdf',
+            'generateCsv',
+            'generateImage',
+            'toggleTable',
+            'toggleStack',
+            'toggleLabels'
+          ]"
+        />
 
         <div class="pt-4 border-t border-gray-700 overflow-x-auto">
           <div><code>getData</code></div>
@@ -2372,20 +2376,6 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     </code>
     </pre>
         </div>
-
-        <ExposedMethods
-          component="VueUiXyCanvas"
-          getImage
-          showHideSeries
-          :names="[
-            'generatePdf',
-            'generateCsv',
-            'generateImage',
-            'toggleTable',
-            'toggleStack',
-            'toggleLabels'
-          ]"
-        />
       </template>
 
       <!-- SLOTS -->

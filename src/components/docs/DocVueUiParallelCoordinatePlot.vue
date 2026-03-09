@@ -24,6 +24,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -874,46 +875,29 @@ const customFormatCode = ref(`customFormat: ({ serie, seriesIndex, series, confi
 
             <!-- EMITS -->
             <template #tab2>
-                @selectDatapoint<br><br>
+                <ComponentEmits
+                    component="VueUiParallelCoordinatePlot"
+                    :names="[
+                        'selectLegend',
+                        'selectDatapoint',
+                        'copyAlt'
+                    ]"
+                />
 
-                Emitted when clicing on a datapoint (plot).
+                <ExposedMethods
+                    component="VueUiParallelCoordinatePlot"
+                    showHideSeries
+                    getImage
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable',
+                        'toggleLabels',
+                    ]"
+                />
 
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiParallelCoordinatePlot
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-  function selectDatapoint(datapoint) {
-    console.log(datapoint)
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
-    <pre>
-    <code>
-   VueUiParallelCoordinatePlotDatasetItem = {
-        name: string;
-        shape: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star";
-        series: VueUiParallelCoordinatePlotDatasetSerieItem[]
-   } & {
-        id: string;
-        isSegregated: boolean;
-        opacity: number;
-        seriesIndex: number;
-   }
-    </code>
-    </pre>
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>

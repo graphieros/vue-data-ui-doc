@@ -25,6 +25,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -911,39 +912,30 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 </div>
             </template>
             <template v-slot:tab2>
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
-<pre>
-<code>
-[
-    {
-        children: [
-            {
-                childIndex: number;
-                color: string;
-                isChild: boolean;
-                isFirstChild: boolean;
-                isLastChild: boolean;
-                name: string;
-                parentId: string;
-                parentName: string;
-                parentValue: number;
-                value: number;
-            },
-            {...}
-        ],
-        color: string;
-        hasChildren: boolean;
-        id: string;
-        isChild: boolean;
-        name: string;
-        value: number;
-    },
-    {...}
-]
-</code>
-</pre>
-<div class="pt-4 border-t border-gray-700 overflow-x-auto">
+
+              <ComponentEmits
+                component="VueUiHorizontalBar"
+                :names="[
+                  'selectLegend',
+                  'copyAlt'
+                ]"
+              />
+
+              <ExposedMethods
+                component="VueUiHorizontalBar"
+                getImage
+                showHideSeries
+                :names="[
+                  'generatePdf',
+                  'generateCsv',
+                  'generateImage',
+                  'generateSvg',
+                  'toggleTable',
+                  'toggleSort'
+                ]"
+              />
+
+              <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
     <pre>
@@ -1007,20 +999,6 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
     </code>
     </pre>
                 </div>
-
-                <ExposedMethods
-                  component="VueUiHorizontalBar"
-                  getImage
-                  showHideSeries
-                  :names="[
-                    'generatePdf',
-                    'generateCsv',
-                    'generateImage',
-                    'generateSvg',
-                    'toggleTable',
-                    'toggleSort'
-                  ]"
-                />
             </template>
 
             <template #tab3>
