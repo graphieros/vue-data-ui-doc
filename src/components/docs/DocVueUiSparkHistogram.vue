@@ -23,6 +23,7 @@ import BaseCard from "../BaseCard.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -618,28 +619,10 @@ function goToPage(route) {
 
             </template>
             <template #tab2>
-@selectDatapoint<br><br>
-
-{{ translations.docs.emits.selectDatapoint[store.lang] }}
-<br><br>
-<pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiSparkHistogram
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-  function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparkHistogramDatasetItem, index: number }) {
-    console.log({ datapoint, index })
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
+              <ComponentEmits
+                  component="VueUiSparkHistogram"
+                  :names="['selectDatapoint']"
+              />
             </template>
 
             <template #tab3>

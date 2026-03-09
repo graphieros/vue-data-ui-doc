@@ -408,7 +408,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
             
             <template #tab2>
                 <ComponentEmits
-                    component="VueUiSparkline"
+                    component="VueUiSparkbar"
                     :names="['selectDatapoint']"
                 />
             </template>

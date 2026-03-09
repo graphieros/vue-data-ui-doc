@@ -465,7 +465,7 @@ function goToPage(route) {
             </template>
             <template #tab2>
               <ComponentEmits
-                    component="VueUiSparkline"
+                    component="VueUiSparkStackbar"
                     :names="['selectDatapoint']"
                 />
               <ExposedMethods
