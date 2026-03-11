@@ -28,6 +28,23 @@ const emitMap = computed(() => ({
     reset: { name: 'reset', description: translations.value.docs.emitted.reset[store.lang] },
     restart: { name: 'restart', description: translations.value.docs.emitted.restart[store.lang] },
     lap: { name: 'lap', description: translations.value.docs.emitted.lap[store.lang] },
+
+    // VueUiChord specials
+    selectGroup: { name: 'selectGroup', description: translations.value.docs.emits.selectGroup[store.lang] },
+    selectRibbon: { name: 'selectRibbon', description: translations.value.docs.emits.selectRibbon[store.lang] },
+
+    // VueUiDag specials
+    onNodeClick: { name: 'onNodeClick', description: translations.value.docs.emits.onNodeClick[store.lang] },
+    onMidpointEnter: { name: 'onMidpointEnter', description: translations.value.docs.emits.onMidpointEnter[store.lang] },
+    onMidpointLeave: { name: 'onMidpointLeave', description: translations.value.docs.emits.onMidpointLeave[store.lang] },
+    rotate: { name: 'rotate', description: translations.value.docs.emits.rotate[store.lang] },
+
+    // VueUiMolecule specials
+    selectNode: { name: 'selectNode', description: translations.value.docs.emits.selectDatapoint[store.lang] },
+
+    // VueUiQuadrant specials
+    selectPlot: { name: 'selectPlot', description: translations.value.docs.emits.selectDatapoint[store.lang] },
+    selectSide: { name: 'selectSide', description: translations.value.docs.emits.selectSide[store.lang] }
 }))
 
 </script>

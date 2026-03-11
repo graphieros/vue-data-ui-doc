@@ -25,7 +25,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
-import FlexibleTooltip from "../FlexibleTooltip.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1048,65 +1048,29 @@ const datapointSlot = ref(`
             </template>
 
             <template v-slot:tab2>
-
+                <ComponentEmits
+                    component="VueUiQuadrant"
+                    :names="[
+                        'selectPlot',
+                        'selectSide',
+                        'selectLegend',
+                        'copyAlt'
+                    ]"
+                />
+                <ExposedMethods
+                    component="VueUiQuadrant"
+                    getImage
+                    showHideSeries
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable',
+                        'toggleLabels'
+                    ]"
+                />
                 <div class="overflow-auto">
-                    <div><code><b>@selectLegend</b></code></div>
-                    <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectLegend[store.lang] }}</div>
-                    <pre>
-<code>
-    [
-        {
-            color: string;
-            name: string;
-            shape: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon"| "star";
-            series: [
-                {
-                    name: string;
-                    x: number;
-                    y: number;
-                    quadrantSide: "tl" | "tr" | "br" | "bl";
-                    sideName: string;
-                },
-                {...}
-            ]
-        },
-        {...}
-    ]
-</code>
-</pre>
-                    <div class="pt-6 border-t border-gray-700"><code><b>@selectPlot</b></code></div>
-                    <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectPlot[store.lang] }}</div>
-                    <pre>
-<code>
-    {
-        category: string;
-        itemName: string;
-        x: number;
-        y: number;
-        quadrantSide: "tl" | "tr" | "br" | "bl";
-        sideName: string; 
-    }
-</code>
-</pre>
-                    <div class="pt-6 border-t border-gray-700"><code><b>@selectSide</b></code></div>
-                    <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectSide[store.lang] }}</div>
-                    <pre>
-<code>
-    {
-        quadrantSide: "tl" | "tr" | "br" | "bl";
-        sideName: string;
-        items: [
-            {
-                category: string;
-                itemName: string;
-                x: number;
-                y: number;
-            },
-            {...}
-        ] 
-    }
-</code>
-</pre>
                     <div class="pt-6 border-t border-gray-700"><code><b>getData</b></code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
                     <pre>
@@ -1170,19 +1134,6 @@ const datapointSlot = ref(`
     </code>
     </pre>
                 </div>
-                <ExposedMethods
-                    component="VueUiQuadrant"
-                    getImage
-                    showHideSeries
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable',
-                        'toggleLabels'
-                    ]"
-                />
             </template>
 
             <template #tab3>

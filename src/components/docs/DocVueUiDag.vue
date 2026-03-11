@@ -16,7 +16,6 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
-import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
@@ -25,6 +24,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ThemesVueUiDag from "../themes/ThemesVueUiDag.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 const store = useMainStore();
@@ -665,6 +665,16 @@ function goToPage(route) {
             </template>
 
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiDag"
+                    :names="[
+                        'onNodeClick',
+                        'onMidpointEnter',
+                        'onMidpointLeave',
+                        'rotate',
+                        'copyAlt'
+                    ]"
+                />
                 <ExposedMethods
                     component="VueUiDag"
                     getImage

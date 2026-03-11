@@ -24,6 +24,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -848,6 +849,24 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
             </template>
 
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiFlow"
+                    :names="[
+                        'copyAlt'
+                    ]"
+                />
+                <ExposedMethods
+                    component="VueUiFlow"
+                    getImage
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable',
+                    ]"
+                />
+
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
@@ -911,17 +930,6 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <ExposedMethods
-                    component="VueUiFlow"
-                    getImage
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable',
-                    ]"
-                />
                 </div>
             </template>
 

@@ -11,7 +11,6 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
-import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
@@ -22,6 +21,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -30,7 +30,7 @@ const key = ref(0);
 const translations = computed(() => store.translations);
 
 onMounted(() => store.docSnap = false);
-const { isMobile } = useMobile()<
+const { isMobile } = useMobile()
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -853,6 +853,26 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
 
             </template>
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiMolecule"
+                    :names="[
+                        'selectNode',
+                        'copyAlt'
+                    ]"
+                />
+                <ExposedMethods
+                    component="VueUiMolecule"
+                    getImage
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable',
+                        'toggleLabels'
+                    ]"
+                />
+
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
@@ -916,18 +936,6 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <ExposedMethods
-                    component="VueUiMolecule"
-                    getImage
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable',
-                        'toggleLabels'
-                    ]"
-                />
                 </div>
             </template>
             <template #tab3>

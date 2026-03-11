@@ -25,6 +25,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig();
 
@@ -623,13 +624,15 @@ function goToPage(route) {
 
             <template #tab2>
                 <div>
-                    <div>Emits:</div>
-                    <ul>
-                        <li><code>@selectDatapoint</code> : {{ translations.docs.emits.selectDatapoint[store.lang] }}</li>
-                        <li><code>@selectGroup</code> : {{ translations.docs.emits.selectGroup[store.lang] }}</li>
-                        <li><code>@selectRibbon</code> : {{ translations.docs.emits.selectRibbon[store.lang] }}</li>
-                        <li></li>
-                    </ul>
+                    <ComponentEmits
+                        component="VueUiChord"
+                        :names="[
+                            'selectLegend',
+                            'selectGroup',
+                            'selectRibbon',
+                            'copyAlt'
+                        ]"
+                    />
 
                     <ExposedMethods
                     component="VueUiDonut"

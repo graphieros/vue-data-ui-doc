@@ -24,6 +24,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -595,6 +596,23 @@ function goToPage(route) {
             </template>
 
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiMoodRadar"
+                    :names="[
+                        'copyAlt'
+                    ]"
+                />
+                <ExposedMethods
+                    component="VueUiMoodRadar"
+                    getImage
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'generateSvg',
+                        'toggleTable'
+                    ]"
+                />
             <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
@@ -658,17 +676,6 @@ function goToPage(route) {
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <ExposedMethods
-                    component="VueUiMoodRadar"
-                    getImage
-                    :names="[
-                        'generatePdf',
-                        'generateCsv',
-                        'generateImage',
-                        'generateSvg',
-                        'toggleTable'
-                    ]"
-                />
                 </div>
             </template>
 

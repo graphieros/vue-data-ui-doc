@@ -19,7 +19,8 @@ const noArgs = [
     'start',
     'pause',
     'reset',
-    'restart'
+    'restart',
+    'onMidpointLeave'
 ]
 
 const contentScript = computed(() => `function ${props.name}(${noArgs.includes(props.name) ? '' : 'args'}) {
