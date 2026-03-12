@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.15.12",
+    "date": "2026-03-12",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Add npmx icon ;)",
+        "link": "/docs#vue-ui-icon"
+      },
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Imrprove type flexibility for the VueUiVerticalBarDatapoint type",
+        "link": "/docs#vue-ui-horizontal-bar"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.11",
     "date": "2026-03-07",
     "updates": [
