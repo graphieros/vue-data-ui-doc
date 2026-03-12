@@ -2829,6 +2829,33 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         }
     })
 
+    const DATASET_HORIZONTAL_BAR_LONG = ref([
+        {
+            name: 'This name is really long\nand spans on two lines',
+            value: 100
+        },
+        {
+            name: 'Series B',
+            value: 80
+        },
+        {
+            name: 'Series C',
+            value: 60
+        },
+        {
+            name: 'Series D',
+            value: 40
+        },
+        {
+            name: 'Series E',
+            value: 20
+        },
+        {
+            name: 'Series F',
+            value: 10
+        },
+    ])
+
     const DATASET_VERTICAL_BAR_BASE = ref([
         {
             name: "Parent 1",
@@ -9438,6 +9465,40 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     es: 'Barras más delgadas, orden inverso',
                     ko: '더 얇은 막대, 역순 정렬',
                     ar: 'أعمدة أرق، ترتيب عكسي'
+                }
+            },
+            // VERTICAL BAR WITH GUTTERS
+            {
+                dataset: DATASET_HORIZONTAL_BAR_LONG.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_VERTICAL_BAR_BASIC.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                layout: {
+                                    bars: {
+                                        rowColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
+                                    },
+                                    separators: { show: false }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: 'VueUiHorizontalBar',
+                icon: 'chartVerticalBar',
+                id: 'horizontal-bar-with-gutters',
+                link: 'vue-ui-horizontal-bar',
+                description: {
+                    en: 'With visible gutters to temper white space when long names are present.',
+                    fr: 'Avec des gouttières visibles pour atténuer les espaces vides lorsque des noms longs sont présents.',
+                    pt: 'Com espaçamentos visíveis para equilibrar o espaço em branco quando há nomes longos.',
+                    de: 'Mit sichtbaren Zwischenräumen, um den Weißraum auszugleichen, wenn lange Namen vorhanden sind.',
+                    zh: '当存在较长名称时，通过可见的间距来平衡空白空间。',
+                    ja: '長い名前がある場合に余白を調整するための可視ガター付き。',
+                    es: 'Con separaciones visibles para equilibrar el espacio en blanco cuando hay nombres largos.',
+                    ko: '긴 이름이 있을 때 여백을 완화하기 위해 보이는 간격을 사용합니다.',
+                    ar: 'مع فواصل مرئية لتقليل الفراغات عندما تكون الأسماء طويلة.'
                 }
             },
             // VERTICAL BAR BACKGROUND
