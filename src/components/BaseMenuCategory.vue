@@ -25,7 +25,7 @@ defineProps({
 
 <template>
     <BaseCard class="w-full max-w-[1000px] mx-auto mt-6 z-10">
-        <div class="text-xs sm:text-sm grid grid-cols-2 xl:grid-cols-3 gap-4 my-2 p-2 sm:p-4 rounded-xl relative pt-12 sm:pt-16">
+        <div class="text-xs sm:text-sm grid sm:grid-cols-1 xl:grid-cols-3 gap-4 my-2 p-2 sm:p-4 rounded-xl relative pt-12 sm:pt-16">
             <div class="absolute w-full font-black text-xl rounded-tl-xl rounded-tr-xl py-2 px-4">
                 {{ title }}
             </div>
