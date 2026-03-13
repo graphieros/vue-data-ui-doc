@@ -23,6 +23,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig()
 
@@ -1109,148 +1110,27 @@ function goToPage(route) {
             </template>
 
             <template v-slot:tab2>
-              <div><code>@selectRoot</code></div>
-              <div class="text-gray-400 pl-5">{{ translations.docs.emits.chestnut.selectRoot[store.lang] }}</div>
-<pre>
-<code>
-{
-  branches: [
-    {
-      breakdown: [
-        {
-          branchName: string;
-          branchTotal: number;
-          color: string;
-          id: string;
-          name: string;
-          proportionToBranch: number;
-          proportionToRoot: number;
-          proportionToTree: number;
-          rootIndex: number;
-          rootName: string;
-          table: {
-            branchName: string;
-            branchToRoot: number;
-            branchToTotal: number;
-            branchValue: number;
-            nutName: string;
-            nutToBranch: number;
-            nutToRoot: number;
-            nutToTotal: number;
-            rootName: string;
-            rootToTotal: number;
-            rootValue: number;
-          },
-          type: "nut";
-          value: number;
-        },
-        {...}
-      ],
-      color: string;
-      id: string;
-      name: string;
-      proportionToTotal: number;
-      rootIndex: number;
-      rootName: string;
-      type: "branch";
-      value: number;
-    },
-    {...}
-  ],
-  color: string;
-  id: string;
-  name: string;
-  r: number;
-  rootIndex: number;
-  total: number;
-  type: "root",
-  x: number;
-  y: number;
-}
-</code>
-</pre>
-              <div><code>@selectBranch</code></div>
-              <div class="text-gray-400 pl-5">{{ translations.docs.emits.chestnut.selectBranch[store.lang] }}</div>
-<pre>
-<code>
-{
-  breakdown: [
-    {
-      branchName: string;
-      branchTotal: number;
-      color: string;
-      id: string;
-      name: string;
-      proportionToBranch: number;
-      proportionToRoot: number;
-      proportionToTree: number;
-      rootIndex: number;
-      rootName: string;
-      table: {
-        branchName: string;
-        branchToRoot: number;
-        branchToTotal: number;
-        branchValue: number;
-        nutName: string;
-        nutToBranch: number;
-        nutToRoot: number;
-        nutToTotal: number;
-        rootName: string;
-        rootToTotal: number;
-        rootValue: number;
-      },
-      type: "nut";
-      value: number;
-    },
-    {...}
-  ],
-  color: string;
-  id: string;
-  name: string;
-  proportionToTotal: number;
-  rootIndex: number;
-  rootName: string;
-  type: "branch";
-  value: number;
-}
-</code>
-</pre>
-              <div><code>@selectNut</code></div>
-              <div class="text-gray-400 pl-5">{{  translations.docs.emits.chestnut.selectNut[store.lang] }}</div>
-<pre>
-<code>
-[
-  {
-      branchName: string;
-      branchTotal: number;
-      color: string;
-      id: string;
-      name: string;
-      proportionToBranch: number;
-      proportionToRoot: number;
-      proportionToTree: number;
-      rootIndex: number;
-      rootName: string;
-      table: {
-        branchName: string;
-        branchToRoot: number;
-        branchToTotal: number;
-        branchValue: number;
-        nutName: string;
-        nutToBranch: number;
-        nutToRoot: number;
-        nutToTotal: number;
-        rootName: string;
-        rootToTotal: number;
-        rootValue: number;
-      },
-      type: "nut";
-      value: number;
-    },
-    {...}
-]
-</code>
-</pre>
+              <ComponentEmits
+                component="VueUiChestnut"
+                :names="[
+                  'selectRoot',
+                  'selectBranch',
+                  'selectNut',
+                  'copyAlt'
+                ]"
+              />
+
+              <ExposedMethods
+                component="VueUiChestnut"
+                getImage
+                :names="[
+                  'generatePdf',
+                  'generateCsv',
+                  'generateImage',
+                  'generateSvg',
+                  'toggleTable'
+                ]"
+              />
 
 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
@@ -1316,17 +1196,6 @@ function goToPage(route) {
     </code>
     </pre>
   </div>
-                <ExposedMethods
-                  component="VueUiChestnut"
-                  getImage
-                  :names="[
-                    'generatePdf',
-                    'generateCsv',
-                    'generateImage',
-                    'generateSvg',
-                    'toggleTable'
-                  ]"
-                />
             </template>
 
             <template #tab3>

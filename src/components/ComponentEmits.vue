@@ -44,7 +44,12 @@ const emitMap = computed(() => ({
 
     // VueUiQuadrant specials
     selectPlot: { name: 'selectPlot', description: translations.value.docs.emits.selectDatapoint[store.lang] },
-    selectSide: { name: 'selectSide', description: translations.value.docs.emits.selectSide[store.lang] }
+    selectSide: { name: 'selectSide', description: translations.value.docs.emits.selectSide[store.lang] },
+
+    // VueUiChestnut specials
+    selectRoot: { name: 'selectRoot', description: translations.value.docs.emits.chestnut.selectRoot[store.lang] },
+    selectBranch: { name: 'selectBranch', description: translations.value.docs.emits.chestnut.selectBranch[store.lang] },
+    selectNut: { name: 'selectNut', description: translations.value.docs.emits.chestnut.selectNut[store.lang] },
 }))
 
 </script>
