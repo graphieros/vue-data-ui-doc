@@ -1,1937 +1,5711 @@
-<script setup lang="ts">
-import type { VueUiXyDatasetItem } from 'vue-data-ui'
-import { VueUiXy } from 'vue-data-ui/vue-ui-xy'
-import { useDebounceFn, useElementSize } from '@vueuse/core'
-import { useCssVariables } from '~/composables/useColors'
-import { OKLCH_NEUTRAL_FALLBACK, transparentizeOklch } from '~/utils/colors'
-import { getFrameworkColor, isListedFramework } from '~/utils/frameworks'
+<script setup>
+import { 
+    computed, 
+    defineAsyncComponent, 
+    getCurrentInstance, 
+    nextTick, 
+    onBeforeUnmount, 
+    onMounted, 
+    ref, 
+    shallowRef, 
+    toRefs, 
+    useSlots, 
+    watch, 
+    watchEffect,
+} from 'vue';
+import {
+    abbreviate,
+    adaptColorToBackground,
+    applyDataLabel,
+    assignStackRatios,
+    buildDisplayedTimeLabels,
+    buildInterLineAreas,
+    calcLinearProgression,
+    calculateNiceScale,
+    calculateNiceScaleWithExactExtremes,
+    checkNaN,
+    clamp,
+    convertColorToHex,
+    convertCustomPalette,
+    createCsvContent,
+    createIndividualArea,
+    createIndividualAreaWithCuts,
+    createPolygonPath,
+    createSmoothAreaSegments,
+    createSmoothPath,
+    createSmoothPathWithCuts,
+    createSmoothPathWithCutsSegments,
+    createStar,
+    createStraightPath,
+    createStraightPathWithCuts,
+    createStraightPathWithCutsSegments,
+    createTSpans,
+    createTSpansFromLineBreaksOnX,
+    createUid,
+    dataLabel,
+    downloadCsv,
+    error,
+    forceValidValue,
+    functionReturnsString,
+    hasDeepProperty,
+    isFunction,
+    isSafeValue,
+    largestTriangleThreeBucketsArray,
+    objectIsEmpty,
+    palette,
+    placeXYTag,
+    setGradientOffset,
+    setOpacity,
+    shiftHue,
+    themePalettes,
+    translateSize,
+    treeShake,
+} from '../lib';
+import { useLocale } from '../useLocale.js';
+import { useConfig } from '../useConfig';
+import { usePrinter } from '../usePrinter.js';
+import { useLoading } from '../useLoading.js';
+import { useDateTime } from '../useDateTime.js';
+import { useSvgExport } from '../useSvgExport.js';
+import { useNestedProp } from '../useNestedProp';
+import { useThemeCheck } from '../useThemeCheck.js';
+import { useTimeLabels } from '../useTimeLabels.js';
+import { useStableElementSize } from '../useStableElementSize.js';
+import { useTimeLabelCollision } from '../useTimeLabelCollider.js';
+import img from '../img.js';
+import Title from '../atoms/Title.vue';
+import themes from "../themes/vue_ui_xy.json";
+import Shape from '../atoms/Shape.vue';
+import BaseScanner from '../atoms/BaseScanner.vue';
+import SlicerPreview from '../atoms/SlicerPreview.vue'; // v3
+import Accordion from "./vue-ui-accordion.vue"; // Must be ready in responsive mode
+import BaseLegendToggle from '../atoms/BaseLegendToggle.vue';
 
-const props = defineProps<{
-  // For single package downloads history
-  weeklyDownloads?: WeeklyDownloadPoint[]
-  inModal?: boolean
+const props = defineProps({
+    config: {
+        type: Object,
+        default() {
+            return {}
+        }
+    },
+    dataset: {
+        type: Array,
+        default() {
+            return []
+        }
+    },
+    selectedXIndex: {
+        type: Number,
+        default: undefined
+    }
+});
 
-  /**
-   * Backward compatible single package mode.
-   * Used when `weeklyDownloads` is provided.
-   */
-  packageName?: string
+const DataTable = defineAsyncComponent(() => import('../atoms/DataTable.vue'));
+const Tooltip = defineAsyncComponent(() => import('../atoms/Tooltip.vue'));
+const UserOptions = defineAsyncComponent(() => import('../atoms/UserOptions.vue'));
+const BaseIcon = defineAsyncComponent(() => import('../atoms/BaseIcon.vue'));
+const TableSparkline = defineAsyncComponent(() => import('./vue-ui-table-sparkline.vue'));
+const PackageVersion = defineAsyncComponent(() => import('../atoms/PackageVersion.vue'));
+const PenAndPaper = defineAsyncComponent(() => import('../atoms/PenAndPaper.vue'));
+const BaseDraggableDialog = defineAsyncComponent(() => import('../atoms/BaseDraggableDialog.vue'));
 
-  /**
-   * Multi-package mode.
-   * Used when `weeklyDownloads` is not provided.
-   */
-  packageNames?: string[]
-  createdIso?: string | null
-}>()
+const emit = defineEmits(['selectTimeLabel', 'selectX', 'selectLegend', 'zoomStart', 'zoomEnd', 'zoomReset', 'copyAlt']);
+const SLOTS = useSlots();
+const instance = getCurrentInstance();
 
-const { locale } = useI18n()
-const { accentColors, selectedAccentColor } = useAccentColor()
-const colorMode = useColorMode()
-const resolvedMode = shallowRef<'light' | 'dark'>('light')
-const rootEl = shallowRef<HTMLElement | null>(null)
-const isZoomed = shallowRef(false)
+const { vue_ui_xy: DEFAULT_CONFIG } = useConfig();
+const { isThemeValid, warnInvalidTheme } = useThemeCheck();
 
-function setIsZoom({ isZoom }: { isZoom: boolean }) {
-  isZoomed.value = isZoom
+const chart = ref(null);
+const chartTitle = ref(null);
+const chartSlicer = ref(null);
+const chartLegend = ref(null);
+const source = ref(null);
+const noTitle = ref(null);
+const G = ref(null);
+const xAxisLabel = ref(null);
+const yAxisLabel = ref(null);
+const timeLabelsEls = ref(null);
+const scaleLabels = ref(null);
+const userOptionsRef = ref(null);
+
+const resizeObserver = ref(null);
+const observedEl = ref(null);
+const slicerStep = ref(0);
+const selectedScale = ref(null);
+const useSafeValues = ref(true);
+const height = ref(600);
+const width = ref(1000);
+const viewBox = ref('0 0 1000 600');
+const clientPosition = ref({ x: 0, y: 0 });
+const icons = ref({ line: 'line', bar: 'bar', plot: 'plot' });
+const isAnnotator = ref(false);
+const isFullscreen = ref(false);
+const isTooltip = ref(false);
+const selectedRowIndex = ref(null);
+const segregatedSeries = ref([]);
+const uniqueId = ref(createUid());
+const step = ref(0);
+const tableStep = ref(0);
+const titleStep = ref(0);
+const showSparklineTable = ref(true);
+const segregateStep = ref(0);
+const selectedMinimapIndex = ref(null);
+const showUserOptionsOnChartHover = ref(false);
+const keepUserOptionState = ref(true);
+const userOptionsVisible = ref(true);
+const svgRef = ref(null);
+const tagRefs = ref({});
+const textMeasurer = ref(null);
+const readyTeleport = ref(false);
+const tableUnit = ref(null);
+const isCallbackImaging = ref(false);
+const isCallbackSvg = ref(false);
+
+const selectedSerieIndex = ref(null);
+
+const dragState = ref({
+    isActive: false,
+    pointerX: null,
+    pointerY: null,
+    absoluteIndex: null,
+    target: null,
+    startValue: null,
+    currentValue: null,
+    currentY: null
+});
+
+const didDragDatapoint = ref(false);
+
+/**
+ * Reference to the chart’s parent element.
+ *
+ * We intentionally observe the PARENT rather than the chart itself because
+ * the chart’s final layout depends on external constraints:
+ * - flex/grid resolution
+ * - font loading
+ * - surrounding DOM (titles, legends, slots, teleports)
+ *
+ * Observing the parent ensures we only proceed once the container that
+ * defines available space has fully settled.
+ */
+const parentElement = shallowRef(null);
+
+/**
+ * Indicates whether the parent layout has been confirmed stable.
+ *
+ * This is not used for measurements directly, but as a semantic signal
+ * to block rendering transitions / animations until layout is safe.
+ */
+const parentLayoutIsStable = ref(false);
+
+/**
+ * Monotonic counter used to force reactive recomputation.
+ *
+ * Computeds such as `drawingArea` explicitly depend on this value
+ * so they only finalize AFTER a stable layout pass has completed.
+ *
+ * This avoids race conditions where the computed runs too early
+ * and caches incorrect geometry.
+ */
+const parentLayoutStableRunSequence = ref(0);
+
+/**
+ * Sequence guard used to cancel outdated async layout passes.
+ *
+ * Multiple stability passes may be triggered in quick succession
+ * (mount, resize, config change). This ensures that only the
+ * most recent pass is allowed to commit results.
+ */
+const pendingParentLayoutSequence = ref(0);
+
+
+/**
+ * Stable-size observer bound to the parent element.
+ *
+ * This does NOT react to every resize immediately.
+ * Instead, it waits until the parent size remains unchanged
+ * across several animation frames before declaring it “stable”.
+ *
+ * Once stability is confirmed, it triggers a controlled layout pass.
+ */
+const stableParentSize = useStableElementSize({
+    elementRef: parentElement,
+    minimumWidth: 2,
+    minimumHeight: 2,
+    stableFramesRequired: 2,
+    once: false,
+    onSizeAccepted: () => {
+        runParentStableLayoutPass();
+    },
+});
+
+/**
+ * Updates the reference to the parent element.
+ *
+ * This is necessary because the chart may be:
+ * - re-parented (fullscreen, teleport)
+ * - conditionally mounted
+ * - wrapped by dynamic layout containers
+ *
+ * Re-resolving the parent ensures we always observe the
+ * correct layout authority.
+ */
+function setParentElementReference() {
+    parentElement.value = chart.value?.parentNode ?? null;
 }
 
-const { width } = useElementSize(rootEl)
-
-const compactNumberFormatter = useCompactNumberFormatter()
-
-onMounted(async () => {
-  rootEl.value = document.documentElement
-  resolvedMode.value = colorMode.value === 'dark' ? 'dark' : 'light'
-
-  initDateRangeFromWeekly()
-  initDateRangeForMultiPackageWeekly52()
-  initDateRangeFallbackClient()
-
-  await nextTick()
-  isMounted.value = true
-
-  loadNow()
-})
-
-const { colors } = useCssVariables(
-  ['--bg', '--fg', '--bg-subtle', '--bg-elevated', '--fg-subtle', '--fg-muted', '--border', '--border-subtle'],
-  {
-    element: rootEl,
-    watchHtmlAttributes: true,
-    watchResize: false,
-  },
-)
-
-watch(
-  () => colorMode.value,
-  value => {
-    resolvedMode.value = value === 'dark' ? 'dark' : 'light'
-  },
-  { flush: 'sync' },
-)
-
-const isDarkMode = computed(() => resolvedMode.value === 'dark')
-
-const accentColorValueById = computed<Record<string, string>>(() => {
-  const map: Record<string, string> = {}
-  for (const item of accentColors.value) {
-    map[item.id] = item.value
-  }
-  return map
-})
-
-const accent = computed(() => {
-  const id = selectedAccentColor.value
-  return id
-    ? (accentColorValueById.value[id] ?? colors.value.fgSubtle ?? OKLCH_NEUTRAL_FALLBACK)
-    : (colors.value.fgSubtle ?? OKLCH_NEUTRAL_FALLBACK)
-})
-
-const mobileBreakpointWidth = 640
-const isMobile = computed(() => width.value > 0 && width.value < mobileBreakpointWidth)
-
-type ChartTimeGranularity = 'daily' | 'weekly' | 'monthly' | 'yearly'
-type EvolutionData =
-  | DailyDownloadPoint[]
-  | WeeklyDownloadPoint[]
-  | MonthlyDownloadPoint[]
-  | YearlyDownloadPoint[]
-
-type DateRangeFields = {
-  startDate?: string
-  endDate?: string
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null
-}
-
-function isWeeklyDataset(data: unknown): data is WeeklyDownloadPoint[] {
-  return (
-    Array.isArray(data) &&
-    data.length > 0 &&
-    isRecord(data[0]) &&
-    'weekStart' in data[0] &&
-    'weekEnd' in data[0] &&
-    'downloads' in data[0]
-  )
-}
-function isDailyDataset(data: unknown): data is DailyDownloadPoint[] {
-  return (
-    Array.isArray(data) &&
-    data.length > 0 &&
-    isRecord(data[0]) &&
-    'day' in data[0] &&
-    'downloads' in data[0]
-  )
-}
-function isMonthlyDataset(data: unknown): data is MonthlyDownloadPoint[] {
-  return (
-    Array.isArray(data) &&
-    data.length > 0 &&
-    isRecord(data[0]) &&
-    'month' in data[0] &&
-    'downloads' in data[0]
-  )
-}
-function isYearlyDataset(data: unknown): data is YearlyDownloadPoint[] {
-  return (
-    Array.isArray(data) &&
-    data.length > 0 &&
-    isRecord(data[0]) &&
-    'year' in data[0] &&
-    'downloads' in data[0]
-  )
+function nextPaintFrame() {
+    return new Promise(resolve => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(resolve);
+        });
+    });
 }
 
 /**
- * Formats a single evolution dataset into the structure expected by `VueUiXy`
- * for single-series charts.
- *
- * The dataset is interpreted based on the selected time granularity:
- * - **daily**   → uses `timestamp`
- * - **weekly**  → uses `timestampEnd`
- * - **monthly** → uses `timestamp`
- * - **yearly**  → uses `timestamp`
- *
- * Only datasets matching the expected shape for the given granularity are
- * accepted. If the dataset does not match, an empty result is returned.
- *
- * The returned structure includes:
- * - a single line-series dataset with a consistent color
- * - a list of timestamps used as the x-axis values
- *
- * @param selectedGranularity - Active chart time granularity
- * @param dataset - Raw evolution dataset to format
- * @param seriesName - Display name for the resulting series
- * @returns An object containing a formatted dataset and its associated dates,
- *          or `{ dataset: null, dates: [] }` when the input is incompatible
+ * Executes a stable layout pass.
+ * Ensure that any geometry depending on label
+ * footprint or container size is computed ONLY after:
+ *   - Vue has flushed DOM updates
+ *   - The parent size is stable
+ *   - The browser has painted at least twice
  */
-function formatXyDataset(
-  selectedGranularity: ChartTimeGranularity,
-  dataset: EvolutionData,
-  seriesName: string,
-): { dataset: VueUiXyDatasetItem[] | null; dates: number[] } {
-  if (selectedGranularity === 'weekly' && isWeeklyDataset(dataset)) {
+async function runParentStableLayoutPass() {
+    const currentSequence = ++pendingParentLayoutSequence.value;
+
+    parentLayoutIsStable.value = false;
+
+    await nextTick();
+    await nextPaintFrame();
+    await nextPaintFrame();
+
+    if (currentSequence !== pendingParentLayoutSequence.value) return;
+
+    parentLayoutStableRunSequence.value += 1;
+    parentLayoutIsStable.value = true;
+}
+
+const svg = computed(() => {
     return {
-      dataset: [
-        {
-          name: seriesName,
-          type: 'line',
-          series: dataset.map(d => d.downloads),
-          color: accent.value,
-          useArea: true,
-        },
-      ],
-      dates: dataset.map(d => d.timestampEnd),
+        height: height.value,
+        width: width.value
     }
-  }
-  if (selectedGranularity === 'daily' && isDailyDataset(dataset)) {
+});
+
+function safeInt(n) { return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0 }
+function safeDiv(a, b, fallback = 0) {
+    return (Number.isFinite(a) && Number.isFinite(b) && Math.abs(b) > 1e-9) ? (a / b) : fallback
+}
+
+const mutableInitialized = ref(false)
+
+const fontSizes = ref({
+    xAxis: 18,
+    yAxis: 12,
+    dataLabels: 20,
+    plotLabels: 10
+});
+
+const plotRadii = ref({ plot: 3, line: 3 });
+
+onMounted(() => {
+    readyTeleport.value = true;
+    if (props.dataset.length) {
+        props.dataset.forEach((ds, i) => {
+            if ([null, undefined].includes(ds.series)) {
+                error({
+                    componentName: 'VueUiXy',
+                    type: 'datasetSerieAttribute',
+                    property: 'series (number[])',
+                    index: i,
+                    debug: debug.value
+                })
+            }
+        })
+    }
+    setParentElementReference();
+    stableParentSize.start();
+    runParentStableLayoutPass();
+});
+
+function prepareConfig() {
+    if (!Object.keys(props.config || {}).length) {
+        return DEFAULT_CONFIG
+    }
+
+    const mergedConfig = useNestedProp({
+        userConfig: props.config,
+        defaultConfig: DEFAULT_CONFIG
+    });
+
+    // ------------------------------ OVERRIDES -----------------------------------
+
+    if (props.config && hasDeepProperty(props.config, 'chart.highlightArea')) {
+        if (!Array.isArray(props.config.chart.highlightArea)) {
+            mergedConfig.chart.highlightArea = [props.config.chart.highlightArea] // FIXME: should be sanitized using useNestedPropToo
+        } else {
+            mergedConfig.chart.highlightArea = props.config.chart.highlightArea;
+        }
+    }
+
+    if (props.config && hasDeepProperty(props.config, 'chart.annotations') && Array.isArray(props.config.chart.annotations) && props.config.chart.annotations.length) {
+        mergedConfig.chart.annotations = props.config.chart.annotations.map(annotation => {
+            return useNestedProp({
+                defaultConfig: DEFAULT_CONFIG.chart.annotations[0],
+                userConfig: annotation
+            })
+        })
+    } else {
+        mergedConfig.chart.annotations = [];
+    }
+
+    if (props.config && hasDeepProperty(props.config, 'chart.grid.position')) {
+        if (props.config.chart.grid.position === 'start' && props.dataset.length && props.dataset.some(el => el.type === 'bar')) {
+            mergedConfig.chart.grid.position = 'middle';
+            if (hasDeepProperty(props.config, 'debug')) {
+                console.warn('Vue Data UI - VueUiXy - config.chart.grid.position was overriden to `middle` because your dataset contains a bar')
+            }
+        }
+    }
+
+    // Merging highlight area(s) incomplete user configs
+    if (props.config && hasDeepProperty(props.config, 'chart.highlightArea')) {
+        if (Array.isArray(props.config.chart.highlightArea)) {
+            mergedConfig.chart.highlightArea = props.config.chart.highlightArea
+                .map(hl => mergeHighlightArea({
+                    defaultConfig: DEFAULT_CONFIG.chart.highlightArea,
+                    userConfig: hl
+                }));
+        } else {
+            mergedConfig.chart.highlightArea = mergeHighlightArea({
+                defaultConfig: DEFAULT_CONFIG.chart.highlightArea,
+                userConfig: props.config.chart.highlightArea
+            });
+        }
+    }
+    // ----------------------------------------------------------------------------
+    
+    const theme = mergedConfig.theme;
+    if (!theme) return mergedConfig;
+
+    if (!isThemeValid.value(mergedConfig)) {
+        warnInvalidTheme(mergedConfig);
+        return mergedConfig;
+    }
+
+    const fused = useNestedProp({
+        userConfig: themes[theme] || props.config,
+        defaultConfig: mergedConfig
+    });
+
+    const finalConfig = useNestedProp({
+        userConfig: props.config,
+        defaultConfig: fused
+    });
+
     return {
-      dataset: [
-        {
-          name: seriesName,
-          type: 'line',
-          series: dataset.map(d => d.downloads),
-          color: accent.value,
-          useArea: true,
-        },
-      ],
-      dates: dataset.map(d => d.timestamp),
+        ...finalConfig,
+        customPalette: finalConfig.customPalette.length ? finalConfig.customPalette : themePalettes[theme] || palette
     }
-  }
-  if (selectedGranularity === 'monthly' && isMonthlyDataset(dataset)) {
+}
+
+function mergeHighlightArea({ defaultConfig, userConfig }) {
+    return useNestedProp({
+        defaultConfig,
+        userConfig
+    });
+}
+
+const isDataset = computed({
+    get() {
+        return !!props.dataset && props.dataset.length;
+    },
+    set(bool) {
+        return bool;
+    }
+});
+
+const FINAL_CONFIG = ref(prepareConfig());
+
+const isCursorPointer = computed(() => FINAL_CONFIG.value.chart.userOptions.useCursorPointer);
+
+const mutableConfig = ref({
+    dataLabels: { show: true },
+    showTooltip: true,
+    showTable: false,
+    isStacked: false,
+    useIndividualScale: false
+});
+
+function seedMutableFromConfig() {
+    if (!mutableInitialized.value) {
+        mutableConfig.value = {
+            dataLabels: { show: true },
+            showTooltip: FINAL_CONFIG.value.chart.tooltip.show === true,
+            showTable: FINAL_CONFIG.value.showTable === true,
+            isStacked: FINAL_CONFIG.value.chart.grid.labels.yAxis.stacked,
+            useIndividualScale: FINAL_CONFIG.value.chart.grid.labels.yAxis.useIndividualScale
+        };
+        mutableInitialized.value = true;
+    } else {
+        mutableConfig.value.isStacked = FINAL_CONFIG.value.chart.grid.labels.yAxis.stacked;
+        if (mutableConfig.value.useIndividualScale == null) {
+            mutableConfig.value.useIndividualScale = FINAL_CONFIG.value.chart.grid.labels.yAxis.useIndividualScale;
+        }
+    }
+}
+
+const debug = computed(() => !!FINAL_CONFIG.value.debug);
+
+const skeletonConfig = computed(() => {
+    return treeShake({
+        defaultConfig: {
+            useCssAnimation: false,
+            showTable: false,
+            chart: {
+                annotations: [],
+                highlightArea: [],
+                backgroundColor: '#99999930',
+                grid: {
+                    stroke: '#6A6A6A',
+                    labels: {
+                        show: false,
+                        axis: {
+                            yLabel: '',
+                            xLabel: ''
+                        },
+                        xAxisLabels: { show: false },
+                        yAxis: {
+                            commonScaleSteps: 10,
+                            useNiceScale: true,
+                            scaleMin: 0,
+                            scaleMax: 134
+                        },
+                        zeroLine: { show: true }
+                    },
+                },
+                padding: {
+                    top: 12,
+                    bottom: 24,
+                    left: 24,
+                    right: 24
+                },
+                userOptions: { show: false },
+                zoom: { 
+                    show: false,
+                    startIndex: null,
+                    endIndex: null
+                }
+            },
+            bar: {
+                serieName: { show: false },
+                labels: { show: false },
+                border: {
+                    useSerieColor: false,
+                    stroke: '#999999'
+                }
+            },
+            line: {
+                dot: {
+                    useSerieColor: false,
+                    fill: '#8A8A8A'
+                },
+                labels: { show: false }
+            }
+        },
+        userConfig: FINAL_CONFIG.value.skeletonConfig ?? {}
+    })
+})
+
+const skeletonDataset = computed(() => {
+    return props.config?.skeletonDataset ?? [
+        {
+            name: '',
+            series: [0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 134],
+            type: 'line',
+            smooth: true,
+            color: '#BABABA'
+        },
+        {
+            name: '',
+            series: [0, 0.5, 1, 1.5, 2.5, 4, 6.5, 10.5, 17, 27.5, 44.5, 67],
+            type: 'bar',
+            color: '#CACACA'
+        },
+    ]
+})
+
+// v3 - Skeleton loader management
+const { loading, FINAL_DATASET, manualLoading } = useLoading({
+    ...toRefs(props),
+    FINAL_CONFIG,
+    prepareConfig,
+    callback: () => {
+        Promise.resolve().then(async () => {
+            await setupSlicer();
+            mutableConfig.value.showTable = FINAL_CONFIG.value.showTable;
+        })
+    },
+    skeletonDataset: skeletonDataset.value,
+    skeletonConfig: treeShake({
+        defaultConfig: FINAL_CONFIG.value,
+        userConfig: skeletonConfig.value
+    })
+});
+
+function memoizeByArrayRef(fn) {
+    const wm = new WeakMap();
+    return (arr, ...rest) => {
+        let m = wm.get(arr);
+        const key = JSON.stringify(rest);
+        if (m && m.has(key)) return m.get(key);
+        const out = fn(arr, ...rest);
+        if (!m) { m = new Map(); wm.set(arr, m); }
+        m.set(key, out);
+        return out;
+    };
+}
+
+const lttbMemo = memoizeByArrayRef((series, threshold) => {
+    return largestTriangleThreeBucketsArray({ data: series, threshold });
+});
+
+const lttb = (series) => lttbMemo(series, FINAL_CONFIG.value.downsample.threshold);
+
+const maxX = computed({
+    get: () => {
+        return Math.max(...FINAL_DATASET.value.map(datapoint => lttb(datapoint.series).length));
+    },
+    set: (v) => v
+});
+
+const slicer = ref({ start: 0, end: maxX.value });
+const slicerPrecog = ref({ start: 0, end: maxX.value });
+
+const isPrecog = computed(() => {
+    return FINAL_CONFIG.value.chart.zoom.preview.enable && (slicerPrecog.value.start !== slicer.value.start || slicerPrecog.value.end !== slicer.value.end);
+});
+
+function setPrecog(side, val) {
+    slicerPrecog.value[side] = val;
+}
+
+function normalizeSlicerWindow() {
+    const maxLen = Math.max(
+        1,
+        ...FINAL_DATASET.value.map(dp => lttb(dp.series).length)
+    )
+
+    let s = Math.max(0, Math.min(slicer.value.start ?? 0, maxLen - 1))
+    let e = Math.max(s + 1, Math.min(slicer.value.end ?? maxLen, maxLen))
+
+    if (!Number.isFinite(s) || !Number.isFinite(e) || e <= s) { s = 0; e = maxLen }
+
+    slicer.value = { start: s, end: e }
+    slicerPrecog.value.start = s
+    slicerPrecog.value.end = e
+
+    if(chartSlicer.value) {
+        chartSlicer.value.setStartValue(s);
+        chartSlicer.value.setEndValue(e)
+    }
+}
+
+const precogRect = computed(() => {
+    const { left, top, width: totalWidth, height } = drawingArea.value
+    const windowStart = slicer.value.start
+    const windowEnd = slicer.value.end
+    const windowLen = windowEnd - windowStart
+    const unit = totalWidth / windowLen
+
+    const rawStart = slicerPrecog.value.start - windowStart;
+    const rawEnd   = slicerPrecog.value.end   - windowStart;
+    const relStart = Math.max(0, Math.min(windowLen, rawStart));
+    const relEnd   = Math.max(0, Math.min(windowLen, rawEnd));
+
     return {
-      dataset: [
-        {
-          name: seriesName,
-          type: 'line',
-          series: dataset.map(d => d.downloads),
-          color: accent.value,
-          useArea: true,
-        },
-      ],
-      dates: dataset.map(d => d.timestamp),
+        x: left + relStart * unit,
+        y: top,
+        width: (relEnd - relStart) * unit,
+        height,
+        fill: FINAL_CONFIG.value.chart.zoom.preview.fill,
+        stroke: FINAL_CONFIG.value.chart.zoom.preview.stroke,
+        ['stroke-width']: FINAL_CONFIG.value.chart.zoom.preview.strokeWidth,
+        ['stroke-dasharray']: FINAL_CONFIG.value.chart.zoom.preview.strokeDasharray,
+        ['stroke-linecap']: 'round',
+        ['stroke-linejoin']: 'round',
+        style: {
+            pointerEvents: 'none',
+            transition: 'none !important',
+            animation: 'none !important'
+        }
     }
-  }
-  if (selectedGranularity === 'yearly' && isYearlyDataset(dataset)) {
+});
+
+watch(() => props.selectedXIndex, (v) => {
+    if ([null, undefined].includes(props.selectedXIndex)) {
+        selectedSerieIndex.value = null;
+        return;
+    }
+
+    const targetIndex = v - slicer.value.start;
+    if (targetIndex < 0 || v >= slicer.value.end) {
+        selectedSerieIndex.value = null;
+    } else {
+        selectedSerieIndex.value = targetIndex ?? null;
+    }
+}, { immediate: true })
+
+const { isPrinting, isImaging, generatePdf, generateImage } = usePrinter({
+    elementId: `vue-ui-xy_${uniqueId.value}`,
+    fileName: FINAL_CONFIG.value.chart.title.text || 'vue-ui-xy',
+    options: FINAL_CONFIG.value.chart.userOptions.print
+});
+
+const isAutoSize = ref(false);
+
+const customPalette = computed(() => {
+    return convertCustomPalette(FINAL_CONFIG.value.customPalette);
+});
+
+const parsedScaleMin = computed(() => {
+    const raw = FINAL_CONFIG.value.chart.grid.labels.yAxis.scaleMin;
+    if (raw === null || raw === undefined) return null;
+    const n = Number(raw);
+    return Number.isFinite(n) ? n : null;
+});
+
+// Baseline for line areas when NOT using individual scale:
+// - default: fill down to 0 (zero.value)
+// - if scaleMin is explicitly set: fill down to the bottom of the chart (forced minimum)
+const globalAreaBaselineY = computed(() => {
+    return parsedScaleMin.value !== null ? drawingArea.value.bottom : zero.value;
+});
+
+const parsedScaleMax = computed(() => {
+    const raw = FINAL_CONFIG.value.chart.grid.labels.yAxis.scaleMax;
+    if (raw === null || raw === undefined) return null;
+    const n = Number(raw);
+    return Number.isFinite(n) ? n : null;
+});
+
+const hasUserScale = computed(() => {
+    return parsedScaleMin.value !== null || parsedScaleMax.value !== null;
+});
+
+const dataRange = computed(() => {
+    const series = safeDataset.value
+        .filter(s => !segregatedSeries.value.includes(s.id))
+        .flatMap(d => (Array.isArray(d.series) ? d.series : []))
+        .filter(Number.isFinite);
+
+    if (!series.length) return { min: 0, max: 1 };
+
     return {
-      dataset: [
-        {
-          name: seriesName,
-          type: 'line',
-          series: dataset.map(d => d.downloads),
-          color: accent.value,
-          useArea: true,
+        min: Math.min(...series),
+        max: Math.max(...series),
+    };
+});
+
+function normalizeRange(minValue, maxValue) {
+    let min = Number.isFinite(minValue) ? minValue : 0;
+    let max = Number.isFinite(maxValue) ? maxValue : 1;
+
+    if (min === max) max = min + 1;
+    else if (min > max) [min, max] = [max, min];
+
+    return { min, max };
+}
+
+const min = computed(() => {
+    const { min: dataMin, max: dataMax } = dataRange.value;
+
+    if (!hasUserScale.value) {
+        const m = dataMin;
+        return m > 0 ? 0 : m;
+    }
+
+    const baseMin = parsedScaleMin.value !== null ? parsedScaleMin.value : (dataMin > 0 ? 0 : dataMin);
+    const baseMax = parsedScaleMax.value !== null ? parsedScaleMax.value : dataMax;
+
+    // Expand to include outliers beyond provided bounds
+    const expandedMin = dataMin < baseMin ? dataMin : baseMin;
+    const expandedMax = dataMax > baseMax ? dataMax : baseMax;
+
+    return normalizeRange(expandedMin, expandedMax).min;
+});
+
+const max = computed(() => {
+    const { min: dataMin, max: dataMax } = dataRange.value;
+
+    if (!hasUserScale.value) {
+        const m = dataMax;
+        return min.value === m ? m + 1 : m;
+    }
+
+    const baseMin = parsedScaleMin.value !== null ? parsedScaleMin.value : (dataMin > 0 ? 0 : dataMin);
+    const baseMax = parsedScaleMax.value !== null ? parsedScaleMax.value : dataMax;
+
+    // Expand to include outliers beyond provided bounds
+    const expandedMin = dataMin < baseMin ? dataMin : baseMin;
+    const expandedMax = dataMax > baseMax ? dataMax : baseMax;
+
+    return normalizeRange(expandedMin, expandedMax).max;
+});
+
+const niceScale = computed(() => {
+    return FINAL_CONFIG.value.chart.grid.labels.yAxis.useNiceScale ? calculateNiceScale(min.value, max.value < 0 ? 0 : max.value, FINAL_CONFIG.value.chart.grid.labels.yAxis.commonScaleSteps) : calculateNiceScaleWithExactExtremes(min.value, max.value < 0 ? 0 : max.value, FINAL_CONFIG.value.chart.grid.labels.yAxis.commonScaleSteps)
+});
+
+const relativeZero = computed(() => {
+    if (![null, undefined].includes(FINAL_CONFIG.value.chart.grid.labels.yAxis.scaleMin)) {
+        return -niceScale.value.min
+    }
+
+    if (niceScale.value.min >= 0) return 0;
+    return Math.abs(niceScale.value.min);
+});
+
+const safeDataset = computed(() => {
+    if (!useSafeValues.value) return FINAL_DATASET.value;
+
+    return FINAL_DATASET.value.map((datapoint, i) => {
+        const LTTB = lttb(datapoint.series);
+        const id = `uniqueId_${i}`;
+        return {
+            ...datapoint,
+            slotAbsoluteIndex: i,
+            series: LTTB.map(d => {
+                return isSafeValue(d) ? d : null
+            }).slice(slicer.value.start, slicer.value.end),
+            color: convertColorToHex(datapoint.color ? datapoint.color : customPalette.value[i] ? customPalette.value[i] : palette[i]),
+            id,
+            scaleLabel: datapoint.scaleLabel || id
+
+        }
+    });
+});
+
+const absoluteDataset = computed(() => {
+    return safeDataset.value.map((datapoint, i) => {
+        return {
+            absoluteIndex: i,
+            ...datapoint,
+            series: datapoint.series.map(plot => plot + relativeZero.value),
+            absoluteValues: datapoint.series,
+            segregate: () => segregate(datapoint),
+            isSegregated: segregatedSeries.value.includes(datapoint.id)
+        }
+    })
+});
+
+const relativeDataset = computed(() => {
+    return safeDataset.value.map((datapoint, i) => {
+        return {
+            ...datapoint,
+            series: datapoint.series.map(plot => plot + relativeZero.value),
+            absoluteValues: datapoint.series,
+        }
+    }).filter(s => !segregatedSeries.value.includes(s.id));
+});
+
+const allSegregated = computed(() => segregatedSeries.value.length === absoluteDataset.value.length);
+
+function getScaleLabelX() {
+    let base = 0;
+    if (scaleLabels.value) {
+        const texts = Array.from(scaleLabels.value.querySelectorAll('text'))
+        base = texts.reduce((max, t) => {
+        const w = t.getComputedTextLength()
+        return( w > max ? w : max) + FINAL_CONFIG.value.chart.grid.labels.yAxis.scaleValueOffsetX
+        }, 0)
+    }
+
+    const yAxisLabelW = yAxisLabel.value
+        ? yAxisLabel.value.getBoundingClientRect().width + FINAL_CONFIG.value.chart.grid.labels.axis.yLabelOffsetX + fontSizes.value.yAxis
+        : 0
+
+    const crosshair = FINAL_CONFIG.value.chart.grid.labels.yAxis.crosshairSize
+    return base + yAxisLabelW + crosshair
+}
+
+
+const timeLabelsHeight = ref(0);
+const timeLabelsBBoxX = ref(0);
+
+function measureTimeLabelsBox() {
+    const el = timeLabelsEls.value;
+
+    if (!el) {
+        timeLabelsHeight.value = 0;
+        timeLabelsBBoxX.value = 0;
+        return;
+    }
+
+    try {
+        const bbox = el.getBBox();
+        timeLabelsHeight.value = bbox?.height ?? 0;
+        timeLabelsBBoxX.value = bbox?.x ?? 0;
+    } catch {
+        timeLabelsHeight.value = 0;
+        timeLabelsBBoxX.value = 0;
+    }
+}
+
+const timeLabelsY = computed(() => {
+    let axisLabelHeight = 0;
+
+    if (xAxisLabel.value) {
+        try {
+            axisLabelHeight = xAxisLabel.value.getBBox().height || 0;
+        } catch {
+            axisLabelHeight = 0;
+        }
+    }
+
+    return axisLabelHeight + timeLabelsHeight.value + fontSizes.value.xAxis;
+});
+
+const useProgression = computed(() => {
+    return FINAL_DATASET.value.some(el => el.useProgression)
+});
+
+const drawingArea = computed(() => {
+    void parentLayoutStableRunSequence.value;
+    
+    let _scaleLabelX = 0;
+    const individualOffsetX = 36;
+
+    if (FINAL_CONFIG.value.chart.grid.labels.show) {
+        if (mutableConfig.value.useIndividualScale && !mutableConfig.value.isStacked) {
+            _scaleLabelX = (FINAL_DATASET.value.length - segregatedSeries.value.length) * (FINAL_CONFIG.value.chart.grid.labels.yAxis.labelWidth + individualOffsetX)
+        } else if(mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked) {
+            _scaleLabelX = FINAL_CONFIG.value.chart.grid.labels.yAxis.labelWidth + individualOffsetX
+        }
+        else {
+            _scaleLabelX = getScaleLabelX();
+        }
+    }
+
+    const topOffset = FINAL_CONFIG.value.chart.labels.fontSize * 1.1;
+
+    const progressionLabelOffsetX = useProgression.value ? 24 : 6;
+
+    if (timeLabelsEls.value) {
+        if (timeLabelsBBoxX.value < 0) {
+            _scaleLabelX += Math.abs(timeLabelsBBoxX.value);
+        }
+    }
+
+    const _width = width.value - _scaleLabelX - FINAL_CONFIG.value.chart.grid.labels.yAxis.crosshairSize - progressionLabelOffsetX - FINAL_CONFIG.value.chart.padding?.left - FINAL_CONFIG.value.chart.padding?.right;
+
+    const xPadding = FINAL_CONFIG.value.chart.grid.position === 'middle' ? 0 : _width / maxSeries.value / 2;
+
+
+
+    return {
+        top: FINAL_CONFIG.value.chart.padding?.top + topOffset,
+        right: width.value - progressionLabelOffsetX - FINAL_CONFIG.value.chart.padding?.right,
+        bottom: height.value - timeLabelsY.value - FINAL_CONFIG.value.chart.padding?.bottom - FINAL_CONFIG.value.chart.grid.labels.axis.xLabelOffsetY,
+        left: _scaleLabelX + FINAL_CONFIG.value.chart.grid.labels.yAxis.crosshairSize - xPadding + FINAL_CONFIG.value.chart.padding?.left,
+        height: height.value - timeLabelsY.value - FINAL_CONFIG.value.chart.padding?.top -FINAL_CONFIG.value.chart.padding?.bottom - topOffset - FINAL_CONFIG.value.chart.grid.labels.axis.xLabelOffsetY,
+        width: _width,
+        scaleLabelX: _scaleLabelX,
+        individualOffsetX
+    }
+});
+
+const gridVerticalLines = computed(() => {
+    const extra = FINAL_CONFIG.value.chart.grid.position === 'middle' ? 1 : 0
+    const count = maxSeries.value + extra
+
+    const topY = forceValidValue(drawingArea.value?.top)
+    const bottomY = forceValidValue(drawingArea.value?.bottom)
+
+    return Array.from({ length: count })
+        .map((_, i) => {
+            const x = (drawingArea.value.width / maxSeries.value) * i + drawingArea.value?.left + xPadding.value
+            return `M${x},${topY} L${x},${bottomY}`
+        })
+        .join(' ')
+});
+
+const crosshairsX = computed(() => {
+    if (!FINAL_CONFIG.value.chart.grid.labels.xAxis.showCrosshairs) return '';
+
+    const segmentWidth = drawingArea.value.width / maxSeries.value;
+    const size = FINAL_CONFIG.value.chart.grid.labels.xAxis.crosshairSize;
+    const alwaysAtZero = FINAL_CONFIG.value.chart.grid.labels.xAxis.crosshairsAlwaysAtZero;
+
+    return displayedTimeLabels.value
+        .map((label, i) => {
+        if (!label || !label.text) return null;
+
+        const x = drawingArea.value?.left + segmentWidth * i + segmentWidth / 2;
+        const y1 = alwaysAtZero
+            ? zero.value - (zero.value === drawingArea.value?.bottom ? 0 : size / 2)
+            : drawingArea.value?.bottom;
+        const y2 = alwaysAtZero
+            ? zero.value + (size / (zero.value === drawingArea.value?.bottom ? 1 : 2))
+            : drawingArea.value?.bottom + size;
+
+        return `M${x},${y1} L${x},${y2}`;
+        })
+        .filter(Boolean)
+        .join(' ');
+});
+
+function usesSelectTimeLabelEvent() {
+    return !!instance?.vnode.props?.onSelectTimeLabel
+}
+
+function getTextMeasurer(fontSize, fontFamily, fontWeight) {
+    if (!textMeasurer.value) {
+        const canvas = document.createElement('canvas')
+        textMeasurer.value = canvas.getContext('2d')
+    }
+    textMeasurer.value.font =
+        `${fontWeight || 'normal'} ${fontSize}px ${fontFamily || 'sans-serif'}`
+    return textMeasurer.value
+}
+
+function hideTags() {
+    const tags = chart.value.querySelectorAll('.vue-ui-xy-tag')
+    if (tags.length) {
+        Array.from(tags).forEach(tag => tag.style.opacity = '0')
+    }
+}
+
+function setTagRef(i, j, el, position, type) {
+    if (el) tagRefs.value[`${i}_${j}_${position}_${type}`] = el;
+}
+
+const userHovers = ref(false);
+
+async function setUserOptionsVisibility(state = false) {
+    await nextTick();
+    userHovers.value = state;
+    if (!showUserOptionsOnChartHover.value) return;
+    userOptionsVisible.value = state
+}
+
+function toggleAnnotator() {
+    isAnnotator.value = !isAnnotator.value;
+}
+
+const timeLabels = ref([]);
+const allTimeLabels = ref([]);
+
+let timeLabelsRequestId = 0;
+watchEffect(() => {
+    const requestId = ++timeLabelsRequestId;
+
+    (async () => {
+        const maxDatapoints = Math.max(
+            ...FINAL_DATASET.value.map(datapoint =>
+                largestTriangleThreeBucketsArray({
+                    data: datapoint.series,
+                    threshold: FINAL_CONFIG.value.downsample.threshold
+                }).length
+            )
+        );
+
+        const labels = await useTimeLabels({
+            values: FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.values,
+            maxDatapoints,
+            formatter: FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.datetimeFormatter,
+            start: slicer.value.start,
+            end: slicer.value.end
+        });
+
+        if (requestId === timeLabelsRequestId) {
+            timeLabels.value = labels;
+        }
+    })();
+});
+
+let allTimeLabelsRequestId = 0;
+watchEffect(() => {
+    const requestId = ++allTimeLabelsRequestId;
+
+    (async () => {
+        const maxDatapoints = Math.max(
+            ...FINAL_DATASET.value.map(datapoint =>
+                largestTriangleThreeBucketsArray({
+                    data: datapoint.series,
+                    threshold: FINAL_CONFIG.value.downsample.threshold
+                }).length
+            )
+        );
+
+        const labels = await useTimeLabels({
+            values: FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.values,
+            maxDatapoints,
+            formatter: FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.datetimeFormatter,
+            start: 0,
+            end: maxX.value
+        });
+
+        if (requestId === allTimeLabelsRequestId) {
+            allTimeLabels.value = labels;
+        }
+    })();
+});
+
+const modulo = computed(() => {
+    const m = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.modulo;
+    if (!timeLabels.value.length) return m;
+    return Math.min(m, [...new Set(timeLabels.value.map(t => t.text))].length);
+});
+
+const displayedTimeLabels = computed(() => {
+    const cfg = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels;
+    const vis = timeLabels.value || [];
+    const all = allTimeLabels.value || [];
+    const start = slicer.value.start ?? 0;
+    const sel = selectedSerieIndex.value;
+    const maxS = maxSeries.value;
+    const visTexts = vis.map(l => l?.text ?? '');
+    const allTexts = all.map(l => l?.text ?? '');
+
+    return buildDisplayedTimeLabels(
+        !!cfg.showOnlyFirstAndLast,
+        !!cfg.showOnlyAtModulo,
+        Math.max(1, modulo.value || 1),
+        visTexts,
+        allTexts,
+        start,
+        sel,
+        maxS
+    );
+});
+
+const displayedTimeLabelsKey = computed(() => {
+    return (displayedTimeLabels.value || []).map(l => l?.text ?? "").join("|");
+});
+
+onMounted(() => {
+    // First measurement after initial paint
+    requestAnimationFrame(() => {
+        measureTimeLabelsBox();
+    });
+
+    // Re-measure when async labels arrive or layout inputs change
+    watch(
+        [
+            () => displayedTimeLabelsKey.value,
+            () => FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.rotation,
+            () => fontSizes.value.xAxis,
+            () => width.value,
+            () => height.value
+        ],
+        async () => {
+            await nextTick();
+            requestAnimationFrame(() => {
+                measureTimeLabelsBox();
+            });
         },
-      ],
-      dates: dataset.map(d => d.timestamp),
+        { flush: "post" }
+    );
+});
+
+onBeforeUnmount(() => {
+    timeLabelsHeight.value = 0;
+    timeLabelsBBoxX.value = 0;
+    stableParentSize.stop();
+});
+
+function selectTimeLabel(label, relativeIndex) {
+    const datapoint = relativeDataset.value.map(datapoint => {
+        return {
+            shape: datapoint.shape || null,
+            name: datapoint.name,
+            color: datapoint.color,
+            type: datapoint.type,
+            value: datapoint.absoluteValues.find((_s, i) => i === relativeIndex),
+            comments: datapoint.comments || [],
+            prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+            suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+        }
+    })
+    emit('selectTimeLabel', {
+        datapoint,
+        absoluteIndex: label.absoluteIndex,
+        label: label.text
+    })
+}
+
+const maxSeries = computed(() => {
+    const len = safeInt((slicer.value.end ?? 0) - (slicer.value.start ?? 0))
+    return Math.max(1, len)
+})
+
+function selectMinimapIndex(i) {
+    selectedMinimapIndex.value = i;
+}
+
+function toggleStack() {
+    mutableConfig.value.isStacked = !mutableConfig.value.isStacked
+    if (!mutableConfig.value.isStacked) {
+        mutableConfig.value.useIndividualScale = FINAL_CONFIG.value.chart.grid.labels.yAxis.useIndividualScale;
+    } else {
+        mutableConfig.value.useIndividualScale = true
     }
-  }
-  return { dataset: null, dates: [] }
 }
 
-/**
- * Extracts normalized time-series points from an evolution dataset based on
- * the selected time granularity.
- *
- * Each returned point contains:
- * - `timestamp`: the numeric time value used for x-axis alignment
- * - `downloads`: the corresponding value at that time
- *
- * The timestamp field is selected according to granularity:
- * - **daily**   → `timestamp`
- * - **weekly**  → `timestampEnd`
- * - **monthly** → `timestamp`
- * - **yearly**  → `timestamp`
- *
- * If the dataset does not match the expected shape for the given granularity,
- * an empty array is returned.
- *
- * This helper is primarily used in multi-package mode to align multiple
- * datasets on a shared time axis.
- *
- * @param selectedGranularity - Active chart time granularity
- * @param dataset - Raw evolution dataset to extract points from
- * @returns An array of normalized `{ timestamp, downloads }` points
- */
-function extractSeriesPoints(
-  selectedGranularity: ChartTimeGranularity,
-  dataset: EvolutionData,
-): Array<{ timestamp: number; downloads: number }> {
-  if (selectedGranularity === 'weekly' && isWeeklyDataset(dataset)) {
-    return dataset.map(d => ({ timestamp: d.timestampEnd, downloads: d.downloads }))
-  }
-  if (selectedGranularity === 'daily' && isDailyDataset(dataset)) {
-    return dataset.map(d => ({ timestamp: d.timestamp, downloads: d.downloads }))
-  }
-  if (selectedGranularity === 'monthly' && isMonthlyDataset(dataset)) {
-    return dataset.map(d => ({ timestamp: d.timestamp, downloads: d.downloads }))
-  }
-  if (selectedGranularity === 'yearly' && isYearlyDataset(dataset)) {
-    return dataset.map(d => ({ timestamp: d.timestamp, downloads: d.downloads }))
-  }
-  return []
+function checkAutoScaleError(datapoint) {
+    if (!debug.value) return;
+    if (datapoint.autoScaling) {
+        if (!FINAL_CONFIG.value.chart.grid.labels.yAxis.useIndividualScale) {
+            console.warn(`VueUiXy (datapoint: ${datapoint.name}) : autoScaling only works when config.chart.grid.labels.yAxis.useIndividualScale is set to true`)
+        }
+        if (!FINAL_CONFIG.value.chart.grid.labels.yAxis.stacked) {
+            console.warn(`VueUiXy (datapoint: ${datapoint.name}) : autoScaling only works when config.chart.grid.labels.yAxis.stacked is set to true`)
+        }
+    }
 }
 
-function toIsoDateOnly(value: string): string {
-  return value.slice(0, 10)
-}
-function isValidIsoDateOnly(value: string): boolean {
-  return /^\d{4}-\d{2}-\d{2}$/.test(value)
-}
-function safeMin(a: string, b: string): string {
-  return a.localeCompare(b) <= 0 ? a : b
-}
-function safeMax(a: string, b: string): string {
-  return a.localeCompare(b) >= 0 ? a : b
+function fillArray(len, src) {
+    const L = safeInt(len)
+    const res = Array(L).fill(0)
+    for (let i = 0; i < src.length && i < L; i += 1) res[i] = src[i] ?? 0
+    return res
 }
 
-/**
- * Multi-package mode detection:
- * packageNames has entries, and packageName is not set.
- */
-const isMultiPackageMode = computed(() => {
-  const names = (props.packageNames ?? []).map(n => String(n).trim()).filter(Boolean)
-  const single = String(props.packageName ?? '').trim()
-  return names.length > 0 && !single
+function validSlicerEnd(v) {
+    const _max = Math.max(...FINAL_DATASET.value.map(datapoint => lttb(datapoint.series).length));
+    if (v > _max) {
+        return _max;
+    }
+    if (v < 0 || (FINAL_CONFIG.value.chart.zoom.startIndex !== null && v < FINAL_CONFIG.value.chart.zoom.startIndex)) {
+        if (FINAL_CONFIG.value.chart.zoom.startIndex !== null) {
+            return FINAL_CONFIG.value.chart.zoom.startIndex + 1
+        } else {
+            return 1
+        }
+    }
+    return v;
+}
+
+const isSettingUp = ref(false);
+const slicerReady = ref(false);
+
+const absoluteSlicerStartIndex = ref(0);
+const absoluteSlicerEndIndex = ref(0);
+
+function isObjectivelyDifferentIndex(a, b) {
+    const na = Number(a);
+    const nb = Number(b);
+    if (!Number.isFinite(na) || !Number.isFinite(nb)) return false;
+    return !Object.is(na, nb);
+}
+
+function setupSlicer() {
+    if (isSettingUp.value) return;
+    isSettingUp.value = true;
+    try {
+        const { startIndex, endIndex } = FINAL_CONFIG.value.chart.zoom;
+        const max = Math.max(...FINAL_DATASET.value.map(dp => lttb(dp.series).length));
+
+        // Absolute bounds are always the full-range indices
+        absoluteSlicerStartIndex.value = 0;
+        absoluteSlicerEndIndex.value = max;
+
+        const start = startIndex != null ? startIndex : 0;
+        const end = endIndex != null ? Math.min(validSlicerEnd(endIndex + 1), max) : max;
+
+        suppressChild.value = true;
+        slicer.value.start = start;
+        slicer.value.end = end;
+        slicerPrecog.value.start = start;
+        slicerPrecog.value.end = end;
+        normalizeSlicerWindow();
+        slicerReady.value = true;
+    } finally {
+        queueMicrotask(() => {
+            suppressChild.value = false;
+        });
+        isSettingUp.value = false;
+    }
+}
+
+const suppressChild = ref(false);
+
+function onSlicerStart(v) {
+    if (isSettingUp.value || suppressChild.value) return;
+
+    const nextStart = Number(v);
+
+    emit('zoomStart', {
+        index: nextStart,
+        isZoom: isObjectivelyDifferentIndex(nextStart, absoluteSlicerStartIndex.value),
+    });
+
+    if (!Number.isFinite(nextStart)) return;
+    if (nextStart === slicer.value.start) return;
+
+    slicer.value.start = nextStart;
+    slicerPrecog.value.start = nextStart;
+    normalizeSlicerWindow();
+}
+
+function onSlicerEnd(v) {
+    if (isSettingUp.value || suppressChild.value) return;
+
+    const end = validSlicerEnd(v);
+
+    emit('zoomEnd', {
+        index: end,
+        isZoom: isObjectivelyDifferentIndex(end, absoluteSlicerEndIndex.value),
+    });
+
+    if (end === slicer.value.end) return;
+
+    slicer.value.end = end;
+    slicerPrecog.value.end = end;
+    normalizeSlicerWindow();
+}
+
+async function refreshSlicer() {
+    await setupSlicer();
+    emit('zoomReset')
+}
+
+function canShowValue(v) {
+    return ![null, undefined, NaN, Infinity, -Infinity].includes(v);
+}
+
+const absoluteMax = computed(() => niceScale.value.max + relativeZero.value);
+
+function ratioToMax(v) {
+    return v / (canShowValue(absoluteMax.value) ? absoluteMax.value : 1);
+}
+
+const zero = computed(() => {
+    if (isNaN(ratioToMax(relativeZero.value))) {
+        return drawingArea.value?.bottom;
+    } else {
+        return drawingArea.value?.bottom - (drawingArea.value.height * ratioToMax(relativeZero.value));
+    }
+});
+
+function calcRectHeight(plot) {
+    const zeroForPositiveValuesOnly = ![null, undefined].includes(FINAL_CONFIG.value.chart.grid.labels.yAxis.scaleMin) && FINAL_CONFIG.value.chart.grid.labels.yAxis.scaleMin > 0 && min.value >= 0 ? drawingArea.value?.bottom : zero.value;
+
+    if (plot.value >= 0) {
+        return checkNaN(zeroForPositiveValuesOnly - plot.y <= 0 ? 0.00001 : zeroForPositiveValuesOnly - plot.y);
+    } else {
+        return checkNaN(plot.y - zero.value <= 0 ? 0.00001 : plot.y - zero.value);
+    }
+}
+
+function calcIndividualHeight(plot) {
+    if (plot.value >= 0) {
+        return checkNaN(plot.zeroPosition - plot.y <= 0 ? 0.00001 : plot.zeroPosition - plot.y)
+    } else {
+        return checkNaN(plot.y - plot.zeroPosition <= 0 ? 0.00001 : plot.zeroPosition - plot.y)
+    }
+}
+
+const slot = computed(() => {
+    const denom = Math.max(1, maxSeries.value)
+    const w = Math.max(1, drawingArea.value.width)
+    const bars = Math.max(1, safeDataset.value.filter(s => s.type === 'bar' && !segregatedSeries.value.includes(s.id)).length)
+    return {
+        bar: safeDiv(w, denom * bars, 1),
+        plot: safeDiv(w, denom, 1),
+        line: safeDiv(w, denom, 1),
+    }
 })
 
-const effectivePackageNames = computed<string[]>(() => {
-  if (isMultiPackageMode.value)
-    return (props.packageNames ?? []).map(n => String(n).trim()).filter(Boolean)
-  const single = String(props.packageName ?? '').trim()
-  return single ? [single] : []
-})
-
-const xAxisLabel = computed(() => {
-  if (!isMultiPackageMode.value) return props.packageName ?? ''
-  const names = effectivePackageNames.value
-  if (names.length === 1) return names[0]
-  return 'packages'
-})
-
-const selectedGranularity = shallowRef<ChartTimeGranularity>('weekly')
-const displayedGranularity = shallowRef<ChartTimeGranularity>('weekly')
-
-const isEndDateOnPeriodEnd = computed(() => {
-  const g = selectedGranularity.value
-  if (g !== 'monthly' && g !== 'yearly') return false
-
-  const iso = String(endDate.value ?? '').slice(0, 10)
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return false
-
-  const [year, month, day] = iso.split('-').map(Number)
-  if (!year || !month || !day) return false
-
-  // Monthly: endDate is the last day of its month (UTC)
-  if (g === 'monthly') {
-    const lastDayOfMonth = new Date(Date.UTC(year, month, 0)).getUTCDate()
-    return day === lastDayOfMonth
-  }
-
-  // Yearly: endDate is the last day of the year (UTC)
-  return month === 12 && day === 31
-})
-
-const isEstimationGranularity = computed(
-  () => displayedGranularity.value === 'monthly' || displayedGranularity.value === 'yearly',
-)
-const shouldRenderEstimationOverlay = computed(
-  () => !pending.value && isEstimationGranularity.value,
-)
-
-const startDate = shallowRef<string>('') // YYYY-MM-DD
-const endDate = shallowRef<string>('') // YYYY-MM-DD
-const hasUserEditedDates = shallowRef(false)
-
-/**
- * Initializes the date range from the provided weeklyDownloads dataset.
- *
- * The range is inferred directly from the dataset boundaries:
- * - `startDate` is set from the `weekStart` of the first entry
- * - `endDate` is set from the `weekEnd` of the last entry
- *
- * Dates are normalized to `YYYY-MM-DD` and validated before assignment.
- *
- * This function is a no-op when:
- * - the user has already edited the date range
- * - no weekly download data is available
- *
- * The inferred range takes precedence over client-side fallbacks but does not
- * override user-defined dates.
- */
-function initDateRangeFromWeekly() {
-  if (hasUserEditedDates.value) return
-  if (!props.weeklyDownloads?.length) return
-
-  const first = props.weeklyDownloads[0]
-  const last = props.weeklyDownloads[props.weeklyDownloads.length - 1]
-  const start = first?.weekStart ? toIsoDateOnly(first.weekStart) : ''
-  const end = last?.weekEnd ? toIsoDateOnly(last.weekEnd) : ''
-  if (isValidIsoDateOnly(start)) startDate.value = start
-  if (isValidIsoDateOnly(end)) endDate.value = end
+function calcRectWidth() {
+    if (mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked) {
+        return slot.value.line - ((drawingArea.value.width / maxSeries.value) * 0.1);
+    }
+    return slot.value.bar;
 }
 
-/**
- * Initializes a default date range on the client when no explicit dates
- * have been provided and the user has not manually edited the range, typically
- * when weeklyDownloads is not provided.
- *
- * The range is computed in UTC to avoid timezone-related off-by-one errors:
- * - `endDate` is set to yesterday (UTC)
- * - `startDate` is set to 29 days before yesterday (UTC), yielding a 30-day range
- *
- * This function is a no-op when:
- * - the user has already edited the date range
- * - the code is running on the server
- * - both `startDate` and `endDate` are already defined
- */
-function initDateRangeFallbackClient() {
-  if (hasUserEditedDates.value) return
-  if (!import.meta.client) return
-  if (startDate.value && endDate.value) return
-
-  const today = new Date()
-  const yesterday = new Date(
-    Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() - 1),
-  )
-  const end = yesterday.toISOString().slice(0, 10)
-
-  const startObj = new Date(yesterday)
-  startObj.setUTCDate(startObj.getUTCDate() - 29)
-  const start = startObj.toISOString().slice(0, 10)
-
-  if (!startDate.value) startDate.value = start
-  if (!endDate.value) endDate.value = end
+function calcRectX(plot) {
+    if (mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked) {
+        return plot.x + ((drawingArea.value.width / maxSeries.value) * 0.05)
+    }
+    return plot.x + (slot.value.bar / 2);
 }
 
-function toUtcDateOnly(date: Date): string {
-  return date.toISOString().slice(0, 10)
+function calcRectY(plot) {
+    if (plot.value >= 0) return plot.y;
+    return [null, undefined, NaN, Infinity, -Infinity].includes(zero.value) ? drawingArea?.bottom.value : zero.value;
 }
 
-function addUtcDays(date: Date, days: number): Date {
-  const next = new Date(date)
-  next.setUTCDate(next.getUTCDate() + days)
-  return next
+function calcIndividualRectY(plot) {
+    if (plot.value >= 0) return plot.y;
+    return [null, undefined, NaN, Infinity, -Infinity].includes(plot.zeroPosition) ? 0 : plot.zeroPosition;
 }
 
-/**
- * Initializes a default date range for multi-package mode using a fixed
- * 52-week rolling window.
- *
- * The range is computed in UTC to ensure consistent boundaries across
- * timezones:
- * - `endDate` is set to yesterday (UTC)
- * - `startDate` is set to the first day of the 52-week window ending yesterday
- *
- * This function is intended for multi-package comparisons where no explicit
- * date range or dataset-derived range is available.
- *
- * This function is a no-op when:
- * - the user has already edited the date range
- * - the code is running on the server
- * - the component is not in multi-package mode
- * - both `startDate` and `endDate` are already defined
- */
-function initDateRangeForMultiPackageWeekly52() {
-  if (hasUserEditedDates.value) return
-  if (!import.meta.client) return
-  if (!isMultiPackageMode.value) return
-  if (startDate.value && endDate.value) return
+const hoveredIndex = ref(null);
 
-  const today = new Date()
-  const yesterday = new Date(
-    Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() - 1),
-  )
+function clientToSvgCoords(evt) {
+    const svgEl = svgRef.value;
+    if (!svgEl) return null;
 
-  endDate.value = toUtcDateOnly(yesterday)
-  startDate.value = toUtcDateOnly(addUtcDays(yesterday, -(52 * 7) + 1))
-}
-
-watch(
-  () => (props.packageNames ?? []).length,
-  () => {
-    initDateRangeForMultiPackageWeekly52()
-  },
-  { immediate: true },
-)
-
-const initialStartDate = shallowRef<string>('') // YYYY-MM-DD
-const initialEndDate = shallowRef<string>('') // YYYY-MM-DD
-
-function setInitialRangeIfEmpty() {
-  if (initialStartDate.value || initialEndDate.value) return
-  if (startDate.value) initialStartDate.value = startDate.value
-  if (endDate.value) initialEndDate.value = endDate.value
-}
-
-watch(
-  [startDate, endDate],
-  () => {
-    if (startDate.value || endDate.value) hasUserEditedDates.value = true
-    setInitialRangeIfEmpty()
-  },
-  { immediate: true, flush: 'post' },
-)
-
-const showResetButton = computed(() => {
-  if (!initialStartDate.value && !initialEndDate.value) return false
-  return startDate.value !== initialStartDate.value || endDate.value !== initialEndDate.value
-})
-
-function resetDateRange() {
-  hasUserEditedDates.value = false
-  startDate.value = ''
-  endDate.value = ''
-  initDateRangeFromWeekly()
-  initDateRangeForMultiPackageWeekly52()
-  initDateRangeFallbackClient()
-}
-
-const options = shallowRef<
-  | { granularity: 'day'; startDate?: string; endDate?: string }
-  | { granularity: 'week'; weeks: number; startDate?: string; endDate?: string }
-  | { granularity: 'month'; months: number; startDate?: string; endDate?: string }
-  | { granularity: 'year'; startDate?: string; endDate?: string }
->({ granularity: 'week', weeks: 52 })
-
-/**
- * Applies the current date range (`startDate` / `endDate`) to a base options
- * object, returning a new object augmented with validated date fields.
- *
- * Dates are normalized to `YYYY-MM-DD`, validated, and ordered to ensure
- * logical consistency:
- * - When both dates are valid, the earliest is assigned to `startDate` and
- *   the latest to `endDate`
- * - When only one valid date is present, only that boundary is applied
- * - Invalid or empty dates are omitted from the result
- *
- * The input object is not mutated.
- *
- * @typeParam T - Base options type to extend with date range fields
- * @param base - Base options object to which the date range should be applied
- * @returns A new options object including the applicable `startDate` and/or
- *          `endDate` fields
- */
-function applyDateRange<T extends Record<string, unknown>>(base: T): T & DateRangeFields {
-  const next: T & DateRangeFields = { ...base }
-
-  const start = startDate.value ? toIsoDateOnly(startDate.value) : ''
-  const end = endDate.value ? toIsoDateOnly(endDate.value) : ''
-
-  const validStart = start && isValidIsoDateOnly(start) ? start : ''
-  const validEnd = end && isValidIsoDateOnly(end) ? end : ''
-
-  if (validStart && validEnd) {
-    next.startDate = safeMin(validStart, validEnd)
-    next.endDate = safeMax(validStart, validEnd)
-  } else {
-    if (validStart) next.startDate = validStart
-    else delete next.startDate
-
-    if (validEnd) next.endDate = validEnd
-    else delete next.endDate
-  }
-
-  return next
-}
-
-const { fetchPackageDownloadEvolution } = useCharts()
-
-const evolution = shallowRef<EvolutionData>(props.weeklyDownloads ?? [])
-const evolutionsByPackage = shallowRef<Record<string, EvolutionData>>({})
-const pending = shallowRef(false)
-
-const isMounted = shallowRef(false)
-let requestToken = 0
-
-// Watches granularity and date inputs to keep request options in sync and
-// manage the loading state.
-//
-// This watcher does NOT perform the fetch itself. Its responsibilities are:
-// - derive the correct API options from the selected granularity
-// - apply the current validated date range to those options
-// - determine whether a loading indicator should be shown
-//
-// Fetching is debounced separately to avoid excessive
-// network requests while the user is interacting with controls.
-watch(
-  [selectedGranularity, startDate, endDate],
-  ([granularityValue]) => {
-    if (granularityValue === 'daily') options.value = applyDateRange({ granularity: 'day' })
-    else if (granularityValue === 'weekly')
-      options.value = applyDateRange({ granularity: 'week', weeks: 52 })
-    else if (granularityValue === 'monthly')
-      options.value = applyDateRange({ granularity: 'month', months: 24 })
-    else options.value = applyDateRange({ granularity: 'year' })
-
-    // Do not set pending during initial setup
-    if (!isMounted.value) return
-
-    const packageNames = effectivePackageNames.value
-    if (!import.meta.client || !packageNames.length) {
-      pending.value = false
-      return
+    // Precise mapping (handles fullscreen & letterboxing)
+    if (svgEl.createSVGPoint && svgEl.getScreenCTM) {
+        const pt = svgEl.createSVGPoint();
+        pt.x = evt.clientX;
+        pt.y = evt.clientY;
+        const ctm = svgEl.getScreenCTM();
+        if (ctm) {
+            const p = pt.matrixTransform(ctm.inverse());
+            return { x: p.x, y: p.y, ok: true };
+        }
     }
 
-    const o = options.value as any
-    const hasExplicitRange = Boolean(o.startDate || o.endDate)
+    // Fallback (preserveAspectRatio meet)
+    const rect = svgEl.getBoundingClientRect();
+    const vb = svgEl.viewBox?.baseVal || { x: 0, y: 0, width: rect.width, height: rect.height };
+    const scale = Math.min(rect.width / vb.width, rect.height / vb.height);
+    const drawnW = vb.width * scale;
+    const drawnH = vb.height * scale;
+    const offsetX = (rect.width - drawnW) / 2;
+    const offsetY = (rect.height - drawnH) / 2;
+    const x = (evt.clientX - rect?.left - offsetX) / scale + vb.x;
+    const y = (evt.clientY - rect?.top  - offsetY) / scale + vb.y;
+    return { x, y, ok: true };
+}
 
-    // Do not show loading when weeklyDownloads is already provided
-    if (
-      !isMultiPackageMode.value &&
-      o.granularity === 'week' &&
-      props.weeklyDownloads?.length &&
-      !hasExplicitRange
-    ) {
-      pending.value = false
-      return
+let RAF_MOUSE_MOVE = 0;
+
+function onSvgMouseMove(e) {
+    if (isAnnotator.value || dragState.value.active) return;
+
+    // cancel any pending raf so a stale one cannot re-open the tooltip
+    if (RAF_MOUSE_MOVE) cancelAnimationFrame(RAF_MOUSE_MOVE);
+
+    RAF_MOUSE_MOVE = requestAnimationFrame(() => {
+        RAF_MOUSE_MOVE = 0;
+
+        const svgPt = clientToSvgCoords(e);
+        // Mouse may have already left by the time this runs :E
+        if (!svgPt || !svgRef.value) {
+            onSvgMouseLeave();
+            return;
+        }
+
+        // Ignore moves outside drawing area
+        const { left, right, top, bottom, width: areaW } = drawingArea.value;
+        if ( svgPt.x < left || svgPt.x > right || svgPt.y < top  || svgPt.y > bottom) {
+            onSvgMouseLeave();
+            return;
+        }
+
+        const localX = svgPt.x - left;
+        const slotW = areaW / maxSeries.value;
+        const idx = Math.floor(localX / slotW);
+
+        if (idx >= 0 && idx < maxSeries.value) {
+            if (hoveredIndex.value !== idx) {
+                hoveredIndex.value = idx;
+                toggleTooltipVisibility(true, idx);
+            }
+        } else {
+            onSvgMouseLeave();
+        }
+    });
+}
+
+function onSvgMouseLeave() {
+    if (RAF_MOUSE_MOVE) {
+        cancelAnimationFrame(RAF_MOUSE_MOVE);
+        RAF_MOUSE_MOVE = 0;
+    }
+    hoveredIndex.value = null;
+    toggleTooltipVisibility(false, null);
+}
+
+function onSvgClick(e) {
+    if (didDragDatapoint.value) {
+        didDragDatapoint.value = false;
+        return;
+    }
+    const svgPt = clientToSvgCoords(e);
+    if (svgPt && svgRef.value) {
+        const { left, right, top, bottom, width: areaW } = drawingArea.value;
+
+        // Only react if click lands inside the drawing area
+        if (svgPt.x >= left && svgPt.x <= right && svgPt.y >= top && svgPt.y <= bottom) {
+            const slotW = areaW / Math.max(1, maxSeries.value);
+            const idx = Math.floor((svgPt.x - left) / slotW);
+
+            if (idx >= 0 && idx < maxSeries.value) {
+                selectX(idx);
+                return;
+            }
+        }
     }
 
-    pending.value = true
-  },
-  { immediate: true },
-)
-
-/**
- * Fetches download evolution data based on the current granularity,
- * date range, and package selection.
- *
- * This function:
- * - runs only on the client
- * - supports both single-package and multi-package modes
- * - applies request de-duplication via a request token to avoid race conditions
- * - updates the appropriate reactive stores with fetched data
- * - manages the `pending` loading state
- *
- * Behavior details:
- * - In multi-package mode, all packages are fetched in parallel and partial
- *   failures are tolerated using `Promise.allSettled`
- * - In single-package mode, weekly data is reused from `weeklyDownloads`
- *   when available and no explicit date range is requested
- * - Outdated responses are discarded when a newer request supersedes them
- *
- */
-async function loadNow() {
-  if (!import.meta.client) return
-
-  const packageNames = effectivePackageNames.value
-  if (!packageNames.length) return
-
-  const currentToken = ++requestToken
-  pending.value = true
-
-  try {
-    if (isMultiPackageMode.value) {
-      const settled = await Promise.allSettled(
-        packageNames.map(async pkg => {
-          const result = await fetchPackageDownloadEvolution(
-            pkg,
-            props.createdIso ?? null,
-            options.value,
-          )
-          return { pkg, result: (result ?? []) as EvolutionData }
-        }),
-      )
-
-      if (currentToken !== requestToken) return
-
-      const next: Record<string, EvolutionData> = {}
-      for (const entry of settled) {
-        if (entry.status === 'fulfilled') next[entry.value.pkg] = entry.value.result
-      }
-
-      evolutionsByPackage.value = next
-      displayedGranularity.value = selectedGranularity.value
-      return
+    if (hoveredIndex.value != null) {
+        selectX(hoveredIndex.value);
     }
+}
 
-    const pkg = packageNames[0] ?? ''
-    if (!pkg) {
-      evolution.value = []
-      displayedGranularity.value = selectedGranularity.value
-      return
+function selectX(index) {
+    const datapoint = relativeDataset.value.map(s => {
+        return {
+            name: s.name,
+            value: [null, undefined, NaN].includes(s.absoluteValues[index]) ? null : s.absoluteValues[index],
+            color: s.color,
+            type: s.type
+        }
+    });
+
+    emit('selectX',
+        {
+            dataset: datapoint,
+            index,
+            indexLabel: FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.values[index]
+        }
+    );
+
+    if (FINAL_CONFIG.value.events.datapointClick) {
+        FINAL_CONFIG.value.events.datapointClick({ datapoint, seriesIndex: index + slicer.value.start })
     }
+}
 
-    const o = options.value
-    const hasExplicitRange = Boolean((o as any).startDate || (o as any).endDate)
-    if (o.granularity === 'week' && props.weeklyDownloads?.length && !hasExplicitRange) {
-      evolution.value = props.weeklyDownloads
-      displayedGranularity.value = 'weekly'
-      return
+function getData() {
+    return absoluteDataset.value.map(s => {
+        return {
+            values: s.absoluteValues,
+            color: s.color,
+            name: s.name,
+            type: s.type
+        }
+    });
+}
+
+async function getImage({ scale = 2 } = {}) {
+    if (!chart.value) return
+    const { width, height } = chart.value.getBoundingClientRect();
+    const aspectRatio = width / height;
+    const { imageUri, base64 } = await img({ domElement: chart.value, base64: true, img: true, scale })
+    return {
+        imageUri,
+        base64,
+        title: FINAL_CONFIG.value.chart.title.text,
+        width,
+        height,
+        aspectRatio
     }
-
-    const result = await fetchPackageDownloadEvolution(pkg, props.createdIso ?? null, options.value)
-    if (currentToken !== requestToken) return
-
-    evolution.value = (result ?? []) as EvolutionData
-    displayedGranularity.value = selectedGranularity.value
-  } catch {
-    if (currentToken !== requestToken) return
-    if (isMultiPackageMode.value) evolutionsByPackage.value = {}
-    else evolution.value = []
-  } finally {
-    if (currentToken === requestToken) pending.value = false
-  }
 }
 
-// Debounced wrapper around `loadNow` to avoid triggering a network request
-// on every intermediate state change while the user is interacting with inputs
-//
-// This 'arbitrary' 1000 ms delay:
-// - gives enough time for the user to finish changing granularity or dates
-// - prevents unnecessary API load and visual flicker of the loading state
-//
-const debouncedLoadNow = useDebounceFn(() => {
-  loadNow()
-}, 1000)
-
-const fetchTriggerKey = computed(() => {
-  const names = effectivePackageNames.value.join(',')
-  const o = options.value as any
-  return [
-    isMultiPackageMode.value ? 'M' : 'S',
-    names,
-    String(props.createdIso ?? ''),
-    String(o.granularity ?? ''),
-    String(o.weeks ?? ''),
-    String(o.months ?? ''),
-    String(o.startDate ?? ''),
-    String(o.endDate ?? ''),
-  ].join('|')
-})
-
-watch(
-  () => fetchTriggerKey.value,
-  () => {
-    if (!import.meta.client) return
-    if (!isMounted.value) return
-    debouncedLoadNow()
-  },
-  { flush: 'post' },
-)
-
-const effectiveDataSingle = computed<EvolutionData>(() => {
-  if (displayedGranularity.value === 'weekly' && props.weeklyDownloads?.length) {
-    if (isWeeklyDataset(evolution.value) && evolution.value.length) return evolution.value
-    return props.weeklyDownloads
-  }
-  return evolution.value
-})
-
-/**
- * Normalized chart data derived from the fetched evolution datasets.
- *
- * This computed value adapts its behavior based on the current mode:
- *
- * - **Single-package mode**
- *   - Delegates formatting to `formatXyDataset`
- *   - Produces a single series with its corresponding timestamps
- *
- * - **Multi-package mode**
- *   - Merges multiple package datasets into a shared time axis
- *   - Aligns all series on the same sorted list of timestamps
- *   - Fills missing datapoints with `0` to keep series lengths consistent
- *   - Assigns framework-specific colors when applicable
- *
- * The returned structure matches the expectations of `VueUiXy`:
- * - `dataset`: array of series definitions, or `null` when no data is available
- * - `dates`: sorted list of timestamps used as the x-axis reference
- *
- * Returning `dataset: null` explicitly signals the absence of data and allows
- * the template to handle empty states without ambiguity.
- */
-const chartData = computed<{ dataset: VueUiXyDatasetItem[] | null; dates: number[] }>(() => {
-  if (!isMultiPackageMode.value) {
-    const pkg = effectivePackageNames.value[0] ?? props.packageName ?? ''
-    return formatXyDataset(displayedGranularity.value, effectiveDataSingle.value, pkg)
-  }
-
-  const names = effectivePackageNames.value
-  const granularity = displayedGranularity.value
-
-  const timestampSet = new Set<number>()
-  const pointsByPackage = new Map<string, Array<{ timestamp: number; downloads: number }>>()
-
-  for (const pkg of names) {
-    const data = evolutionsByPackage.value[pkg] ?? []
-    const points = extractSeriesPoints(granularity, data)
-    pointsByPackage.set(pkg, points)
-    for (const p of points) timestampSet.add(p.timestamp)
-  }
-
-  const dates = Array.from(timestampSet).sort((a, b) => a - b)
-  if (!dates.length) return { dataset: null, dates: [] }
-
-  const dataset: VueUiXyDatasetItem[] = names.map(pkg => {
-    const points = pointsByPackage.get(pkg) ?? []
-    const map = new Map<number, number>()
-    for (const p of points) map.set(p.timestamp, p.downloads)
-
-    const series = dates.map(t => map.get(t) ?? 0)
-
-    const item: VueUiXyDatasetItem = { name: pkg, type: 'line', series } as VueUiXyDatasetItem
-
-    if (isListedFramework(pkg)) {
-      item.color = getFrameworkColor(pkg)
+function toggleLegend() {
+    if (segregatedSeries.value.length) {
+        segregatedSeries.value = [];
+    } else {
+        absoluteDataset.value.forEach(s => {
+            segregatedSeries.value.push(s.id);
+        });
     }
-    // Other packages default to built-in palette
-    return item
-  })
-
-  return { dataset, dates }
-})
-
-const maxDatapoints = computed(() =>
-  Math.max(0, ...(chartData.value.dataset ?? []).map(d => d.series.length))
-)
-
-/**
- * Maximum estimated value across all series when the chart is
- * displaying a partially completed time bucket (monthly or yearly).
- *
- * Used to determine whether the Y-axis upper bound must be extended to accommodate extrapolated values.
- * It does not mutate chart state or rendering directly.
- *
- * Behavior:
- * - Returns `0` when:
- *   - the chart is loading (`pending === true`)
- *   - the current granularity is not `monthly` or `yearly`
- *   - the dataset is empty or has fewer than two points
- *   - the last bucket is fully completed
- *
- * - For partially completed buckets:
- *   - Computes the bucket completion ratio using UTC boundaries
- *   - Linearly extrapolates the last datapoint of each series
- *   - Returns the maximum extrapolated value across all series
- *
- * The reference time used for completion is:
- * - the end of `endDate` (UTC) when provided, or
- * - the current time (`Date.now()`) otherwise
- *
- * @returns The maximum extrapolated value across all series, or `0` when
- * estimation is not applicable.
- */
-const estimatedMaxFromData = computed<number>(() => {
-  if (pending.value) return 0
-  if (!isEstimationGranularity.value) return 0
-
-  const dataset = chartData.value.dataset
-  const dates = chartData.value.dates
-  if (!dataset?.length || dates.length < 2) return 0
-
-  const lastBucketTimestampMs = dates[dates.length - 1] ?? 0
-  const endDateMs = endDate.value ? endDateOnlyToUtcMs(endDate.value) : null
-  const referenceMs = endDateMs ?? Date.now()
-
-  const completionRatio = getCompletionRatioForBucket({
-    bucketTimestampMs: lastBucketTimestampMs,
-    granularity: displayedGranularity.value as 'monthly' | 'yearly',
-    referenceMs,
-  })
-
-  if (!(completionRatio > 0 && completionRatio < 1)) return 0
-
-  let maxEstimated = 0
-
-  for (const serie of dataset) {
-    const values = Array.isArray((serie as any).series) ? ((serie as any).series as number[]) : []
-    if (values.length < 2) continue
-
-    const lastValue = Number(values[values.length - 1])
-    if (!Number.isFinite(lastValue) || lastValue <= 0) continue
-
-    const estimated = lastValue / completionRatio
-    if (Number.isFinite(estimated) && estimated > maxEstimated) maxEstimated = estimated
-  }
-
-  return maxEstimated
-})
-
-const yAxisScaleMax = computed<number | undefined>(() => {
-  if (!isEstimationGranularity.value || pending.value) return undefined
-
-  const datasetMax = getDatasetMaxValue(chartData.value.dataset)
-  const estimatedMax = estimatedMaxFromData.value
-  const candidateMax = Math.max(datasetMax, estimatedMax)
-
-  const niceMax = candidateMax > 0 ? niceMaxScale(candidateMax) : 0
-  return niceMax > datasetMax ? niceMax : undefined
-})
-
-const loadFile = (link: string, filename: string) => {
-  const a = document.createElement('a')
-  a.href = link
-  a.download = filename
-  a.click()
-  a.remove()
 }
 
-const datetimeFormatterOptions = computed(() => {
-  return {
-    daily: { year: 'yyyy-MM-dd', month: 'yyyy-MM-dd', day: 'yyyy-MM-dd' },
-    weekly: { year: 'yyyy-MM-dd', month: 'yyyy-MM-dd', day: 'yyyy-MM-dd' },
-    monthly: { year: 'MMM yyyy', month: 'MMM yyyy', day: 'MMM yyyy' },
-    yearly: { year: 'yyyy', month: 'yyyy', day: 'yyyy' },
-  }[selectedGranularity.value]
-})
-
-const sanitise = (value: string) =>
-  value
-    .replace(/^@/, '')
-    .replace(/[\\/:"*?<>|]/g, '-')
-    .replace(/\//g, '-')
-
-function buildExportFilename(extension: string): string {
-  const g = selectedGranularity.value
-  const range = `${startDate.value}_${endDate.value}`
-
-  if (!isMultiPackageMode.value) {
-    const name = effectivePackageNames.value[0] ?? props.packageName ?? 'package'
-    return `${sanitise(name)}-${g}_${range}.${extension}`
-  }
-
-  const names = effectivePackageNames.value
-  const label = names.length === 1 ? names[0] : names.join('_')
-  return `${sanitise(label ?? '')}-${g}_${range}.${extension}`
-}
-
-const granularityLabels = computed(() => ({
-  daily: $t('package.trends.granularity_daily'),
-  weekly: $t('package.trends.granularity_weekly'),
-  monthly: $t('package.trends.granularity_monthly'),
-  yearly: $t('package.trends.granularity_yearly'),
-}))
-
-function getGranularityLabel(granularity: ChartTimeGranularity) {
-  return granularityLabels.value[granularity]
-}
-
-function clampRatio(value: number): number {
-  if (value < 0) return 0
-  if (value > 1) return 1
-  return value
-}
-
-/**
- * Convert a `YYYY-MM-DD` date to UTC timestamp representing the end of that day.
- * The returned timestamp corresponds to `23:59:59.999` in UTC
- *
- * @param endDateOnly - ISO-like date string (`YYYY-MM-DD`)
- * @returns The UTC timestamp in milliseconds for the end of the given day,
- * or `null` if the input is invalid.
- */
-function endDateOnlyToUtcMs(endDateOnly: string): number | null {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(endDateOnly)) return null
-  const [y, m, d] = endDateOnly.split('-').map(Number)
-  if (!y || !m || !d) return null
-  return Date.UTC(y, m - 1, d, 23, 59, 59, 999)
-}
-
-/**
- * Computes the UTC timestamp corresponding to the start of the time bucket
- * that contains the given timestamp.
- *
- * This function is used to derive period boundaries when computing completion
- * ratios or extrapolating values for partially completed periods.
- *
- * Bucket boundaries are defined in UTC:
- * - **monthly** : first day of the month at `00:00:00.000` UTC
- * - **yearly** : January 1st of the year at `00:00:00.000` UTC
- *
- * @param timestampMs - Reference timestamp in milliseconds
- * @param granularity - Bucket granularity (`monthly` or `yearly`)
- * @returns The UTC timestamp representing the start of the corresponding
- * time bucket.
- */
-function getBucketStartUtc(timestampMs: number, granularity: 'monthly' | 'yearly'): number {
-  const date = new Date(timestampMs)
-  if (granularity === 'yearly') return Date.UTC(date.getUTCFullYear(), 0, 1, 0, 0, 0, 0)
-  return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1, 0, 0, 0, 0)
-}
-
-/**
- * Computes the UTC timestamp corresponding to the end of the time
- * bucket that contains the given timestamp. This end timestamp is paired with `getBucketStartUtc` to define
- * a half-open interval `[start, end)` when computing elapsed time or completion
- * ratios within a period.
- *
- * Bucket boundaries are defined in UTC and are **exclusive**:
- * - **monthly** : first day of the following month at `00:00:00.000` UTC
- * - **yearly** : January 1st of the following year at `00:00:00.000` UTC
- *
- * @param timestampMs - Reference timestamp in milliseconds
- * @param granularity - Bucket granularity (`monthly` or `yearly`)
- * @returns The UTC timestamp (in milliseconds) representing the exclusive end
- * of the corresponding time bucket.
- */
-function getBucketEndUtc(timestampMs: number, granularity: 'monthly' | 'yearly'): number {
-  const date = new Date(timestampMs)
-  if (granularity === 'yearly') return Date.UTC(date.getUTCFullYear() + 1, 0, 1, 0, 0, 0, 0)
-  return Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1, 0, 0, 0, 0)
-}
-
-/**
- * Computes the completion ratio of a time bucket relative to a reference time.
- *
- * The ratio represents how much of the bucket’s duration has elapsed at
- * `referenceMs`, expressed as a normalized value in the range `[0, 1]`.
- *
- * The bucket is defined by the calendar period (monthly or yearly) that
- * contains `bucketTimestampMs`, using UTC boundaries:
- * - start: `getBucketStartUtc(...)`
- * - end: `getBucketEndUtc(...)`
- *
- * The returned value is clamped to `[0, 1]`:
- * - `0`: reference time is at or before the start of the bucket
- * - `1`: reference time is at or after the end of the bucket
- *
- * This function is used to detect partially completed periods and to
- * extrapolate full period values from partial data.
- *
- * @param params.bucketTimestampMs - Timestamp belonging to the bucket
- * @param params.granularity - Bucket granularity (`monthly` or `yearly`)
- * @param params.referenceMs - Reference timestamp used to measure progress
- * @returns A normalized completion ratio in the range `[0, 1]`.
- */
-function getCompletionRatioForBucket(params: {
-  bucketTimestampMs: number
-  granularity: 'monthly' | 'yearly'
-  referenceMs: number
-}): number {
-  const start = getBucketStartUtc(params.bucketTimestampMs, params.granularity)
-  const end = getBucketEndUtc(params.bucketTimestampMs, params.granularity)
-  const total = end - start
-  if (total <= 0) return 1
-  return clampRatio((params.referenceMs - start) / total)
-}
-
-/**
- * Returns a "nice" rounded upper bound for a positive value, suitable for
- * chart axis scaling.
- *
- * The value is converted to a power-of-ten range and then rounded up to the
- * next monotonic step within that decade (1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10).
- *
- * VueUiXy computes its own nice scale from the dataset.
- * However, when injecting an estimation for partial datapoints, the scale must be forced to avoid
- * overflowing the estimation if it were to become the max value. This scale is fed into the `scaleMax`
- * config attribute of VueUiXy.
- *
- * Examples:
- * - `niceMaxScale(2_340)` returns `2_500`
- * - `niceMaxScale(7_100)` returns `8_000`
- * - `niceMaxScale(12)` returns `12.5`
- *
- * @param value - Candidate maximum value
- * @returns A nice maximum >= `value`, or `0` when `value` is not finite or <= 0.
- */
-function niceMaxScale(value: number): number {
-  const v = Number(value)
-  if (!Number.isFinite(v) || v <= 0) return 0
-
-  const exponent = Math.floor(Math.log10(v))
-  const base = 10 ** exponent
-  const fraction = v / base
-
-  // Monotonic scale steps
-  if (fraction <= 1) return 1 * base
-  if (fraction <= 1.25) return 1.25 * base
-  if (fraction <= 1.5) return 1.5 * base
-  if (fraction <= 2) return 2 * base
-  if (fraction <= 2.5) return 2.5 * base
-  if (fraction <= 3) return 3 * base
-  if (fraction <= 4) return 4 * base
-  if (fraction <= 5) return 5 * base
-  if (fraction <= 6) return 6 * base
-  if (fraction <= 8) return 8 * base
-  return 10 * base
-}
-
-/**
- * Extrapolates the last datapoint of a series when it belongs to a partially
- * completed time bucket (monthly or yearly).
- *
- * The extrapolation assumes that the observed value of the last datapoint
- * grows linearly with time within its bucket. The value is scaled by the
- * inverse of the bucket completion ratio, and the corresponding y
- * coordinate is computed by projecting along the segment defined by the
- * previous and last datapoints.
- *
- * Extrapolation is performed only when:
- * - the granularity is `monthly` or `yearly`
- * - the bucket completion ratio is strictly between `0` and `1`
- *
- * In all other cases, the original `lastPoint` is returned unchanged.
- *
- * The reference time used to compute the completion ratio is:
- * - the end of `endDateOnly` (UTC) when provided, or
- * - the current time (`Date.now()`) otherwise
- *
- * @param params.previousPoint - Datapoint immediately preceding the last one
- * @param params.lastPoint - Last observed datapoint (potentially incomplete)
- * @param params.lastBucketTimestampMs - Timestamp identifying the bucket of the last datapoint
- * @param params.granularity - Chart granularity
- * @param params.endDateOnly - Optional `YYYY-MM-DD` end date used as a fixed reference time
- * @returns A new datapoint representing the extrapolated estimate, or the
- *          original `lastPoint` when extrapolation is not applicable.
- */
-function extrapolateIncompleteLastPoint(params: {
-  previousPoint: { x: number; y: number; value: number }
-  lastPoint: { x: number; y: number; value: number; comment?: string }
-  lastBucketTimestampMs: number
-  granularity: ChartTimeGranularity
-  endDateOnly?: string
-}) {
-  if (params.granularity !== 'monthly' && params.granularity !== 'yearly')
-    return { ...params.lastPoint }
-
-  const endDateMs = params.endDateOnly ? endDateOnlyToUtcMs(params.endDateOnly) : null
-  const referenceMs = endDateMs ?? Date.now()
-
-  const completionRatio = getCompletionRatioForBucket({
-    bucketTimestampMs: params.lastBucketTimestampMs,
-    granularity: params.granularity,
-    referenceMs,
-  })
-
-  if (!(completionRatio > 0 && completionRatio < 1)) return { ...params.lastPoint }
-
-  const extrapolatedValue = params.lastPoint.value / completionRatio
-  if (!Number.isFinite(extrapolatedValue)) return { ...params.lastPoint }
-
-  const valueDelta = params.lastPoint.value - params.previousPoint.value
-  const yDelta = params.lastPoint.y - params.previousPoint.y
-
-  if (valueDelta === 0)
-    return { ...params.lastPoint, value: extrapolatedValue, comment: 'extrapolated' }
-
-  const valueToYPixelRatio = yDelta / valueDelta
-  const extrapolatedY =
-    params.previousPoint.y + (extrapolatedValue - params.previousPoint.value) * valueToYPixelRatio
-
-  return {
-    x: params.lastPoint.x,
-    y: extrapolatedY,
-    value: extrapolatedValue,
-    comment: 'extrapolated',
-  }
-}
-
-/**
- * Compute the max value across all series in a `VueUiXy` dataset.
- *
- * @param dataset - Array of `VueUiXyDatasetItem` objects, or `null`
- * @returns The maximum finite value found across all series, or `0` when
- * the dataset is empty or absent.
- */
-function getDatasetMaxValue(dataset: VueUiXyDatasetItem[] | null): number {
-  if (!dataset?.length) return 0
-  let max = 0
-  for (const serie of dataset) {
-    const values = Array.isArray((serie as any).series) ? ((serie as any).series as number[]) : []
-    for (const v of values) {
-      const n = Number(v)
-      if (Number.isFinite(n) && n > max) max = n
+function segregate(legendItem) {
+    if (segregatedSeries.value.includes(legendItem.id)) {
+        segregatedSeries.value = segregatedSeries.value.filter(id => id !== legendItem.id);
+    } else {
+        if (segregatedSeries.value.length + 1 === safeDataset.value.length) return;
+        segregatedSeries.value.push(legendItem.id);
     }
-  }
-  return max
+    emit('selectLegend', relativeDataset.value.map(s => {
+        return {
+            name: s.name,
+            values: s.absoluteValues,
+            color: s.color,
+            type: s.type
+        }
+    }));
+    segregateStep.value += 1;
 }
 
-/**
- * Build and return svg markup for estimation overlays on the chart.
- *
- * This function is used in the `#svg` slot of `VueUiXy` to visually indicate
- * estimated values for partially completed monthly or yearly periods.
- *
- * For each series:
- * - extrapolates the last datapoint when it belongs to an incomplete time bucket
- * - draws a dashed line from the previous datapoint to the extrapolated position
- * - masks the original line segment to avoid visual overlap
- * - renders marker circles at relevant points
- * - displays a formatted label for the estimated value
- *
- * While computing estimations, the function also evaluates whether the Y-axis
- * scale needs to be extended to accommodate estimated values. When required,
- * it commits a deferred `scaleMax` update using `commitYAxisScaleMaxLater`.
- *
- * The function returns an empty string when:
- * - estimation overlays are disabled
- * - no valid series or datapoints are available
- *
- * @param svg - svg context object provided by `VueUiXy` via the `#svg` slot
- * @returns A string containing SVG elements to be injected, or an empty string
- * when no estimation overlay should be rendered.
- */
-function drawEstimationLine(svg: Record<string, any>) {
-  if (!shouldRenderEstimationOverlay.value) return ''
+function validSeriesToToggle(name) {
+    if (!absoluteDataset.value.length) {
+        if (FINAL_CONFIG.value.debug) {
+            console.warn('VueUiXy - There are no series to show.');
+        }
+        return null;
+    }
+    const dp = absoluteDataset.value.find(d => d.name === name);
+    if (!dp) {
+        if (FINAL_CONFIG.value.debug) {
+            console.warn(`VueUiXy - Series name not found "${name}"`);
+        }
+        return null;
+    }
+    return dp;
+}
 
-  const data = Array.isArray(svg?.data) ? svg.data : []
-  if (!data.length) return ''
+function showSeries(name) {
+    const dp = validSeriesToToggle(name);
+    if (dp === null) return;
+    if (segregatedSeries.value.includes(dp.id)) {
+        segregate({ id : dp.id });
+    }
+}
 
-  // Collect per-series estimates and a global max candidate for the y-axis
-  const lines: string[] = []
+function hideSeries(name) {
+    const dp  = validSeriesToToggle(name);
+    if (dp === null) return;
+    if (!segregatedSeries.value.includes(dp.id))  {
+        segregate({ id: dp.id });
+    }
+}
 
-  // Use the last bucket timestamp once (shared x-axis dates)
-  const lastBucketTimestampMs = chartData.value?.dates?.at(-1) ?? 0
+const chartAriaLabel = computed(() => {
+    const titleText = FINAL_CONFIG.value.chart.title.text || 'Chart visualization';
+    const subtitleText = FINAL_CONFIG.value.chart.title.subtitle.text || '';
+    return `${titleText}. ${subtitleText}`;
+});
 
-  for (const serie of data) {
-    const plots = serie?.plots
-    if (!Array.isArray(plots) || plots.length < 2) continue
+const optimize = computed(() => {
+    return {
+        linePlot: maxSeries.value > FINAL_CONFIG.value.line.dot.hideAboveMaxSerieLength
+    }
+});
 
-    const previousPoint = plots.at(-2)
-    const lastPoint = plots.at(-1)
-    if (!previousPoint || !lastPoint) continue
+const hasOptionsNoTitle = computed(() => {
+    return FINAL_CONFIG.value.chart.userOptions.show && (!FINAL_CONFIG.value.chart.title.show || !FINAL_CONFIG.value.chart.title.text);
+});
 
-    const estimationPoint = extrapolateIncompleteLastPoint({
-      previousPoint,
-      lastPoint,
-      lastBucketTimestampMs,
-      granularity: displayedGranularity.value,
-      endDateOnly: endDate.value,
+const highlightAreas = computed(() => {
+    if (Array.isArray(FINAL_CONFIG.value.chart.highlightArea)) {
+        return FINAL_CONFIG.value.chart.highlightArea.map(area => {
+            const areaTo = Math.min(area.to, maxX.value - 1)
+            return {
+                ...area,
+                span: area.from === areaTo ? 1 : areaTo < area.from ? 0 : areaTo - area.from + 1
+            }
+        })
+    }
+    const area = {
+        ...FINAL_CONFIG.value.chart.highlightArea,
+        to: Math.min(FINAL_CONFIG.value.chart.highlightArea.to, maxX.value - 1)
+    };
+    return [{ ...area, span: area.from === area.to ? 1 : area.to < area.from ? 0 : area.to - area.from + 1 }];
+});
+
+const datasetWithIds = computed(() => {
+    if (!useSafeValues.value) return FINAL_DATASET.value;
+    return FINAL_DATASET.value.map((datapoint, i) => {
+        return {
+            ...datapoint,
+            series: lttb(datapoint.series),
+            id: `uniqueId_${i}`,
+            color: convertColorToHex(datapoint.color ? datapoint.color : customPalette.value[i] ? customPalette.value[i] : palette[i]),
+        }
+    });
+});
+
+const tableSparklineDataset = computed(() => {
+    return relativeDataset.value.map(ds => {
+        const source = ds.absoluteValues.map(s => [undefined, null].includes(s) ? 0 : s);
+        return {
+            id: ds.id,
+            name: ds.name,
+            color: ds.color,
+            values: fillArray(maxSeries.value, source)
+        }
+    });
+});
+
+const tableSparklineConfig = computed(() => {
+    return {
+        responsiveBreakpoint: FINAL_CONFIG.value.table.responsiveBreakpoint,
+        roundingValues: FINAL_CONFIG.value.table.rounding,
+        showAverage: false,
+        showMedian: false,
+        showTotal: false,
+        fontFamily: FINAL_CONFIG.value.chart.fontFamily,
+        prefix: FINAL_CONFIG.value.chart.labels.prefix,
+        suffix: FINAL_CONFIG.value.chart.labels.suffix,
+        colNames: timeLabels.value.map((tl, i) => FINAL_CONFIG.value.table.useDefaultTimeFormat ? tl.text : preciseTimeFormatter.value(i + slicer.value.start, FINAL_CONFIG.value.table.timeFormat)),
+        thead: {
+            backgroundColor: FINAL_CONFIG.value.table.th.backgroundColor,
+            color: FINAL_CONFIG.value.table.th.color,
+            outline: FINAL_CONFIG.value.table.th.outline
+        },
+        tbody: {
+            backgroundColor: FINAL_CONFIG.value.table.td.backgroundColor,
+            color: FINAL_CONFIG.value.table.td.color,
+            outline: FINAL_CONFIG.value.table.td.outline
+        },
+        userOptions: {
+            show: false
+        },
+        sparkline: {
+            animation: { show: false }
+        }
+    }
+});
+
+const xPadding = computed(() => {
+    return FINAL_CONFIG.value.chart.grid.position === 'middle' ? 0 : drawingArea.value.width / maxSeries.value / 2;
+});
+
+const activeSeriesWithStackRatios = computed(() => {
+    return assignStackRatios(absoluteDataset.value.filter(ds => !segregatedSeries.value.includes(ds.id)));
+});
+
+function groupBy(array, getKey) {
+    const result = Object.create(null);
+    for (let index = 0; index < array.length; index += 1) {
+        const item = array[index];
+        const key = String(getKey(item));
+        if (!result[key]) result[key] = [];
+        result[key].push(item);
+    }
+    return result;
+}
+
+const scaleGroups = computed(() => {
+    const grouped = groupBy(activeSeriesWithStackRatios.value, item => item.scaleLabel);
+    const result = {};
+    for (const [group, items] of Object.entries(grouped)) {
+        const allValues = items.flatMap(item => item.absoluteValues);
+        result[group] = {
+            min: Math.min(...allValues) || 0,
+            max: Math.max(...allValues) || 1,
+            groupId: `scale_group_${createUid()}`
+        };
+    }
+    return result;
+});
+
+const barSlot = computed(() => {
+    const len = safeDataset.value.filter(serie => serie.type === 'bar').filter(s => !segregatedSeries.value.includes(s.id)).length
+    return (drawingArea.value.width) / maxSeries.value / len - (barPeriodGap.value * len)
+});
+
+const barPeriodGap = computed(() => slot.value.line * FINAL_CONFIG.value.bar.periodGap);
+
+const barWidth = computed(() => {
+    return Math.max(0.00001, calcRectWidth() - (mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked ? 0 : barPeriodGap.value))
+});
+
+const barInnerGap = computed(() => barWidth.value * Math.min(Math.abs(FINAL_CONFIG.value.bar.innerGap), 0.95));
+
+const minimap = computed(() => {
+    if (!FINAL_CONFIG.value.chart.zoom.minimap.show) return [];
+    const _source = datasetWithIds.value.filter(ds => !segregatedSeries.value.includes(ds.id));
+    const maxIndex = Math.max(..._source.map(datapoint => datapoint.series.length));
+
+    const sumAllSeries = [];
+    for (let i = 0; i < maxIndex; i += 1) {
+        sumAllSeries.push(_source.map(ds => ds.series[i] || 0).reduce((a, b) => (a || 0) + (b || 0), 0))
+    }
+    const _min = Math.min(...sumAllSeries);
+    return sumAllSeries.map(dp => dp + (_min < 0 ? Math.abs(_min) : 0)) // positivized
+});
+
+const allMinimaps = computed(() => {
+    if (!FINAL_CONFIG.value.chart.zoom.minimap.show) return [];
+    const _source = datasetWithIds.value.map(ds => {
+        return {
+            ...ds,
+            isVisible: !segregatedSeries.value.includes(ds.id),
+        }
     })
 
-    const stroke = String(serie?.color ?? colors.value.fg)
-
-    /**
-     * The following svg elements are injected in the #svg slot of VueUiXy:
-     * - a dashed line connecting the last datapoint to its ancestor
-     * - a line overlay covering the path segment of 'real data' between last datapoint and its ancestor
-     * - circles on the estimation coordinates, and another on the ancestor to mitigate the line overlay
-     * - the formatted data label
-     */
-
-    lines.push(`
-      <line 
-        x1="${previousPoint.x}" 
-        y1="${previousPoint.y}" 
-        x2="${lastPoint.x}" 
-        y2="${estimationPoint.y}" 
-        stroke="${stroke}" 
-        stroke-width="3"
-        stroke-dasharray="4 8"
-        stroke-linecap="round"
-      />
-      <line
-        x1="${previousPoint.x}" 
-        y1="${previousPoint.y}" 
-        x2="${lastPoint.x}" 
-        y2="${lastPoint.y}" 
-        stroke="${colors.value.bg}" 
-        stroke-width="3"
-        opacity="0.7"
-      />
-      <circle
-        cx="${lastPoint.x}"
-        cy="${lastPoint.y}"
-        r="4"
-        fill="${colors.value.bg}"
-        opacity="0.7"
-      />
-      <circle
-        cx="${lastPoint.x}"
-        cy="${estimationPoint.y}"
-        r="4"
-        fill="${stroke}"
-        stroke="${colors.value.bg}"
-        stroke-width="2"
-      />
-      <circle
-        cx="${previousPoint.x}"
-        cy="${previousPoint.y}"
-        r="4"
-        fill="${stroke}"
-        stroke="${colors.value.bg}"
-        stroke-width="2"
-      />
-      <text
-        text-anchor="start"
-        dominant-baseline="middle"
-        x="${lastPoint.x + 12}"
-        y="${estimationPoint.y}"
-        font-size="24"
-        fill="${colors.value.fg}"
-        stroke="${colors.value.bg}"
-        stroke-width="1"
-        paint-order="stroke fill"
-      >
-        ${compactNumberFormatter.value.format(Number.isFinite(estimationPoint.value) ? estimationPoint.value : 0)}
-      </text>
-    `)
-  }
-
-  if (!lines.length) return ''
-
-  return lines.join('\n')
-}
-
-/**
- * Build and return svg text label for the last datapoint of each series.
- *
- * This function is used in the `#svg` slot of `VueUiXy` to render a value label
- * next to the final datapoint of each series when the data represents fully
- * completed periods (for example, daily or weekly granularities).
- *
- * For each series:
- * - retrieves the last plotted point
- * - renders a text label slightly offset to the right of the point
- * - formats the value using the compact number formatter
- *
- * Return an empty string when no series data is available.
- *
- * @param svg - SVG context object provided by `VueUiXy` via the `#svg` slot
- * @returns A string containing SVG `<text>` elements, or an empty string when
- * no labels should be rendered.
- */
-function drawLastDatapointLabel(svg: Record<string, any>) {
-  const data = Array.isArray(svg?.data) ? svg.data : []
-  if (!data.length) return ''
-
-  const dataLabels: string[] = []
-
-  for (const serie of data) {
-    const lastPlot = serie.plots.at(-1)
-
-    dataLabels.push(`
-      <text
-        text-anchor="start"
-        dominant-baseline="middle"
-        x="${lastPlot.x + 12}"
-        y="${lastPlot.y}"
-        font-size="24"
-        fill="${colors.value.fg}"
-        stroke="${colors.value.bg}"
-        stroke-width="1"
-        paint-order="stroke fill"
-      >
-        ${compactNumberFormatter.value.format(Number.isFinite(lastPlot.value) ? lastPlot.value : 0)}
-      </text>
-    `)
-  }
-
-  return dataLabels.join('\n')
-}
-
-/**
- * Build and return a legend to be injected during the SVG export only, since the custom legend is
- * displayed as an independant div, content has to be injected within the chart's viewBox.
- * 
- * Legend items are displayed in a column, on the top left of the chart. 
- */
-function drawSvgPrintLegend(svg: Record<string, any>) {
-  const data = Array.isArray(svg?.data) ? svg.data : []
-  if (!data.length) return ''
-
-  const seriesNames: string[] = []
-
-  data.forEach((serie, index) => {
-    seriesNames.push(`
-      <rect
-        x="${svg.drawingArea.left + 12}"
-        y="${svg.drawingArea.top + (24 * index) - 7}"
-        width="12"
-        height="12"
-        fill="${serie.color}"
-        rx="3"
-      />
-      <text
-        text-anchor="start"
-        dominant-baseline="middle"
-        x="${svg.drawingArea.left + 32}"
-        y="${svg.drawingArea.top + (24 * index)}"
-        font-size="16"
-        fill="${colors.value.fg}"
-        stroke="${colors.value.bg}"
-        stroke-width="1"
-        paint-order="stroke fill"
-      >
-        ${serie.name}
-      </text>
-  `)
-  })
-
-  // Inject the estimation legend item when necessary
-  if (['monthly', 'yearly'].includes(displayedGranularity.value) && !isEndDateOnPeriodEnd.value && !isZoomed.value) {
-    seriesNames.push(`
-        <line 
-          x1="${svg.drawingArea.left + 12}"
-          y1="${svg.drawingArea.top + (24 * data.length)}"
-          x2="${svg.drawingArea.left + 24}"
-          y2="${svg.drawingArea.top + (24 * data.length)}"
-          stroke="${colors.value.fg}"
-          stroke-dasharray="4"
-          stroke-linecap="round"
-        />
-        <text
-          text-anchor="start"
-          dominant-baseline="middle"
-          x="${svg.drawingArea.left + 32}"
-          y="${svg.drawingArea.top + (24 * data.length)}"
-          font-size="16"
-          fill="${colors.value.fg}"
-          stroke="${colors.value.bg}"
-          stroke-width="1"
-          paint-order="stroke fill"
-        >
-          ${$t('package.trends.legend_estimation')}
-        </text>
-      `)
-  }
-
-  return seriesNames.join('\n')
-}
-
-/**
- * Build and return npmx svg logo and tagline, to be injected during PNG & SVG exports
- */
-function drawNpmxLogoAndTaglineWatermark(svg: Record<string, any>) {
-  if (!svg?.drawingArea) return ''
-  const npmxLogoWidthToHeight = 2.64
-  const npmxLogoWidth = 100
-  const npmxLogoHeight = npmxLogoWidth / npmxLogoWidthToHeight
-
-  return `
-    <svg x="${svg.drawingArea.left + svg.drawingArea.width / 2 - npmxLogoWidth / 2 - 3}" y="${svg.height - npmxLogoHeight}" width="${npmxLogoWidth}" height="${npmxLogoHeight}" viewBox="0 0 330 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22.848 97V85.288H34.752V97H22.848ZM56.4105 107.56L85.5945 25H93.2745L64.0905 107.56H56.4105ZM121.269 97V46.12H128.661L128.949 59.08L127.989 58.216C128.629 55.208 129.781 52.744 131.445 50.824C133.173 48.84 135.221 47.368 137.589 46.408C139.957 45.448 142.453 44.968 145.077 44.968C148.981 44.968 152.213 45.832 154.773 47.56C157.397 49.288 159.381 51.624 160.725 54.568C162.069 57.448 162.741 60.68 162.741 64.264V97H154.677V66.568C154.677 61.832 153.749 58.248 151.893 55.816C150.037 53.32 147.189 52.072 143.349 52.072C140.725 52.072 138.357 52.648 136.245 53.8C134.133 54.888 132.437 56.52 131.157 58.696C129.941 60.808 129.333 63.432 129.333 66.568V97H121.269ZM173.647 111.4V46.12H181.135L181.327 57.64L180.175 57.064C181.455 53.096 183.568 50.088 186.512 48.04C189.519 45.992 192.976 44.968 196.88 44.968C201.936 44.968 206.064 46.216 209.264 48.712C212.528 51.208 214.928 54.472 216.464 58.504C218 62.536 218.767 66.888 218.767 71.56C218.767 76.232 218 80.584 216.464 84.616C214.928 88.648 212.528 91.912 209.264 94.408C206.064 96.904 201.936 98.152 196.88 98.152C194.256 98.152 191.792 97.704 189.487 96.808C187.247 95.912 185.327 94.664 183.727 93.064C182.191 91.464 181.135 89.576 180.559 87.4L181.711 86.056V111.4H173.647ZM196.111 90.472C200.528 90.472 203.984 88.808 206.48 85.48C209.04 82.152 210.319 77.512 210.319 71.56C210.319 65.608 209.04 60.968 206.48 57.64C203.984 54.312 200.528 52.648 196.111 52.648C193.167 52.648 190.607 53.352 188.431 54.76C186.319 56.168 184.655 58.28 183.439 61.096C182.287 63.912 181.711 67.4 181.711 71.56C181.711 75.72 182.287 79.208 183.439 82.024C184.591 84.84 186.255 86.952 188.431 88.36C190.607 89.768 193.167 90.472 196.111 90.472ZM222.57 97V46.12H229.962L230.25 57.448L229.29 57.256C229.866 53.48 231.082 50.504 232.938 48.328C234.858 46.088 237.29 44.968 240.234 44.968C243.242 44.968 245.546 46.056 247.146 48.232C248.81 50.408 249.834 53.608 250.218 57.832H249.258C249.834 53.864 251.114 50.728 253.098 48.424C255.146 46.12 257.706 44.968 260.778 44.968C264.874 44.968 267.85 46.376 269.706 49.192C271.562 52.008 272.49 56.68 272.49 63.208V97H264.426V64.36C264.426 59.816 263.946 56.648 262.986 54.856C262.026 53 260.522 52.072 258.474 52.072C257.13 52.072 255.946 52.52 254.922 53.416C253.898 54.248 253.066 55.592 252.426 57.448C251.85 59.304 251.562 61.672 251.562 64.552V97H243.498V64.36C243.498 60.008 243.018 56.872 242.058 54.952C241.162 53.032 239.658 52.072 237.546 52.072C236.202 52.072 235.018 52.52 233.994 53.416C232.97 54.248 232.138 55.592 231.498 57.448C230.922 59.304 230.634 61.672 230.634 64.552V97H222.57ZM276.676 97L295.396 70.888L277.636 46.12H287.044L300.388 65.32L313.444 46.12H323.044L305.38 71.08L323.908 97H314.5L300.388 76.456L286.276 97H276.676Z" fill="${colors.value.fg}"/>
-    </svg>
-    <text
-      fill="${colors.value.fgMuted}"
-      x="${svg.drawingArea.left + svg.drawingArea.width / 2}"
-      y="${svg.height - npmxLogoHeight - 6}"
-      font-size="12"
-      text-anchor="middle"
-    >
-      ${$t('tagline')}
-    </text>
-  `
-}
-
-// VueUiXy chart component configuration
-const chartConfig = computed(() => {
-  return {
-    theme: isDarkMode.value ? 'dark' : 'default',
-    chart: {
-      height: isMobile.value ? 950 : 600,
-      backgroundColor: colors.value.bg,
-      padding: { bottom: displayedGranularity.value === 'yearly' ? 84 : 64, right: 100 }, // padding right is set to leave space of last datapoint label(s)
-      userOptions: {
-        buttons: { pdf: false, labels: false, fullscreen: false, table: false, tooltip: false },
-        buttonTitles: {
-          csv: $t('package.trends.download_file', { fileType: 'CSV' }),
-          img: $t('package.trends.download_file', { fileType: 'PNG' }),
-          svg: $t('package.trends.download_file', { fileType: 'SVG' }),
-          annotator: $t('package.trends.toggle_annotator'),
-        },
-        callbacks: {
-          img: ({ imageUri }: { imageUri: string }) => {
-            loadFile(imageUri, buildExportFilename('png'))
-          },
-          csv: (csvStr: string) => {
-            const PLACEHOLDER_CHAR = '\0'
-            const multilineDateTemplate = $t('package.trends.date_range_multiline', {
-              start: PLACEHOLDER_CHAR,
-              end: PLACEHOLDER_CHAR,
-            })
-              .replaceAll(PLACEHOLDER_CHAR, '')
-              .trim()
-            const blob = new Blob([
-              csvStr
-                .replace('data:text/csv;charset=utf-8,', '')
-                .replaceAll(`\n${multilineDateTemplate}`, ` ${multilineDateTemplate}`),
-            ])
-            const url = URL.createObjectURL(blob)
-            loadFile(url, buildExportFilename('csv'))
-            URL.revokeObjectURL(url)
-          },
-          svg: ({ blob }: { blob: Blob }) => {
-            const url = URL.createObjectURL(blob)
-            loadFile(url, buildExportFilename('svg'))
-            URL.revokeObjectURL(url)
-          },
-        },
-      },
-      grid: {
-        stroke: colors.value.border,
-        showHorizontalLines: true,
-        labels: {
-          fontSize: isMobile.value ? 24 : 16,
-          color: pending.value ? colors.value.border : colors.value.fgSubtle,
-          axis: {
-            yLabel: $t('package.trends.y_axis_label', {
-              granularity: getGranularityLabel(selectedGranularity.value),
-              facet: $t('package.trends.items.downloads'),
-            }),
-            yLabelOffsetX: 12,
-            fontSize: isMobile.value ? 32 : 24,
-          },
-          xAxisLabels: {
-            show: true,
-            showOnlyAtModulo: true,
-            modulo: 12,
-            values: chartData.value?.dates,
-            datetimeFormatter: {
-              enable: true,
-              locale: locale.value,
-              useUTC: true,
-              options: datetimeFormatterOptions.value,
-            },
-          },
-          yAxis: {
-            formatter: ({ value }: { value: number }) => {
-              return compactNumberFormatter.value.format(Number.isFinite(value) ? value : 0)
-            },
-            useNiceScale: !isEstimationGranularity.value || pending.value, // daily/weekly -> true, monthly/yearly -> false
-            scaleMax: yAxisScaleMax.value,
-            gap: 24, // vertical gap between individual series in stacked mode
-          },
-        },
-      },
-      timeTag: {
-        show: true,
-        backgroundColor: colors.value.bgElevated,
-        color: colors.value.fg,
-        fontSize: 16,
-        circleMarker: { radius: 3, color: colors.value.border },
-        useDefaultFormat: true,
-        timeFormat: 'yyyy-MM-dd HH:mm:ss',
-      },
-      highlighter: { useLine: true },
-      legend: { show: false, position: 'top' },
-      tooltip: {
-        teleportTo: props.inModal ? '#chart-modal' : undefined,
-        borderColor: 'transparent',
-        backdropFilter: false,
-        backgroundColor: 'transparent',
-        customFormat: ({ datapoint }: { datapoint: Record<string, any> | any[] }) => {
-          if (!datapoint) return ''
-
-          const items = Array.isArray(datapoint) ? datapoint : [datapoint[0]]
-          const hasMultipleItems = items.length > 1
-
-          const rows = items
-            .map((d: Record<string, any>) => {
-              const label = String(d?.name ?? '').trim()
-              const raw = Number(d?.value ?? 0)
-              const v = compactNumberFormatter.value.format(Number.isFinite(raw) ? raw : 0)
-
-              if (!hasMultipleItems) {
-                // We don't need the name of the package in this case, since it is shown in the xAxis label
-                return `<div>
-                  <span class="text-base text-[var(--fg)] font-mono tabular-nums">${v}</span>
-                </div>`
-              }
-
-              return `<div class="grid grid-cols-[12px_minmax(0,1fr)_max-content] items-center gap-x-3">
-                <div class="w-3 h-3">
-                  <svg viewBox="0 0 2 2" class="w-full h-full">
-                    <rect x="0" y="0" width="2" height="2" rx="0.3" fill="${d.color}" />
-                  </svg>
-                </div>
-
-                <span class="text-3xs uppercase tracking-wide text-[var(--fg)]/70 truncate">
-                  ${label}
-                </span>
-
-                <span class="text-base text-[var(--fg)] font-mono tabular-nums text-end">
-                  ${v}
-                </span>
-              </div>`
-            })
-            .join('')
-
-          return `<div class="font-mono text-xs p-3 border border-border rounded-md bg-[var(--bg)]/10 backdrop-blur-md">
-            <div class="${hasMultipleItems ? 'flex flex-col gap-2' : ''}">
-              ${rows}
-            </div>
-          </div>`
-        },
-      },
-      zoom: {
-        maxWidth: isMobile.value ? 350 : 500,
-        highlightColor: colors.value.bgElevated,
-        minimap: {
-          show: true,
-          lineColor: '#FAFAFA',
-          selectedColor: accent.value,
-          selectedColorOpacity: 0.06,
-          frameColor: colors.value.border,
-        },
-        preview: {
-          fill: transparentizeOklch(accent.value, isDarkMode.value ? 0.95 : 0.92),
-          stroke: transparentizeOklch(accent.value, 0.5),
-          strokeWidth: 1,
-          strokeDasharray: 3,
-        },
-      },
-    },
-  }
+    return _source
 })
+
+const selectedSeries = computed(() => {
+    return relativeDataset.value.map(datapoint => {
+        return {
+            slotAbsoluteIndex: datapoint.slotAbsoluteIndex,
+            shape: datapoint.shape || null,
+            name: datapoint.name,
+            color: datapoint.color,
+            type: datapoint.type,
+            value: datapoint.absoluteValues.find((_s, i) => i === selectedSerieIndex.value),
+            comments: datapoint.comments || [],
+            prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+            suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+        }
+    });
+});
+
+const yLabels = computed(() => {
+    return niceScale.value.ticks.map(t => {
+        return {
+            y: t >= 0 ? zero.value - (drawingArea.value.height * ratioToMax(t)) : zero.value + (drawingArea.value.height * ratioToMax(Math.abs(t))),
+            value: t,
+            prefix: FINAL_CONFIG.value.chart.labels.prefix,
+            suffix: FINAL_CONFIG.value.chart.labels.suffix,
+        }
+    });
+});
+
+const annotationsY = computed(() => {
+    const ann = FINAL_CONFIG.value.chart.annotations;
+    if (!ann || !Array.isArray(ann) || ann.every(a => !a.show)) return [];
+
+    const visible = ann.filter(a =>
+        a.show &&
+        (a.yAxis.yTop != null || a.yAxis.yBottom != null)
+    );
+
+    if (!visible.length) return [];
+
+    const { left, right } = drawingArea.value;
+    const zeroY = zero.value;
+    const _height = drawingArea.value.height;
+    const _min = niceScale.value.min;
+    const _max = niceScale.value.max;
+    const range = _max - _min;
+
+    const toY = v => {
+        const ratio = (v - 0) / range;
+        return zeroY - (ratio * _height);
+    };
+
+    return visible.map(annotation => {
+        const { yAxis: { yTop: rawTop, yBottom: rawBottom, label } } = annotation;
+        const hasArea = rawTop != null && rawBottom != null && rawTop !== rawBottom;
+
+        const yTop = rawTop == null ? null : toY(rawTop);
+        const yBottom = rawBottom == null ? null : toY(rawBottom);
+
+        const ctx = getTextMeasurer(label.fontSize);
+        ctx.font = `${label.fontSize}px sans-serif`;
+        const textWidth = ctx.measureText(label.text).width;
+        const textHeight = label.fontSize;
+
+        const xText = (label.position === 'start' ? left + label.padding?.left : right - label.padding?.right) + label.offsetX;
+
+        const baselineY = (yTop != null && yBottom != null)
+            ? Math.min(yTop, yBottom)
+            : (yTop != null ? yTop : yBottom);
+
+        const yText = baselineY - (label.fontSize / 3) + label.offsetY - label.padding?.top;
+
+        let rectX;
+        if (label.textAnchor === 'middle') {
+            rectX = xText - (textWidth / 2) - label.padding?.left;
+        } else if (label.textAnchor === 'end') {
+            rectX = xText - textWidth - label.padding?.right;
+        } else {
+            rectX = xText - label.padding?.left;
+        }
+
+        const rectY = yText - (textHeight * 0.75) - label.padding?.top;
+        const show = ![yTop, yBottom, rectY].includes(NaN);
+
+        return {
+            show,
+            id: `annotation_y_${createUid()}`,
+            hasArea,
+            areaHeight: hasArea ? Math.abs(yTop - yBottom) : 0,
+            yTop,
+            yBottom,
+            config: annotation.yAxis,
+            x1: left,
+            x2: right,
+            _text: { x: xText, y: yText },
+            _box: {
+                x: rectX,
+                y: rectY,
+                width: textWidth + label.padding?.left + label.padding?.right,
+                height: textHeight + label.padding?.top + label.padding?.bottom,
+                fill: label.backgroundColor,
+                stroke: label.border.stroke,
+                rx: label.border.rx,
+                ry: label.border.ry,
+                strokeWidth: label.border.strokeWidth
+            }
+        };
+    });
+});
+
+function isPlotAlone(plotSeries, index) {
+    const before = plotSeries[index - 1];
+    const after = plotSeries[index + 1];
+
+    let isAlone = (!!before && !!after && before.value == null && after.value == null) || (!before && !!after && after.value == null) || (!!before && !after && before.value == null);
+
+    return canShowValue(plotSeries[index].value) && isAlone && FINAL_CONFIG.value.line.cutNullValues;
+}
+
+/******************************************************************************************/
+/                                 DATAPOINTS COMPUTING                                     /
+/******************************************************************************************/
+
+function getSerieVerticalGeometry({
+    datapoint,
+    totalSeries,
+    gap,
+    usableHeight,
+    autoScaleValueMin,
+    autoScaleValueMax,
+    individualExtremes,
+    forceExactScale = false
+}) {
+    const scaleSteps = datapoint.scaleSteps || FINAL_CONFIG.value.chart.grid.labels.yAxis.commonScaleSteps;
+    const corrector = 1.0000001;
+
+    const scaleBuilder = forceExactScale || !FINAL_CONFIG.value.chart.grid.labels.yAxis.useNiceScale
+        ? calculateNiceScaleWithExactExtremes
+        : calculateNiceScale;
+
+    const safeIndividualMax = individualExtremes.max === individualExtremes.min
+        ? individualExtremes.max * corrector
+        : individualExtremes.max;
+
+    const safeAutoScaleMax = autoScaleValueMax === autoScaleValueMin
+        ? autoScaleValueMax * corrector
+        : autoScaleValueMax;
+
+    const individualScale = scaleBuilder(
+        individualExtremes.min,
+        safeIndividualMax,
+        scaleSteps
+    );
+
+    const autoScaleSteps = scaleBuilder(
+        autoScaleValueMin,
+        safeAutoScaleMax,
+        scaleSteps
+    );
+
+    const individualZero = individualScale.min >= 0 ? 0 : Math.abs(individualScale.min);
+    const autoScaleZero = 0;
+
+    const individualMax = individualScale.max + Math.abs(individualZero);
+    const autoScaleMax = autoScaleSteps.max + Math.abs(autoScaleZero);
+
+    const origIdx = datapoint.stackIndex;
+    const flippedIdx = totalSeries - 1 - origIdx;
+    const flippedLowerRatio = mutableConfig.value.isStacked ? 1 - datapoint.cumulatedStackRatio : 0;
+    const yOffset = mutableConfig.value.isStacked ? usableHeight * flippedLowerRatio + gap * flippedIdx : 0;
+    const individualHeight = mutableConfig.value.isStacked ? usableHeight * datapoint.stackRatio : drawingArea.value.height;
+
+    const zeroPosition = drawingArea.value?.bottom - yOffset - ((individualHeight) * individualZero / individualMax);
+    const autoScaleZeroPosition = drawingArea.value?.bottom - yOffset - (individualHeight * autoScaleZero / autoScaleMax);
+
+    return {
+        scaleSteps,
+        individualScale,
+        autoScaleSteps,
+        individualZero,
+        autoScaleZero,
+        individualMax,
+        autoScaleMax,
+        yOffset,
+        individualHeight,
+        zeroPosition,
+        autoScaleZeroPosition
+    };
+}
+
+function getActiveScaleContext({
+    datapoint,
+    individualScale,
+    autoScaleSteps,
+    zeroPosition,
+    autoScaleZeroPosition,
+    individualHeight,
+    yOffset
+}) {
+    const useIndividualScale = !!datapoint.useIndividualScale;
+
+    return {
+        useIndividualScale,
+        activeScale: useIndividualScale ? individualScale : autoScaleSteps,
+        activeZeroPosition: useIndividualScale ? zeroPosition : autoScaleZeroPosition,
+        individualHeight,
+        yOffset
+    };
+}
+
+function projectValueToY({
+    value,
+    scale,
+    individualHeight,
+    yOffset
+}) {
+    const zero = scale.min >= 0 ? 0 : Math.abs(scale.min);
+    const max = scale.max + Math.abs(zero);
+
+    return drawingArea.value.bottom - yOffset - ((individualHeight) * (value + zero) / max);
+}
+
+const barSet = computed(() => {
+    const stackSeries = activeSeriesWithStackRatios.value
+        .filter(s => ['bar', 'line', 'plot'].includes(s.type));
+    const totalSeries = stackSeries.length;
+    const gap = FINAL_CONFIG.value.chart.grid.labels.yAxis.gap;
+    const stacked = mutableConfig.value.isStacked;
+    const totalGap = stacked ? gap * (totalSeries - 1) : 0
+    const usableHeight = drawingArea.value.height - totalGap;
+
+    return stackSeries.filter(s => s.type === 'bar').map((datapoint, i) => {
+        checkAutoScaleError(datapoint);
+        const _min = scaleGroups.value[datapoint.scaleLabel].min;
+        const _max = scaleGroups.value[datapoint.scaleLabel].max;
+        const autoScaledRatios = datapoint.absoluteValues.filter(v => ![null, undefined].includes(v)).map(v => {
+            return (v - _min) / (_max - _min)
+        });
+
+        const autoScale = {
+            ratios: autoScaledRatios,
+            valueMin: _min,
+            valueMax: _max < 0 ? 0 : _max,
+        }
+
+        const individualExtremes = {
+            max: datapoint.scaleMax || Math.max(...datapoint.absoluteValues) || 1,
+            min: datapoint.scaleMin || Math.min(...datapoint.absoluteValues.filter(v => ![undefined, null].includes(v))) > 0 ? 0 : Math.min(...datapoint.absoluteValues.filter(v => ![null, undefined].includes(v)))
+        };
+
+        const {
+            individualScale,
+            autoScaleSteps,
+            individualZero,
+            individualMax,
+            autoScaleMax,
+            yOffset,
+            individualHeight,
+            zeroPosition,
+            autoScaleZeroPosition
+        } = getSerieVerticalGeometry({
+            datapoint,
+            totalSeries,
+            gap,
+            usableHeight,
+            autoScaleValueMin: autoScale.valueMin,
+            autoScaleValueMax: autoScale.valueMax,
+            individualExtremes
+        });
+
+        const {
+            useIndividualScale,
+            activeScale,
+            activeZeroPosition
+        } = getActiveScaleContext({
+            datapoint,
+            individualScale,
+            autoScaleSteps,
+            zeroPosition,
+            autoScaleZeroPosition,
+            individualHeight,
+            yOffset
+        });
+
+        const barLen = absoluteDataset.value.filter(ds => ds.type === 'bar').filter(s => !segregatedSeries.value.includes(s.id)).length;
+
+        const plots = datapoint.series.map((plot, j) => {
+            const value = datapoint.absoluteValues[j];
+
+            const yRatio = mutableConfig.value.useIndividualScale
+                ? ((value + individualZero) / individualMax)
+                : ratioToMax(plot);
+
+            const x = mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked
+                ? drawingArea.value?.left + (drawingArea.value.width / maxSeries.value * j)
+                : drawingArea.value?.left
+                + (slot.value.bar * i)
+                + (slot.value.bar * j * barLen)
+                - (barSlot.value / 2)
+                - (i * barPeriodGap.value);
+
+            const y = mutableConfig.value.useIndividualScale
+                ? projectValueToY({
+                    value,
+                    scale: individualScale,
+                    individualHeight,
+                    yOffset
+                })
+                : drawingArea.value?.bottom - yOffset - (individualHeight * yRatio);
+
+            const resolvedY = checkNaN(y);
+            const resolvedX = checkNaN(x);
+            const resolvedZeroPosition = checkNaN(zeroPosition);
+
+            const renderedBarX = mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked
+                ? resolvedX + ((drawingArea.value.width / maxSeries.value) * 0.05) + (barInnerGap.value / 2)
+                : resolvedX + (slot.value.bar / 2) + (barInnerGap.value / 2);
+
+            const renderedBarWidth = Math.max(0.00001, barWidth.value - barInnerGap.value);
+            const barLeft = renderedBarX;
+            const barRight = renderedBarX + renderedBarWidth;
+            const barCenterX = renderedBarX + (renderedBarWidth / 2);
+            const barTop = Math.min(resolvedY, resolvedZeroPosition);
+            const barBottom = Math.max(resolvedY, resolvedZeroPosition);
+
+            return {
+                yOffset: checkNaN(yOffset),
+                individualHeight: checkNaN(individualHeight),
+                x: resolvedX,
+                previewX: barCenterX,
+                y: resolvedY,
+                value,
+                zeroPosition: resolvedZeroPosition,
+                individualMax: checkNaN(individualMax),
+                barLeft,
+                barRight,
+                barCenterX,
+                barTop,
+                barBottom,
+                comment: datapoint.comments ? datapoint.comments.slice(slicer.value.start, slicer.value.end)[j] || '' : ''
+            };
+        });
+
+        const autoScalePlots = datapoint.series.map((_, j) => {
+            const value = datapoint.absoluteValues[j];
+
+            const x = mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked
+                ? drawingArea.value?.left + (drawingArea.value.width / maxSeries.value * j)
+                : (drawingArea.value?.left - slot.value.bar / 2 + slot.value.bar * i)
+                    + (slot.value.bar * j * absoluteDataset.value.filter(ds => ds.type === 'bar').filter(s => !segregatedSeries.value.includes(s.id)).length);
+
+            const y = projectValueToY({
+                value,
+                scale: autoScaleSteps,
+                individualHeight,
+                yOffset
+            });
+
+            const resolvedY = checkNaN(y);
+            const resolvedX = checkNaN(x);
+            const resolvedZeroPosition = checkNaN(autoScaleZeroPosition);
+
+            const renderedBarX = mutableConfig.value.useIndividualScale && mutableConfig.value.isStacked
+                ? resolvedX + ((drawingArea.value.width / maxSeries.value) * 0.05) + (barInnerGap.value / 2)
+                : resolvedX + (slot.value.bar / 2) + (barInnerGap.value / 2);
+
+            const renderedBarWidth = Math.max(0.00001, barWidth.value - barInnerGap.value);
+            const barLeft = renderedBarX;
+            const barRight = renderedBarX + renderedBarWidth;
+            const barCenterX = renderedBarX + (renderedBarWidth / 2);
+            const barTop = Math.min(resolvedY, resolvedZeroPosition);
+            const barBottom = Math.max(resolvedY, resolvedZeroPosition);
+
+            return {
+                yOffset: checkNaN(yOffset),
+                individualHeight: checkNaN(individualHeight),
+                x: resolvedX,
+                previewX: barCenterX,
+                y: resolvedY,
+                value,
+                zeroPosition: resolvedZeroPosition,
+                individualMax: checkNaN(individualMax),
+                barLeft,
+                barRight,
+                barCenterX,
+                barTop,
+                barBottom,
+                comment: datapoint.comments ? datapoint.comments.slice(slicer.value.start, slicer.value.end)[j] || '' : ''
+            };
+        });
+
+        const scaleYLabels = individualScale.ticks.map(t => {
+            return {
+                y: t >= 0 ? zeroPosition - (individualHeight * (t / individualMax)) : zeroPosition + (individualHeight * Math.abs(t) / individualMax),
+                value: t,
+                prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+                suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+                datapoint
+            }
+        });
+
+        const autoScaleYLabels = autoScaleSteps.ticks.map(t => {
+            const v = (t - autoScaleSteps.min) / (autoScaleSteps.max - autoScaleSteps.min);
+            return {
+                y: t >= 0 ? autoScaleZeroPosition - (individualHeight * v) : autoScaleZeroPosition + (individualHeight * v),
+                value: t,
+                prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+                suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+                datapoint
+            }
+        });
+
+        scaleGroups.value[datapoint.scaleLabel].name = datapoint.name;
+        scaleGroups.value[datapoint.scaleLabel].groupName = datapoint.scaleLabel;
+        scaleGroups.value[datapoint.scaleLabel].groupColor = FINAL_CONFIG.value.chart.grid.labels.yAxis.groupColor || datapoint.color;
+        scaleGroups.value[datapoint.scaleLabel].color = datapoint.color;
+        scaleGroups.value[datapoint.scaleLabel].scaleYLabels = datapoint.autoScaling ? autoScaleYLabels : scaleYLabels;
+        scaleGroups.value[datapoint.scaleLabel].zeroPosition = datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition;
+        scaleGroups.value[datapoint.scaleLabel].individualMax = datapoint.autoScaling ? autoScaleMax : individualMax;
+        scaleGroups.value[datapoint.scaleLabel].scaleLabel = datapoint.scaleLabel;
+        scaleGroups.value[datapoint.scaleLabel].id = datapoint.id;
+        scaleGroups.value[datapoint.scaleLabel].yOffset = yOffset;
+        scaleGroups.value[datapoint.scaleLabel].individualHeight = individualHeight;
+        scaleGroups.value[datapoint.scaleLabel].autoScaleYLabels = autoScaleYLabels;
+        scaleGroups.value[datapoint.scaleLabel].unique = activeSeriesWithStackRatios.value.filter(el => el.scaleLabel === datapoint.scaleLabel).length === 1
+
+        return {
+            ...datapoint,
+            yOffset,
+            autoScaleYLabels,
+            individualHeight,
+            scaleYLabels: datapoint.autoScaling ? autoScaleYLabels : scaleYLabels,
+            individualScale: datapoint.autoScaling ? autoScaleSteps : individualScale,
+            individualMax: datapoint.autoScaling ? autoScaleMax : individualMax,
+            zeroPosition: datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition,
+            plots: datapoint.autoScaling ? autoScalePlots : plots,
+            interactivePoints: (datapoint.autoScaling ? autoScalePlots : plots).map((plot, index) => ({
+                serieId: datapoint.id,
+                serieName: datapoint.name,
+                serieType: datapoint.type,
+                serieColor: datapoint.color,
+                scaleLabel: datapoint.scaleLabel,
+                index,
+                absoluteIndex: slicer.value.start + index,
+                value: plot.value,
+                x: plot.previewX ?? plot.barCenterX ?? plot.x,
+                y: plot.y,
+                zeroPosition: datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition,
+                scaleMin: (datapoint.autoScaling ? autoScaleSteps : individualScale).min,
+                scaleMax: (datapoint.autoScaling ? autoScaleSteps : individualScale).max,
+                individualHeight,
+                yOffset,
+                useIndividualScale: datapoint.useIndividualScale,
+                isAutoScaling: datapoint.autoScaling,
+                barLeft: plot.barLeft ?? null,
+                barRight: plot.barRight ?? null,
+                barCenterX: plot.barCenterX ?? plot.previewX ?? plot.x,
+                barTop: plot.barTop ?? null,
+                barBottom: plot.barBottom ?? null,
+                comment: plot.comment,
+                isNull: [undefined, null].includes(plot.value),
+                source: plot
+            })),
+            groupId: scaleGroups.value[datapoint.scaleLabel].groupId
+        }
+    })
+});
+
+const lineSet = computed(() => {
+    const stackSeries = activeSeriesWithStackRatios.value
+        .filter(s => ['bar', 'line', 'plot'].includes(s.type));
+    const totalSeries = stackSeries.length;
+    const gap = FINAL_CONFIG.value.chart.grid.labels.yAxis.gap;
+    const stacked = mutableConfig.value.isStacked;
+    const totalGap = stacked ? gap * (totalSeries - 1) : 0
+    const usableHeight = drawingArea.value.height - totalGap;
+
+    return stackSeries.filter(s => s.type === 'line').map((datapoint, i) => {
+        checkAutoScaleError(datapoint);
+
+        const _min = scaleGroups.value[datapoint.scaleLabel].min;
+        const _max = scaleGroups.value[datapoint.scaleLabel].max;
+        const autoScaledRatios = datapoint.absoluteValues.filter(v => ![null, undefined].includes(v)).map(v => {
+            return (v - _min) / (_max - _min)
+        });
+
+        const autoScale = {
+            ratios: autoScaledRatios,
+            valueMin: _min,
+            valueMax: _max,
+        }
+
+        const individualExtremes = {
+            max: datapoint.scaleMax || Math.max(...datapoint.absoluteValues) || 1,
+            min: datapoint.scaleMin || (Math.min(...datapoint.absoluteValues) > 0 ? 0 : Math.min(...datapoint.absoluteValues))
+        };
+
+        const {
+            individualScale,
+            autoScaleSteps,
+            individualZero,
+            individualMax,
+            autoScaleMax,
+            yOffset,
+            individualHeight,
+            zeroPosition,
+            autoScaleZeroPosition
+        } = getSerieVerticalGeometry({
+            datapoint,
+            totalSeries,
+            gap,
+            usableHeight,
+            autoScaleValueMin: autoScale.valueMin,
+            autoScaleValueMax: autoScale.valueMax,
+            individualExtremes
+        });
+
+        const {
+            useIndividualScale,
+            activeScale,
+            activeZeroPosition
+        } = getActiveScaleContext({
+            datapoint,
+            individualScale,
+            autoScaleSteps,
+            zeroPosition,
+            autoScaleZeroPosition,
+            individualHeight,
+            yOffset
+        });
+
+        const plots = datapoint.series.map((plot, j) => {
+            const value = datapoint.absoluteValues[j];
+
+            const x = (drawingArea.value?.left + (slot.value.line / 2)) + (slot.value.line * j);
+
+            const y = [undefined, null].includes(value)
+                ? activeZeroPosition
+                : projectValueToY({
+                    value,
+                    scale: activeScale,
+                    individualHeight,
+                    yOffset
+                });
+
+            return {
+                x: checkNaN(x),
+                y: checkNaN(y),
+                value,
+                comment: datapoint.comments ? datapoint.comments.slice(slicer.value.start, slicer.value.end)[j] || '' : ''
+            };
+        });
+
+        const autoScalePlots = datapoint.series.map((_, j) => {
+            const value = datapoint.absoluteValues[j];
+            const x = (drawingArea.value?.left + (slot.value.line / 2)) + (slot.value.line * j);
+
+            const y = [undefined, null].includes(value)
+                ? autoScaleZeroPosition
+                : projectValueToY({
+                    value,
+                    scale: autoScaleSteps,
+                    individualHeight,
+                    yOffset
+                });
+
+            return {
+                x: checkNaN(x),
+                y: checkNaN(y),
+                value,
+                comment: datapoint.comments ? datapoint.comments.slice(slicer.value.start, slicer.value.end)[j] || '' : ''
+            };
+        });
+
+        const hasDashedSegments = datapoint.dashIndices && Array.isArray(datapoint.dashIndices) && (datapoint?.dashIndices?.length > 0);
+
+        const curve = FINAL_CONFIG.value.line.cutNullValues
+            ? createSmoothPathWithCuts(plots)
+            : createSmoothPath(plots.filter(p => p.value !== null));
+
+        const autoScaleCurve = FINAL_CONFIG.value.line.cutNullValues
+            ? createSmoothPathWithCuts(autoScalePlots)
+            : createSmoothPath(autoScalePlots.filter(p => p.value !== null));
+
+        const straight = FINAL_CONFIG.value.line.cutNullValues
+            ? createStraightPathWithCuts(plots)
+            : createStraightPath(plots.filter(p => p.value !== null));
+
+        const autoScaleStraight = FINAL_CONFIG.value.line.cutNullValues
+            ? createStraightPathWithCuts(autoScalePlots)
+            : createStraightPath(autoScalePlots.filter(p => p.value !== null));
+
+        const dashedStraight = hasDashedSegments ? createStraightPathWithCutsSegments(FINAL_CONFIG.value.line.cutNullValues ? plots : plots.filter(p => p.value !== null), datapoint.dashIndices.map(_ => _ - slicer.value.start)) : [];
+        const dashedSmooth = hasDashedSegments ? createSmoothPathWithCutsSegments(FINAL_CONFIG.value.line.cutNullValues ? plots : plots.filter(p => p.value !== null), datapoint.dashIndices.map(_ => _ - slicer.value.start)) : [];
+
+        const scaleYLabels = individualScale.ticks.map(t => {
+            return {
+                y: t >= 0 ? zeroPosition - (individualHeight * (t / individualMax)) : zeroPosition + (individualHeight * Math.abs(t) / individualMax),
+                value: t,
+                prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+                suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+                datapoint
+            }
+        });
+
+        const autoScaleYLabels = autoScaleSteps.ticks.map(t => {
+            const v = (t - autoScaleSteps.min) / (autoScaleSteps.max - autoScaleSteps.min);
+            return {
+                y: t >= 0 ? autoScaleZeroPosition - (individualHeight * v) : autoScaleZeroPosition + (individualHeight * v),
+                value: t,
+                prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+                suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+                datapoint
+            }
+        });
+
+        scaleGroups.value[datapoint.scaleLabel].name = datapoint.name;
+        scaleGroups.value[datapoint.scaleLabel].groupName = datapoint.scaleLabel;
+        scaleGroups.value[datapoint.scaleLabel].groupColor = FINAL_CONFIG.value.chart.grid.labels.yAxis.groupColor || datapoint.color;
+        scaleGroups.value[datapoint.scaleLabel].color = datapoint.color;
+        scaleGroups.value[datapoint.scaleLabel].scaleYLabels = datapoint.autoScaling ? autoScaleYLabels : scaleYLabels;
+        scaleGroups.value[datapoint.scaleLabel].zeroPosition = datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition;
+        scaleGroups.value[datapoint.scaleLabel].individualMax = datapoint.autoScaling ? autoScaleMax : individualMax;
+        scaleGroups.value[datapoint.scaleLabel].scaleLabel = datapoint.scaleLabel;
+        scaleGroups.value[datapoint.scaleLabel].id = datapoint.id;
+        scaleGroups.value[datapoint.scaleLabel].yOffset = yOffset;
+        scaleGroups.value[datapoint.scaleLabel].individualHeight = individualHeight;
+        scaleGroups.value[datapoint.scaleLabel].autoScaleYLabels = autoScaleYLabels;
+        scaleGroups.value[datapoint.scaleLabel].unique = activeSeriesWithStackRatios.value.filter(el => el.scaleLabel === datapoint.scaleLabel).length === 1
+
+        const areaZeroPosition =
+            mutableConfig.value.useIndividualScale
+                ? (datapoint.autoScaling ? autoScaleZeroPosition : activeZeroPosition)
+                : globalAreaBaselineY.value;
+
+        const adustedAreaZeroPosition = Math.max(
+            Math.max(
+                datapoint.autoScaling
+                    ? autoScaleZeroPosition
+                    : (scaleYLabels.at(-1) ? scaleYLabels.at(-1).y : 0),
+                drawingArea.value?.top
+            ),
+            areaZeroPosition
+        );
+
+        return {
+            ...datapoint,
+            temperatureColors: datapoint.temperatureColors ? datapoint.temperatureColors.map(c => convertColorToHex(c)) : null,
+            yOffset,
+            autoScaleYLabels,
+            individualHeight,
+            scaleYLabels: datapoint.autoScaling ? autoScaleYLabels : scaleYLabels,
+            individualScale: datapoint.autoScaling ? autoScaleSteps : individualScale,
+            individualMax: datapoint.autoScaling ? autoScaleMax : individualMax,
+            zeroPosition: datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition,
+            curve: datapoint.autoScaling ? autoScaleCurve : curve,
+            plots: datapoint.autoScaling ? autoScalePlots : plots,
+            interactivePoints: (datapoint.autoScaling ? autoScalePlots : plots).map((plot, index) => ({
+                serieId: datapoint.id,
+                serieName: datapoint.name,
+                serieType: datapoint.type,
+                serieColor: datapoint.color,
+                scaleLabel: datapoint.scaleLabel,
+                index,
+                absoluteIndex: slicer.value.start + index,
+                value: plot.value,
+                x: plot.x,
+                y: plot.y,
+                zeroPosition: datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition,
+                scaleMin: (datapoint.autoScaling ? autoScaleSteps : individualScale).min,
+                scaleMax: (datapoint.autoScaling ? autoScaleSteps : individualScale).max,
+                individualHeight,
+                yOffset,
+                useIndividualScale: datapoint.useIndividualScale,
+                isAutoScaling: datapoint.autoScaling,
+                comment: plot.comment,
+                isNull: [undefined, null].includes(plot.value),
+                source: plot
+            })),
+            dashedStraight,
+            dashedSmooth,
+            hasDashedSegments,
+            area: !datapoint.useArea
+                ? ''
+                : mutableConfig.value.useIndividualScale
+                    ? FINAL_CONFIG.value.line.cutNullValues
+                        ? createIndividualAreaWithCuts(datapoint.autoScaling
+                            ? autoScalePlots
+                            : plots,
+                            adustedAreaZeroPosition,
+                        )
+                        : createIndividualArea(datapoint.autoScaling
+                            ? autoScalePlots.filter(p => p.value !== null)
+                            : plots.filter(p => p.value !== null),
+                            adustedAreaZeroPosition)
+                    : FINAL_CONFIG.value.line.cutNullValues
+                        ? createIndividualAreaWithCuts(plots, adustedAreaZeroPosition)
+                        : createIndividualArea(plots.filter(p => p.value !== null), adustedAreaZeroPosition),
+            curveAreas: !datapoint.useArea
+                ? []
+                : createSmoothAreaSegments(
+                    datapoint.autoScaling
+                        ? FINAL_CONFIG.value.line.cutNullValues
+                            ? autoScalePlots
+                            : autoScalePlots.filter(p => p.value !== null)
+                        : FINAL_CONFIG.value.line.cutNullValues
+                            ? plots
+                            : plots.filter(p => p.value !== null),
+                    adustedAreaZeroPosition,
+                    FINAL_CONFIG.value.line.cutNullValues),
+            straight: datapoint.autoScaling ? autoScaleStraight : straight,
+            groupId: scaleGroups.value[datapoint.scaleLabel].groupId
+        }
+    });
+});
+
+const plotSet = computed(() => {
+    const stackSeries = activeSeriesWithStackRatios.value.filter(s => ['bar', 'line', 'plot'].includes(s.type));
+    const totalSeries = stackSeries.length;
+    const gap = FINAL_CONFIG.value.chart.grid.labels.yAxis.gap;
+    const stacked = mutableConfig.value.isStacked;
+    const totalGap = stacked ? gap * (totalSeries - 1) : 0;
+    const usableHeight = drawingArea.value.height - totalGap;
+
+    return stackSeries.filter(s => s.type === 'plot').map((datapoint) => {
+        checkAutoScaleError(datapoint);
+        const _min = scaleGroups.value[datapoint.scaleLabel].min;
+        const _max = scaleGroups.value[datapoint.scaleLabel].max;
+        const autoScaledRatios = datapoint.absoluteValues.filter(v => ![null, undefined].includes(v)).map(v => {
+            return (v - _min) / (_max - _min)
+        });
+
+        const autoScale = {
+            ratios: autoScaledRatios,
+            valueMin: _min,
+            valueMax: _max,
+        }
+
+        const individualExtremes = {
+            max: datapoint.scaleMax || Math.max(...datapoint.absoluteValues) || 1,
+            min: datapoint.scaleMin || Math.min(...datapoint.absoluteValues) > 0 ? 0 : Math.min(...datapoint.absoluteValues)
+        };
+
+        const {
+            individualScale,
+            autoScaleSteps,
+            individualZero,
+            individualMax,
+            autoScaleMax,
+            yOffset,
+            individualHeight,
+            zeroPosition,
+            autoScaleZeroPosition
+        } = getSerieVerticalGeometry({
+            datapoint,
+            totalSeries,
+            gap,
+            usableHeight,
+            autoScaleValueMin: autoScale.valueMin,
+            autoScaleValueMax: autoScale.valueMax,
+            individualExtremes,
+            forceExactScale: true
+        });
+
+        const {
+            useIndividualScale,
+            activeScale,
+            activeZeroPosition
+        } = getActiveScaleContext({
+            datapoint,
+            individualScale,
+            autoScaleSteps,
+            zeroPosition,
+            autoScaleZeroPosition,
+            individualHeight,
+            yOffset
+        });
+
+        const plots = datapoint.series.map((plot, j) => {
+            const value = datapoint.absoluteValues[j];
+            const x = (drawingArea.value?.left + (slot.value.plot / 2)) + (slot.value.plot * j);
+
+            const y = [undefined, null].includes(value)
+                ? activeZeroPosition
+                : projectValueToY({
+                    value,
+                    scale: activeScale,
+                    individualHeight,
+                    yOffset
+                });
+
+            return {
+                x: checkNaN(x),
+                y: checkNaN(y),
+                value,
+                comment: datapoint.comments ? datapoint.comments.slice(slicer.value.start, slicer.value.end)[j] || '' : ''
+            };
+        });
+
+        const autoScalePlots = datapoint.series.map((_, j) => {
+            const value = datapoint.absoluteValues[j];
+            const x = (drawingArea.value?.left + (slot.value.plot / 2)) + (slot.value.plot * j);
+
+            const y = [undefined, null].includes(value)
+                ? autoScaleZeroPosition
+                : projectValueToY({
+                    value,
+                    scale: autoScaleSteps,
+                    individualHeight,
+                    yOffset
+                });
+
+            return {
+                x: checkNaN(x),
+                y: checkNaN(y),
+                value,
+                comment: datapoint.comments ? datapoint.comments.slice(slicer.value.start, slicer.value.end)[j] || '' : ''
+            };
+        });
+
+        const scaleYLabels = individualScale.ticks.map(t => {
+            return {
+                y: t >= 0 ? zeroPosition - (individualHeight * (t / individualMax)) : zeroPosition + (individualHeight * Math.abs(t) / individualMax),
+                value: t,
+                prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+                suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+                datapoint,
+            }
+        });
+
+        const autoScaleYLabels = autoScaleSteps.ticks.map(t => {
+            const v = (t - autoScaleSteps.min) / (autoScaleSteps.max - autoScaleSteps.min);
+            return {
+                y: t >= 0 ? autoScaleZeroPosition - (individualHeight * v) : autoScaleZeroPosition + (individualHeight * v),
+                value: t,
+                prefix: datapoint.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+                suffix: datapoint.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+                datapoint
+            }
+        });
+
+        scaleGroups.value[datapoint.scaleLabel].name = datapoint.name;
+        scaleGroups.value[datapoint.scaleLabel].groupName = datapoint.scaleLabel;
+        scaleGroups.value[datapoint.scaleLabel].groupColor = FINAL_CONFIG.value.chart.grid.labels.yAxis.groupColor || datapoint.color;
+        scaleGroups.value[datapoint.scaleLabel].color = datapoint.color;
+        scaleGroups.value[datapoint.scaleLabel].scaleYLabels = datapoint.autoScaling ? autoScaleYLabels : scaleYLabels;
+        scaleGroups.value[datapoint.scaleLabel].zeroPosition = datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition;
+        scaleGroups.value[datapoint.scaleLabel].individualMax = datapoint.autoScaling ? autoScaleMax : individualMax;
+        scaleGroups.value[datapoint.scaleLabel].scaleLabel = datapoint.scaleLabel;
+        scaleGroups.value[datapoint.scaleLabel].id = datapoint.id;
+        scaleGroups.value[datapoint.scaleLabel].yOffset = yOffset;
+        scaleGroups.value[datapoint.scaleLabel].individualHeight = individualHeight;
+        scaleGroups.value[datapoint.scaleLabel].autoScaleYLabels = autoScaleYLabels;
+        scaleGroups.value[datapoint.scaleLabel].unique = activeSeriesWithStackRatios.value.filter(el => el.scaleLabel === datapoint.scaleLabel).length === 1
+
+        return {
+            ...datapoint,
+            yOffset,
+            autoScaleYLabels,
+            individualHeight,
+            scaleYLabels: datapoint.autoScaling ? autoScaleYLabels : scaleYLabels,
+            individualScale: datapoint.autoScaling ? autoScaleSteps : individualScale,
+            individualMax: datapoint.autoScaling ? autoScaleMax : individualMax,
+            zeroPosition: datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition,
+            plots: datapoint.autoScaling ? autoScalePlots : plots,
+            interactivePoints: (datapoint.autoScaling ? autoScalePlots : plots).map((plot, index) => ({
+                serieId: datapoint.id,
+                serieName: datapoint.name,
+                serieType: datapoint.type,
+                serieColor: datapoint.color,
+                scaleLabel: datapoint.scaleLabel,
+                index,
+                absoluteIndex: slicer.value.start + index,
+                value: plot.value,
+                x: plot.x,
+                y: plot.y,
+                zeroPosition: datapoint.autoScaling ? autoScaleZeroPosition : zeroPosition,
+                comment: plot.comment,
+                isNull: [undefined, null].includes(plot.value),
+                source: plot,
+                scaleMin: (datapoint.autoScaling ? autoScaleSteps : individualScale).min,
+                scaleMax: (datapoint.autoScaling ? autoScaleSteps : individualScale).max,
+                individualHeight,
+                yOffset,
+                useIndividualScale: datapoint.useIndividualScale,
+                isAutoScaling: datapoint.autoScaling
+            })),
+            groupId: scaleGroups.value[datapoint.scaleLabel].groupId
+        }
+    });
+});
+
+const interactiveDatapoints = computed(() => {
+    return [
+        ...barSet.value.flatMap(serie => serie.interactivePoints || []),
+        ...lineSet.value.flatMap(serie => serie.interactivePoints || []),
+        ...plotSet.value.flatMap(serie => serie.interactivePoints || [])
+    ].toSorted((a, b) => {
+        if (a.absoluteIndex !== b.absoluteIndex) return a.absoluteIndex - b.absoluteIndex;
+        if (a.serieType !== b.serieType) return a.serieType.localeCompare(b.serieType);
+        return String(a.serieId).localeCompare(String(b.serieId));
+    });
+});
+
+const interactiveDatapointsByIndex = computed(() => {
+    return interactiveDatapoints.value.reduce((acc, point) => {
+        if (!acc[point.absoluteIndex]) {
+            acc[point.absoluteIndex] = [];
+        }
+        acc[point.absoluteIndex].push(point);
+        return acc;
+    }, {});
+});
+
+function getInteractivePointsAtIndex(absoluteIndex) {
+    return interactiveDatapointsByIndex.value[absoluteIndex] || [];
+}
+
+function getNearestIndexFromX(x) {
+    const start = drawingArea.value?.left + (slot.value.line / 2);
+    const step = slot.value.line;
+    if ([undefined, null].includes(start) || [undefined, null].includes(step) || step === 0) {
+        return null;
+    }
+    const localIndex = Math.round((x - start) / step);
+    const clampedIndex = Math.max(0, Math.min(maxSeries.value - 1, localIndex));
+    return slicer.value.start + clampedIndex;
+}
+
+function getInteractivePointsNearX(x) {
+    const absoluteIndex = getNearestIndexFromX(x);
+    if ([undefined, null].includes(absoluteIndex)) {
+        return [];
+    }
+    return getInteractivePointsAtIndex(absoluteIndex);
+}
+
+function getNearestInteractivePoint({ x, y, candidates = [] }) {
+    const validCandidates = candidates.filter(point => !point.isNull);
+    if (!validCandidates.length) {
+        return null;
+    }
+
+    let nearestPoint = null;
+    let nearestDistance = Infinity;
+
+    for (const point of validCandidates) {
+        const targetX = point.serieType === 'bar'
+            ? (point.barCenterX ?? point.previewX ?? point.x)
+            : point.x;
+
+        if ([undefined, null].includes(targetX) || [undefined, null].includes(point.y)) {
+            continue;
+        }
+
+        const dx = targetX - x;
+        const dy = point.y - y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestPoint = point;
+        }
+    }
+
+    return nearestPoint;
+}
+
+function isPointerInsideBar(point, pointer) {
+    if (point.serieType !== 'bar') {
+        return false;
+    }
+
+    if (
+        [undefined, null].includes(point.barLeft) ||
+        [undefined, null].includes(point.barRight) ||
+        [undefined, null].includes(point.barTop) ||
+        [undefined, null].includes(point.barBottom)
+    ) {
+        return false;
+    }
+
+    return (
+        pointer.x >= point.barLeft &&
+        pointer.x <= point.barRight &&
+        pointer.y >= point.barTop &&
+        pointer.y <= point.barBottom
+    );
+}
+
+// FOR DEBUG
+function getNearestInteractiveTargetFromPointer(pointer) {
+    const absoluteIndex = getNearestIndexFromX(pointer.x);
+    const candidates = getInteractivePointsNearX(pointer.x);
+
+    const barHits = candidates.filter(candidate => isPointerInsideBar(candidate, pointer));
+
+    const nearest = barHits.length
+        ? getNearestInteractivePoint({
+            x: pointer.x,
+            y: pointer.y,
+            candidates: barHits
+        })
+        : getNearestInteractivePoint({
+            x: pointer.x,
+            y: pointer.y,
+            candidates
+        });
+
+    return {
+        absoluteIndex,
+        candidates,
+        nearest
+    };
+}
+
+function projectYToValue({
+    y,
+    scaleMin,
+    scaleMax,
+    individualHeight,
+    yOffset
+}) {
+    const zero = scaleMin >= 0 ? 0 : Math.abs(scaleMin);
+    const max = scaleMax + Math.abs(zero);
+    if (!individualHeight || !max) {
+        return null;
+    }
+    const relative = (drawingArea.value.bottom - yOffset - y) / individualHeight;
+    const rawValue = (relative * max) - zero;
+    return rawValue;
+}
+
+function clampYToSerieBounds({ y, yOffset, individualHeight }) {
+    const minY = drawingArea.value.bottom - yOffset - individualHeight;
+    const maxY = drawingArea.value.bottom - yOffset;
+    return clamp(y, minY, maxY);
+}
+
+// DRAG HELPERS
+function getDraggedValueFromPointerY(target, pointerY) {
+    if (!target) {
+        return {
+            clampedY: null,
+            value: null
+        };
+    }
+    const clampedY = clampYToSerieBounds({
+        y: pointerY,
+        yOffset: target.yOffset,
+        individualHeight: target.individualHeight
+    });
+    const value = projectYToValue({
+        y: clampedY,
+        scaleMin: target.scaleMin,
+        scaleMax: target.scaleMax,
+        individualHeight: target.individualHeight,
+        yOffset: target.yOffset
+    });
+    return {
+        clampedY,
+        value
+    };
+}
+
+function startDatapointDrag(target, pointer) {
+    if (!target) {
+        return;
+    }
+    didDragDatapoint.value = false;
+    dragState.value = {
+        isActive: true,
+        pointerX: pointer.x,
+        pointerY: pointer.y,
+        absoluteIndex: target.absoluteIndex,
+        target,
+        startValue: target.value,
+        currentValue: target.value,
+        currentY: target.y
+    };
+}
+
+function updateDatapointDrag(pointer) {
+    if (!dragState.value.isActive || !dragState.value.target) {
+        return;
+    }
+    const { clampedY, value } = getDraggedValueFromPointerY(
+        dragState.value.target,
+        pointer.y
+    );
+    const hasMoved =
+        Math.abs((dragState.value.currentY ?? clampedY) - clampedY) > 0.5 ||
+        Math.abs((dragState.value.currentValue ?? value) - value) > 0.000001;
+    if (hasMoved) {
+        didDragDatapoint.value = true;
+    }
+    dragState.value = {
+        ...dragState.value,
+        pointerX: pointer.x,
+        pointerY: pointer.y,
+        currentValue: value,
+        currentY: clampedY
+    };
+}
+
+function endDatapointDrag() {
+    const snapshot = { ...dragState.value };
+    dragState.value = {
+        isActive: false,
+        pointerX: null,
+        pointerY: null,
+        absoluteIndex: null,
+        target: null,
+        startValue: null,
+        currentValue: null,
+        currentY: null
+    };
+    return snapshot;
+}
+
+function cancelDatapointDrag() {
+    dragState.value = {
+        isActive: false,
+        pointerX: null,
+        pointerY: null,
+        absoluteIndex: null,
+        target: null,
+        startValue: null,
+        currentValue: null,
+        currentY: null
+    };
+}
+
+const dragPreview = computed(() => {
+    if (!dragState.value.isActive || !dragState.value.target) {
+        return null;
+    }
+    return {
+        serieId: dragState.value.target.serieId,
+        serieType: dragState.value.target.serieType,
+        absoluteIndex: dragState.value.absoluteIndex,
+        x: dragState.value.target.barCenterX ?? dragState.value.target.x,
+        y: dragState.value.currentY,
+        value: dragState.value.currentValue,
+        startValue: dragState.value.startValue,
+        delta: dragState.value.currentValue - dragState.value.startValue
+    };
+});
+
+function buildDatapointDragPayload(snapshot) {
+    if (!snapshot || !snapshot.target) {
+        return null;
+    }
+
+    const target = snapshot.target;
+    const newValue = snapshot.currentValue;
+    const oldValue = snapshot.startValue;
+
+    return {
+        serieId: target.serieId,
+        serieName: target.serieName,
+        serieType: target.serieType,
+        serieColor: target.serieColor,
+        scaleLabel: target.scaleLabel,
+        index: target.index,
+        absoluteIndex: target.absoluteIndex,
+        oldValue,
+        newValue,
+        delta: [undefined, null].includes(newValue) || [undefined, null].includes(oldValue)
+            ? null
+            : newValue - oldValue,
+        x: target.x,
+        y: snapshot.currentY,
+        zeroPosition: target.zeroPosition,
+        scaleMin: target.scaleMin,
+        scaleMax: target.scaleMax,
+        comment: target.comment,
+        isNull: target.isNull,
+        source: target.source
+    };
+}
+
+function emitDatapointDrag(snapshot) {
+    const callback = FINAL_CONFIG.value?.events?.datapointDrag;
+    if (typeof callback !== 'function') {
+        return;
+    }
+    const payload = buildDatapointDragPayload(snapshot);
+    if (!payload) {
+        return;
+    }
+    callback(payload);
+}
+
+function getSvgPointerPosition(event) {
+    const svg = svgRef.value;
+
+    if (!svg) {
+        return { x: null, y: null };
+    }
+    const point = svg.createSVGPoint();
+    point.x = event.clientX;
+    point.y = event.clientY;
+    const ctm = svg.getScreenCTM();
+    if (!ctm) {
+        return { x: null, y: null };
+    }
+    const transformed = point.matrixTransform(ctm.inverse());
+    return {
+        x: transformed.x,
+        y: transformed.y
+    };
+}
+
+const isDatapointDragEnabled = computed(() => {
+    return typeof FINAL_CONFIG.value?.events?.datapointDrag === 'function';
+});
+
+function onSvgPointerDown(event) {
+    if (!isDatapointDragEnabled.value) {
+        return;
+    }
+    const pointer = getSvgPointerPosition(event);
+    if ([undefined, null].includes(pointer.x) || [undefined, null].includes(pointer.y)) {
+        return;
+    }
+    const { nearest } = getNearestInteractiveTargetFromPointer(pointer);
+    if (!nearest) {
+        return;
+    }
+    startDatapointDrag(nearest, pointer);
+    if (event.target?.setPointerCapture && event.pointerId !== undefined) {
+        event.target.setPointerCapture(event.pointerId);
+    }
+}
+
+function onSvgPointerMove(event) {
+    if (!dragState.value.isActive) {
+        return;
+    }
+    const pointer = getSvgPointerPosition(event);
+    if ([undefined, null].includes(pointer.x) || [undefined, null].includes(pointer.y)) {
+        return;
+    }
+    updateDatapointDrag(pointer);
+}
+
+function onSvgPointerUp(event) {
+    if (!dragState.value.isActive) {
+        return;
+    }
+    if (event.target?.releasePointerCapture && event.pointerId !== undefined) {
+        try {
+            event.target.releasePointerCapture(event.pointerId);
+        } catch {
+        }
+    }
+    const snapshot = endDatapointDrag();
+    if (didDragDatapoint.value) {
+        emitDatapointDrag(snapshot);
+        didDragDatapoint.value = false;
+    }
+}
+
+function onSvgPointerCancel(event) {
+    if (!dragState.value.isActive) {
+        return;
+    }
+    if (event.target?.releasePointerCapture && event.pointerId !== undefined) {
+        try {
+            event.target.releasePointerCapture(event.pointerId);
+        } catch {
+        }
+    }
+    cancelDatapointDrag();
+    didDragDatapoint.value = false;
+}
+
+const allScales = computed(() => {
+    const lines = lineSet.value.map(l => {
+        return {
+            name: l.name,
+            color: l.color,
+            scale: l.individualScale,
+            scaleYLabels: l.scaleYLabels,
+            zero: l.zeroPosition,
+            max: l.individualMax,
+            scaleLabel: l.scaleLabel || "",
+            id: l.id,
+            yOffset: l.yOffset || 0,
+            individualHeight: l.individualHeight || drawingArea.value.height,
+            autoScaleYLabels: l.autoScaleYLabels
+        }
+    });
+    const bars = barSet.value.map(b => {
+        return {
+            name: b.name,
+            color: b.color,
+            scale: b.individualScale,
+            scaleYLabels: b.scaleYLabels,
+            zero: b.zeroPosition,
+            max: b.individualMax,
+            scaleLabel: b.scaleLabel || "",
+            id: b.id,
+            yOffset: b.yOffset || 0,
+            individualHeight: b.individualHeight || drawingArea.value.height
+        }
+    });
+    const plots = plotSet.value.map(p => {
+        return {
+            name: p.name,
+            color: p.color,
+            scale: p.individualScale,
+            scaleYLabels: p.scaleYLabels, // FIX
+            zero: p.zeroPosition,
+            max: p.individualMax,
+            scaleLabel: p.scaleLabel || "",
+            id: p.id,
+            yOffset: p.yOffset || 0,
+            individualHeight: p.individualHeight || drawingArea.value.height
+        }
+    });
+
+    const _source = (mutableConfig.value.useIndividualScale && !mutableConfig.value.isStacked) ? Object.values(scaleGroups.value) : [...lines, ...bars, ...plots];
+
+    const len = _source.flatMap(el => el).length;
+
+    return _source.flatMap((el, i) => {
+
+        let x = 0;
+        x = mutableConfig.value.isStacked ? drawingArea.value?.left : drawingArea.value?.left / len * (i + 1);
+
+        const name = (mutableConfig.value.useIndividualScale && !mutableConfig.value.isStacked) ? el.unique ? el.name : el.groupName : el.name
+
+        return {
+            unique: el.unique,
+            id: el.id,
+            groupId: el.groupId,
+            scaleLabel: el.scaleLabel,
+            name: applyDataLabel(
+                FINAL_CONFIG.value.chart.grid.labels.yAxis.serieNameFormatter,
+                name,
+                name,
+                el
+            ),
+            color: (mutableConfig.value.useIndividualScale && !mutableConfig.value.isStacked) ? el.unique ? el.color : el.groupColor : el.color,
+            scale: el.scale,
+            yOffset: el.yOffset,
+            individualHeight: el.individualHeight,
+            x,
+            yLabels: el.scaleYLabels || el.scale.ticks.map(t => {
+                return {
+                    y: t >= 0 ? el.zero - (el.individualHeight * (t / el.max)) : el.zero + (el.individualHeight * Math.abs(t) / el.max),
+                    value: t
+                }
+            })
+        }
+    });
+});
+
+const interLineAreas = computed(() => {
+    const il = FINAL_CONFIG.value.line.interLine || {};
+    const pairs  = il.pairs || [];
+    const colors = il.colors || [];
+
+    if (!pairs.length) return [];
+
+    const out = [];
+    pairs.forEach((pair, i) => {
+        const [nameA, nameB] = Array.isArray(pair) ? pair : [pair.a, pair.b];
+        if (!nameA || !nameB) return;
+
+        const A = lineSet.value.find(s => s.name === nameA);
+        const B = lineSet.value.find(s => s.name === nameB);
+        if (!A || !B || A.type !== 'line' || B.type !== 'line') return;
+
+        const colorLineA = (colors?.[i]?.[0]) ?? A.color;
+        const colorLineB = (colors?.[i]?.[1]) ?? B.color;
+
+        const areas = buildInterLineAreas({
+            lineA: A.plots,
+            lineB: B.plots,
+            smoothA: !!A.smooth,
+            smoothB: !!B.smooth,
+            colorLineA,
+            colorLineB,
+            sampleStepPx: 2,
+            cutNullValues: FINAL_CONFIG.value.line.cutNullValues
+        });
+
+        areas.forEach((a, j) => {
+            out.push({ ...a, key: `inter_${nameA}_${nameB}_${i}_${j}` });
+        });
+    });
+    return out;
+});
+
+/******************************************************************************************/
+
+const dataTooltipSlot = computed(() => {
+    return {
+        datapoint: selectedSeries.value,
+        seriesIndex: selectedSerieIndex.value,
+        series: absoluteDataset.value,
+        bars: barSet.value,
+        lines: lineSet.value,
+        plots: plotSet.value,
+        config: FINAL_CONFIG.value
+    }
+});
+
+const localeData = ref({ months: [], shortMonths: [], days: [], shortDays: [] });
+
+let localeRequestId = 0;
+watchEffect(() => {
+    const requestId = ++localeRequestId;
+    const dateTimeFormatter = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.datetimeFormatter;
+
+    (async () => {
+        const resolved = await useLocale(dateTimeFormatter.locale).catch(() => useLocale("en"));
+        if (requestId === localeRequestId) {
+            localeData.value = resolved.data;
+        }
+    })();
+});
+
+const preciseTimeFormatter = computed(() => {
+    const dateTimeFormatter = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.datetimeFormatter;
+
+    const dateTime = useDateTime({
+        useUTC: dateTimeFormatter.useUTC,
+        locale: localeData.value,
+        januaryAsYear: dateTimeFormatter.januaryAsYear
+    });
+
+    return (absoluteIndex, format) => {
+        const values = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.values;
+        const timestamp = values?.[absoluteIndex];
+        if (timestamp == null) return "";
+        return dateTime.formatDate(new Date(timestamp), format);
+    };
+});
+
+const preciseAllTimeLabels = computed(() => {
+    const values = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.values || []
+    return values.map((_, i) => ({
+        text: preciseTimeFormatter.value(i, FINAL_CONFIG.value.chart.zoom.timeFormat),
+        absoluteIndex: i
+    }))
+});
+
+const tooltipContent = computed(() => {
+    let html = "";
+
+    let sum = selectedSeries.value.map(s => s.value).filter(s => isSafeValue(s) && s !== null).reduce((a, b) => Math.abs(a) + Math.abs(b), 0);
+
+    const time = timeLabels.value[selectedSerieIndex.value];
+    const customFormat = FINAL_CONFIG.value.chart.tooltip.customFormat;
+
+    if (isFunction(customFormat) && functionReturnsString(() => customFormat({
+        absoluteIndex: selectedSerieIndex.value + slicer.value.start,
+        seriesIndex: selectedSerieIndex.value,
+        datapoint: selectedSeries.value,
+        series: absoluteDataset.value,
+        bars: barSet.value,
+        lines: lineSet.value,
+        plots: plotSet.value,
+        config: FINAL_CONFIG.value,
+        dateLabel: time,
+    }))) {
+        return customFormat({
+            absoluteIndex: selectedSerieIndex.value + slicer.value.start,
+            seriesIndex: selectedSerieIndex.value,
+            datapoint: selectedSeries.value,
+            series: absoluteDataset.value,
+            bars: barSet.value,
+            lines: lineSet.value,
+            plots: plotSet.value,
+            config: FINAL_CONFIG.value,
+            dateLabel: time
+        })
+    } else {
+        if (time && time.text && FINAL_CONFIG.value.chart.tooltip.showTimeLabel) {
+            const precise = preciseTimeFormatter.value(selectedSerieIndex.value + slicer.value.start, FINAL_CONFIG.value.chart.tooltip.timeFormat);
+            html += `<div style="padding-bottom: 6px; margin-bottom: 4px; border-bottom: 1px solid ${FINAL_CONFIG.value.chart.tooltip.borderColor}; width:100%">${FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.datetimeFormatter.enable && !FINAL_CONFIG.value.chart.tooltip.useDefaultTimeFormat ? precise : time.text}</div>`;
+        }
+        selectedSeries.value.forEach(s => {
+            if (isSafeValue(s.value)) {
+                let shape = '';
+                let insideShape = '';
+                switch (icons.value[s.type]) {
+                    case 'bar':
+                        shape = `<svg viewBox="0 0 40 40" height="14" width="14">${SLOTS.pattern ? `<rect x="0" y="0" rx="1" stroke="none" height="40" width="40" fill="${s.color}" />` : ''}<rect x="0" y="0" rx="1" stroke="none" height="40" width="40" fill="${SLOTS.pattern ? `url(#pattern_${uniqueId.value}_${s.slotAbsoluteIndex}` : s.color}" /></svg>`;
+                        break;
+
+                    case 'line':
+                        if (!s.shape || !['star', 'triangle', 'square', 'diamond', 'pentagon', 'hexagon'].includes(s.shape)) {
+                            insideShape = `<circle cx="10" cy="8" r="4" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" fill="${s.color}" />`
+                        } else if (s.shape === 'triangle') {
+                            insideShape = `<path d="${createPolygonPath({ plot: { x: 10, y: 8 }, radius: 4, sides: 3, rotation: 0.52 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" />`
+                        } else if (s.shape === 'square') {
+                            insideShape = `<path d="${createPolygonPath({ plot: { x: 10, y: 8 }, radius: 4, sides: 4, rotation: 0.8 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" />`
+                        } else if (s.shape === 'diamond') {
+                            insideShape = `<path d="${createPolygonPath({ plot: { x: 10, y: 8 }, radius: 4, sides: 4, rotation: 0 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" />`
+                        } else if (s.shape === 'pentagon') {
+                            insideShape = `<path d="${createPolygonPath({ plot: { x: 10, y: 8 }, radius: 4, sides: 5, rotation: 0.95 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" />`
+                        } else if (s.shape === 'hexagon') {
+                            insideShape = `<path d="${createPolygonPath({ plot: { x: 10, y: 8 }, radius: 4, sides: 6, rotation: 0 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" />`
+                        } else if (s.shape === 'star') {
+                            insideShape = `<polygon stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" fill="${s.color}" points="${createStar({ plot: { x: 10, y: 8 }, radius: 4 })}" />`
+                        }
+                        shape = `<svg viewBox="0 0 20 12" height="14" width="20"><rect rx="1.5" x="0" y="6.5" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="0.5" height="3" width="20" fill="${s.color}" />${insideShape}</svg>`;
+                        break;
+
+                    case 'plot':
+                        if (!s.shape || !['star', 'triangle', 'square', 'diamond', 'pentagon', 'hexagon'].includes(s.shape)) {
+                            shape = `<svg viewBox="0 0 12 12" height="14" width="14"><circle cx="6" cy="6" r="6" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="1" fill="${s.color}" /></svg>`;
+                            break;
+                        }
+                        if (s.shape === 'star') {
+                            shape = `<svg viewBox="0 0 12 12" height="14" width="14"><polygon stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="1" fill="${s.color}" points="${createStar({ plot: { x: 6, y: 6 }, radius: 5 })}" /></svg>`;
+                            break;
+                        }
+                        if (s.shape === 'triangle') {
+                            shape = `<svg viewBox="0 0 12 12" height="14" width="14"><path d="${createPolygonPath({ plot: { x: 6, y: 6 }, radius: 6, sides: 3, rotation: 0.52 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="1" /></svg>`;
+                            break;
+                        }
+                        if (s.shape === 'square') {
+                            shape = `<svg viewBox="0 0 12 12" height="14" width="14"><path d="${createPolygonPath({ plot: { x: 6, y: 6 }, radius: 6, sides: 4, rotation: 0.8 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="1" /></svg>`;
+                            break;
+                        }
+                        if (s.shape === 'diamond') {
+                            shape = `<svg viewBox="0 0 12 12" height="14" width="14"><path d="${createPolygonPath({ plot: { x: 6, y: 6 }, radius: 5, sides: 4, rotation: 0 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="1" /></svg>`;
+                            break;
+                        }
+                        if (s.shape === 'pentagon') {
+                            shape = `<svg viewBox="0 0 12 12" height="14" width="14"><path d="${createPolygonPath({ plot: { x: 6, y: 6 }, radius: 5, sides: 5, rotation: 0.95 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="1" /></svg>`;
+                            break;
+                        }
+                        if (s.shape === 'hexagon') {
+                            shape = `<svg viewBox="0 0 12 12" height="14" width="14"><path d="${createPolygonPath({ plot: { x: 6, y: 6 }, radius: 5, sides: 6, rotation: 0 }).path}" fill="${s.color}" stroke="${FINAL_CONFIG.value.chart.tooltip.backgroundColor}" stroke-width="1" /></svg>`;
+                            break;
+                        }
+                    default:
+                        break;
+                }
+                html += `<div style="display:flex;flex-direction:row; align-items:center;gap:3px;"><div style="width:20px">${shape}</div> ${s.name}: <b>${FINAL_CONFIG.value.chart.tooltip.showValue ?
+                    applyDataLabel(
+                        s.type === 'line' ? FINAL_CONFIG.value.line.labels.formatter :
+                            s.type === 'bar' ? FINAL_CONFIG.value.bar.labels.formatter :
+                                FINAL_CONFIG.value.plot.labels.formatter,
+                        s.value,
+                        dataLabel({
+                            p: s.prefix,
+                            v: s.value,
+                            s: s.suffix,
+                            r: FINAL_CONFIG.value.chart.tooltip.roundingValue,
+                        }),
+                        { datapoint: s }
+                    ) : ''}</b> ${FINAL_CONFIG.value.chart.tooltip.showPercentage ? `(${dataLabel({
+                        v: checkNaN(Math.abs(s.value) / sum * 100),
+                        s: '%',
+                        r: FINAL_CONFIG.value.chart.tooltip.roundingPercentage
+                    })})` : ''}</div>`;
+
+                if (FINAL_CONFIG.value.chart.comments.showInTooltip && s.comments.length && s.comments.slice(slicer.value.start, slicer.value.end)[selectedSerieIndex.value]) {
+                    html += `<div class="vue-data-ui-tooltip-comment" style="background:${s.color}20; padding: 6px; margin-bottom: 6px; border-left: 1px solid ${s.color}">${s.comments.slice(slicer.value.start, slicer.value.end)[selectedSerieIndex.value]}</div>`
+                }
+
+            }
+        });
+        return `<div style="border-radius:4px;padding:12px;font-variant-numeric: tabular-nums;color:${FINAL_CONFIG.value.chart.tooltip.color}">${html}</div>`;
+    }
+});
+
+const table = computed(() => {
+    if (safeDataset.value.length === 0) return { head: [], body: [], config: {}, columnNames: [] };
+    const head = relativeDataset.value.map(s => {
+        return {
+            label: s.name,
+            color: s.color,
+            type: s.type
+        }
+    });
+    const body = [];
+
+    timeLabels.value.forEach((t, i) => {
+        const row = FINAL_CONFIG.value.table.useDefaultTimeFormat ? [t.text] : [preciseTimeFormatter.value(i + slicer.value.start, FINAL_CONFIG.value.table.timeFormat)];
+        relativeDataset.value.forEach(s => {
+            row.push(canShowValue(s.absoluteValues[i]) ? Number(s.absoluteValues[i].toFixed(FINAL_CONFIG.value.table.rounding)) : '')
+        });
+        body.push(row);
+    });
+    return { head, body };
+});
+
+const dataTable = computed(() => {
+    const showSum = FINAL_CONFIG.value.table.showSum;
+    let head = [''].concat(relativeDataset.value.map(ds => ds.name))
+
+    if (showSum) {
+        head = head.concat(` <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 16v2a1 1 0 0 1 -1 1h-11l6 -7l-6 -7h11a1 1 0 0 1 1 1v2" /></svg>`)
+    }
+
+    let body = [];
+    for (let i = 0; i < maxSeries.value; i += 1) {
+        const sum = relativeDataset.value.map(ds => {
+            return ds.absoluteValues[i] ?? 0
+        }).reduce((a, b) => a + b, 0)
+
+        body.push([
+            FINAL_CONFIG.value.table.useDefaultTimeFormat ?
+            timeLabels.value[i].text ?? '-' : preciseTimeFormatter.value(i + slicer.value.start, FINAL_CONFIG.value.table.timeFormat)]
+            .concat(relativeDataset.value
+                .map(ds => {
+                    return applyDataLabel(
+                        ds.type === 'line' ? FINAL_CONFIG.value.line.labels.formatter :
+                            ds.type === 'bar' ? FINAL_CONFIG.value.bar.labels.formatter :
+                                FINAL_CONFIG.value.plot.labels.formatter,
+                        ds.absoluteValues[i] ?? 0,
+                        dataLabel({
+                            p: ds.prefix || FINAL_CONFIG.value.chart.labels.prefix,
+                            v: ds.absoluteValues[i] ?? 0,
+                            s: ds.suffix || FINAL_CONFIG.value.chart.labels.suffix,
+                            r: FINAL_CONFIG.value.table.rounding
+                        })
+                    )
+                }
+                ))
+            .concat(showSum ? (sum ?? 0).toFixed(FINAL_CONFIG.value.table.rounding) : [])
+        )
+    }
+    const config = {
+        th: {
+            backgroundColor: FINAL_CONFIG.value.table.th.backgroundColor,
+            color: FINAL_CONFIG.value.table.th.color,
+            outline: FINAL_CONFIG.value.table.th.outline
+        },
+        td: {
+            backgroundColor: FINAL_CONFIG.value.table.td.backgroundColor,
+            color: FINAL_CONFIG.value.table.td.color,
+            outline: FINAL_CONFIG.value.table.td.outline
+        },
+        breakpoint: FINAL_CONFIG.value.table.responsiveBreakpoint
+    }
+    const colNames = [FINAL_CONFIG.value.table.columnNames.period].concat(relativeDataset.value.map(ds => ds.name)).concat(FINAL_CONFIG.value.table.columnNames.total)
+
+    return { head, body, config, colNames };
+});
+
+function generateCsv(callback = null) {
+    const title = [[FINAL_CONFIG.value.chart.title.text], [FINAL_CONFIG.value.chart.title.subtitle.text], [""]];
+    const head = ["", ...table.value.head.map(h => h.label)]
+    const body = table.value.body
+    const _table = title.concat([head]).concat(body);
+    const csvContent = createCsvContent(_table);
+    if (!callback) {
+        downloadCsv({ csvContent, title: FINAL_CONFIG.value.chart.title.text || 'vue-ui-xy' });
+    } else {
+        callback(csvContent);
+    }
+}
+
+function toggleTooltipVisibility(show, selectedIndex = null) {
+    if (allSegregated.value) return;
+    isTooltip.value = show;
+
+    const datapoint = relativeDataset.value.map(s => {
+        return {
+            name: s.name,
+            value: [null, undefined, NaN].includes(s.absoluteValues[selectedIndex]) ? null : s.absoluteValues[selectedIndex],
+            color: s.color,
+            type: s.type
+        }
+    })
+
+    if (show) {
+        selectedSerieIndex.value = selectedIndex;
+        if (FINAL_CONFIG.value.events.datapointEnter) {
+            FINAL_CONFIG.value.events.datapointEnter({ datapoint, seriesIndex: selectedIndex + slicer.value.start })
+        }
+    } else {
+        selectedSerieIndex.value = null;
+        if (FINAL_CONFIG.value.events.datapointLeave) {
+            FINAL_CONFIG.value.events.datapointLeave({ datapoint, seriesIndex: selectedIndex + slicer.value.start })
+        }
+    }
+}
+
+function toggleTable() {
+    mutableConfig.value.showTable = !mutableConfig.value.showTable;
+}
+
+function toggleLabels() {
+    mutableConfig.value.dataLabels.show = !mutableConfig.value.dataLabels.show;
+}
+
+function toggleTooltip() {
+    mutableConfig.value.showTooltip = !mutableConfig.value.showTooltip;
+}
+
+function toggleFullscreen(state) {
+    isFullscreen.value = state;
+    step.value += 1;
+}
+
+function convertSizes() {
+    if (!FINAL_CONFIG.value.responsiveProportionalSizing) {
+        fontSizes.value.dataLabels = FINAL_CONFIG.value.chart.grid.labels.fontSize;
+        fontSizes.value.yAxis = FINAL_CONFIG.value.chart.grid.labels.axis.fontSize;
+        fontSizes.value.xAxis = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.fontSize;
+        fontSizes.value.plotLabels = FINAL_CONFIG.value.chart.labels.fontSize;
+        plotRadii.value.plot = FINAL_CONFIG.value.plot.radius;
+        plotRadii.value.line = FINAL_CONFIG.value.line.radius;
+        return;
+    }
+    // Adaptative sizes in responsive mode
+    fontSizes.value.dataLabels = translateSize({
+        relator: height.value,
+        adjuster: 400,
+        source: FINAL_CONFIG.value.chart.grid.labels.fontSize,
+        threshold: 10,
+        fallback: 10
+    });
+    fontSizes.value.yAxis = translateSize({
+        relator: width.value,
+        adjuster: 1000,
+        source: FINAL_CONFIG.value.chart.grid.labels.axis.fontSize,
+        threshold: 10,
+        fallback: 10
+    });
+    fontSizes.value.xAxis = translateSize({
+        relator: width.value,
+        adjuster: 1000,
+        source: FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.fontSize,
+        threshold: 10,
+        fallback: 10
+    });
+    fontSizes.value.plotLabels = translateSize({
+        relator: width.value,
+        adjuster: 800,
+        source: FINAL_CONFIG.value.chart.labels.fontSize,
+        threshold: 10,
+        fallback: 10
+    });
+    plotRadii.value.plot = translateSize({
+        relator: width.value,
+        adjuster: 800,
+        source: FINAL_CONFIG.value.plot.radius,
+        threshold: 1,
+        fallback: 1
+    });
+    plotRadii.value.line = translateSize({
+        relator: width.value,
+        adjuster: 800,
+        source: FINAL_CONFIG.value.line.radius,
+        threshold: 1,
+        fallback: 1
+    })
+}
+
+function prepareChart() {
+    if (objectIsEmpty(props.dataset)) {
+        error({
+            componentName: 'VueUiXy',
+            type: 'dataset',
+            debug: debug.value
+        });
+        manualLoading.value = true; // v3
+    } else {
+        props.dataset.forEach((ds, i) => {
+            if ([null, undefined].includes(ds.name)) {
+                error({
+                    componentName: 'VueUiXy',
+                    type: 'datasetSerieAttribute',
+                    property: 'name (string)',
+                    index: i,
+                    debug: debug.value
+                });
+                manualLoading.value = true; // v3
+            }
+        })
+    }
+
+    if (debug.value) {
+        props.dataset.forEach((datapoint) => {
+            datapoint.series.forEach((s, j) => {
+                if (!isSafeValue(s)) {
+                    console.warn(`VueUiXy has detected an unsafe value in your dataset:\n-----> The serie '${datapoint.name}' contains the value '${s}' at index ${j}.\n'${s}' was converted to null to allow the chart to display.`)
+                }
+            });
+        });
+    }
+
+    // v3
+    if (!objectIsEmpty(props.dataset)) {
+        manualLoading.value = FINAL_CONFIG.value.loading;
+    }
+
+    showUserOptionsOnChartHover.value = FINAL_CONFIG.value.chart.userOptions.showOnChartHover;
+    keepUserOptionState.value = FINAL_CONFIG.value.chart.userOptions.keepStateOnChartLeave;
+    userOptionsVisible.value = !FINAL_CONFIG.value.chart.userOptions.showOnChartHover;
+
+    seedMutableFromConfig()
+
+    const additionalPad = 12;
+
+    if (FINAL_CONFIG.value.responsive) {
+        const _chart = chart.value;
+        // Parent container (must have fixed height or max-height. Setting 100% will result in infinite height growth which looks aweful on top of being useless)
+        const parent = _chart.parentNode;
+
+        if (resizeObserver.value) {
+            resizeObserver.value.unobserve(observedEl.value);
+            resizeObserver.value.disconnect();
+        }
+
+        const { height: _height, width: _width } = parent.getBoundingClientRect();
+
+        // Title height to substract
+        let title = null;
+        let titleHeight = 0;
+        if (FINAL_CONFIG.value.chart.title.show && chartTitle.value) {
+            title = chartTitle.value;
+            titleHeight = title.getBoundingClientRect().height;
+        }
+
+        // Slicer height to substract
+        let slicer = null;
+        let slicerHeight = 0;
+        if (FINAL_CONFIG.value.chart.zoom.show && maxX.value > 6 && isDataset.value && chartSlicer.value && chartSlicer.value.$el) {
+            slicer = chartSlicer.value.$el;
+            slicerHeight = slicer.getBoundingClientRect().height;
+        }
+
+        // Legend height to substract
+        let legend = null;
+        let legendHeight = 0
+        if (FINAL_CONFIG.value.chart.legend.show && chartLegend.value) {
+            legend = chartLegend.value;
+            legendHeight = legend.getBoundingClientRect().height;
+        }
+
+        // Source height to substract
+        let sourceHeight = 0;
+        if (source.value) {
+            sourceHeight = source.value.getBoundingClientRect().height;
+        }
+
+        // NoTitle height to substract
+        let noTitleHeight = 0;
+        if (noTitle.value) {
+            noTitleHeight = noTitle.value.getBoundingClientRect().height;
+        }
+
+        height.value = _height
+            - titleHeight
+            - legendHeight
+            - slicerHeight
+            - sourceHeight
+            - noTitleHeight
+            - additionalPad;
+
+        width.value = _width;
+        viewBox.value = `0 0 ${width.value < 0 ? 10 : width.value} ${height.value < 0 ? 10 : height.value}`;
+        convertSizes();
+
+        const ro = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                if (FINAL_CONFIG.value.chart.title.show && chartTitle.value) {
+                    titleHeight = chartTitle.value.getBoundingClientRect().height;
+                } else {
+                    titleHeight = 0;
+                }
+                if (chartSlicer.value && chartSlicer.value.$el) {
+                    slicerHeight = chartSlicer.value.$el.getBoundingClientRect().height;
+                } else {
+                    slicerHeight = 0;
+                }
+                if (chartLegend.value) {
+                    legendHeight = chartLegend.value.getBoundingClientRect().height;
+                } else {
+                    legendHeight = 0;
+                }
+                if (source.value) {
+                    sourceHeight = source.value.getBoundingClientRect().height;
+                } else {
+                    sourceHeight = 0;
+                }
+                if (noTitle.value) {
+                    noTitleHeight = noTitle.value.getBoundingClientRect().height;
+                } else {
+                    noTitleHeight = 0;
+                }
+
+                requestAnimationFrame(() => {
+                    height.value = entry.contentRect.height
+                        - titleHeight
+                        - legendHeight
+                        - slicerHeight
+                        - sourceHeight
+                        - noTitleHeight
+                        - additionalPad;
+
+                    width.value = entry.contentBoxSize[0].inlineSize ?? entry.contentRect.width;
+                    viewBox.value = `0 0 ${width.value < 0 ? 10 : width.value} ${height.value < 0 ? 10 : height.value}`;
+                    convertSizes();
+                    setParentElementReference();
+                    runParentStableLayoutPass();
+                })
+            }
+        })
+
+        resizeObserver.value = ro;
+        observedEl.value = parent;
+
+        ro.observe(parent);
+
+    } else {
+        height.value = FINAL_CONFIG.value.chart.height;
+        width.value = FINAL_CONFIG.value.chart.width;
+        fontSizes.value.dataLabels = FINAL_CONFIG.value.chart.grid.labels.fontSize;
+        fontSizes.value.yAxis = FINAL_CONFIG.value.chart.grid.labels.axis.fontSize;
+        fontSizes.value.xAxis = FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.fontSize;
+        fontSizes.value.plotLabels = FINAL_CONFIG.value.chart.labels.fontSize;
+        plotRadii.value.plot = FINAL_CONFIG.value.plot.radius;
+        plotRadii.value.line = FINAL_CONFIG.value.line.radius;
+        viewBox.value = `0 0 ${width.value} ${height.value}`;
+    }
+    setParentElementReference();
+    runParentStableLayoutPass();
+}
+
+function setClientPosition(e) {
+    clientPosition.value = {
+        x: e.clientX,
+        y: e.clientY
+    }
+}
+
+onMounted(() => {
+    prepareChart();
+    setupSlicer();
+    document.addEventListener("mousemove", setClientPosition, { passive: true });
+    document.addEventListener('scroll', hideTags, { passive: true });
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('scroll', hideTags, { passive: true });
+    document.removeEventListener("mousemove", setClientPosition, { passive: true });
+    if (resizeObserver.value) {
+        resizeObserver.value.unobserve(observedEl.value);
+        resizeObserver.value.disconnect();
+        resizeObserver.value = null;
+    }
+});
+
+useTimeLabelCollision({
+    timeLabelsEls,
+    timeLabels,
+    slicer,
+    configRef: FINAL_CONFIG,
+    rotationPath: ['chart', 'grid', 'labels', 'xAxisLabels', 'rotation'],
+    autoRotatePath: ['chart', 'grid', 'labels', 'xAxisLabels', 'autoRotate', 'enable'],
+    isAutoSize,
+    height,
+    width,
+    rotation: FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.autoRotate.angle
+});
+
+const useCustomFormatTimeTag = ref(false);
+
+const timeTagEl = ref(null);
+const timeTagInnerW = ref(200)
+
+const activeIndex = computed(() =>
+    (selectedSerieIndex.value ?? selectedMinimapIndex.value ?? 0)
+)
+
+function timeTagMeasuredW() {
+    const w = Math.ceil(timeTagInnerW.value || 200)
+    return Math.min(Math.max(w, 1), 200)
+}
+
+function timeTagX() {
+    const w = timeTagMeasuredW();
+    const W_FO = 200;
+    const sectionsX = Math.max(1, maxSeries.value);
+    const sectionX = drawingArea.value.width / sectionsX;
+    const centerX = drawingArea.value?.left + activeIndex.value * sectionX + sectionX / 2;
+    const desiredX = centerX - w / 2 - (W_FO - w) / 2;
+    const minX = drawingArea.value?.left - (W_FO - w) / 2;
+    const _maxX = drawingArea.value?.right - (W_FO + w) / 2;
+    const clamped = Math.max(minX, Math.min(desiredX, _maxX));
+    return checkNaN(clamped);
+}
+
+onMounted(() => {
+    let observedTimeTagEl = null;
+    let raf = null;
+
+    const setW = (w) => {
+        cancelAnimationFrame(raf)
+        raf = requestAnimationFrame(() => {
+            timeTagInnerW.value = Math.min(Math.max(Math.ceil(w || 0), 1), 200);
+        });
+    }
+
+    const ro = new ResizeObserver((entries) => {
+        let entry = entries.find(e => e.target === observedTimeTagEl) || entries[0];
+        if (!entry) return;
+        setW(entry.contentRect.width || 200)
+    });
+
+    const stop = watchEffect((onInvalidate) => {
+        const el = timeTagEl.value;
+        if (observedTimeTagEl && observedTimeTagEl !== el) {
+            ro.unobserve(observedTimeTagEl);
+            observedTimeTagEl = null;
+        }
+
+        if (el && el !== observedTimeTagEl) {
+            nextTick(() => {
+                if (el.offsetParent === null) return;
+                setW(el.offsetWidth || el.getBoundingClientRect().width || 200)
+            })
+            ro.observe(el);
+            observedTimeTagEl = el;
+        }
+
+        onInvalidate(() => {
+            if (observedTimeTagEl) {
+                ro.unobserve(observedTimeTagEl);
+                observedTimeTagEl = null;
+            }
+        });
+    });
+
+    onBeforeUnmount(() => {
+        try {
+            if (observedTimeTagEl) ro.unobserve(observedTimeTagEl);
+            ro.disconnect();
+            stop();
+        } catch {
+            // ignore
+        }
+    });
+});
+
+const timeTagContent = computed(() => {
+    if ([null, undefined].includes(selectedSerieIndex.value) && [null, undefined].includes(selectedMinimapIndex.value)) return '';
+
+    const index = (selectedSerieIndex.value != null ? selectedSerieIndex.value : 0) || (selectedMinimapIndex.value != null ? selectedMinimapIndex.value : 0);
+
+    const customFormat = FINAL_CONFIG.value.chart.timeTag.customFormat;
+    useCustomFormatTimeTag.value = false;
+
+    if (isFunction(customFormat)) {
+        try {
+            const customFormatString = customFormat({
+                absoluteIndex: index + slicer.value.start,
+                seriesIndex: index,
+                datapoint: selectedSeries.value,
+                bars: barSet.value,
+                lines: lineSet.value,
+                plots: plotSet.value,
+                config: FINAL_CONFIG.value
+            });
+            if (typeof customFormatString === 'string') {
+                useCustomFormatTimeTag.value = true;
+                return customFormatString
+            }
+        } catch (err) {
+            console.warn('Custom format cannot be applied on timeTag.');
+            useCustomFormatTimeTag.value = false;
+        }
+    }
+
+    if (!useCustomFormatTimeTag.value) {
+        if (![null, undefined].includes(timeLabels.value[index])) {
+            if (FINAL_CONFIG.value.chart.grid.labels.xAxisLabels.datetimeFormatter.enable && !FINAL_CONFIG.value.chart.timeTag.useDefaultFormat) {
+                return preciseTimeFormatter.value(index + slicer.value.start, FINAL_CONFIG.value.chart.timeTag.timeFormat);
+            } else {
+                return timeLabels.value[index].text;
+            }
+        } else {
+            return '';
+        }
+    }
+});
+
+// Force reflow when component is mounted in a hidden div
+
+watch(() => props.dataset, (_) => {
+    if (Array.isArray(_) && _.length > 0) {
+        manualLoading.value = false;
+    }
+    maxX.value = Math.max(...FINAL_DATASET.value.map(datapoint => lttb(datapoint.series).length));
+
+    slicer.value = {
+        start: 0,
+        end: maxX.value
+    };
+
+    slicerStep.value += 1;
+    segregateStep.value += 1;
+    setParentElementReference();
+    runParentStableLayoutPass();
+    normalizeSlicerWindow();
+
+}, { deep: true });
+
+watch(() => props.config, (_) => {
+    if (!loading.value) {
+        FINAL_CONFIG.value = prepareConfig();
+    }
+    prepareChart();
+    titleStep.value += 1;
+    tableStep.value += 1;
+
+    // Reset mutable config
+    seedMutableFromConfig()
+    setParentElementReference();
+    runParentStableLayoutPass();
+    normalizeSlicerWindow();
+}, { deep: true });
+
+const isActuallyVisible = ref(false)
+
+function recomputeVisibility() {
+    const el = chart.value?.parentNode
+    if (!el) { isActuallyVisible.value = false; return }
+    const r = el.getBoundingClientRect()
+    isActuallyVisible.value = r.width > 2 && r.height > 2
+}
+
+onMounted(() => {
+    recomputeVisibility()
+    const ro = new ResizeObserver(() => {
+        recomputeVisibility()
+        if (isActuallyVisible.value) {
+            // re-measure and re-init once we have size
+            prepareChart()
+            normalizeSlicerWindow()
+            setupSlicer()
+        }
+    })
+    if (chart.value?.parentNode) ro.observe(chart.value.parentNode)
+})
+
+// v3 - Essential to make shifting between loading config and final config work
+watch(FINAL_CONFIG, () => {
+    seedMutableFromConfig();
+}, { immediate: true });
+
+const tableComponent = computed(() => {
+    const useDialog = FINAL_CONFIG.value.table.useDialog && !FINAL_CONFIG.value.showTable;
+    const open = mutableConfig.value.showTable;
+    return {
+        component: useDialog ? BaseDraggableDialog : Accordion,
+        title: `${FINAL_CONFIG.value.chart.title.text}${FINAL_CONFIG.value.chart.title.subtitle.text ? `: ${FINAL_CONFIG.value.chart.title.subtitle.text}` : ''}`,
+        props: useDialog ? {
+            backgroundColor: FINAL_CONFIG.value.table.th.backgroundColor,
+            color: FINAL_CONFIG.value.table.th.color,
+            headerColor: FINAL_CONFIG.value.table.th.color,
+            headerBg: FINAL_CONFIG.value.table.th.backgroundColor,
+            isFullscreen: isFullscreen.value,
+            fullscreenParent: chart.value,
+            forcedWidth: Math.min(800, window.innerWidth * 0.8)
+        } : {
+            hideDetails: true,
+            config: {
+                open,
+                maxHeight: 10000,
+                body: {
+                    backgroundColor: FINAL_CONFIG.value.chart.backgroundColor,
+                    color: FINAL_CONFIG.value.chart.color
+                },
+                head: {
+                    backgroundColor: FINAL_CONFIG.value.chart.backgroundColor,
+                    color: FINAL_CONFIG.value.chart.color
+                }
+            }
+        }
+    }
+});
+
+watch(() => mutableConfig.value.showTable, v => {
+    if (FINAL_CONFIG.value.showTable) return;
+    if (v && FINAL_CONFIG.value.table.useDialog && tableUnit.value) {
+        tableUnit.value.open()
+    } else {
+        if (tableUnit.value && tableUnit.value.close) {
+            tableUnit.value.close()
+        }
+    }
+})
+
+function closeTable() {
+    mutableConfig.value.showTable = false;
+    if (userOptionsRef.value) {
+        userOptionsRef.value.setTableIconState(false);
+    }
+}
+
+const legendSet = computed(() => {
+    return absoluteDataset.value.map(ds => {
+        return {
+            shape: ds.type === 'bar' ? 'square' : ds.shape ?? 'circle',
+            color: ds.color,
+            name: ds.name,
+        }
+    })
+})
+
+const svgBg = computed(() => FINAL_CONFIG.value.chart.backgroundColor);
+const svgLegend = computed(() => FINAL_CONFIG.value.chart.legend);
+const svgTitle = computed(() => FINAL_CONFIG.value.chart.title);
+
+const { exportSvg, getSvg } = useSvgExport({
+    svg: svgRef,
+    title: svgTitle,
+    legend: svgLegend,
+    legendItems: legendSet,
+    backgroundColor: svgBg
+})
+
+async function generateSvg({ isCb }) {
+    isCallbackSvg.value = true;
+
+    await nextTick();
+
+    try {
+        if (isCb) {
+            const { blob, url, text, dataUrl } = await getSvg();
+            await Promise.resolve(FINAL_CONFIG.value.chart.userOptions.callbacks.svg({ blob, url, text, dataUrl }));
+        } else {
+            await Promise.resolve(exportSvg());
+        }
+    } finally {
+        isCallbackSvg.value = false;
+    }
+}
+
+function onGenerateImage(payload) {
+    if (payload?.stage === "start") {
+        isCallbackImaging.value = true;
+        return;
+    }
+
+    if (payload?.stage === "end") {
+        isCallbackImaging.value = false;
+        return;
+    }
+
+    generateImage();
+}
+
+async function copyAlt(){
+    emit('copyAlt', {
+        config: {
+            ...FINAL_CONFIG.value,
+            formattedDates: timeLabels.value
+        },
+        dataset: {
+            lines: lineSet.value,
+            bars: barSet.value,
+            plots: plotSet.value,
+        }
+    })
+    if (!FINAL_CONFIG.value.chart.userOptions.callbacks.altCopy) {
+        console.warn('Vue Data UI - A callback must be set for `altCopy` in userOptions.');
+        return
+    }
+    await Promise.resolve(FINAL_CONFIG.value.chart.userOptions.callbacks.altCopy({ 
+        config: {
+            ...FINAL_CONFIG.value,
+            formattedDates: timeLabels.value
+        }, 
+        dataset: {
+            lines: lineSet.value,
+            bars: barSet.value,
+            plots: plotSet.value,
+        },
+    }));
+}
+
+defineExpose({
+    getData,
+    getImage,
+    generatePdf,
+    generateImage,
+    generateSvg,
+    generateCsv,
+    hideSeries,
+    showSeries,
+    toggleStack,
+    toggleTable,
+    toggleLabels,
+    toggleTooltip,
+    toggleAnnotator,
+    toggleFullscreen,
+    copyAlt
+});
 </script>
 
 <template>
-  <div class="w-full relative" id="download-analytics" :aria-busy="pending ? 'true' : 'false'">
-    <div class="w-full mb-4 flex flex-col gap-3">
-      <div class="flex flex-col sm:flex-row gap-3 sm:gap-2 sm:items-end">
-        <div class="flex flex-col gap-1 sm:shrink-0">
-          <label
-            for="granularity"
-            class="text-3xs font-mono text-fg-subtle tracking-wide uppercase"
-          >
-            {{ $t('package.trends.granularity') }}
-          </label>
-
-          <div
-            class="flex items-center bg-bg-subtle border border-border rounded-md overflow-hidden"
-          >
-            <select
-              id="granularity"
-              v-model="selectedGranularity"
-              :disabled="pending"
-              class="w-full px-4 py-3 leading-none bg-bg-subtle font-mono text-sm text-fg outline-none appearance-none focus-visible:outline-accent/70"
-            >
-              <option value="daily">
-                {{ $t('package.trends.granularity_daily') }}
-              </option>
-              <option value="weekly">
-                {{ $t('package.trends.granularity_weekly') }}
-              </option>
-              <option value="monthly">
-                {{ $t('package.trends.granularity_monthly') }}
-              </option>
-              <option value="yearly">
-                {{ $t('package.trends.granularity_yearly') }}
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2 flex-1">
-          <div class="flex flex-col gap-1">
-            <label
-              for="startDate"
-              class="text-3xs font-mono text-fg-subtle tracking-wide uppercase"
-            >
-              {{ $t('package.trends.start_date') }}
-            </label>
-            <div class="relative flex items-center">
-              <span
-                class="absolute inset-is-2 i-carbon:calendar w-4 h-4 text-fg-subtle shrink-0 pointer-events-none"
-                aria-hidden="true"
-              />
-              <InputBase
-                id="startDate"
-                v-model="startDate"
-                :disabled="pending"
-                type="date"
-                class="w-full min-w-0 bg-transparent ps-7"
-                size="medium"
-              />
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-1">
-            <label for="endDate" class="text-3xs font-mono text-fg-subtle tracking-wide uppercase">
-              {{ $t('package.trends.end_date') }}
-            </label>
-            <div class="relative flex items-center">
-              <span
-                class="absolute inset-is-2 i-carbon:calendar w-4 h-4 text-fg-subtle shrink-0 pointer-events-none"
-                aria-hidden="true"
-              />
-              <InputBase
-                id="endDate"
-                v-model="endDate"
-                :disabled="pending"
-                type="date"
-                class="w-full min-w-0 bg-transparent ps-7"
-                size="medium"
-              />
-            </div>
-          </div>
-        </div>
-
-        <button
-          v-if="showResetButton"
-          type="button"
-          aria-label="Reset date range"
-          class="self-end flex items-center justify-center px-2.5 py-1.75 border border-transparent rounded-md text-fg-subtle hover:text-fg transition-colors hover:border-border focus-visible:outline-accent/70 sm:mb-0"
-          @click="resetDateRange"
+    <div :id="`vue-ui-xy_${uniqueId}`"
+        :class="`vue-data-ui-component vue-ui-xy ${isFullscreen ? 'vue-data-ui-wrapper-fullscreen' : ''} ${FINAL_CONFIG.useCssAnimation ? '' : 'vue-ui-dna'}`"
+        ref="chart"
+        :style="`background:${FINAL_CONFIG.chart.backgroundColor}; color:${FINAL_CONFIG.chart.color};width:100%;font-family:${FINAL_CONFIG.chart.fontFamily};${FINAL_CONFIG.responsive ? 'height: 100%' : ''}`"
+        @mouseenter="() => setUserOptionsVisibility(true)" @mouseleave="() => setUserOptionsVisibility(false)" @click="onSvgClick">
+        <PenAndPaper 
+            v-if="FINAL_CONFIG.chart.userOptions.buttons.annotator && svgRef" 
+            :svgRef="svgRef"
+            :backgroundColor="FINAL_CONFIG.chart.backgroundColor" 
+            :color="FINAL_CONFIG.chart.color"
+            :active="isAnnotator"
+            :isCursorPointer="isCursorPointer"
+            @close="toggleAnnotator"
         >
-          <span class="i-carbon:reset w-5 h-5" aria-hidden="true" />
-        </button>
-      </div>
-    </div>
-
-    <h2 id="download-analytics-title" class="sr-only">
-      {{ $t('package.downloads.title') }}
-    </h2>
-
-    <div role="region" aria-labelledby="download-analytics-title">
-      <ClientOnly v-if="chartData.dataset">
-        <div :data-pending="pending" :data-minimap-visible="maxDatapoints > 6">
-          <VueUiXy
-            :dataset="chartData.dataset"
-            :config="chartConfig"
-            class="[direction:ltr]"
-            @zoomStart="setIsZoom"
-            @zoomEnd="setIsZoom"
-            @zoomReset="isZoomed = false"
-          >
-            <!-- Injecting custom svg elements -->
-            <template #svg="{ svg }">
-              <!-- Estimation lines for monthly & yearly granularities when the end date induces a downwards trend -->
-              <g
-                v-if="
-                  !pending &&
-                  ['monthly', 'yearly'].includes(displayedGranularity) &&
-                  !isEndDateOnPeriodEnd &&
-                  !isZoomed
-                "
-                v-html="drawEstimationLine(svg)"
-              />
-
-              <!-- Last value label for all other cases -->
-              <g
-                v-if="
-                  !pending &&
-                  (['daily', 'weekly'].includes(displayedGranularity) ||
-                    isEndDateOnPeriodEnd ||
-                    isZoomed)
-                "
-                v-html="drawLastDatapointLabel(svg)"
-              />
-
-              <!-- Inject legend during SVG print only -->
-              <g v-if="svg.isPrintingSvg" v-html="drawSvgPrintLegend(svg)"/>
-
-              <!-- Inject npmx logo & tagline during SVG and PNG print -->
-              <g v-if="svg.isPrintingSvg || svg.isPrintingImg" v-html="drawNpmxLogoAndTaglineWatermark(svg)"/>
-              
-              <!-- Overlay covering the chart area to hide line resizing when switching granularities recalculates VueUiXy scaleMax when estimation lines are necessary -->
-              <rect
-                v-if="pending"
-                :x="svg.drawingArea.left"
-                :y="svg.drawingArea.top - 12"
-                :width="svg.drawingArea.width + 12"
-                :height="svg.drawingArea.height + 48"
-                :fill="colors.bg"
-              />
-            </template>
-
-            <!-- Subtle gradient applied for a unique series (chart modal) -->
-            <template #area-gradient="{ series: chartModalSeries, id: gradientId }">
-              <linearGradient :id="gradientId" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" :stop-color="chartModalSeries.color" stop-opacity="0.2" />
-                <stop offset="100%" :stop-color="colors.bg" stop-opacity="0" />
-              </linearGradient>
-            </template>
-
-            <!-- Custom legend for multiple series -->
-            <template
-              #legend="{ legend }"
-            >
-              <div class="flex gap-4 flex-wrap justify-center">
-                <template v-if="isMultiPackageMode">
-                  <button
-                    v-for="datapoint in legend"
-                    :key="datapoint.name"
-                    :aria-pressed="datapoint.isSegregated"
-                    :aria-label="datapoint.name"
-                    type="button"
-                    class="flex gap-1 place-items-center"
-                    @click="datapoint.segregate()"
-                  >
-                    <div class="h-3 w-3">
-                      <svg viewBox="0 0 2 2" class="w-full">
-                        <rect x="0" y="0" width="2" height="2" rx="0.3" :fill="datapoint.color" />
-                      </svg>
-                    </div>
-                    <span
-                      :style="{
-                        textDecoration: datapoint.isSegregated ? 'line-through' : undefined,
-                      }"
-                    >
-                      {{ datapoint.name }}
-                    </span>
-                  </button>
-                </template>
-
-                <!-- Single series legend (no user interaction) -->
-                <template v-else>
-                  <div class="flex gap-1 place-items-center">
-                    <div class="h-3 w-3">
-                      <svg viewBox="0 0 2 2" class="w-full">
-                        <rect x="0" y="0" width="2" height="2" rx="0.3" :fill="legend[0].color" />
-                      </svg>
-                    </div>
-                    <span>
-                      {{ legend[0].name }}
-                    </span>
-                  </div>
-                </template>
-
-                <!-- Estimation extra legend item -->
-                <div
-                  class="flex gap-1 place-items-center"
-                  v-if="['monthly', 'yearly'].includes(selectedGranularity)"
-                >
-                  <svg viewBox="0 0 20 2" width="20">
-                    <line
-                      x1="0"
-                      y1="1"
-                      x2="20"
-                      y2="1"
-                      :stroke="colors.fg"
-                      stroke-dasharray="4"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                  <span class="text-fg-subtle">{{ $t('package.trends.legend_estimation') }}</span>
-                </div>
-              </div>
-            </template>
-
-            <template #menuIcon="{ isOpen }">
-              <span v-if="isOpen" class="i-carbon:close w-6 h-6" aria-hidden="true" />
-              <span v-else class="i-carbon:overflow-menu-vertical w-6 h-6" aria-hidden="true" />
-            </template>
-            <template #optionCsv>
-              <span
-                class="i-carbon:csv w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
-            </template>
-            <template #optionImg>
-              <span
-                class="i-carbon:png w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
-            </template>
-            <template #optionSvg>
-              <span
-                class="i-carbon:svg w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
-            </template>
-
             <template #annotator-action-close>
-              <span
-                class="i-carbon:close w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
+                <slot name="annotator-action-close"/>
             </template>
             <template #annotator-action-color="{ color }">
-              <span class="i-carbon:color-palette w-6 h-6" :style="{ color }" aria-hidden="true" />
+                <slot name="annotator-action-color" v-bind="{ color }"/>
             </template>
-            <template #annotator-action-undo>
-              <span
-                class="i-carbon:undo w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
+            <template #annotator-action-draw="{ mode }">
+                <slot name="annotator-action-draw" v-bind="{ mode }"/>
             </template>
-            <template #annotator-action-redo>
-              <span
-                class="i-carbon:redo w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
+            <template #annotator-action-undo="{ disabled }">
+                <slot name="annotator-action-undo" v-bind="{ disabled }"/>
             </template>
-            <template #annotator-action-delete>
-              <span
-                class="i-carbon:trash-can w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
+            <template #annotator-action-redo="{ disabled }">
+                <slot name="annotator-action-redo" v-bind="{ disabled }"/>
             </template>
-            <template #optionAnnotator="{ isAnnotator }">
-              <span
-                v-if="isAnnotator"
-                class="i-carbon:edit-off w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
-              <span
-                v-else
-                class="i-carbon:edit w-6 h-6 text-fg-subtle"
-                style="pointer-events: none"
-                aria-hidden="true"
-              />
+            <template #annotator-action-delete="{ disabled }">
+                <slot name="annotator-action-delete" v-bind="{ disabled }"/>
             </template>
-          </VueUiXy>
+        </PenAndPaper>
+
+        <div ref="noTitle" v-if="hasOptionsNoTitle" class="vue-data-ui-no-title-space"
+            :style="`height:36px; width: 100%; background:transparent`" />
+
+        <div ref="chartTitle" class="vue-ui-xy-title" v-if="FINAL_CONFIG.chart.title.show"
+            :style="`font-family:${FINAL_CONFIG.chart.fontFamily}`">
+            <Title :key="`title_${titleStep}`" :config="{
+                title: {
+                    cy: 'xy-div-title',
+                    ...FINAL_CONFIG.chart.title
+                },
+                subtitle: {
+                    cy: 'xy-div-subtitle',
+                    ...FINAL_CONFIG.chart.title.subtitle
+                },
+            }" />
         </div>
 
-        <template #fallback>
-          <div class="min-h-[260px]" />
+        <div :id="`legend-top-${uniqueId}`" />
+
+        <UserOptions ref="userOptionsRef" :key="`user_options_${step}`"
+            v-if="FINAL_CONFIG.chart.userOptions.show && (keepUserOptionState ? true : userOptionsVisible)"
+            :backgroundColor="FINAL_CONFIG.chart.backgroundColor" 
+            :color="FINAL_CONFIG.chart.color"
+            :isPrinting="isPrinting" 
+            :isImaging="isImaging" 
+            :uid="uniqueId"
+            :hasTooltip="FINAL_CONFIG.chart.userOptions.buttons.tooltip && FINAL_CONFIG.chart.tooltip.show"
+            :hasPdf="FINAL_CONFIG.chart.userOptions.buttons.pdf" 
+            :hasXls="FINAL_CONFIG.chart.userOptions.buttons.csv"
+            :hasImg="FINAL_CONFIG.chart.userOptions.buttons.img"
+            :hasSvg="FINAL_CONFIG.chart.userOptions.buttons.svg"
+            :hasLabel="FINAL_CONFIG.chart.userOptions.buttons.labels"
+            :hasTable="FINAL_CONFIG.chart.userOptions.buttons.table"
+            :hasStack="dataset.length > 1 && FINAL_CONFIG.chart.userOptions.buttons.stack"
+            :hasFullscreen="FINAL_CONFIG.chart.userOptions.buttons.fullscreen" 
+            :hasAltCopy="FINAL_CONFIG.chart.userOptions.buttons.altCopy"
+            :isStacked="mutableConfig.isStacked"
+            :isFullscreen="isFullscreen" 
+            :chartElement="$refs.chart" 
+            :position="FINAL_CONFIG.chart.userOptions.position"
+            :isTooltip="mutableConfig.showTooltip" 
+            :titles="{ ...FINAL_CONFIG.chart.userOptions.buttonTitles }"
+            :hasAnnotator="FINAL_CONFIG.chart.userOptions.buttons.annotator" 
+            :isAnnotation="isAnnotator"
+            :callbacks="FINAL_CONFIG.chart.userOptions.callbacks"
+            :tableDialog="FINAL_CONFIG.table.useDialog"
+            :printScale="FINAL_CONFIG.chart.userOptions.print.scale"
+            :isCursorPointer="isCursorPointer"
+            @toggleFullscreen="toggleFullscreen"
+            @generatePdf="generatePdf" 
+            @generateCsv="generateCsv" 
+            @generateImage="onGenerateImage"
+            @generateSvg="generateSvg"
+            @toggleTable="toggleTable" 
+            @toggleLabels="toggleLabels" 
+            @toggleStack="toggleStack"
+            @toggleTooltip="toggleTooltip" 
+            @toggleAnnotator="toggleAnnotator" 
+            @copyAlt="copyAlt"
+            :style="{
+                visibility: keepUserOptionState ? userOptionsVisible ? 'visible' : 'hidden' : 'visible'
+            }">
+            <template #menuIcon="{ isOpen, color }" v-if="$slots.menuIcon">
+                <slot name="menuIcon" v-bind="{ isOpen, color }" />
+            </template>
+            <template #optionTooltip v-if="$slots.optionTooltip">
+                <slot name="optionTooltip" />
+            </template>
+            <template #optionPdf v-if="$slots.optionPdf">
+                <slot name="optionPdf" />
+            </template>
+            <template #optionCsv v-if="$slots.optionCsv">
+                <slot name="optionCsv" />
+            </template>
+            <template #optionImg v-if="$slots.optionImg">
+                <slot name="optionImg" />
+            </template>
+            <template #optionSvg v-if="$slots.optionSvg">
+                <slot name="optionSvg" />
+            </template>
+            <template #optionTable v-if="$slots.optionTable">
+                <slot name="optionTable" />
+            </template>
+            <template #optionLabels v-if="$slots.optionLabels">
+                <slot name="optionLabels" />
+            </template>
+            <template #optionStack="{ isStack }" v-if="$slots.optionStack">
+                <slot name="optionStack" v-bind="{ isStack }" />
+            </template>
+            <template v-if="$slots.optionFullscreen" template #optionFullscreen="{ toggleFullscreen, isFullscreen }">
+                <slot name="optionFullscreen" v-bind="{ toggleFullscreen, isFullscreen }" />
+            </template>
+            <template v-if="$slots.optionAnnotator" #optionAnnotator="{ toggleAnnotator, isAnnotator }">
+                <slot name="optionAnnotator" v-bind="{ toggleAnnotator, isAnnotator }" />
+            </template>
+            <template v-if="$slots.optionAltCopy" #optionAltCopy="{ altCopy: c }">
+                <slot name="optionAltCopy" v-bind="{ altCopy: c }"/>
+            </template>
+        </UserOptions>
+
+        <svg ref="svgRef" xmlns="http://www.w3.org/2000/svg"
+            :class="{ 'vue-data-ui-fullscreen--on': isFullscreen, 'vue-data-ui-fulscreen--off': !isFullscreen }"
+            data-cy="xy-svg" :width="'100%'" 
+            :viewBox="viewBox"
+            class="vue-ui-xy-svg vue-data-ui-svg" 
+            :style="{
+                background: 'transparent',
+                color: FINAL_CONFIG.chart.color,
+                fontFamily: FINAL_CONFIG.chart.fontFamily,
+            }" 
+            :aria-label="chartAriaLabel" 
+            role="img" 
+            aria-live="polite" 
+            preserveAspectRatio="xMidYMid"
+            @mousemove="onSvgMouseMove"
+            @mouseleave="onSvgMouseLeave"
+            @click="onSvgClick"
+            @pointerdown="onSvgPointerDown"
+            @pointermove="onSvgPointerMove"
+            @pointerup="onSvgPointerUp"
+            @pointercancel="onSvgPointerCancel"
+        >
+            <g ref="G" class="vue-data-ui-g">
+                <PackageVersion />
+
+                <!-- BACKGROUND SLOT -->
+                <foreignObject v-if="$slots['chart-background']"
+                    :x="(drawingArea?.left + xPadding) < 0 ? 0 : drawingArea?.left + xPadding" :y="drawingArea?.top"
+                    :width="(drawingArea.width - (FINAL_CONFIG.chart.grid.position === 'middle' ? 0 : drawingArea.width / maxSeries)) < 0 ? 0 : drawingArea.width - (FINAL_CONFIG.chart.grid.position === 'middle' ? 0 : drawingArea.width / maxSeries)"
+                    :height="drawingArea.height < 0 ? 0 : drawingArea.height" :style="{
+                        pointerEvents: 'none'
+                    }">
+                    <slot name="chart-background" />
+                </foreignObject>
+
+                <g v-if="maxSeries > 0">
+                    <!-- GRID -->
+                    <g class="vue-ui-xy-grid">
+                        <line 
+                            v-if="FINAL_CONFIG.chart.grid.labels.xAxis.showBaseline" 
+                            data-cy="xy-grid-line-x"
+                            :stroke="FINAL_CONFIG.chart.grid.stroke" 
+                            stroke-width="1" 
+                            :x1="drawingArea?.left + xPadding"
+                            :x2="drawingArea?.right - xPadding" 
+                            :y1="forceValidValue(drawingArea?.bottom)"
+                            :y2="forceValidValue(drawingArea?.bottom)" 
+                            stroke-linecap="round"
+                            :style="{ animation: 'none !important' }" 
+                        />
+                        <template v-if="!mutableConfig.useIndividualScale">
+                            <line v-if="FINAL_CONFIG.chart.grid.labels.yAxis.showBaseline" data-cy="xy-grid-line-y"
+                                :stroke="FINAL_CONFIG.chart.grid.stroke" stroke-width="1"
+                                :x1="drawingArea?.left + xPadding" :x2="drawingArea?.left + xPadding"
+                                :y1="forceValidValue(drawingArea?.top)" :y2="forceValidValue(drawingArea?.bottom)"
+                                stroke-linecap="round" :style="{ animation: 'none !important' }" />
+                            <g v-if="FINAL_CONFIG.chart.grid.showHorizontalLines">
+                                <line data-cy="xy-grid-horizontal-line" v-for="l in yLabels"
+                                    :x1="drawingArea?.left + xPadding" :x2="drawingArea?.right"
+                                    :y1="forceValidValue(l.y)" :y2="forceValidValue(l.y)"
+                                    :stroke="FINAL_CONFIG.chart.grid.stroke" :stroke-width="0.5" stroke-linecap="round"
+                                    :style="{ animation: 'none !important' }" />
+                            </g>
+                        </template>
+                        <template v-else-if="FINAL_CONFIG.chart.grid.showHorizontalLines">
+                            <g v-for="grid in allScales">
+                                <template v-if="grid.id === selectedScale && grid.yLabels.length">
+                                    <line v-for="l in grid.yLabels" :x1="drawingArea?.left + xPadding"
+                                        :x2="drawingArea?.right - xPadding" :y1="forceValidValue(l.y)"
+                                        :y2="forceValidValue(l.y)" :stroke="grid.color" :stroke-width="0.5"
+                                        stroke-linecap="round" :style="{ animation: 'none !important' }" />
+                                </template>
+                                <template v-else-if="grid.yLabels.length">
+                                    <line v-for="l in grid.yLabels" :x1="drawingArea?.left + xPadding"
+                                        :x2="drawingArea?.right - xPadding" :y1="forceValidValue(l.y)"
+                                        :y2="forceValidValue(l.y)" :stroke="FINAL_CONFIG.chart.grid.stroke"
+                                        :stroke-width="0.5" stroke-linecap="round"
+                                        :style="{ animation: 'none !important' }" />
+                                </template>
+                            </g>
+                        </template>
+                        <g v-if="FINAL_CONFIG.chart.grid.showVerticalLines">
+                            <path data-cy="xy-grid-vertical-line" :d="gridVerticalLines" :stroke-width="0.5"
+                                :stroke="FINAL_CONFIG.chart.grid.stroke" stroke-linecap="round"
+                                :style="{ animation: 'none !important' }" />
+                        </g>
+
+                        <g v-if="FINAL_CONFIG.chart.grid.labels.xAxisLabels.show">
+                            <path :d="crosshairsX" :stroke="FINAL_CONFIG.chart.grid.stroke" :stroke-width="1"
+                                stroke-linecap="round" :style="{ animation: 'none !important' }" />
+                        </g>
+                    </g>
+
+                    <!-- DEFS BARS -->
+                    <template v-for="(serie, i) in barSet" :key="`def_rect_${i}`">
+                        <defs :data-cy="`xy-def-bar-${i}`">
+                            <template v-if="$slots['bar-gradient']">
+                                <slot name="bar-gradient" v-bind="{ series: serie, positiveId: `rectGradient_pos_${i}_${uniqueId}`, negativeId: `rectGradient_neg_${i}_${uniqueId}` }"/>
+                            </template>
+                            <template v-else>
+                                <linearGradient :id="`rectGradient_pos_${i}_${uniqueId}`" x2="0%" y2="100%">
+                                    <stop offset="0%" :stop-color="serie.color" />
+                                    <stop offset="62%" :stop-color="`${shiftHue(serie.color, 0.02)}`" />
+                                    <stop offset="100%" :stop-color="`${shiftHue(serie.color, 0.05)}`" />
+                                </linearGradient>
+                                <linearGradient :id="`rectGradient_neg_${i}_${uniqueId}`" x2="0%" y2="100%">
+                                    <stop offset="0%" :stop-color="`${shiftHue(serie.color, 0.05)}`" />
+                                    <stop offset="38%" :stop-color="`${shiftHue(serie.color, 0.02)}`" />
+                                    <stop offset="100%" :stop-color="serie.color" />
+                                </linearGradient>
+                            </template>
+                        </defs>
+                    </template>
+
+                    <!-- DEFS PLOTS -->
+                    <template v-for="(serie, i) in plotSet" :key="`def_plot_${i}`">
+                        <defs :data-cy="`xy-def-plot-${i}`">
+                            <radialGradient :id="`plotGradient_${i}_${uniqueId}`" cx="50%" cy="50%" r="50%" fx="50%"
+                                fy="50%">
+                                <stop offset="0%" :stop-color="`${shiftHue(serie.color, 0.05)}`" />
+                                <stop offset="100%" :stop-color="serie.color" />
+                            </radialGradient>
+                        </defs>
+                    </template>
+
+                    <!-- DEFS LINES -->
+                    <template v-for="(serie, i) in lineSet" :key="`def_line_${serie.id}`">
+                        <defs :data-cy="`xy-def-line-${i}`">
+                            <radialGradient :id="`lineGradient_${i}_${uniqueId}`" cx="50%" cy="50%" r="50%" fx="50%"
+                                fy="50%">
+                                <stop offset="0%" :stop-color="`${shiftHue(serie.color, 0.05)}`" />
+                                <stop offset="100%" :stop-color="serie.color" />
+                            </radialGradient>
+                            <slot v-if="$slots['area-gradient']" name="area-gradient" v-bind="{ series: serie, id: `areaGradient_${i}_${uniqueId}` }"/>
+                            <linearGradient v-else :id="`areaGradient_${i}_${uniqueId}`" x1="0%" x2="100%" y1="0%" y2="0%">
+                                <stop offset="0%"
+                                    :stop-color="`${setOpacity(shiftHue(serie.color, 0.03), FINAL_CONFIG.line.area.opacity)}`" />
+                                <stop offset="100%"
+                                    :stop-color="`${setOpacity(serie.color, FINAL_CONFIG.line.area.opacity)}`" />
+                            </linearGradient>
+                        </defs>
+                        <defs v-if="serie.temperatureColors">
+                            <linearGradient :id="`temperature_grad_line_${i}_${uniqueId}`" gradientTransform="rotate(90)">
+                                <stop 
+                                    v-for="(color, j) in serie.temperatureColors"
+                                    :key="`temperature_grad_stop_${i}_${j}_${uniqueId}`"
+                                    :stop-color="color"
+                                    :offset="setGradientOffset(j, serie.temperatureColors.length)"
+                                />
+                            </linearGradient>
+                        </defs>
+                    </template>
+
+                    <!-- HIGHLIGHT AREAS -->
+                    <g v-for="oneArea in highlightAreas">
+                        <template v-if="oneArea.show">
+                            <!-- HIGHLIGHT AREA FILLED RECT UNITS -->
+                            <g v-for="(_, i) in oneArea.span">
+                                <rect data-cy="highlight-area" :style="{
+                                    transition: 'none',
+                                    opacity: (oneArea.from + i >= slicer.start && (oneArea.from + i <= slicer.end - 1)) ? 1 : 0
+                                }"
+                                    :x="drawingArea?.left + (drawingArea.width / maxSeries) * ((oneArea.from + i) - slicer.start)"
+                                    :y="drawingArea?.top" :height="drawingArea.height < 0 ? 10 : drawingArea.height"
+                                    :width="drawingArea.width / maxSeries < 0 ? 0.00001 : drawingArea.width / maxSeries"
+                                    :fill="setOpacity(oneArea.color, oneArea.opacity)" />
+                            </g>
+                            <!-- HIGHLIGHT AREA CAPTION -->
+                            <g v-for="(_, i) in oneArea.span">
+                                <foreignObject v-if="oneArea.caption.text && i === 0"
+                                    :x="drawingArea?.left + (drawingArea.width / maxSeries) * ((oneArea.from + i) - slicer.start) - (oneArea.caption.width === 'auto' ? 0 : oneArea.caption.width / 2 - (drawingArea.width / maxSeries) * oneArea.span / 2)"
+                                    :y="drawingArea?.top + oneArea.caption.offsetY" :style="{
+                                        overflow: 'visible',
+                                        opacity: (oneArea.to >= slicer.start && oneArea.from < slicer.end) ? 1 : 0
+                                    }" height="1"
+                                    :width="oneArea.caption.width === 'auto' ? (drawingArea.width / maxSeries) * oneArea.span : oneArea.caption.width">
+                                    <div data-cy="highlight-area-caption"
+                                        :style="`padding:${oneArea.caption.padding}px;text-align:${oneArea.caption.textAlign};font-size:${oneArea.caption.fontSize}px;color:${oneArea.caption.color};font-weight:${oneArea.caption.bold ? 'bold' : 'normal'}`">
+                                        {{ oneArea.caption.text }}
+                                    </div>
+                                </foreignObject>
+                            </g>
+                        </template>
+                    </g>
+
+                    <!-- HIGHLIGHTERS -->
+                    <g v-if="userHovers">
+                        <g v-for="(_, i) in maxSeries" :key="`tooltip_trap_highlighter_${i}`">
+                            <rect data-cy="highlighter" :x="drawingArea?.left + (drawingArea.width / maxSeries) * i"
+                                :y="drawingArea?.top" :height="drawingArea.height < 0 ? 10 : drawingArea.height"
+                                :width="drawingArea.width / maxSeries < 0 ? 0.00001 : drawingArea.width / maxSeries"
+                                :fill="[selectedMinimapIndex, selectedSerieIndex, selectedRowIndex].includes(i) ? setOpacity(FINAL_CONFIG.chart.highlighter.color, FINAL_CONFIG.chart.highlighter.opacity) : 'transparent'"
+                                :style="{ transition: 'none !important', animation: 'none !important' }"
+                            />
+                        </g>
+                    </g>
+
+                    <!-- BARS -->
+                    <template v-if="barSet.length">
+                        <g v-for="(serie, i) in barSet" :key="`serie_bar_${serie.id}`" :class="`serie_bar_${i}`"
+                            :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                            <g v-for="(plot, j) in serie.plots" :key="`bar_plot_${i}_${j}`">
+                                <rect 
+                                    data-cy="datapoint-bar" 
+                                    v-if="canShowValue(plot.value)" 
+                                    :x="calcRectX(plot) + barInnerGap / 2"
+                                    :y="mutableConfig.useIndividualScale ? calcIndividualRectY(plot) : calcRectY(plot)"
+                                    :height="mutableConfig.useIndividualScale ? Math.abs(calcIndividualHeight(plot)) : Math.abs(calcRectHeight(plot))"
+                                    :width="barWidth - barInnerGap"
+                                    :rx="FINAL_CONFIG.bar.borderRadius"
+                                    :fill="FINAL_CONFIG.bar.useGradient ? plot.value >= 0 ? `url(#rectGradient_pos_${i}_${uniqueId})` : `url(#rectGradient_neg_${i}_${uniqueId})` : serie.color"
+                                    :stroke="FINAL_CONFIG.bar.border.useSerieColor ? serie.color : FINAL_CONFIG.bar.border.stroke"
+                                    :stroke-width="FINAL_CONFIG.bar.border.strokeWidth"
+                                    :style="{ 
+                                        transition: loading || !FINAL_CONFIG.bar.showTransition ? undefined: `all ${FINAL_CONFIG.bar.transitionDurationMs}ms ease-in-out`}"
+                                />
+                                <rect 
+                                    data-cy="datapoint-bar" 
+                                    v-if="canShowValue(plot.value) && $slots.pattern"
+                                    :x="calcRectX(plot) - barInnerGap / 2"
+                                    :y="mutableConfig.useIndividualScale ? calcIndividualRectY(plot) : calcRectY(plot)"
+                                    :height="mutableConfig.useIndividualScale ? Math.abs(calcIndividualHeight(plot)) : Math.abs(calcRectHeight(plot))"
+                                    :width="barWidth - barInnerGap"
+                                    :rx="FINAL_CONFIG.bar.borderRadius"
+                                    :fill="`url(#pattern_${uniqueId}_${serie.slotAbsoluteIndex})`"
+                                    :stroke="FINAL_CONFIG.bar.border.useSerieColor ? serie.color : FINAL_CONFIG.bar.border.stroke"
+                                    :stroke-width="FINAL_CONFIG.bar.border.strokeWidth"
+                                    :style="{ transition: loading || !FINAL_CONFIG.bar.showTransition ? undefined: `all ${FINAL_CONFIG.bar.transitionDurationMs}ms ease-in-out`}"
+                                />
+
+                                <template v-if="plot.comment && FINAL_CONFIG.chart.comments.show">
+                                    <foreignObject style="overflow: visible" height="12"
+                                        :width="barWidth + FINAL_CONFIG.chart.comments.width"
+                                        :x="calcRectX(plot) - (FINAL_CONFIG.chart.comments.width / 2) + FINAL_CONFIG.chart.comments.offsetX"
+                                        :y="checkNaN(plot.y) + FINAL_CONFIG.chart.comments.offsetY + 6">
+                                        <slot name="plot-comment"
+                                            :plot="{ ...plot, color: serie.color, seriesIndex: i, datapointIndex: j }" />
+                                    </foreignObject>
+                                </template>
+                            </g>
+                        </g>
+                    </template>
+
+                    <!-- ZERO LINE (AFTER BAR DATASETS, BEFORE LABELS) -->
+                    <template v-if="!mutableConfig.useIndividualScale && FINAL_CONFIG.chart.grid.labels.zeroLine.show">
+                        <line data-cy="xy-grid-line-x" :stroke="FINAL_CONFIG.chart.grid.stroke" stroke-width="1"
+                            :x1="drawingArea?.left + xPadding" :x2="drawingArea?.right"
+                            :y1="forceValidValue(zero)" :y2="forceValidValue(zero)" stroke-linecap="round"
+                            :style="{ animation: 'none !important' }" />
+                    </template>
+
+                    <g
+                        v-if="FINAL_CONFIG.chart.highlighter.useLine && (![null, undefined].includes(selectedSerieIndex) || ![null, undefined].includes(selectedMinimapIndex))">
+                        <line
+                            :x1="drawingArea?.left + (drawingArea.width / maxSeries) * ((selectedSerieIndex !== null ? selectedSerieIndex : 0) || (selectedMinimapIndex !== null ? selectedMinimapIndex : 0)) + (drawingArea.width / maxSeries / 2)"
+                            :x2="drawingArea?.left + (drawingArea.width / maxSeries) * ((selectedSerieIndex !== null ? selectedSerieIndex : 0) || (selectedMinimapIndex !== null ? selectedMinimapIndex : 0)) + (drawingArea.width / maxSeries / 2)"
+                            :y1="forceValidValue(drawingArea?.top)" :y2="forceValidValue(drawingArea?.bottom)"
+                            :stroke="FINAL_CONFIG.chart.highlighter.color"
+                            :stroke-width="FINAL_CONFIG.chart.highlighter.lineWidth"
+                            :stroke-dasharray="FINAL_CONFIG.chart.highlighter.lineDasharray" stroke-linecap="round"
+                            style="transition:none !important; animation: none !important; pointer-events: none;" />
+                    </g>
+
+                    <!-- FRAME -->
+                    <rect data-cy="frame" v-if="FINAL_CONFIG.chart.grid.frame.show"
+                        :style="{ pointerEvents: 'none', transition: 'none', animation: 'none !important' }"
+                        :x="(drawingArea?.left + xPadding) < 0 ? 0 : drawingArea?.left + xPadding" :y="drawingArea?.top"
+                        :width="(drawingArea.width - (FINAL_CONFIG.chart.grid.position === 'middle' ? 0 : drawingArea.width / maxSeries)) < 0 ? 0 : drawingArea.width - (FINAL_CONFIG.chart.grid.position === 'middle' ? 0 : drawingArea.width / maxSeries)"
+                        :height="drawingArea.height < 0 ? 0 : drawingArea.height" fill="transparent"
+                        :stroke="FINAL_CONFIG.chart.grid.frame.stroke"
+                        :stroke-width="FINAL_CONFIG.chart.grid.frame.strokeWidth"
+                        :stroke-linecap="FINAL_CONFIG.chart.grid.frame.strokeLinecap"
+                        :stroke-linejoin="FINAL_CONFIG.chart.grid.frame.strokeLinejoin"
+                        :stroke-dasharray="FINAL_CONFIG.chart.grid.frame.strokeDasharray" />
+
+                    <!-- Y LABELS -->
+                    <g v-if="FINAL_CONFIG.chart.grid.labels.show" ref="scaleLabels">
+                        <template v-if="mutableConfig.useIndividualScale">
+                            <g v-for="el in allScales">
+                                <line :x1="el.x + xPadding - drawingArea.individualOffsetX" :x2="el.x + xPadding - drawingArea.individualOffsetX"
+                                    :y1="mutableConfig.isStacked ? forceValidValue((drawingArea?.bottom - el.yOffset - el.individualHeight)) : forceValidValue(drawingArea?.top)"
+                                    :y2="mutableConfig.isStacked ? forceValidValue((drawingArea?.bottom - el.yOffset)) : forceValidValue(drawingArea?.bottom)"
+                                    :stroke="el.color" :stroke-width="FINAL_CONFIG.chart.grid.stroke"
+                                    stroke-linecap="round"
+                                    :style="`opacity:${selectedScale ? selectedScale === el.groupId ? 1 : 0.3 : 1};transition:opacity 0.2s ease-in-out; animation: none !important`" />
+                            </g>
+                            <g v-for="el in allScales"
+                                :style="`opacity:${selectedScale ? selectedScale === el.groupId ? 1 : 0.3 : 1};transition:opacity 0.2s ease-in-out`">
+                                <text 
+                                    :fill="el.color" 
+                                    :font-size="fontSizes.dataLabels * 0.8" 
+                                    text-anchor="middle"
+                                    :transform="`translate(${el.x - ((fontSizes.dataLabels * 0.8) / 2) + xPadding}, ${mutableConfig.isStacked ? drawingArea?.bottom - el.yOffset - (el.individualHeight / 2) : drawingArea?.top + drawingArea.height / 2}) rotate(-90)`">
+                                    {{ el.name }} {{ el.scaleLabel && el.unique && el.scaleLabel !== el.id ? `-
+                                    ${el.scaleLabel}` : '' }}
+                                </text>
+                                <template v-for="(yLabel, j) in el.yLabels">
+                                    <line 
+                                        v-if="FINAL_CONFIG.chart.grid.labels.yAxis.showCrosshairs"
+                                        :x1="el.x + 3 + xPadding - FINAL_CONFIG.chart.grid.labels.yAxis.crosshairSize - drawingArea.individualOffsetX"
+                                        :x2="el.x + xPadding - drawingArea.individualOffsetX" 
+                                        :y1="forceValidValue(yLabel.y)"
+                                        :y2="forceValidValue(yLabel.y)" :stroke="el.color" :stroke-width="1"
+                                        stroke-linecap="round" :style="{ animation: 'none !important' }" />
+                                </template>
+                                <text v-for="(yLabel, j) in el.yLabels"
+                                    :x="el.x - 5 + xPadding - drawingArea.individualOffsetX"
+                                    :y="forceValidValue(yLabel.y) + fontSizes.dataLabels / 3"
+                                    :font-size="fontSizes.dataLabels" text-anchor="end" :fill="el.color">
+                                    {{
+                                        applyDataLabel(
+                                            FINAL_CONFIG.chart.grid.labels.yAxis.formatter,
+                                            yLabel.value,
+                                            dataLabel({
+                                                p: yLabel.prefix,
+                                                v: yLabel.value,
+                                                s: yLabel.suffix,
+                                                r: FINAL_CONFIG.chart.grid.labels.yAxis.rounding,
+                                            }),
+                                            { datapoint: yLabel.datapoint, seriesIndex: j }
+                                        )
+                                    }}
+                                </text>
+                            </g>
+                        </template>
+                        <template v-else>
+                            <g v-for="(yLabel, i) in yLabels" :key="`yLabel_${i}`">
+                                <line data-cy="axis-y-tick"
+                                    v-if="canShowValue(yLabel) && yLabel.value >= niceScale.min && yLabel.value <= niceScale.max && FINAL_CONFIG.chart.grid.labels.yAxis.showCrosshairs"
+                                    :x1="drawingArea?.left + xPadding"
+                                    :x2="drawingArea?.left + xPadding - FINAL_CONFIG.chart.grid.labels.yAxis.crosshairSize"
+                                    :y1="forceValidValue(yLabel.y)" :y2="forceValidValue(yLabel.y)"
+                                    :stroke="FINAL_CONFIG.chart.grid.stroke" stroke-width="1" stroke-linecap="round"
+                                    :style="{ animation: 'none !important' }" />
+                                <text data-cy="axis-y-label"
+                                    v-if="yLabel.value >= niceScale.min && yLabel.value <= niceScale.max"
+                                    :x="drawingArea.scaleLabelX - FINAL_CONFIG.chart.grid.labels.yAxis.crosshairSize"
+                                    :y="checkNaN(yLabel.y + fontSizes.dataLabels / 3)" :font-size="fontSizes.dataLabels"
+                                    text-anchor="end" :fill="FINAL_CONFIG.chart.grid.labels.color">
+                                    {{ canShowValue(yLabel.value) ? applyDataLabel(
+                                        FINAL_CONFIG.chart.grid.labels.yAxis.formatter,
+                                        yLabel.value,
+                                        dataLabel({
+                                            p: yLabel.prefix,
+                                            v: yLabel.value,
+                                            s: yLabel.suffix,
+                                            r: FINAL_CONFIG.chart.grid.labels.yAxis.rounding,
+                                        })) : ''
+                                    }}
+                                </text>
+                            </g>
+                        </template>
+                    </g>
+
+                    <!-- PLOTS -->
+                    <g v-for="(serie, i) in plotSet" :key="`serie_plot_${serie.id}`" :class="`serie_plot_${i}`"
+                        :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                        <g data-cy="datapoint-plot" v-for="(plot, j) in serie.plots" :key="`circle_plot_${i}_${j}`">
+                            <Shape 
+                                :data-cy="`xy-plot-${i}-${j}`" v-if="plot && canShowValue(plot.value)"
+                                :shape="['triangle', 'square', 'diamond', 'pentagon', 'hexagon', 'star'].includes(serie.shape) ? serie.shape : 'circle'"
+                                :color="FINAL_CONFIG.plot.useGradient ? `url(#plotGradient_${i}_${uniqueId})` : FINAL_CONFIG.plot.dot.useSerieColor ? serie.color : FINAL_CONFIG.plot.dot.fill"
+                                :plot="{ x: checkNaN(plot.x), y: checkNaN(plot.y) }"
+                                :radius="((selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j)) ? (plotRadii.plot || 6) * 1.5 : plotRadii.plot || 6"
+                                :stroke="FINAL_CONFIG.plot.dot.useSerieColor ? FINAL_CONFIG.chart.backgroundColor : serie.color"
+                                :strokeWidth="FINAL_CONFIG.plot.dot.strokeWidth"
+                                :transition="loading || !FINAL_CONFIG.plot.showTransition || ((selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j)) ? undefined: `all ${FINAL_CONFIG.plot.transitionDurationMs}ms ease-in-out`"
+                            />
+
+                            <template v-if="plot.comment && FINAL_CONFIG.chart.comments.show">
+                                <foreignObject style="overflow: visible" height="12"
+                                    :width="FINAL_CONFIG.chart.comments.width"
+                                    :x="plot.x - (FINAL_CONFIG.chart.comments.width / 2) + FINAL_CONFIG.chart.comments.offsetX"
+                                    :y="plot.y + FINAL_CONFIG.chart.comments.offsetY + 6">
+                                    <div style="width: 100%;">
+                                        <slot name="plot-comment"
+                                            :plot="{ ...plot, color: serie.color, seriesIndex: i, datapointIndex: j }" />
+                                    </div>
+                                </foreignObject>
+                            </template>
+                        </g>
+                    </g>
+
+                    <!-- LINE COATINGS -->
+                    <g v-for="(serie, i) in lineSet" :key="`serie_line_${serie.id}`" :class="`serie_line_${i}`"
+                        :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                        <path data-cy="datapoint-line-coating-smooth"
+                            v-if="serie.smooth && serie.plots.length > 1 && !!serie.curve" :d="`M${serie.curve}`"
+                            :stroke="FINAL_CONFIG.chart.backgroundColor"
+                            :stroke-width="FINAL_CONFIG.line.strokeWidth + 1"
+                            :stroke-dasharray="serie.dashed ? FINAL_CONFIG.line.strokeWidth * 2 : 0" fill="none" :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}" />
+
+                        <path data-cy="datapoint-line-coating-straight"
+                            v-else-if="serie.plots.length > 1 && !!serie.straight" :d="`M${serie.straight}`"
+                            :stroke="FINAL_CONFIG.chart.backgroundColor"
+                            :stroke-width="FINAL_CONFIG.line.strokeWidth + 1"
+                            :stroke-dasharray="serie.dashed ? FINAL_CONFIG.line.strokeWidth * 2 : 0" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}" />
+                    </g>
+
+                    <defs v-if="$slots.pattern">
+                        <slot v-for="(serie, i) in safeDataset" :key="`serie_pattern_slot_${serie.id}`" name="pattern"
+                            v-bind="{ ...serie, seriesIndex: serie.slotAbsoluteIndex, patternId: `pattern_${uniqueId}_${i}` }" />
+                    </defs>
+
+                    <!-- INTERLINE AREAS (non stack mode only) -->
+                    <g v-if="interLineAreas.length && !mutableConfig.isStacked">
+                        <path
+                            v-for="area in interLineAreas"
+                            :key="area.key"
+                            :d="area.d"
+                            :fill="area.color"
+                            :fill-opacity="FINAL_CONFIG.line.interLine.fillOpacity"
+                            stroke="none"
+                            pointer-events="none"
+                            :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}"
+                        />
+                    </g>
+
+                    <!-- LINES -->
+                    <g v-for="(serie, i) in lineSet" :key="`serie_line_above_${serie.id}`" :class="`serie_line_${i}`"
+                        :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+
+                        <g v-if="serie.useArea && serie.plots.length > 1">
+                            <template v-if="serie.smooth">
+                                <template v-for="(d, segIndex) in serie.curveAreas" :key="segIndex">
+                                    <path v-if="d" :d="d"
+                                        :fill="FINAL_CONFIG.line.area.useGradient ? `url(#areaGradient_${i}_${uniqueId})` : setOpacity(serie.color, FINAL_CONFIG.line.area.opacity)" :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}"/>
+                                    <path v-if="$slots.pattern && d" :d="d"
+                                        :fill="`url(#pattern_${uniqueId}_${serie.slotAbsoluteIndex})`" :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}"/>
+                                </template>
+                            </template>
+                            <template v-else>
+                                <template v-for="(d, segIndex) in serie.area.split(';')" :key="segIndex">
+                                    <path v-if="d" data-cy="datapoint-line-area-straight" :d="`M${d}Z`"
+                                        :fill="FINAL_CONFIG.line.area.useGradient ? `url(#areaGradient_${i}_${uniqueId})` : setOpacity(serie.color, FINAL_CONFIG.line.area.opacity)" :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}"/>
+                                    <path v-if="$slots.pattern && d" :d="`M${d}Z`"
+                                        :fill="`url(#pattern_${uniqueId}_${serie.slotAbsoluteIndex})`" :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}"/>
+                                </template>
+                            </template>
+                        </g>
+
+                        <path 
+                            data-cy="datapoint-line-smooth"
+                            v-if="!serie.hasDashedSegments && serie.smooth && serie.plots.length > 1 && !!serie.curve" 
+                            :d="`M${serie.curve}`"
+                            :stroke="serie.temperatureColors ? `url(#temperature_grad_line_${i}_${uniqueId})`: serie.color" 
+                            :stroke-width="FINAL_CONFIG.line.strokeWidth"
+                            :stroke-dasharray="serie.dashed ? FINAL_CONFIG.line.strokeWidth * 2 : 0" fill="none"
+                            stroke-linecap="round" 
+                            :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}"
+                        />
+
+                        <template v-else-if="serie.hasDashedSegments">
+                            <template v-if="serie.smooth">
+                                <path 
+                                    v-for="seg in serie.dashedSmooth"
+                                    :key="seg.path"
+                                    fill="none"
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"
+                                    :d="`M ${seg.path}`"
+                                    :stroke="serie.temperatureColors ? `url(#temperature_grad_line_${i}_${uniqueId})`: serie.color"
+                                    :stroke-width="FINAL_CONFIG.line.strokeWidth"
+                                    :stroke-dasharray="seg.dashed ? FINAL_CONFIG.line.strokeWidth * 2 : 0"
+                                />
+                            </template>
+                            <template v-else>                            
+                                <path 
+                                    v-for="seg in serie.dashedStraight"
+                                    :key="seg.path"
+                                    fill="none"
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"
+                                    :d="`M ${seg.path}`"
+                                    :stroke="serie.temperatureColors ? `url(#temperature_grad_line_${i}_${uniqueId})`: serie.color"
+                                    :stroke-width="FINAL_CONFIG.line.strokeWidth"
+                                    :stroke-dasharray="seg.dashed ? FINAL_CONFIG.line.strokeWidth * 2 : 0"
+                                />
+                            </template>
+                        </template>
+
+                        <path 
+                            data-cy="datapoint-line-straight" 
+                            v-else-if="serie.plots.length > 1 && !!serie.straight"
+                            :d="`M${serie.straight}`" 
+                            :stroke="serie.temperatureColors ? `url(#temperature_grad_line_${i}_${uniqueId})`: serie.color"
+                            :stroke-width="FINAL_CONFIG.line.strokeWidth"
+                            :stroke-dasharray="serie.dashed ? FINAL_CONFIG.line.strokeWidth * 2 : 0" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" :style="{ transition: loading || !FINAL_CONFIG.line.showTransition ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`}"/>
+
+                        <template v-for="(plot, j) in serie.plots" :key="`circle_line_${i}_${j}`">
+                            <Shape 
+                                data-cy="datapoint-line-plot"
+                                v-if="(!optimize.linePlot && plot && canShowValue(plot.value)) || (optimize.linePlot && plot && canShowValue(plot.value) && ((selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j))) || isPlotAlone(serie.plots, j)"
+                                :shape="['triangle', 'square', 'diamond', 'pentagon', 'hexagon', 'star'].includes(serie.shape) ? serie.shape : 'circle'"
+                                :color="FINAL_CONFIG.line.useGradient ? `url(#lineGradient_${i}_${uniqueId})` : FINAL_CONFIG.line.dot.useSerieColor ? serie.color : FINAL_CONFIG.line.dot.fill"
+                                :plot="{ x: checkNaN(plot.x), y: checkNaN(plot.y) }"
+                                :radius="((selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j)) ? (plotRadii.line || 6) * 1.5 : isPlotAlone(serie.plots, j) ? (plotRadii.line || 6) : (plotRadii.line || 6)"
+                                :stroke="FINAL_CONFIG.line.dot.useSerieColor ? FINAL_CONFIG.chart.backgroundColor : serie.color"
+                                :strokeWidth="FINAL_CONFIG.line.dot.strokeWidth"
+                                :transition="loading || !FINAL_CONFIG.line.showTransition || ((selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j)) ? undefined: `all ${FINAL_CONFIG.line.transitionDurationMs}ms ease-in-out`"
+                            />
+
+                            <template v-if="plot.comment && FINAL_CONFIG.chart.comments.show">
+                                <foreignObject style="overflow: visible" height="12"
+                                    :width="FINAL_CONFIG.chart.comments.width"
+                                    :x="plot.x - (FINAL_CONFIG.chart.comments.width / 2) + FINAL_CONFIG.chart.comments.offsetX"
+                                    :y="plot.y + FINAL_CONFIG.chart.comments.offsetY + 6">
+                                    <div style="width: 100%;">
+                                        <slot name="plot-comment"
+                                            :plot="{ ...plot, color: serie.color, seriesIndex: i, datapointIndex: j }" />
+                                    </div>
+                                </foreignObject>
+                            </template>
+                        </template>
+                    </g>
+
+                    <!-- X LABELS BAR -->
+                    <g
+                        v-if="(FINAL_CONFIG.bar.labels.show || FINAL_CONFIG.bar.serieName.show) && mutableConfig.dataLabels.show">
+                        <template v-for="(serie, i) in barSet" :key="`xLabel_bar_${serie.id}`" :class="`xLabel_bar_${i}`">
+                            <template v-for="(plot, j) in serie.plots" :key="`xLabel_bar_${i}_${j}`">
+                                <text data-cy="datapoint-bar-label"
+                                    v-if="plot && (!Object.hasOwn(serie, 'dataLabels') || ((serie.dataLabels === true || (selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j)))) && FINAL_CONFIG.bar.labels.show"
+                                    :x="mutableConfig.useIndividualScale && mutableConfig.isStacked ? plot.x + slot.line / 2 : calcRectX(plot) + calcRectWidth() / 2 - barPeriodGap / 2"
+                                    :y="checkNaN(plot.y) + (plot.value >= 0 ? FINAL_CONFIG.bar.labels.offsetY : - FINAL_CONFIG.bar.labels.offsetY * 3)"
+                                    text-anchor="middle" :font-size="fontSizes.plotLabels"
+                                    :fill="FINAL_CONFIG.bar.labels.color"
+                                    :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                    {{ canShowValue(plot.value) ? applyDataLabel(
+                                        FINAL_CONFIG.bar.labels.formatter,
+                                        plot.value,
+                                        dataLabel({
+                                            p: serie.prefix || FINAL_CONFIG.chart.labels.prefix,
+                                            v: plot.value,
+                                            s: serie.suffix || FINAL_CONFIG.chart.labels.suffix,
+                                            r: FINAL_CONFIG.bar.labels.rounding,
+                                        }),
+                                        {
+                                            datapoint: plot,
+                                            serie,
+                                        }
+                                    ) : ''
+                                    }}
+                                </text>
+                                <text v-if="plot && FINAL_CONFIG.bar.serieName.show"
+                                    :x="mutableConfig.useIndividualScale && mutableConfig.isStacked ? plot.x + slot.line / 2 : plot.x + calcRectWidth() * 1.1"
+                                    :y="plot.y + (plot.value > 0 ? FINAL_CONFIG.bar.serieName.offsetY : - FINAL_CONFIG.bar.serieName.offsetY * 3)"
+                                    text-anchor="middle" :font-size="fontSizes.plotLabels"
+                                    :fill="FINAL_CONFIG.bar.serieName.useSerieColor ? serie.color : FINAL_CONFIG.bar.serieName.color"
+                                    :font-weight="FINAL_CONFIG.bar.serieName.bold ? 'bold' : 'normal'"
+                                    :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                    {{ FINAL_CONFIG.bar.serieName.useAbbreviation ? abbreviate({
+                                        source: serie.name,
+                                        length: FINAL_CONFIG.bar.serieName.abbreviationSize}) : serie.name }}
+                                </text>
+                            </template>
+                        </template>
+                    </g>
+
+                    <!-- X LABELS PLOT -->
+                    <g v-if="FINAL_CONFIG.plot.labels.show && mutableConfig.dataLabels.show">
+                        <template v-for="(serie, i) in plotSet" :key="`xLabel_plot_${serie.id}`" :class="`xLabel_plot_${i}`">
+                            <template v-for="(plot, j) in serie.plots" :key="`xLabel_plot_${i}_${j}`">
+                                <text data-cy="datapoint-plot-label"
+                                    v-if="plot && !Object.hasOwn(serie, 'dataLabels') || (serie.dataLabels === true || (selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j))"
+                                    :x="plot.x" :y="plot.y + FINAL_CONFIG.plot.labels.offsetY" text-anchor="middle"
+                                    :font-size="fontSizes.plotLabels" :fill="FINAL_CONFIG.plot.labels.color"
+                                    :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                    {{ canShowValue(plot.value) ? applyDataLabel(
+                                        FINAL_CONFIG.plot.labels.formatter,
+                                        plot.value,
+                                        dataLabel({
+                                            p: serie.prefix || FINAL_CONFIG.chart.labels.prefix,
+                                            v: plot.value,
+                                            s: serie.suffix || FINAL_CONFIG.chart.labels.suffix,
+                                            r: FINAL_CONFIG.plot.labels.rounding,
+                                        }),
+                                        {
+                                            datapoint: plot,
+                                            serie,
+                                        }
+                                    ) : ''
+                                    }}
+                                </text>
+                            </template>
+                        </template>
+                    </g>
+                    <g v-else>
+                        <template v-for="(serie, i) in plotSet" :key="`xLabel_plot_${serie.id}`" :class="`xLabel_plot_${i}`">
+                            <template v-for="(plot, j) in serie.plots" :key="`xLabel_plot_${i}_${j}`">
+                                <!-- PLOT TAGS (fixed) -->
+                                <template v-if="!FINAL_CONFIG.plot.tag.followValue">
+                                    <foreignObject :data-cy="`xy-plot-tag-start-${i}`"
+                                        v-if="plot && j === 0 && serie.useTag && serie.useTag === 'start'" :x="plot.x"
+                                        :y="plot.y - 20" :height="24" width="150"
+                                        :style="`overflow: visible; opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                        <div :style="`padding: 3px; background:${setOpacity(serie.color, 80)};color:${adaptColorToBackground(serie.color)};width:fit-content;font-size:${fontSizes.plotLabels}px;border-radius: 2px;`"
+                                            v-html="applyDataLabel(
+                                                FINAL_CONFIG.plot.tag.formatter,
+                                                plot.value,
+                                                serie.name,
+                                                {
+                                                    datapoint: plot, seriesIndex: j, serieName: serie.name
+                                                }
+                                            )" />
+                                    </foreignObject>
+                                    <foreignObject :data-cy="`xy-plot-tag-end-${i}`"
+                                        v-if="plot && j === serie.plots.length - 1 && serie.useTag && serie.useTag === 'end'"
+                                        :x="plot.x - serie.name.length * (fontSizes.plotLabels / 2)" :y="plot.y - 20"
+                                        :height="24" width="150"
+                                        :style="`overflow: visible; opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                        <div :style="`padding: 3px; background:${setOpacity(serie.color, 80)};color:${adaptColorToBackground(serie.color)};width:fit-content;font-size:${fontSizes.plotLabels}px;border-radius: 2px;`"
+                                            v-html="applyDataLabel(
+                                                FINAL_CONFIG.plot.tag.formatter,
+                                                plot.value,
+                                                serie.name,
+                                                {
+                                                    datapoint: plot, seriesIndex: j, serieName: serie.name
+                                                }
+                                            )" />
+                                    </foreignObject>
+                                </template>
+
+                                <!-- TAG LINE (follower) -->
+                                <template v-else>
+                                    <line class="vue-ui-xy-tag-plot"
+                                        v-if="([selectedMinimapIndex, selectedSerieIndex, selectedRowIndex].includes(j)) && serie.useTag"
+                                        :x1="drawingArea?.left" :x2="drawingArea?.right" :y1="plot.y" :y2="plot.y"
+                                        :stroke-width="1" stroke-linecap="round" stroke-dasharray="2"
+                                        :stroke="serie.color" />
+                                </template>
+                            </template>
+                        </template>
+                    </g>
+
+                    <!-- X LABELS LINE -->
+                    <g v-if="FINAL_CONFIG.line.labels.show && mutableConfig.dataLabels.show">
+                        <template v-for="(serie, i) in lineSet" :key="`xLabel_line_${serie.id}`" :class="`xLabel_line_${i}`">
+                            <template v-for="(plot, j) in serie.plots" :key="`xLabel_line_${i}_${j}`">
+                                <text data-cy="datapoint-line-label"
+                                    v-if="plot && !Object.hasOwn(serie, 'dataLabels') || (serie.dataLabels === true || (selectedSerieIndex !== null && selectedSerieIndex === j) || (selectedMinimapIndex !== null && selectedMinimapIndex === j))"
+                                    :x="plot.x"
+                                    :y="plot.y + (plot.value >= 0 ? FINAL_CONFIG.line.labels.offsetY : - FINAL_CONFIG.line.labels.offsetY * 3)"
+                                    text-anchor="middle" :font-size="fontSizes.plotLabels"
+                                    :fill="FINAL_CONFIG.line.labels.color"
+                                    :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                    {{ canShowValue(plot.value) ? applyDataLabel(
+                                        FINAL_CONFIG.line.labels.formatter,
+                                        plot.value,
+                                        dataLabel({
+                                            p: serie.prefix || FINAL_CONFIG.chart.labels.prefix,
+                                            v: plot.value,
+                                            s: serie.suffix || FINAL_CONFIG.chart.labels.suffix,
+                                            r: FINAL_CONFIG.line.labels.rounding,
+                                        }),
+                                        {
+                                            datapoint: plot,
+                                            serie,
+                                        }
+                                    ) : ''
+                                    }}
+                                </text>
+                            </template>
+                        </template>
+                    </g>
+
+                    <g v-else>
+                        <template v-for="(serie, i) in lineSet" :key="`xLabel_line_${serie.id}`" :class="`xLabel_line_${i}`">
+                            <template v-for="(plot, j) in serie.plots" :key="`xLabel_line_${i}_${j}`">
+                                <!-- LINE TAGS (fixed) -->
+                                <template v-if="!FINAL_CONFIG.line.tag.followValue">
+                                    <foreignObject :data-cy="`xy-line-tag-start-${i}`"
+                                        v-if="plot && j === 0 && serie.useTag && serie.useTag === 'start'" :x="plot.x"
+                                        :y="plot.y - 20" :height="24" width="150"
+                                        :style="`overflow: visible; opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                        <div :style="`padding: 3px; background:${setOpacity(serie.color, 80)};color:${adaptColorToBackground(serie.color)};width:fit-content;font-size:${fontSizes.plotLabels}px;border-radius: 2px;`"
+                                            v-html="applyDataLabel(
+                                                FINAL_CONFIG.line.tag.formatter,
+                                                plot.value,
+                                                serie.name,
+                                                {
+                                                    datapoint: plot, seriesIndex: j, serieName: serie.name
+                                                }
+                                            )">
+                                        </div>
+                                    </foreignObject>
+                                    <foreignObject :data-cy="`xy-line-tag-end-${i}`"
+                                        v-if="plot && j === serie.plots.length - 1 && serie.useTag && serie.useTag === 'end'"
+                                        :x="plot.x" :y="plot.y - 20" :height="24" width="150"
+                                        :style="`overflow: visible; opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`">
+                                        <div :style="`padding: 3px; background:${setOpacity(serie.color, 80)};color:${adaptColorToBackground(serie.color)};width:fit-content;font-size:${fontSizes.plotLabels}px;border-radius: 2px;`"
+                                            v-html="applyDataLabel(
+                                                FINAL_CONFIG.line.tag.formatter,
+                                                plot.value,
+                                                serie.name,
+                                                {
+                                                    datapoint: plot, seriesIndex: j, serieName: serie.name
+                                                }
+                                            )" />
+                                    </foreignObject>
+                                </template>
+
+                                <!-- TAG LINE (follower) -->
+                                <template v-else>
+                                    <line class="vue-ui-xy-tag-line"
+                                        v-if="([selectedMinimapIndex, selectedSerieIndex, selectedRowIndex].includes(j)) && serie.useTag"
+                                        :x1="drawingArea?.left" :x2="drawingArea?.right" :y1="plot.y" :y2="plot.y"
+                                        :stroke-width="1" stroke-linecap="round" stroke-dasharray="2"
+                                        :stroke="serie.color" />
+                                </template>
+                            </template>
+                        </template>
+                    </g>
+
+                    <!-- SERIE NAME TAGS : LINES -->
+                    <template v-for="(serie, i) in lineSet" :key="`xLabel_line_${serie.id}`" :class="`xLabel_line_${i}`">
+                        <template v-for="(plot, j) in serie.plots" :key="`xLabel_line_${i}_${j}`">
+                            <text v-if="plot && j === 0 && serie.showSerieName && serie.showSerieName === 'start'"
+                                :x="plot.x - fontSizes.plotLabels" :y="plot.y" :font-size="fontSizes.plotLabels"
+                                text-anchor="end" :fill="serie.color" v-html="createTSpans({
+                                    content: serie.name,
+                                    fontSize: fontSizes.plotLabels,
+                                    fill: serie.color,
+                                    x: plot.x - fontSizes.plotLabels,
+                                    y: plot.y,
+                                    maxWords: 2
+                                })"
+                                :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`" />
+                            <text
+                                v-if="plot && j === serie.plots.length - 1 && serie.showSerieName && serie.showSerieName === 'end'"
+                                :x="plot.x + fontSizes.plotLabels" :y="plot.y" :font-size="fontSizes.plotLabels"
+                                text-anchor="start" :fill="serie.color" v-html="createTSpans({
+                                    content: serie.name,
+                                    fontSize: fontSizes.plotLabels,
+                                    fill: serie.color,
+                                    x: plot.x + fontSizes.plotLabels,
+                                    y: plot.y,
+                                    maxWords: 2
+                                })"
+                                :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`" />
+                        </template>
+                    </template>
+
+                    <!-- SERIE NAME TAGS : PLOTS -->
+                    <template v-for="(serie, i) in plotSet" :key="`xLabel_plot_${serie.id}`" :class="`xLabel_plot_${i}`">
+                        <template v-for="(plot, j) in serie.plots" :key="`xLabel_plot_${i}_${j}`">
+                            <text v-if="plot && j === 0 && serie.showSerieName && serie.showSerieName === 'start'"
+                                :x="plot.x - fontSizes.plotLabels" :y="plot.y" :font-size="fontSizes.plotLabels"
+                                text-anchor="end" :fill="serie.color" v-html="createTSpans({
+                                    content: serie.name,
+                                    fontSize: fontSizes.plotLabels,
+                                    fill: serie.color,
+                                    x: plot.x - fontSizes.plotLabels,
+                                    y: plot.y,
+                                    maxWords: 2
+                                })"
+                                :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`" />
+                            <text
+                                v-if="plot && j === serie.plots.length - 1 && serie.showSerieName && serie.showSerieName === 'end'"
+                                :x="plot.x + fontSizes.plotLabels" :y="plot.y" :font-size="fontSizes.plotLabels"
+                                text-anchor="start" :fill="serie.color" v-html="createTSpans({
+                                    content: serie.name,
+                                    fontSize: fontSizes.plotLabels,
+                                    fill: serie.color,
+                                    x: plot.x + fontSizes.plotLabels,
+                                    y: plot.y,
+                                    maxWords: 2
+                                })"
+                                :style="`opacity:${selectedScale ? selectedScale === serie.groupId ? 1 : 0.2 : 1};transition:opacity 0.2s ease-in-out`" />
+                        </template>
+                    </template>
+
+                    <!-- PROGRESSION TRENDS -->
+                    <template v-for="(serie, i) in [...plotSet, ...lineSet, ...barSet]" :key="`progression-${i}`">
+                        <g v-if="Object.hasOwn(serie, 'useProgression') && serie.useProgression === true && !isNaN(calcLinearProgression(serie.plots).trend)">
+                            <defs>
+                                <marker
+                                    :id="`progression_arrow_${i}`"
+                                    markerWidth="9"
+                                    markerHeight="9"
+                                    viewBox="-1 -1 9 9"
+                                    markerUnits="userSpaceOnUse"
+                                    refX="7"
+                                    :refY="7 / 2"
+                                    orient="auto"
+                                    overflow="visible"
+                                >
+                                    <polygon
+                                        points="0,0 7,3.5 0,7"
+                                        :fill="serie.color"
+                                        :stroke="FINAL_CONFIG.chart.backgroundColor"
+                                        stroke-width="1"
+                                        stroke-linejoin="round"
+                                    />
+                                </marker>
+                            </defs>
+                            <line 
+                                v-if="serie.plots.length > 1" 
+                                :x1="calcLinearProgression(serie.plots).x1 + (serie.type === 'bar' ? calcRectWidth() : 0)"
+                                :x2="calcLinearProgression(serie.plots).x2 + (serie.type === 'bar' ? calcRectWidth() : 0)"
+                                :y1="forceValidValue(calcLinearProgression(serie.plots).y1)"
+                                :y2="forceValidValue(calcLinearProgression(serie.plots).y2)" 
+                                :stroke-width="1"
+                                :stroke="FINAL_CONFIG.chart.backgroundColor" 
+                                :stroke-dasharray="2" 
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                :marker-end="`url(#progression_arrow_${i})`" 
+                            />
+                            <line 
+                                v-if="serie.plots.length > 1" 
+                                :x1="calcLinearProgression(serie.plots).x1 + (serie.type === 'bar' ? calcRectWidth() : 0)"
+                                :x2="calcLinearProgression(serie.plots).x2 + (serie.type === 'bar' ? calcRectWidth() : 0)"
+                                :y1="forceValidValue(calcLinearProgression(serie.plots).y1)"
+                                :y2="forceValidValue(calcLinearProgression(serie.plots).y2)" 
+                                :stroke-width="1"
+                                :stroke="serie.color" 
+                                :stroke-dasharray="2" 
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                :marker-end="`url(#progression_arrow_${i})`" 
+                            />
+                            <text 
+                                v-if="serie.plots.length > 1" 
+                                :data-cy="`xy-progression-label-${i}`"
+                                text-anchor="middle" 
+                                :x="calcLinearProgression(serie.plots).x2 + (serie.type === 'bar' ? calcRectWidth() : 0)"
+                                :y="calcLinearProgression(serie.plots).y2 - 12" 
+                                :font-size="fontSizes.plotLabels"
+                                :fill="serie.color"
+                                :stroke="FINAL_CONFIG.chart.backgroundColor"
+                                :stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                paint-order="stroke fill"
+                            >
+                                {{ dataLabel({
+                                    v: calcLinearProgression(serie.plots).trend * 100,
+                                    s: '%',
+                                    r: 2,
+                                }) }}
+                            </text>
+                        </g>
+                    </template>
+
+                    <!-- Y LABELS MOUSE TRAPS -->
+                    <template v-if="mutableConfig.useIndividualScale && !mutableConfig.isStacked">
+                        <defs>
+                            <linearGradient v-for="(trap, i) in allScales"
+                                :id="`individual_scale_gradient_${uniqueId}_${i}`" x1="0%" x2="100%" y1="0%" y2="0%">
+                                <stop offset="0%" :stop-color="FINAL_CONFIG.chart.backgroundColor" stop-opacity="0" />
+                                <stop offset="100%" :stop-color="trap.color" stop-opacity="0.2" />
+                            </linearGradient>
+                        </defs>
+                        <rect v-for="(trap, i) in allScales"
+                            :x="trap.x - FINAL_CONFIG.chart.grid.labels.yAxis.labelWidth + xPadding - drawingArea.individualOffsetX"
+                            :y="drawingArea?.top" 
+                            :width="FINAL_CONFIG.chart.grid.labels.yAxis.labelWidth + drawingArea.individualOffsetX"
+                            :height="drawingArea.height < 0 ? 10 : drawingArea.height"
+                            :fill="selectedScale === trap.groupId ? `url(#individual_scale_gradient_${uniqueId}_${i})` : 'transparent'"
+                            @mouseenter="selectedScale = trap.groupId" @mouseleave="selectedScale = null" />
+                    </template>
+
+                    <!-- TODO: adapt preview with config-->
+                    <g v-if="dragPreview">
+                        <line
+                            :x1="dragPreview.x"
+                            :x2="dragPreview.x"
+                            :y1="dragState.target?.zeroPosition"
+                            :y2="dragPreview.y"
+                            :stroke="dragState.target?.serieColor || '#000000'"
+                            stroke-width="1"
+                            stroke-dasharray="3 2"
+                        />
+                        <circle
+                            :cx="dragPreview.x"
+                            :cy="dragPreview.y"
+                            :r="5"
+                            :fill="FINAL_CONFIG.chart.backgroundColor || '#FFFFFF'"
+                            :stroke="dragState.target?.serieColor || '#000000'"
+                            stroke-width="2"
+                        />
+                    </g>
+
+                    <!-- AXIS LABELS -->
+                    <g>
+                        <text ref="yAxisLabel" data-cy="xy-axis-yLabel"
+                            v-if="FINAL_CONFIG.chart.grid.labels.axis.yLabel && !mutableConfig.useIndividualScale"
+                            :font-size="fontSizes.yAxis" :fill="FINAL_CONFIG.chart.grid.labels.color"
+                            :transform="`translate(${FINAL_CONFIG.chart.grid.labels.axis.fontSize}, ${drawingArea?.top + drawingArea.height / 2}) rotate(-90)`"
+                            text-anchor="middle" style="transition: none">
+                            {{ FINAL_CONFIG.chart.grid.labels.axis.yLabel }}
+                        </text>
+                        <text ref="xAxisLabel" data-cy="xy-axis-xLabel"
+                            v-if="FINAL_CONFIG.chart.grid.labels.axis.xLabel" text-anchor="middle"
+                            :x="width / 2"
+                            :y="height - 3"
+                            :font-size="fontSizes.yAxis" :fill="FINAL_CONFIG.chart.grid.labels.color">
+                            {{ FINAL_CONFIG.chart.grid.labels.axis.xLabel }}
+                        </text>
+                    </g>
+
+                    <!-- TIME LABELS -->
+                    <g v-if="FINAL_CONFIG.chart.grid.labels.xAxisLabels.show" ref="timeLabelsEls">
+                        <template v-if="$slots['time-label']">
+                            <template v-for="(label, i) in displayedTimeLabels" :key="`time_label_${label.id}`">
+                                <slot name="time-label" v-bind="{
+                                    x: drawingArea?.left + (drawingArea.width / maxSeries) * i + (drawingArea.width / maxSeries / 2),
+                                    y: drawingArea?.bottom,
+                                    fontSize: fontSizes.xAxis,
+                                    fill: FINAL_CONFIG.chart.grid.labels.xAxisLabels.color,
+                                    transform: `translate(${drawingArea?.left + (drawingArea.width / maxSeries) * i + (drawingArea.width / maxSeries / 2)}, ${drawingArea?.bottom + fontSizes.xAxis * 1.3 + FINAL_CONFIG.chart.grid.labels.xAxisLabels.yOffset}), rotate(${FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation})`,
+                                    absoluteIndex: label.absoluteIndex,
+                                    content: label.text,
+                                    textAnchor: FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation > 0 ? 'start' : FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation < 0 ? 'end' : 'middle',
+                                    show: label && label.text
+                                }" />
+                            </template>
+                        </template>
+                        <template v-else>
+                            <g v-for="(label, i) in displayedTimeLabels" :key="`time_label_${i}`">
+                                <template
+                                    v-if="label && label.text">
+                                    <!-- SINGLE LINE LABEL -->
+                                    <text v-if="!String(label.text).includes('\n')" class="vue-data-ui-time-label"
+                                        data-cy="time-label"
+                                        :text-anchor="FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation > 0 ? 'start' : FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation < 0 ? 'end' : 'middle'"
+                                        :font-size="fontSizes.xAxis"
+                                        :fill="FINAL_CONFIG.chart.grid.labels.xAxisLabels.color"
+                                        :transform="`translate(${drawingArea?.left + (drawingArea.width / maxSeries) * i + (drawingArea.width / maxSeries / 2)}, ${drawingArea?.bottom + fontSizes.xAxis * 1.5}), rotate(${FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation})`"
+                                        :style="{
+                                            cursor: usesSelectTimeLabelEvent() && isCursorPointer ? 'pointer' : 'default'
+                                        }" @click="() => selectTimeLabel(label, i)">
+                                        {{ label.text || "" }}
+                                    </text>
+
+                                    <!-- MULTILINE LABEL (when label includes \n) -->
+                                    <text v-else data-cy="time-label"
+                                        class="vue-data-ui-time-label"
+                                        :text-anchor="FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation > 0 ? 'start' : FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation < 0 ? 'end' : 'middle'"
+                                        :font-size="fontSizes.xAxis"
+                                        :fill="FINAL_CONFIG.chart.grid.labels.xAxisLabels.color"
+                                        :transform="`translate(${drawingArea?.left + (drawingArea.width / maxSeries) * i + (drawingArea.width / maxSeries / 2)}, ${drawingArea?.bottom + fontSizes.xAxis * 1.5}), rotate(${FINAL_CONFIG.chart.grid.labels.xAxisLabels.rotation})`"
+                                        :style="{
+                                            cursor: usesSelectTimeLabelEvent() && isCursorPointer ? 'pointer' : 'default'
+                                        }" v-html="createTSpansFromLineBreaksOnX({
+                                            content: String(label.text),
+                                            fontSize: fontSizes.xAxis,
+                                            fill: FINAL_CONFIG.chart.grid.labels.xAxisLabels.color,
+                                            x: 0,
+                                            y: 0
+                                        })" @click="() => selectTimeLabel(label, i)" />
+                                </template>
+                            </g>
+                        </template>
+                    </g>
+
+                    <!-- ANNOTATIONS -->
+                    <!-- YAXIS ANNOTATIONS -->
+                    <g v-if="annotationsY.length && !mutableConfig.isStacked">
+                        <g v-for="annotation in annotationsY" :key="annotation.uid">
+                            <line v-if="annotation.yTop && annotation.show && isFinite(annotation.yTop)"
+                                :x1="annotation.x1" :y1="annotation.yTop" :x2="annotation.x2" :y2="annotation.yTop"
+                                :stroke="annotation.config.line.stroke"
+                                :stroke-width="annotation.config.line.strokeWidth"
+                                :stroke-dasharray="annotation.config.line.strokeDasharray" stroke-linecap="round"
+                                :style="{ animation: 'none !important' }" />
+                            <line v-if="annotation.yBottom && annotation.show && isFinite(annotation.yBottom)"
+                                :x1="annotation.x1" :y1="annotation.yBottom" :x2="annotation.x2"
+                                :y2="annotation.yBottom" :stroke="annotation.config.line.stroke"
+                                :stroke-width="annotation.config.line.strokeWidth"
+                                :stroke-dasharray="annotation.config.line.strokeDasharray" stroke-linecap="round"
+                                :style="{ animation: 'none !important' }" />
+                            <rect
+                                v-if="annotation.hasArea && annotation.show && isFinite(annotation.yTop) && isFinite(annotation.yBottom)"
+                                :y="Math.min(annotation.yTop, annotation.yBottom)" :x="annotation.x1"
+                                :width="drawingArea.width" :height="checkNaN(annotation.areaHeight, 0)"
+                                :fill="setOpacity(annotation.config.area.fill, annotation.config.area.opacity)"
+                                :style="{ animation: 'none !important' }" />
+                            <rect v-if="annotation.config.label.text && annotation.show && isFinite(annotation._box.y)"
+                                class="vue-ui-xy-annotation-label-box" v-bind="annotation._box"
+                                :style="{ animation: 'none !important', transition: 'none !important' }" />
+                            <text v-if="annotation.config.label.text && annotation.show && isFinite(annotation._text.y)"
+                                :id="annotation.id" class="vue-ui-xy-annotation-label" :x="annotation._text.x"
+                                :y="annotation._text.y" :font-size="annotation.config.label.fontSize"
+                                :fill="annotation.config.label.color" :text-anchor="annotation.config.label.textAnchor">
+                                {{ annotation.config.label.text }}
+                            </text>
+                        </g>
+                    </g>
+
+                    <!-- TIME TAG -->
+                    <g v-if="FINAL_CONFIG.chart.timeTag.show && (![null, undefined].includes(selectedSerieIndex) || ![null, undefined].includes(selectedMinimapIndex))"
+                        style="pointer-events:none">
+                        <foreignObject
+                            :x="timeTagX()"
+                            :y="drawingArea?.bottom" width="200" height="40" style="overflow: visible !important;">
+                            <div 
+                                ref="timeTagEl"
+                                data-cy="time-tag"
+                                class="vue-ui-xy-time-tag"
+                                :style="`width: fit-content;margin: 0 auto;text-align:center;padding:3px 12px;background:${FINAL_CONFIG.chart.timeTag.backgroundColor};color:${FINAL_CONFIG.chart.timeTag.color};font-size:${FINAL_CONFIG.chart.timeTag.fontSize}px`"
+                                v-html="timeTagContent"
+                            />
+                        </foreignObject>
+                        <circle
+                            :cx="drawingArea?.left + (drawingArea.width / maxSeries) * ((selectedSerieIndex !== null ? selectedSerieIndex : 0) || (selectedMinimapIndex !== null ? selectedMinimapIndex : 0)) + (drawingArea.width / maxSeries / 2)"
+                            :cy="drawingArea?.bottom" :r="FINAL_CONFIG.chart.timeTag.circleMarker.radius"
+                            :fill="FINAL_CONFIG.chart.timeTag.circleMarker.color" />
+                    </g>
+                </g>
+
+                <!-- ZOOM PREVIEW -->
+                <rect 
+                    v-if="isPrecog" 
+                    v-bind="precogRect" 
+                    :data-start="slicer.start" 
+                    :data-end="slicer.end"
+                />
+
+                <slot name="svg" :svg="{
+                    ...svg,
+                    isPrintingImg: isPrinting | isImaging | isCallbackImaging,
+                    isPrintingSvg: isCallbackSvg,
+                    data: [...lineSet, ...barSet, ...plotSet],
+                    drawingArea
+                }" />
+            </g>
+        </svg>
+
+        <div v-if="$slots.watermark" class="vue-data-ui-watermark">
+            <slot name="watermark" v-bind="{ isPrinting: isPrinting || isImaging || isCallbackImaging || isCallbackSvg }" />
+        </div>
+
+        <!-- LINE: TAGS FOLLOWING VALUE -->
+        <template v-for="(serie, i) in lineSet" :key="`tag_line_${serie.id}`">
+            <template v-for="(plot, j) in serie.plots" :key="`tag_line_${i}_${j}`">
+                <div :ref="el => setTagRef(i, j, el, 'right', 'line')" class="vue-ui-xy-tag" data-tag="right"
+                    v-if="([selectedMinimapIndex, selectedSerieIndex, selectedRowIndex].includes(j)) && serie.useTag && serie.useTag === 'end' && FINAL_CONFIG.line.tag.followValue"
+                    :style="{
+                        position: 'fixed',
+                        top: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.right + FINAL_CONFIG.line.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_right_line`],
+                            position: 'right'
+                        })?.top + 'px',
+                        left: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.right + FINAL_CONFIG.line.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_right_line`],
+                            position: 'right'
+                        })?.left + 'px',
+                        height: 'fit-content',
+                        width: 'fit-content',
+                        background: serie.color,
+                        color: adaptColorToBackground(serie.color),
+                        padding: '0 6px',
+                        fontSize: FINAL_CONFIG.line.tag.fontSize + 'px',
+                        opacity: 1
+                    }">
+                    <svg class="vue-ui-xy-tag-arrow" height="20" viewBox="0 0 10 20"
+                        :style="{ position: 'absolute', right: '100%', top: '50%', transform: 'translateY(-50%)' }">
+                        <path d="M 0,10 10,0 10,20 Z" :fill="serie.color" stroke="none" />
+                    </svg>
+                    <div class="vue-ui-xy-tag-content" v-html="applyDataLabel(
+                        FINAL_CONFIG.line.tag.formatter,
+                        plot.value,
+                        serie.name,
+                        {
+                            datapoint: plot, seriesIndex: j, serieName: serie.name
+                        }
+                    )">
+                    </div>
+                </div>
+                <div :ref="el => setTagRef(i, j, el, 'left', 'line')" class="vue-ui-xy-tag" data-tag="left"
+                    v-if="([selectedMinimapIndex, selectedSerieIndex, selectedRowIndex].includes(j)) && serie.useTag && serie.useTag === 'start' && FINAL_CONFIG.line.tag.followValue"
+                    :style="{
+                        position: 'fixed',
+                        top: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.left - FINAL_CONFIG.line.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_left_line`],
+                            position: 'left'
+                        })?.top + 'px',
+                        left: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.left - FINAL_CONFIG.line.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_left_line`],
+                            position: 'left'
+                        })?.left + 'px',
+                        height: 'fit-content',
+                        width: 'fit-content',
+                        background: serie.color,
+                        color: adaptColorToBackground(serie.color),
+                        padding: '0 6px',
+                        fontSize: FINAL_CONFIG.line.tag.fontSize + 'px',
+                        opacity: 1
+                    }">
+                    <svg class="vue-ui-xy-tag-arrow" height="100%" viewBox="0 0 10 20"
+                        :style="{ position: 'absolute', left: '100%', top: '50%', transform: 'translateY(-50%)' }">
+                        <path d="M 0,0 10,10 0,20 Z" :fill="serie.color" stroke="none" />
+                    </svg>
+                    <div class="vue-ui-xy-tag-content" v-html="applyDataLabel(
+                        FINAL_CONFIG.line.tag.formatter,
+                        plot.value,
+                        serie.name,
+                        {
+                            datapoint: plot, seriesIndex: j, serieName: serie.name
+                        }
+                    )">
+                    </div>
+                </div>
+            </template>
         </template>
-      </ClientOnly>
-    </div>
 
-    <div
-      v-if="!chartData.dataset && !pending"
-      class="min-h-[260px] flex items-center justify-center text-fg-subtle font-mono text-sm"
-    >
-      {{
-        $t('package.trends.no_data', {
-          facet: $t('package.trends.items.downloads'),
-        })
-      }}
-    </div>
+        <!-- PLOT: TAGS FOLLOWING VALUE -->
+        <template v-for="(serie, i) in plotSet" :key="`tag_plot_${serie.id}`">
+            <template v-for="(plot, j) in serie.plots" :key="`tag_plot_${i}_${j}`">
+                <div :ref="el => setTagRef(i, j, el, 'right', 'plot')" class="vue-ui-xy-tag" data-tag="right"
+                    v-if="([selectedMinimapIndex, selectedSerieIndex, selectedRowIndex].includes(j)) && serie.useTag && serie.useTag === 'end' && FINAL_CONFIG.plot.tag.followValue"
+                    :style="{
+                        position: 'fixed',
+                        top: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.right + FINAL_CONFIG.plot.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_right_plot`],
+                            position: 'right'
+                        })?.top + 'px',
+                        left: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.right + FINAL_CONFIG.plot.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_right_plot`],
+                            position: 'right'
+                        })?.left + 'px',
+                        height: 'fit-content',
+                        width: 'fit-content',
+                        background: serie.color,
+                        color: adaptColorToBackground(serie.color),
+                        padding: '0 6px',
+                        fontSize: FINAL_CONFIG.plot.tag.fontSize + 'px',
+                        opacity: 1
+                    }">
+                    <svg class="vue-ui-xy-tag-arrow" height="20" viewBox="0 0 10 20"
+                        :style="{ position: 'absolute', right: '100%', top: '50%', transform: 'translateY(-50%)' }">
+                        <path d="M 0,10 10,0 10,20 Z" :fill="serie.color" stroke="none" />
+                    </svg>
+                    <div class="vue-ui-xy-tag-content" v-html="applyDataLabel(
+                        FINAL_CONFIG.plot.tag.formatter,
+                        plot.value,
+                        serie.name,
+                        {
+                            datapoint: plot, seriesIndex: j, serieName: serie.name
+                        }
+                    )">
+                    </div>
+                </div>
+                <div :ref="el => setTagRef(i, j, el, 'left', 'plot')" class="vue-ui-xy-tag" data-tag="left"
+                    v-if="([selectedMinimapIndex, selectedSerieIndex, selectedRowIndex].includes(j)) && serie.useTag && serie.useTag === 'start' && FINAL_CONFIG.plot.tag.followValue"
+                    :style="{
+                        position: 'fixed',
+                        top: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.left - FINAL_CONFIG.plot.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_left_plot`],
+                            position: 'left'
+                        })?.top + 'px',
+                        left: placeXYTag({
+                            svgElement: svgRef,
+                            x: drawingArea?.left - FINAL_CONFIG.plot.tag.fontSize / 1.5,
+                            y: plot.y,
+                            element: tagRefs[`${i}_${j}_left_plot`],
+                            position: 'left'
+                        })?.left + 'px',
+                        height: 'fit-content',
+                        width: 'fit-content',
+                        background: serie.color,
+                        color: adaptColorToBackground(serie.color),
+                        padding: '0 6px',
+                        fontSize: FINAL_CONFIG.plot.tag.fontSize + 'px',
+                        opacity: 1
+                    }">
+                    <svg class="vue-ui-xy-tag-arrow" height="100%" viewBox="0 0 10 20"
+                        :style="{ position: 'absolute', left: '100%', top: '50%', transform: 'translateY(-50%)' }">
+                        <path d="M 0,0 10,10 0,20 Z" :fill="serie.color" stroke="none" />
+                    </svg>
+                    <div class="vue-ui-xy-tag-content" v-html="applyDataLabel(
+                        FINAL_CONFIG.plot.tag.formatter,
+                        plot.value,
+                        serie.name,
+                        {
+                            datapoint: plot, seriesIndex: j, serieName: serie.name
+                        }
+                    )">
+                    </div>
+                </div>
+            </template>
+        </template>
 
-    <div
-      v-if="pending"
-      role="status"
-      aria-live="polite"
-      class="absolute top-1/2 inset-is-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-fg-subtle font-mono bg-bg/70 backdrop-blur px-3 py-2 rounded-md border border-border"
-    >
-      {{ $t('package.trends.loading') }}
+        <SlicerPreview 
+            ref="chartSlicer" 
+            v-if="FINAL_CONFIG.chart.zoom.show && maxX > 6 && isDataset && slicerReady"
+            :uuid="uniqueId"
+            :allMinimaps="allMinimaps"
+            :background="FINAL_CONFIG.chart.zoom.color"
+            :borderColor="FINAL_CONFIG.chart.backgroundColor" 
+            :customFormat="FINAL_CONFIG.chart.zoom.customFormat"
+            :cutNullValues="FINAL_CONFIG.line.cutNullValues"
+            :enableRangeHandles="FINAL_CONFIG.chart.zoom.enableRangeHandles"
+            :enableSelectionDrag="FINAL_CONFIG.chart.zoom.enableSelectionDrag"
+            :end="slicer.end"
+            :focusOnDrag="FINAL_CONFIG.chart.zoom.focusOnDrag"
+            :focusRangeRatio="FINAL_CONFIG.chart.zoom.focusRangeRatio"
+            :fontSize="FINAL_CONFIG.chart.zoom.fontSize" :useResetSlot="FINAL_CONFIG.chart.zoom.useResetSlot"
+            :immediate="!FINAL_CONFIG.chart.zoom.preview.enable"
+            :inputColor="FINAL_CONFIG.chart.zoom.color" 
+            :isPreview="isPrecog"
+            :labelLeft="timeLabels[0]? timeLabels[0].text : ''" 
+            :labelRight="timeLabels.at(-1) ? timeLabels.at(-1).text : ''" 
+            :max="maxX" 
+            :min="0"
+            :minimap="minimap"
+            :minimapCompact="FINAL_CONFIG.chart.zoom.minimap.compact"
+            :minimapFrameColor="FINAL_CONFIG.chart.zoom.minimap.frameColor"
+            :minimapIndicatorColor="FINAL_CONFIG.chart.zoom.minimap.indicatorColor"
+            :minimapLineColor="FINAL_CONFIG.chart.zoom.minimap.lineColor"
+            :minimapMerged="FINAL_CONFIG.chart.zoom.minimap.merged"
+            :minimapSelectedColor="FINAL_CONFIG.chart.zoom.minimap.selectedColor"
+            :minimapSelectedColorOpacity="FINAL_CONFIG.chart.zoom.minimap.selectedColorOpacity"
+            :minimapSelectedIndex="selectedSerieIndex"
+            :minimapSelectionRadius="FINAL_CONFIG.chart.zoom.minimap.selectionRadius"
+            :preciseLabels="preciseAllTimeLabels.length ? preciseAllTimeLabels : allTimeLabels"
+            :refreshEndPoint="FINAL_CONFIG.chart.zoom.endIndex !== null ? FINAL_CONFIG.chart.zoom.endIndex + 1 : Math.max(...dataset.map(datapoint => lttb(datapoint.series).length))"
+            :refreshStartPoint="FINAL_CONFIG.chart.zoom.startIndex !== null ? FINAL_CONFIG.chart.zoom.startIndex : 0"
+            :selectColor="FINAL_CONFIG.chart.zoom.highlightColor"
+            :selectedSeries="selectedSeries"
+            :smoothMinimap="FINAL_CONFIG.chart.zoom.minimap.smooth"
+            :start="slicer.start"
+            :textColor="FINAL_CONFIG.chart.color"
+            :timeLabels="allTimeLabels"
+            :usePreciseLabels="FINAL_CONFIG.chart.grid.labels.xAxisLabels.datetimeFormatter.enable && !FINAL_CONFIG.chart.zoom.useDefaultFormat"
+            :valueEnd="slicer.end" 
+            :valueStart="slicer.start" 
+            :verticalHandles="FINAL_CONFIG.chart.zoom.minimap.verticalHandles"
+            :minScale="FINAL_CONFIG.chart.grid.labels.yAxis.scaleMin"
+            :maxScale="FINAL_CONFIG.chart.grid.labels.yAxis.scaleMax"
+            :maxWidth="FINAL_CONFIG.chart.zoom.maxWidth"
+            :additionalMinimapHeight="FINAL_CONFIG.chart.zoom.minimap.additionalHeight"
+            :handleType="FINAL_CONFIG.chart.zoom.minimap.handleType"
+            :handleIconColor="FINAL_CONFIG.chart.zoom.minimap.handleIconColor"
+            :handleBorderWidth="FINAL_CONFIG.chart.zoom.minimap.handleBorderWidth"
+            :handleBorderColor="FINAL_CONFIG.chart.zoom.minimap.handleBorderColor"
+            :handleFill="FINAL_CONFIG.chart.zoom.minimap.handleFill"
+            :handleWidth="FINAL_CONFIG.chart.zoom.minimap.handleWidth"
+            :isCursorPointer="isCursorPointer"
+            @futureEnd="v => setPrecog('end', v)"
+            @futureStart="v => setPrecog('start', v)"
+            @reset="refreshSlicer"
+            @trapMouse="selectMinimapIndex"
+            @update:end="onSlicerEnd"
+            @update:start="onSlicerStart"
+        >
+            <template #reset-action="{ reset }">
+                <slot name="reset-action" v-bind="{ reset }" />
+            </template>
+        </SlicerPreview>
+
+        <div :id="`legend-bottom-${uniqueId}`" />
+
+        <!-- LEGEND -->
+        <Teleport v-if="readyTeleport" :to="FINAL_CONFIG.chart.legend.position === 'top' ? `#legend-top-${uniqueId}` : `#legend-bottom-${uniqueId}`">
+            <div 
+                ref="chartLegend" 
+                data-cy="xy-div-legend" 
+                v-if="FINAL_CONFIG.chart.legend.show" 
+                class="vue-ui-xy-legend"
+                :style="{
+                    fontSize: `var(--legend-font-size, ${(FINAL_CONFIG.chart.legend.fontSize ?? 14)}px)`
+                }"
+            >
+                <BaseLegendToggle
+                    v-if="FINAL_CONFIG.chart.legend.selectAllToggle.show && absoluteDataset.length > 2 && !loading"
+                    :backgroundColor="FINAL_CONFIG.chart.legend.selectAllToggle.backgroundColor"
+                    :color="FINAL_CONFIG.chart.legend.selectAllToggle.color"
+                    :fontSize="FINAL_CONFIG.chart.legend.fontSize"
+                    :checked="segregatedSeries.length > 0"
+                    @toggle="toggleLegend"
+                />
+
+                <div 
+                    v-for="(legendItem, i) in absoluteDataset" 
+                    :data-cy="`xy-div-legend-item-${i}`"
+                    :key="`div_legend_item_${i}`" 
+                    @click="segregate(legendItem)"
+                    :class="{ 
+                        'vue-ui-xy-legend-item-alone': absoluteDataset.length === 1 , 
+                        'vue-ui-xy-legend-item': true, 
+                        'vue-ui-xy-legend-item-segregated': segregatedSeries.includes(legendItem.id) 
+                    }"
+                    :style="{
+                        cursor: isCursorPointer ? 'pointer' : 'default'
+                    }"
+                >
+                    <svg v-if="icons[legendItem.type] === 'line'" viewBox="0 0 20 12" height="1em" width="1.43em">
+                        <rect x="0" y="7.5" rx="1.5" :stroke="FINAL_CONFIG.chart.backgroundColor" :stroke-width="0.5"
+                            height="3" width="20" :fill="legendItem.color" />
+                        <Shape :plot="{ x: 10, y: 9 }" :radius="4" :color="legendItem.color"
+                            :shape="['triangle', 'square', 'diamond', 'pentagon', 'hexagon', 'star'].includes(legendItem.shape) ? legendItem.shape : 'circle'"
+                            :stroke="FINAL_CONFIG.chart.backgroundColor" :strokeWidth="0.5" />
+                    </svg>
+                    <svg v-else-if="icons[legendItem.type] === 'bar'" viewBox="0 0 40 40" height="1em" width="1em">
+                        <rect 
+                            v-if="icons[legendItem.type] === 'bar' && $slots.pattern" 
+                            x="4" 
+                            y="4" 
+                            rx="1" 
+                            height="32"
+                            width="32" 
+                            stroke="none" 
+                            :fill="legendItem.color" 
+                        />
+                        <rect 
+                            v-if="icons[legendItem.type] === 'bar'" 
+                            x="4" 
+                            y="4" 
+                            rx="1" 
+                            height="32" 
+                            width="32"
+                            stroke="none"
+                            :fill="$slots.pattern ? `url(#pattern_${uniqueId}_${legendItem.slotAbsoluteIndex})` : legendItem.color" 
+                        />
+                    </svg>
+                    <svg v-else viewBox="0 0 12 12" height="1em" width="1em">
+                        <Shape :plot="{ x: 6, y: 6 }" :radius="5" :color="legendItem.color"
+                            :shape="['triangle', 'square', 'diamond', 'pentagon', 'hexagon', 'star'].includes(legendItem.shape) ? legendItem.shape : 'circle'" />
+                    </svg>
+                    <span :style="`color:${FINAL_CONFIG.chart.legend.color}`">{{ legendItem.name }}</span>
+                </div>
+            </div>
+            <div v-else ref="chartLegend">
+                <slot name="legend" v-bind:legend="absoluteDataset" />
+            </div>
+        </Teleport>
+
+
+        <div v-if="$slots.source" ref="source" dir="auto">
+            <slot name="source" />
+        </div>
+
+        <!-- TOOLTIP -->
+        <Tooltip 
+            :teleportTo="FINAL_CONFIG.chart.tooltip.teleportTo"
+            :show="mutableConfig.showTooltip && isTooltip"
+            :backgroundColor="FINAL_CONFIG.chart.tooltip.backgroundColor" 
+            :color="FINAL_CONFIG.chart.tooltip.color"
+            :fontSize="FINAL_CONFIG.chart.tooltip.fontSize" 
+            :borderRadius="FINAL_CONFIG.chart.tooltip.borderRadius"
+            :borderColor="FINAL_CONFIG.chart.tooltip.borderColor" 
+            :borderWidth="FINAL_CONFIG.chart.tooltip.borderWidth"
+            :backgroundOpacity="FINAL_CONFIG.chart.tooltip.backgroundOpacity"
+            :position="FINAL_CONFIG.chart.tooltip.position" 
+            :offsetY="FINAL_CONFIG.chart.tooltip.offsetY"
+            :parent="$refs.chart" 
+            :content="tooltipContent" 
+            :isFullscreen="isFullscreen"
+            :isCustom="FINAL_CONFIG.chart.tooltip.customFormat && typeof FINAL_CONFIG.chart.tooltip.customFormat === 'function'"
+            :smooth="FINAL_CONFIG.chart.tooltip.smooth"
+            :backdropFilter="FINAL_CONFIG.chart.tooltip.backdropFilter"
+            :smoothForce="FINAL_CONFIG.chart.tooltip.smoothForce"
+            :smoothSnapThreshold="FINAL_CONFIG.chart.tooltip.smoothSnapThreshold"
+        >
+            <template #tooltip-before>
+                <slot name="tooltip-before" v-bind="{ ...dataTooltipSlot }"></slot>
+            </template>
+            <template #tooltip-after>
+                <slot name="tooltip-after" v-bind="{ ...dataTooltipSlot }"></slot>
+            </template>
+        </Tooltip>
+
+        <!-- DATA TABLE -->
+        <component 
+            v-if="isDataset && FINAL_CONFIG.chart.userOptions.buttons.table" 
+            :is="tableComponent.component" 
+            v-bind="tableComponent.props" 
+            ref="tableUnit" 
+            @close="closeTable"
+        >
+            <template #title v-if="FINAL_CONFIG.table.useDialog">
+                {{ tableComponent.title }}
+            </template>
+            <template #actions v-if="FINAL_CONFIG.table.useDialog">
+                <button tabindex="0" class="vue-ui-user-options-button" @click="generateCsv(FINAL_CONFIG.chart.userOptions.callbacks.csv)">
+                    <BaseIcon name="fileCsv" :stroke="tableComponent.props.color"/>
+                </button>
+            </template>
+            <template #content>
+                <div :style="`${isPrinting || FINAL_CONFIG.table.useDialog ? '' : 'max-height:400px'};${FINAL_CONFIG.table.useDialog ? 'height: fit-content; ' : ''};overflow:auto;width:100%;${FINAL_CONFIG.table.useDialog ? '' : 'margin-top:48px'}`">
+                    <div style="display: flex; flex-direction:row; gap: 6px; align-items:center; padding-left: 6px"
+                        data-dom-to-png-ignore>
+                        <input type="checkbox" v-model="showSparklineTable">
+                        <div 
+                            @click="showSparklineTable = !showSparklineTable" 
+                            :style="{
+                                cursor: isCursorPointer ? 'pointer' : 'default'
+                            }"
+                        >
+                            <BaseIcon name="chartLine" :size="20" :stroke="FINAL_CONFIG.chart.color" />
+                        </div>
+                    </div>
+                    <TableSparkline v-if="showSparklineTable" :key="`sparkline_${segregateStep}`"
+                        :dataset="tableSparklineDataset" :config="tableSparklineConfig" />
+                    <DataTable 
+                        v-else
+                        :key="`table_${tableStep}`" 
+                        :colNames="dataTable.colNames" 
+                        :head="dataTable.head"
+                        :body="dataTable.body" 
+                        :config="dataTable.config"
+                        :title="FINAL_CONFIG.table.useDialog ? '' : tableComponent.title"
+                        :withCloseButton="!FINAL_CONFIG.table.useDialog"
+                        @close="closeTable"
+                    >
+                        <template #th="{ th }">
+                            <div v-html="th" />
+                        </template>
+                        <template #td="{ td }">
+                            {{ !isNaN(Number(td)) ? dataLabel({
+                                p: FINAL_CONFIG.chart.labels.prefix,
+                                v: td,
+                                s: FINAL_CONFIG.chart.labels.suffix,
+                                r: FINAL_CONFIG.table.rounding,
+                            }) : td }}
+                        </template>
+                    </DataTable>
+                </div>
+            </template>
+        </component>
+
+        <!-- v3 Skeleton loader -->
+        <slot name="skeleton">
+            <BaseScanner v-if="loading" />
+        </slot>
     </div>
-  </div>
 </template>
 
-<style>
-.vue-ui-pen-and-paper-actions {
-  background: var(--bg-elevated) !important;
+<style scoped lang="scss">
+@import "../vue-data-ui.css";
+
+.vue-ui-xy * {
+    transition: unset;
 }
 
-.vue-ui-pen-and-paper-action {
-  background: var(--bg-elevated) !important;
-  border: none !important;
+path,
+line,
+rect {
+    animation: xyAnimation 0.5s ease-in-out;
+    transform-origin: center;
 }
 
-.vue-ui-pen-and-paper-action:hover {
-  background: var(--bg-elevated) !important;
-  box-shadow: none !important;
+@keyframes xyAnimation {
+    0% {
+        transform: scale(0.9, 0.9);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.02, 1.02);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
 }
 
-/* Override default placement of the refresh button to have it to the minimap's side */
-@media screen and (min-width: 767px) {
-  #download-analytics .vue-data-ui-refresh-button {
-    top: -0.6rem !important;
-    left: calc(100% + 2rem) !important;
-  }
+.vue-ui-xy {
+    position: relative;
 }
 
-[data-pending='true'] .vue-data-ui-zoom {
-  opacity: 0.1;
+.vue-ui-xy-legend {
+    align-items: center;
+    column-gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    user-select: none;
+    width: 100%;
 }
 
-[data-pending='true'] .vue-data-ui-time-label {
-  opacity: 0;
+.vue-ui-xy-legend-item {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
-/** Override print watermark position to have it below the chart */
-.vue-data-ui-watermark {
-  top: unset !important;
+.vue-ui-xy-legend-item-alone {
+    cursor: default;
 }
 
-[data-minimap-visible='false'] .vue-data-ui-watermark  {
-  top: calc(100% - 2rem) !important;
+.vue-ui-xy-legend-item-segregated {
+    opacity: 0.5;
+}
+
+.vue-ui-xy-title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+canvas {
+    width: 100%;
+    object-fit: contain;
+}
+
+svg.vue-ui-xy-tag-arrow *,
+line.vue-ui-xy-tag-line,
+line.vue-ui-xy-tag-plot {
+    animation: none !important;
+}
+
+.vue-ui-xy-tag {
+    z-index: 2147483647;
+    pointer-events: none;
+}
+
+.vue-ui-xy-tag[data-tag="right"] {
+    border-radius: 0 3px 3px 0;
+}
+
+.vue-ui-xy-tag[data-tag="left"] {
+    border-radius: 3px 0 0 3px;
+}
+
+.vue-ui-xy.no-transition path,
+.vue-ui-xy.no-transition line,
+.vue-ui-xy.no-transition rect {
+    transition: none !important;
 }
 </style>

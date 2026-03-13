@@ -1093,8 +1093,8 @@ const shapeOptions = ref([
 
 const { configCode, showAllConfig } = useConfigCode()
 
-function randomizeData() {
-    const len = 6;
+function randomizeData(N = 11) {
+    const len = N;
     function makeSet(n ,m) {
         const arr = [];
         for (let i = 0; i < n; i += 1) {
@@ -1113,7 +1113,7 @@ function randomizeData() {
             arr.push(s1[i] + s2[i] + 20)
         }
         return arr;
-    })()
+    })().slice(0, -2)
 
     average.value = [
         ...mutableDataset.value[0].series,
