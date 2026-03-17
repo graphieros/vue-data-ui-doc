@@ -16,7 +16,7 @@
     "@stackblitz/sdk": "^1.11.0",
     "color-bridge": "^2.1.0",
     "cypress": "^15.8.1",
-    "jspdf": "^4.2.0",
+    "jspdf": "^4.2.1",
     "pinia": "^2.1.6",
     "prismjs": "^1.29.0",
     "ssh2": "^1.16.0",
