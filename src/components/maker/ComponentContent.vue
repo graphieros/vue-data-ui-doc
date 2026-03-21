@@ -56,6 +56,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 const emit = defineEmits(["click"]);
 
 const isComputed = ref(false);
+const isVapor = ref(false);
 const isUniversal = ref(false);
 
 const finalConfig = computed(() => {
@@ -72,7 +73,7 @@ const finalConfig = computed(() => {
 
 const configTextComputed = computed(() => {
     return `
-    const config = computed(() => { 
+    const config = computed(() => {
 return ${jsonToJsObject(finalConfig.value, 4, true)}})`;
 });
 
@@ -141,19 +142,23 @@ watch(() => isTreeshaken.value, (v) => {
     }
 })
 
+const scriptTag = computed(() => {
+    return `<script${isVapor.value ? ' vapor' : ''} setup>`;
+});
+
 const generatedScript = computed(() => {
     return `import { ${isComputed.value ? "computed" : "ref"} } from "vue";
 ${isTreeshaken.value ? imp.treeshaken : `import { ${isUniversal.value ? "VueDataUi" : props.componentName} } from "vue-data-ui";`}
 import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
 ${isComputed.value
-            ? `const config = computed(() => { 
+            ? `const config = computed(() => {
 return ${jsonToJsObject(finalConfig.value, 4, true)} });`
             : `const config = ref(${jsonToJsObject(finalConfig.value, 4, true)});`
         }
 
 ${isComputed.value
-            ? `const dataset = computed(() => { 
+            ? `const dataset = computed(() => {
 return ${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)} });`
             : `const dataset = ref(${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)});`
         }
@@ -256,6 +261,10 @@ function toggleStorage() {
             <label for="comp" class="text-sm cursor-pointer">Use computed instead of ref</label>
         </div>
         <div class="mb-4 flex flex-row gap-4 place-items-center">
+            <input id="vapor" type="checkbox" v-model="isVapor" />
+            <label for="vapor" class="text-sm cursor-pointer">Use Vapor instead of VDOM</label>
+        </div>
+        <div class="mb-4 flex flex-row gap-4 place-items-center">
             <input id="univ" type="checkbox" v-model="isUniversal" />
             <label for="univ" class="text-sm cursor-pointer">Use VueDataUi universal component</label>
         </div>
@@ -263,10 +272,9 @@ function toggleStorage() {
             <input id="treesh" type="checkbox" v-model="isTreeshaken" />
             <label for="treesh" class="text-sm cursor-pointer">Treeshaken import ( v3.2.0+ )</label>
         </div>
-    
         <div class="relative p-3 rounded-xl border border-transparent hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20] transition-colors mb-12" ref="compContent">
             <div>
-                <CodeParser content="<script setup>" language="html" :withCopy="false" noPointerEvents borderRadius="none"/>
+                <CodeParser :content="scriptTag" language="html" :withCopy="false" noPointerEvents borderRadius="none"/>
                 <CodeParser :content="generatedScript" language="javascript" :withCopy="false" noPointerEvents borderRadius="none"/>
                 <CodeParser content="</script>" language="html" :withCopy="false" noPointerEvents borderRadius="none"/>
                 <CodeParser :content="generatedTemplate" language="html" :withCopy="false" noPointerEvents borderRadius="none"/>
