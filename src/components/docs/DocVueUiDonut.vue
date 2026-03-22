@@ -76,6 +76,13 @@ const darkModeConfig = ref({
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     events: {
         datapointEnter: null,
         datapointLeave: null,
@@ -126,6 +133,7 @@ const darkModeConfig = ref({
                         show: true,
                     },
                     percentage: {
+                        show: true,
                         color: "#CCCCCC",
                         bold: true,
                         fontSize: 18,
@@ -133,6 +141,7 @@ const darkModeConfig = ref({
                         minFontSize: 6,
                     },
                     name: {
+                        show: true,
                         color: "#CCCCCC",
                         bold: false,
                         fontSize: 14,
@@ -319,6 +328,13 @@ const config = ref({
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     events: {
         datapointEnter: null,
         datapointLeave: null,
@@ -369,6 +385,7 @@ const config = ref({
                         show: true
                     },
                     percentage: {
+                        show: true,
                         color: "#1A1A1A",
                         bold: true,
                         fontSize: 18,
@@ -376,6 +393,7 @@ const config = ref({
                         minFontSize: 6,
                     },
                     name: {
+                        show: true,
                         color: "#1A1A1A",
                         bold: false,
                         fontSize: 14,
@@ -899,6 +917,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseDetails attr="a11y" :level="1">
+            <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
@@ -975,6 +1000,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                             </div>
                         </BaseDetails>
                         <BaseDetails attr="percentage" :level="5" title="style.chart.layout.labels.percentage">
+                            <BaseAttr name="show" attr="style.chart.layout.labels.percentage.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                             <BaseAttr name="color" attr="style.chart.layout.labels.percentage.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
                             <BaseAttr name="bold" attr="style.chart.layout.labels.percentage.bold" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="true"/>
                             <BaseAttr name="fontSize" attr="style.chart.layout.labels.percentage.fontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="8" :max="42" defaultVal="18"/>
@@ -990,6 +1016,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                             </div>
                         </BaseDetails>
                         <BaseDetails attr="name" :level="5" title="style.chart.layout.labels.name">
+                            <BaseAttr name="show" attr="style.chart.layout.labels.name.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 
                             <BaseAttr name="color" attr="style.chart.layout.labels.name.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
                             <BaseAttr name="bold" attr="style.chart.layout.labels.name.bold" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="false"/>
                             <BaseAttr name="fontSize" attr="style.chart.layout.labels.name.fontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="8" :max="42" defaultVal="14"/>
@@ -1280,6 +1307,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 <BaseSlotDocumenter
                     componentName="VueUiDonut"
                     :types="[
+                        'hint',
                         'svg',
                         'dataLabel',
                         'legend',

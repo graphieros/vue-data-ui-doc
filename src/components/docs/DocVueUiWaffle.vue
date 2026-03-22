@@ -83,6 +83,13 @@ const isDarkMode = computed(() => {
         useBlurOnHover: true,
         useCustomCells: false,
         useAnimation: true,
+        a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
         style: {
             fontFamily: "inherit",
             chart: {
@@ -249,6 +256,13 @@ const isDarkMode = computed(() => {
         useBlurOnHover: true,
         useCustomCells: false,
         useAnimation: true,
+        a11y: {
+            translations: {
+                keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+                tableAvailable: 'A data table for this chart is available below.',
+                tableCaption: 'Chart data table'
+            }
+        },
         style: {
             fontFamily: "inherit",
             chart: {
@@ -554,6 +568,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>useCustomCells: false, <BaseComment>{{ translations.customization.otherSlots.waffle[store.lang] }}</BaseComment></span>
         <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="a11y" :level="1">
+            <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
@@ -833,6 +854,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 <BaseSlotDocumenter
                     componentName="VueUiWaffle"
                     :types="[
+                        'hint',
                         'svg',
                         'cell',
                         'legend',

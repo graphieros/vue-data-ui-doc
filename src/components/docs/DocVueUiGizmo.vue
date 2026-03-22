@@ -41,6 +41,11 @@ const isDarkMode = computed(() => {
 const dataset = ref(66);
 
 const config = ref({
+    a11y: {
+        translations: {
+            label: 'Progress'
+        }
+    },
     debug: false,
     loading: false,
     type: 'battery',
@@ -55,6 +60,11 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    a11y: {
+        translations: {
+            label: 'Progress'
+        }
+    },
     debug: false,
     loading: false,
     type: 'battery',
@@ -177,6 +187,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGizmoDataset</s
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiGizmoConfig" equal>
+        <BaseDetails attr="a11y" :level="1">
+            <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                <BaseAttr name="label" attr="a11y.translations.label" type="text" defaultVal="'Progress'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
         <BaseAttr inactive name="debug" defaultVal="false"/>
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="type" attr="type" type="select" defaultVal="battery" :options="['battery', 'gauge']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

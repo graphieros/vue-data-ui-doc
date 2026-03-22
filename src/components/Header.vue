@@ -276,13 +276,7 @@ const message = ref({
                     <div data-cy="header-app-name" class="flex flex-row gap-3 w-full whitespace-nowrap align-center">
                         <img data-cy="header-logo" src="../assets/logo3.png" class="h-5 mt-1" />
                         <span class="font-inter-medium text-lg text-[#3A3A3A] dark:text-[#AFAFAF]" style="letter-spacing: -1px;">Vue Data UI</span>
-                    </div>
-                    <div class="h-[20px] flex flex-row align-center sm:ml-5 mt-1">
-                        <svg style="height:100%" viewBox="-6 -6 22 22">
-                            <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <VueUiDigits v-for="d in lastVersion" :config="digitsConfigVersion"
-                            :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.5rem]' : ''" />
+                        <div class="mt-0.5 font-mono dark:text-app-green">{{ releases[0].version.replaceAll('v', '') }}</div>
                     </div>
                 </div>
             </router-link>

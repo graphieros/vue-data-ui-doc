@@ -1302,6 +1302,28 @@ export const useMainStore = defineStore("main", {
                         ko: "이 슬롯을 사용하여 데이터 포인트에 패턴을 겹쳐 표시하세요.",
                         ar: "استخدم هذه الفتحة لإضافة نمط فوق نقاط البيانات."
                     },
+                    hintComment: {
+                        en: 'The slot wrapper is absolutely positioned below the chart area. You can tweak the css of your content to adjust the position.',
+                        fr: 'Le conteneur du slot est positionné en absolu sous la zone du graphique. Vous pouvez ajuster la position en modifiant le CSS de votre contenu.',
+                        pt: 'O contêiner do slot está posicionado de forma absoluta abaixo da área do gráfico. Você pode ajustar a posição modificando o CSS do seu conteúdo.',
+                        de: 'Der Slot-Wrapper ist absolut unterhalb des Diagrammbereichs positioniert. Sie können die Position anpassen, indem Sie das CSS Ihres Inhalts ändern.',
+                        zh: '该插槽容器被绝对定位在图表区域下方。您可以通过调整内容的 CSS 来修改位置。',
+                        ja: 'スロットのラッパーはチャート領域の下に絶対配置されています。コンテンツの CSS を調整して位置を変更できます。',
+                        es: 'El contenedor del slot está posicionado de forma absoluta debajo del área del gráfico. Puede ajustar la posición modificando el CSS de su contenido.',
+                        ko: '슬롯 래퍼는 차트 영역 아래에 절대 위치로 배치됩니다. 콘텐츠의 CSS를 조정하여 위치를 변경할 수 있습니다.',
+                        ar: 'يتم وضع غلاف الـ slot بشكل مطلق أسفل منطقة المخطط. يمكنك تعديل الموضع من خلال تغيير CSS الخاص بالمحتوى.'
+                    },
+                    hint: {
+                        en: 'Use this slot to display a keyboard navigation hint when the chart is in focus.',
+                        fr: 'Utilisez ce slot pour afficher une indication de navigation au clavier lorsque le graphique est focalisé.',
+                        pt: 'Use este slot para exibir uma dica de navegação por teclado quando o gráfico estiver em foco.',
+                        de: 'Verwenden Sie diesen Slot, um einen Hinweis zur Tastaturnavigation anzuzeigen, wenn das Diagramm fokussiert ist.',
+                        zh: '当图表获得焦点时，使用此插槽显示键盘导航提示。',
+                        ja: 'チャートにフォーカスがあるときに、キーボードナビゲーションのヒントを表示するためにこのスロットを使用します。',
+                        es: 'Utilice este slot para mostrar una pista de navegación con teclado cuando el gráfico esté enfocado.',
+                        ar: 'استخدم هذا الـ slot لعرض تلميح للتنقل باستخدام لوحة المفاتيح عندما يكون المخطط في وضع التركيز.',
+                        ko: '차트에 포커스가 있을 때 키보드 탐색 안내를 표시하려면 이 슬롯을 사용하세요.'
+                    },
                     chartBackground: {
                         en: "Use this slot to customize the chart background (gradient, image, etc).",
                         fr: "Utilisez cet emplacement pour personnaliser l'arrière-plan du graphique (dégradé, image, etc.).",

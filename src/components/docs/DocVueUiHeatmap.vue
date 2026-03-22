@@ -68,6 +68,13 @@ function initDataset() {
 const dataset = ref(initDataset());
 
 const config = ref({
+  a11y: {
+      translations: {
+          keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+          tableAvailable: 'A data table for this chart is available below.',
+          tableCaption: 'Chart data table'
+      }
+  },
   style: {
     backgroundColor: "#F3F4F6",
     color: "#1A1A1A",
@@ -269,6 +276,13 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  a11y: {
+      translations: {
+          keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+          tableAvailable: 'A data table for this chart is available below.',
+          tableCaption: 'Chart data table'
+      }
+  },
   style: {
     backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
@@ -656,6 +670,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiHeatmapConfig" equal>
       <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+      <BaseDetails attr="a11y" :level="1">
+          <BaseDetails attr="translations" :level="2" title="a11y.translations">
+              <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          </BaseDetails>
+      </BaseDetails>
       <BaseDetails attr="style" :level="1">
         <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -901,6 +922,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
               <BaseSlotDocumenter
                     componentName="VueUiHeatmap"
                     :types="[
+                        'hint',
                         'svg',
                         'tooltip-before',
                         'tooltip-after',

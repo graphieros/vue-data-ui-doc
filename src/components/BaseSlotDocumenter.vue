@@ -24,6 +24,18 @@ const translations = computed(() => store.translations);
 
 const items = computed(() => {
     return [
+        {
+            names: ['hint'],
+            description: translations.value.slots.hint[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #hint="{ hint, isVisible }">
+            <!-- ${translations.value.slots.hintComment[store.lang]} -->
+            <p v-if="isVisible">{{ hint }}</p>
+        </template>
+    </${props.componentName}>
+            `
+        },
         { 
             names: ['svg'], 
             description: translations.value.slots.presentation[store.lang],

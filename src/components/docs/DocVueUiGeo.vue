@@ -108,6 +108,13 @@ const config = ref({
     responsive: false,
     projection: currentProjection.value,
     theme: '',
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -239,6 +246,13 @@ const darkModeConfig = ref({
     responsive: false,
     projection: currentProjection.value,
     theme: '',
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -527,6 +541,13 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
         <BaseAttr inactive name="debug" attr="debug" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <BaseAttr name="projection" attr="projection" type="select" defaultVal="globe" :options="projections" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="a11y" :level="1">
+            <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
         <BaseDetails attr="map" :level="1">
             <BaseAttr inactive name="geoJson" defaultVal="null" comment="Use a valid geoJSON format"/>
             <BaseAttr inactive name="center" defaultVal="[0, 0]" comment="Center map on specific coordinates"/>
@@ -683,6 +704,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 <BaseSlotDocumenter
                     componentName="VueUiGeo"
                     :types="[
+                        'hint',
                         'datapoint',
                         'svg',
                         'tooltip-before',

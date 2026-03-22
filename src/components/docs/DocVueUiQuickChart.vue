@@ -138,6 +138,13 @@ const quickDatasetBar = ref([
 ])
 
 const config = ref({
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right arrow keys to move between data points.',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     useCursorPointer: false,
     debug: false,
     loading: false,
@@ -302,6 +309,13 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right arrow keys to move between data points.',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     useCursorPointer: false,
     debug: false,
     loading: false,
@@ -921,6 +935,13 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr name="useCursorPointer" attr="useCursorPointer" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="a11y" :level="1">
+            <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
@@ -1118,7 +1139,7 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
     </BaseDetails>
 </code>
             </template>
-            
+
             <template #tab2>
                 <ComponentEmits
                     component="VueUiQuickChart"
@@ -1134,6 +1155,7 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
                 <BaseSlotDocumenter
                     componentName="VueUiQuickChart"
                     :types="[
+                        'hint',
                         'legend',
                         'tooltip-before',
                         'tooltip-after',

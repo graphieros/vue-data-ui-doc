@@ -58,6 +58,13 @@ const config = ref({
     responsive: false,
     useAnimation: true,
     animationSpeed: 2,
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -269,6 +276,13 @@ const darkModeConfig = ref({
     responsive: false,
     useAnimation: true,
     animationSpeed: 2,
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -630,6 +644,13 @@ function goToPage(route) {
         <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="animationSpeed" attr="animationSpeed" type="range" defaultVal="2" :min="0.1" :max="6" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        <BaseDetails attr="a11y" :level="1">
+            <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
@@ -948,6 +969,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiDumbbell"
                     :types="[
+                        'hint',
                         'svg',
                         'legend',
                         'watermark',

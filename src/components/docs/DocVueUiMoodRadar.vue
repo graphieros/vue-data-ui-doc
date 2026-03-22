@@ -73,6 +73,13 @@ const darkModeConfig = ref({
     debug: false,
     loading: false,
     responsive: false,
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     style: {
         fontFamily: "inherit",
         chart: {
@@ -202,6 +209,13 @@ const config = ref({
     debug: false,
     loading: false,
     responsive: false,
+    a11y: {
+        translations: {
+            keyboardNavigation: 'Use the left and right, or up and down arrow keys to move between datapoints',
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    },
     style: {
         fontFamily: "inherit",
         chart: {
@@ -450,6 +464,13 @@ function goToPage(route) {
         <BaseAttr inactive name="debug" defaultVal="false"/>
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"dark" | "celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <BaseDetails attr="a11y" :level="1">
+            <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
@@ -683,6 +704,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiMoodRadar"
                     :types="[
+                        'hint',
                         'svg',
                         'legend',
                         'watermark',

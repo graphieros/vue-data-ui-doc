@@ -339,3 +339,7 @@ code {
     stroke-width: 3;
   }
 }
+
+.vue-data-ui-component svg:focus-visible {
+    outline-offset: 0 !important;
+}

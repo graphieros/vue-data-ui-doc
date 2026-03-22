@@ -103,6 +103,13 @@ const config = ref({
   responsive: false,
   theme: "",
   customPalette: [],
+  a11y: {
+      translations: {
+          keyboardNavigation: 'Use the left and right arrow keys to move between data points.',
+          tableAvailable: 'A data table for this chart is available below.',
+          tableCaption: 'Chart data table'
+      }
+  },
   downsample: {
     threshold: 10000,
   },
@@ -372,6 +379,13 @@ const darkModeConfig = ref({
   loading: false,
   responsive: false,
   theme: "",
+  a11y: {
+      translations: {
+          keyboardNavigation: 'Use the left and right arrow keys to move between data points.',
+          tableAvailable: 'A data table for this chart is available below.',
+          tableCaption: 'Chart data table'
+      }
+  },
   downsample: {
     threshold: 10000,
   },
@@ -866,6 +880,13 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
               >
               <BaseAttr inactive name="debug" defaultVal="false"/>
               <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseDetails attr="a11y" :level="1">
+              <BaseDetails attr="translations" :level="2" title="a11y.translations">
+                  <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
+            </BaseDetails>
               <BaseDetails attr="downsample" :level="1">
                 <BaseAttr
                   name="threshold"
@@ -2383,6 +2404,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
         <BaseSlotDocumenter
             componentName="VueUiXyCanvas"
             :types="[
+                'hint',
                 'legend',
                 'tooltip-before',
                 'tooltip-after',

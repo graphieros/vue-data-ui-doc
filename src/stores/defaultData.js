@@ -2264,14 +2264,19 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'style.chart.layout.labels.value.show', def: true, type: 'checkbox', label: 'showValue', category: 'labels' },
                     { key: 'style.chart.layout.labels.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'valueRounding', category: 'labels' },
+
+                    { key: 'style.chart.layout.labels.percentage.show', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.color', def: '#1A1A1A', type: 'color', label: 'colorPercentage', category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.fontSize', def: 18, min: 6, max: 48, type: 'number', label: 'fontSize', category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.minFontSize', def: 6, min: '', max: 48, type: 'number', label: 'min fontSize', category: 'labels' },
+
+                    { key: 'style.chart.layout.labels.name.show', def: true, type: 'checkbox', label: ['name', 'is', 'show'], category: 'labels' },
                     { key: 'style.chart.layout.labels.name.color', def: '#1A1A1A', type: 'color', label: 'colorName', category: 'labels' },
                     { key: 'style.chart.layout.labels.name.bold', def: false, type: 'checkbox', label: 'bold', category: 'labels' },
                     { key: 'style.chart.layout.labels.name.fontSize', def: 14, type: 'number', min: 6, max: 36, label: 'fontSize', category: 'labels' },
                     { key: 'style.chart.layout.labels.name.minFontSize', def: 6, type: 'number', min: 6, max: 36, label: 'min fontSize', category: 'labels' },
+                    
                     { key: 'style.chart.layout.labels.hollow.show', def: true, type: 'checkbox', label: ['hollow', 'is', 'show'], category: 'labels'},
                     { key: 'style.chart.layout.labels.hollow.total.show', def: true, type: 'checkbox', label: ['hollow', 'total', 'is', 'show'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.total.bold', def: false, type: 'checkbox', label: ['hollow', 'total', 'is', 'bold'], category: 'labels' },

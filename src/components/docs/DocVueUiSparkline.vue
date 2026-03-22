@@ -138,6 +138,13 @@ const darkModeConfig = ref({
   loading: false,
   responsive: false,
   type: 'line',
+  a11y: {
+      translations: {
+          keyboardNavigation: 'Use the left and right arrow keys to move between data points.',
+          tableAvailable: 'A data table for this chart is available below.',
+          tableCaption: 'Chart data table'
+      }
+  },
   gradientPath: {
     show: false,
     segments: 256,
@@ -268,6 +275,13 @@ const config = ref({
   loading: false,
   responsive: false,
   type: 'line',
+  a11y: {
+      translations: {
+          keyboardNavigation: 'Use the left and right arrow keys to move between data points.',
+          tableAvailable: 'A data table for this chart is available below.',
+          tableCaption: 'Chart data table'
+      }
+  },
   gradientPath: {
     show: false,
     segments: 256,
@@ -641,6 +655,13 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
 <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
 <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
 <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+<BaseDetails attr="a11y" :level="1">
+    <BaseDetails attr="translations" :level="2" title="a11y.translations">
+        <BaseAttr name="keyboardNavigation" attr="a11y.translations.keyboardNavigation" type="text" defaultVal="'Use the left and right arrow keys to move between data points.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="tableAvailable" attr="a11y.translations.tableAvailable" type="text" defaultVal="'A data table for this chart is available below.'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="tableCaption" attr="a11y.translations.tableCaption" type="text" defaultVal="'Chart data table'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    </BaseDetails>
+</BaseDetails>
 <BaseDetails attr="temperatureColors" :level="1">
   <BaseAttr name="show" attr="temperatureColors.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
   <BaseAttr name="colors" inactive attr="colors" defaultVal="['#34eb96', '#eb4034']" comment="Any number of colors can be provided"/>
@@ -797,6 +818,7 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
           <BaseSlotDocumenter
                 componentName="VueUiSparkline"
                 :types="[
+                    'hint',
                     'svg',
                     'before',
                     'source',

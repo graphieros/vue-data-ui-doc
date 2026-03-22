@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.16.0",
+    "date": "2026-03-22",
+    "updates": [
+      {
+        "component": "All",
+        "description": "Accessibility improvements",
+        "link": ""
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Add config to display name and percentage labels conditionally",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.15.12",
     "date": "2026-03-12",
     "updates": [
