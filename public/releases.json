@@ -1,5 +1,91 @@
 [
   {
+    "version": "v 3.16.1",
+    "date": "2026-03-24",
+    "updates": [
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-heatmap"
+      },
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-horizontal-bar"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiSparkline",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-sparkline"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiStackline",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-stackline"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Improve keyboard navigation of the chart area",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  }, 
+  {
     "version": "v 3.16.0",
     "date": "2026-03-22",
     "updates": [
