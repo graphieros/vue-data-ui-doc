@@ -4643,6 +4643,10 @@
         ],
         "emits": [
             {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            },
+            {
                 "name": "selectLegend",
                 "description": "Emits the current visible series when selecting a legend item."
             }

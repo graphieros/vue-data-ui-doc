@@ -937,6 +937,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
               <ComponentEmits
                 component="VueUiHorizontalBar"
                 :names="[
+                  'selectDatapoint',
                   'selectLegend',
                   'copyAlt'
                 ]"

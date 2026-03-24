@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.16.2",
+    "date": "2026-03-24",
+    "updates": [
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Add @selectDatapoint emit",
+        "link": "/docs#vue-ui-horizontal-bar"
+      }
+    ]
+  },
+  {
     "version": "v 3.16.1",
     "date": "2026-03-24",
     "updates": [
