@@ -8270,7 +8270,42 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ar: 'خط سلس مع منطقة'
                 }
             },
-                        // SPARKLINE TERMPERATURE COLORS
+            // SPARKLINE WITH DASHINDICES
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        line: {
+                            ...CONFIG_SPARKLINE_BASE.value.style.line,
+                            dashIndices: [10, 11, 20],
+                            dashArray: 6,
+                            smooth: true
+                        },
+                        area: {
+                            show: false,
+                            color: '#1F77B4',
+                        }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-dashed-segments',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'Spline with dashed segments',
+                    fr: 'Spline avec segments en pointillés',
+                    pt: 'Spline com segmentos tracejados',
+                    de: 'Spline mit gestrichelten Segmenten',
+                    zh: '带虚线段的样条曲线',
+                    ja: '破線セグメントを含むスプライン曲線',
+                    es: 'Spline con segmentos discontinuos',
+                    ko: '점선 구간이 있는 스플라인 곡선',
+                    ar: 'منحنى سبلاين مع مقاطع متقطعة'
+                }
+            },
+            // SPARKLINE TERMPERATURE COLORS
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: mergeConfigs({

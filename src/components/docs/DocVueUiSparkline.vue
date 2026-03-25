@@ -180,6 +180,8 @@ const darkModeConfig = ref({
       color: "#1f77b4",
       strokeWidth: 3,
       smooth: true,
+      dashIndices: [],
+      dashArray: 4,
       pulse: {
         show: false,
         loop: true,
@@ -317,6 +319,8 @@ const config = ref({
       color: "#1f77b4",
       strokeWidth: 3,
       smooth: true,
+      dashIndices: [],
+      dashArray: 4,
       pulse: {
         show: false,
         loop: true,
@@ -747,6 +751,8 @@ Toggle tree view: <input type="checkbox" v-model="showAllConfig">
     <BaseAttr name="color" attr="style.line.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="strokeWidth" attr="style.line.strokeWidth" type="number" defaultVal="3" :min="0.1" :max="10" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="smooth" attr="style.line.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr inactive name="dashIndices" defaultVal="[]"/>
+    <BaseAttr name="dashArray" attr="style.line.dashArray" type="number" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" />
     <BaseDetails attr="pulse" :level="3" title="style.line.pulse">
       <BaseAttr name="show" attr="style.line.pulse.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
       <BaseAttr name="loop" attr="style.line.pulse.loop" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />

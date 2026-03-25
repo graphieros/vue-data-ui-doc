@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.16.3",
+    "date": "2026-03-25",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add support for dashed segments on the line variant.",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 3.16.2",
     "date": "2026-03-24",
     "updates": [
