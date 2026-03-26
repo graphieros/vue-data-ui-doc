@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.16.4",
+    "date": "2026-03-25",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Sync keyboard navigation with selectedIndex for mutliple instance setups",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 3.16.3",
     "date": "2026-03-25",
     "updates": [
