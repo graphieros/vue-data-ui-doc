@@ -2213,16 +2213,14 @@ const digitsConfigVersion = computed(() => {
       <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig">
           <template #td="{ td, colIndex }">
-            <div v-if="colIndex === 1" class="h-[18px] flex flex-row align-center">
-              <VueUiDigits v-for="d in td.replaceAll('v ', '')"
-                :config="digitsConfigVersion"
-                :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.5rem]' : ''" />
+            <div v-if="colIndex === 1" class="font-mono text-xs">
+              {{ td.replaceAll('v', '') }}
             </div>
-            <div v-else-if="colIndex === 2" class="flex flex-row gap-2 place-items-center">
+            <div v-else-if="colIndex === 2" class="flex flex-row gap-2 place-items-center font-mono text-xs">
               <VueUiIcon :name="useIconMap(td)" :size="16" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'"/>
               <span>{{ td }}</span>
             </div>
-            <span v-else>
+            <span v-else class="font-mono text-xs">
               {{ td }}
             </span>
           </template>
