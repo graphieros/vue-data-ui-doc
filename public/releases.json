@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.17.1",
+    "date": "2026-03-28",
+    "updates": [
+      {
+        "component": "New tooltip slot",
+        "description": "Add a new #tooltip slot as an alternative to the customFormat in config.",
+        "link": ""
+      },
+      {
+        "component": "Zoom minimap",
+        "description": "Fix range handles not dragging in Firefox",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.16.5",
     "date": "2026-03-25",
     "updates": [
