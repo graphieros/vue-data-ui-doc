@@ -6825,7 +6825,6 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 },
                                 xAxisLabels: {
                                     ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
-                                    values: ['01-25', '02-25', '03-25', '04-25', '05-25', '06-25', '07-25', '08-25', '09-25', '10-25', '11-25', '12-25'],
                                     rotation: 0
                                 }
                             }
