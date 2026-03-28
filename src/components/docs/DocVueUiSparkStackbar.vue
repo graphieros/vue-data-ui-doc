@@ -510,6 +510,7 @@ function goToPage(route) {
                     :types="[
                         'hint',
                         'tooltip-before',
+                        'tooltip',
                         'tooltip-after',
                         'source'
                     ]" 

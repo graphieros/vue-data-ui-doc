@@ -759,6 +759,9 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 :types="[
                     'hint',
                     'svg',
+                    'tooltip-before',
+                    'tooltip',
+                    'tooltip-after',
                     'watermark',
                     'source',
                     'chart-background',

@@ -2407,6 +2407,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                 'hint',
                 'legend',
                 'tooltip-before',
+                'tooltip',
                 'tooltip-after',
                 'reset-action',
                 'watermark',

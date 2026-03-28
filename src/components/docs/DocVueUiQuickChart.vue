@@ -1158,6 +1158,7 @@ const customFormatCode = ref(`tooltipCustomFormat: ({ seriesIndex, datapoint, se
                         'hint',
                         'legend',
                         'tooltip-before',
+                        'tooltip',
                         'tooltip-after',
                         'watermark',
                         'source',

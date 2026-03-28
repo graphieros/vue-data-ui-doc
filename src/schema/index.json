@@ -2108,6 +2108,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -2821,6 +2825,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -3092,6 +3100,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -3574,6 +3586,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -3832,6 +3848,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -4061,6 +4081,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -4440,6 +4464,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -4719,6 +4747,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -4975,6 +5007,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -5693,6 +5729,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -5771,6 +5811,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -6357,6 +6401,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -6603,6 +6651,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -7212,6 +7264,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -7395,6 +7451,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -7686,6 +7746,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -7914,6 +7978,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -8179,6 +8247,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -8901,6 +8973,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -9243,6 +9319,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -9651,6 +9731,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -10280,6 +10364,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -10882,6 +10970,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -11108,6 +11200,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",
@@ -11615,6 +11711,10 @@
                 "description": "inject content on the top area of the tooltip."
             },
             {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
+            },
+            {
                 "name": "tooltip-after",
                 "description": "inject content on the bottom area of the tooltip."
             },
@@ -11873,6 +11973,10 @@
             {
                 "name": "tooltip-before",
                 "description": "inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip",
+                "description": "inject any content inside the tooltip."
             },
             {
                 "name": "tooltip-after",

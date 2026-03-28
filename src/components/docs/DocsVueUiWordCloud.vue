@@ -779,6 +779,9 @@ function goToPage(route) {
                     :types="[
                         'hint',
                         'svg',
+                        'tooltip-before',
+                        'tooltip',
+                        'tooltip-after',
                         'reset-action',
                         'watermark',
                         'source',

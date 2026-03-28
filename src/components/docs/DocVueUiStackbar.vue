@@ -1463,6 +1463,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         'hint',
                         'svg',
                         'tooltip-before',
+                        'tooltip',
                         'tooltip-after',
                         'time-label',
                         'watermark',

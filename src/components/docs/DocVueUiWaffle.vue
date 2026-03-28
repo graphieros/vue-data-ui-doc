@@ -859,6 +859,7 @@ const customFormatCode = ref(`customFormat: ({ seriesIndex, datapoint, series, c
                         'cell',
                         'legend',
                         'tooltip-before',
+                        'tooltip',
                         'tooltip-after',
                         'watermark',
                         'source',

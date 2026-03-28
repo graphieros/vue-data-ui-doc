@@ -1007,6 +1007,7 @@ const customFormatCode = ref(`customFormat: ({ serie, seriesIndex, series, confi
                         'svg',
                         'plot-comment',
                         'tooltip-before',
+                        'tooltip',
                         'tooltip-after',
                         'legend',
                         'watermark',

@@ -708,6 +708,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                         'datapoint',
                         'svg',
                         'tooltip-before',
+                        'tooltip',
                         'tooltip-after',
                         'watermark',
                         'source',

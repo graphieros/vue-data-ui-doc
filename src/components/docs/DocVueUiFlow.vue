@@ -961,6 +961,9 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                     :types="[
                         'hint',
                         'svg',
+                        'tooltip-before',
+                        'tooltip',
+                        'tooltip-after',
                         'watermark',
                         'source',
                         'chart-background',
