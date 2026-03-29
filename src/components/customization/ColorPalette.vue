@@ -84,12 +84,12 @@ const codeContent = computed(() => {
     return {
         default: `
     // default palette
-    import { getPalette } from "vue-data-ui";
+    import { getPalette } from "vue-data-ui/utils";
     const palette = getPalette();
         `,
         celebration: `
     // celebration palette
-    import { getPalette } from "vue-data-ui";
+    import { getPalette } from "vue-data-ui/utils";
     const palette = getPalette('celebration');
         `,
         celebrationNight: `
@@ -99,27 +99,27 @@ const codeContent = computed(() => {
         `,
         zen: `
     // zen palette
-    import { getPalette } from "vue-data-ui";
+    import { getPalette } from "vue-data-ui/utils";
     const palette = getPalette('zen');
         `,
         concrete: `
     // concrete palette
-    import { getPalette } from "vue-data-ui";
+    import { getPalette } from "vue-data-ui/utils";
     const palette = getPalette('concrete');
         `,
         hack: `
     // hack palette
-    import { getPalette } from "vue-data-ui";
+    import { getPalette } from "vue-data-ui/utils";
     const palette = getPalette('hack');
         `,
         minimal: `
     // minimal palette
-    import { getPalette } from "vue-data-ui";
+    import { getPalette } from "vue-data-ui/utils";
     const palette = getPalette('minimal');
         `,
         minimalDark: `
     // minimalDark palette
-    import { getPalette } from "vue-data-ui";
+    import { getPalette } from "vue-data-ui/utils";
     const palette = getPalette('minimalDark');
         `,
     };
