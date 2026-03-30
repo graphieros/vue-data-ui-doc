@@ -270,7 +270,7 @@ export function useConfig(options = {}) {
         color: COLOR_GREY_MID,
         highlightColor: COLOR_GREY_DARK,
         fontSize: FONT._14,
-        useResetSlot: false,
+        useResetSlot: false, // TODO: Legacy, now useless, to be removed in v4
         startIndex: null,
         endIndex: null,
         enableRangeHandles: true,
@@ -4189,7 +4189,9 @@ export function useConfig(options = {}) {
                     strokeHovered: COLOR_BLACK
                 },
                 links: {
-                    stroke: COLOR_GREY_MID
+                    stroke: COLOR_GREY_MID,
+                    strokeWidth: 2,
+                    useChildColor: false,
                 },
                 title: TITLE,
                 tooltip: TOOLTIP,

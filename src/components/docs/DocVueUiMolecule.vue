@@ -220,7 +220,9 @@ const config = ref({
                 strokeHovered: "#2D353C"
             },
             links: {
-                stroke: "#DDDDDD"
+                stroke: "#DDDDDD",
+                strokeWidth: 2,
+                useChildColor: true,
             },
             title: {
                 text: "Title",
@@ -331,7 +333,9 @@ const darkModeConfig = ref({
                 strokeHovered: "#FAFAFA"
             },
             links: {
-                stroke: "#3A3A3A"
+                stroke: "#3A3A3A",
+                strokeWidth: 2,
+                useChildColor: true,
             },
             title: {
                 text: "Title",
@@ -737,6 +741,8 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="links" :level="3" title="style.chart.links">
                     <BaseAttr name="stroke" attr="style.chart.links.stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeWidth" attr="style.chart.links.strokeWidth" type="number" :min="1" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="useChildColor" attr="style.chart.links.useChildColor" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="nodes" :level="3" title="style.chart.links">
                     <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.nodes.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.nodes.stroke">, (default: "#FFFFFF")</span>

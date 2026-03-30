@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.17.2",
+    "date": "2026-03-30",
+    "updates": [
+      {
+        "component": "VueUiMolecule",
+        "description": "Improve links configuration options",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "Types",
+        "description": "Fix a few types errors",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.17.1",
     "date": "2026-03-28",
     "updates": [
