@@ -540,27 +540,24 @@ const selectedConfig = computed(() => {
                         </div>
                     </div>
     <div class="flex flex-col sm:flex-row place-items-center gap-2 justify-center w-full mx-auto">
-        <div class="font-inter-medium flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6" style="letter-spacing: -1px;">
-            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-[#CCCCCC]">1 import</div>
-            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-[#CCCCCC]">3 props</div>
-            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-[#CCCCCC]">{{ Object.keys(mainConfig).length }} components</div>
+        <div class="font-inter-medium flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6 sm:pr-20 sm:ml-20" style="letter-spacing: -1px;">
+            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-gray-400"><span class="font-bold font-mono text-app-green-dark dark:text-app-green">{{ Object.keys(mainConfig).length }}</span> components</div>
+            <div class="text-xl sm:text-4xl w-full text-end text-vue-blue dark:text-gray-400"><span class="font-bold font-mono text-app-blue-dark-mid dark:text-app-blue">2</span> props</div>
         </div>
         
-        <RouterLink class="w-[360px]" to="/universal-component">
-        <div title="Checkout how to use the VueDataUi universal component" class="mx-auto rounded-md py-1 px-6 sm:px-10">
-    <pre>
-
+        <div class="w-[360px]">
+        <div class="mx-auto rounded-md py-1 px-6 sm:px-12">
+    <pre class="sm:-mt-0.5">
     <code class="text-gray-500 text-md relative">
-        <VueUiIcon :name="useIconMap(`VueUi${currentShowcase}`)" class="absolute top-1/2 animate-pulse" :size="32" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
-    &lt;<span class="dark:text-gray-200">VueDataUi</span>
-        <span class="text-black dark:text-app-orange">component</span>="VueUi{{ currentShowcase }}"
-        <span class="text-black dark:text-app-green">:dataset</span>="dataset"
-        <span class="text-black dark:text-app-blue">:config</span>="config"
+        <VueUiIcon :name="useIconMap(`VueUi${currentShowcase}`)" class="absolute top-1/2 animate-pulse sm:-left-14" :size="32" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
+    &lt;<span class="text-app-green-darker dark:text-app-green">VueUi{{ currentShowcase }}</span>
+        <span class="text-app-blue-dark-mid dark:text-app-blue">:dataset</span>
+        <span class="text-app-blue-dark-mid dark:text-app-blue">:config</span>
     /&gt;
     </code>
     </pre>
         </div>
-        </RouterLink>
+        </div>
     </div>
 
     <div class="p-4 rounded-full gap-4 mx-auto flex flex-row justify-center bg-gray-100 dark:bg-[#2A2A2A] w-fit shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
