@@ -1011,42 +1011,7 @@ function handleSearchEnter() {
     >
         <template v-if="isOpen">
             <div class="mt-8 flex flex-col gap-3">
-                <RouterLink to="/universal-component">
-                    <button
-                        :class="`w-full py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
-        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${
-            router.currentRoute.value.fullPath === '/universal-component'
-                ? isDarkMode
-                    ? 'bg-gradient-to-r from-[#5f8aee50] to-[#5f8aee20] shadow'
-                    : 'bg-app-blue-light'
-                : 'bg-gray-200 dark:bg-[#242424]'
-        }`"
-                    >
-                        <div class="flex flex-row place-items-center justify-center gap-4">
-                            <VueUiIcon
-                                name="vueDataUi"
-                                :stroke="`${
-                                    router.currentRoute.value.fullPath === '/universal-component'
-                                        ? isDarkMode
-                                            ? '#83a4f2'
-                                            : '#5f8aee'
-                                        : '#6A6A6A'
-                                }`"
-                            />
-                            <div
-                                style="white-space: nowrap;"
-                                :class="`${
-                                    router.currentRoute.value.fullPath === '/universal-component'
-                                        ? 'font-inter-medium'
-                                        : ''
-                                }`"
-                            >
-                                Universal component
-                            </div>
-                        </div>
-                    </button>
-                    <div class="w-full mt-6 mb-2 border-b border-gray-500 dark:border-[#3A3A3A]"></div>
-                </RouterLink>
+
 
                 <!-- INPUT WITH AUTOCOMPLETE -->
                 <div class="relative mb-2">
@@ -1108,6 +1073,43 @@ function handleSearchEnter() {
                     :icon="menu.icon"
                     @close="closeIfOpen"
                 />
+
+                                <RouterLink to="/universal-component">
+                                <div class="w-full mt-2 mb-6 border-b border-gray-500 dark:border-[#3A3A3A]"></div>
+                    <button
+                        :class="`w-full py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${
+            router.currentRoute.value.fullPath === '/universal-component'
+                ? isDarkMode
+                    ? 'bg-gradient-to-r from-[#5f8aee50] to-[#5f8aee20] shadow'
+                    : 'bg-app-blue-light'
+                : 'bg-gray-200 dark:bg-[#242424]'
+        }`"
+                    >
+                        <div class="flex flex-row place-items-center justify-center gap-4">
+                            <VueUiIcon
+                                name="vueDataUi"
+                                :stroke="`${
+                                    router.currentRoute.value.fullPath === '/universal-component'
+                                        ? isDarkMode
+                                            ? '#83a4f2'
+                                            : '#5f8aee'
+                                        : '#6A6A6A'
+                                }`"
+                            />
+                            <div
+                                style="white-space: nowrap;"
+                                :class="`${
+                                    router.currentRoute.value.fullPath === '/universal-component'
+                                        ? 'font-inter-medium'
+                                        : ''
+                                }`"
+                            >
+                                Universal component
+                            </div>
+                        </div>
+                    </button>
+                </RouterLink>
             </div>
         </template>
         <template v-else>
