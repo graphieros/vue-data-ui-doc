@@ -101,7 +101,7 @@ onMounted(() => {
     } 
     if(localStorage.donutDataset) {
         datasetItems.value = JSON.parse(localStorage.donutDataset)
-    }else {
+    } else {
         localStorage.setItem('donutDataset', JSON.stringify(defaultData.vue_ui_donut.dataset))
     }
     step.value += 1;
@@ -132,7 +132,7 @@ function forceChartUpdate() {
 }
 
 function addDatasetItem() {
-    datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid()});
+    datasetItems.value.push({ ...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid() });
     step.value += 1;
     saveDatasetToLocalStorage()
 }
@@ -153,6 +153,12 @@ const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
 })
 
+const chartDataset = computed(() => {
+    return datasetItems.value.map(item => ({
+        ...item,
+        values: Array.isArray(item.values) ? [...item.values] : []
+    }))
+})
 </script>
 
 <template>
@@ -160,96 +166,107 @@ const finalConfig = computed(() => {
         <ClearStorageAndRefresh keyConfig="donutConfig" keyDataset="donutDataset" :key="`clear_${clearStep}`"/>
         <BaseDocExampleLink link="vue-ui-donut" componentName="VueUiDonut"/>
 
-    <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-        <Transition name="fade">
-            <BaseMakerChart
-                v-if="!isFixed"
-                :isFixed="isFixed"
-                @fixChart="fixChart"
-                @resetModel="resetModel"
-            >
-                <VueUiDonut ref="chart" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-            </BaseMakerChart>
-        </Transition>
-    </div>
+        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+            <Transition name="fade">
+                <BaseMakerChart
+                    v-if="!isFixed"
+                    :isFixed="isFixed"
+                    @fixChart="fixChart"
+                    @resetModel="resetModel"
+                >
+                    <VueUiDonut
+                        ref="chart"
+                        :dataset="chartDataset"
+                        :config="finalConfig"
+                        :key="`chart_${step}`"
+                    />
+                </BaseMakerChart>
+            </Transition>
+        </div>
 
-    <details open>
-        <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-        <div class="flex flex-col gap-2">
-            <BaseCard>
-                <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-
-                    <BaseButton
-                        color="error"
-                        :size="6"
-                        fab
-                        @click="deleteDatasetItem(ds.id)"
-                        tw="absolute -top-2 -left-2"
+        <details open>
+            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+            <div class="flex flex-col gap-2">
+                <BaseCard>
+                    <div
+                        v-for="(ds, i) in datasetItems"
+                        :key="ds.id"
+                        class="w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3"
+                        :style="`background:${ds.color}30`"
                     >
-                        <XIcon size="14" />
-                    </BaseButton>
+                        <BaseButton
+                            color="error"
+                            :size="6"
+                            fab
+                            @click="deleteDatasetItem(ds.id)"
+                            tw="absolute -top-2 -left-2"
+                        >
+                            <XIcon size="14" />
+                        </BaseButton>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="number" v-model="ds.values[0]" @change="saveDatasetToLocalStorage"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </BaseCard>
-        </div>
-        <div class="flex flex-row gap-4 mt-4 mb-6">
-            <BaseButton
-                color="success" 
-                fab
-                :size="10"
-                @click="addDatasetItem"
-                :tooltip="translations.maker.tooltips.addDataset[store.lang]"
-                tooltip-position="right"
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input class="h-[36px]" type="number" v-model="ds.values[0]" @change="saveDatasetToLocalStorage"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </BaseCard>
+            </div>
+
+            <div class="flex flex-row gap-4 mt-4 mb-6">
+                <BaseButton
+                    color="success" 
+                    fab
+                    :size="10"
+                    @click="addDatasetItem"
+                    :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                    tooltip-position="right"
+                >
+                    <PlusIcon/>
+                </BaseButton>
+            </div>
+        </details>
+
+        <details open class="mt-6" v-if="makerTranslations.labels">
+            <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+
+            <MakerKnobs
+                :categories="CONFIG_CATEGORIES"
+                :model="CONFIG_MODEL"
+                @change="forceChartUpdate"
+            />
+        </details>
+
+        <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <ComponentContent
+                :dataset="datasetItems.map(({name, values, color}) => { return {name, values, color}})"
+                :config="finalConfig"
+                componentName="VueUiDonut"
+                configName="vue_ui_donut"
+                @click="() => copyComponent('componentContent', store)"
+                :copyComponentFunc="() => copyComponent('componentContent', store)"
+                keyConfig="donutConfig"
+                keyDataset="donutDataset"
             >
-                <PlusIcon/>
-            </BaseButton>
+                <template #component-copy>
+                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                </template>
+            </ComponentContent>          
+            <slot name="rater"/>
         </div>
-    </details>
-
-    <details open class="mt-6" v-if="makerTranslations.labels">
-        <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-
-        <MakerKnobs
-            :categories="CONFIG_CATEGORIES"
-            :model="CONFIG_MODEL"
-            @change="forceChartUpdate"
-        />
-    </details>
-
-    <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <ComponentContent
-            :dataset="datasetItems.map(({name, values, color}) => { return {name, values, color}})"
-            :config="finalConfig"
-            componentName="VueUiDonut"
-            configName="vue_ui_donut"
-            @click="() => copyComponent('componentContent', store)"
-            :copyComponentFunc="() => copyComponent('componentContent', store)"
-            keyConfig="donutConfig"
-            keyDataset="donutDataset"
-        >
-            <template #component-copy>
-                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-            </template>
-        </ComponentContent>          
-        <slot name="rater"/>
     </div>
-    </div>
+
     <Transition name="fade">
         <BaseMakerChart
             v-if="isFixed"
@@ -257,7 +274,11 @@ const finalConfig = computed(() => {
             @fixChart="fixChart"
             @resetModel="resetModel"
         >
-            <VueUiDonut :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+            <VueUiDonut
+                :dataset="chartDataset"
+                :config="finalConfig"
+                :key="`chart_${step}`"
+            />
         </BaseMakerChart>
     </Transition>
 </template>
