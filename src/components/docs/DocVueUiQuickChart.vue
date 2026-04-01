@@ -758,9 +758,9 @@ const customFormatCode =
                             "
                             :key="key"
                         >
-                            <template #reset-action="{ reset }">
+                            <!-- <template #reset-action="{ reset }">
                                 <button @click="reset()">CUSTOM RESET</button>
-                            </template>
+                            </template> -->
                         </VueUiQuickChart>
                     </template>
                     <template #fallback>
