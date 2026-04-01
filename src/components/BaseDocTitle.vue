@@ -14,6 +14,10 @@ const props = defineProps({
     universal: {
         type: Boolean,
         default: false
+    },
+    hideTitle: {
+        type: Boolean,
+        default: false,
     }
 });
 
@@ -29,7 +33,7 @@ const imp = useImportMap(props.name);
 </script>
 
 <template>
-    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue-mid dark:text-gray-600 mb-2 text-2xl mt-12">
+    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue-mid dark:text-gray-600 mb-2 text-2xl mt-12" v-if="!hideTitle">
         <VueUiIcon 
             :name="useIconMap(name)" 
             :stroke="isDarkMode ? '#5f8aee' : '#3456a3'" 

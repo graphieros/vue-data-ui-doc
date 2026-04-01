@@ -71,6 +71,8 @@ export function useImportMap(c) {
         VueUiDag: 'vue-ui-dag',
         VueUiGeo: 'vue-ui-geo',
         VueUiBump: 'vue-ui-bump',
+        VueUiPattern: 'vue-ui-pattern',
+        VueUiPatternSeed: 'vue-ui-pattern-seed'
     }
     return mapping[c] ? {
         classic: `import { ${c} } from "vue-data-ui";`,

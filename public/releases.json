@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.17.3",
+    "date": "2026-04-01",
+    "updates": [
+      {
+        "component": "VueUiPatternSeed",
+        "description": "New addon component to create unique patterns for chart series",
+        "link": "/customization#patterns"
+      }
+    ]
+  },
+  {
     "version": "v 3.17.2",
     "date": "2026-03-30",
     "updates": [
