@@ -196,6 +196,6 @@ s
 
         <NpmxAd />
 
-        <FncsyAd />
+        <!-- <FncsyAd /> -->
     </div>
 </template>
