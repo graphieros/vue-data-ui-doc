@@ -9,7 +9,7 @@ const props = defineProps({
     },
     limit: {
         type: Number,
-        default: 3
+        default: 3,
     },
     plot: Object,
     radius: Number,
@@ -18,8 +18,8 @@ const props = defineProps({
     strokeWidth: Number,
     zoom: {
         type: Number,
-        default: 1.3
-    }
+        default: 1.3,
+    },
 });
 
 function calcPolygonPoints({
@@ -27,30 +27,27 @@ function calcPolygonPoints({
     centerY,
     outerPoints,
     radius,
-    rotation
+    rotation,
 }) {
     const angle = Math.PI / outerPoints;
     const angleOffsetToCenter = rotation;
     let points = "";
     const coordinates = [];
     for (let i = 0; i < outerPoints * 2; i += 1) {
-        let currX = centerX + Math.cos(i * angle + angleOffsetToCenter) * radius;
-        let currY = centerY + Math.sin(i * angle + angleOffsetToCenter) * radius;
+        let currX =
+            centerX + Math.cos(i * angle + angleOffsetToCenter) * radius;
+        let currY =
+            centerY + Math.sin(i * angle + angleOffsetToCenter) * radius;
         points += `${currX},${currY} `;
         coordinates.push({ x: currX, y: currY });
     }
     return {
         path: `M${points}Z`,
-        coordinates
+        coordinates,
     };
 }
 
-function createPolygonPath({
-    plot,
-    radius,
-    sides,
-    rotation = 0
-}) {
+function createPolygonPath({ plot, radius, sides, rotation = 0 }) {
     const centerX = plot.x;
     const centerY = plot.y;
     const outerPoints = sides / 2;
@@ -59,15 +56,11 @@ function createPolygonPath({
         centerY,
         outerPoints,
         radius: radius + 1,
-        rotation
+        rotation,
     });
 }
 
-function createStar({
-    plot,
-    radius,
-    apexes = 5
-}) {
+function createStar({ plot, radius, apexes = 5 }) {
     const centerX = plot.x;
     const centerY = plot.y;
     const innerCirclePoints = apexes;
@@ -79,8 +72,8 @@ function createStar({
         centerY,
         innerCirclePoints,
         innerRadius,
-        outerRadius
-    })
+        outerRadius,
+    });
 }
 
 function calcStarPoints({
@@ -88,7 +81,7 @@ function calcStarPoints({
     centerY,
     innerCirclePoints,
     innerRadius,
-    outerRadius
+    outerRadius,
 }) {
     const angle = Math.PI / innerCirclePoints;
     const angleOffsetToCenterStar = 60;
@@ -104,66 +97,65 @@ function calcStarPoints({
     return points;
 }
 
-const emit = defineEmits(['mouseover', 'mouseout', 'click']);
+const emit = defineEmits(["mouseover", "mouseout", "click"]);
 
-function getPolygonConfigFromName(name){
+function getPolygonConfigFromName(name) {
     return {
         circle: {
             points: 1,
-            rotation: 0
+            rotation: 0,
         },
         line: {
             points: 2,
-            rotation: 0
+            rotation: 0,
         },
         triangle: {
             points: 3,
-            rotation: 0.52
+            rotation: 0.52,
         },
         square: {
             points: 4,
-            rotation: 0.8
+            rotation: 0.8,
         },
         diamond: {
             points: 4,
-            rotation: 0
+            rotation: 0,
         },
         pentagon: {
             points: 5,
-            rotation: 0.95
+            rotation: 0.95,
         },
         hexagon: {
             points: 6,
-            rotation: 0
-        }
-    }[name]
+            rotation: 0,
+        },
+    }[name];
 }
 
 const config = computed(() => {
-    return getPolygonConfigFromName(props.shape)
+    return getPolygonConfigFromName(props.shape);
 });
 
 const starPoints = computed(() => {
-    if (props.shape !== 'star') return null;
+    if (props.shape !== "star") return null;
     return createStar({
         plot: { x: props.plot.x, y: props.plot.y },
-        radius: props.radius * (props.isSelected ? props.zoom : 1)
-    })
-})
+        radius: props.radius * (props.isSelected ? props.zoom : 1),
+    });
+});
 
 const d = computed(() => {
     return createPolygonPath({
         plot: { x: props.plot.x, y: props.plot.y },
         radius: props.radius * (props.isSelected ? props.zoom : 1),
         sides: config.value.points,
-        rotation: config.value.rotation
+        rotation: config.value.rotation,
     }).path;
 });
-
 </script>
 
 <template>
-    <g> 
+    <g>
         <circle
             v-if="config && config.points === 1"
             :cx="plot.x"
@@ -186,7 +178,7 @@ const d = computed(() => {
             @mouseout="emit('mouseout')"
             @click="emit('click')"
         />
-        <polygon 
+        <polygon
             v-if="starPoints"
             :points="starPoints"
             :fill="color"

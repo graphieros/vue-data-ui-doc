@@ -10,11 +10,11 @@ const dataset = ref([
         description: "Capital of France",
         color: "#E63946",
         radius: 1,
-        dix: 'wut',
+        dix: "wut",
     },
     {
         name: "Lyon",
-        coordinates: [4.8357, 45.7640],
+        coordinates: [4.8357, 45.764],
         description: "Auvergne-Rhône-Alpes",
         color: "#457B9D",
         radius: 1,
@@ -51,13 +51,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
+                    text: "Subtitle",
+                },
             },
-        }
-    }
-})
-
+        },
+    },
+});
 </script>
 
 <template>

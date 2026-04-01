@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useHelpStore = defineStore('help', {
+export const useHelpStore = defineStore("help", {
     state: () => {
         return {
             title: {
@@ -12,8 +12,8 @@ export const useHelpStore = defineStore('help', {
                 ja: "ヘルプセンター",
                 es: "CENTRO DE AYUDA",
                 ko: "지원 센터",
-                ar: 'مركز المساعدة'
-            }
-        }
-    }
-})
+                ar: "مركز المساعدة",
+            },
+        };
+    },
+});

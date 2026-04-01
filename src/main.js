@@ -1,14 +1,14 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import router from './router';
-import { createPinia } from 'pinia';
-import { 
-    VueUiTable, 
-    VueUiDonut, 
-    VueUiWaffle, 
-    VueUiRadar, 
-    VueUiQuadrant, 
+import { createApp } from "vue";
+import "./style.css";
+import App from "./App.vue";
+import router from "./router";
+import { createPinia } from "pinia";
+import {
+    VueUiTable,
+    VueUiDonut,
+    VueUiWaffle,
+    VueUiRadar,
+    VueUiQuadrant,
     VueUiGauge,
     VueUiChestnut,
     VueUiOnion,
@@ -58,7 +58,7 @@ import {
     VueUiStackline,
     VueUiDag,
     VueUiGeo,
-    VueUiBump
+    VueUiBump,
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -105,26 +105,26 @@ app.component("VueUi3dBar", VueUi3dBar);
 app.component("VueUiDigits", VueUiDigits);
 app.component("VueUiMolecule", VueUiMolecule);
 app.component("VueUiTableSparkline", VueUiTableSparkline);
-app.component("Arrow", Arrow)
-app.component("VueUiMiniLoader", VueUiMiniLoader)
-app.component("VueUiNestedDonuts", VueUiNestedDonuts)
-app.component("VueUiSparkgauge", VueUiSparkgauge)
-app.component("VueDataUi", VueDataUi)
-app.component("VueUiQuickChart", VueUiQuickChart)
-app.component("VueUiStripPlot", VueUiStripPlot)
-app.component("VueUiTreemap", VueUiTreemap)
-app.component("VueUiWordCloud", VueUiWordCloud)
-app.component("VueUiXyCanvas", VueUiXyCanvas)
-app.component("VueUiCarouselTable", VueUiCarouselTable)
-app.component("VueUiGizmo", VueUiGizmo)
-app.component("VueUiStackbar", VueUiStackbar)
-app.component('VueUiPattern', VueUiPattern)
-app.component('VueUiWorld', VueUiWorld)
-app.component('VueUiRidgeline', VueUiRidgeline)
-app.component('VueUiChord', VueUiChord)
-app.component('VueUiStackline', VueUiStackline)
-app.component('VueUiDag', VueUiDag)
-app.component('VueUiGeo', VueUiGeo)
-app.component('VueUiBump', VueUiBump)
+app.component("Arrow", Arrow);
+app.component("VueUiMiniLoader", VueUiMiniLoader);
+app.component("VueUiNestedDonuts", VueUiNestedDonuts);
+app.component("VueUiSparkgauge", VueUiSparkgauge);
+app.component("VueDataUi", VueDataUi);
+app.component("VueUiQuickChart", VueUiQuickChart);
+app.component("VueUiStripPlot", VueUiStripPlot);
+app.component("VueUiTreemap", VueUiTreemap);
+app.component("VueUiWordCloud", VueUiWordCloud);
+app.component("VueUiXyCanvas", VueUiXyCanvas);
+app.component("VueUiCarouselTable", VueUiCarouselTable);
+app.component("VueUiGizmo", VueUiGizmo);
+app.component("VueUiStackbar", VueUiStackbar);
+app.component("VueUiPattern", VueUiPattern);
+app.component("VueUiWorld", VueUiWorld);
+app.component("VueUiRidgeline", VueUiRidgeline);
+app.component("VueUiChord", VueUiChord);
+app.component("VueUiStackline", VueUiStackline);
+app.component("VueUiDag", VueUiDag);
+app.component("VueUiGeo", VueUiGeo);
+app.component("VueUiBump", VueUiBump);
 
-app.mount('#app')
+app.mount("#app");

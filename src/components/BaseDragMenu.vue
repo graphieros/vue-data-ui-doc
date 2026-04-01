@@ -10,7 +10,8 @@ let elementTop = 0;
 
 const startDrag = (event) => {
     isDragging.value = true;
-    startY = event.type === "touchstart" ? event.touches[0].clientY : event.clientY;
+    startY =
+        event.type === "touchstart" ? event.touches[0].clientY : event.clientY;
     elementTop = draggableElement.value.offsetTop;
     window.addEventListener("mousemove", handleDrag);
     window.addEventListener("mouseup", endDrag);
@@ -46,8 +47,9 @@ const endDrag = () => {
 
 onMounted(() => {
     const elementHeight = draggableElement.value.offsetHeight;
-    draggableElement.value.style.top = `${(window.innerHeight - elementHeight) / 2
-        }px`;
+    draggableElement.value.style.top = `${
+        (window.innerHeight - elementHeight) / 2
+    }px`;
 });
 
 onUnmounted(() => {
@@ -56,11 +58,20 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div ref="draggableElement"
+    <div
+        ref="draggableElement"
         class="z-10 hidden sm:block fixed left-0 bg-gradient-to-br from-app-blue-light to-app-blue text-white p-4 rounded-r-[55px] shadow-md cursor-move select-none py-6"
-        @mousedown="startDrag" @touchstart="startDrag">
-        <GripVerticalIcon class="absolute top-1/2 -translate-y-1/2 right-0 text-black" size="16"/>
-        <GripVerticalIcon class="absolute top-1/2 -translate-y-1/2 right-0 text-white" size="18"/>
+        @mousedown="startDrag"
+        @touchstart="startDrag"
+    >
+        <GripVerticalIcon
+            class="absolute top-1/2 -translate-y-1/2 right-0 text-black"
+            size="16"
+        />
+        <GripVerticalIcon
+            class="absolute top-1/2 -translate-y-1/2 right-0 text-white"
+            size="18"
+        />
         <BaseCard rounding="rounded-full" type="dark">
             <slot />
         </BaseCard>

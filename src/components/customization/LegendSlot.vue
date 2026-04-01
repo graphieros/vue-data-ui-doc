@@ -15,28 +15,28 @@ const { components } = useFeatures();
 
 const translations = computed(() => {
     return store.translations;
-})
+});
 
-function makeDs({n, m, type, name, smooth=false}) {
+function makeDs({ n, m, type, name, smooth = false }) {
     let series = [];
-    for(let i = 0; i < n; i += 1) {
+    for (let i = 0; i < n; i += 1) {
         series.push(Math.random() * m);
     }
     return {
         series,
         name,
         type,
-        smooth
-    }
+        smooth,
+    };
 }
 
 const dataset = computed(() => {
     return [
-        makeDs({ n: 12, m: 100, type: 'line', name: 'Serie 1', smooth: false }),
-        makeDs({ n: 12, m: 90, type: 'bar', name: 'Serie 2', smooth: false }),
-        makeDs({ n: 12, m: 80, type: 'bar', name: 'Serie 3', smooth: false }),
-    ]
-})
+        makeDs({ n: 12, m: 100, type: "line", name: "Serie 1", smooth: false }),
+        makeDs({ n: 12, m: 90, type: "bar", name: "Serie 2", smooth: false }),
+        makeDs({ n: 12, m: 80, type: "bar", name: "Serie 3", smooth: false }),
+    ];
+});
 
 const config = computed(() => {
     return {
@@ -45,25 +45,24 @@ const config = computed(() => {
                 bottom: 6,
             },
             legend: {
-                show: false
+                show: false,
             },
             userOptions: {
-                position: 'left'
+                position: "left",
             },
             zoom: {
-                show: false
+                show: false,
             },
             grid: {
                 labels: {
                     yAxis: {
-                        scaleMax: 100
-                    }
-                }
-            }
-        }
-    }
-})
-
+                        scaleMax: 100,
+                    },
+                },
+            },
+        },
+    };
+});
 </script>
 
 <template>
@@ -133,26 +132,25 @@ const config = computed(() => {
         </template>
         <template #chart>
             <div class="pr-[140px] bg-white p-2">
-                <VueUiXy
-                    :dataset="dataset"
-                    :config="config"
-                >
+                <VueUiXy :dataset="dataset" :config="config">
                     <template #legend="{ legend }">
-                        <div class="absolute -right-[125px] bottom-[18px] flex flex-col gap-2 p-2 border shadow">
-                            <div 
+                        <div
+                            class="absolute -right-[125px] bottom-[18px] flex flex-col gap-2 p-2 border shadow"
+                        >
+                            <div
                                 v-for="datapoint in legend"
                                 class="flex flex-row gap-2 place-items-center"
                                 @click="datapoint.segregate()"
                                 :style="{
                                     opacity: datapoint.isSegregated ? 0.5 : 1,
-                                    cursor: 'pointer'
+                                    cursor: 'pointer',
                                 }"
                             >
                                 <div
                                     :style="{
                                         backgroundColor: datapoint.color,
                                         height: '16px',
-                                        width: '48px'
+                                        width: '48px',
                                     }"
                                 />
                                 {{ datapoint.name }}
@@ -162,10 +160,7 @@ const config = computed(() => {
                 </VueUiXy>
             </div>
         </template>
-
     </BaseCustomizationBox>
-
-    
 
     <!-- <div class="flex-1 text-center max-w-[600px] mx-auto">
             {{ translations.customization.legendAllowed[store.lang] }}
@@ -192,7 +187,9 @@ const config = computed(() => {
         </div> -->
 
     <div class="mx-auto max-w-[1000px]">
-        <p class="my-6 text-center" dir="auto">{{ translations.customization.legendAllowed[store.lang] }}</p>
+        <p class="my-6 text-center" dir="auto">
+            {{ translations.customization.legendAllowed[store.lang] }}
+        </p>
         <ComponentsTable :cols="['Component', 'Legend']" class="mx-auto">
             <template #th="{ col }">
                 {{ col }}
@@ -200,19 +197,33 @@ const config = computed(() => {
 
             <template #Component="{ row }">
                 <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
-                    <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
-                        <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+                    <VueUiIcon
+                        :name="row.icon"
+                        :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'"
+                    />
+                    <RouterLink
+                        :to="`/docs#${row.link}`"
+                        class="hover:underline"
+                    >
+                        <span class="text-gray-500">VueUi</span
+                        ><span>{{ row.name.replaceAll("VueUi", "") }}</span>
                     </RouterLink>
                 </div>
             </template>
 
             <template #Legend="{ row }">
-                <div class="w-full h-full flex justify-center" :style="{ background: row.legend ? '#42d39230' : 'transparent'}">
-                    <CheckIcon v-if="row.legend" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+                <div
+                    class="w-full h-full flex justify-center"
+                    :style="{
+                        background: row.legend ? '#42d39230' : 'transparent',
+                    }"
+                >
+                    <CheckIcon
+                        v-if="row.legend"
+                        :stroke="isDarkMode ? '#42d392' : '#1d915d'"
+                    />
                 </div>
             </template>
         </ComponentsTable>
     </div>
-
 </template>

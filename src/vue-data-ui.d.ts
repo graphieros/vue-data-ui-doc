@@ -7,113 +7,113 @@ declare module "vue-data-ui" {
 
     export const VueDataUi: DefineComponent<{
         dataset?:
-        | VueUi3dBarDataset
-        | VueUiAgePyramidDataset
-        | VueUiAnnotatorDataset
-        | Array<Array<string | number>>
-        | VueUiChestnutDatasetRoot[]
-        | VueUiDashboardElement[]
-        | number
-        | string
-        | VueUiDonutEvolutionDatasetItem[]
-        | VueUiDonutDatasetItem[]
-        | VueUiGaugeDataset
-        | VueUiHeatmapDatasetItem[]
-        | VueUiMoleculeDatasetNode[]
-        | VueUiMoodRadarDataset
-        | VueUiNestedDonutsDatasetItem[]
-        | VueUiOnionDatasetItem[]
-        | VueUiQuadrantDatasetItem[]
-        | VueUiRadarDataset
-        | VueUiRatingDataset
-        | VueUiRelationCircleDatasetItem[]
-        | VueUiRingsDatasetItem[]
-        | VueUiScatterDatasetItem[]
-        | VueUiSparkbarDatasetItem[]
-        | VueUiSparkgaugeDataset
-        | VueUiSparkHistogramDatasetItem[]
-        | VueUiSparklineDatasetItem[]
-        | VueUiSparkStackbarDatasetItem[]
-        | VueUiTableSparklineDatasetItem[]
-        | VueUiTableDataset
-        | VueUiThermometerDataset
-        | VueUiTiremarksDataset
-        | VueUiVerticalBarDatasetItem[]
-        | VueUiWaffleDatasetItem[]
-        | VueUiWheelDataset
-        | VueUiXyDatasetItem[]
-        | VueUiTreemapDatasetItem[]
-        | VueUiQuickChartDataset
-        | number[]
-        | VueUiStripPlotDataset[]
-        | VueUiWordCloudDatasetItem[]
-        | VueUiXyCanvasDatasetItem[]
-        | VueUiFlowDatasetItem[]
-        | VueUiParallelCoordinatePlotDatasetItem[]
-        | VueUiCarouselTableDataset
-        | VueUiGizmoDataset
-        | VueUiStackbarDatasetItem[]
-        | VueUiBulletDataset
-        | VueUiFunnelDatasetItem[]
-        | VueUiHistoryPlotDatasetItem[]
-        | VueUiCirclePackDatasetItem[];
+            | VueUi3dBarDataset
+            | VueUiAgePyramidDataset
+            | VueUiAnnotatorDataset
+            | Array<Array<string | number>>
+            | VueUiChestnutDatasetRoot[]
+            | VueUiDashboardElement[]
+            | number
+            | string
+            | VueUiDonutEvolutionDatasetItem[]
+            | VueUiDonutDatasetItem[]
+            | VueUiGaugeDataset
+            | VueUiHeatmapDatasetItem[]
+            | VueUiMoleculeDatasetNode[]
+            | VueUiMoodRadarDataset
+            | VueUiNestedDonutsDatasetItem[]
+            | VueUiOnionDatasetItem[]
+            | VueUiQuadrantDatasetItem[]
+            | VueUiRadarDataset
+            | VueUiRatingDataset
+            | VueUiRelationCircleDatasetItem[]
+            | VueUiRingsDatasetItem[]
+            | VueUiScatterDatasetItem[]
+            | VueUiSparkbarDatasetItem[]
+            | VueUiSparkgaugeDataset
+            | VueUiSparkHistogramDatasetItem[]
+            | VueUiSparklineDatasetItem[]
+            | VueUiSparkStackbarDatasetItem[]
+            | VueUiTableSparklineDatasetItem[]
+            | VueUiTableDataset
+            | VueUiThermometerDataset
+            | VueUiTiremarksDataset
+            | VueUiVerticalBarDatasetItem[]
+            | VueUiWaffleDatasetItem[]
+            | VueUiWheelDataset
+            | VueUiXyDatasetItem[]
+            | VueUiTreemapDatasetItem[]
+            | VueUiQuickChartDataset
+            | number[]
+            | VueUiStripPlotDataset[]
+            | VueUiWordCloudDatasetItem[]
+            | VueUiXyCanvasDatasetItem[]
+            | VueUiFlowDatasetItem[]
+            | VueUiParallelCoordinatePlotDatasetItem[]
+            | VueUiCarouselTableDataset
+            | VueUiGizmoDataset
+            | VueUiStackbarDatasetItem[]
+            | VueUiBulletDataset
+            | VueUiFunnelDatasetItem[]
+            | VueUiHistoryPlotDatasetItem[]
+            | VueUiCirclePackDatasetItem[];
         config?:
-        | VueUi3dBarConfig
-        | VueUiAgePyramidConfig
-        | VueUiAnnotatorConfig
-        | VueUiCandlestickConfig
-        | VueUiChestnutConfig
-        | VueUiDashboardConfig
-        | VueUiDigitsConfig
-        | VueUiDonutEvolutionConfig
-        | VueUiDonutConfig
-        | VueUiGaugeConfig
-        | VueUiHeatmapConfig
-        | VueUiMiniLoaderConfig
-        | VueUiMoleculeConfig
-        | VueUiMoodRadarConfig
-        | VueUiNestedDonutsConfig
-        | VueUiOnionConfig
-        | VueUiQuadrantConfig
-        | VueUiRadarConfig
-        | VueUiRatingConfig
-        | VueUiRelationCircleConfig
-        | VueUiRingsConfig
-        | VueUiScatterConfig
-        | VueUiSkeletonConfig
-        | VueUiSmileyConfig
-        | VueUiSparkbarConfig
-        | VueUiSparkgaugeConfig
-        | VueUiSparkHistogramConfig
-        | VueUiSparklineConfig
-        | VueUiSparkStackbarConfig
-        | VueUiTableSparklineConfig
-        | VueUiTableConfig
-        | VueUiThermometerConfig
-        | VueUiTiremarksConfig
-        | VueUiVerticalBarConfig
-        | VueUiWaffleConfig
-        | VueUiWheelConfig
-        | VueUiXyConfig
-        | VueUiKpiConfig
-        | VueUiTreemapConfig
-        | VueUiQuickChartConfig
-        | VueUiCursorConfig
-        | VueUiSparkTrendConfig
-        | VueUiStripPlotConfig
-        | VueUiDumbbellConfig
-        | VueUiWordCloudConfig
-        | VueUiXyCanvasConfig
-        | VueUiFlowConfig
-        | VueUiParallelCoordinatePlotConfig
-        | VueUiTimerConfig
-        | VueUiCarouselTableConfig
-        | VueUiGizmoConfig
-        | VueUiStackbarConfig
-        | VueUiBulletConfig
-        | VueUiFunnelConfig
-        | VueUiHistoryPlotConfig
-        | VueUiCirclePackConfig;
+            | VueUi3dBarConfig
+            | VueUiAgePyramidConfig
+            | VueUiAnnotatorConfig
+            | VueUiCandlestickConfig
+            | VueUiChestnutConfig
+            | VueUiDashboardConfig
+            | VueUiDigitsConfig
+            | VueUiDonutEvolutionConfig
+            | VueUiDonutConfig
+            | VueUiGaugeConfig
+            | VueUiHeatmapConfig
+            | VueUiMiniLoaderConfig
+            | VueUiMoleculeConfig
+            | VueUiMoodRadarConfig
+            | VueUiNestedDonutsConfig
+            | VueUiOnionConfig
+            | VueUiQuadrantConfig
+            | VueUiRadarConfig
+            | VueUiRatingConfig
+            | VueUiRelationCircleConfig
+            | VueUiRingsConfig
+            | VueUiScatterConfig
+            | VueUiSkeletonConfig
+            | VueUiSmileyConfig
+            | VueUiSparkbarConfig
+            | VueUiSparkgaugeConfig
+            | VueUiSparkHistogramConfig
+            | VueUiSparklineConfig
+            | VueUiSparkStackbarConfig
+            | VueUiTableSparklineConfig
+            | VueUiTableConfig
+            | VueUiThermometerConfig
+            | VueUiTiremarksConfig
+            | VueUiVerticalBarConfig
+            | VueUiWaffleConfig
+            | VueUiWheelConfig
+            | VueUiXyConfig
+            | VueUiKpiConfig
+            | VueUiTreemapConfig
+            | VueUiQuickChartConfig
+            | VueUiCursorConfig
+            | VueUiSparkTrendConfig
+            | VueUiStripPlotConfig
+            | VueUiDumbbellConfig
+            | VueUiWordCloudConfig
+            | VueUiXyCanvasConfig
+            | VueUiFlowConfig
+            | VueUiParallelCoordinatePlotConfig
+            | VueUiTimerConfig
+            | VueUiCarouselTableConfig
+            | VueUiGizmoConfig
+            | VueUiStackbarConfig
+            | VueUiBulletConfig
+            | VueUiFunnelConfig
+            | VueUiHistoryPlotConfig
+            | VueUiCirclePackConfig;
     }>;
 
     export type VueUiPatternName =
@@ -291,7 +291,9 @@ declare module "vue-data-ui" {
         value: number;
         config?: any;
     };
-    export type Formatter = null | ((params: FormatterParams) => string | number);
+    export type Formatter =
+        | null
+        | ((params: FormatterParams) => string | number);
 
     export type VueUiTooltipParams<
         TDatapoint,
@@ -299,7 +301,7 @@ declare module "vue-data-ui" {
         TConfig,
         TBar = any,
         TLine = any,
-        TPlot = any
+        TPlot = any,
     > = {
         seriesIndex?: number;
         plotIndex?: number;
@@ -369,14 +371,14 @@ declare module "vue-data-ui" {
                 tooltip?: ChartTooltip & {
                     roundingValue?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiTreemapDatapoint,
-                            VueUiTreemapSeriesItem[],
-                            VueUiTreemapConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiTreemapDatapoint,
+                                  VueUiTreemapSeriesItem[],
+                                  VueUiTreemapConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -508,14 +510,14 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                     roundingPercentage?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiGalaxyDatapoint,
-                            VueUiGalaxySeriesItem[],
-                            VueUiGalaxyConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiGalaxyDatapoint,
+                                  VueUiGalaxySeriesItem[],
+                                  VueUiGalaxyConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -764,14 +766,14 @@ declare module "vue-data-ui" {
                 title?: ChartTitle;
                 tooltip?: ChartTooltip & {
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiMoleculeDatapoint,
-                            VueUiMoleculeDatapoint[],
-                            VueUiMoleculeConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiMoleculeDatapoint,
+                                  VueUiMoleculeDatapoint[],
+                                  VueUiMoleculeConfig
+                              >,
+                          ) => string);
                 };
                 zoom?: {
                     speed?: number;
@@ -1184,7 +1186,7 @@ declare module "vue-data-ui" {
                     };
                     zoom?: {
                         hideLabelsUnderValue?: number;
-                    }
+                    };
                 };
                 layout?: {
                     height?: number;
@@ -1343,7 +1345,7 @@ declare module "vue-data-ui" {
                 layout?: {
                     wheel?: {
                         ticks?: {
-                            type?: 'classic' | 'arc';
+                            type?: "classic" | "arc";
                             rounded?: boolean;
                             inactiveColor?: string;
                             activeColor?: string;
@@ -1426,14 +1428,14 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                     roundingPercentage?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiRingsDatapoint,
-                            VueUiRingsDatapoint[],
-                            VueUiRingsConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiRingsDatapoint,
+                                  VueUiRingsDatapoint[],
+                                  VueUiRingsConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -1491,13 +1493,13 @@ declare module "vue-data-ui" {
             };
             bars?: {
                 shape?:
-                | "circle"
-                | "triangle"
-                | "square"
-                | "diamond"
-                | "pentagon"
-                | "hexagon"
-                | "star";
+                    | "circle"
+                    | "triangle"
+                    | "square"
+                    | "diamond"
+                    | "pentagon"
+                    | "hexagon"
+                    | "star";
                 strokeWidth?: number;
                 colors?: {
                     positive?: string;
@@ -1638,14 +1640,14 @@ declare module "vue-data-ui" {
             };
             tooltip?: ChartTooltip & {
                 customFormat?:
-                | null
-                | ((
-                    params: VueUiTooltipParams<
-                        VueUiSparkStackbarDatasetItem,
-                        VueUiSparkStackbarDatasetItem[],
-                        VueUiSparkStackbarConfig
-                    >
-                ) => string);
+                    | null
+                    | ((
+                          params: VueUiTooltipParams<
+                              VueUiSparkStackbarDatasetItem,
+                              VueUiSparkStackbarDatasetItem[],
+                              VueUiSparkStackbarConfig
+                          >,
+                      ) => string);
             };
         };
     };
@@ -1947,12 +1949,12 @@ declare module "vue-data-ui" {
                 fontSize?: number;
                 name?: {
                     position?:
-                    | "left"
-                    | "top"
-                    | "top-left"
-                    | "top-center"
-                    | "top-right"
-                    | "right"; // "top" legacy converts to "top-left"
+                        | "left"
+                        | "top"
+                        | "top-left"
+                        | "top-center"
+                        | "top-right"
+                        | "right"; // "top" legacy converts to "top-left"
                     width?: string;
                     color?: string;
                     bold?: boolean;
@@ -2060,14 +2062,14 @@ declare module "vue-data-ui" {
             tooltip?: ChartTooltip & {
                 roundingValue?: number;
                 customFormat?:
-                | null
-                | ((
-                    params: VueUiTooltipParams<
-                        VueUiAgePyramidDatapoint,
-                        VueUiAgePyramidSeries[],
-                        VueUiAgePyramidConfig
-                    >
-                ) => string);
+                    | null
+                    | ((
+                          params: VueUiTooltipParams<
+                              VueUiAgePyramidDatapoint,
+                              VueUiAgePyramidSeries[],
+                              VueUiAgePyramidConfig
+                          >,
+                      ) => string);
             };
         };
         translations?: {
@@ -2190,14 +2192,14 @@ declare module "vue-data-ui" {
                 prefix?: string;
                 suffix?: string;
                 customFormat?:
-                | null
-                | ((
-                    params: VueUiTooltipParams<
-                        VueUiCandlestickDatapoint,
-                        VueUiCandlestickDatapoint[],
-                        VueUiCandlestickConfig
-                    >
-                ) => string);
+                    | null
+                    | ((
+                          params: VueUiTooltipParams<
+                              VueUiCandlestickDatapoint,
+                              VueUiCandlestickDatapoint[],
+                              VueUiCandlestickConfig
+                          >,
+                      ) => string);
             };
         };
         translations?: {
@@ -2381,14 +2383,14 @@ declare module "vue-data-ui" {
                 prefix?: string;
                 suffix?: string;
                 customFormat?:
-                | null
-                | ((
-                    params: VueUiTooltipParams<
-                        VueUiScatterDatapoint,
-                        VueUiScatterSeries[],
-                        VueUiScatterConfig
-                    >
-                ) => string);
+                    | null
+                    | ((
+                          params: VueUiTooltipParams<
+                              VueUiScatterDatapoint,
+                              VueUiScatterSeries[],
+                              VueUiScatterConfig
+                          >,
+                      ) => string);
             };
         };
         userOptions?: ChartUserOptions;
@@ -2531,14 +2533,14 @@ declare module "vue-data-ui" {
             tooltip?: ChartTooltip & {
                 roundingValue?: number;
                 customFormat?:
-                | null
-                | ((
-                    params: VueUiTooltipParams<
-                        VueUiHeatmapDatapoint,
-                        VueUiHeatmapRow[],
-                        VueUiHeatmapConfig
-                    >
-                ) => string);
+                    | null
+                    | ((
+                          params: VueUiTooltipParams<
+                              VueUiHeatmapDatapoint,
+                              VueUiHeatmapRow[],
+                              VueUiHeatmapConfig
+                          >,
+                      ) => string);
             };
         };
         userOptions?: ChartUserOptions;
@@ -2643,7 +2645,12 @@ declare module "vue-data-ui" {
                     stroke?: string;
                     strokeWidth?: number;
                     strokeLinecap?: "round" | "butt" | "square";
-                    strokeLinejoin?: "arcs" | "bevel" | "miter" | "miter-clip" | "round";
+                    strokeLinejoin?:
+                        | "arcs"
+                        | "bevel"
+                        | "miter"
+                        | "miter-clip"
+                        | "round";
                     strokeDasharray?: number;
                 };
                 labels?: {
@@ -2723,17 +2730,17 @@ declare module "vue-data-ui" {
                 roundingValue?: number;
                 roundingPercentage?: number;
                 customFormat?:
-                | null
-                | ((
-                    params: VueUiTooltipParams<
-                        VueUiXyDatapointItem[],
-                        VueUiXySeries,
-                        VueUiXyConfig,
-                        VueUiXyDatasetBarItem[],
-                        VueUiXyDatasetLineItem[],
-                        VueUiXyDatasetPlotItem[]
-                    >
-                ) => string);
+                    | null
+                    | ((
+                          params: VueUiTooltipParams<
+                              VueUiXyDatapointItem[],
+                              VueUiXySeries,
+                              VueUiXyConfig,
+                              VueUiXyDatasetBarItem[],
+                              VueUiXyDatasetLineItem[],
+                              VueUiXyDatasetPlotItem[]
+                          >,
+                      ) => string);
                 showTimeLabel?: boolean;
             };
             userOptions?: ChartUserOptions;
@@ -3011,14 +3018,14 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                     roundingPercentage?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiDonutDatapoint,
-                            VueUiDonutSeriesItem[],
-                            VueUiDonutConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiDonutDatapoint,
+                                  VueUiDonutSeriesItem[],
+                                  VueUiDonutConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -3150,14 +3157,14 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                     roundingPercentage?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiNestedDonutsDatapoint,
-                            VueUiNestedDonutsSeriesItem[],
-                            VueUiNestedDonutsConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiNestedDonutsDatapoint,
+                                  VueUiNestedDonutsSeriesItem[],
+                                  VueUiNestedDonutsConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -3285,14 +3292,14 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                     roundingPercentage?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiWaffleDatapoint,
-                            VueUiWaffleSerieItem[],
-                            VueUiWaffleConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiWaffleDatapoint,
+                                  VueUiWaffleSerieItem[],
+                                  VueUiWaffleConfig
+                              >,
+                          ) => string);
                 };
                 legend?: ChartBaseLegend & {
                     backgroundColor?: string;
@@ -3401,14 +3408,14 @@ declare module "vue-data-ui" {
                         animationFrames?: number;
                     };
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiRadarDatapoint,
-                            VueUiRadarSeries,
-                            VueUiRadarConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiRadarDatapoint,
+                                  VueUiRadarSeries,
+                                  VueUiRadarConfig
+                              >,
+                          ) => string);
                 };
                 legend?: ChartBaseLegend & {
                     backgroundColor?: string;
@@ -3601,14 +3608,14 @@ declare module "vue-data-ui" {
                 tooltip?: ChartTooltip & {
                     roundingValue?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiQuadrantDatapoint,
-                            VueUiQuadrantSerie[],
-                            VueUiQuadrantConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiQuadrantDatapoint,
+                                  VueUiQuadrantSerie[],
+                                  VueUiQuadrantConfig
+                              >,
+                          ) => string);
                     showShape?: boolean;
                 };
                 legend?: ChartBaseLegend & {
@@ -4025,14 +4032,14 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                     roundingPercentage?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiOnionDatapoint,
-                            VueUiOnionSeriesItem[],
-                            VueUiOnionConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiOnionDatapoint,
+                                  VueUiOnionSeriesItem[],
+                                  VueUiOnionConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -4189,14 +4196,14 @@ declare module "vue-data-ui" {
                     prefix?: string;
                     suffix?: string;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiVerticalBarDatapoint,
-                            VueUiVerticalBarSerie[],
-                            VueUiVerticalBarConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiVerticalBarDatapoint,
+                                  VueUiVerticalBarSerie[],
+                                  VueUiVerticalBarConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -4682,41 +4689,41 @@ declare module "vue-data-ui" {
 
     export type VueUiSkeletonConfig = {
         type?:
-        | "bar"
-        | "chestnut"
-        | "donut"
-        | "gauge"
-        | "line"
-        | "onion"
-        | "quadrant"
-        | "radar"
-        | "rating"
-        | "table"
-        | "verticalBar"
-        | "waffle"
-        | "heatmap"
-        | "candlestick"
-        | "pyramid"
-        | "wheel"
-        | "rings"
-        | "donutEvolution"
-        | "tiremarks"
-        | "molecule"
-        | "relationCircle"
-        | "thermometer"
-        | "sparkbar"
-        | "sparkStackbar"
-        | "sparkHistogram"
-        | "bar3d"
-        | "galaxy"
-        | "treemap"
-        | "stripPlot"
-        | "dumbbell"
-        | "parallelCoordinatePlot"
-        | "flow"
-        | "bullet"
-        | "historyPlot"
-        | "circlePack";
+            | "bar"
+            | "chestnut"
+            | "donut"
+            | "gauge"
+            | "line"
+            | "onion"
+            | "quadrant"
+            | "radar"
+            | "rating"
+            | "table"
+            | "verticalBar"
+            | "waffle"
+            | "heatmap"
+            | "candlestick"
+            | "pyramid"
+            | "wheel"
+            | "rings"
+            | "donutEvolution"
+            | "tiremarks"
+            | "molecule"
+            | "relationCircle"
+            | "thermometer"
+            | "sparkbar"
+            | "sparkStackbar"
+            | "sparkHistogram"
+            | "bar3d"
+            | "galaxy"
+            | "treemap"
+            | "stripPlot"
+            | "dumbbell"
+            | "parallelCoordinatePlot"
+            | "flow"
+            | "bullet"
+            | "historyPlot"
+            | "circlePack";
         style?: {
             backgroundColor?: string;
             color?: string;
@@ -4907,13 +4914,13 @@ declare module "vue-data-ui" {
         values: Array<number | string>;
         color?: string;
         shape?:
-        | "circle"
-        | "triangle"
-        | "square"
-        | "diamond"
-        | "pentagon"
-        | "hexagon"
-        | "star";
+            | "circle"
+            | "triangle"
+            | "square"
+            | "diamond"
+            | "pentagon"
+            | "hexagon"
+            | "star";
     };
 
     export type VueUiTableHeatmapConfig = {
@@ -5078,7 +5085,7 @@ declare module "vue-data-ui" {
             allowTaint?: boolean;
             backgroundColor?: string;
             useCORS?: boolean;
-            onclone?: null | ((doc: Document) => void),
+            onclone?: null | ((doc: Document) => void);
             scale?: number;
             logging?: boolean;
         };
@@ -5147,7 +5154,12 @@ declare module "vue-data-ui" {
                 stroke?: string;
                 strokeWidth?: number;
                 strokeLinecap?: "round" | "butt" | "square";
-                strokeLinejoin?: "arcs" | "bevel" | "miter" | "miter-clip" | "round";
+                strokeLinejoin?:
+                    | "arcs"
+                    | "bevel"
+                    | "miter"
+                    | "miter-clip"
+                    | "round";
                 smooth?: boolean;
                 useColorTrend?: boolean;
             };
@@ -5284,14 +5296,14 @@ declare module "vue-data-ui" {
                 tooltip?: ChartTooltip & {
                     roundingValue?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiStripPlotDatapoint,
-                            VueUiStripPlotSeriesItem[],
-                            VueUiStripPlotConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiStripPlotDatapoint,
+                                  VueUiStripPlotSeriesItem[],
+                                  VueUiStripPlotConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -5486,14 +5498,14 @@ declare module "vue-data-ui" {
                 tooltip?: ChartTooltip & {
                     roundingValue?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiWordCloudDatapoint,
-                            any,
-                            VueUiDonutConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiWordCloudDatapoint,
+                                  any,
+                                  VueUiDonutConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -5565,14 +5577,14 @@ declare module "vue-data-ui" {
                 };
                 tooltip?: ChartTooltip & {
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiXyDatapointItem[],
-                            VueUiXySeries,
-                            VueUiXyConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiXyDatapointItem[],
+                                  VueUiXySeries,
+                                  VueUiXyConfig
+                              >,
+                          ) => string);
                 };
                 legend?: {
                     backgroundColor?: string;
@@ -5604,7 +5616,8 @@ declare module "vue-data-ui" {
                             hideUnderXLength?: number;
                             position?: "start" | "middle";
                         };
-                        timeLabels?: { // Oversight! TODO: in v3 move to x (breaking change)
+                        timeLabels?: {
+                            // Oversight! TODO: in v3 move to x (breaking change)
                             show?: boolean;
                             fontSizeRatio?: number;
                             values?: Array<string | number>;
@@ -5843,15 +5856,15 @@ declare module "vue-data-ui" {
                 };
                 tooltip?: ChartTooltip & {
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiParallelCoordinatePlotDatapointSelection,
-                            VueUiParallelCoordinatePlotDatasetItem[],
-                            VueUiParallelCoordinatePlotScaleSelection[],
-                            VueUiParallelCoordinatePlotConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiParallelCoordinatePlotDatapointSelection,
+                                  VueUiParallelCoordinatePlotDatasetItem[],
+                                  VueUiParallelCoordinatePlotScaleSelection[],
+                                  VueUiParallelCoordinatePlotConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -6016,7 +6029,7 @@ declare module "vue-data-ui" {
                 verticalAlign?: string;
             };
             tr?: {
-                height?: number; 
+                height?: number;
                 style?: {
                     backgroundColor?: string;
                     color?: string;
@@ -6149,14 +6162,14 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                     roundingPercentage?: number;
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiStackbarDatapointItem[],
-                            VueUiStackbarSeriesItem[],
-                            VueUiStackbarConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiStackbarDatapointItem[],
+                                  VueUiStackbarSeriesItem[],
+                                  VueUiStackbarConfig
+                              >,
+                          ) => string);
                     showTimeLabel?: boolean;
                 };
                 highlighter?: {
@@ -6328,7 +6341,7 @@ declare module "vue-data-ui" {
                     roundingValue?: number;
                 };
             };
-        }
+        };
     };
 
     export const VueUiBullet: DefineComponent<{
@@ -6574,14 +6587,14 @@ declare module "vue-data-ui" {
                 title?: ChartTitle;
                 tooltip?: ChartTooltip & {
                     customFormat?:
-                    | null
-                    | ((
-                        params: VueUiTooltipParams<
-                            VueUiHistoryPlotDatapoint,
-                            VueUiHistoryPlotDatpointSeries[],
-                            VueUiHistoryPlotConfig
-                        >
-                    ) => string);
+                        | null
+                        | ((
+                              params: VueUiTooltipParams<
+                                  VueUiHistoryPlotDatapoint,
+                                  VueUiHistoryPlotDatpointSeries[],
+                                  VueUiHistoryPlotConfig
+                              >,
+                          ) => string);
                 };
             };
         };
@@ -6819,37 +6832,35 @@ declare module "vue-data-ui" {
         | ((word: string) => string)
         | null;
 
-
     export type Point = {
-        [key: string]: any
-        x: number
-        y: number
-    }
+        [key: string]: any;
+        x: number;
+        y: number;
+    };
 
     /**
      * Vue Data UI utility
      * ---
-     * Generate a straight line path to include in the d attribute of a svg path element 
+     * Generate a straight line path to include in the d attribute of a svg path element
      * ___
      * @example
      * const path = createStraightPath([{x: 1, y: 1}, { x: 2, y: 1.2}])
      *
      * @param points - An array of point objects
      */
-    export const createStraightPath: (points: Point[]) => string
+    export const createStraightPath: (points: Point[]) => string;
 
     /**
      * Vue Data UI utility
      * ---
-     * Generate a spline path to include in the d attribute of a svg path element 
+     * Generate a spline path to include in the d attribute of a svg path element
      * ___
      * @example
      * const path = createSmoothPath([{x: 1, y: 1}, { x: 2, y: 1.2}, { x: 3, y: 0.2 }])
      *
      * @param points - An array of point objects
      */
-    export const createSmoothPath: (points: Point[]) => string
-
+    export const createSmoothPath: (points: Point[]) => string;
 
     /**
      * Vue Data UI utility
@@ -6864,7 +6875,7 @@ declare module "vue-data-ui" {
      */
     export const createWordCloudDatasetFromPlainText: (
         text: string,
-        callback?: VueDataUiWordCloudTransformCallback
+        callback?: VueDataUiWordCloudTransformCallback,
     ) => VueUiWordCloudDatasetItem[];
 
     export type VueDataUiAbbreviatePayload = {
@@ -6910,7 +6921,9 @@ declare module "vue-data-ui" {
      *
      * @param key - The key of the component in snake case (e.g., "vue_ui_xy")
      */
-    export const getVueDataUiConfig: (key: VueDataUiConfigKey) => VueDataUiConfig;
+    export const getVueDataUiConfig: (
+        key: VueDataUiConfigKey,
+    ) => VueDataUiConfig;
 
     /**
      * Vue Data UI utility
@@ -6973,7 +6986,7 @@ declare module "vue-data-ui" {
         maxWords: number;
         x: number;
         y: number;
-    }
+    };
 
     /**
      * Vue Data UI utility
@@ -6990,9 +7003,9 @@ declare module "vue-data-ui" {
      *   x: 10,
      *   y: 20
      * });
-     * 
+     *
      * // Usage: <text :x="10" :y="20" fill="#1A1A1A" :font-size="16" v-html="textContent"/>
-     * 
+     *
      * @param {Object} args - The arguments object.
      * @param {string} args.content - The text content to be split into lines.
      * @param {number} args.fontSize - The font size used to determine line spacing.
@@ -7000,15 +7013,15 @@ declare module "vue-data-ui" {
      * @param {number} args.maxWords - Maximum number of words per line.
      * @param {number} args.x - The x-coordinate for each `tspan` element.
      * @param {number} args.y - The starting y-coordinate for the first `tspan`.
-     * 
+     *
      * @returns {string} A string containing the HTML content to be placed with `v-html` inside an SVG `<text>` element.
-    */
+     */
     export const createTSpans: ({
         content,
         fontSize,
         fill,
         maxWords,
         x,
-        y
+        y,
     }: CreateTSpansArgs) => string;
 }

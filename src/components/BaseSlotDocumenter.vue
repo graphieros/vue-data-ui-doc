@@ -10,13 +10,13 @@ const props = defineProps({
     types: {
         type: Array,
         default() {
-            return []
-        }
+            return [];
+        },
     },
     componentName: {
         type: String,
-        default: '__NO_COMPONENT!__'
-    }
+        default: "__NO_COMPONENT!__",
+    },
 });
 
 const store = useMainStore();
@@ -25,7 +25,7 @@ const translations = computed(() => store.translations);
 const items = computed(() => {
     return [
         {
-            names: ['hint'],
+            names: ["hint"],
             description: translations.value.slots.hint[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -34,10 +34,10 @@ const items = computed(() => {
             <p v-if="isVisible">{{ hint }}</p>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['svg'], 
+        {
+            names: ["svg"],
             description: translations.value.slots.presentation[store.lang],
             freestyle: translations.value.slots.freestyle[store.lang],
             snippet: `
@@ -46,10 +46,10 @@ const items = computed(() => {
             <circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="red"/>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['chart-background'],
+            names: ["chart-background"],
             description: translations.value.slots.chartBackground[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -57,10 +57,10 @@ const items = computed(() => {
             <div :style="{ width: '100%', height: '100%', background: 'radial-gradient(at top left, red, white)'}"/>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['legend'], 
+        {
+            names: ["legend"],
             description: translations.value.slots.legendDetail[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -72,11 +72,11 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['dataLabel'], 
-            description: translations.value.slots.donutDataLabels[store.lang], 
+        {
+            names: ["dataLabel"],
+            description: translations.value.slots.donutDataLabels[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #dataLabel="{ datapoint, isBlur, isVisible, isSafari, textAlign, percentage }">
@@ -85,10 +85,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['tooltip-before', 'tooltip', 'tooltip-after',], 
+        {
+            names: ["tooltip-before", "tooltip", "tooltip-after"],
             description: translations.value.slots.tooltip[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -102,10 +102,10 @@ const items = computed(() => {
             {{ datapoint }}
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['reset-action'], 
+        {
+            names: ["reset-action"],
             description: translations.value.slots.resetButton[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -115,10 +115,10 @@ const items = computed(() => {
             </button>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['time-label'], 
+        {
+            names: ["time-label"],
             description: translations.value.slots.timeLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -135,10 +135,10 @@ const items = computed(() => {
             </text>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['watermark'], 
+        {
+            names: ["watermark"],
             description: translations.value.slots.watermark[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -148,10 +148,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['source'], 
+        {
+            names: ["source"],
             description: translations.value.slots.source[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -159,10 +159,10 @@ const items = computed(() => {
             <p>Source: <cite>My source</cite></p>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['plot-comment'],
+        {
+            names: ["plot-comment"],
             description: translations.value.slots.plotComment[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -172,10 +172,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['before'],
+            names: ["before"],
             description: translations.value.slots.sparklineBefore[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -190,10 +190,10 @@ const items = computed(() => {
             </ul>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['data-label'],
+            names: ["data-label"],
             description: translations.value.slots.dataLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -203,10 +203,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['title'],
+            names: ["title"],
             description: translations.value.slots.title[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -216,10 +216,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['title_'],
+            names: ["title_"],
             description: translations.value.slots.title[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -229,11 +229,11 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['value'],
-            description: '',
+            names: ["value"],
+            description: "",
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #value="{ comment }">
@@ -242,11 +242,11 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['comment-before'],
-            description: '',
+            names: ["comment-before"],
+            description: "",
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #comment-before="{ comment }">
@@ -255,11 +255,11 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['comment-after'],
-            description: '',
+            names: ["comment-after"],
+            description: "",
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #comment-after="{ comment }">
@@ -268,11 +268,12 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['cell'],
-            description: translations.value.customization.otherSlots.waffle[store.lang],
+            names: ["cell"],
+            description:
+                translations.value.customization.otherSlots.waffle[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #cell="{ cell, isSelected }">
@@ -281,10 +282,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['datapoint'],
+            names: ["datapoint"],
             description: translations.value.slots.datapoint[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -292,10 +293,10 @@ const items = computed(() => {
             <circle :cx="point.x" :cy="point.y" :r="1" :fill="point.fill" @click="onPointClick(point)"/>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['rect'],
+            names: ["rect"],
             description: translations.value.slots.rect[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -305,10 +306,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['group-label'],
+            names: ["group-label"],
             description: translations.value.slots.groupLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -318,10 +319,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['pattern'], 
+        {
+            names: ["pattern"],
             description: translations.value.slots.pattern[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -331,10 +332,10 @@ const items = computed(() => {
             </pattern>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
-        { 
-            names: ['zoom-label'], 
+        {
+            names: ["zoom-label"],
             description: translations.value.slots.zoomLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -345,10 +346,10 @@ const items = computed(() => {
             </text>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['data-label-circlePack'],
+            names: ["data-label-circlePack"],
             description: translations.value.slots.dataLabel[store.lang],
             snippet: `
         <${props.componentName} :dataset="dataset" :config="config">
@@ -370,12 +371,12 @@ const items = computed(() => {
                 />
             </template>
         </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['layer-under'],
+            names: ["layer-under"],
             description: translations.value.slots.layerUnder[store.lang],
-            snippet:`
+            snippet: `
         <${props.componentName} :dataset="dataset" :config="config">
             <template #layer-under="{ value, size, focusedValue }">
                 <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">
@@ -387,12 +388,12 @@ const items = computed(() => {
                 </svg>
             </template>
         </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['layer-above'],
+            names: ["layer-above"],
             description: translations.value.slots.layerAbove[store.lang],
-            snippet:`
+            snippet: `
         <${props.componentName} :dataset="dataset" :config="config">
             <template #layer-above="{ value, size, hoveredValue, focusedValue }">
                 <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">
@@ -404,10 +405,10 @@ const items = computed(() => {
                 </svg>
             </template>
         </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['breadcrumb-label'],
+            names: ["breadcrumb-label"],
             description: translations.value.slots.breadcrumbLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -420,10 +421,10 @@ const items = computed(() => {
             </span>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['breadcrumb-arrow'],
+            names: ["breadcrumb-arrow"],
             description: translations.value.slots.breadcrumbArrow[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -431,10 +432,10 @@ const items = computed(() => {
             <VueUiIcon name="arrowRight"/>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['area-gradient'],
+            names: ["area-gradient"],
             description: translations.value.slots.areaGradient[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -445,10 +446,10 @@ const items = computed(() => {
             </linearGradient>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['bar-gradient'],
+            names: ["bar-gradient"],
             description: translations.value.slots.areaGradient[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -463,10 +464,10 @@ const items = computed(() => {
             </linearGradient>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['user-menu'],
+            names: ["user-menu"],
             description: translations.value.slots.userMenu[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -511,10 +512,10 @@ const items = computed(() => {
             <MyZoomIcon />
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['annotator-actions'],
+            names: ["annotator-actions"],
             description: translations.value.slots.annotatorActions[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -538,10 +539,10 @@ const items = computed(() => {
             <MyDeleteIcon/>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['node'],
+            names: ["node"],
             description: translations.value.slots.node[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -552,10 +553,10 @@ const items = computed(() => {
             </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['free-node-label'],
+            names: ["free-node-label"],
             description: translations.value.slots.freeNodeLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -567,10 +568,10 @@ const items = computed(() => {
             </text>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['node-label'],
+            names: ["node-label"],
             description: translations.value.slots.nodeLabel[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -579,10 +580,10 @@ const items = computed(() => {
                 ID: {{ node.id }}
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['tooltip-node'],
+            names: ["tooltip-node"],
             description: translations.value.slots.tooltipNode[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -592,10 +593,10 @@ const items = computed(() => {
                 </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['tooltip-midpoint'],
+            names: ["tooltip-midpoint"],
             description: translations.value.slots.tooltipMidpoint[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -605,10 +606,10 @@ const items = computed(() => {
                 </div>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
-            names: ['background-pattern'],
+            names: ["background-pattern"],
             description: translations.value.slots.backgroundPattern[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
@@ -618,63 +619,89 @@ const items = computed(() => {
             <line :x1="x" :x2="x" :y1="y - 2" :y2="y + 2" :stroke="color" stroke-width="0.5"/>
         </template>  
     </${props.componentName}>
-            `
-        }
-    ]
-})
+            `,
+        },
+    ];
+});
 
 function isVisible(tags) {
     let show = false;
-    tags.forEach(t => {
-        show = props.types.includes(t)
-    })
+    tags.forEach((t) => {
+        show = props.types.includes(t);
+    });
     return show;
 }
 
 function copyToClipboard(conf) {
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
+    let selBox = document.createElement("textarea");
+    selBox.style.position = "fixed";
+    selBox.style.left = "0";
+    selBox.style.top = "0";
+    selBox.style.opacity = "0";
     selBox.value = conf;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(selBox);
     store.copy();
 }
-
 </script>
 
 <template>
     <div class="w-full flex flex-col gap-2">
-        <slot name="additional"/>
-        <template v-for="item in items" >
+        <slot name="additional" />
+        <template v-for="item in items">
             <div v-if="isVisible(item.names)" class="mb-4">
-                <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">
-                    <div v-for="tag in item.names" class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow">
-                        #{{ tag === 'annotator-actions' ? 'annotator-action-xxx' : tag === 'user-menu' ? 'menuIcon, #optionXxx'  : tag.replaceAll('_', '').replaceAll('-circlePack', '') }}
+                <div
+                    class="flex flex-row gap-2 place-items-center flex-wrap mb-2"
+                >
+                    <div
+                        v-for="tag in item.names"
+                        class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow"
+                    >
+                        #{{
+                            tag === "annotator-actions"
+                                ? "annotator-action-xxx"
+                                : tag === "user-menu"
+                                  ? "menuIcon, #optionXxx"
+                                  : tag
+                                        .replaceAll("_", "")
+                                        .replaceAll("-circlePack", "")
+                        }}
                     </div>
                 </div>
-                <div class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6">{{ item.description }}</div>
-<div class="bg-gray-200 dark:bg-[#1A1A1A] overflow-auto rounded-b-2xl relative shadow">
-    <div class="absolute top-1 right-1">
-        <FlexibleTooltip position="left" :content="translations.clickToCopy[store.lang]">
-            <button class="flex place-items-center justify-center p-1 rounded-full hover:bg-[#42d39230] transition-colors" @click="() => copyToClipboard(item.snippet)">
-                <CopyIcon class="text-[#3A3A3A] dark:text-app-green" />
-            </button>
-        </FlexibleTooltip>
-    </div>
-    <CodeParser
-        v-if="item.snippet"
-        language="html"
-        :content="item.snippet"
-        @copy="store.copy()"
-    />
-    <slot name="after" v-bind="item"/>
-</div>                
+                <div
+                    class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6"
+                >
+                    {{ item.description }}
+                </div>
+                <div
+                    class="bg-gray-200 dark:bg-[#1A1A1A] overflow-auto rounded-b-2xl relative shadow"
+                >
+                    <div class="absolute top-1 right-1">
+                        <FlexibleTooltip
+                            position="left"
+                            :content="translations.clickToCopy[store.lang]"
+                        >
+                            <button
+                                class="flex place-items-center justify-center p-1 rounded-full hover:bg-[#42d39230] transition-colors"
+                                @click="() => copyToClipboard(item.snippet)"
+                            >
+                                <CopyIcon
+                                    class="text-[#3A3A3A] dark:text-app-green"
+                                />
+                            </button>
+                        </FlexibleTooltip>
+                    </div>
+                    <CodeParser
+                        v-if="item.snippet"
+                        language="html"
+                        :content="item.snippet"
+                        @copy="store.copy()"
+                    />
+                    <slot name="after" v-bind="item" />
+                </div>
             </div>
         </template>
     </div>

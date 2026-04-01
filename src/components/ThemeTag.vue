@@ -5,63 +5,73 @@ import BaseTag from "./BaseTag.vue";
 const props = defineProps({
     type: {
         type: String,
-        default: 'default'
-    }
+        default: "default",
+    },
 });
 
 const themes = ref({
     default: {
         backgroundColor: "#FFFFFF",
-        color: '#1A1A1A',
-        fill: '#2D353C'
+        color: "#1A1A1A",
+        fill: "#2D353C",
     },
     dark: {
         backgroundColor: "#1A1A1A",
         color: "#CCCCCC",
-        fill: "#CCCCCC"
+        fill: "#CCCCCC",
     },
     zen: {
         backgroundColor: "#fbfafa",
         color: "#8A9892",
-        fill: "#B9B99D"
+        fill: "#B9B99D",
     },
     concrete: {
         backgroundColor: "#f6f6fb",
         color: "#50606C",
-        fill: "#4A6A75"
+        fill: "#4A6A75",
     },
     hack: {
         backgroundColor: "#1A1A1A",
         color: "#99AA99",
-        fill: "#009900"
+        fill: "#009900",
     },
     celebration: {
         backgroundColor: "#FFF8E1",
         color: "#424242",
-        fill: "#D32F2F"
+        fill: "#D32F2F",
     },
     celebrationNight: {
         backgroundColor: "#1E1E1E",
         color: "#BDBDBD",
-        fill: "#D32F2F"
+        fill: "#D32F2F",
     },
     minimal: {
-        backgroundColor: '#FFFFFF',
-        color: '#1A1A1A',
-        fill: '#454862'
+        backgroundColor: "#FFFFFF",
+        color: "#1A1A1A",
+        fill: "#454862",
     },
     minimalDark: {
-        backgroundColor: '#1A1A1A',
-        color: '#CCCCCC',
-        fill: '#65698E'
-    }
-})
-
+        backgroundColor: "#1A1A1A",
+        color: "#CCCCCC",
+        fill: "#65698E",
+    },
+});
 </script>
 
 <template>
-    <BaseTag class="mb-4" :backgroundColor="themes[type].backgroundColor" :color="themes[type].color">
-        <svg class="rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)]" viewBox="0 0 10 10" height="16" width="16"><circle cx="5" cy="5" r="5" :fill="themes[type].fill"/></svg>
+    <BaseTag
+        class="mb-4"
+        :backgroundColor="themes[type].backgroundColor"
+        :color="themes[type].color"
+    >
+        <svg
+            class="rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)]"
+            viewBox="0 0 10 10"
+            height="16"
+            width="16"
+        >
+            <circle cx="5" cy="5" r="5" :fill="themes[type].fill" />
+        </svg>
         {{ type }}
     </BaseTag>
 </template>

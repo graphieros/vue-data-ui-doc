@@ -5,23 +5,25 @@ import CodeParser from "./customization/CodeParser.vue";
 const props = defineProps({
     component: {
         type: String,
-        required: true
+        required: true,
     },
     name: {
         type: String,
-        required: true
+        required: true,
     },
     description: {
         type: String,
         required: true,
     },
-})
+});
 
 const params = computed(() => {
-    return {
-        focusLocation: '[-12, 24], { animated: true }',
-    }[props.name] ?? ''
-})
+    return (
+        {
+            focusLocation: "[-12, 24], { animated: true }",
+        }[props.name] ?? ""
+    );
+});
 
 const content = computed(() => {
     return `
@@ -35,16 +37,21 @@ const content = computed(() => {
             ${props.component}Ref.value.${props.name}(${params.value});
         }
     }
-`
-})
-
+`;
+});
 </script>
 
 <template>
     <div class="flex flex-col mt-4 py-4 gap-2">
-        <div class="text-xs bg-[#DCDCAA] text-[#1A1A1A] font-inter-medium px-2 py-0.5 rounded-full w-fit">EXPOSED METHOD</div>
-        <code class="text-xl text-[#559AD3] dark:text-[#DCDCAA]">{{ name }}</code>
+        <div
+            class="text-xs bg-[#DCDCAA] text-[#1A1A1A] font-inter-medium px-2 py-0.5 rounded-full w-fit"
+        >
+            EXPOSED METHOD
+        </div>
+        <code class="text-xl text-[#559AD3] dark:text-[#DCDCAA]">{{
+            name
+        }}</code>
         <div class="text-gray-500">{{ description }}</div>
     </div>
-    <CodeParser :content="content" language="javascript"/>
+    <CodeParser :content="content" language="javascript" />
 </template>

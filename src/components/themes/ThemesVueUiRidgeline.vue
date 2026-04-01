@@ -38,7 +38,7 @@ const dataset = ref([
                 values: [0, 2, 6, 12, 16, 19, 21, 21, 17, 12, 7, 3],
             },
         ],
-    }, 
+    },
     {
         name: "Beijing",
         datapoints: [
@@ -65,7 +65,7 @@ const dataset = ref([
                 values: [5, 6, 9, 12, 16, 19, 21, 21, 18, 13, 8, 5],
             },
         ],
-    }, 
+    },
     {
         name: "San Francisco",
         datapoints: [
@@ -137,7 +137,7 @@ const dataset = ref([
                 values: [14, 15, 15, 17, 18, 20, 22, 22, 22, 19, 16, 13],
             },
         ],
-    }, 
+    },
     {
         name: "Istanbul",
         datapoints: [
@@ -163,13 +163,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

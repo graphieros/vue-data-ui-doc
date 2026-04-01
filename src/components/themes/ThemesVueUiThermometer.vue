@@ -3,29 +3,26 @@ import { ref } from "vue";
 import BaseThemeUnit from "./BaseThemeUnit.vue";
 
 const dataset = ref({
-  value: 37,
-  from: -100,
-  to: 100,
-  steps: 20,
-  colors: {
-    from: "#42d392",
-    to: "#5f8bee",
-  }
+    value: 37,
+    from: -100,
+    to: 100,
+    steps: 20,
+    colors: {
+        from: "#42d392",
+        to: "#5f8bee",
+    },
 });
 
 const config = ref({
     style: {
-
         title: {
             text: "Title",
             subtitle: {
-                text: "Subtitle"
-            }
-        }
-        
-    }
-})
-
+                text: "Subtitle",
+            },
+        },
+    },
+});
 </script>
 
 <template>

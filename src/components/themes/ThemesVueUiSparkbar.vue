@@ -7,24 +7,23 @@ const dataset = ref([
         name: "quality",
         value: 61.95,
         rounding: 2,
-        suffix: "%"
+        suffix: "%",
     },
     {
         name: "popularity",
         value: 2.04,
         rounding: 2,
-        suffix: "%"
+        suffix: "%",
     },
     {
         name: "maintenance",
         value: 33.33,
         rounding: 2,
-        suffix: "%"
+        suffix: "%",
     },
 ]);
 
-const config = ref({})
-
+const config = ref({});
 </script>
 
 <template>

@@ -1,5 +1,12 @@
 <script setup>
-import { ref, onMounted, computed, onBeforeUnmount, nextTick, watch } from "vue";
+import {
+    ref,
+    onMounted,
+    computed,
+    onBeforeUnmount,
+    nextTick,
+    watch,
+} from "vue";
 import { Menu2Icon, XIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
@@ -24,10 +31,10 @@ onMounted(() => {
     store.isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/Edg/.test(ua);
 
     if (!localStorage.visitor) {
-        localStorage.setItem('visitor', createUid());
+        localStorage.setItem("visitor", createUid());
     }
     if (!localStorage.votes) {
-        localStorage.setItem('votes', JSON.stringify([]));
+        localStorage.setItem("votes", JSON.stringify([]));
     }
 });
 
@@ -64,7 +71,7 @@ const digitsConfigVersion = computed(() => {
         digits: {
             color: isDarkMode.value ? "#42d392" : "#1A1A1A",
             skeletonColor: isDarkMode.value ? "#FFFFFF10" : "#1A1A1A16",
-            thickness: 1.8
+            thickness: 1.8,
         },
     };
 });
@@ -77,18 +84,17 @@ function openChartMaker() {
 
 function updateTheme() {
     if (localStorage.theme === "dark") {
-            localStorage.theme = "light";
-            document.documentElement.classList.remove("dark");
-            store.isDarkMode = false;
-        } else {
-            localStorage.theme = "dark";
-            document.documentElement.classList.add("dark");
-            store.isDarkMode = true;
-        }
+        localStorage.theme = "light";
+        document.documentElement.classList.remove("dark");
+        store.isDarkMode = false;
+    } else {
+        localStorage.theme = "dark";
+        document.documentElement.classList.add("dark");
+        store.isDarkMode = true;
+    }
 }
 
 function changeTheme() {
-
     if (!document.startViewTransition) {
         updateTheme();
         return;
@@ -96,18 +102,21 @@ function changeTheme() {
 
     document.startViewTransition(() => {
         updateTheme();
-    })
+    });
 }
 
 const currentRoute = computed(() => {
     return router.currentRoute.value.path;
 });
 
-watch(() => currentRoute.value, (nr, or) => {
-    if (nr !== or) {
-        window.scrollTo(0,0);
-    }
-});
+watch(
+    () => currentRoute.value,
+    (nr, or) => {
+        if (nr !== or) {
+            window.scrollTo(0, 0);
+        }
+    },
+);
 
 function isSelected(route) {
     return currentRoute.value === route;
@@ -144,9 +153,11 @@ onMounted(() => {
 
 async function fetchRatings() {
     try {
-        const response = await fetch('https://vue-data-ui.graphieros.com/api/get_ratings.php');
+        const response = await fetch(
+            "https://vue-data-ui.graphieros.com/api/get_ratings.php",
+        );
         if (!response.ok) {
-            console.warn('Network response was not ok');
+            console.warn("Network response was not ok");
             return;
         }
         const data = await response.json();
@@ -157,14 +168,13 @@ async function fetchRatings() {
         store.ratings.average = data.average || 0;
         store.ratings.breakdown = data.ratings || [];
     } catch (error) {
-        console.error('Fetch error:', error);
+        console.error("Fetch error:", error);
     }
 }
 
-
 onMounted(() => {
     fetchRatings();
-})
+});
 
 const isDarkMode = computed(() => store.isDarkMode);
 
@@ -177,7 +187,7 @@ const languageOptions = ref([
     { value: "zh", text: "中文" },
     { value: "ja", text: "日本語" },
     { value: "ko", text: "한국인" },
-    { value: "ar", text: "عربي"}
+    { value: "ar", text: "عربي" },
 ]);
 
 const selectedLanguage = computed({
@@ -193,31 +203,59 @@ const selectedLanguage = computed({
 
 const dropdownItems = computed(() => {
     return [
-        { link: '/installation', title: translations.value.menu.installation[store.lang], clickableWhenActive: false},
-        { link: '/docs', title: translations.value.menu.docs[store.lang], clickableWhenActive: true },
-        { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang], clickableWhenActive: false },
-        { link: '/customization', title: translations.value.menu.customization[store.lang], clickableWhenActive: false },
-        { link: '/examples', title: translations.value.menu.examples[store.lang], clickableWhenActive: false },
-        { link: '/versions', title: translations.value.menu.versions[store.lang], clickableWhenActive: false },
-        { link: '/about', title: translations.value.menu.about[store.lang], clickableWhenActive: false },
-    ]
+        {
+            link: "/installation",
+            title: translations.value.menu.installation[store.lang],
+            clickableWhenActive: false,
+        },
+        {
+            link: "/docs",
+            title: translations.value.menu.docs[store.lang],
+            clickableWhenActive: true,
+        },
+        {
+            link: "/chart-builder",
+            title: translations.value.menu.chartBuilder[store.lang],
+            clickableWhenActive: false,
+        },
+        {
+            link: "/customization",
+            title: translations.value.menu.customization[store.lang],
+            clickableWhenActive: false,
+        },
+        {
+            link: "/examples",
+            title: translations.value.menu.examples[store.lang],
+            clickableWhenActive: false,
+        },
+        {
+            link: "/versions",
+            title: translations.value.menu.versions[store.lang],
+            clickableWhenActive: false,
+        },
+        {
+            link: "/about",
+            title: translations.value.menu.about[store.lang],
+            clickableWhenActive: false,
+        },
+    ];
 });
 
 const detailedDoc = ref({
-        en: "Detailed components documentation",
-        fr: "Documentation détaillée des composants",
-        pt: "Documentação detalhada dos componentes",
-        de: "Detaillierte Komponenten-Dokumentation",
-        zh: "详细的组件文档",
-        ja: "詳細なコンポーネントドキュメント",
-        es: "Documentación detallada de los componentes",
-        ko: "상세한 구성 요소 문서",
-        ar: "توثيق مفصل للمكونات"
-    })
+    en: "Detailed components documentation",
+    fr: "Documentation détaillée des composants",
+    pt: "Documentação detalhada dos componentes",
+    de: "Detaillierte Komponenten-Dokumentation",
+    zh: "详细的组件文档",
+    ja: "詳細なコンポーネントドキュメント",
+    es: "Documentación detallada de los componentes",
+    ko: "상세한 구성 요소 문서",
+    ar: "توثيق مفصل للمكونات",
+});
 
 const isHome = computed(() => {
-    return currentRoute.value === '/'
-})
+    return currentRoute.value === "/";
+});
 
 const isDocOpen = ref(false);
 
@@ -234,73 +272,113 @@ function toggleDocMenu() {
 }
 
 function closeOnEsc(e) {
-    if(e.key === 'Escape') {
-            closeDocsMenu();
-        }
+    if (e.key === "Escape") {
+        closeDocsMenu();
+    }
 }
 
 onMounted(() => {
-    window.addEventListener('keydown', closeOnEsc);
+    window.addEventListener("keydown", closeOnEsc);
 });
 
 onBeforeUnmount(() => {
-    window.removeEventListener('keydown', closeOnEsc);
+    window.removeEventListener("keydown", closeOnEsc);
 });
 
 const message = ref({
-    en: 'Even if your company makes more than 2M$ a year, Vue Data UI remains FREE',
-    fr: 'Même si votre entreprise génère plus de 2M$ par an, Vue Data UI reste GRATUIT',
-    pt: 'Mesmo que sua empresa fature mais de 2 milhões de dólares por ano, o Vue Data UI continua GRATUITO',
-    de: 'Auch wenn Ihr Unternehmen mehr als 2 Mio. $ pro Jahr verdient, bleibt Vue Data UI KOSTENLOS',
-    zh: '即使您的公司每年收入超过200万美元，Vue Data UI仍然是免费的',
-    ja: 'あなたの会社の年間売上が200万ドル以上あったとしても、Vue Data UIは「無料」のままです',
-    es: 'Incluso si su empresa gana más de 2 millones de dólares al año, Vue Data UI sigue siendo GRATUITO',
-    ko: '귀사의 연 매출이 200만 달러를 넘더라도 Vue Data UI는 여전히 무료입니다',
-    ar: 'حتى إذا حققت شركتك أكثر من 2 مليون دولار سنويًا، يظل Vue Data UI مجانًا',
-})
-
-
+    en: "Even if your company makes more than 2M$ a year, Vue Data UI remains FREE",
+    fr: "Même si votre entreprise génère plus de 2M$ par an, Vue Data UI reste GRATUIT",
+    pt: "Mesmo que sua empresa fature mais de 2 milhões de dólares por ano, o Vue Data UI continua GRATUITO",
+    de: "Auch wenn Ihr Unternehmen mehr als 2 Mio. $ pro Jahr verdient, bleibt Vue Data UI KOSTENLOS",
+    zh: "即使您的公司每年收入超过200万美元，Vue Data UI仍然是免费的",
+    ja: "あなたの会社の年間売上が200万ドル以上あったとしても、Vue Data UIは「無料」のままです",
+    es: "Incluso si su empresa gana más de 2 millones de dólares al año, Vue Data UI sigue siendo GRATUITO",
+    ko: "귀사의 연 매출이 200만 달러를 넘더라도 Vue Data UI는 여전히 무료입니다",
+    ar: "حتى إذا حققت شركتك أكثر من 2 مليون دولار سنويًا، يظل Vue Data UI مجانًا",
+});
 </script>
 
 <template>
     <ChartMaker ref="chartMkr" />
-    <div v-if="currentRoute === '/'" class="fixed bottom-0 left-0 w-full h-[40px] bg-app-green-light dark:bg-app-blue hidden sm:flex z-[2147483647] place-items-center justify-center">
+    <div
+        v-if="currentRoute === '/'"
+        class="fixed bottom-0 left-0 w-full h-[40px] bg-app-green-light dark:bg-app-blue hidden sm:flex z-[2147483647] place-items-center justify-center"
+    >
         {{ message[store.lang] }} <span class="animate-bounce ml-2">✊</span>
     </div>
-    <header data-cy="app-header"
+    <header
+        data-cy="app-header"
         tabindex="1"
-        class="z-[2147483647] sticky top-0 w-full font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none">
+        class="z-[2147483647] sticky top-0 w-full font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none"
+    >
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
             <router-link data-cy="link-home" to="/" v-if="!isHome">
                 <div class="flex flex-row gap-3">
-                    <div data-cy="header-app-name" class="flex flex-row gap-3 w-full whitespace-nowrap align-center">
-                        <img data-cy="header-logo" src="../assets/logo3.png" class="h-5 mt-1" />
-                        <span class="font-inter-medium text-lg text-[#3A3A3A] dark:text-[#AFAFAF]" style="letter-spacing: -1px;">Vue Data UI</span>
-                        <div class="mt-0.5 font-mono dark:text-app-green">{{ releases[0].version.replaceAll('v', '') }}</div>
+                    <div
+                        data-cy="header-app-name"
+                        class="flex flex-row gap-3 w-full whitespace-nowrap align-center"
+                    >
+                        <img
+                            data-cy="header-logo"
+                            src="../assets/logo3.png"
+                            class="h-5 mt-1"
+                        />
+                        <span
+                            class="font-inter-medium text-lg text-[#3A3A3A] dark:text-[#AFAFAF]"
+                            style="letter-spacing: -1px"
+                            >Vue Data UI</span
+                        >
+                        <div class="mt-0.5 font-mono dark:text-app-green">
+                            {{ releases[0].version.replaceAll("v", "") }}
+                        </div>
                     </div>
                 </div>
             </router-link>
-            <div v-else/>
+            <div v-else />
 
-            <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
-                <router-link data-cy="link-installation" to="/installation" @mouseenter="closeDocsMenu">
-                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/installation')
+            <nav
+                class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center"
+            >
+                <router-link
+                    data-cy="link-installation"
+                    to="/installation"
+                    @mouseenter="closeDocsMenu"
+                >
+                    <span
+                        :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${
+                            isSelected('/installation')
                                 ? 'text-black dark:text-app-blue hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
-                            }`">
-                            <VueUiIcon name="starFill" :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'" :size="18" :strokeWidth="1" />
+                        }`"
+                    >
+                        <VueUiIcon
+                            name="starFill"
+                            :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'"
+                            :size="18"
+                            :strokeWidth="1"
+                        />
                         {{ translations.menu.installation[store.lang] }}
                     </span>
                 </router-link>
                 <div class="relative" @keydown.esc="closeDocsMenu">
-                    <router-link data-cy="link-docs" to="/docs" @mouseover="openDocMenu" @click.stop="toggleDocMenu" @focus="openDocMenu">
+                    <router-link
+                        data-cy="link-docs"
+                        to="/docs"
+                        @mouseover="openDocMenu"
+                        @click.stop="toggleDocMenu"
+                        @focus="openDocMenu"
+                    >
                         <div
-                            :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/docs')
+                            :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${
+                                isSelected('/docs')
                                     ? 'text-black dark:text-app-green hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                     : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
-                                }`"
-                            >
-                            <IconSettings :size="18" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
+                            }`"
+                        >
+                            <IconSettings
+                                :size="18"
+                                :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"
+                            />
                             {{ translations.menu.docs[store.lang] }}
                         </div>
                     </router-link>
@@ -312,37 +390,93 @@ const message = ref({
                             tabindex="0"
                         >
                             <kbd>Esc</kbd>
-                            <div class="fixed -top-1 left-0 py-3 w-full text-center font-inter-bold">
+                            <div
+                                class="fixed -top-1 left-0 py-3 w-full text-center font-inter-bold"
+                            >
                                 {{ detailedDoc[store.lang] }}
                             </div>
-                            <div v-for="menu in simpleMenu" class="flex flex-col bg-gray-100 dark:bg-[#2A2A2A] pl-2 pt-2 rounded-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
-        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] pb-2">
-                                <div class="text-s mb-4 font-inter-medium">{{ menu.category }}</div>
+                            <div
+                                v-for="menu in simpleMenu"
+                                class="flex flex-col bg-gray-100 dark:bg-[#2A2A2A] pl-2 pt-2 rounded-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] pb-2"
+                            >
+                                <div class="text-s mb-4 font-inter-medium">
+                                    {{ menu.category }}
+                                </div>
                                 <FlexibleTooltip
-                                        v-for="(item, i) in menu.components"
-                                        position="bottom"
-                                        :content="`${item.description}`"
-                                        width="w-fit min-w-[200px]"
-                                        delay="delay-150"
-                                    >
+                                    v-for="(item, i) in menu.components"
+                                    position="bottom"
+                                    :content="`${item.description}`"
+                                    width="w-fit min-w-[200px]"
+                                    delay="delay-150"
+                                >
                                     <template #before-inside>
                                         <div class="h-[32px] w-[32px]">
-                                            <VueUiIcon :name="item.icon" :size="32" :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'"/>
+                                            <VueUiIcon
+                                                :name="item.icon"
+                                                :size="32"
+                                                :stroke="
+                                                    isDarkMode
+                                                        ? '#83a4f2'
+                                                        : '#1A1A1A'
+                                                "
+                                            />
                                         </div>
                                     </template>
-                                    <RouterLink :to="item.link" @click="closeDocsMenu">
-                                        <div class="flex flex-row place-items-center py-1 gap-2 relative">
-                                            <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse">
-                                                <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#83a4f2'"/>
+                                    <RouterLink
+                                        :to="item.link"
+                                        @click="closeDocsMenu"
+                                    >
+                                        <div
+                                            class="flex flex-row place-items-center py-1 gap-2 relative"
+                                        >
+                                            <svg
+                                                v-if="
+                                                    item.link ===
+                                                    router.currentRoute.value
+                                                        .fullPath
+                                                "
+                                                viewBox="0 0 10 10"
+                                                height="10"
+                                                width="10"
+                                                class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse"
+                                            >
+                                                <circle
+                                                    cx="5"
+                                                    cy="5"
+                                                    r="5"
+                                                    :fill="
+                                                        isDarkMode
+                                                            ? '#42d392'
+                                                            : '#83a4f2'
+                                                    "
+                                                />
                                             </svg>
                                             <div class="h-[16px] w-[16px]">
-                                                <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'"/>
+                                                <VueUiIcon
+                                                    :name="item.icon"
+                                                    :size="18"
+                                                    :stroke="
+                                                        isDarkMode
+                                                            ? '#83a4f2'
+                                                            : '#1A1A1A'
+                                                    "
+                                                />
                                             </div>
                                             <div
                                                 :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-inter-medium cursor-default hover:no-underline' : ''}`"
                                             >
-                                                <span class="text-gray-500">VueUi</span>
-                                                <span class="font-inter-medium">{{ item.name.replaceAll('VueUi', '') }}</span>
+                                                <span class="text-gray-500"
+                                                    >VueUi</span
+                                                >
+                                                <span
+                                                    class="font-inter-medium"
+                                                    >{{
+                                                        item.name.replaceAll(
+                                                            "VueUi",
+                                                            "",
+                                                        )
+                                                    }}</span
+                                                >
                                             </div>
                                         </div>
                                     </RouterLink>
@@ -351,51 +485,101 @@ const message = ref({
                         </div>
                     </Transition>
                 </div>
-                <router-link data-cy="link-docs" to="/chart-builder"  @mouseenter="closeDocsMenu">
-                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
+                <router-link
+                    data-cy="link-docs"
+                    to="/chart-builder"
+                    @mouseenter="closeDocsMenu"
+                >
+                    <span
+                        :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${
+                            isSelected('/chart-builder')
                                 ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
-                            }`">
-                            <VueUiIcon name="boxes" :stroke="isDarkMode ? '#ffe596' : '#1A1A1A'" :size="18" :strokeWidth="1" />
+                        }`"
+                    >
+                        <VueUiIcon
+                            name="boxes"
+                            :stroke="isDarkMode ? '#ffe596' : '#1A1A1A'"
+                            :size="18"
+                            :strokeWidth="1"
+                        />
                         {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-customization" to="/customization"  @mouseenter="closeDocsMenu">
-                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/customization')
+                <router-link
+                    data-cy="link-customization"
+                    to="/customization"
+                    @mouseenter="closeDocsMenu"
+                >
+                    <span
+                        :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${
+                            isSelected('/customization')
                                 ? 'text-black dark:text-[#de8b37] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-[#de8b37] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
-                            }`">
-                            <VueUiIcon name="palette" :stroke="isDarkMode ? '#de8b37' : '#1A1A1A'" :size="18" :strokeWidth="1" />
+                        }`"
+                    >
+                        <VueUiIcon
+                            name="palette"
+                            :stroke="isDarkMode ? '#de8b37' : '#1A1A1A'"
+                            :size="18"
+                            :strokeWidth="1"
+                        />
                         {{ translations.menu.customization[store.lang] }}
                     </span>
                 </router-link>
-                <router-link to="/examples"  @mouseenter="closeDocsMenu">
-                    <span :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/examples')
+                <router-link to="/examples" @mouseenter="closeDocsMenu">
+                    <span
+                        :class="`font-inter-medium flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${
+                            isSelected('/examples')
                                 ? 'text-black dark:text-[#de6937] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-[#de6937] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
-                            }`">
-                            <VueUiIcon name="dashboard" :stroke="isDarkMode ? '#de6937' : '#1A1A1A'" :size="18" :strokeWidth="1" />
+                        }`"
+                    >
+                        <VueUiIcon
+                            name="dashboard"
+                            :stroke="isDarkMode ? '#de6937' : '#1A1A1A'"
+                            :size="18"
+                            :strokeWidth="1"
+                        />
                         {{ translations.menu.examples[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-versions" to="/versions"  @mouseenter="closeDocsMenu">
-                    <span :class="`font-inter-medium py-1 px-2 rounded-xl ${isSelected('/versions')
+                <router-link
+                    data-cy="link-versions"
+                    to="/versions"
+                    @mouseenter="closeDocsMenu"
+                >
+                    <span
+                        :class="`font-inter-medium py-1 px-2 rounded-xl ${
+                            isSelected('/versions')
                                 ? 'text-black dark:text-[#CCCCCC] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
-                            }`">
+                        }`"
+                    >
                         {{ translations.menu.versions[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-about" to="/about"  @mouseenter="closeDocsMenu">
-                    <span :class="`font-inter-medium py-1 px-2 rounded-xl ${isSelected('/about')
+                <router-link
+                    data-cy="link-about"
+                    to="/about"
+                    @mouseenter="closeDocsMenu"
+                >
+                    <span
+                        :class="`font-inter-medium py-1 px-2 rounded-xl ${
+                            isSelected('/about')
                                 ? 'text-black dark:text-[#CCCCCC] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
-                            }`">
+                        }`"
+                    >
                         {{ translations.menu.about[store.lang] }}
                     </span>
                 </router-link>
-                <button data-cy="btn-mode" @click="changeTheme" id="themeToggle"
-                    class="dark:hover:bg-[#fdd66320] hover:bg-[#5f8bee30] hover:text-[#5f8bee] rounded-full p-1 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+                <button
+                    data-cy="btn-mode"
+                    @click="changeTheme"
+                    id="themeToggle"
+                    class="dark:hover:bg-[#fdd66320] hover:bg-[#5f8bee30] hover:text-[#5f8bee] rounded-full p-1 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                >
                     <SunFilledIcon v-if="isDarkMode" class="text-[#fdd663]" />
                     <MoonStarsIcon v-else />
                 </button>
@@ -423,15 +607,27 @@ const message = ref({
             </nav>
 
             <div class="relative xl:hidden">
-                <button id="mainDropdownButton" v-if="isOpen" @click="useMenu" type="button">
+                <button
+                    id="mainDropdownButton"
+                    v-if="isOpen"
+                    @click="useMenu"
+                    type="button"
+                >
                     <XIcon />
                 </button>
-                <button id="mainDropdownButton" v-else @click="useMenu" type="button">
+                <button
+                    id="mainDropdownButton"
+                    v-else
+                    @click="useMenu"
+                    type="button"
+                >
                     <Menu2Icon />
                 </button>
-                <div id="mainDropdown"
+                <div
+                    id="mainDropdown"
                     class="absolute top-full mt-2 right-0 rounded-lg w-[14rem] text-right"
-                    v-if="isOpen">
+                    v-if="isOpen"
+                >
                     <BaseCard type="dark">
                         <ul>
                             <HeaderDropdownItem
@@ -441,18 +637,32 @@ const message = ref({
                                 :clickableWhenActive="item.clickableWhenActive"
                             />
                             <div class="flex w-full justify-end mt-2">
-                                <button @click="changeTheme" id="themeToggle"
-                                    class="bg-gray-150 dark:bg-[#2A2A2A] hover:bg-gray-100 hover:dark:bg-[#3A3A3A] flex flex-row place-items-center align-center w-fit p-2 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
-                                    <SunFilledIcon v-if="store.isDarkMode" class="text-[#fdd663]" />
+                                <button
+                                    @click="changeTheme"
+                                    id="themeToggle"
+                                    class="bg-gray-150 dark:bg-[#2A2A2A] hover:bg-gray-100 hover:dark:bg-[#3A3A3A] flex flex-row place-items-center align-center w-fit p-2 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                                >
+                                    <SunFilledIcon
+                                        v-if="store.isDarkMode"
+                                        class="text-[#fdd663]"
+                                    />
                                     <MoonStarsIcon v-else />
                                 </button>
                             </div>
-                            <div class="z-10 flex flex-row place-items-center gap-2 mt-4">
+                            <div
+                                class="z-10 flex flex-row place-items-center gap-2 mt-4"
+                            >
                                 <div class="w-fit">
                                     <LanguageIcon class="dark:text-app-green" />
                                 </div>
-                                <select v-model="selectedLanguage" class="h-[24px] px-2">
-                                    <option v-for="option in languageOptions" :value="option.value">
+                                <select
+                                    v-model="selectedLanguage"
+                                    class="h-[24px] px-2"
+                                >
+                                    <option
+                                        v-for="option in languageOptions"
+                                        :value="option.value"
+                                    >
                                         {{ option.text }}
                                     </option>
                                 </select>
@@ -492,7 +702,7 @@ const message = ref({
 <style scoped>
 kbd {
     position: absolute;
-    background: radial-gradient(at top left, #AAAAAA, #DDDDDD);
+    background: radial-gradient(at top left, #aaaaaa, #dddddd);
     border: 1px solid #808080;
     border-right: 4px solid #606060;
     border-bottom: 4px solid #606060;

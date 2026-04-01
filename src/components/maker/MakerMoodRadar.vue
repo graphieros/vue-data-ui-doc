@@ -1,9 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject } from "./lib.js"
-import { useDefaultDataStore } from "../../stores/defaultData"
+import { useMakerStore } from "../../stores/maker";
+import { copyComponent, convertArrayToObject } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
@@ -35,60 +35,65 @@ const isDarkMode = computed(() => {
 const CONFIG_CATEGORIES = computed(() => {
     return [
         {
-            key: 'general',
-            title: makerTranslations.value.categories.general[store.lang]
+            key: "general",
+            title: makerTranslations.value.categories.general[store.lang],
         },
         {
-            key: 'grid',
-            title: makerTranslations.value.categories.grid[store.lang]
+            key: "grid",
+            title: makerTranslations.value.categories.grid[store.lang],
         },
         {
-            key: 'datapoints',
-            title: makerTranslations.value.categories.datapoints[store.lang]
+            key: "datapoints",
+            title: makerTranslations.value.categories.datapoints[store.lang],
         },
         {
-            key: 'labels',
-            title: makerTranslations.value.categories.labels[store.lang]
+            key: "labels",
+            title: makerTranslations.value.categories.labels[store.lang],
         },
         {
-            key: 'title',
-            title: makerTranslations.value.categories.title[store.lang]
+            key: "title",
+            title: makerTranslations.value.categories.title[store.lang],
         },
         {
-            key: 'subtitle',
-            title: makerTranslations.value.categories.subtitle[store.lang]
+            key: "subtitle",
+            title: makerTranslations.value.categories.subtitle[store.lang],
         },
         {
-            key: 'legend',
-            title: makerTranslations.value.categories.legend[store.lang]
+            key: "legend",
+            title: makerTranslations.value.categories.legend[store.lang],
         },
         {
-            key: 'table',
-            title: makerTranslations.value.categories.table[store.lang]
+            key: "table",
+            title: makerTranslations.value.categories.table[store.lang],
         },
         {
-            key: 'translations',
-            title: makerTranslations.value.categories.translations[store.lang]
+            key: "translations",
+            title: makerTranslations.value.categories.translations[store.lang],
         },
-    ]
-})
+    ];
+});
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_mood_radar.model)));
+const CONFIG_MODEL = ref(
+    JSON.parse(JSON.stringify(defaultData.vue_ui_mood_radar.model)),
+);
 
 const datasetItems = ref(defaultData.vue_ui_mood_radar.dataset);
 
 onMounted(() => {
-    if(localStorage.moodRadarConfig) {
+    if (localStorage.moodRadarConfig) {
         CONFIG_MODEL.value = JSON.parse(localStorage.moodRadarConfig);
-    } 
-    if(localStorage.moodRadarDataset) {
-        datasetItems.value = JSON.parse(localStorage.moodRadarDataset)
-    }else {
-        localStorage.setItem('moodRadarDataset', JSON.stringify(defaultData.vue_ui_mood_radar.dataset))
+    }
+    if (localStorage.moodRadarDataset) {
+        datasetItems.value = JSON.parse(localStorage.moodRadarDataset);
+    } else {
+        localStorage.setItem(
+            "moodRadarDataset",
+            JSON.stringify(defaultData.vue_ui_mood_radar.dataset),
+        );
     }
 
     step.value += 1;
-})
+});
 
 function saveDatasetToLocalStorage() {
     localStorage.moodRadarDataset = JSON.stringify(datasetItems.value);
@@ -101,31 +106,40 @@ function saveConfigToLocalStorage() {
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_mood_radar.model))
+    CONFIG_MODEL.value = JSON.parse(
+        JSON.stringify(defaultData.vue_ui_mood_radar.model),
+    );
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.moodRadarConfig) {
-        localStorage.setItem('moodRadarConfig', {})
+    if (!localStorage.moodRadarConfig) {
+        localStorage.setItem("moodRadarConfig", {});
     }
-    saveConfigToLocalStorage()
+    saveConfigToLocalStorage();
     step.value += 1;
 }
 
 const finalConfig = computed(() => {
-    return convertArrayToObject(CONFIG_MODEL.value)
+    return convertArrayToObject(CONFIG_MODEL.value);
 });
 </script>
 
 <template>
     <div>
+        <ClearStorageAndRefresh
+            keyConfig="moodRadarConfig"
+            keyDataset="moodRadarDataset"
+            :key="`clear_${clearStep}`"
+        />
+        <BaseDocExampleLink
+            link="vue-ui-mood-radar"
+            :example="false"
+            componentName="VueUiMoodRadar"
+        />
 
-        <ClearStorageAndRefresh keyConfig="moodRadarConfig" keyDataset="moodRadarDataset" :key="`clear_${clearStep}`"/>
-        <BaseDocExampleLink link="vue-ui-mood-radar" :example="false" componentName="VueUiMoodRadar"/>
-        
-        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+        <div class="w-full mt-[64px]" style="height: calc(100% - 64px)">
             <Transition name="fade">
                 <BaseMakerChart
                     v-if="!isFixed"
@@ -133,33 +147,87 @@ const finalConfig = computed(() => {
                     @fixChart="fixChart"
                     @resetModel="resetModel"
                 >
-                    <VueUiMoodRadar ref="chart" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                    <VueUiMoodRadar
+                        ref="chart"
+                        :dataset="datasetItems"
+                        :config="finalConfig"
+                        :key="`chart_${step}`"
+                    />
                 </BaseMakerChart>
             </Transition>
         </div>
-        
+
         <BaseCard>
             <details open>
-                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                <summary class="cursor-pointer mb-4">
+                    {{ makerTranslations.dataset[store.lang] }}
+                </summary>
                 <div class="flex flex-col gap-2">
-                    <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
+                    <div
+                        :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`"
+                    >
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="text-left text-xs h-[40px]">1</th>
-                                    <th class="text-left text-xs h-[40px]">2</th>
-                                    <th class="text-left text-xs h-[40px]">3</th>
-                                    <th class="text-left text-xs h-[40px]">4</th>
-                                    <th class="text-left text-xs h-[40px]">5</th>
+                                    <th class="text-left text-xs h-[40px]">
+                                        1
+                                    </th>
+                                    <th class="text-left text-xs h-[40px]">
+                                        2
+                                    </th>
+                                    <th class="text-left text-xs h-[40px]">
+                                        3
+                                    </th>
+                                    <th class="text-left text-xs h-[40px]">
+                                        4
+                                    </th>
+                                    <th class="text-left text-xs h-[40px]">
+                                        5
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input class="w-[82px]" type="number" v-model="datasetItems['1']" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="w-[82px]" type="number" v-model="datasetItems['2']" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="w-[82px]" type="number" v-model="datasetItems['3']" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="w-[82px]" type="number" v-model="datasetItems['4']" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="w-[82px]" type="number" v-model="datasetItems['5']" @change="saveDatasetToLocalStorage"></td>
+                                    <td>
+                                        <input
+                                            class="w-[82px]"
+                                            type="number"
+                                            v-model="datasetItems['1']"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            class="w-[82px]"
+                                            type="number"
+                                            v-model="datasetItems['2']"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            class="w-[82px]"
+                                            type="number"
+                                            v-model="datasetItems['3']"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            class="w-[82px]"
+                                            type="number"
+                                            v-model="datasetItems['4']"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            class="w-[82px]"
+                                            type="number"
+                                            v-model="datasetItems['5']"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -167,34 +235,40 @@ const finalConfig = computed(() => {
                 </div>
             </details>
         </BaseCard>
-        
+
         <details open class="mt-6" v-if="makerTranslations.labels">
-                <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-        
-                <MakerKnobs
-                    :categories="CONFIG_CATEGORIES"
-                    :model="CONFIG_MODEL"
-                    @change="forceChartUpdate"
-                />
-            </details>
-        
-            <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-                <ComponentContent
-                    :dataset="datasetItems"
-                    :config="finalConfig"
-                    componentName="VueUiMoodRadar"
-                    configName="vue_ui_mood_radar"
-                    @click="() => copyComponent('componentContent', store)"
-                    :copyComponentFunc="() => copyComponent('componentContent', store)"
-                    keyConfig="moodRadarConfig"
-                    keyDataset="moodRadarDataset"
-                >
-                    <template #component-copy>
-                        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-                    </template>
-                </ComponentContent>
-                <slot name="rater"/>
-            </div>
+            <summary class="cursor-pointer">
+                {{ makerTranslations.config[store.lang] }}
+            </summary>
+
+            <MakerKnobs
+                :categories="CONFIG_CATEGORIES"
+                :model="CONFIG_MODEL"
+                @change="forceChartUpdate"
+            />
+        </details>
+
+        <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <ComponentContent
+                :dataset="datasetItems"
+                :config="finalConfig"
+                componentName="VueUiMoodRadar"
+                configName="vue_ui_mood_radar"
+                @click="() => copyComponent('componentContent', store)"
+                :copyComponentFunc="
+                    () => copyComponent('componentContent', store)
+                "
+                keyConfig="moodRadarConfig"
+                keyDataset="moodRadarDataset"
+            >
+                <template #component-copy>
+                    <CopyComponent
+                        @click="() => copyComponent('componentContent', store)"
+                    />
+                </template>
+            </ComponentContent>
+            <slot name="rater" />
+        </div>
     </div>
     <Transition name="fade">
         <BaseMakerChart
@@ -203,13 +277,18 @@ const finalConfig = computed(() => {
             @fixChart="fixChart"
             @resetModel="resetModel"
         >
-            <VueUiMoodRadar :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+            <VueUiMoodRadar
+                :dataset="datasetItems"
+                :config="finalConfig"
+                :key="`chart_${step}`"
+            />
         </BaseMakerChart>
     </Transition>
 </template>
 
 <style scoped>
-th, td {
+th,
+td {
     padding: 0 3px;
 }
 </style>

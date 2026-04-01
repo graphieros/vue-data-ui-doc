@@ -1,9 +1,9 @@
 <script setup>
 /**
  * Link to a route with a hash, then scrolls to a second hash on the same page.
- * 
+ *
  * Example:
- * 
+ *
  * ```html
  * <CuteLink
  *  path="/examples/categories"
@@ -17,9 +17,8 @@
 const props = defineProps({
     path: { type: String },
     hash: { type: String },
-    target: { type: String }
+    target: { type: String },
 });
-
 </script>
 
 <template>
@@ -29,9 +28,9 @@ const props = defineProps({
             query: {
                 next: target,
             },
-            hash: `#${hash}`
+            hash: `#${hash}`,
         }"
     >
-        <slot/>
+        <slot />
     </RouterLink>
 </template>

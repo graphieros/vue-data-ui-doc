@@ -1,13 +1,19 @@
 export const xyDataset = [
     {
         name: "Series 1",
-        series: [ -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
+        series: [
+            -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13,
+            21, 34, 55,
+        ],
         type: "bar",
-        color: "rgb(95,139,238)"
+        color: "rgb(95,139,238)",
     },
     {
         name: "Series 2",
-        series: [ 55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
+        series: [
+            55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13,
+            -21, -34, -55,
+        ],
         type: "line",
         color: "rgb(66,211,146)",
         useProgression: true,
@@ -15,13 +21,19 @@ export const xyDataset = [
     },
     {
         name: "Series 3",
-        series: [ 64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
+        series: [
+            64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16,
+            30, 42, 52, 60, 64,
+        ],
         type: "plot",
-        color: "rgb(255,100,0)"
+        color: "rgb(255,100,0)",
     },
     {
         name: "Target",
-        series: [ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+        series: [
+            30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+            30, 30, 30, 30,
+        ],
         type: "line",
         color: "#404040",
         dashed: true,
@@ -40,7 +52,7 @@ export const xyConfig = {
             opacity: 10,
         },
         zoom: {
-            color: "#42d392"
+            color: "#42d392",
         },
         grid: {
             stroke: "#C4C4C4",
@@ -52,33 +64,55 @@ export const xyConfig = {
                 axis: {
                     yLabel: "yLabel",
                     xLabel: "xLabel",
-                    fontSize: 12
+                    fontSize: 12,
                 },
                 xAxisLabels: {
                     color: "#1A1A1A",
                     show: true,
                     showOnlyFirstAndLast: false,
-                    values: ['JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+                    values: [
+                        "JAN",
+                        "FEB",
+                        "MAR",
+                        "APR",
+                        "JUN",
+                        "JUL",
+                        "AUG",
+                        "SEP",
+                        "OCT",
+                        "NOV",
+                        "DEC",
+                        "JAN",
+                        "FEB",
+                        "MAR",
+                        "APR",
+                        "JUN",
+                        "JUL",
+                        "AUG",
+                        "SEP",
+                        "OCT",
+                        "NOV",
+                    ],
                     fontSize: 6,
-                }
-            }
+                },
+            },
         },
         legend: {
             show: true,
             color: "#1A1A1A",
-            fontSize: 12
+            fontSize: 12,
         },
         title: {
-           show:true,
-           text: "Title",
-           color: "#1A1A1A",
-           fontSize: 20,
-           bold: true,
-           subtitle: {
-            fontSize: 16,
-            color: "#565656",
-            text: "Subtitle"
-           }
+            show: true,
+            text: "Title",
+            color: "#1A1A1A",
+            fontSize: 20,
+            bold: true,
+            subtitle: {
+                fontSize: 16,
+                color: "#565656",
+                text: "Subtitle",
+            },
         },
         tooltip: {
             color: "#1A1A1A",
@@ -91,13 +125,13 @@ export const xyConfig = {
         },
         userOptions: {
             show: false,
-            title:"options",
+            title: "options",
             labels: {
                 dataLabels: "Show datalabels",
                 titleInside: "Title inside",
                 legendInside: "Legend inside",
-                showTable: "Show table"
-            }
+                showTable: "Show table",
+            },
         },
     },
     bar: {
@@ -107,7 +141,7 @@ export const xyConfig = {
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
-        }
+        },
     },
     line: {
         radius: 3,
@@ -118,8 +152,7 @@ export const xyConfig = {
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
-        }
-
+        },
     },
     plot: {
         radius: 3,
@@ -129,58 +162,58 @@ export const xyConfig = {
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
-        }
+        },
     },
     table: {
         rounding: 0,
         th: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4"
+            outline: "1px solid #C4C4C4",
         },
         td: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
-        }
-    }
-}
+        },
+    },
+};
 
 export const donutDataset = [
     {
         name: "Serie 1",
-        values: [100]
+        values: [100],
     },
     {
         name: "Serie 2",
-        values: [200]
+        values: [200],
     },
     {
         name: "Serie 3",
-        values: [300, 1]
+        values: [300, 1],
     },
 ];
 
 export const donutDataset2 = [
     {
         name: "Serie 1",
-        values: [100]
+        values: [100],
     },
     {
         name: "Serie 2",
-        values: [200]
+        values: [200],
     },
     {
         name: "Serie 3",
-        values: [300, 1]
+        values: [300, 1],
     },
     {
         name: "Serie 4",
-        values: [150, 1]
+        values: [150, 1],
     },
     {
         name: "Serie 5",
-        values: [90, 1]
+        values: [90, 1],
     },
 ];
 
@@ -202,7 +235,7 @@ export const donutConfig = {
                     percentage: {
                         color: "#1A1A1A",
                         bold: true,
-                        fontSize: 18
+                        fontSize: 18,
                     },
                     name: {
                         color: "#1A1A1A",
@@ -215,7 +248,7 @@ export const donutConfig = {
                             bold: false,
                             fontSize: 18,
                             color: "#1A1A1A",
-                            text:  "Total",
+                            text: "Total",
                             offsetY: -16,
                             value: {
                                 color: "#1A1A1A",
@@ -225,14 +258,14 @@ export const donutConfig = {
                                 prefix: "",
                                 offsetY: -12,
                                 rounding: 0,
-                            }
+                            },
                         },
                         average: {
                             show: false,
                             bold: false,
                             fontSize: 18,
                             color: "#1A1A1A",
-                            text:  "Average",
+                            text: "Average",
                             offsetY: 0,
                             value: {
                                 color: "#1A1A1A",
@@ -242,23 +275,23 @@ export const donutConfig = {
                                 prefix: "",
                                 offsetY: 6,
                                 rounding: 0,
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 },
                 donut: {
-                    strokeWidth: 55
+                    strokeWidth: 55,
                 },
             },
             legend: {
-                    backgroundColor: "#FFFFFF",
-                    color: "#1A1A1A",
-                    show: true,
-                    fontSize: 12,
-                    bold: false,
-                    roundingValue: 0,
-                    roundingPercentage: 0,
-                },
+                backgroundColor: "#FFFFFF",
+                color: "#1A1A1A",
+                show: true,
+                fontSize: 12,
+                bold: false,
+                roundingValue: 0,
+                roundingPercentage: 0,
+            },
             title: {
                 text: "Title",
                 color: "#1A1A1A",
@@ -268,8 +301,8 @@ export const donutConfig = {
                     color: "#565656",
                     text: "Subtitle",
                     fontSize: 16,
-                    bold: false
-                }
+                    bold: false,
+                },
             },
             tooltip: {
                 show: true,
@@ -280,11 +313,11 @@ export const donutConfig = {
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
-            }
-        }
+            },
+        },
     },
     userOptions: {
-        show: false
+        show: false,
     },
     translations: {
         total: "Total",
@@ -295,34 +328,34 @@ export const donutConfig = {
         th: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4"
+            outline: "1px solid #C4C4C4",
         },
         td: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
-            roundingPercentage: 0
-        }
-    }
-}
+            roundingPercentage: 0,
+        },
+    },
+};
 
 export const waffleDataset = [
     {
         name: "Serie 1",
         color: "#5f8bee",
-        values: [100]
+        values: [100],
     },
     {
         name: "Serie 2",
         color: "#42d392",
-        values: [200]
+        values: [200],
     },
     {
         name: "Serie 3",
         color: "#ff6400",
-        values: [300, 1]
-    }
+        values: [300, 1],
+    },
 ];
 
 export const waffleConfig = {
@@ -340,7 +373,7 @@ export const waffleConfig = {
                 },
                 rect: {
                     rounded: true,
-                    rounding:2,
+                    rounding: 2,
                     stroke: "#FFFFFF",
                     strokeWidth: 3,
                     useGradient: true,
@@ -356,8 +389,8 @@ export const waffleConfig = {
                     color: "#565656",
                     text: "Subtitle",
                     fontSize: 16,
-                    bold: false
-                }
+                    bold: false,
+                },
             },
             tooltip: {
                 show: true,
@@ -377,107 +410,107 @@ export const waffleConfig = {
                 fontSize: 12,
                 roundingValue: 0,
                 roundingPercentage: 0,
-            }
-        }
+            },
+        },
     },
     userOptions: {
-        show: false
+        show: false,
     },
     table: {
         show: false,
         th: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4"
+            outline: "1px solid #C4C4C4",
         },
         td: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
-            roundingPercentage: 0
-        }
-    }
-}
+            roundingPercentage: 0,
+        },
+    },
+};
 
 export const radarDataset = {
     categories: [
-      {
-        name: "category 1",
-        color: "#5f8bee",
-      },
-      {
-        name: "category 2",
-        color: "#42d392",
-      },
-      {
-        name: "category 3",
-        color: "#ff6400",
-      }
-  ],
+        {
+            name: "category 1",
+            color: "#5f8bee",
+        },
+        {
+            name: "category 2",
+            color: "#42d392",
+        },
+        {
+            name: "category 3",
+            color: "#ff6400",
+        },
+    ],
     series: [
-      {
-        name: "Serie 1",
-        values: [65, 45, 12],
-        color: "",
-        target: 100
-      },
-      {
-        name: "Serie 2",
-        values: [2525, 3472, 4950],
-        color: "",
-        target: 10000
-      },
-      {
-        name: "Serie 3",
-        values: [4.7, 1, 3],
-        color: "",
-        target: 5
-      },
-      {
-        name: "Serie 4",
-        values: [400, 250, 325],
-        color: "",
-        target: 500
-      },
-      {
-        name: "Serie 5",
-        values: [53, 95, 67],
-        color: "",
-        target: 100
-      },
-      {
-        name: "Serie 6",
-        values: [166, 107, 75],
-        color: "",
-        target: 200
-      },
-      {
-        name: "Serie 7",
-        values: [6, 7, 10],
-        color: "",
-        target: 10
-      },
-      {
-        name: "Serie 8",
-        values: [6, 3, 10],
-        color: "",
-        target: 10
-      },
-      {
-        name: "Serie 9",
-        values: [2, 7, 9],
-        color: "",
-        target: 10
-      },
-      {
-        name: "Serie 10",
-        values: [6, 7, 8],
-        color: "",
-        target: 10
-      },
-    ]
-  };
+        {
+            name: "Serie 1",
+            values: [65, 45, 12],
+            color: "",
+            target: 100,
+        },
+        {
+            name: "Serie 2",
+            values: [2525, 3472, 4950],
+            color: "",
+            target: 10000,
+        },
+        {
+            name: "Serie 3",
+            values: [4.7, 1, 3],
+            color: "",
+            target: 5,
+        },
+        {
+            name: "Serie 4",
+            values: [400, 250, 325],
+            color: "",
+            target: 500,
+        },
+        {
+            name: "Serie 5",
+            values: [53, 95, 67],
+            color: "",
+            target: 100,
+        },
+        {
+            name: "Serie 6",
+            values: [166, 107, 75],
+            color: "",
+            target: 200,
+        },
+        {
+            name: "Serie 7",
+            values: [6, 7, 10],
+            color: "",
+            target: 10,
+        },
+        {
+            name: "Serie 8",
+            values: [6, 3, 10],
+            color: "",
+            target: 10,
+        },
+        {
+            name: "Serie 9",
+            values: [2, 7, 9],
+            color: "",
+            target: 10,
+        },
+        {
+            name: "Serie 10",
+            values: [6, 7, 8],
+            color: "",
+            target: 10,
+        },
+    ],
+};
 
 export const radarConfig = {
     responsive: true,
@@ -505,14 +538,14 @@ export const radarConfig = {
                     show: true,
                     stroke: "#C4C4C4",
                     strokeWidth: 0.5,
-                    graduations: 5
+                    graduations: 5,
                 },
                 labels: {
                     dataLabels: {
                         show: true,
                         fontSize: 12,
-                        color: "#1A1A1A"
-                    }
+                        color: "#1A1A1A",
+                    },
                 },
             },
             title: {
@@ -524,8 +557,8 @@ export const radarConfig = {
                     color: "#565656",
                     text: "Subtitle",
                     fontSize: 16,
-                    bold: false
-                }
+                    bold: false,
+                },
             },
             tooltip: {
                 show: true,
@@ -544,241 +577,240 @@ export const radarConfig = {
                 color: "#1A1A1A",
                 fontSize: 14,
                 roundingPercentage: 0,
-            }
-        }
+            },
+        },
     },
     table: {
         show: false,
         th: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4"
+            outline: "1px solid #C4C4C4",
         },
         td: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
-            roundingPercentage: 0
-        }
+            roundingPercentage: 0,
+        },
     },
     userOptions: {
-        show: false
+        show: false,
     },
     translations: {
-        target: "Target"
-    }
-}
+        target: "Target",
+    },
+};
 
 export const chestnutDataset = [
     {
-    name: "Root1",
-    color: "#ff6400",
-    branches: [
-      {
-        name: "branch 1.1",
-        value: 200,
-        breakdown: [
-          {
-            name: "break 1.1.1",
-            value: 50,
-            color: "#F17171"
-          },
-          {
-            name: "break 1.1.2",
-            value: 25,
-            color: "#ffc800"
-          },
-          {
-            name: "break 1.1.3",
-            value: 25,
-            color: "#42d392"
-          },
-        ]
-      },
-      {
-        name: "branch 1.2",
-        value: 100,
-        breakdown: [
-          {
-            name: "break 1.2.1",
-            value: 10,
-            color: "#F17171"
-          },
-          {
-            name: "break 1.2.2",
-            value: 20,
-            color: "#ffc800"
-          },
-          {
-            name: "break 1.2.3",
-            value: 70,
-            color: "#42d392"
-          },
-        ]
-      },
-      {
-        name: "branch 1.3",
-        value: 175,
-        breakdown: [
-          {
-            name: "break 1.3.1",
-            value: 90,
-            color: "#F17171"
-          },
-          {
-            name: "break 1.3.2",
-            value: 10,
-            color: "#ffc800"
-          },
-          {
-            name: "break 1.3.3",
-            value: 75,
-            color: "#42d392"
-          },
-        ]
-      },
-
-    ]
-  },
-  {
-    name: "Root2",
-    color: "#5f8bee",
-    branches: [
-      {
-        name: "branch 2.1",
-        value: 200,
-        breakdown: [
-          {
-            name: "break 2.1.1",
-            value: 150,
-            color: "#F17171"
-          },
-          {
-            name: "break 2.1.2",
-            value: 25,
-            color: "#ffc800"
-          },
-          {
-            name: "break 2.1.3",
-            value: 25,
-            color: "#42d392"
-          },
-        ]
-      },
-      {
-        name: "branch 2.2",
-        value: 300,
-        breakdown: [
-          {
-            name: "break 2.2.1",
-            value: 100,
-            color: "#F17171"
-          },
-          {
-            name: "break 2.2.2",
-            value: 10,
-            color: "#ffc800"
-          },
-          {
-            name: "break 2.2.3",
-            value: 150,
-            color: "#42d392"
-          },
-        ]
-      },
-      {
-        name: "branch 2.3",
-        value: 125,
-        breakdown: [
-          {
-            name: "break 2.3.1",
-            value: 80,
-            color: "#F17171"
-          },
-          {
-            name: "break 2.3.2",
-            value: 20,
-            color: "#ffc800"
-          },
-          {
-            name: "break 2.3.3",
-            value: 25,
-            color: "#42d392"
-          },
-        ]
-      },
-    ]
-  },
-  {
-    name: "Root3",
-    color: "#42d392",
-    branches: [
-      {
-        name: "branch 3.1",
-        value: 120,
-        breakdown: [
-          {
-            name: "break 3.1.1",
-            value: 100,
-            color: "#F17171"
-          },
-          {
-            name: "break 3.1.2",
-            value: 10,
-            color: "#ffc800"
-          },
-          {
-            name: "break 3.1.3",
-            value: 10,
-            color: "#42d392"
-          },
-        ]
-      },
-      {
-        name: "branch 3.2",
-        value: 90,
-        breakdown: [
-          {
-            name: "break 3.2.1",
-            value: 30,
-            color: "#F17171"
-          },
-          {
-            name: "break 3.2.2",
-            value: 30,
-            color: "#ffc800"
-          },
-          {
-            name: "break 3.2.3",
-            value: 40,
-            color: "#42d392"
-          },
-        ]
-      },
-      {
-        name: "branch 3.3",
-        value: 390,
-        breakdown: [
-          {
-            name: "break 3.3.1",
-            value: 90,
-            color: "#F17171"
-          },
-          {
-            name: "break 3.3.2",
-            value: 200,
-            color: "#ffc800"
-          },
-          {
-            name: "break 3.3.3",
-            value: 100,
-            color: "#42d392"
-          },
-        ]
-      }
-    ]
-  },
+        name: "Root1",
+        color: "#ff6400",
+        branches: [
+            {
+                name: "branch 1.1",
+                value: 200,
+                breakdown: [
+                    {
+                        name: "break 1.1.1",
+                        value: 50,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 1.1.2",
+                        value: 25,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 1.1.3",
+                        value: 25,
+                        color: "#42d392",
+                    },
+                ],
+            },
+            {
+                name: "branch 1.2",
+                value: 100,
+                breakdown: [
+                    {
+                        name: "break 1.2.1",
+                        value: 10,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 1.2.2",
+                        value: 20,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 1.2.3",
+                        value: 70,
+                        color: "#42d392",
+                    },
+                ],
+            },
+            {
+                name: "branch 1.3",
+                value: 175,
+                breakdown: [
+                    {
+                        name: "break 1.3.1",
+                        value: 90,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 1.3.2",
+                        value: 10,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 1.3.3",
+                        value: 75,
+                        color: "#42d392",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        name: "Root2",
+        color: "#5f8bee",
+        branches: [
+            {
+                name: "branch 2.1",
+                value: 200,
+                breakdown: [
+                    {
+                        name: "break 2.1.1",
+                        value: 150,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 2.1.2",
+                        value: 25,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 2.1.3",
+                        value: 25,
+                        color: "#42d392",
+                    },
+                ],
+            },
+            {
+                name: "branch 2.2",
+                value: 300,
+                breakdown: [
+                    {
+                        name: "break 2.2.1",
+                        value: 100,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 2.2.2",
+                        value: 10,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 2.2.3",
+                        value: 150,
+                        color: "#42d392",
+                    },
+                ],
+            },
+            {
+                name: "branch 2.3",
+                value: 125,
+                breakdown: [
+                    {
+                        name: "break 2.3.1",
+                        value: 80,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 2.3.2",
+                        value: 20,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 2.3.3",
+                        value: 25,
+                        color: "#42d392",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        name: "Root3",
+        color: "#42d392",
+        branches: [
+            {
+                name: "branch 3.1",
+                value: 120,
+                breakdown: [
+                    {
+                        name: "break 3.1.1",
+                        value: 100,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 3.1.2",
+                        value: 10,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 3.1.3",
+                        value: 10,
+                        color: "#42d392",
+                    },
+                ],
+            },
+            {
+                name: "branch 3.2",
+                value: 90,
+                breakdown: [
+                    {
+                        name: "break 3.2.1",
+                        value: 30,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 3.2.2",
+                        value: 30,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 3.2.3",
+                        value: 40,
+                        color: "#42d392",
+                    },
+                ],
+            },
+            {
+                name: "branch 3.3",
+                value: 390,
+                breakdown: [
+                    {
+                        name: "break 3.3.1",
+                        value: 90,
+                        color: "#F17171",
+                    },
+                    {
+                        name: "break 3.3.2",
+                        value: 200,
+                        color: "#ffc800",
+                    },
+                    {
+                        name: "break 3.3.3",
+                        value: 100,
+                        color: "#42d392",
+                    },
+                ],
+            },
+        ],
+    },
 ];
 
 export const chestnutConfig = {
@@ -818,8 +850,8 @@ export const chestnutConfig = {
                             color: "#1A1A1A",
                             fontSize: 16,
                             bold: true,
-                        }
-                    }
+                        },
+                    },
                 },
                 verticalSeparator: {
                     stroke: "#FFFFFF",
@@ -849,8 +881,8 @@ export const chestnutConfig = {
                             roundingPercentage: 0,
                             prefix: "",
                             suffix: "",
-                        }
-                    }
+                        },
+                    },
                 },
                 nuts: {
                     offsetX: 20,
@@ -869,7 +901,7 @@ export const chestnutConfig = {
                                 fontSize: 12,
                                 bold: false,
                                 prefix: "",
-                                suffix: ""
+                                suffix: "",
                             },
                             core: {
                                 total: {
@@ -882,11 +914,11 @@ export const chestnutConfig = {
                                     fontSize: 24,
                                     bold: true,
                                     prefix: "",
-                                    suffix: ""
-                                }
-                            }
-                        }
-                    }
+                                    suffix: "",
+                                },
+                            },
+                        },
+                    },
                 },
                 legend: {
                     fontSize: 16,
@@ -894,24 +926,24 @@ export const chestnutConfig = {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     prefix: "",
-                    suffix: ""
+                    suffix: "",
                 },
                 title: {
                     color: "#1A1A1A",
                     fontSize: 20,
                     text: "Title",
                     bold: true,
-                    offsetY:0,
+                    offsetY: 0,
                     subtitle: {
                         text: "Subtitle",
                         color: "#565656",
                         bold: false,
                         fontSize: 16,
                         offsetY: 0,
-                    }
-                }
-            }
-        }
+                    },
+                },
+            },
+        },
     },
     table: {
         show: false,
@@ -931,30 +963,30 @@ export const chestnutConfig = {
                 nutValue: "nut value",
                 nutToBranch: "%/branch",
                 nutToRoot: "%/root",
-                nutToTotal: "%/total"
-            }
+                nutToTotal: "%/total",
+            },
         },
         td: {
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
-            roundingPercentage: 0
-        }
+            roundingPercentage: 0,
+        },
     },
     userOptions: {
         show: false,
         title: "options",
         labels: {
-            showTable: "Show table"
-        }
+            showTable: "Show table",
+        },
     },
     translations: {
         total: "Total",
         proportionToTree: "of grand total",
-        of: "of"
-    }
-}
+        of: "of",
+    },
+};
 
 const charts = {
     xyConfig,
@@ -966,7 +998,7 @@ const charts = {
     radarConfig,
     radarDataset,
     chestnutConfig,
-    chestnutDataset
-}
+    chestnutDataset,
+};
 
 export default charts;

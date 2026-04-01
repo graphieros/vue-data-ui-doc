@@ -18,7 +18,7 @@ const dataset = ref({
             from: 4,
             to: 5,
         },
-    ]
+    ],
 });
 
 const config = ref({
@@ -27,13 +27,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

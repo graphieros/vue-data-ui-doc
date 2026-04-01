@@ -10,10 +10,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiBumpConfig",
             "dataset": "VueUiBumpDatasetItem[]"
@@ -24,151 +21,71 @@
                     {
                         "name": "JavaScript",
                         "values": [
-                            1.2,
-                            1.35,
-                            1.55,
-                            1.75,
-                            2.1,
-                            2.45,
-                            2.75,
-                            3.05,
-                            3.3,
+                            1.2, 1.35, 1.55, 1.75, 2.1, 2.45, 2.75, 3.05, 3.3,
                             3.5
                         ]
                     },
                     {
                         "name": "Python",
                         "values": [
-                            0.65,
-                            0.74,
-                            0.86,
-                            1.02,
-                            1.25,
-                            1.5,
-                            1.75,
-                            2.05,
-                            2.35,
+                            0.65, 0.74, 0.86, 1.02, 1.25, 1.5, 1.75, 2.05, 2.35,
                             2.6
                         ]
                     },
                     {
                         "name": "Java",
                         "values": [
-                            0.9,
-                            0.92,
-                            0.94,
-                            0.96,
-                            0.98,
-                            1,
-                            1.02,
-                            1.04,
-                            1.06,
+                            0.9, 0.92, 0.94, 0.96, 0.98, 1, 1.02, 1.04, 1.06,
                             1.08
                         ]
                     },
                     {
                         "name": "TypeScript",
                         "values": [
-                            0.06,
-                            0.09,
-                            0.14,
-                            0.23,
-                            0.38,
-                            0.56,
-                            0.76,
-                            0.98,
-                            1.2,
+                            0.06, 0.09, 0.14, 0.23, 0.38, 0.56, 0.76, 0.98, 1.2,
                             1.45
                         ]
                     },
                     {
                         "name": "C#",
                         "values": [
-                            0.52,
-                            0.545,
-                            0.57,
-                            0.6,
-                            0.64,
-                            0.69,
-                            0.74,
-                            0.8,
-                            0.86,
+                            0.52, 0.545, 0.57, 0.6, 0.64, 0.69, 0.74, 0.8, 0.86,
                             0.92
                         ]
                     },
                     {
                         "name": "C++",
                         "values": [
-                            0.48,
-                            0.49,
-                            0.5,
-                            0.51,
-                            0.525,
-                            0.54,
-                            0.56,
-                            0.585,
-                            0.61,
-                            0.635
+                            0.48, 0.49, 0.5, 0.51, 0.525, 0.54, 0.56, 0.585,
+                            0.61, 0.635
                         ]
                     },
                     {
                         "name": "Go",
                         "values": [
-                            0.045,
-                            0.07,
-                            0.11,
-                            0.17,
-                            0.26,
-                            0.36,
-                            0.47,
-                            0.59,
-                            0.72,
-                            0.86
+                            0.045, 0.07, 0.11, 0.17, 0.26, 0.36, 0.47, 0.59,
+                            0.72, 0.86
                         ]
                     },
                     {
                         "name": "Rust",
                         "values": [
-                            0.005,
-                            0.009,
-                            0.018,
-                            0.035,
-                            0.07,
-                            0.12,
-                            0.19,
-                            0.28,
-                            0.38,
-                            0.5
+                            0.005, 0.009, 0.018, 0.035, 0.07, 0.12, 0.19, 0.28,
+                            0.38, 0.5
                         ]
                     },
                     {
                         "name": "PHP",
                         "values": [
-                            0.7,
-                            0.69,
-                            0.68,
-                            0.67,
-                            0.66,
-                            0.65,
-                            0.64,
-                            0.63,
-                            0.62,
+                            0.7, 0.69, 0.68, 0.67, 0.66, 0.65, 0.64, 0.63, 0.62,
                             0.61
                         ]
                     },
                     {
                         "name": "Ruby",
                         "values": [
-                            0.23,
-                            0.225,
-                            0.22,
-                            0.215,
-                            0.21,
-                            0.205,
-                            0.2,
-                            0.195,
-                            0.19,
-                            0.185
+                            0.23, 0.225, 0.22, 0.215, 0.21, 0.205, 0.2, 0.195,
+                            0.19, 0.185
                         ]
                     }
                 ]
@@ -330,10 +247,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiGeoConfig",
             "dataset": "VueUiGeoDatasetItem[]"
@@ -343,50 +257,35 @@
                 "dataset": [
                     {
                         "name": "Paris",
-                        "coordinates": [
-                            2.3522,
-                            48.8566
-                        ],
+                        "coordinates": [2.3522, 48.8566],
                         "description": "Capital of France",
                         "color": "#E63946",
                         "radius": 1
                     },
                     {
                         "name": "Lyon",
-                        "coordinates": [
-                            4.8357,
-                            45.7640
-                        ],
+                        "coordinates": [4.8357, 45.764],
                         "description": "Auvergne-Rhône-Alpes",
                         "color": "#457B9D",
                         "radius": 1
                     },
                     {
                         "name": "Marseille",
-                        "coordinates": [
-                            5.3698,
-                            43.2965
-                        ],
+                        "coordinates": [5.3698, 43.2965],
                         "description": "Provence-Alpes-Côte d’Azur",
                         "color": "#2A9D8F",
                         "radius": 1
                     },
                     {
                         "name": "Bordeaux",
-                        "coordinates": [
-                            -0.5792,
-                            44.8378
-                        ],
+                        "coordinates": [-0.5792, 44.8378],
                         "description": "Nouvelle-Aquitaine",
                         "color": "#F4A261",
                         "radius": 1
                     },
                     {
                         "name": "Lille",
-                        "coordinates": [
-                            3.0573,
-                            50.6292
-                        ],
+                        "coordinates": [3.0573, 50.6292],
                         "description": "Hauts-de-France",
                         "color": "#8D99AE",
                         "radius": 1
@@ -550,10 +449,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "reponsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiDagConfig",
             "dataset": "VueUiDagDataset"
@@ -802,10 +698,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiChordConfig",
             "dataset": "VueUiChordDataset"
@@ -814,37 +707,12 @@
             {
                 "dataset": {
                     "matrix": [
-                        [
-                            12000,
-                            6000,
-                            9000,
-                            3000
-                        ],
-                        [
-                            2000,
-                            10000,
-                            2000,
-                            6001
-                        ],
-                        [
-                            8000,
-                            1600,
-                            8000,
-                            8001
-                        ],
-                        [
-                            1000,
-                            1000,
-                            1000,
-                            7001
-                        ]
+                        [12000, 6000, 9000, 3000],
+                        [2000, 10000, 2000, 6001],
+                        [8000, 1600, 8000, 8001],
+                        [1000, 1000, 1000, 7001]
                     ],
-                    "labels": [
-                        "A",
-                        "B",
-                        "C",
-                        "D"
-                    ]
+                    "labels": ["A", "B", "C", "D"]
                 }
             }
         ],
@@ -1023,10 +891,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiRidgelineConfig",
             "dataset": "VueUiRidgelineDatasetItem[]"
@@ -1040,18 +905,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    -7,
-                                    -6,
-                                    0,
-                                    8,
-                                    15,
-                                    18,
-                                    20,
-                                    18,
-                                    13,
-                                    7,
-                                    1,
-                                    -4
+                                    -7, -6, 0, 8, 15, 18, 20, 18, 13, 7, 1, -4
                                 ]
                             }
                         ]
@@ -1062,18 +916,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    -4,
-                                    -2,
-                                    3,
-                                    10,
-                                    16,
-                                    22,
-                                    24,
-                                    23,
-                                    19,
-                                    12,
-                                    5,
-                                    -1
+                                    -4, -2, 3, 10, 16, 22, 24, 23, 19, 12, 5, -1
                                 ]
                             }
                         ]
@@ -1084,18 +927,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    -3,
-                                    -2,
-                                    2,
-                                    9,
-                                    15,
-                                    20,
-                                    22,
-                                    21,
-                                    17,
-                                    10,
-                                    4,
-                                    -1
+                                    -3, -2, 2, 9, 15, 20, 22, 21, 17, 10, 4, -1
                                 ]
                             }
                         ]
@@ -1106,18 +938,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    0,
-                                    2,
-                                    6,
-                                    12,
-                                    16,
-                                    19,
-                                    21,
-                                    21,
-                                    17,
-                                    12,
-                                    7,
-                                    3
+                                    0, 2, 6, 12, 16, 19, 21, 21, 17, 12, 7, 3
                                 ]
                             }
                         ]
@@ -1128,18 +949,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    -3,
-                                    0,
-                                    6,
-                                    14,
-                                    20,
-                                    24,
-                                    26,
-                                    25,
-                                    20,
-                                    13,
-                                    5,
-                                    -1
+                                    -3, 0, 6, 14, 20, 24, 26, 25, 20, 13, 5, -1
                                 ]
                             }
                         ]
@@ -1150,18 +960,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    5,
-                                    6,
-                                    8,
-                                    11,
-                                    15,
-                                    18,
-                                    20,
-                                    20,
-                                    17,
-                                    13,
-                                    9,
-                                    6
+                                    5, 6, 8, 11, 15, 18, 20, 20, 17, 13, 9, 6
                                 ]
                             }
                         ]
@@ -1172,18 +971,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    5,
-                                    6,
-                                    9,
-                                    12,
-                                    16,
-                                    19,
-                                    21,
-                                    21,
-                                    18,
-                                    13,
-                                    8,
-                                    5
+                                    5, 6, 9, 12, 16, 19, 21, 21, 18, 13, 8, 5
                                 ]
                             }
                         ]
@@ -1194,17 +982,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    11,
-                                    12,
-                                    13,
-                                    13,
-                                    14,
-                                    15,
-                                    15,
-                                    16,
-                                    17,
-                                    16,
-                                    14,
+                                    11, 12, 13, 13, 14, 15, 15, 16, 17, 16, 14,
                                     12
                                 ]
                             }
@@ -1216,18 +994,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    0,
-                                    2,
-                                    7,
-                                    13,
-                                    18,
-                                    24,
-                                    27,
-                                    26,
-                                    22,
-                                    15,
-                                    9,
-                                    3
+                                    0, 2, 7, 13, 18, 24, 27, 26, 22, 15, 9, 3
                                 ]
                             }
                         ]
@@ -1238,18 +1005,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    3,
-                                    5,
-                                    9,
-                                    14,
-                                    18,
-                                    22,
-                                    24,
-                                    24,
-                                    20,
-                                    15,
-                                    8,
-                                    4
+                                    3, 5, 9, 14, 18, 22, 24, 24, 20, 15, 8, 4
                                 ]
                             }
                         ]
@@ -1260,18 +1016,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    6,
-                                    8,
-                                    11,
-                                    13,
-                                    17,
-                                    22,
-                                    26,
-                                    25,
-                                    21,
-                                    15,
-                                    10,
-                                    7
+                                    6, 8, 11, 13, 17, 22, 26, 25, 21, 15, 10, 7
                                 ]
                             }
                         ]
@@ -1282,18 +1027,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    8,
-                                    9,
-                                    11,
-                                    14,
-                                    18,
-                                    22,
-                                    25,
-                                    25,
-                                    22,
-                                    17,
-                                    12,
-                                    9
+                                    8, 9, 11, 14, 18, 22, 25, 25, 22, 17, 12, 9
                                 ]
                             }
                         ]
@@ -1304,18 +1038,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    -2,
-                                    0,
-                                    5,
-                                    12,
-                                    17,
-                                    21,
-                                    25,
-                                    26,
-                                    21,
-                                    15,
-                                    7,
-                                    1
+                                    -2, 0, 5, 12, 17, 21, 25, 26, 21, 15, 7, 1
                                 ]
                             }
                         ]
@@ -1326,18 +1049,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    5,
-                                    6,
-                                    9,
-                                    15,
-                                    19,
-                                    22,
-                                    26,
-                                    27,
-                                    24,
-                                    18,
-                                    13,
-                                    8
+                                    5, 6, 9, 15, 19, 22, 26, 27, 24, 18, 13, 8
                                 ]
                             }
                         ]
@@ -1348,17 +1060,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    14,
-                                    15,
-                                    15,
-                                    17,
-                                    18,
-                                    20,
-                                    22,
-                                    22,
-                                    22,
-                                    19,
-                                    16,
+                                    14, 15, 15, 17, 18, 20, 22, 22, 22, 19, 16,
                                     13
                                 ]
                             }
@@ -1370,18 +1072,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    6,
-                                    6,
-                                    8,
-                                    12,
-                                    16,
-                                    21,
-                                    23,
-                                    23,
-                                    20,
-                                    16,
-                                    12,
-                                    8
+                                    6, 6, 8, 12, 16, 21, 23, 23, 20, 16, 12, 8
                                 ]
                             }
                         ]
@@ -1392,17 +1083,7 @@
                             {
                                 "name": "Average Temperature (°C)",
                                 "values": [
-                                    13,
-                                    14,
-                                    15,
-                                    16,
-                                    16,
-                                    16,
-                                    15,
-                                    15,
-                                    15,
-                                    14,
-                                    13,
+                                    13, 14, 15, 16, 16, 16, 15, 15, 15, 14, 13,
                                     13
                                 ]
                             }
@@ -1598,10 +1279,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": false,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiWorldConfig",
             "dataset": "VueUiWorldDataset"
@@ -1729,10 +1407,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": false,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiCirclePackConfig",
             "dataset": "VueUiCirclePackDatasetItem[]"
@@ -1978,10 +1653,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiHistoryPlotConfig",
             "dataset": "VueUiHistoryPlotDatasetItem[]"
@@ -2254,10 +1926,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiFunnelConfig",
             "dataset": "VueUiFunnelDatasetItem[]"
@@ -2446,10 +2115,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiBulletConfig",
             "dataset": "VueUiBulletDataset"
@@ -2619,10 +2285,7 @@
         "hasEmits": false,
         "hasExposed": false,
         "responsive": false,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiKpiConfig",
             "dataset": "number"
@@ -2663,10 +2326,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiStackbarConfig",
             "dataset": "VueUiStackbarDatasetItem[]"
@@ -2676,25 +2336,11 @@
                 "dataset": [
                     {
                         "name": "Serie 1",
-                        "series": [
-                            19,
-                            20.07,
-                            30,
-                            40,
-                            60,
-                            25
-                        ]
+                        "series": [19, 20.07, 30, 40, 60, 25]
                     },
                     {
                         "name": "Serie 2",
-                        "series": [
-                            13,
-                            8,
-                            9,
-                            13,
-                            25,
-                            27
-                        ]
+                        "series": [13, 8, 9, 13, 25, 27]
                     }
                 ],
                 "config": {}
@@ -2929,10 +2575,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiStacklineConfig",
             "dataset": "VueUiStacklineDatasetItem[]"
@@ -2942,36 +2585,15 @@
                 "dataset": [
                     {
                         "name": "Serie 1",
-                        "series": [
-                            19,
-                            20.07,
-                            30,
-                            40,
-                            60,
-                            25
-                        ]
+                        "series": [19, 20.07, 30, 40, 60, 25]
                     },
                     {
                         "name": "Serie 2",
-                        "series": [
-                            13,
-                            8,
-                            9,
-                            13,
-                            25,
-                            27
-                        ]
+                        "series": [13, 8, 9, 13, 25, 27]
                     },
                     {
                         "name": "Serie 3",
-                        "series": [
-                            24,
-                            16,
-                            20,
-                            14,
-                            8,
-                            55
-                        ]
+                        "series": [24, 16, 20, 14, 8, 55]
                     }
                 ],
                 "config": {}
@@ -3206,10 +2828,7 @@
         "hasEmits": false,
         "hasExposed": false,
         "responsive": false,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiGizmoConfig",
             "dataset": "VueUiGizmoDataset"
@@ -3232,10 +2851,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiCarouselTableConfig",
             "dataset": "VueUiCarouselTableDataset"
@@ -3243,84 +2859,18 @@
         "examples": [
             {
                 "dataset": {
-                    "head": [
-                        "col1",
-                        "col2",
-                        "col3",
-                        "col4",
-                        "col5"
-                    ],
+                    "head": ["col1", "col2", "col3", "col4", "col5"],
                     "body": [
-                        [
-                            10000,
-                            1000,
-                            100,
-                            10,
-                            0
-                        ],
-                        [
-                            10001,
-                            1001,
-                            101,
-                            11,
-                            1
-                        ],
-                        [
-                            10002,
-                            1002,
-                            102,
-                            12,
-                            2
-                        ],
-                        [
-                            10003,
-                            1003,
-                            103,
-                            13,
-                            3
-                        ],
-                        [
-                            10004,
-                            1004,
-                            104,
-                            14,
-                            4
-                        ],
-                        [
-                            10005,
-                            1005,
-                            105,
-                            15,
-                            5
-                        ],
-                        [
-                            10006,
-                            1006,
-                            106,
-                            16,
-                            6
-                        ],
-                        [
-                            10007,
-                            1007,
-                            107,
-                            17,
-                            7
-                        ],
-                        [
-                            10008,
-                            1008,
-                            108,
-                            18,
-                            8
-                        ],
-                        [
-                            10009,
-                            1009,
-                            109,
-                            19,
-                            9
-                        ]
+                        [10000, 1000, 100, 10, 0],
+                        [10001, 1001, 101, 11, 1],
+                        [10002, 1002, 102, 12, 2],
+                        [10003, 1003, 103, 13, 3],
+                        [10004, 1004, 104, 14, 4],
+                        [10005, 1005, 105, 15, 5],
+                        [10006, 1006, 106, 16, 6],
+                        [10007, 1007, 107, 17, 7],
+                        [10008, 1008, 108, 18, 8],
+                        [10009, 1009, 109, 19, 9]
                     ]
                 },
                 "config": {}
@@ -3409,10 +2959,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiFlowConfig",
             "dataset": "VueUiFlowDatasetItem[]"
@@ -3420,71 +2967,19 @@
         "examples": [
             {
                 "dataset": [
-                    [
-                        "A1",
-                        "B1",
-                        10
-                    ],
-                    [
-                        "A1",
-                        "B2",
-                        10
-                    ],
-                    [
-                        "B1",
-                        "C1",
-                        5
-                    ],
-                    [
-                        "B1",
-                        "C2",
-                        5
-                    ],
-                    [
-                        "B1",
-                        "C3",
-                        5
-                    ],
-                    [
-                        "B1",
-                        "C4",
-                        5
-                    ],
-                    [
-                        "A2",
-                        "B1",
-                        10
-                    ],
-                    [
-                        "B2",
-                        "C5",
-                        10
-                    ],
-                    [
-                        "C3",
-                        "D1",
-                        2
-                    ],
-                    [
-                        "C4",
-                        "D1",
-                        2
-                    ],
-                    [
-                        "C5",
-                        "D1",
-                        2
-                    ],
-                    [
-                        "C2",
-                        "D2",
-                        2
-                    ],
-                    [
-                        "C3",
-                        "D2",
-                        1
-                    ]
+                    ["A1", "B1", 10],
+                    ["A1", "B2", 10],
+                    ["B1", "C1", 5],
+                    ["B1", "C2", 5],
+                    ["B1", "C3", 5],
+                    ["B1", "C4", 5],
+                    ["A2", "B1", 10],
+                    ["B2", "C5", 10],
+                    ["C3", "D1", 2],
+                    ["C4", "D1", 2],
+                    ["C5", "D1", 2],
+                    ["C2", "D2", 2],
+                    ["C3", "D2", 1]
                 ]
             }
         ],
@@ -3671,16 +3166,8 @@
         "hasExposed": true,
         "hasLttb": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
-        "keywords": [
-            "xy",
-            "line",
-            "bar",
-            "plot"
-        ],
+        "props": ["dataset", "config"],
+        "keywords": ["xy", "line", "bar", "plot"],
         "types": {
             "config": "VueUiXyConfig",
             "dataset": "VueUiXyDatasetItem[]"
@@ -3690,20 +3177,7 @@
                 "dataset": [
                     {
                         "name": "Serie 1",
-                        "series": [
-                            0,
-                            1,
-                            2,
-                            3,
-                            5,
-                            8,
-                            13,
-                            21,
-                            34,
-                            55,
-                            89,
-                            144
-                        ],
+                        "series": [0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144],
                         "type": "line"
                     }
                 ],
@@ -3968,10 +3442,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiWordCloudConfig",
             "dataset": "VueUiWordCloudDatasetItem[] | string"
@@ -4180,10 +3651,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiWheelConfig",
             "dataset": "VueUiWheelDataset"
@@ -4327,10 +3795,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiWaffleConfig",
             "dataset": "VueUiWaffleDatasetItem[]"
@@ -4340,21 +3805,15 @@
                 "dataset": [
                     {
                         "name": "Serie 1",
-                        "values": [
-                            100
-                        ]
+                        "values": [100]
                     },
                     {
                         "name": "Serie 2",
-                        "values": [
-                            50
-                        ]
+                        "values": [50]
                     },
                     {
                         "name": "Serie 3",
-                        "values": [
-                            25
-                        ]
+                        "values": [25]
                     }
                 ],
                 "config": {}
@@ -4564,10 +4023,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiHorizontalBarConfig",
             "dataset": "VueUiHorizontalBarDatasetItem[]"
@@ -4847,10 +4303,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiTreemapConfig",
             "dataset": "VueUiTreemapDatasetItem[]"
@@ -5101,10 +4554,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiTiremarksConfig",
             "dataset": "VueUiTiremarksDataset"
@@ -5249,10 +4699,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "examples": [
             {
                 "dataset": {
@@ -5402,10 +4849,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiStripPlotConfig",
             "dataset": "VueUiStripPlotDataset[]"
@@ -5761,10 +5205,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": false,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "dataset": "VueUiSparkStackBarDatasetItem[]",
             "config": "VueUiSparkStackBarConfig"
@@ -5834,10 +5275,7 @@
         "hasExposed": false,
         "responsive": true,
         "hasLttb": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiSparklineConfig",
             "dataset": "VueUiSparklineDatasetItem[]"
@@ -5952,10 +5390,7 @@
         "hasEmits": true,
         "hasExposed": false,
         "responsive": false,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiSparkHistogramConfig",
             "dataset": "VueUiSparkHistogramDatasetItem[]"
@@ -6067,10 +5502,7 @@
         "hasEmits": false,
         "hasExposed": false,
         "responsive": false,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "dataset": "VueUiSparkgaugeDataset",
             "config": "VueUiSparkgaugeConfig"
@@ -6106,10 +5538,7 @@
         "hasEmits": true,
         "hasExposed": false,
         "responsive": false,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiSparkbarConfig",
             "dataset": "VueUiSparkbarDatasetItem[]"
@@ -6172,26 +5601,14 @@
         "hasExposed": false,
         "responsive": false,
         "hasLttb": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiSparkTrendConfig",
             "dataset": "number[]"
         },
         "examples": [
             {
-                "dataset": [
-                    1,
-                    2,
-                    3,
-                    5,
-                    8,
-                    -13,
-                    21,
-                    34
-                ]
+                "dataset": [1, 2, 3, 5, 8, -13, 21, 34]
             }
         ],
         "slots": [
@@ -6217,10 +5634,7 @@
         "hasExposed": true,
         "responsive": true,
         "hasLttb": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiScatterConfig",
             "dataset": "VueUiScatterDatasetItem[]"
@@ -6493,10 +5907,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiRingsConfig",
             "dataset": "VueUiRingsDatasetItem[]"
@@ -6506,36 +5917,23 @@
                 "dataset": [
                     {
                         "name": "Serie 1",
-                        "values": [
-                            100
-                        ]
+                        "values": [100]
                     },
                     {
                         "name": "Serie 2",
-                        "values": [
-                            200
-                        ]
+                        "values": [200]
                     },
                     {
                         "name": "Serie 3",
-                        "values": [
-                            300,
-                            1
-                        ]
+                        "values": [300, 1]
                     },
                     {
                         "name": "Serie 4",
-                        "values": [
-                            50,
-                            1
-                        ]
+                        "values": [50, 1]
                     },
                     {
                         "name": "Serie 5",
-                        "values": [
-                            25,
-                            1
-                        ]
+                        "values": [25, 1]
                     }
                 ]
             }
@@ -6753,10 +6151,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiRelationCircleConfig",
             "dataset": "VueUiRelationCircleDatasetItem[]"
@@ -6780,171 +6175,73 @@
                             "11",
                             "12"
                         ],
-                        "weights": [
-                            5,
-                            3,
-                            10,
-                            2,
-                            9,
-                            3,
-                            1,
-                            2,
-                            3,
-                            7,
-                            1
-                        ]
+                        "weights": [5, 3, 10, 2, 9, 3, 1, 2, 3, 7, 1]
                     },
                     {
                         "id": "02",
                         "label": "Ipsum",
-                        "relations": [
-                            "01",
-                            "03",
-                            "07",
-                            "06",
-                            "07"
-                        ],
-                        "weights": [
-                            3,
-                            2,
-                            9,
-                            7,
-                            1
-                        ]
+                        "relations": ["01", "03", "07", "06", "07"],
+                        "weights": [3, 2, 9, 7, 1]
                     },
                     {
                         "id": "03",
                         "label": "Dolor",
-                        "relations": [
-                            "01",
-                            "02"
-                        ],
-                        "weights": [
-                            2,
-                            5
-                        ]
+                        "relations": ["01", "02"],
+                        "weights": [2, 5]
                     },
                     {
                         "id": "04",
                         "label": "Consectetur",
-                        "relations": [
-                            "01",
-                            "05",
-                            "10"
-                        ],
-                        "weights": [
-                            2,
-                            1,
-                            4
-                        ]
+                        "relations": ["01", "05", "10"],
+                        "weights": [2, 1, 4]
                     },
                     {
                         "id": "05",
                         "label": "Amet",
-                        "relations": [
-                            "01",
-                            "04",
-                            "07",
-                            "10"
-                        ],
-                        "weights": [
-                            2,
-                            3,
-                            4,
-                            5
-                        ]
+                        "relations": ["01", "04", "07", "10"],
+                        "weights": [2, 3, 4, 5]
                     },
                     {
                         "id": "06",
                         "label": "Rherum",
-                        "relations": [
-                            "01",
-                            "02"
-                        ],
-                        "weights": [
-                            4,
-                            1
-                        ]
+                        "relations": ["01", "02"],
+                        "weights": [4, 1]
                     },
                     {
                         "id": "07",
                         "label": "Delecta",
-                        "relations": [
-                            "01",
-                            "02",
-                            "08",
-                            "12"
-                        ],
-                        "weights": [
-                            4,
-                            8,
-                            2,
-                            1
-                        ]
+                        "relations": ["01", "02", "08", "12"],
+                        "weights": [4, 8, 2, 1]
                     },
                     {
                         "id": "08",
                         "label": "Nitimur",
-                        "relations": [
-                            "01",
-                            "07",
-                            "12",
-                            "01"
-                        ],
-                        "weights": [
-                            7,
-                            3,
-                            2,
-                            3
-                        ]
+                        "relations": ["01", "07", "12", "01"],
+                        "weights": [7, 3, 2, 3]
                     },
                     {
                         "id": "09",
                         "label": "Vetitum",
-                        "relations": [
-                            "01"
-                        ],
-                        "weights": [
-                            1
-                        ]
+                        "relations": ["01"],
+                        "weights": [1]
                     },
                     {
                         "id": "10",
                         "label": "Monumentum",
-                        "relations": [
-                            "01",
-                            "04",
-                            "05"
-                        ],
-                        "weights": [
-                            4,
-                            1,
-                            4
-                        ]
+                        "relations": ["01", "04", "05"],
+                        "weights": [4, 1, 4]
                     },
                     {
                         "id": "11",
                         "label": "Aere",
-                        "relations": [
-                            "01"
-                        ],
-                        "weights": [
-                            3
-                        ]
+                        "relations": ["01"],
+                        "weights": [3]
                     },
                     {
                         "id": "12",
                         "label": "Perennius",
-                        "relations": [
-                            "01",
-                            "07",
-                            "08"
-                        ],
-                        "weights": [
-                            8,
-                            1,
-                            1
-                        ]
+                        "relations": ["01", "07", "08"],
+                        "weights": [8, 1, 1]
                     }
                 ]
             }
@@ -7076,10 +6373,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiRadarConfig",
             "dataset": "VueUiRadarDataset"
@@ -7104,56 +6398,32 @@
                     "series": [
                         {
                             "name": "Serie 1",
-                            "values": [
-                                65,
-                                45,
-                                12
-                            ],
+                            "values": [65, 45, 12],
                             "target": 100
                         },
                         {
                             "name": "Serie 2",
-                            "values": [
-                                2525,
-                                3472,
-                                4950
-                            ],
+                            "values": [2525, 3472, 4950],
                             "target": 10000
                         },
                         {
                             "name": "Serie 3",
-                            "values": [
-                                4.7,
-                                1,
-                                3
-                            ],
+                            "values": [4.7, 1, 3],
                             "target": 5
                         },
                         {
                             "name": "Serie 4",
-                            "values": [
-                                400,
-                                250,
-                                325
-                            ],
+                            "values": [400, 250, 325],
                             "target": 500
                         },
                         {
                             "name": "Serie 5",
-                            "values": [
-                                5,
-                                9,
-                                7
-                            ],
+                            "values": [5, 9, 7],
                             "target": 10
                         },
                         {
                             "name": "Serie 6",
-                            "values": [
-                                6,
-                                7,
-                                10
-                            ],
+                            "values": [6, 7, 10],
                             "target": 10
                         }
                     ]
@@ -7356,23 +6626,14 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiQuickChartConfig",
             "dataset": "VueUiQuickChartDataset"
         },
         "examples": [
             {
-                "dataset": [
-                    1,
-                    2,
-                    -3,
-                    8,
-                    5
-                ]
+                "dataset": [1, 2, -3, 8, 5]
             }
         ],
         "userOptions": [
@@ -7538,10 +6799,7 @@
         "hasExposed": true,
         "responsive": true,
         "hasLttb": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiQuadrantConfig",
             "dataset": "VueUiQuadrantDatasetItem[]"
@@ -7842,10 +7100,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiOnionConfig",
             "dataset": "VueUiOnionDatasetItem[]"
@@ -8072,10 +7327,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiNestedDonutsConfig",
             "dataset": "VueUiNestedDonutsDatasetItem[]"
@@ -8088,21 +7340,15 @@
                         "series": [
                             {
                                 "name": "Serie 1",
-                                "values": [
-                                    50
-                                ]
+                                "values": [50]
                             },
                             {
                                 "name": "Serie 2",
-                                "values": [
-                                    30
-                                ]
+                                "values": [30]
                             },
                             {
                                 "name": "Serie 3",
-                                "values": [
-                                    20
-                                ]
+                                "values": [20]
                             }
                         ]
                     },
@@ -8111,21 +7357,15 @@
                         "series": [
                             {
                                 "name": "Serie 1",
-                                "values": [
-                                    40
-                                ]
+                                "values": [40]
                             },
                             {
                                 "name": "Serie 2",
-                                "values": [
-                                    40
-                                ]
+                                "values": [40]
                             },
                             {
                                 "name": "Serie 3",
-                                "values": [
-                                    30
-                                ]
+                                "values": [30]
                             }
                         ]
                     }
@@ -8345,10 +7585,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiMoodRadarConfig",
             "dataset": "VueUiMoodRadarDataset"
@@ -8533,10 +7770,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": false,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiMoleculeConfig",
             "dataset": "VueUiMoleculeDatasetNode[]"
@@ -9073,10 +8307,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiHeatmapConfig",
             "dataset": "VueUiHeatmapDatasetItem[]"
@@ -9087,140 +8318,47 @@
                     {
                         "name": "Mon",
                         "values": [
-                            31,
-                            58,
-                            12,
-                            25,
-                            13,
-                            9,
-                            3,
-                            7,
-                            55,
-                            12,
-                            36,
-                            23,
-                            37,
-                            28,
+                            31, 58, 12, 25, 13, 9, 3, 7, 55, 12, 36, 23, 37, 28,
                             29
                         ]
                     },
                     {
                         "name": "Tue",
                         "values": [
-                            3,
-                            12,
-                            7,
-                            9,
-                            15,
-                            27,
-                            31,
-                            42,
-                            63,
-                            13,
-                            25,
-                            12,
-                            9,
-                            55,
+                            3, 12, 7, 9, 15, 27, 31, 42, 63, 13, 25, 12, 9, 55,
                             12
                         ]
                     },
                     {
                         "name": "Wed",
                         "values": [
-                            8,
-                            9,
-                            3,
-                            18,
-                            11,
-                            7,
-                            2,
-                            1,
-                            2,
-                            1,
-                            8,
-                            3,
-                            2,
-                            1,
-                            2
+                            8, 9, 3, 18, 11, 7, 2, 1, 2, 1, 8, 3, 2, 1, 2
                         ]
                     },
                     {
                         "name": "Thu",
                         "values": [
-                            8,
-                            12,
-                            13,
-                            25,
-                            31,
-                            42,
-                            12,
-                            9,
-                            8,
-                            4,
-                            12,
-                            5,
-                            2,
-                            1,
-                            9
+                            8, 12, 13, 25, 31, 42, 12, 9, 8, 4, 12, 5, 2, 1, 9
                         ]
                     },
                     {
                         "name": "Fri",
                         "values": [
-                            8,
-                            9,
-                            3,
-                            18,
-                            11,
-                            7,
-                            12,
-                            25,
-                            13,
-                            21,
-                            12,
-                            88,
-                            33,
-                            66,
+                            8, 9, 3, 18, 11, 7, 12, 25, 13, 21, 12, 88, 33, 66,
                             9
                         ]
                     },
                     {
                         "name": "Sat",
                         "values": [
-                            8,
-                            9,
-                            3,
-                            18,
-                            11,
-                            7,
-                            55,
-                            19,
-                            12,
-                            55,
-                            18,
-                            13,
-                            33,
-                            12,
+                            8, 9, 3, 18, 11, 7, 55, 19, 12, 55, 18, 13, 33, 12,
                             22
                         ]
                     },
                     {
                         "name": "Sun",
                         "values": [
-                            8,
-                            9,
-                            3,
-                            18,
-                            11,
-                            7,
-                            19,
-                            25,
-                            13,
-                            44,
-                            22,
-                            33,
-                            66,
-                            77,
+                            8, 9, 3, 18, 11, 7, 19, 25, 13, 44, 22, 33, 66, 77,
                             22
                         ]
                     }
@@ -9419,10 +8557,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiGaugeConfig",
             "dataset": "VueUiGaugeDataset"
@@ -9586,10 +8721,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiGalaxyConfig",
             "dataset": "VueUiGalaxyDatasetItem[]"
@@ -9599,28 +8731,19 @@
                 "dataset": [
                     {
                         "name": "Series 0",
-                        "values": [
-                            12
-                        ]
+                        "values": [12]
                     },
                     {
                         "name": "Series 1",
-                        "values": [
-                            100
-                        ]
+                        "values": [100]
                     },
                     {
                         "name": "Series 2",
-                        "values": [
-                            200
-                        ]
+                        "values": [200]
                     },
                     {
                         "name": "Series 3",
-                        "values": [
-                            300,
-                            1
-                        ]
+                        "values": [300, 1]
                     }
                 ]
             }
@@ -9825,10 +8948,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiDumbbellConfig",
             "dataset": "VueUiDumbbellDataset[]"
@@ -9962,10 +9082,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiDonutEvolutionConfig",
             "dataset": "VueUiDonutEvolutionDatasetItem[]"
@@ -9975,62 +9092,19 @@
                 "dataset": [
                     {
                         "name": "Serie 1",
-                        "values": [
-                            55,
-                            34,
-                            21,
-                            13,
-                            8,
-                            5,
-                            8,
-                            13,
-                            21,
-                            34,
-                            55
-                        ]
+                        "values": [55, 34, 21, 13, 8, 5, 8, 13, 21, 34, 55]
                     },
                     {
                         "name": "Serie 2",
-                        "values": [
-                            1,
-                            12,
-                            24,
-                            32,
-                            5,
-                            8,
-                            13,
-                            21,
-                            34,
-                            55,
-                            89
-                        ]
+                        "values": [1, 12, 24, 32, 5, 8, 13, 21, 34, 55, 89]
                     },
                     {
                         "name": "Serie 3",
-                        "values": [
-                            16,
-                            2,
-                            3,
-                            5,
-                            28,
-                            13,
-                            21,
-                            34,
-                            55,
-                            89,
-                            134
-                        ]
+                        "values": [16, 2, 3, 5, 28, 13, 21, 34, 55, 89, 134]
                     },
                     {
                         "name": "Serie 4",
-                        "values": [
-                            5,
-                            null,
-                            5,
-                            5,
-                            5,
-                            5
-                        ]
+                        "values": [5, null, 5, 5, 5, 5]
                     }
                 ]
             }
@@ -10210,10 +9284,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiDonutConfig",
             "dataset": "VueUiDonutDatasetItem[]"
@@ -10223,22 +9294,15 @@
                 "dataset": [
                     {
                         "name": "Series 1",
-                        "values": [
-                            100
-                        ]
+                        "values": [100]
                     },
                     {
                         "name": "Series 2",
-                        "values": [
-                            200
-                        ]
+                        "values": [200]
                     },
                     {
                         "name": "Series 3",
-                        "values": [
-                            300,
-                            1
-                        ]
+                        "values": [300, 1]
                     }
                 ]
             }
@@ -10468,10 +9532,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": false,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiChestnutConfig",
             "dataset": "VueUiChestnutDatasetRoot[]"
@@ -10727,10 +9788,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiCandlestickConfig",
             "dataset": "Array<Array<string | number>>"
@@ -10751,126 +9809,21 @@
                     }
                 },
                 "dataset": [
-                    [
-                        "2024-01-01",
-                        56,
-                        120,
-                        40,
-                        110,
-                        1250
-                    ],
-                    [
-                        "2024-02-01",
-                        110,
-                        150,
-                        80,
-                        98,
-                        2200
-                    ],
-                    [
-                        "2024-03-01",
-                        98,
-                        155,
-                        75,
-                        103,
-                        3500
-                    ],
-                    [
-                        "2024-04-01",
-                        103,
-                        115,
-                        102,
-                        102,
-                        999
-                    ],
-                    [
-                        "2024-05-01",
-                        102,
-                        135,
-                        72,
-                        85,
-                        3216
-                    ],
-                    [
-                        "2024-06-01",
-                        85,
-                        162,
-                        65,
-                        107,
-                        4315
-                    ],
-                    [
-                        "2024-07-01",
-                        107,
-                        134,
-                        99,
-                        112,
-                        2561
-                    ],
-                    [
-                        "2024-08-01",
-                        112,
-                        125,
-                        112,
-                        120,
-                        669
-                    ],
-                    [
-                        "2024-09-01",
-                        120,
-                        113,
-                        76,
-                        89,
-                        2591
-                    ],
-                    [
-                        "2024-10-01",
-                        89,
-                        150,
-                        85,
-                        125,
-                        2881
-                    ],
-                    [
-                        "2024-11-01",
-                        125,
-                        130,
-                        45,
-                        92,
-                        1972
-                    ],
-                    [
-                        "2024-12-01",
-                        92,
-                        120,
-                        35,
-                        75,
-                        3599
-                    ],
-                    [
-                        "2024-13-01",
-                        75,
-                        80,
-                        26,
-                        45,
-                        5881
-                    ],
-                    [
-                        "2024-14-01",
-                        45,
-                        60,
-                        20,
-                        30,
-                        2881
-                    ],
-                    [
-                        "2024-15-01",
-                        30,
-                        120,
-                        10,
-                        105,
-                        2881
-                    ]
+                    ["2024-01-01", 56, 120, 40, 110, 1250],
+                    ["2024-02-01", 110, 150, 80, 98, 2200],
+                    ["2024-03-01", 98, 155, 75, 103, 3500],
+                    ["2024-04-01", 103, 115, 102, 102, 999],
+                    ["2024-05-01", 102, 135, 72, 85, 3216],
+                    ["2024-06-01", 85, 162, 65, 107, 4315],
+                    ["2024-07-01", 107, 134, 99, 112, 2561],
+                    ["2024-08-01", 112, 125, 112, 120, 669],
+                    ["2024-09-01", 120, 113, 76, 89, 2591],
+                    ["2024-10-01", 89, 150, 85, 125, 2881],
+                    ["2024-11-01", 125, 130, 45, 92, 1972],
+                    ["2024-12-01", 92, 120, 35, 75, 3599],
+                    ["2024-13-01", 75, 80, 26, 45, 5881],
+                    ["2024-14-01", 45, 60, 20, 30, 2881],
+                    ["2024-15-01", 30, 120, 10, 105, 2881]
                 ]
             }
         ],
@@ -11066,10 +10019,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "config",
-            "dataset"
-        ],
+        "props": ["config", "dataset"],
         "types": {
             "config": "VueUiAgePyramidConfig",
             "dataset": "Array<Array<string | number>>"
@@ -11077,42 +10027,12 @@
         "examples": [
             {
                 "dataset": [
-                    [
-                        "2018",
-                        5,
-                        120000,
-                        119500
-                    ],
-                    [
-                        "2019",
-                        4,
-                        109200,
-                        109100
-                    ],
-                    [
-                        "2020",
-                        3,
-                        160700,
-                        160600
-                    ],
-                    [
-                        "2021",
-                        2,
-                        98630,
-                        98250
-                    ],
-                    [
-                        "2022",
-                        1,
-                        81100,
-                        81200
-                    ],
-                    [
-                        "2023",
-                        0,
-                        77900,
-                        77800
-                    ]
+                    ["2018", 5, 120000, 119500],
+                    ["2019", 4, 109200, 109100],
+                    ["2020", 3, 160700, 160600],
+                    ["2021", 2, 98630, 98250],
+                    ["2022", 1, 81100, 81200],
+                    ["2023", 0, 77900, 77800]
                 ]
             }
         ],
@@ -11294,10 +10214,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUi3dBarConfig",
             "dataset": "VueUi3dBarDataset"
@@ -11511,10 +10428,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiParallelCoordinatePlotConfig",
             "dataset": "VueUiParallelCoordinatePlotDatasetItem[]"
@@ -11528,30 +10442,15 @@
                         "series": [
                             {
                                 "name": "Item 1.1",
-                                "values": [
-                                    1200,
-                                    150,
-                                    12,
-                                    1.2
-                                ]
+                                "values": [1200, 150, 12, 1.2]
                             },
                             {
                                 "name": "Item 1.2",
-                                "values": [
-                                    1000,
-                                    100,
-                                    10,
-                                    1
-                                ]
+                                "values": [1000, 100, 10, 1]
                             },
                             {
                                 "name": "Item 1.3",
-                                "values": [
-                                    -800,
-                                    85,
-                                    8.5,
-                                    0.85
-                                ]
+                                "values": [-800, 85, 8.5, 0.85]
                             }
                         ]
                     },
@@ -11560,30 +10459,15 @@
                         "series": [
                             {
                                 "name": "Item 2.1",
-                                "values": [
-                                    2300,
-                                    230,
-                                    23,
-                                    2.3
-                                ]
+                                "values": [2300, 230, 23, 2.3]
                             },
                             {
                                 "name": "Item 2.2",
-                                "values": [
-                                    2500,
-                                    250,
-                                    25,
-                                    2.5
-                                ]
+                                "values": [2500, 250, 25, 2.5]
                             },
                             {
                                 "name": "Item 2.3",
-                                "values": [
-                                    2800,
-                                    280,
-                                    28,
-                                    2.8
-                                ]
+                                "values": [2800, 280, 28, 2.8]
                             }
                         ]
                     }
@@ -11816,10 +10700,7 @@
         "hasExposed": true,
         "responsive": true,
         "hasLttb": true,
-        "props": [
-            "dataset",
-            "config"
-        ],
+        "props": ["dataset", "config"],
         "types": {
             "config": "VueUiXyCanvasConfig",
             "dataset": "VueUiXyCanvasDatasetItem[]"
@@ -11830,20 +10711,7 @@
                     {
                         "name": "Serie 1",
                         "type": "line",
-                        "series": [
-                            0,
-                            1,
-                            2,
-                            3,
-                            5,
-                            8,
-                            13,
-                            21,
-                            34,
-                            55,
-                            89,
-                            144
-                        ]
+                        "series": [0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
                     }
                 ],
                 "config": {}

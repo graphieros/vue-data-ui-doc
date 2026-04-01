@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-const step = ref(0)
+const step = ref(0);
 const step1 = ref(0);
 
 const themePalettes = {
@@ -43,7 +43,7 @@ const themePalettes = {
         "#61747E",
         "#718890",
         "#829CA2",
-        "#92B0B5"
+        "#92B0B5",
     ],
     hack: [
         "#004C00",
@@ -83,7 +83,7 @@ const themePalettes = {
         "#4CFF4C",
         "#4CE64C",
         "#4CCC4C",
-        "#4CB34C"
+        "#4CB34C",
     ],
     zen: [
         "#B9B99D",
@@ -120,76 +120,74 @@ const themePalettes = {
         "#97ACB7",
         "#C4CBBC",
         "#C3C5C5",
-        "#A0AC94"
-    ]
+        "#A0AC94",
+    ],
 };
 
-const dataset = ref(
-    [
-        {
-            name: "Parent 1",
-            value: 100,
-            children: [
-                {
-                    name: "P1 C1",
-                    value: 70,
-                },
-                {
-                    name: 'P1 C2',
-                    value: 20
-                },
-                {
-                    name: 'P1 C3',
-                    value: 10,
-                },
-            ]
-        },
-        {
-            name: "Parent 2",
-            value: 110,
-            children: [
-                {
-                    name: "P2 C1",
-                    value: 80,
-                },
-                {
-                    name: 'P2 C2',
-                    value: 20
-                },
-                {
-                    name: 'P2 C3',
-                    value: 10,
-                },
-            ]
-        },
-        {
-            name: "Parent 3",
-            value: 50,
-            children: [
-                {
-                    name: "P3 C1",
-                    value: 20,
-                },
-                {
-                    name: 'P3 C2',
-                    value: 10
-                },
-                {
-                    name: 'P3 C3',
-                    value: 10
-                },
-                {
-                    name: 'P3 C4',
-                    value: 5
-                },
-                {
-                    name: 'P3 C5',
-                    value: 5
-                },
-            ]
-        },
-    ]
-)
+const dataset = ref([
+    {
+        name: "Parent 1",
+        value: 100,
+        children: [
+            {
+                name: "P1 C1",
+                value: 70,
+            },
+            {
+                name: "P1 C2",
+                value: 20,
+            },
+            {
+                name: "P1 C3",
+                value: 10,
+            },
+        ],
+    },
+    {
+        name: "Parent 2",
+        value: 110,
+        children: [
+            {
+                name: "P2 C1",
+                value: 80,
+            },
+            {
+                name: "P2 C2",
+                value: 20,
+            },
+            {
+                name: "P2 C3",
+                value: 10,
+            },
+        ],
+    },
+    {
+        name: "Parent 3",
+        value: 50,
+        children: [
+            {
+                name: "P3 C1",
+                value: 20,
+            },
+            {
+                name: "P3 C2",
+                value: 10,
+            },
+            {
+                name: "P3 C3",
+                value: 10,
+            },
+            {
+                name: "P3 C4",
+                value: 5,
+            },
+            {
+                name: "P3 C5",
+                value: 5,
+            },
+        ],
+    },
+]);
 
 const config = ref({
     style: {
@@ -197,32 +195,52 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>
-    <div class="my-4 grid grid-cols-2 gap-6 place-items-center w-full p-4 bg-gray-200 dark:bg-[#3A3A3A] rounded-md">
+    <div
+        class="my-4 grid grid-cols-2 gap-6 place-items-center w-full p-4 bg-gray-200 dark:bg-[#3A3A3A] rounded-md"
+    >
         <div class="w-full shadow-md">
             <code>theme: "" (default)</code>
-            <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="{...config, theme: ''}" :key="`_1_${step1}`" />
+            <VueDataUi
+                component="VueUiTreemap"
+                :dataset="dataset"
+                :config="{ ...config, theme: '' }"
+                :key="`_1_${step1}`"
+            />
         </div>
         <div class="w-full shadow-md">
             <code>theme: "zen"</code>
-            <VueUiTreemap :dataset="dataset" :config="{...config, theme: 'zen'}" :key="`_2_${step}`" />
+            <VueUiTreemap
+                :dataset="dataset"
+                :config="{ ...config, theme: 'zen' }"
+                :key="`_2_${step}`"
+            />
         </div>
         <div class="w-full shadow-md">
             <code>theme: "concrete"</code>
-            <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="{...config, theme: 'concrete'}" :key="`_3_${step}`" />
+            <VueDataUi
+                component="VueUiTreemap"
+                :dataset="dataset"
+                :config="{ ...config, theme: 'concrete' }"
+                :key="`_3_${step}`"
+            />
         </div>
         <div class="w-full shadow-md">
             <code>theme: "hack"</code>
-            <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="{...config, theme: 'hack'}" :key="`_4_${step}`" />
+            <VueDataUi
+                component="VueUiTreemap"
+                :dataset="dataset"
+                :config="{ ...config, theme: 'hack' }"
+                :key="`_4_${step}`"
+            />
         </div>
     </div>
 </template>

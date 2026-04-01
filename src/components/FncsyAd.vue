@@ -60,129 +60,153 @@ const fncsy = ref({
                 توقف عن إضاعة الوقت في الإعدادات المعقدة.
                 <br/>
                 <br/>
-                احصل فوراً على <span class="text-app-green-dark dark:text-app-green">أدوات جاهزة للإنتاج</span> يثق بها المبدعون والمصممون والمطورون. استخرج البيانات باستخدام أنماط ذكية، أنشئ رموز QR، حوّل العملات، عالج بيانات CSV، شفّر Base64، أنشئ UUID، تحقق من عنوان IP الخاص بك، احسب الشبكات الفرعية، أنشئ أنماطاً — <span class="text-app-green-dark dark:text-app-green">كل ذلك في ثوانٍ معدودة، مجاناً بالكامل</span>`
-})
+                احصل فوراً على <span class="text-app-green-dark dark:text-app-green">أدوات جاهزة للإنتاج</span> يثق بها المبدعون والمصممون والمطورون. استخرج البيانات باستخدام أنماط ذكية، أنشئ رموز QR، حوّل العملات، عالج بيانات CSV، شفّر Base64، أنشئ UUID، تحقق من عنوان IP الخاص بك، احسب الشبكات الفرعية، أنشئ أنماطاً — <span class="text-app-green-dark dark:text-app-green">كل ذلك في ثوانٍ معدودة، مجاناً بالكامل</span>`,
+});
 
 const fncsyIntro = ref({
-    en: 'Check out awesome free tools provided by our friends at :',
-    fr: 'Découvrez des outils gratuits incroyables proposés par nos amis chez :',
-    pt: 'Confira ferramentas gratuitas incríveis oferecidas por nossos amigos em :',
-    de: 'Schauen Sie sich tolle kostenlose Tools an, bereitgestellt von unseren Freunden bei :',
-    zh: '来看看我们朋友提供的精彩免费工具：',
-    ja: '私たちの仲間が提供する素晴らしい無料ツールをご覧ください',
-    es: 'Descubre increíbles herramientas gratuitas proporcionadas por nuestros amigos en :',
-    ko: '우리 친구들이 제공하는 멋진 무료 도구를 확인하세요 :',
-    ar: 'اطّلع على أدوات مجانية رائعة مقدمة من أصدقائنا في :'
-})
+    en: "Check out awesome free tools provided by our friends at :",
+    fr: "Découvrez des outils gratuits incroyables proposés par nos amis chez :",
+    pt: "Confira ferramentas gratuitas incríveis oferecidas por nossos amigos em :",
+    de: "Schauen Sie sich tolle kostenlose Tools an, bereitgestellt von unseren Freunden bei :",
+    zh: "来看看我们朋友提供的精彩免费工具：",
+    ja: "私たちの仲間が提供する素晴らしい無料ツールをご覧ください",
+    es: "Descubre increíbles herramientas gratuitas proporcionadas por nuestros amigos en :",
+    ko: "우리 친구들이 제공하는 멋진 무료 도구를 확인하세요 :",
+    ar: "اطّلع على أدوات مجانية رائعة مقدمة من أصدقائنا في :",
+});
 
 const freeProductionReady = ref({
-    en: 'Free production-ready tools',
-    fr: 'Outils gratuits prêts pour la production',
-    pt: 'Ferramentas gratuitas prontas para produção',
-    de: 'Kostenlose produktionsreife Tools',
-    zh: '免费生产级工具',
-    ja: '無料の本番環境対応ツール',
-    es: 'Herramientas gratuitas listas para producción',
-    ko: '무료 프로덕션급 도구',
-    ar: 'أدوات مجانية جاهزة للإنتاج'
-})
+    en: "Free production-ready tools",
+    fr: "Outils gratuits prêts pour la production",
+    pt: "Ferramentas gratuitas prontas para produção",
+    de: "Kostenlose produktionsreife Tools",
+    zh: "免费生产级工具",
+    ja: "無料の本番環境対応ツール",
+    es: "Herramientas gratuitas listas para producción",
+    ko: "무료 프로덕션급 도구",
+    ar: "أدوات مجانية جاهزة للإنتاج",
+});
 
 const pixel = ref({
-    en: 'Photo to Pixel Art Creator',
-    fr: 'Créateur de pixel art à partir de photo',
-    pt: 'Criador de Pixel Art a partir de foto',
-    de: 'Foto-zu-Pixel-Art-Generator',
-    zh: '照片转像素画生成器',
-    ja: '写真をドット絵に変換する生成ツール',
-    es: 'Creador de pixel art a partir de fotos',
-    ko: '사진 → 픽셀 아트 생성기',
-    ar: 'منشئ تحويل الصور إلى فن البكسل'
-})
+    en: "Photo to Pixel Art Creator",
+    fr: "Créateur de pixel art à partir de photo",
+    pt: "Criador de Pixel Art a partir de foto",
+    de: "Foto-zu-Pixel-Art-Generator",
+    zh: "照片转像素画生成器",
+    ja: "写真をドット絵に変換する生成ツール",
+    es: "Creador de pixel art a partir de fotos",
+    ko: "사진 → 픽셀 아트 생성기",
+    ar: "منشئ تحويل الصور إلى فن البكسل",
+});
 
 const stegano = ref({
-    en: 'Image steganography tool',
-    fr: 'Outil de stéganographie d’images',
-    pt: 'Ferramenta de esteganografia de imagens',
-    de: 'Bild-Steganografie-Tool',
-    zh: '图像隐写工具',
-    ja: '画像ステガノグラフィーツール',
-    es: 'Herramienta de esteganografía de imágenes',
-    ko: '이미지 스테가노그래피 도구',
-    ar: 'أداة إخفاء المعلومات في الصور'
-})
+    en: "Image steganography tool",
+    fr: "Outil de stéganographie d’images",
+    pt: "Ferramenta de esteganografia de imagens",
+    de: "Bild-Steganografie-Tool",
+    zh: "图像隐写工具",
+    ja: "画像ステガノグラフィーツール",
+    es: "Herramienta de esteganografía de imágenes",
+    ko: "이미지 스테가노그래피 도구",
+    ar: "أداة إخفاء المعلومات في الصور",
+});
 
 const broken = ref({
-    en: 'Broken Link Checker',
-    fr: 'Vérificateur de liens brisés',
-    pt: 'Verificador de links quebrados',
-    de: 'Defekte-Link-Checker',
-    zh: '死链检查器',
-    ja: 'リンク切れチェッカー',
-    es: 'Comprobador de enlaces rotos',
-    ko: '끊어진 링크 검사기',
-    ar: 'مدقق الروابط المعطلة'
-})
+    en: "Broken Link Checker",
+    fr: "Vérificateur de liens brisés",
+    pt: "Verificador de links quebrados",
+    de: "Defekte-Link-Checker",
+    zh: "死链检查器",
+    ja: "リンク切れチェッカー",
+    es: "Comprobador de enlaces rotos",
+    ko: "끊어진 링크 검사기",
+    ar: "مدقق الروابط المعطلة",
+});
 
 const soMuchMore = ref({
-    en: '...and so much more!',
-    fr: '…et bien plus encore !',
-    pt: '…e muito mais!',
-    de: '…und vieles mehr!',
-    zh: '……还有更多功能！',
-    ja: '……そして、まだまだあります！',
-    es: '¡…y mucho más!',
-    ko: '…그리고 더 많은 기능!',
-    ar: '…والمزيد من المزايا!'
-})
-
+    en: "...and so much more!",
+    fr: "…et bien plus encore !",
+    pt: "…e muito mais!",
+    de: "…und vieles mehr!",
+    zh: "……还有更多功能！",
+    ja: "……そして、まだまだあります！",
+    es: "¡…y mucho más!",
+    ko: "…그리고 더 많은 기능!",
+    ar: "…والمزيد من المزايا!",
+});
 </script>
 
 <template>
     <div class="ml-12 sm:mx-auto max-w-[1000px] px-12 sm:px-20" dir="auto">
-        <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-2 place-items-center">
-            <VueUiIcon name="externalLink" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
+        <div
+            class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-2 place-items-center"
+        >
+            <VueUiIcon
+                name="externalLink"
+                :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
+            />
             {{ fncsyIntro[store.lang] }}
         </div>
 
         <BaseCard type="dark">
             <a href="https://fncsy.com/" target="_blank">
-                <div class="flex flex-row gap-2 place-items-center justify-start">
-                    <div class="flex flex-row flex-wrap place-items-center lg:gap-4">
+                <div
+                    class="flex flex-row gap-2 place-items-center justify-start"
+                >
+                    <div
+                        class="flex flex-row flex-wrap place-items-center lg:gap-4"
+                    >
                         <div class="flex flex-row gap-2 place-items-center">
-                            <img src="../assets/fncsy-logo.webp" alt="Fncsy logo" height="64" width="64"/>
-                            <code class="text-app-green-dark dark:text-app-green text-[32px]">FNCSY</code>
+                            <img
+                                src="../assets/fncsy-logo.webp"
+                                alt="Fncsy logo"
+                                height="64"
+                                width="64"
+                            />
+                            <code
+                                class="text-app-green-dark dark:text-app-green text-[32px]"
+                                >FNCSY</code
+                            >
                         </div>
                     </div>
                 </div>
             </a>
-            <p class="font-inter-medium text-gray-500 px-4">{{freeProductionReady[store.lang] }}</p>
+            <p class="font-inter-medium text-gray-500 px-4">
+                {{ freeProductionReady[store.lang] }}
+            </p>
             <div class="flex flex-col lg:flex-row gap-12 place-items-center">
                 <div class="flex flex-col sm:justify-center mt-4 min-w-[300px]">
-                    <a href="https://fncsy.com/image-to-pixel-art" target="_blank" class="hover:bg-gray-300 hover:dark:bg-[#FFFFFF10] rounded-md transition-colors px-2">
+                    <a
+                        href="https://fncsy.com/image-to-pixel-art"
+                        target="_blank"
+                        class="hover:bg-gray-300 hover:dark:bg-[#FFFFFF10] rounded-md transition-colors px-2"
+                    >
                         <div class="flex flex-row gap-2 place-items-center">
-                            <span class="text-[24px] sm:text-[32px]">
-                                🎮
-                            </span>
+                            <span class="text-[24px] sm:text-[32px]"> 🎮 </span>
                             <code class="text-left text-sm">
                                 {{ pixel[store.lang] }}
                             </code>
                         </div>
                     </a>
-                    <a href="https://fncsy.com/steganography" target="_blank" class="hover:bg-gray-300 hover:dark:bg-[#FFFFFF10] rounded-md transition-colors px-2">
+                    <a
+                        href="https://fncsy.com/steganography"
+                        target="_blank"
+                        class="hover:bg-gray-300 hover:dark:bg-[#FFFFFF10] rounded-md transition-colors px-2"
+                    >
                         <div class="flex flex-row gap-2 place-items-center">
-                            <span class="text-[24px] sm:text-[32px]">
-                                🕵️
-                            </span>
+                            <span class="text-[24px] sm:text-[32px]"> 🕵️ </span>
                             <code class="text-left text-sm">
                                 {{ stegano[store.lang] }}
                             </code>
                         </div>
                     </a>
-                    <a href="https://fncsy.com/dead-link-checker" target="_blank" class="hover:bg-gray-300 hover:dark:bg-[#FFFFFF10] rounded-md transition-colors px-2">
+                    <a
+                        href="https://fncsy.com/dead-link-checker"
+                        target="_blank"
+                        class="hover:bg-gray-300 hover:dark:bg-[#FFFFFF10] rounded-md transition-colors px-2"
+                    >
                         <div class="flex flex-row gap-2 place-items-center">
-                            <span class="text-[24px] sm:text-[32px]">
-                                🔗
-                            </span>
+                            <span class="text-[24px] sm:text-[32px]"> 🔗 </span>
                             <code class="text-left text-sm">
                                 {{ broken[store.lang] }}
                             </code>
@@ -192,11 +216,10 @@ const soMuchMore = ref({
 
                 <div class="w-full mx-auto text-sm">
                     <a href="https://fncsy.com/" target="_blank">
-                        <code class="text-left" v-html="fncsy[store.lang]"/>
+                        <code class="text-left" v-html="fncsy[store.lang]" />
                     </a>
                 </div>
             </div>
-
         </BaseCard>
     </div>
 </template>

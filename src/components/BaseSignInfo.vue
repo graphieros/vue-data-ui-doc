@@ -1,8 +1,14 @@
 <script setup>
-    import { ref, computed } from "vue";
+import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import BaseCard from "./BaseCard.vue";
-import { AmpersandIcon, MinusVerticalIcon, SquareRoundedMinusIcon, SquareRoundedPlusFilledIcon, SquareRoundedPlusIcon } from "vue-tabler-icons";
+import {
+    AmpersandIcon,
+    MinusVerticalIcon,
+    SquareRoundedMinusIcon,
+    SquareRoundedPlusFilledIcon,
+    SquareRoundedPlusIcon,
+} from "vue-tabler-icons";
 
 defineProps({
     /**
@@ -10,11 +16,11 @@ defineProps({
      */
     type: {
         type: String,
-        default: 'positiveOnly'
-    }
-})
+        default: "positiveOnly",
+    },
+});
 
-const store = useMainStore()
+const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const translations = ref({
@@ -27,7 +33,7 @@ const translations = ref({
         ja: `データセットは正の値のみを受け付けます`,
         es: `El conjunto de datos solo acepta valores positivos`,
         ko: `데이터 세트는 양수 값만 허용합니다`,
-        ar: `يقبل مجموعة البيانات القيم الإيجابية فقط`
+        ar: `يقبل مجموعة البيانات القيم الإيجابية فقط`,
     },
     positiveOrNegativeOnly: {
         en: `Dataset accepts either positive values only or negative values only`,
@@ -38,7 +44,7 @@ const translations = ref({
         ja: `データセットは正の値のみまたは負の値のみを受け付けます`,
         es: `El conjunto de datos solo acepta valores positivos o solo valores negativos`,
         ko: `데이터 세트는 양수 값만 또는 음수 값만 허용합니다`,
-        ar: `يقبل مجموعة البيانات القيم الإيجابية فقط أو القيم السلبية فقط`
+        ar: `يقبل مجموعة البيانات القيم الإيجابية فقط أو القيم السلبية فقط`,
     },
     both: {
         en: `Dataset accepts a mix of positive and negative values`,
@@ -49,28 +55,30 @@ const translations = ref({
         ja: `データセットは正の値と負の値の混合を受け付けます`,
         es: `El conjunto de datos acepta una combinación de valores positivos y negativos`,
         ko: `데이터 세트는 양수와 음수 값을 혼합하여 허용합니다`,
-        ar: `يقبل مجموعة البيانات مزيجًا من القيم الإيجابية والسلبية`
+        ar: `يقبل مجموعة البيانات مزيجًا من القيم الإيجابية والسلبية`,
     },
-})
-
+});
 </script>
 
 <template>
-    <BaseCard class="flex flex-row gap-2 mb-2 w-fit mx-auto flex-wrap justify-center align-center place-items-center" v-if="['positiveOnly', 'positiveOrNegativeOnly', 'both'].includes(type)">
+    <BaseCard
+        class="flex flex-row gap-2 mb-2 w-fit mx-auto flex-wrap justify-center align-center place-items-center"
+        v-if="['positiveOnly', 'positiveOrNegativeOnly', 'both'].includes(type)"
+    >
         <BaseCard>
             <div class="flex flex-row flex-nowrap">
                 <template v-if="type === 'both'">
-                    <SquareRoundedPlusIcon color="#42d392"/>
-                    <AmpersandIcon/>
-                    <SquareRoundedMinusIcon color="#ff6600"/>
+                    <SquareRoundedPlusIcon color="#42d392" />
+                    <AmpersandIcon />
+                    <SquareRoundedMinusIcon color="#ff6600" />
                 </template>
                 <template v-if="type === 'positiveOnly'">
-                    <SquareRoundedPlusIcon color="#42d392"/>
+                    <SquareRoundedPlusIcon color="#42d392" />
                 </template>
                 <template v-if="type === 'positiveOrNegativeOnly'">
-                    <SquareRoundedPlusIcon color="#42d392"/>
-                    <MinusVerticalIcon/>
-                    <SquareRoundedMinusIcon color="#ff6600"/>
+                    <SquareRoundedPlusIcon color="#42d392" />
+                    <MinusVerticalIcon />
+                    <SquareRoundedMinusIcon color="#ff6600" />
                 </template>
             </div>
         </BaseCard>
@@ -80,6 +88,6 @@ const translations = ref({
 
 <style scoped>
 .shadowed {
-    box-shadow: 0 6px 12px -6px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.3);
 }
 </style>

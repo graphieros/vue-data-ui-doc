@@ -6,11 +6,10 @@ const dataset = ref({
     value: 8,
     min: -10,
     max: 10,
-    title: "KPI 1"
-})
+    title: "KPI 1",
+});
 
-const config = ref({})
-
+const config = ref({});
 </script>
 
 <template>

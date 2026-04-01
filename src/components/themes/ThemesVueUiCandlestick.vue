@@ -19,13 +19,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

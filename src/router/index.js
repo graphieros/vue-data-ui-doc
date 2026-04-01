@@ -7,112 +7,112 @@ const routes = [
     {
         path: "/",
         name: "Home",
-        component: Home
+        component: Home,
     },
     {
-        path: '/search',
-        name: 'Search',
+        path: "/search",
+        name: "Search",
         component: SearchPage,
-        props: (route) => ({ query: route.query.q })
+        props: (route) => ({ query: route.query.q }),
     },
     {
         path: "/installation",
         name: "Installation",
-        component: () => import('../views/Installation.vue')
+        component: () => import("../views/Installation.vue"),
     },
     {
         path: "/docs",
         name: "Docs",
-        component: () => import("../views/Docs.vue")
+        component: () => import("../views/Docs.vue"),
     },
     {
         path: "/dashboard",
         name: "Dashboard",
-        component: () => import("../views/Dashboard.vue")
+        component: () => import("../views/Dashboard.vue"),
     },
     {
         path: "/versions",
         name: "Versions",
-        component: () => import("../views/Versions.vue")
+        component: () => import("../views/Versions.vue"),
     },
     {
         path: "/about",
         name: "About",
-        component: () => import("../views/About.vue")
+        component: () => import("../views/About.vue"),
     },
     {
         path: "/customization",
         name: "Customization",
-        component: () => import("../views/Customization.vue")
+        component: () => import("../views/Customization.vue"),
     },
     {
         path: "/chart-builder",
         name: "Maker",
-        component: () => import("../views/Maker.vue")
+        component: () => import("../views/Maker.vue"),
     },
     {
         path: "/examples",
         name: "Examples",
-        component: () => import("../views/Examples.vue")
+        component: () => import("../views/Examples.vue"),
     },
     {
         path: "/examples/categories",
         name: "Example Categories",
-        component: () => import("../views/ExampleCategories.vue")
+        component: () => import("../views/ExampleCategories.vue"),
     },
     {
         path: "/examples/config-flows",
         name: "Config flows",
-        component: () => import("../views/ConfigFlows.vue")
+        component: () => import("../views/ConfigFlows.vue"),
     },
     {
         path: "/examples/game-of-life",
         name: "Game of Life",
-        component: () => import('../views/GameOfLife.vue')
+        component: () => import("../views/GameOfLife.vue"),
     },
     {
         path: "/universal-component",
         name: "Universal component",
-        component: () => import("../views/UniversalComponent.vue")
+        component: () => import("../views/UniversalComponent.vue"),
     },
     {
         path: "/examples/theme-dashboards",
         name: "Theme dashboards",
-        component: () => import("../views/ThemeDashboards.vue")
+        component: () => import("../views/ThemeDashboards.vue"),
     },
     {
         path: "/examples/dont-try-this-at-home",
         name: "Dont try this at home",
-        component: () => import("../views/DontTryThisAtHome.vue")
+        component: () => import("../views/DontTryThisAtHome.vue"),
     },
     {
         path: "/examples/loading-states",
         name: "Loading states",
-        component: () => import("../views/LoadingStates.vue")
+        component: () => import("../views/LoadingStates.vue"),
     },
     {
-        path: '/docs',
-        redirect: to => {
-            if (to.hash === '#vue-ui-vertical-bar') {
-            return { path: '/docs', hash: '#vue-ui-horizontal-bar' }
+        path: "/docs",
+        redirect: (to) => {
+            if (to.hash === "#vue-ui-vertical-bar") {
+                return { path: "/docs", hash: "#vue-ui-horizontal-bar" };
             }
-            return true
-        }
+            return true;
+        },
     },
     {
-        path: '/examples/themes',
-        name: 'Built-in themes',
-        component: () => import('../views/ThemeSwapper.vue')
+        path: "/examples/themes",
+        name: "Built-in themes",
+        component: () => import("../views/ThemeSwapper.vue"),
     },
     {
-        path: '/customization/a11y',
-        name: 'a11y',
-        component: () => import('../views/A11y.vue')
+        path: "/customization/a11y",
+        name: "a11y",
+        component: () => import("../views/A11y.vue"),
     },
     {
         path: "/:catchAll(.*)",
-        component: NotFound
-    }
+        component: NotFound,
+    },
 ];
 
 const router = createRouter({
@@ -137,11 +137,11 @@ router.onError((error) => {
         /ChunkLoadError/i,
         /Failed to fetch dynamically imported module/i,
         /Failed to load module script/i,
-        /Importing a module script failed/i
+        /Importing a module script failed/i,
     ];
 
     const isChunkError = chunkFailedPatterns.some((pattern) =>
-        pattern.test(message)
+        pattern.test(message),
     );
 
     if (!isChunkError) {

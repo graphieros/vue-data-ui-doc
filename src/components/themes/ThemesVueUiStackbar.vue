@@ -18,7 +18,6 @@ const dataset = ref([
     {
         name: "Serie 4",
         series: [25, 23, 9, 13, 25, 31],
-
     },
 ]);
 
@@ -28,13 +27,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

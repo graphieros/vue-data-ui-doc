@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
-import FlexibleTooltip from './FlexibleTooltip.vue';
+import FlexibleTooltip from "./FlexibleTooltip.vue";
 import BaseCard from "./BaseCard.vue";
 
 const store = useMainStore();
@@ -18,7 +18,7 @@ const t = ref({
         ja: "チャートメニュー",
         es: "Menú del gráfico",
         ko: "차트 메뉴",
-        ar: "قائمة الرسم البياني"
+        ar: "قائمة الرسم البياني",
     },
     description: {
         en: "All charts propose a menu with a variable set of actions, depending on the type of chart. This menu can be hidden through the configuration, or each action can be shown or hidden. It is also possible to customize the looks of the menu, if you prefer to use your own icons or labels.",
@@ -29,7 +29,7 @@ const t = ref({
         ja: "すべてのチャートは、チャートの種類に応じて可変のアクションセットを含むメニューを提供します。このメニューは設定で非表示にすることができ、各アクションを個別に表示または非表示にすることも可能です。また、独自のアイコンやラベルを使用したい場合、メニューの外観をカスタマイズすることもできます。",
         es: "Todos los gráficos ofrecen un menú con un conjunto variable de acciones, dependiendo del tipo de gráfico. Este menú puede ocultarse a través de la configuración, o cada acción puede mostrarse u ocultarse. También es posible personalizar la apariencia del menú si prefieres usar tus propios iconos o etiquetas.",
         ko: "모든 차트는 차트 유형에 따라 다양한 동작 세트를 포함하는 메뉴를 제공합니다. 이 메뉴는 설정을 통해 숨길 수 있으며 각 동작은 개별적으로 표시하거나 숨길 수 있습니다. 또한, 메뉴의 외형을 사용자 정의하여 자신만의 아이콘이나 레이블을 사용할 수도 있습니다.",
-        ar: "تقدم جميع الرسوم البيانية قائمة تحتوي على مجموعة متنوعة من الإجراءات، حسب نوع الرسم البياني. يمكن إخفاء هذه القائمة من خلال الإعدادات، أو يمكن إظهار أو إخفاء كل إجراء بشكل منفصل. كما يمكن تخصيص مظهر القائمة إذا كنت تفضل استخدام الأيقونات أو التسميات الخاصة بك."
+        ar: "تقدم جميع الرسوم البيانية قائمة تحتوي على مجموعة متنوعة من الإجراءات، حسب نوع الرسم البياني. يمكن إخفاء هذه القائمة من خلال الإعدادات، أو يمكن إظهار أو إخفاء كل إجراء بشكل منفصل. كما يمكن تخصيص مظهر القائمة إذا كنت تفضل استخدام الأيقونات أو التسميات الخاصة بك.",
     },
     tooltip: {
         en: "Toggles tooltip visibility",
@@ -40,7 +40,7 @@ const t = ref({
         ja: "ツールチップの表示を切り替えます",
         es: "Alterna la visibilidad del tooltip",
         ko: "툴팁 가시성을 전환합니다",
-        ar: "تبديل رؤية التلميحات"
+        ar: "تبديل رؤية التلميحات",
     },
     pdf: {
         en: "Downloads the chart as PDF",
@@ -51,7 +51,7 @@ const t = ref({
         ja: "チャートをPDFとしてダウンロードします",
         es: "Descarga el gráfico como PDF",
         ko: "차트를 PDF로 다운로드합니다",
-        ar: "تنزيل الرسم البياني كملف PDF"
+        ar: "تنزيل الرسم البياني كملف PDF",
     },
     csv: {
         en: "Downloads the dataset as CSV",
@@ -62,7 +62,7 @@ const t = ref({
         ja: "データセットをCSVとしてダウンロードします",
         es: "Descarga el conjunto de datos como CSV",
         ko: "데이터 세트를 CSV로 다운로드합니다",
-        ar: "تنزيل مجموعة البيانات كملف CSV"
+        ar: "تنزيل مجموعة البيانات كملف CSV",
     },
     img: {
         en: "Downloads the chart as PNG",
@@ -73,7 +73,7 @@ const t = ref({
         ja: "チャートをPNGとしてダウンロードします",
         es: "Descarga el gráfico como PNG",
         ko: "차트를 PNG로 다운로드합니다",
-        ar: "تنزيل الرسم البياني كملف PNG"
+        ar: "تنزيل الرسم البياني كملف PNG",
     },
     svg: {
         en: "Downloads the chart as SVG",
@@ -84,7 +84,7 @@ const t = ref({
         ja: "チャートをSVGとしてダウンロードします",
         es: "Descarga el gráfico como SVG",
         ko: "차트를 SVG로 다운로드합니다",
-        ar: "تنزيل الرسم البياني كملف SVG"
+        ar: "تنزيل الرسم البياني كملف SVG",
     },
     table: {
         en: "Toggles the data table visibility",
@@ -95,7 +95,7 @@ const t = ref({
         ja: "データテーブルの表示を切り替えます",
         es: "Alterna la visibilidad de la tabla de datos",
         ko: "데이터 테이블 가시성을 전환합니다",
-        ar: "تبديل رؤية جدول البيانات"
+        ar: "تبديل رؤية جدول البيانات",
     },
     labels: {
         en: "Toggles data labels visibility",
@@ -106,7 +106,7 @@ const t = ref({
         ja: "データラベルの表示を切り替えます",
         es: "Alterna la visibilidad de las etiquetas de datos",
         ko: "데이터 레이블 가시성을 전환합니다",
-        ar: "تبديل رؤية تسميات البيانات"
+        ar: "تبديل رؤية تسميات البيانات",
     },
     stack: {
         en: "Toggles the stack mode",
@@ -117,7 +117,7 @@ const t = ref({
         ja: "スタックモードを切り替えます",
         es: "Alterna el modo de apilamiento",
         ko: "스택 모드를 전환합니다",
-        ar: "تبديل وضع التكديس"
+        ar: "تبديل وضع التكديس",
     },
     fullscreen: {
         en: "Toggles fullscreen mode",
@@ -128,7 +128,7 @@ const t = ref({
         ja: "全画面モードを切り替えます",
         es: "Alterna el modo de pantalla completa",
         ko: "전체 화면 모드를 전환합니다",
-        ar: "تبديل وضع ملء الشاشة"
+        ar: "تبديل وضع ملء الشاشة",
     },
     sort: {
         en: "Inverses the sort order",
@@ -139,7 +139,7 @@ const t = ref({
         ja: "並べ替え順序を反転します",
         es: "Invierte el orden de clasificación",
         ko: "정렬 순서를 반전시킵니다",
-        ar: "عكس ترتيب الفرز"
+        ar: "عكس ترتيب الفرز",
     },
     annotator: {
         en: "Opens the built-in annotator",
@@ -150,126 +150,366 @@ const t = ref({
         ja: "組み込みの注釈ツールを開きます",
         es: "Abre el anotador integrado",
         ko: "내장된 주석 도구를 엽니다",
-        ar: "يفتح أداة التعليق المدمجة"
+        ar: "يفتح أداة التعليق المدمجة",
     },
     zoom: {
-        en: 'Lock or unlock the pan zoom feature',
-        fr: 'Verrouiller ou déverrouiller la fonctionnalité de déplacement et zoom',
-        pt: 'Bloquear ou desbloquear o recurso de pan e zoom',
-        de: 'Die Pan- und Zoomfunktion sperren oder entsperren',
-        zh: '锁定或解锁平移和缩放功能',
-        ja: 'パンおよびズーム機能をロックまたは解除する',
-        es: 'Bloquear o desbloquear la función de desplazamiento y zoom',
-        ko: '이동 및 확대/축소 기능을 잠그거나 해제합니다',
-        ar: 'قفل أو فتح ميزة التحريك والتكبير'
-    }
-})
+        en: "Lock or unlock the pan zoom feature",
+        fr: "Verrouiller ou déverrouiller la fonctionnalité de déplacement et zoom",
+        pt: "Bloquear ou desbloquear o recurso de pan e zoom",
+        de: "Die Pan- und Zoomfunktion sperren oder entsperren",
+        zh: "锁定或解锁平移和缩放功能",
+        ja: "パンおよびズーム機能をロックまたは解除する",
+        es: "Bloquear o desbloquear la función de desplazamiento y zoom",
+        ko: "이동 및 확대/축소 기능을 잠그거나 해제합니다",
+        ar: "قفل أو فتح ميزة التحريك والتكبير",
+    },
+});
 
 const charts = ref({
-    VueUiQuickChart: { name: 'VueUiQuickChart', icon: 'vueDataUi', link: '/docs#vue-ui-quick-chart'},
-    VueUiBullet: { name: 'VueUiBullet', icon: 'chartBullet', link: '/docs#vue-ui-bullet' },
-    VueUiXy: { name: 'VueUiXy', icon: 'chartLine', link: '/docs#vue-ui-xy' },
-    VueUiXyCanvas: { name: 'VueUiXyCanvas', icon: 'chartLine', link: '/docs#vue-ui-xy-canvas' },
-    VueUiVerticalBar: { name: 'VueUiVerticalBar', icon: 'chartVerticalBar', link: '/docs#vue-ui-vertical-bar' },
-    VueUiParallelCoordinatePlot: { name: 'VueUiParallelCoordinatePlot', icon: 'chartParallelCoordinatePlot', link: '/docs#vue-ui-parallel-coordinate-plot' },
-    VueUiFlow: { name: 'VueUiFlow', icon: 'chartFlow', link: '/docs#vue-ui-flow' },
-    VueUiCandlestick: { name: 'VueUiCandlestick', icon: 'chartCandlestick', link: '/docs#vue-ui-candlestick' },
-    VueUiAgePyramid: { name: 'VueUiAgePyramid', icon: 'chartAgePyramid', link: '/docs#vue-ui-age-pyramid'},
-    VueUiStackbar: { name: 'VueUiStackbar', icon: 'chartStackbar', link: '/docs#vue-ui-stackbar'},
-    VueUiStackline: { name: 'VueUiStackline', icon: 'chartStackline', link: '/docs#vue-ui-stackline'},
-    VueUiDonutEvolution: { name: 'VueUiDonutEvolution', icon: 'chartDonutEvolution', link: '/docs#vue-ui-donut-evolution'},
-    VueUiDonut: { name: 'VueUiDonut', icon: 'chartDonut', link: '/docs#vue-ui-donut'},
-    VueUiNestedDonuts: { name: 'VueUiNestedDonuts', icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts'},
-    VueUiWaffle: { name: 'VueUiWaffle', icon: 'chartWaffle', link: '/docs#vue-ui-waffle'},
-    VueUiHeatmap: { name: 'VueUiHeatmap', icon: 'chartHeatmap', link: '/docs#vue-ui-heatmap'},
-    VueUiTreemap: { name: 'VueUiTreemap', icon: 'chartTreemap', link: '/docs#vue-ui-treemap'},
-    VueUiRings: { name: 'VueUiRings', icon: 'chartRings', link: '/docs#vue-ui-rings'},
-    VueUiGalaxy: { name: 'VueUiGalaxy', icon: 'chartGalaxy', link: '/docs#vue-ui-galaxy'},
-    VueUiChestnut: { name: 'VueUiChestnut', icon: 'chartChestnut', link: '/docs#vue-ui-chestnut'},
-    VueUiGauge: { name: 'VueUiGauge', icon: 'chartGauge', link: '/docs#vue-ui-gauge'},
-    VueUiOnion: { name: 'VueUiOnion', icon: 'chartOnion', link: '/docs#vue-ui-onion' },
-    VueUiWheel: { name: 'VueUiWheel', icon: 'chartWheel', link: '/docs#vue-ui-wheel'},
-    VueUiTiremarks: { name: 'VueUiTiremarks', icon: 'chartTiremarks', link: '/docs#vue-ui-tiremarks'},
-    VueUiThermometer: { name: 'VueUiThermometer', icon: 'chartThermometer', link: '/docs#vue-ui-thermometer'},
-    VueUiWordCloud: { name: 'VueUiWordCloud', icon: 'chartWordCloud', link: '/docs#vue-ui-word-cloud'},
-    VueUiRelationCircle: { name: 'VueUiRelationCircle', icon: 'chartRelationCircle', link: '/docs#vue-ui-relation-circle'},
-    VueUiRadar: { name: 'VueUiRadar', icon: 'chartRadar', link: '/docs#vue-ui-radar'},
-    VueUiMoodRadar: { name: 'VueUiMoodRadar', icon: 'chartMoodRadar', link: '/docs#vue-ui-mood-radar'},
-    VueUiQuadrant: { name: 'VueUiQuadrant', icon: 'chartQuadrant', link: '/docs#vue-ui-quadrant'},
-    VueUiScatter: { name: 'VueUiScatter', icon: 'chartScatter', link: '/docs#vue-ui-scatter'},
-    VueUiMolecule: { name: 'VueUiMolecule', icon: 'chartCluster', link: '/docs#vue-ui-molecule'},
-    VueUiStripPlot: { name: 'VueUiStripPlot', icon: 'chartStripPlot', link: '/docs#vue-ui-strip-plot'},
-    VueUiDumbbell: { name: 'VueUiDumbbell', icon: 'chartDumbbell', link: '/docs#vue-ui-dumbbell'},
-    VueUi3dBar: { name: 'VueUi3dBar', icon: 'chart3dBar', link: '/docs#vue-ui-3d-bar'},
-    VueUiCirclePack: { name: 'VueUiCirclePack', icon: 'chartCirclePack', link: '/docs#vue-ui-circle-pack'},
-    VueUiDag: { name: 'VueUiDag', icon: 'chartDag', link: '/docs#vue-ui-dag'},
-    VueUiGeo: { name: 'VueUiGeo', icon: 'chartGeo', link: '/docs#vue-ui-geo'},
-    VueUiBump: { name: 'VueUiBump', icon: 'chartBump', link: '/docs#vue-ui-bump'}
-})
+    VueUiQuickChart: {
+        name: "VueUiQuickChart",
+        icon: "vueDataUi",
+        link: "/docs#vue-ui-quick-chart",
+    },
+    VueUiBullet: {
+        name: "VueUiBullet",
+        icon: "chartBullet",
+        link: "/docs#vue-ui-bullet",
+    },
+    VueUiXy: { name: "VueUiXy", icon: "chartLine", link: "/docs#vue-ui-xy" },
+    VueUiXyCanvas: {
+        name: "VueUiXyCanvas",
+        icon: "chartLine",
+        link: "/docs#vue-ui-xy-canvas",
+    },
+    VueUiVerticalBar: {
+        name: "VueUiVerticalBar",
+        icon: "chartVerticalBar",
+        link: "/docs#vue-ui-vertical-bar",
+    },
+    VueUiParallelCoordinatePlot: {
+        name: "VueUiParallelCoordinatePlot",
+        icon: "chartParallelCoordinatePlot",
+        link: "/docs#vue-ui-parallel-coordinate-plot",
+    },
+    VueUiFlow: {
+        name: "VueUiFlow",
+        icon: "chartFlow",
+        link: "/docs#vue-ui-flow",
+    },
+    VueUiCandlestick: {
+        name: "VueUiCandlestick",
+        icon: "chartCandlestick",
+        link: "/docs#vue-ui-candlestick",
+    },
+    VueUiAgePyramid: {
+        name: "VueUiAgePyramid",
+        icon: "chartAgePyramid",
+        link: "/docs#vue-ui-age-pyramid",
+    },
+    VueUiStackbar: {
+        name: "VueUiStackbar",
+        icon: "chartStackbar",
+        link: "/docs#vue-ui-stackbar",
+    },
+    VueUiStackline: {
+        name: "VueUiStackline",
+        icon: "chartStackline",
+        link: "/docs#vue-ui-stackline",
+    },
+    VueUiDonutEvolution: {
+        name: "VueUiDonutEvolution",
+        icon: "chartDonutEvolution",
+        link: "/docs#vue-ui-donut-evolution",
+    },
+    VueUiDonut: {
+        name: "VueUiDonut",
+        icon: "chartDonut",
+        link: "/docs#vue-ui-donut",
+    },
+    VueUiNestedDonuts: {
+        name: "VueUiNestedDonuts",
+        icon: "chartNestedDonuts",
+        link: "/docs#vue-ui-nested-donuts",
+    },
+    VueUiWaffle: {
+        name: "VueUiWaffle",
+        icon: "chartWaffle",
+        link: "/docs#vue-ui-waffle",
+    },
+    VueUiHeatmap: {
+        name: "VueUiHeatmap",
+        icon: "chartHeatmap",
+        link: "/docs#vue-ui-heatmap",
+    },
+    VueUiTreemap: {
+        name: "VueUiTreemap",
+        icon: "chartTreemap",
+        link: "/docs#vue-ui-treemap",
+    },
+    VueUiRings: {
+        name: "VueUiRings",
+        icon: "chartRings",
+        link: "/docs#vue-ui-rings",
+    },
+    VueUiGalaxy: {
+        name: "VueUiGalaxy",
+        icon: "chartGalaxy",
+        link: "/docs#vue-ui-galaxy",
+    },
+    VueUiChestnut: {
+        name: "VueUiChestnut",
+        icon: "chartChestnut",
+        link: "/docs#vue-ui-chestnut",
+    },
+    VueUiGauge: {
+        name: "VueUiGauge",
+        icon: "chartGauge",
+        link: "/docs#vue-ui-gauge",
+    },
+    VueUiOnion: {
+        name: "VueUiOnion",
+        icon: "chartOnion",
+        link: "/docs#vue-ui-onion",
+    },
+    VueUiWheel: {
+        name: "VueUiWheel",
+        icon: "chartWheel",
+        link: "/docs#vue-ui-wheel",
+    },
+    VueUiTiremarks: {
+        name: "VueUiTiremarks",
+        icon: "chartTiremarks",
+        link: "/docs#vue-ui-tiremarks",
+    },
+    VueUiThermometer: {
+        name: "VueUiThermometer",
+        icon: "chartThermometer",
+        link: "/docs#vue-ui-thermometer",
+    },
+    VueUiWordCloud: {
+        name: "VueUiWordCloud",
+        icon: "chartWordCloud",
+        link: "/docs#vue-ui-word-cloud",
+    },
+    VueUiRelationCircle: {
+        name: "VueUiRelationCircle",
+        icon: "chartRelationCircle",
+        link: "/docs#vue-ui-relation-circle",
+    },
+    VueUiRadar: {
+        name: "VueUiRadar",
+        icon: "chartRadar",
+        link: "/docs#vue-ui-radar",
+    },
+    VueUiMoodRadar: {
+        name: "VueUiMoodRadar",
+        icon: "chartMoodRadar",
+        link: "/docs#vue-ui-mood-radar",
+    },
+    VueUiQuadrant: {
+        name: "VueUiQuadrant",
+        icon: "chartQuadrant",
+        link: "/docs#vue-ui-quadrant",
+    },
+    VueUiScatter: {
+        name: "VueUiScatter",
+        icon: "chartScatter",
+        link: "/docs#vue-ui-scatter",
+    },
+    VueUiMolecule: {
+        name: "VueUiMolecule",
+        icon: "chartCluster",
+        link: "/docs#vue-ui-molecule",
+    },
+    VueUiStripPlot: {
+        name: "VueUiStripPlot",
+        icon: "chartStripPlot",
+        link: "/docs#vue-ui-strip-plot",
+    },
+    VueUiDumbbell: {
+        name: "VueUiDumbbell",
+        icon: "chartDumbbell",
+        link: "/docs#vue-ui-dumbbell",
+    },
+    VueUi3dBar: {
+        name: "VueUi3dBar",
+        icon: "chart3dBar",
+        link: "/docs#vue-ui-3d-bar",
+    },
+    VueUiCirclePack: {
+        name: "VueUiCirclePack",
+        icon: "chartCirclePack",
+        link: "/docs#vue-ui-circle-pack",
+    },
+    VueUiDag: { name: "VueUiDag", icon: "chartDag", link: "/docs#vue-ui-dag" },
+    VueUiGeo: { name: "VueUiGeo", icon: "chartGeo", link: "/docs#vue-ui-geo" },
+    VueUiBump: {
+        name: "VueUiBump",
+        icon: "chartBump",
+        link: "/docs#vue-ui-bump",
+    },
+});
 
 const items = ref([
     {
-        name: 'tooltip',
-        icon: 'tooltip',
-        charts: ['VueUiQuickChart', 'VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot']
+        name: "tooltip",
+        icon: "tooltip",
+        charts: [
+            "VueUiQuickChart",
+            "VueUiXy",
+            "VueUiXyCanvas",
+            "VueUiVerticalBar",
+            "VueUiParallelCoordinatePlot",
+            "VueUiCandlestick",
+            "VueUiAgePyramid",
+            "VueUiStackbar",
+            "VueUiStackline",
+            "VueUiDonut",
+            "VueUiNestedDonuts",
+            "VueUiWaffle",
+            "VueUiHeatmap",
+            "VueUiTreemap",
+            "VueUiRings",
+            "VueUiGalaxy",
+            "VueUiOnion",
+            "VueUiWordCloud",
+            "VueUiRadar",
+            "VueUiQuadrant",
+            "VueUiScatter",
+            "VueUiMolecule",
+            "VueUiStripPlot",
+        ],
     },
     {
-        name: 'pdf',
-        icon: 'pdf',
-        charts: Object.keys(charts.value)
+        name: "pdf",
+        icon: "pdf",
+        charts: Object.keys(charts.value),
     },
     {
-        name: 'csv',
-        icon: 'excel',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack', 'VueUiBump']
+        name: "csv",
+        icon: "excel",
+        charts: [
+            "VueUiXy",
+            "VueUiXyCanvas",
+            "VueUiVerticalBar",
+            "VueUiParallelCoordinatePlot",
+            "VueUiFlow",
+            "VueUiCandlestick",
+            "VueUiAgePyramid",
+            "VueUiStackbar",
+            "VueUiStackline",
+            "VueUiDonutEvolution",
+            "VueUiDonut",
+            "VueUiNestedDonuts",
+            "VueUiWaffle",
+            "VueUiHeatmap",
+            "VueUiTreemap",
+            "VueUiRings",
+            "VueUiGalaxy",
+            "VueUiChestnut",
+            "VueUiOnion",
+            "VueUiWordCloud",
+            "VueUiRadar",
+            "VueUiMoodRadar",
+            "VueUiQuadrant",
+            "VueUiScatter",
+            "VueUiMolecule",
+            "VueUiStripPlot",
+            "VueUiDumbbell",
+            "VueUi3dBar",
+            "VueUiCirclePack",
+            "VueUiBump",
+        ],
     },
     {
-        name: 'img',
-        icon: 'image',
-        charts: Object.keys(charts.value)
+        name: "img",
+        icon: "image",
+        charts: Object.keys(charts.value),
     },
     {
-        name: 'svg',
-        icon: 'svg',
-        charts: Object.keys(charts.value).filter(k => k !== 'VueUiXyCanvas')
+        name: "svg",
+        icon: "svg",
+        charts: Object.keys(charts.value).filter((k) => k !== "VueUiXyCanvas"),
     },
     {
-        name: 'table',
-        icon:  'tableOpen',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack', 'VueUiBump']
+        name: "table",
+        icon: "tableOpen",
+        charts: [
+            "VueUiXy",
+            "VueUiXyCanvas",
+            "VueUiVerticalBar",
+            "VueUiParallelCoordinatePlot",
+            "VueUiFlow",
+            "VueUiCandlestick",
+            "VueUiAgePyramid",
+            "VueUiStackbar",
+            "VueUiStackline",
+            "VueUiDonutEvolution",
+            "VueUiDonut",
+            "VueUiNestedDonuts",
+            "VueUiWaffle",
+            "VueUiHeatmap",
+            "VueUiTreemap",
+            "VueUiRings",
+            "VueUiGalaxy",
+            "VueUiChestnut",
+            "VueUiOnion",
+            "VueUiWordCloud",
+            "VueUiRadar",
+            "VueUiMoodRadar",
+            "VueUiQuadrant",
+            "VueUiScatter",
+            "VueUiMolecule",
+            "VueUiStripPlot",
+            "VueUiDumbbell",
+            "VueUi3dBar",
+            "VueUiCirclePack",
+            "VueUiBump",
+        ],
     },
     {
-        name: 'labels',
-        icon: 'labelOpen',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiParallelCoordinatePlot', 'VueUiStackbar', 'VueUiStackline', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiQuadrant', 'VueUiMolecule', 'VueUiStripPlot']
+        name: "labels",
+        icon: "labelOpen",
+        charts: [
+            "VueUiXy",
+            "VueUiXyCanvas",
+            "VueUiParallelCoordinatePlot",
+            "VueUiStackbar",
+            "VueUiStackline",
+            "VueUiDonut",
+            "VueUiNestedDonuts",
+            "VueUiQuadrant",
+            "VueUiMolecule",
+            "VueUiStripPlot",
+        ],
     },
     {
-        name: 'stack',
-        icon: 'stack',
-        charts: ['VueUiXy', 'VueUiXyCanvas']
+        name: "stack",
+        icon: "stack",
+        charts: ["VueUiXy", "VueUiXyCanvas"],
     },
     {
-        name: 'fullscreen',
-        icon: 'fullscreen',
-        charts: Object.keys(charts.value)
+        name: "fullscreen",
+        icon: "fullscreen",
+        charts: Object.keys(charts.value),
     },
     {
-        name: 'sort',
-        icon: 'sort',
-        charts: ['VueUiVerticalBar']
+        name: "sort",
+        icon: "sort",
+        charts: ["VueUiVerticalBar"],
     },
     {
-        name: 'annotator',
-        icon: 'annotator',
-        charts: Object.keys(charts.value)
+        name: "annotator",
+        icon: "annotator",
+        charts: Object.keys(charts.value),
     },
     {
-        name: 'zoom',
-        icon: 'zoomLock',
-        charts: ['VueUiWordCloud', 'VueUiMolecule', 'VueUiDag', 'VueUiGeo']
-    }
-])
-
+        name: "zoom",
+        icon: "zoomLock",
+        charts: ["VueUiWordCloud", "VueUiMolecule", "VueUiDag", "VueUiGeo"],
+    },
+]);
 </script>
 
 <template>
@@ -284,34 +524,70 @@ const items = ref([
                 </p>
             </div>
             <div class="w-full flex justify-center">
-                <video v-if="isDarkMode" controls width="500" loop="true" autoplay="true">
+                <video
+                    v-if="isDarkMode"
+                    controls
+                    width="500"
+                    loop="true"
+                    autoplay="true"
+                >
                     <source src="../assets/user_options.mp4" type="video/mp4" />
                 </video>
                 <video v-else controls width="500" loop="true" autoplay="true">
-                    <source src="../assets/user_options_light.mp4" type="video/mp4" />
+                    <source
+                        src="../assets/user_options_light.mp4"
+                        type="video/mp4"
+                    />
                 </video>
             </div>
             <div class="mx-6">
-                <table class="schema table-auto border-collapse border border-gray-400 dark:border-gray-500 my-4 w-full">
+                <table
+                    class="schema table-auto border-collapse border border-gray-400 dark:border-gray-500 my-4 w-full"
+                >
                     <thead>
                         <tr class="bg-[#FFFFFF15]">
-                            <th class="border border-slate-600 p-2">{{ translations.overview.icon[store.lang] }}</th>
-                            <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
-                            <th class="border border-slate-600 p-2">{{ translations.overview.component[store.lang] }}</th>
+                            <th class="border border-slate-600 p-2">
+                                {{ translations.overview.icon[store.lang] }}
+                            </th>
+                            <th class="border border-slate-600 p-2">
+                                {{
+                                    translations.overview.description[
+                                        store.lang
+                                    ]
+                                }}
+                            </th>
+                            <th class="border border-slate-600 p-2">
+                                {{
+                                    translations.overview.component[store.lang]
+                                }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="bg-[#FFFFFF05]" v-for="option in items">
-                            <td class="p-2 border border-gray-400 dark:border-gray-500 bg-[#FFFFFF10]">
+                            <td
+                                class="p-2 border border-gray-400 dark:border-gray-500 bg-[#FFFFFF10]"
+                            >
                                 <div class="w-full flex justify-center">
-                                    <VueUiIcon :name="option.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                    <VueUiIcon
+                                        :name="option.icon"
+                                        :stroke="
+                                            isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                                        "
+                                    />
                                 </div>
                             </td>
-                            <td class="p-2 border border-gray-400 dark:border-gray-500 text-xs">
+                            <td
+                                class="p-2 border border-gray-400 dark:border-gray-500 text-xs"
+                            >
                                 {{ t[option.name][store.lang] }}
                             </td>
-                            <td class="p-2 border border-gray-400 dark:border-gray-500 text-xs">
-                                <div class="flex flex-row flex-wrap gap-2 max-w-[500px]">
+                            <td
+                                class="p-2 border border-gray-400 dark:border-gray-500 text-xs"
+                            >
+                                <div
+                                    class="flex flex-row flex-wrap gap-2 max-w-[500px]"
+                                >
                                     <FlexibleTooltip
                                         v-for="c in option.charts"
                                         position="bottom"
@@ -320,10 +596,32 @@ const items = ref([
                                         delay="delay-150"
                                     >
                                         <RouterLink :to="charts[c].link">
-                                            <div class="relative flex place-items-center justify-center p-2 border border-gray-200 dark:border-[#FFFFFF10] hover:bg-[#5f8aee30] hover:shadow-md hover:border-app-blue dark:hover:border-app-blue transition-all pb-3">
-                                                <VueUiIcon :name="charts[c].icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="-mt-1" />
-                                                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[6px] pb-[2px]">
-                                                    {{ charts[c].name === 'VueUiParallelCoordinatePlot' ? 'PCP' : charts[c].name.replace('VueUi', '') }}
+                                            <div
+                                                class="relative flex place-items-center justify-center p-2 border border-gray-200 dark:border-[#FFFFFF10] hover:bg-[#5f8aee30] hover:shadow-md hover:border-app-blue dark:hover:border-app-blue transition-all pb-3"
+                                            >
+                                                <VueUiIcon
+                                                    :name="charts[c].icon"
+                                                    :stroke="
+                                                        isDarkMode
+                                                            ? '#CCCCCC'
+                                                            : '#1A1A1A'
+                                                    "
+                                                    class="-mt-1"
+                                                />
+                                                <div
+                                                    class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[6px] pb-[2px]"
+                                                >
+                                                    {{
+                                                        charts[c].name ===
+                                                        "VueUiParallelCoordinatePlot"
+                                                            ? "PCP"
+                                                            : charts[
+                                                                  c
+                                                              ].name.replace(
+                                                                  "VueUi",
+                                                                  "",
+                                                              )
+                                                    }}
                                                 </div>
                                             </div>
                                         </RouterLink>

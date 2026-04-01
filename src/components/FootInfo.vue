@@ -9,11 +9,11 @@ import useMobile from "../useMobile";
 import NpmxAd from "./NpmxAd.vue";
 
 const store = useMainStore();
-const router = useRouter()
+const router = useRouter();
 const translations = computed(() => store.translations);
 
 const isDarkMode = computed(() => store.isDarkMode);
-const { isMobile } = useMobile()
+const { isMobile } = useMobile();
 
 const currentRoute = computed(() => {
     return router.currentRoute.value.path;
@@ -27,26 +27,54 @@ const isMenuOpen = computed(() => store.isMenuOpen);
 
 const menuItems = computed(() => {
     return [
-        { link: '/installation', title: translations.value.menu.installation[store.lang], icon: 'starFill' },
-        { link: '/docs', title: translations.value.menu.docs[store.lang], icon: 'settings' },
-        { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang], icon: 'boxes'},
-        { link: '/examples', title: translations.value.menu.examples[store.lang], icon: 'dashboard' },
-        { link: '/customization', title: translations.value.menu.customization[store.lang], icon: 'palette'},
-        { link: '/versions', title: translations.value.menu.versions[store.lang], icon: ''},
-        { link: '/about', title: translations.value.menu.about[store.lang], icon: ''},
-    ]
+        {
+            link: "/installation",
+            title: translations.value.menu.installation[store.lang],
+            icon: "starFill",
+        },
+        {
+            link: "/docs",
+            title: translations.value.menu.docs[store.lang],
+            icon: "settings",
+        },
+        {
+            link: "/chart-builder",
+            title: translations.value.menu.chartBuilder[store.lang],
+            icon: "boxes",
+        },
+        {
+            link: "/examples",
+            title: translations.value.menu.examples[store.lang],
+            icon: "dashboard",
+        },
+        {
+            link: "/customization",
+            title: translations.value.menu.customization[store.lang],
+            icon: "palette",
+        },
+        {
+            link: "/versions",
+            title: translations.value.menu.versions[store.lang],
+            icon: "",
+        },
+        {
+            link: "/about",
+            title: translations.value.menu.about[store.lang],
+            icon: "",
+        },
+    ];
 });
 
 const fncsyIntro = ref({
-    en: 'Check out awesome free tools provided by our friends at :',
-    fr: 'Découvrez des outils gratuits incroyables proposés par nos amis chez :',
-    pt: 'Confira ferramentas gratuitas incríveis oferecidas por nossos amigos em :',
-    de: 'Schauen Sie sich tolle kostenlose Tools an, bereitgestellt von unseren Freunden bei :',
-    zh: '来看看我们朋友提供的精彩免费工具：',
-    ja: '私たちの仲間が提供する素晴らしい無料ツールをご覧ください',
-    es: 'Descubre increíbles herramientas gratuitas proporcionadas por nuestros amigos en :',
-    ko: '우리 친구들이 제공하는 멋진 무료 도구를 확인하세요 :',
-    ar: 'اطّلع على أدوات مجانية رائعة مقدمة من أصدقائنا في :'
+    en: "Check out awesome free tools provided by our friends at :",
+    fr: "Découvrez des outils gratuits incroyables proposés par nos amis chez :",
+    pt: "Confira ferramentas gratuitas incríveis oferecidas por nossos amigos em :",
+    de: "Schauen Sie sich tolle kostenlose Tools an, bereitgestellt von unseren Freunden bei :",
+    zh: "来看看我们朋友提供的精彩免费工具：",
+    ja: "私たちの仲間が提供する素晴らしい無料ツールをご覧ください",
+    es: "Descubre increíbles herramientas gratuitas proporcionadas por nuestros amigos en :",
+    ko: "우리 친구들이 제공하는 멋진 무료 도구를 확인하세요 :",
+    ar: "اطّلع على أدوات مجانية رائعة مقدمة من أصدقائنا في :",
 });
 
 const fncsy = ref({
@@ -102,36 +130,64 @@ const fncsy = ref({
                 توقف عن إضاعة الوقت في الإعدادات المعقدة.
                 <br/>
                 <br/>
-                احصل فوراً على <span class="text-app-green-dark dark:text-app-green">أدوات جاهزة للإنتاج</span> يثق بها المبدعون والمصممون والمطورون. استخرج البيانات باستخدام أنماط ذكية، أنشئ رموز QR، حوّل العملات، عالج بيانات CSV، شفّر Base64، أنشئ UUID، تحقق من عنوان IP الخاص بك، احسب الشبكات الفرعية، أنشئ أنماطاً — <span class="text-app-green-dark dark:text-app-green">كل ذلك في ثوانٍ معدودة، مجاناً بالكامل</span>`
-})
-
-
+                احصل فوراً على <span class="text-app-green-dark dark:text-app-green">أدوات جاهزة للإنتاج</span> يثق بها المبدعون والمصممون والمطورون. استخرج البيانات باستخدام أنماط ذكية، أنشئ رموز QR، حوّل العملات، عالج بيانات CSV، شفّر Base64، أنشئ UUID، تحقق من عنوان IP الخاص بك، احسب الشبكات الفرعية، أنشئ أنماطاً — <span class="text-app-green-dark dark:text-app-green">كل ذلك في ثوانٍ معدودة، مجاناً بالكامل</span>`,
+});
 </script>
 s
 <template>
-    <div :class="`flex-col mt-12 justify-center py-12 border-t ${isDarkMode ? 'bg-[#1A1A1A] border-[#2A2A2A]' : 'bg-gray-300'}   ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`">
-
-        <div v-if="!isMobile" :class="`mx-auto w-full flex flex-col sm:flex-row gap-12 place-items-center justify-center pb-8 border-b border-gray-400 dark:border-[#4A4A4A]`">
-            <div class="flex flex-col gap-2 place-items-center justify-center min-w-[200px]">
-                <img data-cy="header-logo" src="../assets/logo3.png" class="h-12" />
+    <div
+        :class="`flex-col mt-12 justify-center py-12 border-t ${isDarkMode ? 'bg-[#1A1A1A] border-[#2A2A2A]' : 'bg-gray-300'}   ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`"
+    >
+        <div
+            v-if="!isMobile"
+            :class="`mx-auto w-full flex flex-col sm:flex-row gap-12 place-items-center justify-center pb-8 border-b border-gray-400 dark:border-[#4A4A4A]`"
+        >
+            <div
+                class="flex flex-col gap-2 place-items-center justify-center min-w-[200px]"
+            >
+                <img
+                    data-cy="header-logo"
+                    src="../assets/logo3.png"
+                    class="h-12"
+                />
                 <span>Vue Data UI</span>
-                <div class="flex flex-row gap-2 place-items-center justify-center" title="Copy Left">
-                    <VueUiIcon name="copyLeft" stroke="#6A6A6A"/>
+                <div
+                    class="flex flex-row gap-2 place-items-center justify-center"
+                    title="Copy Left"
+                >
+                    <VueUiIcon name="copyLeft" stroke="#6A6A6A" />
                     <span>{{ new Date().getFullYear() }}</span>
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-6 flex-wrap" dir="auto">
-                <div class="flex flex-col place-items-center justify-center gap-2 relative" v-for="menuItem in menuItems">
-                    <a :class="`text-black dark:text-app-blue hover:underline px-2 pb-1 ${isSelected(menuItem.link) ? 'shadow-md border-b border-app-blue' : ''}`" :href="menuItem.link">
+                <div
+                    class="flex flex-col place-items-center justify-center gap-2 relative"
+                    v-for="menuItem in menuItems"
+                >
+                    <a
+                        :class="`text-black dark:text-app-blue hover:underline px-2 pb-1 ${isSelected(menuItem.link) ? 'shadow-md border-b border-app-blue' : ''}`"
+                        :href="menuItem.link"
+                    >
                         <div class="flex flex-row place-items-center gap-2">
-                            <VueUiIcon v-if="menuItem.icon" :name="menuItem.icon" :size="18" :stroke="isDarkMode ? '#CCCCCC' : '#6A6A6A'"/>
+                            <VueUiIcon
+                                v-if="menuItem.icon"
+                                :name="menuItem.icon"
+                                :size="18"
+                                :stroke="isDarkMode ? '#CCCCCC' : '#6A6A6A'"
+                            />
                             {{ menuItem.title }}
                         </div>
                     </a>
                 </div>
-                <div class="flex flex-col place-items-center justify-center gap-2">
-                    <a href="https://github.com/graphieros/vue-data-ui" target="_blank" class="text-black dark:text-app-blue hover:underline">
+                <div
+                    class="flex flex-col place-items-center justify-center gap-2"
+                >
+                    <a
+                        href="https://github.com/graphieros/vue-data-ui"
+                        target="_blank"
+                        class="text-black dark:text-app-blue hover:underline"
+                    >
                         GitHub
                     </a>
                 </div>
@@ -140,7 +196,6 @@ s
 
         <NpmxAd />
 
-        <FncsyAd/>
-
+        <FncsyAd />
     </div>
 </template>

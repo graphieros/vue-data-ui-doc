@@ -1,5 +1,13 @@
 <script setup>
-import { ref, computed, nextTick, onBeforeUnmount, toRefs, onMounted, watch } from "vue";
+import {
+    ref,
+    computed,
+    nextTick,
+    onBeforeUnmount,
+    toRefs,
+    onMounted,
+    watch,
+} from "vue";
 import vClickOutside from "../directives/vClickOutside";
 import { XIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
@@ -15,28 +23,28 @@ const props = defineProps({
     },
     optionTarget: {
         type: String,
-        default: 'link'
+        default: "link",
     },
     additionalOptionTarget: {
         type: String,
-        default: 'component'
+        default: "component",
     },
     width: {
         type: Number,
-        default: 305
+        default: 305,
     },
     basePadding: {
         type: String,
-        default: '0.5rem 0.75rem'
+        default: "0.5rem 0.75rem",
     },
     background: {
         type: String,
-        default: 'bg-gray-100 dark:bg-[#2A2A2A]'
+        default: "bg-gray-100 dark:bg-[#2A2A2A]",
     },
     search: {
         type: Boolean,
-        default: true
-    }
+        default: true,
+    },
 });
 
 const store = useMainStore();
@@ -57,14 +65,14 @@ const highlightedIndex = ref(null);
 const optionsRef = ref([]);
 
 const selectedOption = computed(() =>
-    props.options.find((option) => option[props.optionTarget] === props.value)
+    props.options.find((option) => option[props.optionTarget] === props.value),
 );
 
 const currentIndex = computed(() => {
-    return props.options.findIndex(o => {
-        return o[props.optionTarget] === props.value
+    return props.options.findIndex((o) => {
+        return o[props.optionTarget] === props.value;
     });
-})
+});
 
 const toggleDropdown = (forceState) => {
     isOpen.value = forceState !== undefined ? forceState : !isOpen.value;
@@ -86,9 +94,9 @@ const navigate = (step) => {
         highlightedIndex.value = newIndex;
         const option = list.value?.children[newIndex];
         if (option) {
-        option.scrollIntoView({
-            block: 'nearest',
-        });
+            option.scrollIntoView({
+                block: "nearest",
+            });
         }
     }
 };
@@ -118,78 +126,133 @@ const onClickAway = (event) => {
 const button = ref(null);
 
 const availableOptions = computed(() => {
-    if(!searchModel.value) return props.options
-    return props.options.filter(o => o[props.optionTarget].toUpperCase().includes(searchModel.value.toUpperCase()) || o[props.additionalOptionTarget].toUpperCase().includes(searchModel.value.toUpperCase()))
+    if (!searchModel.value) return props.options;
+    return props.options.filter(
+        (o) =>
+            o[props.optionTarget]
+                .toUpperCase()
+                .includes(searchModel.value.toUpperCase()) ||
+            o[props.additionalOptionTarget]
+                .toUpperCase()
+                .includes(searchModel.value.toUpperCase()),
+    );
 });
 
-const searchModel = ref('');
+const searchModel = ref("");
 
 function clearSearch() {
-    searchModel.value = '';
+    searchModel.value = "";
 }
 
-watch(() => isOpen.value, async (v) => {
-    await nextTick()
-    v && fokkus()
-})
+watch(
+    () => isOpen.value,
+    async (v) => {
+        await nextTick();
+        if (v) {
+            fokkus();
+        }
+    },
+);
 
 defineExpose({
-    clearSearch
+    clearSearch,
 });
-
 </script>
 
 <template>
-    <div class="dropdown" @keydown.down.prevent="navigate(1)" @keydown.up.prevent="navigate(-1)"
-        @keydown.enter.prevent="selectHighlighted" @keydown.esc.prevent="toggleDropdown(false)"
+    <div
+        class="dropdown"
+        @keydown.down.prevent="navigate(1)"
+        @keydown.up.prevent="navigate(-1)"
+        @keydown.enter.prevent="selectHighlighted"
+        @keydown.esc.prevent="toggleDropdown(false)"
         v-click-outside="onClickAway"
         :style="{
-            width: props.width + 'px'
+            width: props.width + 'px',
         }"
     >
-        <button 
-            ref="button" 
-            :class="`dropdown-button ${background} border border-[#5f8aee50] hover:border-app-blue transition-colors !rounded-full`" 
-            :aria-haspopup="true" 
+        <button
+            ref="button"
+            :class="`dropdown-button ${background} border border-[#5f8aee50] hover:border-app-blue transition-colors !rounded-full`"
+            :aria-haspopup="true"
             :aria-expanded="isOpen.toString()"
             @click="toggleDropdown()"
             :style="{
                 width: props.width + 'px',
-                padding: props.basePadding
+                padding: props.basePadding,
             }"
         >
-            <slot name="selected" v-bind="{ selectedOption }"/>
+            <slot name="selected" v-bind="{ selectedOption }" />
         </button>
         <BaseCard v-show="isOpen" class="dropdown-options">
-            <ul  
-                ref="list" 
-                :class="`${background}`" 
-                role="listbox" 
+            <ul
+                ref="list"
+                :class="`${background}`"
+                role="listbox"
                 :aria-labelledby="id"
                 :style="{
-                    width: props.width + 'px'
+                    width: props.width + 'px',
                 }"
             >
-                <li v-if="search" class="sticky top-0 bg-inherit py-1 shadow-md">
-                    <div class="w-full flex flex-row mt-1 mb-1 px-2 gap-2 place-items-center peer relative">
-                        <input ref="rootInput" class="dd-search-input peer w-full h-[36px] transition-colors" style="padding-left:36px" type="text" v-model="searchModel"/>
-                        <VueUiIcon name="magnify" :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'" class="absolute left-4" :size="20"/>
-                        <button @click="searchModel = ''" :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`">
-                            <XIcon class="text-gray-500 peer-focus:text-app-blue peer-hover:text-app-blue hover:text-app-blue transition-colors"/>
+                <li
+                    v-if="search"
+                    class="sticky top-0 bg-inherit py-1 shadow-md"
+                >
+                    <div
+                        class="w-full flex flex-row mt-1 mb-1 px-2 gap-2 place-items-center peer relative"
+                    >
+                        <input
+                            ref="rootInput"
+                            class="dd-search-input peer w-full h-[36px] transition-colors"
+                            style="padding-left: 36px"
+                            type="text"
+                            v-model="searchModel"
+                        />
+                        <VueUiIcon
+                            name="magnify"
+                            :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'"
+                            class="absolute left-4"
+                            :size="20"
+                        />
+                        <button
+                            @click="searchModel = ''"
+                            :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`"
+                        >
+                            <XIcon
+                                class="text-gray-500 peer-focus:text-app-blue peer-hover:text-app-blue hover:text-app-blue transition-colors"
+                            />
                         </button>
                     </div>
-                    <div v-if="availableOptions.length === 0" class="text-xs mb-3 text-center">
+                    <div
+                        v-if="availableOptions.length === 0"
+                        class="text-xs mb-3 text-center"
+                    >
                         {{ store.translations.search.noResults[store.lang] }}
                     </div>
                 </li>
-                <li v-for="(option, index) in availableOptions" :key="option[props.optionTarget]"
+                <li
+                    v-for="(option, index) in availableOptions"
+                    :key="option[props.optionTarget]"
                     ref="optionsRef"
-                    :class="{ highlighted: index === highlightedIndex, current: index === currentIndex }" 
-                    class="dropdown-option" 
+                    :class="{
+                        highlighted: index === highlightedIndex,
+                        current: index === currentIndex,
+                    }"
+                    class="dropdown-option"
                     role="option"
-                    :aria-selected="index === highlightedIndex" @click="selectOption(option)" @mouseover="highlight(index)"
-                    @mouseleave="highlight(null)">
-                    <slot name="option" v-bind="{ option, selected: index === highlightedIndex, current: index === currentIndex }"/>
+                    :aria-selected="index === highlightedIndex"
+                    @click="selectOption(option)"
+                    @mouseover="highlight(index)"
+                    @mouseleave="highlight(null)"
+                >
+                    <slot
+                        name="option"
+                        v-bind="{
+                            option,
+                            selected: index === highlightedIndex,
+                            current: index === currentIndex,
+                        }"
+                    />
                 </li>
             </ul>
         </BaseCard>
@@ -242,10 +305,11 @@ defineExpose({
     background: transparent !important;
     border-radius: unset !important;
     border: unset !important;
-    background: #FFFFFF10 !important;
+    background: #ffffff10 !important;
 }
-.dd-search-input:hover, .dd-search-input:focus {
-    border:unset !important;
+.dd-search-input:hover,
+.dd-search-input:focus {
+    border: unset !important;
     outline: unset !important;
     border-bottom: 1px solid #5f8aee !important;
 }

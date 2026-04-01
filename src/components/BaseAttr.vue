@@ -14,38 +14,38 @@ const props = defineProps({
     light: {
         type: Object,
         default() {
-            return {}
-        }
+            return {};
+        },
     },
     dark: {
         type: Object,
         default() {
-            return {}
-        }
+            return {};
+        },
     },
     name: {
         type: String,
-        default: '',
+        default: "",
     },
     attr: {
         type: String,
-        default: ''
+        default: "",
     },
     defaultVal: {
         type: String,
-        default: ''
+        default: "",
     },
     type: {
         type: String,
-        default: ''
+        default: "",
     },
     min: {
         type: Number,
-        default: 0
+        default: 0,
     },
     max: {
         type: Number,
-        default: Number.MAX_SAFE_INTEGER
+        default: Number.MAX_SAFE_INTEGER,
     },
     step: {
         type: Number,
@@ -54,46 +54,46 @@ const props = defineProps({
     options: {
         type: Array,
         default() {
-            return []
-        }
+            return [];
+        },
     },
     comment: {
         type: String,
-        default: ''
+        default: "",
     },
     rgba: {
         type: Boolean,
-        default: false
+        default: false,
     },
     tooltip: {
         type: String,
-        default: ''
+        default: "",
     },
     inactive: {
         type: Boolean,
-        default: false
+        default: false,
     },
     indent: {
         type: Boolean,
         default: false,
     },
-})
+});
 
-const emit = defineEmits(['change'])
+const emit = defineEmits(["change"]);
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
-let initialValue = ref('');
+let initialValue = ref("");
 
 function getNestedAttribute(obj, path) {
-    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+    return path.split(".").reduce((acc, part) => acc && acc[part], obj);
 }
 
 const id = createUid();
 
 function setNestedAttribute(obj, path, value) {
-    const parts = path.split('.');
+    const parts = path.split(".");
     let current = obj;
 
     parts.forEach((part, index) => {
@@ -106,23 +106,28 @@ function setNestedAttribute(obj, path, value) {
     });
 }
 
-const targetObject = computed(() => (isDarkMode.value ? props.dark : props.light));
+const targetObject = computed(() =>
+    isDarkMode.value ? props.dark : props.light,
+);
 
 function updateSelectValue(event) {
     const value = event.target.value;
     setNestedAttribute(targetObject.value, props.attr, value);
     nestedAttribute.value = value;
-    emit('change')
+    emit("change");
 }
 
 const nestedAttribute = computed({
     get() {
-        return getNestedAttribute(isDarkMode.value ? props.dark : props.light, props.attr);
+        return getNestedAttribute(
+            isDarkMode.value ? props.dark : props.light,
+            props.attr,
+        );
     },
     set(value) {
         const targetObject = isDarkMode.value ? props.dark : props.light;
         setNestedAttribute(targetObject, props.attr, value);
-    }
+    },
 });
 
 onMounted(() => {
@@ -131,71 +136,150 @@ onMounted(() => {
 
 function resetValue() {
     nestedAttribute.value = initialValue.value;
-    emit('change')
+    emit("change");
 }
 
-watch(() => store.isDarkMode, (_val) => {
-    nestedAttribute.value = getNestedAttribute(isDarkMode.value ? props.dark : props.light, props.attr);
-    initialValue.value = nestedAttribute.value;
-});
+watch(
+    () => store.isDarkMode,
+    (_val) => {
+        nestedAttribute.value = getNestedAttribute(
+            isDarkMode.value ? props.dark : props.light,
+            props.attr,
+        );
+        initialValue.value = nestedAttribute.value;
+    },
+);
 
-const showResetButton = computed(() => initialValue.value !== nestedAttribute.value)
+const showResetButton = computed(
+    () => initialValue.value !== nestedAttribute.value,
+);
 
 const defaultValueTranslation = ref({
-    en: 'Default value:',
-    fr: 'Valeur par défaut:',
-    pt: 'Valor padrão:',
-    de: 'Standardwert:',
-    zh: '默认值：',
-    ja: 'デフォルト値:',
-    es: 'Valor predeterminado:',
-    ar: 'القيمة الافتراضية:'
-})
+    en: "Default value:",
+    fr: "Valeur par défaut:",
+    pt: "Valor padrão:",
+    de: "Standardwert:",
+    zh: "默认值：",
+    ja: "デフォルト値:",
+    es: "Valor predeterminado:",
+    ar: "القيمة الافتراضية:",
+});
 
 const isSelected = ref(false);
 
 const translatedTooltip = computed(() => {
-    return props.tooltip || useAttrMapping(props.name)
-})
-
+    return props.tooltip || useAttrMapping(props.name);
+});
 </script>
 
 <template>
-    <div :class="`relative min-h-[32px] py-1 ${indent ? 'ml-6' : ''}`" @mouseenter="isSelected=true" @mouseout="isSelected=false">
-        <FlexibleTooltip position="top" :mute="!translatedTooltip" :content="translatedTooltip" width="min-w-[100px] max-w-[300px]" opacity="group-hover:opacity-[0.9]">
-            <div class="flex flex-row flex-wrap gap-2 align-center place-items-center">
-                <label :for="`i_${id}`" :id="id" class="pr-1">{{ name }}:</label>
+    <div
+        :class="`relative min-h-[32px] py-1 ${indent ? 'ml-6' : ''}`"
+        @mouseenter="isSelected = true"
+        @mouseout="isSelected = false"
+    >
+        <FlexibleTooltip
+            position="top"
+            :mute="!translatedTooltip"
+            :content="translatedTooltip"
+            width="min-w-[100px] max-w-[300px]"
+            opacity="group-hover:opacity-[0.9]"
+        >
+            <div
+                class="flex flex-row flex-wrap gap-2 align-center place-items-center"
+            >
+                <label :for="`i_${id}`" :id="id" class="pr-1"
+                    >{{ name }}:</label
+                >
                 <span v-if="inactive" class="ml-1">
                     {{ defaultVal }}
                 </span>
                 <template v-else>
                     <template v-if="type === 'number'">
-                        <BaseNumberInput v-model:value="nestedAttribute" :min="min" :max="max" :step="step" @change="emit('change')" :labelId="id" :id="`i_${id}`"/>
+                        <BaseNumberInput
+                            v-model:value="nestedAttribute"
+                            :min="min"
+                            :max="max"
+                            :step="step"
+                            @change="emit('change')"
+                            :labelId="id"
+                            :id="`i_${id}`"
+                        />
                     </template>
                     <template v-if="type === 'text'">
-                        <input type="text" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
+                        <input
+                            type="text"
+                            v-model="nestedAttribute"
+                            @change="emit('change')"
+                            :id="`i_${id}`"
+                        />
                     </template>
                     <template v-if="type === 'color'">
-                        <BaseColorInput v-if="rgba" v-model:value="nestedAttribute" @change="emit('change')" :labelId="id" :id="`i_${id}`">
+                        <BaseColorInput
+                            v-if="rgba"
+                            v-model:value="nestedAttribute"
+                            @change="emit('change')"
+                            :labelId="id"
+                            :id="`i_${id}`"
+                        >
                             <template #before>
-                                <BaseComment v-if="comment">{{ comment }}</BaseComment>
+                                <BaseComment v-if="comment">{{
+                                    comment
+                                }}</BaseComment>
                             </template>
                             <template #after>
-                                <div class="pl-2 text-gray-600 dark:text-gray-400 flex flex-row place-items-center align-center" dir="auto">
-                                    <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span>
-                                    <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
+                                <div
+                                    class="pl-2 text-gray-600 dark:text-gray-400 flex flex-row place-items-center align-center"
+                                    dir="auto"
+                                >
+                                    <span class="text-xs">{{
+                                        defaultValueTranslation[store.lang]
+                                    }}</span>
+                                    <span
+                                        dir="ltr"
+                                        class="text-black dark:text-white pl-1"
+                                        >{{ defaultVal }}</span
+                                    >
                                     <span class="ml-4">
-                                        <BaseColorInfo v-if="type === 'color'" :color="defaultVal" tooltipPosition="right"/>
+                                        <BaseColorInfo
+                                            v-if="type === 'color'"
+                                            :color="defaultVal"
+                                            tooltipPosition="right"
+                                        />
                                     </span>
                                 </div>
                             </template>
                         </BaseColorInput>
-                        <input :aria-labelledby="id" v-else type="color" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
+                        <input
+                            :aria-labelledby="id"
+                            v-else
+                            type="color"
+                            v-model="nestedAttribute"
+                            @change="emit('change')"
+                            :id="`i_${id}`"
+                        />
                     </template>
                     <template v-if="type === 'range'">
-                        <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                            <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ nestedAttribute }}</div>
-                            <input :id="`i_${id}`" :aria-labelledby="id" :title="nestedAttribute" type="range" v-model="nestedAttribute" :min="min" :max="max" :step="step" class="accent-app-blue z-10" @change="emit('change')">
+                        <div
+                            class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md dark:border-t dark:border-[#6A6A6A]"
+                        >
+                            <div
+                                class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums"
+                            >
+                                {{ nestedAttribute }}
+                            </div>
+                            <input
+                                :id="`i_${id}`"
+                                :aria-labelledby="id"
+                                :title="nestedAttribute"
+                                type="range"
+                                v-model="nestedAttribute"
+                                :min="min"
+                                :max="max"
+                                :step="step"
+                                class="accent-app-blue z-10"
+                                @change="emit('change')"
+                            />
                         </div>
                     </template>
                     <template v-if="type === 'checkbox'">
@@ -204,20 +288,44 @@ const translatedTooltip = computed(() => {
                             :id="`i_${id}`"
                             type="checkbox"
                             :checked="nestedAttribute === true"
-                            @change="nestedAttribute = $event.target.checked; emit('change')"
+                            @change="
+                                nestedAttribute = $event.target.checked;
+                                emit('change');
+                            "
                             class="accent-app-blue"
                         />
                     </template>
                     <template v-if="type === 'select'">
-                        <select :value="nestedAttribute" @change="updateSelectValue" class="h-[28px]" :id="`i_${id}`" :aria-labelledby="id">
-                            <option v-for="o in options" :key="o" :value="o">{{ o }}</option>
+                        <select
+                            :value="nestedAttribute"
+                            @change="updateSelectValue"
+                            class="h-[28px]"
+                            :id="`i_${id}`"
+                            :aria-labelledby="id"
+                        >
+                            <option v-for="o in options" :key="o" :value="o">
+                                {{ o }}
+                            </option>
                         </select>
                     </template>
-                    <span dir="auto" class="pl-2 text-gray-600 dark:text-gray-400" v-if="!rgba">
-                        <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span>
-                        <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
+                    <span
+                        dir="auto"
+                        class="pl-2 text-gray-600 dark:text-gray-400"
+                        v-if="!rgba"
+                    >
+                        <span class="text-xs">{{
+                            defaultValueTranslation[store.lang]
+                        }}</span>
+                        <span
+                            dir="ltr"
+                            class="text-black dark:text-white pl-1"
+                            >{{ defaultVal }}</span
+                        >
                         <span class="ml-4">
-                            <BaseColorInfo v-if="type === 'color'" :color="defaultVal"/>
+                            <BaseColorInfo
+                                v-if="type === 'color'"
+                                :color="defaultVal"
+                            />
                         </span>
                     </span>
                 </template>
@@ -229,9 +337,9 @@ const translatedTooltip = computed(() => {
                     v-if="showResetButton && type !== 'checkbox' && !inactive"
                     @click="resetValue"
                 >
-                    <RefreshDotIcon/>
+                    <RefreshDotIcon />
                 </button>
             </Transition>
         </FlexibleTooltip>
-</div>
+    </div>
 </template>

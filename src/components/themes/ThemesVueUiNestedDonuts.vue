@@ -7,37 +7,37 @@ const dataset = ref([
         name: "Group 1",
         series: [
             {
-                name: 'Serie 1',
-                values: [50]
+                name: "Serie 1",
+                values: [50],
             },
             {
-                name: 'Serie 2',
-                values: [30]
+                name: "Serie 2",
+                values: [30],
             },
             {
-                name: 'Serie 3',
-                values: [20]
+                name: "Serie 3",
+                values: [20],
             },
-        ]
+        ],
     },
     {
         name: "Group 2",
         series: [
             {
-                name: 'Serie 1',
-                values: [40]
+                name: "Serie 1",
+                values: [40],
             },
             {
-                name: 'Serie 2',
-                values: [40]
+                name: "Serie 2",
+                values: [40],
             },
             {
-                name: 'Serie 3',
-                values: [30]
+                name: "Serie 3",
+                values: [30],
             },
-        ]
+        ],
     },
-])
+]);
 
 const config = ref({
     style: {
@@ -45,13 +45,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

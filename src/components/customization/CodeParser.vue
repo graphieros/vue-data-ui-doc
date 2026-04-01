@@ -1,8 +1,8 @@
 <script setup>
-import { computed, watch, ref } from 'vue';
+import { computed, watch, ref } from "vue";
 import { VueHiCode } from "vue-hi-code";
-import "vue-hi-code/style.css"
-import { useMainStore } from '../../stores';
+import "vue-hi-code/style.css";
+import { useMainStore } from "../../stores";
 
 const props = defineProps({
     content: {
@@ -15,35 +15,35 @@ const props = defineProps({
     },
     title: {
         type: String,
-        default: ''
+        default: "",
     },
     withCopy: {
         type: Boolean,
-        default: true
+        default: true,
     },
     noPointerEvents: {
         type: Boolean,
-        default: false
+        default: false,
     },
     borderRadius: {
         type: String,
-        default: '0.3rem'
+        default: "0.3rem",
     },
     fontSize: {
         type: String,
-        default: '0.8rem'
+        default: "0.8rem",
     },
     lineHeight: {
         type: String,
-        default: '1.4rem'
+        default: "1.4rem",
     },
     tw: {
         type: String,
-        default: ''
-    }
+        default: "",
+    },
 });
 
-const emit = defineEmits(['copy']);
+const emit = defineEmits(["copy"]);
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -57,161 +57,174 @@ const config = computed(() => {
         title: props.title,
         withCopy: props.withCopy,
         borderRadius: props.borderRadius,
-        backgroundColor: isDarkMode.value ? 'rgb(32, 32, 32)' : '#FAF9F9',
-        baseTextColor: isDarkMode.value ? '#CCCCCC' : '#2A2A2A',
-        copyIconColor: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
-        colorFunction: isDarkMode.value ? '#DCDCAA' : '#559AD3',
-        colorVariableKeyword: isDarkMode.value ? '#559AD3' : 'rgb(161, 82, 152)',
-        colorKeywords: props.language === 'typescript' ? '#559AD3' : isDarkMode.value ? '#B37BAE' : 'rgb(161, 82, 152)',
-        colorString: isDarkMode.value ? '#CD9077' : 'rgb(112, 168, 118)',
-        colorNumber: isDarkMode.value ? '#AEC6A1' : 'rgb(149, 116, 42)',
-        colorBrackets: isDarkMode.value ? '#CCCCCC' : '#2A2A2A',
-        colorPunctuation: isDarkMode.value ? '#E1E5E8' : '#3A3A3A',
-        colorParenthesis: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
-        colorTitle: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-        fontFamily: 'JetBrainsMono',
+        backgroundColor: isDarkMode.value ? "rgb(32, 32, 32)" : "#FAF9F9",
+        baseTextColor: isDarkMode.value ? "#CCCCCC" : "#2A2A2A",
+        copyIconColor: isDarkMode.value ? "#CCCCCC" : "#3A3A3A",
+        colorFunction: isDarkMode.value ? "#DCDCAA" : "#559AD3",
+        colorVariableKeyword: isDarkMode.value
+            ? "#559AD3"
+            : "rgb(161, 82, 152)",
+        colorKeywords:
+            props.language === "typescript"
+                ? "#559AD3"
+                : isDarkMode.value
+                  ? "#B37BAE"
+                  : "rgb(161, 82, 152)",
+        colorString: isDarkMode.value ? "#CD9077" : "rgb(112, 168, 118)",
+        colorNumber: isDarkMode.value ? "#AEC6A1" : "rgb(149, 116, 42)",
+        colorBrackets: isDarkMode.value ? "#CCCCCC" : "#2A2A2A",
+        colorPunctuation: isDarkMode.value ? "#E1E5E8" : "#3A3A3A",
+        colorParenthesis: isDarkMode.value ? "#8A8A8A" : "#3A3A3A",
+        colorTitle: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+        fontFamily: "JetBrainsMono",
         tsTypesCustom: [
-            'VueUiSparklineDatasetItem',
-            'VueUiSparklineConfig',
-            'VueUiSparkbarDatasetItem',
-            'VueUiSparkbarConfig',
-            'VueUiSparkStackbarDatasetItem',
-            'VueUiSparkStackbarConfig',
-            'VueUiSparkHistogramDatasetItem',
-            'VueUiSparkHistogramConfig',
-            'VueUiSparkgaugeDataset',
-            'VueUiSparkgaugeConfig',
-            'VueUiSparkTrendConfig',
-            'VueUiGizmoConfig',
-            'VueUiKpiConfig',
-            'VueUiQuickChartDataset',
-            'VueUiQuickChartConfig',
-            'VueUiXyDatasetItem',
-            'VueUiXyConfig',
-            'VueUiXyCanvasDatasetItem',
-            'VueUiXyCanvasConfig',
-            'VueUiHorizontalBarDatasetItem',
-            'VueUiHorizontalBarConfig',
-            'VueUiParallelCoordinatePlotDatasetItem',
-            'VueUiParallelCoordinatePlotConfig',
-            'VueUiFlowDatasetItem',
-            'VueUiFlowConfig',
-            'OHLC',
-            'VueUiCandlestickConfig',
-            'VueUiAgePyramidConfig',
-            'VueUiStackbarDatasetItem',
-            'VueUiStackbarConfig',
-            'VueUiFunnelDatasetItem',
-            'VueUiFunnelConfig',
-            'VueUiHistoryPlotDatasetItem',
-            'VueUiHistoryPlotConfig',
-            'VueUiRidgelineDatasetItem',
-            'VueUiRidgelineConfig',
-            'VueUiDonutDatasetItem',
-            'VueUiDonutConfig',
-            'VueUiNestedDonutsDatasetItem',
-            'VueUiNestedDonutsConfig',
-            'VueUiWaffleDatasetItem',
-            'VueUiWaffleConfig',
-            'VueUiHeatmapDatasetItem',
-            'VueUiHeatmapConfig',
-            'VueUiTreemapDatasetItem',
-            'VueUiTreemapConfig',
-            'VueUiRingsDatasetItem',
-            'VueUiRingsConfig',
-            'VueUiGalaxyDatasetItem',
-            'VueUiGalaxyConfig',
-            'VueUiDonutEvolutionDatasetItem',
-            'VueUiDonutEvolutionConfig',
-            'VueUiCirclePackDatasetItem',
-            'VueUiCirclePackConfig',
-            'VueUiGaugeDataset',
-            'VueUiGaugeConfig',
-            'VueUiBulletDataset',
-            'VueUiBulletConfig',
-            'VueUiOnionDatasetItem',
-            'VueUiOnionConfig',
-            'VueUiWheelDataset',
-            'VueUiWheelConfig',
-            'VueUiTiremarksDataset',
-            'VueUiTiremarksConfig',
-            'VueUiThermometerDataset',
-            'VueUiThermometerConfig',
-            'VueUiTimerConfig',
-            'VueUiWordCloudDatasetItem',
-            'VueUiWordCloudConfig',
-            'VueUiRelationCircleDatasetItem',
-            'VueUiRelationCircleConfig',
-            'VueUiChordDataset',
-            'VueUiChordConfig',
-            'VueUiRadarDataset',
-            'VueUiRadarConfig',
-            'VueUiMoodRadarDataset',
-            'VueUiMoodRadarConfig',
-            'VueUiQuadrantDatasetItem',
-            'VueUiQuadrantDatasetItem',
-            'VueUiChestnutDatasetRoot',
-            'VueUiChestnutConfig',
-            'VueUiScatterDatasetItem',
-            'VueUiScatterConfig',
-            'VueUiMoleculeDatasetNode',
-            'VueUiMoleculeConfig',
-            'VueUiStripPlotDataset',
-            'VueUiStripPlotConfig',
-            'VueUiDumbbellDataset',
-            'VueUiDumbbellConfig',
-            'VueUiWorldDataset',
-            'VueUiWorldConfig',
-            'VueUi3dBarDataset',
-            'VueUi3dBarConfig',
-            'VueUiTableSparklineDatasetItem',
-            'VueUiTableSparklineConfig',
-            'VueUiTableHeatmapDatasetItem',
-            'VueUiTableHeatmapConfig',
-            'VueUiTableDataset',
-            'VueUiTableConfig',
-            'VueUiCarouselTableDataset',
-            'VueUiCarouselTableConfig',
-            'VueUiRatingDataset',
-            'VueUiRatingConfig',
-            'VueUiSmileyConfig',
-            'VueUiAccordionConfig',
-            'VueUiSkeletonConfig',
-            'VueUiDashboardElement',
-            'VueUiDashboardConfig',
-            'VueUiAnnotatorDataset',
-            'VueUiAnnotatorConfig',
-            'VueUiDigitsConfig',
-            'VueUiCursorConfig',
-            'VueUiMiniLoaderConfig',
-            'VueUiKpiConfig',
-            'VueUiDagNode',
-            'VueUiDagEdge',
-            'VueUiDagDataset',
-            'VueUiGeoDatasetItem',
-            'VueUiStacklineDatasetItem',
-            'VueUiBumpConfig',
-            'VueUiBumpDatasetItem'
-        ]
-    }
+            "VueUiSparklineDatasetItem",
+            "VueUiSparklineConfig",
+            "VueUiSparkbarDatasetItem",
+            "VueUiSparkbarConfig",
+            "VueUiSparkStackbarDatasetItem",
+            "VueUiSparkStackbarConfig",
+            "VueUiSparkHistogramDatasetItem",
+            "VueUiSparkHistogramConfig",
+            "VueUiSparkgaugeDataset",
+            "VueUiSparkgaugeConfig",
+            "VueUiSparkTrendConfig",
+            "VueUiGizmoConfig",
+            "VueUiKpiConfig",
+            "VueUiQuickChartDataset",
+            "VueUiQuickChartConfig",
+            "VueUiXyDatasetItem",
+            "VueUiXyConfig",
+            "VueUiXyCanvasDatasetItem",
+            "VueUiXyCanvasConfig",
+            "VueUiHorizontalBarDatasetItem",
+            "VueUiHorizontalBarConfig",
+            "VueUiParallelCoordinatePlotDatasetItem",
+            "VueUiParallelCoordinatePlotConfig",
+            "VueUiFlowDatasetItem",
+            "VueUiFlowConfig",
+            "OHLC",
+            "VueUiCandlestickConfig",
+            "VueUiAgePyramidConfig",
+            "VueUiStackbarDatasetItem",
+            "VueUiStackbarConfig",
+            "VueUiFunnelDatasetItem",
+            "VueUiFunnelConfig",
+            "VueUiHistoryPlotDatasetItem",
+            "VueUiHistoryPlotConfig",
+            "VueUiRidgelineDatasetItem",
+            "VueUiRidgelineConfig",
+            "VueUiDonutDatasetItem",
+            "VueUiDonutConfig",
+            "VueUiNestedDonutsDatasetItem",
+            "VueUiNestedDonutsConfig",
+            "VueUiWaffleDatasetItem",
+            "VueUiWaffleConfig",
+            "VueUiHeatmapDatasetItem",
+            "VueUiHeatmapConfig",
+            "VueUiTreemapDatasetItem",
+            "VueUiTreemapConfig",
+            "VueUiRingsDatasetItem",
+            "VueUiRingsConfig",
+            "VueUiGalaxyDatasetItem",
+            "VueUiGalaxyConfig",
+            "VueUiDonutEvolutionDatasetItem",
+            "VueUiDonutEvolutionConfig",
+            "VueUiCirclePackDatasetItem",
+            "VueUiCirclePackConfig",
+            "VueUiGaugeDataset",
+            "VueUiGaugeConfig",
+            "VueUiBulletDataset",
+            "VueUiBulletConfig",
+            "VueUiOnionDatasetItem",
+            "VueUiOnionConfig",
+            "VueUiWheelDataset",
+            "VueUiWheelConfig",
+            "VueUiTiremarksDataset",
+            "VueUiTiremarksConfig",
+            "VueUiThermometerDataset",
+            "VueUiThermometerConfig",
+            "VueUiTimerConfig",
+            "VueUiWordCloudDatasetItem",
+            "VueUiWordCloudConfig",
+            "VueUiRelationCircleDatasetItem",
+            "VueUiRelationCircleConfig",
+            "VueUiChordDataset",
+            "VueUiChordConfig",
+            "VueUiRadarDataset",
+            "VueUiRadarConfig",
+            "VueUiMoodRadarDataset",
+            "VueUiMoodRadarConfig",
+            "VueUiQuadrantDatasetItem",
+            "VueUiQuadrantDatasetItem",
+            "VueUiChestnutDatasetRoot",
+            "VueUiChestnutConfig",
+            "VueUiScatterDatasetItem",
+            "VueUiScatterConfig",
+            "VueUiMoleculeDatasetNode",
+            "VueUiMoleculeConfig",
+            "VueUiStripPlotDataset",
+            "VueUiStripPlotConfig",
+            "VueUiDumbbellDataset",
+            "VueUiDumbbellConfig",
+            "VueUiWorldDataset",
+            "VueUiWorldConfig",
+            "VueUi3dBarDataset",
+            "VueUi3dBarConfig",
+            "VueUiTableSparklineDatasetItem",
+            "VueUiTableSparklineConfig",
+            "VueUiTableHeatmapDatasetItem",
+            "VueUiTableHeatmapConfig",
+            "VueUiTableDataset",
+            "VueUiTableConfig",
+            "VueUiCarouselTableDataset",
+            "VueUiCarouselTableConfig",
+            "VueUiRatingDataset",
+            "VueUiRatingConfig",
+            "VueUiSmileyConfig",
+            "VueUiAccordionConfig",
+            "VueUiSkeletonConfig",
+            "VueUiDashboardElement",
+            "VueUiDashboardConfig",
+            "VueUiAnnotatorDataset",
+            "VueUiAnnotatorConfig",
+            "VueUiDigitsConfig",
+            "VueUiCursorConfig",
+            "VueUiMiniLoaderConfig",
+            "VueUiKpiConfig",
+            "VueUiDagNode",
+            "VueUiDagEdge",
+            "VueUiDagDataset",
+            "VueUiGeoDatasetItem",
+            "VueUiStacklineDatasetItem",
+            "VueUiBumpConfig",
+            "VueUiBumpDatasetItem",
+        ],
+    };
 });
 
-watch(() => isDarkMode.value, () => {
-    step.value += 1
-})
+watch(
+    () => isDarkMode.value,
+    () => {
+        step.value += 1;
+    },
+);
 </script>
 
 <template>
-    <div :class="`relative flex flex-row w-full place-items-center ${tw}`" :style="{
-        pointerEvents: noPointerEvents ? 'none' : 'all'
-    }">
-        <slot name="color"/>
+    <div
+        :class="`relative flex flex-row w-full place-items-center ${tw}`"
+        :style="{
+            pointerEvents: noPointerEvents ? 'none' : 'all',
+        }"
+    >
+        <slot name="color" />
         <VueHiCode
             :key="step"
             class="w-full"
-            :content="content" 
-            :language="language" 
-            v-bind="config" 
+            :content="content"
+            :language="language"
+            v-bind="config"
             @copy="emit('copy')"
         />
     </div>

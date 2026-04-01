@@ -1,21 +1,21 @@
 <script setup>
 import { ref, computed } from "vue";
-import BasePopoverButton from "./BasePopoverButton.vue"
+import BasePopoverButton from "./BasePopoverButton.vue";
 import { useMainStore } from "../stores";
 import { useIconMap } from "../useIconMap";
 
 const props = defineProps({
     datasetGauge: {
-        type: Object
+        type: Object,
     },
     datasetXy: {
-        type: Array
+        type: Array,
     },
     configGauge: {
-        type: Object
+        type: Object,
     },
     configXy: {
-        type: Object
+        type: Object,
     },
     datasetRating: {
         type: Object,
@@ -23,18 +23,18 @@ const props = defineProps({
     configRating: {
         type: Object,
         default() {
-            return {}
-        }
+            return {};
+        },
     },
     name: {
-        type: String
+        type: String,
     },
     total: {
-        type: Number
-    }
-})
+        type: Number,
+    },
+});
 
-const store = useMainStore()
+const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const isOpen = ref(false);
@@ -42,7 +42,6 @@ const isOpen = ref(false);
 function open(state) {
     isOpen.value = state;
 }
-
 </script>
 
 <template>
@@ -53,18 +52,31 @@ function open(state) {
             @open="open"
         >
             <template #button-content>
-                <div :class="`transition-colors w-[150px] ${isOpen ? 'bg-[#FFFFFF] dark:bg-[#3A3A3A]' : 'bg-[#FFFFFF] dark:bg-[#2A2A2A]'}`">
+                <div
+                    :class="`transition-colors w-[150px] ${isOpen ? 'bg-[#FFFFFF] dark:bg-[#3A3A3A]' : 'bg-[#FFFFFF] dark:bg-[#2A2A2A]'}`"
+                >
                     <div class="flex flex-col place-items-center pt-4">
-                        <VueUiIcon :name="useIconMap(name)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
-                        <div :class="`pt-2 text-xs flex flex-col border-b ${isOpen ? 'border-[#E1E5E8] dark:border-[#5A5A5A]' : 'border-[#E1E5E8] dark:border-[#4A4A4A]'} w-full pb-2`">
+                        <VueUiIcon
+                            :name="useIconMap(name)"
+                            :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"
+                        />
+                        <div
+                            :class="`pt-2 text-xs flex flex-col border-b ${isOpen ? 'border-[#E1E5E8] dark:border-[#5A5A5A]' : 'border-[#E1E5E8] dark:border-[#4A4A4A]'} w-full pb-2`"
+                        >
                             <span>
                                 <span class="text-gray-500">VueUi</span>
-                                <span>{{ name.replaceAll('VueUi', '') }}</span>
+                                <span>{{ name.replaceAll("VueUi", "") }}</span>
                             </span>
                             <span>{{ total }} votes</span>
                         </div>
                     </div>
-                    <div :style="{ transform: 'scale(0.7, 0.7)', pointerEvents:'none', cursor: 'default' }">
+                    <div
+                        :style="{
+                            transform: 'scale(0.7, 0.7)',
+                            pointerEvents: 'none',
+                            cursor: 'default',
+                        }"
+                    >
                         <VueUiRating
                             :dataset="datasetRating"
                             :config="configRating"
@@ -75,10 +87,7 @@ function open(state) {
             <template #popover-content>
                 <div>
                     <VueUiGauge :dataset="datasetGauge" :config="configGauge" />
-                    <VueUiXy
-                        :dataset="datasetXy"
-                        :config="configXy"
-                    />
+                    <VueUiXy :dataset="datasetXy" :config="configXy" />
                 </div>
             </template>
         </BasePopoverButton>

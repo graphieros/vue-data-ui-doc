@@ -6,11 +6,10 @@ const props = defineProps({
     items: {
         type: Array,
         default() {
-            return []
-        }
-    }
+            return [];
+        },
+    },
 });
-
 </script>
 
 <template>

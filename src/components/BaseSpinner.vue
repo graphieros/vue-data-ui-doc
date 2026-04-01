@@ -14,20 +14,31 @@ const isDarkMode = computed(() => store.isDarkMode);
 const fadeStyle = computed(() => ({
     "--fade-duration": `${props.duration}ms`,
     "--fade-easing": props.easing,
-    "z-index": "2147483640"
+    "z-index": "2147483640",
 }));
 </script>
 
 <template>
     <Transition name="fade" appear>
-        <div v-if="props.visible" class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" :style="fadeStyle">
-            <img class="loader-logo fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" alt="Vue Data UI logo"
-                src="../assets/logo.png" width="80" height="80" />
-            <span :class="{
-                loader: true,
-                'loader-dark': isDarkMode,
-                'loader-light': !isDarkMode,
-            }"></span>
+        <div
+            v-if="props.visible"
+            class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+            :style="fadeStyle"
+        >
+            <img
+                class="loader-logo fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+                alt="Vue Data UI logo"
+                src="../assets/logo.png"
+                width="80"
+                height="80"
+            />
+            <span
+                :class="{
+                    loader: true,
+                    'loader-dark': isDarkMode,
+                    'loader-light': !isDarkMode,
+                }"
+            ></span>
         </div>
     </Transition>
 </template>
@@ -96,7 +107,6 @@ const fadeStyle = computed(() => ({
 }
 
 @media (prefers-reduced-motion: reduce) {
-
     .loader,
     .loader-logo {
         animation: none;

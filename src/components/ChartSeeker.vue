@@ -9,28 +9,34 @@ import BaseCard from "./BaseCard.vue";
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(["click"]);
 
-const { classification, classificationDescription, taxinomy } = useCharts()
+const { classification, classificationDescription, taxinomy } = useCharts();
 
-const filters = ref(Object.keys(classification.value).map(f => {
+const filters = ref(
+    Object.keys(classification.value).map((f) => {
         return {
             name: f,
-            selected: false
-        }
-    }))
+            selected: false,
+        };
+    }),
+);
 
 const selectedFilters = computed(() => {
-    return filters.value.filter(f => f.selected).map(f => f.name)
-})
+    return filters.value.filter((f) => f.selected).map((f) => f.name);
+});
 
 const charts = computed(() => {
-    return Object.keys(taxinomy.value).map(t => {
-        return {
-            name: t,
-            ...taxinomy.value[t]
-        }
-    }).filter(t => t.taxinomy.some(tag => selectedFilters.value.includes(tag)))
+    return Object.keys(taxinomy.value)
+        .map((t) => {
+            return {
+                name: t,
+                ...taxinomy.value[t],
+            };
+        })
+        .filter((t) =>
+            t.taxinomy.some((tag) => selectedFilters.value.includes(tag)),
+        );
 });
 
 const title = computed(() => {
@@ -43,9 +49,9 @@ const title = computed(() => {
         ja: "何を表示しますか？",
         es: "¿Qué te gustaría mostrar?",
         ko: "무엇을 표시하시겠습니까?",
-        ar: "ماذا تريد أن تعرض؟"
-    }[store.lang]
-})
+        ar: "ماذا تريد أن تعرض؟",
+    }[store.lang];
+});
 
 const cli = computed(() => {
     return {
@@ -57,26 +63,25 @@ const cli = computed(() => {
         ja: "公式CLIツールを使用してボイラープレートを作成します",
         es: "Utilice la herramienta CLI oficial para crear una plantilla",
         ko: "공식 CLI 도구를 사용하여 보일러플레이트를 생성하세요",
-        ar: "استخدم أداة CLI الرسمية لإنشاء قالب"
-    }[store.lang]
-})
+        ar: "استخدم أداة CLI الرسمية لإنشاء قالب",
+    }[store.lang];
+});
 
 const step = ref(0);
 
 function updateFilters(f) {
-    filters.value = filters.value.map(filter => {
+    filters.value = filters.value.map((filter) => {
         return {
             ...filter,
-            selected: f.name === filter.name ? !f.selected : false
-        }
-    })
+            selected: f.name === filter.name ? !f.selected : false,
+        };
+    });
     nextTick(() => {
         step.value += 1;
-    })
+    });
 }
 
 const selectedIndex = ref(null);
-
 </script>
 
 <template>
@@ -84,24 +89,31 @@ const selectedIndex = ref(null);
         <div>
             <div class="pb-2">
                 <h3 class="p-4 pb-1 text-lg" dir="auto">{{ title }}</h3>
-                <div class="flex flex-row flex-wrap gap-2 p-2 rounded-md mx-2 bg-gray-100 dark:bg-[#2A2A2A]">
+                <div
+                    class="flex flex-row flex-wrap gap-2 p-2 rounded-md mx-2 bg-gray-100 dark:bg-[#2A2A2A]"
+                >
                     <FlexibleTooltip
                         v-for="filter in filters"
                         position="bottom"
-                        :content="classificationDescription[filter.name][store.lang]"
+                        :content="
+                            classificationDescription[filter.name][store.lang]
+                        "
                         width="w-fit min-w-[200px]"
                         delay="delay-150"
                     >
-                    <button
-                        @click="() => updateFilters(filter)"
-                        :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue text-black' : 'bg-gray-100 dark:bg-[#3A3A3A] hover:bg-gray-50 dark:hover:bg-[#4A4A4A]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
-                    >
-                        {{ classification[filter.name][store.lang] }}
-                    </button>
-                </FlexibleTooltip>
+                        <button
+                            @click="() => updateFilters(filter)"
+                            :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue text-black' : 'bg-gray-100 dark:bg-[#3A3A3A] hover:bg-gray-50 dark:hover:bg-[#4A4A4A]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
+                        >
+                            {{ classification[filter.name][store.lang] }}
+                        </button>
+                    </FlexibleTooltip>
                 </div>
             </div>
-            <div class="flex flex-row gap-4 place-items-center mt-2 py-4" v-if="charts.length">
+            <div
+                class="flex flex-row gap-4 place-items-center mt-2 py-4"
+                v-if="charts.length"
+            >
                 <div class="flex flex-row flex-wrap gap-4 w-full px-4">
                     <FlexibleTooltip
                         v-for="(chart, i) in charts"
@@ -111,10 +123,33 @@ const selectedIndex = ref(null);
                         delay="delay-150"
                     >
                         <RouterLink :to="chart.link" @click="emit('click')">
-                            <div class="bg-gray-50 dark:bg-[#3A3A3A] relative flex place-items-center justify-center p-2 rounded-xl hover:bg-white hover:bg-[#5f8aee30] transition-all pb-3 h-[80px] w-[80px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]" @mouseover="selectedIndex = i" @mouseout="selectedIndex = null">
-                                <VueUiIcon :name="chart.icon" :stroke="selectedIndex !== null && selectedIndex === i ? '#5f8aee' : isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="-mt-1" :size="32" />
-                                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[10px] pb-[10px]">
-                                    {{ chart.name === 'VueUiParallelCoordinatePlot' ? 'PCP' : chart.name.replace('VueUi', '') }}
+                            <div
+                                class="bg-gray-50 dark:bg-[#3A3A3A] relative flex place-items-center justify-center p-2 rounded-xl hover:bg-white hover:bg-[#5f8aee30] transition-all pb-3 h-[80px] w-[80px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                                @mouseover="selectedIndex = i"
+                                @mouseout="selectedIndex = null"
+                            >
+                                <VueUiIcon
+                                    :name="chart.icon"
+                                    :stroke="
+                                        selectedIndex !== null &&
+                                        selectedIndex === i
+                                            ? '#5f8aee'
+                                            : isDarkMode
+                                              ? '#CCCCCC'
+                                              : '#1A1A1A'
+                                    "
+                                    class="-mt-1"
+                                    :size="32"
+                                />
+                                <div
+                                    class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[10px] pb-[10px]"
+                                >
+                                    {{
+                                        chart.name ===
+                                        "VueUiParallelCoordinatePlot"
+                                            ? "PCP"
+                                            : chart.name.replace("VueUi", "")
+                                    }}
                                 </div>
                             </div>
                         </RouterLink>
@@ -122,10 +157,19 @@ const selectedIndex = ref(null);
                 </div>
             </div>
             <div class="p-2 w-fit">
-                <a href="https://github.com/graphieros/vue-data-ui-cli" target="_blank" class="w-fit">
-                    <button class="py-2 px-4 rounded-full bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center gap-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]" dir="auto">
-                        <div class="w-[40px] h-[40px] flex place-items-center justify-center">
-                            <TerminalIcon/>
+                <a
+                    href="https://github.com/graphieros/vue-data-ui-cli"
+                    target="_blank"
+                    class="w-fit"
+                >
+                    <button
+                        class="py-2 px-4 rounded-full bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center gap-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]"
+                        dir="auto"
+                    >
+                        <div
+                            class="w-[40px] h-[40px] flex place-items-center justify-center"
+                        >
+                            <TerminalIcon />
                         </div>
                         <div dir="auto" class="text-left">
                             {{ cli }}
@@ -142,23 +186,33 @@ const selectedIndex = ref(null);
                         head: {
                             useArrowSlot: true,
                             backgroundColor: 'transparent',
-                            iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
+                            iconColor: isDarkMode ? '#fdd663' : '#1A1A1A',
                         },
                         body: {
                             backgroundColor: 'transparent',
-                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                        }
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                        },
                     }"
                 >
                     <template #arrow="{ iconColor }">
-                        <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                        <VueUiIcon
+                            name="arrowRight"
+                            :size="16"
+                            :stroke="iconColor"
+                        />
                     </template>
-                    <template #title>
-                        CLI demo
-                    </template>
+                    <template #title> CLI demo </template>
                     <template #content>
-                        <video controls width="100%" loop="true" autoplay="true">
-                            <source src="../assets/vdui_cli.mp4" type="video/mp4" />
+                        <video
+                            controls
+                            width="100%"
+                            loop="true"
+                            autoplay="true"
+                        >
+                            <source
+                                src="../assets/vdui_cli.mp4"
+                                type="video/mp4"
+                            />
                         </video>
                     </template>
                 </VueDataUi>
@@ -166,4 +220,3 @@ const selectedIndex = ref(null);
         </div>
     </BaseCard>
 </template>
-

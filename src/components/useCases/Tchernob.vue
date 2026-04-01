@@ -157,22 +157,24 @@ const timeline = ref([
 ]);
 
 function getKnobs() {
-    return Object.keys(timeline.value[0]).map(k => {
-        return {
-            name: k.replaceAll('_', ' '),
-            attr: k,
-            active: k === 'reactor_power_percent'
-        }
-    }).filter(k => {
-        return ![
-            'time',
-            'coolant_flow_percent',
-            'reactivity_margin_rods',
-            'pressure_MPa',
-            'notes',
-            'confidence'
-        ].includes(k.attr)
-    })
+    return Object.keys(timeline.value[0])
+        .map((k) => {
+            return {
+                name: k.replaceAll("_", " "),
+                attr: k,
+                active: k === "reactor_power_percent",
+            };
+        })
+        .filter((k) => {
+            return ![
+                "time",
+                "coolant_flow_percent",
+                "reactivity_margin_rods",
+                "pressure_MPa",
+                "notes",
+                "confidence",
+            ].includes(k.attr);
+        });
 }
 
 const knobs = ref(getKnobs());
@@ -180,43 +182,47 @@ const knobs = ref(getKnobs());
 const baseDataset = computed(() => {
     return [
         {
-            name: 'Reactor power percent',
-            series: timeline.value.map(t => t.reactor_power_percent),
-            type: 'line',
+            name: "Reactor power percent",
+            series: timeline.value.map((t) => t.reactor_power_percent),
+            type: "line",
             smooth: true,
-            visible: knobs.value.find(k => k.attr === 'reactor_power_percent').active,
-            color: '#1f77b4',
-            dataLabels: true
+            visible: knobs.value.find((k) => k.attr === "reactor_power_percent")
+                .active,
+            color: "#1f77b4",
+            dataLabels: true,
         },
         {
-            name: 'Thermal power',
-            series: timeline.value.map(t => t.thermal_power_MW),
-            type: 'line',
+            name: "Thermal power",
+            series: timeline.value.map((t) => t.thermal_power_MW),
+            type: "line",
             smooth: true,
-            visible: knobs.value.find(k => k.attr === 'thermal_power_MW').active,
-            color: '#ff7f0e'
+            visible: knobs.value.find((k) => k.attr === "thermal_power_MW")
+                .active,
+            color: "#ff7f0e",
         },
         {
-            name: 'Control rods inserted count',
-            series: timeline.value.map(t => t.control_rods_inserted_count),
-            type: 'bar',
-            visible: knobs.value.find(k => k.attr === 'control_rods_inserted_count').active,
-            color: isDarkMode.value ? '#5A5A5A' : '#BBBBBB',
+            name: "Control rods inserted count",
+            series: timeline.value.map((t) => t.control_rods_inserted_count),
+            type: "bar",
+            visible: knobs.value.find(
+                (k) => k.attr === "control_rods_inserted_count",
+            ).active,
+            color: isDarkMode.value ? "#5A5A5A" : "#BBBBBB",
         },
         {
-            name: 'Core temperature °C',
-            series: timeline.value.map(t => t.core_temp_C),
-            type: 'line',
+            name: "Core temperature °C",
+            series: timeline.value.map((t) => t.core_temp_C),
+            type: "line",
             smooth: true,
-            visible: knobs.value.find(k => k.attr === 'core_temp_C').active,
-            color: '#d62728'
+            visible: knobs.value.find((k) => k.attr === "core_temp_C").active,
+            color: "#d62728",
         },
-    ]
+    ];
 });
 
 const dataset = computed(() => {
-    return baseDataset.value.filter(el => el.visible)
-})
+    return baseDataset.value.filter((el) => el.visible);
+});
 
 function setSelectedX(i) {
     X.value = i;
@@ -228,39 +234,38 @@ const config = computed(() => ({
             setSelectedX(seriesIndex);
             view(seriesIndex);
         },
-        datapointLeave: () => {
-        }
+        datapointLeave: () => {},
     },
     chart: {
-        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#f3f4f6',
-        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        backgroundColor: isDarkMode.value ? "#2A2A2A" : "#f3f4f6",
+        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
         grid: {
             labels: {
                 yAxis: {
-                    useIndividualScale: true
-                }
-            }
+                    useIndividualScale: true,
+                },
+            },
         },
         highlighter: {
             useLine: true,
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            lineDasharray: 6
+            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            lineDasharray: 6,
         },
         legend: { show: false },
         tooltip: { show: false },
         userOptions: { show: false },
-        zoom: { show: false }
+        zoom: { show: false },
     },
     line: {
         radius: 4,
         useGradient: false,
         dot: {
             useSerieColor: false,
-            fill: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-            strokeWidth: 2
-        }
+            fill: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+            strokeWidth: 2,
+        },
     },
-}))
+}));
 
 const X = ref(undefined);
 
@@ -279,11 +284,13 @@ function view(i) {
     const below = offsetInParent + elRect.height > parent.clientHeight;
 
     if (above || below) {
-        const targetTop = parent.scrollTop + offsetInParent - (parent.clientHeight - elRect.height) / 2;
-        parent.scrollTo({ top: targetTop, behavior: 'smooth' });
+        const targetTop =
+            parent.scrollTop +
+            offsetInParent -
+            (parent.clientHeight - elRect.height) / 2;
+        parent.scrollTo({ top: targetTop, behavior: "smooth" });
     }
 }
-
 </script>
 
 <template>
@@ -293,16 +300,30 @@ function view(i) {
                 <BaseCard>
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-2">
-                            <label 
+                            <label
                                 v-for="(knob, i) in knobs"
                                 class="flex flex-row gap-2 place-items-center"
                             >
-                                <input type="checkbox" v-model="knob.active" class="!hidden"/>
-                                <div class="flex flex-row place-items-center gap-2 cursor-pointer select-none" :style="{
-                                    opacity: knob.active ? 1 : 0.5
-                                }">
-                                    <div class="h-4 w-4 rounded-full" :style="{ background: baseDataset[i]?.color}"/>
-                                    <span :class="`${knob.active ? '' : 'line-through'}`">
+                                <input
+                                    type="checkbox"
+                                    v-model="knob.active"
+                                    class="!hidden"
+                                />
+                                <div
+                                    class="flex flex-row place-items-center gap-2 cursor-pointer select-none"
+                                    :style="{
+                                        opacity: knob.active ? 1 : 0.5,
+                                    }"
+                                >
+                                    <div
+                                        class="h-4 w-4 rounded-full"
+                                        :style="{
+                                            background: baseDataset[i]?.color,
+                                        }"
+                                    />
+                                    <span
+                                        :class="`${knob.active ? '' : 'line-through'}`"
+                                    >
                                         {{ knob.name }}
                                     </span>
                                 </div>
@@ -317,8 +338,15 @@ function view(i) {
                 </BaseCard>
             </div>
             <BaseCard class="w-full sm:w-2/5">
-                <div class="flex flex-col gap-6 max-h-[500px] overflow-auto px-2 pr-3 py-2" ref="timelineContainer">
-                    <BaseCard v-for="(t, i) in timeline" :type="X === i ? 'light' : 'medium'" class="relative">
+                <div
+                    class="flex flex-col gap-6 max-h-[500px] overflow-auto px-2 pr-3 py-2"
+                    ref="timelineContainer"
+                >
+                    <BaseCard
+                        v-for="(t, i) in timeline"
+                        :type="X === i ? 'light' : 'medium'"
+                        class="relative"
+                    >
                         <div
                             class="timeline-item"
                             :id="`tl-${i}`"
@@ -332,27 +360,77 @@ function view(i) {
                                 <i>{{ t.notes }}</i>
                             </p>
 
-                            <ul v-if="i < timeline.length -1">
-                                <li class="flex flex-row gap-2 place-items-center">
-                                    <div class="h-4 w-4 rounded-full" :style="{ background: baseDataset[0]?.color}"/>
-                                    <span class="text-gray-600 dark:text-[#9A9A9A]">Reactor power: </span>
-                                    <span class="font-inter-medium">{{ t.reactor_power_percent }} %</span>
+                            <ul v-if="i < timeline.length - 1">
+                                <li
+                                    class="flex flex-row gap-2 place-items-center"
+                                >
+                                    <div
+                                        class="h-4 w-4 rounded-full"
+                                        :style="{
+                                            background: baseDataset[0]?.color,
+                                        }"
+                                    />
+                                    <span
+                                        class="text-gray-600 dark:text-[#9A9A9A]"
+                                        >Reactor power:
+                                    </span>
+                                    <span class="font-inter-medium"
+                                        >{{ t.reactor_power_percent }} %</span
+                                    >
                                 </li>
-                                <li class="flex flex-row gap-2 place-items-center">
-                                    <div class="h-4 w-4 rounded-full" :style="{ background: baseDataset[1]?.color}"/>
-                                    <span class="text-gray-600 dark:text-[#9A9A9A]">Thermal power MW: </span>
-                                    <span class="font-inter-medium">{{ t.thermal_power_MW }} MW</span>
+                                <li
+                                    class="flex flex-row gap-2 place-items-center"
+                                >
+                                    <div
+                                        class="h-4 w-4 rounded-full"
+                                        :style="{
+                                            background: baseDataset[1]?.color,
+                                        }"
+                                    />
+                                    <span
+                                        class="text-gray-600 dark:text-[#9A9A9A]"
+                                        >Thermal power MW:
+                                    </span>
+                                    <span class="font-inter-medium"
+                                        >{{ t.thermal_power_MW }} MW</span
+                                    >
                                 </li>
                                 <template v-if="i < timeline.length - 2">
-                                    <li class="flex flex-row gap-2 place-items-center">
-                                        <div class="h-4 w-4 rounded-full" :style="{ background: baseDataset[2]?.color}"/>
-                                        <span class="text-gray-600 dark:text-[#9A9A9A]">Control rods inserted: </span>
-                                        <span class="font-inter-medium">{{ t.control_rods_inserted_count }}</span>
+                                    <li
+                                        class="flex flex-row gap-2 place-items-center"
+                                    >
+                                        <div
+                                            class="h-4 w-4 rounded-full"
+                                            :style="{
+                                                background:
+                                                    baseDataset[2]?.color,
+                                            }"
+                                        />
+                                        <span
+                                            class="text-gray-600 dark:text-[#9A9A9A]"
+                                            >Control rods inserted:
+                                        </span>
+                                        <span class="font-inter-medium">{{
+                                            t.control_rods_inserted_count
+                                        }}</span>
                                     </li>
-                                    <li class="flex flex-row gap-2 place-items-center">
-                                        <div class="h-4 w-4 rounded-full" :style="{ background: baseDataset[3]?.color}"/>
-                                        <span class="text-gray-600 dark:text-[#9A9A9A]">Core temperature: </span>
-                                        <span class="font-inter-medium">{{ t.core_temp_C }} °C</span>
+                                    <li
+                                        class="flex flex-row gap-2 place-items-center"
+                                    >
+                                        <div
+                                            class="h-4 w-4 rounded-full"
+                                            :style="{
+                                                background:
+                                                    baseDataset[3]?.color,
+                                            }"
+                                        />
+                                        <span
+                                            class="text-gray-600 dark:text-[#9A9A9A]"
+                                            >Core temperature:
+                                        </span>
+                                        <span class="font-inter-medium"
+                                            >{{ t.core_temp_C }} °C</span
+                                        >
                                     </li>
                                     <!-- <li>
                                         <span class="text-gray-600 dark:text-[#9A9A9A]">Coolant flow: </span>
@@ -361,8 +439,11 @@ function view(i) {
                                 </template>
                             </ul>
 
-                            <div class="flex place-items-center justify-center" v-else>
-                                <RadioactiveFilledIcon :size="64"/>
+                            <div
+                                class="flex place-items-center justify-center"
+                                v-else
+                            >
+                                <RadioactiveFilledIcon :size="64" />
                             </div>
                         </div>
                     </BaseCard>

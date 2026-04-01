@@ -7,7 +7,7 @@ import BaseClip from "./Base/BaseClip.vue";
 const props = defineProps({
     snapOnResize: {
         type: Boolean,
-        default: false
+        default: false,
     },
     snapOnLoad: {
         type: Boolean,
@@ -15,24 +15,24 @@ const props = defineProps({
     },
     backgroundColor: {
         type: String,
-        default: 'bg-white dark:bg-[#2A2A2A]'
+        default: "bg-white dark:bg-[#2A2A2A]",
     },
     startTop: {
         type: Number,
-        default: 120
+        default: 120,
     },
     resizable: {
         type: Boolean,
-        default: false
+        default: false,
     },
     width: {
         type: String,
-        default: ''
+        default: "",
     },
     clip: {
         type: Boolean,
-        default: false
-    }
+        default: false,
+    },
 });
 
 const store = useMainStore();
@@ -147,7 +147,7 @@ watch(
             await nextTick();
             snapRight();
         }
-    }
+    },
 );
 
 onUnmounted(() => {
@@ -156,27 +156,47 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div ref="draggableElement" :class="[
-        'hidden min-w-[300px] sm:flex fixed left-0 flex-col',
-        backgroundColor,
-        'px-5 pt-12 rounded cursor-move select-none',
-        props.resizable ? 'resize overflow-hidden' : '',
-        props.width ? props.width : '',
-        'max-h-[calc(100vh-200px)]',
-        'shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#535c58,0_4px_6px_rgba(0,0,0,0.5)]',
-        'rounded-xl'
-    ]" style="z-index: 1000" @mousedown="startDrag" @touchstart="startDrag">
+    <div
+        ref="draggableElement"
+        :class="[
+            'hidden min-w-[300px] sm:flex fixed left-0 flex-col',
+            backgroundColor,
+            'px-5 pt-12 rounded cursor-move select-none',
+            props.resizable ? 'resize overflow-hidden' : '',
+            props.width ? props.width : '',
+            'max-h-[calc(100vh-200px)]',
+            'shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#535c58,0_4px_6px_rgba(0,0,0,0.5)]',
+            'rounded-xl',
+        ]"
+        style="z-index: 1000"
+        @mousedown="startDrag"
+        @touchstart="startDrag"
+    >
         <div class="relative flex-none">
-            <BaseClip v-if="clip" tw="w-[20px] absolute -top-[58px] right-0 z-100" :color="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
-            <slot name="header"/>
-            <GripHorizontalIcon class="absolute -top-8 left-1/2 -translate-x-1/2" size="20" />
-            <div @mousedown="isInteracting = true" @mouseup="isInteracting = false"
-                class="pt-2" style="cursor: initial">
-            </div>
+            <BaseClip
+                v-if="clip"
+                tw="w-[20px] absolute -top-[58px] right-0 z-100"
+                :color="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
+            />
+            <slot name="header" />
+            <GripHorizontalIcon
+                class="absolute -top-8 left-1/2 -translate-x-1/2"
+                size="20"
+            />
+            <div
+                @mousedown="isInteracting = true"
+                @mouseup="isInteracting = false"
+                class="pt-2"
+                style="cursor: initial"
+            ></div>
         </div>
 
-        <div @mousedown="isInteracting = true" @mouseup="isInteracting = false" style="cursor: initial"
-            class="flex-1 overflow-auto py-4">
+        <div
+            @mousedown="isInteracting = true"
+            @mouseup="isInteracting = false"
+            style="cursor: initial"
+            class="flex-1 overflow-auto py-4"
+        >
             <slot />
         </div>
     </div>

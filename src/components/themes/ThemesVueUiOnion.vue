@@ -4,41 +4,40 @@ import BaseThemeUnit from "./BaseThemeUnit.vue";
 
 const dataset = ref([
     {
-    name: "Serie 1",
-    percentage: 21,
-    value: 1200,
-    prefix: "",
-    suffix: "",
-  },
-  {
-    name: "Serie 2",
-    percentage: 34,
-    value: 1000,
-    prefix: "",
-    suffix: "",
-  },
-  {
-    name: "Serie 3",
-    percentage: 55,
-    value: 500,
-    prefix: "",
-    suffix: "",
-  },
-  {
-    name: "Serie 4",
-    percentage: 79,
-    value: 1280,
-    prefix: "",
-    suffix: "",
-  },
-  {
-    name: "Serie 5",
-    percentage: 52,
-    value: 145,
-    prefix: "",
-    suffix: "",
-    
-  }
+        name: "Serie 1",
+        percentage: 21,
+        value: 1200,
+        prefix: "",
+        suffix: "",
+    },
+    {
+        name: "Serie 2",
+        percentage: 34,
+        value: 1000,
+        prefix: "",
+        suffix: "",
+    },
+    {
+        name: "Serie 3",
+        percentage: 55,
+        value: 500,
+        prefix: "",
+        suffix: "",
+    },
+    {
+        name: "Serie 4",
+        percentage: 79,
+        value: 1280,
+        prefix: "",
+        suffix: "",
+    },
+    {
+        name: "Serie 5",
+        percentage: 52,
+        value: 145,
+        prefix: "",
+        suffix: "",
+    },
 ]);
 
 const config = ref({
@@ -47,13 +46,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

@@ -4,25 +4,25 @@ import { useCase } from "./useCase";
 import UseCaseTitle from "./UseCaseTitle.vue";
 import { useMainStore } from "../../stores";
 import { useCaseStore } from "../../stores/cases";
-import Prism from "prismjs"
-import "prismjs/themes/prism-okaidia.css"
+import Prism from "prismjs";
+import "prismjs/themes/prism-okaidia.css";
 import XyShareSelect from "./XyShareSelect.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import Tchernob from "./Tchernob.vue";
 
 onMounted(() => {
-    window.Prism = window.Prism || {}
-    window.Prism.manual = true
-    Prism.highlightAll()
-})
+    window.Prism = window.Prism || {};
+    window.Prism.manual = true;
+    Prism.highlightAll();
+});
 
 const store = useMainStore();
 const cases = useCaseStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
 const accordionTitle = computed(() => {
-    return cases.code[store.lang]
-})
+    return cases.code[store.lang];
+});
 
 const {
     XY_STACKED_DATASET_WITH_AUTOSCALE,
@@ -31,9 +31,8 @@ const {
     XY_STACKED_CONFIG,
     XY_STACKED_DATASET,
     XY_FIXED_SCALE_CONFIG,
-    XY_FIXED_SCALE_DATASET
-} = useCase()
-
+    XY_FIXED_SCALE_DATASET,
+} = useCase();
 
 /**
  * Idea: xy next to timeline. selectX highlights timeline item
@@ -41,15 +40,15 @@ const {
  */
 
 const shareX = ref({
-    en: 'Share selected time index on multiple chart instances',
-    fr: 'Partager l’index temporel sélectionné sur plusieurs instances de graphique',
-    pt: 'Compartilhar o índice de tempo selecionado em várias instâncias de gráfico',
-    de: 'Ausgewählten Zeitindex auf mehreren Diagramminstanzen teilen',
-    zh: '在多个图表实例上共享所选时间索引',
-    ja: '選択した時間インデックスを複数のチャートインスタンスで共有する',
-    es: 'Compartir el índice de tiempo seleccionado en varias instancias de gráfico',
-    ko: '선택한 시간 인덱스를 여러 차트 인스턴스에서 공유하기',
-    ar: 'مشاركة فهرس الوقت المحدد عبر عدة مثيلات من المخططات'
+    en: "Share selected time index on multiple chart instances",
+    fr: "Partager l’index temporel sélectionné sur plusieurs instances de graphique",
+    pt: "Compartilhar o índice de tempo selecionado em várias instâncias de gráfico",
+    de: "Ausgewählten Zeitindex auf mehreren Diagramminstanzen teilen",
+    zh: "在多个图表实例上共享所选时间索引",
+    ja: "選択した時間インデックスを複数のチャートインスタンスで共有する",
+    es: "Compartir el índice de tiempo seleccionado en varias instancias de gráfico",
+    ko: "선택한 시간 인덱스를 여러 차트 인스턴스에서 공유하기",
+    ar: "مشاركة فهرس الوقت المحدد عبر عدة مثيلات من المخططات",
 });
 
 const shareXDescription = ref({
@@ -61,9 +60,8 @@ const shareXDescription = ref({
     ja: `VueUiXy には特別な "selectedXIndex" プロパティがあり、設定イベントと併用して複数のチャートで選択した時間インデックスを強調表示できます。`,
     es: `VueUiXy tiene una prop especial "selectedXIndex", que puede usarse junto con eventos de configuración para resaltar el índice de tiempo seleccionado en varios gráficos.`,
     ko: `VueUiXy에는 특별한 "selectedXIndex" prop이 있으며, 설정 이벤트와 함께 사용하여 여러 차트에서 선택된 시간 인덱스를 강조 표시할 수 있습니다.`,
-    ar: `يمتلك VueUiXy خاصية خاصة تسمى "selectedXIndex"، ويمكن استخدامها مع أحداث الإعداد لتمييز فهرس الوقت المحدد عبر عدة مخططات.`
-    }
-)
+    ar: `يمتلك VueUiXy خاصية خاصة تسمى "selectedXIndex"، ويمكن استخدامها مع أحداث الإعداد لتمييز فهرس الوقت المحدد عبر عدة مخططات.`,
+});
 
 const shareXCodeTemplate = ref(`
 <div class="flex gap-2 flex-wrap align-center justify-around">
@@ -122,8 +120,7 @@ const shareXCodeJs = ref(`
             defaultConfig: commonConfig.value,
             userConfig: {} // specific config for this chart
         })
-    });`)
-
+    });`);
 </script>
 
 <template>
@@ -139,22 +136,25 @@ const shareXCodeJs = ref(`
             </div>
         </template>
     </UseCaseTitle>
-    <XyShareSelect/>
+    <XyShareSelect />
     <div class="w-full">
-        <VueDataUi component="VueUiAccordion" :config="{
-            maxHeight: 5000,
-            head: {
-                useArrowSlot: true,
-                backgroundColor: 'transparent',
-                iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
-            },
-            body: {
-                backgroundColor: 'transparent',
-                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-            }
-        }">
+        <VueDataUi
+            component="VueUiAccordion"
+            :config="{
+                maxHeight: 5000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent',
+                    iconColor: isDarkMode ? '#fdd663' : '#1A1A1A',
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                },
+            }"
+        >
             <template #arrow="{ iconColor }">
-                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" />
             </template>
             <template #title>
                 {{ accordionTitle }}
@@ -176,30 +176,30 @@ const shareXCodeJs = ref(`
         </VueDataUi>
     </div>
 
-    <hr class="mt-4 mb-8"/>
+    <hr class="mt-4 mb-8" />
 
     <UseCaseTitle>
         <template #title>
             <div>
-                <div class="w-full mb-2">
-                    Timeline example
-                </div>
+                <div class="w-full mb-2">Timeline example</div>
                 <div class="w-full text-black dark:text-[#CCCCCC]">
                     Sync a chart to a timeline
                 </div>
             </div>
         </template>
     </UseCaseTitle>
-    <Tchernob/>
+    <Tchernob />
     <div class="my-4">
         <a
             class="my-4 text-app-blue hover:underline"
-            href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/useCases/Tchernob.vue" target="_blank">
+            href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/useCases/Tchernob.vue"
+            target="_blank"
+        >
             View component source code
         </a>
     </div>
 
-    <hr class="mt-4 mb-8"/>
+    <hr class="mt-4 mb-8" />
 
     <UseCaseTitle>
         <template #title>
@@ -214,31 +214,40 @@ const shareXCodeJs = ref(`
         />
     </div>
     <div class="w-full">
-        <VueDataUi component="VueUiAccordion" :config="{
-            maxHeight: 5000,
-            head: {
-                useArrowSlot: true,
-                backgroundColor: 'transparent',
-                iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
-            },
-            body: {
-                backgroundColor: 'transparent',
-                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-            }
-        }">
+        <VueDataUi
+            component="VueUiAccordion"
+            :config="{
+                maxHeight: 5000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent',
+                    iconColor: isDarkMode ? '#fdd663' : '#1A1A1A',
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                },
+            }"
+        >
             <template #arrow="{ iconColor }">
-                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" />
             </template>
             <template #title>
                 {{ accordionTitle }}
             </template>
             <template #content>
                 <div class="bg-[#272822] p-2 rounded">
-                    <code class="language-javascript" style="white-space: pre-wrap;">
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
                         const dataset = ref({{ XY_FIXED_SCALE_DATASET }});
                     </code>
-                    <br><br>
-                    <code class="language-javascript" style="white-space: pre-wrap;">
+                    <br /><br />
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
                         const config = ref({{ XY_FIXED_SCALE_CONFIG }});
                     </code>
                 </div>
@@ -246,7 +255,7 @@ const shareXCodeJs = ref(`
         </VueDataUi>
     </div>
 
-    <hr class="mt-4 mb-8"/>
+    <hr class="mt-4 mb-8" />
 
     <UseCaseTitle>
         <template #title>
@@ -264,31 +273,40 @@ const shareXCodeJs = ref(`
         />
     </div>
     <div class="w-full">
-        <VueDataUi component="VueUiAccordion" :config="{
-            maxHeight: 5000,
-            head: {
-                useArrowSlot: true,
-                backgroundColor: 'transparent',
-                iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
-            },
-            body: {
-                backgroundColor: 'transparent',
-                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-            }
-        }">
+        <VueDataUi
+            component="VueUiAccordion"
+            :config="{
+                maxHeight: 5000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent',
+                    iconColor: isDarkMode ? '#fdd663' : '#1A1A1A',
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                },
+            }"
+        >
             <template #arrow="{ iconColor }">
-                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" />
             </template>
             <template #title>
                 {{ accordionTitle }}
             </template>
             <template #content>
                 <div class="bg-[#272822] p-2 rounded">
-                    <code class="language-javascript" style="white-space: pre-wrap;">
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
                         const dataset = ref({{ XY_MULTIPLE_Y_AXES_DATASET }});
                     </code>
-                    <br><br>
-                    <code class="language-javascript" style="white-space: pre-wrap;">
+                    <br /><br />
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
                         const config = ref({{ XY_MULTIPLE_Y_AXES_CONFIG }});
                     </code>
                 </div>
@@ -296,7 +314,7 @@ const shareXCodeJs = ref(`
         </VueDataUi>
     </div>
 
-    <hr class="mt-4 mb-8"/>
+    <hr class="mt-4 mb-8" />
 
     <UseCaseTitle>
         <template #title>
@@ -314,31 +332,40 @@ const shareXCodeJs = ref(`
         />
     </div>
     <div class="w-full">
-        <VueDataUi component="VueUiAccordion" :config="{
-            maxHeight: 5000,
-            head: {
-                useArrowSlot: true,
-                backgroundColor: 'transparent',
-                iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
-            },
-            body: {
-                backgroundColor: 'transparent',
-                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-            }
-        }">
+        <VueDataUi
+            component="VueUiAccordion"
+            :config="{
+                maxHeight: 5000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent',
+                    iconColor: isDarkMode ? '#fdd663' : '#1A1A1A',
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                },
+            }"
+        >
             <template #arrow="{ iconColor }">
-                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" />
             </template>
             <template #title>
                 {{ accordionTitle }}
             </template>
             <template #content>
                 <div class="bg-[#272822] p-2 rounded">
-                    <code class="language-javascript" style="white-space: pre-wrap;">
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
                         const dataset = ref({{ XY_STACKED_DATASET }});
                     </code>
-                    <br><br>
-                    <code class="language-javascript" style="white-space: pre-wrap;">
+                    <br /><br />
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
                         const config = ref({{ XY_STACKED_CONFIG }});
                     </code>
                 </div>
@@ -346,7 +373,7 @@ const shareXCodeJs = ref(`
         </VueDataUi>
     </div>
 
-    <hr class="mt-4 mb-8"/>
+    <hr class="mt-4 mb-8" />
 
     <UseCaseTitle>
         <template #title>
@@ -364,31 +391,42 @@ const shareXCodeJs = ref(`
         />
     </div>
     <div class="w-full">
-        <VueDataUi component="VueUiAccordion" :config="{
-            maxHeight: 5000,
-            head: {
-                useArrowSlot: true,
-                backgroundColor: 'transparent',
-                iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
-            },
-            body: {
-                backgroundColor: 'transparent',
-                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-            }
-        }">
+        <VueDataUi
+            component="VueUiAccordion"
+            :config="{
+                maxHeight: 5000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent',
+                    iconColor: isDarkMode ? '#fdd663' : '#1A1A1A',
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                },
+            }"
+        >
             <template #arrow="{ iconColor }">
-                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" />
             </template>
             <template #title>
                 {{ accordionTitle }}
             </template>
             <template #content>
                 <div class="bg-[#272822] p-2 rounded">
-                    <code class="language-javascript" style="white-space: pre-wrap;">
-                        const dataset = ref({{ XY_STACKED_DATASET_WITH_AUTOSCALE }});
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
+                        const dataset = ref({{
+                            XY_STACKED_DATASET_WITH_AUTOSCALE
+                        }});
                     </code>
-                    <br><br>
-                    <code class="language-javascript" style="white-space: pre-wrap;">
+                    <br /><br />
+                    <code
+                        class="language-javascript"
+                        style="white-space: pre-wrap"
+                    >
                         const config = ref({{ XY_STACKED_CONFIG }});
                     </code>
                 </div>

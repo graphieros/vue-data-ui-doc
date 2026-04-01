@@ -3,7 +3,7 @@ import { ref } from "vue";
 import BaseThemeUnit from "./BaseThemeUnit.vue";
 
 const dataset = ref({
-  percentage: 66.5,
+    percentage: 66.5,
 });
 
 const config = ref({
@@ -12,13 +12,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

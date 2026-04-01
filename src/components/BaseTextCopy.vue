@@ -25,8 +25,8 @@ async function copyToClipboard() {
         props.value ??
         (wrapperEl.value
             ? (wrapperEl.value.querySelector("[data-copy-root]")?.innerText ??
-                wrapperEl.value.innerText ??
-                "")
+              wrapperEl.value.innerText ??
+              "")
             : "");
 
     try {
@@ -65,8 +65,15 @@ function onLeave() {
             <slot />
         </span>
 
-        <button ref="btnEl" class="bct-popover" type="button" :aria-label="ariaLabel" title="Copy" @mousedown.prevent
-            @click.prevent="copyToClipboard">
+        <button
+            ref="btnEl"
+            class="bct-popover"
+            type="button"
+            :aria-label="ariaLabel"
+            title="Copy"
+            @mousedown.prevent
+            @click.prevent="copyToClipboard"
+        >
             <CopyIcon class="text-gray-400 dark:text-[#8A8A8A]" />
         </button>
     </div>
@@ -92,7 +99,10 @@ function onLeave() {
     cursor: pointer;
     opacity: 0;
     transform: translateX(-12px) scale(0.5, 0.5);
-    transition: opacity 120ms ease, transform 120ms ease, background 120ms ease;
+    transition:
+        opacity 120ms ease,
+        transform 120ms ease,
+        background 120ms ease;
     pointer-events: none;
 }
 

@@ -239,8 +239,8 @@ export function useCase() {
         {
             name: "S3",
             series: [
-                23.12, 23.12, 23.05, 23.07, 23.65, 23.69, 23.72, 23.21, 23.36, 23.41,
-                23.08,
+                23.12, 23.12, 23.05, 23.07, 23.65, 23.69, 23.72, 23.21, 23.36,
+                23.41, 23.08,
             ],
             type: "line",
             smooth: false,
@@ -382,8 +382,8 @@ export function useCase() {
         {
             name: "Serie 1",
             series: [
-                -0, -10, 10, -20, 20, -30, 30, -40, 40, -50, 50, -40, 40, -30, 30, -20,
-                20, -10, 10, 0,
+                -0, -10, 10, -20, 20, -30, 30, -40, 40, -50, 50, -40, 40, -30,
+                30, -20, 20, -10, 10, 0,
             ],
             type: "line",
             smooth: true,
@@ -472,7 +472,9 @@ export function useCase() {
                         smooth: true,
                         lineColor: "#1F77B4",
                         selectedColor: isDarkMode.value ? "#8A8A8A" : "#8A8A8A",
-                        indicatorColor: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        indicatorColor: isDarkMode.value
+                            ? "#CCCCCC"
+                            : "#1A1A1A",
                     },
                 },
             },
@@ -530,7 +532,16 @@ export function useCase() {
                         },
                         xAxisLabels: {
                             color: textColor.value,
-                            values: ["T0", "T1", "T2", "T3", "T4", "T5", "T6", "T7"],
+                            values: [
+                                "T0",
+                                "T1",
+                                "T2",
+                                "T3",
+                                "T4",
+                                "T5",
+                                "T6",
+                                "T7",
+                            ],
                             fontSize: 12,
                             yOffset: -18,
                         },

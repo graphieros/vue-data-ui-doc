@@ -9,12 +9,24 @@ const mainContainerSize = ref(null);
 
 // PROPS
 const items = ref([
-    { x: 0, y: 0, w: 10, h: 10, id: 'A', component: 'VueUiWaffle', dataset: [{ name: 'S1', values: [10] }, { name: 'S2', values: [20] }, { name: 'S3', values: [30] }] },
-    { x: 0, y: 11, w: 1, h: 1, id: 'B' },
+    {
+        x: 0,
+        y: 0,
+        w: 10,
+        h: 10,
+        id: "A",
+        component: "VueUiWaffle",
+        dataset: [
+            { name: "S1", values: [10] },
+            { name: "S2", values: [20] },
+            { name: "S3", values: [30] },
+        ],
+    },
+    { x: 0, y: 11, w: 1, h: 1, id: "B" },
 ]);
 
 // Grid cfg
-const gridUnit = ref(20);  // CONFIG number of columns
+const gridUnit = ref(20); // CONFIG number of columns
 const gridHeight = ref(20); // CONFIG number of rows. TODO: add button (and slot providing action) to add rows
 
 const pixelSize = computed(() => {
@@ -23,14 +35,14 @@ const pixelSize = computed(() => {
 });
 
 const sizedItems = computed(() => {
-    return items.value.map(item => ({
+    return items.value.map((item) => ({
         ...item,
         current: {
             left: `${item.x * pixelSize.value}px`,
             top: `${item.y * pixelSize.value}px`,
             width: `${item.w * pixelSize.value}px`,
-            height: `${item.h * pixelSize.value}px`
-        }
+            height: `${item.h * pixelSize.value}px`,
+        },
     }));
 });
 
@@ -43,13 +55,12 @@ const grid = computed(() => {
                 y: j,
                 id: `unit_${i}_${j}`,
                 left: i * pixelSize.value,
-                top: j * pixelSize.value
+                top: j * pixelSize.value,
             });
         }
     }
     return units;
 });
-
 
 function setMainContainerClientRect(domRect) {
     mainContainerSize.value = domRect;
@@ -61,7 +72,12 @@ function computeActiveUnit(e) {
     const rect = mainContainer.value.getBoundingClientRect();
     const x = Math.floor((e.clientX - rect.left) / pixelSize.value);
     const y = Math.floor((e.clientY - rect.top) / pixelSize.value);
-    activeUnit.value = { x, y, left: x * pixelSize.value, top: y * pixelSize.value };
+    activeUnit.value = {
+        x,
+        y,
+        left: x * pixelSize.value,
+        top: y * pixelSize.value,
+    };
 }
 
 // Drag
@@ -99,7 +115,7 @@ function updateCandidateRect(e) {
             x: activeUnit.value.x,
             y: activeUnit.value.y,
             w: selectedItem.value.w,
-            h: selectedItem.value.h
+            h: selectedItem.value.h,
         };
     } else if (resizingItem.value) {
         // Resize mode
@@ -109,28 +125,28 @@ function updateCandidateRect(e) {
                 x: item.x,
                 y: item.y,
                 w: Math.max(1, activeUnit.value.x - item.x + 1),
-                h: Math.max(1, activeUnit.value.y - item.y + 1)
+                h: Math.max(1, activeUnit.value.y - item.y + 1),
             };
         } else if (resizeDirection.value === "top-left") {
             candidateRect.value = {
                 x: activeUnit.value.x,
                 y: activeUnit.value.y,
-                w: Math.max(1, (item.x + item.w) - activeUnit.value.x),
-                h: Math.max(1, (item.y + item.h) - activeUnit.value.y)
+                w: Math.max(1, item.x + item.w - activeUnit.value.x),
+                h: Math.max(1, item.y + item.h - activeUnit.value.y),
             };
         } else if (resizeDirection.value === "top-right") {
             candidateRect.value = {
                 x: item.x,
                 y: activeUnit.value.y,
                 w: Math.max(1, activeUnit.value.x - item.x + 1),
-                h: Math.max(1, (item.y + item.h) - activeUnit.value.y)
+                h: Math.max(1, item.y + item.h - activeUnit.value.y),
             };
         } else if (resizeDirection.value === "bottom-left") {
             candidateRect.value = {
                 x: activeUnit.value.x,
                 y: item.y,
-                w: Math.max(1, (item.x + item.w) - activeUnit.value.x),
-                h: Math.max(1, activeUnit.value.y - item.y + 1)
+                w: Math.max(1, item.x + item.w - activeUnit.value.x),
+                h: Math.max(1, activeUnit.value.y - item.y + 1),
             };
         }
     } else {
@@ -172,23 +188,26 @@ function onDocMouseUp(e) {
     if (activeUnit.value) {
         if (resizingItem.value) {
             // Resize mode.
-            items.value = items.value.map(i => {
+            items.value = items.value.map((i) => {
                 if (i.id === resizingItem.value.id) {
-                    let newX = i.x, newY = i.y, newW = i.w, newH = i.h;
+                    let newX = i.x,
+                        newY = i.y,
+                        newW = i.w,
+                        newH = i.h;
                     if (resizeDirection.value === "bottom-right") {
                         newW = Math.max(1, activeUnit.value.x - i.x + 1);
                         newH = Math.max(1, activeUnit.value.y - i.y + 1);
                     } else if (resizeDirection.value === "top-left") {
-                        newW = Math.max(1, (i.x + i.w) - activeUnit.value.x);
-                        newH = Math.max(1, (i.y + i.h) - activeUnit.value.y);
+                        newW = Math.max(1, i.x + i.w - activeUnit.value.x);
+                        newH = Math.max(1, i.y + i.h - activeUnit.value.y);
                         newX = activeUnit.value.x;
                         newY = activeUnit.value.y;
                     } else if (resizeDirection.value === "top-right") {
                         newW = Math.max(1, activeUnit.value.x - i.x + 1);
-                        newH = Math.max(1, (i.y + i.h) - activeUnit.value.y);
+                        newH = Math.max(1, i.y + i.h - activeUnit.value.y);
                         newY = activeUnit.value.y;
                     } else if (resizeDirection.value === "bottom-left") {
-                        newW = Math.max(1, (i.x + i.w) - activeUnit.value.x);
+                        newW = Math.max(1, i.x + i.w - activeUnit.value.x);
                         newH = Math.max(1, activeUnit.value.y - i.y + 1);
                         newX = activeUnit.value.x;
                     }
@@ -203,11 +222,20 @@ function onDocMouseUp(e) {
             });
         } else if (selectedItem.value) {
             // Drag mode.
-            items.value = items.value.map(i => {
+            items.value = items.value.map((i) => {
                 if (i.id === selectedItem.value.id) {
-                    const candidate = { x: activeUnit.value.x, y: activeUnit.value.y, w: i.w, h: i.h };
+                    const candidate = {
+                        x: activeUnit.value.x,
+                        y: activeUnit.value.y,
+                        w: i.w,
+                        h: i.h,
+                    };
                     if (canPlaceItem(candidate, i.id)) {
-                        return { ...i, x: activeUnit.value.x, y: activeUnit.value.y };
+                        return {
+                            ...i,
+                            x: activeUnit.value.x,
+                            y: activeUnit.value.y,
+                        };
                     } else {
                         return i;
                     }
@@ -242,7 +270,7 @@ const candidateStyle = computed(() => {
         height: candidateRect.value.h * pixelSize.value + "px",
         pointerEvents: "none",
         border: "2px dashed #333",
-        background: "rgba(0, 0, 0, 0.1)"
+        background: "rgba(0, 0, 0, 0.1)",
     };
     // When resizing, show the candidate rect above the item.
     if (resizingItem.value) {
@@ -261,7 +289,9 @@ onMounted(() => {
     if (wrapper.value) {
         resizeObserver.value = new ResizeObserver((_entries) => {
             if (mainContainer.value) {
-                setMainContainerClientRect(mainContainer.value.getBoundingClientRect());
+                setMainContainerClientRect(
+                    mainContainer.value.getBoundingClientRect(),
+                );
             }
         });
         resizeObserver.value.observe(wrapper.value);
@@ -274,42 +304,81 @@ onBeforeUnmount(() => {
 
 <template>
     <div class="debug">
-        Drag: {{ selectedItem ? selectedItem.id : 'none' }},
-        Resize: {{ resizingItem ? resizingItem.id : 'none' }},
-        Active cell: {{ activeUnit ? activeUnit.x + ',' + activeUnit.y : 'none' }}
+        Drag: {{ selectedItem ? selectedItem.id : "none" }}, Resize:
+        {{ resizingItem ? resizingItem.id : "none" }}, Active cell:
+        {{ activeUnit ? activeUnit.x + "," + activeUnit.y : "none" }}
     </div>
     <div class="vue-ui-grid-wrapper" ref="wrapper">
-        <div class="vue-ui-grid-main-container" ref="mainContainer" :style="{ height: `${pixelSize * gridHeight}px` }"
-            @mousemove="onContainerMouseMove" @mouseleave="() => activeUnit = null">
+        <div
+            class="vue-ui-grid-main-container"
+            ref="mainContainer"
+            :style="{ height: `${pixelSize * gridHeight}px` }"
+            @mousemove="onContainerMouseMove"
+            @mouseleave="() => (activeUnit = null)"
+        >
             <!-- Grid units for visual feedback -->
-            <div class="vue-ui-grid-unit" v-for="unit in grid" :key="unit.id" :style="{
-                position: 'absolute',
-                top: `${unit.top}px`,
-                left: `${unit.left}px`,
-                height: `${pixelSize}px`,
-                width: `${pixelSize}px`
-            }" :class="{ 'selected': activeUnit && activeUnit.x === unit.x && activeUnit.y === unit.y }"></div>
+            <div
+                class="vue-ui-grid-unit"
+                v-for="unit in grid"
+                :key="unit.id"
+                :style="{
+                    position: 'absolute',
+                    top: `${unit.top}px`,
+                    left: `${unit.left}px`,
+                    height: `${pixelSize}px`,
+                    width: `${pixelSize}px`,
+                }"
+                :class="{
+                    selected:
+                        activeUnit &&
+                        activeUnit.x === unit.x &&
+                        activeUnit.y === unit.y,
+                }"
+            ></div>
 
             <!-- Items -->
-            <div class="vue-ui-grid-item" v-for="item in sizedItems" :key="item.id" :style="{
-                position: 'absolute',
-                top: item.current.top,
-                left: item.current.left,
-                width: item.current.width,
-                height: item.current.height
-            }">
+            <div
+                class="vue-ui-grid-item"
+                v-for="item in sizedItems"
+                :key="item.id"
+                :style="{
+                    position: 'absolute',
+                    top: item.current.top,
+                    left: item.current.left,
+                    width: item.current.width,
+                    height: item.current.height,
+                }"
+            >
                 <!-- Drag handle -->
-                <div class="vue-ui-grid-handle" @mousedown="(e) => startDrag(item, e)" />
+                <div
+                    class="vue-ui-grid-handle"
+                    @mousedown="(e) => startDrag(item, e)"
+                />
                 <!-- Resize handles (black squares) -->
-                <div v-for="handle in ['top-left', 'top-right', 'bottom-left', 'bottom-right']" :key="handle"
-                    class="vue-ui-grid-resize-handle" :class="handle"
-                    @mousedown="(e) => startResize(item, handle, e)" />
-                <div :style="{ width: '100%', height: '100%', padding: '1rem' }">
+                <div
+                    v-for="handle in [
+                        'top-left',
+                        'top-right',
+                        'bottom-left',
+                        'bottom-right',
+                    ]"
+                    :key="handle"
+                    class="vue-ui-grid-resize-handle"
+                    :class="handle"
+                    @mousedown="(e) => startResize(item, handle, e)"
+                />
+                <div
+                    :style="{ width: '100%', height: '100%', padding: '1rem' }"
+                >
                     <slot name="item" v-bind="{ item }" />
                 </div>
             </div>
 
-            <div v-if="candidateRect" class="candidate-rect" :style="candidateStyle"></div>
+            <div
+                v-if="candidateRect"
+                class="candidate-rect"
+                :style="candidateStyle"
+            ></div>
         </div>
     </div>
 </template>
@@ -342,7 +411,7 @@ onBeforeUnmount(() => {
 
 /* Grid units (for visual feedback) */
 .vue-ui-grid-unit {
-    outline: 0.1px solid #4A4A4A;
+    outline: 0.1px solid #4a4a4a;
     position: absolute;
 }
 

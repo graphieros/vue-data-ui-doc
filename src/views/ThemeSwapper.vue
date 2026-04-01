@@ -19,70 +19,73 @@ const router = useRouter();
 const route = useRoute();
 
 const themes = [
-    'default',
-    'dark',
-    'minimal',
-    'minimalDark',
-    'celebration',
-    'celebrationNight',
-    'zen',
-    'concrete',
-    'hack'
+    "default",
+    "dark",
+    "minimal",
+    "minimalDark",
+    "celebration",
+    "celebrationNight",
+    "zen",
+    "concrete",
+    "hack",
 ];
 
 const background = {
-    default: 'bg-[#FFFFFF]',
-    dark: 'bg-[#1A1A1A]',
-    minimal: 'bg-[#FFFFFF]',
-    minimalDark: 'bg-[#1A1A1A]',
-    celebration: 'bg-[#FFF8E1]',
-    celebrationNight: 'bg-[#1E1E1E]',
-    zen: 'bg-[#fbfafa]',
-    concrete: 'bg-[#f6f6fb]',
-    hack: 'bg-[#1A1A1A]'
-}
+    default: "bg-[#FFFFFF]",
+    dark: "bg-[#1A1A1A]",
+    minimal: "bg-[#FFFFFF]",
+    minimalDark: "bg-[#1A1A1A]",
+    celebration: "bg-[#FFF8E1]",
+    celebrationNight: "bg-[#1E1E1E]",
+    zen: "bg-[#fbfafa]",
+    concrete: "bg-[#f6f6fb]",
+    hack: "bg-[#1A1A1A]",
+};
 
 onMounted(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
 });
 
 const crumbs = ref([
     {
         description: translations.value.menu.docs[store.lang],
-        link: '/docs'
+        link: "/docs",
     },
     {
         description: translations.value.menu.examples[store.lang],
-        link: '/examples'
+        link: "/examples",
     },
     {
-        description: 'Themes'
+        description: "Themes",
     },
     {
-        description: 'default'
-    }
+        description: "default",
+    },
 ]);
 
-const currentTheme = ref('default');
+const currentTheme = ref("default");
 
-watch(() => router.currentRoute.value, (r) => {
-    const hash = router.currentRoute.value.hash;
-    if (!hash) {
-        currentTheme.value = isDarkMode.value ? 'dark' : 'default'
-    } else {
-        currentTheme.value = hash.replaceAll('#', '');
-    }
-    crumbs.value.at(-1).description = currentTheme.value;
-}, { immediate: true })
-
+watch(
+    () => router.currentRoute.value,
+    (r) => {
+        const hash = router.currentRoute.value.hash;
+        if (!hash) {
+            currentTheme.value = isDarkMode.value ? "dark" : "default";
+        } else {
+            currentTheme.value = hash.replaceAll("#", "");
+        }
+        crumbs.value.at(-1).description = currentTheme.value;
+    },
+    { immediate: true },
+);
 
 const step = ref(0);
 
 const code = computed(() => {
     return `const config = ref({
-    theme: '${currentTheme.value === 'default' ? '' : currentTheme.value}',
-})`
-})
+    theme: '${currentTheme.value === "default" ? "" : currentTheme.value}',
+})`;
+});
 
 function selectTheme(theme) {
     currentTheme.value = theme;
@@ -90,26 +93,26 @@ function selectTheme(theme) {
     router.push({
         path: route.path,
         query: route.query,
-        hash: `#${theme}`
-    })
+        hash: `#${theme}`,
+    });
 }
 
 const DATASET_XY = ref([
     {
-        name: 'Series A',
+        name: "Series A",
         series: [0, 0.5, 0.5, 1, 1.5, 2.5, 4, 6.5, 10.5],
-        type: 'bar'
+        type: "bar",
     },
     {
-        name: 'Series B',
+        name: "Series B",
         series: [0, 1, 1, 2, 3, 5, 8, 13, 21],
-        type: 'bar'
+        type: "bar",
     },
     {
-        name: 'Series C',
+        name: "Series C",
         series: [0, 3, 3, 5, 6, 8, 11, 16, 24],
-        type: 'line',
-        smooth: true
+        type: "line",
+        smooth: true,
     },
 ]);
 
@@ -118,35 +121,35 @@ const CONFIG_XY = computed(() => {
         theme: currentTheme.value,
         chart: {
             title: {
-                text: 'Title',
-                textAlign: 'left',
+                text: "Title",
+                textAlign: "left",
                 paddingLeft: 12,
                 subtitle: {
-                    text: 'Subtitle'
-                }
+                    text: "Subtitle",
+                },
             },
             zoom: {
                 minimap: {
-                    show: true
-                }
-            }
-        }
-    }
+                    show: true,
+                },
+            },
+        },
+    };
 });
 
 const DATASET_DONUT = ref([
     {
-        name: 'Series A',
-        values: [3]
+        name: "Series A",
+        values: [3],
     },
     {
-        name: 'Series B',
-        values: [2]
+        name: "Series B",
+        values: [2],
     },
     {
-        name: 'Series C',
-        values: [1]
-    }
+        name: "Series C",
+        values: [1],
+    },
 ]);
 
 const CONFIG_DONUT = computed(() => {
@@ -155,38 +158,38 @@ const CONFIG_DONUT = computed(() => {
         style: {
             chart: {
                 title: {
-                    text: 'Title',
-                    textAlign: 'left',
+                    text: "Title",
+                    textAlign: "left",
                     paddingLeft: 12,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
-                }
-            }
-        }
-    }
+                        text: "Subtitle",
+                    },
+                },
+            },
+        },
+    };
 });
 
 const DATASET_STACKLINE = ref([
     {
         name: "Serie A",
         series: [19, 20.07, 30, 40, 50, 60, 25, 29, 32],
-        shape: 'square',
+        shape: "square",
     },
     {
         name: "Serie B",
         series: [13, 8, 9, 13, 25, 27, 16, 18, 19],
-        shape: 'hexagon'
+        shape: "hexagon",
     },
     {
         name: "Serie C",
         series: [13, 10, 9, 13, 25, 19, 12, 13, 21],
-        shape: 'triangle'
+        shape: "triangle",
     },
     {
         name: "Serie D",
         series: [25, 23, 9, 13, 25, 31, 16, 19, 18],
-        shape: 'star'
+        shape: "star",
     },
 ]);
 
@@ -196,28 +199,28 @@ const CONFIG_STACKLINE = computed(() => {
         style: {
             chart: {
                 title: {
-                    text: 'Title',
-                    textAlign: 'left',
+                    text: "Title",
+                    textAlign: "left",
                     paddingLeft: 12,
                     subtitle: {
-                        text: 'Subtitle'
+                        text: "Subtitle",
                     },
                 },
                 bars: {
-                    distributed: true
+                    distributed: true,
                 },
                 zoom: {
                     minimap: {
-                        show: true
-                    }
-                }
-            }
-        }
-    }
+                        show: true,
+                    },
+                },
+            },
+        },
+    };
 });
 
 const DATASET_BUMP = ref([
-        {
+    {
         name: "JavaScript",
         values: [1.2, 1.35, 1.55, 1.75, 2.1, 2.45, 2.75, 3.05, 3.3, 3.5],
     },
@@ -255,7 +258,9 @@ const DATASET_BUMP = ref([
     },
     {
         name: "Ruby",
-        values: [0.23, 0.225, 0.22, 0.215, 0.21, 0.205, 0.2, 0.195, 0.19, 0.185],
+        values: [
+            0.23, 0.225, 0.22, 0.215, 0.21, 0.205, 0.2, 0.195, 0.19, 0.185,
+        ],
     },
 ]);
 
@@ -266,63 +271,63 @@ const CONFIG_BUMP = computed(() => {
             chart: {
                 height: 900,
                 title: {
-                    text: 'Title',
-                    textAlign: 'left',
+                    text: "Title",
+                    textAlign: "left",
                     paddingLeft: 12,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
-                }
-            }
-        }
-    }
+                        text: "Subtitle",
+                    },
+                },
+            },
+        },
+    };
 });
 
 const DATASET_WORD_CLOUD = ref([
     {
-        "name": "lorem",
-        "value": 1
+        name: "lorem",
+        value: 1,
     },
     {
-        "name": "ipsum",
-        "value": 12
+        name: "ipsum",
+        value: 12,
     },
     {
-        "name": "dolor",
-        "value": 4
+        name: "dolor",
+        value: 4,
     },
     {
-        "name": "sit",
-        "value": 11
+        name: "sit",
+        value: 11,
     },
     {
-        "name": "amet",
-        "value": 11
+        name: "amet",
+        value: 11,
     },
     {
-        "name": "consectetur",
-        "value": 3
+        name: "consectetur",
+        value: 3,
     },
     {
-        "name": "adipiscing",
-        "value": 1
+        name: "adipiscing",
+        value: 1,
     },
     {
-        "name": "elit",
-        "value": 8
+        name: "elit",
+        value: 8,
     },
     {
-        "name": "vivamus",
-        "value": 3
+        name: "vivamus",
+        value: 3,
     },
     {
-        "name": "pretium",
-        "value": 7
+        name: "pretium",
+        value: 7,
     },
     {
-        "name": "venenatis",
-        "value": 4
-    }
+        name: "venenatis",
+        value: 4,
+    },
 ]);
 
 const CONFIG_WORD_CLOUD = computed(() => {
@@ -331,28 +336,28 @@ const CONFIG_WORD_CLOUD = computed(() => {
         style: {
             chart: {
                 title: {
-                    text: 'Title',
-                    textAlign: 'left',
+                    text: "Title",
+                    textAlign: "left",
                     paddingLeft: 12,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
-                }
-            }
-        }
-    }
-})
+                        text: "Subtitle",
+                    },
+                },
+            },
+        },
+    };
+});
 
 function makeSparklineDs(n) {
     const arr = [];
     for (let i = 0; i < n; i += 1) {
         arr.push({
             period: `Period ${i}`,
-            value: Math.random() * 10
-        })
+            value: Math.random() * 10,
+        });
     }
     return arr;
-} 
+}
 
 const DATASET_SPARKLINE = ref(makeSparklineDs(24));
 
@@ -362,57 +367,57 @@ const CONFIG_SPARKLINE = computed(() => {
         style: {
             chartWidth: 400,
             title: {
-                text: 'Title',
-                fontSize: 20
+                text: "Title",
+                fontSize: 20,
             },
             dataLabel: {
-                fontSize: 48
+                fontSize: 48,
             },
             line: {
-                smooth: true
+                smooth: true,
             },
             tooltip: {
-                show: true
-            }
-        }
-    }
+                show: true,
+            },
+        },
+    };
 });
 
 const CONFIG_SPARKLINE_BAR = computed(() => {
     return {
         theme: currentTheme.value,
-        type: 'bar',
+        type: "bar",
         style: {
             chartWidth: 400,
             title: {
-                text: 'Title',
-                fontSize: 20
+                text: "Title",
+                fontSize: 20,
             },
             dataLabel: {
-                fontSize: 48
+                fontSize: 48,
             },
             tooltip: {
-                show: true
-            }
-        }
-    }
-})
+                show: true,
+            },
+        },
+    };
+});
 
 const DATASET_SPARKLINE_BAR = ref(makeSparklineDs(12));
 
 const DATASET_SPARKSTACKBAR = ref([
     {
-        name: 'A',
-        value: 128
+        name: "A",
+        value: 128,
     },
     {
-        name: 'B',
-        value: 36
+        name: "B",
+        value: 36,
     },
     {
-        name: 'C',
-        value: 16
-    }
+        name: "C",
+        value: 16,
+    },
 ]);
 
 const CONFIG_SPARKSTACKBAR = computed(() => {
@@ -423,10 +428,10 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                 show: false,
             },
             title: {
-                text: 'Title'
-            }
-        }
-    }
+                text: "Title",
+            },
+        },
+    };
 });
 </script>
 
@@ -442,25 +447,39 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
             />
         </template>
     </BackgroundPattern>
-    <BaseCrumbs :tree="crumbs" noMargin showMobile/>
+    <BaseCrumbs :tree="crumbs" noMargin showMobile />
 
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
-        <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
-            <VueUiIcon name="palette" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#de6937' : '#de6937'"/>
-            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center" style="letter-spacing: -1px;">{{ translations.builtInThemes[lang] }}</h1>
+        <div
+            class="w-full flex flex-row gap-4 place-items-center justify-center my-12"
+        >
+            <VueUiIcon
+                name="palette"
+                :size="80"
+                :strokeWidth="0.8"
+                class="hidden md:block"
+                :stroke="isDarkMode ? '#de6937' : '#de6937'"
+            />
+            <h1
+                class="font-inter-bold text-[48px] sm:text-[72px] text-center"
+                style="letter-spacing: -1px"
+            >
+                {{ translations.builtInThemes[lang] }}
+            </h1>
         </div>
 
         <div class="w-full sticky top-[100px] z-10">
             <BaseCard class="w-fit mx-auto">
                 <div class="mx-auto flex flex-row flex-wrap gap-2">
-                    <button 
-                        v-for="theme in themes" 
+                    <button
+                        v-for="theme in themes"
                         @click="selectTheme(theme)"
                         :class="{
-                            'shadow': true,
+                            shadow: true,
                             'bg-white px-4 py-1 rounded-full hover:bg-[#1A1A1A] hover:text-[#CCCCCC]': true,
                             'dark:bg-[#3A3A3A] dark:hover:bg-[#4A4A4A]': true,
-                            '!bg-[#1A1A1A] !text-[#CCCCCC] dark:!bg-[#a24923]': currentTheme === theme
+                            '!bg-[#1A1A1A] !text-[#CCCCCC] dark:!bg-[#a24923]':
+                                currentTheme === theme,
                         }"
                     >
                         {{ theme }}
@@ -470,57 +489,123 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
         </div>
 
         <div class="max-w-[300px] mx-auto mt-6">
-            <CodeParser language="javascript" :content="code" @copy="store.copy()"/>
+            <CodeParser
+                language="javascript"
+                :content="code"
+                @copy="store.copy()"
+            />
         </div>
 
         <BaseCard class="mt-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <!-- On mobile: 1 column and span 1. On sm+: span both columns and use 3 columns inside -->
-                <div class="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <div class="flex items-center h-full w-full">
-                    <VueUiSparkline :dataset="DATASET_SPARKLINE" :config="CONFIG_SPARKLINE" />
-                    </div>
-                </BaseCard>
+                <div
+                    class="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4"
+                >
+                    <BaseCard
+                        class="w-full"
+                        :backgroundColor="background[currentTheme]"
+                    >
+                        <div class="flex items-center h-full w-full">
+                            <VueUiSparkline
+                                :dataset="DATASET_SPARKLINE"
+                                :config="CONFIG_SPARKLINE"
+                            />
+                        </div>
+                    </BaseCard>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <div class="flex items-center h-full w-full">
-                    <VueUiSparkStackbar :dataset="DATASET_SPARKSTACKBAR" :config="CONFIG_SPARKSTACKBAR" />
-                    </div>
-                </BaseCard>
+                    <BaseCard
+                        class="w-full"
+                        :backgroundColor="background[currentTheme]"
+                    >
+                        <div class="flex items-center h-full w-full">
+                            <VueUiSparkStackbar
+                                :dataset="DATASET_SPARKSTACKBAR"
+                                :config="CONFIG_SPARKSTACKBAR"
+                            />
+                        </div>
+                    </BaseCard>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                    <div class="flex items-center h-full w-full">
-                    <VueUiSparkline :dataset="DATASET_SPARKLINE_BAR" :config="CONFIG_SPARKLINE_BAR" />
-                    </div>
-                </BaseCard>
+                    <BaseCard
+                        class="w-full"
+                        :backgroundColor="background[currentTheme]"
+                    >
+                        <div class="flex items-center h-full w-full">
+                            <VueUiSparkline
+                                :dataset="DATASET_SPARKLINE_BAR"
+                                :config="CONFIG_SPARKLINE_BAR"
+                            />
+                        </div>
+                    </BaseCard>
                 </div>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                <VueUiXy :dataset="DATASET_XY" :config="CONFIG_XY" :key="`donut_${step}`" />
+                <BaseCard
+                    class="w-full"
+                    :backgroundColor="background[currentTheme]"
+                >
+                    <VueUiXy
+                        :dataset="DATASET_XY"
+                        :config="CONFIG_XY"
+                        :key="`donut_${step}`"
+                    />
                 </BaseCard>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                <VueUiDonut :dataset="DATASET_DONUT" :config="CONFIG_DONUT" :key="`xy_${step}`" />
+                <BaseCard
+                    class="w-full"
+                    :backgroundColor="background[currentTheme]"
+                >
+                    <VueUiDonut
+                        :dataset="DATASET_DONUT"
+                        :config="CONFIG_DONUT"
+                        :key="`xy_${step}`"
+                    />
                 </BaseCard>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                <VueUiStackline :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackline_${step}`" />
+                <BaseCard
+                    class="w-full"
+                    :backgroundColor="background[currentTheme]"
+                >
+                    <VueUiStackline
+                        :dataset="DATASET_STACKLINE"
+                        :config="CONFIG_STACKLINE"
+                        :key="`stackline_${step}`"
+                    />
                 </BaseCard>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                <VueUiStackbar :dataset="DATASET_STACKLINE" :config="CONFIG_STACKLINE" :key="`stackbar_${step}`" />
+                <BaseCard
+                    class="w-full"
+                    :backgroundColor="background[currentTheme]"
+                >
+                    <VueUiStackbar
+                        :dataset="DATASET_STACKLINE"
+                        :config="CONFIG_STACKLINE"
+                        :key="`stackbar_${step}`"
+                    />
                 </BaseCard>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                <VueUiBump :dataset="DATASET_BUMP" :config="CONFIG_BUMP" :key="`bump_${step}`" />
+                <BaseCard
+                    class="w-full"
+                    :backgroundColor="background[currentTheme]"
+                >
+                    <VueUiBump
+                        :dataset="DATASET_BUMP"
+                        :config="CONFIG_BUMP"
+                        :key="`bump_${step}`"
+                    />
                 </BaseCard>
 
-                <BaseCard class="w-full" :backgroundColor="background[currentTheme]">
-                <VueUiWordCloud :dataset="DATASET_WORD_CLOUD" :config="CONFIG_WORD_CLOUD" :key="`wordcloud_${step}`" />
+                <BaseCard
+                    class="w-full"
+                    :backgroundColor="background[currentTheme]"
+                >
+                    <VueUiWordCloud
+                        :dataset="DATASET_WORD_CLOUD"
+                        :config="CONFIG_WORD_CLOUD"
+                        :key="`wordcloud_${step}`"
+                    />
                 </BaseCard>
             </div>
         </BaseCard>
     </div>
-    <ConfirmCopy/>
+    <ConfirmCopy />
 </template>

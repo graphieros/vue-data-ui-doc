@@ -7,57 +7,51 @@ import FRANCE from "../src/resources/FRANCE.json";
 import CHINA from "../src/resources/CHINA.json";
 import BRAZIL from "../src/resources/BRAZIL.json";
 import ITALY from "../src/resources/ITALY.json";
-import { treeShake } from "./useNestedProp";
 
-import SUMMER1 from "./assets/treemap/summer1.png"
-import SUMMER2 from "./assets/treemap/summer2.png"
-import SUMMER3 from "./assets/treemap/summer3.png"
-import SUMMER4 from "./assets/treemap/summer4.png"
+import SUMMER1 from "./assets/treemap/summer1.png";
+import SUMMER2 from "./assets/treemap/summer2.png";
+import SUMMER3 from "./assets/treemap/summer3.png";
+import SUMMER4 from "./assets/treemap/summer4.png";
 
-import SPRING1 from "./assets/treemap/spring1.png"
-import SPRING2 from "./assets/treemap/spring2.png"
-import SPRING3 from "./assets/treemap/spring3.png"
+import SPRING1 from "./assets/treemap/spring1.png";
+import SPRING2 from "./assets/treemap/spring2.png";
+import SPRING3 from "./assets/treemap/spring3.png";
 
-import FALL1 from "./assets/treemap/fall1.png"
-import FALL2 from "./assets/treemap/fall2.png"
-import FALL3 from "./assets/treemap/fall3.png"
+import FALL1 from "./assets/treemap/fall1.png";
+import FALL2 from "./assets/treemap/fall2.png";
+import FALL3 from "./assets/treemap/fall3.png";
 
-import WINTER1 from "./assets/treemap/winter1.png"
-import WINTER2 from "./assets/treemap/winter2.png"
-import WINTER3 from "./assets/treemap/winter3.png"
+import WINTER1 from "./assets/treemap/winter1.png";
+import WINTER2 from "./assets/treemap/winter2.png";
+import WINTER3 from "./assets/treemap/winter3.png";
 
 // nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
 
 const { utils } = colorBridge();
 
-const { lightenHexColor } = utils();
-
 export default function useExamples() {
-
     const store = useMainStore();
     const isDarkMode = computed(() => store.isDarkMode);
     const colors = computed(() => {
         return {
-            bg: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-            textColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            gridStroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-            greyStroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-            grey: '#6A6A6A',
-            gridStrokeLight: isDarkMode.value ? '#7A7A7A' : '#BBBBBB',
-            blue: '#1f77b4',
-            green: '#98df8a',
-            orange: '#ff7f0e',
-            yellow: '#e7ba52',
-            red: '#ff3700'
-        }
+            bg: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+            textColor: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            gridStroke: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
+            greyStroke: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+            grey: "#6A6A6A",
+            gridStrokeLight: isDarkMode.value ? "#7A7A7A" : "#BBBBBB",
+            blue: "#1f77b4",
+            green: "#98df8a",
+            orange: "#ff7f0e",
+            yellow: "#e7ba52",
+            red: "#ff3700",
+        };
     });
-
-
 
     function makeRandomSet(n, m = 100) {
         const arr = [];
-        for( let i = 0; i < n; i += 1) {
-            arr.push(Math.random() * m + Math.random()*(m / 10))
+        for (let i = 0; i < n; i += 1) {
+            arr.push(Math.random() * m + Math.random() * (m / 10));
         }
         return arr;
     }
@@ -66,35 +60,35 @@ export default function useExamples() {
         return {
             th: {
                 backgroundColor: colors.value.bg,
-                color: colors.value.textColor
+                color: colors.value.textColor,
             },
             td: {
                 backgroundColor: colors.value.bg,
-                color: colors.value.textColor
+                color: colors.value.textColor,
             },
-        }
-    })
+        };
+    });
 
     //-------------- VUE-UI-RINGS --------------//
     const DATASET_RINGS_BASIC = ref([
         {
-            name: 'Series A',
+            name: "Series A",
             values: [32],
         },
         {
-            name: 'Series B',
+            name: "Series B",
             values: [16],
         },
         {
-            name: 'Series C',
+            name: "Series C",
             values: [8],
         },
         {
-            name: 'Series D',
+            name: "Series D",
             values: [4],
         },
         {
-            name: 'Series E',
+            name: "Series E",
             values: [2],
         },
     ]);
@@ -107,589 +101,596 @@ export default function useExamples() {
                 color: colors.value.textColor,
                 layout: {
                     rings: {
-                        stroke: colors.value.bg
-                    }
+                        stroke: colors.value.bg,
+                    },
                 },
                 legend: {
                     backgroundColor: colors.value.bg,
-                    color: colors.value.textColor
+                    color: colors.value.textColor,
                 },
                 title: {
-                    text: 'Title',
+                    text: "Title",
                     color: colors.value.textColor,
-                    textAlign: 'left',
+                    textAlign: "left",
                     paddingLeft: 24,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
+                        text: "Subtitle",
+                    },
                 },
                 tooltip: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     showPercentage: false,
                     borderColor: colors.value.gridStroke,
-                    backgroundOpacity: 70
+                    backgroundOpacity: 70,
                 },
-            }
-        }
-    }))
-
+            },
+        },
+    }));
 
     //-------------- VUE-UI-BUMP --------------//
 
     const DATASET_BUMP_DEFAULT = ref([
-    {
-        name: "Series A",
-        values: [120, 135, 155, 175, 210, 245, 275, 305, 330, 350],
-    },
-    {
-        name: "Series B",
-        values: [65, 74, 86, 102, 125, 150, 175, 205, 235, 260],
-    },
-    {
-        name: "Series C",
-        values: [90, 92, 94, 96, 98, 100, 102, 104, 106, 108],
-    },
-    {
-        name: "Series D",
-        values: [6, 9, 14, 23, 38, 56, 76, 98, 120, 145],
-    },
-    {
-        name: "Series E",
-        values: [52, 54.5, 57, 60, 64, 69, 74, 80, 86, 92],
-    },
-]);
+        {
+            name: "Series A",
+            values: [120, 135, 155, 175, 210, 245, 275, 305, 330, 350],
+        },
+        {
+            name: "Series B",
+            values: [65, 74, 86, 102, 125, 150, 175, 205, 235, 260],
+        },
+        {
+            name: "Series C",
+            values: [90, 92, 94, 96, 98, 100, 102, 104, 106, 108],
+        },
+        {
+            name: "Series D",
+            values: [6, 9, 14, 23, 38, 56, 76, 98, 120, 145],
+        },
+        {
+            name: "Series E",
+            values: [52, 54.5, 57, 60, 64, 69, 74, 80, 86, 92],
+        },
+    ]);
 
-const CONFIG_BUMP_CLASSIC = computed(() => {
-    return {
-        style: {
-            chart: {
-                backgroundColor: colors.value.bg,
-                color: colors.value.textColor,
-                title: {
-                    text: 'Title',
+    const CONFIG_BUMP_CLASSIC = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
-                    textAlign: 'left',
-                    paddingLeft: 6,
-                    subtitle: {
-                        text: 'Subtitle'
-                    }
+                    title: {
+                        text: "Title",
+                        color: colors.value.textColor,
+                        textAlign: "left",
+                        paddingLeft: 6,
+                        subtitle: {
+                            text: "Subtitle",
+                        },
+                    },
+                    layout: {
+                        timeLabels: {
+                            color: colors.value.textColor,
+                        },
+                        lines: {
+                            coatingColor: colors.value.bg,
+                        },
+                        plots: {
+                            stroke: colors.value.bg,
+                            labels: {
+                                fontSize: 16,
+                            },
+                        },
+                        nameLabels: {
+                            color: colors.value.textColor,
+                            fontSize: 18,
+                        },
+                    },
                 },
-                layout: {
-                    timeLabels: {
-                        color: colors.value.textColor,
-                    },
-                    lines: {
-                        coatingColor: colors.value.bg
-                    },
-                    plots: {
-                        stroke: colors.value.bg,
-                        labels: {
-                            fontSize: 16
-                        }
-                    },
-                    nameLabels: {
-                        color: colors.value.textColor,
-                        fontSize: 18
-                    }
-                }
-            }
-        }
-    }
-})
-
+            },
+        };
+    });
 
     //-------------- VUE-UI-GEO --------------//
     const data_france = [
-  {
-    name: "Paris",
-    coordinates: [2.333333, 48.8666667],
-    population: 2175000
-  },
-  {
-    name: "Marseille",
-    coordinates: [5.4, 43.299999],
-    population: 873000
-  },
-  {
-    name: "Lyon",
-    coordinates: [4.85, 45.75],
-    population: 537000
-  },
-  {
-    name: "Toulouse",
-    coordinates: [1.43333, 43.5999998],
-    population: 502000
-  },
-  {
-    name: "Nice",
-    coordinates: [7.25, 43.700001],
-    population: 338000
-  },
-  {
-    name: "Nantes",
-    coordinates: [-1.55448, 47.21811],
-    population: 325070
-  },
-  {
-    name: "Montpellier",
-    coordinates: [3.862038, 43.62505],
-    population: 300000
-  },
-  {
-    name: "Strasbourg",
-    coordinates: [7.75, 48.583328],
-    population: 286000
-  },
-  {
-    name: "Bordeaux",
-    coordinates: [-0.580816, 44.836151],
-    population: 265328
-  },
-  {
-    name: "Lille",
-    coordinates: [3.066667, 50.633333],
-    population: 236000
-  }
-]
+        {
+            name: "Paris",
+            coordinates: [2.333333, 48.8666667],
+            population: 2175000,
+        },
+        {
+            name: "Marseille",
+            coordinates: [5.4, 43.299999],
+            population: 873000,
+        },
+        {
+            name: "Lyon",
+            coordinates: [4.85, 45.75],
+            population: 537000,
+        },
+        {
+            name: "Toulouse",
+            coordinates: [1.43333, 43.5999998],
+            population: 502000,
+        },
+        {
+            name: "Nice",
+            coordinates: [7.25, 43.700001],
+            population: 338000,
+        },
+        {
+            name: "Nantes",
+            coordinates: [-1.55448, 47.21811],
+            population: 325070,
+        },
+        {
+            name: "Montpellier",
+            coordinates: [3.862038, 43.62505],
+            population: 300000,
+        },
+        {
+            name: "Strasbourg",
+            coordinates: [7.75, 48.583328],
+            population: 286000,
+        },
+        {
+            name: "Bordeaux",
+            coordinates: [-0.580816, 44.836151],
+            population: 265328,
+        },
+        {
+            name: "Lille",
+            coordinates: [3.066667, 50.633333],
+            population: 236000,
+        },
+    ];
 
     const DATASET_GEO_FRANCE = computed(() => {
-        const max = Math.max(...data_france.map(c => c.population));
+        const max = Math.max(...data_france.map((c) => c.population));
 
         const baseRadius = 5;
-        return data_france.map(c => ({
+        return data_france.map((c) => ({
             name: c.name,
             coordinates: c.coordinates,
-            radius: c.population / max * baseRadius,
+            radius: (c.population / max) * baseRadius,
             description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
-            color: '#5f8aee90'
-        }))
-    })
+            color: "#5f8aee90",
+        }));
+    });
 
     const CONFIG_GEO_FRANCE = computed(() => ({
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         map: {
             geoJson: FRANCE,
-            fitPadding: 24
+            fitPadding: 24,
         },
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                backgroundColor: isDarkMode.value ? colors.value.bg : "#f3f4f6",
                 territory: {
-                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    fill: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
                     hover: {
-                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
-                    }
+                        fill: isDarkMode.value ? "#4A4A4A" : "#E1E5E8",
+                    },
                 },
                 points: {
                     labels: {
                         fontSizeRatio: 1,
-                    }
+                    },
                 },
                 title: {
-                    textAlign: 'left',
-                    text: 'France',
+                    textAlign: "left",
+                    text: "France",
                     subtitle: {
-                        text: '10 most populated cities'
-                    }
-                }
+                        text: "10 most populated cities",
+                    },
+                },
             },
-        }
+        },
     }));
 
     const data_china = [
         {
             name: "Shanghai",
             coordinates: [121.4737, 31.2304],
-            population: 30482100
+            population: 30482100,
         },
         {
             name: "Beijing",
             coordinates: [116.4074, 39.9042],
-            population: 22596500
+            population: 22596500,
         },
         {
             name: "Chongqing",
             coordinates: [106.5516, 29.563],
-            population: 18171200
+            population: 18171200,
         },
         {
             name: "Guangzhou",
             coordinates: [113.2644, 23.1291],
-            population: 14878700
+            population: 14878700,
         },
         {
             name: "Tianjin",
             coordinates: [117.2, 39.1333],
-            population: 14704100
+            population: 14704100,
         },
         {
             name: "Shenzhen",
             coordinates: [114.0579, 22.5431],
-            population: 13545400
+            population: 13545400,
         },
         {
             name: "Nanjing",
             coordinates: [118.7969, 32.0603],
-            population: 10174900
+            population: 10174900,
         },
         {
             name: "Chengdu",
             coordinates: [104.0665, 30.5728],
-            population: 9998870
+            population: 9998870,
         },
         {
             name: "Wuhan",
             coordinates: [114.3054, 30.5928],
-            population: 8986480
+            population: 8986480,
         },
         {
             name: "Hangzhou",
             coordinates: [120.1551, 30.2741],
-            population:  8591040
-        }
-]
+            population: 8591040,
+        },
+    ];
 
     const DATASET_GEO_CHINA = computed(() => {
-        const max = Math.max(...data_china.map(c => c.population));
+        const max = Math.max(...data_china.map((c) => c.population));
 
         const baseRadius = 10;
-        return data_china.map(c => ({
+        return data_china.map((c) => ({
             name: c.name,
             coordinates: c.coordinates,
-            radius: c.population / max * baseRadius,
+            radius: (c.population / max) * baseRadius,
             description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
-            color: '#ff370090'
-        }))
-    })
-
+            color: "#ff370090",
+        }));
+    });
 
     const CONFIG_GEO_CHINA = computed(() => ({
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         map: {
             geoJson: CHINA,
-            fitPadding: 24
+            fitPadding: 24,
         },
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                backgroundColor: isDarkMode.value ? colors.value.bg : "#f3f4f6",
                 territory: {
-                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    fill: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
                     hover: {
-                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
-                    }
+                        fill: isDarkMode.value ? "#4A4A4A" : "#E1E5E8",
+                    },
                 },
                 points: {
                     labels: {
                         fontSizeRatio: 2,
-                    }
+                    },
                 },
                 title: {
-                    textAlign: 'left',
-                    text: 'China',
+                    textAlign: "left",
+                    text: "China",
                     subtitle: {
-                        text: '10 most populated cities'
-                    }
-                }
-            }
-        }
+                        text: "10 most populated cities",
+                    },
+                },
+            },
+        },
     }));
 
     const data_brazil = [
         {
             name: "São Paulo",
             coordinates: [-46.6333, -23.5505],
-            population: 11904961
+            population: 11904961,
         },
         {
             name: "Rio de Janeiro",
             coordinates: [-43.1729, -22.9068],
-            population: 6730729
+            population: 6730729,
         },
         {
             name: "Brasília",
             coordinates: [-47.8825, -15.7942],
-            population: 5300108
+            population: 5300108,
         },
         {
             name: "Fortaleza",
             coordinates: [-38.5229, -3.7319],
-            population: 2304400
+            population: 2304400,
         },
         {
             name: "Salvador",
             coordinates: [-38.5014, -12.9777],
-            population: 2292740
+            population: 2292740,
         },
         {
             name: "Belo Horizonte",
             coordinates: [-43.9352, -19.9208],
-            population: 2316200
+            population: 2316200,
         },
         {
             name: "Manaus",
-            coordinates: [-60.0212, -3.1190],
-            population: 2302600
+            coordinates: [-60.0212, -3.119],
+            population: 2302600,
         },
         {
             name: "Curitiba",
             coordinates: [-49.2643, -25.4284],
-            population: 1825000
+            population: 1825000,
         },
         {
             name: "Recife",
             coordinates: [-34.8799, -8.0476],
-            population: 1617000
+            population: 1617000,
         },
         {
             name: "Goiânia",
             coordinates: [-49.2643, -16.6869],
-            population: 1527367
-        }
-    ]
+            population: 1527367,
+        },
+    ];
 
     const DATASET_GEO_BRAZIL = computed(() => {
-        const max = Math.max(...data_brazil.map(c => c.population));
+        const max = Math.max(...data_brazil.map((c) => c.population));
 
         const baseRadius = 10;
-        return data_brazil.map(c => ({
+        return data_brazil.map((c) => ({
             name: c.name,
             coordinates: c.coordinates,
-            radius: c.population / max * baseRadius,
+            radius: (c.population / max) * baseRadius,
             description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
-            color: '#42d39290'
-        }))
-    })
+            color: "#42d39290",
+        }));
+    });
 
     const CONFIG_GEO_BRAZIL = computed(() => ({
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         map: {
             geoJson: BRAZIL,
-            fitPadding: 24
+            fitPadding: 24,
         },
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                backgroundColor: isDarkMode.value ? colors.value.bg : "#f3f4f6",
                 territory: {
-                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    fill: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
                     hover: {
-                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
-                    }
+                        fill: isDarkMode.value ? "#4A4A4A" : "#E1E5E8",
+                    },
                 },
                 points: {
                     labels: {
                         fontSizeRatio: 2.5,
-                    }
+                    },
                 },
                 title: {
-                    textAlign: 'left',
-                    text: 'Brazil',
+                    textAlign: "left",
+                    text: "Brazil",
                     subtitle: {
-                        text: '10 most populated cities'
-                    }
-                }
-            }
-        }
+                        text: "10 most populated cities",
+                    },
+                },
+            },
+        },
     }));
 
     const data_italy = [
         {
             name: "Rome",
             coordinates: [12.4964, 41.9028],
-            population: 2746984
+            population: 2746984,
         },
         {
             name: "Milan",
             coordinates: [9.1895, 45.4642],
-            population: 1366155
+            population: 1366155,
         },
         {
             name: "Naples",
             coordinates: [14.2681, 40.8518],
-            population: 908082
+            population: 908082,
         },
         {
             name: "Turin",
             coordinates: [7.6675, 45.0703],
-            population: 856745
+            population: 856745,
         },
         {
             name: "Palermo",
             coordinates: [13.3615, 38.1157],
-            population: 625956
+            population: 625956,
         },
         {
             name: "Genoa",
             coordinates: [8.9463, 44.4056],
-            population: 563947
+            population: 563947,
         },
         {
             name: "Bologna",
             coordinates: [11.3426, 44.4949],
-            population: 390734
+            population: 390734,
         },
         {
             name: "Florence",
             coordinates: [11.2558, 43.7696],
-            population: 362353
+            population: 362353,
         },
         {
             name: "Bari",
             coordinates: [16.8719, 41.1171],
-            population: 315473
+            population: 315473,
         },
         {
             name: "Catania",
             coordinates: [15.0873, 37.5022],
-            population: 297517
-        }
+            population: 297517,
+        },
     ];
 
     const DATASET_GEO_ITALY = computed(() => {
-        const max = Math.max(...data_italy.map(c => c.population));
+        const max = Math.max(...data_italy.map((c) => c.population));
 
         const baseRadius = 3;
-        return data_italy.map(c => ({
+        return data_italy.map((c) => ({
             name: c.name,
             coordinates: c.coordinates,
-            radius: c.population / max * baseRadius,
+            radius: (c.population / max) * baseRadius,
             description: `Population: ${(c.population / 1000000).toFixed(2)} M`,
-            color: '#1f77b490'
-        }))
-    })
+            color: "#1f77b490",
+        }));
+    });
 
     const CONFIG_GEO_ITALY = computed(() => ({
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         map: {
             geoJson: ITALY,
-            fitPadding: 24
+            fitPadding: 24,
         },
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? colors.value.bg : '#f3f4f6',
+                backgroundColor: isDarkMode.value ? colors.value.bg : "#f3f4f6",
                 territory: {
-                    fill: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+                    fill: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
                     hover: {
-                        fill: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
-                    }
+                        fill: isDarkMode.value ? "#4A4A4A" : "#E1E5E8",
+                    },
                 },
                 points: {
                     labels: {
                         fontSizeRatio: 1,
-                    }
+                    },
                 },
                 title: {
-                    textAlign: 'left',
-                    text: 'Italy',
+                    textAlign: "left",
+                    text: "Italy",
                     subtitle: {
-                        text: '10 most populated cities'
-                    }
-                }
-            }
-        }
+                        text: "10 most populated cities",
+                    },
+                },
+            },
+        },
     }));
 
     //-------------- VUE-UI-DAG --------------//
     const DATASET_DAG_BASIC = ref({
         nodes: [
-            { id: "A", label: "A",},
-            { id: "B", label: "B",},
-            { id: "C", label: "C",},
+            { id: "A", label: "A" },
+            { id: "B", label: "B" },
+            { id: "C", label: "C" },
             { id: "D", label: "D" },
         ],
         edges: [
-            { from: "A", to: "B",},
+            { from: "A", to: "B" },
             { from: "B", to: "A" },
             { from: "B", to: "A" },
             { from: "C", to: "A" },
             { from: "B", to: "D" },
             { from: "C", to: "D" },
             { from: "D", to: "A" },
-        ]
-    })
+        ],
+    });
 
     const DATASET_DAG_SPECIAL = ref({
         nodes: [
-            { id: "A", label: "A",},
-            { id: "B", label: "B",},
-            { id: "C", label: "C", backgroundColor: '#FF0000', color: '#FFFFFF'},
+            { id: "A", label: "A" },
+            { id: "B", label: "B" },
+            {
+                id: "C",
+                label: "C",
+                backgroundColor: "#FF0000",
+                color: "#FFFFFF",
+            },
             { id: "D", label: "D" },
         ],
         edges: [
-            { from: "A", to: "B",},
+            { from: "A", to: "B" },
             { from: "B", to: "A" },
             { from: "B", to: "A" },
-            { from: "C", to: "A", color: '#FF0000'},
+            { from: "C", to: "A", color: "#FF0000" },
             { from: "B", to: "D" },
-            { from: "C", to: "D", color: '#FF0000' },
+            { from: "C", to: "D", color: "#FF0000" },
             { from: "D", to: "A" },
-        ]
+        ],
     });
 
-        const DATASET_DAG_ANIMATED = ref({
+    const DATASET_DAG_ANIMATED = ref({
         nodes: [
-            { id: "A", label: "A", backgroundColor: '#5f8aee'},
-            { id: "B", label: "B", backgroundColor: '#5f8aee'},
-            { id: "C", label: "C", backgroundColor: '#FF0000', color: '#FFFFFF'},
+            { id: "A", label: "A", backgroundColor: "#5f8aee" },
+            { id: "B", label: "B", backgroundColor: "#5f8aee" },
+            {
+                id: "C",
+                label: "C",
+                backgroundColor: "#FF0000",
+                color: "#FFFFFF",
+            },
             { id: "D", label: "D" },
         ],
         edges: [
-            { from: "A", to: "B", color: '#5f8aee', animated: true },
-            { from: "B", to: "A", color: '#5f8aee', animated: true },
+            { from: "A", to: "B", color: "#5f8aee", animated: true },
+            { from: "B", to: "A", color: "#5f8aee", animated: true },
             { from: "B", to: "A" },
-            { from: "C", to: "A", color: '#FF0000', animated: true },
+            { from: "C", to: "A", color: "#FF0000", animated: true },
             { from: "B", to: "D" },
-            { from: "C", to: "D", color: '#FF0000', animated: true },
+            { from: "C", to: "D", color: "#FF0000", animated: true },
             { from: "D", to: "A" },
-        ]
+        ],
     });
 
     const DATASET_DAG_CUSTOM = ref({
         nodes: [
-            { id: "A", label: "Computer", icon: 'computer', color: '#ff3700'},
-            { id: "B", label: "Home", icon: 'home', color: '#1d915d'},
-            { id: "C", label: "Person", icon: 'person', color: '#ff8c00'},
-            { id: "D", label: "Network", icon: 'network', color: '#5f8aee'},
+            { id: "A", label: "Computer", icon: "computer", color: "#ff3700" },
+            { id: "B", label: "Home", icon: "home", color: "#1d915d" },
+            { id: "C", label: "Person", icon: "person", color: "#ff8c00" },
+            { id: "D", label: "Network", icon: "network", color: "#5f8aee" },
         ],
         edges: [
-            { from: "A", to: "B",},
+            { from: "A", to: "B" },
             { from: "B", to: "A" },
             { from: "B", to: "A" },
             { from: "C", to: "A" },
             { from: "B", to: "D" },
             { from: "C", to: "D" },
-            { from: "D", to: "A" }
-        ]
-    })
+            { from: "D", to: "A" },
+        ],
+    });
 
     const CONFIG_DAG_BASIC = computed(() => ({
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         style: {
             chart: {
                 nodes: {
-                    tooltip: { showOnClick: true }
+                    tooltip: { showOnClick: true },
                 },
                 midpoints: {
-                    show: true
+                    show: true,
                 },
                 zoom: {
-                    active: false
+                    active: false,
                 },
                 title: {
-                    text: 'Title',
+                    text: "Title",
                     color: colors.value.textColor,
-                    textAlign: 'left',
+                    textAlign: "left",
                     paddingLeft: 24,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
+                        text: "Subtitle",
+                    },
                 },
-            }
-        }
-    }))
+            },
+        },
+    }));
 
     const CONFIG_DAG_CUSTOM = computed(() => ({
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         style: {
             chart: {
                 layout: {
@@ -698,35 +699,32 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     rankSeparation: 32.6,
                 },
                 nodes: {
-                    tooltip: { showOnClick: true }
+                    tooltip: { showOnClick: true },
                 },
                 midpoints: {
                     show: true,
-                    radius: 2.5
+                    radius: 2.5,
                 },
                 edges: {
-                    strokeWidth: 0.6
+                    strokeWidth: 0.6,
                 },
                 zoom: {
-                    active: false
+                    active: false,
                 },
                 title: {
-                    text: 'Title',
+                    text: "Title",
                     color: colors.value.textColor,
-                    textAlign: 'left',
+                    textAlign: "left",
                     paddingLeft: 24,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
+                        text: "Subtitle",
+                    },
                 },
-            }
-        }
-    }))
-
+            },
+        },
+    }));
 
     //-------------- VUE-UI-RIDGELINE --------------//
-
-    let raf_ridgline = ref(null);
     let to_ridgeline = ref(null);
 
     const YOINK = ref([
@@ -889,21 +887,20 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         function anim() {
             const seed = Math.random();
 
-            YOINK.value.forEach(ds => {
-                ds.datapoints[0].values.shift()
-                ds.datapoints[0].values.push(20 + Math.random() * seed * 50)
-            })
+            YOINK.value.forEach((ds) => {
+                ds.datapoints[0].values.shift();
+                ds.datapoints[0].values.push(20 + Math.random() * seed * 50);
+            });
 
             to_ridgeline.value = setTimeout(() => {
                 raf.value = requestAnimationFrame(anim);
-            }, 250)
+            }, 250);
         }
 
         anim();
 
         return YOINK.value;
-
-    })
+    });
 
     const DATASET_RIDGELINE = ref([
         {
@@ -1065,125 +1062,259 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         {
             name: "Moscow (cold: 1985, hot: 2020)",
             datapoints: [
-                { name: "hottest", values: [-5, -3, 3, 11, 17, 20, 22, 21, 15, 9, 3, -2], color: '#ff3700'},
-                { name: "coldest", values: [-9, -8, -3, 5, 13, 16, 18, 17, 11, 4, -2, -7], color: '#5f8aee'},
+                {
+                    name: "hottest",
+                    values: [-5, -3, 3, 11, 17, 20, 22, 21, 15, 9, 3, -2],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [-9, -8, -3, 5, 13, 16, 18, 17, 11, 4, -2, -7],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Chicago (cold: 1979, hot: 2012)",
             datapoints: [
-                { name: "hottest", values: [0, 3, 7, 14, 19, 25, 27, 27, 22, 16, 8, 2], color: '#ff3700' },
-                { name: "coldest", values: [-7, -5, 0, 8, 14, 19, 21, 20, 15, 8, 2, -4], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [0, 3, 7, 14, 19, 25, 27, 27, 22, 16, 8, 2],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [-7, -5, 0, 8, 14, 19, 21, 20, 15, 8, 2, -4],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Toronto (cold: 1993, hot: 2016)",
             datapoints: [
-                { name: "hottest", values: [0, 2, 7, 13, 19, 24, 26, 25, 20, 13, 7, 1], color: '#ff3700' },
-                { name: "coldest", values: [-7, -5, -1, 7, 13, 18, 19, 18, 14, 7, 1, -4], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [0, 2, 7, 13, 19, 24, 26, 25, 20, 13, 7, 1],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [-7, -5, -1, 7, 13, 18, 19, 18, 14, 7, 1, -4],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Berlin (cold: 1962, hot: 2919)",
             datapoints: [
-                { name: "hottest", values: [3, 5, 9, 15, 19, 23, 25, 25, 21, 15, 8, 5], color: '#ff3700' },
-                { name: "coldest", values: [-2, 0, 4, 10, 14, 16, 17, 16, 13, 7, 3, 0], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [3, 5, 9, 15, 19, 23, 25, 25, 21, 15, 8, 5],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [-2, 0, 4, 10, 14, 16, 17, 16, 13, 7, 3, 0],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Beijing (cold: 1984, hot: 2021)",
             datapoints: [
-                { name: "hottest", values: [0, 4, 10, 18, 23, 28, 30, 29, 25, 16, 8, 2], color: '#ff3700' },
-                { name: "coldest", values: [-7, -4, 2, 11, 17, 21, 23, 22, 17, 9, 2, -4], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [0, 4, 10, 18, 23, 28, 30, 29, 25, 16, 8, 2],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [-7, -4, 2, 11, 17, 21, 23, 22, 17, 9, 2, -4],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "London (cold: 1963, hot: 2014)",
             datapoints: [
-                { name: "hottest", values: [8, 9, 12, 15, 19, 22, 24, 24, 21, 17, 13, 9], color: '#ff3700' },
-                { name: "coldest", values: [2, 3, 5, 8, 12, 15, 16, 16, 13, 8, 5, 3], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [8, 9, 12, 15, 19, 22, 24, 24, 21, 17, 13, 9],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [2, 3, 5, 8, 12, 15, 16, 16, 13, 8, 5, 3],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Paris (cold: 1956, hot: 2019)",
             datapoints: [
-                { name: "hottest", values: [8, 9, 13, 17, 21, 25, 27, 27, 24, 19, 14, 9], color: '#ff3700' },
-                { name: "coldest", values: [2, 3, 5, 9, 13, 16, 17, 17, 14, 9, 5, 2], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [8, 9, 13, 17, 21, 25, 27, 27, 24, 19, 14, 9],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [2, 3, 5, 9, 13, 16, 17, 17, 14, 9, 5, 2],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "San Francisco (cold: 1972, hot: 2015)",
             datapoints: [
-                { name: "hottest", values: [13, 14, 15, 15, 16, 17, 18, 19, 19, 18, 16, 14], color: '#ff3700' },
-                { name: "coldest", values: [10, 11, 12, 12, 13, 14, 14, 15, 16, 15, 13, 11], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [13, 14, 15, 15, 16, 17, 18, 19, 19, 18, 16, 14],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [10, 11, 12, 12, 13, 14, 14, 15, 16, 15, 13, 11],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "New York (cold: 1978, hot: 2010)",
             datapoints: [
-                { name: "hottest", values: [4, 6, 12, 17, 23, 28, 30, 30, 25, 18, 13, 7], color: '#ff3700' },
-                { name: "coldest", values: [-4, -2, 3, 9, 14, 20, 23, 22, 17, 10, 3, -2], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [4, 6, 12, 17, 23, 28, 30, 30, 25, 18, 13, 7],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [-4, -2, 3, 9, 14, 20, 23, 22, 17, 10, 3, -2],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Milan (cold: 1981, hot: 2017)",
             datapoints: [
-                { name: "hottest", values: [6, 8, 12, 18, 22, 26, 28, 28, 25, 19, 12, 7], color: '#ff3700' },
-                { name: "coldest", values: [1, 3, 7, 12, 16, 20, 21, 21, 17, 11, 5, 2], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [6, 8, 12, 18, 22, 26, 28, 28, 25, 19, 12, 7],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [1, 3, 7, 12, 16, 20, 21, 21, 17, 11, 5, 2],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Madrid (cold: 1985, hot: 2022)",
             datapoints: [
-                { name: "hottest", values: [10, 12, 16, 19, 24, 30, 34, 33, 28, 22, 16, 12], color: '#ff3700' },
-                { name: "coldest", values: [3, 5, 8, 10, 14, 19, 22, 22, 18, 13, 7, 4], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [10, 12, 16, 19, 24, 30, 34, 33, 28, 22, 16, 12],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [3, 5, 8, 10, 14, 19, 22, 22, 18, 13, 7, 4],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Rome (cold: 1971, hot: 2020)",
             datapoints: [
-                { name: "hottest", values: [11, 12, 15, 19, 23, 27, 30, 30, 27, 22, 17, 13], color: '#ff3700' },
-                { name: "coldest", values: [5, 6, 8, 11, 15, 18, 20, 20, 17, 13, 9, 6], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [11, 12, 15, 19, 23, 27, 30, 30, 27, 22, 17, 13],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [5, 6, 8, 11, 15, 18, 20, 20, 17, 13, 9, 6],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Seoul (cold: 1980, hot: 2021)",
             datapoints: [
-                { name: "hottest", values: [2, 4, 10, 16, 22, 27, 31, 32, 27, 20, 13, 7], color: '#ff3700' },
-                { name: "coldest", values: [-5, -2, 2, 8, 13, 17, 20, 21, 16, 9, 3, -1], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [2, 4, 10, 16, 22, 27, 31, 32, 27, 20, 13, 7],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [-5, -2, 2, 8, 13, 17, 20, 21, 16, 9, 3, -1],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Tokyo (cold: 1966, hot: 2018)",
             datapoints: [
-                { name: "hottest", values: [8, 9, 13, 19, 23, 27, 31, 32, 29, 24, 18, 13], color: '#ff3700' },
-                { name: "coldest", values: [2, 3, 6, 12, 16, 19, 23, 23, 20, 14, 9, 4], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [8, 9, 13, 19, 23, 27, 31, 32, 29, 24, 18, 13],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [2, 3, 6, 12, 16, 19, 23, 23, 20, 14, 9, 4],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Los Angeles (cold: 1975, hot: 2016)",
             datapoints: [
-                { name: "hottest", values: [16, 17, 17, 19, 20, 22, 25, 26, 25, 22, 19, 16], color: '#ff3700' },
-                { name: "coldest", values: [12, 13, 13, 14, 15, 16, 18, 18, 18, 16, 14, 12] , color: '#5f8aee'},
+                {
+                    name: "hottest",
+                    values: [16, 17, 17, 19, 20, 22, 25, 26, 25, 22, 19, 16],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [12, 13, 13, 14, 15, 16, 18, 18, 18, 16, 14, 12],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Istanbul (cold: 1983, hot: 2020)",
             datapoints: [
-                { name: "hottest", values: [9, 10, 13, 17, 22, 27, 29, 29, 26, 20, 15, 11], color: '#ff3700' },
-                { name: "coldest", values: [3, 4, 6, 9, 13, 17, 19, 19, 16, 11, 7, 4] , color: '#5f8aee'},
+                {
+                    name: "hottest",
+                    values: [9, 10, 13, 17, 22, 27, 29, 29, 26, 20, 15, 11],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [3, 4, 6, 9, 13, 17, 19, 19, 16, 11, 7, 4],
+                    color: "#5f8aee",
+                },
             ],
         },
         {
             name: "Mexico City (cold: 1974, hot: 2019)",
             datapoints: [
-                { name: "hottest", values: [15, 16, 17, 18, 18, 18, 18, 18, 18, 17, 16, 15], color: '#ff3700' },
-                { name: "coldest", values: [10, 11, 12, 13, 13, 13, 13, 13, 13, 12, 11, 10], color: '#5f8aee' },
+                {
+                    name: "hottest",
+                    values: [15, 16, 17, 18, 18, 18, 18, 18, 18, 17, 16, 15],
+                    color: "#ff3700",
+                },
+                {
+                    name: "coldest",
+                    values: [10, 11, 12, 13, 13, 13, 13, 13, 13, 12, 11, 10],
+                    color: "#5f8aee",
+                },
             ],
         },
     ]);
-
-
 
     //-------------- VUE-UI-WORLD --------------//
     const DATASET_WORLD = ref({
@@ -1344,7 +1475,6 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         SVK: { value: 8.5 },
         SVN: { value: 9.0 },
         SLB: { value: 26.5 },
-        SOM: { value: 27.5 },
         ZAF: { value: 17.5 },
         SSD: { value: 27.5 },
         ESP: { value: 15.5 },
@@ -1387,550 +1517,567 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
     //-------------- VUE-UI-XY --------------//
 
     const LINESET = ref([
-        -89, -55, -34, -21, -13, -8, -5, -3, -2, -1, 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+        -89, -55, -34, -21, -13, -8, -5, -3, -2, -1, 0, 1, 2, 3, 5, 8, 13, 21,
+        34, 55, 89,
     ]);
 
     const BARSET = ref([
-        21, 13, 29, 51, 12, 19, 16, 32, 64, 16, 21, 19, 45, 32, 12, -17, 34, 12, 2, 19, 40
+        21, 13, 29, 51, 12, 19, 16, 32, 64, 16, 21, 19, 45, 32, 12, -17, 34, 12,
+        2, 19, 40,
     ]);
 
     const LINESET_FIXED_0 = ref([
-        20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20,
-    ])
+        20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20,
+        20, -20, 20, -20,
+    ]);
     const LINESET_FIXED_1 = ref([
-        -60, 58, -56, 54, -52, 50, -48, 46, -44, 42, -40, 38, -36, 34, -32, 30, -28, 26, -24, 22
-    ])
+        -60, 58, -56, 54, -52, 50, -48, 46, -44, 42, -40, 38, -36, 34, -32, 30,
+        -28, 26, -24, 22,
+    ]);
     const BINARYSET = ref([
-        1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1
-    ])
+        1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1,
+    ]);
     const BINARYSET2 = ref([
-        0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0
-    ])
+        0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0,
+    ]);
     const KRACHSET = ref([
-        65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 106, 119, 140, 12, 9, 7, 5, 12, 18, 29
-    ])
+        65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 106, 119, 140, 12, 9, 7, 5,
+        12, 18, 29,
+    ]);
     const LIVESET = ref([
-        65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 95, 80, 82, 12, 9, 7, 5, 12, 18, 29
-    ])
+        65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 95, 80, 82, 12, 9, 7, 5,
+        12, 18, 29,
+    ]);
 
     const CHANGESET = ref([
-        12, 10, 9, 11, 7, 4, 10, 11, 8, 9, 7, 19, 27, 25, 32, 29, 37, 48, 52, 51, 60
+        12, 10, 9, 11, 7, 4, 10, 11, 8, 9, 7, 19, 27, 25, 32, 29, 37, 48, 52,
+        51, 60,
     ]);
 
     const BG_SET = ref([
-        12, 25, 16, 24, 28, 44, 32, 19, 65, 67, 55, 34, 32, 67, 89
-    ])
+        12, 25, 16, 24, 28, 44, 32, 19, 65, 67, 55, 34, 32, 67, 89,
+    ]);
 
     const LINESET_MONTHS = ref([
-        120, 130, 80, 90, 78, 100, 110, 120, 115, 100, 80, 105
-    ])
+        120, 130, 80, 90, 78, 100, 110, 120, 115, 100, 80, 105,
+    ]);
 
     const DATASET_XY_ESTIMATES = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             series: LINESET_MONTHS.value,
-            dashIndices: [4, 5, 11]
-        }
-    ])
+            dashIndices: [4, 5, 11],
+        },
+    ]);
 
     const DATASET_XY_ESTIMATES_SMOOTH = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             smooth: true,
             series: LINESET_MONTHS.value,
-            dashIndices: [4, 5, 11]
-        }
-    ])
+            dashIndices: [4, 5, 11],
+        },
+    ]);
 
     const DATASET_XY_BASIC_LINE = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             series: LINESET,
-        }
+        },
     ]);
 
     const DATASET_XY_SINUSOID2 = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
-        }
+        },
     ]);
 
     const DATASET_XY_SINUSOID2_AREA = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
-            useArea: true
-        }
+            useArea: true,
+        },
     ]);
-
 
     const DATASET_XY_SINUSOID2_SMOOTH = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
-            smooth: true
-        }
+            smooth: true,
+        },
     ]);
 
     const DATASET_XY_SINUSOID2_SMOOTH_AREA = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
             smooth: true,
-            useArea: true
-        }
+            useArea: true,
+        },
     ]);
 
     const DATASET_XY_INTERLINE = ref([
         {
-            name: 'Performance',
-            type: 'line',
-            series: [0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0],
+            name: "Performance",
+            type: "line",
+            series: [
+                0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0,
+            ],
         },
         {
-            name: 'Target',
-            type: 'line',
+            name: "Target",
+            type: "line",
             series: [10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10],
         },
-    ])
+    ]);
     const DATASET_XY_INTERLINE_SMOOTH = ref([
         {
-            name: 'Performance',
-            type: 'line',
-            series: [0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0],
-            smooth: true
+            name: "Performance",
+            type: "line",
+            series: [
+                0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0,
+            ],
+            smooth: true,
         },
         {
-            name: 'Target',
-            type: 'line',
+            name: "Target",
+            type: "line",
             series: [10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10],
-            smooth: true
+            smooth: true,
         },
-    ])
+    ]);
 
     const DATASET_XY_WITH_NULL = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             smooth: true,
-            series: [null, 64, 29, 55, 44, null, null, 77, 65, 45, 89]
+            series: [null, 64, 29, 55, 44, null, null, 77, 65, 45, 89],
         },
         {
-            name: 'Serie 2',
-            type: 'line',
-            series: [53, 24, 19, 35, null, null, null, 47, 25, 35, null]
+            name: "Serie 2",
+            type: "line",
+            series: [53, 24, 19, 35, null, null, null, 47, 25, 35, null],
         },
-    ])
+    ]);
 
     const DATASET_XY_BACKGROUND = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: false,
             series: BG_SET,
-            color: 'white',
-            useArea: true
-        }
-    ])
+            color: "white",
+            useArea: true,
+        },
+    ]);
 
     const raf = ref(null);
     const to = ref(null);
 
     const DATASET_XY_LIVE_DATA = computed(() => {
-
         const ds = LIVESET.value;
         const ds2 = JSON.parse(JSON.stringify(CHANGESET.value));
 
         function anim() {
-            ds.shift()
-            ds2.shift()
-            ds.push(Math.random() * 100)
-            ds2.push(Math.random() * 60)
+            ds.shift();
+            ds2.shift();
+            ds.push(Math.random() * 100);
+            ds2.push(Math.random() * 60);
             to.value = setTimeout(() => {
-                raf.value = requestAnimationFrame(anim)
-            }, 250)
+                raf.value = requestAnimationFrame(anim);
+            }, 250);
         }
 
-        anim()
+        anim();
 
         return [
             {
-                name: 'Channel 1',
-                type: 'line',
+                name: "Channel 1",
+                type: "line",
                 smooth: true,
                 series: ds,
                 scaleMin: 0,
                 scaleMax: 100,
                 scaleSteps: 3,
-                dataLabels: false
+                dataLabels: false,
             },
             {
-                name: 'Channel 2',
-                type: 'bar',
+                name: "Channel 2",
+                type: "bar",
                 series: ds2,
                 color: colors.value.orange,
                 scaleMin: 0,
                 scaleMax: 60,
                 scaleSteps: 5,
-                dataLabels: false
-            }
-        ]
-    })
+                dataLabels: false,
+            },
+        ];
+    });
 
     const DATASET_XY_DUAL = ref([
         {
-            name: 'Serie 1',
-            type: 'bar',
+            name: "Serie 1",
+            type: "bar",
             dataLabels: true,
-            series: [3200, 2450, 3442, 3229, 4274, 1292, 1912, 2915, 3925, 4100, 3300, 4250],
-            prefix: '$',
+            series: [
+                3200, 2450, 3442, 3229, 4274, 1292, 1912, 2915, 3925, 4100,
+                3300, 4250,
+            ],
+            prefix: "$",
             scaleMin: 0,
             scaleMax: 5000,
         },
         {
-            name: 'Serie 2',
-            type: 'line',
+            name: "Serie 2",
+            type: "line",
             dataLabels: true,
             series: [65, 75, 82, 67, 55, 89, 86, 80, 75, 72, 78, 92],
-            suffix: '%',
+            suffix: "%",
             scaleMin: 0,
             scaleMax: 100,
         },
-    ])
+    ]);
 
     const DATASET_XY_CHANGE = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
-            series: CHANGESET
-        }
-    ])
+            series: CHANGESET,
+        },
+    ]);
 
     const DATASET_XY_COMMENTS = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
             series: KRACHSET,
-            comments: ['','','','','','','','','','','','', '', 'WOW!', 'OMG!',]
-        }
+            comments: [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "WOW!",
+                "OMG!",
+            ],
+        },
     ]);
 
-    const TRENDSET = ref([12, 25, 31, 19, 17, 34, 55, 12, 29, 29, 29, 20])
+    const TRENDSET = ref([12, 25, 31, 19, 17, 34, 55, 12, 29, 29, 29, 20]);
 
     function makeTrendComments(ds) {
-        return ds.map((d,i) => {
+        return ds.map((d, i) => {
             if (i > 0) {
                 return {
-                    trend: d === ds[i - 1] ? 'eq' : d > ds[i - 1] ? 'up' : 'down',
-                    evolution: ((d / ds[i - 1]) - 1) * 100
-                }
+                    trend:
+                        d === ds[i - 1] ? "eq" : d > ds[i - 1] ? "up" : "down",
+                    evolution: (d / ds[i - 1] - 1) * 100,
+                };
             }
             return {
-                trend: '',
-                evolution: null
-            }
-        })
+                trend: "",
+                evolution: null,
+            };
+        });
     }
 
     const DATASET_XY_COMMENTS_TRENDS = ref([
         {
-            name: 'Series 1',
-            type: 'line',
+            name: "Series 1",
+            type: "line",
             dataLabels: true,
             series: TRENDSET.value,
             comments: makeTrendComments(TRENDSET.value),
-            color: '#8A8A8A',
+            color: "#8A8A8A",
             smooth: true,
-        }
-    ])
+        },
+    ]);
 
     const DATASET_XY_LINE_FIXED = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: false,
             smooth: true,
-            series: LINESET_FIXED_0
+            series: LINESET_FIXED_0,
         },
         {
-            name: 'Serie 2',
-            type: 'line',
+            name: "Serie 2",
+            type: "line",
             dataLabels: false,
             smooth: true,
-            series: LINESET_FIXED_1
-        }
-    ]);
-
-    const DATASET_XY_BASIC_LINE_SMOOTH = ref([
-        {
-            name: 'Serie 1',
-            type: 'line',
-            dataLabels: true,
-            smooth: true,
-            series: LINESET
-        }
+            series: LINESET_FIXED_1,
+        },
     ]);
 
     const DATASET_XY_BASIC_BAR = ref([
         {
-            name: 'Serie 1',
-            type: 'bar',
+            name: "Serie 1",
+            type: "bar",
             dataLabels: true,
-            series: LINESET
-        }
+            series: LINESET,
+        },
     ]);
 
     const DATASET_XY_BASIC_COMBINED = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: true,
-            series: LINESET
+            series: LINESET,
         },
         {
-            name: 'Serie 2',
-            type: 'bar',
+            name: "Serie 2",
+            type: "bar",
             dataLabels: true,
-            series: BARSET
-        }
+            series: BARSET,
+        },
     ]);
 
     const DATASET_XY_BASIC_COMBINED_STACK = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             dataLabels: false,
             series: LINESET,
-            scaleSteps: 5
+            scaleSteps: 5,
         },
         {
-            name: 'Serie 2',
-            type: 'bar',
+            name: "Serie 2",
+            type: "bar",
             dataLabels: false,
             series: BARSET,
-            scaleSteps: 4
+            scaleSteps: 4,
         },
         {
-            name: 'Serie 3',
-            type: 'line',
+            name: "Serie 3",
+            type: "line",
             dataLabels: false,
             series: BINARYSET,
             stackRatio: 0.1,
-            scaleSteps: 2
+            scaleSteps: 2,
         },
         {
-            name: 'Serie 2',
-            type: 'line',
+            name: "Serie 2",
+            type: "line",
             dataLabels: false,
             series: BINARYSET2,
             stackRatio: 0.1,
-            scaleSteps: 2
-        }
+            scaleSteps: 2,
+        },
     ]);
 
     const DATASET_XY_BASIC_MULTIBAR = ref([
         {
-            name: 'Serie 1',
-            type: 'bar',
+            name: "Serie 1",
+            type: "bar",
             dataLabels: true,
-            series: makeRandomSet(8, 100)
+            series: makeRandomSet(8, 100),
         },
         {
-            name: 'Serie 2',
-            type: 'bar',
+            name: "Serie 2",
+            type: "bar",
             dataLabels: true,
-            series: makeRandomSet(8, 100)
+            series: makeRandomSet(8, 100),
         },
         {
-            name: 'Serie 3',
-            type: 'bar',
+            name: "Serie 3",
+            type: "bar",
             dataLabels: true,
-            series: makeRandomSet(8, 100)
+            series: makeRandomSet(8, 100),
         },
     ]);
 
     const DATASET_XY_SINUSOID = ref([
         {
-            name: 'Serie 1',
-            type: 'line',
+            name: "Serie 1",
+            type: "line",
             smooth: true,
             dataLabels: false,
-            series: [0, -80, 0, 80, 0, -80, 0, 80, 0, -80, 0]
-        }
-    ])
+            series: [0, -80, 0, 80, 0, -80, 0, 80, 0, -80, 0],
+        },
+    ]);
 
-    function makeDs(n,m,label="") {
+    function makeDs(n, m, label = "") {
         let arr = [];
-        for(let i = 0; i < n; i += 1){
-            if(label){
-                arr.push(`${label} ${i}`)
+        for (let i = 0; i < n; i += 1) {
+            if (label) {
+                arr.push(`${label} ${i}`);
             } else {
-                arr.push(Math.random()*m)
+                arr.push(Math.random() * m);
             }
         }
-        return arr
+        return arr;
     }
 
-    function generateDayTimestamps(n) {
-        const result = [];
-        const start = new Date();
-        start.setHours(0, 0, 0, 0);
+    // function generateDayTimestamps(n) {
+    //     const result = [];
+    //     const start = new Date();
+    //     start.setHours(0, 0, 0, 0);
 
-        for (let i = 0; i < n; i += 1) {
-            result.push(new Date(start.getTime() + i * 24 * 60 * 60 * 1000).getTime());
-        }
+    //     for (let i = 0; i < n; i += 1) {
+    //         result.push(new Date(start.getTime() + i * 24 * 60 * 60 * 1000).getTime());
+    //     }
 
-        return result;
-    }
-
+    //     return result;
+    // }
 
     const DATASET_XY_LTTB = ref([
         {
-            name: 'Serie',
-            type: 'line',
+            name: "Serie",
+            type: "line",
             smooth: false,
             series: makeDs(10000, 100),
-            useTag: 'end',
-            dataLabels: false
-        }
-    ])
+            useTag: "end",
+            dataLabels: false,
+        },
+    ]);
 
     const DATASET_XY_GROUPS = ref([
         {
-            name: 'Pizza satisfaction',
-            type: 'bar',
+            name: "Pizza satisfaction",
+            type: "bar",
             smooth: true,
             series: makeDs(21, 100),
             dataLabels: false,
-            scaleLabel: 'Satisfaction',
+            scaleLabel: "Satisfaction",
             scaleMin: 0,
             scaleMax: 100,
-            suffix: '%',
-            color: '#8A8A8A'
+            suffix: "%",
+            color: "#8A8A8A",
         },
         {
-            name: 'Donut satisfaction',
-            type: 'bar',
+            name: "Donut satisfaction",
+            type: "bar",
             smooth: true,
             series: makeDs(21, 100),
             dataLabels: false,
-            scaleLabel: 'Satisfaction',
+            scaleLabel: "Satisfaction",
             scaleMin: 0,
             scaleMax: 100,
-            suffix: '%',
-            color: '#5A5A5A'
+            suffix: "%",
+            color: "#5A5A5A",
         },
         {
-            name: 'Donut sales',
-            type: 'line',
+            name: "Donut sales",
+            type: "line",
             smooth: true,
             series: makeDs(21, 1000),
             dataLabels: false,
-            scaleLabel: 'Revenue',
+            scaleLabel: "Revenue",
             scaleMin: 0,
             scaleMax: 2000,
         },
         {
-            name: 'Pizza sales',
-            type: 'line',
+            name: "Pizza sales",
+            type: "line",
             smooth: true,
             series: makeDs(21, 2000),
             dataLabels: false,
-            scaleLabel: 'Revenue',
+            scaleLabel: "Revenue",
             scaleMin: 0,
             scaleMax: 2000,
         },
-    ])
+    ]);
 
     const DATASET_XY_SHAPES = ref([
         {
-            name: 'Stars',
-            type: 'line',
-            smooth: 'true',
+            name: "Stars",
+            type: "line",
+            smooth: "true",
             dataLabels: false,
-            shape: 'star',
-            series: [100, 110, 100, 90, 100, 110, 100, 90, 100]
+            shape: "star",
+            series: [100, 110, 100, 90, 100, 110, 100, 90, 100],
         },
         {
-            name: 'Triangles',
-            type: 'line',
-            smooth: 'true',
+            name: "Triangles",
+            type: "line",
+            smooth: "true",
             dataLabels: false,
-            shape: 'triangle',
-            series: [80, 90, 80, 70, 80, 90, 80, 70, 80]
+            shape: "triangle",
+            series: [80, 90, 80, 70, 80, 90, 80, 70, 80],
         },
         {
-            name: 'Squares',
-            type: 'line',
-            smooth: 'true',
+            name: "Squares",
+            type: "line",
+            smooth: "true",
             dataLabels: false,
-            shape: 'square',
-            series: [60, 70, 60, 50, 60, 70, 60, 50, 60]
+            shape: "square",
+            series: [60, 70, 60, 50, 60, 70, 60, 50, 60],
         },
         {
-            name: 'Pentagons',
-            type: 'line',
-            smooth: 'true',
+            name: "Pentagons",
+            type: "line",
+            smooth: "true",
             dataLabels: false,
-            shape: 'pentagon',
-            series: [40, 50, 40, 30, 40, 50, 40, 30, 40]
+            shape: "pentagon",
+            series: [40, 50, 40, 30, 40, 50, 40, 30, 40],
         },
         {
-            name: 'Hexagons',
-            type: 'line',
-            smooth: 'true',
+            name: "Hexagons",
+            type: "line",
+            smooth: "true",
             dataLabels: false,
-            shape: 'hexagon',
-            series: [20, 30, 20, 10, 20, 30, 20, 10, 20]
+            shape: "hexagon",
+            series: [20, 30, 20, 10, 20, 30, 20, 10, 20],
         },
-    ])
+    ]);
 
     const DATASET_XY_CUMULATIVE_AVERAGE = computed(() => {
-
         const makeS = () => {
             let arr = [];
-            for (let i = 0; i < 500; i  += 1) {
-                arr.push(Math.random() * 10 + Math.random() * (i / 250))
+            for (let i = 0; i < 500; i += 1) {
+                arr.push(Math.random() * 10 + Math.random() * (i / 250));
             }
-            return arr
-        }
+            return arr;
+        };
 
-        const series = makeS()
-        const avg = getCumulativeAverage({ values: series })
+        const series = makeS();
+        const avg = getCumulativeAverage({ values: series });
 
         return [
             {
-                name: 'Hourly revenue',
-                type: 'bar',
+                name: "Hourly revenue",
+                type: "bar",
                 dataLabels: false,
                 series,
             },
             {
-                name: 'Cumulmative average',
-                type: 'line',
+                name: "Cumulmative average",
+                type: "line",
                 dataLabels: false,
                 series: avg,
-                color: isDarkMode.value ? undefined : '#d62728',
-            }
-        ]
-    })
+                color: isDarkMode.value ? undefined : "#d62728",
+            },
+        ];
+    });
 
     const BASE_XY_CONFIG = computed(() => {
         return {
@@ -1939,13 +2086,13 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                 backgroundColor: colors.value.bg,
                 color: colors.value.textColor,
                 title: {
-                    text: 'Title',
+                    text: "Title",
                     color: colors.value.textColor,
-                    textAlign: 'left',
+                    textAlign: "left",
                     paddingLeft: 24,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
+                        text: "Subtitle",
+                    },
                 },
                 padding: {
                     top: 18,
@@ -1953,43 +2100,43 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                 },
                 legend: {
                     color: colors.value.textColor,
-                    position: 'top'
+                    position: "top",
                 },
                 tooltip: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     showPercentage: false,
                     borderColor: colors.value.gridStroke,
-                    backgroundOpacity: 70
+                    backgroundOpacity: 70,
                 },
                 highlighter: {
-                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                    opacity: 5
+                    color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
+                    opacity: 5,
                 },
                 highlightArea: {
                     show: true,
                     from: 0,
                     to: 20,
-                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                    color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                     opacity: 3,
                     caption: {
-                        text: ''
-                    }
+                        text: "",
+                    },
                 },
                 grid: {
                     stroke: colors.value.gridStroke,
                     frame: {
                         show: true,
-                        stroke: colors.value.gridStroke
+                        stroke: colors.value.gridStroke,
                     },
                     labels: {
                         fontSize: 16,
                         color: colors.value.textColor,
                         axis: {
-                            yLabel: 'yAxis',
+                            yLabel: "yAxis",
                             fontSize: 20,
-                            xLabel: 'xAxis',
-                            xLabelOffsetY: 48
+                            xLabel: "xAxis",
+                            xLabelOffsetY: 48,
                         },
                         xAxis: {
                             showBaseline: true,
@@ -1997,33 +2144,19 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                         xAxisLabels: {
                             color: colors.value.textColor,
                             values: [
-                                1735689600000,
-                                1738368000000,
-                                1740787200000,
-                                1743465600000,
-                                1746057600000,
-                                1748736000000,
-                                1751328000000,
-                                1754006400000,
-                                1756684800000,
-                                1759276800000,
-                                1761955200000,
-                                1764547200000,
-                                1767225600000,
-                                1769904000000,
-                                1772323200000,
-                                1775001600000,
-                                1777593600000,
-                                1780272000000,
-                                1782864000000,
-                                1785542400000,
-                                1788220800000
+                                1735689600000, 1738368000000, 1740787200000,
+                                1743465600000, 1746057600000, 1748736000000,
+                                1751328000000, 1754006400000, 1756684800000,
+                                1759276800000, 1761955200000, 1764547200000,
+                                1767225600000, 1769904000000, 1772323200000,
+                                1775001600000, 1777593600000, 1780272000000,
+                                1782864000000, 1785542400000, 1788220800000,
                             ],
                             datetimeFormatter: {
-                                enable: true
-                            }
-                        }
-                    }
+                                enable: true,
+                            },
+                        },
+                    },
                 },
                 labels: {
                     fontSize: 20,
@@ -2032,12 +2165,12 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     maxWidth: 500,
                     minimap: {
                         show: true,
-                        lineColor: '#1F77B4',
+                        lineColor: "#1F77B4",
                         indicatorColor: colors.value.textColor,
-                        selectedColor: isDarkMode.value ? '#6A6A6A' : '#CCCCCC',
+                        selectedColor: isDarkMode.value ? "#6A6A6A" : "#CCCCCC",
                         frameColor: colors.value.gridStroke,
-                    }
-                }
+                    },
+                },
             },
             line: {
                 radius: 5,
@@ -2045,18 +2178,18 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                 labels: {
                     show: true,
                     color: colors.value.textColor,
-                    offsetY: -12
-                }
+                    offsetY: -12,
+                },
             },
             bar: {
                 labels: {
                     show: true,
                     color: colors.value.textColor,
-                    offsetY: -6
-                }
-            }
-        }
-    })
+                    offsetY: -6,
+                },
+            },
+        };
+    });
 
     //-------------- VUE-UI-DONUT------------- //
 
@@ -2076,19 +2209,18 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
-                        showPercentage: false,
                         borderColor: colors.value.gridStroke,
                         backgroundOpacity: 70,
                         showPercentage: true,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     layout: {
                         curvedMarkers: curvedMarkers.value,
@@ -2103,143 +2235,143 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                                 color: colors.value.textColor,
                             },
                             name: {
-                                color: colors.value.textColor
+                                color: colors.value.textColor,
                             },
                             hollow: {
                                 average: {
-                                    color: '#6A6A6A',
+                                    color: "#6A6A6A",
                                     value: {
                                         color: colors.value.textColor,
-                                    }
+                                    },
                                 },
                                 total: {
-                                    color: '#6A6A6A',
+                                    color: "#6A6A6A",
                                     offsetY: -6,
                                     value: {
                                         color: colors.value.textColor,
-                                        offsetY: -6
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    })
+                                        offsetY: -6,
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        };
+    });
 
     const DATASET_DONUT_BASIC = computed(() => {
         return [
             {
-                name: 'Series 1',
-                values: [100]
+                name: "Series 1",
+                values: [100],
             },
             {
-                name: 'Series 2',
-                values: [50]
+                name: "Series 2",
+                values: [50],
             },
             {
-                name: 'Series 3',
-                values: [25]
+                name: "Series 3",
+                values: [25],
             },
             {
-                name: 'Series 4',
-                values: [12.5]
+                name: "Series 4",
+                values: [12.5],
             },
             {
-                name: 'Series 5',
-                values: [10]
+                name: "Series 5",
+                values: [10],
             },
             {
-                name: 'Series 5',
-                values: [6]
+                name: "Series 5",
+                values: [6],
             },
             {
-                name: 'Series 7',
-                values: [3]
+                name: "Series 7",
+                values: [3],
             },
-        ]
+        ];
     });
 
     const DATASET_DONUT_COMMENT = computed(() => {
         return [
             {
-                name: 'Series 1',
+                name: "Series 1",
                 values: [100],
-                comment: 'This is a comment for Series 1'
+                comment: "This is a comment for Series 1",
             },
             {
-                name: 'Series 2',
+                name: "Series 2",
                 values: [50],
-                comment: 'This is a comment for Series 2'
+                comment: "This is a comment for Series 2",
             },
             {
-                name: 'Series 3',
+                name: "Series 3",
                 values: [25],
-                comment: 'This is a comment for Series 3'
+                comment: "This is a comment for Series 3",
             },
             {
-                name: 'Series 4',
-                values: [12.5]
+                name: "Series 4",
+                values: [12.5],
             },
             {
-                name: 'Series 6',
-                values: [10]
+                name: "Series 6",
+                values: [10],
             },
             {
-                name: 'Series 5',
-                values: [6]
+                name: "Series 5",
+                values: [6],
             },
             {
-                name: 'Series 7',
-                values: [3]
+                name: "Series 7",
+                values: [3],
             },
-        ]
+        ];
     });
 
     const DATASET_DONUT_POLAR = computed(() => {
         return [
             {
-                name: 'Series 1',
-                values: [100]
+                name: "Series 1",
+                values: [100],
             },
             {
-                name: 'Series 2',
-                values: [90]
+                name: "Series 2",
+                values: [90],
             },
             {
-                name: 'Series 3',
-                values: [80]
+                name: "Series 3",
+                values: [80],
             },
             {
-                name: 'Series 4',
-                values: [70]
+                name: "Series 4",
+                values: [70],
             },
             {
-                name: 'Series 5',
-                values: [60]
+                name: "Series 5",
+                values: [60],
             },
             {
-                name: 'Series 6',
-                values: [50]
+                name: "Series 6",
+                values: [50],
             },
             {
-                name: 'Series 7',
-                values: [40]
+                name: "Series 7",
+                values: [40],
             },
             {
-                name: 'Series 8',
-                values: [30]
+                name: "Series 8",
+                values: [30],
             },
             {
-                name: 'Series 9',
-                values: [20]
+                name: "Series 9",
+                values: [20],
             },
             {
-                name: 'Series 10',
-                values: [10]
+                name: "Series 10",
+                values: [10],
             },
-        ]
+        ];
     });
 
     //-------------- VUE-UI-SPARKLINE ------------- //
@@ -2253,44 +2385,44 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                 },
                 dataLabel: {
                     fontSize: 64,
-                    color: colors.value.textColor
+                    color: colors.value.textColor,
                 },
                 line: {
-                    color: '#1F77B4',
+                    color: "#1F77B4",
                 },
                 title: {
-                    color: '#6A6A6A',
-                    text: 'Title'
+                    color: "#6A6A6A",
+                    text: "Title",
                 },
-            }
-        }
+            },
+        };
     });
 
     const DATASET_SPARKLINE = ref([
-        { period: 'T1', value: 55 },
-        { period: 'T0', value: 89 },
-        { period: 'T3', value: 21 },
-        { period: 'T2', value: 34 },
-        { period: 'T4', value: 13 },
-        { period: 'T6', value: 5 },
-        { period: 'T5', value: 8 },
-        { period: 'T9', value: 11 },
-        { period: 'T7', value: 31 },
-        { period: 'T8', value: 12 },
-        { period: 'T11', value: 11 },
-        { period: 'T10', value: 7 },
-        { period: 'T17', value: 21 },
-        { period: 'T12', value: 6 },
-        { period: 'T13', value: 9 },
-        { period: 'T18', value: 34 },
-        { period: 'T20', value: 89 },
-        { period: 'T14', value: 5 },
-        { period: 'T16', value: 13 },
-        { period: 'T15', value: 8 },
-        { period: 'T19', value: 55 },
+        { period: "T1", value: 55 },
+        { period: "T0", value: 89 },
+        { period: "T3", value: 21 },
+        { period: "T2", value: 34 },
+        { period: "T4", value: 13 },
+        { period: "T6", value: 5 },
+        { period: "T5", value: 8 },
+        { period: "T9", value: 11 },
+        { period: "T7", value: 31 },
+        { period: "T8", value: 12 },
+        { period: "T11", value: 11 },
+        { period: "T10", value: 7 },
+        { period: "T17", value: 21 },
+        { period: "T12", value: 6 },
+        { period: "T13", value: 9 },
+        { period: "T18", value: 34 },
+        { period: "T20", value: 89 },
+        { period: "T14", value: 5 },
+        { period: "T16", value: 13 },
+        { period: "T15", value: 8 },
+        { period: "T19", value: 55 },
     ]);
 
-        //-------------- VUE-UI-STACKLINE --------------//
+    //-------------- VUE-UI-STACKLINE --------------//
     const CONFIG_STACKLINE_BASE = computed(() => {
         return {
             table: TABLE.value,
@@ -2303,88 +2435,99 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                         minimap: {
                             show: true,
                             indicatorColor: colors.value.textColor,
-                        }
+                        },
                     },
                     grid: {
                         x: {
                             axisColor: colors.value.gridStroke,
                             axisName: {
-                                text: 'xAxis',
-                                color: colors.value.textColor
+                                text: "xAxis",
+                                color: colors.value.textColor,
                             },
                             timeLabels: {
                                 color: colors.value.textColor,
-                                values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9']
-                            }
+                                values: [
+                                    "T0",
+                                    "T1",
+                                    "T2",
+                                    "T3",
+                                    "T4",
+                                    "T5",
+                                    "T6",
+                                    "T7",
+                                    "T8",
+                                    "T9",
+                                ],
+                            },
                         },
                         y: {
                             axisColor: colors.value.gridStroke,
                             axisName: {
-                                text: 'yAxis',
-                                color: colors.value.textColor
+                                text: "yAxis",
+                                color: colors.value.textColor,
                             },
                             axisLabels: {
-                                color: colors.value.textColor
-                            }
-                        }
+                                color: colors.value.textColor,
+                            },
+                        },
                     },
                     highlighter: {
-                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                        opacity: 5
+                        color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
+                        opacity: 5,
                     },
                     legend: {
-                        position: 'top',
+                        position: "top",
                         backgroundColor: colors.value.bg,
-                        color: colors.value.textColor
+                        color: colors.value.textColor,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddintLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
                     lines: {
                         totalValues: {
-                            color: colors.value.textColor
+                            color: colors.value.textColor,
                         },
                         dataLabels: {
-                            color: colors.value.textColor
-                        }
+                            color: colors.value.textColor,
+                        },
                     },
-                }
-            }
-        }
+                },
+            },
+        };
     });
 
     const DATASET_STACKLINE_BASIC = ref([
         {
             name: "Serie 1",
             series: [19, 20.07, 30, 40, 50, 60, 12, 20, 25, 19],
-            shape: 'square'
+            shape: "square",
         },
         {
             name: "Serie 2",
             series: [13, 8, 9, 13, 25, 27, 17, 12, 25, 13],
-            shape: 'pentagon'
+            shape: "pentagon",
         },
         {
             name: "Serie 3",
             series: [13, 10, 9, 13, 25, 19, 6, 18, 20, 32],
-            shape: 'triangle'
+            shape: "triangle",
         },
         {
             name: "Serie 4",
             series: [25, 23, 9, 13, 25, 31, 19, 13, 12, 14],
-            shape: 'star'
+            shape: "star",
         },
     ]);
 
@@ -2392,28 +2535,28 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         {
             name: "Serie A",
             series: [13, 8, 9, 13, 25, 27],
-            color: '#98df8a',
-            shape: 'star'
+            color: "#98df8a",
+            shape: "star",
         },
         {
             name: "Serie B",
             series: [13, 10, 9, 13, 25, 19],
-            color: '#2ca02c',
-            shape: 'star'
+            color: "#2ca02c",
+            shape: "star",
         },
         {
             name: "Serie C",
             series: [-19, -20.07, -30, -40, -50, -60],
-            shape: 'triangle',
-            color: '#ff7f0e'
+            shape: "triangle",
+            color: "#ff7f0e",
         },
         {
             name: "Serie D",
             series: [-25, -23, -9, -13, -25, -31],
-            shape: 'triangle',
-            color: '#d62728'
+            shape: "triangle",
+            color: "#d62728",
         },
-    ])
+    ]);
 
     //-------------- VUE-UI-STACKBAR --------------//
     const CONFIG_STACKBAR_BASE = computed(() => {
@@ -2426,65 +2569,75 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     zoom: {
                         maxWidth: 500,
                         minimap: {
-                            show: true
-                        }
+                            show: true,
+                        },
                     },
                     grid: {
                         x: {
                             axisColor: colors.value.gridStroke,
                             axisName: {
-                                text: 'xAxis',
-                                color: colors.value.textColor
+                                text: "xAxis",
+                                color: colors.value.textColor,
                             },
                             timeLabels: {
                                 color: colors.value.textColor,
-                                values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9']
-                            }
+                                values: [
+                                    "T0",
+                                    "T1",
+                                    "T2",
+                                    "T3",
+                                    "T4",
+                                    "T5",
+                                    "T6",
+                                    "T7",
+                                    "T8",
+                                    "T9",
+                                ],
+                            },
                         },
                         y: {
                             axisColor: colors.value.gridStroke,
                             axisName: {
-                                text: 'yAxis',
-                                color: colors.value.textColor
+                                text: "yAxis",
+                                color: colors.value.textColor,
                             },
                             axisLabels: {
-                                color: colors.value.textColor
-                            }
-                        }
+                                color: colors.value.textColor,
+                            },
+                        },
                     },
                     highlighter: {
-                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                        opacity: 5
+                        color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
+                        opacity: 5,
                     },
                     legend: {
                         backgroundColor: colors.value.bg,
-                        color: colors.value.textColor
+                        color: colors.value.textColor,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddintLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
                     bars: {
                         totalValues: {
-                            color: colors.value.textColor
-                        }
+                            color: colors.value.textColor,
+                        },
                     },
-                }
-            }
-        }
+                },
+            },
+        };
     });
-
 
     const DATASET_STACKBAR_BASIC = ref([
         {
@@ -2503,7 +2656,7 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
             name: "Serie 4",
             series: [25, 23, 9, 13, 25, 31, 19, 13, 12, 14],
         },
-    ])
+    ]);
     const DATASET_STACKBAR_MIXED = ref([
         {
             name: "Serie 1",
@@ -2521,7 +2674,7 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
             name: "Serie 4",
             series: [-25, -23, -9, -13, -25, -31],
         },
-    ])
+    ]);
 
     //-------------- VUE-UI-NESTED-DONUTS --------------//
     const CONFIG_NESTED_DONUTS_BASE = computed(() => {
@@ -2534,139 +2687,139 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     layout: {
                         labels: {
                             dataLabels: {
-                                color: colors.value.textColor
-                            }
-                        }
+                                color: colors.value.textColor,
+                            },
+                        },
                     },
                     legend: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddintLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
-                }
-            }
-        }
-    })
+                },
+            },
+        };
+    });
 
     const DATASET_NESTED_DONUTS_BASIC = ref([
         {
             name: "Group 1",
             series: [
                 {
-                    name: 'Serie 1',
-                    values: [50]
+                    name: "Serie 1",
+                    values: [50],
                 },
                 {
-                    name: 'Serie 2',
-                    values: [30]
+                    name: "Serie 2",
+                    values: [30],
                 },
                 {
-                    name: 'Serie 3',
-                    values: [20]
+                    name: "Serie 3",
+                    values: [20],
                 },
-            ]
+            ],
         },
         {
             name: "Group 2",
             series: [
                 {
-                    name: 'Serie 1',
-                    values: [40]
+                    name: "Serie 1",
+                    values: [40],
                 },
                 {
-                    name: 'Serie 2',
-                    values: [40]
+                    name: "Serie 2",
+                    values: [40],
                 },
                 {
-                    name: 'Serie 3',
-                    values: [30]
+                    name: "Serie 3",
+                    values: [30],
                 },
-            ]
+            ],
         },
-    ])
+    ]);
 
     const DATASET_NESTED_DONUTS_QUAD = ref([
         {
             name: "Group 1",
             series: [
                 {
-                    name: 'Serie 1',
-                    values: [50]
+                    name: "Serie 1",
+                    values: [50],
                 },
                 {
-                    name: 'Serie 2',
-                    values: [30]
+                    name: "Serie 2",
+                    values: [30],
                 },
                 {
-                    name: 'Serie 3',
-                    values: [20]
+                    name: "Serie 3",
+                    values: [20],
                 },
-            ]
+            ],
         },
         {
             name: "Group 2",
             series: [
                 {
-                    name: 'Serie 1',
-                    values: [40]
+                    name: "Serie 1",
+                    values: [40],
                 },
                 {
-                    name: 'Serie 2',
-                    values: [40]
+                    name: "Serie 2",
+                    values: [40],
                 },
                 {
-                    name: 'Serie 3',
-                    values: [30]
+                    name: "Serie 3",
+                    values: [30],
                 },
-            ]
+            ],
         },
         {
             name: "Group 3",
             series: [
                 {
-                    name: 'Serie 1',
-                    values: [12]
+                    name: "Serie 1",
+                    values: [12],
                 },
                 {
-                    name: 'Serie 2',
-                    values: [27]
+                    name: "Serie 2",
+                    values: [27],
                 },
                 {
-                    name: 'Serie 3',
-                    values: [100]
+                    name: "Serie 3",
+                    values: [100],
                 },
-            ]
+            ],
         },
         {
             name: "Group 4",
             series: [
                 {
-                    name: 'Serie 1',
-                    values: [55]
+                    name: "Serie 1",
+                    values: [55],
                 },
                 {
-                    name: 'Serie 2',
-                    values: [55]
+                    name: "Serie 2",
+                    values: [55],
                 },
                 {
-                    name: 'Serie 3',
-                    values: [55]
+                    name: "Serie 3",
+                    values: [55],
                 },
-            ]
+            ],
         },
     ]);
 
@@ -2675,73 +2828,73 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
             name: "Group 2",
             series: [
                 {
-                    name: 'Breadkdown 1.1',
+                    name: "Breadkdown 1.1",
                     values: [30],
-                    color: '#1f77b4'
+                    color: "#1f77b4",
                 },
                 {
-                    name: 'Breadkdown 1.2',
+                    name: "Breadkdown 1.2",
                     values: [15],
-                    color: '#1f77b4'
+                    color: "#1f77b4",
                 },
                 {
-                    name: 'Breadkdown 1.3',
+                    name: "Breadkdown 1.3",
                     values: [5],
-                    color: '#1f77b4'
+                    color: "#1f77b4",
                 },
                 {
-                    name: 'Breadkdown 2.1',
+                    name: "Breadkdown 2.1",
                     values: [12],
-                    color: '#aec7e8'
+                    color: "#aec7e8",
                 },
                 {
-                    name: 'Breadkdown 2.2',
+                    name: "Breadkdown 2.2",
                     values: [10],
-                    color: '#aec7e8'
+                    color: "#aec7e8",
                 },
                 {
-                    name: 'Breadkdown 2.3',
+                    name: "Breadkdown 2.3",
                     values: [8],
-                    color: '#aec7e8'
+                    color: "#aec7e8",
                 },
                 {
-                    name: 'Breadkdown 3.1',
+                    name: "Breadkdown 3.1",
                     values: [8],
-                    color: '#ff7f0e'
+                    color: "#ff7f0e",
                 },
                 {
-                    name: 'Breadkdown 3.2',
+                    name: "Breadkdown 3.2",
                     values: [7],
-                    color: '#ff7f0e'
+                    color: "#ff7f0e",
                 },
                 {
-                    name: 'Breadkdown 3.3',
+                    name: "Breadkdown 3.3",
                     values: [5],
-                    color: '#ff7f0e'
+                    color: "#ff7f0e",
                 },
-            ]
+            ],
         },
         {
             name: "Group 1",
             series: [
                 {
-                    name: 'Serie 1',
+                    name: "Serie 1",
                     values: [50],
-                    color: '#1f77b4'
+                    color: "#1f77b4",
                 },
                 {
-                    name: 'Serie 2',
+                    name: "Serie 2",
                     values: [30],
-                    color: '#aec7e8'
+                    color: "#aec7e8",
                 },
                 {
-                    name: 'Serie 3',
+                    name: "Serie 3",
                     values: [20],
-                    color: '#ff7f0e'
+                    color: "#ff7f0e",
                 },
-            ]
+            ],
         },
-    ])
+    ]);
 
     //-------------- VUE-UI-NESTED-DONUTS --------------//
     const CONFIG_WAFFLE_BASE = computed(() => {
@@ -2759,20 +2912,20 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddintLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
-                }
-            }
-        }
+                },
+            },
+        };
     });
 
     //-------------- VUE-UI-VERTICAL-BAR --------------//
@@ -2786,89 +2939,89 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     layout: {
                         bars: {
                             dataLabels: {
-                                color: colors.value.textColor
+                                color: colors.value.textColor,
                             },
                             nameLabels: {
-                                color: colors.value.textColor
+                                color: colors.value.textColor,
                             },
                             parentLabels: {
-                                color: colors.value.textColor
-                            }
+                                color: colors.value.textColor,
+                            },
                         },
                         highlighter: {
-                            color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                            opacity: 5
+                            color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
+                            opacity: 5,
                         },
                         separators: {
                             show: true,
                             color: colors.value.gridStroke,
-                            strokeWidth: 1
-                        }
+                            strokeWidth: 1,
+                        },
                     },
                     legend: {
                         backgroundColor: colors.value.bg,
-                        color: colors.value.textColor
+                        color: colors.value.textColor,
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddintLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
-                }
-            }
-        }
-    })
+                },
+            },
+        };
+    });
 
     const DATASET_HORIZONTAL_BAR_LONG = ref([
         {
-            name: 'This name is really long\nand spans on two lines',
-            value: 100
+            name: "This name is really long\nand spans on two lines",
+            value: 100,
         },
         {
-            name: 'Series B',
-            value: 80
+            name: "Series B",
+            value: 80,
         },
         {
-            name: 'Series C',
-            value: 60
+            name: "Series C",
+            value: 60,
         },
         {
-            name: 'Series D',
-            value: 40
+            name: "Series D",
+            value: 40,
         },
         {
-            name: 'Series E',
-            value: 20
+            name: "Series E",
+            value: 20,
         },
         {
-            name: 'Series F',
-            value: 10
+            name: "Series F",
+            value: 10,
         },
-    ])
+    ]);
 
     const DATASET_VERTICAL_BAR_BASE = ref([
         {
             name: "Parent 1",
             children: [
-            {
-                name: "Parent 1 Child 1",
-                value: 80
-            },
-            {
-                name: "Parent 1 Child 2",
-                value: 20
-            },
-            ]
+                {
+                    name: "Parent 1 Child 1",
+                    value: 80,
+                },
+                {
+                    name: "Parent 1 Child 2",
+                    value: 20,
+                },
+            ],
         },
         {
             name: "Parent 2",
@@ -2885,52 +3038,52 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         {
             name: "Parent 5",
             children: [
-            {
-                name: "Parent 5 Child 1",
-                value: 60,
-            },
-            {
-                name: "Parent 5 Child 2",
-                value: 20,
-            },
-            {
-                name: "Parent 5 Child 3",
-                value: 40,
-            },
-            ]
-        }
-    ])
+                {
+                    name: "Parent 5 Child 1",
+                    value: 60,
+                },
+                {
+                    name: "Parent 5 Child 2",
+                    value: 20,
+                },
+                {
+                    name: "Parent 5 Child 3",
+                    value: 40,
+                },
+            ],
+        },
+    ]);
 
     const DATASET_VERTICAL_BAR_MIXED = ref([
         {
             name: "Parent 1",
             children: [
-            {
-                name: "Parent 1 Child 1",
-                value: 80
-            },
-            {
-                name: "Parent 1 Child 2",
-                value: 20
-            },
-            ]
+                {
+                    name: "Parent 1 Child 1",
+                    value: 80,
+                },
+                {
+                    name: "Parent 1 Child 2",
+                    value: 20,
+                },
+            ],
         },
         {
             name: "Parent 2",
             children: [
                 {
-                    name: 'Parent 2 Child 1',
-                    value: -92
+                    name: "Parent 2 Child 1",
+                    value: -92,
                 },
                 {
-                    name: 'Parent 2 Child 2',
-                    value: -65
+                    name: "Parent 2 Child 2",
+                    value: -65,
                 },
                 {
-                    name: 'Parent 2 Child 3',
-                    value: -36
+                    name: "Parent 2 Child 3",
+                    value: -36,
                 },
-            ]
+            ],
         },
         {
             name: "Parent 3",
@@ -2947,9 +3100,9 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     name: "Parent 4 Child 2",
                     value: 20,
                 },
-            ]
-        }
-    ])
+            ],
+        },
+    ]);
 
     //-------------- VUE-UI-HEATMAP --------------//
     const CONFIG_HEATMAP_BASIC = computed(() => {
@@ -2965,89 +3118,88 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                                 show: true,
                             },
                             color: {
-                                show: true
-                            }
+                                show: true,
+                            },
                         },
                         columnTotal: {
                             value: {
                                 show: true,
                                 rotation: 0,
                                 offsetX: 0,
-                                offsetY: 0
+                                offsetY: 0,
                             },
                             color: {
-                                show: true
+                                show: true,
                             },
                         },
                         colors: {
-                            hot: isDarkMode.value ? '#5f8aee' : '#1d7318',
-                            cold: isDarkMode.value ? '#3A3A3A' : '#FFFFFF'
+                            hot: isDarkMode.value ? "#5f8aee" : "#1d7318",
+                            cold: isDarkMode.value ? "#3A3A3A" : "#FFFFFF",
                         },
                         selected: {
                             color: colors.value.textColor,
-                            border: 1.5
-                        }
+                            border: 1.5,
+                        },
                     },
                     dataLabels: {
                         xAxis: {
                             values: makeHeatmapLabels(24),
-                            color: colors.value.textColor
+                            color: colors.value.textColor,
                         },
                         yAxis: {
-                            color: colors.value.textColor
-
-                        }
-                    }
+                            color: colors.value.textColor,
+                        },
+                    },
                 },
                 legend: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
-                    fontSize: 8
+                    fontSize: 8,
                 },
                 tooltip: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     borderColor: colors.value.gridStroke,
-                    backgroundOpacity: 70
+                    backgroundOpacity: 70,
                 },
                 title: {
-                    text: 'Title',
+                    text: "Title",
                     color: colors.value.textColor,
-                    textAlign: 'left',
+                    textAlign: "left",
                     paddintLeft: 24,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
+                        text: "Subtitle",
+                    },
                 },
-            }
-        }
-    })
+            },
+        };
+    });
 
     function makeHeatmapDs(n, m) {
         const arr = [];
-        for(let i = 0; i < n; i += 1) {
-            arr.push(Math.round(Math.random() * m))
+        for (let i = 0; i < n; i += 1) {
+            arr.push(Math.round(Math.random() * m));
         }
         return arr;
     }
 
     function makeHeatmapLabels(n) {
-        const arr = []
-        for(let i = 0; i < n; i += 1) {
-            arr.push(`W${i}`)
+        const arr = [];
+        for (let i = 0; i < n; i += 1) {
+            arr.push(`W${i}`);
         }
-        return arr
+        return arr;
     }
 
     const DATASET_HEATMAP_BASE = ref([
-        { name: 'SUN', values: makeHeatmapDs(24, 10)},
-        { name: 'MON', values: makeHeatmapDs(24, 110)},
-        { name: 'TUE', values: makeHeatmapDs(24, 100)},
-        { name: 'WED', values: makeHeatmapDs(24, 110)},
-        { name: 'THU', values: makeHeatmapDs(24, 110)},
-        { name: 'FRI', values: makeHeatmapDs(24, 90)},
-        { name: 'SAT', values: makeHeatmapDs(24, 30)},
-    ])
+        { name: "SUN", values: makeHeatmapDs(24, 10) },
+        { name: "MON", values: makeHeatmapDs(24, 110) },
+        { name: "TUE", values: makeHeatmapDs(24, 100) },
+        { name: "WED", values: makeHeatmapDs(24, 110) },
+        { name: "THU", values: makeHeatmapDs(24, 110) },
+        { name: "FRI", values: makeHeatmapDs(24, 90) },
+        { name: "SAT", values: makeHeatmapDs(24, 30) },
+    ]);
 
     //-------------- VUE-UI-GAUGE --------------//
     const CONFIG_GAUGE_BASE = computed(() => {
@@ -3058,73 +3210,71 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     color: colors.value.textColor,
                     layout: {
                         markers: {
-                            color: colors.value.textColor
+                            color: colors.value.textColor,
                         },
                         pointer: {
                             stroke: colors.value.bg,
                             circle: {
-                                color: isDarkMode.value ? '#6A6A6A' : '#FFFFFF'
-                            }
-                        }
+                                color: isDarkMode.value ? "#6A6A6A" : "#FFFFFF",
+                            },
+                        },
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddintLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
-                }
-            }
-        }
+                },
+            },
+        };
     });
 
     const DATASET_GAUGE_BASIC = ref({
         value: 7,
         series: [
-            { from: 0, to: 4, color: '#c96747', name: 'Critical' },
-            { from: 4, to: 6, color: '#c7c34c', name: 'Nominal' },
-            { from: 6, to: 10, color: '#54b840', name: 'Excellent' }
-        ]
-    })
+            { from: 0, to: 4, color: "#c96747", name: "Critical" },
+            { from: 4, to: 6, color: "#c7c34c", name: "Nominal" },
+            { from: 6, to: 10, color: "#54b840", name: "Excellent" },
+        ],
+    });
 
     const DATASET_GAUGE_MIXED = ref({
         value: -20,
         series: [
-            { from: -100, to: 0, color: '#c96747', name: 'Critical' },
-            { from: 0, to: 100, color: '#54b840', name: 'Nominal' }
-        ]
-    })
+            { from: -100, to: 0, color: "#c96747", name: "Critical" },
+            { from: 0, to: 100, color: "#54b840", name: "Nominal" },
+        ],
+    });
 
     const DATASET_GAUGE_SINGLE = ref({
         value: 66,
-        series: [
-            { from: 0, to: 100, name: 'CURRENT SATISFACTION'}
-        ]
-    })
+        series: [{ from: 0, to: 100, name: "CURRENT SATISFACTION" }],
+    });
 
     const DATASET_GAUGE_SINGLE_TEXT = ref({
         value: 66,
         series: [
-            { from: 0, to: 50, color: '#c96747', name: 'CRITICAL' },
-            { from: 50, to: 100, color: '#54b840', name: ' NOMINAL' },
-        ]
-    })
+            { from: 0, to: 50, color: "#c96747", name: "CRITICAL" },
+            { from: 50, to: 100, color: "#54b840", name: " NOMINAL" },
+        ],
+    });
 
     const DATASET_GAUGE_EMOJIS = ref({
         value: 3.5,
         series: [
-            { from: 0, to: 1, color: '#c95247', name: '😧' },
-            { from: 1, to: 2, color: '#c97047', name: '🙁' },
-            { from: 2, to: 3, color: '#c5c947', name: '😐' },
-            { from: 3, to: 4, color: '#86c947', name: '🙂' },
-            { from: 4, to: 5, color: '#54b840', name: '😀' },
-        ]
-    })
+            { from: 0, to: 1, color: "#c95247", name: "😧" },
+            { from: 1, to: 2, color: "#c97047", name: "🙁" },
+            { from: 2, to: 3, color: "#c5c947", name: "😐" },
+            { from: 3, to: 4, color: "#86c947", name: "🙂" },
+            { from: 4, to: 5, color: "#54b840", name: "😀" },
+        ],
+    });
 
-     //-------------- VUE-UI-ONION --------------//
+    //-------------- VUE-UI-ONION --------------//
     const CONFIG_ONION_BASIC = computed(() => {
         return {
             table: TABLE.value,
@@ -3138,31 +3288,31 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                     },
                     layout: {
                         gutter: {
-                            color: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
+                            color: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
                         },
                         labels: {
                             color: colors.value.textColor,
-                        }
+                        },
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddintLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
-                }
-            }
-        }
-    })
+                },
+            },
+        };
+    });
 
     const DATASET_ONION_BASE = ref([
         {
@@ -3178,14 +3328,14 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
         {
             name: "Serie 3",
             percentage: 55,
-            value: 500
+            value: 500,
         },
         {
             name: "Serie 4",
             percentage: 79,
-            value: 1280
-        }
-    ])
+            value: 1280,
+        },
+    ]);
 
     //-------------- VUE-UI-WORD-CLOUD --------------//
     const CONFIG_WORD_WLOUD_BASIC = computed(() => {
@@ -3203,454 +3353,452 @@ const CONFIG_BUMP_CLASSIC = computed(() => {
                         backgroundOpacity: 70,
                     },
                     controls: {
-                        position: 'bottom',
+                        position: "bottom",
                         show: true,
                         backgroundColor: colors.value.bg,
                         buttonColor: colors.value.bg,
                         color: colors.value.textColor,
                         fontSize: 14,
                         border: `1px solid ${colors.value.gridStroke}`,
-                        padding: '0.5rem',
-                        borderRadius: '0.25rem'
+                        padding: "0.5rem",
+                        borderRadius: "0.25rem",
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     zoom: {
-                        show: false
-                    }
-                }
-            }
-        }
-    })
+                        show: false,
+                    },
+                },
+            },
+        };
+    });
 
     function makeColors({ colorStart, iterations, force }) {
         let color = colorStart;
         const arr = [colorStart];
         for (let i = 0; i < iterations; i += 1) {
-          color = shiftHue(color, force);
-          arr.push(color)
+            color = shiftHue(color, force);
+            arr.push(color);
         }
         return arr;
-      }
+    }
 
-const DATASET_WORDCLOUD_CHINESE = computed(() => {
-    return [
-        { name: '编程', value: 255 },
-        { name: '代码', value: 55 },
-        { name: '算法', value: 18 },
-        { name: '调试', value: 15 },
-        { name: '变量', value: 22 },
-        { name: '函数', value: 13 },
-        { name: '对象', value: 26 },
-        { name: '类', value: 16 },
-        { name: '继承', value: 10 },
-        { name: '多态', value: 11 },
-        { name: '接口', value: 23 },
-        { name: '数组', value: 25 },
-        { name: '链表', value: 12 },
-        { name: '栈', value: 14 },
-        { name: '队列', value: 20 },
-        { name: '哈希', value: 19 },
-        { name: '递归', value: 16 },
-        { name: '循环', value: 13 },
-        { name: '条件', value: 28 },
-        { name: '异常', value: 12 },
-        { name: '编译', value: 29 },
-        { name: '解释', value: 14 },
-        { name: '框架', value: 24 },
-        { name: '模块', value: 21 },
-        { name: '库', value: 27 },
-        { name: '包', value: 18 },
-        { name: '主函数', value: 20 },
-        { name: '流程', value: 11 },
-        { name: '事件', value: 17 },
-        { name: '回调', value: 13 },
-        { name: '异步', value: 95 },
-        { name: '同步', value: 22 },
-        { name: '线程', value: 16 },
-        { name: '进程', value: 12 },
-        { name: '内存', value: 23 },
-        { name: '指针', value: 29 },
-        { name: '引用', value: 18 },
-        { name: '堆', value: 20 },
-        { name: 'API', value: 93 },
-        { name: '表', value: 15 },
-        { name: '字段', value: 25 },
-        { name: '查询', value: 21 },
-        { name: '排序', value: 13 },
-        { name: '过滤', value: 12 },
-        { name: '映射', value: 15 },
-        { name: '合并', value: 14 },
-        { name: 'API', value: 12 },
-        { name: '请求', value: 26 },
-        { name: '响应', value: 17 },
-        { name: '服务器', value: 44 },
-        { name: '前端', value: 12 },
-        { name: '后端', value: 38 },
-        { name: '路由', value: 19 },
-        { name: '依赖注入', value: 14 },
-        { name: '状态管理', value: 28 },
-        { name: '编译流程', value: 17 },
-        { name: '构建系统', value: 22 },
-        { name: '语法树', value: 13 },
-        { name: '词法分析', value: 11 },
-        { name: '语法解析', value: 16 },
-        { name: '虚拟机', value: 27 },
-        { name: '垃圾回收', value: 29 },
-        { name: '事件循环', value: 21 },
-        { name: '并发', value: 32 },
-        { name: '并行', value: 20 },
-        { name: '数据结构', value: 23 },
-        { name: '二叉树', value: 14 },
-        { name: '图遍历', value: 12 },
-        { name: '加密', value: 18 },
-        { name: '编码', value: 10 },
-        { name: '解码', value: 11 },
-        { name: '类型系统', value: 26 },
-        { name: '静态类型', value: 15 },
-        { name: '动态类型', value: 16 },
-        { name: '不可变数据', value: 19 },
-        { name: '可变数据', value: 17 },
-        { name: '信号处理', value: 12 },
-        { name: '线程池', value: 24 },
-        { name: '调度器', value: 20 },
-        { name: '执行上下文', value: 18 },
-        { name: '指令集', value: 22 },
-        { name: '编译优化', value: 25 },
-        { name: '运行时环境', value: 28 },
-        { name: '内存分配', value: 29 },
-        { name: '栈帧', value: 13 },
-        { name: '符号解析', value: 14 },
-        { name: '协议定义', value: 17 },
-        { name: '数据序列化', value: 21 },
-        { name: '反序列化', value: 20 },
-        { name: '验证', value: 12 },
-        { name: '授权', value: 19 },
-        { name: '认证', value: 22 },
-        { name: '传输层', value: 24 },
-        { name: '应用层', value: 23 },
-        { name: '配置文件', value: 15 },
-        { name: '依赖图', value: 18 },
-        { name: '包注册表', value: 16 },
-        { name: '模块解析', value: 20 }
-    ].sort((a, b) => b.value - a.value);
-});
+    const DATASET_WORDCLOUD_CHINESE = computed(() => {
+        return [
+            { name: "编程", value: 255 },
+            { name: "代码", value: 55 },
+            { name: "算法", value: 18 },
+            { name: "调试", value: 15 },
+            { name: "变量", value: 22 },
+            { name: "函数", value: 13 },
+            { name: "对象", value: 26 },
+            { name: "类", value: 16 },
+            { name: "继承", value: 10 },
+            { name: "多态", value: 11 },
+            { name: "接口", value: 23 },
+            { name: "数组", value: 25 },
+            { name: "链表", value: 12 },
+            { name: "栈", value: 14 },
+            { name: "队列", value: 20 },
+            { name: "哈希", value: 19 },
+            { name: "递归", value: 16 },
+            { name: "循环", value: 13 },
+            { name: "条件", value: 28 },
+            { name: "异常", value: 12 },
+            { name: "编译", value: 29 },
+            { name: "解释", value: 14 },
+            { name: "框架", value: 24 },
+            { name: "模块", value: 21 },
+            { name: "库", value: 27 },
+            { name: "包", value: 18 },
+            { name: "主函数", value: 20 },
+            { name: "流程", value: 11 },
+            { name: "事件", value: 17 },
+            { name: "回调", value: 13 },
+            { name: "异步", value: 95 },
+            { name: "同步", value: 22 },
+            { name: "线程", value: 16 },
+            { name: "进程", value: 12 },
+            { name: "内存", value: 23 },
+            { name: "指针", value: 29 },
+            { name: "引用", value: 18 },
+            { name: "堆", value: 20 },
+            { name: "API", value: 93 },
+            { name: "表", value: 15 },
+            { name: "字段", value: 25 },
+            { name: "查询", value: 21 },
+            { name: "排序", value: 13 },
+            { name: "过滤", value: 12 },
+            { name: "映射", value: 15 },
+            { name: "合并", value: 14 },
+            { name: "API", value: 12 },
+            { name: "请求", value: 26 },
+            { name: "响应", value: 17 },
+            { name: "服务器", value: 44 },
+            { name: "前端", value: 12 },
+            { name: "后端", value: 38 },
+            { name: "路由", value: 19 },
+            { name: "依赖注入", value: 14 },
+            { name: "状态管理", value: 28 },
+            { name: "编译流程", value: 17 },
+            { name: "构建系统", value: 22 },
+            { name: "语法树", value: 13 },
+            { name: "词法分析", value: 11 },
+            { name: "语法解析", value: 16 },
+            { name: "虚拟机", value: 27 },
+            { name: "垃圾回收", value: 29 },
+            { name: "事件循环", value: 21 },
+            { name: "并发", value: 32 },
+            { name: "并行", value: 20 },
+            { name: "数据结构", value: 23 },
+            { name: "二叉树", value: 14 },
+            { name: "图遍历", value: 12 },
+            { name: "加密", value: 18 },
+            { name: "编码", value: 10 },
+            { name: "解码", value: 11 },
+            { name: "类型系统", value: 26 },
+            { name: "静态类型", value: 15 },
+            { name: "动态类型", value: 16 },
+            { name: "不可变数据", value: 19 },
+            { name: "可变数据", value: 17 },
+            { name: "信号处理", value: 12 },
+            { name: "线程池", value: 24 },
+            { name: "调度器", value: 20 },
+            { name: "执行上下文", value: 18 },
+            { name: "指令集", value: 22 },
+            { name: "编译优化", value: 25 },
+            { name: "运行时环境", value: 28 },
+            { name: "内存分配", value: 29 },
+            { name: "栈帧", value: 13 },
+            { name: "符号解析", value: 14 },
+            { name: "协议定义", value: 17 },
+            { name: "数据序列化", value: 21 },
+            { name: "反序列化", value: 20 },
+            { name: "验证", value: 12 },
+            { name: "授权", value: 19 },
+            { name: "认证", value: 22 },
+            { name: "传输层", value: 24 },
+            { name: "应用层", value: 23 },
+            { name: "配置文件", value: 15 },
+            { name: "依赖图", value: 18 },
+            { name: "包注册表", value: 16 },
+            { name: "模块解析", value: 20 },
+        ].sort((a, b) => b.value - a.value);
+    });
 
-
-const DATASET_WORDCLOUD_ENGLISH = computed(() => {
-    return [
-        { name: 'Programming', value: 95 },
-        { name: 'Code', value: 55 },
-        { name: 'Algorithm', value: 18 },
-        { name: 'Debugging', value: 15 },
-        { name: 'Variable', value: 22 },
-        { name: 'Function', value: 13 },
-        { name: 'Object', value: 26 },
-        { name: 'Class', value: 16 },
-        { name: 'Inheritance', value: 10 },
-        { name: 'Polymorphism', value: 11 },
-        { name: 'Interface', value: 23 },
-        { name: 'Array', value: 25 },
-        { name: 'Linked List', value: 12 },
-        { name: 'Stack', value: 14 },
-        { name: 'Queue', value: 20 },
-        { name: 'Hash', value: 19 },
-        { name: 'Recursion', value: 16 },
-        { name: 'Loop', value: 13 },
-        { name: 'Condition', value: 28 },
-        { name: 'Exception', value: 12 },
-        { name: 'Compile', value: 29 },
-        { name: 'Interpret', value: 14 },
-        { name: 'Framework', value: 24 },
-        { name: 'Module', value: 21 },
-        { name: 'Library', value: 27 },
-        { name: 'Package', value: 18 },
-        { name: 'Main Function', value: 20 },
-        { name: 'Process Flow', value: 11 },
-        { name: 'Event', value: 17 },
-        { name: 'Callback', value: 13 },
-        { name: 'Asynchronous', value: 95 },
-        { name: 'Synchronous', value: 22 },
-        { name: 'Thread', value: 16 },
-        { name: 'Process', value: 12 },
-        { name: 'Memory', value: 23 },
-        { name: 'Pointer', value: 29 },
-        { name: 'Reference', value: 18 },
-        { name: 'Heap', value: 20 },
-        { name: 'Table', value: 15 },
-        { name: 'Field', value: 25 },
-        { name: 'Query', value: 21 },
-        { name: 'Sorting', value: 13 },
-        { name: 'Filter', value: 12 },
-        { name: 'Mapping', value: 15 },
-        { name: 'Merge', value: 14 },
-        { name: 'Server', value: 44 },
-        { name: 'Frontend', value: 12 },
-        { name: 'Backend', value: 38 },
-        { name: 'Routing', value: 19 },
-        { name: 'Injection', value: 14 },
-        { name: 'State', value: 28 },
-        { name: 'Pipeline', value: 17 },
-        { name: 'Build System', value: 22 },
-        { name: 'Syntax Tree', value: 13 },
-        { name: 'Tokenization', value: 11 },
-        { name: 'Parsing', value: 16 },
-        { name: 'Virtual', value: 27 },
-        { name: 'Garbage', value: 29 },
-        { name: 'Event Loop', value: 21 },
-        { name: 'Concurrency', value: 32 },
-        { name: 'Parallelism', value: 20 },
-        { name: 'Binary Tree', value: 14 },
-        { name: 'Graph', value: 12 },
-        { name: 'Cryptography', value: 18 },
-        { name: 'Encoding', value: 10 },
-        { name: 'Decoding', value: 11 },
-        { name: 'Type System', value: 26 },
-        { name: 'Static Typing', value: 15 },
-        { name: 'Dynamic Typing', value: 16 },
-        { name: 'Immutable Data', value: 19 },
-        { name: 'Mutable Data', value: 17 },
-        { name: 'Signal Handling', value: 12 },
-        { name: 'Thread Pool', value: 24 },
-        { name: 'Scheduler', value: 20 },
-        { name: 'Execution', value: 18 },
-        { name: 'Instruction Set', value: 22 },
-        { name: 'Compiler', value: 25 },
-        { name: 'Runtime Environment', value: 28 },
-        { name: 'Memory', value: 29 },
-        { name: 'Symbol', value: 14 },
-        { name: 'Protocol', value: 17 },
-        { name: 'Serialization', value: 21 },
-        { name: 'Deserialization', value: 20 },
-        { name: 'Validation', value: 12 },
-        { name: 'Authorization', value: 19 },
-        { name: 'Authentication', value: 22 },
-        { name: 'Transport', value: 24 },
-        { name: 'Application', value: 23 },
-        { name: 'File', value: 15 },
-        { name: 'Dependency Graph', value: 18 },
-        { name: 'Package', value: 16 },
-        { name: 'Module', value: 20 }
-    ]
-    .sort((a, b) => b.value - a.value)
-    .map(el => ({
-        ...el,
-        name: el.name.toUpperCase()
-    }))
-})
-
+    const DATASET_WORDCLOUD_ENGLISH = computed(() => {
+        return [
+            { name: "Programming", value: 95 },
+            { name: "Code", value: 55 },
+            { name: "Algorithm", value: 18 },
+            { name: "Debugging", value: 15 },
+            { name: "Variable", value: 22 },
+            { name: "Function", value: 13 },
+            { name: "Object", value: 26 },
+            { name: "Class", value: 16 },
+            { name: "Inheritance", value: 10 },
+            { name: "Polymorphism", value: 11 },
+            { name: "Interface", value: 23 },
+            { name: "Array", value: 25 },
+            { name: "Linked List", value: 12 },
+            { name: "Stack", value: 14 },
+            { name: "Queue", value: 20 },
+            { name: "Hash", value: 19 },
+            { name: "Recursion", value: 16 },
+            { name: "Loop", value: 13 },
+            { name: "Condition", value: 28 },
+            { name: "Exception", value: 12 },
+            { name: "Compile", value: 29 },
+            { name: "Interpret", value: 14 },
+            { name: "Framework", value: 24 },
+            { name: "Module", value: 21 },
+            { name: "Library", value: 27 },
+            { name: "Package", value: 18 },
+            { name: "Main Function", value: 20 },
+            { name: "Process Flow", value: 11 },
+            { name: "Event", value: 17 },
+            { name: "Callback", value: 13 },
+            { name: "Asynchronous", value: 95 },
+            { name: "Synchronous", value: 22 },
+            { name: "Thread", value: 16 },
+            { name: "Process", value: 12 },
+            { name: "Memory", value: 23 },
+            { name: "Pointer", value: 29 },
+            { name: "Reference", value: 18 },
+            { name: "Heap", value: 20 },
+            { name: "Table", value: 15 },
+            { name: "Field", value: 25 },
+            { name: "Query", value: 21 },
+            { name: "Sorting", value: 13 },
+            { name: "Filter", value: 12 },
+            { name: "Mapping", value: 15 },
+            { name: "Merge", value: 14 },
+            { name: "Server", value: 44 },
+            { name: "Frontend", value: 12 },
+            { name: "Backend", value: 38 },
+            { name: "Routing", value: 19 },
+            { name: "Injection", value: 14 },
+            { name: "State", value: 28 },
+            { name: "Pipeline", value: 17 },
+            { name: "Build System", value: 22 },
+            { name: "Syntax Tree", value: 13 },
+            { name: "Tokenization", value: 11 },
+            { name: "Parsing", value: 16 },
+            { name: "Virtual", value: 27 },
+            { name: "Garbage", value: 29 },
+            { name: "Event Loop", value: 21 },
+            { name: "Concurrency", value: 32 },
+            { name: "Parallelism", value: 20 },
+            { name: "Binary Tree", value: 14 },
+            { name: "Graph", value: 12 },
+            { name: "Cryptography", value: 18 },
+            { name: "Encoding", value: 10 },
+            { name: "Decoding", value: 11 },
+            { name: "Type System", value: 26 },
+            { name: "Static Typing", value: 15 },
+            { name: "Dynamic Typing", value: 16 },
+            { name: "Immutable Data", value: 19 },
+            { name: "Mutable Data", value: 17 },
+            { name: "Signal Handling", value: 12 },
+            { name: "Thread Pool", value: 24 },
+            { name: "Scheduler", value: 20 },
+            { name: "Execution", value: 18 },
+            { name: "Instruction Set", value: 22 },
+            { name: "Compiler", value: 25 },
+            { name: "Runtime Environment", value: 28 },
+            { name: "Memory", value: 29 },
+            { name: "Symbol", value: 14 },
+            { name: "Protocol", value: 17 },
+            { name: "Serialization", value: 21 },
+            { name: "Deserialization", value: 20 },
+            { name: "Validation", value: 12 },
+            { name: "Authorization", value: 19 },
+            { name: "Authentication", value: 22 },
+            { name: "Transport", value: 24 },
+            { name: "Application", value: 23 },
+            { name: "File", value: 15 },
+            { name: "Dependency Graph", value: 18 },
+            { name: "Package", value: 16 },
+            { name: "Module", value: 20 },
+        ]
+            .sort((a, b) => b.value - a.value)
+            .map((el) => ({
+                ...el,
+                name: el.name.toUpperCase(),
+            }));
+    });
 
     const DATASET_WORDCLOUD_ARABIC = computed(() => {
         return [
-            { name: 'برمجة', value: 95 },
-            { name: 'كود', value: 55 },
-            { name: 'خوارزمية', value: 18 },
-            { name: 'تصحيح', value: 15 },
-            { name: 'متغير', value: 22 },
-            { name: 'دالة', value: 13 },
-            { name: 'كائن', value: 26 },
-            { name: 'فئة', value: 16 },
-            { name: 'وراثة', value: 10 },
-            { name: 'تعدد الأشكال', value: 11 },
-            { name: 'واجهة', value: 23 },
-            { name: 'مصفوفة', value: 25 },
-            { name: 'قائمة مرتبطة', value: 12 },
-            { name: 'مكدس', value: 14 },
-            { name: 'طابور', value: 20 },
-            { name: 'تجزئة', value: 19 },
-            { name: 'استدعاء ذاتي', value: 16 },
-            { name: 'حلقة', value: 13 },
-            { name: 'شرط', value: 28 },
-            { name: 'استثناء', value: 12 },
-            { name: 'ترجمة', value: 29 },
-            { name: 'تفسير', value: 14 },
-            { name: 'إطار عمل', value: 24 },
-            { name: 'وحدة', value: 21 },
-            { name: 'مكتبة', value: 27 },
-            { name: 'حزمة', value: 18 },
-            { name: 'الدالة الرئيسية', value: 20 },
-            { name: 'تدفق العملية', value: 11 },
-            { name: 'حدث', value: 17 },
-            { name: 'نداء العودة', value: 13 },
-            { name: 'غير متزامن', value: 95 },
-            { name: 'متزامن', value: 22 },
-            { name: 'خيط', value: 16 },
-            { name: 'عملية', value: 12 },
-            { name: 'ذاكرة', value: 23 },
-            { name: 'مؤشر', value: 29 },
-            { name: 'مرجع', value: 18 },
-            { name: 'كومة', value: 20 },
-            { name: 'واجهة برمجة التطبيقات', value: 93 },
-            { name: 'جدول', value: 15 },
-            { name: 'حقل', value: 25 },
-            { name: 'استعلام', value: 21 },
-            { name: 'ترتيب', value: 13 },
-            { name: 'تصفية', value: 12 },
-            { name: 'تعيين', value: 15 },
-            { name: 'دمج', value: 14 },
-            { name: 'API', value: 12 },
-            { name: 'طلب', value: 26 },
-            { name: 'استجابة', value: 17 },
-            { name: 'خادم', value: 44 },
-            { name: 'الواجهة الأمامية', value: 12 },
-            { name: 'خلفية', value: 38 },
-        { name: 'مسار', value: 19 },
-        { name: 'حقن依赖', value: 14 },
-        { name: 'إدارة حالة', value: 28 },
-        { name: 'خط تجميع', value: 17 },
-        { name: 'نظام بناء', value: 22 },
-        { name: 'شجرة بنية', value: 13 },
-        { name: 'تحليل لغوي', value: 11 },
-        { name: 'محرك افتراضي', value: 27 },
-        { name: 'جمع نفايات', value: 29 },
-        { name: 'حلقة أحداث', value: 21 },
-        { name: 'تزامن', value: 32 },
-        { name: 'توازي', value: 20 },
-        { name: 'هيكل بيانات', value: 23 },
-        { name: 'شجرة ثنائية', value: 14 },
-        { name: 'اجتياز رسم', value: 12 },
-        { name: 'تشفير', value: 18 },
-        { name: 'ترميز', value: 10 },
-        { name: 'فك ترميز', value: 11 },
-        { name: 'نظام نوع', value: 26 },
-        { name: 'نوع ثابت', value: 15 },
-        { name: 'نوع ديناميكي', value: 16 },
-        { name: 'بيانات ثابتة', value: 19 },
-        { name: 'بيانات متغيرة', value: 17 },
-        { name: 'معالجة إشارة', value: 12 },
-        { name: 'مجموعة خيوط', value: 24 },
-        { name: 'مجدول', value: 20 },
-        { name: 'سياق تنفيذ', value: 18 },
-        { name: 'مجموعة تعليمات', value: 22 },
-        { name: 'تحسين مترجم', value: 25 },
-        { name: 'بيئة تشغيل', value: 28 },
-        { name: 'تخصيص ذاكرة', value: 29 },
-        { name: 'إطار مكدس', value: 13 },
-        { name: 'حل رموز', value: 14 },
-        { name: 'تعريف بروتوكول', value: 17 },
-        { name: 'تسلسل بيانات', value: 21 },
-        { name: 'فك تسلسل', value: 20 },
-        { name: 'تحقق', value: 12 },
-        { name: 'تفويض', value: 19 },
-        { name: 'مصادقة', value: 22 },
-        { name: 'طبقة نقل', value: 24 },
-        { name: 'طبقة تطبيق', value: 23 },
-        { name: 'ملف إعداد', value: 15 },
-        { name: 'مخطط اعتماد', value: 18 },
-        { name: 'سجل حزم', value: 16 },
-        { name: 'حل وحدة', value: 20 }
-          ].sort((a,b) => b.value - a.value)
-    })
+            { name: "برمجة", value: 95 },
+            { name: "كود", value: 55 },
+            { name: "خوارزمية", value: 18 },
+            { name: "تصحيح", value: 15 },
+            { name: "متغير", value: 22 },
+            { name: "دالة", value: 13 },
+            { name: "كائن", value: 26 },
+            { name: "فئة", value: 16 },
+            { name: "وراثة", value: 10 },
+            { name: "تعدد الأشكال", value: 11 },
+            { name: "واجهة", value: 23 },
+            { name: "مصفوفة", value: 25 },
+            { name: "قائمة مرتبطة", value: 12 },
+            { name: "مكدس", value: 14 },
+            { name: "طابور", value: 20 },
+            { name: "تجزئة", value: 19 },
+            { name: "استدعاء ذاتي", value: 16 },
+            { name: "حلقة", value: 13 },
+            { name: "شرط", value: 28 },
+            { name: "استثناء", value: 12 },
+            { name: "ترجمة", value: 29 },
+            { name: "تفسير", value: 14 },
+            { name: "إطار عمل", value: 24 },
+            { name: "وحدة", value: 21 },
+            { name: "مكتبة", value: 27 },
+            { name: "حزمة", value: 18 },
+            { name: "الدالة الرئيسية", value: 20 },
+            { name: "تدفق العملية", value: 11 },
+            { name: "حدث", value: 17 },
+            { name: "نداء العودة", value: 13 },
+            { name: "غير متزامن", value: 95 },
+            { name: "متزامن", value: 22 },
+            { name: "خيط", value: 16 },
+            { name: "عملية", value: 12 },
+            { name: "ذاكرة", value: 23 },
+            { name: "مؤشر", value: 29 },
+            { name: "مرجع", value: 18 },
+            { name: "كومة", value: 20 },
+            { name: "واجهة برمجة التطبيقات", value: 93 },
+            { name: "جدول", value: 15 },
+            { name: "حقل", value: 25 },
+            { name: "استعلام", value: 21 },
+            { name: "ترتيب", value: 13 },
+            { name: "تصفية", value: 12 },
+            { name: "تعيين", value: 15 },
+            { name: "دمج", value: 14 },
+            { name: "API", value: 12 },
+            { name: "طلب", value: 26 },
+            { name: "استجابة", value: 17 },
+            { name: "خادم", value: 44 },
+            { name: "الواجهة الأمامية", value: 12 },
+            { name: "خلفية", value: 38 },
+            { name: "مسار", value: 19 },
+            { name: "حقن依赖", value: 14 },
+            { name: "إدارة حالة", value: 28 },
+            { name: "خط تجميع", value: 17 },
+            { name: "نظام بناء", value: 22 },
+            { name: "شجرة بنية", value: 13 },
+            { name: "تحليل لغوي", value: 11 },
+            { name: "محرك افتراضي", value: 27 },
+            { name: "جمع نفايات", value: 29 },
+            { name: "حلقة أحداث", value: 21 },
+            { name: "تزامن", value: 32 },
+            { name: "توازي", value: 20 },
+            { name: "هيكل بيانات", value: 23 },
+            { name: "شجرة ثنائية", value: 14 },
+            { name: "اجتياز رسم", value: 12 },
+            { name: "تشفير", value: 18 },
+            { name: "ترميز", value: 10 },
+            { name: "فك ترميز", value: 11 },
+            { name: "نظام نوع", value: 26 },
+            { name: "نوع ثابت", value: 15 },
+            { name: "نوع ديناميكي", value: 16 },
+            { name: "بيانات ثابتة", value: 19 },
+            { name: "بيانات متغيرة", value: 17 },
+            { name: "معالجة إشارة", value: 12 },
+            { name: "مجموعة خيوط", value: 24 },
+            { name: "مجدول", value: 20 },
+            { name: "سياق تنفيذ", value: 18 },
+            { name: "مجموعة تعليمات", value: 22 },
+            { name: "تحسين مترجم", value: 25 },
+            { name: "بيئة تشغيل", value: 28 },
+            { name: "تخصيص ذاكرة", value: 29 },
+            { name: "إطار مكدس", value: 13 },
+            { name: "حل رموز", value: 14 },
+            { name: "تعريف بروتوكول", value: 17 },
+            { name: "تسلسل بيانات", value: 21 },
+            { name: "فك تسلسل", value: 20 },
+            { name: "تحقق", value: 12 },
+            { name: "تفويض", value: 19 },
+            { name: "مصادقة", value: 22 },
+            { name: "طبقة نقل", value: 24 },
+            { name: "طبقة تطبيق", value: 23 },
+            { name: "ملف إعداد", value: 15 },
+            { name: "مخطط اعتماد", value: 18 },
+            { name: "سجل حزم", value: 16 },
+            { name: "حل وحدة", value: 20 },
+        ].sort((a, b) => b.value - a.value);
+    });
 
     const DATASET_WORDCLOUD_HINDI = computed(() => {
         return [
-            { name: 'प्रोग्रामिंग', value: 95 },
-            { name: 'कोड', value: 55 },
-            { name: 'एल्गोरिदम', value: 18 },
-            { name: 'डीबग', value: 15 },
-            { name: 'वेरिएबल', value: 22 },
-            { name: 'फ़ंक्शन', value: 13 },
-            { name: 'ऑब्जेक्ट', value: 26 },
-            { name: 'क्लास', value: 16 },
-            { name: 'इनहेरिटेंस', value: 10 },
-            { name: 'पॉलीमॉर्फिज़्म', value: 11 },
-            { name: 'इंटरफ़ेस', value: 23 },
-            { name: 'ऐरे', value: 25 },
-            { name: 'लिंक्ड लिस्ट', value: 12 },
-            { name: 'स्टैक', value: 14 },
-            { name: 'क्यू', value: 20 },
-            { name: 'हैश', value: 19 },
-            { name: 'रिकर्सन', value: 16 },
-            { name: 'लूप', value: 13 },
-            { name: 'कंडीशन', value: 28 },
-            { name: 'एक्सेप्शन', value: 12 },
-            { name: 'कंपाइल', value: 29 },
-            { name: 'इंटरप्रेट', value: 14 },
-            { name: 'फ्रेमवर्क', value: 24 },
-            { name: 'मॉड्यूल', value: 21 },
-            { name: 'लाइब्रेरी', value: 27 },
-            { name: 'पैकेज', value: 18 },
-            { name: 'मुख्य फ़ंक्शन', value: 20 },
-            { name: 'प्रोसेस फ्लो', value: 11 },
-            { name: 'इवेंट', value: 17 },
-            { name: 'कॉलबैक', value: 13 },
-            { name: 'असिंक', value: 95 },
-            { name: 'सिंक', value: 22 },
-            { name: 'थ्रेड', value: 16 },
-            { name: 'प्रोसेस', value: 12 },
-            { name: 'मेमोरी', value: 23 },
-            { name: 'पॉइंटर', value: 29 },
-            { name: 'रेफरेंस', value: 18 },
-            { name: 'हीप', value: 20 },
-            { name: 'एपीआई', value: 93 },
-            { name: 'टेबल', value: 15 },
-            { name: 'फ़ील्ड', value: 25 },
-            { name: 'क्वेरी', value: 21 },
-            { name: 'सॉर्टिंग', value: 13 },
-            { name: 'फिल्टर', value: 12 },
-            { name: 'मैपिंग', value: 15 },
-            { name: 'मरज', value: 14 },
-            { name: 'एपीआई', value: 12 },
-            { name: 'रिक्वेस्ट', value: 26 },
-            { name: 'रिस्पॉन्स', value: 17 },
-            { name: 'सर्वर', value: 44 },
-            { name: 'फ्रंटएंड', value: 12 },
-            { name: 'बैकएंड', value: 38 },
-        { name: 'रूटिंग', value: 19 },
-        { name: 'डिपेंडेंसी इंजेक्शन', value: 14 },
-        { name: 'स्टेट मैनेजमेंट', value: 28 },
-        { name: 'कम्पाइल पाइपलाइन', value: 17 },
-        { name: 'बिल्ड सिस्टम', value: 22 },
-        { name: 'सिंटैक्स ट्री', value: 13 },
-        { name: 'टोकनाइज़ेशन', value: 11 },
-        { name: 'पार्सिंग', value: 16 },
-        { name: 'वर्चुअल मशीन', value: 27 },
-        { name: 'गार्बेज कलेक्शन', value: 29 },
-        { name: 'इवेंट लूप', value: 21 },
-        { name: 'कंकरेन्सी', value: 32 },
-        { name: 'पैरललिज़्म', value: 20 },
-        { name: 'डेटा स्ट्रक्चर', value: 23 },
-        { name: 'बाइनरी ट्री', value: 14 },
-        { name: 'ग्राफ ट्रैवर्सल', value: 12 },
-        { name: 'क्रिप्टोग्राफी', value: 18 },
-        { name: 'एनकोडिंग', value: 10 },
-        { name: 'डीकोडिंग', value: 11 },
-        { name: 'टाइप सिस्टम', value: 26 },
-        { name: 'स्टैटिक टाइप', value: 15 },
-        { name: 'डायनामिक टाइप', value: 16 },
-        { name: 'इम्यूटेबल डेटा', value: 19 },
-        { name: 'म्यूटेबल डेटा', value: 17 },
-        { name: 'सिग्नल हैंडलिंग', value: 12 },
-        { name: 'थ्रेड पूल', value: 24 },
-        { name: 'शेड्यूलर', value: 20 },
-        { name: 'एग्जीक्यूशन कॉन्टेक्स्ट', value: 18 },
-        { name: 'इंस्ट्रक्शन सेट', value: 22 },
-        { name: 'कम्पाइल ऑप्टिमाइज़ेशन', value: 25 },
-        { name: 'रनटाइम एनवायरनमेंट', value: 28 },
-        { name: 'मेमोरी एलोकेशन', value: 29 },
-        { name: 'स्टैक फ्रेम', value: 13 },
-        { name: 'सिंबल रेजोल्यूशन', value: 14 },
-        { name: 'प्रोटोकॉल डेफिनिशन', value: 17 },
-        { name: 'डेटा सीरियलाइज़ेशन', value: 21 },
-        { name: 'डीसीरियलाइज़ेशन', value: 20 },
-        { name: 'वैलिडेशन', value: 12 },
-        { name: 'ऑथराइजेशन', value: 19 },
-        { name: 'ऑथेन्टिकेशन', value: 22 },
-        { name: 'ट्रांसपोर्ट लेयर', value: 24 },
-        { name: 'एप्लिकेशन लेयर', value: 23 },
-        { name: 'कन्फ़िग फ़ाइल', value: 15 },
-        { name: 'डिपेंडेंसी ग्राफ', value: 18 },
-        { name: 'पैकेज रजिस्ट्री', value: 16 },
-        { name: 'मॉड्यूल रेजोल्यूशन', value: 20 }
-          ].sort((a,b) => b.value - a.value)
-    })
+            { name: "प्रोग्रामिंग", value: 95 },
+            { name: "कोड", value: 55 },
+            { name: "एल्गोरिदम", value: 18 },
+            { name: "डीबग", value: 15 },
+            { name: "वेरिएबल", value: 22 },
+            { name: "फ़ंक्शन", value: 13 },
+            { name: "ऑब्जेक्ट", value: 26 },
+            { name: "क्लास", value: 16 },
+            { name: "इनहेरिटेंस", value: 10 },
+            { name: "पॉलीमॉर्फिज़्म", value: 11 },
+            { name: "इंटरफ़ेस", value: 23 },
+            { name: "ऐरे", value: 25 },
+            { name: "लिंक्ड लिस्ट", value: 12 },
+            { name: "स्टैक", value: 14 },
+            { name: "क्यू", value: 20 },
+            { name: "हैश", value: 19 },
+            { name: "रिकर्सन", value: 16 },
+            { name: "लूप", value: 13 },
+            { name: "कंडीशन", value: 28 },
+            { name: "एक्सेप्शन", value: 12 },
+            { name: "कंपाइल", value: 29 },
+            { name: "इंटरप्रेट", value: 14 },
+            { name: "फ्रेमवर्क", value: 24 },
+            { name: "मॉड्यूल", value: 21 },
+            { name: "लाइब्रेरी", value: 27 },
+            { name: "पैकेज", value: 18 },
+            { name: "मुख्य फ़ंक्शन", value: 20 },
+            { name: "प्रोसेस फ्लो", value: 11 },
+            { name: "इवेंट", value: 17 },
+            { name: "कॉलबैक", value: 13 },
+            { name: "असिंक", value: 95 },
+            { name: "सिंक", value: 22 },
+            { name: "थ्रेड", value: 16 },
+            { name: "प्रोसेस", value: 12 },
+            { name: "मेमोरी", value: 23 },
+            { name: "पॉइंटर", value: 29 },
+            { name: "रेफरेंस", value: 18 },
+            { name: "हीप", value: 20 },
+            { name: "एपीआई", value: 93 },
+            { name: "टेबल", value: 15 },
+            { name: "फ़ील्ड", value: 25 },
+            { name: "क्वेरी", value: 21 },
+            { name: "सॉर्टिंग", value: 13 },
+            { name: "फिल्टर", value: 12 },
+            { name: "मैपिंग", value: 15 },
+            { name: "मरज", value: 14 },
+            { name: "एपीआई", value: 12 },
+            { name: "रिक्वेस्ट", value: 26 },
+            { name: "रिस्पॉन्स", value: 17 },
+            { name: "सर्वर", value: 44 },
+            { name: "फ्रंटएंड", value: 12 },
+            { name: "बैकएंड", value: 38 },
+            { name: "रूटिंग", value: 19 },
+            { name: "डिपेंडेंसी इंजेक्शन", value: 14 },
+            { name: "स्टेट मैनेजमेंट", value: 28 },
+            { name: "कम्पाइल पाइपलाइन", value: 17 },
+            { name: "बिल्ड सिस्टम", value: 22 },
+            { name: "सिंटैक्स ट्री", value: 13 },
+            { name: "टोकनाइज़ेशन", value: 11 },
+            { name: "पार्सिंग", value: 16 },
+            { name: "वर्चुअल मशीन", value: 27 },
+            { name: "गार्बेज कलेक्शन", value: 29 },
+            { name: "इवेंट लूप", value: 21 },
+            { name: "कंकरेन्सी", value: 32 },
+            { name: "पैरललिज़्म", value: 20 },
+            { name: "डेटा स्ट्रक्चर", value: 23 },
+            { name: "बाइनरी ट्री", value: 14 },
+            { name: "ग्राफ ट्रैवर्सल", value: 12 },
+            { name: "क्रिप्टोग्राफी", value: 18 },
+            { name: "एनकोडिंग", value: 10 },
+            { name: "डीकोडिंग", value: 11 },
+            { name: "टाइप सिस्टम", value: 26 },
+            { name: "स्टैटिक टाइप", value: 15 },
+            { name: "डायनामिक टाइप", value: 16 },
+            { name: "इम्यूटेबल डेटा", value: 19 },
+            { name: "म्यूटेबल डेटा", value: 17 },
+            { name: "सिग्नल हैंडलिंग", value: 12 },
+            { name: "थ्रेड पूल", value: 24 },
+            { name: "शेड्यूलर", value: 20 },
+            { name: "एग्जीक्यूशन कॉन्टेक्स्ट", value: 18 },
+            { name: "इंस्ट्रक्शन सेट", value: 22 },
+            { name: "कम्पाइल ऑप्टिमाइज़ेशन", value: 25 },
+            { name: "रनटाइम एनवायरनमेंट", value: 28 },
+            { name: "मेमोरी एलोकेशन", value: 29 },
+            { name: "स्टैक फ्रेम", value: 13 },
+            { name: "सिंबल रेजोल्यूशन", value: 14 },
+            { name: "प्रोटोकॉल डेफिनिशन", value: 17 },
+            { name: "डेटा सीरियलाइज़ेशन", value: 21 },
+            { name: "डीसीरियलाइज़ेशन", value: 20 },
+            { name: "वैलिडेशन", value: 12 },
+            { name: "ऑथराइजेशन", value: 19 },
+            { name: "ऑथेन्टिकेशन", value: 22 },
+            { name: "ट्रांसपोर्ट लेयर", value: 24 },
+            { name: "एप्लिकेशन लेयर", value: 23 },
+            { name: "कन्फ़िग फ़ाइल", value: 15 },
+            { name: "डिपेंडेंसी ग्राफ", value: 18 },
+            { name: "पैकेज रजिस्ट्री", value: 16 },
+            { name: "मॉड्यूल रेजोल्यूशन", value: 20 },
+        ].sort((a, b) => b.value - a.value);
+    });
 
     //-------------- VUE-UI-SCATTER --------------//
     const CONFIG_SCATTER_BASIC = computed(() => {
@@ -3661,68 +3809,74 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 color: colors.value.textColor,
                 layout: {
                     padding: {
-                        right: 12
+                        right: 12,
                     },
                     axis: {
-                        stroke: colors.value.gridStroke
+                        stroke: colors.value.gridStroke,
                     },
                     dataLabels: {
                         xAxis: {
                             color: colors.value.textColor,
                         },
                         yAxis: {
-                            color: colors.value.textColor
-                        }
+                            color: colors.value.textColor,
+                        },
                     },
                     plots: {
                         radius: 4,
                         stroke: colors.value.bg,
-                        selectors:  {
+                        selectors: {
                             stroke: colors.value.gridStroke,
                             labels: {
-                                color: colors.value.textColor
+                                color: colors.value.textColor,
                             },
                             markers: {
-                                fill: colors.value.gridStroke
-                            }
+                                fill: colors.value.gridStroke,
+                            },
                         },
                         significance: {
-                            deviationThreshold: 30
-                        }
-                    }
+                            deviationThreshold: 30,
+                        },
+                    },
                 },
                 legend: {
                     backgroundColor: colors.value.bg,
-                    color: colors.value.textColor
+                    color: colors.value.textColor,
                 },
                 title: {
-                    text: 'Title',
+                    text: "Title",
                     color: colors.value.textColor,
-                    textAlign: 'left',
+                    textAlign: "left",
                     paddingLeft: 24,
                     subtitle: {
-                        text: 'Subtitle'
-                    }
+                        text: "Subtitle",
+                    },
                 },
                 tooltip: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     borderColor: colors.value.gridStroke,
-                    backgroundOpacity: 70
+                    backgroundOpacity: 70,
                 },
-            }
-        }
-    })
+            },
+        };
+    });
 
     function makeScatterSet({ min, max, n, clusterName, weight = false }) {
         const arr = [];
-        for(let i = 0; i < n; i += 1) {
+        for (let i = 0; i < n; i += 1) {
             arr.push({
-                y: (Math.random() > 0.4 ? max / 2 : max / 10) + Math.random() * (max - min) + min,
-                x: (Math.random() > 0.4 ? max / 2 : max / 10) + Math.random() * (max - min) + min,
+                y:
+                    (Math.random() > 0.4 ? max / 2 : max / 10) +
+                    Math.random() * (max - min) +
+                    min,
+                x:
+                    (Math.random() > 0.4 ? max / 2 : max / 10) +
+                    Math.random() * (max - min) +
+                    min,
                 name: `plot_${i}_${clusterName}`,
-                weight: weight ? Math.random() * 20 : undefined
-            })
+                weight: weight ? Math.random() * 20 : undefined,
+            });
         }
         return arr;
     }
@@ -3741,85 +3895,83 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
 
     const DATASET_SCATTER_BASIC = ref([
         {
-            name: 'Serie',
+            name: "Serie",
             values: makeScatterSet({
                 min: 0,
                 max: 100,
                 n: 100,
-                clusterName: 'Serie',
-            })
-        }
+                clusterName: "Serie",
+            }),
+        },
     ]);
 
     const DATASET_SCATTER_LARGE = ref([
         {
-            name: 'Big data',
+            name: "Big data",
             values: makeScatterBigData(),
-        }
-    ])
+        },
+    ]);
 
     const DATASET_SCATTER_BUBBLE = ref([
         {
-            name: 'Serie',
+            name: "Serie",
             values: makeScatterSet({
                 min: 0,
                 max: 100,
                 n: 100,
-                clusterName: 'Serie',
-                weight: true
-            })
-        }
+                clusterName: "Serie",
+                weight: true,
+            }),
+        },
     ]);
 
     const DATASET_SCATTER_MULTIPLE = ref([
         {
-            name: 'Serie1',
-            color: '#1f77b4',
+            name: "Serie1",
+            color: "#1f77b4",
             values: makeScatterSet({
                 min: 0,
                 max: 100,
                 n: 100,
-                clusterName: 'Serie1',
-            })
+                clusterName: "Serie1",
+            }),
         },
         {
-            name: 'Serie2',
-            color: '#ff7f0e',
+            name: "Serie2",
+            color: "#ff7f0e",
             values: makeScatterSet({
                 min: -200,
                 max: 100,
                 n: 100,
-                clusterName: 'Serie2',
-            })
+                clusterName: "Serie2",
+            }),
         },
     ]);
 
-    const DATASET_SCATTER_SHAPES = ref(
-        [
-            {
-                name: 'Serie1',
-                color: '#1f77b4',
-                shape: 'star',
-                values: makeScatterSet({
-                    min: 0,
-                    max: 100,
-                    n: 100,
-                    clusterName: 'Serie1',
-                })
-            },
-            {
-                name: 'Serie2',
-                color: '#ff7f0e',
-                shape: 'square',
-                values: makeScatterSet({
-                    min: -200,
-                    max: 100,
-                    n: 100,
-                    clusterName: 'Serie2',
-                })
-            },
-        ]
-    )
+    const DATASET_SCATTER_SHAPES = ref([
+        {
+            name: "Serie1",
+            color: "#1f77b4",
+            shape: "star",
+            values: makeScatterSet({
+                min: 0,
+                max: 100,
+                n: 100,
+                clusterName: "Serie1",
+            }),
+        },
+        {
+            name: "Serie2",
+            color: "#ff7f0e",
+            shape: "square",
+            values: makeScatterSet({
+                min: -200,
+                max: 100,
+                n: 100,
+                clusterName: "Serie2",
+            }),
+        },
+    ]);
 
     //-------------- VUE-UI-WHEEL --------------//
     const CONFIG_WHEEL_BASIC = computed(() => {
@@ -3830,28 +3982,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     color: colors.value.textColor,
                     layout: {
                         innerCircle: {
-                            stroke: colors.value.gridStroke
+                            stroke: colors.value.gridStroke,
                         },
                         wheel: {
                             tiltAngle3d: 60,
                             ticks: {
-                                inactiveColor: colors.value.gridStroke
-                            }
-                        }
+                                inactiveColor: colors.value.gridStroke,
+                            },
+                        },
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
-                    }
-                }
-            }
-        }
-    })
+                            text: "Subtitle",
+                        },
+                    },
+                },
+            },
+        };
+    });
 
     const CONFIG_WHEEL_SQUARED_TICKS_3D = computed(() => {
         return {
@@ -3864,16 +4016,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     animation: {
                         use: true,
                         speed: 0.5,
-                        acceleration: 1
+                        acceleration: 1,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     layout: {
                         wheel: {
@@ -3886,21 +4038,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 sizeRatio: 0.85,
                                 gradient: {
                                     show: false,
-                                    shiftHueIntensity: 12
+                                    shiftHueIntensity: 12,
                                 },
                                 quantity: 50,
                                 strokeWidth: 0,
                                 stroke: "#FFFFFF",
                                 type: "arc",
                                 spacingRatio3d: 0.8,
-                                shadeColorRatio3d: 0.15
-                            }
+                                shadeColorRatio3d: 0.15,
+                            },
                         },
                         innerCircle: {
                             show: true,
                             stroke: colors.value.gridStroke,
                             strokeWidth: 1,
-                            radiusRatio: 0.9
+                            radiusRatio: 0.9,
                         },
                         percentage: {
                             show: true,
@@ -3911,16 +4063,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             offsetY: -16,
                             stroke: colors.value.bg,
                             strokeWidth: 12,
-                        }
+                        },
                     },
-                }
+                },
             },
-        }
-    })
+        };
+    });
 
     const DATASET_WHEEL_BASIC = ref({
-        percentage: 80
-    })
+        percentage: 80,
+    });
 
     //-------------- VUE-UI-SPARKHISTOGRAM --------------//
     const CONFIG_SPARKHISTOGRAM_BASIC = computed(() => {
@@ -3929,22 +4081,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 backgroundColor: colors.value.bg,
                 bars: {
                     colors: {
-                        positive: colors.value.blue
-                    }
+                        positive: colors.value.blue,
+                    },
                 },
                 labels: {
                     timeLabel: {
-                        color: colors.value.grey
+                        color: colors.value.grey,
                     },
                     value: {
-                        color: colors.value.textColor
+                        color: colors.value.textColor,
                     },
                     valueLabel: {
-                        color: colors.value.textColor
-                    }
+                        color: colors.value.textColor,
+                    },
                 },
                 selector: {
-                    stroke: colors.value.blue
+                    stroke: colors.value.blue,
                 },
                 title: {
                     textAlign: "left",
@@ -3953,16 +4105,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     fontSize: 24,
                     bold: true,
                     margin: "0 0 6px 0",
-                        subtitle: {
-                            color: "#A1A1A1",
-                            text: "",
-                            fontSize: 12,
-                            bold: false
-                        }
-                    }
-            }
-        }
-    })
+                    subtitle: {
+                        color: "#A1A1A1",
+                        text: "",
+                        fontSize: 12,
+                        bold: false,
+                    },
+                },
+            },
+        };
+    });
 
     const DATASET_SPARKHISTOGRAM_BASE = ref([
         {
@@ -3976,77 +4128,66 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             valueLabel: "50%",
             timeLabel: "10:00",
             intensity: 0.5,
-
         },
         {
             value: 1.1,
             valueLabel: "60%",
             timeLabel: "11:00",
             intensity: 0.6,
-
         },
         {
             value: 0.8,
             valueLabel: "70%",
             timeLabel: "12:00",
             intensity: 0.7,
-
         },
         {
             value: 2,
             valueLabel: "100%",
             timeLabel: "13:00",
             intensity: 1,
-
         },
         {
             value: 2.1,
             valueLabel: "100%",
             timeLabel: "14:00",
             intensity: 1,
-
         },
         {
             value: 2.3,
             valueLabel: "80%",
             timeLabel: "15:00",
             intensity: 0.8,
-
         },
         {
             value: 2.1,
             valueLabel: "70%",
             timeLabel: "16:00",
             intensity: 0.7,
-
         },
         {
             value: 0.9,
             valueLabel: "60%",
             timeLabel: "17:00",
             intensity: 0.6,
-
         },
         {
             value: 0.7,
             valueLabel: "50%",
             timeLabel: "18:00",
             intensity: 0.5,
-
         },
         {
             value: 0.3,
             valueLabel: "30%",
             timeLabel: "19:00",
             intensity: 0.3,
-
         },
         {
             value: 0.2,
             valueLabel: "20%",
             timeLabel: "20:00",
             intensity: 0.2,
-
         },
     ]);
 
@@ -4069,17 +4210,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 color: colors.value.gridStroke,
                             },
                             xAxis: {
-                                name: 'Market reach',
+                                name: "Market reach",
                                 min: -100,
                                 max: 100,
                                 auto: false,
                             },
                             yAxis: {
-                                name: 'Innovation index',
+                                name: "Innovation index",
                                 min: -100,
                                 max: 100,
                                 auto: false,
-                            }
+                            },
                         },
                         labels: {
                             axisLabels: {
@@ -4090,73 +4231,73 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             },
                             plotLabels: {
                                 color: colors.value.textColor,
-                                offsetY: 16
+                                offsetY: 16,
                             },
                             quadrantLabels: {
                                 bl: {
-                                    text: 'Niche players',
-                                    color: colors.value.red
+                                    text: "Niche players",
+                                    color: colors.value.red,
                                 },
                                 br: {
-                                    text: 'Challengers',
-                                    color: colors.value.blue
+                                    text: "Challengers",
+                                    color: colors.value.blue,
                                 },
                                 tl: {
-                                    text: 'Innovators',
-                                    color: colors.value.yellow
+                                    text: "Innovators",
+                                    color: colors.value.yellow,
                                 },
                                 tr: {
-                                    text: 'Market leaders',
-                                    color: colors.value.green
-                                }
-                            }
+                                    text: "Market leaders",
+                                    color: colors.value.green,
+                                },
+                            },
                         },
                         plots: {
-                            outlineColor: colors.value.bg
-                        }
+                            outlineColor: colors.value.bg,
+                        },
                     },
                     legend: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                     },
                     title: {
-                        text: 'Business Landscape Quadrant',
+                        text: "Business Landscape Quadrant",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 0,
                         subtitle: {
-                            text: 'Market Reach vs. Innovation'
-                        }
+                            text: "Market Reach vs. Innovation",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
-                }
-            }
-        }
+                },
+            },
+        };
     });
 
     const DATASET_QUADRANT_TECH = ref([
         {
-            name: 'China',
-            shape: 'circle',
-            color: '#EE1C25',
+            name: "China",
+            shape: "circle",
+            color: "#EE1C25",
             series: [
                 { name: "Tencent", x: 7, y: 6 },
                 { name: "Alibaba", x: 6, y: 2 },
                 { name: "ByteDance", x: 2, y: 7 },
                 { name: "Huawei", x: -6, y: 6 },
                 { name: "Baidu", x: -5, y: 2 },
-                { name: "Xiaomi", x: -6, y: -3 }
-            ]
+                { name: "Xiaomi", x: -6, y: -3 },
+            ],
         },
         {
-            name: 'USA',
-            shape: 'circle',
-            color: '#005288',
+            name: "USA",
+            shape: "circle",
+            color: "#005288",
             series: [
                 { name: "Apple", x: 6, y: 4 },
                 { name: "Microsoft", x: 5, y: 6 },
@@ -4164,45 +4305,45 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 { name: "NVIDIA", x: 4, y: -1 },
                 { name: "Amazon", x: -3, y: -2 },
                 { name: "Meta", x: -1, y: 2 },
-            ]
-        }
+            ],
+        },
     ]);
 
     const DATASET_QUADRANT_BASE = ref([
         {
-        name: "Startups",
-        shape: "circle",
-        series: [
-            { name: "BrightTech", x: 77, y: 86 },
-            { name: "NanoApps", x: 87, y: 72 },
-            { name: "QuickShift", x: 14, y: 22 },
-            { name: "UrbanNest", x: 12, y: 18 },
-            { name: "CloudVibe", x: 27, y: 25 },
-            { name: "GreenByte", x: -5, y: 15 },
-            { name: "IdeaForge", x: 16, y: 5 },
-            { name: "BluePeak", x: 8, y: -6 },
-            { name: "Sparkle", x: -15, y: -14 },
-            { name: "MiniMint", x: 5, y: 11 }
-        ]
+            name: "Startups",
+            shape: "circle",
+            series: [
+                { name: "BrightTech", x: 77, y: 86 },
+                { name: "NanoApps", x: 87, y: 72 },
+                { name: "QuickShift", x: 14, y: 22 },
+                { name: "UrbanNest", x: 12, y: 18 },
+                { name: "CloudVibe", x: 27, y: 25 },
+                { name: "GreenByte", x: -5, y: 15 },
+                { name: "IdeaForge", x: 16, y: 5 },
+                { name: "BluePeak", x: 8, y: -6 },
+                { name: "Sparkle", x: -15, y: -14 },
+                { name: "MiniMint", x: 5, y: 11 },
+            ],
         },
         {
-        name: "Enterprises",
-        shape: "square",
-        color: "#ff7f0e",
-        series: [
-            { name: "OmniCorp", x: 22, y: 75 },
-            { name: "GigaWorks", x: 72, y: -27 },
-            { name: "DataDrive", x: -44, y: 65 },
-            { name: "PrimeSoft", x: 36, y: -19 },
-            { name: "EcoSphere", x: -67, y: -76 },
-            { name: "NextGen", x: -35, y: 30 },
-            { name: "CoreVision", x: 51, y: -38 },
-            { name: "AstraSys", x: -55, y: 57 },
-            { name: "PeakLogic", x: 40, y: 21 },
-            { name: "Solidus", x: -24, y: -31 }
-        ]
-        }
-    ])
+            name: "Enterprises",
+            shape: "square",
+            color: "#ff7f0e",
+            series: [
+                { name: "OmniCorp", x: 22, y: 75 },
+                { name: "GigaWorks", x: 72, y: -27 },
+                { name: "DataDrive", x: -44, y: 65 },
+                { name: "PrimeSoft", x: 36, y: -19 },
+                { name: "EcoSphere", x: -67, y: -76 },
+                { name: "NextGen", x: -35, y: 30 },
+                { name: "CoreVision", x: 51, y: -38 },
+                { name: "AstraSys", x: -55, y: 57 },
+                { name: "PeakLogic", x: 40, y: 21 },
+                { name: "Solidus", x: -24, y: -31 },
+            ],
+        },
+    ]);
 
     //-------------- VUE-UI-RADAR --------------//
     const CONFIG_RADAR_BASIC = computed(() => {
@@ -4214,121 +4355,119 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     color: colors.value.textColor,
                     layout: {
                         dataPolygon: {
-                            transparent: true
+                            transparent: true,
                         },
                         grid: {
-                            stroke: colors.value.gridStroke
+                            stroke: colors.value.gridStroke,
                         },
                         labels: {
                             dataLabels: {
-                                color: colors.value.textColor
-                            }
+                                color: colors.value.textColor,
+                            },
                         },
                         outerPolygon: {
-                            stroke: colors.value.gridStrokeLight
-                        }
+                            stroke: colors.value.gridStrokeLight,
+                        },
                     },
                     legend: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
-                }
-            }
-        }
-    })
+                },
+            },
+        };
+    });
 
     const DATASET_RADAR_BASE = ref({
-        categories: [
-            { name: 'Single category' },
-        ],
+        categories: [{ name: "Single category" }],
         series: [
             {
-                name: 'KPI 1',
+                name: "KPI 1",
                 values: [80],
-                target: 100
+                target: 100,
             },
             {
-                name: 'KPI 2',
+                name: "KPI 2",
                 values: [600],
-                target: 2000
+                target: 2000,
             },
             {
-                name: 'KPI 3',
+                name: "KPI 3",
                 values: [10320],
-                target: 15000
+                target: 15000,
             },
             {
-                name: 'KPI 4',
+                name: "KPI 4",
                 values: [1.8],
-                target: 2
+                target: 2,
             },
             {
-                name: 'KPI 5',
+                name: "KPI 5",
                 values: [120000],
-                target: 500000
+                target: 500000,
             },
             {
-                name: 'KPI 6',
+                name: "KPI 6",
                 values: [3700],
-                target: 3700
-            }
-        ]
-    })
+                target: 3700,
+            },
+        ],
+    });
 
     const DATASET_RADAR_MULTIPLE = ref({
         categories: [
-            { name: 'Category 1' },
-            { name: 'Category 2' },
-            { name: 'Category 3' },
+            { name: "Category 1" },
+            { name: "Category 2" },
+            { name: "Category 3" },
         ],
         series: [
             {
-                name: 'KPI 1',
-                values: [80, 60,  70],
-                target: 100
+                name: "KPI 1",
+                values: [80, 60, 70],
+                target: 100,
             },
             {
-                name: 'KPI 2',
+                name: "KPI 2",
                 values: [600, 320, 1000],
-                target: 2000
+                target: 2000,
             },
             {
-                name: 'KPI 3',
+                name: "KPI 3",
                 values: [10320, 8500, 12400],
-                target: 15000
+                target: 15000,
             },
             {
-                name: 'KPI 4',
+                name: "KPI 4",
                 values: [1.8, 1.9, 1.2],
-                target: 2
+                target: 2,
             },
             {
-                name: 'KPI 5',
+                name: "KPI 5",
                 values: [120000, 300000, 450000],
-                target: 500000
+                target: 500000,
             },
             {
-                name: 'KPI 6',
+                name: "KPI 6",
                 values: [3700, 2900, 1300],
-                target: 3700
-            }
-        ]
-    })
+                target: 3700,
+            },
+        ],
+    });
 
     //-------------- VUE-UI-STRIP-PLOT --------------//
     const CONFIG_STRIP_PLOT_BASE = computed(() => {
@@ -4341,17 +4480,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     grid: {
                         stroke: colors.value.gridStroke,
                         horizontalGrid: {
-                            stroke: colors.value.gridStroke
+                            stroke: colors.value.gridStroke,
                         },
                         verticalGrid: {
-                            stroke: colors.value.gridStroke
-                        }
+                            stroke: colors.value.gridStroke,
+                        },
                     },
                     labels: {
                         axis: {
                             color: colors.value.textColor,
-                            xLabel: 'Continents',
-                            yLabel: 'Population in Millions'
+                            xLabel: "Continents",
+                            yLabel: "Population in Millions",
                         },
                         bestPlotLabel: {
                             color: colors.value.textColor,
@@ -4361,30 +4500,30 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         },
                         yAxisLabels: {
                             color: colors.value.textColor,
-                        }
+                        },
                     },
                     plots: {
-                        stroke: colors.value.bg
+                        stroke: colors.value.bg,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 24,
                         subtitle: {
-                            text: 'Subtitle'
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
-                }
-            }
-        }
-    })
+                },
+            },
+        };
+    });
 
     const DATASET_STRIP_PLOT_BASIC = ref([
         {
@@ -4400,7 +4539,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 { name: "Karachi", value: 14.9 },
                 { name: "Shenzen", value: 14.7 },
                 { name: "Tokyo", value: 14 },
-            ]
+            ],
         },
         {
             name: "Africa",
@@ -4415,7 +4554,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 { name: "Alexandria", value: 4.9 },
                 { name: "Dar es Salaam", value: 4.7 },
                 { name: "Nairobi", value: 4.4 },
-            ]
+            ],
         },
         {
             name: "Europe",
@@ -4429,8 +4568,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 { name: "Rome", value: 2.7 },
                 { name: "Paris", value: 2.1 },
                 { name: "Minsk", value: 2 },
-                { name: "Vienna", value: 1.9 }
-            ]
+                { name: "Vienna", value: 1.9 },
+            ],
         },
         {
             name: "America",
@@ -4444,8 +4583,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 { name: "Santiago", value: 6.2 },
                 { name: "Los Angeles", value: 4 },
                 { name: "Buenos Aires", value: 3 },
-                { name: "Brasilia", value: 2.9 }
-            ]
+                { name: "Brasilia", value: 2.9 },
+            ],
         },
         {
             name: "Australia & Oceania",
@@ -4460,9 +4599,9 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 { name: "Gold Coast", value: 0.7 },
                 { name: "Newcastle-Maitland", value: 0.5 },
                 { name: "Canberra", value: 0.46 },
-            ]
+            ],
         },
-    ])
+    ]);
 
     //-------------- VUE-UI-BULLET --------------//
     const CONFIG_BULLET_BASE = computed(() => {
@@ -4472,52 +4611,52 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     legend: {
-                        color: colors.value.textColor
+                        color: colors.value.textColor,
                     },
                     segments: {
                         dataLabels: {
-                            color: colors.value.textColor
-                        }
+                            color: colors.value.textColor,
+                        },
                     },
                     valueBar: {
                         stroke: colors.value.bg,
                         label: {
-                            color: colors.value.textColor
-                        }
+                            color: colors.value.textColor,
+                        },
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
                         subtitle: {
-                            text: 'Subtitle',
-                        }
-                    }
-                }
-            }
-        }
-    })
+                            text: "Subtitle",
+                        },
+                    },
+                },
+            },
+        };
+    });
 
     const DATASET_BULLET_BASIC = ref({
         value: 80,
         target: 75,
         segments: [
             {
-                name: 'Low',
+                name: "Low",
                 from: 0,
                 to: 50,
             },
             {
-                name: 'Medium',
+                name: "Medium",
                 from: 50,
                 to: 70,
             },
             {
-                name: 'High',
+                name: "High",
                 from: 70,
                 to: 100,
             },
-        ]
-    })
+        ],
+    });
 
     const DATASET_BULLET_BACKGROUND = computed(() => {
         return {
@@ -4525,76 +4664,76 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             target: 75,
             segments: [
                 {
-                    name: 'Low',
+                    name: "Low",
                     from: 0,
                     to: 50,
-                    color: isDarkMode.value ? '#FFFFFF40' : '#1A1A1A10'
+                    color: isDarkMode.value ? "#FFFFFF40" : "#1A1A1A10",
                 },
                 {
-                    name: 'Medium',
+                    name: "Medium",
                     from: 50,
                     to: 70,
-                    color: isDarkMode.value ? '#FFFFFF60' : '#1A1A1A20'
+                    color: isDarkMode.value ? "#FFFFFF60" : "#1A1A1A20",
                 },
                 {
-                    name: 'High',
+                    name: "High",
                     from: 70,
                     to: 100,
-                    color: isDarkMode.value ? '#FFFFFF80' : '#1A1A1A40'
+                    color: isDarkMode.value ? "#FFFFFF80" : "#1A1A1A40",
                 },
-            ]
-        }
-    })
+            ],
+        };
+    });
 
     const DATASET_BULLET_COLORS = ref({
         value: 80,
         target: 75,
         segments: [
             {
-                name: 'Low',
+                name: "Low",
                 from: 0,
                 to: 50,
-                color: '#cf5932'
+                color: "#cf5932",
             },
             {
-                name: 'Medium',
+                name: "Medium",
                 from: 50,
                 to: 70,
-                color: '#cc9433'
+                color: "#cc9433",
             },
             {
-                name: 'High',
+                name: "High",
                 from: 70,
                 to: 100,
-                color: '#52cc33'
+                color: "#52cc33",
             },
-        ]
-    })
+        ],
+    });
 
     const DATASET_BULLET_MIXED = ref({
         value: 42,
         target: 30,
         segments: [
             {
-                name: 'Cold',
+                name: "Cold",
                 from: -100,
                 to: 0,
-                color: '#5f8aee'
+                color: "#5f8aee",
             },
             {
-                name: 'Temperate',
+                name: "Temperate",
                 from: 0,
                 to: 40,
-                color: '#52cc33'
+                color: "#52cc33",
             },
             {
-                name: 'Hot',
+                name: "Hot",
                 from: 40,
                 to: 100,
-                color: '#cf5932'
+                color: "#cf5932",
             },
-        ]
-    })
+        ],
+    });
 
     //-------------- VUE-UI-FUNNEL --------------//
     const DATASET_FUNNEL_BASIC = ref([
@@ -4624,27 +4763,27 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
         {
             name: "Lead",
             value: 8249,
-            color: '#d6616b50'
+            color: "#d6616b50",
         },
         {
             name: "Opportunity",
             value: 6322,
-            color: '#2ca02c50'
+            color: "#2ca02c50",
         },
         {
             name: "Qualified",
             value: 4562,
-            color: '#17becf50'
+            color: "#17becf50",
         },
         {
             name: "Sold",
             value: 3021,
-            color: '#ff7f0e50'
+            color: "#ff7f0e50",
         },
         {
             name: "Retained",
             value: 1412,
-            color: '#e7ba5250'
+            color: "#e7ba5250",
         },
     ]);
 
@@ -4656,41 +4795,43 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     circles: {
-                        stroke: colors.value.bg
+                        stroke: colors.value.bg,
                     },
                     circleLinks: {
-                        color: colors.value.greyStroke
+                        color: colors.value.greyStroke,
                     },
                     area: {
-                        color: colors.value.greyStroke
+                        color: colors.value.greyStroke,
                     },
                     bars: {
                         stroke: colors.value.bg,
                         dataLabels: {
                             name: {
-                                color: colors.value.textColor
+                                color: colors.value.textColor,
                             },
                             value: {
-                                color: isDarkMode.value ? colors.value.gridStrokeLight : '#AAAAAA'
-                            }
-                        }
+                                color: isDarkMode.value
+                                    ? colors.value.gridStrokeLight
+                                    : "#AAAAAA",
+                            },
+                        },
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 36,
                         subtitle: {
-                            text: 'Subtitle',
-                        }
-                    }
-                }
-            }
-        }
-    })
+                            text: "Subtitle",
+                        },
+                    },
+                },
+            },
+        };
+    });
 
     //-------------- VUE-UI-TREEMAP --------------//
-    const DATASET_TREEMAP_BASIC = ref( [
+    const DATASET_TREEMAP_BASIC = ref([
         {
             name: "Parent 1",
             value: 100,
@@ -4701,16 +4842,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     url: SUMMER1,
                 },
                 {
-                    name: 'P1 C2',
+                    name: "P1 C2",
                     value: 20,
                     url: SUMMER2,
                 },
                 {
-                    name: 'P1 C3',
+                    name: "P1 C3",
                     value: 10,
-                    url: SUMMER3
+                    url: SUMMER3,
                 },
-            ]
+            ],
         },
         {
             name: "Parent 2",
@@ -4719,19 +4860,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 {
                     name: "P2 C1",
                     value: 80,
-                    url: SPRING1
+                    url: SPRING1,
                 },
                 {
-                    name: 'P2 C2',
+                    name: "P2 C2",
                     value: 20,
-                    url: SPRING2
+                    url: SPRING2,
                 },
                 {
-                    name: 'P2 C3',
+                    name: "P2 C3",
                     value: 10,
-                    url: SPRING3
+                    url: SPRING3,
                 },
-            ]
+            ],
         },
         {
             name: "Parent 3",
@@ -4740,55 +4881,55 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 {
                     name: "P3 C1",
                     value: 20,
-                    url: SUMMER4
+                    url: SUMMER4,
                 },
                 {
-                    name: 'P3 C2',
+                    name: "P3 C2",
                     value: 10,
                     url: FALL1,
                 },
                 {
-                    name: 'P3 C3',
+                    name: "P3 C3",
                     value: 10,
-                    url: FALL2
+                    url: FALL2,
                 },
                 {
-                    name: 'P3 C4',
+                    name: "P3 C4",
                     value: 5,
-                    url: FALL3
+                    url: FALL3,
                 },
                 {
-                    name: 'P3 C5',
+                    name: "P3 C5",
                     value: 5,
-                    url: WINTER1
+                    url: WINTER1,
                 },
                 {
-                    name: 'P3 C6',
+                    name: "P3 C6",
                     value: 10,
-                    url: WINTER2
+                    url: WINTER2,
                 },
                 {
-                    name: 'P3 C7',
+                    name: "P3 C7",
                     value: 5,
-                    url: WINTER3
+                    url: WINTER3,
                 },
                 {
-                    name: 'P3 C8',
+                    name: "P3 C8",
                     value: 10,
                     children: [
                         {
-                            name: 'P3 C8 CC1',
+                            name: "P3 C8 CC1",
                             value: 5,
-                            url: SUMMER1
+                            url: SUMMER1,
                         },
                         {
-                            name: 'P3 C8 CC2',
+                            name: "P3 C8 CC2",
                             value: 5,
-                            url: SUMMER2
+                            url: SUMMER2,
                         },
-                    ]
+                    ],
                 },
-            ]
+            ],
         },
         {
             name: "Parent 4",
@@ -4797,19 +4938,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 {
                     name: "P4 C1",
                     value: 10,
-                    url: WINTER1
+                    url: WINTER1,
                 },
                 {
-                    name: 'P4 C2',
+                    name: "P4 C2",
                     value: 15,
-                    url: WINTER2
+                    url: WINTER2,
                 },
                 {
-                    name: 'P4 C3',
+                    name: "P4 C3",
                     value: 5,
-                    url: WINTER3
+                    url: WINTER3,
                 },
-            ]
+            ],
         },
         {
             name: "Parent 5",
@@ -4818,124 +4959,124 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 {
                     name: "P5 C1",
                     value: 10,
-                    url: FALL1
+                    url: FALL1,
                 },
                 {
-                    name: 'P5 C2',
+                    name: "P5 C2",
                     value: 15,
-                    url: FALL2
+                    url: FALL2,
                 },
                 {
-                    name: 'P5 C3',
+                    name: "P5 C3",
                     value: 5,
-                    url: FALL3
+                    url: FALL3,
                 },
-            ]
+            ],
         },
     ]);
 
-    const DATASET_TREEMAP_PICS = computed(() => ([
+    const DATASET_TREEMAP_PICS = computed(() => [
         {
             name: "Summer",
             value: 120,
-            color: '#FFC107',
+            color: "#FFC107",
             children: [
                 {
                     name: "P1 C1",
                     value: 70,
                     url: SUMMER1,
-                    color: '#FFC107'
+                    color: "#FFC107",
                 },
                 {
-                    name: 'P1 C2',
+                    name: "P1 C2",
                     value: 30,
                     url: SUMMER2,
-                    color: '#FFC107'
+                    color: "#FFC107",
                 },
                 {
-                    name: 'P1 C3',
+                    name: "P1 C3",
                     value: 20,
                     url: SUMMER3,
-                    color: '#FFC107'
+                    color: "#FFC107",
                 },
-            ]
+            ],
         },
         {
             name: "Spring",
             value: 110,
-            color: '#2ca02c',
+            color: "#2ca02c",
             children: [
                 {
                     name: "P2 C1",
                     value: 80,
                     url: SPRING1,
-                    color: '#2ca02c',
+                    color: "#2ca02c",
                 },
                 {
-                    name: 'P2 C2',
+                    name: "P2 C2",
                     value: 20,
                     url: SPRING2,
-                    color: '#2ca02c',
+                    color: "#2ca02c",
                 },
                 {
-                    name: 'P2 C3',
+                    name: "P2 C3",
                     value: 10,
                     url: SPRING3,
-                    color: '#2ca02c',
+                    color: "#2ca02c",
                 },
-            ]
+            ],
         },
         {
             name: "Fall",
             value: 75,
-            color: '#ff7f0e',
+            color: "#ff7f0e",
             children: [
                 {
-                    name: 'P3 C2',
+                    name: "P3 C2",
                     value: 10,
                     url: FALL1,
-                    color: '#ff7f0e',
+                    color: "#ff7f0e",
                 },
                 {
-                    name: 'P3 C3',
+                    name: "P3 C3",
                     value: 10,
                     url: FALL2,
-                    color: '#ff7f0e',
+                    color: "#ff7f0e",
                 },
                 {
-                    name: 'P3 C4',
+                    name: "P3 C4",
                     value: 5,
                     url: FALL3,
-                    color: '#ff7f0e',
+                    color: "#ff7f0e",
                 },
-            ]
+            ],
         },
         {
             name: "Winter",
             value: 30,
-            color: '#CCCCCC',
+            color: "#CCCCCC",
             children: [
                 {
                     name: "P4 C1",
                     value: 10,
                     url: WINTER1,
-                    color: '#CCCCCC',
+                    color: "#CCCCCC",
                 },
                 {
-                    name: 'P4 C2',
+                    name: "P4 C2",
                     value: 15,
                     url: WINTER2,
-                    color: '#CCCCCC',
+                    color: "#CCCCCC",
                 },
                 {
-                    name: 'P4 C3',
+                    name: "P4 C3",
                     value: 5,
                     url: WINTER3,
-                    color: '#CCCCCC',
+                    color: "#CCCCCC",
                 },
-            ]
+            ],
         },
-    ]))
+    ]);
 
     const CONFIG_TREEMAP_BASIC = computed(() => {
         return {
@@ -4952,32 +5093,34 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         rects: {
                             stroke: colors.value.bg,
                             selected: {
-                                stroke: colors.value.bg
+                                stroke: colors.value.bg,
                             },
                             group: {
-                                stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
-                            }
-                        }
+                                stroke: isDarkMode.value
+                                    ? "#8A8A8A"
+                                    : "#A1A1A1",
+                            },
+                        },
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 12,
                         subtitle: {
-                            text: 'Subtitle',
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
-                }
-            }
-        }
-    })
+                },
+            },
+        };
+    });
 
     //-------------- VUE-UI-HISTORY-MAP --------------//
     const DATASET_HISTORY_PLOT_BASIC = ref([
@@ -5018,62 +5161,62 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
                     title: {
-                        text: 'Title',
+                        text: "Title",
                         color: colors.value.textColor,
-                        textAlign: 'left',
+                        textAlign: "left",
                         paddingLeft: 36,
                         subtitle: {
-                            text: 'Subtitle',
-                        }
+                            text: "Subtitle",
+                        },
                     },
                     grid: {
                         xAxis: {
-                            stroke: colors.value.gridStroke
+                            stroke: colors.value.gridStroke,
                         },
                         yAxis: {
-                            stroke: colors.value.gridStroke
+                            stroke: colors.value.gridStroke,
                         },
                         horizontalLines: {
-                            stroke: colors.value.greyStroke
+                            stroke: colors.value.greyStroke,
                         },
                         verticalLines: {
-                            stroke: colors.value.greyStroke
-                        }
+                            stroke: colors.value.greyStroke,
+                        },
                     },
                     axes: {
                         x: {
                             labels: {
                                 color: colors.value.textColor,
-                                prefix: '$'
+                                prefix: "$",
                             },
                             name: {
-                                text: 'Average revenue',
-                                color: colors.value.textColor
-                            }
+                                text: "Average revenue",
+                                color: colors.value.textColor,
+                            },
                         },
                         y: {
                             labels: {
-                                color: colors.value.textColor
+                                color: colors.value.textColor,
                             },
                             name: {
-                                text: 'Average satisfaction',
-                                color: colors.value.textColor
-                            }
-                        }
+                                text: "Average satisfaction",
+                                color: colors.value.textColor,
+                            },
+                        },
                     },
                     plots: {
                         stroke: colors.value.bg,
                         labels: {
-                            color: colors.value.textColor
-                        }
-                    }
-                }
-            }
-        }
-    })
+                            color: colors.value.textColor,
+                        },
+                    },
+                },
+            },
+        };
+    });
 
     const CONFIG_WORLD_BASIC = computed(() => {
         return {
@@ -5082,35 +5225,35 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
                     territory: {
-                        stroke: isDarkMode.value ? '#FFFFFF' : '#FFFFFF',
+                        stroke: isDarkMode.value ? "#FFFFFF" : "#FFFFFF",
                         colors: {
-                            min: '#b8c8fc',
-                            max: '#b54f0b'
+                            min: "#b8c8fc",
+                            max: "#b54f0b",
                         },
-                        emptyColor: isDarkMode.value ? '#4A4A4A' : '#E0E0E0'
+                        emptyColor: isDarkMode.value ? "#4A4A4A" : "#E0E0E0",
                     },
                     dataLabels: {
-                        suffix: '°C'
+                        suffix: "°C",
                     },
                     title: {
-                        text: 'Average yearly temperatures °C',
+                        text: "Average yearly temperatures °C",
                         color: colors.value.textColor,
                         subtitle: {
-                            text: '(Approximation)',
-                            color: colors.value.grey
-                        }
+                            text: "(Approximation)",
+                            color: colors.value.grey,
+                        },
                     },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
                         showPercentage: false,
                         borderColor: colors.value.gridStroke,
-                        backgroundOpacity: 70
+                        backgroundOpacity: 70,
                     },
-                }
-            }
-        }
-    })
+                },
+            },
+        };
+    });
 
     const CONFIG_RIDGELINE_BASIC = computed(() => {
         return {
@@ -5187,8 +5330,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 dot: {
                                     hideAboveMaxSerieLength: 62,
                                     useSerieColor: true,
-                                    fill: '#FFFFFF',
-                                    strokeWidth: 0.5
+                                    fill: "#FFFFFF",
+                                    strokeWidth: 0.5,
                                 },
                                 labels: {
                                     show: true,
@@ -5198,8 +5341,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 },
                                 area: {
                                     useGradient: true,
-                                    opacity: 30
-                                }
+                                    opacity: 30,
+                                },
                             },
                             table: {
                                 rounding: 0,
@@ -5209,7 +5352,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 th: {
                                     backgroundColor: colors.value.bg,
                                     color: colors.value.textColor,
-                                    outline: "none"
+                                    outline: "none",
                                 },
                                 td: {
                                     backgroundColor: colors.value.bg,
@@ -5218,10 +5361,10 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 },
                                 columnNames: {
                                     period: "Period",
-                                    total: "Total"
-                                }
+                                    total: "Total",
+                                },
                             },
-                            chart:  {
+                            chart: {
                                 backgroundColor: colors.value.bg,
                                 color: colors.value.textColor,
                                 highlighter: {
@@ -5229,7 +5372,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     opacity: 10,
                                     useLine: false,
                                     lineDasharray: 2,
-                                    lineWidth: 1
+                                    lineWidth: 1,
                                 },
                                 legend: {
                                     color: colors.value.textColor,
@@ -5244,13 +5387,13 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     roundingPercentage: 0,
                                     customFormat: null,
                                     borderRadius: 4,
-                                    borderColor:"#3A3A3A",
+                                    borderColor: "#3A3A3A",
                                     borderWidth: 1,
                                     fontSize: 14,
                                     backgroundOpacity: 70,
                                     position: "center",
                                     offsetY: 24,
-                                    showTimeLabel: true
+                                    showTimeLabel: true,
                                 },
                                 zoom: {
                                     show: true,
@@ -5261,24 +5404,24 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                         smooth: true,
                                         lineColor: "#1F77B4",
                                         selectedColorOpacity: 0.2,
-                                        selectedColor: '#8A8A8A',
+                                        selectedColor: "#8A8A8A",
                                         selectionRadius: 2,
-                                        indicatorColor: '#CCCCCC',
-                                        verticalHandles: false
-                                    }
+                                        indicatorColor: "#CCCCCC",
+                                        verticalHandles: false,
+                                    },
                                 },
                                 grid: {
                                     stroke: colors.value.gridStroke,
                                     showVerticalLines: false,
                                     showHorizontalLines: false,
-                                    position: 'middle',
+                                    position: "middle",
                                     frame: {
                                         show: false,
-                                        stroke: '#E1E5E8',
+                                        stroke: "#E1E5E8",
                                         strokeWidth: 2,
-                                        strokeLinecap: 'round',
-                                        strokeLinejoin: 'round',
-                                        strokeDasharray: 0
+                                        strokeLinecap: "round",
+                                        strokeLinejoin: "round",
+                                        strokeDasharray: 0,
                                     },
                                     labels: {
                                         show: true,
@@ -5291,16 +5434,29 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                             color: colors.value.textColor,
                                             show: true,
                                             showOnlyFirstAndLast: false,
-                                            values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                                            values: [
+                                                "JAN",
+                                                "FEB",
+                                                "MAR",
+                                                "APR",
+                                                "MAY",
+                                                "JUN",
+                                                "JUL",
+                                                "AUG",
+                                                "SEP",
+                                                "OCT",
+                                                "NOV",
+                                                "DEC",
+                                            ],
                                             fontSize: 18,
                                             yOffset: 0,
                                             rotation: 0,
                                             showOnlyAtModulo: false,
-                                            modulo: 12
-                                        }
-                                    }
+                                            modulo: 12,
+                                        },
+                                    },
                                 },
-                            }
+                            },
                         },
                     },
                     areas: {
@@ -5354,7 +5510,20 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             prefix: "",
                             suffix: "",
                             rotation: 0,
-                            values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                            values: [
+                                "JAN",
+                                "FEB",
+                                "MAR",
+                                "APR",
+                                "MAY",
+                                "JUN",
+                                "JUL",
+                                "AUG",
+                                "SEP",
+                                "OCT",
+                                "NOV",
+                                "DEC",
+                            ],
                             color: colors.value.textColor,
                             fontSize: 14,
                             bold: false,
@@ -5374,45 +5543,50 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     },
                 },
             },
-        }
-    })
+        };
+    });
 
     // CHORD
 
     const DATASET_CHORD_BASIC = ref({
         matrix: [
             //        DEU  JPN  GBR  FRA  IND  CHN
-            /* DEU */ [   0,  90, 100, 120,  60, 140 ],
-            /* JPN */ [ 110,   0,  70,  80,  40, 160 ],
-            /* GBR */ [  80,  70,   0,  70,  30,  90 ],
-            /* FRA */ [ 120,  50,  70,   0,  40, 100 ],
-            /* IND */ [  60,  40,  30,  40,   0,  70 ],
-            /* CHN */ [ 150, 200, 100, 120,  80,   0 ],
-          ],
-          labels: ['Germany', 'Japan', 'United Kingdom', 'France', 'India', 'China'],
+            /* DEU */ [0, 90, 100, 120, 60, 140],
+            /* JPN */ [110, 0, 70, 80, 40, 160],
+            /* GBR */ [80, 70, 0, 70, 30, 90],
+            /* FRA */ [120, 50, 70, 0, 40, 100],
+            /* IND */ [60, 40, 30, 40, 0, 70],
+            /* CHN */ [150, 200, 100, 120, 80, 0],
+        ],
+        labels: [
+            "Germany",
+            "Japan",
+            "United Kingdom",
+            "France",
+            "India",
+            "China",
+        ],
         colors: [
-            '#FFCE00', // Germany (gold)
-            '#f7a1ec', // Japan (red disc)
-            '#5c23cf', // United Kingdom (navy blue)
-            '#3477eb', // France (blue)
-            '#FF9933',  // India (saffron)
-            '#eb4034', // China (red)
-          ]
-      })
-
-
+            "#FFCE00", // Germany (gold)
+            "#f7a1ec", // Japan (red disc)
+            "#5c23cf", // United Kingdom (navy blue)
+            "#3477eb", // France (blue)
+            "#FF9933", // India (saffron)
+            "#eb4034", // China (red)
+        ],
+    });
 
     const CONFIG_CHORD_BASE = computed(() => {
         return {
             table: {
                 th: {
                     backgroundColor: colors.value.bg,
-                    color: colors.value.textColor
+                    color: colors.value.textColor,
                 },
                 td: {
                     backgroundColor: colors.value.bg,
-                    color: colors.value.textColor
-                }
+                    color: colors.value.textColor,
+                },
             },
             style: {
                 chart: {
@@ -5420,37 +5594,37 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     color: colors.value.textColor,
                     legend: {
                         backgroundColor: colors.value.bg,
-                        color: colors.value.textColor
+                        color: colors.value.textColor,
                     },
                     arcs: {
                         stroke: colors.value.bg,
                         labels: {
-                            color: colors.value.textColor
-                        }
+                            color: colors.value.textColor,
+                        },
                     },
                     ribbons: {
                         stroke: colors.value.bg,
                         labels: {
                             color: colors.value.textColor,
                             connector: {
-                                stroke: colors.value.textColor
+                                stroke: colors.value.textColor,
                             },
                             marker: {
-                                stroke: colors.value.bg
-                            }
-                        }
+                                stroke: colors.value.bg,
+                            },
+                        },
                     },
                     title: {
-                        text: 'Export Flows Among Leading Economies',
+                        text: "Export Flows Among Leading Economies",
                         color: colors.value.textColor,
                         subtitle: {
-                            text: 'Bilateral export values (in billions USD)',
-                        }
-                    }
-                }
-            }
-        }
-    })
+                            text: "Bilateral export values (in billions USD)",
+                        },
+                    },
+                },
+            },
+        };
+    });
 
     const examples = computed(() => {
         return [
@@ -5458,56 +5632,61 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             {
                 dataset: DATASET_GEO_FRANCE.value,
                 config: CONFIG_GEO_FRANCE.value,
-                component: 'VueUiGeo',
-                icon: 'chartGeo',
-                link: 'vue-ui-geo',
-                id: 'geo-france',
-                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
-                outsideLink: 'https://mapscaping.com/geojson-every-country-in-the-world/',
+                component: "VueUiGeo",
+                icon: "chartGeo",
+                link: "vue-ui-geo",
+                id: "geo-france",
+                dataDisclaimer:
+                    "Data might not be exact or up to date, and is for the sake of example only.",
+                outsideLink:
+                    "https://mapscaping.com/geojson-every-country-in-the-world/",
                 description: {
-                    en: 'Plotting a dataset on a geoJson map of France',
-                    fr: 'Représentation d’un jeu de données sur une carte GeoJSON de la France',
-                    pt: 'Representação de um conjunto de dados em um mapa GeoJSON da França',
-                    de: 'Darstellung eines Datensatzes auf einer GeoJSON-Karte von Frankreich',
-                    zh: '在法国的 GeoJSON 地图上绘制数据集',
-                    ja: 'フランスの GeoJSON マップ上にデータセットをプロットする',
-                    es: 'Representación de un conjunto de datos en un mapa GeoJSON de Francia',
-                    ko: '프랑스 GeoJSON 지도에 데이터 세트를 표시',
-                    ar: 'تمثيل مجموعة بيانات على خريطة GeoJSON لفرنسا'
-                }
+                    en: "Plotting a dataset on a geoJson map of France",
+                    fr: "Représentation d’un jeu de données sur une carte GeoJSON de la France",
+                    pt: "Representação de um conjunto de dados em um mapa GeoJSON da França",
+                    de: "Darstellung eines Datensatzes auf einer GeoJSON-Karte von Frankreich",
+                    zh: "在法国的 GeoJSON 地图上绘制数据集",
+                    ja: "フランスの GeoJSON マップ上にデータセットをプロットする",
+                    es: "Representación de un conjunto de datos en un mapa GeoJSON de Francia",
+                    ko: "프랑스 GeoJSON 지도에 데이터 세트를 표시",
+                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON لفرنسا",
+                },
             },
             // GEO CHINA
             {
                 dataset: DATASET_GEO_CHINA.value,
                 config: CONFIG_GEO_CHINA.value,
-                component: 'VueUiGeo',
-                icon: 'chartGeo',
-                link: 'vue-ui-geo',
-                id: 'geo-china',
-                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
-                outsideLink: 'https://github.com/longwosion/geojson-map-china/blob/master/china.json',
+                component: "VueUiGeo",
+                icon: "chartGeo",
+                link: "vue-ui-geo",
+                id: "geo-china",
+                dataDisclaimer:
+                    "Data might not be exact or up to date, and is for the sake of example only.",
+                outsideLink:
+                    "https://github.com/longwosion/geojson-map-china/blob/master/china.json",
                 description: {
-                    en: 'Plotting a dataset on a geoJson map of China',
-                    fr: 'Représentation d’un jeu de données sur une carte GeoJSON de la Chine',
-                    pt: 'Representação de um conjunto de dados em um mapa GeoJSON da China',
-                    de: 'Darstellung eines Datensatzes auf einer GeoJSON-Karte von China',
-                    zh: '在中国的 GeoJSON 地图上绘制数据集',
-                    ja: '中国の GeoJSON マップ上にデータセットをプロットする',
-                    es: 'Representación de un conjunto de datos en un mapa GeoJSON de China',
-                    ko: '중국 GeoJSON 지도에 데이터 세트를 표시',
-                    ar: 'تمثيل مجموعة بيانات على خريطة GeoJSON للصين'
-                }
+                    en: "Plotting a dataset on a geoJson map of China",
+                    fr: "Représentation d’un jeu de données sur une carte GeoJSON de la Chine",
+                    pt: "Representação de um conjunto de dados em um mapa GeoJSON da China",
+                    de: "Darstellung eines Datensatzes auf einer GeoJSON-Karte von China",
+                    zh: "在中国的 GeoJSON 地图上绘制数据集",
+                    ja: "中国の GeoJSON マップ上にデータセットをプロットする",
+                    es: "Representación de un conjunto de datos en un mapa GeoJSON de China",
+                    ko: "중국 GeoJSON 지도에 데이터 세트를 표시",
+                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON للصين",
+                },
             },
             // GEO BRAZIL
             {
                 dataset: DATASET_GEO_BRAZIL.value,
                 config: CONFIG_GEO_BRAZIL.value,
-                component: 'VueUiGeo',
-                icon: 'chartGeo',
-                link: 'vue-ui-geo',
-                id: 'geo-brazil',
-                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
-                outsideLink: 'https://exploratory.io/map',
+                component: "VueUiGeo",
+                icon: "chartGeo",
+                link: "vue-ui-geo",
+                id: "geo-brazil",
+                dataDisclaimer:
+                    "Data might not be exact or up to date, and is for the sake of example only.",
+                outsideLink: "https://exploratory.io/map",
                 description: {
                     en: "Plotting a dataset on a geoJson map of Brazil",
                     fr: "Représentation d’un jeu de données sur une carte GeoJSON du Brésil",
@@ -5517,19 +5696,20 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "ブラジルの GeoJSON マップ上にデータセットをプロットする",
                     es: "Representación de un conjunto de datos en un mapa GeoJSON de Brasil",
                     ko: "브라질 GeoJSON 지도에 데이터 세트를 표시",
-                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON للبرازيل"
-                }
+                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON للبرازيل",
+                },
             },
             // GEO ITALY
             {
                 dataset: DATASET_GEO_ITALY.value,
                 config: CONFIG_GEO_ITALY.value,
-                component: 'VueUiGeo',
-                icon: 'chartGeo',
-                link: 'vue-ui-geo',
-                id: 'geo-brazil',
-                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
-                outsideLink: 'https://simplemaps.com/gis/country/it',
+                component: "VueUiGeo",
+                icon: "chartGeo",
+                link: "vue-ui-geo",
+                id: "geo-brazil",
+                dataDisclaimer:
+                    "Data might not be exact or up to date, and is for the sake of example only.",
+                outsideLink: "https://simplemaps.com/gis/country/it",
                 description: {
                     en: "Plotting a dataset on a geoJson map of Italy",
                     fr: "Représentation d’un jeu de données sur une carte GeoJSON d'Italie",
@@ -5539,20 +5719,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "イタリアの GeoJSON マップ上にデータセットをプロットする",
                     es: "Representación de un conjunto de datos en un mapa GeoJSON de Italia",
                     ko: "이탈리아 GeoJSON 지도에 데이터 세트를 표시",
-                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON لإيطاليا"
-                }
+                    ar: "تمثيل مجموعة بيانات على خريطة GeoJSON لإيطاليا",
+                },
             },
             // GEO FRANCE WITH CUSTOM SVG ELEMENTS
             {
                 dataset: DATASET_GEO_FRANCE.value,
                 config: CONFIG_GEO_FRANCE.value,
-                component: 'VueUiGeo',
-                icon: 'chartGeo',
-                link: 'vue-ui-geo',
-                id: 'geo-france-with-custom-features',
+                component: "VueUiGeo",
+                icon: "chartGeo",
+                link: "vue-ui-geo",
+                id: "geo-france-with-custom-features",
                 customGeo: true,
-                dataDisclaimer: 'Data might not be exact or up to date, and is for the sake of example only.',
-                outsideLink: 'https://mapscaping.com/geojson-every-country-in-the-world/',
+                dataDisclaimer:
+                    "Data might not be exact or up to date, and is for the sake of example only.",
+                outsideLink:
+                    "https://mapscaping.com/geojson-every-country-in-the-world/",
                 tags: ["#svg"],
                 slot: `<template #svg="{ svg }">
                 <!--
@@ -5584,36 +5766,36 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 />
             </template>`,
                 description: {
-                    en: 'Leveraging the #svg slot to add svg elements',
-                    fr: 'Exploiter le slot #svg pour ajouter des éléments SVG',
-                    pt: 'Aproveitar o slot #svg para adicionar elementos SVG',
-                    de: 'Nutzung des #svg-Slots zum Hinzufügen von SVG-Elementen',
-                    zh: '利用 #svg 插槽添加 SVG 元素',
-                    ja: '#svg スロットを活用して SVG 要素を追加する',
-                    es: 'Aprovechar el slot #svg para añadir elementos SVG',
-                    ko: '#svg 슬롯을 활용하여 SVG 요소를 추가하기',
-                    ar: 'الاستفادة من فتحة #svg لإضافة عناصر SVG'
-                }
+                    en: "Leveraging the #svg slot to add svg elements",
+                    fr: "Exploiter le slot #svg pour ajouter des éléments SVG",
+                    pt: "Aproveitar o slot #svg para adicionar elementos SVG",
+                    de: "Nutzung des #svg-Slots zum Hinzufügen von SVG-Elementen",
+                    zh: "利用 #svg 插槽添加 SVG 元素",
+                    ja: "#svg スロットを活用して SVG 要素を追加する",
+                    es: "Aprovechar el slot #svg para añadir elementos SVG",
+                    ko: "#svg 슬롯을 활용하여 SVG 요소를 추가하기",
+                    ar: "الاستفادة من فتحة #svg لإضافة عناصر SVG",
+                },
             },
             // CHORD CLASSIC
             {
                 dataset: DATASET_CHORD_BASIC.value,
                 config: CONFIG_CHORD_BASE.value,
-                component: 'VueUiChord',
-                icon: 'chartChord',
-                link: 'vue-ui-chord',
-                id: 'chord-classic',
+                component: "VueUiChord",
+                icon: "chartChord",
+                link: "vue-ui-chord",
+                id: "chord-classic",
                 description: {
-                    en: 'Basic rendering',
-                    fr: 'Rendu de base',
-                    pt: 'Renderização básica',
-                    de: 'Grundlegende Darstellung',
-                    zh: '基本渲染',
-                    ja: '基本的なレンダリング',
-                    es: 'Representación básica',
-                    ko: '기본 렌더링',
-                    ar: 'عرض أساسي'
-                }
+                    en: "Basic rendering",
+                    fr: "Rendu de base",
+                    pt: "Renderização básica",
+                    de: "Grundlegende Darstellung",
+                    zh: "基本渲染",
+                    ja: "基本的なレンダリング",
+                    es: "Representación básica",
+                    ko: "기본 렌더링",
+                    ar: "عرض أساسي",
+                },
             },
             // CHORD SPACED
             {
@@ -5626,26 +5808,26 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_CHORD_BASE.value.style.chart,
                             arcs: {
                                 ...CONFIG_CHORD_BASE.value.style.chart.arcs,
-                                padAngle: 48
-                            }
-                        }
-                    }
+                                padAngle: 48,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiChord',
-                icon: 'chartChord',
-                link: 'vue-ui-chord',
-                id: 'chord-spaced',
+                component: "VueUiChord",
+                icon: "chartChord",
+                link: "vue-ui-chord",
+                id: "chord-spaced",
                 description: {
-                    en: 'Spaced',
-                    fr: 'Espacé',
-                    pt: 'Espaçado',
-                    de: 'Abstand',
-                    zh: '间距',
-                    ja: '間隔',
-                    es: 'Espaciado',
-                    ko: '간격',
-                    ar: 'متباعد'
-                }
+                    en: "Spaced",
+                    fr: "Espacé",
+                    pt: "Espaçado",
+                    de: "Abstand",
+                    zh: "间距",
+                    ja: "間隔",
+                    es: "Espaciado",
+                    ko: "간격",
+                    ar: "متباعد",
+                },
             },
             // CHORD DONUT LIKE
             {
@@ -5659,36 +5841,36 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             arcs: {
                                 ...CONFIG_CHORD_BASE.value.style.chart.arcs,
                                 padAngle: 0,
-                                innerRadiusRatio: 0.7
-                            }
-                        }
-                    }
+                                innerRadiusRatio: 0.7,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiChord',
-                icon: 'chartChord',
-                link: 'vue-ui-chord',
-                id: 'chord-donut',
+                component: "VueUiChord",
+                icon: "chartChord",
+                link: "vue-ui-chord",
+                id: "chord-donut",
                 description: {
-                    en: 'Donut-like',
-                    fr: 'En forme de beignet',
-                    pt: 'Em forma de rosquinha',
-                    de: 'Donut-ähnlich',
-                    zh: '甜甜圈状',
-                    ja: 'ドーナツ状',
-                    es: 'En forma de dona',
-                    ko: '도넛 모양',
-                    ar: 'على شكل دونات'
-                }
+                    en: "Donut-like",
+                    fr: "En forme de beignet",
+                    pt: "Em forma de rosquinha",
+                    de: "Donut-ähnlich",
+                    zh: "甜甜圈状",
+                    ja: "ドーナツ状",
+                    es: "En forma de dona",
+                    ko: "도넛 모양",
+                    ar: "على شكل دونات",
+                },
             },
             // CHORD PATTERNS
             {
                 dataset: DATASET_CHORD_BASIC.value,
                 config: CONFIG_CHORD_BASE.value,
-                component: 'VueUiChord',
-                id: 'chord-patterns',
-                icon: 'chartChord',
-                link: 'vue-ui-chord',
-                tags: ['#pattern'],
+                component: "VueUiChord",
+                id: "chord-patterns",
+                icon: "chartChord",
+                link: "vue-ui-chord",
+                tags: ["#pattern"],
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
                 <!-- Condition specific patterns to the seriesIndex if necessary -->
@@ -5709,19 +5891,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムパターンの使用",
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
-                    ar: "استخدام نمط مخصص"
-                }
+                    ar: "استخدام نمط مخصص",
+                },
             },
             // CHORD BACKGROUND
             {
                 dataset: DATASET_CHORD_BASIC.value,
                 config: CONFIG_CHORD_BASE.value,
-                component: 'VueUiChord',
-                icon: 'chartChord',
-                link: 'vue-ui-chord',
+                component: "VueUiChord",
+                icon: "chartChord",
+                link: "vue-ui-chord",
                 chartBackground: true,
-                id: 'chord-background',
-                tags: ['#chart-background'],
+                id: "chord-background",
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -5736,48 +5918,48 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // RIDGELINE CLASSIC
             {
                 dataset: DATASET_RIDGELINE.value,
                 config: CONFIG_RIDGELINE_BASIC.value,
-                component: 'VueUiRidgeline',
-                icon: 'chartRidgeline',
-                link: 'vue-ui-ridgeline',
-                id: 'ridgeline-classic',
+                component: "VueUiRidgeline",
+                icon: "chartRidgeline",
+                link: "vue-ui-ridgeline",
+                id: "ridgeline-classic",
                 description: {
-                    en: 'Basic rendering',
-                    fr: 'Rendu de base',
-                    pt: 'Renderização básica',
-                    de: 'Grundlegende Darstellung',
-                    zh: '基本渲染',
-                    ja: '基本的なレンダリング',
-                    es: 'Representación básica',
-                    ko: '기본 렌더링',
-                    ar: 'عرض أساسي'
-                }
+                    en: "Basic rendering",
+                    fr: "Rendu de base",
+                    pt: "Renderização básica",
+                    de: "Grundlegende Darstellung",
+                    zh: "基本渲染",
+                    ja: "基本的なレンダリング",
+                    es: "Representación básica",
+                    ko: "기본 렌더링",
+                    ar: "عرض أساسي",
+                },
             },
             // RIDGELINE CATEGORIES
             {
                 dataset: DATASET_RIDGELINE_MULTIPLE.value,
                 config: CONFIG_RIDGELINE_BASIC.value,
-                component: 'VueUiRidgeline',
-                icon: 'chartRidgeline',
-                link: 'vue-ui-ridgeline',
-                id: 'ridgeline-categories',
+                component: "VueUiRidgeline",
+                icon: "chartRidgeline",
+                link: "vue-ui-ridgeline",
+                id: "ridgeline-categories",
                 description: {
-                    en: 'Multiple series per datapoint',
-                    fr: 'Séries multiples par point de données',
-                    pt: 'Múltiplas séries por ponto de dados',
-                    de: 'Mehrere Reihen pro Datenpunkt',
-                    zh: '每个数据点的多组序列',
-                    ja: '各データポイントごとの複数系列',
-                    es: 'Varias series por punto de datos',
-                    ko: '데이터 포인트별 다중 시리즈',
-                    ar: 'سلاسل متعددة لكل نقطة بيانات'
-                }
+                    en: "Multiple series per datapoint",
+                    fr: "Séries multiples par point de données",
+                    pt: "Múltiplas séries por ponto de dados",
+                    de: "Mehrere Reihen pro Datenpunkt",
+                    zh: "每个数据点的多组序列",
+                    ja: "各データポイントごとの複数系列",
+                    es: "Varias series por punto de datos",
+                    ko: "데이터 포인트별 다중 시리즈",
+                    ar: "سلاسل متعددة لكل نقطة بيانات",
+                },
             },
             // RIDGELINE CONDENSED
             {
@@ -5789,27 +5971,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_RIDGELINE_BASIC.value.style.chart,
                             areas: {
-                                ...CONFIG_RIDGELINE_BASIC.value.style.chart.areas,
-                                rowHeight: 15
-                            }
-                        }
-                    }
+                                ...CONFIG_RIDGELINE_BASIC.value.style.chart
+                                    .areas,
+                                rowHeight: 15,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiRidgeline',
-                icon: 'chartRidgeline',
-                link: 'vue-ui-ridgeline',
-                id: 'ridgeline-condensed',
+                component: "VueUiRidgeline",
+                icon: "chartRidgeline",
+                link: "vue-ui-ridgeline",
+                id: "ridgeline-condensed",
                 description: {
-                    en: 'Condensed rows',
-                    fr: 'Rangées condensées',
-                    pt: 'Linhas condensadas',
-                    de: 'Kompakte Reihen',
-                    zh: '紧凑行',
-                    ja: '凝縮された行',
-                    es: 'Filas condensadas',
-                    ko: '압축된 행',
-                    ar: 'صفوف مكثفة'
-                }
+                    en: "Condensed rows",
+                    fr: "Rangées condensées",
+                    pt: "Linhas condensadas",
+                    de: "Kompakte Reihen",
+                    zh: "紧凑行",
+                    ja: "凝縮された行",
+                    es: "Filas condensadas",
+                    ko: "압축된 행",
+                    ar: "صفوف مكثفة",
+                },
             },
             // RIDGELINE LIVE
             {
@@ -5821,25 +6004,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_RIDGELINE_BASIC.value.style.chart,
                             areas: {
-                                ...CONFIG_RIDGELINE_BASIC.value.style.chart.areas,
+                                ...CONFIG_RIDGELINE_BASIC.value.style.chart
+                                    .areas,
                                 rowHeight: 20,
-                                height: 100
+                                height: 100,
                             },
                             title: {
-                                ...CONFIG_RIDGELINE_BASIC.value.style.chart.title,
-                                text: 'Sismic acitivity',
+                                ...CONFIG_RIDGELINE_BASIC.value.style.chart
+                                    .title,
+                                text: "Sismic acitivity",
                                 subtitle: {
-                                    ...CONFIG_RIDGELINE_BASIC.value.style.chart.title.subtitle,
-                                    text: ''
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_RIDGELINE_BASIC.value.style.chart
+                                        .title.subtitle,
+                                    text: "",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiRidgeline',
-                icon: 'chartRidgeline',
-                link: 'vue-ui-ridgeline',
-                id: 'ridgeline-live',
+                component: "VueUiRidgeline",
+                icon: "chartRidgeline",
+                link: "vue-ui-ridgeline",
+                id: "ridgeline-live",
                 description: {
                     en: "Frequent data update",
                     fr: "Mise à jour fréquente des données",
@@ -5849,324 +6035,324 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "頻繁なデータ更新",
                     es: "Actualización frecuente de datos",
                     ko: "빈번한 데이터 업데이트",
-                    ar: "تحديث متكرر للبيانات"
-                }
+                    ar: "تحديث متكرر للبيانات",
+                },
             },
             // WORLD GLOBE
             {
                 dataset: DATASET_WORLD.value,
                 config: CONFIG_WORLD_BASIC.value,
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-globe',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-globe",
                 description: {
-                    en: 'Globe projection',
-                    fr: 'Projection du globe',
-                    pt: 'Projeção do globo',
-                    de: 'Globus-Projektion',
-                    zh: '地球投影',
-                    ja: '地球儀投影',
-                    es: 'Proyección del globo',
-                    ko: '지구본 투영',
-                    ar: 'إسقاط الكرة الأرضية'
-                }
+                    en: "Globe projection",
+                    fr: "Projection du globe",
+                    pt: "Projeção do globo",
+                    de: "Globus-Projektion",
+                    zh: "地球投影",
+                    ja: "地球儀投影",
+                    es: "Proyección del globo",
+                    ko: "지구본 투영",
+                    ar: "إسقاط الكرة الأرضية",
+                },
             },
             // WORLD MERCATOR
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'mercator'
+                    projection: "mercator",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-mercator',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-mercator",
                 description: {
-                    en: 'Mercator projection',
-                    fr: 'Projection de Mercator',
-                    pt: 'Projeção de Mercator',
-                    de: 'Mercator-Projektion',
-                    zh: '墨卡托投影',
-                    ja: 'メルカトル図法',
-                    es: 'Proyección de Mercator',
-                    ko: '메르카토르 도법',
-                    ar: 'إسقاط مركاتور'
-                }
+                    en: "Mercator projection",
+                    fr: "Projection de Mercator",
+                    pt: "Projeção de Mercator",
+                    de: "Mercator-Projektion",
+                    zh: "墨卡托投影",
+                    ja: "メルカトル図法",
+                    es: "Proyección de Mercator",
+                    ko: "메르카토르 도법",
+                    ar: "إسقاط مركاتور",
+                },
             },
             // WORLD AITOFF
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'aitoff'
+                    projection: "aitoff",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-aitoff',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-aitoff",
                 description: {
-                    en: 'Aitoff projection',
-                    fr: 'Projection Aitoff',
-                    pt: 'Projeção de Aitoff',
-                    de: 'Aitoff-Projektion',
-                    zh: '艾托夫投影',
-                    ja: 'アイトフ図法',
-                    es: 'Proyección de Aitoff',
-                    ko: '아이토프 도법',
-                    ar: 'إسقاط أيتوف'
-                }
+                    en: "Aitoff projection",
+                    fr: "Projection Aitoff",
+                    pt: "Projeção de Aitoff",
+                    de: "Aitoff-Projektion",
+                    zh: "艾托夫投影",
+                    ja: "アイトフ図法",
+                    es: "Proyección de Aitoff",
+                    ko: "아이토프 도법",
+                    ar: "إسقاط أيتوف",
+                },
             },
             // WORLD AZIMUTAL EQUIDISTANT
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'azimuthalEquidistant'
+                    projection: "azimuthalEquidistant",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-azimutal',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-azimutal",
                 description: {
-                    en: 'Azimuthal equidistant projection',
-                    fr: 'Projection azimutale équidistante',
-                    pt: 'Projeção azimutal equidistante',
-                    de: 'Azimutal äquidistante Projektion',
-                    zh: '方位等距投影',
-                    ja: '方位等距図法',
-                    es: 'Proyección azimutal equidistante',
-                    ko: '방위 등거리 투영법',
-                    ar: 'إسقاط سمتي متساوي البعد'
-                }
+                    en: "Azimuthal equidistant projection",
+                    fr: "Projection azimutale équidistante",
+                    pt: "Projeção azimutal equidistante",
+                    de: "Azimutal äquidistante Projektion",
+                    zh: "方位等距投影",
+                    ja: "方位等距図法",
+                    es: "Proyección azimutal equidistante",
+                    ko: "방위 등거리 투영법",
+                    ar: "إسقاط سمتي متساوي البعد",
+                },
             },
             // WORLD BONNE
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'bonne'
+                    projection: "bonne",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-bonne',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-bonne",
                 description: {
-                    en: 'Bonne projection',
-                    fr: 'Projection de Bonne',
-                    pt: 'Projeção de Bonne',
-                    de: 'Bonne-Projektion',
-                    zh: '邦纳投影',
-                    ja: 'ボンヌ図法',
-                    es: 'Proyección de Bonne',
-                    ko: '본 도법',
-                    ar: 'إسقاط بونيه'
-                }
+                    en: "Bonne projection",
+                    fr: "Projection de Bonne",
+                    pt: "Projeção de Bonne",
+                    de: "Bonne-Projektion",
+                    zh: "邦纳投影",
+                    ja: "ボンヌ図法",
+                    es: "Proyección de Bonne",
+                    ko: "본 도법",
+                    ar: "إسقاط بونيه",
+                },
             },
             // WORLD EQUI RECTANGULAR
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'equirectangular'
+                    projection: "equirectangular",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-equirectangular',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-equirectangular",
                 description: {
-                    en: 'Equirectangular projection',
-                    fr: 'Projection équirectangulaire',
-                    pt: 'Projeção equiretangular',
-                    de: 'Equirektangulare Projektion',
-                    zh: '等矩形投影',
-                    ja: '等緯度経線図法',
-                    es: 'Proyección equirectangular',
-                    ko: '등직각 도법',
-                    ar: 'الإسقاط المستطيل المتساوي'
-                }
+                    en: "Equirectangular projection",
+                    fr: "Projection équirectangulaire",
+                    pt: "Projeção equiretangular",
+                    de: "Equirektangulare Projektion",
+                    zh: "等矩形投影",
+                    ja: "等緯度経線図法",
+                    es: "Proyección equirectangular",
+                    ko: "등직각 도법",
+                    ar: "الإسقاط المستطيل المتساوي",
+                },
             },
             // WORLD GALL PETERS
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'gallPeters'
+                    projection: "gallPeters",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-gallpeters',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-gallpeters",
                 description: {
-                    en: 'Gall Peters projection',
-                    fr: 'Projection Gall-Peters',
-                    pt: 'Projeção Gall-Peters',
-                    de: 'Gall-Peters-Projektion',
-                    zh: '盖尔-彼得斯投影',
-                    ja: 'ガル＝ピーターズ図法',
-                    es: 'Proyección Gall-Peters',
-                    ko: '갈-피터스 도법',
-                    ar: 'إسقاط غال-بيترز'
-                }
+                    en: "Gall Peters projection",
+                    fr: "Projection Gall-Peters",
+                    pt: "Projeção Gall-Peters",
+                    de: "Gall-Peters-Projektion",
+                    zh: "盖尔-彼得斯投影",
+                    ja: "ガル＝ピーターズ図法",
+                    es: "Proyección Gall-Peters",
+                    ko: "갈-피터스 도법",
+                    ar: "إسقاط غال-بيترز",
+                },
             },
             // WORLD HAMMER
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'hammer'
+                    projection: "hammer",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-hammer',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-hammer",
                 description: {
-                    en: 'Hammer projection',
-                    fr: 'Projection Hammer',
-                    pt: 'Projeção Hammer',
-                    de: 'Hammer-Projektion',
-                    zh: '哈默投影',
-                    ja: 'ハマー図法',
-                    es: 'Proyección Hammer',
-                    ko: '해머 도법',
-                    ar: 'إسقاط هامَر'
-                }
+                    en: "Hammer projection",
+                    fr: "Projection Hammer",
+                    pt: "Projeção Hammer",
+                    de: "Hammer-Projektion",
+                    zh: "哈默投影",
+                    ja: "ハマー図法",
+                    es: "Proyección Hammer",
+                    ko: "해머 도법",
+                    ar: "إسقاط هامَر",
+                },
             },
             // WORLD MOLLWEIDE
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'mollweide'
+                    projection: "mollweide",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-mollweide',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-mollweide",
                 description: {
-                    en: 'Mollweide projection',
-                    fr: 'Projection Mollweide',
-                    pt: 'Projeção Mollweide',
-                    de: 'Mollweide-Projektion',
-                    zh: '莫尔魏德投影',
-                    ja: 'モルワイデ図法',
-                    es: 'Proyección Mollweide',
-                    ko: '몰바이데 도법',
-                    ar: 'إسقاط مولفايده'
-                }
+                    en: "Mollweide projection",
+                    fr: "Projection Mollweide",
+                    pt: "Projeção Mollweide",
+                    de: "Mollweide-Projektion",
+                    zh: "莫尔魏德投影",
+                    ja: "モルワイデ図法",
+                    es: "Proyección Mollweide",
+                    ko: "몰바이데 도법",
+                    ar: "إسقاط مولفايده",
+                },
             },
             // WORLD ROBINSON
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'robinson'
+                    projection: "robinson",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-robinson',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-robinson",
                 description: {
-                    en: 'Robinson projection',
-                    fr: 'Projection Robinson',
-                    pt: 'Projeção de Robinson',
-                    de: 'Robinson-Projektion',
-                    zh: '罗宾逊投影',
-                    ja: 'ロビンソン図法',
-                    es: 'Proyección Robinson',
-                    ko: '로빈슨 도법',
-                    ar: 'إسقاط روبنسون'
-                }
+                    en: "Robinson projection",
+                    fr: "Projection Robinson",
+                    pt: "Projeção de Robinson",
+                    de: "Robinson-Projektion",
+                    zh: "罗宾逊投影",
+                    ja: "ロビンソン図法",
+                    es: "Proyección Robinson",
+                    ko: "로빈슨 도법",
+                    ar: "إسقاط روبنسون",
+                },
             },
             // WORLD SINUSOIDAL
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'sinusoidal'
+                    projection: "sinusoidal",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-sinusioidal',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-sinusioidal",
                 description: {
-                    en: 'Sinusoidal projection',
-                    fr: 'Projection sinusoïdale',
-                    pt: 'Projeção sinusoidal',
-                    de: 'Sinusoidal-Projektion',
-                    zh: '正弦曲线投影',
-                    ja: 'サイノソイダル図法',
-                    es: 'Proyección sinusoidal',
-                    ko: '사인 곡선 도법',
-                    ar: 'إسقاط جيبي'
-                }
+                    en: "Sinusoidal projection",
+                    fr: "Projection sinusoïdale",
+                    pt: "Projeção sinusoidal",
+                    de: "Sinusoidal-Projektion",
+                    zh: "正弦曲线投影",
+                    ja: "サイノソイダル図法",
+                    es: "Proyección sinusoidal",
+                    ko: "사인 곡선 도법",
+                    ar: "إسقاط جيبي",
+                },
             },
             // WORLD VAN DER GRINTEN
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'vanDerGrinten'
+                    projection: "vanDerGrinten",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-grinten',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-grinten",
                 description: {
-                    en: 'Van Der Grinten projection',
-                    fr: 'Projection Van Der Grinten',
-                    pt: 'Projeção Van Der Grinten',
-                    de: 'Van-der-Grinten-Projektion',
-                    zh: '范德格林滕投影',
-                    ja: 'ヴァン・デル・グリント図法',
-                    es: 'Proyección Van Der Grinten',
-                    ko: '반 데어 그린텐 도법',
-                    ar: 'إسقاط فان دير غرينتن'
-                }
+                    en: "Van Der Grinten projection",
+                    fr: "Projection Van Der Grinten",
+                    pt: "Projeção Van Der Grinten",
+                    de: "Van-der-Grinten-Projektion",
+                    zh: "范德格林滕投影",
+                    ja: "ヴァン・デル・グリント図法",
+                    es: "Proyección Van Der Grinten",
+                    ko: "반 데어 그린텐 도법",
+                    ar: "إسقاط فان دير غرينتن",
+                },
             },
             // WORLD WINKEL TRIPEL
             {
                 dataset: DATASET_WORLD.value,
                 config: {
                     ...CONFIG_WORLD_BASIC.value,
-                    projection: 'winkelTripel'
+                    projection: "winkelTripel",
                 },
-                component: 'VueUiWorld',
-                icon: 'world',
-                link: 'vue-ui-world',
-                id: 'world-winkeltripel',
+                component: "VueUiWorld",
+                icon: "world",
+                link: "vue-ui-world",
+                id: "world-winkeltripel",
                 description: {
-                    en: 'Winkel Tripel projection',
-                    fr: 'Projection Winkel Tripel',
-                    pt: 'Projeção Winkel Tripel',
-                    de: 'Winkel-Tripel-Projektion',
-                    zh: '温克尔三重投影',
-                    ja: 'ウィンケル・トリペル図法',
-                    es: 'Proyección Winkel Tripel',
-                    ko: '빈켈 트리펠 도법',
-                    ar: 'إسقاط وينكل تريبل'
-                }
+                    en: "Winkel Tripel projection",
+                    fr: "Projection Winkel Tripel",
+                    pt: "Projeção Winkel Tripel",
+                    de: "Winkel-Tripel-Projektion",
+                    zh: "温克尔三重投影",
+                    ja: "ウィンケル・トリペル図法",
+                    es: "Proyección Winkel Tripel",
+                    ko: "빈켈 트리펠 도법",
+                    ar: "إسقاط وينكل تريبل",
+                },
             },
             // XY BASIC LINE
             {
                 dataset: DATASET_XY_SINUSOID2.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'basic-line',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "basic-line",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Basic line chart',
-                    fr: 'Graphique linéaire de base',
-                    pt: 'Gráfico de linha básico',
-                    de: 'Grundlegendes Liniendiagramm',
-                    zh: '基本折线图',
-                    ja: '基本的な折れ線グラフ',
-                    es: 'Gráfico de línea básico',
-                    ko: '기본 선형 차트',
-                    ar: 'مخطط خطي أساسي'
-                }
+                    en: "Basic line chart",
+                    fr: "Graphique linéaire de base",
+                    pt: "Gráfico de linha básico",
+                    de: "Grundlegendes Liniendiagramm",
+                    zh: "基本折线图",
+                    ja: "基本的な折れ線グラフ",
+                    es: "Gráfico de línea básico",
+                    ko: "기본 선형 차트",
+                    ar: "مخطط خطي أساسي",
+                },
             },
             // XY LINE SMOOTH
             {
@@ -6179,86 +6365,86 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...BASE_XY_CONFIG.value.chart.zoom,
                             minimap: {
                                 ...BASE_XY_CONFIG.value.chart.zoom.minimap,
-                                smooth: true
-                            }
-                        }
-                    }
+                                smooth: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'basic-smooth-line',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "basic-smooth-line",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Basic smooth line chart',
-                    fr: 'Graphique linéaire lisse de base',
-                    pt: 'Gráfico de linha suave básico',
-                    de: 'Grundlegendes glattes Liniendiagramm',
-                    zh: '基本平滑折线图',
-                    ja: '基本的な滑らかな折れ線グラフ',
-                    es: 'Gráfico de línea suave básico',
-                    ko: '기본 부드러운 선형 차트',
-                    ar: 'مخطط خطي ناعم أساسي'
-                }
+                    en: "Basic smooth line chart",
+                    fr: "Graphique linéaire lisse de base",
+                    pt: "Gráfico de linha suave básico",
+                    de: "Grundlegendes glattes Liniendiagramm",
+                    zh: "基本平滑折线图",
+                    ja: "基本的な滑らかな折れ線グラフ",
+                    es: "Gráfico de línea suave básico",
+                    ko: "기본 부드러운 선형 차트",
+                    ar: "مخطط خطي ناعم أساسي",
+                },
             },
             // XY BASIC BAR
             {
                 dataset: DATASET_XY_BASIC_BAR.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'basic-bar',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "basic-bar",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Basic histogram',
-                    fr: 'Histogramme de base',
-                    pt: 'Histograma básico',
-                    de: 'Grundlegendes Histogramm',
-                    zh: '基本直方图',
-                    ja: '基本的なヒストグラム',
-                    es: 'Histograma básico',
-                    ko: '기본 히스토그램',
-                    ar: 'مخطط مدرج تكراري أساسي'
-                }
+                    en: "Basic histogram",
+                    fr: "Histogramme de base",
+                    pt: "Histograma básico",
+                    de: "Grundlegendes Histogramm",
+                    zh: "基本直方图",
+                    ja: "基本的なヒストグラム",
+                    es: "Histograma básico",
+                    ko: "기본 히스토그램",
+                    ar: "مخطط مدرج تكراري أساسي",
+                },
             },
             // XY COMBINED
             {
                 dataset: DATASET_XY_BASIC_COMBINED.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'basic-combined',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "basic-combined",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Combined',
-                    fr: 'Combiné',
-                    pt: 'Combinado',
-                    de: 'Kombiniert',
-                    zh: '组合图',
-                    ja: '組み合わせ',
-                    es: 'Combinado',
-                    ko: '결합된',
-                    ar: 'مركب'
-                }
+                    en: "Combined",
+                    fr: "Combiné",
+                    pt: "Combinado",
+                    de: "Kombiniert",
+                    zh: "组合图",
+                    ja: "組み合わせ",
+                    es: "Combinado",
+                    ko: "결합된",
+                    ar: "مركب",
+                },
             },
             // XY WITH NULL VALUES LINKED
             {
                 dataset: DATASET_XY_WITH_NULL.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'null-linked',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "null-linked",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'With incomplete data (null values) linked',
-                    fr: 'Avec des données incomplètes (valeurs nulles) liées',
-                    pt: 'Com dados incompletos (valores nulos) vinculados',
-                    de: 'Mit unvollständigen Daten (Nullwerte) verknüpft',
-                    zh: '已链接不完整的数据（空值）',
-                    ja: '不完全なデータ（null 値）がリンクされています',
-                    es: 'Con datos incompletos (valores nulos) vinculados',
-                    ko: '불완전한 데이터(널 값)이 연결됨',
-                    ar: 'مع بيانات غير مكتملة (قيم فارغة) مرتبطة'
-                }
+                    en: "With incomplete data (null values) linked",
+                    fr: "Avec des données incomplètes (valeurs nulles) liées",
+                    pt: "Com dados incompletos (valores nulos) vinculados",
+                    de: "Mit unvollständigen Daten (Nullwerte) verknüpft",
+                    zh: "已链接不完整的数据（空值）",
+                    ja: "不完全なデータ（null 値）がリンクされています",
+                    es: "Con datos incompletos (valores nulos) vinculados",
+                    ko: "불완전한 데이터(널 값)이 연결됨",
+                    ar: "مع بيانات غير مكتملة (قيم فارغة) مرتبطة",
+                },
             },
             // XY WITH NULL VALUES CUT
             {
@@ -6267,137 +6453,157 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ...BASE_XY_CONFIG.value,
                     line: {
                         ...BASE_XY_CONFIG.value.line,
-                        cutNullValues: true
-                    }
+                        cutNullValues: true,
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'null-cut',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "null-cut",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'With incomplete data (null values) cut',
-                    fr: 'Avec des données incomplètes (valeurs nulles) coupées',
-                    pt: 'Com dados incompletos (valores nulos) cortados',
-                    de: 'Mit ausgeschnittenen unvollständigen Daten (Nullwerte)',
-                    zh: '已剪切不完整的数据（空值）',
-                    ja: '不完全なデータ（null 値）が切り捨てられています',
-                    es: 'Con datos incompletos (valores nulos) cortados',
-                    ko: '불완전한 데이터(널 값)이 잘라짐',
-                    ar: 'مع قطع البيانات غير المكتملة (القيم الفارغة)'
-                }
+                    en: "With incomplete data (null values) cut",
+                    fr: "Avec des données incomplètes (valeurs nulles) coupées",
+                    pt: "Com dados incompletos (valores nulos) cortados",
+                    de: "Mit ausgeschnittenen unvollständigen Daten (Nullwerte)",
+                    zh: "已剪切不完整的数据（空值）",
+                    ja: "不完全なデータ（null 値）が切り捨てられています",
+                    es: "Con datos incompletos (valores nulos) cortados",
+                    ko: "불완전한 데이터(널 값)이 잘라짐",
+                    ar: "مع قطع البيانات غير المكتملة (القيم الفارغة)",
+                },
             },
             // XY SIGNALING ESTIMATIONS
             {
                 dataset: DATASET_XY_ESTIMATES.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-estimations',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-estimations",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Straight line with estimations signaled as dashed segments',
-                    fr: 'Ligne droite avec estimations indiquées par des segments en pointillés',
-                    pt: 'Linha reta com estimativas indicadas como segmentos tracejados',
-                    de: 'Gerade Linie mit Schätzungen, die als gestrichelte Segmente dargestellt sind',
-                    zh: '带有虚线段表示预测值的直线',
-                    ja: '推定値を破線で示した直線',
-                    es: 'Línea recta con estimaciones indicadas como segmentos discontinuos',
-                    ko: '추정값이 점선 구간으로 표시된 직선',
-                    ar: 'خط مستقيم مع التقديرات المشار إليها بمقاطع متقطعة'
-                }
+                    en: "Straight line with estimations signaled as dashed segments",
+                    fr: "Ligne droite avec estimations indiquées par des segments en pointillés",
+                    pt: "Linha reta com estimativas indicadas como segmentos tracejados",
+                    de: "Gerade Linie mit Schätzungen, die als gestrichelte Segmente dargestellt sind",
+                    zh: "带有虚线段表示预测值的直线",
+                    ja: "推定値を破線で示した直線",
+                    es: "Línea recta con estimaciones indicadas como segmentos discontinuos",
+                    ko: "추정값이 점선 구간으로 표시된 직선",
+                    ar: "خط مستقيم مع التقديرات المشار إليها بمقاطع متقطعة",
+                },
             },
             // XY SIGNALING ESTIMATIONS SMOOTH
             {
                 dataset: DATASET_XY_ESTIMATES_SMOOTH.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-estimations-smooth',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-estimations-smooth",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Spline with estimations signaled as dashed segments',
-                    fr: 'Courbe lissée avec estimations signalées par des segments en pointillés',
-                    pt: 'Curva suavizada com estimativas sinalizadas por segmentos tracejados',
-                    de: 'Geglättete Kurve mit Schätzungen, die als gestrichelte Segmente dargestellt sind',
-                    zh: '平滑曲线图，预测部分以虚线段表示',
-                    ja: '推定値が破線で示されたスプライン曲線',
-                    es: 'Curva suavizada con estimaciones señaladas como segmentos discontinuos',
-                    ko: '추정값이 점선 구간으로 표시된 스플라인 곡선',
-                    ar: 'منحنى ناعم مع تقديرات مميزة بمقاطع متقطعة'
-                }
+                    en: "Spline with estimations signaled as dashed segments",
+                    fr: "Courbe lissée avec estimations signalées par des segments en pointillés",
+                    pt: "Curva suavizada com estimativas sinalizadas por segmentos tracejados",
+                    de: "Geglättete Kurve mit Schätzungen, die als gestrichelte Segmente dargestellt sind",
+                    zh: "平滑曲线图，预测部分以虚线段表示",
+                    ja: "推定値が破線で示されたスプライン曲線",
+                    es: "Curva suavizada con estimaciones señaladas como segmentos discontinuos",
+                    ko: "추정값이 점선 구간으로 표시된 스플라인 곡선",
+                    ar: "منحنى ناعم مع تقديرات مميزة بمقاطع متقطعة",
+                },
             },
             // XY STRAIGHT WITH PATH GRADIENT
             {
-                dataset: [{
-                    name: 'Serie 1',
-                    type: 'line',
-                    series: [5, 8, 3, 5, 2, 3, 1, 2, 0, 1, 0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5],
-                    temperatureColors: ['#ff3700', '#ff8c00', '#42d392', '#5f8aee'],
-                    color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A'
-                }],
+                dataset: [
+                    {
+                        name: "Serie 1",
+                        type: "line",
+                        series: [
+                            5, 8, 3, 5, 2, 3, 1, 2, 0, 1, 0, 1, 0, 2, 1, 3, 2,
+                            5, 3, 8, 5,
+                        ],
+                        temperatureColors: [
+                            "#ff3700",
+                            "#ff8c00",
+                            "#42d392",
+                            "#5f8aee",
+                        ],
+                        color: isDarkMode.value ? "#CCCCCC" : "#6A6A6A",
+                    },
+                ],
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-straight-path-gradient',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-straight-path-gradient",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Straight segments, with temperature colors',
-                    fr: 'Segments droits, avec couleurs de température',
-                    pt: 'Segmentos retos, com cores de temperatura',
-                    de: 'Gerade Segmente mit Temperaturfarben',
-                    zh: '直线段，带有温度颜色',
-                    ja: '直線セグメント（温度カラー付き）',
-                    es: 'Segmentos rectos, con colores de temperatura',
-                    ko: '직선 세그먼트, 온도 색상 적용',
-                    ar: 'مقاطع مستقيمة مع ألوان الحرارة'
-                }
+                    en: "Straight segments, with temperature colors",
+                    fr: "Segments droits, avec couleurs de température",
+                    pt: "Segmentos retos, com cores de temperatura",
+                    de: "Gerade Segmente mit Temperaturfarben",
+                    zh: "直线段，带有温度颜色",
+                    ja: "直線セグメント（温度カラー付き）",
+                    es: "Segmentos rectos, con colores de temperatura",
+                    ko: "직선 세그먼트, 온도 색상 적용",
+                    ar: "مقاطع مستقيمة مع ألوان الحرارة",
+                },
             },
             // XY SMOOTH WITH PATH GRADIENT
             {
-                dataset: [{
-                    name: 'Serie 1',
-                    type: 'line',
-                    smooth: true,
-                    series: [5, 8, 3, 5, 2, 3, 1, 2, 0, 1, 0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5],
-                    temperatureColors: ['#ff3700', '#ff8c00', '#42d392', '#5f8aee'],
-                    color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A'
-                }],
+                dataset: [
+                    {
+                        name: "Serie 1",
+                        type: "line",
+                        smooth: true,
+                        series: [
+                            5, 8, 3, 5, 2, 3, 1, 2, 0, 1, 0, 1, 0, 2, 1, 3, 2,
+                            5, 3, 8, 5,
+                        ],
+                        temperatureColors: [
+                            "#ff3700",
+                            "#ff8c00",
+                            "#42d392",
+                            "#5f8aee",
+                        ],
+                        color: isDarkMode.value ? "#CCCCCC" : "#6A6A6A",
+                    },
+                ],
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-spline-path-gradient',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-spline-path-gradient",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Spline, with temperature colors',
-                    fr: 'Courbe lissée, avec couleurs de température',
-                    pt: 'Curva suavizada, com cores de temperatura',
-                    de: 'Spline-Kurve mit Temperaturfarben',
-                    zh: '平滑曲线，带有温度颜色',
-                    ja: 'スプライン曲線（温度カラー付き）',
-                    es: 'Curva suavizada, con colores de temperatura',
-                    ko: '스플라인 곡선, 온도 색상 적용',
-                    ar: 'منحنى سلس مع ألوان الحرارة'
-                }
+                    en: "Spline, with temperature colors",
+                    fr: "Courbe lissée, avec couleurs de température",
+                    pt: "Curva suavizada, com cores de temperatura",
+                    de: "Spline-Kurve mit Temperaturfarben",
+                    zh: "平滑曲线，带有温度颜色",
+                    ja: "スプライン曲線（温度カラー付き）",
+                    es: "Curva suavizada, con colores de temperatura",
+                    ko: "스플라인 곡선, 온도 색상 적용",
+                    ar: "منحنى سلس مع ألوان الحرارة",
+                },
             },
             // XY MULTIBAR
             {
                 dataset: DATASET_XY_BASIC_MULTIBAR.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'basic-multibar',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "basic-multibar",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Multiple bar series',
-                    fr: 'Séries de barres multiples',
-                    pt: 'Séries de barras múltiplas',
-                    de: 'Mehrere Balkenreihen',
-                    zh: '多条柱状系列',
-                    ja: '複数の棒グラフシリーズ',
-                    es: 'Series de barras múltiples',
-                    ko: '다중 막대 시리즈',
-                    ar: 'سلاسل شريطية متعددة'
-                }
+                    en: "Multiple bar series",
+                    fr: "Séries de barres multiples",
+                    pt: "Séries de barras múltiplas",
+                    de: "Mehrere Balkenreihen",
+                    zh: "多条柱状系列",
+                    ja: "複数の棒グラフシリーズ",
+                    es: "Series de barras múltiples",
+                    ko: "다중 막대 시리즈",
+                    ar: "سلاسل شريطية متعددة",
+                },
             },
             // XY FIXED SCALE
             {
@@ -6414,37 +6620,37 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             minimap: {
                                 ...BASE_XY_CONFIG.value.chart.zoom.minimap,
                                 smooth: true,
-                            }
+                            },
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: -100,
-                                    scaleMax: 100
+                                    scaleMax: 100,
                                 },
-                            }
-                        }
-                    }
-
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'basic-fixed-scale',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "basic-fixed-scale",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Fixed scale, starting point',
-                    fr: 'Échelle fixe, point de départ',
-                    pt: 'Escala fixa, ponto de partida',
-                    de: 'Feste Skala, Ausgangspunkt',
-                    zh: '固定比例，起点',
-                    ja: '固定スケール、始点',
-                    es: 'Escala fija, punto de partida',
-                    ko: '고정 스케일, 시작점',
-                    ar: 'مقياس ثابت، نقطة البداية'
-                }
+                    en: "Fixed scale, starting point",
+                    fr: "Échelle fixe, point de départ",
+                    pt: "Escala fixa, ponto de partida",
+                    de: "Feste Skala, Ausgangspunkt",
+                    zh: "固定比例，起点",
+                    ja: "固定スケール、始点",
+                    es: "Escala fija, punto de partida",
+                    ko: "고정 스케일, 시작점",
+                    ar: "مقياس ثابت، نقطة البداية",
+                },
             },
             // XY ANNOTATIONS
             {
@@ -6458,11 +6664,12 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: -100,
-                                    scaleMax: 100
-                                }
-                            }
+                                    scaleMax: 100,
+                                },
+                            },
                         },
                         annotations: [
                             {
@@ -6470,48 +6677,52 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 yAxis: {
                                     yTop: 40,
                                     label: {
-                                        text: 'Good',
+                                        text: "Good",
                                         fontSize: 18,
                                         offsetX: 2,
                                         offsetY: -4,
-                                        backgroundColor: '#42d39290',
-                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                        backgroundColor: "#42d39290",
+                                        color: isDarkMode.value
+                                            ? "#CCCCCC"
+                                            : "#1A1A1A",
                                         padding: { top: 8 },
                                         border: {
-                                            stroke: '#42d392'
-                                        }
+                                            stroke: "#42d392",
+                                        },
                                     },
                                     line: {
-                                        stroke: '#42d392',
+                                        stroke: "#42d392",
                                         strokeWidth: 2,
-                                        strokeDasharray: 5
-                                    }
-                                }
+                                        strokeDasharray: 5,
+                                    },
+                                },
                             },
                             {
                                 show: true,
                                 yAxis: {
                                     yTop: -40,
                                     label: {
-                                        text: 'Bad',
+                                        text: "Bad",
                                         fontSize: 18,
                                         offsetX: -2,
                                         offsetY: -4,
-                                        position: 'end',
-                                        textAnchor: 'end',
-                                        backgroundColor: '#ff660090',
-                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                        position: "end",
+                                        textAnchor: "end",
+                                        backgroundColor: "#ff660090",
+                                        color: isDarkMode.value
+                                            ? "#CCCCCC"
+                                            : "#1A1A1A",
                                         padding: { top: 8 },
                                         border: {
-                                            stroke: '#ff6600'
-                                        }
+                                            stroke: "#ff6600",
+                                        },
                                     },
                                     line: {
-                                        stroke: '#ff6600',
+                                        stroke: "#ff6600",
                                         strokeWidth: 2,
-                                        strokeDasharray: 5
-                                    }
-                                }
+                                        strokeDasharray: 5,
+                                    },
+                                },
                             },
                             {
                                 show: true,
@@ -6519,45 +6730,47 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     yTop: 10,
                                     yBottom: -10,
                                     label: {
-                                        text: 'Neutral',
+                                        text: "Neutral",
                                         fontSize: 18,
                                         offsetX: 2,
                                         offsetY: -4,
-                                        backgroundColor: '#CCCCCC50',
-                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                        backgroundColor: "#CCCCCC50",
+                                        color: isDarkMode.value
+                                            ? "#CCCCCC"
+                                            : "#1A1A1A",
                                         padding: { top: 8 },
                                         border: {
-                                            stroke: '#CCCCCC'
-                                        }
+                                            stroke: "#CCCCCC",
+                                        },
                                     },
                                     line: {
-                                        stroke: '#CCCCCC',
+                                        stroke: "#CCCCCC",
                                         strokeWidth: 2,
-                                        strokeDasharray: 5
+                                        strokeDasharray: 5,
                                     },
                                     area: {
-                                        opacity: isDarkMode.value ? 10 : 30
-                                    }
-                                }
+                                        opacity: isDarkMode.value ? 10 : 30,
+                                    },
+                                },
                             },
-                        ]
-                    }
+                        ],
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-annotations',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-annotations",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'With annotations on the Y axis',
-                    fr: 'Avec des annotations sur l’axe Y',
-                    pt: 'Com anotações no eixo Y',
-                    de: 'Mit Anmerkungen auf der Y-Achse',
-                    zh: '带有 Y 轴注释',
-                    ja: 'Y軸に注釈付き',
-                    es: 'Con anotaciones en el eje Y',
-                    ko: 'Y축에 주석 포함',
-                    ar: 'مع تعليقات توضيحية على المحور الصادي'
-                }
+                    en: "With annotations on the Y axis",
+                    fr: "Avec des annotations sur l’axe Y",
+                    pt: "Com anotações no eixo Y",
+                    de: "Mit Anmerkungen auf der Y-Achse",
+                    zh: "带有 Y 轴注释",
+                    ja: "Y軸に注釈付き",
+                    es: "Con anotaciones en el eje Y",
+                    ko: "Y축에 주석 포함",
+                    ar: "مع تعليقات توضيحية على المحور الصادي",
+                },
             },
             // XY HIGHLIGHT AREAS
             {
@@ -6571,52 +6784,52 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 show: true,
                                 from: 0,
                                 to: 10,
-                                color: '#ff6600',
+                                color: "#ff6600",
                                 opacity: 10,
                                 caption: {
-                                    text: 'Before the change',
+                                    text: "Before the change",
                                     color: colors.value.textColor,
                                     fontSize: 16,
                                     offsetY: 24,
-                                    width: 'auto',
-                                    textAlign: 'center',
-                                    padding: 3
-                                }
+                                    width: "auto",
+                                    textAlign: "center",
+                                    padding: 3,
+                                },
                             },
                             {
                                 show: true,
                                 from: 11,
                                 to: 20,
-                                color: '#42d392',
+                                color: "#42d392",
                                 opacity: 10,
                                 caption: {
-                                    text: 'After the change',
+                                    text: "After the change",
                                     color: colors.value.textColor,
                                     fontSize: 16,
                                     offsetY: 24,
-                                    width: 'auto',
-                                    textAlign: 'center',
-                                    padding: 3
-                                }
-                            }
-                        ]
-                    }
+                                    width: "auto",
+                                    textAlign: "center",
+                                    padding: 3,
+                                },
+                            },
+                        ],
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-highlight-areas',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-highlight-areas",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Multiple highlight areas',
-                    fr: 'Plusieurs zones en surbrillance',
-                    pt: 'Múltiplas áreas de destaque',
-                    de: 'Mehrere Hervorhebungsbereiche',
-                    zh: '多个高亮区域',
-                    ja: '複数のハイライト領域',
-                    es: 'Múltiples áreas destacadas',
-                    ko: '여러 강조 영역',
-                    ar: 'مناطق تمييز متعددة'
-                }
+                    en: "Multiple highlight areas",
+                    fr: "Plusieurs zones en surbrillance",
+                    pt: "Múltiplas áreas de destaque",
+                    de: "Mehrere Hervorhebungsbereiche",
+                    zh: "多个高亮区域",
+                    ja: "複数のハイライト領域",
+                    es: "Múltiples áreas destacadas",
+                    ko: "여러 강조 영역",
+                    ar: "مناطق تمييز متعددة",
+                },
             },
             // XY STACKED
             {
@@ -6633,31 +6846,31 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 yAxis: {
                                     useIndividualScale: true,
                                     stacked: true,
-                                    gap: 24
-                                }
-                            }
-                        }
+                                    gap: 24,
+                                },
+                            },
+                        },
                     },
                     line: {
                         ...BASE_XY_CONFIG.value.line,
-                        radius: 2
-                    }
+                        radius: 2,
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-stacked',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-stacked",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Stacked series',
-                    fr: 'Séries empilées',
-                    pt: 'Séries empilhadas',
-                    de: 'Gestapelte Serien',
-                    zh: '堆叠系列',
-                    ja: '積み重ねられたシリーズ',
-                    es: 'Series apiladas',
-                    ko: '스택 시리즈',
-                    ar: 'سلاسل مكدسة'
-                }
+                    en: "Stacked series",
+                    fr: "Séries empilées",
+                    pt: "Séries empilhadas",
+                    de: "Gestapelte Serien",
+                    zh: "堆叠系列",
+                    ja: "積み重ねられたシリーズ",
+                    es: "Series apiladas",
+                    ko: "스택 시리즈",
+                    ar: "سلاسل مكدسة",
+                },
             },
             // XY LINE WITH COMMENT
             {
@@ -6669,22 +6882,23 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         comments: {
                             showInTooltip: true,
                             width: 100,
-                            offsetY: -120
+                            offsetY: -120,
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: 0,
-                                    scaleMax: 200
-                                }
-                            }
-                        }
-                    }
+                                    scaleMax: 200,
+                                },
+                            },
+                        },
+                    },
                 },
-                tags: ['#plot-comment'],
+                tags: ["#plot-comment"],
                 slot: `<template #plot-comment="{ plot }">
                 <div 
                     v-if="plot.value === 140" 
@@ -6701,21 +6915,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     {{ plot.comment }}
                 </div>
             </template>`,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-comment',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-comment",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'With an individual datapoint comment',
-                    fr: 'Avec un commentaire sur un point de données individuel',
-                    pt: 'Com um comentário de ponto de dados individual',
-                    de: 'Mit einem Kommentar zu einem einzelnen Datenpunkt',
-                    zh: '带有单个数据点评论',
-                    ja: '個別データポイントのコメント付き',
-                    es: 'Con un comentario de punto de datos individual',
-                    ko: '개별 데이터 포인트에 대한 주석 포함',
-                    ar: 'مع تعليق على نقطة بيانات فردية'
-                }
+                    en: "With an individual datapoint comment",
+                    fr: "Avec un commentaire sur un point de données individuel",
+                    pt: "Com um comentário de ponto de dados individual",
+                    de: "Mit einem Kommentar zu einem einzelnen Datenpunkt",
+                    zh: "带有单个数据点评论",
+                    ja: "個別データポイントのコメント付き",
+                    es: "Con un comentario de punto de datos individual",
+                    ko: "개별 데이터 포인트에 대한 주석 포함",
+                    ar: "مع تعليق على نقطة بيانات فردية",
+                },
             },
 
             // XY LINE WITH TREND COMMENT
@@ -6728,26 +6942,27 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         comments: {
                             showInTooltip: false,
                             width: 100,
-                            offsetY: -80
+                            offsetY: -80,
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: 0,
-                                    scaleMax: 100
-                                }
-                            }
-                        }
-                    }
+                                    scaleMax: 100,
+                                },
+                            },
+                        },
+                    },
                 },
-                tags: ['#plot-comment'],
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-comment-trend',
-                link: 'vue-ui-xy',
+                tags: ["#plot-comment"],
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-comment-trend",
+                link: "vue-ui-xy",
                 slot: `<template #plot-comment="{ plot }">
                 <div 
                     v-if="['up', 'eq', 'down'].includes(plot.comment.trend)" 
@@ -6784,16 +6999,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 </div>    
             </template>`,
                 description: {
-                    en: 'With an individual datapoint comment as a trend arrow',
-                    fr: 'Avec un commentaire de point de données individuel sous forme de flèche de tendance',
-                    pt: 'Com um comentário de ponto de dados individual como uma seta de tendência',
-                    de: 'Mit einem einzelnen Datenpunktkommentar als Trendpfeil',
-                    zh: '带有单个数据点评论的趋势箭头',
-                    ja: '個々のデータポイントに対するトレンド矢印としてのコメント付き',
-                    es: 'Con un comentario individual de punto de datos como una flecha de tendencia',
-                    ko: '개별 데이터 포인트 주석을 추세 화살표로 표시',
-                    ar: 'مع تعليق على نقطة بيانات فردية كسهم للاتجاه'
-                }
+                    en: "With an individual datapoint comment as a trend arrow",
+                    fr: "Avec un commentaire de point de données individuel sous forme de flèche de tendance",
+                    pt: "Com um comentário de ponto de dados individual como uma seta de tendência",
+                    de: "Mit einem einzelnen Datenpunktkommentar als Trendpfeil",
+                    zh: "带有单个数据点评论的趋势箭头",
+                    ja: "個々のデータポイントに対するトレンド矢印としてのコメント付き",
+                    es: "Con un comentario individual de punto de datos como una flecha de tendencia",
+                    ko: "개별 데이터 포인트 주석을 추세 화살표로 표시",
+                    ar: "مع تعليق على نقطة بيانات فردية كسهم للاتجاه",
+                },
             },
 
             // XY INDIVIDUAL SCALE
@@ -6809,8 +7024,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         ...BASE_XY_CONFIG.value.bar,
                         labels: {
                             ...BASE_XY_CONFIG.value.bar.labels,
-                            color: '#6A6A6A'
-                        }
+                            color: "#6A6A6A",
+                        },
                     },
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
@@ -6821,20 +7036,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
 
                                 yAxis: {
                                     useIndividualScale: true,
-                                    labelWidth: 64
+                                    labelWidth: 64,
                                 },
                                 xAxisLabels: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
-                                    rotation: 0
-                                }
-                            }
-                        }
-                    }
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .xAxisLabels,
+                                    rotation: 0,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-dual',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-dual",
+                link: "vue-ui-xy",
                 description: {
                     en: "Multiple series with individual scales",
                     fr: "Séries multiples avec des échelles individuelles",
@@ -6844,8 +7060,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "個別のスケールを持つ複数のシリーズ",
                     es: "Múltiples series con escalas individuales",
                     ko: "개별 스케일이 있는 여러 시리즈",
-                    ar: "سلاسل متعددة بمقاييس فردية"
-                }
+                    ar: "سلاسل متعددة بمقاييس فردية",
+                },
             },
             // XY CUSTOM BACKGROUND
             {
@@ -6862,20 +7078,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: 0,
-                                    scaleMax: 100
-                                }
-                            }
-                        }
-                    }
+                                    scaleMax: 100,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-background',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-background",
+                link: "vue-ui-xy",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -6890,16 +7107,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // XY CUSTOM BACKGROUND PATTERN
             {
-                dataset: DATASET_XY_BACKGROUND.value.map(ds => {
+                dataset: DATASET_XY_BACKGROUND.value.map((ds) => {
                     return {
                         ...ds,
                         color: undefined,
-                    }
+                    };
                 }),
                 config: {
                     ...BASE_XY_CONFIG.value,
@@ -6913,20 +7130,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: 0,
-                                    scaleMax: 100
-                                }
-                            }
-                        }
-                    }
+                                    scaleMax: 100,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-background-pattern',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-background-pattern",
+                link: "vue-ui-xy",
                 chartBackgroundPattern: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -6941,16 +7159,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景パターン付き",
                     es: "Con un patrón de fondo personalizado",
                     ko: "사용자 정의 배경 패턴과 함께",
-                    ar: "مع نمط خلفية مخصص"
-                }
+                    ar: "مع نمط خلفية مخصص",
+                },
             },
             // XY PATTERN
             {
-                dataset: DATASET_XY_BACKGROUND.value.map(ds => {
+                dataset: DATASET_XY_BACKGROUND.value.map((ds) => {
                     return {
                         ...ds,
                         color: undefined,
-                    }
+                    };
                 }),
                 config: {
                     ...BASE_XY_CONFIG.value,
@@ -6964,19 +7182,20 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: 0,
-                                    scaleMax: 100
-                                }
-                            }
-                        }
-                    }
+                                    scaleMax: 100,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-pattern',
-                link: 'vue-ui-xy',
-                tags: ['#pattern'],
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-pattern",
+                link: "vue-ui-xy",
+                tags: ["#pattern"],
                 pattern: true,
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
@@ -6997,8 +7216,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムパターンの使用",
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
-                    ar: "استخدام نمط مخصص"
-                }
+                    ar: "استخدام نمط مخصص",
+                },
             },
             // XY STYLED MARKERS
             {
@@ -7012,9 +7231,9 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         strokeWidth: 2,
                         dot: {
                             useSerieColor: false,
-                            fill: '#fdd663',
-                            strokeWidth: 2
-                        }
+                            fill: "#fdd663",
+                            strokeWidth: 2,
+                        },
                     },
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
@@ -7023,29 +7242,31 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: -100,
-                                    scaleMax: 100
+                                    scaleMax: 100,
                                 },
                                 xAxisLabels: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
-                                    rotation: 0
-                                }
-                            }
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .xAxisLabels,
+                                    rotation: 0,
+                                },
+                            },
                         },
                         zoom: {
                             ...BASE_XY_CONFIG.value.chart.zoom,
                             minimap: {
                                 ...BASE_XY_CONFIG.value.chart.zoom.minimap,
-                                smooth: true
-                            }
-                        }
-                    }
+                                smooth: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-styled-markers',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-styled-markers",
+                link: "vue-ui-xy",
                 description: {
                     en: "Styled plot markers",
                     fr: "Marqueurs de tracé stylisés",
@@ -7055,8 +7276,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "スタイル付きプロットマーカー",
                     es: "Marcadores de trazado estilizados",
                     ko: "스타일이 적용된 플롯 마커",
-                    ar: "علامات المؤامرة ذات نمط"
-                }
+                    ar: "علامات المؤامرة ذات نمط",
+                },
             },
             // XY GRID
             {
@@ -7078,29 +7299,31 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: -100,
-                                    scaleMax: 100
+                                    scaleMax: 100,
                                 },
                                 xAxisLabels: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
-                                    rotation: 0
-                                }
-                            }
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .xAxisLabels,
+                                    rotation: 0,
+                                },
+                            },
                         },
                         zoom: {
                             ...BASE_XY_CONFIG.value.chart.zoom,
                             minimap: {
                                 ...BASE_XY_CONFIG.value.chart.zoom.minimap,
-                                smooth: true
-                            }
-                        }
-                    }
+                                smooth: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-grid',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-grid",
+                link: "vue-ui-xy",
                 description: {
                     en: "With visible grid",
                     fr: "Avec grille visible",
@@ -7110,8 +7333,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "可視グリッド付き",
                     es: "Con cuadrícula visible",
                     ko: "보이는 그리드 포함",
-                    ar: "مع شبكة مرئية"
-                }
+                    ar: "مع شبكة مرئية",
+                },
             },
             // XY SHAPES
             {
@@ -7125,13 +7348,13 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         strokeWidth: 2,
                         labels: {
                             ...BASE_XY_CONFIG.value.line.labels,
-                            offsetY: -20
+                            offsetY: -20,
                         },
                         dot: {
                             useSerieColor: false,
-                            fill: '#FFFFFF',
+                            fill: "#FFFFFF",
                             strokeWidth: 2,
-                        }
+                        },
                     },
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
@@ -7140,29 +7363,31 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: 0,
-                                    scaleMax: 120
+                                    scaleMax: 120,
                                 },
                                 xAxisLabels: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
-                                    rotation: 0
-                                }
-                            }
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .xAxisLabels,
+                                    rotation: 0,
+                                },
+                            },
                         },
                         zoom: {
                             ...BASE_XY_CONFIG.value.chart.zoom,
                             minimap: {
                                 ...BASE_XY_CONFIG.value.chart.zoom.minimap,
-                                smooth: true
-                            }
-                        }
-                    }
+                                smooth: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-shapes',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-shapes",
+                link: "vue-ui-xy",
                 description: {
                     en: "Datapoint markers with geometric shapes",
                     fr: "Marqueurs de points de données avec des formes géométriques",
@@ -7172,8 +7397,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "幾何形状のデータポイントマーカー",
                     es: "Marcadores de puntos de datos con formas geométricas",
                     ko: "기하학적 모양의 데이터 포인트 마커",
-                    ar: "علامات نقاط البيانات بأشكال هندسية"
-                }
+                    ar: "علامات نقاط البيانات بأشكال هندسية",
+                },
             },
             // XY LTTB
             {
@@ -7191,18 +7416,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         },
                         dot: {
                             useSerieColor: false,
-                            fill: '#ff3700'
+                            fill: "#ff3700",
                         },
                         tag: {
                             formatter: ({ value, config }) => {
-                                const { serieName } = config
+                                const { serieName } = config;
                                 return `<div>
                                     <span style="font-size:10px">${serieName}</span>
                                     <span>${value.toFixed(1)}</span>
-                                </div>`
-                            }
-                        }
-
+                                </div>`;
+                            },
+                        },
                     },
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
@@ -7214,51 +7438,53 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     scaleMin: 0,
-                                    scaleMax: 100
+                                    scaleMax: 100,
                                 },
                                 xAxisLabels: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .xAxisLabels,
                                     showOnlyAtModulo: true,
-                                    values: makeDs(1000,100,'T'),
+                                    values: makeDs(1000, 100, "T"),
                                     modulo: 9,
                                     rotation: 0,
                                     datetimeFormatter: {
-                                        enable: false
-                                    }
-                                }
-                            }
+                                        enable: false,
+                                    },
+                                },
+                            },
                         },
                         highlightArea: {
                             show: false,
                         },
                         highlighter: {
                             useLine: true,
-                            color: '#ff3700'
+                            color: "#ff3700",
                         },
                         timeTag: {
                             show: true,
-                            backgroundColor: '#ff3700',
-                            color: '#FFFFFF',
+                            backgroundColor: "#ff3700",
+                            color: "#FFFFFF",
                             fontSize: 14,
                             circleMarker: {
-                                radius: 0
-                            }
+                                radius: 0,
+                            },
                         },
                         zoom: {
                             ...BASE_XY_CONFIG.value.chart.zoom,
                             minimap: {
                                 ...BASE_XY_CONFIG.value.chart.zoom.minimap,
-                                smooth: true
-                            }
-                        }
-                    }
+                                smooth: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-lttb',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-lttb",
+                link: "vue-ui-xy",
                 description: {
                     en: "Dataset of 10000 datapoints downsampled to 500 datapoints",
                     fr: "Ensemble de données de 10000 points réduit à 500 points",
@@ -7268,8 +7494,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "10000のデータポイントを500にダウンサンプリングしたデータセット",
                     es: "Conjunto de datos de 10000 puntos reducido a 500 puntos",
                     ko: "10000개의 데이터 포인트를 500개로 다운샘플링한 데이터 세트",
-                    ar: "مجموعة بيانات تحتوي على 10000 نقطة بيانات تم تقليلها إلى 500 نقطة بيانات"
-                }
+                    ar: "مجموعة بيانات تحتوي على 10000 نقطة بيانات تم تقليلها إلى 500 نقطة بيانات",
+                },
             },
             // XY GROUPS
             {
@@ -7283,31 +7509,32 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .yAxis,
                                     useIndividualScale: true,
                                     groupColor: colors.value.textColor,
                                     labelWidth: 12,
-                                    scaleLabelOffsetX: 0
-                                }
-                            }
-                        }
-                    }
+                                    scaleLabelOffsetX: 0,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'line-scale-groups',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "line-scale-groups",
+                link: "vue-ui-xy",
                 description: {
-                    en: 'Grouped y axis scales',
-                    fr: 'Échelles de l’axe des ordonnées groupées',
-                    pt: 'Escalas do eixo y agrupadas',
-                    de: 'Gruppierte Y-Achsenskalen',
-                    zh: '分组的 Y 轴刻度',
-                    ja: 'グループ化されたY軸スケール',
-                    es: 'Escalas del eje Y agrupadas',
-                    ko: '그룹화된 Y축 스케일',
-                    ar: 'مقاييس محور Y مجمعة'
-                }
+                    en: "Grouped y axis scales",
+                    fr: "Échelles de l’axe des ordonnées groupées",
+                    pt: "Escalas do eixo y agrupadas",
+                    de: "Gruppierte Y-Achsenskalen",
+                    zh: "分组的 Y 轴刻度",
+                    ja: "グループ化されたY軸スケール",
+                    es: "Escalas del eje Y agrupadas",
+                    ko: "그룹화된 Y축 스케일",
+                    ar: "مقاييس محور Y مجمعة",
+                },
             },
             // XY LIVE DATA
             {
@@ -7317,7 +7544,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
                         zoom: {
-                            show: false
+                            show: false,
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
@@ -7327,21 +7554,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 yAxis: {
                                     useIndividualScale: true,
                                     stacked: true,
-                                    gap: 48
+                                    gap: 48,
                                 },
                                 xAxisLabels: {
                                     color: colors.value.textColor,
                                     values: [],
-                                    rotation: -45
-                                }
-                            }
-                        }
-                    }
+                                    rotation: -45,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-live',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-live",
+                link: "vue-ui-xy",
                 description: {
                     en: "Frequent data update",
                     fr: "Mise à jour fréquente des données",
@@ -7351,8 +7578,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "頻繁なデータ更新",
                     es: "Actualización frecuente de datos",
                     ko: "빈번한 데이터 업데이트",
-                    ar: "تحديث متكرر للبيانات"
-                }
+                    ar: "تحديث متكرر للبيانات",
+                },
             },
             // XY CUMULATIVE AVERAGE
             {
@@ -7369,24 +7596,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 xAxisLabels: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels
+                                        .xAxisLabels,
                                     showOnlyAtModulo: true,
-                                    values: makeDs(1000,100,'T'),
+                                    values: makeDs(1000, 100, "T"),
                                     modulo: 9,
                                     rotation: 0,
                                     datetimeFormatter: {
-                                        enable: false
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        enable: false,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-cumulative-average',
-                link: 'vue-ui-xy',
-                utilityFunctions: ['getCumulativeAverage'],
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-cumulative-average",
+                link: "vue-ui-xy",
+                utilityFunctions: ["getCumulativeAverage"],
                 description: {
                     en: "With cumulative average",
                     fr: "Avec la moyenne cumulée",
@@ -7396,8 +7624,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "累積平均付き",
                     es: "Con promedio acumulativo",
                     ko: "누적 평균 포함",
-                    ar: "مع المتوسط التراكمي"
-                }
+                    ar: "مع المتوسط التراكمي",
+                },
             },
             // XY INTERLINE DEFAULT
             {
@@ -7414,16 +7642,14 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             rounding: 1,
                         },
                         interLine: {
-                            pairs: [
-                                ['Performance', 'Target']
-                            ]
-                        }
-                    }
+                            pairs: [["Performance", "Target"]],
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-interline-default',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-interline-default",
+                link: "vue-ui-xy",
                 description: {
                     en: "With interline coloring of line pairs",
                     fr: "Avec la coloration interligne des paires de lignes",
@@ -7433,8 +7659,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "線ペア間のインターライン塗りつぶしあり",
                     es: "Con coloreado entre líneas de pares de líneas",
                     ko: "선 쌍 사이의 인터라인 색상 적용",
-                    ar: "مع تلوين بيني لأزواج الخطوط"
-                }
+                    ar: "مع تلوين بيني لأزواج الخطوط",
+                },
             },
             // XY INTERLINE CUSTOM COLORS
             {
@@ -7451,19 +7677,15 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             rounding: 1,
                         },
                         interLine: {
-                            pairs: [
-                                ['Performance', 'Target']
-                            ],
-                            colors: [
-                                ['green', 'red']
-                            ]
-                        }
-                    }
+                            pairs: [["Performance", "Target"]],
+                            colors: [["green", "red"]],
+                        },
+                    },
                 },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-interline-custom-colors',
-                link: 'vue-ui-xy',
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-interline-custom-colors",
+                link: "vue-ui-xy",
                 description: {
                     en: "With interline coloring of line pairs with custom colors",
                     fr: "Avec la coloration interligne des paires de lignes avec des couleurs personnalisées",
@@ -7473,18 +7695,18 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "線ペア間のインターライン塗りつぶし（カスタムカラー付き）",
                     es: "Con coloreado entre líneas de pares de líneas con colores personalizados",
                     ko: "사용자 정의 색상으로 선 쌍 사이 인터라인 색상 적용",
-                    ar: "مع تلوين بيني لأزواج الخطوط باستخدام ألوان مخصصة"
-                }
+                    ar: "مع تلوين بيني لأزواج الخطوط باستخدام ألوان مخصصة",
+                },
             },
             // XY CUSTOM GRADIENT LINE
             {
                 dataset: DATASET_XY_SINUSOID2_AREA.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'area-custom-gradient',
-                link: 'vue-ui-xy',
-                tags: ['#area-gradient'],
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "area-custom-gradient",
+                link: "vue-ui-xy",
+                tags: ["#area-gradient"],
                 customGradient: true,
                 slot: `<template #area-gradient="{ series, id }">
                 <linearGradient 
@@ -7506,26 +7728,26 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 </linearGradient>
             </template>`,
                 description: {
-                    en: 'Custom area gradient',
-                    fr: 'Dégradé de zone personnalisé',
-                    pt: 'Gradiente de área personalizado',
-                    de: 'Benutzerdefinierter Flächenverlauf',
-                    zh: '自定义区域渐变',
-                    ja: 'カスタムエリアグラデーション',
-                    es: 'Degradado de área personalizado',
-                    ko: '사용자 지정 영역 그라데이션',
-                    ar: 'تدرّج مساحي مخصّص'
-                }
+                    en: "Custom area gradient",
+                    fr: "Dégradé de zone personnalisé",
+                    pt: "Gradiente de área personalizado",
+                    de: "Benutzerdefinierter Flächenverlauf",
+                    zh: "自定义区域渐变",
+                    ja: "カスタムエリアグラデーション",
+                    es: "Degradado de área personalizado",
+                    ko: "사용자 지정 영역 그라데이션",
+                    ar: "تدرّج مساحي مخصّص",
+                },
             },
             // XY CUSTOM GRADIENT LINE SMOOTH
             {
                 dataset: DATASET_XY_SINUSOID2_SMOOTH_AREA.value,
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'area-custom-gradient-smooth',
-                link: 'vue-ui-xy',
-                tags: ['#area-gradient'],
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "area-custom-gradient-smooth",
+                link: "vue-ui-xy",
+                tags: ["#area-gradient"],
                 customGradient: true,
                 slot: `<template #area-gradient="{ series, id }">
                 <linearGradient 
@@ -7547,32 +7769,32 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 </linearGradient>
             </template>`,
                 description: {
-                    en: 'Custom area gradient with smooth line',
-                    fr: 'Dégradé de zone personnalisé avec courbe lissée',
-                    pt: 'Gradiente de área personalizado com linha suave',
-                    de: 'Benutzerdefinierter Flächenverlauf mit glatter Linie',
-                    zh: '带平滑线的自定义区域渐变',
-                    ja: '滑らかな線付きカスタムエリアグラデーション',
-                    es: 'Degradado de área personalizado con línea suave',
-                    ko: '부드러운 선이 있는 사용자 지정 영역 그라데이션',
-                    ar: 'تدرّج مساحي مخصّص مع خط سلس'
-                }
+                    en: "Custom area gradient with smooth line",
+                    fr: "Dégradé de zone personnalisé avec courbe lissée",
+                    pt: "Gradiente de área personalizado com linha suave",
+                    de: "Benutzerdefinierter Flächenverlauf mit glatter Linie",
+                    zh: "带平滑线的自定义区域渐变",
+                    ja: "滑らかな線付きカスタムエリアグラデーション",
+                    es: "Degradado de área personalizado con línea suave",
+                    ko: "부드러운 선이 있는 사용자 지정 영역 그라데이션",
+                    ar: "تدرّج مساحي مخصّص مع خط سلس",
+                },
             },
             // XY CUSTOM GRADIENT BAR
             {
-                dataset: DATASET_XY_SINUSOID2_AREA.value.map(d => {
+                dataset: DATASET_XY_SINUSOID2_AREA.value.map((d) => {
                     return {
                         ...d,
-                        type: 'bar',
-                        series: [-13, -8, -5, -3, -2, -1, 1, 2, 3, 5, 8, 13]
-                    }
+                        type: "bar",
+                        series: [-13, -8, -5, -3, -2, -1, 1, 2, 3, 5, 8, 13],
+                    };
                 }),
                 config: BASE_XY_CONFIG.value,
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'bar-custom-gradient',
-                link: 'vue-ui-xy',
-                tags: ['#bar-gradient'],
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "bar-custom-gradient",
+                link: "vue-ui-xy",
+                tags: ["#bar-gradient"],
                 customGradient: true,
                 slot: `<template #bar-gradient="{ series, positiveId, negativeId }">
                 <!-- Use one gradient definition for positive and another for negative, to apply inverse gradient directions -->
@@ -7612,37 +7834,37 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 </linearGradient>
             </template>`,
                 description: {
-                    en: 'Custom bar gradient',
-                    fr: 'Dégradé de barres personnalisé',
-                    pt: 'Gradiente de barras personalizado',
-                    de: 'Benutzerdefinierter Balkenverlauf',
-                    zh: '自定义柱状图渐变',
-                    ja: 'カスタムバーグラデーション',
-                    es: 'Degradado de barras personalizado',
-                    ko: '사용자 지정 막대 그라데이션',
-                    ar: 'تدرّج أعمدة مخصّص'
-                }
+                    en: "Custom bar gradient",
+                    fr: "Dégradé de barres personnalisé",
+                    pt: "Gradiente de barras personalizado",
+                    de: "Benutzerdefinierter Balkenverlauf",
+                    zh: "自定义柱状图渐变",
+                    ja: "カスタムバーグラデーション",
+                    es: "Degradado de barras personalizado",
+                    ko: "사용자 지정 막대 그라데이션",
+                    ar: "تدرّج أعمدة مخصّص",
+                },
             },
             // DONUT BASIC
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: CONFIG_DONUT_BASE.value,
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-basic',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-basic",
+                link: "vue-ui-donut",
                 toggleCurvedMarkers: true,
                 description: {
-                    en: 'Basic donut chart',
-                    fr: 'Graphique en anneau de base',
-                    pt: 'Gráfico de rosca básico',
-                    de: 'Grundlegendes Donut-Diagramm',
-                    zh: '基础甜甜圈图表',
-                    ja: '基本的なドーナツチャート',
-                    es: 'Gráfico de rosquilla básico',
-                    ko: '기본 도넛 차트',
-                    ar: 'مخطط دائري أساسي'
-                }
+                    en: "Basic donut chart",
+                    fr: "Graphique en anneau de base",
+                    pt: "Gráfico de rosca básico",
+                    de: "Grundlegendes Donut-Diagramm",
+                    zh: "基础甜甜圈图表",
+                    ja: "基本的なドーナツチャート",
+                    es: "Gráfico de rosquilla básico",
+                    ko: "기본 도넛 차트",
+                    ar: "مخطط دائري أساسي",
+                },
             },
             // DONUT SMALL HIDDEN
             {
@@ -7656,32 +7878,34 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
                                 labels: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.labels,
                                     dataLabels: {
-                                        ...CONFIG_DONUT_BASE.value.style.chart.layout.labels.dataLabels,
-                                        hideUnderValue: 8
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        ...CONFIG_DONUT_BASE.value.style.chart
+                                            .layout.labels.dataLabels,
+                                        hideUnderValue: 8,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-basic-small-hidden',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-basic-small-hidden",
+                link: "vue-ui-donut",
                 toggleCurvedMarkers: true,
                 description: {
-                    en: 'Datalabels hidden for small arcs',
-                    fr: 'Étiquettes de données masquées pour les petits arcs',
-                    pt: 'Rótulos de dados ocultados para arcos pequenos',
-                    de: 'Datenbeschriftungen für kleine Bögen ausgeblendet',
-                    zh: '小弧段隐藏数据标签',
-                    ja: '小さなアークではデータラベルが非表示になります',
-                    es: 'Etiquetas de datos ocultas para arcos pequeños',
-                    ko: '작은 호에서는 데이터 레이블이 숨겨집니다',
-                    ar: 'إخفاء تسميات البيانات للأقواس الصغيرة'
-                }
+                    en: "Datalabels hidden for small arcs",
+                    fr: "Étiquettes de données masquées pour les petits arcs",
+                    pt: "Rótulos de dados ocultados para arcos pequenos",
+                    de: "Datenbeschriftungen für kleine Bögen ausgeblendet",
+                    zh: "小弧段隐藏数据标签",
+                    ja: "小さなアークではデータラベルが非表示になります",
+                    es: "Etiquetas de datos ocultas para arcos pequeños",
+                    ko: "작은 호에서는 데이터 레이블이 숨겨집니다",
+                    ar: "إخفاء تسميات البيانات للأقواس الصغيرة",
+                },
             },
             // DONUT COMMENTS
             {
@@ -7693,17 +7917,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_DONUT_BASE.value.style.chart,
                             comments: {
-                                show: true
-                            }
-                        }
-                    }
+                                show: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDonut',
+                component: "VueUiDonut",
                 toggleCurvedMarkers: true,
-                icon: 'chartDonut',
-                id: 'donut-comment',
-                link: 'vue-ui-donut',
-                tags: ['#plot-comment'],
+                icon: "chartDonut",
+                id: "donut-comment",
+                link: "vue-ui-donut",
+                tags: ["#plot-comment"],
                 slot: `<template #plot-comment="{ plot }">
                 <div
                     :style="{
@@ -7717,16 +7941,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 </div>
             </template>`,
                 description: {
-                    en: 'With individual comments in the dataset',
-                    fr: 'Avec des commentaires individuels dans le jeu de données',
-                    pt: 'Com comentários individuais no conjunto de dados',
-                    de: 'Mit individuellen Kommentaren im Datensatz',
-                    zh: '数据集中包含单独的注释',
-                    ja: 'データセットに個別のコメント付き',
-                    es: 'Con comentarios individuales en el conjunto de datos',
-                    ko: '데이터 세트에 개별 댓글 포함',
-                    ar: 'مع تعليقات فردية في مجموعة البيانات'
-                }
+                    en: "With individual comments in the dataset",
+                    fr: "Avec des commentaires individuels dans le jeu de données",
+                    pt: "Com comentários individuais no conjunto de dados",
+                    de: "Mit individuellen Kommentaren im Datensatz",
+                    zh: "数据集中包含单独的注释",
+                    ja: "データセットに個別のコメント付き",
+                    es: "Con comentarios individuales en el conjunto de datos",
+                    ko: "데이터 세트에 개별 댓글 포함",
+                    ar: "مع تعليقات فردية في مجموعة البيانات",
+                },
             },
             // PIE
             {
@@ -7739,53 +7963,54 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_DONUT_BASE.value.style.chart,
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
-                                donut:{
+                                donut: {
                                     strokeWidth: 180,
                                 },
                                 labels: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.labels,
                                     hollow: {
                                         show: false,
                                         average: {
                                             show: false,
                                         },
                                         total: {
-                                            show: false
-                                        }
+                                            show: false,
+                                        },
                                     },
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-pie',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-pie",
+                link: "vue-ui-donut",
                 toggleCurvedMarkers: true,
                 description: {
-                    en: 'Pie chart',
-                    fr: 'Diagramme circulaire',
-                    pt: 'Gráfico de pizza',
-                    de: 'Kreisdiagramm',
-                    zh: '饼图',
-                    ja: '円グラフ',
-                    es: 'Gráfico de pastel',
-                    ko: '파이 차트',
-                    ar: 'مخطط دائري'
-                }
+                    en: "Pie chart",
+                    fr: "Diagramme circulaire",
+                    pt: "Gráfico de pizza",
+                    de: "Kreisdiagramm",
+                    zh: "饼图",
+                    ja: "円グラフ",
+                    es: "Gráfico de pastel",
+                    ko: "파이 차트",
+                    ar: "مخطط دائري",
+                },
             },
             // POLAR
             {
                 dataset: DATASET_DONUT_POLAR.value,
                 config: {
                     ...CONFIG_DONUT_BASE.value,
-                    type: 'polar'
+                    type: "polar",
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-polar',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-polar",
+                link: "vue-ui-donut",
                 description: {
                     en: "Polar area chart",
                     fr: "Diagramme en aires polaires",
@@ -7795,8 +8020,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "ポーラーエリアチャート",
                     es: "Gráfico de área polar",
                     ko: "극 영역 차트",
-                    ar: "مخطط المساحة القطبية"
-                }
+                    ar: "مخطط المساحة القطبية",
+                },
             },
             // PIE NO GRADIENT
             {
@@ -7810,41 +8035,42 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             useGradient: false,
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
-                                donut:{
+                                donut: {
                                     strokeWidth: 180,
                                 },
                                 labels: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.labels,
                                     hollow: {
                                         show: false,
                                         average: {
                                             show: false,
                                         },
                                         total: {
-                                            show: false
-                                        }
+                                            show: false,
+                                        },
                                     },
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'pie-no-gradient',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "pie-no-gradient",
+                link: "vue-ui-donut",
                 toggleCurvedMarkers: true,
                 description: {
-                    en: 'Pie chart, no gradient',
-                    fr: 'Graphique en secteurs, sans dégradé',
-                    pt: 'Gráfico de torta, sem gradiente',
-                    de: 'Kreisdiagramm, ohne Verlauf',
-                    zh: '饼图，无渐变',
-                    ja: '円グラフ、グラデーションなし',
-                    es: 'Gráfico de pastel, sin degradado',
-                    ko: '파이 차트, 그라디언트 없음',
-                    ar: 'مخطط دائري، بدون تدرج'
-                }
+                    en: "Pie chart, no gradient",
+                    fr: "Graphique en secteurs, sans dégradé",
+                    pt: "Gráfico de torta, sem gradiente",
+                    de: "Kreisdiagramm, ohne Verlauf",
+                    zh: "饼图，无渐变",
+                    ja: "円グラフ、グラデーションなし",
+                    es: "Gráfico de pastel, sin degradado",
+                    ko: "파이 차트, 그라디언트 없음",
+                    ar: "مخطط دائري، بدون تدرج",
+                },
             },
             // DONUT THIN NO GRADIENT
             {
@@ -7858,11 +8084,12 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             useGradient: false,
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
-                                donut:{
+                                donut: {
                                     strokeWidth: 24,
                                 },
                                 labels: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.labels,
                                     hollow: {
                                         show: false,
                                         average: {
@@ -7870,23 +8097,23 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                         },
                                         total: {
                                             show: true,
-                                            text: '',
+                                            text: "",
                                             value: {
                                                 color: colors.value.textColor,
                                                 offsetY: 4,
-                                                fontSize: 64
-                                            }
-                                        }
+                                                fontSize: 64,
+                                            },
+                                        },
                                     },
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-thin',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-thin",
+                link: "vue-ui-donut",
                 toggleCurvedMarkers: true,
                 description: {
                     en: "Donut with lower fat",
@@ -7897,8 +8124,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "低脂肪のドーナツ",
                     es: "Donut con menos grasa",
                     ko: "지방이 적은 도넛",
-                    ar: "دونات منخفضة الدهون"
-                }
+                    ar: "دونات منخفضة الدهون",
+                },
             },
             // DONUT SHADOW
             {
@@ -7912,29 +8139,30 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
                                 donut: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
-                                    useShadow: true
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.donut,
+                                    useShadow: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-shadow',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-shadow",
+                link: "vue-ui-donut",
                 toggleCurvedMarkers: true,
                 description: {
-                    en: 'With shadow',
-                    fr: 'Avec ombre',
-                    pt: 'Com sombra',
-                    de: 'Mit Schatten',
-                    zh: '带阴影',
-                    ja: '影付き',
-                    es: 'Con sombra',
-                    ko: '그림자 포함',
-                    ar: 'مع ظل'
-                }
+                    en: "With shadow",
+                    fr: "Avec ombre",
+                    pt: "Com sombra",
+                    de: "Mit Schatten",
+                    zh: "带阴影",
+                    ja: "影付き",
+                    es: "Con sombra",
+                    ko: "그림자 포함",
+                    ar: "مع ظل",
+                },
             },
             // PIE SHADOW
             {
@@ -7948,50 +8176,55 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
                                 donut: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.donut,
                                     useShadow: true,
                                     strokeWidth: 180,
                                 },
                                 labels: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.labels,
                                     hollow: {
                                         show: false,
                                         average: {
                                             show: false,
                                         },
                                         total: {
-                                            show: false
-                                        }
+                                            show: false,
+                                        },
                                     },
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'pie-shadow',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "pie-shadow",
+                link: "vue-ui-donut",
                 toggleCurvedMarkers: true,
                 description: {
-                    en: 'Pie chart with shadow',
-                    fr: 'Graphique en secteurs avec ombre',
-                    pt: 'Gráfico de torta com sombra',
-                    de: 'Kreisdiagramm mit Schatten',
-                    zh: '带阴影的饼图',
-                    ja: '影付きの円グラフ',
-                    es: 'Gráfico de pastel con sombra',
-                    ko: '그림자가 있는 파이 차트',
-                    ar: 'مخطط دائري مع ظل'
-                }
+                    en: "Pie chart with shadow",
+                    fr: "Graphique en secteurs avec ombre",
+                    pt: "Gráfico de torta com sombra",
+                    de: "Kreisdiagramm mit Schatten",
+                    zh: "带阴影的饼图",
+                    ja: "影付きの円グラフ",
+                    es: "Gráfico de pastel con sombra",
+                    ko: "그림자가 있는 파이 차트",
+                    ar: "مخطط دائري مع ظل",
+                },
             },
             // DONUT BACKGROUND
             {
-                dataset: DATASET_DONUT_BASIC.value.map((ds,i) => {
+                dataset: DATASET_DONUT_BASIC.value.map((ds, i) => {
                     return {
                         ...ds,
-                        color: shiftHue('#1f77b4', -(i * DATASET_DONUT_BASIC.value.length / 200))
-                    }
+                        color: shiftHue(
+                            "#1f77b4",
+                            -((i * DATASET_DONUT_BASIC.value.length) / 200),
+                        ),
+                    };
                 }),
                 config: {
                     ...CONFIG_DONUT_BASE.value,
@@ -8002,18 +8235,23 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
                                 donut: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.donut,
                                     useShadow: false,
                                 },
                                 labels: {
-                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_DONUT_BASE.value.style.chart
+                                        .layout.labels,
                                     name: {
-                                        ...CONFIG_DONUT_BASE.value.style.chart.layout.labels.name,
-                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                                        ...CONFIG_DONUT_BASE.value.style.chart
+                                            .layout.labels.name,
+                                        color: isDarkMode.value
+                                            ? "#CCCCCC"
+                                            : "#1A1A1A",
                                     },
                                     hollow: {
                                         average: {
-                                            show: false
+                                            show: false,
                                         },
                                         total: {
                                             color: colors.value.textColor,
@@ -8021,25 +8259,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                             value: {
                                                 color: colors.value.textColor,
                                                 fontSize: 64,
-                                                offsetY: 24
-                                            }
-                                        }
+                                                offsetY: 24,
+                                            },
+                                        },
                                         // show: false,
                                         // average: { show: false },
                                         // total: { show: false },
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
                 chartBackground: true,
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-bg',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-bg",
                 toggleCurvedMarkers: true,
-                link: 'vue-ui-donut',
-                tags: ['#chart-background'],
+                link: "vue-ui-donut",
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -8054,20 +8292,20 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // DONUT PATTERN
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: CONFIG_DONUT_BASE.value,
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-pattern',
-                link: 'vue-ui-donut',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-pattern",
+                link: "vue-ui-donut",
                 multiPattern: true,
                 toggleCurvedMarkers: true,
-                tags: ['#pattern'],
+                tags: ["#pattern"],
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
                 <!-- Condition specific patterns to the seriesIndex if necessary -->
@@ -8087,22 +8325,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムパターンの使用",
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
-                    ar: "استخدام نمط مخصص"
-                }
+                    ar: "استخدام نمط مخصص",
+                },
             },
             // POLAR PATTERN
             {
                 dataset: DATASET_DONUT_POLAR.value,
                 config: {
                     ...CONFIG_DONUT_BASE.value,
-                    type: 'polar'
+                    type: "polar",
                 },
-                component: 'VueUiDonut',
-                icon: 'chartDonut',
-                id: 'donut-polar-pattern',
+                component: "VueUiDonut",
+                icon: "chartDonut",
+                id: "donut-polar-pattern",
                 multiPattern: true,
-                tags: ['#pattern'],
-                link: 'vue-ui-donut',
+                tags: ["#pattern"],
+                link: "vue-ui-donut",
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
                 <!-- Condition specific patterns to the seriesIndex if necessary -->
@@ -8122,28 +8360,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "ポーラーエリアチャート カスタムパターンの使用",
                     es: "Gráfico de área polar - Usando un patrón personalizado",
                     ko: "극 영역 차트 - 맞춤형 패턴 사용",
-                    ar: "استخدام نمط مخصص - مخطط المساحة القطبية"
-                }
+                    ar: "استخدام نمط مخصص - مخطط المساحة القطبية",
+                },
             },
             // SPARKLINE BASIX
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: CONFIG_SPARKLINE_BASE.value,
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-basic',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-basic",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'Basic sparkline chart',
-                    fr: 'Graphique sparkline de base',
-                    pt: 'Gráfico sparkline básico',
-                    de: 'Grundlegendes Sparkline-Diagramm',
-                    zh: '基本迷你图',
-                    ja: '基本スパークラインチャート',
-                    es: 'Gráfico sparkline básico',
-                    ko: '기본 스파크라인 차트',
-                    ar: 'مخطط الشرارة الأساسي'
-                }
+                    en: "Basic sparkline chart",
+                    fr: "Graphique sparkline de base",
+                    pt: "Gráfico sparkline básico",
+                    de: "Grundlegendes Sparkline-Diagramm",
+                    zh: "基本迷你图",
+                    ja: "基本スパークラインチャート",
+                    es: "Gráfico sparkline básico",
+                    ko: "기본 스파크라인 차트",
+                    ar: "مخطط الشرارة الأساسي",
+                },
             },
             // SPARKLINE WITH PULSE
             {
@@ -8155,28 +8393,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             line: {
                                 pulse: {
                                     show: true,
-                                    color: '#aec7e8',
-                                    radius: 2
-                                }
-                            }
-                        }
-                    }
+                                    color: "#aec7e8",
+                                    radius: 2,
+                                },
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-with-pulse',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-with-pulse",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'We have a pulse',
-                    fr: 'Nous avons un pouls',
-                    pt: 'Temos um pulso',
-                    de: 'Wir haben einen Puls',
-                    zh: '我们有脉搏',
-                    ja: '脈がある',
-                    es: 'Tenemos pulso',
-                    ko: '맥박이 있습니다',
-                    ar: 'لدينا نبض'
-                }
+                    en: "We have a pulse",
+                    fr: "Nous avons un pouls",
+                    pt: "Temos um pulso",
+                    de: "Wir haben einen Puls",
+                    zh: "我们有脉搏",
+                    ja: "脈がある",
+                    es: "Tenemos pulso",
+                    ko: "맥박이 있습니다",
+                    ar: "لدينا نبض",
+                },
             },
             // SPARKLINE AREA
             {
@@ -8187,25 +8425,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         ...CONFIG_SPARKLINE_BASE.value.style,
                         area: {
                             show: true,
-                            color: '#1F77B4',
-                        }
-                    }
+                            color: "#1F77B4",
+                        },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-area',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-area",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'Sparkline area chart',
-                    fr: 'Graphique sparkline avec aire',
-                    pt: 'Gráfico de área sparkline',
-                    de: 'Sparkline-Flächendiagramm',
-                    zh: '迷你面积图',
-                    ja: 'スパークライン面積チャート',
-                    es: 'Gráfico de área sparkline',
-                    ko: '스파크라인 영역 차트',
-                    ar: 'مخطط منطقة الشرارة'
-                }
+                    en: "Sparkline area chart",
+                    fr: "Graphique sparkline avec aire",
+                    pt: "Gráfico de área sparkline",
+                    de: "Sparkline-Flächendiagramm",
+                    zh: "迷你面积图",
+                    ja: "スパークライン面積チャート",
+                    es: "Gráfico de área sparkline",
+                    ko: "스파크라인 영역 차트",
+                    ar: "مخطط منطقة الشرارة",
+                },
             },
             // SPARKLINE SMOOTH
             {
@@ -8217,23 +8455,23 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         line: {
                             ...CONFIG_SPARKLINE_BASE.value.style.line,
                             smooth: true,
-                        }
-                    }
+                        },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-smooth',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-smooth",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'Smooth line',
-                    fr: 'Ligne lissée',
-                    pt: 'Linha suave',
-                    de: 'Geglättete Linie',
-                    zh: '平滑线',
-                    ja: '滑らかな線',
-                    es: 'Línea suave',
-                    ko: '부드러운 선',
-                    ar: 'خط سلس'
+                    en: "Smooth line",
+                    fr: "Ligne lissée",
+                    pt: "Linha suave",
+                    de: "Geglättete Linie",
+                    zh: "平滑线",
+                    ja: "滑らかな線",
+                    es: "Línea suave",
+                    ko: "부드러운 선",
+                    ar: "خط سلس",
                 },
             },
             // SPARKLINE AREA SMOOTH
@@ -8245,29 +8483,29 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         ...CONFIG_SPARKLINE_BASE.value.style,
                         line: {
                             ...CONFIG_SPARKLINE_BASE.value.style.line,
-                            smooth: true
+                            smooth: true,
                         },
                         area: {
                             show: true,
-                            color: '#1F77B4',
-                        }
-                    }
+                            color: "#1F77B4",
+                        },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-smooth-area',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-smooth-area",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'Smooth line with area',
-                    fr: 'Ligne lissée avec aire',
-                    pt: 'Linha suave com área',
-                    de: 'Geglättete Linie mit Fläche',
-                    zh: '带区域的平滑线',
-                    ja: '面積を含む滑らかな線',
-                    es: 'Línea suave con área',
-                    ko: '영역이 포함된 부드러운 선',
-                    ar: 'خط سلس مع منطقة'
-                }
+                    en: "Smooth line with area",
+                    fr: "Ligne lissée avec aire",
+                    pt: "Linha suave com área",
+                    de: "Geglättete Linie mit Fläche",
+                    zh: "带区域的平滑线",
+                    ja: "面積を含む滑らかな線",
+                    es: "Línea suave con área",
+                    ko: "영역이 포함된 부드러운 선",
+                    ar: "خط سلس مع منطقة",
+                },
             },
             // SPARKLINE WITH DASHINDICES
             {
@@ -8280,29 +8518,29 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_SPARKLINE_BASE.value.style.line,
                             dashIndices: [10, 11, 20],
                             dashArray: 6,
-                            smooth: true
+                            smooth: true,
                         },
                         area: {
                             show: false,
-                            color: '#1F77B4',
-                        }
-                    }
+                            color: "#1F77B4",
+                        },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-dashed-segments',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-dashed-segments",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'Spline with dashed segments',
-                    fr: 'Spline avec segments en pointillés',
-                    pt: 'Spline com segmentos tracejados',
-                    de: 'Spline mit gestrichelten Segmenten',
-                    zh: '带虚线段的样条曲线',
-                    ja: '破線セグメントを含むスプライン曲線',
-                    es: 'Spline con segmentos discontinuos',
-                    ko: '점선 구간이 있는 스플라인 곡선',
-                    ar: 'منحنى سبلاين مع مقاطع متقطعة'
-                }
+                    en: "Spline with dashed segments",
+                    fr: "Spline avec segments en pointillés",
+                    pt: "Spline com segmentos tracejados",
+                    de: "Spline mit gestrichelten Segmenten",
+                    zh: "带虚线段的样条曲线",
+                    ja: "破線セグメントを含むスプライン曲線",
+                    es: "Spline con segmentos discontinuos",
+                    ko: "점선 구간이 있는 스플라인 곡선",
+                    ar: "منحنى سبلاين مع مقاطع متقطعة",
+                },
             },
             // SPARKLINE TERMPERATURE COLORS
             {
@@ -8312,27 +8550,32 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     userConfig: {
                         temperatureColors: {
                             show: true,
-                            colors: ['#ff3700', '#ff8c00', '#42d392', '#5f8aee']
+                            colors: [
+                                "#ff3700",
+                                "#ff8c00",
+                                "#42d392",
+                                "#5f8aee",
+                            ],
                         },
                         style: {
                             area: {
                                 show: true,
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                                color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                             },
                             line: {
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                                color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                                 smooth: true,
                             },
                             verticalIndicator: {
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
-                            }
-                        }
-                    }
+                                color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-temperature-colors',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-temperature-colors",
+                link: "vue-ui-sparkline",
                 description: {
                     en: "With temperature gradient colors",
                     fr: "Avec des couleurs en dégradé de température",
@@ -8342,8 +8585,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "温度グラデーションカラー付き",
                     es: "Con colores en degradado de temperatura",
                     ko: "온도 그라데이션 색상 포함",
-                    ar: "بألوان متدرجة لدرجة الحرارة"
-                }
+                    ar: "بألوان متدرجة لدرجة الحرارة",
+                },
             },
             // SPARKLINE GRADIENT
             {
@@ -8356,18 +8599,18 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         },
                         style: {
                             line: {
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                                color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                             },
                             verticalIndicator: {
-                                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
-                            }
-                        }
-                    }
+                                color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-gradient-path',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-gradient-path",
+                link: "vue-ui-sparkline",
                 description: {
                     en: "With a gradient path (experimental)",
                     fr: "Avec un tracé en dégradé (expérimental)",
@@ -8377,67 +8620,67 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "グラデーション付きのパス（実験的）",
                     es: "Con un trazado en degradado (experimental)",
                     ko: "그라데이션 경로 포함 (실험적)",
-                    ar: "بمسار متدرج (تجريبي)"
-                }
+                    ar: "بمسار متدرج (تجريبي)",
+                },
             },
             // SPARKLINE BAR
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: {
                     ...CONFIG_SPARKLINE_BASE.value,
-                    type: 'bar',
+                    type: "bar",
                     style: {
                         ...CONFIG_SPARKLINE_BASE.value.style,
                         bar: {
-                            color: '#1F77B4'
-                        }
-                    }
+                            color: "#1F77B4",
+                        },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-bar',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-bar",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'Basic sparkline bars',
-                    fr: 'Barres sparkline de base',
-                    pt: 'Barras sparkline básicas',
-                    de: 'Grundlegende Sparkline-Balken',
-                    zh: '基本迷你柱状图',
-                    ja: '基本スパークラインバー',
-                    es: 'Barras sparkline básicas',
-                    ko: '기본 스파크라인 막대',
-                    ar: 'أعمدة الشرارة الأساسية'
-                }
+                    en: "Basic sparkline bars",
+                    fr: "Barres sparkline de base",
+                    pt: "Barras sparkline básicas",
+                    de: "Grundlegende Sparkline-Balken",
+                    zh: "基本迷你柱状图",
+                    ja: "基本スパークラインバー",
+                    es: "Barras sparkline básicas",
+                    ko: "기본 스파크라인 막대",
+                    ar: "أعمدة الشرارة الأساسية",
+                },
             },
             // SPARKLINE BAR ROUNDED
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: {
                     ...CONFIG_SPARKLINE_BASE.value,
-                    type: 'bar',
+                    type: "bar",
                     style: {
                         ...CONFIG_SPARKLINE_BASE.value.style,
                         bar: {
-                            color: '#1F77B4',
-                            borderRadius: 10
-                        }
-                    }
+                            color: "#1F77B4",
+                            borderRadius: 10,
+                        },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-bar-radius',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-bar-radius",
+                link: "vue-ui-sparkline",
                 description: {
-                    en: 'Rounded bars',
-                    fr: 'Barres arrondies',
-                    pt: 'Barras arredondadas',
-                    de: 'Abgerundete Balken',
-                    zh: '圆角柱状图',
-                    ja: '丸みを帯びたバー',
-                    es: 'Barras redondeadas',
-                    ko: '둥근 막대',
-                    ar: 'أعمدة مستديرة'
-                }
+                    en: "Rounded bars",
+                    fr: "Barres arrondies",
+                    pt: "Barras arredondadas",
+                    de: "Abgerundete Balken",
+                    zh: "圆角柱状图",
+                    ja: "丸みを帯びたバー",
+                    es: "Barras redondeadas",
+                    ko: "둥근 막대",
+                    ar: "أعمدة مستديرة",
+                },
             },
             // SPARKLINE BACKGROUND
             {
@@ -8448,16 +8691,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         ...CONFIG_SPARKLINE_BASE.value.style,
                         line: {
                             ...CONFIG_SPARKLINE_BASE.value.style.line,
-                            color: isDarkMode.value ? 'white' : 'black'
-                        }
-                    }
+                            color: isDarkMode.value ? "white" : "black",
+                        },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-background',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-background",
                 chartBackground: true,
-                link: 'vue-ui-sparkline',
-                tags: ['#chart-background'],
+                link: "vue-ui-sparkline",
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -8472,8 +8715,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // SPARKLINE TOOLTIP
             {
@@ -8491,16 +8734,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         tooltip: {
                             show: true,
                             backgroundOpacity: 20,
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                         },
                         title: { show: false },
-                        dataLabel: { show: false }
-                    }
+                        dataLabel: { show: false },
+                    },
                 },
-                component: 'VueUiSparkline',
-                icon: 'chartSparkline',
-                id: 'sparkline-tooltip',
-                link: 'vue-ui-sparkline',
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-tooltip",
+                link: "vue-ui-sparkline",
                 description: {
                     en: "With a tooltip",
                     fr: "Avec une info-bulle",
@@ -8510,28 +8753,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "ツールチップ付き",
                     es: "Con un tooltip",
                     ko: "툴팁 포함",
-                    ar: "مع تلميح الأدوات"
-                }
+                    ar: "مع تلميح الأدوات",
+                },
             },
             // STACKLINE BASIC
             {
                 dataset: DATASET_STACKLINE_BASIC.value,
                 config: CONFIG_STACKLINE_BASE.value,
-                component: 'VueUiStackline',
-                icon: 'chartStackline',
-                id: 'stack-line-basic',
-                link: 'vue-ui-stackline',
+                component: "VueUiStackline",
+                icon: "chartStackline",
+                id: "stack-line-basic",
+                link: "vue-ui-stackline",
                 description: {
-                    en: 'Basic stacked line chart',
-                    fr: 'Graphique en lignes empilées de base',
-                    pt: 'Gráfico de linhas empilhadas básico',
-                    de: 'Einfaches gestapeltes Liniendiagramm',
-                    zh: '基础堆叠折线图',
-                    ja: '基本的な積み上げ折れ線グラフ',
-                    es: 'Gráfico de líneas apiladas básico',
-                    ko: '기본 누적 선형 차트',
-                    ar: 'مخطط خطي مكدس أساسي'
-                }
+                    en: "Basic stacked line chart",
+                    fr: "Graphique en lignes empilées de base",
+                    pt: "Gráfico de linhas empilhadas básico",
+                    de: "Einfaches gestapeltes Liniendiagramm",
+                    zh: "基础堆叠折线图",
+                    ja: "基本的な積み上げ折れ線グラフ",
+                    es: "Gráfico de líneas apiladas básico",
+                    ko: "기본 누적 선형 차트",
+                    ar: "مخطط خطي مكدس أساسي",
+                },
             },
             // STACKLINE DISTRIBUTED
             {
@@ -8543,27 +8786,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STACKLINE_BASE.value.style.chart,
                             lines: {
-                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
-                                distributed: true
-                            }
-                        }
-                    }
+                                ...CONFIG_STACKLINE_BASE.value.style.chart
+                                    .lines,
+                                distributed: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackline',
-                icon: 'chartStackline',
-                id: 'stack-line-distributed',
-                link: 'vue-ui-stackline',
+                component: "VueUiStackline",
+                icon: "chartStackline",
+                id: "stack-line-distributed",
+                link: "vue-ui-stackline",
                 description: {
-                    en: 'Distributed stacked line chart',
-                    fr: 'Graphique en lignes empilées distribuées',
-                    pt: 'Gráfico de linhas empilhadas distribuídas',
-                    de: 'Verteiltes gestapeltes Liniendiagramm',
-                    zh: '分布式堆叠折线图',
-                    ja: '分布型積み上げ折れ線グラフ',
-                    es: 'Gráfico de líneas apiladas distribuidas',
-                    ko: '분포형 누적 선형 차트',
-                    ar: 'مخطط خطي مكدس موزع'
-                }
+                    en: "Distributed stacked line chart",
+                    fr: "Graphique en lignes empilées distribuées",
+                    pt: "Gráfico de linhas empilhadas distribuídas",
+                    de: "Verteiltes gestapeltes Liniendiagramm",
+                    zh: "分布式堆叠折线图",
+                    ja: "分布型積み上げ折れ線グラフ",
+                    es: "Gráfico de líneas apiladas distribuidas",
+                    ko: "분포형 누적 선형 차트",
+                    ar: "مخطط خطي مكدس موزع",
+                },
             },
             // STACKLINE SMOOTH WITH GRID
             {
@@ -8575,40 +8819,47 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STACKLINE_BASE.value.style.chart,
                             lines: {
-                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                ...CONFIG_STACKLINE_BASE.value.style.chart
+                                    .lines,
                                 smooth: true,
                             },
                             grid: {
                                 ...CONFIG_STACKLINE_BASE.value.style.chart.grid,
                                 x: {
-                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.x,
-                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
-                                    showHorizontalLines: true
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart
+                                        .grid.x,
+                                    linesColor: isDarkMode.value
+                                        ? "#4A4A4A"
+                                        : "#E1E5E8",
+                                    showHorizontalLines: true,
                                 },
                                 y: {
-                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.y,
-                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
-                                    showVerticalLines: true
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart
+                                        .grid.y,
+                                    linesColor: isDarkMode.value
+                                        ? "#4A4A4A"
+                                        : "#E1E5E8",
+                                    showVerticalLines: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackline',
-                icon: 'chartStackline',
-                id: 'stack-line-smooth-grid',
-                link: 'vue-ui-stackline',
+                component: "VueUiStackline",
+                icon: "chartStackline",
+                id: "stack-line-smooth-grid",
+                link: "vue-ui-stackline",
                 description: {
-                    en: 'Smooth lines with grid',
-                    fr: 'Lignes lissées avec grille',
-                    pt: 'Linhas suaves com grade',
-                    de: 'Geglättete Linien mit Gitter',
-                    zh: '带网格的平滑折线',
-                    ja: 'グリッド付きのスムーズな折れ線',
-                    es: 'Líneas suaves con cuadrícula',
-                    ko: '그리드가 있는 부드러운 선형 차트',
-                    ar: 'خطوط سلسة مع شبكة'
-                }
+                    en: "Smooth lines with grid",
+                    fr: "Lignes lissées avec grille",
+                    pt: "Linhas suaves com grade",
+                    de: "Geglättete Linien mit Gitter",
+                    zh: "带网格的平滑折线",
+                    ja: "グリッド付きのスムーズな折れ線",
+                    es: "Líneas suaves con cuadrícula",
+                    ko: "그리드가 있는 부드러운 선형 차트",
+                    ar: "خطوط سلسة مع شبكة",
+                },
             },
             // STACKLINE SMOOTH DISTRIBUTED WITH GRID
             {
@@ -8620,41 +8871,48 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STACKLINE_BASE.value.style.chart,
                             lines: {
-                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                ...CONFIG_STACKLINE_BASE.value.style.chart
+                                    .lines,
                                 distributed: true,
                                 smooth: true,
                             },
                             grid: {
                                 ...CONFIG_STACKLINE_BASE.value.style.chart.grid,
                                 x: {
-                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.x,
-                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
-                                    showHorizontalLines: true
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart
+                                        .grid.x,
+                                    linesColor: isDarkMode.value
+                                        ? "#4A4A4A"
+                                        : "#E1E5E8",
+                                    showHorizontalLines: true,
                                 },
                                 y: {
-                                    ...CONFIG_STACKLINE_BASE.value.style.chart.grid.y,
-                                    linesColor: isDarkMode.value ? '#4A4A4A' : '#E1E5E8',
-                                    showVerticalLines: true
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_STACKLINE_BASE.value.style.chart
+                                        .grid.y,
+                                    linesColor: isDarkMode.value
+                                        ? "#4A4A4A"
+                                        : "#E1E5E8",
+                                    showVerticalLines: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackline',
-                icon: 'chartStackline',
-                id: 'stack-line-smooth-grid-distributed',
-                link: 'vue-ui-stackline',
+                component: "VueUiStackline",
+                icon: "chartStackline",
+                id: "stack-line-smooth-grid-distributed",
+                link: "vue-ui-stackline",
                 description: {
-                    en: 'Smooth distributed lines with grid',
-                    fr: 'Lignes lissées distribuées avec grille',
-                    pt: 'Linhas suaves distribuídas com grade',
-                    de: 'Geglättete verteilte Linien mit Gitter',
-                    zh: '带网格的平滑分布折线',
-                    ja: 'グリッド付きのスムーズな分布型折れ線',
-                    es: 'Líneas suaves distribuidas con cuadrícula',
-                    ko: '그리드가 있는 부드러운 분포형 선형 차트',
-                    ar: 'خطوط سلسة موزعة مع شبكة'
-                }
+                    en: "Smooth distributed lines with grid",
+                    fr: "Lignes lissées distribuées avec grille",
+                    pt: "Linhas suaves distribuídas com grade",
+                    de: "Geglättete verteilte Linien mit Gitter",
+                    zh: "带网格的平滑分布折线",
+                    ja: "グリッド付きのスムーズな分布型折れ線",
+                    es: "Líneas suaves distribuidas con cuadrícula",
+                    ko: "그리드가 있는 부드러운 분포형 선형 차트",
+                    ar: "خطوط سلسة موزعة مع شبكة",
+                },
             },
             // STACKLINE MIXED
             {
@@ -8666,27 +8924,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STACKLINE_BASE.value.style.chart,
                             lines: {
-                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                ...CONFIG_STACKLINE_BASE.value.style.chart
+                                    .lines,
                                 smooth: true,
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackline',
-                icon: 'chartStackline',
-                id: 'stack-line-mixed',
-                link: 'vue-ui-stackline',
+                component: "VueUiStackline",
+                icon: "chartStackline",
+                id: "stack-line-mixed",
+                link: "vue-ui-stackline",
                 description: {
-                    en: 'Positive and negative values',
-                    fr: 'Valeurs positives et négatives',
-                    pt: 'Valores positivos e negativos',
-                    de: 'Positive und negative Werte',
-                    zh: '正值和负值',
-                    ja: '正の値と負の値',
-                    es: 'Valores positivos y negativos',
-                    ko: '양수와 음수',
-                    ar: 'قيم موجبة وسالبة'
-                }
+                    en: "Positive and negative values",
+                    fr: "Valeurs positives et négatives",
+                    pt: "Valores positivos e negativos",
+                    de: "Positive und negative Werte",
+                    zh: "正值和负值",
+                    ja: "正の値と負の値",
+                    es: "Valores positivos y negativos",
+                    ko: "양수와 음수",
+                    ar: "قيم موجبة وسالبة",
+                },
             },
             // STACKLINE MIXED
             {
@@ -8698,72 +8957,72 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STACKLINE_BASE.value.style.chart,
                             lines: {
-                                ...CONFIG_STACKLINE_BASE.value.style.chart.lines,
+                                ...CONFIG_STACKLINE_BASE.value.style.chart
+                                    .lines,
                                 smooth: true,
-                                distributed: true
-                            }
-                        }
-                    }
+                                distributed: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackline',
-                icon: 'chartStackline',
-                id: 'stack-line-mixed-distributed',
-                link: 'vue-ui-stackline',
+                component: "VueUiStackline",
+                icon: "chartStackline",
+                id: "stack-line-mixed-distributed",
+                link: "vue-ui-stackline",
                 description: {
-                    en: 'Positive and negative values, distributed',
-                    fr: 'Valeurs positives et négatives, distribuées',
-                    pt: 'Valores positivos e negativos, distribuídos',
-                    de: 'Positive und negative Werte, verteilt',
-                    zh: '正值和负值，分布显示',
-                    ja: '正と負の値の分布表示',
-                    es: 'Valores positivos y negativos, distribuidos',
-                    ko: '양수와 음수 값, 분포형',
-                    ar: 'قيم موجبة وسالبة، موزعة'
-                }
+                    en: "Positive and negative values, distributed",
+                    fr: "Valeurs positives et négatives, distribuées",
+                    pt: "Valores positivos e negativos, distribuídos",
+                    de: "Positive und negative Werte, verteilt",
+                    zh: "正值和负值，分布显示",
+                    ja: "正と負の値の分布表示",
+                    es: "Valores positivos y negativos, distribuidos",
+                    ko: "양수와 음수 값, 분포형",
+                    ar: "قيم موجبة وسالبة، موزعة",
+                },
             },
             // STACKBAR BASIC
             {
                 dataset: DATASET_STACKBAR_BASIC.value,
                 config: CONFIG_STACKBAR_BASE.value,
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-basic',
-                link: 'vue-ui-stackbar',
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-basic",
+                link: "vue-ui-stackbar",
                 description: {
-                    en: 'Basic stacked bar chart',
-                    fr: 'Graphique à barres empilées de base',
-                    pt: 'Gráfico de barras empilhadas básico',
-                    de: 'Grundlegendes gestapeltes Balkendiagramm',
-                    zh: '基本堆叠柱状图',
-                    ja: '基本的な積み上げ棒グラフ',
-                    es: 'Gráfico de barras apiladas básico',
-                    ko: '기본 스택형 막대 차트',
-                    ar: 'مخطط الأعمدة المتراكمة الأساسي'
-                }
+                    en: "Basic stacked bar chart",
+                    fr: "Graphique à barres empilées de base",
+                    pt: "Gráfico de barras empilhadas básico",
+                    de: "Grundlegendes gestapeltes Balkendiagramm",
+                    zh: "基本堆叠柱状图",
+                    ja: "基本的な積み上げ棒グラフ",
+                    es: "Gráfico de barras apiladas básico",
+                    ko: "기본 스택형 막대 차트",
+                    ar: "مخطط الأعمدة المتراكمة الأساسي",
+                },
             },
             // STACKBAR HORIZONTAL
             {
                 dataset: DATASET_STACKBAR_BASIC.value,
                 config: {
                     ...CONFIG_STACKBAR_BASE.value,
-                    orientation: 'horizontal'
-
+                    orientation: "horizontal",
                 },
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-horizontal',
-                link: 'vue-ui-stackbar',
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-horizontal",
+                link: "vue-ui-stackbar",
                 description: {
-                    en: 'Horizontal layout',
-                    fr: 'Disposition horizontale',
-                    pt: 'Layout horizontal',
-                    de: 'Horizontale Anordnung',
-                    zh: '水平布局',
-                    ja: '水平レイアウト',
-                    es: 'Distribución horizontal',
-                    ko: '수평 레이아웃',
-                    ar: 'تخطيط أفقي'
-                }
+                    en: "Horizontal layout",
+                    fr: "Disposition horizontale",
+                    pt: "Layout horizontal",
+                    de: "Horizontale Anordnung",
+                    zh: "水平布局",
+                    ja: "水平レイアウト",
+                    es: "Distribución horizontal",
+                    ko: "수평 레이아웃",
+                    ar: "تخطيط أفقي",
+                },
             },
             // STACKBAR DISTRIBUTED
             {
@@ -8776,59 +9035,59 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_STACKBAR_BASE.value.style.chart,
                             bars: {
                                 ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
-                                distributed: true
-                            }
-                        }
-                    }
+                                distributed: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-basic-distributed',
-                link: 'vue-ui-stackbar',
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-basic-distributed",
+                link: "vue-ui-stackbar",
                 description: {
-                    en: 'Distributed vertical stack bar',
-                    fr: 'Barre empilée verticale distribuée',
-                    pt: 'Barra empilhada vertical distribuída',
-                    de: 'Verteilte vertikale Stapelleiste',
-                    zh: '分布式垂直堆叠柱状图',
-                    ja: '分散型垂直スタックバー',
-                    es: 'Barra apilada vertical distribuida',
-                    ko: '분산형 수직 스택 막대',
-                    ar: 'شريط مكدس رأسي موزع'
-                }
+                    en: "Distributed vertical stack bar",
+                    fr: "Barre empilée verticale distribuée",
+                    pt: "Barra empilhada vertical distribuída",
+                    de: "Verteilte vertikale Stapelleiste",
+                    zh: "分布式垂直堆叠柱状图",
+                    ja: "分散型垂直スタックバー",
+                    es: "Barra apilada vertical distribuida",
+                    ko: "분산형 수직 스택 막대",
+                    ar: "شريط مكدس رأسي موزع",
+                },
             },
             // STACKBAR HORIZONTAL DISTRIBUTED
             {
                 dataset: DATASET_STACKBAR_BASIC.value,
                 config: {
                     ...CONFIG_STACKBAR_BASE.value,
-                    orientation: 'horizontal',
+                    orientation: "horizontal",
                     style: {
                         ...CONFIG_STACKBAR_BASE.value.style,
                         chart: {
                             ...CONFIG_STACKBAR_BASE.value.style.chart,
                             bars: {
                                 ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
-                                distributed: true
-                            }
-                        }
-                    }
+                                distributed: true,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-horizontal-distributed',
-                link: 'vue-ui-stackbar',
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-horizontal-distributed",
+                link: "vue-ui-stackbar",
                 description: {
-                    en: 'Distributed horizontal stack bar',
-                    fr: 'Barre empilée horizontale distribuée',
-                    pt: 'Barra empilhada horizontal distribuída',
-                    de: 'Verteilte horizontale Stapelleiste',
-                    zh: '分布式水平堆叠柱状图',
-                    ja: '分散型水平スタックバー',
-                    es: 'Barra apilada horizontal distribuida',
-                    ko: '분산형 수평 스택 막대',
-                    ar: 'شريط مكدس أفقي موزع'
-                }
+                    en: "Distributed horizontal stack bar",
+                    fr: "Barre empilée horizontale distribuée",
+                    pt: "Barra empilhada horizontal distribuída",
+                    de: "Verteilte horizontale Stapelleiste",
+                    zh: "分布式水平堆叠柱状图",
+                    ja: "分散型水平スタックバー",
+                    es: "Barra apilada horizontal distribuida",
+                    ko: "분산형 수평 스택 막대",
+                    ar: "شريط مكدس أفقي موزع",
+                },
             },
             // STACKBAR MIXED
             {
@@ -8842,28 +9101,29 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             grid: {
                                 ...CONFIG_STACKBAR_BASE.value.style.chart.grid,
                                 x: {
-                                    ...CONFIG_STACKBAR_BASE.value.style.chart.grid.x,
-                                    showHorizontalLines: true
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_STACKBAR_BASE.value.style.chart
+                                        .grid.x,
+                                    showHorizontalLines: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-mixed',
-                link: 'vue-ui-stackbar',
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-mixed",
+                link: "vue-ui-stackbar",
                 description: {
-                    en: 'Positive and negative values',
-                    fr: 'Valeurs positives et négatives',
-                    pt: 'Valores positivos e negativos',
-                    de: 'Positive und negative Werte',
-                    zh: '正值和负值',
-                    ja: '正の値と負の値',
-                    es: 'Valores positivos y negativos',
-                    ko: '양수와 음수',
-                    ar: 'قيم موجبة وسالبة'
-                }
+                    en: "Positive and negative values",
+                    fr: "Valeurs positives et négatives",
+                    pt: "Valores positivos e negativos",
+                    de: "Positive und negative Werte",
+                    zh: "正值和负值",
+                    ja: "正の値と負の値",
+                    es: "Valores positivos y negativos",
+                    ko: "양수와 음수",
+                    ar: "قيم موجبة وسالبة",
+                },
             },
             // STACKBAR NO GAP
             {
@@ -8876,15 +9136,15 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_STACKBAR_BASE.value.style.chart,
                             bars: {
                                 ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
-                                gapRatio: 0
-                            }
-                        }
-                    }
+                                gapRatio: 0,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-basic-no-gap',
-                link: 'vue-ui-stackbar',
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-basic-no-gap",
+                link: "vue-ui-stackbar",
                 description: {
                     en: "Without gaps",
                     fr: "Sans espaces",
@@ -8894,19 +9154,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "隙間なし",
                     es: "Sin espacios",
                     ko: "간격 없이",
-                    ar: "بدون فجوات"
-                }
+                    ar: "بدون فجوات",
+                },
             },
             // STACKBAR BACKGROUND
             {
                 dataset: DATASET_STACKBAR_BASIC.value,
                 config: CONFIG_STACKBAR_BASE.value,
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-background',
-                link: 'vue-ui-stackbar',
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-background",
+                link: "vue-ui-stackbar",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -8921,8 +9181,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // STACKBAR PATTERN
             {
@@ -8936,18 +9196,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             bars: {
                                 ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
                                 dataLabels: {
-                                    ...CONFIG_STACKBAR_BASE.value.style.chart.bars.dataLabels,
-                                    show: false
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_STACKBAR_BASE.value.style.chart
+                                        .bars.dataLabels,
+                                    show: false,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStackbar',
-                icon: 'chartStackbar',
-                id: 'stack-bar-pattern',
-                link: 'vue-ui-stackbar',
-                tags: ['#pattern'],
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-pattern",
+                link: "vue-ui-stackbar",
+                tags: ["#pattern"],
                 pattern: true,
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
@@ -8968,8 +9229,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムパターンの使用",
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
-                    ar: "استخدام نمط مخصص"
-                }
+                    ar: "استخدام نمط مخصص",
+                },
             },
             // NESTED DONUTS BASIC
             {
@@ -8981,33 +9242,36 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
                             layout: {
-                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart
+                                    .layout,
                                 labels: {
-                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                        .chart.layout.labels,
                                     dataLabels: {
-                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
-                                        donutNameOffsetY: -6
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                            .chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiNestedDonuts',
-                icon: 'chartNestedDonuts',
-                id: 'nested-donuts-basic',
-                link: 'vue-ui-nested-donuts',
+                component: "VueUiNestedDonuts",
+                icon: "chartNestedDonuts",
+                id: "nested-donuts-basic",
+                link: "vue-ui-nested-donuts",
                 description: {
-                    en: 'Basic nested donuts chart',
-                    fr: 'Graphique de beignets imbriqués de base',
-                    pt: 'Gráfico de rosquinhas aninhadas básico',
-                    de: 'Grundlegendes verschachteltes Donut-Diagramm',
-                    zh: '基本嵌套圆环图',
-                    ja: '基本的なネストドーナツチャート',
-                    es: 'Gráfico de donas anidadas básico',
-                    ko: '기본 중첩 도넛 차트',
-                    ar: 'مخطط الكعكات المتداخلة الأساسي'
-                }
+                    en: "Basic nested donuts chart",
+                    fr: "Graphique de beignets imbriqués de base",
+                    pt: "Gráfico de rosquinhas aninhadas básico",
+                    de: "Grundlegendes verschachteltes Donut-Diagramm",
+                    zh: "基本嵌套圆环图",
+                    ja: "基本的なネストドーナツチャート",
+                    es: "Gráfico de donas anidadas básico",
+                    ko: "기본 중첩 도넛 차트",
+                    ar: "مخطط الكعكات المتداخلة الأساسي",
+                },
             },
             // NESTED PIES
             {
@@ -9019,36 +9283,39 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
                             layout: {
-                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart
+                                    .layout,
                                 donut: {
-                                    spacingRatio: 1
+                                    spacingRatio: 1,
                                 },
                                 labels: {
-                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                        .chart.layout.labels,
                                     dataLabels: {
-                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
-                                        donutNameOffsetY: -6
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                            .chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiNestedDonuts',
-                icon: 'chartNestedDonuts',
-                id: 'nested-pies',
-                link: 'vue-ui-nested-donuts',
+                component: "VueUiNestedDonuts",
+                icon: "chartNestedDonuts",
+                id: "nested-pies",
+                link: "vue-ui-nested-donuts",
                 description: {
-                    en: 'Nested pies chart',
-                    fr: 'Graphique de secteurs imbriqués',
-                    pt: 'Gráfico de tortas aninhadas',
-                    de: 'Verschachteltes Kreisdiagramm',
-                    zh: '嵌套饼图',
-                    ja: 'ネストされた円グラフ',
-                    es: 'Gráfico de tartas anidadas',
-                    ko: '중첩 파이 차트',
-                    ar: 'مخطط الفطائر المتداخلة'
-                }
+                    en: "Nested pies chart",
+                    fr: "Graphique de secteurs imbriqués",
+                    pt: "Gráfico de tortas aninhadas",
+                    de: "Verschachteltes Kreisdiagramm",
+                    zh: "嵌套饼图",
+                    ja: "ネストされた円グラフ",
+                    es: "Gráfico de tartas anidadas",
+                    ko: "중첩 파이 차트",
+                    ar: "مخطط الفطائر المتداخلة",
+                },
             },
             // NESTED DONUTS QUAD
             {
@@ -9060,35 +9327,38 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
                             layout: {
-                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart
+                                    .layout,
                                 labels: {
-                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                        .chart.layout.labels,
                                     dataLabels: {
-                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                            .chart.layout.labels.dataLabels,
                                         offsetX: -10,
                                         offsetY: -10,
-                                        donutNameOffsetY: -3
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        donutNameOffsetY: -3,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiNestedDonuts',
-                icon: 'chartNestedDonuts',
-                id: 'nested-donuts-quad',
-                link: 'vue-ui-nested-donuts',
+                component: "VueUiNestedDonuts",
+                icon: "chartNestedDonuts",
+                id: "nested-donuts-quad",
+                link: "vue-ui-nested-donuts",
                 description: {
-                    en: 'With more series',
-                    fr: 'Avec plus de séries',
-                    pt: 'Com mais séries',
-                    de: 'Mit mehr Serien',
-                    zh: '含更多系列',
-                    ja: 'より多くのシリーズで',
-                    es: 'Con más series',
-                    ko: '더 많은 시리즈 포함',
-                    ar: 'مع المزيد من السلاسل'
-                }
+                    en: "With more series",
+                    fr: "Avec plus de séries",
+                    pt: "Com mais séries",
+                    de: "Mit mehr Serien",
+                    zh: "含更多系列",
+                    ja: "より多くのシリーズで",
+                    es: "Con más series",
+                    ko: "더 많은 시리즈 포함",
+                    ar: "مع المزيد من السلاسل",
+                },
             },
             // NESTED PIES QUAD
             {
@@ -9101,38 +9371,41 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
                             useGradient: false,
                             layout: {
-                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart
+                                    .layout,
                                 donut: {
-                                    spacingRatio: 1
+                                    spacingRatio: 1,
                                 },
                                 labels: {
-                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                        .chart.layout.labels,
                                     dataLabels: {
-                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                            .chart.layout.labels.dataLabels,
                                         offsetX: -20,
                                         offsetY: -20,
-                                        donutNameOffsetY: 10
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        donutNameOffsetY: 10,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiNestedDonuts',
-                icon: 'chartNestedDonuts',
-                id: 'nested-pies-quad-no-gradient',
-                link: 'vue-ui-nested-donuts',
+                component: "VueUiNestedDonuts",
+                icon: "chartNestedDonuts",
+                id: "nested-pies-quad-no-gradient",
+                link: "vue-ui-nested-donuts",
                 description: {
-                    en: 'With more series, pies, no gradient',
-                    fr: 'Avec plus de séries, secteurs, sans dégradé',
-                    pt: 'Com mais séries, tortas, sem gradiente',
-                    de: 'Mit mehr Serien, Kreise, ohne Verlauf',
-                    zh: '含更多系列、饼图、无渐变',
-                    ja: 'より多くのシリーズ、円グラフ、グラデーションなし',
-                    es: 'Con más series, tartas, sin degradado',
-                    ko: '더 많은 시리즈, 파이, 그라디언트 없음',
-                    ar: 'مع المزيد من السلاسل والفطائر، بدون تدرج'
-                }
+                    en: "With more series, pies, no gradient",
+                    fr: "Avec plus de séries, secteurs, sans dégradé",
+                    pt: "Com mais séries, tortas, sem gradiente",
+                    de: "Mit mehr Serien, Kreise, ohne Verlauf",
+                    zh: "含更多系列、饼图、无渐变",
+                    ja: "より多くのシリーズ、円グラフ、グラデーションなし",
+                    es: "Con más series, tartas, sin degradado",
+                    ko: "더 많은 시리즈, 파이, 그라디언트 없음",
+                    ar: "مع المزيد من السلاسل والفطائر، بدون تدرج",
+                },
             },
             // NESTED DONUTS BREAKDOWN
             {
@@ -9144,37 +9417,41 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
                             tooltip: {
-                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.tooltip,
-                                showAllItemsAtIndex: false
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart
+                                    .tooltip,
+                                showAllItemsAtIndex: false,
                             },
                             layout: {
-                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart
+                                    .layout,
                                 labels: {
-                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                        .chart.layout.labels,
                                     dataLabels: {
-                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
-                                        donutNameOffsetY: -6
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                            .chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiNestedDonuts',
-                icon: 'chartNestedDonuts',
-                id: 'nested-donuts-breakdown',
-                link: 'vue-ui-nested-donuts',
+                component: "VueUiNestedDonuts",
+                icon: "chartNestedDonuts",
+                id: "nested-donuts-breakdown",
+                link: "vue-ui-nested-donuts",
                 description: {
-                    en: 'Breakdown on the external ring',
-                    fr: 'Répartition sur l\'anneau extérieur',
-                    pt: 'Detalhamento no anel externo',
-                    de: 'Aufschlüsselung auf dem äußeren Ring',
-                    zh: '在外环上的分解',
-                    ja: '外側リングの内訳',
-                    es: 'Desglose en el anillo externo',
-                    ko: '외부 링의 분해',
-                    ar: 'تفصيل على الحلقة الخارجية'
-                }
+                    en: "Breakdown on the external ring",
+                    fr: "Répartition sur l'anneau extérieur",
+                    pt: "Detalhamento no anel externo",
+                    de: "Aufschlüsselung auf dem äußeren Ring",
+                    zh: "在外环上的分解",
+                    ja: "外側リングの内訳",
+                    es: "Desglose en el anillo externo",
+                    ko: "외부 링의 분해",
+                    ar: "تفصيل على الحلقة الخارجية",
+                },
             },
             // NESTED DONUTS BACKGROUND
             {
@@ -9186,24 +9463,27 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
                             layout: {
-                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart
+                                    .layout,
                                 labels: {
-                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                        .chart.layout.labels,
                                     dataLabels: {
-                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
-                                        donutNameOffsetY: -6
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style
+                                            .chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiNestedDonuts',
-                icon: 'chartNestedDonuts',
-                id: 'nested-donuts-background',
-                link: 'vue-ui-nested-donuts',
+                component: "VueUiNestedDonuts",
+                icon: "chartNestedDonuts",
+                id: "nested-donuts-background",
+                link: "vue-ui-nested-donuts",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -9218,28 +9498,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // WAFFLE BASIC
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: CONFIG_WAFFLE_BASE.value,
-                component: 'VueUiWaffle',
-                icon: 'chartWaffle',
-                id: 'waffle-basic',
-                link: 'vue-ui-waffle',
+                component: "VueUiWaffle",
+                icon: "chartWaffle",
+                id: "waffle-basic",
+                link: "vue-ui-waffle",
                 description: {
-                    en: 'Basic waffle chart',
-                    fr: 'Graphique en gaufre de base',
-                    pt: 'Gráfico de waffle básico',
-                    de: 'Grundlegendes Waffeldiagramm',
-                    zh: '基本华夫图',
-                    ja: '基本ワッフルチャート',
-                    es: 'Gráfico de waffle básico',
-                    ko: '기본 와플 차트',
-                    ar: 'مخطط الوافل الأساسي'
-                }
+                    en: "Basic waffle chart",
+                    fr: "Graphique en gaufre de base",
+                    pt: "Gráfico de waffle básico",
+                    de: "Grundlegendes Waffeldiagramm",
+                    zh: "基本华夫图",
+                    ja: "基本ワッフルチャート",
+                    es: "Gráfico de waffle básico",
+                    ko: "기본 와플 차트",
+                    ar: "مخطط الوافل الأساسي",
+                },
             },
             // WAFFLE VERTICAL
             {
@@ -9252,27 +9532,27 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_WAFFLE_BASE.value.style.chart,
                             layout: {
                                 grid: {
-                                    vertical: true
-                                }
-                            }
-                        }
-                    }
+                                    vertical: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWaffle',
-                icon: 'chartWaffle',
-                id: 'waffle-vertical',
-                link: 'vue-ui-waffle',
+                component: "VueUiWaffle",
+                icon: "chartWaffle",
+                id: "waffle-vertical",
+                link: "vue-ui-waffle",
                 description: {
-                    en: 'Vertical layout',
-                    fr: 'Disposition verticale',
-                    pt: 'Layout vertical',
-                    de: 'Vertikales Layout',
-                    zh: '垂直布局',
-                    ja: '縦向きレイアウト',
-                    es: 'Distribución vertical',
-                    ko: '세로 레이아웃',
-                    ar: 'تخطيط عمودي'
-                }
+                    en: "Vertical layout",
+                    fr: "Disposition verticale",
+                    pt: "Layout vertical",
+                    de: "Vertikales Layout",
+                    zh: "垂直布局",
+                    ja: "縦向きレイアウト",
+                    es: "Distribución vertical",
+                    ko: "세로 레이아웃",
+                    ar: "تخطيط عمودي",
+                },
             },
             // WAFFLE MORE CELLS
             {
@@ -9286,31 +9566,31 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 grid: {
                                     size: 20,
-                                    spaceBetween: 0
+                                    spaceBetween: 0,
                                 },
                                 rect: {
                                     useGradient: false,
                                     rounding: 0,
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWaffle',
-                icon: 'chartWaffle',
-                id: 'waffle-no-gradient',
-                link: 'vue-ui-waffle',
+                component: "VueUiWaffle",
+                icon: "chartWaffle",
+                id: "waffle-no-gradient",
+                link: "vue-ui-waffle",
                 description: {
-                    en: 'More cells, no gradient',
-                    fr: 'Plus de cellules, sans dégradé',
-                    pt: 'Mais células, sem gradiente',
-                    de: 'Mehr Zellen, ohne Verlauf',
-                    zh: '更多单元格，无渐变',
-                    ja: 'セルを増やして、グラデーションなし',
-                    es: 'Más celdas, sin degradado',
-                    ko: '더 많은 셀, 그라디언트 없음',
-                    ar: 'مزيد من الخلايا، بدون تدرج'
-                }
+                    en: "More cells, no gradient",
+                    fr: "Plus de cellules, sans dégradé",
+                    pt: "Mais células, sem gradiente",
+                    de: "Mehr Zellen, ohne Verlauf",
+                    zh: "更多单元格，无渐变",
+                    ja: "セルを増やして、グラデーションなし",
+                    es: "Más celdas, sin degradado",
+                    ko: "더 많은 셀, 그라디언트 없음",
+                    ar: "مزيد من الخلايا، بدون تدرج",
+                },
             },
             // WAFFLE ROUNDED CELLS
             {
@@ -9324,31 +9604,31 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 grid: {
                                     size: 10,
-                                    spaceBetween: 10
+                                    spaceBetween: 10,
                                 },
                                 rect: {
                                     useGradient: true,
                                     rounding: 24,
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWaffle',
-                icon: 'chartWaffle',
-                id: 'waffle-rounded',
-                link: 'vue-ui-waffle',
+                component: "VueUiWaffle",
+                icon: "chartWaffle",
+                id: "waffle-rounded",
+                link: "vue-ui-waffle",
                 description: {
-                    en: 'Rounded cells',
-                    fr: 'Cellules arrondies',
-                    pt: 'Células arredondadas',
-                    de: 'Abgerundete Zellen',
-                    zh: '圆角单元格',
-                    ja: '丸みのあるセル',
-                    es: 'Celdas redondeadas',
-                    ko: '둥근 셀',
-                    ar: 'خلايا مستديرة'
-                }
+                    en: "Rounded cells",
+                    fr: "Cellules arrondies",
+                    pt: "Células arredondadas",
+                    de: "Abgerundete Zellen",
+                    zh: "圆角单元格",
+                    ja: "丸みのあるセル",
+                    es: "Celdas redondeadas",
+                    ko: "둥근 셀",
+                    ar: "خلايا مستديرة",
+                },
             },
             // WAFFLE LABELS
             {
@@ -9364,68 +9644,68 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     captions: {
                                         show: true,
                                         showSerieName: true,
-                                        fontSize: 16
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        fontSize: 16,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWaffle',
-                icon: 'chartWaffle',
-                id: 'waffle-labels',
-                link: 'vue-ui-waffle',
+                component: "VueUiWaffle",
+                icon: "chartWaffle",
+                id: "waffle-labels",
+                link: "vue-ui-waffle",
                 description: {
-                    en: 'With labels',
-                    fr: 'Avec étiquettes',
-                    pt: 'Com etiquetas',
-                    de: 'Mit Beschriftungen',
-                    zh: '带标签',
-                    ja: 'ラベル付き',
-                    es: 'Con etiquetas',
-                    ko: '레이블 포함',
-                    ar: 'مع تسميات'
-                }
+                    en: "With labels",
+                    fr: "Avec étiquettes",
+                    pt: "Com etiquetas",
+                    de: "Mit Beschriftungen",
+                    zh: "带标签",
+                    ja: "ラベル付き",
+                    es: "Con etiquetas",
+                    ko: "레이블 포함",
+                    ar: "مع تسميات",
+                },
             },
             // VERTICAL BAR BASIC
             {
                 dataset: DATASET_VERTICAL_BAR_BASE.value,
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiHorizontalBar',
-                icon: 'chartVerticalBar',
-                id: 'horizontal-bar-basic',
-                link: 'vue-ui-horizontal-bar',
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-basic",
+                link: "vue-ui-horizontal-bar",
                 description: {
-                    en: 'Sorted horizontal histogram',
-                    fr: 'Histogramme horizontal trié',
-                    pt: 'Histograma horizontal ordenado',
-                    de: 'Sortiertes horizontales Histogramm',
-                    zh: '已排序的水平直方图',
-                    ja: 'ソートされた水平ヒストグラム',
-                    es: 'Histograma horizontal ordenado',
-                    ko: '정렬된 가로 히스토그램',
-                    ar: 'مدرج تكراري أفقي مُرتَّب'
-                }
+                    en: "Sorted horizontal histogram",
+                    fr: "Histogramme horizontal trié",
+                    pt: "Histograma horizontal ordenado",
+                    de: "Sortiertes horizontales Histogramm",
+                    zh: "已排序的水平直方图",
+                    ja: "ソートされた水平ヒストグラム",
+                    es: "Histograma horizontal ordenado",
+                    ko: "정렬된 가로 히스토그램",
+                    ar: "مدرج تكراري أفقي مُرتَّب",
+                },
             },
             // VERTICAL BAR MIXED
             {
                 dataset: DATASET_VERTICAL_BAR_MIXED.value,
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiHorizontalBar',
-                icon: 'chartVerticalBar',
-                id: 'horizontal-bar-mixed',
-                link: 'vue-ui-horizontal-bar',
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-mixed",
+                link: "vue-ui-horizontal-bar",
                 description: {
-                    en: 'Positive and negative values',
-                    fr: 'Valeurs positives et négatives',
-                    pt: 'Valores positivos e negativos',
-                    de: 'Positive und negative Werte',
-                    zh: '正值和负值',
-                    ja: '正の値と負の値',
-                    es: 'Valores positivos y negativos',
-                    ko: '양수와 음수 값',
-                    ar: 'قيم موجبة وسالبة'
-                }
+                    en: "Positive and negative values",
+                    fr: "Valeurs positives et négatives",
+                    pt: "Valores positivos e negativos",
+                    de: "Positive und negative Werte",
+                    zh: "正值和负值",
+                    ja: "正の値と負の値",
+                    es: "Valores positivos y negativos",
+                    ko: "양수와 음수 값",
+                    ar: "قيم موجبة وسالبة",
+                },
             },
             // VERTICAL BAR NO GAP NO GRADIENT
             {
@@ -9437,32 +9717,34 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout,
+                                ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart
+                                    .layout,
                                 bars: {
-                                    ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout.bars,
+                                    ...CONFIG_VERTICAL_BAR_BASIC.value.style
+                                        .chart.layout.bars,
                                     useGradient: false,
                                     gap: 0,
-                                    borderRadius: 0
-                                }
-                            }
-                        }
-                    }
+                                    borderRadius: 0,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiHorizontalBar',
-                icon: 'chartVerticalBar',
-                id: 'horizontal-bar-no-gap-no-gradient',
-                link: 'vue-ui-horizontal-bar',
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-no-gap-no-gradient",
+                link: "vue-ui-horizontal-bar",
                 description: {
-                    en: 'No gap, no gradient',
-                    fr: 'Pas d’interstice, pas de dégradé',
-                    pt: 'Sem espaço, sem gradiente',
-                    de: 'Kein Abstand, kein Verlauf',
-                    zh: '无间隙，无渐变',
-                    ja: '隙間なし、グラデーションなし',
-                    es: 'Sin espacio, sin degradado',
-                    ko: '간격 없음, 그라데이션 없음',
-                    ar: 'بدون فجوة، بدون تدرج'
-                }
+                    en: "No gap, no gradient",
+                    fr: "Pas d’interstice, pas de dégradé",
+                    pt: "Sem espaço, sem gradiente",
+                    de: "Kein Abstand, kein Verlauf",
+                    zh: "无间隙，无渐变",
+                    ja: "隙間なし、グラデーションなし",
+                    es: "Sin espacio, sin degradado",
+                    ko: "간격 없음, 그라데이션 없음",
+                    ar: "بدون فجوة، بدون تدرج",
+                },
             },
             // VERTICAL BAR NO GAP NO GRADIENT SORTED ASC
             {
@@ -9474,32 +9756,34 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout,
+                                ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart
+                                    .layout,
                                 bars: {
-                                    ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout.bars,
+                                    ...CONFIG_VERTICAL_BAR_BASIC.value.style
+                                        .chart.layout.bars,
                                     borderRadius: 3,
                                     height: 20,
-                                    sort: 'asc'
-                                }
-                            }
-                        }
-                    }
+                                    sort: "asc",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiHorizontalBar',
-                icon: 'chartVerticalBar',
-                id: 'horizontal-bar-no-gap-no-gradient-inverse-sort',
-                link: 'vue-ui-horizontal-bar',
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-no-gap-no-gradient-inverse-sort",
+                link: "vue-ui-horizontal-bar",
                 description: {
-                    en: 'Thinner bars, inverse sort',
-                    fr: 'Barres plus fines, tri inversé',
-                    pt: 'Barras mais finas, ordenação inversa',
-                    de: 'Dünnere Balken, umgekehrte Sortierung',
-                    zh: '更细的条形，逆序排列',
-                    ja: '細いバー、逆順ソート',
-                    es: 'Barras más delgadas, orden inverso',
-                    ko: '더 얇은 막대, 역순 정렬',
-                    ar: 'أعمدة أرق، ترتيب عكسي'
-                }
+                    en: "Thinner bars, inverse sort",
+                    fr: "Barres plus fines, tri inversé",
+                    pt: "Barras mais finas, ordenação inversa",
+                    de: "Dünnere Balken, umgekehrte Sortierung",
+                    zh: "更细的条形，逆序排列",
+                    ja: "細いバー、逆順ソート",
+                    es: "Barras más delgadas, orden inverso",
+                    ko: "더 얇은 막대, 역순 정렬",
+                    ar: "أعمدة أرق، ترتيب عكسي",
+                },
             },
             // VERTICAL BAR WITH GUTTERS
             {
@@ -9511,40 +9795,42 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             chart: {
                                 layout: {
                                     bars: {
-                                        rowColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
+                                        rowColor: isDarkMode.value
+                                            ? "#3A3A3A"
+                                            : "#E1E5E8",
                                     },
-                                    separators: { show: false }
-                                }
-                            }
-                        }
-                    }
+                                    separators: { show: false },
+                                },
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiHorizontalBar',
-                icon: 'chartVerticalBar',
-                id: 'horizontal-bar-with-gutters',
-                link: 'vue-ui-horizontal-bar',
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-with-gutters",
+                link: "vue-ui-horizontal-bar",
                 description: {
-                    en: 'With visible gutters to temper white space when long names are present.',
-                    fr: 'Avec des gouttières visibles pour atténuer les espaces vides lorsque des noms longs sont présents.',
-                    pt: 'Com espaçamentos visíveis para equilibrar o espaço em branco quando há nomes longos.',
-                    de: 'Mit sichtbaren Zwischenräumen, um den Weißraum auszugleichen, wenn lange Namen vorhanden sind.',
-                    zh: '当存在较长名称时，通过可见的间距来平衡空白空间。',
-                    ja: '長い名前がある場合に余白を調整するための可視ガター付き。',
-                    es: 'Con separaciones visibles para equilibrar el espacio en blanco cuando hay nombres largos.',
-                    ko: '긴 이름이 있을 때 여백을 완화하기 위해 보이는 간격을 사용합니다.',
-                    ar: 'مع فواصل مرئية لتقليل الفراغات عندما تكون الأسماء طويلة.'
-                }
+                    en: "With visible gutters to temper white space when long names are present.",
+                    fr: "Avec des gouttières visibles pour atténuer les espaces vides lorsque des noms longs sont présents.",
+                    pt: "Com espaçamentos visíveis para equilibrar o espaço em branco quando há nomes longos.",
+                    de: "Mit sichtbaren Zwischenräumen, um den Weißraum auszugleichen, wenn lange Namen vorhanden sind.",
+                    zh: "当存在较长名称时，通过可见的间距来平衡空白空间。",
+                    ja: "長い名前がある場合に余白を調整するための可視ガター付き。",
+                    es: "Con separaciones visibles para equilibrar el espacio en blanco cuando hay nombres largos.",
+                    ko: "긴 이름이 있을 때 여백을 완화하기 위해 보이는 간격을 사용합니다.",
+                    ar: "مع فواصل مرئية لتقليل الفراغات عندما تكون الأسماء طويلة.",
+                },
             },
             // VERTICAL BAR BACKGROUND
             {
                 dataset: DATASET_VERTICAL_BAR_BASE.value,
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiHorizontalBar',
-                icon: 'chartVerticalBar',
-                id: 'horizontal-bar-background',
-                link: 'vue-ui-horizontal-bar',
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-background",
+                link: "vue-ui-horizontal-bar",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -9559,18 +9845,18 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // VERTICAL BAR PATTERN
             {
                 dataset: DATASET_VERTICAL_BAR_BASE.value,
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiHorizontalBar',
-                icon: 'chartVerticalBar',
-                id: 'horizontal-bar-pattern',
-                link: 'vue-ui-horizontal-bar',
-                tags: ['#pattern'],
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-pattern",
+                link: "vue-ui-horizontal-bar",
+                tags: ["#pattern"],
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
                 <!-- Condition specific patterns to the seriesIndex if necessary -->
@@ -9591,28 +9877,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムパターンの使用",
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
-                    ar: "استخدام نمط مخصص"
-                }
+                    ar: "استخدام نمط مخصص",
+                },
             },
             // HEATMAP BASIC
             {
                 dataset: DATASET_HEATMAP_BASE.value,
                 config: CONFIG_HEATMAP_BASIC.value,
-                component: 'VueUiHeatmap',
-                icon: 'chartHeatmap',
-                id: 'heatmap-basic',
-                link: 'vue-ui-heatmap',
+                component: "VueUiHeatmap",
+                icon: "chartHeatmap",
+                id: "heatmap-basic",
+                link: "vue-ui-heatmap",
                 description: {
-                    en: 'Basic heatmap chart',
-                    fr: 'Graphique de carte thermique de base',
-                    pt: 'Gráfico de mapa de calor básico',
-                    de: 'Grundlegendes Heatmap-Diagramm',
-                    zh: '基本热图图表',
-                    ja: '基本的なヒートマップチャート',
-                    es: 'Gráfico de mapa de calor básico',
-                    ko: '기본 히트맵 차트',
-                    ar: 'مخطط خريطة حرارية أساسي'
-                }
+                    en: "Basic heatmap chart",
+                    fr: "Graphique de carte thermique de base",
+                    pt: "Gráfico de mapa de calor básico",
+                    de: "Grundlegendes Heatmap-Diagramm",
+                    zh: "基本热图图表",
+                    ja: "基本的なヒートマップチャート",
+                    es: "Gráfico de mapa de calor básico",
+                    ko: "기본 히트맵 차트",
+                    ar: "مخطط خريطة حرارية أساسي",
+                },
             },
             // HEATMAP NO GAP
             {
@@ -9624,34 +9910,37 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         layout: {
                             ...CONFIG_HEATMAP_BASIC.value.style.layout,
                             cells: {
-                                ...CONFIG_HEATMAP_BASIC.value.style.layout.cells,
+                                ...CONFIG_HEATMAP_BASIC.value.style.layout
+                                    .cells,
                                 spacing: 0,
                                 columnTotal: {
-                                    ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal,
+                                    ...CONFIG_HEATMAP_BASIC.value.style.layout
+                                        .cells.columnTotal,
                                     value: {
-                                        ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal.value,
-                                        offsetY: 20
-                                    }
-                                }
-                            }
+                                        ...CONFIG_HEATMAP_BASIC.value.style
+                                            .layout.cells.columnTotal.value,
+                                        offsetY: 20,
+                                    },
+                                },
+                            },
                         },
-                    }
+                    },
                 },
-                component: 'VueUiHeatmap',
-                icon: 'chartHeatmap',
-                id: 'heatmap-no-gap',
-                link: 'vue-ui-heatmap',
+                component: "VueUiHeatmap",
+                icon: "chartHeatmap",
+                id: "heatmap-no-gap",
+                link: "vue-ui-heatmap",
                 description: {
-                    en: 'No gap',
-                    fr: 'Sans interstice',
-                    pt: 'Sem intervalo',
-                    de: 'Ohne Lücke',
-                    zh: '无间隙',
-                    ja: '隙間なし',
-                    es: 'Sin espacio',
-                    ko: '간격 없음',
-                    ar: 'بدون فجوة'
-                }
+                    en: "No gap",
+                    fr: "Sans interstice",
+                    pt: "Sem intervalo",
+                    de: "Ohne Lücke",
+                    zh: "无间隙",
+                    ja: "隙間なし",
+                    es: "Sin espacio",
+                    ko: "간격 없음",
+                    ar: "بدون فجوة",
+                },
             },
             // HEATMAP BASIC
             {
@@ -9664,68 +9953,70 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_HEATMAP_BASIC.value.style.layout,
                             crosshairs: {
                                 show: true,
-                                stroke: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                stroke: isDarkMode.value
+                                    ? "#CCCCCC"
+                                    : "#1A1A1A",
                                 strokeWidth: 2,
-                                strokeDasharray: 4
-                            }
-                        }
-                    }
+                                strokeDasharray: 4,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiHeatmap',
-                icon: 'chartHeatmap',
-                id: 'heatmap-crosshairs',
-                link: 'vue-ui-heatmap',
+                component: "VueUiHeatmap",
+                icon: "chartHeatmap",
+                id: "heatmap-crosshairs",
+                link: "vue-ui-heatmap",
                 description: {
-                    en: 'With crosshairs',
-                    fr: 'Avec lignes de repérage',
-                    pt: 'Com linhas de referência',
-                    de: 'Mit Fadenkreuzlinien',
-                    zh: '带有十字参考线',
-                    ja: 'クロスヘア付き',
-                    es: 'Con líneas de referencia',
-                    ko: '십자 기준선 포함',
-                    ar: 'مع خطوط إرشادية'
-                }
+                    en: "With crosshairs",
+                    fr: "Avec lignes de repérage",
+                    pt: "Com linhas de referência",
+                    de: "Mit Fadenkreuzlinien",
+                    zh: "带有十字参考线",
+                    ja: "クロスヘア付き",
+                    es: "Con líneas de referencia",
+                    ko: "십자 기준선 포함",
+                    ar: "مع خطوط إرشادية",
+                },
             },
             // GAUGE BASIC
             {
                 dataset: DATASET_GAUGE_BASIC.value,
                 config: CONFIG_GAUGE_BASE.value,
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-basic',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-basic",
+                link: "vue-ui-gauge",
                 description: {
-                    en: 'Basic gauge chart',
-                    fr: 'Graphique de jauge de base',
-                    pt: 'Gráfico de medidor básico',
-                    de: 'Grundlegendes Messdiagramm',
-                    zh: '基础仪表图',
-                    ja: '基本ゲージチャート',
-                    es: 'Gráfico de medidor básico',
-                    ko: '기본 게이지 차트',
-                    ar: 'مخطط عداد أساسي'
-                }
+                    en: "Basic gauge chart",
+                    fr: "Graphique de jauge de base",
+                    pt: "Gráfico de medidor básico",
+                    de: "Grundlegendes Messdiagramm",
+                    zh: "基础仪表图",
+                    ja: "基本ゲージチャート",
+                    es: "Gráfico de medidor básico",
+                    ko: "기본 게이지 차트",
+                    ar: "مخطط عداد أساسي",
+                },
             },
             // GAUGE MIXED
             {
                 dataset: DATASET_GAUGE_MIXED.value,
                 config: CONFIG_GAUGE_BASE.value,
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-mixed-scale',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-mixed-scale",
+                link: "vue-ui-gauge",
                 description: {
-                    en: 'Gauge chart with mixed scale',
-                    fr: 'Graphique de jauge avec échelle mixte',
-                    pt: 'Gráfico de medidor com escala mista',
-                    de: 'Messdiagramm mit gemischter Skala',
-                    zh: '带混合刻度的仪表图',
-                    ja: '混合スケールのゲージチャート',
-                    es: 'Gráfico de medidor con escala mixta',
-                    ko: '혼합 스케일 게이지 차트',
-                    ar: 'مخطط عداد بمقياس مختلط'
-                }
+                    en: "Gauge chart with mixed scale",
+                    fr: "Graphique de jauge avec échelle mixte",
+                    pt: "Gráfico de medidor com escala mista",
+                    de: "Messdiagramm mit gemischter Skala",
+                    zh: "带混合刻度的仪表图",
+                    ja: "混合スケールのゲージチャート",
+                    es: "Gráfico de medidor con escala mixta",
+                    ko: "혼합 스케일 게이지 차트",
+                    ar: "مخطط عداد بمقياس مختلط",
+                },
             },
             // GAUGE ROUNDED POINTER
             {
@@ -9739,28 +10030,29 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_GAUGE_BASE.value.style.chart.layout,
                                 pointer: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
-                                    type: 'rounded'
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.pointer,
+                                    type: "rounded",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-pointer-rounded',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-pointer-rounded",
+                link: "vue-ui-gauge",
                 description: {
-                    en: 'With rounded pointer',
-                    fr: 'Avec pointeur arrondi',
-                    pt: 'Com ponteiro arredondado',
-                    de: 'Mit abgerundetem Zeiger',
-                    zh: '带圆形指针',
-                    ja: '丸みを帯びたポインタ付き',
-                    es: 'Con puntero redondeado',
-                    ko: '둥근 포인터 포함',
-                    ar: 'بمؤشر دائري'
-                }
+                    en: "With rounded pointer",
+                    fr: "Avec pointeur arrondi",
+                    pt: "Com ponteiro arredondado",
+                    de: "Mit abgerundetem Zeiger",
+                    zh: "带圆形指针",
+                    ja: "丸みを帯びたポインタ付き",
+                    es: "Con puntero redondeado",
+                    ko: "둥근 포인터 포함",
+                    ar: "بمؤشر دائري",
+                },
             },
             // GAUGE LARGER
             {
@@ -9774,32 +10066,35 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_GAUGE_BASE.value.style.chart.layout,
                                 track: {
-                                    size: 5
+                                    size: 5,
                                 },
                                 pointer: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.pointer,
                                     useRatingColor: false,
-                                    color: isDarkMode.value ? colors.value.bg : '#3A3A3A'
-                                }
-                            }
-                        }
-                    }
+                                    color: isDarkMode.value
+                                        ? colors.value.bg
+                                        : "#3A3A3A",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-larger',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-larger",
+                link: "vue-ui-gauge",
                 description: {
-                    en: 'Wider',
-                    fr: 'Plus large',
-                    pt: 'Mais largo',
-                    de: 'Breiter',
-                    zh: '更宽',
-                    ja: 'より広い',
-                    es: 'Más ancho',
-                    ko: '더 넓은',
-                    ar: 'أوسع'
-                }
+                    en: "Wider",
+                    fr: "Plus large",
+                    pt: "Mais largo",
+                    de: "Breiter",
+                    zh: "更宽",
+                    ja: "より広い",
+                    es: "Más ancho",
+                    ko: "더 넓은",
+                    ar: "أوسع",
+                },
             },
             // GAUGE SINGLE WITH HUGE LABEL
             // {
@@ -9852,14 +10147,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     size: 0,
                                 },
                                 markers: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
-                                    offsetY: 40
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.markers,
+                                    offsetY: 40,
                                 },
                                 segmentNames: {
-                                    fontSize: 55
+                                    fontSize: 55,
                                 },
                                 pointer: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.pointer,
                                     size: 1.1,
                                 },
                                 segmentSeparators: {
@@ -9868,14 +10165,14 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     offsetOut: 36,
                                     offsetIn: 150,
                                 },
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-text-only',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-text-only",
+                link: "vue-ui-gauge",
                 description: {
                     en: "Text only",
                     fr: "Texte uniquement",
@@ -9885,8 +10182,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "テキストのみ",
                     es: "Solo texto",
                     ko: "텍스트만",
-                    ar: "نص فقط"
-                }
+                    ar: "نص فقط",
+                },
             },
             // GAUGE SINGLE WITH EMOJIS
             {
@@ -9904,14 +10201,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     size: 0,
                                 },
                                 markers: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
-                                    offsetY: 40
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.markers,
+                                    offsetY: 40,
                                 },
                                 segmentNames: {
-                                    fontSize: 55
+                                    fontSize: 55,
                                 },
                                 pointer: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.pointer,
                                     size: 1.1,
                                 },
                                 segmentSeparators: {
@@ -9920,14 +10219,14 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     offsetOut: 36,
                                     offsetIn: 150,
                                 },
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-emojis',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-emojis",
+                link: "vue-ui-gauge",
                 description: {
                     en: "Emojis only",
                     fr: "Emojis uniquement",
@@ -9937,19 +10236,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "絵文字のみ",
                     es: "Solo emojis",
                     ko: "이모지만",
-                    ar: "إيموجيات فقط"
-                }
+                    ar: "إيموجيات فقط",
+                },
             },
             // GAUGE WITH SEPARATORS
             {
                 dataset: {
                     ...DATASET_GAUGE_BASIC.value,
-                    series: DATASET_GAUGE_BASIC.value.series.map(s => {
+                    series: DATASET_GAUGE_BASIC.value.series.map((s) => {
                         return {
                             ...s,
-                            name: s.name.toUpperCase()
-                        }
-                    })
+                            name: s.name.toUpperCase(),
+                        };
+                    }),
                 },
                 config: {
                     ...CONFIG_GAUGE_BASE.value,
@@ -9961,25 +10260,26 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 ...CONFIG_GAUGE_BASE.value.style.chart.layout,
                                 radiusRatio: 0.8,
                                 segmentNames: {
-                                    fontSize: 20
+                                    fontSize: 20,
                                 },
                                 segmentSeparators: {
                                     show: true,
                                     stroke: colors.value.gridStrokeLight,
-                                    offsetOut: 36
+                                    offsetOut: 36,
                                 },
                                 markers: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
-                                    offsetY: 36
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.markers,
+                                    offsetY: 36,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-separators',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-separators",
+                link: "vue-ui-gauge",
                 description: {
                     en: "With segment separators",
                     fr: "Avec séparateurs de segments",
@@ -9989,19 +10289,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "セグメントセパレーター付き",
                     es: "Con separadores de segmentos",
                     ko: "세그먼트 구분선 포함",
-                    ar: "مع فواصل المقاطع"
-                }
+                    ar: "مع فواصل المقاطع",
+                },
             },
             // MORE GAUGE WITH SEPARATORS
             {
                 dataset: {
                     ...DATASET_GAUGE_MIXED.value,
-                    series: DATASET_GAUGE_MIXED.value.series.map(s => {
+                    series: DATASET_GAUGE_MIXED.value.series.map((s) => {
                         return {
                             ...s,
-                            name: s.name.toUpperCase()
-                        }
-                    })
+                            name: s.name.toUpperCase(),
+                        };
+                    }),
                 },
                 config: {
                     ...CONFIG_GAUGE_BASE.value,
@@ -10013,33 +10313,37 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 ...CONFIG_GAUGE_BASE.value.style.chart.layout,
                                 radiusRatio: 0.8,
                                 segmentNames: {
-                                    fontSize: 50
+                                    fontSize: 50,
                                 },
                                 segmentSeparators: {
                                     show: true,
                                     stroke: colors.value.gridStrokeLight,
-                                    offsetOut: 36
+                                    offsetOut: 36,
                                 },
                                 markers: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
-                                    offsetY: 36
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.markers,
+                                    offsetY: 36,
                                 },
                                 track: {
-                                    size: 4
+                                    size: 4,
                                 },
                                 pointer: {
-                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    ...CONFIG_GAUGE_BASE.value.style.chart
+                                        .layout.pointer,
                                     useRatingColor: false,
-                                    color: isDarkMode.value ? colors.value.bg : '#3A3A3A'
-                                }
-                            }
-                        }
-                    }
+                                    color: isDarkMode.value
+                                        ? colors.value.bg
+                                        : "#3A3A3A",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-separators-2',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-separators-2",
+                link: "vue-ui-gauge",
                 description: {
                     en: "With huge labels and separators",
                     fr: "Avec de grandes étiquettes et des séparateurs",
@@ -10049,8 +10353,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "巨大なラベルとセパレーター付き",
                     es: "Con etiquetas grandes y separadores",
                     ko: "큰 레이블과 구분선 포함",
-                    ar: "بعلامات كبيرة وفواصل"
-                }
+                    ar: "بعلامات كبيرة وفواصل",
+                },
             },
             // GAUGE SINGLE WITH HUGE LABEL AND INDICATOR ARC
             // {
@@ -10108,12 +10412,12 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
             {
                 dataset: DATASET_GAUGE_BASIC.value,
                 config: CONFIG_GAUGE_BASE.value,
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-background',
-                link: 'vue-ui-gauge',
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-background",
+                link: "vue-ui-gauge",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -10128,17 +10432,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // GAUGE PATTERN
             {
                 dataset: DATASET_GAUGE_BASIC.value,
                 config: CONFIG_GAUGE_BASE.value,
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-pattern',
-                tags: ['#pattern'],
+                component: "VueUiGauge",
+                icon: "chartGauge",
+                id: "gauge-pattern",
+                tags: ["#pattern"],
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
                 <!-- Condition specific patterns to the seriesIndex if necessary -->
@@ -10149,7 +10453,7 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     :scale="1"
                 />    
             </template>`,
-                link: 'vue-ui-gauge',
+                link: "vue-ui-gauge",
                 multiPattern: true,
                 description: {
                     en: "Using a custom pattern",
@@ -10160,28 +10464,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムパターンの使用",
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
-                    ar: "استخدام نمط مخصص"
-                }
+                    ar: "استخدام نمط مخصص",
+                },
             },
             // ONION BASIC
             {
                 dataset: DATASET_ONION_BASE.value,
                 config: CONFIG_ONION_BASIC.value,
-                component: 'VueUiOnion',
-                icon: 'chartOnion',
-                id: 'onion-basic',
-                link: 'vue-ui-onion',
+                component: "VueUiOnion",
+                icon: "chartOnion",
+                id: "onion-basic",
+                link: "vue-ui-onion",
                 description: {
-                    en: 'Basic radial bar chart',
-                    fr: 'Diagramme à barres radial de base',
-                    pt: 'Gráfico de barras radial básico',
-                    de: 'Grundlegendes Radialbalkendiagramm',
-                    zh: '基本径向条形图',
-                    ja: '基本的な放射状バー チャート',
-                    es: 'Gráfico de barras radial básico',
-                    ko: '기본 방사형 막대 차트',
-                    ar: 'مخطط شريطي شعاعي أساسي'
-                }
+                    en: "Basic radial bar chart",
+                    fr: "Diagramme à barres radial de base",
+                    pt: "Gráfico de barras radial básico",
+                    de: "Grundlegendes Radialbalkendiagramm",
+                    zh: "基本径向条形图",
+                    ja: "基本的な放射状バー チャート",
+                    es: "Gráfico de barras radial básico",
+                    ko: "기본 방사형 막대 차트",
+                    ar: "مخطط شريطي شعاعي أساسي",
+                },
             },
             // ONION NO SPACING NO GRADIENT
             {
@@ -10196,31 +10500,32 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_ONION_BASIC.value.style.chart.layout,
                                 gutter: {
-                                    ...CONFIG_ONION_BASIC.value.style.chart.layout.gutter,
-                                    width: 0.85
+                                    ...CONFIG_ONION_BASIC.value.style.chart
+                                        .layout.gutter,
+                                    width: 0.85,
                                 },
                                 track: {
-                                    width: 0.85
-                                }
-                            }
-                        }
-                    }
+                                    width: 0.85,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiOnion',
-                icon: 'chartOnion',
-                id: 'onion-no-spacing-no-gradient',
-                link: 'vue-ui-onion',
+                component: "VueUiOnion",
+                icon: "chartOnion",
+                id: "onion-no-spacing-no-gradient",
+                link: "vue-ui-onion",
                 description: {
-                    en: 'No spacing, no gradient',
-                    fr: 'Pas d\'espacement, pas de dégradé',
-                    pt: 'Sem espaçamento, sem gradiente',
-                    de: 'Kein Abstand, kein Farbverlauf',
-                    zh: '无间距，无渐变',
-                    ja: '間隔なし、グラデーションなし',
-                    es: 'Sin espaciado, sin degradado',
-                    ko: '간격 없음, 그라데이션 없음',
-                    ar: 'بدون مسافات، بدون تدرج'
-                }
+                    en: "No spacing, no gradient",
+                    fr: "Pas d'espacement, pas de dégradé",
+                    pt: "Sem espaçamento, sem gradiente",
+                    de: "Kein Abstand, kein Farbverlauf",
+                    zh: "无间距，无渐变",
+                    ja: "間隔なし、グラデーションなし",
+                    es: "Sin espaciado, sin degradado",
+                    ko: "간격 없음, 그라데이션 없음",
+                    ar: "بدون مسافات، بدون تدرج",
+                },
             },
             // ONION THINNER TRACKS
             {
@@ -10234,31 +10539,32 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_ONION_BASIC.value.style.chart.layout,
                                 gutter: {
-                                    ...CONFIG_ONION_BASIC.value.style.chart.layout.gutter,
-                                    width: 0.9
+                                    ...CONFIG_ONION_BASIC.value.style.chart
+                                        .layout.gutter,
+                                    width: 0.9,
                                 },
                                 track: {
-                                    width: 0.2
-                                }
-                            }
-                        }
-                    }
+                                    width: 0.2,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiOnion',
-                icon: 'chartOnion',
-                id: 'onion-thinner-tracks',
-                link: 'vue-ui-onion',
+                component: "VueUiOnion",
+                icon: "chartOnion",
+                id: "onion-thinner-tracks",
+                link: "vue-ui-onion",
                 description: {
-                    en: 'With thinner tracks',
-                    fr: 'Avec des pistes plus fines',
-                    pt: 'Com trilhas mais finas',
-                    de: 'Mit dünneren Spuren',
-                    zh: '带有更细的轨道',
-                    ja: 'より細いトラック付き',
-                    es: 'Con pistas más delgadas',
-                    ko: '더 얇은 트랙으로',
-                    ar: 'مع مسارات أرق'
-                }
+                    en: "With thinner tracks",
+                    fr: "Avec des pistes plus fines",
+                    pt: "Com trilhas mais finas",
+                    de: "Mit dünneren Spuren",
+                    zh: "带有更细的轨道",
+                    ja: "より細いトラック付き",
+                    es: "Con pistas más delgadas",
+                    ko: "더 얇은 트랙으로",
+                    ar: "مع مسارات أرق",
+                },
             },
             // ONION BACKGROUND
             {
@@ -10272,19 +10578,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_ONION_BASIC.value.style.chart.layout,
                                 gutter: {
-                                    ...CONFIG_ONION_BASIC.value.style.chart.layout.gutter,
-                                    color: isDarkMode.value ? '#FFFFFF40' : '#FFFFFF60'
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_ONION_BASIC.value.style.chart
+                                        .layout.gutter,
+                                    color: isDarkMode.value
+                                        ? "#FFFFFF40"
+                                        : "#FFFFFF60",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiOnion',
-                icon: 'chartOnion',
-                id: 'onion-background',
-                link: 'vue-ui-onion',
+                component: "VueUiOnion",
+                icon: "chartOnion",
+                id: "onion-background",
+                link: "vue-ui-onion",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -10299,8 +10608,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // WORD CLOUD CHINESE
             {
@@ -10313,13 +10622,13 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
                             height: 300,
                             width: 300,
-                        }
-                    }
+                        },
+                    },
                 },
-                component: 'VueUiWordCloud',
-                icon: 'chartWordCloud',
-                id: 'word-cloud-chinese',
-                link: 'vue-ui-word-cloud',
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-chinese",
+                link: "vue-ui-word-cloud",
                 description: {
                     en: "Word cloud based on a Chinese text",
                     fr: "Nuage de mots basé sur un texte chinois",
@@ -10329,17 +10638,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "中国語のテキストに基づいたワードクラウド",
                     es: "Nube de palabras basada en un texto chino",
                     ko: "중국어 텍스트를 기반으로 한 워드 클라우드",
-                    ar: "سحابة كلمات مستندة إلى نص صيني"
-                }
+                    ar: "سحابة كلمات مستندة إلى نص صيني",
+                },
             },
             // WORD CLOUD ENGLISH
             {
                 dataset: DATASET_WORDCLOUD_ENGLISH.value,
                 config: CONFIG_WORD_WLOUD_BASIC.value,
-                component: 'VueUiWordCloud',
-                icon: 'chartWordCloud',
-                id: 'word-cloud-english',
-                link: 'vue-ui-word-cloud',
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-english",
+                link: "vue-ui-word-cloud",
                 description: {
                     en: "Word cloud based on an English text",
                     fr: "Nuage de mots basé sur un texte en anglais",
@@ -10349,17 +10658,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "英語のテキストに基づくワードクラウド",
                     es: "Nube de palabras basada en un texto en inglés",
                     ko: "영어 텍스트를 기반으로 한 단어 구름",
-                    ar: "سحابة كلمات مستندة إلى نص إنجليزي"
-                }
+                    ar: "سحابة كلمات مستندة إلى نص إنجليزي",
+                },
             },
             // WORD CLOUD ARABIC
             {
                 dataset: DATASET_WORDCLOUD_ARABIC.value,
                 config: CONFIG_WORD_WLOUD_BASIC.value,
-                component: 'VueUiWordCloud',
-                icon: 'chartWordCloud',
-                id: 'word-cloud-arabic',
-                link: 'vue-ui-word-cloud',
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-arabic",
+                link: "vue-ui-word-cloud",
                 description: {
                     en: "Word cloud based on an Arabic text",
                     fr: "Nuage de mots basé sur un texte en arabe",
@@ -10369,17 +10678,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "アラビア語のテキストに基づくワードクラウド",
                     es: "Nube de palabras basada en un texto en árabe",
                     ko: "아랍어 텍스트를 기반으로 한 단어 구름",
-                    ar: "سحابة كلمات مستندة إلى نص عربي"
-                }
+                    ar: "سحابة كلمات مستندة إلى نص عربي",
+                },
             },
             // WORD CLOUD HINDI
             {
                 dataset: DATASET_WORDCLOUD_HINDI.value,
                 config: CONFIG_WORD_WLOUD_BASIC.value,
-                component: 'VueUiWordCloud',
-                icon: 'chartWordCloud',
-                id: 'word-cloud-hindi',
-                link: 'vue-ui-word-cloud',
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-hindi",
+                link: "vue-ui-word-cloud",
                 description: {
                     en: "Word cloud based on a text in Hindi",
                     fr: "Nuage de mots basé sur un texte en hindi",
@@ -10389,8 +10698,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "ヒンディー語のテキストに基づくワードクラウド",
                     es: "Nube de palabras basada en un texto en hindi",
                     ko: "힌디어 텍스트를 기반으로 한 워드 클라우드",
-                    ar: "سحابة الكلمات بناءً على نص باللغة الهندية"
-                }
+                    ar: "سحابة الكلمات بناءً على نص باللغة الهندية",
+                },
             },
             // WORD CLOUD CUSTOM PALETTE
             {
@@ -10398,9 +10707,9 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 config: {
                     ...CONFIG_WORD_WLOUD_BASIC.value,
                     customPalette: makeColors({
-                        colorStart: '#5f8aee',
+                        colorStart: "#5f8aee",
                         iterations: 200,
-                        force: 0.0006
+                        force: 0.0006,
                     }),
                     style: {
                         ...CONFIG_WORD_WLOUD_BASIC.value.style,
@@ -10408,13 +10717,13 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
                             height: 300,
                             width: 300,
-                        }
-                    }
+                        },
+                    },
                 },
-                component: 'VueUiWordCloud',
-                icon: 'chartWordCloud',
-                id: 'word-cloud-chinese-custom-palette',
-                link: 'vue-ui-word-cloud',
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-chinese-custom-palette",
+                link: "vue-ui-word-cloud",
                 description: {
                     en: "Custom palette with progressive hue shift",
                     fr: "Palette personnalisée avec un dégradé progressif de teinte",
@@ -10424,8 +10733,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "進行的な色相シフトを伴うカスタムパレット",
                     es: "Paleta personalizada con cambio progresivo de tono",
                     ko: "점진적인 색조 변화를 포함한 사용자 정의 팔레트",
-                    ar: "لوحة ألوان مخصصة مع انتقال تدريجي في درجات اللون"
-                }
+                    ar: "لوحة ألوان مخصصة مع انتقال تدريجي في درجات اللون",
+                },
             },
             // WORD CLOUD CUSTOM PALETTE BACKGROUND
             {
@@ -10433,9 +10742,9 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                 config: {
                     ...CONFIG_WORD_WLOUD_BASIC.value,
                     customPalette: makeColors({
-                        colorStart: '#FFFFFF',
+                        colorStart: "#FFFFFF",
                         iterations: 200,
-                        force: 0.0006
+                        force: 0.0006,
                     }),
                     style: {
                         ...CONFIG_WORD_WLOUD_BASIC.value.style,
@@ -10443,15 +10752,15 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
                             height: 300,
                             width: 300,
-                        }
-                    }
+                        },
+                    },
                 },
-                component: 'VueUiWordCloud',
-                icon: 'chartWordCloud',
-                id: 'word-cloud-chinese-custom-palette-background',
-                link: 'vue-ui-word-cloud',
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-chinese-custom-palette-background",
+                link: "vue-ui-word-cloud",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -10466,17 +10775,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // SCATTER BASIC
             {
                 dataset: DATASET_SCATTER_BASIC.value,
                 config: CONFIG_SCATTER_BASIC.value,
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-basic',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-basic",
+                link: "vue-ui-scatter",
                 description: {
                     en: "Basic scatter plot chart",
                     fr: "Graphique de dispersion de base",
@@ -10486,17 +10795,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本的な散布図",
                     es: "Gráfico de dispersión básico",
                     ko: "기본 산점도 차트",
-                    ar: "مخطط مبعثر أساسي"
-                }
+                    ar: "مخطط مبعثر أساسي",
+                },
             },
             // SCATTER BUBBLE
             {
                 dataset: DATASET_SCATTER_BUBBLE.value,
                 config: CONFIG_SCATTER_BASIC.value,
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-bubble',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-bubble",
+                link: "vue-ui-scatter",
                 description: {
                     en: "Bubble chart",
                     fr: "Graphique à bulles",
@@ -10506,8 +10815,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "バブルチャート",
                     es: "Gráfico de burbujas",
                     ko: "버블 차트",
-                    ar: "مخطط الفقاعات"
-                }
+                    ar: "مخطط الفقاعات",
+                },
             },
             // SCATTER GIFT WRAP
             {
@@ -10519,18 +10828,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         layout: {
                             ...CONFIG_SCATTER_BASIC.value.style.layout,
                             plots: {
-                                ...CONFIG_SCATTER_BASIC.value.style.layout.plots,
+                                ...CONFIG_SCATTER_BASIC.value.style.layout
+                                    .plots,
                                 giftWrap: {
-                                    show: true
-                                }
-                            }
-                        }
-                    }
+                                    show: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-gift-wrap',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-gift-wrap",
+                link: "vue-ui-scatter",
                 description: {
                     en: "With gift wrap algorithm",
                     fr: "Avec l'algorithme de cerclage",
@@ -10540,8 +10850,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "ギフトラップアルゴリズムを使用",
                     es: "Con algoritmo de envoltura de regalo",
                     ko: "선물 포장 알고리즘 사용",
-                    ar: "مع خوارزمية تغليف الهدايا"
-                }
+                    ar: "مع خوارزمية تغليف الهدايا",
+                },
             },
             // SCATTER MARGINAL BARS
             {
@@ -10557,21 +10867,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             },
                             marginalBars: {
                                 show: true,
-                                fill: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                                fill: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                                 showLines: true,
                                 highlighter: {
-                                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                                    stroke: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
-                                    highlightBothAxes: true
-                                }
-                            }
-                        }
-                    }
+                                    color: isDarkMode.value
+                                        ? "#FFFFFF"
+                                        : "#1A1A1A",
+                                    stroke: isDarkMode.value
+                                        ? "#6A6A6A"
+                                        : "#1A1A1A",
+                                    highlightBothAxes: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-marginal-bars',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-marginal-bars",
+                link: "vue-ui-scatter",
                 description: {
                     en: "With marginal bars",
                     fr: "Avec des barres marginales",
@@ -10581,8 +10895,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "マージナルバー付き",
                     es: "Con barras marginales",
                     ko: "여백 막대 포함",
-                    ar: "مع أشرطة هامشية"
-                }
+                    ar: "مع أشرطة هامشية",
+                },
             },
             // SCATTER MULTIPLE SERIES WITH MIXED VALUES
             {
@@ -10598,21 +10912,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             },
                             marginalBars: {
                                 show: true,
-                                fill: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                                fill: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                                 showLines: true,
                                 highlighter: {
-                                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                                    stroke: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
-                                    highlightBothAxes: true
-                                }
-                            }
-                        }
-                    }
+                                    color: isDarkMode.value
+                                        ? "#FFFFFF"
+                                        : "#1A1A1A",
+                                    stroke: isDarkMode.value
+                                        ? "#6A6A6A"
+                                        : "#1A1A1A",
+                                    highlightBothAxes: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-multiple-mixed',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-multiple-mixed",
+                link: "vue-ui-scatter",
                 description: {
                     en: "Multiple series, with mixed values",
                     fr: "Séries multiples, avec des valeurs mixtes",
@@ -10622,8 +10940,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "複数のシリーズ、混合値あり",
                     es: "Múltiples series, con valores mixtos",
                     ko: "여러 시리즈, 혼합된 값 포함",
-                    ar: "سلاسل متعددة، بقيم مختلطة"
-                }
+                    ar: "سلاسل متعددة، بقيم مختلطة",
+                },
             },
             // SCATTER MULTIPLE
             {
@@ -10635,18 +10953,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         layout: {
                             ...CONFIG_SCATTER_BASIC.value.style.layout,
                             plots: {
-                                ...CONFIG_SCATTER_BASIC.value.style.layout.plots,
+                                ...CONFIG_SCATTER_BASIC.value.style.layout
+                                    .plots,
                                 giftWrap: {
-                                    show: true
-                                }
-                            }
-                        }
-                    }
+                                    show: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-multiple',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-multiple",
+                link: "vue-ui-scatter",
                 description: {
                     en: "Multiple series, with mixed values and gift wrap algorithm",
                     fr: "Séries multiples, avec des valeurs mixtes et un algorithme de cerclage",
@@ -10656,17 +10975,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "複数のシリーズ、混合値とギフトラップアルゴリズムあり",
                     es: "Múltiples series, con valores mixtos y algoritmo de envoltura de regalo",
                     ko: "여러 시리즈, 혼합된 값 및 기프트 랩 알고리즘 포함",
-                    ar: "سلاسل متعددة، بقيم مختلطة وخوارزمية التغليف"
-                }
+                    ar: "سلاسل متعددة، بقيم مختلطة وخوارزمية التغليف",
+                },
             },
             // SCATTER WITH SHAPES
             {
                 dataset: DATASET_SCATTER_SHAPES.value,
                 config: CONFIG_SCATTER_BASIC.value,
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-shapes',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-shapes",
+                link: "vue-ui-scatter",
                 description: {
                     en: "Datapoint markers with geometric shapes",
                     fr: "Marqueurs de points de données avec des formes géométriques",
@@ -10676,8 +10995,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "幾何形状のデータポイントマーカー",
                     es: "Marcadores de puntos de datos con formas geométricas",
                     ko: "기하학적 모양의 데이터 포인트 마커",
-                    ar: "علامات نقاط البيانات بأشكال هندسية"
-                }
+                    ar: "علامات نقاط البيانات بأشكال هندسية",
+                },
             },
             // SCATTER BIG DATA
             {
@@ -10691,20 +11010,24 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_SCATTER_BASIC.value.style.layout,
                             correlation: { show: false },
                             plots: {
-                                ...CONFIG_SCATTER_BASIC.value.style.layout.plots,
+                                ...CONFIG_SCATTER_BASIC.value.style.layout
+                                    .plots,
                                 radius: 0.5,
                                 selectors: {
-                                    ...CONFIG_SCATTER_BASIC.value.style.layout.plots.selectors,
-                                    stroke: isDarkMode.value ? '#CCCCCC' : '#3A3A3A'
-                                }
-                            }
-                        }
-                    }
+                                    ...CONFIG_SCATTER_BASIC.value.style.layout
+                                        .plots.selectors,
+                                    stroke: isDarkMode.value
+                                        ? "#CCCCCC"
+                                        : "#3A3A3A",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiScatter',
-                icon: 'chartScatter',
-                id: 'scatter-large',
-                link: 'vue-ui-scatter',
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-large",
+                link: "vue-ui-scatter",
                 description: {
                     en: "100000 datapoints using performance mode",
                     fr: "100000 points de données en mode performance",
@@ -10714,17 +11037,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "パフォーマンスモードを使用した 100000 データポイント",
                     es: "100000 puntos de datos usando el modo de rendimiento",
                     ko: "성능 모드를 사용한 100000 데이터 포인트",
-                    ar: "100000 نقطة بيانات باستخدام وضع الأداء"
-                }
+                    ar: "100000 نقطة بيانات باستخدام وضع الأداء",
+                },
             },
             // WHEEL BASIC
             {
                 dataset: DATASET_WHEEL_BASIC.value,
                 config: CONFIG_WHEEL_BASIC.value,
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-basic',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-basic",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Wheel gauge chart basic",
                     fr: "Jauge en forme de roue basique",
@@ -10734,8 +11057,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本ホイールゲージチャート",
                     es: "Gráfico de medidor de rueda básico",
                     ko: "기본 휠 게이지 차트",
-                    ar: "مخطط عداد عجلة أساسي"
-                }
+                    ar: "مخطط عداد عجلة أساسي",
+                },
             },
             // WHEEL LESS GRADIENT SQUARED TICKS
             {
@@ -10755,23 +11078,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     fontSize: 90,
                                 },
                                 wheel: {
-                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart
+                                        .layout.wheel,
                                     ticks: {
-                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart
+                                            .layout.wheel.ticks,
                                         rounded: false,
                                         gradient: {
-                                            show: false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            show: false,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-less-gradient-squared',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-less-gradient-squared",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Less gradient, rectangular ticks",
                     fr: "Moins de dégradé, graduations rectangulaires",
@@ -10781,8 +11106,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "勾配を少なくし、長方形の目盛り",
                     es: "Menos gradiente, marcas rectangulares",
                     ko: "더 적은 그라데이션, 직사각형 눈금",
-                    ar: "تدرج أقل، علامات مستطيلة"
-                }
+                    ar: "تدرج أقل، علامات مستطيلة",
+                },
             },
             // WHEEL SMALL TICKS
             {
@@ -10796,20 +11121,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_WHEEL_BASIC.value.style.chart.layout,
                                 wheel: {
-                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart
+                                        .layout.wheel,
                                     ticks: {
-                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
-                                        sizeRatio: 1
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart
+                                            .layout.wheel.ticks,
+                                        sizeRatio: 1,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-small-ticks',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-small-ticks",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Smaller tick size",
                     fr: "Taille de graduation réduite",
@@ -10819,8 +11146,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "より小さい目盛サイズ",
                     es: "Tamaño de marca más pequeño",
                     ko: "작은 눈금 크기",
-                    ar: "حجم تدريج أصغر"
-                }
+                    ar: "حجم تدريج أصغر",
+                },
             },
             // WHEEL BIG TICKS
             {
@@ -10840,23 +11167,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     show: false,
                                 },
                                 wheel: {
-                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart
+                                        .layout.wheel,
                                     ticks: {
-                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart
+                                            .layout.wheel.ticks,
                                         sizeRatio: 0,
                                         gradient: {
-                                            shiftHueIntensity: -5
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            shiftHueIntensity: -5,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-big-ticks',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-big-ticks",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Bigger tick size",
                     fr: "",
@@ -10866,20 +11195,20 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "",
                     es: "",
                     ko: "",
-                    ar: ''
-                }
+                    ar: "",
+                },
             },
             // WHEEL 3D BASIC
             {
                 dataset: DATASET_WHEEL_BASIC.value,
                 config: {
                     ...CONFIG_WHEEL_BASIC.value,
-                    layout: '3d'
+                    layout: "3d",
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-basic-3d',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-basic-3d",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Wheel gauge chart basic 3D",
                     fr: "Jauge en forme de roue basique 3D",
@@ -10889,17 +11218,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "3D 基本ホイールゲージチャート",
                     es: "Gráfico de medidor de rueda básico 3D",
                     ko: "3D 기본 휠 게이지 차트",
-                    ar: "3Dمخطط عداد عجلة أساسي"
-                }
+                    ar: "3Dمخطط عداد عجلة أساسي",
+                },
             },
             // WHEEL LESS GRADIENT SQUARED TICKS 3D
             {
                 dataset: DATASET_WHEEL_BASIC.value,
                 config: CONFIG_WHEEL_SQUARED_TICKS_3D.value,
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-less-gradient-squared',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-less-gradient-squared",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Less gradient, rectangular ticks 3D",
                     fr: "Moins de dégradé, graduations rectangulaires 3D",
@@ -10909,15 +11238,15 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "3D 勾配を少なくし、長方形の目盛り",
                     es: "Menos gradiente, marcas rectangulares 3D",
                     ko: "3D 더 적은 그라데이션, 직사각형 눈금",
-                    ar: "3Dتدرج أقل، علامات مستطيلة"
-                }
+                    ar: "3Dتدرج أقل، علامات مستطيلة",
+                },
             },
             // WHEEL 3D BASIC WITH DEPTS
             {
                 dataset: DATASET_WHEEL_BASIC.value,
                 config: {
                     ...CONFIG_WHEEL_BASIC.value,
-                    layout: '3d',
+                    layout: "3d",
                     style: {
                         ...CONFIG_WHEEL_BASIC.value.style,
                         chart: {
@@ -10925,20 +11254,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_WHEEL_BASIC.value.style.chart.layout,
                                 wheel: {
-                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart
+                                        .layout.wheel,
                                     ticks: {
-                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart
+                                            .layout.wheel.ticks,
                                         depth3d: 40,
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-basic-3d-depth',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-basic-3d-depth",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Wheel gauge chart basic 3D with depth",
                     fr: "Jauge circulaire 3D simple avec profondeur",
@@ -10948,8 +11279,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "奥行きのある基本的な3Dリングゲージチャート",
                     es: "Gráfico de indicador circular 3D básico con profundidad",
                     ko: "깊이 효과가 있는 기본 3D 원형 게이지 차트",
-                    ar: "مخطط مقياس دائري ثلاثي الأبعاد بسيط مع عمق"
-                }
+                    ar: "مخطط مقياس دائري ثلاثي الأبعاد بسيط مع عمق",
+                },
             },
             // WHEEL LESS GRADIENT SQUARED TICKS 3D WITH DEPTH
             {
@@ -10961,22 +11292,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart,
                             layout: {
-                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout,
+                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                    .chart.layout,
                                 wheel: {
-                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel,
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                        .chart.layout.wheel,
                                     ticks: {
-                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel.ticks,
-                                        depth3d: 40
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value
+                                            .style.chart.layout.wheel.ticks,
+                                        depth3d: 40,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-less-gradient-squared-depth',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-less-gradient-squared-depth",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Less gradient, rectangular ticks 3D with depth",
                     fr: "Moins de dégradé, graduations rectangulaires 3D avec profondeur",
@@ -10986,8 +11320,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "グラデーション控えめ、奥行きのある3Dの矩形目盛",
                     es: "Menos degradado, marcas rectangulares 3D con profundidad",
                     ko: "그라디언트를 줄인, 깊이감 있는 3D 직사각형 눈금",
-                    ar: "تدرّج لوني أقل، علامات مستطيلة ثلاثية الأبعاد بعمق"
-                }
+                    ar: "تدرّج لوني أقل، علامات مستطيلة ثلاثية الأبعاد بعمق",
+                },
             },
             // WHEEL SQUARED TICKS 3D DONUT SHAPED GRADIENT
             {
@@ -10999,32 +11333,36 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart,
                             layout: {
-                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout,
+                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                    .chart.layout,
                                 percentage: {
-                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.percentage,
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                        .chart.layout.percentage,
                                     fontSize: 48,
-                                    offsetY: -6
+                                    offsetY: -6,
                                 },
                                 wheel: {
-                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel,
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                        .chart.layout.wheel,
                                     ticks: {
-                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel.ticks,
+                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value
+                                            .style.chart.layout.wheel.ticks,
                                         spacingRatio3d: 1,
                                         sizeRatio: 0.7,
                                         depth3d: 20,
                                         gradient: {
-                                            show: true
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            show: true,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-less-gradient-donut-gradient',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-less-gradient-donut-gradient",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Donut shaped with gradient",
                     fr: "En forme de beignet avec dégradé",
@@ -11034,8 +11372,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "グラデーション付きのドーナツ形状",
                     es: "Con forma de rosquilla con degradado",
                     ko: "그라데이션이 있는 도넛 모양",
-                    ar: "بشكل دونات مع تدرج لوني"
-                }
+                    ar: "بشكل دونات مع تدرج لوني",
+                },
             },
             // WHEEL SQUARED TICKS 3D DONUT SHAPED PLAIN
             {
@@ -11047,33 +11385,37 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart,
                             layout: {
-                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout,
+                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                    .chart.layout,
                                 percentage: {
-                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.percentage,
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                        .chart.layout.percentage,
                                     fontSize: 48,
                                     offsetY: -20,
-                                    strokeWidth: 3
+                                    strokeWidth: 3,
                                 },
                                 wheel: {
-                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel,
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style
+                                        .chart.layout.wheel,
                                     ticks: {
-                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel.ticks,
+                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value
+                                            .style.chart.layout.wheel.ticks,
                                         spacingRatio3d: 1,
                                         sizeRatio: 0,
                                         depth3d: 20,
                                         gradient: {
-                                            show: false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            show: false,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-less-gradient-pie-plain',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-less-gradient-pie-plain",
+                link: "vue-ui-wheel",
                 description: {
                     en: "Pie shaped with plain color",
                     fr: "En forme de tarte avec couleur unie",
@@ -11083,19 +11425,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "単色のパイ形状",
                     es: "Con forma de pastel de color liso",
                     ko: "단색 파이 모양",
-                    ar: "بشكل فطيرة بلون موحد"
-                }
+                    ar: "بشكل فطيرة بلون موحد",
+                },
             },
             // WHEEL BACKGROUND
             {
                 dataset: DATASET_WHEEL_BASIC.value,
                 config: CONFIG_WHEEL_BASIC.value,
-                component: 'VueUiWheel',
-                icon: 'chartWheel',
-                id: 'wheel-background',
-                link: 'vue-ui-wheel',
+                component: "VueUiWheel",
+                icon: "chartWheel",
+                id: "wheel-background",
+                link: "vue-ui-wheel",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -11110,17 +11452,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // SPARKHISTOGRAM BASIC
             {
                 dataset: DATASET_SPARKHISTOGRAM_BASE.value,
                 config: CONFIG_SPARKHISTOGRAM_BASIC.value,
-                component: 'VueUiSparkHistogram',
-                icon: 'chartSparkHistogram',
-                id: 'sparkhistogram-basic',
-                link: 'vue-ui-sparkhistogram',
+                component: "VueUiSparkHistogram",
+                icon: "chartSparkHistogram",
+                id: "sparkhistogram-basic",
+                link: "vue-ui-sparkhistogram",
                 description: {
                     en: "Basic spark histogram chart",
                     fr: "Histogramme compact de base",
@@ -11130,8 +11472,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本コンパクトヒストグラムチャート",
                     es: "Histograma compacto básico",
                     ko: "기본 소형 히스토그램 차트",
-                    ar: "مخطط المدرج التكراري المضغوط الأساسي"
-                }
+                    ar: "مخطط المدرج التكراري المضغوط الأساسي",
+                },
             },
             // SPARKHISTOGRAM SHAPE STAR
             {
@@ -11142,20 +11484,20 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         ...CONFIG_SPARKHISTOGRAM_BASIC.value.style,
                         bars: {
                             ...CONFIG_SPARKHISTOGRAM_BASIC.value.style.bars,
-                            shape: 'star',
+                            shape: "star",
                             colors: {
-                                positive: colors.value.yellow
-                            }
+                                positive: colors.value.yellow,
+                            },
                         },
                         selector: {
-                            stroke: colors.value.yellow
-                        }
-                    }
+                            stroke: colors.value.yellow,
+                        },
+                    },
                 },
-                component: 'VueUiSparkHistogram',
-                icon: 'chartSparkHistogram',
-                id: 'sparkhistogram-star',
-                link: 'vue-ui-sparkhistogram',
+                component: "VueUiSparkHistogram",
+                icon: "chartSparkHistogram",
+                id: "sparkhistogram-star",
+                link: "vue-ui-sparkhistogram",
                 description: {
                     en: "With stars",
                     fr: "Avec des étoiles",
@@ -11165,8 +11507,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "星付き",
                     es: "Con estrellas",
                     ko: "별 포함",
-                    ar: "مع نجوم"
-                }
+                    ar: "مع نجوم",
+                },
             },
             // SPARKHISTOGRAM STRECHED, SDQUARED, NO GAP
             {
@@ -11180,21 +11522,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             borderRadius: 0,
                             gap: 1,
                             colors: {
-                                positive: colors.value.orange
-                            }
+                                positive: colors.value.orange,
+                            },
                         },
                         layout: {
-                            height: 300
+                            height: 300,
                         },
                         selector: {
-                            stroke: colors.value.orange
-                        }
-                    }
+                            stroke: colors.value.orange,
+                        },
+                    },
                 },
-                component: 'VueUiSparkHistogram',
-                icon: 'chartSparkHistogram',
-                id: 'sparkhistogram-stretched',
-                link: 'vue-ui-sparkhistogram',
+                component: "VueUiSparkHistogram",
+                icon: "chartSparkHistogram",
+                id: "sparkhistogram-stretched",
+                link: "vue-ui-sparkhistogram",
                 description: {
                     en: "Stretched, no border radius, no space between",
                     fr: "Étiré, sans rayon de bordure, sans intervalle",
@@ -11204,8 +11546,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "伸縮、境界半径なし、間隔なし",
                     es: "Estirado, sin radio de borde, sin espacio entre",
                     ko: "늘어진, 테두리 반지름 없음, 간격 없음",
-                    ar: "ممتد، بدون نصف قطر الحدود، بدون مسافة بين"
-                }
+                    ar: "ممتد، بدون نصف قطر الحدود، بدون مسافة بين",
+                },
             },
             // SPARKHISTOGRAM STRECHED, SDQUARED, NO GAP, BACKGROUND
             {
@@ -11219,23 +11561,23 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             borderRadius: 0,
                             gap: 1,
                             colors: {
-                                positive: '#FFFFFF'
-                            }
+                                positive: "#FFFFFF",
+                            },
                         },
                         layout: {
-                            height: 300
+                            height: 300,
                         },
                         selector: {
-                            stroke: colors.value.orange
-                        }
-                    }
+                            stroke: colors.value.orange,
+                        },
+                    },
                 },
-                component: 'VueUiSparkHistogram',
-                icon: 'chartSparkHistogram',
-                id: 'sparkhistogram-stretched-background',
-                link: 'vue-ui-sparkhistogram',
+                component: "VueUiSparkHistogram",
+                icon: "chartSparkHistogram",
+                id: "sparkhistogram-stretched-background",
+                link: "vue-ui-sparkhistogram",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -11250,17 +11592,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // QUADRANT BASIC
             {
                 dataset: DATASET_QUADRANT_BASE.value,
                 config: CONFIG_QUADRANT_BASIC.value,
-                component: 'VueUiQuadrant',
-                icon: 'chartQuadrant',
-                id: 'quadrant-basic',
-                link: 'vue-ui-quadrant',
+                component: "VueUiQuadrant",
+                icon: "chartQuadrant",
+                id: "quadrant-basic",
+                link: "vue-ui-quadrant",
                 description: {
                     en: "Basic quadrant chart",
                     fr: "Graphique de quadrant de base",
@@ -11270,8 +11612,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本的な象限チャート",
                     es: "Gráfico de cuadrantes básico",
                     ko: "기본 사분면 차트",
-                    ar: "مخطط ربعي أساسي"
-                }
+                    ar: "مخطط ربعي أساسي",
+                },
             },
             // QUADRANT WITH AREAS
             {
@@ -11283,18 +11625,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_QUADRANT_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_QUADRANT_BASIC.value.style.chart.layout,
+                                ...CONFIG_QUADRANT_BASIC.value.style.chart
+                                    .layout,
                                 areas: {
-                                    show: true
-                                }
-                            }
-                        }
-                    }
+                                    show: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiQuadrant',
-                icon: 'chartQuadrant',
-                id: 'quadrant-areas',
-                link: 'vue-ui-quadrant',
+                component: "VueUiQuadrant",
+                icon: "chartQuadrant",
+                id: "quadrant-areas",
+                link: "vue-ui-quadrant",
                 description: {
                     en: "With gift wrap algorithm",
                     fr: "Avec l'algorithme de l'emballage cadeau",
@@ -11304,8 +11647,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "ギフトラッピングアルゴリズム付き",
                     es: "Con algoritmo de envoltura de regalos",
                     ko: "선물 포장 알고리즘 포함",
-                    ar: "مع خوارزمية التغليف الهدي"
-                }
+                    ar: "مع خوارزمية التغليف الهدي",
+                },
             },
             // QUADRANT PRACTICAL
             {
@@ -11319,15 +11662,15 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     grid: {
                                         xAxis: {
                                             min: 10,
-                                            max: 10
+                                            max: 10,
                                         },
                                         yAxis: {
                                             min: 10,
-                                            max: 10
+                                            max: 10,
                                         },
                                         graduations: {
-                                            roundingForce: 0
-                                        }
+                                            roundingForce: 0,
+                                        },
                                     },
                                     labels: {
                                         plotLabels: {
@@ -11335,32 +11678,32 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                         },
                                         quadrantLabels: {
                                             tl: {
-                                                text: 'Visionaries',
-                                                color: colors.value.textColor
+                                                text: "Visionaries",
+                                                color: colors.value.textColor,
                                             },
                                             tr: {
-                                                text: 'Leaders',
-                                                color: colors.value.textColor
+                                                text: "Leaders",
+                                                color: colors.value.textColor,
                                             },
                                             br: {
-                                                text: 'Challengers',
-                                                color: colors.value.textColor
+                                                text: "Challengers",
+                                                color: colors.value.textColor,
                                             },
                                             bl: {
-                                                text: 'Niche players',
-                                                color: colors.value.textColor
+                                                text: "Niche players",
+                                                color: colors.value.textColor,
                                             },
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiQuadrant',
-                icon: 'chartQuadrant',
-                id: 'quadrant-tech',
-                link: 'vue-ui-quadrant',
+                component: "VueUiQuadrant",
+                icon: "chartQuadrant",
+                id: "quadrant-tech",
+                link: "vue-ui-quadrant",
                 customQuadrant: true,
                 tags: ["#datapoint"],
                 slot: `<template #datapoint="{ datapoint }">
@@ -11378,8 +11721,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "実践的な例",
                     es: "Ejemplo práctico",
                     ko: "실용적인 예시",
-                    ar: "مثال عملي"
-                }
+                    ar: "مثال عملي",
+                },
             },
             // QUADRANT WITH AREAS, BACKGROUND
             {
@@ -11391,20 +11734,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_QUADRANT_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_QUADRANT_BASIC.value.style.chart.layout,
+                                ...CONFIG_QUADRANT_BASIC.value.style.chart
+                                    .layout,
                                 areas: {
-                                    show: true
-                                }
-                            }
-                        }
-                    }
+                                    show: true,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiQuadrant',
-                icon: 'chartQuadrant',
-                id: 'quadrant-areas-background',
-                link: 'vue-ui-quadrant',
+                component: "VueUiQuadrant",
+                icon: "chartQuadrant",
+                id: "quadrant-areas-background",
+                link: "vue-ui-quadrant",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -11419,17 +11763,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // RADAR BASIC
             {
                 dataset: DATASET_RADAR_BASE.value,
                 config: CONFIG_RADAR_BASIC.value,
-                component: 'VueUiRadar',
-                icon: 'chartRadar',
-                id: 'radar-basic',
-                link: 'vue-ui-radar',
+                component: "VueUiRadar",
+                icon: "chartRadar",
+                id: "radar-basic",
+                link: "vue-ui-radar",
                 description: {
                     en: "Basic radar chart",
                     fr: "Diagramme radar de base",
@@ -11439,8 +11783,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本レーダーチャート",
                     es: "Gráfico de radar básico",
                     ko: "기본 레이더 차트",
-                    ar: "مخطط رادار أساسي"
-                }
+                    ar: "مخطط رادار أساسي",
+                },
             },
             // RADAR FILLED
             {
@@ -11455,17 +11799,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 ...CONFIG_RADAR_BASIC.value.style.chart.layout,
                                 dataPolygon: {
                                     transparent: false,
-                                    opacity: 70
-                                }
-                            }
-                        }
-                    }
-
+                                    opacity: 70,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiRadar',
-                icon: 'chartRadar',
-                id: 'radar-filled',
-                link: 'vue-ui-radar',
+                component: "VueUiRadar",
+                icon: "chartRadar",
+                id: "radar-filled",
+                link: "vue-ui-radar",
                 description: {
                     en: "Filled polygon",
                     fr: "Polygone rempli",
@@ -11475,17 +11818,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "塗りつぶされたポリゴン",
                     es: "Polígono relleno",
                     ko: "채워진 다각형",
-                    ar: "مضلع مملوء"
-                }
+                    ar: "مضلع مملوء",
+                },
             },
             // RADAR BASIC MULTIPLE
             {
                 dataset: DATASET_RADAR_MULTIPLE.value,
                 config: CONFIG_RADAR_BASIC.value,
-                component: 'VueUiRadar',
-                icon: 'chartRadar',
-                id: 'radar-basic-multiple',
-                link: 'vue-ui-radar',
+                component: "VueUiRadar",
+                icon: "chartRadar",
+                id: "radar-basic-multiple",
+                link: "vue-ui-radar",
                 description: {
                     en: "With multiple categories",
                     fr: "Avec plusieurs catégories",
@@ -11495,8 +11838,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "複数のカテゴリー付き",
                     es: "Con múltiples categorías",
                     ko: "여러 카테고리 포함",
-                    ar: "مع فئات متعددة"
-                }
+                    ar: "مع فئات متعددة",
+                },
             },
             // RADAR FILLED MULTIPLE
             {
@@ -11511,17 +11854,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                 ...CONFIG_RADAR_BASIC.value.style.chart.layout,
                                 dataPolygon: {
                                     transparent: false,
-                                    opacity: 50
-                                }
-                            }
-                        }
-                    }
-
+                                    opacity: 50,
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiRadar',
-                icon: 'chartRadar',
-                id: 'radar-filled-multiple',
-                link: 'vue-ui-radar',
+                component: "VueUiRadar",
+                icon: "chartRadar",
+                id: "radar-filled-multiple",
+                link: "vue-ui-radar",
                 description: {
                     en: "Multiple categories with filled polygons",
                     fr: "Plusieurs catégories avec des polygones remplis",
@@ -11531,19 +11873,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "塗りつぶされたポリゴンを含む複数のカテゴリー",
                     es: "Múltiples categorías con polígonos rellenos",
                     ko: "채워진 다각형이 포함된 여러 카테고리",
-                    ar: "فئات متعددة مع مضلعات ممتلئة"
-                }
+                    ar: "فئات متعددة مع مضلعات ممتلئة",
+                },
             },
             // RADAR FILLED, BACKGROUND
             {
                 dataset: {
                     ...DATASET_RADAR_BASE.value,
-                    categories: DATASET_RADAR_BASE.value.categories.map(c => {
+                    categories: DATASET_RADAR_BASE.value.categories.map((c) => {
                         return {
                             ...c,
-                            color: '#FFFFFF'
-                        }
-                    })
+                            color: "#FFFFFF",
+                        };
+                    }),
                 },
                 config: {
                     ...CONFIG_RADAR_BASIC.value,
@@ -11554,28 +11896,29 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_RADAR_BASIC.value.style.chart.layout,
                                 grid: {
-                                    ...CONFIG_RADAR_BASIC.value.style.chart.layout.grid,
-                                    stroke: '#FFFFFF'
+                                    ...CONFIG_RADAR_BASIC.value.style.chart
+                                        .layout.grid,
+                                    stroke: "#FFFFFF",
                                 },
                                 dataPolygon: {
                                     transparent: false,
-                                    opacity: 70
+                                    opacity: 70,
                                 },
                                 outerPolygon: {
-                                    ...CONFIG_RADAR_BASIC.value.style.chart.layout.outerPolygon,
-                                    stroke: '#FFFFFF'
-                                }
-                            }
-                        }
-                    }
-
+                                    ...CONFIG_RADAR_BASIC.value.style.chart
+                                        .layout.outerPolygon,
+                                    stroke: "#FFFFFF",
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiRadar',
-                icon: 'chartRadar',
-                id: 'radar-filled-background',
-                link: 'vue-ui-radar',
+                component: "VueUiRadar",
+                icon: "chartRadar",
+                id: "radar-filled-background",
+                link: "vue-ui-radar",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -11590,17 +11933,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // STRIP PLOT BASIC
             {
                 dataset: DATASET_STRIP_PLOT_BASIC.value,
                 config: CONFIG_STRIP_PLOT_BASE.value,
-                component: 'VueUiStripPlot',
-                icon: 'chartStripPlot',
-                id: 'strip-plot-basic',
-                link: 'vue-ui-strip-plot',
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-basic",
+                link: "vue-ui-strip-plot",
                 description: {
                     en: "Basic strip plot chart",
                     fr: "Diagramme de points de base",
@@ -11610,8 +11953,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本ストリッププロット",
                     es: "Gráfico de puntos básico",
                     ko: "기본 스트립 플롯",
-                    ar: "مخطط نقاط أساسي"
-                }
+                    ar: "مخطط نقاط أساسي",
+                },
             },
             // STRIP PLOT SMALLER
             {
@@ -11623,20 +11966,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
                             plots: {
-                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart
+                                    .plots,
                                 radius: 6,
                                 opacity: 1,
                                 gradient: {
                                     show: false,
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStripPlot',
-                icon: 'chartStripPlot',
-                id: 'strip-plot-smaller',
-                link: 'vue-ui-strip-plot',
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-smaller",
+                link: "vue-ui-strip-plot",
                 description: {
                     en: "Smaller plots, no gradient, no opacity",
                     fr: "Petits graphiques, sans dégradé, sans opacité",
@@ -11646,8 +11990,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "小さなプロット、グラデーションなし、不透明度なし",
                     es: "Gráficos más pequeños, sin degradado, sin opacidad",
                     ko: "작은 플롯, 그라디언트 없음, 불투명도 없음",
-                    ar: "مخططات أصغر، بدون تدرج، بدون شفافية"
-                }
+                    ar: "مخططات أصغر، بدون تدرج، بدون شفافية",
+                },
             },
             // STRIP PLOT SHAPES STAR
             {
@@ -11659,18 +12003,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
                             plots: {
-                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
-                                shape: 'star',
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart
+                                    .plots,
+                                shape: "star",
                                 radius: 12,
-                                opacity: 1
-                            }
-                        }
-                    }
+                                opacity: 1,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStripPlot',
-                icon: 'chartStripPlot',
-                id: 'strip-plot-star',
-                link: 'vue-ui-strip-plot',
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-star",
+                link: "vue-ui-strip-plot",
                 description: {
                     en: "Datapoint markers with geometric shapes",
                     fr: "Marqueurs de points de données avec des formes géométriques",
@@ -11680,8 +12025,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "幾何形状のデータポイントマーカー",
                     es: "Marcadores de puntos de datos con formas geométricas",
                     ko: "기하학적 모양의 데이터 포인트 마커",
-                    ar: "علامات نقاط البيانات بأشكال هندسية"
-                }
+                    ar: "علامات نقاط البيانات بأشكال هندسية",
+                },
             },
             // STRIP PLOT SHAPES TRIANGLE
             {
@@ -11693,18 +12038,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
                             plots: {
-                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
-                                shape: 'triangle',
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart
+                                    .plots,
+                                shape: "triangle",
                                 radius: 12,
-                                opacity: 1
-                            }
-                        }
-                    }
+                                opacity: 1,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStripPlot',
-                icon: 'chartStripPlot',
-                id: 'strip-plot-triangle',
-                link: 'vue-ui-strip-plot',
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-triangle",
+                link: "vue-ui-strip-plot",
                 description: {
                     en: "Datapoint markers with geometric shapes",
                     fr: "Marqueurs de points de données avec des formes géométriques",
@@ -11714,8 +12060,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "幾何形状のデータポイントマーカー",
                     es: "Marcadores de puntos de datos con formas geométricas",
                     ko: "기하학적 모양의 데이터 포인트 마커",
-                    ar: "علامات نقاط البيانات بأشكال هندسية"
-                }
+                    ar: "علامات نقاط البيانات بأشكال هندسية",
+                },
             },
             // STRIP PLOT SHAPES STAR, BACKGROUND
             {
@@ -11727,20 +12073,21 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
                             plots: {
-                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
-                                shape: 'star',
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart
+                                    .plots,
+                                shape: "star",
                                 radius: 12,
-                                opacity: 1
-                            }
-                        }
-                    }
+                                opacity: 1,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiStripPlot',
-                icon: 'chartStripPlot',
-                id: 'strip-plot-star-background',
-                link: 'vue-ui-strip-plot',
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-star-background",
+                link: "vue-ui-strip-plot",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -11755,17 +12102,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // BULLET BASIC
             {
                 dataset: DATASET_BULLET_BASIC.value,
                 config: CONFIG_BULLET_BASE.value,
-                component: 'VueUiBullet',
-                icon: 'chartBullet',
-                id: 'bullet-basic',
-                link: 'vue-ui-bullet',
+                component: "VueUiBullet",
+                icon: "chartBullet",
+                id: "bullet-basic",
+                link: "vue-ui-bullet",
                 description: {
                     en: "Basic bullet chart",
                     fr: "Graphique à barres de performance basique",
@@ -11775,17 +12122,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本パフォーマンスチャート",
                     es: "Gráfico básico de rendimiento",
                     ko: "기본 성능 차트",
-                    ar: "مخطط الأداء الأساسي"
-                }
+                    ar: "مخطط الأداء الأساسي",
+                },
             },
             // BULLET COLORS
             {
                 dataset: DATASET_BULLET_COLORS.value,
                 config: CONFIG_BULLET_BASE.value,
-                component: 'VueUiBullet',
-                icon: 'chartBullet',
-                id: 'bullet-colors',
-                link: 'vue-ui-bullet',
+                component: "VueUiBullet",
+                icon: "chartBullet",
+                id: "bullet-colors",
+                link: "vue-ui-bullet",
                 description: {
                     en: "With custom segment colors",
                     fr: "Avec des couleurs de segments personnalisées",
@@ -11795,8 +12142,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムセグメントカラー付き",
                     es: "Con colores de segmentos personalizados",
                     ko: "사용자 정의 세그먼트 색상",
-                    ar: "مع ألوان مقاطع مخصصة"
-                }
+                    ar: "مع ألوان مقاطع مخصصة",
+                },
             },
             // BULLET LARGER
             {
@@ -11808,20 +12155,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_BULLET_BASE.value.style.chart,
                             segments: {
-                                ...CONFIG_BULLET_BASE.value.style.chart.segments,
-                                baseColor: '#1f77b4'
+                                ...CONFIG_BULLET_BASE.value.style.chart
+                                    .segments,
+                                baseColor: "#1f77b4",
                             },
                             valueBar: {
-                                ...CONFIG_BULLET_BASE.value.style.chart.valueBar,
-                                heightRatio: 0.5
-                            }
-                        }
-                    }
+                                ...CONFIG_BULLET_BASE.value.style.chart
+                                    .valueBar,
+                                heightRatio: 0.5,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiBullet',
-                icon: 'chartBullet',
-                id: 'bullet-larger',
-                link: 'vue-ui-bullet',
+                component: "VueUiBullet",
+                icon: "chartBullet",
+                id: "bullet-larger",
+                link: "vue-ui-bullet",
                 description: {
                     en: "With larger value bar",
                     fr: "Avec une barre de valeur plus grande",
@@ -11831,8 +12180,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "より大きな値のバー付き",
                     es: "Con barra de valor más grande",
                     ko: "더 큰 값 막대 포함",
-                    ar: "مع شريط قيمة أكبر"
-                }
+                    ar: "مع شريط قيمة أكبر",
+                },
             },
             // BULLET THINNER
             {
@@ -11844,20 +12193,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_BULLET_BASE.value.style.chart,
                             segments: {
-                                ...CONFIG_BULLET_BASE.value.style.chart.segments,
-                                baseColor: '#1f77b4'
+                                ...CONFIG_BULLET_BASE.value.style.chart
+                                    .segments,
+                                baseColor: "#1f77b4",
                             },
                             valueBar: {
-                                ...CONFIG_BULLET_BASE.value.style.chart.valueBar,
-                                heightRatio: 0.15
-                            }
-                        }
-                    }
+                                ...CONFIG_BULLET_BASE.value.style.chart
+                                    .valueBar,
+                                heightRatio: 0.15,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiBullet',
-                icon: 'chartBullet',
-                id: 'bullet-thinner',
-                link: 'vue-ui-bullet',
+                component: "VueUiBullet",
+                icon: "chartBullet",
+                id: "bullet-thinner",
+                link: "vue-ui-bullet",
                 description: {
                     en: "With thinner value bar",
                     fr: "Avec une barre de valeur plus fine",
@@ -11867,8 +12218,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "より細い値のバー付き",
                     es: "Con barra de valor más delgada",
                     ko: "더 얇은 값 막대 포함",
-                    ar: "مع شريط قيمة أنحف"
-                }
+                    ar: "مع شريط قيمة أنحف",
+                },
             },
             // BULLET MIXED
             {
@@ -11880,20 +12231,22 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_BULLET_BASE.value.style.chart,
                             segments: {
-                                ...CONFIG_BULLET_BASE.value.style.chart.segments,
+                                ...CONFIG_BULLET_BASE.value.style.chart
+                                    .segments,
                                 dataLabels: {
-                                    ...CONFIG_BULLET_BASE.value.style.chart.dataLabels,
+                                    ...CONFIG_BULLET_BASE.value.style.chart
+                                        .dataLabels,
                                     color: colors.value.textColor,
-                                    suffix: '°C'
-                                }
+                                    suffix: "°C",
+                                },
                             },
-                        }
-                    }
+                        },
+                    },
                 },
-                component: 'VueUiBullet',
-                icon: 'chartBullet',
-                id: 'bullet-mixed',
-                link: 'vue-ui-bullet',
+                component: "VueUiBullet",
+                icon: "chartBullet",
+                id: "bullet-mixed",
+                link: "vue-ui-bullet",
                 description: {
                     en: "With negative and positive values",
                     fr: "Avec des valeurs négatives et positives",
@@ -11903,19 +12256,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "負と正の値付き",
                     es: "Con valores negativos y positivos",
                     ko: "음수와 양수 포함",
-                    ar: "مع القيم السالبة والموجبة"
-                }
+                    ar: "مع القيم السالبة والموجبة",
+                },
             },
             // BULLET BASIC, BACKGROUND
             {
                 dataset: DATASET_BULLET_BACKGROUND.value,
                 config: CONFIG_BULLET_BASE.value,
-                component: 'VueUiBullet',
-                icon: 'chartBullet',
-                id: 'bullet-background',
-                link: 'vue-ui-bullet',
+                component: "VueUiBullet",
+                icon: "chartBullet",
+                id: "bullet-background",
+                link: "vue-ui-bullet",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -11930,68 +12283,68 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // DAG BASIC
             {
                 dataset: DATASET_DAG_BASIC.value,
                 config: CONFIG_DAG_BASIC.value,
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-basic',
-                link: 'vue-ui-dag',
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-basic",
+                link: "vue-ui-dag",
                 description: {
-                    en: 'Basic DAG chart',
-                    fr: 'Diagramme DAG simple',
-                    pt: 'Gráfico DAG básico',
-                    de: 'Grundlegendes DAG-Diagramm',
-                    zh: '基础 DAG 图表',
-                    ja: '基本的 DAG チャート',
-                    es: 'Gráfico DAG básico',
-                    ko: '기본 DAG 차트',
-                    ar: 'مخطط DAG أساسي'
-                }
+                    en: "Basic DAG chart",
+                    fr: "Diagramme DAG simple",
+                    pt: "Gráfico DAG básico",
+                    de: "Grundlegendes DAG-Diagramm",
+                    zh: "基础 DAG 图表",
+                    ja: "基本的 DAG チャート",
+                    es: "Gráfico DAG básico",
+                    ko: "기본 DAG 차트",
+                    ar: "مخطط DAG أساسي",
+                },
             },
             // DAG SPECIAL
             {
                 dataset: DATASET_DAG_SPECIAL.value,
                 config: CONFIG_DAG_BASIC.value,
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-special',
-                link: 'vue-ui-dag',
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-special",
+                link: "vue-ui-dag",
                 description: {
-                    en: 'With individual colors',
-                    fr: 'Avec des couleurs individuelles',
-                    pt: 'Com cores individuais',
-                    de: 'Mit individuellen Farben',
-                    zh: '具有单独颜色',
-                    ja: '個別の色付き',
-                    es: 'Con colores individuales',
-                    ko: '개별 색상 포함',
-                    ar: 'مع ألوان فردية'
-                }
+                    en: "With individual colors",
+                    fr: "Avec des couleurs individuelles",
+                    pt: "Com cores individuais",
+                    de: "Mit individuellen Farben",
+                    zh: "具有单独颜色",
+                    ja: "個別の色付き",
+                    es: "Con colores individuales",
+                    ko: "개별 색상 포함",
+                    ar: "مع ألوان فردية",
+                },
             },
             // DAG ANIMATED EDGES
             {
                 dataset: DATASET_DAG_ANIMATED.value,
                 config: CONFIG_DAG_BASIC.value,
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-animated-edges',
-                link: 'vue-ui-dag',
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-animated-edges",
+                link: "vue-ui-dag",
                 description: {
-                    en: 'With animated edges',
-                    fr: 'Avec des arêtes animées',
-                    pt: 'Com arestas animadas',
-                    de: 'Mit animierten Kanten',
-                    zh: '带有动画边',
-                    ja: 'アニメーションするエッジ付き',
-                    es: 'Con aristas animadas',
-                    ko: '애니메이션 엣지 포함',
-                    ar: 'مع حواف متحركة'
-                }
+                    en: "With animated edges",
+                    fr: "Avec des arêtes animées",
+                    pt: "Com arestas animadas",
+                    de: "Mit animierten Kanten",
+                    zh: "带有动画边",
+                    ja: "アニメーションするエッジ付き",
+                    es: "Con aristas animadas",
+                    ko: "애니메이션 엣지 포함",
+                    ar: "مع حواف متحركة",
+                },
             },
             // DAG WITH BACKGROUND PATTERN
             {
@@ -12004,26 +12357,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_DAG_BASIC.value.style.chart,
                             backgroundPattern: {
                                 show: true,
-                                dotColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
-                            }
-                        }
-                    }
+                                dotColor: isDarkMode.value
+                                    ? "#3A3A3A"
+                                    : "#E1E5E8",
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-background-pattern',
-                link: 'vue-ui-dag',
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-background-pattern",
+                link: "vue-ui-dag",
                 description: {
-                    en: 'With background pattern enabled',
-                    fr: 'Avec motif de fond activé',
-                    pt: 'Com padrão de fundo ativado',
-                    de: 'Mit aktiviertem Hintergrundmuster',
-                    zh: '启用背景图案',
-                    ja: '背景パターン有効',
-                    es: 'Con patrón de fondo activado',
-                    ko: '배경 패턴 활성화',
-                    ar: 'مع تفعيل نمط الخلفية'
-                }
+                    en: "With background pattern enabled",
+                    fr: "Avec motif de fond activé",
+                    pt: "Com padrão de fundo ativado",
+                    de: "Mit aktiviertem Hintergrundmuster",
+                    zh: "启用背景图案",
+                    ja: "背景パターン有効",
+                    es: "Con patrón de fondo activado",
+                    ko: "배경 패턴 활성화",
+                    ar: "مع تفعيل نمط الخلفية",
+                },
             },
             // DAG BASIC - LR
             {
@@ -12035,26 +12390,26 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_DAG_BASIC.value.style.chart,
                             layout: {
-                                rankDirection: 'LR'
-                            }
-                        }
-                    }
+                                rankDirection: "LR",
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-basic-LR',
-                link: 'vue-ui-dag',
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-basic-LR",
+                link: "vue-ui-dag",
                 description: {
-                    en: 'Basic DAG chart - Left to right',
-                    fr: 'Diagramme DAG basique - De gauche à droite',
-                    pt: 'Gráfico DAG básico - Da esquerda para a direita',
-                    de: 'Grundlegendes DAG-Diagramm – Von links nach rechts',
-                    zh: '基础DAG图——从左到右',
-                    ja: '基本的DAGチャート – 左から右へ',
-                    es: 'Gráfico DAG básico – De izquierda a derecha',
-                    ko: '기본 DAG 차트 – 왼쪽에서 오른쪽으로',
-                    ar: 'مخطط DAG أساسي – من اليسار إلى اليمين'
-                }
+                    en: "Basic DAG chart - Left to right",
+                    fr: "Diagramme DAG basique - De gauche à droite",
+                    pt: "Gráfico DAG básico - Da esquerda para a direita",
+                    de: "Grundlegendes DAG-Diagramm – Von links nach rechts",
+                    zh: "基础DAG图——从左到右",
+                    ja: "基本的DAGチャート – 左から右へ",
+                    es: "Gráfico DAG básico – De izquierda a derecha",
+                    ko: "기본 DAG 차트 – 왼쪽에서 오른쪽으로",
+                    ar: "مخطط DAG أساسي – من اليسار إلى اليمين",
+                },
             },
             // DAG SPECIAL - LR
             {
@@ -12066,26 +12421,26 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_DAG_BASIC.value.style.chart,
                             layout: {
-                                rankDirection: 'LR'
-                            }
-                        }
-                    }
+                                rankDirection: "LR",
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-special-LR',
-                link: 'vue-ui-dag',
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-special-LR",
+                link: "vue-ui-dag",
                 description: {
-                    en: 'With individual colors - Left to right',
-                    fr: 'Avec des couleurs individuelles – De gauche à droite',
-                    pt: 'Com cores individuais – Da esquerda para a direita',
-                    de: 'Mit individuellen Farben – Von links nach rechts',
-                    zh: '具有独立颜色——从左到右',
-                    ja: '個別の色付き – 左から右へ',
-                    es: 'Con colores individuales – De izquierda a derecha',
-                    ko: '개별 색상 적용 – 왼쪽에서 오른쪽으로',
-                    ar: 'مع ألوان فردية – من اليسار إلى اليمين'
-                }
+                    en: "With individual colors - Left to right",
+                    fr: "Avec des couleurs individuelles – De gauche à droite",
+                    pt: "Com cores individuais – Da esquerda para a direita",
+                    de: "Mit individuellen Farben – Von links nach rechts",
+                    zh: "具有独立颜色——从左到右",
+                    ja: "個別の色付き – 左から右へ",
+                    es: "Con colores individuales – De izquierda a derecha",
+                    ko: "개별 색상 적용 – 왼쪽에서 오른쪽으로",
+                    ar: "مع ألوان فردية – من اليسار إلى اليمين",
+                },
             },
             // DAG STRAIGHT EDGES
             {
@@ -12097,36 +12452,36 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_DAG_BASIC.value.style.chart,
                             layout: {
-                                curvedEdges: false
-                            }
-                        }
-                    }
+                                curvedEdges: false,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-straight-edges',
-                link: 'vue-ui-dag',
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-straight-edges",
+                link: "vue-ui-dag",
                 description: {
-                    en: 'DAG with straight edges',
-                    fr: 'DAG avec arêtes droites',
-                    pt: 'DAG com arestas retas',
-                    de: 'DAG mit geraden Kanten',
-                    zh: '具有直边的DAG',
-                    ja: '直線エッジのあるDAG',
-                    es: 'DAG con aristas rectas',
-                    ko: '직선 간선을 가진 DAG',
-                    ar: 'رسم DAG بحواف مستقيمة'
-                }
+                    en: "DAG with straight edges",
+                    fr: "DAG avec arêtes droites",
+                    pt: "DAG com arestas retas",
+                    de: "DAG mit geraden Kanten",
+                    zh: "具有直边的DAG",
+                    ja: "直線エッジのあるDAG",
+                    es: "DAG con aristas rectas",
+                    ko: "직선 간선을 가진 DAG",
+                    ar: "رسم DAG بحواف مستقيمة",
+                },
             },
             // DAG CUSTOM NODES
             {
                 dataset: DATASET_DAG_CUSTOM.value,
                 config: CONFIG_DAG_CUSTOM.value,
-                component: 'VueUiDag',
-                icon: 'chartDag',
-                id: 'dag-custom-nodes',
-                link: 'vue-ui-dag',
-                customNode:true,
+                component: "VueUiDag",
+                icon: "chartDag",
+                id: "dag-custom-nodes",
+                link: "vue-ui-dag",
+                customNode: true,
                 slot: `<template #node="{ node }">
                     <div :style="{
                         width: '100%',
@@ -12143,25 +12498,25 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     </div>
                 </template>`,
                 description: {
-                    en: 'With custom node content',
-                    fr: 'Avec un contenu de nœud personnalisé',
-                    pt: 'Com conteúdo de nó personalizado',
-                    de: 'Mit benutzerdefiniertem Knoteninhalte',
-                    zh: '具有自定义节点内容',
-                    ja: 'カスタムノードコンテンツ付き',
-                    es: 'Con contenido de nodo personalizado',
-                    ko: '사용자 지정 노드 콘텐츠 포함',
-                    ar: 'مع محتوى عقدة مخصص'
-                }
+                    en: "With custom node content",
+                    fr: "Avec un contenu de nœud personnalisé",
+                    pt: "Com conteúdo de nó personalizado",
+                    de: "Mit benutzerdefiniertem Knoteninhalte",
+                    zh: "具有自定义节点内容",
+                    ja: "カスタムノードコンテンツ付き",
+                    es: "Con contenido de nodo personalizado",
+                    ko: "사용자 지정 노드 콘텐츠 포함",
+                    ar: "مع محتوى عقدة مخصص",
+                },
             },
             // FUNNEL BASIC
             {
                 dataset: DATASET_FUNNEL_BASIC.value,
                 config: CONFIG_FUNNEL_BASIC.value,
-                component: 'VueUiFunnel',
-                icon: 'chartFunnel',
-                id: 'funnel-basic',
-                link: 'vue-ui-funnel',
+                component: "VueUiFunnel",
+                icon: "chartFunnel",
+                id: "funnel-basic",
+                link: "vue-ui-funnel",
                 description: {
                     en: "Basic funnel chart",
                     fr: "Graphique en entonnoir de base",
@@ -12171,8 +12526,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本的なファネルチャート",
                     es: "Gráfico de embudo básico",
                     ko: "기본 퍼널 차트",
-                    ar: "مخطط قمعي أساسي"
-                }
+                    ar: "مخطط قمعي أساسي",
+                },
             },
             // FUNNEL COLORS
             {
@@ -12184,25 +12539,26 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_FUNNEL_BASIC.value.style.chart,
                             circles: {
-                                ...CONFIG_FUNNEL_BASIC.value.style.chart.circles,
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                    .circles,
                                 strokeWidth: 6,
                                 dataLabels: {
                                     adaptColorToBackground: false,
-                                    color: colors.value.textColor
-                                }
+                                    color: colors.value.textColor,
+                                },
                             },
                             bars: {
                                 ...CONFIG_FUNNEL_BASIC.value.style.chart.bars,
                                 borderRadius: 36,
-                                strokeWidth: 6
-                            }
-                        }
-                    }
+                                strokeWidth: 6,
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiFunnel',
-                icon: 'chartFunnel',
-                id: 'funnel-colors',
-                link: 'vue-ui-funnel',
+                component: "VueUiFunnel",
+                icon: "chartFunnel",
+                id: "funnel-colors",
+                link: "vue-ui-funnel",
                 description: {
                     en: "With custom colors and rounded bars",
                     fr: "Avec des couleurs personnalisées et des barres arrondies",
@@ -12212,8 +12568,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタムカラーと丸みを帯びたバー付き",
                     es: "Con colores personalizados y barras redondeadas",
                     ko: "사용자 지정 색상 및 둥근 막대 포함",
-                    ar: "مع ألوان مخصصة وأشرطة مستديرة"
-                }
+                    ar: "مع ألوان مخصصة وأشرطة مستديرة",
+                },
             },
             // FUNNEL COMPACT
             {
@@ -12227,35 +12583,40 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             height: 200,
                             barCircleSpacingRatio: 0,
                             circles: {
-                                ...CONFIG_FUNNEL_BASIC.value.style.chart.circles,
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                    .circles,
                                 dataLabels: {
-                                    ...CONFIG_FUNNEL_BASIC.value.style.chart.dataLabels,
-                                    fontSize: 10
-                                }
+                                    ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                        .dataLabels,
+                                    fontSize: 10,
+                                },
                             },
                             bars: {
                                 ...CONFIG_FUNNEL_BASIC.value.style.chart.bars,
                                 gapRatio: 0,
                                 dataLabels: {
-                                    ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels,
+                                    ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                        .bars.dataLabels,
                                     name: {
-                                        ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels.name,
+                                        ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                            .bars.dataLabels.name,
                                         offsetY: 4,
-                                        fontSize: 12
+                                        fontSize: 12,
                                     },
                                     value: {
-                                        ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels.value,
-                                        fontSize: 12
+                                        ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                            .bars.dataLabels.value,
+                                        fontSize: 12,
                                     },
-                                }
-                            }
-                        }
-                    }
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiFunnel',
-                icon: 'chartFunnel',
-                id: 'funnel-compact',
-                link: 'vue-ui-funnel',
+                component: "VueUiFunnel",
+                icon: "chartFunnel",
+                id: "funnel-compact",
+                link: "vue-ui-funnel",
                 description: {
                     en: "Compact",
                     fr: "Compact",
@@ -12265,8 +12626,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "コンパクト",
                     es: "Compacto",
                     ko: "콤팩트",
-                    ar: "مضغوط"
-                }
+                    ar: "مضغوط",
+                },
             },
             // FUNNEL BACKGROUND
             {
@@ -12279,33 +12640,39 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             ...CONFIG_FUNNEL_BASIC.value.style.chart,
                             area: {
                                 ...CONFIG_FUNNEL_BASIC.value.style.chart.area,
-                                color: '#FFFFFF40'
+                                color: "#FFFFFF40",
                             },
                             circleLinks: {
-                                ...CONFIG_FUNNEL_BASIC.value.style.chart.circleLinks,
-                                color: '#FFFFFF40'
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                    .circleLinks,
+                                color: "#FFFFFF40",
                             },
                             bars: {
                                 ...CONFIG_FUNNEL_BASIC.value.style.chart.bars,
                                 dataLabels: {
-                                    ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels,
+                                    ...CONFIG_FUNNEL_BASIC.value.style.chart
+                                        .bars.dataLabels,
                                     name: {
-                                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                                        color: isDarkMode.value
+                                            ? "#FFFFFF"
+                                            : "#1A1A1A",
                                     },
                                     value: {
-                                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        color: isDarkMode.value
+                                            ? "#FFFFFF"
+                                            : "#1A1A1A",
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiFunnel',
-                icon: 'chartFunnel',
-                id: 'funnel-background',
-                link: 'vue-ui-funnel',
+                component: "VueUiFunnel",
+                icon: "chartFunnel",
+                id: "funnel-background",
+                link: "vue-ui-funnel",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -12320,8 +12687,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // TREEMAP BASIC
             {
@@ -12333,24 +12700,30 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_TREEMAP_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                    .layout,
                                 rects: {
-                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                        .layout.rects,
                                     group: {
-                                        stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
+                                        stroke: isDarkMode.value
+                                            ? "#8A8A8A"
+                                            : "#A1A1A1",
                                         label: {
-                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            color: isDarkMode.value
+                                                ? "#CCCCCC"
+                                                : "#1A1A1A",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiTreemap',
-                icon: 'chartTreemap',
-                id: 'treemap-basic',
-                link: 'vue-ui-treemap',
+                component: "VueUiTreemap",
+                icon: "chartTreemap",
+                id: "treemap-basic",
+                link: "vue-ui-treemap",
                 description: {
                     en: "Basic treemap chart",
                     fr: "Graphique en treemap de base",
@@ -12360,8 +12733,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本的なツリーマップチャート",
                     es: "Gráfico de mapa de árbol básico",
                     ko: "기본 트리맵 차트",
-                    ar: "مخطط شجري أساسي"
-                }
+                    ar: "مخطط شجري أساسي",
+                },
             },
             // TREEMAP ROUNDED CORNERS
             {
@@ -12373,25 +12746,29 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_TREEMAP_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                    .layout,
                                 rects: {
-                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                        .layout.rects,
                                     borderRadius: 24,
                                     group: {
                                         strokeWidth: 0,
                                         label: {
-                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            color: isDarkMode.value
+                                                ? "#CCCCCC"
+                                                : "#1A1A1A",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiTreemap',
-                icon: 'chartTreemap',
-                id: 'treemap-rounded-corners',
-                link: 'vue-ui-treemap',
+                component: "VueUiTreemap",
+                icon: "chartTreemap",
+                id: "treemap-rounded-corners",
+                link: "vue-ui-treemap",
                 description: {
                     en: "Rounded corners",
                     fr: "Coins arrondis",
@@ -12401,8 +12778,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "丸い角",
                     es: "Esquinas redondeadas",
                     ko: "둥근 모서리",
-                    ar: "زوايا مستديرة"
-                }
+                    ar: "زوايا مستديرة",
+                },
             },
             // TREEMAP NO GRADIENT
             {
@@ -12414,28 +12791,34 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_TREEMAP_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                    .layout,
                                 rects: {
-                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                        .layout.rects,
                                     colorRatio: 0.4,
                                     gradient: {
                                         show: false,
                                     },
                                     group: {
-                                        stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
+                                        stroke: isDarkMode.value
+                                            ? "#8A8A8A"
+                                            : "#A1A1A1",
                                         label: {
-                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            color: isDarkMode.value
+                                                ? "#CCCCCC"
+                                                : "#1A1A1A",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiTreemap',
-                icon: 'chartTreemap',
-                id: 'treemap-no-gradient',
-                link: 'vue-ui-treemap',
+                component: "VueUiTreemap",
+                icon: "chartTreemap",
+                id: "treemap-no-gradient",
+                link: "vue-ui-treemap",
                 description: {
                     en: "Without gradient",
                     fr: "Sans dégradé",
@@ -12445,8 +12828,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "グラデーションなし",
                     es: "Sin degradado",
                     ko: "그라데이션 없음",
-                    ar: "بدون تدرج"
-                }
+                    ar: "بدون تدرج",
+                },
             },
             // TREEMAP WITH GROUP BG
             {
@@ -12458,9 +12841,11 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_TREEMAP_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                    .layout,
                                 rects: {
-                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                        .layout.rects,
                                     colorRatio: 0,
                                     gradient: {
                                         show: false,
@@ -12468,16 +12853,16 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     group: {
                                         useSeriesBackgroundColor: true,
                                         backgroundLighterRatio: 0.2,
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiTreemap',
-                icon: 'chartTreemap',
-                id: 'treemap-no-gradient-with-group-bg',
-                link: 'vue-ui-treemap',
+                component: "VueUiTreemap",
+                icon: "chartTreemap",
+                id: "treemap-no-gradient-with-group-bg",
+                link: "vue-ui-treemap",
                 description: {
                     en: "With group background color",
                     fr: "Avec couleur d’arrière-plan de groupe",
@@ -12487,8 +12872,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "グループの背景色付き",
                     es: "Con color de fondo del grupo",
                     ko: "그룹 배경색 포함",
-                    ar: "مع لون خلفية المجموعة"
-                    }
+                    ar: "مع لون خلفية المجموعة",
+                },
             },
             // TREEMAP #RECT SLOT
             {
@@ -12500,27 +12885,31 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_TREEMAP_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                    .layout,
                                 rects: {
-                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
-                                    stroke: 'transparent',
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                        .layout.rects,
+                                    stroke: "transparent",
                                     group: {
-                                        stroke: 'transparent',
+                                        stroke: "transparent",
                                         label: {
-                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            color: isDarkMode.value
+                                                ? "#CCCCCC"
+                                                : "#1A1A1A",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiTreemap',
-                icon: 'chartTreemap',
-                id: 'treemap-slot-rect',
-                link: 'vue-ui-treemap',
+                component: "VueUiTreemap",
+                icon: "chartTreemap",
+                id: "treemap-slot-rect",
+                link: "vue-ui-treemap",
                 useRectSlot: true,
-                tags: ['#rect'],
+                tags: ["#rect"],
                 slot: `<template #rect="{ rect, shouldShow, fontSize, isZoom, textColor }">
                 <div>{{ rect.name }}</div>
             </template>`,
@@ -12533,8 +12922,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "#rect スロットを使用",
                     es: "Usando el slot #rect",
                     ko: "#rect 슬롯 사용",
-                    ar: "استخدام فتحة #rect"
-                }
+                    ar: "استخدام فتحة #rect",
+                },
             },
             // TREEMAP #GROUP-LABEL SLOT
             {
@@ -12546,26 +12935,32 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                         chart: {
                             ...CONFIG_TREEMAP_BASIC.value.style.chart,
                             layout: {
-                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                    .layout,
                                 rects: {
-                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart
+                                        .layout.rects,
                                     group: {
-                                        stroke: isDarkMode.value ? '#8A8A8A' : '#A1A1A1',
+                                        stroke: isDarkMode.value
+                                            ? "#8A8A8A"
+                                            : "#A1A1A1",
                                         label: {
-                                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            color: isDarkMode.value
+                                                ? "#CCCCCC"
+                                                : "#1A1A1A",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiTreemap',
-                icon: 'chartTreemap',
-                id: 'treemap-slot-group',
-                link: 'vue-ui-treemap',
+                component: "VueUiTreemap",
+                icon: "chartTreemap",
+                id: "treemap-slot-group",
+                link: "vue-ui-treemap",
                 useGroupLabelSlot: true,
-                tags: ['#group-label'],
+                tags: ["#group-label"],
                 slot: `<template #group-label="{ group }">
                 <div>
                     {{ group.name }}: {{ group.value }}
@@ -12580,17 +12975,17 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "#group スロットを使用",
                     es: "Usando el slot #group",
                     ko: "#group 슬롯 사용",
-                    ar: "استخدام فتحة #group"
-                }
+                    ar: "استخدام فتحة #group",
+                },
             },
             // BASIC HISTORY PLOT
             {
                 dataset: DATASET_HISTORY_PLOT_BASIC.value,
                 config: CONFIG_HISTORY_PLOT_BASIC.value,
-                component: 'VueUiHistoryPlot',
-                icon: 'chartHistoryPlot',
-                id: 'history-plot-basic',
-                link: 'vue-ui-history-plot',
+                component: "VueUiHistoryPlot",
+                icon: "chartHistoryPlot",
+                id: "history-plot-basic",
+                link: "vue-ui-history-plot",
                 description: {
                     en: "Basic layout",
                     fr: "Disposition de base",
@@ -12600,8 +12995,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本レイアウト",
                     es: "Diseño básico",
                     ko: "기본 레이아웃",
-                    ar: "تخطيط أساسي"
-                }
+                    ar: "تخطيط أساسي",
+                },
             },
             // HISTORY PLOT THICK PATH
             {
@@ -12615,15 +13010,15 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             paths: {
                                 useSerieColor: false,
                                 strokeWidth: 24,
-                                stroke: colors.value.gridStroke + '40'
-                            }
-                        }
-                    }
+                                stroke: colors.value.gridStroke + "40",
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiHistoryPlot',
-                icon: 'chartHistoryPlot',
-                id: 'history-plot-thick-path',
-                link: 'vue-ui-history-plot',
+                component: "VueUiHistoryPlot",
+                icon: "chartHistoryPlot",
+                id: "history-plot-thick-path",
+                link: "vue-ui-history-plot",
                 description: {
                     en: "With Thick path",
                     fr: "Avec chemin épais",
@@ -12633,19 +13028,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "太いパス付き",
                     es: "Con trazo grueso",
                     ko: "두꺼운 경로 포함",
-                    ar: "بمسار سميك"
-                }
+                    ar: "بمسار سميك",
+                },
             },
             // BASIC HISTORY PLOT BACKGROUND
             {
                 dataset: DATASET_HISTORY_PLOT_BASIC.value,
                 config: CONFIG_HISTORY_PLOT_BASIC.value,
-                component: 'VueUiHistoryPlot',
-                icon: 'chartHistoryPlot',
-                id: 'history-plot-background',
-                link: 'vue-ui-history-plot',
+                component: "VueUiHistoryPlot",
+                icon: "chartHistoryPlot",
+                id: "history-plot-background",
+                link: "vue-ui-history-plot",
                 chartBackground: true,
-                tags: ['#chart-background'],
+                tags: ["#chart-background"],
                 slot: `<template #chart-background>
                 <div :style="{ height: '100%', width: '100%' }">
                     <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
@@ -12660,28 +13055,28 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "カスタム背景付き",
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
+                    ar: "مع خلفية مخصصة",
+                },
             },
             // BUMP VALUES
             {
                 dataset: DATASET_BUMP_DEFAULT.value,
                 config: CONFIG_BUMP_CLASSIC.value,
-                component: 'VueUiBump',
-                icon: 'chartBump',
-                id: 'bump-values',
-                link: 'vue-ui-bump',
+                component: "VueUiBump",
+                icon: "chartBump",
+                id: "bump-values",
+                link: "vue-ui-bump",
                 description: {
-                    en: 'Basic bump chart with values',
-                    fr: 'Graphique de type bump basique avec valeurs',
-                    pt: 'Gráfico bump básico com valores',
-                    de: 'Einfaches Bump-Diagramm mit Werten',
-                    zh: '带数值的基础跃迁图',
-                    ja: '値を含む基本的なバンプチャート',
-                    es: 'Gráfico bump básico con valores',
-                    ko: '값이 포함된 기본 범프 차트',
-                    ar: 'مخطط بامب أساسي مع قيم'
-                }
+                    en: "Basic bump chart with values",
+                    fr: "Graphique de type bump basique avec valeurs",
+                    pt: "Gráfico bump básico com valores",
+                    de: "Einfaches Bump-Diagramm mit Werten",
+                    zh: "带数值的基础跃迁图",
+                    ja: "値を含む基本的なバンプチャート",
+                    es: "Gráfico bump básico con valores",
+                    ko: "값이 포함된 기본 범프 차트",
+                    ar: "مخطط بامب أساسي مع قيم",
+                },
             },
             // BUMP RANKS
             {
@@ -12695,32 +13090,33 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_BUMP_CLASSIC.value.style.chart.layout,
                                 plots: {
-                                    ...CONFIG_BUMP_CLASSIC.value.style.chart.layout.plots,
+                                    ...CONFIG_BUMP_CLASSIC.value.style.chart
+                                        .layout.plots,
                                     radius: 16,
                                     labels: {
-                                        displayedValue: 'rank',
-                                        fontSize: 16
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        displayedValue: "rank",
+                                        fontSize: 16,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiBump',
-                icon: 'chartBump',
-                id: 'bump-ranking',
-                link: 'vue-ui-bump',
+                component: "VueUiBump",
+                icon: "chartBump",
+                id: "bump-ranking",
+                link: "vue-ui-bump",
                 description: {
-                    en: 'Basic bump chart with ranks',
-                    fr: 'Graphique de type bump basique avec rangs',
-                    pt: 'Gráfico bump básico com classificações',
-                    de: 'Einfaches Bump-Diagramm mit Rängen',
-                    zh: '带排名的基础跃迁图',
-                    ja: '順位を含む基本的なバンプチャート',
-                    es: 'Gráfico bump básico con clasificaciones',
-                    ko: '순위가 포함된 기본 범프 차트',
-                    ar: 'مخطط بامب أساسي مع مراتب'
-                }
+                    en: "Basic bump chart with ranks",
+                    fr: "Graphique de type bump basique avec rangs",
+                    pt: "Gráfico bump básico com classificações",
+                    de: "Einfaches Bump-Diagramm mit Rängen",
+                    zh: "带排名的基础跃迁图",
+                    ja: "順位を含む基本的なバンプチャート",
+                    es: "Gráfico bump básico con clasificaciones",
+                    ko: "순위가 포함된 기본 범프 차트",
+                    ar: "مخطط بامب أساسي مع مراتب",
+                },
             },
             // BUMP RANKS DENSE
             {
@@ -12735,43 +13131,45 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             layout: {
                                 ...CONFIG_BUMP_CLASSIC.value.style.chart.layout,
                                 timeLabels: {
-                                    ...CONFIG_BUMP_CLASSIC.value.style.chart.layout.timeLabels,
-                                    offsetY: 12
+                                    ...CONFIG_BUMP_CLASSIC.value.style.chart
+                                        .layout.timeLabels,
+                                    offsetY: 12,
                                 },
                                 plots: {
-                                    ...CONFIG_BUMP_CLASSIC.value.style.chart.layout.plots,
+                                    ...CONFIG_BUMP_CLASSIC.value.style.chart
+                                        .layout.plots,
                                     labels: {
-                                        displayedValue: 'rank'
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        displayedValue: "rank",
+                                    },
+                                },
+                            },
+                        },
+                    },
                 },
-                component: 'VueUiBump',
-                icon: 'chartBump',
-                id: 'bump-ranking-dense',
-                link: 'vue-ui-bump',
+                component: "VueUiBump",
+                icon: "chartBump",
+                id: "bump-ranking-dense",
+                link: "vue-ui-bump",
                 description: {
-                    en: 'Dense bump chart with ranks',
-                    fr: 'Graphique de type bump dense avec rangs',
-                    pt: 'Gráfico bump denso com classificações',
-                    de: 'Dichtes Bump-Diagramm mit Rängen',
-                    zh: '带排名的密集跃迁图',
-                    ja: '順位を含む密集したバンプチャート',
-                    es: 'Gráfico bump denso con clasificaciones',
-                    ko: '순위가 포함된 밀집 범프 차트',
-                    ar: 'مخطط بامب كثيف مع مراتب'
-                }
+                    en: "Dense bump chart with ranks",
+                    fr: "Graphique de type bump dense avec rangs",
+                    pt: "Gráfico bump denso com classificações",
+                    de: "Dichtes Bump-Diagramm mit Rängen",
+                    zh: "带排名的密集跃迁图",
+                    ja: "順位を含む密集したバンプチャート",
+                    es: "Gráfico bump denso con clasificaciones",
+                    ko: "순위가 포함된 밀집 범프 차트",
+                    ar: "مخطط بامب كثيف مع مراتب",
+                },
             },
             // RINGS BASIC
             {
                 dataset: DATASET_RINGS_BASIC.value,
                 config: CONFIG_RINGS_BASE.value,
-                component: 'VueUiRings',
-                icon: 'chartRings',
-                id: 'rings-basic',
-                link: 'vue-ui-rings',
+                component: "VueUiRings",
+                icon: "chartRings",
+                id: "rings-basic",
+                link: "vue-ui-rings",
                 description: {
                     en: "Basic rings chart",
                     fr: "Graphique en anneaux basique",
@@ -12781,8 +13179,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "基本的なリングチャート",
                     es: "Gráfico de anillos básico",
                     ko: "기본 링 차트",
-                    ar: "مخطط حلقات أساسي"
-                }
+                    ar: "مخطط حلقات أساسي",
+                },
             },
             // RINGS THICK NO GRADIENT NO SHADOW
             {
@@ -12794,22 +13192,24 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                             chart: {
                                 layout: {
                                     rings: {
-                                        stroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                                        stroke: isDarkMode.value
+                                            ? "#3A3A3A"
+                                            : "#E1E5E8",
                                         strokeWidth: 12,
                                         useShadow: false,
                                         gradient: {
-                                            show: false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            show: false,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiRings',
-                icon: 'chartRings',
-                id: 'rings-thick-no-gradient-no-shadow',
-                link: 'vue-ui-rings',
+                component: "VueUiRings",
+                icon: "chartRings",
+                id: "rings-thick-no-gradient-no-shadow",
+                link: "vue-ui-rings",
                 description: {
                     en: "Thick borders, no gradient, no shadow",
                     fr: "Bordures épaisses, sans dégradé, sans ombre",
@@ -12819,8 +13219,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "太い境界線、グラデーションなし、影なし",
                     es: "Bordes gruesos, sin degradado, sin sombra",
                     ko: "두꺼운 테두리, 그라데이션 없음, 그림자 없음",
-                    ar: "حدود سميكة، بدون تدرج، بدون ظل"
-                }
+                    ar: "حدود سميكة، بدون تدرج، بدون ظل",
+                },
             },
             // RINGS WITH DATA LABELS LEFT
             {
@@ -12836,19 +13236,19 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                             show: true,
                                             color: colors.value.textColor,
                                             markers: {
-                                                position: 'left'
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                                position: "left",
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiRings',
-                icon: 'chartRings',
-                id: 'rings-with-labels-left',
-                link: 'vue-ui-rings',
+                component: "VueUiRings",
+                icon: "chartRings",
+                id: "rings-with-labels-left",
+                link: "vue-ui-rings",
                 description: {
                     en: "With data labels on the left side",
                     fr: "Avec des étiquettes de données sur le côté gauche",
@@ -12858,8 +13258,8 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "左側にデータラベル付き",
                     es: "Con etiquetas de datos en el lado izquierdo",
                     ko: "왼쪽에 데이터 레이블 포함",
-                    ar: "مع تسميات البيانات على الجانب الأيسر"
-                }
+                    ar: "مع تسميات البيانات على الجانب الأيسر",
+                },
             },
             // RINGS WITH DATA LABELS RIGHT
             {
@@ -12873,18 +13273,18 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                                     labels: {
                                         dataLabels: {
                                             show: true,
-                                            color: colors.value.textColor
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                            color: colors.value.textColor,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
-                component: 'VueUiRings',
-                icon: 'chartRings',
-                id: 'rings-with-labels-right',
-                link: 'vue-ui-rings',
+                component: "VueUiRings",
+                icon: "chartRings",
+                id: "rings-with-labels-right",
+                link: "vue-ui-rings",
                 description: {
                     en: "With data labels on the right side",
                     fr: "Avec des étiquettes de données sur le côté droit",
@@ -12894,15 +13294,14 @@ const DATASET_WORDCLOUD_ENGLISH = computed(() => {
                     ja: "右側にデータラベル付き",
                     es: "Con etiquetas de datos en el lado derecho",
                     ko: "오른쪽에 데이터 레이블 포함",
-                    ar: "مع تسميات البيانات على الجانب الأيمن"
-                }
+                    ar: "مع تسميات البيانات على الجانب الأيمن",
+                },
             },
-        ]
-    })
+        ];
+    });
 
     return {
         examples,
-        curvedMarkers
-    }
-
+        curvedMarkers,
+    };
 }

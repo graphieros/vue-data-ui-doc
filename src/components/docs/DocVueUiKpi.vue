@@ -16,24 +16,27 @@ import DocSnapper from "../DocSnapper.vue";
 import useMobile from "../../useMobile";
 import BaseDocDescription from "../BaseDocDescription.vue";
 
-const mainConfig = useConfig()
+const mainConfig = useConfig();
 
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
 const isFixed = ref(false);
 
-onMounted(() => store.docSnap = false);
+onMounted(() => (store.docSnap = false));
 
-watch(() => store.isDarkMode, (val) => {
-    nextTick(() => {
-        key.value += 1;
-    })
-});
+watch(
+    () => store.isDarkMode,
+    (val) => {
+        nextTick(() => {
+            key.value += 1;
+        });
+    },
+);
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
+});
 
 const dataset0 = ref(299792458);
 const dataset1 = ref(40075);
@@ -41,73 +44,79 @@ const dataset2 = ref(384400);
 
 const config = computed(() => {
     return {
-    debug: false,
-    animationFrames: 60,
-    animationValueStart: 0,
-    backgroundColor: "#FFFFFF",
-    fontFamily: "inherit",
-    layoutClass: "p-4 rounded-md shadow-md mb-6 w-full max-w-[350px] mx-auto",
-    prefix: "",
-    suffix: "m/s",
-    title: "Speed of light",
-    titleBold: true,
-    titleColor: "#2D353C",
-    titleClass: "",
-    titleCss: "",
-    titleFontSize: 16,
-    useAnimation: true,
-    valueBold: true,
-    valueColor: "#6376DD",
-    valueClass: "tabular-nums",
-    valueCss: "",
-    valueFontSize: 32,
-    valueRounding: 0,
-    analogDigits: {
-        show: false,
-        height: 40,
-        color: '#1A1A1A',
-        skeletonColor: "#E1E5E8"
-    }
-}
-})
+        debug: false,
+        animationFrames: 60,
+        animationValueStart: 0,
+        backgroundColor: "#FFFFFF",
+        fontFamily: "inherit",
+        layoutClass:
+            "p-4 rounded-md shadow-md mb-6 w-full max-w-[350px] mx-auto",
+        prefix: "",
+        suffix: "m/s",
+        title: "Speed of light",
+        titleBold: true,
+        titleColor: "#2D353C",
+        titleClass: "",
+        titleCss: "",
+        titleFontSize: 16,
+        useAnimation: true,
+        valueBold: true,
+        valueColor: "#6376DD",
+        valueClass: "tabular-nums",
+        valueCss: "",
+        valueFontSize: 32,
+        valueRounding: 0,
+        analogDigits: {
+            show: false,
+            height: 40,
+            color: "#1A1A1A",
+            skeletonColor: "#E1E5E8",
+        },
+    };
+});
 
 const darkModeConfig = computed(() => {
     return {
-    debug: false,
-    animationFrames: 60,
-    animationValueStart: 0,
-    backgroundColor: "#2A2A2A",
-    fontFamily: "inherit",
-    layoutClass: "p-4 rounded-md shadow-md mb-6 w-full max-w-[350px] mx-auto",
-    prefix: "",
-    suffix: " m/s",
-    title: "Speed of light",
-    titleBold: true,
-    titleColor: "#CCCCCC",
-    titleClass: "",
-    titleCss: "",
-    titleFontSize: 18,
-    useAnimation: true,
-    valueBold: true,
-    valueColor: "#6376DD",
-    valueClass: "tabular-nums",
-    valueCss: "",
-    valueFontSize: 36,
-    valueRounding: 0,
-    analogDigits: {
-        show: false,
-        height: 40,
-        color: '#6376DD',
-        skeletonColor: "#2A2A2A"
-    }
-}
-})
+        debug: false,
+        animationFrames: 60,
+        animationValueStart: 0,
+        backgroundColor: "#2A2A2A",
+        fontFamily: "inherit",
+        layoutClass:
+            "p-4 rounded-md shadow-md mb-6 w-full max-w-[350px] mx-auto",
+        prefix: "",
+        suffix: " m/s",
+        title: "Speed of light",
+        titleBold: true,
+        titleColor: "#CCCCCC",
+        titleClass: "",
+        titleCss: "",
+        titleFontSize: 18,
+        useAnimation: true,
+        valueBold: true,
+        valueColor: "#6376DD",
+        valueClass: "tabular-nums",
+        valueCss: "",
+        valueFontSize: 36,
+        valueRounding: 0,
+        analogDigits: {
+            show: false,
+            height: 40,
+            color: "#6376DD",
+            skeletonColor: "#2A2A2A",
+        },
+    };
+});
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
+const mutableConfigDarkMode = ref(
+    JSON.parse(JSON.stringify(darkModeConfig.value)),
+);
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
+    mutableConfigDarkMode.value = JSON.parse(
+        JSON.stringify(darkModeConfig.value),
+    );
 }
 
 function forceChartUpdate() {
@@ -115,36 +124,37 @@ function forceChartUpdate() {
 }
 
 function copyToClipboard(conf) {
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
+    let selBox = document.createElement("textarea");
+    selBox.style.position = "fixed";
+    selBox.style.left = "0";
+    selBox.style.top = "0";
+    selBox.style.opacity = "0";
     selBox.value = JSON.stringify(conf);
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(selBox);
     store.copy();
 }
 
-const { configCode, showAllConfig } = useConfigCode()
+const { configCode, showAllConfig } = useConfigCode();
 
-const { isMobile } = useMobile()
+const { isMobile } = useMobile();
 
 function fixChart() {
     isFixed.value = !isFixed.value;
     store.docSnap = !store.docSnap;
 }
-
 </script>
 
 <template>
     <div>
         <BaseDocTitle name="VueUiKpi" />
 
-        <BaseDocDescription :text="translations.docs.tooltips.kpi[store.lang]"/>
+        <BaseDocDescription
+            :text="translations.docs.tooltips.kpi[store.lang]"
+        />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-kpi"
@@ -158,20 +168,39 @@ function fixChart() {
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+                @copyToClipboard="
+                    copyToClipboard(isDarkMode ? darkModeConfig : config)
+                "
             >
-                <VueDataUi 
-                    component="VueUiKpi" 
-                    :dataset="dataset0" 
-                    :config="isDarkMode ? {
-                        ...mutableConfigDarkMode,
-                        valueFontSize: isFixed ? 28 : mutableConfigDarkMode.valueFontSize 
-                    } : {
-                        ...mutableConfig,
-                        valueFontSize: isFixed ? 28 : mutableConfig.valueFontSize
-                    }" :key="`kpi0_${key}`">
+                <VueDataUi
+                    component="VueUiKpi"
+                    :dataset="dataset0"
+                    :config="
+                        isDarkMode
+                            ? {
+                                  ...mutableConfigDarkMode,
+                                  valueFontSize: isFixed
+                                      ? 28
+                                      : mutableConfigDarkMode.valueFontSize,
+                              }
+                            : {
+                                  ...mutableConfig,
+                                  valueFontSize: isFixed
+                                      ? 28
+                                      : mutableConfig.valueFontSize,
+                              }
+                    "
+                    :key="`kpi0_${key}`"
+                >
                     <template #comment-before>
-                        <div :class="`max-w-[300px] text-[12px] mt-2 text-gray-500 ${mutableConfigDarkMode.analogDigits.show || mutableConfig.analogDigits.show ? 'mb-2' : ''}`">According to the special theory of relativity, c is the upper limit for the speed at which conventional matter or energy (and thus any signal carrying information) can travel through space</div>
+                        <div
+                            :class="`max-w-[300px] text-[12px] mt-2 text-gray-500 ${mutableConfigDarkMode.analogDigits.show || mutableConfig.analogDigits.show ? 'mb-2' : ''}`"
+                        >
+                            According to the special theory of relativity, c is
+                            the upper limit for the speed at which conventional
+                            matter or energy (and thus any signal carrying
+                            information) can travel through space
+                        </div>
                     </template>
                 </VueDataUi>
             </DocSnapper>
@@ -186,57 +215,246 @@ function fixChart() {
                 </div>
                 {{ translations.docs.example[store.lang] }}
                 <div class="w-full overflow-x auto">
-<pre>
+                    <pre>
 <code>
 const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
 </code>
-</pre>                    
+</pre>
                 </div>
             </template>
 
             <template #tab1>
                 <div class="flex gap-2">
-                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
-                    <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                    <button
+                        @click="resetDefault"
+                        class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all"
+                    >
+                        {{ translations.docs.reset[store.lang] }}
+                    </button>
+                    <button
+                        @click="
+                            copyToClipboard(
+                                isDarkMode
+                                    ? mutableConfigDarkMode
+                                    : mutableConfig,
+                            )
+                        "
+                        class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"
+                    >
+                        <CopyIcon />
+                        {{ translations.docs.copyThisConfig[store.lang] }}
+                    </button>
                 </div>
                 <div class="mt-4">
                     TS type: <code class="text-app-blue">VueUiKpiConfig</code>
                 </div>
 
-<div class="my-4">
-    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
-</div>
+                <div class="my-4">
+                    Toggle tree view:
+                    <input type="checkbox" v-model="showAllConfig" />
+                </div>
 
-<code ref="configCode">
-    <BaseDetails attr="const config: VueUiKpiConfig" equal>
-        <BaseAttr inactive name="debug" defaultVal="false"/>
-        <BaseAttr name="animationFrames" attr="animationFrames" type="number" defaultVal="60" :min="0" :max="1000" :step="20" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
-        <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
-        <BaseAttr name="layoutClass" attr="layoutClass" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="layoutCss" attr="layoutCss" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="prefix" attr="prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="suffix" attr="suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="title" attr="title" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="titleBold" attr="titleBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="titleColor" attr="titleColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="titleClass" attr="titleClass" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="titleCss" attr="titleCss" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="titleFontSize" attr="titleFontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="valueBold" attr="valueBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="valueClass" attr="valueClass" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="valueCss" attr="valueCss" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="valueFontSize" attr="valueFontSize" type="number" defaultVal="32" :min="8" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="valueRounding" attr="valueRounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseDetails attr="analogDigits" :level="1">
-            <BaseAttr name="show" attr="analogDigits.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-            <BaseAttr name="height" attr="analogDigits.height" type="number" defaultVal="40" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="color" attr="analogDigits.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="skeletonColor" attr="analogDigits.skeletonColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        </BaseDetails>
-    </BaseDetails>
-</code>
+                <code ref="configCode">
+                    <BaseDetails attr="const config: VueUiKpiConfig" equal>
+                        <BaseAttr inactive name="debug" defaultVal="false" />
+                        <BaseAttr
+                            name="animationFrames"
+                            attr="animationFrames"
+                            type="number"
+                            defaultVal="60"
+                            :min="0"
+                            :max="1000"
+                            :step="20"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                            @change="forceChartUpdate()"
+                        />
+                        <BaseAttr
+                            name="backgroundColor"
+                            attr="backgroundColor"
+                            type="color"
+                            defaultVal="#FFFFFF"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            inactive
+                            name="fontFamily"
+                            defaultVal="'inherit'"
+                        />
+                        <BaseAttr
+                            name="layoutClass"
+                            attr="layoutClass"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="layoutCss"
+                            attr="layoutCss"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="prefix"
+                            attr="prefix"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="suffix"
+                            attr="suffix"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="title"
+                            attr="title"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="titleBold"
+                            attr="titleBold"
+                            type="checkbox"
+                            defaultVal="true"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="titleColor"
+                            attr="titleColor"
+                            type="color"
+                            defaultVal="#2D353C"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="titleClass"
+                            attr="titleClass"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="titleCss"
+                            attr="titleCss"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="titleFontSize"
+                            attr="titleFontSize"
+                            type="number"
+                            defaultVal="16"
+                            :min="8"
+                            :max="42"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="useAnimation"
+                            attr="useAnimation"
+                            type="checkbox"
+                            defaultVal="true"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="valueBold"
+                            attr="valueBold"
+                            type="checkbox"
+                            defaultVal="true"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="valueClass"
+                            attr="valueClass"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="valueCss"
+                            attr="valueCss"
+                            type="text"
+                            defaultVal="''"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="valueFontSize"
+                            attr="valueFontSize"
+                            type="number"
+                            defaultVal="32"
+                            :min="8"
+                            :max="64"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                            name="valueRounding"
+                            attr="valueRounding"
+                            type="number"
+                            defaultVal="0"
+                            :min="0"
+                            :max="6"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseDetails attr="analogDigits" :level="1">
+                            <BaseAttr
+                                name="show"
+                                attr="analogDigits.show"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                                @change="forceChartUpdate()"
+                            />
+                            <BaseAttr
+                                name="height"
+                                attr="analogDigits.height"
+                                type="number"
+                                defaultVal="40"
+                                :min="20"
+                                :max="100"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="color"
+                                attr="analogDigits.color"
+                                type="color"
+                                defaultVal="#2D353C"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="skeletonColor"
+                                attr="analogDigits.skeletonColor"
+                                type="color"
+                                defaultVal="#E1E5E8"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
+                    </BaseDetails>
+                </code>
             </template>
 
             <template #tab3>
@@ -247,7 +465,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                         'value',
                         'comment-before',
                         'comment-after',
-                    ]" 
+                    ]"
                 />
             </template>
         </Box>

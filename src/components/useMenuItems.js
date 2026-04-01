@@ -1,13 +1,11 @@
 import { computed } from "vue";
 import { useMainStore } from "../stores";
 
-
 export function useMenuItems() {
-
     const store = useMainStore();
     const translations = computed(() => {
         return store.translations;
-    })
+    });
 
     const menuItems = computed(() => [
         {
@@ -16,11 +14,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.xy[store.lang],
             link: "/docs#vue-ui-xy",
             type: "xy",
-            thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_xy.png", import.meta.url).href,
+            thumbLight: new URL("../assets/thumb_xy_light.png", import.meta.url)
+                .href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "XyCanvas",
@@ -28,35 +27,47 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.xyCanvas[store.lang],
             link: "/docs#vue-ui-xy-canvas",
             type: "xy",
-            thumb: new URL('../assets/thumb_xy_canvas.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_xy_canvas_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_xy_canvas.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_xy_canvas_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Stackbar",
             icon: "chartStackbar",
             tooltip: translations.value.docs.tooltips.stackbarBig[store.lang],
             link: "/docs#vue-ui-stackbar",
-            type: 'xy',
-            thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
+            type: "xy",
+            thumb: new URL("../assets/thumb_stack_bar.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_stack_bar_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Stackline",
             icon: "chartStackline",
             tooltip: translations.value.docs.tooltips.stackline[store.lang],
             link: "/docs#vue-ui-stackline",
-            type: 'xy',
-            thumb: new URL('../assets/thumb_stack_line.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_stack_line_light.png', import.meta.url).href,
+            type: "xy",
+            thumb: new URL("../assets/thumb_stack_line.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_stack_line_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Donut",
@@ -64,11 +75,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.donut[store.lang],
             link: "/docs#vue-ui-donut",
             type: "donuts",
-            thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_donut.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_donut_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Treemap",
@@ -76,11 +90,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.treemap[store.lang],
             link: "/docs#vue-ui-treemap",
             type: "donuts",
-            thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_treemap.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_treemap_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Galaxy",
@@ -88,11 +105,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.galaxy[store.lang],
             link: "/docs#vue-ui-galaxy",
             type: "donuts",
-            thumb: new URL('../assets/thumb_galaxy.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_galaxy.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_galaxy_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "CirclePack",
@@ -100,11 +120,15 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.circlePack[store.lang],
             link: "/docs#vue-ui-circle-pack",
             type: "donuts",
-            thumb: new URL('../assets/thumb_circle_pack.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_circle_pack.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_circle_pack_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: false
+            hasLegend: false,
         },
         {
             name: "NestedDonuts",
@@ -112,23 +136,34 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.nestedDonuts[store.lang],
             link: "/docs#vue-ui-nested-donuts",
             type: "donuts",
-            thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_nested_donuts.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_nested_donuts_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "DonutEvolution",
             icon: "chartDonutEvolution",
-            tooltip: translations.value.docs.tooltips.donutEvolution[store.lang],
+            tooltip:
+                translations.value.docs.tooltips.donutEvolution[store.lang],
             link: "/docs#vue-ui-donut-evolution",
-            type: ['donuts', 'xy'],
-            thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href,
+            type: ["donuts", "xy"],
+            thumb: new URL(
+                "../assets/thumb_donut_evolution.png",
+                import.meta.url,
+            ).href,
+            thumbLight: new URL(
+                "../assets/thumb_donut_evolution_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Waffle",
@@ -136,11 +171,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.waffle[store.lang],
             link: "/docs#vue-ui-waffle",
             type: "donuts",
-            thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_waffle.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_waffle_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Rings",
@@ -148,11 +186,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.rings[store.lang],
             link: "/docs#vue-ui-rings",
             type: "donuts",
-            thumb: new URL('../assets/thumb_rings.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_rings_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_rings.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_rings_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Radar",
@@ -160,11 +201,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.radar[store.lang],
             link: "/docs#vue-ui-radar",
             type: "radar",
-            thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_radar.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_radar_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Quadrant",
@@ -172,11 +216,15 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.quadrant[store.lang],
             link: "/docs#vue-ui-quadrant",
             type: "misc",
-            thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_quadrant.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_quadrant_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Dag",
@@ -184,11 +232,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.dag[store.lang],
             link: "/docs#vue-ui-dag",
             type: "graphs",
-            thumb: new URL('../assets/thumb_dag.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_dag_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_dag.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_dag_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
-            hasLegend: false
+            hasLegend: false,
         },
         {
             name: "Gauge",
@@ -196,11 +247,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.gauge[store.lang],
             link: "/docs#vue-ui-gauge",
             type: "gauge",
-            thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_gauge.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_gauge_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Wheel",
@@ -208,8 +262,11 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.wheel[store.lang],
             link: "/docs#vue-ui-wheel",
             type: "gauge",
-            thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_wheel_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_wheel.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_wheel_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
         },
@@ -219,8 +276,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.tiremarks[store.lang],
             link: "/docs#vue-ui-tiremarks",
             type: "gauge",
-            thumb: new URL('../assets/thumb_tiremarks.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_tiremarks.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_tiremarks_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
         },
@@ -229,36 +290,47 @@ export function useMenuItems() {
             icon: "chartChestnut",
             tooltip: translations.value.docs.tooltips.chestnut[store.lang],
             link: "/docs#vue-ui-chestnut",
-            type: ['xy', 'donuts', 'misc'],
-            thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href,
+            type: ["xy", "donuts", "misc"],
+            thumb: new URL("../assets/thumb_chestnut.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_chestnut_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Ridgeline",
             icon: "chartRidgeline",
             tooltip: translations.value.docs.tooltips.ridgeline[store.lang],
             link: "/docs#vue-ui-ridgeline",
-            type: ['xy'],
-            thumb: new URL('../assets/thumb_ridgeline.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href,
+            type: ["xy"],
+            thumb: new URL("../assets/thumb_ridgeline.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_ridgeline_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Bump",
             icon: "chartBump",
             tooltip: translations.value.docs.tooltips.bump[store.lang],
             link: "/docs#vue-ui-bump",
-            type: ['xy'],
-            thumb: new URL('../assets/thumb_bump.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_bump_light.png', import.meta.url).href,
+            type: ["xy"],
+            thumb: new URL("../assets/thumb_bump.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_bump_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: false
+            hasLegend: false,
         },
         {
             name: "Onion",
@@ -266,11 +338,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.onion[store.lang],
             link: "/docs#vue-ui-onion",
             type: "gauge",
-            thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_onion.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_onion_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "HorizontalBar",
@@ -278,11 +353,15 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.verticalBar[store.lang],
             link: "/docs#vue-ui-horizontal-bar",
             type: "xy",
-            thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_vertical_bar.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_vertical_bar_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Heatmap",
@@ -290,8 +369,11 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.heatmap[store.lang],
             link: "/docs#vue-ui-heatmap",
             type: "donuts",
-            thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_heatmap.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_heatmap_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
         },
@@ -301,11 +383,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.scatter[store.lang],
             link: "/docs#vue-ui-scatter",
             type: "misc",
-            thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_scatter.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_scatter_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Candlestick",
@@ -313,11 +398,15 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.candlestick[store.lang],
             link: "/docs#vue-ui-candlestick",
             type: "xy",
-            thumb: new URL('../assets/thumb_candlestick.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_candlestick_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_candlestick.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_candlestick_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "AgePyramid",
@@ -325,11 +414,15 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.agePyramid[store.lang],
             link: "/docs#vue-ui-age-pyramid",
             type: "xy",
-            thumbLight: new URL('../assets/thumb_age_pyramid_light.png', import.meta.url).href,
-            thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_age_pyramid_light.png",
+                import.meta.url,
+            ).href,
+            thumb: new URL("../assets/thumb_age_pyramid.png", import.meta.url)
+                .href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Sparkline",
@@ -337,8 +430,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.sparkline[store.lang],
             link: "/docs#vue-ui-sparkline",
             type: "mini",
-            thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_sparkline.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_sparkline_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
         },
@@ -348,8 +445,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.sparkbar[store.lang],
             link: "/docs#vue-ui-sparkbar",
             type: "mini",
-            thumb: new URL('../assets/thumb_sparkbar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_sparkbar_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_sparkbar.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_sparkbar_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -359,8 +460,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.stackbar[store.lang],
             link: "/docs#vue-ui-sparkstackbar",
             type: "mini",
-            thumb: new URL('../assets/thumb_stackbar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_stackbar_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_stackbar.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_stackbar_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -370,8 +475,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.histogram[store.lang],
             link: "/docs#vue-ui-sparkhistogram",
             type: "mini",
-            thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_histogram.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_histogram_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -381,8 +490,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.gauge[store.lang],
             link: "/docs#vue-ui-sparkgauge",
             type: "mini",
-            thumb: new URL('../assets/thumb_sparkgauge.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_sparkgauge.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_sparkgauge_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -392,8 +505,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.trend[store.lang],
             link: "/docs#vue-ui-spark-trend",
             type: "mini",
-            thumb: new URL('../assets/thumb_spark_trend.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_spark_trend_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_spark_trend.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_spark_trend_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -403,19 +520,26 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.gizmo[store.lang],
             link: "/docs#vue-ui-gizmo",
             type: "mini",
-            thumb: new URL('../assets/thumb_gizmo.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_gizmo.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_gizmo_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
         {
             name: "QuickChart",
             icon: "vueDataUi",
-            tooltip: translations.value.docs.tooltips.quickChart[store.lang], 
+            tooltip: translations.value.docs.tooltips.quickChart[store.lang],
             link: "/docs#vue-ui-quick-chart",
-            type: ['mini', 'xy'],
-            thumb: new URL('../assets/thumb_quick_chart.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_quick_chart_light.png', import.meta.url).href,
+            type: ["mini", "xy"],
+            thumb: new URL("../assets/thumb_quick_chart.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_quick_chart_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasLegend: true,
             hasTableCss: false,
@@ -426,19 +550,29 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.bullet[store.lang],
             link: "/docs#vue-ui-bullet",
             type: ["mini", "gauge"],
-            thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_bullet.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_bullet_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
         },
         {
             name: "RelationCircle",
             icon: "chartRelationCircle",
-            tooltip: translations.value.docs.tooltips.relationCircle[store.lang],
+            tooltip:
+                translations.value.docs.tooltips.relationCircle[store.lang],
             link: "/docs#vue-ui-relation-circle",
             type: "semantic",
-            thumb: new URL('../assets/thumb_relation_circle.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href,
+            thumb: new URL(
+                "../assets/thumb_relation_circle.png",
+                import.meta.url,
+            ).href,
+            thumbLight: new URL(
+                "../assets/thumb_relation_circle_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
         },
@@ -448,11 +582,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.chord[store.lang],
             link: "/docs#vue-ui-chord",
             type: "semantic",
-            thumb: new URL('../assets/thumb_chord.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_chord_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_chord.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_chord_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Thermometer",
@@ -460,8 +597,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.thermometer[store.lang],
             link: "/docs#vue-ui-thermometer",
             type: "gauge",
-            thumb: new URL('../assets/thumb_thermometer.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_thermometer_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_thermometer.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_thermometer_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
         },
@@ -471,19 +612,29 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.table[store.lang],
             link: "/docs#vue-ui-table",
             type: "table",
-            thumb: new URL('../assets/thumb_table.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_table_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_table.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_table_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
         {
             name: "TableSparkline",
             icon: "chartTableSparkline",
-            tooltip: translations.value.docs.tooltips.sparklineTable[store.lang],
+            tooltip:
+                translations.value.docs.tooltips.sparklineTable[store.lang],
             link: "/docs#vue-ui-table-sparkline",
             type: "table",
-            thumb: new URL('../assets/thumb_table_sparkline.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_table_sparkline_light.png', import.meta.url).href,
+            thumb: new URL(
+                "../assets/thumb_table_sparkline.png",
+                import.meta.url,
+            ).href,
+            thumbLight: new URL(
+                "../assets/thumb_table_sparkline_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -493,8 +644,12 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.tableHeatmap[store.lang],
             link: "/docs#vue-ui-table-heatmap",
             type: "table",
-            thumb: new URL('../assets/thumb_table_heatmap.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_table_heatmap_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_table_heatmap.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_table_heatmap_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -504,8 +659,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.carouselTable[store.lang],
             link: "/docs#vue-ui-carousel-table",
             type: "table",
-            thumb: new URL('../assets/thumb_carousel_table.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href,
+            thumb: new URL(
+                "../assets/thumb_carousel_table.png",
+                import.meta.url,
+            ).href,
+            thumbLight: new URL(
+                "../assets/thumb_carousel_table_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -515,8 +676,11 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.rating[store.lang],
             link: "/docs#vue-ui-rating",
             type: "rating",
-            thumb: new URL('../assets/thumb_rating.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_rating_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_rating.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_rating_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -526,8 +690,11 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.smiley[store.lang],
             link: "/docs#vue-ui-smiley",
             type: "rating",
-            thumb: new URL('../assets/thumb_smiley.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_smiley_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_smiley.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_smiley_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: false,
             hasTableCss: false,
         },
@@ -600,11 +767,15 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.moodRadar[store.lang],
             link: "/docs#vue-ui-mood-radar",
             type: "radar",
-            thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_mood_radar.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_mood_radar_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "3dBar",
@@ -612,8 +783,11 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.bar3d[store.lang],
             link: "/docs#vue-ui-3d-bar",
             type: "3d",
-            thumb: new URL('../assets/thumb_3d_bar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_3d_bar.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_3d_bar_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
         },
@@ -639,8 +813,12 @@ export function useMenuItems() {
             name: "Molecule",
             icon: "chartCluster",
             tooltip: translations.value.docs.tooltips.molecule[store.lang],
-            thumb: new URL('../assets/thumb_molecule.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_molecule_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_molecule.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_molecule_light.png",
+                import.meta.url,
+            ).href,
             link: "/docs#vue-ui-molecule",
             type: "graphs",
             hasSlot: true,
@@ -651,9 +829,13 @@ export function useMenuItems() {
             icon: "chartStripPlot",
             tooltip: translations.value.docs.tooltips.stripPlot[store.lang],
             link: "/docs#vue-ui-strip-plot",
-            type: ['donuts', 'misc'],
-            thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
+            type: ["donuts", "misc"],
+            thumb: new URL("../assets/thumb_strip_plot.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_strip_plot_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
         },
@@ -662,36 +844,46 @@ export function useMenuItems() {
             icon: "chartDumbbell",
             tooltip: translations.value.docs.tooltips.dumbbell[store.lang],
             link: "/docs#vue-ui-dumbbell",
-            type: ['xy', 'misc'],
-            thumb: new URL('../assets/thumb_dumbbell.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_dumbbell_light.png', import.meta.url).href,
+            type: ["xy", "misc"],
+            thumb: new URL("../assets/thumb_dumbbell.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_dumbbell_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "World",
             icon: "world",
             tooltip: translations.value.docs.tooltips.world[store.lang],
             link: "/docs#vue-ui-world",
-            type: ['misc'],
-            thumb: new URL('../assets/thumb_world.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_world_light.png', import.meta.url).href,
+            type: ["misc"],
+            thumb: new URL("../assets/thumb_world.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_world_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
             name: "Geo",
             icon: "chartGeo",
             tooltip: translations.value.docs.tooltips.geo[store.lang],
             link: "/docs#vue-ui-geo",
-            type: ['misc'],
-            thumb: new URL('../assets/thumb_geo.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_geo_light.png', import.meta.url).href,
+            type: ["misc"],
+            thumb: new URL("../assets/thumb_geo.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_geo_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: false,
-            hasLegend: false
+            hasLegend: false,
         },
         {
             name: "WordCloud",
@@ -699,11 +891,15 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.wordCloud[store.lang],
             link: "/docs#vue-ui-word-cloud",
             type: "semantic",
-            thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_word_cloud.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_word_cloud_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: false
+            hasLegend: false,
         },
         {
             name: "Flow",
@@ -711,11 +907,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.flow[store.lang],
             link: "/docs#vue-ui-flow",
             type: "graphs",
-            thumb: new URL('../assets/thumb_flow.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_flow_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_flow.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_flow_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: false
+            hasLegend: false,
         },
         {
             name: "ParallelCoordinatePlot",
@@ -723,22 +922,28 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.pcp[store.lang],
             link: "/docs#vue-ui-parallel-coordinate-plot",
             type: "xy",
-            thumb: new URL('../assets/thumb_pcp.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_pcp_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_pcp.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_pcp_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
         {
-            name: 'Timer',
-            icon: 'lap',
+            name: "Timer",
+            icon: "lap",
             tooltip: translations.value.docs.tooltips.timer[store.lang],
-            link: '/docs#vue-ui-timer',
-            type: 'gauge',
+            link: "/docs#vue-ui-timer",
+            type: "gauge",
             hasSlot: false,
             hasLegend: false,
-            thumb: new URL('../assets/thumb_timer.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_timer_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_timer.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_timer_light.png",
+                import.meta.url,
+            ).href,
         },
         {
             name: "Funnel",
@@ -746,11 +951,14 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.funnel[store.lang],
             link: "/docs#vue-ui-funnel",
             type: "xy",
-            thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_funnel.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_funnel_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: false
+            hasLegend: false,
         },
         {
             name: "HistoryPlot",
@@ -758,66 +966,70 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.historyPlot[store.lang],
             link: "/docs#vue-ui-history-plot",
             type: "xy",
-            thumb: new URL('../assets/thumb_history_plot.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href,
+            thumb: new URL("../assets/thumb_history_plot.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_history_plot_light.png",
+                import.meta.url,
+            ).href,
             hasSlot: true,
             hasTableCss: true,
-            hasLegend: true
+            hasLegend: true,
         },
     ]);
 
     const menuCategories = computed(() => {
-    return [
-        {
-            filterBy: 'mini',
-            title: translations.value.sideMenu.miniCharts[store.lang]
-        },
-        {
-            filterBy: 'xy',
-            title: translations.value.sideMenu.lineAndBars[store.lang]
-        },
-        {
-            filterBy: 'donuts',
-            title: translations.value.sideMenu.donuts[store.lang]
-        },
-        {
-            filterBy: 'gauge',
-            title: translations.value.sideMenu.gauges[store.lang]
-        },
-        {
-            filterBy: 'semantic',
-            title: translations.value.types.semantic[store.lang]
-        },
-        {
-            filterBy: 'radar',
-            title: translations.value.sideMenu.radars[store.lang]
-        },
-        {
-            filterBy: 'graphs',
-            title: translations.value.sideMenu.graphs[store.lang]
-        },
-        {
-            filterBy: 'misc',
-            title: translations.value.sideMenu.misc[store.lang]
-        },
-        {
-            filterBy: '3d',
-            title: '3D'
-        },
-        {
-            filterBy: 'table',
-            title: translations.value.sideMenu.tables[store.lang]
-        },
-        {
-            filterBy: 'rating',
-            title: translations.value.sideMenu.rating[store.lang]
-        },
-        {
-            filterBy: 'tool',
-            title: translations.value.sideMenu.utilities[store.lang]
-        },
-    ]
-})
+        return [
+            {
+                filterBy: "mini",
+                title: translations.value.sideMenu.miniCharts[store.lang],
+            },
+            {
+                filterBy: "xy",
+                title: translations.value.sideMenu.lineAndBars[store.lang],
+            },
+            {
+                filterBy: "donuts",
+                title: translations.value.sideMenu.donuts[store.lang],
+            },
+            {
+                filterBy: "gauge",
+                title: translations.value.sideMenu.gauges[store.lang],
+            },
+            {
+                filterBy: "semantic",
+                title: translations.value.types.semantic[store.lang],
+            },
+            {
+                filterBy: "radar",
+                title: translations.value.sideMenu.radars[store.lang],
+            },
+            {
+                filterBy: "graphs",
+                title: translations.value.sideMenu.graphs[store.lang],
+            },
+            {
+                filterBy: "misc",
+                title: translations.value.sideMenu.misc[store.lang],
+            },
+            {
+                filterBy: "3d",
+                title: "3D",
+            },
+            {
+                filterBy: "table",
+                title: translations.value.sideMenu.tables[store.lang],
+            },
+            {
+                filterBy: "rating",
+                title: translations.value.sideMenu.rating[store.lang],
+            },
+            {
+                filterBy: "tool",
+                title: translations.value.sideMenu.utilities[store.lang],
+            },
+        ];
+    });
 
     return { menuItems, menuCategories };
 }

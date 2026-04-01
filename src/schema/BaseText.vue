@@ -1,29 +1,29 @@
 <script setup>
-
 defineProps({
     label: {
         type: String,
-        default: ''
+        default: "",
     },
     text: {
         type: String,
-        default: ''
+        default: "",
     },
     isCode: {
         type: Boolean,
-        default: false
+        default: false,
     },
     codeTw: {
         type: String,
-        default: ''
-    }
-})
-
+        default: "",
+    },
+});
 </script>
 
 <template>
     <div class="flex flex-row gap-1">
-        <div class="text-gray-500 dark:text-[#8A8A8A] flex flex-row min-w-[110px]">
+        <div
+            class="text-gray-500 dark:text-[#8A8A8A] flex flex-row min-w-[110px]"
+        >
             {{ label }} :
         </div>
         <slot>

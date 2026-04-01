@@ -1,49 +1,48 @@
 export function useChartSlots(component) {
-
     const VDUI_SLOTS = {
-        ARROW: 'arrow',
-        AVERAGE: 'average',
-        BEFORE: 'before',
-        CAPTION: 'caption',
-        CELL: 'cell',
-        CHART_BACKGROUND: 'chart-background',
-        COMMENT_AFTER: 'comment-after',
-        COMMENT_BEFORE: 'comment-before',
-        CONTENT: 'content',
-        CONTROLS: 'controls',
-        DATALABEL: 'dataLabel',
-        DATA_LABEL: 'data-label',
-        LAPS: 'laps',
-        LEGEND: 'legend',
-        MEDIAN: 'median',
-        OPTION_ANIMATION: 'optionAnimation',
-        OPTION_ANNOTATOR: 'optionAnnotator',
-        OPTION_CSV: 'optionCsv',
-        OPTION_FULLSCREEN: 'optionFullscreen',
-        OPTION_IMG: 'optionImg',
-        OPTION_LABELS: 'optionLabels',
-        OPTION_PDF: 'optionPdf',
-        OPTION_SORT: 'optionSort',
-        OPTION_STACK: 'optionStack',
-        OPTION_TABLE: 'optionTable',
-        OPTION_TOOLTIP: 'optionTooltip',
-        PATTERN: 'pattern',
-        PLOT_COMMENT: 'plot-comment',
-        RECT: 'rect',
-        RESET_ACTION: 'reset-action',
-        ROW_TITLE: 'rowTitle',
-        SOURCE: 'source',
-        SUM: 'sum',
-        SVG: 'svg',
-        TD: 'td',
-        TH: 'th',
-        TIME: 'time',
-        TIME_LABEL: 'time-label',
-        TITLE: 'title',
-        TOOLTIP_AFTER: 'tooltip-after',
-        TOOLTIP_BEFORE: 'tooltip-before',
-        VALUE: 'value',
-        WATERMARK: 'watermark',
+        ARROW: "arrow",
+        AVERAGE: "average",
+        BEFORE: "before",
+        CAPTION: "caption",
+        CELL: "cell",
+        CHART_BACKGROUND: "chart-background",
+        COMMENT_AFTER: "comment-after",
+        COMMENT_BEFORE: "comment-before",
+        CONTENT: "content",
+        CONTROLS: "controls",
+        DATALABEL: "dataLabel",
+        DATA_LABEL: "data-label",
+        LAPS: "laps",
+        LEGEND: "legend",
+        MEDIAN: "median",
+        OPTION_ANIMATION: "optionAnimation",
+        OPTION_ANNOTATOR: "optionAnnotator",
+        OPTION_CSV: "optionCsv",
+        OPTION_FULLSCREEN: "optionFullscreen",
+        OPTION_IMG: "optionImg",
+        OPTION_LABELS: "optionLabels",
+        OPTION_PDF: "optionPdf",
+        OPTION_SORT: "optionSort",
+        OPTION_STACK: "optionStack",
+        OPTION_TABLE: "optionTable",
+        OPTION_TOOLTIP: "optionTooltip",
+        PATTERN: "pattern",
+        PLOT_COMMENT: "plot-comment",
+        RECT: "rect",
+        RESET_ACTION: "reset-action",
+        ROW_TITLE: "rowTitle",
+        SOURCE: "source",
+        SUM: "sum",
+        SVG: "svg",
+        TD: "td",
+        TH: "th",
+        TIME: "time",
+        TIME_LABEL: "time-label",
+        TITLE: "title",
+        TOOLTIP_AFTER: "tooltip-after",
+        TOOLTIP_BEFORE: "tooltip-before",
+        VALUE: "value",
+        WATERMARK: "watermark",
     };
 
     const slotsMap = {
@@ -126,25 +125,16 @@ export function useChartSlots(component) {
         vue_ui_sparkbar: [
             VDUI_SLOTS.SOURCE,
             VDUI_SLOTS.DATA_LABEL,
-            VDUI_SLOTS.TITLE
+            VDUI_SLOTS.TITLE,
         ],
         vue_ui_sparkstackbar: [
             VDUI_SLOTS.SOURCE,
             VDUI_SLOTS.TOOLTIP_AFTER,
             VDUI_SLOTS.TOOLTIP_BEFORE,
         ],
-        vue_ui_sparkhistogram: [
-            VDUI_SLOTS.CHART_BACKGROUND,
-            VDUI_SLOTS.SOURCE
-        ],
-        vue_ui_sparkgauge: [
-            VDUI_SLOTS.CHART_BACKGROUND,
-            VDUI_SLOTS.SOURCE
-        ],
-        vue_ui_spark_trend: [
-            VDUI_SLOTS.CHART_BACKGROUND,
-            VDUI_SLOTS.SOURCE
-        ],
+        vue_ui_sparkhistogram: [VDUI_SLOTS.CHART_BACKGROUND, VDUI_SLOTS.SOURCE],
+        vue_ui_sparkgauge: [VDUI_SLOTS.CHART_BACKGROUND, VDUI_SLOTS.SOURCE],
+        vue_ui_spark_trend: [VDUI_SLOTS.CHART_BACKGROUND, VDUI_SLOTS.SOURCE],
         vue_ui_gizmo: [],
         vue_ui_quick_chart: [
             VDUI_SLOTS.CHART_BACKGROUND,
@@ -622,19 +612,17 @@ export function useChartSlots(component) {
             VDUI_SLOTS.TITLE,
         ],
         vue_ui_skeleton: [],
-        vue_ui_dashboard: [
-            VDUI_SLOTS.CONTENT
-        ],
+        vue_ui_dashboard: [VDUI_SLOTS.CONTENT],
         vue_ui_annotator: [],
         vue_ui_icon: [],
         vue_ui_digits: [],
         vue_ui_cursor: [],
         vue_ui_mini_loader: [],
-    }
+    };
 
     return slotsMap[component];
 }
 
 export default {
-    useSlotChecker
-}
+    useSlotChecker,
+};

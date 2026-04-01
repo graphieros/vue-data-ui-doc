@@ -3,184 +3,184 @@ export default function useFlows() {
         VueUiDonut: {
             flow: [
                 // root → top‐level props
-                ['vue_ui_donut', 'type', 1],
-                ['vue_ui_donut', 'responsive', 1],
-                ['vue_ui_donut', 'theme', 1],
-                ['vue_ui_donut', 'customPalette', 1],
-                ['vue_ui_donut', 'useCssAnimation', 1],
-                ['vue_ui_donut', 'serieToggleAnimation', 1],
-                ['vue_ui_donut', 'startAnimation', 1],
-                ['vue_ui_donut', 'useBlurOnHover', 1],
-                ['vue_ui_donut', 'userOptions', 1],
-                ['vue_ui_donut', 'translations', 1],
-                ['vue_ui_donut', 'table', 1],
-                ['vue_ui_donut', 'style', 1],
-              
+                ["vue_ui_donut", "type", 1],
+                ["vue_ui_donut", "responsive", 1],
+                ["vue_ui_donut", "theme", 1],
+                ["vue_ui_donut", "customPalette", 1],
+                ["vue_ui_donut", "useCssAnimation", 1],
+                ["vue_ui_donut", "serieToggleAnimation", 1],
+                ["vue_ui_donut", "startAnimation", 1],
+                ["vue_ui_donut", "useBlurOnHover", 1],
+                ["vue_ui_donut", "userOptions", 1],
+                ["vue_ui_donut", "translations", 1],
+                ["vue_ui_donut", "table", 1],
+                ["vue_ui_donut", "style", 1],
+
                 // serieToggleAnimation
-                ['serieToggleAnimation', 'show', 1],
-                ['serieToggleAnimation', 'durationMs', 1],
-              
+                ["serieToggleAnimation", "show", 1],
+                ["serieToggleAnimation", "durationMs", 1],
+
                 // startAnimation
-                ['startAnimation', 'show', 1],
-                ['startAnimation', 'durationMs', 1],
-                ['startAnimation', 'staggerMs', 1],
-              
+                ["startAnimation", "show", 1],
+                ["startAnimation", "durationMs", 1],
+                ["startAnimation", "staggerMs", 1],
+
                 // userOptions
-                ['userOptions', 'tooltip', 1],
-                ['userOptions', 'pdf', 1],
-                ['userOptions', 'csv', 1],
-                ['userOptions', 'img', 1],
-                ['userOptions', 'table', 1],
-                ['userOptions', 'labels', 1],
-                ['userOptions', 'fullscreen', 1],
-                ['userOptions', 'annotator', 1],
-              
+                ["userOptions", "tooltip", 1],
+                ["userOptions", "pdf", 1],
+                ["userOptions", "csv", 1],
+                ["userOptions", "img", 1],
+                ["userOptions", "table", 1],
+                ["userOptions", "labels", 1],
+                ["userOptions", "fullscreen", 1],
+                ["userOptions", "annotator", 1],
+
                 // translations
-                ['translations', 'total', 1],
-                ['translations', 'average', 1],
-              
+                ["translations", "total", 1],
+                ["translations", "average", 1],
+
                 // table
-                ['table', 'th', 1],
-                ['table', 'td', 1],
-                ['table', 'columnNames', 1],
-              
+                ["table", "th", 1],
+                ["table", "td", 1],
+                ["table", "columnNames", 1],
+
                 // table.columnNames
-                ['columnNames', 'series', 1],
-                ['columnNames', 'value', 1],
-                ['columnNames', 'percentage', 1],
-              
+                ["columnNames", "series", 1],
+                ["columnNames", "value", 1],
+                ["columnNames", "percentage", 1],
+
                 // style → chart
-                ['style', 'chart', 1],
-              
+                ["style", "chart", 1],
+
                 // chart props
-                ['chart', 'useGradient', 1],
-                ['chart', 'gradientIntensity', 1],
-                ['chart', 'backgroundColor', 1],
-                ['chart', 'color', 1],
-                ['chart', 'padding', 1],
-                ['chart', 'layout', 1],
-                ['chart', 'comments', 1],
-                ['chart', 'legend', 1],
-                ['chart', 'tooltip', 1],
-                ['chart', 'title', 1],
-              
+                ["chart", "useGradient", 1],
+                ["chart", "gradientIntensity", 1],
+                ["chart", "backgroundColor", 1],
+                ["chart", "color", 1],
+                ["chart", "padding", 1],
+                ["chart", "layout", 1],
+                ["chart", "comments", 1],
+                ["chart", "legend", 1],
+                ["chart", "tooltip", 1],
+                ["chart", "title", 1],
+
                 // chart.padding
-                ['padding', 'top', 1],
-                ['padding', 'right', 1],
-                ['padding', 'bottom', 1],
-                ['padding', 'left', 1],
-              
+                ["padding", "top", 1],
+                ["padding", "right", 1],
+                ["padding", "bottom", 1],
+                ["padding", "left", 1],
+
                 // layout → labels & donut
-                ['layout', 'labels', 1],
-                ['layout', 'donut', 1],
-              
+                ["layout", "labels", 1],
+                ["layout", "donut", 1],
+
                 // layout.labels → dataLabels, value, percentage, name, hollow
-                ['labels', 'dataLabels', 1],
-                ['labels', 'value', 1],
-                ['labels', 'percentage', 1],
-                ['labels', 'name', 1],
-                ['labels', 'hollow', 1],
-              
+                ["labels", "dataLabels", 1],
+                ["labels", "value", 1],
+                ["labels", "percentage", 1],
+                ["labels", "name", 1],
+                ["labels", "hollow", 1],
+
                 // dataLabels
-                ['dataLabels', 'show', 1],
-                ['dataLabels', 'useLabelSlots', 1],
-                ['dataLabels', 'hideUnderValue', 1],
-                ['dataLabels', 'prefix', 1],
-                ['dataLabels', 'suffix', 1],
-              
+                ["dataLabels", "show", 1],
+                ["dataLabels", "useLabelSlots", 1],
+                ["dataLabels", "hideUnderValue", 1],
+                ["dataLabels", "prefix", 1],
+                ["dataLabels", "suffix", 1],
+
                 // value
-                ['value', 'rounding', 1],
-                ['value', 'show', 1],
-              
+                ["value", "rounding", 1],
+                ["value", "show", 1],
+
                 // percentage
-                ['percentage', 'color', 1],
-                ['percentage', 'bold', 1],
-                ['percentage', 'fontSize', 1],
-                ['percentage', 'rounding', 1],
-              
+                ["percentage", "color", 1],
+                ["percentage", "bold", 1],
+                ["percentage", "fontSize", 1],
+                ["percentage", "rounding", 1],
+
                 // name
-                ['name', 'color', 1],
-                ['name', 'bold', 1],
-                ['name', 'fontSize', 1],
-              
+                ["name", "color", 1],
+                ["name", "bold", 1],
+                ["name", "fontSize", 1],
+
                 // hollow → total & average
-                ['hollow', 'total', 1],
-                ['hollow', 'average', 1],
-              
+                ["hollow", "total", 1],
+                ["hollow", "average", 1],
+
                 // hollow.total
-                ['total', 'show', 1],
-                ['total', 'bold', 1],
-                ['total', 'fontSize', 1],
-                ['total', 'color', 1],
-                ['total', 'text', 1],
-                ['total', 'offsetY', 1],
-                ['total', 'value', 1],
-              
+                ["total", "show", 1],
+                ["total", "bold", 1],
+                ["total", "fontSize", 1],
+                ["total", "color", 1],
+                ["total", "text", 1],
+                ["total", "offsetY", 1],
+                ["total", "value", 1],
+
                 // hollow.total.value
-                ['value', 'color', 1],
-                ['value', 'fontSize', 1],
-                ['value', 'bold', 1],
-                ['value', 'suffix', 1],
-                ['value', 'prefix', 1],
-                ['value', 'offsetY', 1],
-                ['value', 'rounding', 1],
-              
+                ["value", "color", 1],
+                ["value", "fontSize", 1],
+                ["value", "bold", 1],
+                ["value", "suffix", 1],
+                ["value", "prefix", 1],
+                ["value", "offsetY", 1],
+                ["value", "rounding", 1],
+
                 // donut
-                ['donut', 'strokeWidth', 1],
-                ['donut', 'borderWidth', 1],
-                ['donut', 'useShadow', 1],
-                ['donut', 'shadowColor', 1],
-              
+                ["donut", "strokeWidth", 1],
+                ["donut", "borderWidth", 1],
+                ["donut", "useShadow", 1],
+                ["donut", "shadowColor", 1],
+
                 // comments
-                ['comments', 'show', 1],
-                ['comments', 'showInTooltip', 1],
-                ['comments', 'width', 1],
-                ['comments', 'offsetY', 1],
-                ['comments', 'offsetX', 1],
-              
+                ["comments", "show", 1],
+                ["comments", "showInTooltip", 1],
+                ["comments", "width", 1],
+                ["comments", "offsetY", 1],
+                ["comments", "offsetX", 1],
+
                 // legend
-                ['legend', 'roundingValue', 1],
-                ['legend', 'roundingPercentage', 1],
-              
+                ["legend", "roundingValue", 1],
+                ["legend", "roundingPercentage", 1],
+
                 // tooltip
-                ['tooltip', 'showValue', 1],
-                ['tooltip', 'showPercentage', 1],
-                ['tooltip', 'roundingValue', 1],
-                ['tooltip', 'roundingPercentage', 1],
-              ],
-              nodeCategories: {
+                ["tooltip", "showValue", 1],
+                ["tooltip", "showPercentage", 1],
+                ["tooltip", "roundingValue", 1],
+                ["tooltip", "roundingPercentage", 1],
+            ],
+            nodeCategories: {
                 // core configuration
-                type:               'core',
-                responsive:         'core',
-                theme:              'core',
-                customPalette:      'core',
-                useCssAnimation:    'core',
-              
+                type: "core",
+                responsive: "core",
+                theme: "core",
+                customPalette: "core",
+                useCssAnimation: "core",
+
                 // animations
-                serieToggleAnimation: 'animations',
-                startAnimation:       'animations',
-                useBlurOnHover:       'animations',
-              
+                serieToggleAnimation: "animations",
+                startAnimation: "animations",
+                useBlurOnHover: "animations",
+
                 // user‐controllable options
-                userOptions:        'user options',
-              
+                userOptions: "user options",
+
                 // localization / translations
-                translations:       'translations',
-              
+                translations: "translations",
+
                 // the built-in data-table
-                table:              'table',
-              
+                table: "table",
+
                 // all styling under “style”
-                style:              'style'
-              },
-              nodeCategoryColors: {
-                core:            '#1f77b4',  // blue
-                animations:      '#ff7f0e',  // orange
-                'user options':  '#2ca02c',  // green
-                translations:    '#d62728',  // red
-                table:           '#9467bd',  // purple
-                style:           '#8c564b'   // brown
-              }
+                style: "style",
+            },
+            nodeCategoryColors: {
+                core: "#1f77b4", // blue
+                animations: "#ff7f0e", // orange
+                "user options": "#2ca02c", // green
+                translations: "#d62728", // red
+                table: "#9467bd", // purple
+                style: "#8c564b", // brown
+            },
         },
         VueUiXy: {
             flow: [
@@ -464,515 +464,515 @@ export default function useFlows() {
             ],
             nodeCategories: {
                 // top-level
-                vue_ui_xy:        "root",
-                theme:            "root",
-                responsive:       "root",
-                customPalette:    "root",
-                useCssAnimation:  "root",
-                downsample:       "root",
-                chart:            "root",
-                bar:              "root",
-                line:             "root",
-                plot:             "root",
-                table:            "root",
-                showTable:        "root",
-              
+                vue_ui_xy: "root",
+                theme: "root",
+                responsive: "root",
+                customPalette: "root",
+                useCssAnimation: "root",
+                downsample: "root",
+                chart: "root",
+                bar: "root",
+                line: "root",
+                plot: "root",
+                table: "root",
+                showTable: "root",
+
                 // chart → direct props
-                fontFamily:    "chart",
-                backgroundColor:"chart",
-                color:         "chart",
-                height:        "chart",
-                width:         "chart",
-                zoom:          "chart",
-                padding:       "chart",
-                highlighter:   "chart",
+                fontFamily: "chart",
+                backgroundColor: "chart",
+                color: "chart",
+                height: "chart",
+                width: "chart",
+                zoom: "chart",
+                padding: "chart",
+                highlighter: "chart",
                 highlightArea: "chart",
-                timeTag:       "chart",
-                grid:          "chart",
-                comments:      "chart",
-                labels:        "chart",
-                legend:        "chart",
-                title:         "chart",
-                tooltip:       "chart",
-                userOptions:   "chart",
-              
+                timeTag: "chart",
+                grid: "chart",
+                comments: "chart",
+                labels: "chart",
+                legend: "chart",
+                title: "chart",
+                tooltip: "chart",
+                userOptions: "chart",
+
                 // chart.zoom
-                minimap:       "zoom",
-              
+                minimap: "zoom",
+
                 // chart.padding
-                top:           "padding",
-                right:         "padding",
-                bottom:        "padding",
-                left:          "padding",
-              
+                top: "padding",
+                right: "padding",
+                bottom: "padding",
+                left: "padding",
+
                 // chart.highlighter
-                opacity:       "highlighter",
-                useLine:       "highlighter",
+                opacity: "highlighter",
+                useLine: "highlighter",
                 lineDasharray: "highlighter",
-                lineWidth:     "highlighter",
-              
+                lineWidth: "highlighter",
+
                 // chart.highlightArea
-                show:          "highlightArea",
-                from:          "highlightArea",
-                to:            "highlightArea",
-                opacity:       "highlightArea",
-                caption:       "highlightArea",
-              
+                show: "highlightArea",
+                from: "highlightArea",
+                to: "highlightArea",
+                opacity: "highlightArea",
+                caption: "highlightArea",
+
                 // chart.highlightArea.caption
-                text:          "caption",
-                fontSize:      "caption",
-                bold:          "caption",
-                offsetY:       "caption",
-                width:         "caption",
-                padding:       "caption",
-                textAlign:     "caption",
-              
+                text: "caption",
+                fontSize: "caption",
+                bold: "caption",
+                offsetY: "caption",
+                width: "caption",
+                padding: "caption",
+                textAlign: "caption",
+
                 // chart.timeTag
-                show:             "timeTag",
-                fontSize:         "timeTag",
-                circleMarker:     "timeTag",
-              
+                show: "timeTag",
+                fontSize: "timeTag",
+                circleMarker: "timeTag",
+
                 // chart.timeTag.circleMarker
-                radius:           "circleMarker",
-              
+                radius: "circleMarker",
+
                 // chart.grid
                 showVerticalLines: "grid",
-                showHorizontalLines:"grid",
-                position:         "grid",
-                frame:            "grid",
-                labels:           "grid",
-              
+                showHorizontalLines: "grid",
+                position: "grid",
+                frame: "grid",
+                labels: "grid",
+
                 // chart.grid.frame
-                strokeWidth:      "frame",
-                strokeLinecap:    "frame",
-                strokeLinejoin:   "frame",
-                strokeDasharray:  "frame",
-              
+                strokeWidth: "frame",
+                strokeLinecap: "frame",
+                strokeLinejoin: "frame",
+                strokeDasharray: "frame",
+
                 // chart.grid.labels
-                axis:           "labels",
-                zeroLine:       "labels",
-                xAxis:          "labels",
-                yAxis:          "labels",
-                xAxisLabels:    "labels",
-              
+                axis: "labels",
+                zeroLine: "labels",
+                xAxis: "labels",
+                yAxis: "labels",
+                xAxisLabels: "labels",
+
                 // chart.grid.labels.axis
-                yLabel:         "axis",
-                yLabelOffsetX:  "axis",
-                xLabel:         "axis",
-                xLabelOffsetY:  "axis",
-              
+                yLabel: "axis",
+                yLabelOffsetX: "axis",
+                xLabel: "axis",
+                xLabelOffsetY: "axis",
+
                 // chart.grid.labels.yAxis
-                commonScaleSteps:    "yAxis",
-                useIndividualScale:  "yAxis",
-                stacked:             "yAxis",
-                gap:                 "yAxis",
-                labelWidth:          "yAxis",
-                scaleMin:            "yAxis",
-                scaleMax:            "yAxis",
-                groupColor:          "yAxis",
-                scaleLabelOffsetX:   "yAxis",
-                scaleValueOffsetX:   "yAxis",
-              
+                commonScaleSteps: "yAxis",
+                useIndividualScale: "yAxis",
+                stacked: "yAxis",
+                gap: "yAxis",
+                labelWidth: "yAxis",
+                scaleMin: "yAxis",
+                scaleMax: "yAxis",
+                groupColor: "yAxis",
+                scaleLabelOffsetX: "yAxis",
+                scaleValueOffsetX: "yAxis",
+
                 // chart.grid.labels.xAxisLabels
-                values:        "xAxisLabels",
-                showOnlyFirstAndLast:"xAxisLabels",
-                showOnlyAtModulo:    "xAxisLabels",
-                modulo:         "xAxisLabels",
-                yOffset:        "xAxisLabels",
-                rotation:       "xAxisLabels",
-              
+                values: "xAxisLabels",
+                showOnlyFirstAndLast: "xAxisLabels",
+                showOnlyAtModulo: "xAxisLabels",
+                modulo: "xAxisLabels",
+                yOffset: "xAxisLabels",
+                rotation: "xAxisLabels",
+
                 // chart.comments
                 showInTooltip: "comments",
-                width:         "comments",
-                offsetX:       "comments",
-              
+                width: "comments",
+                offsetX: "comments",
+
                 // chart.labels (top-level)
-                prefix:        "labels",
-                suffix:        "labels",
-              
+                prefix: "labels",
+                suffix: "labels",
+
                 // chart.legend (top-level)
-                fontSize:      "legend",
-              
+                fontSize: "legend",
+
                 // chart.tooltip (top-level)
-                showTimeLabel:    "tooltip",
-                showValue:        "tooltip",
-                roundingValue:    "tooltip",
-                roundingPercentage:"tooltip",
-              
+                showTimeLabel: "tooltip",
+                showValue: "tooltip",
+                roundingValue: "tooltip",
+                roundingPercentage: "tooltip",
+
                 // chart.userOptions
-                tooltip:      "userOptions",
-                pdf:          "userOptions",
-                csv:          "userOptions",
-                img:          "userOptions",
-                table:        "userOptions",
-                labels:       "userOptions",
-                fullscreen:   "userOptions",
-                stack:        "userOptions",
-                annotator:    "userOptions",
-              
+                tooltip: "userOptions",
+                pdf: "userOptions",
+                csv: "userOptions",
+                img: "userOptions",
+                table: "userOptions",
+                labels: "userOptions",
+                fullscreen: "userOptions",
+                stack: "userOptions",
+                annotator: "userOptions",
+
                 // bar
                 borderRadius: "bar",
-                useGradient:  "bar",
-                periodGap:    "bar",
-                border:       "bar",
-                serieName:    "bar",
-              
+                useGradient: "bar",
+                periodGap: "bar",
+                border: "bar",
+                serieName: "bar",
+
                 // bar.border
-                useSerieColor:"border",
-                strokeWidth:  "border",
-              
+                useSerieColor: "border",
+                strokeWidth: "border",
+
                 // bar.labels
-                show:         "bar.labels",
-                offsetY:      "bar.labels",
-                rounding:     "bar.labels",
-              
+                show: "bar.labels",
+                offsetY: "bar.labels",
+                rounding: "bar.labels",
+
                 // bar.serieName
-                useAbbreviation:"bar.serieName",
-                abbreviationSize:"bar.serieName",
-              
+                useAbbreviation: "bar.serieName",
+                abbreviationSize: "bar.serieName",
+
                 // line
-                radius:       "line",
-                strokeWidth:  "line",
-                cutNullValues:"line",
-                dot:          "line",
-                area:         "line",
-                tag:          "line",
-              
+                radius: "line",
+                strokeWidth: "line",
+                cutNullValues: "line",
+                dot: "line",
+                area: "line",
+                tag: "line",
+
                 // line.dot
-                hideAboveMaxSerieLength:"dot",
-                fill:         "dot",
-              
+                hideAboveMaxSerieLength: "dot",
+                fill: "dot",
+
                 // line.labels (reuse ‘labels’)
                 // line.area (reuse ‘area’)
                 // line.tag (reuse ‘tag’)
-              
+
                 // plot (reuse many of the same)
                 // table
-                responsiveBreakpoint:"table",
-                rounding:             "table",
-                sparkline:            "table",
-                showSum:              "table",
-                columnNames:          "table",
-              
+                responsiveBreakpoint: "table",
+                rounding: "table",
+                sparkline: "table",
+                showSum: "table",
+                columnNames: "table",
+
                 // table.columnNames
-                period:        "columnNames",
-                total:         "columnNames",
-              },
-              nodeCategoryColors: {
-                root:             "#1f77b4",
-                chart:            "#ff7f0e",
-                zoom:             "#2ca02c",
-                padding:          "#d62728",
-                highlighter:      "#9467bd",
-                highlightArea:    "#8c564b",
-                caption:          "#e377c2",
-                timeTag:          "#7f7f7f",
-                circleMarker:     "#bcbd22",
-                grid:             "#17becf",
-                frame:            "#aec7e8",
-                labels:           "#ffbb78",
-                axis:             "#98df8a",
-                zeroLine:         "#c5b0d5",
-                xAxis:            "#c49c94",
-                yAxis:            "#f7b6d2",
-                xAxisLabels:      "#dbdb8d",
-                comments:         "#9edae5",
-                legend:           "#8c6d31",
-                tooltip:          "#bd9e39",
-                userOptions:      "#e7ba52",
-                bar:              "#e377c2",
-                border:           "#7f7f7f",
-                "bar.labels":     "#17becf",
-                "bar.serieName":  "#bcbd22",
-                line:             "#1f77b4",
-                dot:              "#ff7f0e",
-                area:             "#2ca02c",
-                tag:              "#d62728",
-                plot:             "#9467bd",
-                table:            "#8c564b",
-                columnNames:      "#e377c2",
-              }
+                period: "columnNames",
+                total: "columnNames",
+            },
+            nodeCategoryColors: {
+                root: "#1f77b4",
+                chart: "#ff7f0e",
+                zoom: "#2ca02c",
+                padding: "#d62728",
+                highlighter: "#9467bd",
+                highlightArea: "#8c564b",
+                caption: "#e377c2",
+                timeTag: "#7f7f7f",
+                circleMarker: "#bcbd22",
+                grid: "#17becf",
+                frame: "#aec7e8",
+                labels: "#ffbb78",
+                axis: "#98df8a",
+                zeroLine: "#c5b0d5",
+                xAxis: "#c49c94",
+                yAxis: "#f7b6d2",
+                xAxisLabels: "#dbdb8d",
+                comments: "#9edae5",
+                legend: "#8c6d31",
+                tooltip: "#bd9e39",
+                userOptions: "#e7ba52",
+                bar: "#e377c2",
+                border: "#7f7f7f",
+                "bar.labels": "#17becf",
+                "bar.serieName": "#bcbd22",
+                line: "#1f77b4",
+                dot: "#ff7f0e",
+                area: "#2ca02c",
+                tag: "#d62728",
+                plot: "#9467bd",
+                table: "#8c564b",
+                columnNames: "#e377c2",
+            },
         },
         VueUiFlow: {
             flow: [
                 // root
-                ['Config', 'theme', 1],
-                ['Config', 'customPalette', 1],
-                ['Config', 'userOptions', 1],
-                ['Config', 'nodeCategories', 1],
-                ['Config', 'nodeCategoryColors', 1],
-                ['Config', 'style', 1],
-                ['Config', 'table', 1],
+                ["Config", "theme", 1],
+                ["Config", "customPalette", 1],
+                ["Config", "userOptions", 1],
+                ["Config", "nodeCategories", 1],
+                ["Config", "nodeCategoryColors", 1],
+                ["Config", "style", 1],
+                ["Config", "table", 1],
 
                 // userOptions
-                ['userOptions', 'show', 1],
-                ['userOptions', 'showOnChartHover', 1],
-                ['userOptions', 'position', 1],
-                ['userOptions', 'buttons', 1],
-                ['buttons', 'pdf', 1],
-                ['buttons', 'csv', 1],
-                ['buttons', 'img', 1],
-                ['buttons', 'table', 1],
-                ['buttons', 'fullscreen', 1],
-                ['buttons', 'annotator', 1],
-                ['buttons', 'tooltip', 1],
-                ['userOptions', 'buttonTitles', 1],
+                ["userOptions", "show", 1],
+                ["userOptions", "showOnChartHover", 1],
+                ["userOptions", "position", 1],
+                ["userOptions", "buttons", 1],
+                ["buttons", "pdf", 1],
+                ["buttons", "csv", 1],
+                ["buttons", "img", 1],
+                ["buttons", "table", 1],
+                ["buttons", "fullscreen", 1],
+                ["buttons", "annotator", 1],
+                ["buttons", "tooltip", 1],
+                ["userOptions", "buttonTitles", 1],
 
                 // style
-                ['style', 'fontFamily', 1],
-                ['style', 'chart', 1],
+                ["style", "fontFamily", 1],
+                ["style", "chart", 1],
 
                 // chart
-                ['chart', 'backgroundColor', 1],
-                ['chart', 'color', 1],
-                ['chart', 'padding', 1],
-                ['chart', 'title', 1],
-                ['chart', 'tooltip', 1],
-                ['chart', 'legend', 1],
-                ['chart', 'nodes', 1],
-                ['chart', 'links', 1],
+                ["chart", "backgroundColor", 1],
+                ["chart", "color", 1],
+                ["chart", "padding", 1],
+                ["chart", "title", 1],
+                ["chart", "tooltip", 1],
+                ["chart", "legend", 1],
+                ["chart", "nodes", 1],
+                ["chart", "links", 1],
 
                 // padding
-                ['padding', 'top', 1],
-                ['padding', 'right', 1],
-                ['padding', 'bottom', 1],
-                ['padding', 'left', 1],
+                ["padding", "top", 1],
+                ["padding", "right", 1],
+                ["padding", "bottom", 1],
+                ["padding", "left", 1],
 
                 // title
-                ['title', 'text', 1],
-                ['title', 'subtitle', 1],
-                ['subtitle', 'text', 1],
-                ['title', 'cy', 1],
+                ["title", "text", 1],
+                ["title", "subtitle", 1],
+                ["subtitle", "text", 1],
+                ["title", "cy", 1],
 
                 // tooltip
-                ['tooltip', 'show', 1],
-                ['tooltip', 'fontSize', 1],
-                ['tooltip', 'backgroundColor', 1],
-                ['tooltip', 'color', 1],
-                ['tooltip', 'borderColor', 1],
-                ['tooltip', 'borderWidth', 1],
-                ['tooltip', 'borderRadius', 1],
-                ['tooltip', 'backgroundOpacity', 1],
-                ['tooltip', 'position', 1],
-                ['tooltip', 'offsetY', 1],
-                ['tooltip', 'showPercentage', 1],
-                ['tooltip', 'roundingPercentage', 1],
-                ['tooltip', 'translations', 1],
-                ['translations', 'from', 1],
-                ['translations', 'to', 1],
-                ['translations', 'percentOfTotal', 1],
+                ["tooltip", "show", 1],
+                ["tooltip", "fontSize", 1],
+                ["tooltip", "backgroundColor", 1],
+                ["tooltip", "color", 1],
+                ["tooltip", "borderColor", 1],
+                ["tooltip", "borderWidth", 1],
+                ["tooltip", "borderRadius", 1],
+                ["tooltip", "backgroundOpacity", 1],
+                ["tooltip", "position", 1],
+                ["tooltip", "offsetY", 1],
+                ["tooltip", "showPercentage", 1],
+                ["tooltip", "roundingPercentage", 1],
+                ["tooltip", "translations", 1],
+                ["translations", "from", 1],
+                ["translations", "to", 1],
+                ["translations", "percentOfTotal", 1],
 
                 // legend
-                ['legend', 'show', 1],
-                ['legend', 'backgroundColor', 1],
-                ['legend', 'color', 1],
-                ['legend', 'fontSize', 1],
-                ['legend', 'paddingBottom', 1],
-                ['legend', 'paddingTop', 1],
-                ['legend', 'bold', 1],
-                ['legend', 'cy', 1],
+                ["legend", "show", 1],
+                ["legend", "backgroundColor", 1],
+                ["legend", "color", 1],
+                ["legend", "fontSize", 1],
+                ["legend", "paddingBottom", 1],
+                ["legend", "paddingTop", 1],
+                ["legend", "bold", 1],
+                ["legend", "cy", 1],
 
                 // nodes
-                ['nodes', 'gap', 1],
-                ['nodes', 'minHeight', 1],
-                ['nodes', 'width', 1],
-                ['nodes', 'labels', 1],
-                ['nodes', 'stroke', 1],
-                ['nodes', 'strokeWidth', 1],
+                ["nodes", "gap", 1],
+                ["nodes", "minHeight", 1],
+                ["nodes", "width", 1],
+                ["nodes", "labels", 1],
+                ["nodes", "stroke", 1],
+                ["nodes", "strokeWidth", 1],
 
                 // labels
-                ['labels', 'fontSize', 1],
-                ['labels', 'abbreviation', 1],
-                ['labels', 'prefix', 1],
-                ['labels', 'suffix', 1],
-                ['labels', 'rounding', 1],
-                ['labels', 'formatter', 1],
+                ["labels", "fontSize", 1],
+                ["labels", "abbreviation", 1],
+                ["labels", "prefix", 1],
+                ["labels", "suffix", 1],
+                ["labels", "rounding", 1],
+                ["labels", "formatter", 1],
 
                 // abbreviation
-                ['abbreviation', 'use', 1],
-                ['abbreviation', 'length', 1],
+                ["abbreviation", "use", 1],
+                ["abbreviation", "length", 1],
 
                 // links
-                ['links', 'width', 1],
-                ['links', 'opacity', 1],
-                ['links', 'stroke', 1],
-                ['links', 'strokeWidth', 1],
+                ["links", "width", 1],
+                ["links", "opacity", 1],
+                ["links", "stroke", 1],
+                ["links", "strokeWidth", 1],
 
                 // table
-                ['table', 'show', 1],
-                ['table', 'responsiveBreakpoint', 1],
-                ['table', 'columnNames', 1],
-                ['columnNames', 'source', 1],
-                ['columnNames', 'target', 1],
-                ['columnNames', 'value', 1],
-                ['table', 'th', 1],
-                ['table', 'td', 1],
+                ["table", "show", 1],
+                ["table", "responsiveBreakpoint", 1],
+                ["table", "columnNames", 1],
+                ["columnNames", "source", 1],
+                ["columnNames", "target", 1],
+                ["columnNames", "value", 1],
+                ["table", "th", 1],
+                ["table", "td", 1],
 
                 // th
-                ['th', 'backgroundColor', 1],
-                ['th', 'color', 1],
-                ['th', 'outline', 1],
+                ["th", "backgroundColor", 1],
+                ["th", "color", 1],
+                ["th", "outline", 1],
 
                 // td
-                ['td', 'backgroundColor', 1],
-                ['td', 'color', 1],
-                ['td', 'outline', 1],
+                ["td", "backgroundColor", 1],
+                ["td", "color", 1],
+                ["td", "outline", 1],
             ],
             nodeCategories: {
                 // top‐level
-                theme: 'config',
-                customPalette: 'config',
-                userOptions: 'config',
-                nodeCategories: 'config',
-                nodeCategoryColors: 'config',
-                style: 'config',
-                table: 'config',
+                theme: "config",
+                customPalette: "config",
+                userOptions: "config",
+                nodeCategories: "config",
+                nodeCategoryColors: "config",
+                style: "config",
+                table: "config",
 
                 // userOptions
-                show: 'userOptions',
-                showOnChartHover: 'userOptions',
-                position: 'userOptions',
-                buttons: 'userOptions',
-                buttonTitles: 'userOptions',
+                show: "userOptions",
+                showOnChartHover: "userOptions",
+                position: "userOptions",
+                buttons: "userOptions",
+                buttonTitles: "userOptions",
 
                 // buttons
-                pdf: 'userOptionsButtons',
-                csv: 'userOptionsButtons',
-                img: 'userOptionsButtons',
-                table: 'userOptionsButtons',
-                fullscreen: 'userOptionsButtons',
-                annotator: 'userOptionsButtons',
-                tooltip: 'userOptionsButtons',
+                pdf: "userOptionsButtons",
+                csv: "userOptionsButtons",
+                img: "userOptionsButtons",
+                table: "userOptionsButtons",
+                fullscreen: "userOptionsButtons",
+                annotator: "userOptionsButtons",
+                tooltip: "userOptionsButtons",
 
                 // style
-                fontFamily: 'style',
-                chart: 'style',
+                fontFamily: "style",
+                chart: "style",
 
                 // chart
-                backgroundColor: 'chart',
-                color: 'chart',
-                padding: 'chart',
-                title: 'chart',
-                tooltip: 'chart',
-                legend: 'chart',
-                nodes: 'chart',
-                links: 'chart',
+                backgroundColor: "chart",
+                color: "chart",
+                padding: "chart",
+                title: "chart",
+                tooltip: "chart",
+                legend: "chart",
+                nodes: "chart",
+                links: "chart",
 
                 // padding
-                top: 'chartPadding',
-                right: 'chartPadding',
-                bottom: 'chartPadding',
-                left: 'chartPadding',
+                top: "chartPadding",
+                right: "chartPadding",
+                bottom: "chartPadding",
+                left: "chartPadding",
 
                 // title
-                text: 'chartTitle',
-                subtitle: 'chartTitle',
-                cy: 'chartTitle',
+                text: "chartTitle",
+                subtitle: "chartTitle",
+                cy: "chartTitle",
                 // subtitle.text lives under the same category
 
                 // tooltip
-                show: 'chartTooltip',
-                fontSize: 'chartTooltip',
-                backgroundColor: 'chartTooltip',
-                color: 'chartTooltip',
-                borderColor: 'chartTooltip',
-                borderWidth: 'chartTooltip',
-                borderRadius: 'chartTooltip',
-                backgroundOpacity: 'chartTooltip',
-                position: 'chartTooltip',
-                offsetY: 'chartTooltip',
-                showPercentage: 'chartTooltip',
-                roundingPercentage: 'chartTooltip',
-                translations: 'chartTooltip',
-                from: 'chartTooltipTranslations',
-                to: 'chartTooltipTranslations',
-                percentOfTotal: 'chartTooltipTranslations',
+                show: "chartTooltip",
+                fontSize: "chartTooltip",
+                backgroundColor: "chartTooltip",
+                color: "chartTooltip",
+                borderColor: "chartTooltip",
+                borderWidth: "chartTooltip",
+                borderRadius: "chartTooltip",
+                backgroundOpacity: "chartTooltip",
+                position: "chartTooltip",
+                offsetY: "chartTooltip",
+                showPercentage: "chartTooltip",
+                roundingPercentage: "chartTooltip",
+                translations: "chartTooltip",
+                from: "chartTooltipTranslations",
+                to: "chartTooltipTranslations",
+                percentOfTotal: "chartTooltipTranslations",
 
                 // legend
-                show: 'chartLegend',
-                backgroundColor: 'chartLegend',
-                color: 'chartLegend',
-                fontSize: 'chartLegend',
-                paddingBottom: 'chartLegend',
-                paddingTop: 'chartLegend',
-                bold: 'chartLegend',
-                cy: 'chartLegend',
+                show: "chartLegend",
+                backgroundColor: "chartLegend",
+                color: "chartLegend",
+                fontSize: "chartLegend",
+                paddingBottom: "chartLegend",
+                paddingTop: "chartLegend",
+                bold: "chartLegend",
+                cy: "chartLegend",
 
                 // nodes
-                gap: 'chartNodes',
-                minHeight: 'chartNodes',
-                width: 'chartNodes',
-                labels: 'chartNodes',
-                stroke: 'chartNodes',
-                strokeWidth: 'chartNodes',
+                gap: "chartNodes",
+                minHeight: "chartNodes",
+                width: "chartNodes",
+                labels: "chartNodes",
+                stroke: "chartNodes",
+                strokeWidth: "chartNodes",
 
                 // labels
-                fontSize: 'chartLabels',
-                abbreviation: 'chartLabels',
-                prefix: 'chartLabels',
-                suffix: 'chartLabels',
-                rounding: 'chartLabels',
-                formatter: 'chartLabels',
+                fontSize: "chartLabels",
+                abbreviation: "chartLabels",
+                prefix: "chartLabels",
+                suffix: "chartLabels",
+                rounding: "chartLabels",
+                formatter: "chartLabels",
 
                 // abbreviation
-                use: 'chartLabelsAbbreviation',
-                length: 'chartLabelsAbbreviation',
+                use: "chartLabelsAbbreviation",
+                length: "chartLabelsAbbreviation",
 
                 // links
-                width: 'chartLinks',
-                opacity: 'chartLinks',
-                stroke: 'chartLinks',
-                strokeWidth: 'chartLinks',
+                width: "chartLinks",
+                opacity: "chartLinks",
+                stroke: "chartLinks",
+                strokeWidth: "chartLinks",
 
                 // table
-                show: 'table',
-                responsiveBreakpoint: 'table',
-                columnNames: 'table',
-                th: 'table',
-                td: 'table',
+                show: "table",
+                responsiveBreakpoint: "table",
+                columnNames: "table",
+                th: "table",
+                td: "table",
 
                 // columnNames
-                source: 'tableColumnNames',
-                target: 'tableColumnNames',
-                value: 'tableColumnNames',
+                source: "tableColumnNames",
+                target: "tableColumnNames",
+                value: "tableColumnNames",
 
                 // th
-                backgroundColor: 'tableTh',
-                color: 'tableTh',
-                outline: 'tableTh',
+                backgroundColor: "tableTh",
+                color: "tableTh",
+                outline: "tableTh",
 
                 // td
-                backgroundColor: 'tableTd',
-                color: 'tableTd',
-                outline: 'tableTd',
+                backgroundColor: "tableTd",
+                color: "tableTd",
+                outline: "tableTd",
             },
             nodeCategoryColors: {
                 // top‐level
-                config: '#1f77b4',
-                userOptions: '#ff7f0e',
-                userOptionsButtons: '#2ca02c',
-                style: '#d62728',
+                config: "#1f77b4",
+                userOptions: "#ff7f0e",
+                userOptionsButtons: "#2ca02c",
+                style: "#d62728",
 
                 // chart
-                chart: '#9467bd',
-                chartPadding: '#8c564b',
-                chartTitle: '#e377c2',
-                chartTooltip: '#bcbd22',
-                chartTooltipTranslations: '#17becf',
-                chartLegend: '#aec7e8',
-                chartNodes: '#98df8a',
-                chartLabels: '#ff9896',
-                chartLabelsAbbreviation: '#c5b0d5',
-                chartLinks: '#c49c94',
+                chart: "#9467bd",
+                chartPadding: "#8c564b",
+                chartTitle: "#e377c2",
+                chartTooltip: "#bcbd22",
+                chartTooltipTranslations: "#17becf",
+                chartLegend: "#aec7e8",
+                chartNodes: "#98df8a",
+                chartLabels: "#ff9896",
+                chartLabelsAbbreviation: "#c5b0d5",
+                chartLinks: "#c49c94",
 
                 // table
-                table: '#dbdb8d',
-                tableColumnNames: '#9edae5',
-                tableTh: '#393b79',
-                tableTd: '#5254a3',
+                table: "#dbdb8d",
+                tableColumnNames: "#9edae5",
+                tableTh: "#393b79",
+                tableTd: "#5254a3",
             },
-        }
-    }
+        },
+    };
 
     return flows;
 }

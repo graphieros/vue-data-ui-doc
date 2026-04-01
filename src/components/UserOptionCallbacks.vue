@@ -8,34 +8,36 @@ const props = defineProps({
     items: {
         type: Array,
         default() {
-            return []
-        }
+            return [];
+        },
     },
     path: {
         type: String,
-        default: ''
+        default: "",
     },
     root: {
         type: String,
-        default: ''
-    }
+        default: "",
+    },
 });
 
 const store = useMainStore();
 
 const description = ref({
-    en: 'You can set callbacks to all buttons of the user menu.',
-    fr: 'Vous pouvez définir des callbacks pour tous les boutons du menu utilisateur.',
-    pt: 'Você pode definir callbacks para todos os botões do menu do usuário.',
-    de: 'Sie können Callbacks für alle Schaltflächen des Benutzermenüs festlegen.',
-    zh: '您可以为用户菜单的所有按钮设置回调 (callbacks)。',
-    ja: 'ユーザーメニューのすべてのボタンにコールバックを設定できます。',
-    es: 'Puedes establecer callbacks para todos los botones del menú de usuario.',
-    ko: '사용자 메뉴의 모든 버튼에 콜백을 설정할 수 있습니다.',
-    ar: 'يمكنك تعيين callbacks لجميع أزرار قائمة المستخدم.'
-})
+    en: "You can set callbacks to all buttons of the user menu.",
+    fr: "Vous pouvez définir des callbacks pour tous les boutons du menu utilisateur.",
+    pt: "Você pode definir callbacks para todos os botões do menu do usuário.",
+    de: "Sie können Callbacks für alle Schaltflächen des Benutzermenüs festlegen.",
+    zh: "您可以为用户菜单的所有按钮设置回调 (callbacks)。",
+    ja: "ユーザーメニューのすべてのボタンにコールバックを設定できます。",
+    es: "Puedes establecer callbacks para todos los botones del menú de usuario.",
+    ko: "사용자 메뉴의 모든 버튼에 콜백을 설정할 수 있습니다.",
+    ar: "يمكنك تعيين callbacks لجميع أزرار قائمة المستخدم.",
+});
 
-const TAB = computed(() => props.path ? `       ` : !props.root ? `    `: '');
+const TAB = computed(() =>
+    props.path ? `       ` : !props.root ? `    ` : "",
+);
 
 const cb = ref({
     animation: `animation: () => {
@@ -90,47 +92,48 @@ const cb = ref({
             ${TAB.value}// Do something
         ${TAB.value}},
         ${TAB.value}`,
-})
+});
 
 const cbs = computed(() => {
-    return Object.keys(cb.value).filter(k => props.items.includes(k)).map(name => {
-        return {
-            name,
-            content: cb.value[name]
-        }
-    })
-})
+    return Object.keys(cb.value)
+        .filter((k) => props.items.includes(k))
+        .map((name) => {
+            return {
+                name,
+                content: cb.value[name],
+            };
+        });
+});
 
 const codeChart = computed(() => {
     return `const config = ref({
     chart: {
         userOptions: {
             callbacks: {
-                ${cbs.value.map(c => c.content).join('')}
+                ${cbs.value.map((c) => c.content).join("")}
             }
         }
     }
-});`
-})
+});`;
+});
 
 const codeRoot = computed(() => {
     return `const config = ref({
     ${props.root}: {
-        ${cbs.value.map(c => c.content).join('')}
+        ${cbs.value.map((c) => c.content).join("")}
     }
-});`
-})
+});`;
+});
 
 const codeStandard = computed(() => {
     return `const config = ref({
     userOptions: {
         callbacks: {
-            ${cbs.value.map(c => c.content).join('')}
+            ${cbs.value.map((c) => c.content).join("")}
         }
     }
-});`
-})
-
+});`;
+});
 </script>
 
 <template>
@@ -140,7 +143,9 @@ const codeStandard = computed(() => {
         </h3>
         <CodeParser
             language="javascript"
-            :content="path === 'chart' ? codeChart : root ? codeRoot : codeStandard"
+            :content="
+                path === 'chart' ? codeChart : root ? codeRoot : codeStandard
+            "
             @copy="store.copy()"
         />
     </div>

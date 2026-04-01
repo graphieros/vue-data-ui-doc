@@ -4,14 +4,13 @@ import Shape from "./Shape.vue";
 defineProps({
     color: {
         type: String,
-        default: '#000000'
+        default: "#000000",
     },
     shape: {
         type: String,
-        default: 'circle'
-    }
-})
-
+        default: "circle",
+    },
+});
 </script>
 
 <template>

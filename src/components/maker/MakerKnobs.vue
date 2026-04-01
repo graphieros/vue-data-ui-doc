@@ -1,5 +1,12 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, nextTick, watch } from "vue";
+import {
+    ref,
+    computed,
+    onMounted,
+    onBeforeUnmount,
+    nextTick,
+    watch,
+} from "vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import { useMainStore } from "../../stores";
 import { useMakerStore } from "../../stores/maker";
@@ -12,36 +19,40 @@ const props = defineProps({
     categories: {
         type: Array,
         default() {
-            return []
-        }
+            return [];
+        },
     },
     model: {
         type: Array,
         default() {
-            return []
-        }
-    }
-})
+            return [];
+        },
+    },
+});
 
 const store = useMainStore();
 const makerStore = useMakerStore();
-const isDarkMode = computed(() => store.isDarkMode)
+const isDarkMode = computed(() => store.isDarkMode);
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
+});
 
 const uid = createUid();
 
-const emit = defineEmits(['change'])
+const emit = defineEmits(["change"]);
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => {
-        if(! makerTranslations.value.labels[l]) return l
-        return  makerTranslations.value.labels[l][store.lang]
-    }).join(" ") :
-    makerTranslations.value.labels[label] ?
-    makerTranslations.value.labels[label][store.lang] : label
+    return Array.isArray(label)
+        ? label
+              .map((l) => {
+                  if (!makerTranslations.value.labels[l]) return l;
+                  return makerTranslations.value.labels[l][store.lang];
+              })
+              .join(" ")
+        : makerTranslations.value.labels[label]
+          ? makerTranslations.value.labels[label][store.lang]
+          : label;
 }
 
 const warningColorAlpha = ref({
@@ -53,8 +64,8 @@ const warningColorAlpha = ref({
     ja: "v2.3.77から透明な色が使用可能です",
     es: "Los colores transparentes son utilizables desde la v2.3.77",
     ko: "투명 색상은 v2.3.77부터 사용할 수 있습니다",
-    ar: "الألوان الشفافة قابلة للاستخدام منذ الإصدار v2.3.77"
-})
+    ar: "الألوان الشفافة قابلة للاستخدام منذ الإصدار v2.3.77",
+});
 
 const useOldColorPickers = ref(false);
 
@@ -67,41 +78,40 @@ const useTransparencyLabel = ref({
     ja: "古いカラーピッカーを使用する（v2.3.77以前）",
     es: "Usa los antiguos selectores de colores (antes de la v2.3.77)",
     ko: "구버전 색상 선택기 사용 (v2.3.77 이전)",
-    ar: "استخدم أدوات اختيار الألوان القديمة (قبل الإصدار v2.3.77)"
-})
+    ar: "استخدم أدوات اختيار الألوان القديمة (قبل الإصدار v2.3.77)",
+});
 
 const configCategoriesLabel = ref({
-    en: 'Config categories:',
-    fr: 'Catégories de configuration:',
-    pt: 'Categorias de configuração:',
-    de: 'Konfigurationskategorien:',
-    zh: '配置类别:',
-    ja: '設定カテゴリ:',
-    es: 'Categorías de configuración:',
-    ko: '설정 범주:',
-    ar: 'فئات التكوين:'
-})
+    en: "Config categories:",
+    fr: "Catégories de configuration:",
+    pt: "Categorias de configuração:",
+    de: "Konfigurationskategorien:",
+    zh: "配置类别:",
+    ja: "設定カテゴリ:",
+    es: "Categorías de configuración:",
+    ko: "설정 범주:",
+    ar: "فئات التكوين:",
+});
 
-const selectedCategory = ref(null)
+const selectedCategory = ref(null);
 
 function scrollToId(id) {
-    const element = document.getElementById(id)
-    const headerOffset = 160
-    const elementPosition = element.getBoundingClientRect().top
-    const offsetPosition = elementPosition + window.scrollY - headerOffset
-    selectedCategory.value = id
+    const element = document.getElementById(id);
+    const headerOffset = 160;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    selectedCategory.value = id;
 
     window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
-    })
+        behavior: "smooth",
+    });
 }
 
 function getKeyTranslation(key) {
-    const attr = key.split('.').at(-1);
+    const attr = key.split(".").at(-1);
     return useAttrMapping(attr);
 }
-
 
 const observer = ref(null);
 
@@ -122,11 +132,14 @@ function updateSelectedCategoryFromScroll(entries) {
 async function setupCategoryObserver() {
     if (observer.value) observer.value.disconnect();
 
-        observer.value = new IntersectionObserver(updateSelectedCategoryFromScroll, {
+    observer.value = new IntersectionObserver(
+        updateSelectedCategoryFromScroll,
+        {
             root: null,
             rootMargin: "-160px 0px -70% 0px",
             threshold: 0,
-        });
+        },
+    );
 
     props.categories.forEach((category) => {
         const element = document.getElementById(category.key);
@@ -153,60 +166,176 @@ onMounted(() => {
 });
 
 watch(
-    () => props.categories.map(c => c.key).join("|"),
+    () => props.categories.map((c) => c.key).join("|"),
     () => {
         bindObserver();
-    }
+    },
 );
 </script>
 
 <template>
     <BaseCard class="mt-6">
-        <div class="z-0 w-full border border-app-orange p-4 rounded-lg bg-[#ff660020] text-black dark:text-white" dir="auto">
+        <div
+            class="z-0 w-full border border-app-orange p-4 rounded-lg bg-[#ff660020] text-black dark:text-white"
+            dir="auto"
+        >
             <div class="flex flex-col gap-2">
                 <div class="flex flex-row gap-2 text-app-orange">
-                    <VueUiIcon name="circleExclamation" stroke="#ff6600"/>
+                    <VueUiIcon name="circleExclamation" stroke="#ff6600" />
                     {{ warningColorAlpha[store.lang] }}
                 </div>
                 <div class="flex-row" dir="auto">
-                    <label for="useTrans" class="px-8">{{ useTransparencyLabel[store.lang] }}</label>
-                    <input id="useTrans" type="checkbox" v-model="useOldColorPickers">
+                    <label for="useTrans" class="px-8">{{
+                        useTransparencyLabel[store.lang]
+                    }}</label>
+                    <input
+                        id="useTrans"
+                        type="checkbox"
+                        v-model="useOldColorPickers"
+                    />
                 </div>
             </div>
         </div>
     </BaseCard>
-    <div class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-gray-200 dark:bg-[#1A1A1A]" style="z-index:1000" dir="auto">
+    <div
+        class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-gray-200 dark:bg-[#1A1A1A]"
+        style="z-index: 1000"
+        dir="auto"
+    >
         <div>{{ configCategoriesLabel[store.lang] }}</div>
         <button
-            v-for="category in categories" @click="scrollToId(category.key)"
+            v-for="category in categories"
+            @click="scrollToId(category.key)"
             :class="`text-xs py-1 px-2 rounded-full ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] hover:bg-[#1A1A1A20] dark:bg-[#FFFFFF10] hover:dark:bg-[#FFFFFF20]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
         >
             {{ category.title }}
         </button>
     </div>
-    <div class="flex flex-col gap-2 my-4 overflow-visible" v-for="(category, c) in categories" :id="category.key" :style="{ scrollMarginTop : '80px'}">
+    <div
+        class="flex flex-col gap-2 my-4 overflow-visible"
+        v-for="(category, c) in categories"
+        :id="category.key"
+        :style="{ scrollMarginTop: '80px' }"
+    >
         <BaseCard type="medium">
             <div class="flex flex-row place-items-center gap-3 mb-4">
-                <VueUiIcon name="sliders" :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"/>
-                <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]">{{ category.title }}</h4>
+                <VueUiIcon
+                    name="sliders"
+                    :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
+                />
+                <h4
+                    class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]"
+                >
+                    {{ category.title }}
+                </h4>
             </div>
             <div class="flex flex-row gap-4 place-items-center flex-wrap">
-                <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
-                    <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }} <br v-if="getKeyTranslation(knob.key)"/><span v-if="getKeyTranslation(knob.key) && typeof getKeyTranslation(knob.key) === 'string' && typeof getLabel(knob.label) === 'string' && getKeyTranslation(knob.key).toUpperCase() !== getLabel(knob.label).toUpperCase()" class="text-xs text-gray-500">({{ getKeyTranslation(knob.key) }})</span></label>
-                    <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type === 'color' && (useOldColorPickers || knob.old)" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
+                <div
+                    v-for="(knob, i) in model.filter(
+                        (k) => k.category === category.key,
+                    )"
+                    class="flex flex-col justify-start my-2"
+                >
+                    <label
+                        :for="`k_${i}_${uid}_${c}`"
+                        :id="`l_${i}_${uid}_${c}`"
+                        v-if="knob.type !== 'color'"
+                        class="text-xs text-black dark:text-white"
+                        dir="auto"
+                        >{{ getLabel(knob.label) }}
+                        <br v-if="getKeyTranslation(knob.key)" /><span
+                            v-if="
+                                getKeyTranslation(knob.key) &&
+                                typeof getKeyTranslation(knob.key) ===
+                                    'string' &&
+                                typeof getLabel(knob.label) === 'string' &&
+                                getKeyTranslation(knob.key).toUpperCase() !==
+                                    getLabel(knob.label).toUpperCase()
+                            "
+                            class="text-xs text-gray-500"
+                            >({{ getKeyTranslation(knob.key) }})</span
+                        ></label
+                    >
+                    <label
+                        :for="`k_${i}_${uid}_${c}`"
+                        :id="`l_${i}_${uid}_${c}`"
+                        v-if="
+                            knob.type === 'color' &&
+                            (useOldColorPickers || knob.old)
+                        "
+                        class="text-xs text-black dark:text-white"
+                        dir="auto"
+                        >{{ getLabel(knob.label) }}</label
+                    >
 
                     <div class="flex place-items-center justify-start h-[40px]">
-                        <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
+                        <BaseNumberInput
+                            v-if="knob.type === 'number'"
+                            v-model:value="knob.def"
+                            :min="knob.min"
+                            :max="knob.max"
+                            :step="knob.step"
+                            @change="emit('change')"
+                            :labelId="`l_${i}_${uid}_${c}`"
+                            :id="`k_${i}_${uid}_${c}`"
+                        />
                         <template v-if="knob.type === 'range'">
-                            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                                <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ knob.def }}</div>
-                                <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-0" @change="emit('change')">
+                            <div
+                                class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md dark:border-t dark:border-[#6A6A6A]"
+                            >
+                                <div
+                                    class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums"
+                                >
+                                    {{ knob.def }}
+                                </div>
+                                <input
+                                    :id="`k_${i}_${uid}_${c}`"
+                                    type="range"
+                                    v-model="knob.def"
+                                    :min="knob.min"
+                                    :max="knob.max"
+                                    :step="knob.step"
+                                    class="accent-app-blue z-0"
+                                    @change="emit('change')"
+                                />
                             </div>
                         </template>
-                        <BaseColorInput v-else-if="knob.type === 'color' && (!useOldColorPickers && !knob.old)" :label="getLabel(knob.label)" :rgba="true" v-model:value="knob.def" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
-                        <input :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`" v-else-if="!['number', 'range', 'select'].includes(knob.type)" class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" v-model="knob.def" @change="emit('change')">
-                        <select v-else-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2" :id="`k_${i}_${uid}_${c}`">
-                            <option v-for="opt in knob.options">{{ opt }}</option>
+                        <BaseColorInput
+                            v-else-if="
+                                knob.type === 'color' &&
+                                !useOldColorPickers &&
+                                !knob.old
+                            "
+                            :label="getLabel(knob.label)"
+                            :rgba="true"
+                            v-model:value="knob.def"
+                            :labelId="`l_${i}_${uid}_${c}`"
+                            :id="`k_${i}_${uid}_${c}`"
+                        />
+                        <input
+                            :labelId="`l_${i}_${uid}_${c}`"
+                            :id="`k_${i}_${uid}_${c}`"
+                            v-else-if="
+                                !['number', 'range', 'select'].includes(
+                                    knob.type,
+                                )
+                            "
+                            class="accent-app-blue"
+                            v-if="!['none', 'select'].includes(knob.type)"
+                            :type="knob.type"
+                            v-model="knob.def"
+                            @change="emit('change')"
+                        />
+                        <select
+                            v-else-if="knob.type === 'select'"
+                            v-model="knob.def"
+                            @change="emit('change')"
+                            class="h-[32px] px-2"
+                            :id="`k_${i}_${uid}_${c}`"
+                        >
+                            <option v-for="opt in knob.options">
+                                {{ opt }}
+                            </option>
                         </select>
                     </div>
                 </div>

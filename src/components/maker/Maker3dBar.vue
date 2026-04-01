@@ -1,10 +1,10 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, XIcon } from "vue-tabler-icons"
-import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
-import { useDefaultDataStore } from "../../stores/defaultData"
+import { PlusIcon, XIcon } from "vue-tabler-icons";
+import { useMakerStore } from "../../stores/maker";
+import { copyComponent, convertArrayToObject, createUid } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
@@ -42,53 +42,60 @@ const datasetItems = ref(defaultData.vue_ui_3d_bar.dataset.series);
 const CONFIG_CATEGORIES = computed(() => {
     return [
         {
-            key: 'general',
-            title: makerTranslations.value.categories.general[store.lang]
+            key: "general",
+            title: makerTranslations.value.categories.general[store.lang],
         },
         {
-            key: 'container',
-            title: makerTranslations.value.categories.container[store.lang]
+            key: "container",
+            title: makerTranslations.value.categories.container[store.lang],
         },
         {
-            key: 'labels',
-            title: makerTranslations.value.categories.labels[store.lang]
+            key: "labels",
+            title: makerTranslations.value.categories.labels[store.lang],
         },
         {
-            key: 'title',
-            title: makerTranslations.value.categories.title[store.lang]
+            key: "title",
+            title: makerTranslations.value.categories.title[store.lang],
         },
         {
-            key: 'subtitle',
-            title: makerTranslations.value.categories.subtitle[store.lang]
+            key: "subtitle",
+            title: makerTranslations.value.categories.subtitle[store.lang],
         },
         {
-            key: 'legend',
-            title: makerTranslations.value.categories.legend[store.lang]
+            key: "legend",
+            title: makerTranslations.value.categories.legend[store.lang],
         },
         {
-            key: 'table',
-            title: makerTranslations.value.categories.table[store.lang]
+            key: "table",
+            title: makerTranslations.value.categories.table[store.lang],
         },
-    ]
+    ];
 });
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_3d_bar.model)));
-const dataset = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_3d_bar.dataset)));
+const CONFIG_MODEL = ref(
+    JSON.parse(JSON.stringify(defaultData.vue_ui_3d_bar.model)),
+);
+const dataset = ref(
+    JSON.parse(JSON.stringify(defaultData.vue_ui_3d_bar.dataset)),
+);
 
 onMounted(() => {
-    if(localStorage.config3dBar) {
+    if (localStorage.config3dBar) {
         CONFIG_MODEL.value = JSON.parse(localStorage.config3dBar);
-    } 
-    if(localStorage.dataset3dBar) {
-        dataset.value = JSON.parse(localStorage.dataset3dBar)
-    }else {
-        localStorage.setItem('dataset3dBar', JSON.stringify(defaultData.vue_ui_3d_bar.dataset))
+    }
+    if (localStorage.dataset3dBar) {
+        dataset.value = JSON.parse(localStorage.dataset3dBar);
+    } else {
+        localStorage.setItem(
+            "dataset3dBar",
+            JSON.stringify(defaultData.vue_ui_3d_bar.dataset),
+        );
     }
     step.value += 1;
-})
+});
 
 function saveDatasetToLocalStorage() {
-    if(isStack.value) {
+    if (isStack.value) {
         dataset.value.series = datasetItems.value;
     }
     localStorage.dataset3dBar = JSON.stringify(dataset.value);
@@ -102,213 +109,363 @@ function saveConfigToLocalStorage() {
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_3d_bar.model))
+    CONFIG_MODEL.value = JSON.parse(
+        JSON.stringify(defaultData.vue_ui_3d_bar.model),
+    );
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.config3dBar) {
-        localStorage.setItem('config3dBar', {})
+    if (!localStorage.config3dBar) {
+        localStorage.setItem("config3dBar", {});
     }
-    saveConfigToLocalStorage()
+    saveConfigToLocalStorage();
     step.value += 1;
 }
 
 const finalConfig = computed(() => {
-    return convertArrayToObject(CONFIG_MODEL.value)
-})
+    return convertArrayToObject(CONFIG_MODEL.value);
+});
 
 const options = ref({
     datasetItems: {
-        name: 'Serie n',
+        name: "Serie n",
         value: 0,
-        color: '#CCCCCC',
-        breakdown: []
+        color: "#CCCCCC",
+        breakdown: [],
     },
     subSerie: {
-        name: 'Sub serie n',
-        value: 0
-    }
-})
+        name: "Sub serie n",
+        value: 0,
+    },
+});
 
 function addDatasetItem() {
-    datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid()});
+    datasetItems.value.push({
+        ...JSON.parse(JSON.stringify(options.value.datasetItems)),
+        id: createUid(),
+    });
     dataset.value.series = datasetItems.value;
     step.value += 1;
-    saveDatasetToLocalStorage()
+    saveDatasetToLocalStorage();
 }
 
 function addSubSerie(parentId) {
-    const thisParent = datasetItems.value.find(p => p.id === parentId);
-    thisParent.breakdown.push({...JSON.parse(JSON.stringify(options.value.subSerie)), id: createUid()});
+    const thisParent = datasetItems.value.find((p) => p.id === parentId);
+    thisParent.breakdown.push({
+        ...JSON.parse(JSON.stringify(options.value.subSerie)),
+        id: createUid(),
+    });
     step.value += 1;
-    saveDatasetToLocalStorage()
+    saveDatasetToLocalStorage();
 }
 
 function deleteDatasetItem(id) {
-    datasetItems.value = datasetItems.value.filter(_ => _.id !== id);
+    datasetItems.value = datasetItems.value.filter((_) => _.id !== id);
     dataset.value.series = datasetItems.value;
     step.value += 1;
-    saveDatasetToLocalStorage()
+    saveDatasetToLocalStorage();
 }
 
 function deleteSubSerie(parentId, serieId) {
-    const thisParent = datasetItems.value.find(p => p.id === parentId);
-    thisParent.breakdown = thisParent.breakdown.filter(b => b.id !== serieId);
+    const thisParent = datasetItems.value.find((p) => p.id === parentId);
+    thisParent.breakdown = thisParent.breakdown.filter((b) => b.id !== serieId);
     step.value += 1;
-    saveDatasetToLocalStorage()
+    saveDatasetToLocalStorage();
 }
 </script>
 
 <template>
     <div>
+        <ClearStorageAndRefresh
+            keyConfig="config3dBar"
+            keyDataset="dataset3dBar"
+            :key="`clear_${clearStep}`"
+        />
+        <BaseDocExampleLink
+            link="vue-ui-3d-bar"
+            :example="false"
+            componentName="VueUi3dBar"
+        />
 
-        <ClearStorageAndRefresh keyConfig="config3dBar" keyDataset="dataset3dBar" :key="`clear_${clearStep}`"/>
-        <BaseDocExampleLink link="vue-ui-3d-bar" :example="false" componentName="VueUi3dBar"/>
-      
-      <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-        <Transition name="fade">
-            <BaseMakerChart
-                v-if="!isFixed"
-                :isFixed="isFixed"
-                @fixChart="fixChart"
-                @resetModel="resetModel"
-            >
-                <VueUi3dBar ref="chart" :dataset="isStack ? { series: dataset.series } : { percentage: dataset.percentage }" :config="finalConfig" :key="`chart_${step}`"/>
-            </BaseMakerChart>
-        </Transition>
-      </div>
-      
-    <BaseCard>
-        <details open>
-            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-            <div class="flex flex-col gap-2">
-                <div class="flex flex-row gap-3 place-items-center">
-                    <label for="stack_mode">Stack mode</label>
-                    <input type="checkbox" v-model="isStack" @change="step += 1">
-                </div>
-                <div v-if="!isStack" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.percentage[store.lang] }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><input class="w-[82px]" min="0" max="100" type="number" v-model="dataset.percentage" @change="saveDatasetToLocalStorage">%</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="flex flex-col gap-2" v-if="isStack">
-                    <div v-for="(ds, i) in datasetItems" :key="ds.id" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-                        <BaseButton
-                            color="error"
-                            :size="6"
-                            fab
-                            @click="deleteDatasetItem(ds.id)"
-                            tw="absolute -top-1 -left-4"
-                        >
-                            <XIcon size="16" />
-                        </BaseButton>
+        <div class="w-full mt-[64px]" style="height: calc(100% - 64px)">
+            <Transition name="fade">
+                <BaseMakerChart
+                    v-if="!isFixed"
+                    :isFixed="isFixed"
+                    @fixChart="fixChart"
+                    @resetModel="resetModel"
+                >
+                    <VueUi3dBar
+                        ref="chart"
+                        :dataset="
+                            isStack
+                                ? { series: dataset.series }
+                                : { percentage: dataset.percentage }
+                        "
+                        :config="finalConfig"
+                        :key="`chart_${step}`"
+                    />
+                </BaseMakerChart>
+            </Transition>
+        </div>
+
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">
+                    {{ makerTranslations.dataset[store.lang] }}
+                </summary>
+                <div class="flex flex-col gap-2">
+                    <div class="flex flex-row gap-3 place-items-center">
+                        <label for="stack_mode">Stack mode</label>
+                        <input
+                            type="checkbox"
+                            v-model="isStack"
+                            @change="step += 1"
+                        />
+                    </div>
+                    <div
+                        v-if="!isStack"
+                        :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`"
+                    >
                         <table>
                             <thead>
-                            <tr>
-                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.breakdown[store.lang] }}</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th class="text-left text-xs h-[40px]">
+                                        {{
+                                            makerTranslations.labels.percentage[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
-                                <td class="flex flex-row gap-2 place-items-center">
-                                    <div class="flex flex-col gap-2 place-items-center relative" v-for="sub in ds.breakdown" :key="sub.id">
-                                        <div class="flex flex-row justify-start w-full pl-10">
-                                            <BaseButton
-                                                color="error"
-                                                :size="4"
-                                                fab
-                                                @click="deleteSubSerie(ds.id, sub.id)"
-                                            >
-                                                <XIcon size="12" />
-                                            </BaseButton> 
-                                        </div>
-
-                                        <div class="flex flex-row gap-2 place-items-center">
-                                            <label class="text-xs">{{ makerTranslations.labels.name[store.lang] }}</label>
-                                            <input class="h-[36px]" type="text" v-model="sub.name">
-                                        </div>
-                                        <div class="flex flex-row gap-2 place-items-center">
-                                            <label class="text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
-                                            <input class="h-[36px]" type="number" min="0" v-model="sub.value">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <BaseButton
-                                        color="success"
-                                        fab
-                                        @click="addSubSerie(ds.id)"
-                                        :tooltip="translations.maker.tooltips.addData[store.lang]"
-                                    >
-                                        <PlusIcon/>
-                                    </BaseButton>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <input
+                                            class="w-[82px]"
+                                            min="0"
+                                            max="100"
+                                            type="number"
+                                            v-model="dataset.percentage"
+                                            @change="saveDatasetToLocalStorage"
+                                        />%
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
+                    <div class="flex flex-col gap-2" v-if="isStack">
+                        <div
+                            v-for="(ds, i) in datasetItems"
+                            :key="ds.id"
+                            :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`"
+                            :style="`background:${ds.color}30`"
+                        >
+                            <BaseButton
+                                color="error"
+                                :size="6"
+                                fab
+                                @click="deleteDatasetItem(ds.id)"
+                                tw="absolute -top-1 -left-4"
+                            >
+                                <XIcon size="16" />
+                            </BaseButton>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="text-left text-xs h-[40px]">
+                                            {{
+                                                makerTranslations.labels.color[
+                                                    store.lang
+                                                ]
+                                            }}
+                                        </th>
+                                        <th class="text-left text-xs">
+                                            {{
+                                                makerTranslations.labels
+                                                    .serieName[store.lang]
+                                            }}
+                                        </th>
+                                        <th class="text-left text-xs">
+                                            {{
+                                                makerTranslations.labels.value[
+                                                    store.lang
+                                                ]
+                                            }}
+                                        </th>
+                                        <th class="text-left text-xs">
+                                            {{
+                                                makerTranslations.labels
+                                                    .breakdown[store.lang]
+                                            }}
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input
+                                                type="color"
+                                                v-model="ds.color"
+                                                @change="
+                                                    saveDatasetToLocalStorage
+                                                "
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                class="h-[36px]"
+                                                type="text"
+                                                v-model="ds.name"
+                                                @change="
+                                                    saveDatasetToLocalStorage
+                                                "
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                class="h-[36px]"
+                                                type="number"
+                                                v-model="ds.value"
+                                                @change="
+                                                    saveDatasetToLocalStorage
+                                                "
+                                            />
+                                        </td>
+                                        <td
+                                            class="flex flex-row gap-2 place-items-center"
+                                        >
+                                            <div
+                                                class="flex flex-col gap-2 place-items-center relative"
+                                                v-for="sub in ds.breakdown"
+                                                :key="sub.id"
+                                            >
+                                                <div
+                                                    class="flex flex-row justify-start w-full pl-10"
+                                                >
+                                                    <BaseButton
+                                                        color="error"
+                                                        :size="4"
+                                                        fab
+                                                        @click="
+                                                            deleteSubSerie(
+                                                                ds.id,
+                                                                sub.id,
+                                                            )
+                                                        "
+                                                    >
+                                                        <XIcon size="12" />
+                                                    </BaseButton>
+                                                </div>
+
+                                                <div
+                                                    class="flex flex-row gap-2 place-items-center"
+                                                >
+                                                    <label class="text-xs">{{
+                                                        makerTranslations.labels
+                                                            .name[store.lang]
+                                                    }}</label>
+                                                    <input
+                                                        class="h-[36px]"
+                                                        type="text"
+                                                        v-model="sub.name"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="flex flex-row gap-2 place-items-center"
+                                                >
+                                                    <label class="text-xs">{{
+                                                        makerTranslations.labels
+                                                            .value[store.lang]
+                                                    }}</label>
+                                                    <input
+                                                        class="h-[36px]"
+                                                        type="number"
+                                                        min="0"
+                                                        v-model="sub.value"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <BaseButton
+                                                color="success"
+                                                fab
+                                                @click="addSubSerie(ds.id)"
+                                                :tooltip="
+                                                    translations.maker.tooltips
+                                                        .addData[store.lang]
+                                                "
+                                            >
+                                                <PlusIcon />
+                                            </BaseButton>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="flex flex-row gap-4 mt-4 mb-6" v-if="isStack">
+                        <BaseButton
+                            color="success"
+                            fab
+                            :size="10"
+                            @click="addDatasetItem"
+                            :tooltip="
+                                translations.maker.tooltips.addDataset[
+                                    store.lang
+                                ]
+                            "
+                            tooltip-position="right"
+                        >
+                            <PlusIcon />
+                        </BaseButton>
+                    </div>
                 </div>
-                <div class="flex flex-row gap-4 mt-4 mb-6" v-if="isStack">
-                <BaseButton
-                    color="success" 
-                    fab
-                    :size="10"
-                    @click="addDatasetItem"
-                    :tooltip="translations.maker.tooltips.addDataset[store.lang]"
-                    tooltip-position="right"
-                >
-                    <PlusIcon/>
-                </BaseButton>
-                </div>
-            </div>
+            </details>
+        </BaseCard>
+
+        <details open class="mt-6" v-if="makerTranslations.labels">
+            <summary class="cursor-pointer">
+                {{ makerTranslations.config[store.lang] }}
+            </summary>
+
+            <MakerKnobs
+                :categories="CONFIG_CATEGORIES"
+                :model="CONFIG_MODEL"
+                @change="forceChartUpdate"
+            />
         </details>
-    </BaseCard>
-      
-      <details open class="mt-6" v-if="makerTranslations.labels">
-              <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-      
-              <MakerKnobs
-                  :categories="CONFIG_CATEGORIES"
-                  :model="CONFIG_MODEL"
-                  @change="forceChartUpdate"
-              />
-          </details>
-      
-          <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-              <ComponentContent
-                  :dataset="isStack ? { series: dataset.series } : { percentage: dataset.percentage }"
-                  :config="finalConfig"
-                  componentName="VueUi3dBar"
-                  configName="vue_ui_3d_bar"
-                  @click="() => copyComponent('componentContent', store)"
-                  :copyComponentFunc="() => copyComponent('componentContent', store)"
-                  keyConfig="config3dBar"
-                  keyDataset="dataset3dBar"
-              >
-              <template #component-copy>
-                        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-                    </template>
+
+        <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <ComponentContent
+                :dataset="
+                    isStack
+                        ? { series: dataset.series }
+                        : { percentage: dataset.percentage }
+                "
+                :config="finalConfig"
+                componentName="VueUi3dBar"
+                configName="vue_ui_3d_bar"
+                @click="() => copyComponent('componentContent', store)"
+                :copyComponentFunc="
+                    () => copyComponent('componentContent', store)
+                "
+                keyConfig="config3dBar"
+                keyDataset="dataset3dBar"
+            >
+                <template #component-copy>
+                    <CopyComponent
+                        @click="() => copyComponent('componentContent', store)"
+                    />
+                </template>
             </ComponentContent>
-            <slot name="rater"/>
-          </div>
+            <slot name="rater" />
+        </div>
     </div>
     <Transition name="fade">
         <BaseMakerChart
@@ -317,13 +474,22 @@ function deleteSubSerie(parentId, serieId) {
             @fixChart="fixChart"
             @resetModel="resetModel"
         >
-            <VueUi3dBar :dataset="isStack ? { series: dataset.series } : { percentage: dataset.percentage }" :config="finalConfig" :key="`chart_${step}`"/>
+            <VueUi3dBar
+                :dataset="
+                    isStack
+                        ? { series: dataset.series }
+                        : { percentage: dataset.percentage }
+                "
+                :config="finalConfig"
+                :key="`chart_${step}`"
+            />
         </BaseMakerChart>
     </Transition>
 </template>
 
 <style scoped>
-th, td {
+th,
+td {
     padding: 0 3px;
 }
 </style>

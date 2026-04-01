@@ -13,7 +13,11 @@ export default function useMaker() {
         setTimeout(() => {
             step.value += 1;
             if (chart.value) {
-                chart.value.$el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest'})
+                chart.value.$el.scrollIntoView({
+                    behavior: "smooth",
+                    block: "end",
+                    inline: "nearest",
+                });
             }
         }, 100);
     }
@@ -23,6 +27,6 @@ export default function useMaker() {
         isFixed,
         step,
         chart,
-        fixChart
-    }
+        fixChart,
+    };
 }

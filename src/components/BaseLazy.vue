@@ -10,14 +10,19 @@ import { onMounted, onBeforeUnmount, ref, watch, computed } from "vue";
 
 const props = defineProps({
     bounds: { type: String, default: "500px 0px" },
-    threshold: { type: [Number, Array], default() { return 0 } },
+    threshold: {
+        type: [Number, Array],
+        default() {
+            return 0;
+        },
+    },
     once: { type: Boolean, default: false },
     root: { type: [String, HTMLElement], default: null },
     tag: { type: String, default: "div" },
     enabled: { type: Boolean, default: true },
-    visibleRatioEnter: { type: Number, default: 0.1 }, 
+    visibleRatioEnter: { type: Number, default: 0.1 },
     visibleRatioExit: { type: Number, default: 0.0 },
-    leaveDelay: { type: Number, default: 50 }
+    leaveDelay: { type: Number, default: 50 },
 });
 
 const emit = defineEmits(["enter", "leave", "load", "change"]);
@@ -100,15 +105,18 @@ function createObserver() {
             rootMargin: props.bounds,
             threshold: Array.isArray(props.threshold)
                 ? props.threshold
-                :
-                Array.from(
-                    new Set(
-                        [props.threshold, props.visibleRatioEnter, props.visibleRatioExit]
-                            .flat()
-                            .filter((v) => typeof v === "number")
-                    )
-                ).sort((a, b) => a - b)
-        }
+                : Array.from(
+                      new Set(
+                          [
+                              props.threshold,
+                              props.visibleRatioEnter,
+                              props.visibleRatioExit,
+                          ]
+                              .flat()
+                              .filter((v) => typeof v === "number"),
+                      ),
+                  ).sort((a, b) => a - b),
+        },
     );
 
     observer.observe(hostEl.value);
@@ -143,7 +151,7 @@ watch(
         props.enabled,
         props.visibleRatioEnter,
         props.visibleRatioExit,
-        props.leaveDelay
+        props.leaveDelay,
     ],
     ([, , , enabled]) => {
         if (!enabled) {
@@ -151,7 +159,7 @@ watch(
             return;
         }
         createObserver();
-    }
+    },
 );
 
 function refresh() {

@@ -6,27 +6,15 @@ const CONFIG = useConfig();
 function getAllUniqueKeys(obj, keys = new Set()) {
     for (const key in obj) {
         keys.add(key);
-        if (obj[key] && typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+        if (
+            obj[key] &&
+            typeof obj[key] === "object" &&
+            !Array.isArray(obj[key])
+        ) {
             getAllUniqueKeys(obj[key], keys);
         }
     }
     return Array.from(keys);
-}
-
-function arrayToLangObject(keys) {
-    const template = { fr: "", pt: "", de: "", zh: "", ja: "", es: "", ar: "" };
-    return keys.reduce((acc, key) => {
-        acc[key] = { ...template };
-        return acc;
-    }, {});
-}
-
-function logAllConfigKeys() {
-    const arr = [];
-    Object.keys(CONFIG).forEach((key) => {
-        arr.push(getAllUniqueKeys(CONFIG[key]));
-    });
-    console.log(arrayToLangObject(arr.flat()));
 }
 
 export default function useAttrMapping(attr) {
@@ -2337,15 +2325,6 @@ export default function useAttrMapping(attr) {
             ar: "عجلة",
         },
         ticks: {
-            fr: "",
-            pt: "",
-            de: "",
-            zh: "",
-            ja: "",
-            es: "",
-            ar: "",
-        },
-        ticks: {
             fr: "graduations",
             pt: "marcas",
             de: "Ticks",
@@ -2406,7 +2385,7 @@ export default function useAttrMapping(attr) {
             zh: "内部半径相对于外部半径的比例，用于控制带状区域的厚度。",
             ja: "内半径を外半径に対する比率で定義し、リボンの厚みを調整します。",
             es: "Proporción del radio interno con respecto al radio externo, controlando el grosor de las cintas.",
-            ar: "نسبة نصف القطر الداخلي إلى نصف القطر الخارجي، للتحكم في سمك الأشرطة."
+            ar: "نسبة نصف القطر الداخلي إلى نصف القطر الخارجي، للتحكم في سمك الأشرطة.",
         },
         outerRadiusRatio: {
             fr: "Ratio du rayon extérieur par rapport à la taille globale du graphique, définissant la dimension externe du diagramme.",
@@ -2415,7 +2394,7 @@ export default function useAttrMapping(attr) {
             zh: "外部半径相对于图表整体大小的比例，用于定义图表的外部尺寸。",
             ja: "外半径をチャート全体のサイズに対する比率で定義し、図の外形サイズを決定します。",
             es: "Proporción del radio externo con respecto al tamaño total de la gráfica, definiendo la dimensión externa del diagrama.",
-            ar: "نسبة نصف القطر الخارجي إلى الحجم الكلي للمخطط، لتحديد البعد الخارجي للرسوم البيانية."
+            ar: "نسبة نصف القطر الخارجي إلى الحجم الكلي للمخطط، لتحديد البعد الخارجي للرسوم البيانية.",
         },
         display: {
             fr: "affichage",
@@ -7369,7 +7348,7 @@ export default function useAttrMapping(attr) {
         },
     };
 
-    if (!mapping[attr] || !mapping[attr][store.lang]) return ''
+    if (!mapping[attr] || !mapping[attr][store.lang]) return "";
 
     return mapping[attr][store.lang];
 }

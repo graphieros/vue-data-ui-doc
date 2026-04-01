@@ -7,23 +7,20 @@ import { useCaseStore } from "../../stores/cases";
 import CodeParser from "../customization/CodeParser.vue";
 
 onMounted(() => {
-    window.Prism = window.Prism || {}
-    window.Prism.manual = true
-    Prism.highlightAll()
-})
+    window.Prism = window.Prism || {};
+    window.Prism.manual = true;
+    Prism.highlightAll();
+});
 
 const store = useMainStore();
 const cases = useCaseStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
 const accordionTitle = computed(() => {
-    return cases.code[store.lang]
-})
+    return cases.code[store.lang];
+});
 
-const {
-    SCATTER_LARGE_DATASET,
-    SCATTER_LARGE_CONFIG
-} = useCase()
+const { SCATTER_LARGE_DATASET, SCATTER_LARGE_CONFIG } = useCase();
 
 const code = ref(`import { VueUiScatter } from "vue-data-ui";
 function makeScatterBigData() {
@@ -61,7 +58,6 @@ const config = ref({
     }
 })
 `);
-
 </script>
 
 <template>
@@ -75,26 +71,29 @@ const config = ref({
     </UseCaseTitle>
     <div class="w-full rounded p-4 bg-white">
         <VueDataUi
-            component="VueUiScatter" 
+            component="VueUiScatter"
             :dataset="SCATTER_LARGE_DATASET"
             :config="SCATTER_LARGE_CONFIG"
         />
     </div>
     <div class="w-full">
-        <VueDataUi component="VueUiAccordion" :config="{
-            maxHeight: 5000,
-            head: {
-                useArrowSlot: true,
-                backgroundColor: 'transparent',
-                iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
-            },
-            body: {
-                backgroundColor: 'transparent',
-                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-            }
-        }">
+        <VueDataUi
+            component="VueUiAccordion"
+            :config="{
+                maxHeight: 5000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent',
+                    iconColor: isDarkMode ? '#fdd663' : '#1A1A1A',
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                },
+            }"
+        >
             <template #arrow="{ iconColor }">
-                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" />
             </template>
             <template #title>
                 {{ accordionTitle }}

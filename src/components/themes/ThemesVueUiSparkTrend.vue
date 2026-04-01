@@ -2,10 +2,9 @@
 import { ref } from "vue";
 import BaseThemeUnit from "./BaseThemeUnit.vue";
 
-const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89])
+const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89]);
 
-const config = ref({})
-
+const config = ref({});
 </script>
 
 <template>

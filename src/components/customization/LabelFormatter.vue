@@ -12,7 +12,7 @@ const code = ref(`
 formatter: ({ value, config }) => {
   return \`my format:\${value.toLocaleString('de-DE')}\`;
 }
-`)
+`);
 
 const codeConfig = ref(`
 // Example for labels in VueUiDonut
@@ -32,8 +32,7 @@ const configDonut = ref({
     }
   }
 });
-`)
-    
+`);
 </script>
 
 <template>
@@ -42,7 +41,16 @@ const configDonut = ref({
     </div>
 
     <BaseCard class="max-w-[1200px] mx-auto">
-      <CodeParser :content="code" language="javascript" @copy="store.copy()"/>
-      <CodeParser class="mt-4" :content="codeConfig" language="javascript" @copy="store.copy()"/>
+        <CodeParser
+            :content="code"
+            language="javascript"
+            @copy="store.copy()"
+        />
+        <CodeParser
+            class="mt-4"
+            :content="codeConfig"
+            language="javascript"
+            @copy="store.copy()"
+        />
     </BaseCard>
 </template>

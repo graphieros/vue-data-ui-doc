@@ -1,9 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject } from "./lib.js"
-import { useDefaultDataStore } from "../../stores/defaultData"
+import { useMakerStore } from "../../stores/maker";
+import { copyComponent, convertArrayToObject } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
@@ -24,11 +24,11 @@ const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
-})
+});
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
+});
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
@@ -37,162 +37,193 @@ const isDarkMode = computed(() => {
 const CONFIG_CATEGORIES = computed(() => {
     return [
         {
-            key: 'general',
-            title: makerTranslations.value.categories.general[store.lang]
+            key: "general",
+            title: makerTranslations.value.categories.general[store.lang],
         },
         {
-            key: 'userOptions',
-            title: makerTranslations.value.categories.userOptions[store.lang]
+            key: "userOptions",
+            title: makerTranslations.value.categories.userOptions[store.lang],
         },
         {
-            key: 'labels',
-            title: makerTranslations.value.categories.labels[store.lang]
+            key: "labels",
+            title: makerTranslations.value.categories.labels[store.lang],
         },
         {
-            key: 'title',
-            title: makerTranslations.value.categories.title[store.lang]
+            key: "title",
+            title: makerTranslations.value.categories.title[store.lang],
         },
         {
-            key: 'subtitle',
-            title: makerTranslations.value.categories.subtitle[store.lang]
+            key: "subtitle",
+            title: makerTranslations.value.categories.subtitle[store.lang],
         },
-    ]
-})
+    ];
+});
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_wheel.model)))
+const CONFIG_MODEL = ref(
+    JSON.parse(JSON.stringify(defaultData.vue_ui_wheel.model)),
+);
 
 const currentDataset = ref(defaultData.vue_ui_wheel.dataset);
 
 onMounted(() => {
-    if(localStorage.wheelConfig) {
+    if (localStorage.wheelConfig) {
         CONFIG_MODEL.value = JSON.parse(localStorage.wheelConfig);
-    } 
-    if(localStorage.wheelDataset) {
-        currentDataset.value = JSON.parse(localStorage.wheelDataset)
-    }else {
-        localStorage.setItem('wheelDataset', JSON.stringify(defaultData.vue_ui_wheel.dataset))
+    }
+    if (localStorage.wheelDataset) {
+        currentDataset.value = JSON.parse(localStorage.wheelDataset);
+    } else {
+        localStorage.setItem(
+            "wheelDataset",
+            JSON.stringify(defaultData.vue_ui_wheel.dataset),
+        );
     }
     step.value += 1;
-})
+});
 
 function saveDatasetToLocalStorage(clear = true) {
-    if(clear) {
+    if (clear) {
         step.value += 1;
     }
     localStorage.wheelDataset = JSON.stringify(currentDataset.value);
-    if(clear) {
+    if (clear) {
         clearStep.value += 1;
     }
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.wheelConfig = JSON.stringify(CONFIG_MODEL.value)
+    localStorage.wheelConfig = JSON.stringify(CONFIG_MODEL.value);
     clearStep.value += 1;
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_wheel.model))
+    CONFIG_MODEL.value = JSON.parse(
+        JSON.stringify(defaultData.vue_ui_wheel.model),
+    );
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.wheelConfig) {
-        localStorage.setItem('wheelConfig', {})
+    if (!localStorage.wheelConfig) {
+        localStorage.setItem("wheelConfig", {});
     }
-    saveConfigToLocalStorage()
+    saveConfigToLocalStorage();
     step.value += 1;
 }
 
 const finalConfig = computed(() => {
-    return convertArrayToObject(CONFIG_MODEL.value)
-})
+    return convertArrayToObject(CONFIG_MODEL.value);
+});
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => {
-        if(! makerTranslations.value.labels[l]) return l
-        return  makerTranslations.value.labels[l][store.lang]
-    }).join(" ") :
-    makerTranslations.value.labels[label][store.lang]
+    return Array.isArray(label)
+        ? label
+              .map((l) => {
+                  if (!makerTranslations.value.labels[l]) return l;
+                  return makerTranslations.value.labels[l][store.lang];
+              })
+              .join(" ")
+        : makerTranslations.value.labels[label][store.lang];
 }
 
 function randomVal() {
-    currentDataset.value.percentage = Math.random() * 100; 
+    currentDataset.value.percentage = Math.random() * 100;
 }
 </script>
 
 <template>
     <div>
-        <ClearStorageAndRefresh keyConfig="wheelConfig" keyDataset="wheelDataset" :key="`clear_${clearStep}`"/>
-        <BaseDocExampleLink link="vue-ui-wheel" componentName="VueUiWheel"/>
-        
-            <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-                <Transition name="fade">
-                    <BaseMakerChart
-                        v-if="!isFixed"
-                        :isFixed="isFixed"
-                        @fixChart="fixChart"
-                        @resetModel="resetModel"
-                    >
-                        <VueUiWheel ref="chart" :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
-                    </BaseMakerChart>
-                </Transition>
-            </div>
-        
-            <BaseCard>
-                <details open>
-                    <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-    
-                    <div class="flex flex-row place-items-center gap-2">
-                        <BaseButton
-                            @click="randomVal"
-                            tw="px-3 py-4 font-inter-medium !rounded-full w-[200px]"
-                        >
-                            Random value
-                        </BaseButton>
-                        <div class="h-[40px]">
-                            <VueUiDigits
-                                :dataset="Number(currentDataset.percentage.toFixed(1))"
-                                :config="{
-                                    backgroundColor: 'transparent',
-                                    digits: {
-                                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                                        skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
-                                    }
-                                }"
-                            />
-                        </div>
-                    </div>
-                </details>
-            </BaseCard>
-        
-            <details open class="mt-6" v-if="makerTranslations.labels">
-                <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-        
-                <MakerKnobs
-                    :categories="CONFIG_CATEGORIES"
-                    :model="CONFIG_MODEL"
-                    @change="forceChartUpdate"
-                />
-            </details>
-        
-            <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-                <ComponentContent
-                    :dataset="currentDataset"
-                    :config="finalConfig"
-                    componentName="VueUiWheel"
-                    configName="vue_ui_wheel"
-                    @click="() => copyComponent('componentContent', store)"
-                    :copyComponentFunc="() => copyComponent('componentContent', store)"
-                    keyConfig="wheelConfig"
-                    keyDataset="wheelDataset"
+        <ClearStorageAndRefresh
+            keyConfig="wheelConfig"
+            keyDataset="wheelDataset"
+            :key="`clear_${clearStep}`"
+        />
+        <BaseDocExampleLink link="vue-ui-wheel" componentName="VueUiWheel" />
+
+        <div class="w-full mt-[64px]" style="height: calc(100% - 64px)">
+            <Transition name="fade">
+                <BaseMakerChart
+                    v-if="!isFixed"
+                    :isFixed="isFixed"
+                    @fixChart="fixChart"
+                    @resetModel="resetModel"
                 >
-                    <template #component-copy>
-                        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-                    </template>
-                </ComponentContent>
-                <slot name="rater"/>
-            </div>
+                    <VueUiWheel
+                        ref="chart"
+                        :dataset="currentDataset"
+                        :config="finalConfig"
+                        :key="`chart_${step}`"
+                    />
+                </BaseMakerChart>
+            </Transition>
+        </div>
+
+        <BaseCard>
+            <details open>
+                <summary class="cursor-pointer mb-4">
+                    {{ makerTranslations.dataset[store.lang] }}
+                </summary>
+
+                <div class="flex flex-row place-items-center gap-2">
+                    <BaseButton
+                        @click="randomVal"
+                        tw="px-3 py-4 font-inter-medium !rounded-full w-[200px]"
+                    >
+                        Random value
+                    </BaseButton>
+                    <div class="h-[40px]">
+                        <VueUiDigits
+                            :dataset="
+                                Number(currentDataset.percentage.toFixed(1))
+                            "
+                            :config="{
+                                backgroundColor: 'transparent',
+                                digits: {
+                                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                    skeletonColor: isDarkMode
+                                        ? '#3A3A3A'
+                                        : '#E1E5E8',
+                                },
+                            }"
+                        />
+                    </div>
+                </div>
+            </details>
+        </BaseCard>
+
+        <details open class="mt-6" v-if="makerTranslations.labels">
+            <summary class="cursor-pointer">
+                {{ makerTranslations.config[store.lang] }}
+            </summary>
+
+            <MakerKnobs
+                :categories="CONFIG_CATEGORIES"
+                :model="CONFIG_MODEL"
+                @change="forceChartUpdate"
+            />
+        </details>
+
+        <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <ComponentContent
+                :dataset="currentDataset"
+                :config="finalConfig"
+                componentName="VueUiWheel"
+                configName="vue_ui_wheel"
+                @click="() => copyComponent('componentContent', store)"
+                :copyComponentFunc="
+                    () => copyComponent('componentContent', store)
+                "
+                keyConfig="wheelConfig"
+                keyDataset="wheelDataset"
+            >
+                <template #component-copy>
+                    <CopyComponent
+                        @click="() => copyComponent('componentContent', store)"
+                    />
+                </template>
+            </ComponentContent>
+            <slot name="rater" />
+        </div>
     </div>
 
     <Transition name="fade">
@@ -202,14 +233,18 @@ function randomVal() {
             @fixChart="fixChart"
             @resetModel="resetModel"
         >
-            <VueUiWheel :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
+            <VueUiWheel
+                :dataset="currentDataset"
+                :config="finalConfig"
+                :key="`chart_${step}`"
+            />
         </BaseMakerChart>
     </Transition>
-    
 </template>
 
 <style scoped>
-th, td {
+th,
+td {
     padding: 0 3px;
 }
 </style>

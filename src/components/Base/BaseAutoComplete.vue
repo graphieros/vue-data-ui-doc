@@ -91,7 +91,10 @@ function highlightSuggestion(suggestion, query) {
     if (matchIndex < 0) return escapeHtml(safeSuggestion);
 
     const before = safeSuggestion.slice(0, matchIndex);
-    const match = safeSuggestion.slice(matchIndex, matchIndex + safeQuery.length);
+    const match = safeSuggestion.slice(
+        matchIndex,
+        matchIndex + safeQuery.length,
+    );
     const after = safeSuggestion.slice(matchIndex + safeQuery.length);
 
     return `${escapeHtml(before)}<strong>${escapeHtml(match)}</strong>${escapeHtml(after)}`;
@@ -127,7 +130,10 @@ async function handleKeydown(event) {
         event.preventDefault();
     }
 
-    if (!isOpen.value && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+    if (
+        !isOpen.value &&
+        (event.key === "ArrowDown" || event.key === "ArrowUp")
+    ) {
         openIfHasSuggestions();
         await nextTick();
     }
@@ -135,7 +141,10 @@ async function handleKeydown(event) {
     if (!isOpen.value) return;
 
     if (event.key === "ArrowDown") {
-        const nextIndex = Math.min(activeIndex.value + 1, suggestions.value.length - 1);
+        const nextIndex = Math.min(
+            activeIndex.value + 1,
+            suggestions.value.length - 1,
+        );
         activeIndex.value = nextIndex;
         scrollActiveIntoView();
         return;
@@ -160,7 +169,6 @@ async function handleKeydown(event) {
         closeSuggestions();
     }
 }
-
 
 function scrollActiveIntoView() {
     const id = activeDescendantId.value;
@@ -187,14 +195,37 @@ onBeforeUnmount(() => {
     <div class="autocomplete">
         <label v-if="label" class="label" :for="inputId">{{ label }}</label>
 
-        <VueUiIcon name="magnify" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="absolute top-1/2 -translate-y-1/2 left-2.5" :size="20"/>
+        <VueUiIcon
+            name="magnify"
+            :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+            class="absolute top-1/2 -translate-y-1/2 left-2.5"
+            :size="20"
+        />
 
-        <input :id="inputId" ref="inputElement" type="search" class="input pl-6 !rounded-md" :placeholder="placeholder"
-            autocomplete="off" role="combobox" aria-autocomplete="list" :aria-expanded="String(isOpen)"
-            :aria-controls="listId" :aria-activedescendant="activeDescendantId || undefined" v-model="model"
-            @input="handleInput" @keydown="handleKeydown" @focus="handleFocus" />
+        <input
+            :id="inputId"
+            ref="inputElement"
+            type="search"
+            class="input pl-6 !rounded-md"
+            :placeholder="placeholder"
+            autocomplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            :aria-expanded="String(isOpen)"
+            :aria-controls="listId"
+            :aria-activedescendant="activeDescendantId || undefined"
+            v-model="model"
+            @input="handleInput"
+            @keydown="handleKeydown"
+            @focus="handleFocus"
+        />
 
-        <ul :id="listId" class="suggestions bg-white dark:bg-[#1A1A1A] rounded" role="listbox" :aria-hidden="String(!isOpen)">
+        <ul
+            :id="listId"
+            class="suggestions bg-white dark:bg-[#1A1A1A] rounded"
+            role="listbox"
+            :aria-hidden="String(!isOpen)"
+        >
             <li
                 v-for="(suggestion, index) in suggestions"
                 :key="suggestionKey(suggestion, index)"
@@ -202,15 +233,9 @@ onBeforeUnmount(() => {
                 role="option"
                 :aria-selected="String(index === activeIndex)"
                 @mousedown.prevent="selectSuggestion(index)"
-                class="
-                    px-3 py-2 cursor-pointer
-                    transition-colors
-                    hover:bg-gray-100
-                    dark:hover:bg-neutral-800
-                    flex flex-row gap-2
-                "
+                class="px-3 py-2 cursor-pointer transition-colors hover:bg-gray-100 dark:hover:bg-neutral-800 flex flex-row gap-2"
                 :class="{
-                    'bg-gray-100 dark:bg-neutral-800': index === activeIndex
+                    'bg-gray-100 dark:bg-neutral-800': index === activeIndex,
                 }"
             >
                 <slot name="before" v-bind="{ suggestion }"></slot>
@@ -219,7 +244,6 @@ onBeforeUnmount(() => {
         </ul>
     </div>
 </template>
-
 
 <style scoped>
 .autocomplete {

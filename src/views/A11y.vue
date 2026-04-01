@@ -13,18 +13,17 @@ const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => store.translations);
 
-
 const docsCrumbs = ref([
     {
         description: translations.value.menu.docs[store.lang],
-        link: '/docs'
+        link: "/docs",
     },
     {
         description: translations.value.menu.customization[store.lang],
-        link: '/customization'
+        link: "/customization",
     },
     {
-        description: 'a11y',
+        description: "a11y",
     },
 ]);
 
@@ -60,7 +59,7 @@ async function copyToClipboard(text) {
 }
 
 function replaceQueries(template, values) {
-    if (typeof template !== 'string' || !values) return '';
+    if (typeof template !== "string" || !values) return "";
     return template.replace(/{([^}]+)}/g, (_match, name) => values[name]);
 }
 
@@ -74,15 +73,20 @@ const altCopyTranslations = {
     es: `Este gráfico de tipo {chartType} muestra una serie llamada {seriesName}, que comienza en {startValue} y termina en {endValue}.`,
     ko: `이 {chartType} 차트는 {seriesName}라는 이름의 시리즈를 보여주며, {startValue}에서 시작하여 {endValue}에서 끝납니다.`,
     ar: `يعرض هذا المخطط من نوع {chartType} سلسلة باسم {seriesName}، تبدأ من {startValue} وتنتهي عند {endValue}.`,
-}
+};
 
 function createAltTextAndCopy({ dataset: dst, config: cfg }) {
     const { type: chartType, name: seriesName, series } = dst.bars[0];
     const startValue = series[0];
     const endValue = series.at(-1);
-    const alt = replaceQueries(altCopyTranslations[store.lang], { chartType, seriesName, startValue, endValue });
+    const alt = replaceQueries(altCopyTranslations[store.lang], {
+        chartType,
+        seriesName,
+        startValue,
+        endValue,
+    });
     copyToClipboard(alt);
-    store.copy({ message: alt, type: 'success'});
+    store.copy({ message: alt, type: "success" });
 }
 
 const snippets = computed(() => ({
@@ -124,28 +128,30 @@ function replaceQueries(template, values) {
     userOptions: {
         useCursorPointer: true, // ${translations.value.a11y.cursor_pointer_updated_at[store.lang]}
     }
-}))`
-}))
+}))`,
+}));
 
-const dataset = shallowRef([{
-    name: 'Fibonacci',
-    type: 'bar',
-    series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-}]);
+const dataset = shallowRef([
+    {
+        name: "Fibonacci",
+        type: "bar",
+        series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
+    },
+]);
 
 const config = computed(() => ({
-    theme: isDarkMode.value ? 'dark' : '',
+    theme: isDarkMode.value ? "dark" : "",
     chart: {
-        backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
+        backgroundColor: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
         grid: {
             labels: {
                 yAxis: {
-                    useNiceScale: true
-                }
-            }
+                    useNiceScale: true,
+                },
+            },
         },
         legend: {
-            position: 'top'
+            position: "top",
         },
         tooltip: {
             showPercentage: false,
@@ -164,32 +170,42 @@ const config = computed(() => ({
                 tooltip: false,
             },
             callbacks: {
-                altCopy: createAltTextAndCopy
-            }
+                altCopy: createAltTextAndCopy,
+            },
         },
         zoom: {
             minimap: {
-                show: true
-            }
-        }
-    }
-}))
+                show: true,
+            },
+        },
+    },
+}));
 
-const isMenuOpen = ref(false)
+const isMenuOpen = ref(false);
 
 function listenTo(isOpen) {
     isMenuOpen.value = isOpen;
 }
-
 </script>
 
 <template>
-    <BaseCrumbs :tree="docsCrumbs" noMargin/>
+    <BaseCrumbs :tree="docsCrumbs" noMargin />
 
     <div class="my-12 w-full mx-auto text-center max-w-[1200px] px-4">
-        <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
-            <VueUiIcon class="hidden md:block" name="accessibility" :size="80" :strokeWidth="0.8" :stroke="isDarkMode ? '#de8b37' : '#de8b37'"/>
-            <h1 :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'}`" style="letter-spacing: -1px;">
+        <div
+            class="w-full flex flex-row gap-4 place-items-center justify-center my-12"
+        >
+            <VueUiIcon
+                class="hidden md:block"
+                name="accessibility"
+                :size="80"
+                :strokeWidth="0.8"
+                :stroke="isDarkMode ? '#de8b37' : '#de8b37'"
+            />
+            <h1
+                :class="`font-inter-bold text-[48px] sm:text-[72px] text-center ${isDarkMode ? 'bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent' : 'text-vue-blue'}`"
+                style="letter-spacing: -1px"
+            >
                 a11y
             </h1>
         </div>
@@ -199,25 +215,46 @@ function listenTo(isOpen) {
             <BaseCard>
                 <article dir="auto">
                     <h2 class="text-left font-inter-medium text-xl flex gap-2">
-                        <VueUiIcon name="accessibility" :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"/>
+                        <VueUiIcon
+                            name="accessibility"
+                            :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"
+                        />
                         {{ translations.a11y.alt_menu[store.lang] }}
                     </h2>
                     <p class="text-left my-4 max-w-[80ch]">
-                        {{ translations.a11y.copy_alt_text_description[store.lang] }}
+                        {{
+                            translations.a11y.copy_alt_text_description[
+                                store.lang
+                            ]
+                        }}
                     </p>
                     <p class="text-left my-4 max-w-[80ch]">
-                        {{ translations.a11y.copy_alt_text_instructions[store.lang] }}
+                        {{
+                            translations.a11y.copy_alt_text_instructions[
+                                store.lang
+                            ]
+                        }}
                     </p>
                 </article>
-                
-    
+
                 <div class="flex flex-col gap-4">
-                    <BaseCard class="max-w-[500px] mx-auto relative" type="light">
+                    <BaseCard
+                        class="max-w-[500px] mx-auto relative"
+                        type="light"
+                    >
                         <VueUiXy :dataset :config>
                             <template #menuIcon="{ isOpen, color }">
                                 {{ listenTo(isOpen) }}
-                                <VueUiIcon v-if="!isOpen" name="menu" :stroke="color"/>
-                                <VueUiIcon v-else name="close" :stroke="color"/>
+                                <VueUiIcon
+                                    v-if="!isOpen"
+                                    name="menu"
+                                    :stroke="color"
+                                />
+                                <VueUiIcon
+                                    v-else
+                                    name="close"
+                                    :stroke="color"
+                                />
                             </template>
                         </VueUiXy>
                         <BaseArrow
@@ -227,35 +264,62 @@ function listenTo(isOpen) {
                             direction="right"
                         />
                     </BaseCard>
-                    
-                    <CodeParser language="javascript" :content="snippets.config" class="text-left" @copy="store.copy"/>
-                    <CodeParser language="javascript" :content="snippets.createAltTextAndCopy" class="text-left" @copy="store.copy"/>
-                    <CodeParser language="javascript" :content="snippets.replaceQueries" class="text-left" @copy="store.copy"/>
+
+                    <CodeParser
+                        language="javascript"
+                        :content="snippets.config"
+                        class="text-left"
+                        @copy="store.copy"
+                    />
+                    <CodeParser
+                        language="javascript"
+                        :content="snippets.createAltTextAndCopy"
+                        class="text-left"
+                        @copy="store.copy"
+                    />
+                    <CodeParser
+                        language="javascript"
+                        :content="snippets.replaceQueries"
+                        class="text-left"
+                        @copy="store.copy"
+                    />
                 </div>
             </BaseCard>
-    
+
             <!-- CURSOR POINTER OR NOT EXAMPLE -->
             <BaseCard>
                 <article dir="auto">
                     <h2 class="text-left font-inter-medium text-xl flex gap-2">
-                        <VueUiIcon name="pointer" :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"/>
+                        <VueUiIcon
+                            name="pointer"
+                            :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"
+                        />
                         {{ translations.a11y.cursor_pointer[store.lang] }}
                     </h2>
                     <p class="text-left my-4 max-w-[80ch]">
-                        {{ translations.a11y.cursor_pointer_presentation[store.lang] }}
+                        {{
+                            translations.a11y.cursor_pointer_presentation[
+                                store.lang
+                            ]
+                        }}
                     </p>
                 </article>
-                <CodeParser language="javascript" :content="snippets.config_pointer" class="text-left" @copy="store.copy"/>
+                <CodeParser
+                    language="javascript"
+                    :content="snippets.config_pointer"
+                    class="text-left"
+                    @copy="store.copy"
+                />
             </BaseCard>
         </div>
-
     </div>
     <ConfirmCopy />
 </template>
 
 <style scoped>
 @keyframes hounce {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateX(-10px);
     }
     50% {

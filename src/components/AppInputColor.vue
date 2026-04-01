@@ -17,7 +17,7 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(['select'])
+const emit = defineEmits(["select"]);
 
 const currentColor = ref(props.color || "#2D353C");
 function updateColor() {

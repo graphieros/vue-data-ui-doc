@@ -50,7 +50,9 @@ const config = computed(() => {
                                 text: "Total",
                                 offsetY: -14,
                                 value: {
-                                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                                    color: isDarkMode.value
+                                        ? "#CCCCCC"
+                                        : "#1A1A1A",
                                     fontSize: 18,
                                     bold: true,
                                     prefix: "k$ ",
@@ -67,7 +69,9 @@ const config = computed(() => {
                                 text: "Average",
                                 offsetY: 5,
                                 value: {
-                                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                                    color: isDarkMode.value
+                                        ? "#CCCCCC"
+                                        : "#1A1A1A",
                                     fontSize: 18,
                                     bold: true,
                                     prefix: "k$ ",
@@ -170,7 +174,7 @@ const dataset = ref(
             values: [275],
             color: "#f5ee38",
         },
-    ].sort((a, b) => b.values[0] - a.values[0])
+    ].sort((a, b) => b.values[0] - a.values[0]),
 );
 
 function getData() {

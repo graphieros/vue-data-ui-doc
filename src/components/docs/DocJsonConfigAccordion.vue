@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
 
-
 const config = ref({
     open: false,
     maxHeight: 10000,
@@ -33,19 +32,19 @@ const darkModeConfig = ref({
         color: "#CCCCCC",
     },
 });
-
 </script>
 
 <template>
-    <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
+    <VueDataUi
+        component="VueUiAccordion"
+        :config="isDarkMode ? darkModeConfig : config"
+    >
         <template #title="{ color }">
-            <div :style="`color:${color}`">
-                Current config as JSON
-            </div>
+            <div :style="`color:${color}`">Current config as JSON</div>
         </template>
         <template #content>
             <div class="mx-auto w-full">
-                <slot name="content"/>
+                <slot name="content" />
             </div>
         </template>
     </VueDataUi>

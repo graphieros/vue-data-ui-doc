@@ -16,7 +16,7 @@ const dataset = ref([
             { name: "Karachi", value: 14.9 },
             { name: "Shenzen", value: 14.7 },
             { name: "Tokyo", value: 14 },
-        ]
+        ],
     },
     {
         name: "Africa",
@@ -31,7 +31,7 @@ const dataset = ref([
             { name: "Alexandria", value: 4.9 },
             { name: "Dar es Salaam", value: 4.7 },
             { name: "Nairobi", value: 4.4 },
-        ]
+        ],
     },
     {
         name: "Europe",
@@ -45,8 +45,8 @@ const dataset = ref([
             { name: "Rome", value: 2.7 },
             { name: "Paris", value: 2.1 },
             { name: "Minsk", value: 2 },
-            { name: "Vienna", value: 1.9 }
-        ]
+            { name: "Vienna", value: 1.9 },
+        ],
     },
     {
         name: "America",
@@ -60,8 +60,8 @@ const dataset = ref([
             { name: "Santiago", value: 6.2 },
             { name: "Los Angeles", value: 4 },
             { name: "Buenos Aires", value: 3 },
-            { name: "Brasilia", value: 2.9 }
-        ]
+            { name: "Brasilia", value: 2.9 },
+        ],
     },
     {
         name: "Australia & Oceania",
@@ -76,7 +76,7 @@ const dataset = ref([
             { name: "Gold Coast", value: 0.7 },
             { name: "Newcastle-Maitland", value: 0.5 },
             { name: "Canberra", value: 0.46 },
-        ]
+        ],
     },
 ]);
 
@@ -86,13 +86,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

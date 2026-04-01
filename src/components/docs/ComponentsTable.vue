@@ -6,16 +6,12 @@ const props = defineProps({
     cols: {
         type: Array,
         default() {
-            return [
-                'icon',
-                'name'
-            ]
-        }
-    }
-})
+            return ["icon", "name"];
+        },
+    },
+});
 
 const { components, keys } = useFeatures();
-
 </script>
 
 <template>

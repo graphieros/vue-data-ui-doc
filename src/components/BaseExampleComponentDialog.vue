@@ -16,7 +16,12 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const props = defineProps({
     isOpen: { type: Boolean, default: false },
-    example: { type: Object, default() { return {}; } },
+    example: {
+        type: Object,
+        default() {
+            return {};
+        },
+    },
 });
 
 const emit = defineEmits(["close"]);
@@ -92,10 +97,14 @@ function copyComponent() {
                 </BaseButton>
             </template>
 
-            <div class="w-full max-h-[calc(100vh-200px)] overflow-visible px-4 pb-4">
+            <div
+                class="w-full max-h-[calc(100vh-200px)] overflow-visible px-4 pb-4"
+            >
                 <div class="flex flex-row gap-10 place-items-center">
                     <div class="flex flex-col gap-2">
-                        <div class="flex flex-row place-items-center font-inter-medium">
+                        <div
+                            class="flex flex-row place-items-center font-inter-medium"
+                        >
                             <VueUiIcon
                                 :name="example.icon"
                                 :stroke="isDarkMode ? '#5F8aee' : '#2A2A2A'"
@@ -114,10 +123,7 @@ function copyComponent() {
 
                 <div
                     ref="compContent"
-                    class="relative bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812]
-                        p-3 rounded border border-transparent
-                        hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20]
-                        transition-colors mb-12"
+                    class="relative bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded border border-transparent hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20] transition-colors mb-12"
                 >
                     <div class="h-full w-full overflow-visible">
                         <CodeParser
@@ -151,8 +157,7 @@ function copyComponent() {
                     </div>
                     <button
                         @click="copyComponent"
-                        class="cursor-pointer absolute top-4 right-4 flex items-center justify-center
-                            p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors"
+                        class="cursor-pointer absolute top-4 right-4 flex items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors"
                     >
                         <CopyIcon class="text-app-blue" />
                     </button>

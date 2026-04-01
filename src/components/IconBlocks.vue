@@ -4,7 +4,7 @@ import { onMounted, nextTick, ref } from "vue";
 defineProps({
     size: { type: Number, default: 18 },
     stroke: { type: String, default: "#1A1A1A" },
-    strokeWidth: { type: Number, default: 1 }
+    strokeWidth: { type: Number, default: 1 },
 });
 
 const svgRef = ref(null);
@@ -18,7 +18,8 @@ function offsetSvgPath(path, n, m) {
     });
 }
 
-const cube = "M 25 1 L 20 3 L 25 5 L 30 3 L 25 1 M 25 5 L 25 11 L 30 9 L 30 3 M 25 11 L 20 9 L 20 3";
+const cube =
+    "M 25 1 L 20 3 L 25 5 L 30 3 L 25 1 M 25 5 L 25 11 L 30 9 L 30 3 M 25 11 L 20 9 L 20 3";
 const cubeFill = "M 20 3 L 25 5 L 25 11 L 20 9 L 20 3";
 
 const cubes = [
@@ -36,7 +37,7 @@ const cubes = [
     { a: offsetSvgPath(cube, -10, 32), b: offsetSvgPath(cubeFill, -10, 32) },
     { a: offsetSvgPath(cube, 10, 32), b: offsetSvgPath(cubeFill, 10, 32) },
     { a: offsetSvgPath(cube, 20, 32), b: offsetSvgPath(cubeFill, 20, 32) },
-    { a: offsetSvgPath(cube, -20, 32), b: offsetSvgPath(cubeFill, -20, 32) }
+    { a: offsetSvgPath(cube, -20, 32), b: offsetSvgPath(cubeFill, -20, 32) },
 ];
 
 function animateCubesFallToTheirOwnCoordinates(svgEl, options = {}) {
@@ -46,7 +47,7 @@ function animateCubesFallToTheirOwnCoordinates(svgEl, options = {}) {
         stagger = 90,
         easing = "cubic-bezier(.2,.8,.2,1)",
         dropDistanceUnits = 30,
-        extraDelay = 0
+        extraDelay = 0,
     } = options;
 
     if (!svgEl) return;
@@ -89,18 +90,27 @@ onMounted(async () => {
         fallDuration: 500,
         stagger: 50,
         easing: "cubic-bezier(.2,.8,.2,1)",
-        dropDistanceUnits: 18
+        dropDistanceUnits: 18,
     });
 });
 </script>
 
 <template>
     <div :style="{ width: size + 'px', height: size + 'px' }">
-        <svg ref="svgRef" width="100%"
-            :viewBox="`${-strokeWidth} ${-strokeWidth} ${50 + strokeWidth * 2} ${50 + strokeWidth * 2}`">
+        <svg
+            ref="svgRef"
+            width="100%"
+            :viewBox="`${-strokeWidth} ${-strokeWidth} ${50 + strokeWidth * 2} ${50 + strokeWidth * 2}`"
+        >
             <g v-for="(cube, i) in cubes" :key="i">
-                <path :d="cube.a" stroke-linecap="round" stroke-linejoin="round" fill="none" :stroke="stroke"
-                    :stroke-width="strokeWidth" />
+                <path
+                    :d="cube.a"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                    :stroke="stroke"
+                    :stroke-width="strokeWidth"
+                />
                 <path class="cube-shade" :d="cube.b" :fill="stroke" />
             </g>
         </svg>

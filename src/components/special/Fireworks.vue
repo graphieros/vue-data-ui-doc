@@ -23,7 +23,7 @@ class Particle {
         green = Math.floor(Math.random() * 255),
         blue = Math.floor(Math.random() * 255),
         speed,
-        isFixedSpeed
+        isFixedSpeed,
     ) {
         this.x = xPosition;
         this.y = yPosition;
@@ -70,7 +70,7 @@ class Particle {
                 this.red,
                 this.green,
                 this.blue,
-                0.4 + Math.random() * 0.3
+                0.4 + Math.random() * 0.3,
             );
         }
 
@@ -105,7 +105,7 @@ class Particle {
             this.red + 150,
             this.green + 150,
             this.blue + 150,
-            1
+            1,
         );
         drawingContext.fill();
     }
@@ -119,7 +119,7 @@ class Particle {
 
 function createFirework(
     xPosition = Math.random() * (canvasRef.value?.width || window.innerWidth),
-    yPosition = Math.random() * (canvasRef.value?.height || window.innerHeight)
+    yPosition = Math.random() * (canvasRef.value?.height || window.innerHeight),
 ) {
     const canvasElement = canvasRef.value;
     if (!canvasElement) {
@@ -146,7 +146,7 @@ function createFirework(
             red,
             green,
             blue,
-            speed
+            speed,
         );
         particles.push(particle);
 
@@ -161,7 +161,7 @@ function createFirework(
             green,
             blue,
             maximumSpeed,
-            true
+            true,
         );
         particles.push(particle);
     }

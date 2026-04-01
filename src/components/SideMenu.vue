@@ -55,7 +55,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Sparkline",
         thumb: new URL("../assets/thumb_sparkline.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_sparkline_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_sparkline_light.png",
+            import.meta.url,
+        ).href,
         component: "Sparkline",
     },
     {
@@ -65,7 +68,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Sparkbar",
         thumb: new URL("../assets/thumb_sparkbar.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_sparkbar_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_sparkbar_light.png",
+            import.meta.url,
+        ).href,
         component: "Sparkbar",
     },
     {
@@ -75,7 +81,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "SparkStackbar",
         thumb: new URL("../assets/thumb_stackbar.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_stackbar_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_stackbar_light.png",
+            import.meta.url,
+        ).href,
         component: "SparkStackbar",
     },
     {
@@ -85,7 +94,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "SparkHistogram",
         thumb: new URL("../assets/thumb_histogram.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_histogram_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_histogram_light.png",
+            import.meta.url,
+        ).href,
         component: "SparkHistogram",
     },
     {
@@ -95,7 +107,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Sparkgauge",
         thumb: new URL("../assets/thumb_sparkgauge.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_sparkgauge_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_sparkgauge_light.png",
+            import.meta.url,
+        ).href,
         component: "Sparkgauge",
     },
     {
@@ -105,7 +120,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "SparkTrend",
         thumb: new URL("../assets/thumb_spark_trend.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_spark_trend_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_spark_trend_light.png",
+            import.meta.url,
+        ).href,
         component: "SparkTrend",
     },
     {
@@ -115,7 +133,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Gizmo",
         thumb: new URL("../assets/thumb_gizmo.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_gizmo_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_gizmo_light.png", import.meta.url)
+            .href,
         component: "Gizmo",
     },
     {
@@ -125,7 +144,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "QuickChart",
         thumb: new URL("../assets/thumb_quick_chart.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_quick_chart_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_quick_chart_light.png",
+            import.meta.url,
+        ).href,
         component: "QuickChart",
     },
     {
@@ -135,7 +157,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Bullet",
         thumb: new URL("../assets/thumb_bullet.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_bullet_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_bullet_light.png", import.meta.url)
+            .href,
         component: "Bullet",
     },
     {
@@ -145,7 +168,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Xy",
         thumb: new URL("../assets/thumb_xy.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_xy_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_xy_light.png", import.meta.url)
+            .href,
         component: "Xy",
     },
     {
@@ -155,7 +179,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "XyCanvas",
         thumb: new URL("../assets/thumb_xy_canvas.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_xy_canvas_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_xy_canvas_light.png",
+            import.meta.url,
+        ).href,
         component: "XyCanvas",
     },
     {
@@ -164,8 +191,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "HorizontalBar",
-        thumb: new URL("../assets/thumb_vertical_bar.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_vertical_bar_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_vertical_bar.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_vertical_bar_light.png",
+            import.meta.url,
+        ).href,
         component: "HorizontalBar",
     },
     {
@@ -175,7 +206,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "ParallelCoordinatePlot",
         thumb: new URL("../assets/thumb_pcp.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_pcp_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_pcp_light.png", import.meta.url)
+            .href,
         component: "PCP",
     },
     {
@@ -185,7 +217,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Flow",
         thumb: new URL("../assets/thumb_flow.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_flow_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_flow_light.png", import.meta.url)
+            .href,
         component: "Flow",
     },
     {
@@ -195,7 +228,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Candlestick",
         thumb: new URL("../assets/thumb_candlestick.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_candlestick_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_candlestick_light.png",
+            import.meta.url,
+        ).href,
         component: "Candlestick",
     },
     {
@@ -205,7 +241,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "AgePyramid",
         thumb: new URL("../assets/thumb_age_pyramid.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_age_pyramid_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_age_pyramid_light.png",
+            import.meta.url,
+        ).href,
         component: "AgePyramid",
     },
     {
@@ -215,7 +254,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Stackbar",
         thumb: new URL("../assets/thumb_stack_bar.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_stack_bar_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_stack_bar_light.png",
+            import.meta.url,
+        ).href,
         component: "Stackbar",
     },
     {
@@ -225,7 +267,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Stackline",
         thumb: new URL("../assets/thumb_stack_line.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_stack_line_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_stack_line_light.png",
+            import.meta.url,
+        ).href,
         component: "Stackline",
     },
     {
@@ -234,8 +279,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "DonutEvolution",
-        thumb: new URL("../assets/thumb_donut_evolution.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_donut_evolution_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_donut_evolution.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_donut_evolution_light.png",
+            import.meta.url,
+        ).href,
         component: "DonutEvolution",
     },
     {
@@ -245,7 +294,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Funnel",
         thumb: new URL("../assets/thumb_funnel.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_funnel_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_funnel_light.png", import.meta.url)
+            .href,
         component: "Funnel",
     },
     {
@@ -254,8 +304,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "HistoryPlot",
-        thumb: new URL("../assets/thumb_history_plot.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_history_plot_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_history_plot.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_history_plot_light.png",
+            import.meta.url,
+        ).href,
         component: "HistoryPlot",
     },
     {
@@ -265,7 +319,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Ridgeline",
         thumb: new URL("../assets/thumb_ridgeline.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_ridgeline_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_ridgeline_light.png",
+            import.meta.url,
+        ).href,
         component: "Ridgeline",
     },
     {
@@ -275,7 +332,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Bump",
         thumb: new URL("../assets/thumb_bump.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_bump_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_bump_light.png", import.meta.url)
+            .href,
         component: "Bump",
     },
     {
@@ -285,7 +343,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Donut",
         thumb: new URL("../assets/thumb_donut.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_donut_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_donut_light.png", import.meta.url)
+            .href,
         component: "Donut",
     },
     {
@@ -294,8 +353,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "NestedDonuts",
-        thumb: new URL("../assets/thumb_nested_donuts.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_nested_donuts_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_nested_donuts.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_nested_donuts_light.png",
+            import.meta.url,
+        ).href,
         component: "NestedDonuts",
     },
     {
@@ -305,7 +368,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Waffle",
         thumb: new URL("../assets/thumb_waffle.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_waffle_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_waffle_light.png", import.meta.url)
+            .href,
         component: "Waffle",
     },
     {
@@ -315,7 +379,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Heatmap",
         thumb: new URL("../assets/thumb_heatmap.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_heatmap_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_heatmap_light.png",
+            import.meta.url,
+        ).href,
         component: "Heatmap",
     },
     {
@@ -325,7 +392,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Treemap",
         thumb: new URL("../assets/thumb_treemap.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_treemap_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_treemap_light.png",
+            import.meta.url,
+        ).href,
         component: "Treemap",
     },
     {
@@ -335,7 +405,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Rings",
         thumb: new URL("../assets/thumb_rings.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_rings_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_rings_light.png", import.meta.url)
+            .href,
         component: "Rings",
     },
     {
@@ -345,7 +416,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Galaxy",
         thumb: new URL("../assets/thumb_galaxy.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_galaxy_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_galaxy_light.png", import.meta.url)
+            .href,
         component: "Galaxy",
     },
     {
@@ -355,7 +427,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "CirclePack",
         thumb: new URL("../assets/thumb_circle_pack.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_circle_pack_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_circle_pack_light.png",
+            import.meta.url,
+        ).href,
         component: "CirclePack",
     },
     {
@@ -365,7 +440,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Chestnut",
         thumb: new URL("../assets/thumb_chestnut.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_chestnut_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_chestnut_light.png",
+            import.meta.url,
+        ).href,
         component: "Chestnut",
     },
     {
@@ -375,7 +453,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Gauge",
         thumb: new URL("../assets/thumb_gauge.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_gauge_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_gauge_light.png", import.meta.url)
+            .href,
         component: "Gauge",
     },
     {
@@ -385,7 +464,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Onion",
         thumb: new URL("../assets/thumb_onion.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_onion_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_onion_light.png", import.meta.url)
+            .href,
         component: "Onion",
     },
     {
@@ -395,7 +475,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Wheel",
         thumb: new URL("../assets/thumb_wheel.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_wheel_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_wheel_light.png", import.meta.url)
+            .href,
         component: "Wheel",
     },
     {
@@ -405,7 +486,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Tiremarks",
         thumb: new URL("../assets/thumb_tiremarks.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_tiremarks_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_tiremarks_light.png",
+            import.meta.url,
+        ).href,
         component: "Tiremarks",
     },
     {
@@ -415,7 +499,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Thermometer",
         thumb: new URL("../assets/thumb_thermometer.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_thermometer_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_thermometer_light.png",
+            import.meta.url,
+        ).href,
         component: "Thermometer",
     },
     {
@@ -425,7 +512,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "WordCloud",
         thumb: new URL("../assets/thumb_word_cloud.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_word_cloud_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_word_cloud_light.png",
+            import.meta.url,
+        ).href,
         component: "WordCloud",
     },
     {
@@ -434,8 +524,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "RelationCircle",
-        thumb: new URL("../assets/thumb_relation_circle.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_relation_circle_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_relation_circle.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_relation_circle_light.png",
+            import.meta.url,
+        ).href,
         component: "RelationCircle",
     },
     {
@@ -445,7 +539,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Chord",
         thumb: new URL("../assets/thumb_chord.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_chord_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_chord_light.png", import.meta.url)
+            .href,
         component: "Chord",
     },
     {
@@ -455,7 +550,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Radar",
         thumb: new URL("../assets/thumb_radar.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_radar_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_radar_light.png", import.meta.url)
+            .href,
         component: "Radar",
     },
     {
@@ -465,7 +561,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "MoodRadar",
         thumb: new URL("../assets/thumb_mood_radar.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_mood_radar_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_mood_radar_light.png",
+            import.meta.url,
+        ).href,
         component: "MoodRadar",
     },
     {
@@ -475,7 +574,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Quadrant",
         thumb: new URL("../assets/thumb_quadrant.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_quadrant_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_quadrant_light.png",
+            import.meta.url,
+        ).href,
         component: "Quadrant",
     },
     {
@@ -485,7 +587,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Scatter",
         thumb: new URL("../assets/thumb_scatter.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_scatter_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_scatter_light.png",
+            import.meta.url,
+        ).href,
         component: "Scatter",
     },
     {
@@ -495,7 +600,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Molecule",
         thumb: new URL("../assets/thumb_molecule.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_molecule_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_molecule_light.png",
+            import.meta.url,
+        ).href,
         component: "Molecule",
     },
     {
@@ -505,7 +613,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "StripPlot",
         thumb: new URL("../assets/thumb_strip_plot.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_strip_plot_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_strip_plot_light.png",
+            import.meta.url,
+        ).href,
         component: "StripPlot",
     },
     {
@@ -515,7 +626,10 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Dumbbell",
         thumb: new URL("../assets/thumb_dumbbell.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_dumbbell_light.png", import.meta.url).href,
+        thumbLight: new URL(
+            "../assets/thumb_dumbbell_light.png",
+            import.meta.url,
+        ).href,
         component: "Dumbbell",
     },
     {
@@ -525,7 +639,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "World",
         thumb: new URL("../assets/thumb_world.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_world_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_world_light.png", import.meta.url)
+            .href,
         component: "World",
     },
     {
@@ -535,7 +650,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Geo",
         thumb: new URL("../assets/thumb_geo.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_geo_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_geo_light.png", import.meta.url)
+            .href,
         component: "Geo",
     },
     {
@@ -545,7 +661,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Dag",
         thumb: new URL("../assets/thumb_dag.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_dag_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_dag_light.png", import.meta.url)
+            .href,
         component: "Dag",
     },
     {
@@ -555,7 +672,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "3dBar",
         thumb: new URL("../assets/thumb_3d_bar.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_3d_bar_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_3d_bar_light.png", import.meta.url)
+            .href,
         component: "3dBar",
     },
     {
@@ -564,8 +682,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "TableSparkline",
-        thumb: new URL("../assets/thumb_table_sparkline.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_table_sparkline_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_table_sparkline.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_table_sparkline_light.png",
+            import.meta.url,
+        ).href,
         component: "TableSparkline",
     },
     {
@@ -574,8 +696,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "TableHeatmap",
-        thumb: new URL("../assets/thumb_table_heatmap.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_table_heatmap_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_table_heatmap.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_table_heatmap_light.png",
+            import.meta.url,
+        ).href,
         component: "TableHeatmap",
     },
     {
@@ -585,7 +711,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Table",
         thumb: new URL("../assets/thumb_table.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_table_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_table_light.png", import.meta.url)
+            .href,
         component: "Table",
     },
     {
@@ -594,8 +721,12 @@ const smallMenu = ref([
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "CarouselTable",
-        thumb: new URL("../assets/thumb_carousel_table.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_carousel_table_light.png", import.meta.url).href,
+        thumb: new URL("../assets/thumb_carousel_table.png", import.meta.url)
+            .href,
+        thumbLight: new URL(
+            "../assets/thumb_carousel_table_light.png",
+            import.meta.url,
+        ).href,
         component: "CarouselTable",
     },
     {
@@ -605,7 +736,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Rating",
         thumb: new URL("../assets/thumb_rating.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_rating_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_rating_light.png", import.meta.url)
+            .href,
         component: "Rating",
     },
     {
@@ -615,7 +747,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Smiley",
         thumb: new URL("../assets/thumb_smiley.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_smiley_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_smiley_light.png", import.meta.url)
+            .href,
         component: "Smiley",
     },
     {
@@ -741,144 +874,411 @@ const sideMenuItems = computed(() => {
         {
             title: translations.value.sideMenu.miniCharts[store.lang],
             items: [
-                { route: "/docs#vue-ui-sparkline", componentName: "Sparkline", icon: "chartSparkline" },
-                { route: "/docs#vue-ui-sparkbar", componentName: "Sparkbar", icon: "chartSparkbar" },
-                { route: "/docs#vue-ui-sparkstackbar", componentName: "SparkStackbar", icon: "chartSparkStackbar" },
-                { route: "/docs#vue-ui-sparkhistogram", componentName: "SparkHistogram", icon: "chartSparkHistogram" },
-                { route: "/docs#vue-ui-sparkgauge", componentName: "Sparkgauge", icon: "chartGauge" },
-                { route: "/docs#vue-ui-spark-trend", componentName: "SparkTrend", icon: "trend" },
-                { route: "/docs#vue-ui-gizmo", componentName: "Gizmo", icon: "battery" },
-                { route: "/docs#vue-ui-kpi", componentName: "Kpi", icon: "kpiBox" },
+                {
+                    route: "/docs#vue-ui-sparkline",
+                    componentName: "Sparkline",
+                    icon: "chartSparkline",
+                },
+                {
+                    route: "/docs#vue-ui-sparkbar",
+                    componentName: "Sparkbar",
+                    icon: "chartSparkbar",
+                },
+                {
+                    route: "/docs#vue-ui-sparkstackbar",
+                    componentName: "SparkStackbar",
+                    icon: "chartSparkStackbar",
+                },
+                {
+                    route: "/docs#vue-ui-sparkhistogram",
+                    componentName: "SparkHistogram",
+                    icon: "chartSparkHistogram",
+                },
+                {
+                    route: "/docs#vue-ui-sparkgauge",
+                    componentName: "Sparkgauge",
+                    icon: "chartGauge",
+                },
+                {
+                    route: "/docs#vue-ui-spark-trend",
+                    componentName: "SparkTrend",
+                    icon: "trend",
+                },
+                {
+                    route: "/docs#vue-ui-gizmo",
+                    componentName: "Gizmo",
+                    icon: "battery",
+                },
+                {
+                    route: "/docs#vue-ui-kpi",
+                    componentName: "Kpi",
+                    icon: "kpiBox",
+                },
             ],
             icon: "chartSparkline",
         },
         {
             title: translations.value.sideMenu.lineAndBars[store.lang],
             items: [
-                { route: "/docs#vue-ui-quick-chart", componentName: "QuickChart", icon: "vueDataUi" },
-                { route: "/docs#vue-ui-xy", componentName: "Xy", icon: "chartLine" },
-                { route: "/docs#vue-ui-xy-canvas", componentName: "XyCanvas", icon: "chartLine" },
-                { route: "/docs#vue-ui-horizontal-bar", componentName: "HorizontalBar", icon: "chartVerticalBar" },
+                {
+                    route: "/docs#vue-ui-quick-chart",
+                    componentName: "QuickChart",
+                    icon: "vueDataUi",
+                },
+                {
+                    route: "/docs#vue-ui-xy",
+                    componentName: "Xy",
+                    icon: "chartLine",
+                },
+                {
+                    route: "/docs#vue-ui-xy-canvas",
+                    componentName: "XyCanvas",
+                    icon: "chartLine",
+                },
+                {
+                    route: "/docs#vue-ui-horizontal-bar",
+                    componentName: "HorizontalBar",
+                    icon: "chartVerticalBar",
+                },
                 {
                     route: "/docs#vue-ui-parallel-coordinate-plot",
                     componentName: "ParallelCoordinatePlot",
                     icon: "chartParallelCoordinatePlot",
-                },            
-                { route: "/docs#vue-ui-candlestick", componentName: "Candlestick", icon: "chartCandlestick" },
-                { route: "/docs#vue-ui-age-pyramid", componentName: "AgePyramid", icon: "chartAgePyramid" },
-                { route: "/docs#vue-ui-stackbar", componentName: "Stackbar", icon: "chartStackbar" },
-                { route: "/docs#vue-ui-stackline", componentName: "Stackline", icon: "chartStackline" },
-                { route: "/docs#vue-ui-funnel", componentName: "Funnel", icon: "chartFunnel" },
-                { route: "/docs#vue-ui-history-plot", componentName: "HistoryPlot", icon: "chartHistoryPlot" },
-                { route: "/docs#vue-ui-ridgeline", componentName: "Ridgeline", icon: "chartRidgeline" },
-                { route: "/docs#vue-ui-bump", componentName: "Bump", icon: "chartBump" },
+                },
+                {
+                    route: "/docs#vue-ui-candlestick",
+                    componentName: "Candlestick",
+                    icon: "chartCandlestick",
+                },
+                {
+                    route: "/docs#vue-ui-age-pyramid",
+                    componentName: "AgePyramid",
+                    icon: "chartAgePyramid",
+                },
+                {
+                    route: "/docs#vue-ui-stackbar",
+                    componentName: "Stackbar",
+                    icon: "chartStackbar",
+                },
+                {
+                    route: "/docs#vue-ui-stackline",
+                    componentName: "Stackline",
+                    icon: "chartStackline",
+                },
+                {
+                    route: "/docs#vue-ui-funnel",
+                    componentName: "Funnel",
+                    icon: "chartFunnel",
+                },
+                {
+                    route: "/docs#vue-ui-history-plot",
+                    componentName: "HistoryPlot",
+                    icon: "chartHistoryPlot",
+                },
+                {
+                    route: "/docs#vue-ui-ridgeline",
+                    componentName: "Ridgeline",
+                    icon: "chartRidgeline",
+                },
+                {
+                    route: "/docs#vue-ui-bump",
+                    componentName: "Bump",
+                    icon: "chartBump",
+                },
             ],
             icon: "chartLine",
         },
         {
             title: translations.value.sideMenu.donuts[store.lang],
             items: [
-                { route: "/docs#vue-ui-donut", componentName: "Donut", icon: "chartDonut" },
-                { route: "/docs#vue-ui-nested-donuts", componentName: "NestedDonuts", icon: "chartNestedDonuts" },
-                { route: "/docs#vue-ui-waffle", componentName: "Waffle", icon: "chartWaffle" },
-                { route: "/docs#vue-ui-heatmap", componentName: "Heatmap", icon: "chartHeatmap" },
-                { route: "/docs#vue-ui-treemap", componentName: "Treemap", icon: "chartTreemap" },
-                { route: "/docs#vue-ui-rings", componentName: "Rings", icon: "chartRings" },
-                { route: "/docs#vue-ui-galaxy", componentName: "Galaxy", icon: "chartGalaxy" },
-                { route: "/docs#vue-ui-donut-evolution", componentName: "DonutEvolution", icon: "chartDonutEvolution" },
-                { route: "/docs#vue-ui-circle-pack", componentName: "CirclePack", icon: "chartCirclePack" },
+                {
+                    route: "/docs#vue-ui-donut",
+                    componentName: "Donut",
+                    icon: "chartDonut",
+                },
+                {
+                    route: "/docs#vue-ui-nested-donuts",
+                    componentName: "NestedDonuts",
+                    icon: "chartNestedDonuts",
+                },
+                {
+                    route: "/docs#vue-ui-waffle",
+                    componentName: "Waffle",
+                    icon: "chartWaffle",
+                },
+                {
+                    route: "/docs#vue-ui-heatmap",
+                    componentName: "Heatmap",
+                    icon: "chartHeatmap",
+                },
+                {
+                    route: "/docs#vue-ui-treemap",
+                    componentName: "Treemap",
+                    icon: "chartTreemap",
+                },
+                {
+                    route: "/docs#vue-ui-rings",
+                    componentName: "Rings",
+                    icon: "chartRings",
+                },
+                {
+                    route: "/docs#vue-ui-galaxy",
+                    componentName: "Galaxy",
+                    icon: "chartGalaxy",
+                },
+                {
+                    route: "/docs#vue-ui-donut-evolution",
+                    componentName: "DonutEvolution",
+                    icon: "chartDonutEvolution",
+                },
+                {
+                    route: "/docs#vue-ui-circle-pack",
+                    componentName: "CirclePack",
+                    icon: "chartCirclePack",
+                },
             ],
             icon: "chartDonut",
         },
         {
             title: translations.value.sideMenu.gauges[store.lang],
             items: [
-                { route: "/docs#vue-ui-gauge", componentName: "Gauge", icon: "chartGauge" },
-                { route: "/docs#vue-ui-bullet", componentName: "Bullet", icon: "chartBullet" },
-                { route: "/docs#vue-ui-onion", componentName: "Onion", icon: "chartOnion" },
-                { route: "/docs#vue-ui-wheel", componentName: "Wheel", icon: "chartWheel" },
-                { route: "/docs#vue-ui-tiremarks", componentName: "Tiremarks", icon: "chartTiremarks" },
-                { route: "/docs#vue-ui-thermometer", componentName: "Thermometer", icon: "chartThermometer" },
-                { route: "/docs#vue-ui-timer", componentName: "Timer", icon: "lap" },
+                {
+                    route: "/docs#vue-ui-gauge",
+                    componentName: "Gauge",
+                    icon: "chartGauge",
+                },
+                {
+                    route: "/docs#vue-ui-bullet",
+                    componentName: "Bullet",
+                    icon: "chartBullet",
+                },
+                {
+                    route: "/docs#vue-ui-onion",
+                    componentName: "Onion",
+                    icon: "chartOnion",
+                },
+                {
+                    route: "/docs#vue-ui-wheel",
+                    componentName: "Wheel",
+                    icon: "chartWheel",
+                },
+                {
+                    route: "/docs#vue-ui-tiremarks",
+                    componentName: "Tiremarks",
+                    icon: "chartTiremarks",
+                },
+                {
+                    route: "/docs#vue-ui-thermometer",
+                    componentName: "Thermometer",
+                    icon: "chartThermometer",
+                },
+                {
+                    route: "/docs#vue-ui-timer",
+                    componentName: "Timer",
+                    icon: "lap",
+                },
             ],
             icon: "chartGauge",
         },
         {
             title: translations.value.sideMenu.semantic[store.lang],
             items: [
-                { route: "/docs#vue-ui-word-cloud", componentName: "WordCloud", icon: "chartWordCloud" },
-                { route: "/docs#vue-ui-relation-circle", componentName: "RelationCircle", icon: "chartRelationCircle" },
-                { route: "/docs#vue-ui-chord", componentName: "Chord", icon: "chartChord" },
+                {
+                    route: "/docs#vue-ui-word-cloud",
+                    componentName: "WordCloud",
+                    icon: "chartWordCloud",
+                },
+                {
+                    route: "/docs#vue-ui-relation-circle",
+                    componentName: "RelationCircle",
+                    icon: "chartRelationCircle",
+                },
+                {
+                    route: "/docs#vue-ui-chord",
+                    componentName: "Chord",
+                    icon: "chartChord",
+                },
             ],
             icon: "chartWordCloud",
         },
         {
             title: translations.value.sideMenu.graphs[store.lang],
             items: [
-                { route: "/docs#vue-ui-dag", componentName: "Dag", icon: "chartDag" },
-                { route: "/docs#vue-ui-flow", componentName: "Flow", icon: "chartFlow" },
-                { route: "/docs#vue-ui-molecule", componentName: "Molecule", icon: "chartCluster" },
+                {
+                    route: "/docs#vue-ui-dag",
+                    componentName: "Dag",
+                    icon: "chartDag",
+                },
+                {
+                    route: "/docs#vue-ui-flow",
+                    componentName: "Flow",
+                    icon: "chartFlow",
+                },
+                {
+                    route: "/docs#vue-ui-molecule",
+                    componentName: "Molecule",
+                    icon: "chartCluster",
+                },
             ],
-            icon: 'chartDag'
+            icon: "chartDag",
         },
         {
             title: translations.value.sideMenu.radars[store.lang],
             items: [
-                { route: "/docs#vue-ui-radar", componentName: "Radar", icon: "chartRadar" },
-                { route: "/docs#vue-ui-mood-radar", componentName: "MoodRadar", icon: "chartMoodRadar" },
+                {
+                    route: "/docs#vue-ui-radar",
+                    componentName: "Radar",
+                    icon: "chartRadar",
+                },
+                {
+                    route: "/docs#vue-ui-mood-radar",
+                    componentName: "MoodRadar",
+                    icon: "chartMoodRadar",
+                },
             ],
             icon: "chartRadar",
         },
         {
             title: translations.value.sideMenu.misc[store.lang],
             items: [
-                { route: "/docs#vue-ui-quadrant", componentName: "Quadrant", icon: "chartQuadrant" },
-                { route: "/docs#vue-ui-chestnut", componentName: "Chestnut", icon: "chartChestnut" },
-                { route: "/docs#vue-ui-scatter", componentName: "Scatter", icon: "chartScatter" },        
-                { route: "/docs#vue-ui-strip-plot", componentName: "StripPlot", icon: "chartStripPlot" },
-                { route: "/docs#vue-ui-dumbbell", componentName: "Dumbbell", icon: "chartDumbbell" },
-                { route: "/docs#vue-ui-world", componentName: "World", icon: "world" },
-                { route: "/docs#vue-ui-geo", componentName: "Geo", icon: "chartGeo" },                
+                {
+                    route: "/docs#vue-ui-quadrant",
+                    componentName: "Quadrant",
+                    icon: "chartQuadrant",
+                },
+                {
+                    route: "/docs#vue-ui-chestnut",
+                    componentName: "Chestnut",
+                    icon: "chartChestnut",
+                },
+                {
+                    route: "/docs#vue-ui-scatter",
+                    componentName: "Scatter",
+                    icon: "chartScatter",
+                },
+                {
+                    route: "/docs#vue-ui-strip-plot",
+                    componentName: "StripPlot",
+                    icon: "chartStripPlot",
+                },
+                {
+                    route: "/docs#vue-ui-dumbbell",
+                    componentName: "Dumbbell",
+                    icon: "chartDumbbell",
+                },
+                {
+                    route: "/docs#vue-ui-world",
+                    componentName: "World",
+                    icon: "world",
+                },
+                {
+                    route: "/docs#vue-ui-geo",
+                    componentName: "Geo",
+                    icon: "chartGeo",
+                },
             ],
             icon: "chartScatter",
         },
         {
             title: translations.value.sideMenu.charts3d[store.lang],
-            items: [{ route: "/docs#vue-ui-3d-bar", componentName: "3dBar", icon: "chart3dBar" }],
+            items: [
+                {
+                    route: "/docs#vue-ui-3d-bar",
+                    componentName: "3dBar",
+                    icon: "chart3dBar",
+                },
+            ],
             icon: "chart3dBar",
         },
         {
             title: translations.value.sideMenu.tables[store.lang],
             items: [
-                { route: "/docs#vue-ui-table-sparkline", componentName: "TableSparkline", icon: "chartTableSparkline" },
-                { route: "/docs#vue-ui-table-heatmap", componentName: "TableHeatmap", icon: "chartTable" },
-                { route: "/docs#vue-ui-table", componentName: "Table", icon: "chartTable" },
-                { route: "/docs#vue-ui-carousel-table", componentName: "CarouselTable", icon: "carouselTable" },
+                {
+                    route: "/docs#vue-ui-table-sparkline",
+                    componentName: "TableSparkline",
+                    icon: "chartTableSparkline",
+                },
+                {
+                    route: "/docs#vue-ui-table-heatmap",
+                    componentName: "TableHeatmap",
+                    icon: "chartTable",
+                },
+                {
+                    route: "/docs#vue-ui-table",
+                    componentName: "Table",
+                    icon: "chartTable",
+                },
+                {
+                    route: "/docs#vue-ui-carousel-table",
+                    componentName: "CarouselTable",
+                    icon: "carouselTable",
+                },
             ],
             icon: "chartTable",
         },
         {
             title: translations.value.sideMenu.rating[store.lang],
             items: [
-                { route: "/docs#vue-ui-rating", componentName: "Rating", icon: "star" },
-                { route: "/docs#vue-ui-smiley", componentName: "Smiley", icon: "smiley" },
+                {
+                    route: "/docs#vue-ui-rating",
+                    componentName: "Rating",
+                    icon: "star",
+                },
+                {
+                    route: "/docs#vue-ui-smiley",
+                    componentName: "Smiley",
+                    icon: "smiley",
+                },
             ],
             icon: "starFill",
         },
         {
             title: translations.value.sideMenu.utilities[store.lang],
             items: [
-                { route: "/docs#vue-ui-accordion", componentName: "Accordion", icon: "accordion" },
-                { route: "/docs#vue-ui-skeleton", componentName: "Skeleton", icon: "skeleton" },
-                { route: "/docs#vue-ui-dashboard", componentName: "Dashboard", icon: "dashboard" },
-                { route: "/docs#vue-ui-annotator", componentName: "Annotator", icon: "annotator" },
-                { route: "/docs#vue-ui-icon", componentName: "Icon", icon: "icons" },
-                { route: "/docs#vue-ui-digits", componentName: "Digits", icon: "digit8" },
-                { route: "/docs#vue-ui-cursor", componentName: "Cursor", icon: "cursor" },
-                { route: "/docs#vue-ui-mini-loader", componentName: "MiniLoader", icon: "chartWheel" },
+                {
+                    route: "/docs#vue-ui-accordion",
+                    componentName: "Accordion",
+                    icon: "accordion",
+                },
+                {
+                    route: "/docs#vue-ui-skeleton",
+                    componentName: "Skeleton",
+                    icon: "skeleton",
+                },
+                {
+                    route: "/docs#vue-ui-dashboard",
+                    componentName: "Dashboard",
+                    icon: "dashboard",
+                },
+                {
+                    route: "/docs#vue-ui-annotator",
+                    componentName: "Annotator",
+                    icon: "annotator",
+                },
+                {
+                    route: "/docs#vue-ui-icon",
+                    componentName: "Icon",
+                    icon: "icons",
+                },
+                {
+                    route: "/docs#vue-ui-digits",
+                    componentName: "Digits",
+                    icon: "digit8",
+                },
+                {
+                    route: "/docs#vue-ui-cursor",
+                    componentName: "Cursor",
+                    icon: "cursor",
+                },
+                {
+                    route: "/docs#vue-ui-mini-loader",
+                    componentName: "MiniLoader",
+                    icon: "chartWheel",
+                },
                 {
                     route: "/docs#utility-functions",
-                    componentName: translations.value.utilityFunctions[store.lang],
+                    componentName:
+                        translations.value.utilityFunctions[store.lang],
                     icon: "func",
                 },
             ],
@@ -972,7 +1372,8 @@ function handleSearchEnter() {
     if (!filteredSideMenuItems.value.length) {
         return;
     }
-    const selectedItem = filteredSideMenuItems.value[activeSearchResultIndex.value];
+    const selectedItem =
+        filteredSideMenuItems.value[activeSearchResultIndex.value];
     if (selectedItem) {
         goToMenuItem(selectedItem);
     }
@@ -981,11 +1382,7 @@ function handleSearchEnter() {
 
 <template>
     <button
-        class="fixed left-[282px] top-[73px] z-30 rounded-full 
-        bg-gray-200 dark:bg-[#2A2A2A] 
-        hover:bg-gray-100 dark:hover:bg-[#3A3A3A] 
-        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] 
-        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+        class="fixed left-[282px] top-[73px] z-30 rounded-full bg-gray-200 dark:bg-[#2A2A2A] hover:bg-gray-100 dark:hover:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
         v-if="isOpen"
         @click="toggle"
     >
@@ -993,15 +1390,13 @@ function handleSearchEnter() {
     </button>
 
     <button
-        class="fixed left-[42px] top-[73px] z-30 rounded-full 
-        bg-gray-200 dark:bg-[#2A2A2A] 
-        hover:bg-gray-100 dark:hover:bg-[#3A3A3A] 
-        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] 
-        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+        class="fixed left-[42px] top-[73px] z-30 rounded-full bg-gray-200 dark:bg-[#2A2A2A] hover:bg-gray-100 dark:hover:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
         v-if="!isOpen"
         @click="toggle"
     >
-        <ChevronRightIcon class="text-black dark:text-app-blue animate-ping sm:animate-none" />
+        <ChevronRightIcon
+            class="text-black dark:text-app-blue animate-ping sm:animate-none"
+        />
     </button>
 
     <aside
@@ -1011,17 +1406,22 @@ function handleSearchEnter() {
     >
         <template v-if="isOpen">
             <div class="mt-8 flex flex-col gap-3">
-
-
                 <!-- INPUT WITH AUTOCOMPLETE -->
                 <div class="relative mb-2">
-                    <VueUiIcon name="magnify" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'" class="absolute top-3 left-3" :size="20"/>
+                    <VueUiIcon
+                        name="magnify"
+                        :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'"
+                        class="absolute top-3 left-3"
+                        :size="20"
+                    />
                     <input
                         ref="componentSearch"
                         v-model="searchInputQuery"
                         type="text"
                         class="w-full !rounded-full border border-gray-400 dark:border-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] px-4 py-2.5 !pl-12 text-sm outline-none focus:ring-2 focus:ring-app-blue"
-                        :placeholder="translations.sideMenu.searchPlaceholder[store.lang]"
+                        :placeholder="
+                            translations.sideMenu.searchPlaceholder[store.lang]
+                        "
                         @focus="handleSearchFocus"
                         @blur="handleSearchBlur"
                         @keydown.down.prevent="moveSearchSelection(1)"
@@ -1033,7 +1433,11 @@ function handleSearchEnter() {
                         class="absolute top-[7px] right-3 rounded-full w-7 h-7 flex items-center hover:bg-white hover:shadow transition-all dark:hover:bg-[#3A3A3A] p-1 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                         @click="searchInputQuery = ''"
                     >
-                        <VueUiIcon name="close" :size="20" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'"/>
+                        <VueUiIcon
+                            name="close"
+                            :size="20"
+                            :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'"
+                        />
                     </button>
 
                     <ul
@@ -1053,10 +1457,23 @@ function handleSearchEnter() {
                         >
                             <div class="flex flex-col">
                                 <div class="flex flex-row items-center gap-2">
-                                    <VueUiIcon :name="item.icon" :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'" class="w-4 h-4" />
-                                    <span class="font-inter-medium"><span class="text-[#BBBBBB] dark:text-[#5A5A5A]">VueUi</span>{{ item.label }}</span>
+                                    <VueUiIcon
+                                        :name="item.icon"
+                                        :stroke="
+                                            isDarkMode ? '#83a4f2' : '#8A8A8A'
+                                        "
+                                        class="w-4 h-4"
+                                    />
+                                    <span class="font-inter-medium"
+                                        ><span
+                                            class="text-[#BBBBBB] dark:text-[#5A5A5A]"
+                                            >VueUi</span
+                                        >{{ item.label }}</span
+                                    >
                                 </div>
-                                <span class="text-xs text-gray-500 dark:text-gray-400 pl-6">
+                                <span
+                                    class="text-xs text-gray-500 dark:text-gray-400 pl-6"
+                                >
                                     {{ item.groupTitle }}
                                 </span>
                             </div>
@@ -1067,15 +1484,23 @@ function handleSearchEnter() {
                 <Dropdown
                     v-for="(menu, i) in sideMenuItems"
                     :key="menu.title"
-                    :open="menu.items.some((item) => item.route === router.currentRoute.value.fullPath)"
+                    :open="
+                        menu.items.some(
+                            (item) =>
+                                item.route ===
+                                router.currentRoute.value.fullPath,
+                        )
+                    "
                     :title="menu.title"
                     :items="menu.items"
                     :icon="menu.icon"
                     @close="closeIfOpen"
                 />
 
-                                <RouterLink to="/universal-component">
-                                <div class="w-full mt-2 mb-6 border-b border-gray-500 dark:border-[#3A3A3A]"></div>
+                <RouterLink to="/universal-component">
+                    <div
+                        class="w-full mt-2 mb-6 border-b border-gray-500 dark:border-[#3A3A3A]"
+                    ></div>
                     <button
                         :class="`w-full py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
         dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${
@@ -1086,11 +1511,14 @@ function handleSearchEnter() {
                 : 'bg-gray-200 dark:bg-[#242424]'
         }`"
                     >
-                        <div class="flex flex-row place-items-center justify-center gap-4">
+                        <div
+                            class="flex flex-row place-items-center justify-center gap-4"
+                        >
                             <VueUiIcon
                                 name="vueDataUi"
                                 :stroke="`${
-                                    router.currentRoute.value.fullPath === '/universal-component'
+                                    router.currentRoute.value.fullPath ===
+                                    '/universal-component'
                                         ? isDarkMode
                                             ? '#83a4f2'
                                             : '#5f8aee'
@@ -1098,9 +1526,10 @@ function handleSearchEnter() {
                                 }`"
                             />
                             <div
-                                style="white-space: nowrap;"
+                                style="white-space: nowrap"
                                 :class="`${
-                                    router.currentRoute.value.fullPath === '/universal-component'
+                                    router.currentRoute.value.fullPath ===
+                                    '/universal-component'
                                         ? 'font-inter-medium'
                                         : ''
                                 }`"

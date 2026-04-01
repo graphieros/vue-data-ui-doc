@@ -9,7 +9,11 @@ import { useRoute, useRouter } from "vue-router";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import Rater from "../components/Rater.vue";
-import { CircleArrowDownRightFilledIcon, CircleArrowRightFilledIcon, CircleArrowUpRightFilledIcon } from "vue-tabler-icons";
+import {
+    CircleArrowDownRightFilledIcon,
+    CircleArrowRightFilledIcon,
+    CircleArrowUpRightFilledIcon,
+} from "vue-tabler-icons";
 import FlexibleTooltip from "../components/FlexibleTooltip.vue";
 import BaseExampleComponentDialog from "../components/BaseExampleComponentDialog.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
@@ -23,9 +27,9 @@ import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import { VueUiIcon } from "vue-data-ui";
 import BaseDigit from "../components/Base/BaseDigit.vue";
 
-const { examples, curvedMarkers } = useExamples()
-const store = useMainStore()
-const makerStore = useMakerStore()
+const { examples, curvedMarkers } = useExamples();
+const store = useMainStore();
+const makerStore = useMakerStore();
 const isDarkMode = computed(() => store.isDarkMode);
 const router = useRouter();
 const route = useRoute();
@@ -34,376 +38,493 @@ const raterStep = ref(0);
 
 const key = ref(0);
 
-watch(() => store.isDarkMode, (val) => {
-    nextTick(() => {
-        key.value += 1;
-    })
-});
+watch(
+    () => store.isDarkMode,
+    (val) => {
+        nextTick(() => {
+            key.value += 1;
+        });
+    },
+);
 
 const crumbs = ref([
     {
         description: translations.value.menu.docs[store.lang],
-        link: '/docs'
+        link: "/docs",
     },
     {
         description: translations.value.menu.examples[store.lang],
-        link: '/examples'
-    }
+        link: "/examples",
+    },
 ]);
 
 function updateCrumb() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     function capitalizeFirstLetter(val) {
         return String(val).charAt(0).toUpperCase() + String(val).slice(1);
     }
-    let hash = route.hash ? route.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null;
-    if (hash === 'VueUiSparkhistogram') {
-        hash = 'VueUiSparkHistogram'
+    let hash = route.hash
+        ? route.hash
+              .replace("#", "")
+              .split("-")
+              .map((s) => capitalizeFirstLetter(s))
+              .join("")
+        : null;
+    if (hash === "VueUiSparkhistogram") {
+        hash = "VueUiSparkHistogram";
     }
-    const hashIcon = hash ? categories.value.find(c => c.component === hash) ? categories.value.find(c => c.component === hash).icon : undefined : undefined
+    const hashIcon = hash
+        ? categories.value.find((c) => c.component === hash)
+            ? categories.value.find((c) => c.component === hash).icon
+            : undefined
+        : undefined;
 
     if (crumbs.value.length === 2) {
         crumbs.value.push({
             description: hash,
-            icon: hashIcon
-        })
+            icon: hashIcon,
+        });
     } else {
         crumbs.value[2] = {
             description: hash,
-            icon: hashIcon
-        }
+            icon: hashIcon,
+        };
     }
     raterStep.value += 1;
 }
 
 const categories = computed(() => {
-    return  [
+    return [
         {
-            link: 'vue-ui-xy',
-            icon: 'chartLine',
-            component: 'VueUiXy',
-            thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
+            link: "vue-ui-xy",
+            icon: "chartLine",
+            component: "VueUiXy",
+            thumb: new URL("../assets/thumb_xy.png", import.meta.url).href,
+            thumbLight: new URL("../assets/thumb_xy_light.png", import.meta.url)
+                .href,
             description: translations.value.docs.tooltips.xy,
-            raterId: 'vue_ui_xy'
+            raterId: "vue_ui_xy",
         },
         {
-            link: 'vue-ui-donut',
-            icon: 'chartDonut',
-            component: 'VueUiDonut',
-            thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+            link: "vue-ui-donut",
+            icon: "chartDonut",
+            component: "VueUiDonut",
+            thumb: new URL("../assets/thumb_donut.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_donut_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.donut,
-            raterId: 'vue_ui_donut'
+            raterId: "vue_ui_donut",
         },
         {
-            link: 'vue-ui-sparkline',
-            icon: 'chartSparkline',
-            component: 'VueUiSparkline',
-            thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
+            link: "vue-ui-sparkline",
+            icon: "chartSparkline",
+            component: "VueUiSparkline",
+            thumb: new URL("../assets/thumb_sparkline.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_sparkline_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.sparkline,
-            raterId: 'vue_ui_sparkline'
+            raterId: "vue_ui_sparkline",
         },
         {
-            link: 'vue-ui-stackbar',
-            icon: 'chartStackbar',
-            component: 'VueUiStackbar',
-            thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
+            link: "vue-ui-stackbar",
+            icon: "chartStackbar",
+            component: "VueUiStackbar",
+            thumb: new URL("../assets/thumb_stack_bar.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_stack_bar_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.stackbar,
-            raterId: 'vue_ui_stackbar'
+            raterId: "vue_ui_stackbar",
         },
         {
-            link: 'vue-ui-stackline',
-            icon: 'chartStackline',
-            component: 'VueUiStackline',
-            thumb: new URL('../assets/thumb_stack_line.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_stack_line_light.png', import.meta.url).href,
+            link: "vue-ui-stackline",
+            icon: "chartStackline",
+            component: "VueUiStackline",
+            thumb: new URL("../assets/thumb_stack_line.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_stack_line_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.stackline,
-            raterId: 'vue_ui_stackline'
+            raterId: "vue_ui_stackline",
         },
         {
-            link: 'vue-ui-world',
-            icon: 'world',
-            component: 'VueUiWorld',
-            thumb: new URL('../assets/thumb_world.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_world_light.png', import.meta.url).href,
+            link: "vue-ui-world",
+            icon: "world",
+            component: "VueUiWorld",
+            thumb: new URL("../assets/thumb_world.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_world_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.world,
-            raterId: 'vue_ui_world'
+            raterId: "vue_ui_world",
         },
         {
-            link: 'vue-ui-dag',
-            icon: 'chartDag',
-            component: 'VueUiDag',
-            thumb: new URL('../assets/thumb_dag.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_dag_light.png', import.meta.url).href,
+            link: "vue-ui-dag",
+            icon: "chartDag",
+            component: "VueUiDag",
+            thumb: new URL("../assets/thumb_dag.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_dag_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.dag,
-            raterId: 'vue_ui_dag'
+            raterId: "vue_ui_dag",
         },
         {
-            link: 'vue-ui-geo',
-            icon: 'chartGeo',
-            component: 'VueUiGeo',
-            thumb: new URL('../assets/thumb_geo.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_geo_light.png', import.meta.url).href,
+            link: "vue-ui-geo",
+            icon: "chartGeo",
+            component: "VueUiGeo",
+            thumb: new URL("../assets/thumb_geo.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_geo_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.geo,
-            raterId: 'vue_ui_geo'
+            raterId: "vue_ui_geo",
         },
         {
-            link: 'vue-ui-nested-donuts',
-            icon: 'chartNestedDonuts',
-            component: 'VueUiNestedDonuts',
-            thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+            link: "vue-ui-nested-donuts",
+            icon: "chartNestedDonuts",
+            component: "VueUiNestedDonuts",
+            thumb: new URL("../assets/thumb_nested_donuts.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_nested_donuts_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.nestedDonuts,
-            raterId: 'vue_ui_nested_donuts'
+            raterId: "vue_ui_nested_donuts",
         },
         {
-            link: 'vue-ui-waffle',
-            icon: 'chartWaffle',
-            component: 'VueUiWaffle',
-            thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+            link: "vue-ui-waffle",
+            icon: "chartWaffle",
+            component: "VueUiWaffle",
+            thumb: new URL("../assets/thumb_waffle.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_waffle_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.waffle,
-            raterId: 'vue_ui_waffle'
+            raterId: "vue_ui_waffle",
         },
         {
-            link: 'vue-ui-horizontal-bar',
-            icon: 'chartVerticalBar',
-            component: 'VueUiHorizontalBar',
-            thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
+            link: "vue-ui-horizontal-bar",
+            icon: "chartVerticalBar",
+            component: "VueUiHorizontalBar",
+            thumb: new URL("../assets/thumb_vertical_bar.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_vertical_bar_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.verticalBar,
-            raterId: 'vue_ui_horizontal_bar'
+            raterId: "vue_ui_horizontal_bar",
         },
         {
-            link: 'vue-ui-heatmap',
-            icon: 'chartHeatmap',
-            component: 'VueUiHeatmap',
-            thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
+            link: "vue-ui-heatmap",
+            icon: "chartHeatmap",
+            component: "VueUiHeatmap",
+            thumb: new URL("../assets/thumb_heatmap.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_heatmap_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.heatmap,
-            raterId: 'vue_ui_heatmap'
+            raterId: "vue_ui_heatmap",
         },
         {
-            link: 'vue-ui-gauge',
-            icon: 'chartGauge',
-            component: 'VueUiGauge',
-            thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
+            link: "vue-ui-gauge",
+            icon: "chartGauge",
+            component: "VueUiGauge",
+            thumb: new URL("../assets/thumb_gauge.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_gauge_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.gauge,
-            raterId: 'vue_ui_gauge'
+            raterId: "vue_ui_gauge",
         },
         {
-            link: 'vue-ui-onion',
-            icon: 'chartOnion',
-            component: 'VueUiOnion',
-            thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
+            link: "vue-ui-onion",
+            icon: "chartOnion",
+            component: "VueUiOnion",
+            thumb: new URL("../assets/thumb_onion.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_onion_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.onion,
-            raterId: 'vue_ui_onion'
+            raterId: "vue_ui_onion",
         },
         {
-            link: 'vue-ui-word-cloud',
-            icon: 'chartWordCloud',
-            component: 'VueUiWordCloud',
-            thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
+            link: "vue-ui-word-cloud",
+            icon: "chartWordCloud",
+            component: "VueUiWordCloud",
+            thumb: new URL("../assets/thumb_word_cloud.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_word_cloud_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.wordCloud,
-            raterId: 'vue_ui_word_cloud'
+            raterId: "vue_ui_word_cloud",
         },
         {
             link: "vue-ui-scatter",
-            icon: 'chartScatter',
-            component: 'VueUiScatter',
-            thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
+            icon: "chartScatter",
+            component: "VueUiScatter",
+            thumb: new URL("../assets/thumb_scatter.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_scatter_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.scatter,
-            raterId: 'vue_ui_scatter'
+            raterId: "vue_ui_scatter",
         },
         {
-            link: 'vue-ui-wheel',
-            icon: 'chartWheel',
-            component: 'VueUiWheel',
-            thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_wheel_light.png', import.meta.url).href,
+            link: "vue-ui-wheel",
+            icon: "chartWheel",
+            component: "VueUiWheel",
+            thumb: new URL("../assets/thumb_wheel.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_wheel_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.wheel,
-            raterId: 'vue_ui_wheel'
+            raterId: "vue_ui_wheel",
         },
         {
-            link: 'vue-ui-bump',
-            icon: 'chartBump',
-            component: 'VueUiBump',
-            thumb: new URL('../assets/thumb_bump.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_bump_light.png', import.meta.url).href,
+            link: "vue-ui-bump",
+            icon: "chartBump",
+            component: "VueUiBump",
+            thumb: new URL("../assets/thumb_bump.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_bump_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.bump,
-            raterId: 'vue_ui_bump'
+            raterId: "vue_ui_bump",
         },
         {
-            link: 'vue-ui-sparkhistogram',
-            icon: 'chartSparkHistogram',
-            component: 'VueUiSparkHistogram',
-            thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
+            link: "vue-ui-sparkhistogram",
+            icon: "chartSparkHistogram",
+            component: "VueUiSparkHistogram",
+            thumb: new URL("../assets/thumb_histogram.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_histogram_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.histogram,
-            raterId: 'vue_ui_sparkhistogram'
+            raterId: "vue_ui_sparkhistogram",
         },
         {
-            link: 'vue-ui-quadrant',
-            icon: 'chartQuadrant',
-            component: 'VueUiQuadrant',
-            thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
+            link: "vue-ui-quadrant",
+            icon: "chartQuadrant",
+            component: "VueUiQuadrant",
+            thumb: new URL("../assets/thumb_quadrant.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_quadrant_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.quadrant,
-            raterId: 'vue_ui_quadrant'
+            raterId: "vue_ui_quadrant",
         },
         {
-            link: 'vue-ui-radar',
-            icon: 'chartRadar',
-            component: 'VueUiRadar',
-            thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
+            link: "vue-ui-radar",
+            icon: "chartRadar",
+            component: "VueUiRadar",
+            thumb: new URL("../assets/thumb_radar.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_radar_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.radar,
-            raterId: 'vue_ui_radar'
+            raterId: "vue_ui_radar",
         },
         {
-            link: 'vue-ui-strip-plot',
-            icon: 'chartStripPlot',
-            component: 'VueUiStripPlot',
-            thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
+            link: "vue-ui-strip-plot",
+            icon: "chartStripPlot",
+            component: "VueUiStripPlot",
+            thumb: new URL("../assets/thumb_strip_plot.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_strip_plot_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.stripPlot,
-            raterId: 'vue_ui_strip_plot'
+            raterId: "vue_ui_strip_plot",
         },
         {
-            link: 'vue-ui-bullet',
-            icon: 'chartBullet',
-            component: 'VueUiBullet',
-            thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
+            link: "vue-ui-bullet",
+            icon: "chartBullet",
+            component: "VueUiBullet",
+            thumb: new URL("../assets/thumb_bullet.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_bullet_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.bullet,
-            raterId: 'vue_ui_bullet'
+            raterId: "vue_ui_bullet",
         },
         {
-            link: 'vue-ui-funnel',
-            icon: 'chartFunnel',
-            component: 'VueUiFunnel',
-            thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
+            link: "vue-ui-funnel",
+            icon: "chartFunnel",
+            component: "VueUiFunnel",
+            thumb: new URL("../assets/thumb_funnel.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_funnel_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.funnel,
-            raterId: 'vue_ui_funnel'
+            raterId: "vue_ui_funnel",
         },
         {
-            link: 'vue-ui-treemap',
-            icon: 'chartTreemap',
-            component: 'VueUiTreemap',
-            thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
+            link: "vue-ui-treemap",
+            icon: "chartTreemap",
+            component: "VueUiTreemap",
+            thumb: new URL("../assets/thumb_treemap.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_treemap_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.treemap,
-            raterId: 'vue_ui_treemap'
+            raterId: "vue_ui_treemap",
         },
         {
-            link: 'vue-ui-history-plot',
-            icon: 'chartHistoryPlot',
-            component: 'VueUiHistoryPlot',
-            thumb: new URL('../assets/thumb_history_plot.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href,
+            link: "vue-ui-history-plot",
+            icon: "chartHistoryPlot",
+            component: "VueUiHistoryPlot",
+            thumb: new URL("../assets/thumb_history_plot.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_history_plot_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.historyPlot,
-            raterId: 'vue_ui_history_plot'
+            raterId: "vue_ui_history_plot",
         },
         {
-            link: 'vue-ui-ridgeline',
-            icon: 'chartRidgeline',
-            component: 'VueUiRidgeline',
-            thumb: new URL('../assets/thumb_ridgeline.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href,
+            link: "vue-ui-ridgeline",
+            icon: "chartRidgeline",
+            component: "VueUiRidgeline",
+            thumb: new URL("../assets/thumb_ridgeline.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_ridgeline_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.ridgeline,
-            raterId: 'vue_ui_ridgeline'
+            raterId: "vue_ui_ridgeline",
         },
         {
-            link: 'vue-ui-chord',
-            icon: 'chartChord',
-            component: 'VueUiChord',
-            thumb: new URL('../assets/thumb_chord.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_chord_light.png', import.meta.url).href,
+            link: "vue-ui-chord",
+            icon: "chartChord",
+            component: "VueUiChord",
+            thumb: new URL("../assets/thumb_chord.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_chord_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.chord,
-            raterId: 'vue_ui_chord'
+            raterId: "vue_ui_chord",
         },
         {
-            link: 'vue-ui-rings',
-            icon: 'chartRings',
-            component: 'VueUiRings',
-            thumb: new URL('../assets/thumb_rings.png', import.meta.url).href,
-            thumbLight: new URL('../assets/thumb_rings_light.png', import.meta.url).href,
+            link: "vue-ui-rings",
+            icon: "chartRings",
+            component: "VueUiRings",
+            thumb: new URL("../assets/thumb_rings.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_rings_light.png",
+                import.meta.url,
+            ).href,
             description: translations.value.docs.tooltips.rings,
-            raterId: 'vue_ui_rings'
+            raterId: "vue_ui_rings",
         },
     ].map((c, i) => {
         return {
             ...c,
-            order: i
-        }
-    })
-})
+            order: i,
+        };
+    });
+});
 
 const inProgress = ref({
-    en: 'A selection of examples to showcase Vue Data UI flexibility',
-    fr: 'Une sélection d’exemples pour montrer la flexibilité de Vue Data UI',
-    pt: 'Uma seleção de exemplos para demonstrar a flexibilidade do Vue Data UI',
-    de: 'Eine Auswahl an Beispielen zur Veranschaulichung der Flexibilität von Vue Data UI',
-    zh: '一组示例展示 Vue Data UI 的灵活性',
-    ja: 'Vue Data UI の柔軟性を示す例のセレクション',
-    es: 'Una selección de ejemplos para mostrar la flexibilidad de Vue Data UI',
-    ko: 'Vue Data UI의 유연성을 보여주는 예제 모음',
-    ar: 'مجموعة مختارة من الأمثلة لعرض مرونة Vue Data UI'
+    en: "A selection of examples to showcase Vue Data UI flexibility",
+    fr: "Une sélection d’exemples pour montrer la flexibilité de Vue Data UI",
+    pt: "Uma seleção de exemplos para demonstrar a flexibilidade do Vue Data UI",
+    de: "Eine Auswahl an Beispielen zur Veranschaulichung der Flexibilität von Vue Data UI",
+    zh: "一组示例展示 Vue Data UI 的灵活性",
+    ja: "Vue Data UI の柔軟性を示す例のセレクション",
+    es: "Una selección de ejemplos para mostrar la flexibilidad de Vue Data UI",
+    ko: "Vue Data UI의 유연성을 보여주는 예제 모음",
+    ar: "مجموعة مختارة من الأمثلة لعرض مرونة Vue Data UI",
 });
 
 const checkTheDocs = ref({
-    en: 'Check the docs page to see the list of all available components',
-    fr: 'Consultez la page de documentation pour voir la liste de tous les composants disponibles',
-    pt: 'Verifique a página de documentação para ver a lista de todos os componentes disponíveis',
-    de: 'Überprüfen Sie die Dokumentationsseite, um die Liste aller verfügbaren Komponenten zu sehen',
-    zh: '查看文档页面以获取所有可用组件的列表',
-    ja: 'すべての利用可能なコンポーネントのリストは、ドキュメントページを確認してください',
-    es: 'Consulta la página de documentación para ver la lista de todos los componentes disponibles',
-    ko: '사용 가능한 모든 구성 요소 목록은 문서 페이지를 확인하세요',
-    ar: 'تحقق من صفحة الوثائق لرؤية قائمة جميع المكونات المتاحة'
-})
+    en: "Check the docs page to see the list of all available components",
+    fr: "Consultez la page de documentation pour voir la liste de tous les composants disponibles",
+    pt: "Verifique a página de documentação para ver a lista de todos os componentes disponíveis",
+    de: "Überprüfen Sie die Dokumentationsseite, um die Liste aller verfügbaren Komponenten zu sehen",
+    zh: "查看文档页面以获取所有可用组件的列表",
+    ja: "すべての利用可能なコンポーネントのリストは、ドキュメントページを確認してください",
+    es: "Consulta la página de documentación para ver la lista de todos los componentes disponibles",
+    ko: "사용 가능한 모든 구성 요소 목록은 문서 페이지를 확인하세요",
+    ar: "تحقق من صفحة الوثائق لرؤية قائمة جميع المكونات المتاحة",
+});
 
-const selectedLink = ref('');
+const selectedLink = ref("");
 const selectedOrder = ref(null);
 const selectedType = ref(null);
 const step = ref(0);
 
 function goToExample() {
     updateHash(selectedLink.value);
-    selectedOrder.value = categories.value.find(el => el.link === selectedLink.value).order
-    step.value += 1
+    selectedOrder.value = categories.value.find(
+        (el) => el.link === selectedLink.value,
+    ).order;
+    step.value += 1;
 }
 
 onMounted(() => {
     if (route.hash) {
-        selectedLink.value = route.hash.replace('#', '');
-        selectedOrder.value = categories.value.find(c => c.link === selectedLink.value).order;
-        selectedType.value = categories.value.find(c => c.link === selectedLink.value);
+        selectedLink.value = route.hash.replace("#", "");
+        selectedOrder.value = categories.value.find(
+            (c) => c.link === selectedLink.value,
+        ).order;
+        selectedType.value = categories.value.find(
+            (c) => c.link === selectedLink.value,
+        );
         updateCrumb();
     } else {
-        updateHash('vue-ui-xy');
-        selectedType.value = categories.value.find(c => c.link === 'vue-ui-xy')
+        updateHash("vue-ui-xy");
+        selectedType.value = categories.value.find(
+            (c) => c.link === "vue-ui-xy",
+        );
     }
 });
 
 function updateHash(link) {
-    router.push({ path: route.path, hash: link ? `#${link}` : '' });
+    router.push({ path: route.path, hash: link ? `#${link}` : "" });
     selectedLink.value = link;
-    selectedType.value = categories.value.find(c => c.link === link);
-    setTimeout(updateCrumb, 100)
+    selectedType.value = categories.value.find((c) => c.link === link);
+    setTimeout(updateCrumb, 100);
 }
 
 const filteredExamples = computed(() => {
-    return examples.value.filter(e => e.link === selectedLink.value)
-})
+    return examples.value.filter((e) => e.link === selectedLink.value);
+});
 
 const hoveredLink = ref(null);
 
@@ -411,7 +532,7 @@ const dialogExample = ref(null);
 const showDialogExample = ref(false);
 
 function openComponentCode(example) {
-    console.log(example)
+    console.log(example);
     dialogExample.value = example;
     showDialogExample.value = true;
 }
@@ -422,25 +543,25 @@ function closeDialogExample() {
 }
 
 function scrollToId(id, { smooth = true, offset = 0 } = {}) {
-    const el = document.getElementById(id)
-    if (!el) return false
+    const el = document.getElementById(id);
+    if (!el) return false;
 
-    const elementTop = el.getBoundingClientRect().top + window.scrollY
-    const targetY = elementTop - offset
+    const elementTop = el.getBoundingClientRect().top + window.scrollY;
+    const targetY = elementTop - offset;
 
     window.scrollTo({
         top: targetY,
-        behavior: smooth ? 'smooth' : 'auto',
-    })
+        behavior: smooth ? "smooth" : "auto",
+    });
 
-    return true
+    return true;
 }
 
 async function maybeScrollToNextTag() {
-    const next = typeof route.query.next === 'string' ? route.query.next : null
-    if (!next) return
+    const next = typeof route.query.next === "string" ? route.query.next : null;
+    if (!next) return;
 
-    await nextTick()
+    await nextTick();
     setTimeout(() => {
         let tries = 0;
         const maxTries = 12;
@@ -453,43 +574,69 @@ async function maybeScrollToNextTag() {
 }
 
 onMounted(() => {
-    maybeScrollToNextTag()
+    maybeScrollToNextTag();
 });
 
 function makeMapLinks({ data }) {
     const { projectedPoints } = data;
-    if (!projectedPoints) return '';
+    if (!projectedPoints) return "";
 
-    const centerPoint = projectedPoints.find(p => p.name === 'Paris');
-    const otherPoints = [...projectedPoints].filter(p => p.name !== 'Paris');
+    const centerPoint = projectedPoints.find((p) => p.name === "Paris");
+    const otherPoints = [...projectedPoints].filter((p) => p.name !== "Paris");
 
-    return otherPoints.map(p => {
+    return otherPoints.map((p) => {
         return {
             x1: centerPoint.x,
             x2: p.x,
             y1: centerPoint.y,
-            y2: p.y
-        }
+            y2: p.y,
+        };
     });
 }
-
 </script>
 
 <template>
-    <BaseCrumbs :tree="crumbs" noMargin showMobile/>
+    <BaseCrumbs :tree="crumbs" noMargin showMobile />
 
     <!-- CHART TYPE SELECTION -->
-    <div class="fixed top-[87px] left-0 w-full bg-[#F2F3F6] dark:bg-[#232323] z-50 py-4 drop-shadow-md">
+    <div
+        class="fixed top-[87px] left-0 w-full bg-[#F2F3F6] dark:bg-[#232323] z-50 py-4 drop-shadow-md"
+    >
         <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-12">
             <BaseTabContainer :selected-index-on-load="selectedOrder">
                 <template #content>
-                    <div v-for="category in categories" class="relative overflow-hidden rounded-2xl w-[100px] sm:w-[150px] h-[100px] sm:h-[100px] my-4 flex-shrink-0 bg-[#F2F3F6] dark:bg-[#232323] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]" @mouseover="hoveredLink = category" @mouseleave="hoveredLink = null">
-                        <button @click="updateHash(category.link)" :class="`p-2 flex flex-col place-items-center justify-center h-full w-full rounded-2xl border ${selectedLink === category.link ? 'border-app-blue' : 'border-transparent'}`">
-                            <img class="w-full h-full object-contain rounded" :src="isDarkMode ? category.thumb : category.thumbLight">
+                    <div
+                        v-for="category in categories"
+                        class="relative overflow-hidden rounded-2xl w-[100px] sm:w-[150px] h-[100px] sm:h-[100px] my-4 flex-shrink-0 bg-[#F2F3F6] dark:bg-[#232323] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                        @mouseover="hoveredLink = category"
+                        @mouseleave="hoveredLink = null"
+                    >
+                        <button
+                            @click="updateHash(category.link)"
+                            :class="`p-2 flex flex-col place-items-center justify-center h-full w-full rounded-2xl border ${selectedLink === category.link ? 'border-app-blue' : 'border-transparent'}`"
+                        >
+                            <img
+                                class="w-full h-full object-contain rounded"
+                                :src="
+                                    isDarkMode
+                                        ? category.thumb
+                                        : category.thumbLight
+                                "
+                            />
                         </button>
                         <Transition name="fade">
-                            <div style="width: calc(100% - 2px)" class="text-shadow-md absolute top-0 left-[1px] pointer-events-none bg-[#1A1A1A10] dark:bg-[#FFFFFF10] h-full flex place-items-end justify-center" v-if="(hoveredLink && hoveredLink.link === category.link) || selectedLink === category.link">
-                                <div class="text-xs sm:text-md w-full pb-2 pt-1 text-center bg-[#1A1A1A80] text-white">
+                            <div
+                                style="width: calc(100% - 2px)"
+                                class="text-shadow-md absolute top-0 left-[1px] pointer-events-none bg-[#1A1A1A10] dark:bg-[#FFFFFF10] h-full flex place-items-end justify-center"
+                                v-if="
+                                    (hoveredLink &&
+                                        hoveredLink.link === category.link) ||
+                                    selectedLink === category.link
+                                "
+                            >
+                                <div
+                                    class="text-xs sm:text-md w-full pb-2 pt-1 text-center bg-[#1A1A1A80] text-white"
+                                >
                                     {{ category.component }}
                                 </div>
                             </div>
@@ -500,14 +647,29 @@ function makeMapLinks({ data }) {
         </div>
     </div>
 
-    <div class="px-16 my-12 mx-auto text-center max-w-[80ch] flex flex-col place-items-center gap-4 mt-[200px] pt-12" dir="auto">
+    <div
+        class="px-16 my-12 mx-auto text-center max-w-[80ch] flex flex-col place-items-center gap-4 mt-[200px] pt-12"
+        dir="auto"
+    >
         <span class="text-xl">{{ inProgress[store.lang] }}</span>
-        <div dir="auto" class="flex flex-row gap-4 place-items-center justify-center flex-wrap">
-            <span dir="auto" class="text-gray-500">{{ checkTheDocs[store.lang] }}</span>
+        <div
+            dir="auto"
+            class="flex flex-row gap-4 place-items-center justify-center flex-wrap"
+        >
+            <span dir="auto" class="text-gray-500">{{
+                checkTheDocs[store.lang]
+            }}</span>
             <RouterLink to="/docs">
-                <button dir="auto" class="flex flex-row gap-2 place-items-center py-2 px-4 rounded-full border bg-[#5f8aee30] border-app-blue hover:bg-[#5f8aee50] transition-colors">
-                    <VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#5f8aee' : '#2A2A2A'" :size="18"/>
-                    {{ translations.menu.docs[store.lang]  }}
+                <button
+                    dir="auto"
+                    class="flex flex-row gap-2 place-items-center py-2 px-4 rounded-full border bg-[#5f8aee30] border-app-blue hover:bg-[#5f8aee50] transition-colors"
+                >
+                    <VueUiIcon
+                        name="clipBoard"
+                        :stroke="isDarkMode ? '#5f8aee' : '#2A2A2A'"
+                        :size="18"
+                    />
+                    {{ translations.menu.docs[store.lang] }}
                 </button>
             </RouterLink>
         </div>
@@ -521,56 +683,139 @@ function makeMapLinks({ data }) {
                 additional-option-target="component"
             >
                 <template #selected="{ selectedOption }">
-                    <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                    <div
+                        v-if="selectedOption"
+                        class="text-left flex flex-row gap-2 place-items-center"
+                    >
                         <div class="h-[24px] w-[24px] flex place-items-center">
-                            <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                            <VueUiIcon
+                                :name="selectedOption.icon"
+                                :size="24"
+                                stroke="#5f8aee"
+                            />
                         </div>
                         <div class="text-xl">
-                            <span :class="'text-gray-500 dark:text-app-blue'">VueUi</span>
-                            <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.component.replace('VueUi', '') }}</span>
+                            <span :class="'text-gray-500 dark:text-app-blue'"
+                                >VueUi</span
+                            >
+                            <span :class="'dark:text-app-blue-light'">{{
+                                selectedOption.component.replace("VueUi", "")
+                            }}</span>
                         </div>
                     </div>
                 </template>
                 <template #option="{ option, selected, current }">
-                    <div class="text-left flex flex-row gap-2 place-items-center">
+                    <div
+                        class="text-left flex flex-row gap-2 place-items-center"
+                    >
                         <div class="h-[20px] w-[20px] flex place-items-center">
-                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                            <VueUiIcon
+                                :name="option.icon"
+                                :size="20"
+                                :stroke="
+                                    isDarkMode
+                                        ? selected || current
+                                            ? '#FFFFFF'
+                                            : '#8A8A8A'
+                                        : selected || current
+                                          ? '#FFFFFF'
+                                          : '#1A1A1A'
+                                "
+                            />
                         </div>
                         <div>
-                            <span :class="(selected || current) ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
-                            <span :class="(selected || current) ? `text-white`: 'dark:text-app-blue-light'">{{ option.component.replace('VueUi', '') }}</span>
+                            <span
+                                :class="
+                                    selected || current
+                                        ? `text-white`
+                                        : 'text-gray-500 dark:text-app-blue'
+                                "
+                                >VueUi</span
+                            >
+                            <span
+                                :class="
+                                    selected || current
+                                        ? `text-white`
+                                        : 'dark:text-app-blue-light'
+                                "
+                                >{{
+                                    option.component.replace("VueUi", "")
+                                }}</span
+                            >
                         </div>
                     </div>
                 </template>
             </BaseDropdown>
-            <div class="w-full flex flex-row gap-2 justify-center place-items-center">
-                <span class="font-inter-medium text-xl text-app-blue-dark-mid dark:text-app-blue">
+            <div
+                class="w-full flex flex-row gap-2 justify-center place-items-center"
+            >
+                <span
+                    class="font-inter-medium text-xl text-app-blue-dark-mid dark:text-app-blue"
+                >
                     {{ filteredExamples.length }}
                 </span>
-                <span class="font-inter-medium text-[#4A4A4A] dark:text-[#8A8A8A]">{{ translations.menu.examples[store.lang]  }}</span>
+                <span
+                    class="font-inter-medium text-[#4A4A4A] dark:text-[#8A8A8A]"
+                    >{{ translations.menu.examples[store.lang] }}</span
+                >
             </div>
         </div>
-        <div v-if="selectedType" class="text-gray-500 mx-auto max-w-[60ch]" dir="auto">{{ selectedType.description[store.lang] }}</div>
+        <div
+            v-if="selectedType"
+            class="text-gray-500 mx-auto max-w-[60ch]"
+            dir="auto"
+        >
+            {{ selectedType.description[store.lang] }}
+        </div>
     </div>
 
-    <div class="max-w-[1270px] px-12 pt-12 mx-auto text-center border-t border-gray-500 flex flex-col justify-center gap-2"/>
+    <div
+        class="max-w-[1270px] px-12 pt-12 mx-auto text-center border-t border-gray-500 flex flex-col justify-center gap-2"
+    />
 
     <div class="min-h-[1000px]">
         <!-- EXAMPLES DISPLAY -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 sm:mt-6">
-            <div v-for="(example, i) in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full" :id="example.id">
+        <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 sm:mt-6"
+        >
+            <div
+                v-for="(example, i) in filteredExamples"
+                :key="`${example.id}_${key}`"
+                class="flex-col inline-flex w-full"
+                :id="example.id"
+            >
                 <BaseLazy>
                     <template #placeholder>
                         <BaseCard>
-                            <div class="w-full h-[700px]"/>
+                            <div class="w-full h-[700px]" />
                         </BaseCard>
                     </template>
-                    <BaseCard :focused="router.currentRoute.value.fullPath.endsWith(`categories?next=${example.id}#${example.link}`)">
-                        <div dir="auto" class="bg-gray-200 rounded-2xl dark:bg-[rgb(35,35,35)] p-4">
+                    <BaseCard
+                        :focused="
+                            router.currentRoute.value.fullPath.endsWith(
+                                `categories?next=${example.id}#${example.link}`,
+                            )
+                        "
+                    >
+                        <div
+                            dir="auto"
+                            class="bg-gray-200 rounded-2xl dark:bg-[rgb(35,35,35)] p-4"
+                        >
                             <div class="flex flex-row gap-4 place-items-center">
-                                <div class="flex flex-row gap-2 place-items-center pb-5 w-fit">
-                                    <VueUiIcon :name="example.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                                    <h2 class="font-inter-medium text-gray-800 dark:text-[#1F77B4]">{{ example.component }}</h2>
+                                <div
+                                    class="flex flex-row gap-2 place-items-center pb-5 w-fit"
+                                >
+                                    <VueUiIcon
+                                        :name="example.icon"
+                                        :stroke="
+                                            isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                                        "
+                                    />
+                                    <h2
+                                        class="font-inter-medium text-gray-800 dark:text-[#1F77B4]"
+                                    >
+                                        {{ example.component }}
+                                    </h2>
                                 </div>
                                 <BaseDocHeaderActions
                                     :defaultConfig="false"
@@ -581,10 +826,33 @@ function makeMapLinks({ data }) {
                                 >
                                     <template #componentCode>
                                         <div class="hidden sm:block relative">
-                                            <FlexibleTooltip position="bottom" :content="translations.viewComponentCode[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
-                                                <button @click="openComponentCode(example)" class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
-                dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors">
-                                                    <VueUiIcon name="htmlTag" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                            <FlexibleTooltip
+                                                position="bottom"
+                                                :content="
+                                                    translations
+                                                        .viewComponentCode[
+                                                        store.lang
+                                                    ]
+                                                "
+                                                width="w-fit min-w-[120px]"
+                                                delay="delay-150"
+                                            >
+                                                <button
+                                                    @click="
+                                                        openComponentCode(
+                                                            example,
+                                                        )
+                                                    "
+                                                    class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors"
+                                                >
+                                                    <VueUiIcon
+                                                        name="htmlTag"
+                                                        :stroke="
+                                                            isDarkMode
+                                                                ? '#CCCCCC'
+                                                                : '#1A1A1A'
+                                                        "
+                                                    />
                                                 </button>
                                             </FlexibleTooltip>
                                         </div>
@@ -596,39 +864,92 @@ function makeMapLinks({ data }) {
                                 />
                             </div>
 
-                            <div class="flex flex-row gap-1 place-items-center align-center">
-                                <BaseDigit :value="i+1" :color="isDarkMode ? '#579ecf' : undefined"/>
-                                <div class="text-gray-500 dark:text-[#6A6A6A]">•</div>
-                                <p class="dark:text-[#9dcbeb]">{{  example.description[store.lang] }}</p>
+                            <div
+                                class="flex flex-row gap-1 place-items-center align-center"
+                            >
+                                <BaseDigit
+                                    :value="i + 1"
+                                    :color="isDarkMode ? '#579ecf' : undefined"
+                                />
+                                <div class="text-gray-500 dark:text-[#6A6A6A]">
+                                    •
+                                </div>
+                                <p class="dark:text-[#9dcbeb]">
+                                    {{ example.description[store.lang] }}
+                                </p>
                             </div>
 
-                            <div v-if="example.tags && example.tags.length" class="flex flex-row gap-2 place-items-center flex-wrap my-2">
+                            <div
+                                v-if="example.tags && example.tags.length"
+                                class="flex flex-row gap-2 place-items-center flex-wrap my-2"
+                            >
                                 <div>Slots used:</div>
                                 <div v-for="tag in example.tags">
-                                    <div class="font-inter-medium text-xs px-2 py-0.5 bg-gradient-to-br from-[#6fe8b2] to-app-green text-black rounded-full">
+                                    <div
+                                        class="font-inter-medium text-xs px-2 py-0.5 bg-gradient-to-br from-[#6fe8b2] to-app-green text-black rounded-full"
+                                    >
                                         {{ tag }}
                                     </div>
                                 </div>
                             </div>
-                            <RouterLink :to="`/docs#${example.link}`" v-if="example.tags && example.tags.length">
-                                <a class="text-app-blue underline text-sm">{{ translations.checkSlotsTab[store.lang] }}</a>
+                            <RouterLink
+                                :to="`/docs#${example.link}`"
+                                v-if="example.tags && example.tags.length"
+                            >
+                                <a class="text-app-blue underline text-sm">{{
+                                    translations.checkSlotsTab[store.lang]
+                                }}</a>
                             </RouterLink>
 
-                            <div v-if="example.utilityFunctions && example.utilityFunctions.length" class="flex flex-row gap-2 place-items-center flex-wrap my-2">
-                                <div dir="auto">{{ translations.utilityFunctionsUsed[store.lang] }}:</div>
+                            <div
+                                v-if="
+                                    example.utilityFunctions &&
+                                    example.utilityFunctions.length
+                                "
+                                class="flex flex-row gap-2 place-items-center flex-wrap my-2"
+                            >
+                                <div dir="auto">
+                                    {{
+                                        translations.utilityFunctionsUsed[
+                                            store.lang
+                                        ]
+                                    }}:
+                                </div>
                                 <div v-for="func in example.utilityFunctions">
-                                    <div class="text-xs px-2 py-0.5 bg-gradient-to-br from-[#fcb77a] to-[#ff7f0e] text-black rounded-full">
+                                    <div
+                                        class="text-xs px-2 py-0.5 bg-gradient-to-br from-[#fcb77a] to-[#ff7f0e] text-black rounded-full"
+                                    >
                                         {{ func }}
                                     </div>
                                 </div>
                             </div>
-                            <RouterLink :to="`/docs#utility-functions`" v-if="example.utilityFunctions && example.utilityFunctions.length">
-                                <a class="text-app-blue underline text-sm">{{ translations.checkUtilityFunctions[store.lang] }}</a>
+                            <RouterLink
+                                :to="`/docs#utility-functions`"
+                                v-if="
+                                    example.utilityFunctions &&
+                                    example.utilityFunctions.length
+                                "
+                            >
+                                <a class="text-app-blue underline text-sm">{{
+                                    translations.checkUtilityFunctions[
+                                        store.lang
+                                    ]
+                                }}</a>
                             </RouterLink>
-                            <div v-if="example.toggleCurvedMarkers" class="mt-2 text-right">
+                            <div
+                                v-if="example.toggleCurvedMarkers"
+                                class="mt-2 text-right"
+                            >
                                 <label>
-                                    {{ translations.useCurvedMarkers[store.lang] }}
-                                    <input type="checkbox" v-model="curvedMarkers"/>
+                                    {{
+                                        translations.useCurvedMarkers[
+                                            store.lang
+                                        ]
+                                    }}
+                                    <input
+                                        type="checkbox"
+                                        v-model="curvedMarkers"
+                                    />
                                 </label>
                             </div>
                         </div>
@@ -636,160 +957,673 @@ function makeMapLinks({ data }) {
                         <BaseSuspense>
                             <template #default>
                                 <div class="w-full p-4 example-wrapper">
-                                    <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
-
-                                        <template #group-label="{ group }" v-if="example.component === 'VueUiTreemap' && example.useGroupLabelSlot">
-                                            <div style="width:100%; height:100%; text-align:left; padding: 6px 12px">
-                                                <div class="flex flex-row gap-2 place-items-center align-center">
-                                                    <VueUiIcon v-if="group.name === 'Parent 2'" :stroke="group.color" name="moodLaughing"/>
-                                                    <VueUiIcon v-if="group.name === 'Parent 1'" :stroke="group.color" name="moodNeutral"/>
-                                                    <VueUiIcon v-if="group.name === 'Parent 3'" :stroke="group.color" name="moodSad"/>
-                                                    <VueUiIcon v-if="group.name === 'Parent 4'" :stroke="group.color" name="moodSurprised"/>
-                                                    <VueUiIcon v-if="group.name === 'Parent 5'" :stroke="group.color" name="moodWink"/>
-                                                    {{ group.name }} : <span class="font-inter-medium">{{ group.value }}</span>
+                                    <VueDataUi
+                                        :component="example.component"
+                                        :dataset="example.dataset"
+                                        :config="example.config"
+                                    >
+                                        <template
+                                            #group-label="{ group }"
+                                            v-if="
+                                                example.component ===
+                                                    'VueUiTreemap' &&
+                                                example.useGroupLabelSlot
+                                            "
+                                        >
+                                            <div
+                                                style="
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    text-align: left;
+                                                    padding: 6px 12px;
+                                                "
+                                            >
+                                                <div
+                                                    class="flex flex-row gap-2 place-items-center align-center"
+                                                >
+                                                    <VueUiIcon
+                                                        v-if="
+                                                            group.name ===
+                                                            'Parent 2'
+                                                        "
+                                                        :stroke="group.color"
+                                                        name="moodLaughing"
+                                                    />
+                                                    <VueUiIcon
+                                                        v-if="
+                                                            group.name ===
+                                                            'Parent 1'
+                                                        "
+                                                        :stroke="group.color"
+                                                        name="moodNeutral"
+                                                    />
+                                                    <VueUiIcon
+                                                        v-if="
+                                                            group.name ===
+                                                            'Parent 3'
+                                                        "
+                                                        :stroke="group.color"
+                                                        name="moodSad"
+                                                    />
+                                                    <VueUiIcon
+                                                        v-if="
+                                                            group.name ===
+                                                            'Parent 4'
+                                                        "
+                                                        :stroke="group.color"
+                                                        name="moodSurprised"
+                                                    />
+                                                    <VueUiIcon
+                                                        v-if="
+                                                            group.name ===
+                                                            'Parent 5'
+                                                        "
+                                                        :stroke="group.color"
+                                                        name="moodWink"
+                                                    />
+                                                    {{ group.name }} :
+                                                    <span
+                                                        class="font-inter-medium"
+                                                        >{{ group.value }}</span
+                                                    >
                                                 </div>
                                             </div>
                                         </template>
 
-                                        <template #rect="{ rect, shouldShow, textColor }" v-if="example.component === 'VueUiTreemap' && example.useRectSlot">
-                                            <div xmlns="http://www.w3.org/1999/xhtml" style="height:100%;width:100%">
+                                        <template
+                                            #rect="{
+                                                rect,
+                                                shouldShow,
+                                                textColor,
+                                            }"
+                                            v-if="
+                                                example.component ===
+                                                    'VueUiTreemap' &&
+                                                example.useRectSlot
+                                            "
+                                        >
+                                            <div
+                                                xmlns="http://www.w3.org/1999/xhtml"
+                                                style="
+                                                    height: 100%;
+                                                    width: 100%;
+                                                "
+                                            >
                                                 <img
                                                     :src="rect.url"
                                                     :style="{
                                                         width: '100%',
                                                         height: '100%',
                                                         objectFit: 'cover',
-                                                        transition: 'opacity 0.3s',
-                                                        opacity: rect.isSelected ? 1 : 0.6
+                                                        transition:
+                                                            'opacity 0.3s',
+                                                        opacity: rect.isSelected
+                                                            ? 1
+                                                            : 0.6,
                                                     }"
                                                 />
                                             </div>
                                         </template>
 
-                                        <template #area-gradient="{ series, id }" v-if="example.customGradient">
-                                            <linearGradient :id="id" x1="0" x2="0" y1="0" y2="1">
-                                                <stop offset="0%" :stop-color="series.color"/>
-                                                <stop offset="100%" :stop-color="isDarkMode ? '#3A3A3A' : '#FFFFFF'" stop-opacity="0"/>
+                                        <template
+                                            #area-gradient="{ series, id }"
+                                            v-if="example.customGradient"
+                                        >
+                                            <linearGradient
+                                                :id="id"
+                                                x1="0"
+                                                x2="0"
+                                                y1="0"
+                                                y2="1"
+                                            >
+                                                <stop
+                                                    offset="0%"
+                                                    :stop-color="series.color"
+                                                />
+                                                <stop
+                                                    offset="100%"
+                                                    :stop-color="
+                                                        isDarkMode
+                                                            ? '#3A3A3A'
+                                                            : '#FFFFFF'
+                                                    "
+                                                    stop-opacity="0"
+                                                />
                                             </linearGradient>
                                         </template>
 
-                                        <template #bar-gradient="{ series, positiveId, negativeId }" v-if="example.customGradient">
-                                            <linearGradient :id="positiveId" x1="0" x2="0" y1="0" y2="1">
-                                                <stop offset="0%" :stop-color="series.color"/>
-                                                <stop offset="100%" :stop-color="isDarkMode ? '#3A3A3A' : '#FFFFFF'" stop-opacity="0"/>
+                                        <template
+                                            #bar-gradient="{
+                                                series,
+                                                positiveId,
+                                                negativeId,
+                                            }"
+                                            v-if="example.customGradient"
+                                        >
+                                            <linearGradient
+                                                :id="positiveId"
+                                                x1="0"
+                                                x2="0"
+                                                y1="0"
+                                                y2="1"
+                                            >
+                                                <stop
+                                                    offset="0%"
+                                                    :stop-color="series.color"
+                                                />
+                                                <stop
+                                                    offset="100%"
+                                                    :stop-color="
+                                                        isDarkMode
+                                                            ? '#3A3A3A'
+                                                            : '#FFFFFF'
+                                                    "
+                                                    stop-opacity="0"
+                                                />
                                             </linearGradient>
-                                            <linearGradient :id="negativeId" x1="0" x2="0" y1="0" y2="1">
-                                                <stop offset="0%" :stop-color="isDarkMode ? '#3A3A3A' : '#FFFFFF'" stop-opacity="0"/>
-                                                <stop offset="100%" :stop-color="series.color"/>
+                                            <linearGradient
+                                                :id="negativeId"
+                                                x1="0"
+                                                x2="0"
+                                                y1="0"
+                                                y2="1"
+                                            >
+                                                <stop
+                                                    offset="0%"
+                                                    :stop-color="
+                                                        isDarkMode
+                                                            ? '#3A3A3A'
+                                                            : '#FFFFFF'
+                                                    "
+                                                    stop-opacity="0"
+                                                />
+                                                <stop
+                                                    offset="100%"
+                                                    :stop-color="series.color"
+                                                />
                                             </linearGradient>
                                         </template>
                                         <template #plot-comment="{ plot }">
-                                            <template v-if="example.component === 'VueUiXy'">
-                                                <div v-if="['up', 'eq', 'down'].includes(plot.comment.trend)" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl py-2 -mt-5">
+                                            <template
+                                                v-if="
+                                                    example.component ===
+                                                    'VueUiXy'
+                                                "
+                                            >
+                                                <div
+                                                    v-if="
+                                                        [
+                                                            'up',
+                                                            'eq',
+                                                            'down',
+                                                        ].includes(
+                                                            plot.comment.trend,
+                                                        )
+                                                    "
+                                                    class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl py-2 -mt-5"
+                                                >
                                                     <div class="text-sm mb-1">
-                                                        <span class="text-app-green" v-if="plot.comment.trend === 'up'">{{ plot.comment.evolution.toFixed(1) + '%' }}</span>
-                                                        <span class="text-[#FF6600]" v-if="plot.comment.trend === 'down'">{{ plot.comment.evolution.toFixed(1) + '%' }}</span>
-                                                        <span class="text-[#6A6A6A]" v-if="plot.comment.trend === 'eq'">{{ plot.comment.evolution.toFixed(1) + '%' }}</span>
+                                                        <span
+                                                            class="text-app-green"
+                                                            v-if="
+                                                                plot.comment
+                                                                    .trend ===
+                                                                'up'
+                                                            "
+                                                            >{{
+                                                                plot.comment.evolution.toFixed(
+                                                                    1,
+                                                                ) + "%"
+                                                            }}</span
+                                                        >
+                                                        <span
+                                                            class="text-[#FF6600]"
+                                                            v-if="
+                                                                plot.comment
+                                                                    .trend ===
+                                                                'down'
+                                                            "
+                                                            >{{
+                                                                plot.comment.evolution.toFixed(
+                                                                    1,
+                                                                ) + "%"
+                                                            }}</span
+                                                        >
+                                                        <span
+                                                            class="text-[#6A6A6A]"
+                                                            v-if="
+                                                                plot.comment
+                                                                    .trend ===
+                                                                'eq'
+                                                            "
+                                                            >{{
+                                                                plot.comment.evolution.toFixed(
+                                                                    1,
+                                                                ) + "%"
+                                                            }}</span
+                                                        >
                                                     </div>
-                                                    <CircleArrowUpRightFilledIcon v-if="plot.comment.trend === 'up'" color="#42d392" style="transform: scale(1.2,1.2)"/>
-                                                    <CircleArrowRightFilledIcon v-if="plot.comment.trend === 'eq'" color="#6A6A6A" style="transform: scale(1.2,1.2)"/>
-                                                    <CircleArrowDownRightFilledIcon v-if="plot.comment.trend === 'down'" color="#FF6600" style="transform: scale(1.2,1.2)"/>
+                                                    <CircleArrowUpRightFilledIcon
+                                                        v-if="
+                                                            plot.comment
+                                                                .trend === 'up'
+                                                        "
+                                                        color="#42d392"
+                                                        style="
+                                                            transform: scale(
+                                                                1.2,
+                                                                1.2
+                                                            );
+                                                        "
+                                                    />
+                                                    <CircleArrowRightFilledIcon
+                                                        v-if="
+                                                            plot.comment
+                                                                .trend === 'eq'
+                                                        "
+                                                        color="#6A6A6A"
+                                                        style="
+                                                            transform: scale(
+                                                                1.2,
+                                                                1.2
+                                                            );
+                                                        "
+                                                    />
+                                                    <CircleArrowDownRightFilledIcon
+                                                        v-if="
+                                                            plot.comment
+                                                                .trend ===
+                                                            'down'
+                                                        "
+                                                        color="#FF6600"
+                                                        style="
+                                                            transform: scale(
+                                                                1.2,
+                                                                1.2
+                                                            );
+                                                        "
+                                                    />
                                                 </div>
-                                                <template v-else-if="!Object.hasOwn(plot.comment, 'trend')">
-                                                    <div v-if="plot.value === 140" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green">
-                                                        <VueUiIcon name="smiley" stroke="#42d392" :size="30"/>
+                                                <template
+                                                    v-else-if="
+                                                        !Object.hasOwn(
+                                                            plot.comment,
+                                                            'trend',
+                                                        )
+                                                    "
+                                                >
+                                                    <div
+                                                        v-if="
+                                                            plot.value === 140
+                                                        "
+                                                        class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green"
+                                                    >
+                                                        <VueUiIcon
+                                                            name="smiley"
+                                                            stroke="#42d392"
+                                                            :size="30"
+                                                        />
                                                         {{ plot.comment }}
                                                     </div>
-                                                    <div v-else-if="plot.value === 12" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange">
-                                                        <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
+                                                    <div
+                                                        v-else-if="
+                                                            plot.value === 12
+                                                        "
+                                                        class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange"
+                                                    >
+                                                        <VueUiIcon
+                                                            name="moodFlat"
+                                                            stroke="#FF6600"
+                                                            :size="30"
+                                                        />
                                                         {{ plot.comment }}
                                                     </div>
                                                 </template>
                                             </template>
-                                            <div v-else :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`">
+                                            <div
+                                                v-else
+                                                :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`"
+                                            >
                                                 {{ plot.comment }}
                                             </div>
                                         </template>
 
-                                        <template #chart-background v-if="example.chartBackground">
-                                            <div v-if="isDarkMode" :style="{ height: '100%', width: '100%' }">
-                                                <img src="../assets/slot_chart_background.png" class="w-full object-cover h-full opacity-50">
+                                        <template
+                                            #chart-background
+                                            v-if="example.chartBackground"
+                                        >
+                                            <div
+                                                v-if="isDarkMode"
+                                                :style="{
+                                                    height: '100%',
+                                                    width: '100%',
+                                                }"
+                                            >
+                                                <img
+                                                    src="../assets/slot_chart_background.png"
+                                                    class="w-full object-cover h-full opacity-50"
+                                                />
                                             </div>
-                                            <div v-else :style="{ height: '100%', width: '100%' }">
-                                                <img src="../assets/slot_chart_background_light.png" class="w-full object-cover h-full">
+                                            <div
+                                                v-else
+                                                :style="{
+                                                    height: '100%',
+                                                    width: '100%',
+                                                }"
+                                            >
+                                                <img
+                                                    src="../assets/slot_chart_background_light.png"
+                                                    class="w-full object-cover h-full"
+                                                />
                                             </div>
                                         </template>
 
-                                        <template #chart-background v-if="example.chartBackgroundPattern">
-                                            <div v-if="isDarkMode" :style="{ height: '100%', width: '100%' }" class="bg-pattern-dark"/>
-                                            <div v-else :style="{ height: '100%', width: '100%' }" class="bg-pattern" />
+                                        <template
+                                            #chart-background
+                                            v-if="
+                                                example.chartBackgroundPattern
+                                            "
+                                        >
+                                            <div
+                                                v-if="isDarkMode"
+                                                :style="{
+                                                    height: '100%',
+                                                    width: '100%',
+                                                }"
+                                                class="bg-pattern-dark"
+                                            />
+                                            <div
+                                                v-else
+                                                :style="{
+                                                    height: '100%',
+                                                    width: '100%',
+                                                }"
+                                                class="bg-pattern"
+                                            />
                                         </template>
 
-                                        <template #pattern="{ seriesIndex, patternId }" v-if="example.pattern">
+                                        <template
+                                            #pattern="{
+                                                seriesIndex,
+                                                patternId,
+                                            }"
+                                            v-if="example.pattern"
+                                        >
                                             <Suspense>
                                                 <VueUiPattern
-                                                    v-if="['VueUiXy'].includes(example.component)"
+                                                    v-if="
+                                                        ['VueUiXy'].includes(
+                                                            example.component,
+                                                        )
+                                                    "
                                                     name="grid"
                                                     :id="patternId"
-                                                    :stroke="isDarkMode ? '#1f77b460' : '#FAFAFA'"
+                                                    :stroke="
+                                                        isDarkMode
+                                                            ? '#1f77b460'
+                                                            : '#FAFAFA'
+                                                    "
                                                     :scale="1"
                                                 />
-                                                <VueUiPattern v-else name="bubbles" :id="patternId" :stroke="isDarkMode ? '#5A5A5A' : '#CCCCCC'" :scale="1"/>
+                                                <VueUiPattern
+                                                    v-else
+                                                    name="bubbles"
+                                                    :id="patternId"
+                                                    :stroke="
+                                                        isDarkMode
+                                                            ? '#5A5A5A'
+                                                            : '#CCCCCC'
+                                                    "
+                                                    :scale="1"
+                                                />
                                             </Suspense>
                                         </template>
 
-                                        <template #pattern="{ seriesIndex, patternId }" v-if="example.multiPattern">
-                                            <pattern v-if="seriesIndex === 0" :id="patternId" width="50.222" height="29.003" patternTransform="scale(1)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="none" stroke="#1A1A1A" stroke-linecap="square" d="M58.592-14.503h-16.74m6.277 3.627H56.5l4.188 7.25h-8.373zM60.686 3.623l-4.187 7.25h-8.372l4.187-7.25zM41.852-7.252l4.185 7.25-4.185 7.252L37.666 0zm25.11 7.25L58.593 14.5h-16.74L33.481-.001l8.371-14.501m16.74-.001 8.37 14.502m0 0h-16.74v0m-8.37-14.501L50.222 0l-8.37 14.503M8.371-14.502H-8.37m6.276 3.627h8.371l4.188 7.25H2.093zM10.464 3.624l-4.186 7.25h-8.373l4.187-7.25zM-8.37-7.251-4.185 0-8.37 7.252-12.556 0zM16.74 0 8.37 14.502H-8.37L-16.742 0l8.371-14.501m16.74-.001L16.741-.001m0 0H.001v0m-8.37-14.501L0 0l-8.37 14.503m6.275 3.625h8.372l4.187 7.25H2.093zm12.558 14.499-4.187 7.25h-8.372l4.187-7.25zM-8.371 21.752l4.185 7.25-4.185 7.252-4.185-7.251zm25.112 7.25L8.37 43.504H-8.37l-8.371-14.502 8.37-14.501M8.37 14.5l8.372 14.502m0 0H0v0m-8.37-14.5L0 29.003l-8.37 14.503m56.5-25.379 8.371.001 4.188 7.25h-8.373zm12.557 14.5L56.5 39.876l-8.372.001 4.187-7.25zM41.852 21.751l4.185 7.25-4.185 7.252-4.186-7.252zm25.11 7.25-8.37 14.502h-16.74l-8.372-14.5M58.59 14.5l8.372 14.503m0 0h-16.74v0m-8.371-14.501 8.37 14.501-8.37 14.503M33.482 0h-16.74m6.276 3.627 8.371.001 4.188 7.25h-8.373zm12.557 14.5-4.187 7.249-8.372.001 4.187-7.25zM16.741 7.25l4.185 7.25-4.185 7.252-4.186-7.252zm25.11 7.25-8.37 14.502h-16.74M41.851 14.5h-16.74v0M16.742 0l8.37 14.502-8.37 14.503"/></pattern>
+                                        <template
+                                            #pattern="{
+                                                seriesIndex,
+                                                patternId,
+                                            }"
+                                            v-if="example.multiPattern"
+                                        >
+                                            <pattern
+                                                v-if="seriesIndex === 0"
+                                                :id="patternId"
+                                                width="50.222"
+                                                height="29.003"
+                                                patternTransform="scale(1)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="none"
+                                                    stroke="#1A1A1A"
+                                                    stroke-linecap="square"
+                                                    d="M58.592-14.503h-16.74m6.277 3.627H56.5l4.188 7.25h-8.373zM60.686 3.623l-4.187 7.25h-8.372l4.187-7.25zM41.852-7.252l4.185 7.25-4.185 7.252L37.666 0zm25.11 7.25L58.593 14.5h-16.74L33.481-.001l8.371-14.501m16.74-.001 8.37 14.502m0 0h-16.74v0m-8.37-14.501L50.222 0l-8.37 14.503M8.371-14.502H-8.37m6.276 3.627h8.371l4.188 7.25H2.093zM10.464 3.624l-4.186 7.25h-8.373l4.187-7.25zM-8.37-7.251-4.185 0-8.37 7.252-12.556 0zM16.74 0 8.37 14.502H-8.37L-16.742 0l8.371-14.501m16.74-.001L16.741-.001m0 0H.001v0m-8.37-14.501L0 0l-8.37 14.503m6.275 3.625h8.372l4.187 7.25H2.093zm12.558 14.499-4.187 7.25h-8.372l4.187-7.25zM-8.371 21.752l4.185 7.25-4.185 7.252-4.185-7.251zm25.112 7.25L8.37 43.504H-8.37l-8.371-14.502 8.37-14.501M8.37 14.5l8.372 14.502m0 0H0v0m-8.37-14.5L0 29.003l-8.37 14.503m56.5-25.379 8.371.001 4.188 7.25h-8.373zm12.557 14.5L56.5 39.876l-8.372.001 4.187-7.25zM41.852 21.751l4.185 7.25-4.185 7.252-4.186-7.252zm25.11 7.25-8.37 14.502h-16.74l-8.372-14.5M58.59 14.5l8.372 14.503m0 0h-16.74v0m-8.371-14.501 8.37 14.501-8.37 14.503M33.482 0h-16.74m6.276 3.627 8.371.001 4.188 7.25h-8.373zm12.557 14.5-4.187 7.249-8.372.001 4.187-7.25zM16.741 7.25l4.185 7.25-4.185 7.252-4.186-7.252zm25.11 7.25-8.37 14.502h-16.74M41.851 14.5h-16.74v0M16.742 0l8.37 14.502-8.37 14.503"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 1" :id="patternId" width="23.07" height="40" patternTransform="scale(1)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="none" stroke="#1A1A1A" stroke-linecap="square" d="m17.62 0-6.07 10.5m2.74 4.76L8.22 4.75m-5.48 0h12.13M.01 0h23.07M6.07 20 0 9.5m2.74-4.75-6.07 10.5m-5.48 0H3.33m8.2 4.75L0 .02-11.54 20m40.68 0L23.07 9.5m2.74-4.75-6.06 10.5m-5.49 0H26.4M34.6 20 23.08.02 11.53 20m-5.46 0L0 30.51m2.74 4.75-6.07-10.5m-5.48 0H3.33m8.2-4.75L0 40l-11.54-19.98zM17.6 40l-6.06-10.5m2.74-4.76L8.2 35.25m-5.48 0h12.13M0 40h23.07L11.54 20.01m17.6 0-6.07 10.5m2.74 4.75-6.06-10.5m-5.49 0H26.4M11.53 20h23.08L23.07 40"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 1"
+                                                :id="patternId"
+                                                width="23.07"
+                                                height="40"
+                                                patternTransform="scale(1)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="none"
+                                                    stroke="#1A1A1A"
+                                                    stroke-linecap="square"
+                                                    d="m17.62 0-6.07 10.5m2.74 4.76L8.22 4.75m-5.48 0h12.13M.01 0h23.07M6.07 20 0 9.5m2.74-4.75-6.07 10.5m-5.48 0H3.33m8.2 4.75L0 .02-11.54 20m40.68 0L23.07 9.5m2.74-4.75-6.06 10.5m-5.49 0H26.4M34.6 20 23.08.02 11.53 20m-5.46 0L0 30.51m2.74 4.75-6.07-10.5m-5.48 0H3.33m8.2-4.75L0 40l-11.54-19.98zM17.6 40l-6.06-10.5m2.74-4.76L8.2 35.25m-5.48 0h12.13M0 40h23.07L11.54 20.01m17.6 0-6.07 10.5m2.74 4.75-6.06-10.5m-5.49 0H26.4M11.53 20h23.08L23.07 40"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 2" :id="patternId" width="100" height="173.21" patternTransform="scale(0.6)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="#1A1A1A" d="M0 0v4.74L2.73 0zm4.14 0 6.44 11.15 2.38-4.12L8.9 0zm23.81 0 .49.84h-14.3l2.39 4.13h11.9l-7.14 12.37h4.77L34.39 2.9 32.71 0zm9.52 0 .49.84h19.05l7.14 12.37H49.87l2.38 4.13h11.9l-7.14 12.37h4.76l8.34-14.44L61.28 0zm28.57 0 7.64 13.21h19.04l7.15 12.37h-14.3l2.39 4.13h11.9l-7.14 12.37h4.77l2.5-4.34V17.57l-3.7-6.42 3.7-6.41V0h-2.01l-5.25 9.1H78.44L83.7 0h-4.77l-4.06 7.03L70.81 0zm22.41 0-2.87 4.97h4.76L93.21 0zm-50.5 4.97-9.51 16.5h-14.3l7.15-12.38h-4.76L10.58 19.4 3.44 7.03l-2.39 4.12 8.34 14.43h19.05l7.14 12.38H21.29l2.39 4.12h11.9l-7.14 12.38h4.75l8.34-14.44-9.52-16.5 7.14-12.37 7.14 12.37 2.38-4.12-5.95-10.3h14.29l-2.38-4.13zm35.72 12.37-9.52 16.5H49.87l7.14-12.38h-4.76l-5.96 10.31-7.14-12.37-2.38 4.12 8.33 14.44h19.05l7.14 12.37H57.01l2.38 4.13h11.9l-7.14 12.37h4.76l8.33-14.44-9.52-16.5 7.14-12.37 7.15 12.38 2.38-4.13-5.95-10.3h14.28l-2.38-4.13zM0 17.57v20.16l5.82-10.08zm9.39 12.14-9.4 16.27v4.57L7 62.71H0v4.12h7L0 78.97v.23h4.63l8.33-14.43-9.52-16.5 7.14-12.37 7.14 12.37 2.38-4.13-5.95-10.3h14.29l-2.38-4.13zm65.47 2.06-2.38 4.13 8.34 14.43h19.05l.13.22v-4.57l-.13.23h-14.3l7.15-12.38h-4.76l-5.95 10.31zM45.1 42.08l-9.52 16.5H21.29l7.15-12.37h-4.76l-5.96 10.3-7.14-12.37-2.38 4.13 8.33 14.44h19.05l7.14 12.37H28.44l2.38 4.12h11.9l-7.14 12.37h4.76l8.33-14.43-9.52-16.5 7.14-12.37 7.15 12.37 2.38-4.12-5.95-10.31h14.28l-2.38-4.13zm35.72 12.38-9.53 16.49H57.01l7.14-12.37h-4.76l-5.95 10.3-7.15-12.36-2.37 4.12 8.33 14.44h19.04l7.15 12.37h-14.3l2.39 4.12h11.9l-7.14 12.37h4.77l8.33-14.43-9.53-16.5 7.15-12.37 7.14 12.37 2.38-4.12-5.95-10.31h14.29l-2.39-4.12zm11.9 8.25 2.38 4.12h4.9v-4.12zm-76.2 4.12L7 83.33H0v4.12h7l7.15 12.37H0v.23l2.25 3.9h11.9L7 116.31h4.77l8.33-14.43-9.52-16.5 7.14-12.37 7.14 12.37 2.38-4.12-5.95-10.31h14.29l-2.39-4.12zm65.49 2.06-2.38 4.12 8.33 14.44H100v-4.13h-7.28l7.15-12.37H95.1l-5.95 10.3zM100 78.97l-.13.23h.13zm-47.75.23-9.53 16.5H28.44l7.14-12.38h-4.76l-5.96 10.31-7.14-12.37-2.38 4.12 8.34 14.44h19.04l7.15 12.37h-14.3l2.39 4.12h11.9l-7.14 12.37h4.76l8.34-14.43-9.53-16.5 7.15-12.37 7.14 12.38 2.38-4.13-5.95-10.3h14.28l-2.38-4.13zM0 91.57v4.12h7l-2.37-4.12zm87.96 0-9.52 16.5h-14.3l7.15-12.38h-4.76L60.58 106l-7.14-12.37-2.39 4.13 8.34 14.43h19.05l7.14 12.37H71.29l2.38 4.12h11.9l-7.13 12.38h4.76l8.33-14.44-9.52-16.5 7.14-12.36 7.14 12.37 2.38-4.13-5.95-10.3H100v-4.13zm11.9 8.25.14.22v-.22zm-76.18 4.12-9.53 16.5H0v4.12h14.15l7.14 12.37H7l2.39 4.13h11.9l-7.14 12.37h4.76L27.24 139l-9.52-16.5 7.14-12.37 7.15 12.37 2.38-4.13-5.95-10.3h14.28l-2.38-4.13zM89.15 106l-2.38 4.13 8.33 14.43h4.9v-4.12h-.13l.13-.22v-8.26l-3.7 6.41zm-86.9 2.07L0 111.97v8.24l7-12.14zm57.14 8.24-9.52 16.5h-14.3l7.15-12.37h-4.76l-5.95 10.3-7.15-12.37-2.38 4.13 8.34 14.43h19.05l7.14 12.38H42.72l2.38 4.12h11.91l-7.14 12.37h4.76l8.33-14.43-9.52-16.5 7.14-12.37 7.14 12.37 2.39-4.12-5.96-10.31h14.29l-2.38-4.13zm-59.4 12.37v4.13h14.16l-2.38-4.13zm95.11 0-9.52 16.5H71.29l7.14-12.37h-4.75l-5.96 10.31-7.14-12.37-2.38 4.12 8.33 14.44h19.05l7.14 12.37H78.43l2.39 4.12h11.9l-4.27 7.4h4.76l5.46-9.46-9.52-16.5 7.14-12.37 3.7 6.42v-8.26l-.12-.23h.13v-4.13zM0 133.04v8.25l3.44 5.95 2.38-4.12zm30.82 8.02-9.53 16.5H7l7.15-12.38H9.39l-5.95 10.31L0 149.54v8.24l2.25 3.9h19.04l6.66 11.52h4.76l-7.85-13.58 7.15-12.38 7.14 12.38 2.38-4.13-5.95-10.3h14.29l-2.39-4.13zm65.47 2.06-2.38 4.12 6.09 10.55v-8.25zm-29.76 10.3-9.52 16.5H42.72l7.15-12.37H45.1l-5.95 10.32-7.14-12.38-2.38 4.13 7.84 13.58h23.81l-.7-1.21 7.14-12.37 7.14 12.37 2.38-4.12-5.95-10.32h14.29l-2.38-4.12zM2.25 165.8 0 169.7v3.5h2.73l.7-1.21.7 1.21H8.9L7 169.93h14.3l-2.39-4.13zm65.47 2.07-2.38 4.12.7 1.21h4.76zm32.28 1.82-2.03 3.51H100zm-19.18.24-1.9 3.27h4.77l1.89-3.27z"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 2"
+                                                :id="patternId"
+                                                width="100"
+                                                height="173.21"
+                                                patternTransform="scale(0.6)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="#1A1A1A"
+                                                    d="M0 0v4.74L2.73 0zm4.14 0 6.44 11.15 2.38-4.12L8.9 0zm23.81 0 .49.84h-14.3l2.39 4.13h11.9l-7.14 12.37h4.77L34.39 2.9 32.71 0zm9.52 0 .49.84h19.05l7.14 12.37H49.87l2.38 4.13h11.9l-7.14 12.37h4.76l8.34-14.44L61.28 0zm28.57 0 7.64 13.21h19.04l7.15 12.37h-14.3l2.39 4.13h11.9l-7.14 12.37h4.77l2.5-4.34V17.57l-3.7-6.42 3.7-6.41V0h-2.01l-5.25 9.1H78.44L83.7 0h-4.77l-4.06 7.03L70.81 0zm22.41 0-2.87 4.97h4.76L93.21 0zm-50.5 4.97-9.51 16.5h-14.3l7.15-12.38h-4.76L10.58 19.4 3.44 7.03l-2.39 4.12 8.34 14.43h19.05l7.14 12.38H21.29l2.39 4.12h11.9l-7.14 12.38h4.75l8.34-14.44-9.52-16.5 7.14-12.37 7.14 12.37 2.38-4.12-5.95-10.3h14.29l-2.38-4.13zm35.72 12.37-9.52 16.5H49.87l7.14-12.38h-4.76l-5.96 10.31-7.14-12.37-2.38 4.12 8.33 14.44h19.05l7.14 12.37H57.01l2.38 4.13h11.9l-7.14 12.37h4.76l8.33-14.44-9.52-16.5 7.14-12.37 7.15 12.38 2.38-4.13-5.95-10.3h14.28l-2.38-4.13zM0 17.57v20.16l5.82-10.08zm9.39 12.14-9.4 16.27v4.57L7 62.71H0v4.12h7L0 78.97v.23h4.63l8.33-14.43-9.52-16.5 7.14-12.37 7.14 12.37 2.38-4.13-5.95-10.3h14.29l-2.38-4.13zm65.47 2.06-2.38 4.13 8.34 14.43h19.05l.13.22v-4.57l-.13.23h-14.3l7.15-12.38h-4.76l-5.95 10.31zM45.1 42.08l-9.52 16.5H21.29l7.15-12.37h-4.76l-5.96 10.3-7.14-12.37-2.38 4.13 8.33 14.44h19.05l7.14 12.37H28.44l2.38 4.12h11.9l-7.14 12.37h4.76l8.33-14.43-9.52-16.5 7.14-12.37 7.15 12.37 2.38-4.12-5.95-10.31h14.28l-2.38-4.13zm35.72 12.38-9.53 16.49H57.01l7.14-12.37h-4.76l-5.95 10.3-7.15-12.36-2.37 4.12 8.33 14.44h19.04l7.15 12.37h-14.3l2.39 4.12h11.9l-7.14 12.37h4.77l8.33-14.43-9.53-16.5 7.15-12.37 7.14 12.37 2.38-4.12-5.95-10.31h14.29l-2.39-4.12zm11.9 8.25 2.38 4.12h4.9v-4.12zm-76.2 4.12L7 83.33H0v4.12h7l7.15 12.37H0v.23l2.25 3.9h11.9L7 116.31h4.77l8.33-14.43-9.52-16.5 7.14-12.37 7.14 12.37 2.38-4.12-5.95-10.31h14.29l-2.39-4.12zm65.49 2.06-2.38 4.12 8.33 14.44H100v-4.13h-7.28l7.15-12.37H95.1l-5.95 10.3zM100 78.97l-.13.23h.13zm-47.75.23-9.53 16.5H28.44l7.14-12.38h-4.76l-5.96 10.31-7.14-12.37-2.38 4.12 8.34 14.44h19.04l7.15 12.37h-14.3l2.39 4.12h11.9l-7.14 12.37h4.76l8.34-14.43-9.53-16.5 7.15-12.37 7.14 12.38 2.38-4.13-5.95-10.3h14.28l-2.38-4.13zM0 91.57v4.12h7l-2.37-4.12zm87.96 0-9.52 16.5h-14.3l7.15-12.38h-4.76L60.58 106l-7.14-12.37-2.39 4.13 8.34 14.43h19.05l7.14 12.37H71.29l2.38 4.12h11.9l-7.13 12.38h4.76l8.33-14.44-9.52-16.5 7.14-12.36 7.14 12.37 2.38-4.13-5.95-10.3H100v-4.13zm11.9 8.25.14.22v-.22zm-76.18 4.12-9.53 16.5H0v4.12h14.15l7.14 12.37H7l2.39 4.13h11.9l-7.14 12.37h4.76L27.24 139l-9.52-16.5 7.14-12.37 7.15 12.37 2.38-4.13-5.95-10.3h14.28l-2.38-4.13zM89.15 106l-2.38 4.13 8.33 14.43h4.9v-4.12h-.13l.13-.22v-8.26l-3.7 6.41zm-86.9 2.07L0 111.97v8.24l7-12.14zm57.14 8.24-9.52 16.5h-14.3l7.15-12.37h-4.76l-5.95 10.3-7.15-12.37-2.38 4.13 8.34 14.43h19.05l7.14 12.38H42.72l2.38 4.12h11.91l-7.14 12.37h4.76l8.33-14.43-9.52-16.5 7.14-12.37 7.14 12.37 2.39-4.12-5.96-10.31h14.29l-2.38-4.13zm-59.4 12.37v4.13h14.16l-2.38-4.13zm95.11 0-9.52 16.5H71.29l7.14-12.37h-4.75l-5.96 10.31-7.14-12.37-2.38 4.12 8.33 14.44h19.05l7.14 12.37H78.43l2.39 4.12h11.9l-4.27 7.4h4.76l5.46-9.46-9.52-16.5 7.14-12.37 3.7 6.42v-8.26l-.12-.23h.13v-4.13zM0 133.04v8.25l3.44 5.95 2.38-4.12zm30.82 8.02-9.53 16.5H7l7.15-12.38H9.39l-5.95 10.31L0 149.54v8.24l2.25 3.9h19.04l6.66 11.52h4.76l-7.85-13.58 7.15-12.38 7.14 12.38 2.38-4.13-5.95-10.3h14.29l-2.39-4.13zm65.47 2.06-2.38 4.12 6.09 10.55v-8.25zm-29.76 10.3-9.52 16.5H42.72l7.15-12.37H45.1l-5.95 10.32-7.14-12.38-2.38 4.13 7.84 13.58h23.81l-.7-1.21 7.14-12.37 7.14 12.37 2.38-4.12-5.95-10.32h14.29l-2.38-4.12zM2.25 165.8 0 169.7v3.5h2.73l.7-1.21.7 1.21H8.9L7 169.93h14.3l-2.39-4.13zm65.47 2.07-2.38 4.12.7 1.21h4.76zm32.28 1.82-2.03 3.51H100zm-19.18.24-1.9 3.27h4.77l1.89-3.27z"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 3" :id="patternId" width="58" height="100.23" patternTransform="scale(1)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="none" stroke="#1A1A1A" stroke-linecap="square" d="m12.127 73.813.013 5.643 4.893-2.81zm-6.01-3.47 16.928 9.773-16.93 9.777zm-6.02-3.476 28.967 16.725L.13 100.262zm16.97 23.616-.015 5.643-4.893-2.81zm6.01-3.472L6.148 96.786l16.93 9.776zM.128 100.261l28.935 16.669m16.874-23.67-.013-5.644-4.894 2.81zm6.01 3.47L35.02 86.956l16.931-9.775zM29 83.482l28.936-16.669.032 33.393m-28.904 2.834 4.881-2.834-4.88-2.832zm0 6.94V90.433l16.932 9.773zm0 6.952v-33.45l28.904 16.724zM58 13.915l-4.882 2.833L58 19.582zm0-6.94v19.548l-16.932-9.774zm0-6.951v33.448L29.096 16.748m0-13.89 4.88-2.833-4.88-2.833zm0 6.94V-9.749L46.026.025zm0 6.95v-33.449L58 .024zM16.94 23.696l-4.894-2.81-.014 5.643zm6.01-3.47L6.02 29.998v-19.55zM0 33.472.033.08 28.97 16.75m-5.99-29.92L6.053-3.393l16.93 9.776zm5.99 29.92L29-16.644.033.08m40.966 23.615.013 5.643 4.893-2.81zm-6.01-3.47 16.928 9.774-16.93 9.775zm22.947 13.248L29 50.143l-.031-33.394M16.97 43.197l-.013-5.643-4.894 2.81zm6.01 3.47L6.053 36.894l16.93-9.776zM29 50.143.032 33.419l28.936-16.67m16.937 57.008-4.893-2.81-.014 5.644zm6.01-3.47L34.988 80.06V60.51zM29 64.035l-4.88 2.832L29 69.7zm0-6.942v19.549l-16.93-9.775zM.097 66.867 29 50.143v33.449m16.938-43.228-.013 5.644-4.894-2.811zm6.01-3.47L35.02 46.667l16.931 9.777zM29 50.143l28.936 16.67.032-33.394M.097 52.975l4.88-2.832-4.88-2.833zm0 6.942V40.368l16.931 9.775zm0 6.95V33.42"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 3"
+                                                :id="patternId"
+                                                width="58"
+                                                height="100.23"
+                                                patternTransform="scale(1)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="none"
+                                                    stroke="#1A1A1A"
+                                                    stroke-linecap="square"
+                                                    d="m12.127 73.813.013 5.643 4.893-2.81zm-6.01-3.47 16.928 9.773-16.93 9.777zm-6.02-3.476 28.967 16.725L.13 100.262zm16.97 23.616-.015 5.643-4.893-2.81zm6.01-3.472L6.148 96.786l16.93 9.776zM.128 100.261l28.935 16.669m16.874-23.67-.013-5.644-4.894 2.81zm6.01 3.47L35.02 86.956l16.931-9.775zM29 83.482l28.936-16.669.032 33.393m-28.904 2.834 4.881-2.834-4.88-2.832zm0 6.94V90.433l16.932 9.773zm0 6.952v-33.45l28.904 16.724zM58 13.915l-4.882 2.833L58 19.582zm0-6.94v19.548l-16.932-9.774zm0-6.951v33.448L29.096 16.748m0-13.89 4.88-2.833-4.88-2.833zm0 6.94V-9.749L46.026.025zm0 6.95v-33.449L58 .024zM16.94 23.696l-4.894-2.81-.014 5.643zm6.01-3.47L6.02 29.998v-19.55zM0 33.472.033.08 28.97 16.75m-5.99-29.92L6.053-3.393l16.93 9.776zm5.99 29.92L29-16.644.033.08m40.966 23.615.013 5.643 4.893-2.81zm-6.01-3.47 16.928 9.774-16.93 9.775zm22.947 13.248L29 50.143l-.031-33.394M16.97 43.197l-.013-5.643-4.894 2.81zm6.01 3.47L6.053 36.894l16.93-9.776zM29 50.143.032 33.419l28.936-16.67m16.937 57.008-4.893-2.81-.014 5.644zm6.01-3.47L34.988 80.06V60.51zM29 64.035l-4.88 2.832L29 69.7zm0-6.942v19.549l-16.93-9.775zM.097 66.867 29 50.143v33.449m16.938-43.228-.013 5.644-4.894-2.811zm6.01-3.47L35.02 46.667l16.931 9.777zM29 50.143l28.936 16.67.032-33.394M.097 52.975l4.88-2.832-4.88-2.833zm0 6.942V40.368l16.931 9.775zm0 6.95V33.42"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 4" :id="patternId" width="40" height="69.282" patternTransform="scale(0.7)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="none" stroke="#1A1A1A" d="M13.333-3.849v23.094M6.667-15.396l20 11.547M13.333-19.245l20 11.547M20 0v23.094m20-34.641-6.667 3.849-6.666 3.849L20 0M0-11.547l6.667 3.849 6.666 3.849L20 0m0-23.094 20 11.547v23.094L20 23.094l-6.667-3.849-6.666-3.849L0 11.547v-23.094l6.667-3.849 6.666-3.849zM40-3.769 20 7.698m20-3.849-16.253 9.384L20 15.396M6.667-7.698v23.094m6.666 50.037v23.094M6.667 53.886l20 11.547M13.333 50.037l20 11.547M20 69.282v23.094m20-34.641-6.667 3.849-6.666 3.849L20 69.282M0 57.735l6.667 3.849 6.666 3.849L20 69.282m0-23.094 20 11.547v23.094L20 92.376l-6.667-3.849-6.666-3.849L0 80.829V57.735l6.667-3.849 6.666-3.849zm20 19.325L20 76.98m20-3.849L20 84.678M6.667 61.584v23.094m26.666-53.886v23.094m-6.666-34.641 20 11.547M33.333 15.396l20 11.547M40 34.641v23.094m20-34.641-6.667 3.849-6.666 3.849L40 34.641M20 23.094l6.667 3.849 6.666 3.849L40 34.641m0-23.094 20 11.547v23.094L40 57.735l-6.667-3.849-6.666-3.849L20 46.188V23.094l6.667-3.849 6.666-3.849zm20 19.325L40 42.339m20-3.849L40 50.037M26.667 26.943v23.094M-6.667 30.792v23.094m-6.666-34.641 20 11.547M-6.667 15.396l20 11.547M0 34.641v23.094m20-34.641-6.667 3.849-6.666 3.849L0 34.641m-20-11.547 6.667 3.849 6.666 3.849L0 34.641m0-23.094 20 11.547v23.094L0 57.735l-6.667-3.849-6.666-3.849L-20 46.188V23.094l6.667-3.849 6.666-3.849zm20 19.325L0 42.339m20-3.849L0 50.037m-13.333-23.094v23.094"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 4"
+                                                :id="patternId"
+                                                width="40"
+                                                height="69.282"
+                                                patternTransform="scale(0.7)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="none"
+                                                    stroke="#1A1A1A"
+                                                    d="M13.333-3.849v23.094M6.667-15.396l20 11.547M13.333-19.245l20 11.547M20 0v23.094m20-34.641-6.667 3.849-6.666 3.849L20 0M0-11.547l6.667 3.849 6.666 3.849L20 0m0-23.094 20 11.547v23.094L20 23.094l-6.667-3.849-6.666-3.849L0 11.547v-23.094l6.667-3.849 6.666-3.849zM40-3.769 20 7.698m20-3.849-16.253 9.384L20 15.396M6.667-7.698v23.094m6.666 50.037v23.094M6.667 53.886l20 11.547M13.333 50.037l20 11.547M20 69.282v23.094m20-34.641-6.667 3.849-6.666 3.849L20 69.282M0 57.735l6.667 3.849 6.666 3.849L20 69.282m0-23.094 20 11.547v23.094L20 92.376l-6.667-3.849-6.666-3.849L0 80.829V57.735l6.667-3.849 6.666-3.849zm20 19.325L20 76.98m20-3.849L20 84.678M6.667 61.584v23.094m26.666-53.886v23.094m-6.666-34.641 20 11.547M33.333 15.396l20 11.547M40 34.641v23.094m20-34.641-6.667 3.849-6.666 3.849L40 34.641M20 23.094l6.667 3.849 6.666 3.849L40 34.641m0-23.094 20 11.547v23.094L40 57.735l-6.667-3.849-6.666-3.849L20 46.188V23.094l6.667-3.849 6.666-3.849zm20 19.325L40 42.339m20-3.849L40 50.037M26.667 26.943v23.094M-6.667 30.792v23.094m-6.666-34.641 20 11.547M-6.667 15.396l20 11.547M0 34.641v23.094m20-34.641-6.667 3.849-6.666 3.849L0 34.641m-20-11.547 6.667 3.849 6.666 3.849L0 34.641m0-23.094 20 11.547v23.094L0 57.735l-6.667-3.849-6.666-3.849L-20 46.188V23.094l6.667-3.849 6.666-3.849zm20 19.325L0 42.339m20-3.849L0 50.037m-13.333-23.094v23.094"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 5" :id="patternId" width="16.5" height="32.877" patternTransform="scale(1)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="none" stroke="#1A1A1A" d="m-5 2 5 10L5 2zm16.5 0 5 10 5-10zM8.25 4.438l-5 10h10zm-5 14 5 10.001 5-10zM0 20.878l-5 10H5zm16.5 0-5 10h10z"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 5"
+                                                :id="patternId"
+                                                width="16.5"
+                                                height="32.877"
+                                                patternTransform="scale(1)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="none"
+                                                    stroke="#1A1A1A"
+                                                    d="m-5 2 5 10L5 2zm16.5 0 5 10 5-10zM8.25 4.438l-5 10h10zm-5 14 5 10.001 5-10zM0 20.878l-5 10H5zm16.5 0-5 10h10z"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 6" :id="patternId" width="160" height="160" patternTransform="scale(0.3)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="none" stroke="#1A1A1A" stroke-width="2" d="M121.5 39.5V9.169c0-2.827 1.724-4.707 3.473-5.602l.707-.362c2.086-1.068 4.702-.631 6.359 1.026l1.985 1.985c1.349 1.349 3.235 2.018 5.14 2.128 12.336 0 12.336-18.505 0-18.505M40.75 39.499V9.17c0-2.827-1.724-4.707-3.473-5.602l-.707-.362c-2.086-1.068-4.702-.631-6.359 1.026l-1.985 1.985c-1.349 1.349-3.236 2.018-5.14 2.128-12.336 0-12.336-18.505 0-18.505m146.575 111.248c0-12.337-18.505-12.337-18.505 0 .11 1.904.78 3.79 2.128 5.139l1.985 1.985c1.657 1.657 2.094 4.273 1.026 6.36l-.362.706c-.895 1.75-2.775 3.474-5.602 3.474l-30.33-.001m49.66-63.086c0 12.336-18.505 12.336-18.505 0 .11-1.904.78-3.791 2.128-5.14l1.985-1.985c1.657-1.657 2.094-4.273 1.026-6.359l-.362-.707c-.895-1.749-2.775-3.474-5.602-3.473h-30.33m19.162 130.344c12.337 0 12.337-18.505 0-18.505-1.631 0-3.99.98-5.139 2.128l-1.985 1.985c-1.656 1.656-4.274 2.094-6.36 1.027l-.706-.362c-2.086-1.069-3.474-3.258-3.474-5.602v-34.302l.001-26.228c0-2.344-1.427-4.458-3.473-5.602l-.707-.361a5.83 5.83 0 0 0-6.36 1.026l-1.984 1.985c-1.144 1.152-3.508 2.128-5.14 2.128-12.336 0-12.336-18.505 0-18.505 1.904.11 3.715.86 5.14 2.128l1.985 1.985a5.81 5.81 0 0 0 6.359 1.026l.707-.362c1.287-1.485 3.473-2.775 3.473-5.602v-30.33M23.086 168.343c-12.336 0-12.336-18.505 0-18.505 1.632 0 3.992.98 5.14 2.128l1.985 1.985c1.656 1.656 4.274 2.094 6.359 1.027l.707-.362c2.086-1.069 3.474-3.258 3.474-5.602l-.001-34.302V88.485c0-2.344 1.387-4.533 3.473-5.602l.707-.361c2.085-1.068 4.703-.63 6.359 1.026l1.985 1.985c1.148 1.148 3.508 2.128 5.14 2.128 12.336 0 12.336-18.505 0-18.505-1.905.11-3.791.78-5.14 2.128l-1.985 1.985c-1.657 1.657-4.273 2.094-6.36 1.026l-.706-.362c-1.75-.895-3.474-2.775-3.474-5.602v-30.33m80.75 80.749H91.17c-2.827 0-4.707 1.724-5.602 3.473l-.362.707c-1.068 2.086-.631 4.702 1.026 6.359l1.985 1.985c1.349 1.349 2.018 3.236 2.128 5.14 0 12.336-18.505 12.336-18.505 0 0-1.632.98-3.992 2.128-5.14l1.985-1.985c1.656-1.656 2.094-4.274 1.026-6.359l-.361-.707c-1.069-2.086-3.258-3.474-5.602-3.473h-60.53c-2.344 0-4.533-1.387-5.602-3.473l-.362-.707c-1.067-2.085-.63-4.703 1.027-6.359l1.985-1.985c1.148-1.148 2.128-3.508 2.128-5.14 0-12.336-18.505-12.336-18.505 0M121.5 38H91.169c-2.827 0-4.707-1.724-5.602-3.473l-.362-.707c-1.068-2.086-.631-4.702 1.026-6.359l1.985-1.985c1.349-1.349 2.018-3.235 2.128-5.14C90.344 8 71.84 8 71.84 20.337c0 1.632.977 3.994 2.128 5.14.663.66 1.343 1.305 1.985 1.985 1.608 1.703 2.003 4.23 1.026 6.36q-.167.359-.361.706C75.48 36.577 73.359 38 71.015 38h-60.53c-2.344 0-4.533 1.387-5.602 3.473l-.362.707c-1.067 2.085-.63 4.703 1.027 6.36l1.985 1.984c1.148 1.148 2.128 3.508 2.128 5.14C9.66 68-8.844 68-8.844 55.664"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 6"
+                                                :id="patternId"
+                                                width="160"
+                                                height="160"
+                                                patternTransform="scale(0.3)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="none"
+                                                    stroke="#1A1A1A"
+                                                    stroke-width="2"
+                                                    d="M121.5 39.5V9.169c0-2.827 1.724-4.707 3.473-5.602l.707-.362c2.086-1.068 4.702-.631 6.359 1.026l1.985 1.985c1.349 1.349 3.235 2.018 5.14 2.128 12.336 0 12.336-18.505 0-18.505M40.75 39.499V9.17c0-2.827-1.724-4.707-3.473-5.602l-.707-.362c-2.086-1.068-4.702-.631-6.359 1.026l-1.985 1.985c-1.349 1.349-3.236 2.018-5.14 2.128-12.336 0-12.336-18.505 0-18.505m146.575 111.248c0-12.337-18.505-12.337-18.505 0 .11 1.904.78 3.79 2.128 5.139l1.985 1.985c1.657 1.657 2.094 4.273 1.026 6.36l-.362.706c-.895 1.75-2.775 3.474-5.602 3.474l-30.33-.001m49.66-63.086c0 12.336-18.505 12.336-18.505 0 .11-1.904.78-3.791 2.128-5.14l1.985-1.985c1.657-1.657 2.094-4.273 1.026-6.359l-.362-.707c-.895-1.749-2.775-3.474-5.602-3.473h-30.33m19.162 130.344c12.337 0 12.337-18.505 0-18.505-1.631 0-3.99.98-5.139 2.128l-1.985 1.985c-1.656 1.656-4.274 2.094-6.36 1.027l-.706-.362c-2.086-1.069-3.474-3.258-3.474-5.602v-34.302l.001-26.228c0-2.344-1.427-4.458-3.473-5.602l-.707-.361a5.83 5.83 0 0 0-6.36 1.026l-1.984 1.985c-1.144 1.152-3.508 2.128-5.14 2.128-12.336 0-12.336-18.505 0-18.505 1.904.11 3.715.86 5.14 2.128l1.985 1.985a5.81 5.81 0 0 0 6.359 1.026l.707-.362c1.287-1.485 3.473-2.775 3.473-5.602v-30.33M23.086 168.343c-12.336 0-12.336-18.505 0-18.505 1.632 0 3.992.98 5.14 2.128l1.985 1.985c1.656 1.656 4.274 2.094 6.359 1.027l.707-.362c2.086-1.069 3.474-3.258 3.474-5.602l-.001-34.302V88.485c0-2.344 1.387-4.533 3.473-5.602l.707-.361c2.085-1.068 4.703-.63 6.359 1.026l1.985 1.985c1.148 1.148 3.508 2.128 5.14 2.128 12.336 0 12.336-18.505 0-18.505-1.905.11-3.791.78-5.14 2.128l-1.985 1.985c-1.657 1.657-4.273 2.094-6.36 1.026l-.706-.362c-1.75-.895-3.474-2.775-3.474-5.602v-30.33m80.75 80.749H91.17c-2.827 0-4.707 1.724-5.602 3.473l-.362.707c-1.068 2.086-.631 4.702 1.026 6.359l1.985 1.985c1.349 1.349 2.018 3.236 2.128 5.14 0 12.336-18.505 12.336-18.505 0 0-1.632.98-3.992 2.128-5.14l1.985-1.985c1.656-1.656 2.094-4.274 1.026-6.359l-.361-.707c-1.069-2.086-3.258-3.474-5.602-3.473h-60.53c-2.344 0-4.533-1.387-5.602-3.473l-.362-.707c-1.067-2.085-.63-4.703 1.027-6.359l1.985-1.985c1.148-1.148 2.128-3.508 2.128-5.14 0-12.336-18.505-12.336-18.505 0M121.5 38H91.169c-2.827 0-4.707-1.724-5.602-3.473l-.362-.707c-1.068-2.086-.631-4.702 1.026-6.359l1.985-1.985c1.349-1.349 2.018-3.235 2.128-5.14C90.344 8 71.84 8 71.84 20.337c0 1.632.977 3.994 2.128 5.14.663.66 1.343 1.305 1.985 1.985 1.608 1.703 2.003 4.23 1.026 6.36q-.167.359-.361.706C75.48 36.577 73.359 38 71.015 38h-60.53c-2.344 0-4.533 1.387-5.602 3.473l-.362.707c-1.067 2.085-.63 4.703 1.027 6.36l1.985 1.984c1.148 1.148 2.128 3.508 2.128 5.14C9.66 68-8.844 68-8.844 55.664"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 7" :id="patternId" width="100" height="100" patternTransform="scale(1)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="#1A1A1A" d="M0 0v1l1-1zm6.29 0-.147.143 11.81 11.619 8.19-8.143L22.666.047 22.709 0h-1.998l-.045.047 3.477 3.572-6.19 6.143L8.238.192 8.434 0H6.289zm6.759 0 1.047 1.047L15.143 0zm14.474 0 7.143 7.143-2.428 2.523-3.43-3.523-4.855 4.572 8.238 8.142L43.857 7.143 36.686 0h-2.008l7.226 7.191-9.666 9.713L26 10.762l2.762-2.57 3.476 3.617 4.477-4.618L29.572.047 29.62 0h-2.096zm14.288 0 4.808 4.809 4.572-4.57L50.953 0h-2.047l.285.285-2.572 2.572L43.762 0zm14.068 0-17.64 17.904 4.57 4.62L65 .333 64.697 0H62.79l.258.285-20.19 20.192-2.572-2.573L57.857 0H55.88zm14.549 0-3.62 3.62 8.145 8.142L86.666.047 86.619 0h-1.951l.047.047L75 9.762l-6.143-6.143 2.57-2.572L75 4.619 79.62 0h-2.048l-2.619 2.62L72.334 0zm21.43 0-3.62 3.62 4.57 4.571L100 .998V0h-.953l-6.19 6.191-2.572-2.572L93.905 0h-2.048zm-88 2.191L0 6.091v2.04l3.762-3.846 2.666 3.049-6.381 6.19-.047-.05v2.098l8.38-8.095L3.858 2.19zM100 6.091l-4.572 4.624L100 15.572v-2.097l-2.572-2.713L100 8.13V6.09zm-35.762.1-4.572 4.57 4.572 4.573 4.57-4.572-4.57-4.57zm21.428 0L74.953 16.904l-3.572-3.57-4.572 4.57 8.144 8.143 15.285-15.285-4.572-4.57zm-21.428 2 2.57 2.57-2.57 2.573-2.572-2.572zm21.477 0 2.57 2.57L75 24.048l-6.143-6.143 2.57-2.57L75 18.904zM10.666 10 0 20.668v2L10.666 12l2.572 2.572L0 27.811v2l15.238-15.239zm46.43 3.334L42.809 27.619l-7.381-7.38-8.143 8.142 4.572 4.572 3.57-3.572 2.811 2.81-6.142 6.143L21.38 27.619l-4.572 4.572 15.287 15.286 25-25L67.809 33.19l4.572-4.572-15.285-15.285zm35.713.238-4.57 4.57 11.714 11.715.047-.046v-1.954l-9.715-9.714 2.572-2.57L100 22.714v-2.047l-.047.047-7.144-7.143zm-71.143.094-12 11.38 4.572 4.669 7.334-7.238 3.381 3.57 4.62-4.62zm35.43 1.62L70.38 28.571l-2.572 2.57-10.713-10.714-25 25-13.287-13.285 2.572-2.57 10.715 10.712 8.142-8.142-4.81-4.809-3.57 3.57-2.573-2.57 6.143-6.143 7.38 7.381 14.288-14.287zm-35.477.429 5.904 5.762L25 24l-3.38-3.523-7.335 7.285-2.57-2.62zm64.047 4.762-4.57 4.57L96.38 40.334l3.619-3.62V34.81zm.049 2L99 35.762l-2.572 2.572-13.285-13.287zm-6.953 4.904L67.809 38.334l-3.57-3.572-4.573 4.572 8.143 8.143 15.525-15.524zm-71.666.238-4.573 4.572L17.81 47.477l4.572-4.573L7.096 27.62zm50 0L45.38 39.334l4.572 4.57 11.713-11.713zm21.713 1.762 2.572 2.572-13.524 13.524-6.142-6.143 2.57-2.572 3.572 3.572L78.81 29.381zm-71.713.238L20.38 42.904l-2.572 2.573L4.523 32.19l2.573-2.572zm50 0 2.57 2.572-9.713 9.713-2.572-2.57zm28.57 5.143-4.57 4.572 11.713 11.713 4.572-4.57zM0 34.809v1.906l.953-.953zm85.715 1.953 9.713 9.715-2.57 2.57-9.715-9.713zm-82.192 1.81L0 41.877v2.08l2.523 2.424L0 48.973v2.12l7.096 7.098 8.142-8.144zm0 1.951L13.238 50l-6.142 6.143L.953 50l3.57-3.715L1 42.857zM100 41.877l-1.096 1.027L100 43.957zm-57.191.027-4.57 4.573 4.57 4.57 4.572-4.57zm14.287 0L45.38 53.62l4.572 4.572 7.143-7.144 10.713 10.715 4.572-4.57zm21.476 0-8.144 8.143L75 54.619l3.572-3.572 7.143 7.144 4.57-4.572zm-35.763 2 2.572 2.573-2.572 2.57-2.57-2.57zm14.287 0L70.38 57.191l-2.572 2.57-10.713-10.714-7.143 7.144-2.572-2.572 9.715-9.715zm21.476 0 9.713 9.715-2.57 2.572-7.143-7.144L75 52.619l-2.572-2.572zm-53.619 1.573L9.666 60.762l4.572 4.572 15.285-15.287zm0 2 2.57 2.57-13.285 13.287-2.572-2.572zM100 48.973l-1.047 1.074L100 51.094zm-64.334.074-4.57 4.572 18.857 18.858 11.713-11.715-4.57-4.57-7.143 7.142zm0 2 14.287 14.287 7.143-7.143 2.57 2.57-9.713 9.716-16.857-16.858zm60.953 1.81-4.572 4.57L100 65.382v-2.049l-5.904-5.904 2.57-2.57L100 58.19v-1.953l-3.38-3.38zm-68.096 3.334L9.666 75.047l4.572 4.572 7.143-7.142 7.142 7.142 4.573-4.572-7.143-7.143 2.57-2.57 7.143 7.143 4.572-4.573zm50 0-8.142 8.143 8.142 8.143 4.573-4.573-3.573-3.57 3.573-3.572zM0 56.238v2l9.666 9.666-2.57 2.573L0 63.38v2l7.096 7.096 4.57-4.573zm28.523 1.905 9.715 9.714-2.572 2.57-7.143-7.142-4.57 4.572L31.096 75l-2.573 2.572-7.142-7.144-7.143 7.144L11.666 75zm50 .048 2.573 2.57-3.573 3.573 3.573 3.57-2.573 2.573-6.142-6.143zm10.715 1.57-4.572 4.573 3.572 3.57-6.904 6.905 4.57 4.572 11.477-11.477zm.047 2 6.143 6.143-9.475 9.477-2.572-2.572 6.904-6.905-3.57-3.57zm-25.047 1.573-8.142 8.143 4.57 4.57 8.143-8.143-4.57-4.57zm0 2 2.57 2.57-6.142 6.143-2.57-2.57zm-21.43 5.143L28.524 84.762l-7.142-7.143-4.572 4.57 11.714 11.715 18.858-18.857-4.572-4.57zm28.573 0-4.572 4.57 11.714 11.715 4.573-4.573L71.38 70.477zm28.572 0L88.238 82.189l4.57 4.43 7.145-7 .047.047v-2.094l-7.143 7.047-2.572-2.476L100 72.428v-1.905zM0 70.523v1.952l16.809 16.81-2.57 2.572-3.573-3.572-7.143 7.143L0 91.904v2.05l3.523 3.523 7.143-7.143 3.572 3.57 4.57-4.57L0 70.524zm42.809 1.954 2.572 2.57-16.858 16.857-9.714-9.715 2.572-2.57 7.142 7.143L42.81 72.477zm28.572 0 9.715 9.712-2.573 2.573-9.714-9.715zm-17.858 1.57-4.57 4.572 4.57 4.57 4.573-4.57zm0 2 2.573 2.572-2.573 2.57-2.57-2.57zM0 77.619v2.047l6.096 6.096-2.573 2.666L0 84.81v1.953l3.523 3.664 4.573-4.713zm64.238 0L53.523 88.334l-7.142-7.145-4.572 4.573 11.714 11.715L68.81 82.189l-4.57-4.57zm0 2 2.57 2.57-13.285 13.288-9.714-9.715 2.572-2.573 7.142 7.145zm7.143 5.143-8.143 8.142 4.57 4.573 3.573-3.573 3.572 3.573 4.57-4.573zm14.285 0-4.57 4.572L89 97.238l4.572-4.572zm14.287 0-4.572 4.572 4.619 4.62v-2.097l-2.572-2.572 2.572-2.57V84.81l-.047-.05zm-28.525 1.953 6.144 6.142L75 95.427l-3.572-3.57-3.57 3.57-2.573-2.57zm14.287.047 5.904 5.904-2.572 2.572-5.904-5.904zm-46.477 1.572-4.572 4.57L41.762 100h2l-7.096-7.096 2.572-2.57L48.906 100h2zm-18.095 3.57-7.096 7.143-3.332-3.332L6.289 100h2.143l2.33-2.285L13.049 100h2.094l6.095-6.096L24 96.524 20.71 100h1.999L26 96.428zm75.476 3.334L91.857 100h2.047l2.762-2.762 2.572 2.57-.191.192H100v-1.38l-3.38-3.382zm-36.142.096L55.879 100h1.978l2.57-2.62L62.79 100h1.908zm-28.381.094L27.523 100h2.096l2.524-2.523L34.678 100h2.008zm50 .049L77.572 100h2.047l2.524-2.523L84.668 100h1.951zM0 98.617V100h1l.191-.191zm71.38.43-.952.953h1.906l-.953-.953z"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 7"
+                                                :id="patternId"
+                                                width="100"
+                                                height="100"
+                                                patternTransform="scale(1)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="#1A1A1A"
+                                                    d="M0 0v1l1-1zm6.29 0-.147.143 11.81 11.619 8.19-8.143L22.666.047 22.709 0h-1.998l-.045.047 3.477 3.572-6.19 6.143L8.238.192 8.434 0H6.289zm6.759 0 1.047 1.047L15.143 0zm14.474 0 7.143 7.143-2.428 2.523-3.43-3.523-4.855 4.572 8.238 8.142L43.857 7.143 36.686 0h-2.008l7.226 7.191-9.666 9.713L26 10.762l2.762-2.57 3.476 3.617 4.477-4.618L29.572.047 29.62 0h-2.096zm14.288 0 4.808 4.809 4.572-4.57L50.953 0h-2.047l.285.285-2.572 2.572L43.762 0zm14.068 0-17.64 17.904 4.57 4.62L65 .333 64.697 0H62.79l.258.285-20.19 20.192-2.572-2.573L57.857 0H55.88zm14.549 0-3.62 3.62 8.145 8.142L86.666.047 86.619 0h-1.951l.047.047L75 9.762l-6.143-6.143 2.57-2.572L75 4.619 79.62 0h-2.048l-2.619 2.62L72.334 0zm21.43 0-3.62 3.62 4.57 4.571L100 .998V0h-.953l-6.19 6.191-2.572-2.572L93.905 0h-2.048zm-88 2.191L0 6.091v2.04l3.762-3.846 2.666 3.049-6.381 6.19-.047-.05v2.098l8.38-8.095L3.858 2.19zM100 6.091l-4.572 4.624L100 15.572v-2.097l-2.572-2.713L100 8.13V6.09zm-35.762.1-4.572 4.57 4.572 4.573 4.57-4.572-4.57-4.57zm21.428 0L74.953 16.904l-3.572-3.57-4.572 4.57 8.144 8.143 15.285-15.285-4.572-4.57zm-21.428 2 2.57 2.57-2.57 2.573-2.572-2.572zm21.477 0 2.57 2.57L75 24.048l-6.143-6.143 2.57-2.57L75 18.904zM10.666 10 0 20.668v2L10.666 12l2.572 2.572L0 27.811v2l15.238-15.239zm46.43 3.334L42.809 27.619l-7.381-7.38-8.143 8.142 4.572 4.572 3.57-3.572 2.811 2.81-6.142 6.143L21.38 27.619l-4.572 4.572 15.287 15.286 25-25L67.809 33.19l4.572-4.572-15.285-15.285zm35.713.238-4.57 4.57 11.714 11.715.047-.046v-1.954l-9.715-9.714 2.572-2.57L100 22.714v-2.047l-.047.047-7.144-7.143zm-71.143.094-12 11.38 4.572 4.669 7.334-7.238 3.381 3.57 4.62-4.62zm35.43 1.62L70.38 28.571l-2.572 2.57-10.713-10.714-25 25-13.287-13.285 2.572-2.57 10.715 10.712 8.142-8.142-4.81-4.809-3.57 3.57-2.573-2.57 6.143-6.143 7.38 7.381 14.288-14.287zm-35.477.429 5.904 5.762L25 24l-3.38-3.523-7.335 7.285-2.57-2.62zm64.047 4.762-4.57 4.57L96.38 40.334l3.619-3.62V34.81zm.049 2L99 35.762l-2.572 2.572-13.285-13.287zm-6.953 4.904L67.809 38.334l-3.57-3.572-4.573 4.572 8.143 8.143 15.525-15.524zm-71.666.238-4.573 4.572L17.81 47.477l4.572-4.573L7.096 27.62zm50 0L45.38 39.334l4.572 4.57 11.713-11.713zm21.713 1.762 2.572 2.572-13.524 13.524-6.142-6.143 2.57-2.572 3.572 3.572L78.81 29.381zm-71.713.238L20.38 42.904l-2.572 2.573L4.523 32.19l2.573-2.572zm50 0 2.57 2.572-9.713 9.713-2.572-2.57zm28.57 5.143-4.57 4.572 11.713 11.713 4.572-4.57zM0 34.809v1.906l.953-.953zm85.715 1.953 9.713 9.715-2.57 2.57-9.715-9.713zm-82.192 1.81L0 41.877v2.08l2.523 2.424L0 48.973v2.12l7.096 7.098 8.142-8.144zm0 1.951L13.238 50l-6.142 6.143L.953 50l3.57-3.715L1 42.857zM100 41.877l-1.096 1.027L100 43.957zm-57.191.027-4.57 4.573 4.57 4.57 4.572-4.57zm14.287 0L45.38 53.62l4.572 4.572 7.143-7.144 10.713 10.715 4.572-4.57zm21.476 0-8.144 8.143L75 54.619l3.572-3.572 7.143 7.144 4.57-4.572zm-35.763 2 2.572 2.573-2.572 2.57-2.57-2.57zm14.287 0L70.38 57.191l-2.572 2.57-10.713-10.714-7.143 7.144-2.572-2.572 9.715-9.715zm21.476 0 9.713 9.715-2.57 2.572-7.143-7.144L75 52.619l-2.572-2.572zm-53.619 1.573L9.666 60.762l4.572 4.572 15.285-15.287zm0 2 2.57 2.57-13.285 13.287-2.572-2.572zM100 48.973l-1.047 1.074L100 51.094zm-64.334.074-4.57 4.572 18.857 18.858 11.713-11.715-4.57-4.57-7.143 7.142zm0 2 14.287 14.287 7.143-7.143 2.57 2.57-9.713 9.716-16.857-16.858zm60.953 1.81-4.572 4.57L100 65.382v-2.049l-5.904-5.904 2.57-2.57L100 58.19v-1.953l-3.38-3.38zm-68.096 3.334L9.666 75.047l4.572 4.572 7.143-7.142 7.142 7.142 4.573-4.572-7.143-7.143 2.57-2.57 7.143 7.143 4.572-4.573zm50 0-8.142 8.143 8.142 8.143 4.573-4.573-3.573-3.57 3.573-3.572zM0 56.238v2l9.666 9.666-2.57 2.573L0 63.38v2l7.096 7.096 4.57-4.573zm28.523 1.905 9.715 9.714-2.572 2.57-7.143-7.142-4.57 4.572L31.096 75l-2.573 2.572-7.142-7.144-7.143 7.144L11.666 75zm50 .048 2.573 2.57-3.573 3.573 3.573 3.57-2.573 2.573-6.142-6.143zm10.715 1.57-4.572 4.573 3.572 3.57-6.904 6.905 4.57 4.572 11.477-11.477zm.047 2 6.143 6.143-9.475 9.477-2.572-2.572 6.904-6.905-3.57-3.57zm-25.047 1.573-8.142 8.143 4.57 4.57 8.143-8.143-4.57-4.57zm0 2 2.57 2.57-6.142 6.143-2.57-2.57zm-21.43 5.143L28.524 84.762l-7.142-7.143-4.572 4.57 11.714 11.715 18.858-18.857-4.572-4.57zm28.573 0-4.572 4.57 11.714 11.715 4.573-4.573L71.38 70.477zm28.572 0L88.238 82.189l4.57 4.43 7.145-7 .047.047v-2.094l-7.143 7.047-2.572-2.476L100 72.428v-1.905zM0 70.523v1.952l16.809 16.81-2.57 2.572-3.573-3.572-7.143 7.143L0 91.904v2.05l3.523 3.523 7.143-7.143 3.572 3.57 4.57-4.57L0 70.524zm42.809 1.954 2.572 2.57-16.858 16.857-9.714-9.715 2.572-2.57 7.142 7.143L42.81 72.477zm28.572 0 9.715 9.712-2.573 2.573-9.714-9.715zm-17.858 1.57-4.57 4.572 4.57 4.57 4.573-4.57zm0 2 2.573 2.572-2.573 2.57-2.57-2.57zM0 77.619v2.047l6.096 6.096-2.573 2.666L0 84.81v1.953l3.523 3.664 4.573-4.713zm64.238 0L53.523 88.334l-7.142-7.145-4.572 4.573 11.714 11.715L68.81 82.189l-4.57-4.57zm0 2 2.57 2.57-13.285 13.288-9.714-9.715 2.572-2.573 7.142 7.145zm7.143 5.143-8.143 8.142 4.57 4.573 3.573-3.573 3.572 3.573 4.57-4.573zm14.285 0-4.57 4.572L89 97.238l4.572-4.572zm14.287 0-4.572 4.572 4.619 4.62v-2.097l-2.572-2.572 2.572-2.57V84.81l-.047-.05zm-28.525 1.953 6.144 6.142L75 95.427l-3.572-3.57-3.57 3.57-2.573-2.57zm14.287.047 5.904 5.904-2.572 2.572-5.904-5.904zm-46.477 1.572-4.572 4.57L41.762 100h2l-7.096-7.096 2.572-2.57L48.906 100h2zm-18.095 3.57-7.096 7.143-3.332-3.332L6.289 100h2.143l2.33-2.285L13.049 100h2.094l6.095-6.096L24 96.524 20.71 100h1.999L26 96.428zm75.476 3.334L91.857 100h2.047l2.762-2.762 2.572 2.57-.191.192H100v-1.38l-3.38-3.382zm-36.142.096L55.879 100h1.978l2.57-2.62L62.79 100h1.908zm-28.381.094L27.523 100h2.096l2.524-2.523L34.678 100h2.008zm50 .049L77.572 100h2.047l2.524-2.523L84.668 100h1.951zM0 98.617V100h1l.191-.191zm71.38.43-.952.953h1.906l-.953-.953z"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 8" :id="patternId" width="79.508" height="40" patternTransform="scale(1)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="#1A1A1A" d="M0 0v.685c5.16 0 10.01 2.01 13.657 5.658.384.383.74.787 1.086 1.197a41 41 0 0 0-1.877 1.546c.185-.16.367-.324.554-.481C10.19 4.803 5.38 2.385 0 2.385v1.639c4.877 0 9.245 2.203 12.177 5.659.153-.139.313-.27.468-.406a41.2 41.2 0 0 0-6.769 7.675c.204-.299.403-.6.614-.893A7.59 7.59 0 0 0 0 12.399v1.64c2.427 0 4.511 1.462 5.44 3.548.11-.168.228-.33.34-.496a41 41 0 0 0-1.368 2.165c.231.025.46.06.69.088a41 41 0 0 0-1.846-.187c.305.022.61.039.913.07-.365-1.983-2.081-3.49-4.169-3.49v1.64c1.129 0 2.094.717 2.463 1.72q.033.001.068.005A42 42 0 0 0 0 19.016v1.64c5.312 0 10.464 1.04 15.314 3.091A39.2 39.2 0 0 1 27.82 32.18a39.4 39.4 0 0 1 5.756 7.301 41 41 0 0 1 1.766-.224 41 41 0 0 0-1.373-2.172c.113.168.233.332.345.502.93-2.085 3.013-3.547 5.44-3.547 2.426 0 4.51 1.462 5.44 3.547.112-.17.232-.334.345-.502a41 41 0 0 0-1.373 2.172 43 43 0 0 1 1.766.224 39.4 39.4 0 0 1 5.756-7.3 39.22 39.22 0 0 1 27.82-11.524v-1.64a42 42 0 0 0-2.649.09l.199-.016a2.62 2.62 0 0 1 2.45-1.713v-1.64c-2.085 0-3.784 1.51-4.151 3.487.344-.034.692-.056 1.039-.082q-1.002.077-1.99.202c.23-.028.459-.063.69-.088a41 41 0 0 0-1.368-2.165c.112.166.23.328.34.496.929-2.086 3.013-3.548 5.44-3.548V12.4a7.59 7.59 0 0 0-6.49 3.66c.211.293.41.594.614.893a41.2 41.2 0 0 0-6.769-7.675c.156.136.315.267.468.406 2.932-3.456 7.3-5.66 12.177-5.66V2.385c-5.38 0-10.189 2.42-13.42 6.22.187.158.369.322.554.482a41 41 0 0 0-1.877-1.546c.347-.41.702-.814 1.086-1.197A19.2 19.2 0 0 1 79.508.685V0H73.34a20.97 20.97 0 0 0-9.903 6.563c.343.243.679.496 1.014.749a41 41 0 0 0-6.108-3.833c.261.133.525.262.782.4a26 26 0 0 1 2.005-2.257A27 27 0 0 1 62.917 0h-2.405c-1.026.975-2.004 1.998-2.87 3.12.096.046.19.099.287.147a41 41 0 0 0-2.005-.926l.126.052A30 30 0 0 1 58.081 0h-2.148c-.49.578-.997 1.144-1.445 1.757.2.078.397.163.597.243-.743-.3-1.495-.584-2.26-.841.282-.398.596-.773.894-1.159h-2.065c-.155.216-.32.425-.47.644q.812.236 1.608.504A41 41 0 0 0 48.66.005c.262.06.527.112.787.175.041-.062.091-.118.133-.18H29.928c.042.062.092.118.133.18.255-.061.513-.113.77-.171q-2.09.464-4.096 1.133a41 41 0 0 1 1.589-.498c-.15-.22-.315-.428-.47-.644h-2.065c.298.386.612.761.893 1.159-.762.256-1.51.539-2.252.838.197-.079.391-.163.59-.24-.45-.613-.955-1.179-1.446-1.757h-2.147a30 30 0 0 1 2.03 2.393q.061-.024.121-.05-1.01.434-1.993.92c.095-.046.187-.098.282-.144C21 2 20.022.975 18.997 0H16.59a27 27 0 0 1 1.787 1.622 26 26 0 0 1 2.005 2.257c.255-.137.515-.264.773-.396a41 41 0 0 0-6.097 3.827c.335-.252.67-.504 1.012-.747A20.97 20.97 0 0 0 6.168 0Zm10.659 0a22.7 22.7 0 0 1 6.827 5.601q.689-.449 1.396-.87c-1.475-1.82-3.226-3.4-5.16-4.731Zm55.127 0c-1.934 1.332-3.686 2.91-5.16 4.732q.707.42 1.396.87A22.7 22.7 0 0 1 68.849 0ZM39.754.656c5.312 0 10.464 1.04 15.314 3.091a39.2 39.2 0 0 1 12.506 8.432 39.4 39.4 0 0 1 5.756 7.302c.117-.018.237-.029.354-.045a41 41 0 0 0-2.215.375l.046-.01C64.832 9.316 53.11 2.355 39.754 2.355S14.676 9.316 7.994 19.802l.044.01a41 41 0 0 0-2.213-.376c.117.016.236.027.353.045a39.4 39.4 0 0 1 5.756-7.302A39.22 39.22 0 0 1 39.754.656m0 3.338a35.9 35.9 0 0 1 25.46 10.546 36 36 0 0 1 4.6 5.64c.266-.065.535-.118.802-.178a41 41 0 0 0-4.18 1.156 42 42 0 0 0-2.271.846c.203-.081.404-.168.608-.247-5.632-7.712-14.738-12.725-25.019-12.725s-19.387 5.013-25.02 12.725c.207.08.409.167.614.25a40.6 40.6 0 0 0-6.443-2.002c.262.059.527.112.788.175a36 36 0 0 1 4.601-5.64 35.9 35.9 0 0 1 25.46-10.546m26.682 17.164a42 42 0 0 1 1.642-.514c-6.18-9.026-16.559-14.951-28.324-14.951s-22.143 5.925-28.323 14.951q.828.24 1.64.514a33 33 0 0 1 3.583-4.258 32.56 32.56 0 0 1 23.1-9.568 32.56 32.56 0 0 1 23.1 9.568 33 33 0 0 1 3.582 4.258M79.508 5.723c-4.4 0-8.333 1.994-10.952 5.124q.588.582 1.153 1.187c2.319-2.848 5.849-4.672 9.799-4.672zM0 5.723v1.64c3.95 0 7.48 1.823 9.8 4.67q.564-.604 1.152-1.186A14.24 14.24 0 0 0 0 5.723m0 3.338v1.64c3.123 0 5.886 1.552 7.573 3.92a43 43 0 0 1 1.074-1.303c-2-2.585-5.125-4.257-8.647-4.257m79.508 0c-3.522 0-6.647 1.672-8.647 4.257q.55.64 1.074 1.304c1.687-2.369 4.45-3.922 7.573-3.922zm-39.754 1.61c7.834 0 15.2 3.05 20.739 8.59a30 30 0 0 1 2.718 3.132l.13-.053q-1.02.438-2.01.928c.097-.049.192-.102.29-.15-5.054-6.535-12.966-10.749-21.867-10.749-8.9 0-16.813 4.214-21.867 10.75.098.047.193.1.29.149a41 41 0 0 0-2.01-.928l.13.053a30 30 0 0 1 2.718-3.132c5.54-5.54 12.905-8.59 20.739-8.59m0 3.338c6.943 0 13.47 2.704 18.378 7.613a26 26 0 0 1 2.005 2.257c.259-.14.524-.269.786-.403a41 41 0 0 0-6.131 3.85q.51-.389 1.032-.763c-3.843-4.592-9.613-7.517-16.07-7.517s-12.226 2.925-16.07 7.517c.35.248.691.505 1.032.763a41 41 0 0 0-6.13-3.85c.261.134.526.264.785.403a26 26 0 0 1 2.005-2.257c4.909-4.91 11.435-7.613 18.378-7.613m0 1.699c-7.63 0-14.43 3.523-18.883 9.023q.708.422 1.397.87.691-.84 1.468-1.62a22.5 22.5 0 0 1 16.018-6.634c6.05 0 11.74 2.356 16.018 6.635a23 23 0 0 1 1.469 1.619q.689-.448 1.395-.87c-4.454-5.5-11.253-9.023-18.882-9.023m0 4.977c5.16 0 10.01 2.01 13.657 5.657.384.384.74.788 1.086 1.197a41 41 0 0 0-1.89 1.558c.19-.164.375-.331.567-.492-3.231-3.802-8.04-6.22-13.42-6.22-5.378 0-10.186 2.417-13.417 6.216.211.178.416.363.624.545a41 41 0 0 0-1.95-1.607c.347-.409.702-.813 1.086-1.197a19.2 19.2 0 0 1 13.657-5.657M0 22.355v1.639A35.89 35.89 0 0 1 29.929 40h.94l.288-.064c-.085.018-.166.045-.25.064H48.6c-.084-.019-.164-.046-.249-.064q.144.03.288.064h.94a35.89 35.89 0 0 1 29.929-16.006v-1.64h-.001c-13.356 0-25.078 6.962-31.76 17.448l.098.022a41 41 0 0 0-3.94-.598c-.367-1.979-2.067-3.488-4.152-3.488s-3.785 1.51-4.151 3.488a41 41 0 0 0-3.942.598l.1-.022C25.077 29.316 13.355 22.355 0 22.354Zm39.754 1.669c4.877 0 9.244 2.202 12.177 5.659.156-.142.318-.275.477-.413a41.2 41.2 0 0 0-6.785 7.692c.206-.302.407-.607.62-.904a7.59 7.59 0 0 0-6.489-3.659 7.59 7.59 0 0 0-6.49 3.66c.214.296.415.601.621.903a41.2 41.2 0 0 0-6.815-7.721c.168.148.34.29.507.442 2.932-3.457 7.3-5.66 12.177-5.66zM0 25.693V27.6c.234 0 .465-.014.694-.034.02-.066.045-.13.067-.196 4.14.094 8.161.924 11.954 2.529A32.6 32.6 0 0 1 23.1 36.9c.975.976 1.854 2.022 2.689 3.1h2.065C21.626 31.342 11.479 25.693 0 25.693m79.508 0c-11.479 0-21.626 5.65-27.854 14.307h2.065c.835-1.078 1.714-2.124 2.69-3.1 3-3 6.494-5.356 10.384-7 3.793-1.605 7.814-2.436 11.954-2.53l.068.196c.228.02.459.034.693.034zm-39.754.03c-4.4 0-8.333 1.994-10.952 5.124a43 43 0 0 1 1.153 1.186c2.32-2.847 5.849-4.671 9.799-4.671s7.48 1.824 9.8 4.671q.564-.604 1.152-1.186a14.24 14.24 0 0 0-10.952-5.124M0 29.03v1.64c7.834 0 15.2 3.05 20.739 8.59.24.24.458.493.688.739h2.148C17.895 33.31 9.463 29.031 0 29.031Zm79.508 0c-9.463 0-17.895 4.28-23.575 10.969h2.148c.23-.246.449-.5.688-.74 5.54-5.539 12.905-8.59 20.739-8.59zm-39.754.03c-3.522 0-6.647 1.672-8.647 4.257q.55.64 1.075 1.304c1.687-2.369 4.449-3.921 7.572-3.921s5.885 1.552 7.573 3.92a42 42 0 0 1 1.074-1.303c-2-2.585-5.125-4.257-8.647-4.257M0 32.37v1.64c6.132 0 11.936 2.116 16.59 5.991h2.407C14.043 35.29 7.375 32.37 0 32.37m79.508 0c-7.374 0-14.043 2.922-18.996 7.631h2.405c4.655-3.875 10.459-5.991 16.591-5.991ZM0 35.709v1.639c3.78 0 7.418.92 10.66 2.653h3.062C9.815 37.31 5.102 35.708 0 35.708Zm79.508 0c-5.103 0-9.815 1.602-13.722 4.292h3.062a22.54 22.54 0 0 1 10.66-2.653zm-39.754 1.67c1.144 0 2.108.74 2.466 1.763-.82-.049-1.633-.125-2.466-.125s-1.646.076-2.466.125a2.62 2.62 0 0 1 2.466-1.764zM0 39.045V40h6.168A20.9 20.9 0 0 0 0 39.046Zm79.508 0a20.9 20.9 0 0 0-6.168.954h6.168z"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 8"
+                                                :id="patternId"
+                                                width="79.508"
+                                                height="40"
+                                                patternTransform="scale(1)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="#1A1A1A"
+                                                    d="M0 0v.685c5.16 0 10.01 2.01 13.657 5.658.384.383.74.787 1.086 1.197a41 41 0 0 0-1.877 1.546c.185-.16.367-.324.554-.481C10.19 4.803 5.38 2.385 0 2.385v1.639c4.877 0 9.245 2.203 12.177 5.659.153-.139.313-.27.468-.406a41.2 41.2 0 0 0-6.769 7.675c.204-.299.403-.6.614-.893A7.59 7.59 0 0 0 0 12.399v1.64c2.427 0 4.511 1.462 5.44 3.548.11-.168.228-.33.34-.496a41 41 0 0 0-1.368 2.165c.231.025.46.06.69.088a41 41 0 0 0-1.846-.187c.305.022.61.039.913.07-.365-1.983-2.081-3.49-4.169-3.49v1.64c1.129 0 2.094.717 2.463 1.72q.033.001.068.005A42 42 0 0 0 0 19.016v1.64c5.312 0 10.464 1.04 15.314 3.091A39.2 39.2 0 0 1 27.82 32.18a39.4 39.4 0 0 1 5.756 7.301 41 41 0 0 1 1.766-.224 41 41 0 0 0-1.373-2.172c.113.168.233.332.345.502.93-2.085 3.013-3.547 5.44-3.547 2.426 0 4.51 1.462 5.44 3.547.112-.17.232-.334.345-.502a41 41 0 0 0-1.373 2.172 43 43 0 0 1 1.766.224 39.4 39.4 0 0 1 5.756-7.3 39.22 39.22 0 0 1 27.82-11.524v-1.64a42 42 0 0 0-2.649.09l.199-.016a2.62 2.62 0 0 1 2.45-1.713v-1.64c-2.085 0-3.784 1.51-4.151 3.487.344-.034.692-.056 1.039-.082q-1.002.077-1.99.202c.23-.028.459-.063.69-.088a41 41 0 0 0-1.368-2.165c.112.166.23.328.34.496.929-2.086 3.013-3.548 5.44-3.548V12.4a7.59 7.59 0 0 0-6.49 3.66c.211.293.41.594.614.893a41.2 41.2 0 0 0-6.769-7.675c.156.136.315.267.468.406 2.932-3.456 7.3-5.66 12.177-5.66V2.385c-5.38 0-10.189 2.42-13.42 6.22.187.158.369.322.554.482a41 41 0 0 0-1.877-1.546c.347-.41.702-.814 1.086-1.197A19.2 19.2 0 0 1 79.508.685V0H73.34a20.97 20.97 0 0 0-9.903 6.563c.343.243.679.496 1.014.749a41 41 0 0 0-6.108-3.833c.261.133.525.262.782.4a26 26 0 0 1 2.005-2.257A27 27 0 0 1 62.917 0h-2.405c-1.026.975-2.004 1.998-2.87 3.12.096.046.19.099.287.147a41 41 0 0 0-2.005-.926l.126.052A30 30 0 0 1 58.081 0h-2.148c-.49.578-.997 1.144-1.445 1.757.2.078.397.163.597.243-.743-.3-1.495-.584-2.26-.841.282-.398.596-.773.894-1.159h-2.065c-.155.216-.32.425-.47.644q.812.236 1.608.504A41 41 0 0 0 48.66.005c.262.06.527.112.787.175.041-.062.091-.118.133-.18H29.928c.042.062.092.118.133.18.255-.061.513-.113.77-.171q-2.09.464-4.096 1.133a41 41 0 0 1 1.589-.498c-.15-.22-.315-.428-.47-.644h-2.065c.298.386.612.761.893 1.159-.762.256-1.51.539-2.252.838.197-.079.391-.163.59-.24-.45-.613-.955-1.179-1.446-1.757h-2.147a30 30 0 0 1 2.03 2.393q.061-.024.121-.05-1.01.434-1.993.92c.095-.046.187-.098.282-.144C21 2 20.022.975 18.997 0H16.59a27 27 0 0 1 1.787 1.622 26 26 0 0 1 2.005 2.257c.255-.137.515-.264.773-.396a41 41 0 0 0-6.097 3.827c.335-.252.67-.504 1.012-.747A20.97 20.97 0 0 0 6.168 0Zm10.659 0a22.7 22.7 0 0 1 6.827 5.601q.689-.449 1.396-.87c-1.475-1.82-3.226-3.4-5.16-4.731Zm55.127 0c-1.934 1.332-3.686 2.91-5.16 4.732q.707.42 1.396.87A22.7 22.7 0 0 1 68.849 0ZM39.754.656c5.312 0 10.464 1.04 15.314 3.091a39.2 39.2 0 0 1 12.506 8.432 39.4 39.4 0 0 1 5.756 7.302c.117-.018.237-.029.354-.045a41 41 0 0 0-2.215.375l.046-.01C64.832 9.316 53.11 2.355 39.754 2.355S14.676 9.316 7.994 19.802l.044.01a41 41 0 0 0-2.213-.376c.117.016.236.027.353.045a39.4 39.4 0 0 1 5.756-7.302A39.22 39.22 0 0 1 39.754.656m0 3.338a35.9 35.9 0 0 1 25.46 10.546 36 36 0 0 1 4.6 5.64c.266-.065.535-.118.802-.178a41 41 0 0 0-4.18 1.156 42 42 0 0 0-2.271.846c.203-.081.404-.168.608-.247-5.632-7.712-14.738-12.725-25.019-12.725s-19.387 5.013-25.02 12.725c.207.08.409.167.614.25a40.6 40.6 0 0 0-6.443-2.002c.262.059.527.112.788.175a36 36 0 0 1 4.601-5.64 35.9 35.9 0 0 1 25.46-10.546m26.682 17.164a42 42 0 0 1 1.642-.514c-6.18-9.026-16.559-14.951-28.324-14.951s-22.143 5.925-28.323 14.951q.828.24 1.64.514a33 33 0 0 1 3.583-4.258 32.56 32.56 0 0 1 23.1-9.568 32.56 32.56 0 0 1 23.1 9.568 33 33 0 0 1 3.582 4.258M79.508 5.723c-4.4 0-8.333 1.994-10.952 5.124q.588.582 1.153 1.187c2.319-2.848 5.849-4.672 9.799-4.672zM0 5.723v1.64c3.95 0 7.48 1.823 9.8 4.67q.564-.604 1.152-1.186A14.24 14.24 0 0 0 0 5.723m0 3.338v1.64c3.123 0 5.886 1.552 7.573 3.92a43 43 0 0 1 1.074-1.303c-2-2.585-5.125-4.257-8.647-4.257m79.508 0c-3.522 0-6.647 1.672-8.647 4.257q.55.64 1.074 1.304c1.687-2.369 4.45-3.922 7.573-3.922zm-39.754 1.61c7.834 0 15.2 3.05 20.739 8.59a30 30 0 0 1 2.718 3.132l.13-.053q-1.02.438-2.01.928c.097-.049.192-.102.29-.15-5.054-6.535-12.966-10.749-21.867-10.749-8.9 0-16.813 4.214-21.867 10.75.098.047.193.1.29.149a41 41 0 0 0-2.01-.928l.13.053a30 30 0 0 1 2.718-3.132c5.54-5.54 12.905-8.59 20.739-8.59m0 3.338c6.943 0 13.47 2.704 18.378 7.613a26 26 0 0 1 2.005 2.257c.259-.14.524-.269.786-.403a41 41 0 0 0-6.131 3.85q.51-.389 1.032-.763c-3.843-4.592-9.613-7.517-16.07-7.517s-12.226 2.925-16.07 7.517c.35.248.691.505 1.032.763a41 41 0 0 0-6.13-3.85c.261.134.526.264.785.403a26 26 0 0 1 2.005-2.257c4.909-4.91 11.435-7.613 18.378-7.613m0 1.699c-7.63 0-14.43 3.523-18.883 9.023q.708.422 1.397.87.691-.84 1.468-1.62a22.5 22.5 0 0 1 16.018-6.634c6.05 0 11.74 2.356 16.018 6.635a23 23 0 0 1 1.469 1.619q.689-.448 1.395-.87c-4.454-5.5-11.253-9.023-18.882-9.023m0 4.977c5.16 0 10.01 2.01 13.657 5.657.384.384.74.788 1.086 1.197a41 41 0 0 0-1.89 1.558c.19-.164.375-.331.567-.492-3.231-3.802-8.04-6.22-13.42-6.22-5.378 0-10.186 2.417-13.417 6.216.211.178.416.363.624.545a41 41 0 0 0-1.95-1.607c.347-.409.702-.813 1.086-1.197a19.2 19.2 0 0 1 13.657-5.657M0 22.355v1.639A35.89 35.89 0 0 1 29.929 40h.94l.288-.064c-.085.018-.166.045-.25.064H48.6c-.084-.019-.164-.046-.249-.064q.144.03.288.064h.94a35.89 35.89 0 0 1 29.929-16.006v-1.64h-.001c-13.356 0-25.078 6.962-31.76 17.448l.098.022a41 41 0 0 0-3.94-.598c-.367-1.979-2.067-3.488-4.152-3.488s-3.785 1.51-4.151 3.488a41 41 0 0 0-3.942.598l.1-.022C25.077 29.316 13.355 22.355 0 22.354Zm39.754 1.669c4.877 0 9.244 2.202 12.177 5.659.156-.142.318-.275.477-.413a41.2 41.2 0 0 0-6.785 7.692c.206-.302.407-.607.62-.904a7.59 7.59 0 0 0-6.489-3.659 7.59 7.59 0 0 0-6.49 3.66c.214.296.415.601.621.903a41.2 41.2 0 0 0-6.815-7.721c.168.148.34.29.507.442 2.932-3.457 7.3-5.66 12.177-5.66zM0 25.693V27.6c.234 0 .465-.014.694-.034.02-.066.045-.13.067-.196 4.14.094 8.161.924 11.954 2.529A32.6 32.6 0 0 1 23.1 36.9c.975.976 1.854 2.022 2.689 3.1h2.065C21.626 31.342 11.479 25.693 0 25.693m79.508 0c-11.479 0-21.626 5.65-27.854 14.307h2.065c.835-1.078 1.714-2.124 2.69-3.1 3-3 6.494-5.356 10.384-7 3.793-1.605 7.814-2.436 11.954-2.53l.068.196c.228.02.459.034.693.034zm-39.754.03c-4.4 0-8.333 1.994-10.952 5.124a43 43 0 0 1 1.153 1.186c2.32-2.847 5.849-4.671 9.799-4.671s7.48 1.824 9.8 4.671q.564-.604 1.152-1.186a14.24 14.24 0 0 0-10.952-5.124M0 29.03v1.64c7.834 0 15.2 3.05 20.739 8.59.24.24.458.493.688.739h2.148C17.895 33.31 9.463 29.031 0 29.031Zm79.508 0c-9.463 0-17.895 4.28-23.575 10.969h2.148c.23-.246.449-.5.688-.74 5.54-5.539 12.905-8.59 20.739-8.59zm-39.754.03c-3.522 0-6.647 1.672-8.647 4.257q.55.64 1.075 1.304c1.687-2.369 4.449-3.921 7.572-3.921s5.885 1.552 7.573 3.92a42 42 0 0 1 1.074-1.303c-2-2.585-5.125-4.257-8.647-4.257M0 32.37v1.64c6.132 0 11.936 2.116 16.59 5.991h2.407C14.043 35.29 7.375 32.37 0 32.37m79.508 0c-7.374 0-14.043 2.922-18.996 7.631h2.405c4.655-3.875 10.459-5.991 16.591-5.991ZM0 35.709v1.639c3.78 0 7.418.92 10.66 2.653h3.062C9.815 37.31 5.102 35.708 0 35.708Zm79.508 0c-5.103 0-9.815 1.602-13.722 4.292h3.062a22.54 22.54 0 0 1 10.66-2.653zm-39.754 1.67c1.144 0 2.108.74 2.466 1.763-.82-.049-1.633-.125-2.466-.125s-1.646.076-2.466.125a2.62 2.62 0 0 1 2.466-1.764zM0 39.045V40h6.168A20.9 20.9 0 0 0 0 39.046Zm79.508 0a20.9 20.9 0 0 0-6.168.954h6.168z"
+                                            /></pattern>
 
-                                            <pattern v-if="seriesIndex === 9" :id="patternId" width="30" height="30" patternTransform="scale(1)" patternUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="#2b2b3100"/><path fill="none" stroke="#1A1A1A" d="M9 20.502A7.5 7.5 0 0 1 1.5 28 7.5 7.5 0 0 0-6 35.5a7.5 7.5 0 0 1-7.5 7.499 7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1-21 35.5a7.5 7.5 0 0 1 7.5-7.5A7.5 7.5 0 0 0-6 20.502a7.5 7.5 0 1 1 15 0zm15 0A7.5 7.5 0 0 1 16.5 28a7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1 9 20.502c0-2.072-.84-3.947-2.197-5.303A7.48 7.48 0 0 0 1.5 13.002a7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1-6 5.503a7.5 7.5 0 1 1 15 0c0 2.07.84 3.945 2.196 5.303a7.48 7.48 0 0 0 5.304 2.196c2.07 0 3.945.84 5.303 2.197A7.47 7.47 0 0 1 24 20.502zm15 0A7.5 7.5 0 0 1 31.5 28a7.5 7.5 0 0 0-7.5 7.5 7.5 7.5 0 0 1-7.5 7.499 7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1 9 35.5a7.5 7.5 0 0 1 7.5-7.5 7.5 7.5 0 0 0 7.5-7.498 7.5 7.5 0 1 1 15 0zm0-30A7.5 7.5 0 0 1 31.5-2 7.5 7.5 0 0 0 24 5.5a7.5 7.5 0 0 1-7.5 7.499 7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1 9 5.5 7.5 7.5 0 0 1 16.5-2 7.5 7.5 0 0 0 24-9.498a7.5 7.5 0 1 1 15 0zm-22.5 37.5a7.5 7.5 0 0 0-7.5 7.5c0-2.072-.84-3.947-2.197-5.303A7.48 7.48 0 0 0 1.5 28.002 7.5 7.5 0 0 0 9 20.503c0 2.07.84 3.945 2.196 5.303a7.48 7.48 0 0 0 5.304 2.196zm15-15a7.5 7.5 0 0 0-7.5 7.5c0-2.072-.84-3.947-2.197-5.303a7.48 7.48 0 0 0-5.303-2.197A7.5 7.5 0 0 0 24 5.503c0 2.07.84 3.945 2.196 5.303a7.48 7.48 0 0 0 5.304 2.196z"/></pattern>
+                                            <pattern
+                                                v-if="seriesIndex === 9"
+                                                :id="patternId"
+                                                width="30"
+                                                height="30"
+                                                patternTransform="scale(1)"
+                                                patternUnits="userSpaceOnUse"
+                                                ><rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#2b2b3100" /><path
+                                                    fill="none"
+                                                    stroke="#1A1A1A"
+                                                    d="M9 20.502A7.5 7.5 0 0 1 1.5 28 7.5 7.5 0 0 0-6 35.5a7.5 7.5 0 0 1-7.5 7.499 7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1-21 35.5a7.5 7.5 0 0 1 7.5-7.5A7.5 7.5 0 0 0-6 20.502a7.5 7.5 0 1 1 15 0zm15 0A7.5 7.5 0 0 1 16.5 28a7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1 9 20.502c0-2.072-.84-3.947-2.197-5.303A7.48 7.48 0 0 0 1.5 13.002a7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1-6 5.503a7.5 7.5 0 1 1 15 0c0 2.07.84 3.945 2.196 5.303a7.48 7.48 0 0 0 5.304 2.196c2.07 0 3.945.84 5.303 2.197A7.47 7.47 0 0 1 24 20.502zm15 0A7.5 7.5 0 0 1 31.5 28a7.5 7.5 0 0 0-7.5 7.5 7.5 7.5 0 0 1-7.5 7.499 7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1 9 35.5a7.5 7.5 0 0 1 7.5-7.5 7.5 7.5 0 0 0 7.5-7.498 7.5 7.5 0 1 1 15 0zm0-30A7.5 7.5 0 0 1 31.5-2 7.5 7.5 0 0 0 24 5.5a7.5 7.5 0 0 1-7.5 7.499 7.48 7.48 0 0 1-5.304-2.196A7.48 7.48 0 0 1 9 5.5 7.5 7.5 0 0 1 16.5-2 7.5 7.5 0 0 0 24-9.498a7.5 7.5 0 1 1 15 0zm-22.5 37.5a7.5 7.5 0 0 0-7.5 7.5c0-2.072-.84-3.947-2.197-5.303A7.48 7.48 0 0 0 1.5 28.002 7.5 7.5 0 0 0 9 20.503c0 2.07.84 3.945 2.196 5.303a7.48 7.48 0 0 0 5.304 2.196zm15-15a7.5 7.5 0 0 0-7.5 7.5c0-2.072-.84-3.947-2.197-5.303a7.48 7.48 0 0 0-5.303-2.197A7.5 7.5 0 0 0 24 5.503c0 2.07.84 3.945 2.196 5.303a7.48 7.48 0 0 0 5.304 2.196z"
+                                            /></pattern>
                                         </template>
 
                                         <!-- VueUiDag slots -->
-                                        <template #node="{ node }" v-if="example.customNode">
-                                            <div :style="{
-                                                width: '100%',
-                                                height: '100%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                border: isDarkMode ? '1px solid #4A4A4A' : '1px solid #CCCCCC',
-                                                padding: '0.3rem',
-                                                borderRadius: '50%',
-                                                backgroundColor: isDarkMode ? '#2A2A2A' : node.original.color
-                                            }">
-                                                <VueUiIcon :name="node.original.icon" :stroke="isDarkMode ? node.original.color : '#FFFFFF'"/>
+                                        <template
+                                            #node="{ node }"
+                                            v-if="example.customNode"
+                                        >
+                                            <div
+                                                :style="{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    border: isDarkMode
+                                                        ? '1px solid #4A4A4A'
+                                                        : '1px solid #CCCCCC',
+                                                    padding: '0.3rem',
+                                                    borderRadius: '50%',
+                                                    backgroundColor: isDarkMode
+                                                        ? '#2A2A2A'
+                                                        : node.original.color,
+                                                }"
+                                            >
+                                                <VueUiIcon
+                                                    :name="node.original.icon"
+                                                    :stroke="
+                                                        isDarkMode
+                                                            ? node.original
+                                                                  .color
+                                                            : '#FFFFFF'
+                                                    "
+                                                />
                                             </div>
                                         </template>
-                                        <template #free-node-label="{ node }" v-if="example.customNode">
-                                            <text :x="node.x" :y="node.y + node.height - 5" :fill="isDarkMode ? '#CCCCCC' : '#1A1A1A'" font-size="6" text-anchor="middle">
+                                        <template
+                                            #free-node-label="{ node }"
+                                            v-if="example.customNode"
+                                        >
+                                            <text
+                                                :x="node.x"
+                                                :y="node.y + node.height - 5"
+                                                :fill="
+                                                    isDarkMode
+                                                        ? '#CCCCCC'
+                                                        : '#1A1A1A'
+                                                "
+                                                font-size="6"
+                                                text-anchor="middle"
+                                            >
                                                 {{ node.label }}
                                             </text>
                                         </template>
 
                                         <!-- Source slot -->
-                                        <template #source v-if="example.dataDisclaimer">
+                                        <template
+                                            #source
+                                            v-if="example.dataDisclaimer"
+                                        >
                                             <div class="mt-4 text-xs pb-2">
-                                                <div class="flex flex-col align-start">
+                                                <div
+                                                    class="flex flex-col align-start"
+                                                >
                                                     <span>
-                                                        {{ example.dataDisclaimer }}
+                                                        {{
+                                                            example.dataDisclaimer
+                                                        }}
                                                     </span>
-                                                    <a class="text-app-blue-dark dark:text-app-blue underline" target="_blank" v-if="example.outsideLink" :href="example.outsideLink">
+                                                    <a
+                                                        class="text-app-blue-dark dark:text-app-blue underline"
+                                                        target="_blank"
+                                                        v-if="
+                                                            example.outsideLink
+                                                        "
+                                                        :href="
+                                                            example.outsideLink
+                                                        "
+                                                    >
                                                         Link to map source
                                                     </a>
                                                 </div>
@@ -797,9 +1631,14 @@ function makeMapLinks({ data }) {
                                         </template>
 
                                         <!-- VueUiGeo slots -->
-                                        <template #svg="{ svg }" v-if="example.customGeo">
+                                        <template
+                                            #svg="{ svg }"
+                                            v-if="example.customGeo"
+                                        >
                                             <line
-                                                v-for="link in makeMapLinks(svg)"
+                                                v-for="link in makeMapLinks(
+                                                    svg,
+                                                )"
                                                 :x1="link.x1"
                                                 :y1="link.y1"
                                                 :x2="link.x2"
@@ -807,153 +1646,574 @@ function makeMapLinks({ data }) {
                                                 stroke="#d62728"
                                                 stroke-width="0.1"
                                                 stroke-linecap="round"
-                                                style="pointer-events:none"
+                                                style="pointer-events: none"
                                             />
                                         </template>
 
                                         <!-- VueUiQuadrant slots -->
-                                        <template v-if="example.customQuadrant" #datapoint="{ datapoint }">
-                                            <div style="width:100%;height:100%;">
+                                        <template
+                                            v-if="example.customQuadrant"
+                                            #datapoint="{ datapoint }"
+                                        >
+                                            <div
+                                                style="
+                                                    width: 100%;
+                                                    height: 100%;
+                                                "
+                                            >
                                                 <div style="margin-left: -12px">
-
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'META'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24">
-
-                                                        <path fill="#0081FB" fill-rule="evenodd" d="M1.946 7.139C3.04 5.572 4.552 4.5 6 4.5c1.654 0 3.116 1.08 4.338 2.333 1.255 1.286 2.467 2.977 3.598 4.594l0.379 0.541c1.01 1.45 1.956 2.804 2.865 3.842 0.508 0.58 0.97 1.02 1.387 1.31 0.42 0.291 0.723 0.38 0.933 0.38 0.684 0 1.273 -0.272 1.71 -0.805 0.449 -0.547 0.79 -1.44 0.79 -2.739 0 -2.5 -0.707 -4.412 -1.587 -5.673C19.495 6.966 18.51 6.5 18 6.5c-0.784 0 -1.734 0.535 -2.879 1.7a1 1 0 1 1 -1.427 -1.4C14.908 5.563 16.36 4.5 18 4.5c1.448 0 2.961 1.072 4.054 2.639C23.185 8.76 24 11.077 24 13.956c0 1.636 -0.43 3.016 -1.243 4.007A4.136 4.136 0 0 1 19.5 19.5c-0.769 0 -1.468 -0.317 -2.073 -0.737 -0.608 -0.421 -1.193 -0.997 -1.752 -1.635 -0.987 -1.128 -2 -2.581 -2.998 -4.012l-0.38 -0.543c-1.143 -1.633 -2.266 -3.192 -3.39 -4.343C7.75 7.045 6.792 6.5 6 6.5c-0.509 0 -1.495 0.466 -2.414 1.783C2.706 9.544 2 11.455 2 13.957c0 1.298 0.341 2.19 0.79 2.738a2.137 2.137 0 0 0 1.71 0.805c0.385 0 0.991 -0.297 1.862 -1.192 0.829 -0.852 1.708 -2.04 2.655 -3.384a1 1 0 0 1 1.635 1.152c-0.942 1.337 -1.904 2.648 -2.857 3.627 -0.91 0.935 -2.027 1.797 -3.295 1.797a4.136 4.136 0 0 1 -3.257 -1.537C0.43 16.972 0 15.593 0 13.956 0 11.078 0.815 8.76 1.946 7.14Z" clip-rule="evenodd" stroke-width="1"></path>
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'META'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        height="24"
+                                                    >
+                                                        <path
+                                                            fill="#0081FB"
+                                                            fill-rule="evenodd"
+                                                            d="M1.946 7.139C3.04 5.572 4.552 4.5 6 4.5c1.654 0 3.116 1.08 4.338 2.333 1.255 1.286 2.467 2.977 3.598 4.594l0.379 0.541c1.01 1.45 1.956 2.804 2.865 3.842 0.508 0.58 0.97 1.02 1.387 1.31 0.42 0.291 0.723 0.38 0.933 0.38 0.684 0 1.273 -0.272 1.71 -0.805 0.449 -0.547 0.79 -1.44 0.79 -2.739 0 -2.5 -0.707 -4.412 -1.587 -5.673C19.495 6.966 18.51 6.5 18 6.5c-0.784 0 -1.734 0.535 -2.879 1.7a1 1 0 1 1 -1.427 -1.4C14.908 5.563 16.36 4.5 18 4.5c1.448 0 2.961 1.072 4.054 2.639C23.185 8.76 24 11.077 24 13.956c0 1.636 -0.43 3.016 -1.243 4.007A4.136 4.136 0 0 1 19.5 19.5c-0.769 0 -1.468 -0.317 -2.073 -0.737 -0.608 -0.421 -1.193 -0.997 -1.752 -1.635 -0.987 -1.128 -2 -2.581 -2.998 -4.012l-0.38 -0.543c-1.143 -1.633 -2.266 -3.192 -3.39 -4.343C7.75 7.045 6.792 6.5 6 6.5c-0.509 0 -1.495 0.466 -2.414 1.783C2.706 9.544 2 11.455 2 13.957c0 1.298 0.341 2.19 0.79 2.738a2.137 2.137 0 0 0 1.71 0.805c0.385 0 0.991 -0.297 1.862 -1.192 0.829 -0.852 1.708 -2.04 2.655 -3.384a1 1 0 0 1 1.635 1.152c-0.942 1.337 -1.904 2.648 -2.857 3.627 -0.91 0.935 -2.027 1.797 -3.295 1.797a4.136 4.136 0 0 1 -3.257 -1.537C0.43 16.972 0 15.593 0 13.956 0 11.078 0.815 8.76 1.946 7.14Z"
+                                                            clip-rule="evenodd"
+                                                            stroke-width="1"
+                                                        ></path>
                                                     </svg>
 
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'NVIDIA'" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 1559 1032" width="24">
-                                                        <path fill-rule="evenodd" fill="#76b900" d="M1557.9 -0.5L1557.9 1029.78L581.99 1029.78L581.99 908.81C602.63 911.1 623.28 912.25 645.06 912.25C870.98 912.25 1269.49 797.01 1440.36 653.67C1415.13 628.45 1292.99 570.54 1263.18 546.46C1083.13 701.26 897.36 832.55 640.48 832.55C620.98 832.55 600.91 830.83 581.42 828.54L581.42 742.54C604.93 746.55 628.44 748.85 652.52 748.85C928.32 748.85 1193.23 426.63 1193.23 426.63C1193.23 426.63 962.15 124.49 608.37 136.53L580.84 138.25L580.84 -0.5L1557.9 -0.5ZM608.37 212.78C862.95 204.75 1029.81 431.79 1029.81 431.79C1029.81 431.79 849.76 681.77 656.53 681.77C630.73 681.77 605.5 677.75 581.42 669.73L581.42 387.65C680.61 399.69 700.68 443.26 759.74 542.45L892.2 431.22C892.2 431.22 795.29 304.51 632.45 304.51C615.25 303.94 598.05 305.09 580.84 306.81L580.84 213.97C299.69 236 159.4 443.26 159.4 443.26C159.4 443.26 266.63 789.55 580.84 828.54L580.84 908.81C152.52 868.67 0 427.21 0 427.21C0 427.21 269.49 163.47 581.42 138.25L581.42 213.89C590.4 213.33 599.38 212.78 608.37 212.78ZM580.84 743.11C343.46 700.69 277.52 453.58 277.52 453.58C277.52 453.58 391.63 327.45 580.84 306.81L580.84 387.07L580.27 387.07C481.07 375.03 403.09 467.91 403.09 467.91C403.09 467.91 447.24 624.43 580.84 669.73L580.84 743.11Z"/>
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'NVIDIA'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        baseProfile="tiny-ps"
+                                                        viewBox="0 0 1559 1032"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            fill-rule="evenodd"
+                                                            fill="#76b900"
+                                                            d="M1557.9 -0.5L1557.9 1029.78L581.99 1029.78L581.99 908.81C602.63 911.1 623.28 912.25 645.06 912.25C870.98 912.25 1269.49 797.01 1440.36 653.67C1415.13 628.45 1292.99 570.54 1263.18 546.46C1083.13 701.26 897.36 832.55 640.48 832.55C620.98 832.55 600.91 830.83 581.42 828.54L581.42 742.54C604.93 746.55 628.44 748.85 652.52 748.85C928.32 748.85 1193.23 426.63 1193.23 426.63C1193.23 426.63 962.15 124.49 608.37 136.53L580.84 138.25L580.84 -0.5L1557.9 -0.5ZM608.37 212.78C862.95 204.75 1029.81 431.79 1029.81 431.79C1029.81 431.79 849.76 681.77 656.53 681.77C630.73 681.77 605.5 677.75 581.42 669.73L581.42 387.65C680.61 399.69 700.68 443.26 759.74 542.45L892.2 431.22C892.2 431.22 795.29 304.51 632.45 304.51C615.25 303.94 598.05 305.09 580.84 306.81L580.84 213.97C299.69 236 159.4 443.26 159.4 443.26C159.4 443.26 266.63 789.55 580.84 828.54L580.84 908.81C152.52 868.67 0 427.21 0 427.21C0 427.21 269.49 163.47 581.42 138.25L581.42 213.89C590.4 213.33 599.38 212.78 608.37 212.78ZM580.84 743.11C343.46 700.69 277.52 453.58 277.52 453.58C277.52 453.58 391.63 327.45 580.84 306.81L580.84 387.07L580.27 387.07C481.07 375.03 403.09 467.91 403.09 467.91C403.09 467.91 447.24 624.43 580.84 669.73L580.84 743.11Z"
+                                                        />
                                                     </svg>
 
-
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'GOOGLE'" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 1556 1587" width="24">
-                                                        <path fill="#4285f4" d="M1555.26 810.89C1555.26 745.67 1549.96 698.07 1538.51 648.72L793.5 648.72L793.5 943.1L1230.8 943.1C1221.99 1016.26 1174.38 1126.44 1068.58 1200.47L1067.09 1210.33L1302.65 1392.76L1318.97 1394.39C1468.85 1256 1555.26 1052.4 1555.26 810.89Z"/>
-                                                        <path fill="#34a853" d="M793.5 1586.53C1007.74 1586.53 1187.6 1516.02 1318.97 1394.39L1068.58 1200.47C1001.57 1247.19 911.64 1279.8 793.5 1279.8C583.66 1279.8 405.57 1141.42 342.08 950.16L332.78 950.95L87.84 1140.45L84.64 1149.35C215.12 1408.48 483.15 1586.53 793.5 1586.53Z"/>
-                                                        <path fill="#fbbc05" d="M342.08 950.16C325.33 900.8 315.64 847.91 315.64 793.27C315.64 738.62 325.33 685.73 341.2 636.37L340.76 625.86L92.75 433.32L84.64 437.17C30.86 544.71 0 665.46 0 793.27C0 921.07 30.86 1041.82 84.64 1149.35L342.08 950.16Z"/>
-                                                        <path fill="#eb4335" d="M793.5 306.73C942.5 306.73 1043.01 371.07 1100.32 424.84L1324.26 206.25C1186.72 78.45 1007.74 0 793.5 0C483.15 0 215.12 178.04 84.64 437.17L341.2 636.37C405.57 445.11 583.66 306.73 793.5 306.73Z"/>
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'GOOGLE'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        baseProfile="tiny-ps"
+                                                        viewBox="0 0 1556 1587"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            fill="#4285f4"
+                                                            d="M1555.26 810.89C1555.26 745.67 1549.96 698.07 1538.51 648.72L793.5 648.72L793.5 943.1L1230.8 943.1C1221.99 1016.26 1174.38 1126.44 1068.58 1200.47L1067.09 1210.33L1302.65 1392.76L1318.97 1394.39C1468.85 1256 1555.26 1052.4 1555.26 810.89Z"
+                                                        />
+                                                        <path
+                                                            fill="#34a853"
+                                                            d="M793.5 1586.53C1007.74 1586.53 1187.6 1516.02 1318.97 1394.39L1068.58 1200.47C1001.57 1247.19 911.64 1279.8 793.5 1279.8C583.66 1279.8 405.57 1141.42 342.08 950.16L332.78 950.95L87.84 1140.45L84.64 1149.35C215.12 1408.48 483.15 1586.53 793.5 1586.53Z"
+                                                        />
+                                                        <path
+                                                            fill="#fbbc05"
+                                                            d="M342.08 950.16C325.33 900.8 315.64 847.91 315.64 793.27C315.64 738.62 325.33 685.73 341.2 636.37L340.76 625.86L92.75 433.32L84.64 437.17C30.86 544.71 0 665.46 0 793.27C0 921.07 30.86 1041.82 84.64 1149.35L342.08 950.16Z"
+                                                        />
+                                                        <path
+                                                            fill="#eb4335"
+                                                            d="M793.5 306.73C942.5 306.73 1043.01 371.07 1100.32 424.84L1324.26 206.25C1186.72 78.45 1007.74 0 793.5 0C483.15 0 215.12 178.04 84.64 437.17L341.2 636.37C405.57 445.11 583.66 306.73 793.5 306.73Z"
+                                                        />
                                                     </svg>
 
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'MICROSOFT'" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 1528 1528" width="24">
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'MICROSOFT'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        baseProfile="tiny-ps"
+                                                        viewBox="0 0 1528 1528"
+                                                        width="24"
+                                                    >
                                                         <g id="Layer">
-                                                            <path fill="#f25022" d="M0 0L724.96 0L724.96 725.8L0 725.8L0 0Z"/>
-                                                            <path fill="#7fba00" d="M801.27 0L1526.24 0L1526.24 725.8L801.27 725.8L801.27 0Z"/>
-                                                            <path fill="#00a4ef" d="M0 802.2L724.96 802.2L724.96 1528L0 1528L0 802.2Z"/>
-                                                            <path fill="#ffb900" d="M801.27 802.2L1526.24 802.2L1526.24 1528L801.27 1528L801.27 802.2Z"/>
+                                                            <path
+                                                                fill="#f25022"
+                                                                d="M0 0L724.96 0L724.96 725.8L0 725.8L0 0Z"
+                                                            />
+                                                            <path
+                                                                fill="#7fba00"
+                                                                d="M801.27 0L1526.24 0L1526.24 725.8L801.27 725.8L801.27 0Z"
+                                                            />
+                                                            <path
+                                                                fill="#00a4ef"
+                                                                d="M0 802.2L724.96 802.2L724.96 1528L0 1528L0 802.2Z"
+                                                            />
+                                                            <path
+                                                                fill="#ffb900"
+                                                                d="M801.27 802.2L1526.24 802.2L1526.24 1528L801.27 1528L801.27 802.2Z"
+                                                            />
                                                         </g>
                                                     </svg>
 
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'APPLE'" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 1263 1500" width="24">
-                                                        <path :fill="isDarkMode ? '#FFFFFF' : '#000000'" id="Layer" class="shp0" d="M1053 1440C971.7 1518.9 882 1506.6 796.5 1469.4C705.6 1431.45 622.5 1429.05 526.5 1469.4C406.95 1521 343.5 1506 271.5 1440C-135 1021.5 -75 384 387 360C499.05 366 577.5 421.95 643.5 426.6C741.6 406.65 835.5 349.5 940.5 357C1066.65 367.2 1161 417 1224 506.55C964.5 662.55 1026 1004.55 1264.35 1100.55C1216.65 1225.8 1155.45 1349.55 1052.85 1441.05L1053 1440ZM634.5 355.5C622.35 169.5 773.1 16.5 946.5 1.5C970.35 216 751.5 376.5 634.5 355.5Z"/>
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'APPLE'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        baseProfile="tiny-ps"
+                                                        viewBox="0 0 1263 1500"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            :fill="
+                                                                isDarkMode
+                                                                    ? '#FFFFFF'
+                                                                    : '#000000'
+                                                            "
+                                                            id="Layer"
+                                                            class="shp0"
+                                                            d="M1053 1440C971.7 1518.9 882 1506.6 796.5 1469.4C705.6 1431.45 622.5 1429.05 526.5 1469.4C406.95 1521 343.5 1506 271.5 1440C-135 1021.5 -75 384 387 360C499.05 366 577.5 421.95 643.5 426.6C741.6 406.65 835.5 349.5 940.5 357C1066.65 367.2 1161 417 1224 506.55C964.5 662.55 1026 1004.55 1264.35 1100.55C1216.65 1225.8 1155.45 1349.55 1052.85 1441.05L1053 1440ZM634.5 355.5C622.35 169.5 773.1 16.5 946.5 1.5C970.35 216 751.5 376.5 634.5 355.5Z"
+                                                        />
                                                     </svg>
 
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'ALIBABA'" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 1513 975" width="24">
-                                                        <path fill="#ff5a00" d="m989.5 0h67.8c95.3 5.4 196.5 23.1 272.4 85.5 60.6 49.1 86.3 133 71.4 208.6-11.4 56.4-37.4 108.4-65.4 158.1-56.8 98.4-126.6 188.2-193 280.1-11.9 15.2-21.2 33.8-20 53.6 1.1 15.7 13.1 28.4 27.2 34 27.3 11.1 57.5 8.9 86.2 7.3 90.7-9.5 178.1-37 264.6-64.6 6.6-4.1 8.8 2.6 11.3 7.4-91.9 61.3-190.8 112.4-294.8 150-57.5 19.3-118.3 37.6-179.6 30.4-32.2-3.2-64.5-22.4-74.6-54.5-12.5-41.8-7.9-88.1 10.2-127.6 27.5-61.7 70.2-114.7 110.7-168.2 67.1-88 136.4-175.5 189.1-273.3 17.4-34.7 36-76.8 18.7-115.1-16.3-35.3-51.7-56.1-85.6-71.8-60.2-26.9-124.4-43.1-187.7-61.1q-14.3 9.4-28.5 19c22 16.8 44 33.6 65.8 50.7-83.3 15-166.3 31.8-248.3 52.7-124.9 31-246.8 72.5-367.6 116.5 11.8 23.5 23.5 47.1 34.7 70.9-27.3 30.2-54.4 60.7-81.7 90.9 65.6 19.6 136.3 22.3 203.2 7.5 57.2-12.8 111-40.2 154.7-79.3-11.9-14.8-26.9-26.7-43.1-36.5 53.1 1.1 101.4 47.4 101.5 101.1q-15.6 0.1-31 0.2c-2.2-11.7-5.3-23-9.4-34.1-60.3 54.5-138.2 88.6-218.9 97.4-71.1 8.2-143.8-1.6-210.7-26.6 4.5 41.4 9 82.6 13.2 124-38 14.8-73.3 36.2-104.9 62-25.1 21.9-50 47.1-59.6 79.9-9.2 28.9 5.8 61.7 31.1 77.2 30.7 19 66.5 27.8 101.9 32.9 46.7 6.1 93.9 5.6 140.8 2.3 92.1-6.8 183.1-24.1 272.7-45.8 8.9-3.6 13.1 11.1 4 13.4-71.5 36.8-146.3 67.8-224.3 87.8-73.3 18.9-148.8 28.6-224.4 31.2-77.1-2.4-159-17.3-220.1-67.8-45.4-36.8-69.3-95.2-69.5-153.1v-3.1c1.5-61.2 22.2-120.4 52-173.4 39.2-74.8 87.5-145 144.6-207.3 98.7-108.7 222.5-192.8 355.6-253.7 137.9-62.5 285.5-107.4 437.3-115.7z"/>
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'ALIBABA'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        viewBox="0 0 1513 975"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            fill="#ff5a00"
+                                                            d="m989.5 0h67.8c95.3 5.4 196.5 23.1 272.4 85.5 60.6 49.1 86.3 133 71.4 208.6-11.4 56.4-37.4 108.4-65.4 158.1-56.8 98.4-126.6 188.2-193 280.1-11.9 15.2-21.2 33.8-20 53.6 1.1 15.7 13.1 28.4 27.2 34 27.3 11.1 57.5 8.9 86.2 7.3 90.7-9.5 178.1-37 264.6-64.6 6.6-4.1 8.8 2.6 11.3 7.4-91.9 61.3-190.8 112.4-294.8 150-57.5 19.3-118.3 37.6-179.6 30.4-32.2-3.2-64.5-22.4-74.6-54.5-12.5-41.8-7.9-88.1 10.2-127.6 27.5-61.7 70.2-114.7 110.7-168.2 67.1-88 136.4-175.5 189.1-273.3 17.4-34.7 36-76.8 18.7-115.1-16.3-35.3-51.7-56.1-85.6-71.8-60.2-26.9-124.4-43.1-187.7-61.1q-14.3 9.4-28.5 19c22 16.8 44 33.6 65.8 50.7-83.3 15-166.3 31.8-248.3 52.7-124.9 31-246.8 72.5-367.6 116.5 11.8 23.5 23.5 47.1 34.7 70.9-27.3 30.2-54.4 60.7-81.7 90.9 65.6 19.6 136.3 22.3 203.2 7.5 57.2-12.8 111-40.2 154.7-79.3-11.9-14.8-26.9-26.7-43.1-36.5 53.1 1.1 101.4 47.4 101.5 101.1q-15.6 0.1-31 0.2c-2.2-11.7-5.3-23-9.4-34.1-60.3 54.5-138.2 88.6-218.9 97.4-71.1 8.2-143.8-1.6-210.7-26.6 4.5 41.4 9 82.6 13.2 124-38 14.8-73.3 36.2-104.9 62-25.1 21.9-50 47.1-59.6 79.9-9.2 28.9 5.8 61.7 31.1 77.2 30.7 19 66.5 27.8 101.9 32.9 46.7 6.1 93.9 5.6 140.8 2.3 92.1-6.8 183.1-24.1 272.7-45.8 8.9-3.6 13.1 11.1 4 13.4-71.5 36.8-146.3 67.8-224.3 87.8-73.3 18.9-148.8 28.6-224.4 31.2-77.1-2.4-159-17.3-220.1-67.8-45.4-36.8-69.3-95.2-69.5-153.1v-3.1c1.5-61.2 22.2-120.4 52-173.4 39.2-74.8 87.5-145 144.6-207.3 98.7-108.7 222.5-192.8 355.6-253.7 137.9-62.5 285.5-107.4 437.3-115.7z"
+                                                        />
                                                     </svg>
 
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'TENCENT'" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 1721 2276" width="24">
-                                                        <path fill="#0052d9" d="M594.07 498.83L-0.11 498.83L233.63 834.04L534.82 834.04L281.52 2276.01L809.18 2276.01L1062.84 834.04L1721 834.04L681.97 -1.82L594.07 498.83Z"/>
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'TENCENT'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        baseProfile="tiny-ps"
+                                                        viewBox="0 0 1721 2276"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            fill="#0052d9"
+                                                            d="M594.07 498.83L-0.11 498.83L233.63 834.04L534.82 834.04L281.52 2276.01L809.18 2276.01L1062.84 834.04L1721 834.04L681.97 -1.82L594.07 498.83Z"
+                                                        />
                                                     </svg>
 
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'BYTEDANCE'" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 1543 1349" width="24">
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'BYTEDANCE'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        viewBox="0 0 1543 1349"
+                                                        width="24"
+                                                    >
                                                         <g id="g68">
-                                                            <path id="path58" fill="#3259b4" class="s0" d="m0 59.7l268 77.5v1074.1l-268 77.6z"/>
-                                                            <path id="path60" fill="#3c8cff" class="s1" d="m422.9 608.7l262 65.6v578.8l-262 53.7z"/>
-                                                            <path id="path62" fill="#00c8d2" class="s2" d="m869.6 495.3l244.1-65.7v710.1l-244.1-71.6z"/>
-                                                            <path id="path64" fill="#78e6dd" class="s3" d="m1274.5 0l268.1 77.6v1205.3l-268.1 65.7z"/>
+                                                            <path
+                                                                id="path58"
+                                                                fill="#3259b4"
+                                                                class="s0"
+                                                                d="m0 59.7l268 77.5v1074.1l-268 77.6z"
+                                                            />
+                                                            <path
+                                                                id="path60"
+                                                                fill="#3c8cff"
+                                                                class="s1"
+                                                                d="m422.9 608.7l262 65.6v578.8l-262 53.7z"
+                                                            />
+                                                            <path
+                                                                id="path62"
+                                                                fill="#00c8d2"
+                                                                class="s2"
+                                                                d="m869.6 495.3l244.1-65.7v710.1l-244.1-71.6z"
+                                                            />
+                                                            <path
+                                                                id="path64"
+                                                                fill="#78e6dd"
+                                                                class="s3"
+                                                                d="m1274.5 0l268.1 77.6v1205.3l-268.1 65.7z"
+                                                            />
                                                         </g>
                                                     </svg>
 
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'HUAWEI'" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 1527 1700" width="24">
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'HUAWEI'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        version="1.2"
+                                                        viewBox="0 0 1527 1700"
+                                                        width="24"
+                                                    >
                                                         <defs>
-
-                                                            <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1099.847,0,0,1099.847,961.7,141.79)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g1"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1099.847,0,0,1099.847,961.7,141.79)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
-                                                            <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1099.573,0,0,1099.573,961.668,141.935)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g2"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1099.573,0,0,1099.573,961.668,141.935)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
-                                                            <radialGradient id="g3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1099.573,0,0,1099.573,961.539,141.854)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g3"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1099.573,0,0,1099.573,961.539,141.854)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
-                                                            <radialGradient id="g4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1099.75,0,0,1099.75,961.619,141.79)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g4"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1099.75,0,0,1099.75,961.619,141.79)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
-                                                            <radialGradient id="g5" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1101.038,0,0,1101.038,961.828,141.79)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g5"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1101.038,0,0,1101.038,961.828,141.79)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
-                                                            <radialGradient id="g6" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1100.201,0,0,1100.201,961.877,142.514)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g6"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1100.201,0,0,1100.201,961.877,142.514)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
-                                                            <radialGradient id="g7" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1100.748,0,0,1100.748,961.845,141.983)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g7"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1100.748,0,0,1100.748,961.845,141.983)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
-                                                            <radialGradient id="g8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1100.957,0,0,1100.957,961.828,141.886)">
-                                                                <stop offset="0" stop-color="#f7bfa4"/>
-                                                                <stop offset=".427" stop-color="#e60012"/>
-                                                                <stop offset="1" stop-color="#a00000"/>
+                                                            <radialGradient
+                                                                id="g8"
+                                                                cx="0"
+                                                                cy="0"
+                                                                r="1"
+                                                                gradientUnits="userSpaceOnUse"
+                                                                gradientTransform="matrix(1100.957,0,0,1100.957,961.828,141.886)"
+                                                            >
+                                                                <stop
+                                                                    offset="0"
+                                                                    stop-color="#f7bfa4"
+                                                                />
+                                                                <stop
+                                                                    offset=".427"
+                                                                    stop-color="#e60012"
+                                                                />
+                                                                <stop
+                                                                    offset="1"
+                                                                    stop-color="#a00000"
+                                                                />
                                                             </radialGradient>
                                                         </defs>
-                                                        <path id="Path 4" class="s0" :fill="isDarkMode ? '#FFFFFF' : '#000000'" d="m172.7 1296.3v103h-117.5v-103h-51.5v255.8h51.5v-103h117.5v103h51.5v-255.8z"/>
-                                                        <path id="Path 6" class="s0" :fill="isDarkMode ? '#FFFFFF' : '#000000'" d="m465.6 1442.7c0 41.8-20.9 64.4-57.9 64.4-38.7 0-59.6-22.6-59.6-66v-144.8h-51.5v146.4c0 72.4 40.2 114.3 109.4 114.3 70.9 0 111.1-41.9 111.1-115.9v-144.8h-51.5zm600.3 30.5l-57.9-177h-41.9l-57.9 177-58-177h-54.7l88.5 255.9h43.5l57.9-167.4 59.6 167.4h43.4l88.5-255.9h-54.7zm204.4-30.5h95v-46.7h-95v-51.5h136.8v-46.7h-188.3v255.9h194.7v-46.7h-143.2zm204.4-146.4h51.5v255.8h-51.5z"/>
-                                                        <path id="Path 7" fill-rule="evenodd" :fill="isDarkMode ? '#FFFFFF' : '#000000'" class="s0" d="m620.1 1499l-1.6 3.2-20.9 49.9h-53.1l112.6-255.8h45.1l1.6 1.6 111 254.2h-54.7l-22.5-53.1zm20.9-51.5l-1.6 4.9h78.8l-3.2-4.9-37-86.9z"/>
-                                                        <path id="Path 7" class="s1" fill="url(#g1)" d="m109.9 456.3c4.8 96.5 77.3 152.8 77.3 152.8 115.8 112.7 397.5 255.9 463.5 289.7 1.6 0 4.8 0 6.4-1.6 0 0 3.2-3.2 1.6-6.4-180.2-391.1-424.9-687.2-424.9-687.2 0 0-133.5 125.5-123.9 252.7z"/>
-                                                        <path id="Path 8" class="s2" fill="url(#g2)" d="m138.9 1006.6c49.9 90.1 136.8 160.9 225.3 138.4 61.2-14.5 201.2-112.6 246.2-144.8 4.9-3.2 3.3-6.5 3.3-6.5-1.7-4.8-6.5-4.8-6.5-4.8z"/>
-                                                        <path id="Path 9" class="s3" fill="url(#g3)" d="m26.2 795.8c51.5 107.8 148.1 140 148.1 140 45.1 17.7 90.1 19.3 90.1 19.3 6.5 1.6 278.4 0 350.9 0 3.2 0 4.8-3.2 4.8-3.2 3.2-3.2-1.6-6.4-1.6-6.4-206-140-605.1-352.4-605.1-352.4-35.4 112.6 12.8 202.7 12.8 202.7z"/>
-                                                        <path id="Path 10" class="s4" fill="url(#g4)" d="m576.6 15.4c-123.9 32.1-154.5 144.8-154.5 144.8-22.5 70.8 1.7 148 1.7 148 40.2 183.5 244.6 486 288 548.8 3.2 3.2 6.5 3.2 6.5 3.2 4.8-1.6 3.2-6.5 3.2-6.5h1.6c66-674.2-70.8-852.8-70.8-852.8-20.9 1.6-75.7 14.5-75.7 14.5z"/>
-                                                        <path id="Path 11" class="s5" fill="url(#g5)" d="m803.6 853.7c0 4.9 3.2 4.9 3.2 4.9 4.8 3.2 6.4-1.6 6.4-1.6 45.1-66 247.9-365.3 289.7-548.8 0 0 22.5-88.5 0-148 0 0-30.6-114.3-154.5-144.8 0 0-35.4-9.7-74-14.5 0 0-138.4 178.6-70.8 852.8z"/>
-                                                        <path id="Path 12" class="s6" fill="url(#g6)" d="m917.8 990.5c0 0-4.8 0-4.8 3.2 0 0-1.6 3.3 1.6 6.5 45.1 32.2 180.3 127.1 246.2 144.8 0 0 120.7 41.8 225.4-138.4z"/>
-                                                        <path id="Path 13" class="s7" fill="url(#g7)" d="m908.2 943.9c0 0-4.9 3.2-3.2 8 0 0 1.6 3.2 4.8 3.2 74 0 352.4 0 360.5-1.6 0 0 35.4-1.6 80.4-17.7 0 0 98.2-32.2 151.3-144.8 0 0 45.1-91.7 9.7-199.6 0 0-399.1 214.1-603.5 352.5z"/>
-                                                        <path id="Path 14" class="s8" fill="url(#g8)" d="m867.9 889.1c0 0-1.6 4.9 1.6 8.1 0 0 3.3 1.6 6.5 0 67.6-33.8 346-175.4 461.9-288.1 0 0 74-59.5 77.2-152.8 8.1-132-123.9-252.7-123.9-252.7 0 0-244.6 296.1-423.3 685.5z"/>
+                                                        <path
+                                                            id="Path 4"
+                                                            class="s0"
+                                                            :fill="
+                                                                isDarkMode
+                                                                    ? '#FFFFFF'
+                                                                    : '#000000'
+                                                            "
+                                                            d="m172.7 1296.3v103h-117.5v-103h-51.5v255.8h51.5v-103h117.5v103h51.5v-255.8z"
+                                                        />
+                                                        <path
+                                                            id="Path 6"
+                                                            class="s0"
+                                                            :fill="
+                                                                isDarkMode
+                                                                    ? '#FFFFFF'
+                                                                    : '#000000'
+                                                            "
+                                                            d="m465.6 1442.7c0 41.8-20.9 64.4-57.9 64.4-38.7 0-59.6-22.6-59.6-66v-144.8h-51.5v146.4c0 72.4 40.2 114.3 109.4 114.3 70.9 0 111.1-41.9 111.1-115.9v-144.8h-51.5zm600.3 30.5l-57.9-177h-41.9l-57.9 177-58-177h-54.7l88.5 255.9h43.5l57.9-167.4 59.6 167.4h43.4l88.5-255.9h-54.7zm204.4-30.5h95v-46.7h-95v-51.5h136.8v-46.7h-188.3v255.9h194.7v-46.7h-143.2zm204.4-146.4h51.5v255.8h-51.5z"
+                                                        />
+                                                        <path
+                                                            id="Path 7"
+                                                            fill-rule="evenodd"
+                                                            :fill="
+                                                                isDarkMode
+                                                                    ? '#FFFFFF'
+                                                                    : '#000000'
+                                                            "
+                                                            class="s0"
+                                                            d="m620.1 1499l-1.6 3.2-20.9 49.9h-53.1l112.6-255.8h45.1l1.6 1.6 111 254.2h-54.7l-22.5-53.1zm20.9-51.5l-1.6 4.9h78.8l-3.2-4.9-37-86.9z"
+                                                        />
+                                                        <path
+                                                            id="Path 7"
+                                                            class="s1"
+                                                            fill="url(#g1)"
+                                                            d="m109.9 456.3c4.8 96.5 77.3 152.8 77.3 152.8 115.8 112.7 397.5 255.9 463.5 289.7 1.6 0 4.8 0 6.4-1.6 0 0 3.2-3.2 1.6-6.4-180.2-391.1-424.9-687.2-424.9-687.2 0 0-133.5 125.5-123.9 252.7z"
+                                                        />
+                                                        <path
+                                                            id="Path 8"
+                                                            class="s2"
+                                                            fill="url(#g2)"
+                                                            d="m138.9 1006.6c49.9 90.1 136.8 160.9 225.3 138.4 61.2-14.5 201.2-112.6 246.2-144.8 4.9-3.2 3.3-6.5 3.3-6.5-1.7-4.8-6.5-4.8-6.5-4.8z"
+                                                        />
+                                                        <path
+                                                            id="Path 9"
+                                                            class="s3"
+                                                            fill="url(#g3)"
+                                                            d="m26.2 795.8c51.5 107.8 148.1 140 148.1 140 45.1 17.7 90.1 19.3 90.1 19.3 6.5 1.6 278.4 0 350.9 0 3.2 0 4.8-3.2 4.8-3.2 3.2-3.2-1.6-6.4-1.6-6.4-206-140-605.1-352.4-605.1-352.4-35.4 112.6 12.8 202.7 12.8 202.7z"
+                                                        />
+                                                        <path
+                                                            id="Path 10"
+                                                            class="s4"
+                                                            fill="url(#g4)"
+                                                            d="m576.6 15.4c-123.9 32.1-154.5 144.8-154.5 144.8-22.5 70.8 1.7 148 1.7 148 40.2 183.5 244.6 486 288 548.8 3.2 3.2 6.5 3.2 6.5 3.2 4.8-1.6 3.2-6.5 3.2-6.5h1.6c66-674.2-70.8-852.8-70.8-852.8-20.9 1.6-75.7 14.5-75.7 14.5z"
+                                                        />
+                                                        <path
+                                                            id="Path 11"
+                                                            class="s5"
+                                                            fill="url(#g5)"
+                                                            d="m803.6 853.7c0 4.9 3.2 4.9 3.2 4.9 4.8 3.2 6.4-1.6 6.4-1.6 45.1-66 247.9-365.3 289.7-548.8 0 0 22.5-88.5 0-148 0 0-30.6-114.3-154.5-144.8 0 0-35.4-9.7-74-14.5 0 0-138.4 178.6-70.8 852.8z"
+                                                        />
+                                                        <path
+                                                            id="Path 12"
+                                                            class="s6"
+                                                            fill="url(#g6)"
+                                                            d="m917.8 990.5c0 0-4.8 0-4.8 3.2 0 0-1.6 3.3 1.6 6.5 45.1 32.2 180.3 127.1 246.2 144.8 0 0 120.7 41.8 225.4-138.4z"
+                                                        />
+                                                        <path
+                                                            id="Path 13"
+                                                            class="s7"
+                                                            fill="url(#g7)"
+                                                            d="m908.2 943.9c0 0-4.9 3.2-3.2 8 0 0 1.6 3.2 4.8 3.2 74 0 352.4 0 360.5-1.6 0 0 35.4-1.6 80.4-17.7 0 0 98.2-32.2 151.3-144.8 0 0 45.1-91.7 9.7-199.6 0 0-399.1 214.1-603.5 352.5z"
+                                                        />
+                                                        <path
+                                                            id="Path 14"
+                                                            class="s8"
+                                                            fill="url(#g8)"
+                                                            d="m867.9 889.1c0 0-1.6 4.9 1.6 8.1 0 0 3.3 1.6 6.5 0 67.6-33.8 346-175.4 461.9-288.1 0 0 74-59.5 77.2-152.8 8.1-132-123.9-252.7-123.9-252.7 0 0-244.6 296.1-423.3 685.5z"
+                                                        />
                                                     </svg>
 
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'BAIDU'
+                                                        "
+                                                        viewBox="0 0 1386 1514"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            id="path47"
+                                                            fill="#2830e1"
+                                                            d="m449.1 1079.4h92.8v209.5h-84.8c0 0-61-2.7-79.6-71.6-10.6-29.1 0-66.3 5.4-79.6 5.3-15.8 23.8-47.7 66.2-58.3z"
+                                                        />
+                                                        <path
+                                                            fill="#2830e1"
+                                                            id="path41"
+                                                            fill-rule="evenodd"
+                                                            d="m767.3 246.6c10.5-87.5 119.3-225.4 204.1-206.9 84.8 18.6 164.4 132.6 148.5 230.8-16 98.1-92.8 228-214.7 212.2-122.1-16-148.5-127.4-137.9-236.1zm-254.5 220.1c-90.9 0-164.4-104.3-164.4-233.3 0-129.1 73.5-233.4 164.4-233.4 90.9 0 164.4 104.3 164.4 233.4 0 129-73.5 233.3-164.4 233.3zm-509.1 87.6c0 0 18.6-193.7 151.2-204.2 106-10.6 182.9 106 190.9 172.3 5.3 42.4 26.4 238.8-137.9 273.2-161.8 34.5-222.8-153.9-204.2-241.3zm1222.2 344.8c-180.2 2.6-188.2-122.1-188.2-212.2 0-95.5 18.5-228.1 164.3-228.1 143.2 0 183 140.5 183 188.3 0 45.1 18.5 246.7-159.1 252zm29.2 485.3c-90.2 209.5-418.9 100.7-418.9 100.7 0 0-121.9-39.7-262.4-7.9-140.6 29.2-262.6 18.6-262.6 18.6 0 0-164.3 2.6-212-204.3-45.1-209.5 164.3-323.5 180.2-342.1 16-21.2 127.3-95.5 196.3-212.1 68.8-119.4 281-212.2 429.5 18.5 108.6 156.5 296.8 302.3 296.8 302.3 0 0 140.5 108.8 53.1 326.3zm-612.5-10.6v-517.2l-95.4-2.7v140.6h-114c0 0-114 7.9-153.8 137.9-15.9 87.5 10.7 137.9 16 148.5 2.6 10.6 39.7 74.3 132.5 92.9zm392.4-2.7v-363.3h-106v273.1h-100.8c0 0-31.8-5.3-37.1-31.8v-244l-100.7 2.7v270.5c0 0 5.3 68.9 100.7 92.8z"
+                                                        />
+                                                    </svg>
 
-                                                <svg v-if="datapoint.name.toUpperCase() === 'BAIDU'" viewBox="0 0 1386 1514" width="24">
-                                                    <path id="path47" fill="#2830e1" d="m449.1 1079.4h92.8v209.5h-84.8c0 0-61-2.7-79.6-71.6-10.6-29.1 0-66.3 5.4-79.6 5.3-15.8 23.8-47.7 66.2-58.3z"/>
-                                                    <path fill="#2830e1" id="path41" fill-rule="evenodd" d="m767.3 246.6c10.5-87.5 119.3-225.4 204.1-206.9 84.8 18.6 164.4 132.6 148.5 230.8-16 98.1-92.8 228-214.7 212.2-122.1-16-148.5-127.4-137.9-236.1zm-254.5 220.1c-90.9 0-164.4-104.3-164.4-233.3 0-129.1 73.5-233.4 164.4-233.4 90.9 0 164.4 104.3 164.4 233.4 0 129-73.5 233.3-164.4 233.3zm-509.1 87.6c0 0 18.6-193.7 151.2-204.2 106-10.6 182.9 106 190.9 172.3 5.3 42.4 26.4 238.8-137.9 273.2-161.8 34.5-222.8-153.9-204.2-241.3zm1222.2 344.8c-180.2 2.6-188.2-122.1-188.2-212.2 0-95.5 18.5-228.1 164.3-228.1 143.2 0 183 140.5 183 188.3 0 45.1 18.5 246.7-159.1 252zm29.2 485.3c-90.2 209.5-418.9 100.7-418.9 100.7 0 0-121.9-39.7-262.4-7.9-140.6 29.2-262.6 18.6-262.6 18.6 0 0-164.3 2.6-212-204.3-45.1-209.5 164.3-323.5 180.2-342.1 16-21.2 127.3-95.5 196.3-212.1 68.8-119.4 281-212.2 429.5 18.5 108.6 156.5 296.8 302.3 296.8 302.3 0 0 140.5 108.8 53.1 326.3zm-612.5-10.6v-517.2l-95.4-2.7v140.6h-114c0 0-114 7.9-153.8 137.9-15.9 87.5 10.7 137.9 16 148.5 2.6 10.6 39.7 74.3 132.5 92.9zm392.4-2.7v-363.3h-106v273.1h-100.8c0 0-31.8-5.3-37.1-31.8v-244l-100.7 2.7v270.5c0 0 5.3 68.9 100.7 92.8z"/>
-                                                </svg>
+                                                    <svg
+                                                        height="24"
+                                                        width="24"
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'AMAZON'
+                                                        "
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 64 64"
+                                                    >
+                                                        <path
+                                                            data-name="layer2"
+                                                            d="M48.7 32.852V11.819C48.7 8.214 45.2 0 32.694 0 20.09-.1 13.388 7.713 13.388 14.824l10.5.9s2.3-7.111 7.8-7.111 5.1 4.407 5.1 5.308a45.384 45.384 0 0 0-.1 4.707c-6.9.2-24.208 2.2-24.208 16.826 0 15.624 19.706 16.325 26.208 6.21a4.709 4.709 0 0 0 .9 1.2c2.4 2.5 5.6 5.508 5.6 5.508l8.1-8.012S48.7 36.758 48.7 32.852zm-12-1.8c0 11.518-12 9.715-12 2.5 0-6.71 7.2-8.113 12-8.213z"
+                                                            :fill="
+                                                                isDarkMode
+                                                                    ? '#E1E5E8'
+                                                                    : '#171715'
+                                                            "
+                                                        ></path>
+                                                        <path
+                                                            data-name="layer1"
+                                                            d="M55.4 52.682c-26.408 12.519-42.714 2-53.217-4.307-.6-.4-1.8.1-.8 1.2C4.885 53.784 16.289 64 31.194 64S55 55.787 56.1 54.385c1.2-1.402.4-2.203-.7-1.703z"
+                                                            fill="#ffac35"
+                                                        ></path>
+                                                        <path
+                                                            data-name="layer1"
+                                                            d="M62.8 48.576c-.7-.9-4.3-1.1-6.6-.8s-5.7 1.7-5.4 2.5c.1.3.5.2 2 0 1.6-.2 5.9-.7 6.9.5.9 1.2-1.4 6.911-1.8 7.812s.2 1.2.9.5a11.061 11.061 0 0 0 3-4.507c1-2.099 1.5-5.304 1-6.005z"
+                                                            fill="#ffac35"
+                                                        ></path>
+                                                    </svg>
 
-                                                    <svg height="24" width="24" v-if="datapoint.name.toUpperCase() === 'AMAZON'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path data-name="layer2" d="M48.7 32.852V11.819C48.7 8.214 45.2 0 32.694 0 20.09-.1 13.388 7.713 13.388 14.824l10.5.9s2.3-7.111 7.8-7.111 5.1 4.407 5.1 5.308a45.384 45.384 0 0 0-.1 4.707c-6.9.2-24.208 2.2-24.208 16.826 0 15.624 19.706 16.325 26.208 6.21a4.709 4.709 0 0 0 .9 1.2c2.4 2.5 5.6 5.508 5.6 5.508l8.1-8.012S48.7 36.758 48.7 32.852zm-12-1.8c0 11.518-12 9.715-12 2.5 0-6.71 7.2-8.113 12-8.213z" :fill="isDarkMode ? '#E1E5E8' : '#171715'"></path><path data-name="layer1" d="M55.4 52.682c-26.408 12.519-42.714 2-53.217-4.307-.6-.4-1.8.1-.8 1.2C4.885 53.784 16.289 64 31.194 64S55 55.787 56.1 54.385c1.2-1.402.4-2.203-.7-1.703z" fill="#ffac35"></path><path data-name="layer1" d="M62.8 48.576c-.7-.9-4.3-1.1-6.6-.8s-5.7 1.7-5.4 2.5c.1.3.5.2 2 0 1.6-.2 5.9-.7 6.9.5.9 1.2-1.4 6.911-1.8 7.812s.2 1.2.9.5a11.061 11.061 0 0 0 3-4.507c1-2.099 1.5-5.304 1-6.005z" fill="#ffac35"></path></svg>
-
-                                                    <svg v-if="datapoint.name.toUpperCase() === 'XIAOMI'" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    width="24px" height="24px" viewBox="-200.008 -199.727 512 512" enable-background="new -200.008 -199.727 512 512"
-                                                    xml:space="preserve">
+                                                    <svg
+                                                        v-if="
+                                                            datapoint.name.toUpperCase() ===
+                                                            'XIAOMI'
+                                                        "
+                                                        version="1.1"
+                                                        id="Layer_1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                        x="0px"
+                                                        y="0px"
+                                                        width="24px"
+                                                        height="24px"
+                                                        viewBox="-200.008 -199.727 512 512"
+                                                        enable-background="new -200.008 -199.727 512 512"
+                                                        xml:space="preserve"
+                                                    >
                                                         <g>
                                                             <g>
                                                                 <g>
-                                                                    <path id="路径_1_" fill="#FF6900" d="M258.626-146.231c-48.304-48.118-117.759-53.496-202.634-53.496
+                                                                    <path
+                                                                        id="路径_1_"
+                                                                        fill="#FF6900"
+                                                                        d="M258.626-146.231c-48.304-48.118-117.759-53.496-202.634-53.496
                                                                         c-84.982,0-154.542,5.44-202.826,53.688c-48.277,48.228-53.174,117.676-53.174,202.561c0,84.899,4.897,154.368,53.194,202.613
                                                                         c48.281,48.255,117.833,53.139,202.806,53.139c84.974,0,154.514-4.884,202.795-53.139
-                                                                        c48.294-48.254,53.205-117.714,53.205-202.613C311.992-28.472,307.028-97.995,258.626-146.231L258.626-146.231z"/>
+                                                                        c48.294-48.254,53.205-117.714,53.205-202.613C311.992-28.472,307.028-97.995,258.626-146.231L258.626-146.231z"
+                                                                    />
                                                                 </g>
                                                             </g>
                                                             <g>
                                                                 <g>
-                                                                    <path id="形状结合" fill="#FFFFFF" d="M204.546-41.122c1.759,0,3.223,1.417,3.223,3.161v189.386
+                                                                    <path
+                                                                        id="形状结合"
+                                                                        fill="#FFFFFF"
+                                                                        d="M204.546-41.122c1.759,0,3.223,1.417,3.223,3.161v189.386
                                                                         c0,1.715-1.464,3.139-3.223,3.139H163.05c-1.781,0-3.228-1.424-3.228-3.139V-37.961c0-1.743,1.446-3.161,3.228-3.161H204.546z
                                                                         M24.468-41.122c31.303,0,64.033,1.435,80.176,17.589c15.871,15.897,17.59,47.549,17.656,78.286v96.671
                                                                         c0,1.715-1.446,3.139-3.219,3.139h-41.49c-1.777,0-3.229-1.424-3.229-3.139V53.09c-0.044-17.167-1.031-34.81-9.884-43.692
                                                                         c-7.62-7.641-21.839-9.391-36.625-9.754h-75.21c-1.764,0-3.208,1.419-3.208,3.136v148.645c0,1.715-1.462,3.139-3.237,3.139
                                                                         h-41.516c-1.774,0-3.201-1.424-3.201-3.139V-37.961c0-1.743,1.426-3.161,3.201-3.161H24.468z M33.755,34.305
                                                                         c1.766,0,3.201,1.413,3.201,3.143v113.977c0,1.715-1.436,3.139-3.201,3.139H-9.829c-1.792,0-3.228-1.424-3.228-3.139V37.448
-                                                                        c0-1.73,1.436-3.143,3.228-3.143H33.755z"/>
+                                                                        c0-1.73,1.436-3.143,3.228-3.143H33.755z"
+                                                                    />
                                                                 </g>
                                                             </g>
                                                         </g>
-                                                </svg>
+                                                    </svg>
                                                 </div>
                                             </div>
                                         </template>
@@ -962,9 +2222,7 @@ function makeMapLinks({ data }) {
                             </template>
                             <template #fallback>
                                 <BaseCard>
-                                    <div class="w-full h-[500px]">
-                                        Lorem
-                                    </div>
+                                    <div class="w-full h-[500px]">Lorem</div>
                                 </BaseCard>
                             </template>
                         </BaseSuspense>
@@ -972,7 +2230,11 @@ function makeMapLinks({ data }) {
                 </BaseLazy>
             </div>
         </div>
-        <Rater :key="`rater_${raterStep}`" v-if="selectedType && selectedType.raterId" :itemId="selectedType.raterId" />
+        <Rater
+            :key="`rater_${raterStep}`"
+            v-if="selectedType && selectedType.raterId"
+            :itemId="selectedType.raterId"
+        />
     </div>
 
     <BaseExampleComponentDialog
@@ -990,13 +2252,13 @@ function makeMapLinks({ data }) {
 }
 
 .bg-pattern-dark {
-    background-image: radial-gradient(#FFFFFF20 2px, transparent 2px);
+    background-image: radial-gradient(#ffffff20 2px, transparent 2px);
     background-size: 24px 24px;
     background-color: transparent;
 }
 
 .bg-pattern {
-    background-image: radial-gradient(#CCCCCC 2px, transparent 2px);
+    background-image: radial-gradient(#cccccc 2px, transparent 2px);
     background-size: 24px 24px;
     background-color: transparent;
 }

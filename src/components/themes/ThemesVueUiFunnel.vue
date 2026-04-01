@@ -3,7 +3,7 @@ import { ref } from "vue";
 import BaseThemeUnit from "./BaseThemeUnit.vue";
 
 const dataset = ref([
-{
+    {
         name: "Lead",
         value: 8249,
     },
@@ -31,13 +31,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

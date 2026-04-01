@@ -9,16 +9,16 @@ import CodeParser from "./customization/CodeParser.vue";
 const props = defineProps({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     universal: {
         type: Boolean,
-        default: false
+        default: false,
     },
     hideTitle: {
         type: Boolean,
         default: false,
-    }
+    },
 });
 
 const store = useMainStore();
@@ -29,26 +29,39 @@ function capitalizeFirstLetter(val) {
 }
 
 const imp = useImportMap(props.name);
-
 </script>
 
 <template>
-    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue-mid dark:text-gray-600 mb-2 text-2xl mt-12" v-if="!hideTitle">
-        <VueUiIcon 
-            :name="useIconMap(name)" 
-            :stroke="isDarkMode ? '#5f8aee' : '#3456a3'" 
+    <h1
+        class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue-mid dark:text-gray-600 mb-2 text-2xl mt-12"
+        v-if="!hideTitle"
+    >
+        <VueUiIcon
+            :name="useIconMap(name)"
+            :stroke="isDarkMode ? '#5f8aee' : '#3456a3'"
             :strokeWidth="isDarkMode ? 1.5 : 1.9"
             :size="32"
         />
         <BaseTextCopy>
-            <span class="sm:text-4xl" style="letter-spacing: -1px;"><span v-if="!universal">VueUi</span><span class="text-app-blue-dark-mid dark:text-app-blue">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
+            <span class="sm:text-4xl" style="letter-spacing: -1px"
+                ><span v-if="!universal">VueUi</span
+                ><span class="text-app-blue-dark-mid dark:text-app-blue">{{
+                    capitalizeFirstLetter(name.replaceAll("VueUi", ""))
+                }}</span></span
+            >
         </BaseTextCopy>
     </h1>
     <div v-if="!!imp" class="w-fit mx-auto imp mb-2">
         <span v-if="imp.treeshaken" class="text-xs pl-4">
             Treeshaken import (since v3.2.0)
         </span>
-        <CodeParser language="javascript" :content="imp.treeshaken || imp.treeshaken" line-height="0.8rem" tw="mr-8" @copy="store.copy()"/>
+        <CodeParser
+            language="javascript"
+            :content="imp.treeshaken || imp.treeshaken"
+            line-height="0.8rem"
+            tw="mr-8"
+            @copy="store.copy()"
+        />
     </div>
 </template>
 

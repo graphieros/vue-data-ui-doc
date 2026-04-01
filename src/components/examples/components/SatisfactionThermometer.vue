@@ -11,27 +11,26 @@ const config = computed(() => {
         userOptions: { show: false },
         style: {
             chart: {
-                backgroundColor: 'transparent',
+                backgroundColor: "transparent",
                 width: 100,
                 height: 150,
                 graduations: {
-                    stroke: isDarkMode.value ? '#1A1A1A' : '#2A2A2A',
+                    stroke: isDarkMode.value ? "#1A1A1A" : "#2A2A2A",
                     strokeWidth: 1.5,
                     gradient: { show: false },
                 },
                 label: {
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     fontSize: 28,
-                    rounding: 2
+                    rounding: 2,
                 },
                 thermometer: {
-                    width: 16
-                }
-            }
-        }
-    }
-})
-
+                    width: 16,
+                },
+            },
+        },
+    };
+});
 </script>
 
 <template>
@@ -45,7 +44,7 @@ const config = computed(() => {
             colors: {
                 from: '#42d392',
                 to: '#42d392',
-            }
+            },
         }"
         :config="thermoConfig"
     />

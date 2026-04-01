@@ -14,23 +14,26 @@ const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
 
-onMounted(() => store.docSnap = false);
+onMounted(() => (store.docSnap = false));
 
-watch(() => store.isDarkMode, (val) => {
-    nextTick(() => {
-        key.value += 1;
-    })
-});
+watch(
+    () => store.isDarkMode,
+    (val) => {
+        nextTick(() => {
+            key.value += 1;
+        });
+    },
+);
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
+});
 
 const icons = ref([
-    "aToZ", 
+    "aToZ",
     "accordion",
-    "addColumn", 
-    "addRow", 
+    "addColumn",
+    "addRow",
     "annotator",
     "annotator",
     "annotatorDisabled",
@@ -41,19 +44,19 @@ const icons = ref([
     "arrowRight",
     "arrowTop",
     "battery",
-    "bell", 
-    "bellOff", 
-    "bellRing", 
-    "binary", 
-    "blur", 
+    "bell",
+    "bellOff",
+    "bellRing",
+    "binary",
+    "blur",
     "boxes",
-    "branches", 
+    "branches",
     "bringToBack",
     "bringToFront",
-    "bucket", 
-    "bucketEmpty", 
-    "bucketFill", 
-    "bucketRecycle", 
+    "bucket",
+    "bucketEmpty",
+    "bucketFill",
+    "bucketRecycle",
     "building",
     "bug",
     "calendar",
@@ -109,35 +112,35 @@ const icons = ref([
     "chartWordCloudZh",
     "check",
     "checkList",
-    "chip", 
-    "chipAi", 
-    "chipBinary", 
+    "chip",
+    "chipAi",
+    "chipBinary",
     "circle",
     "circleCancel",
     "circleCheck",
     "circleExclamation",
     "circleFill",
     "circleQuestion",
-    "clip", 
+    "clip",
     "clipBoard",
     "clipboardBar",
     "clipboardDonut",
     "clipboardLine",
     "clipboardVariable",
     "close",
-    "cloud", 
-    "cloudRain", 
+    "cloud",
+    "cloudRain",
     "colorPicker",
     "computer",
     "copy",
     "copyLeft",
-    "croissant", 
+    "croissant",
     "csv",
     "curlyBrackets",
     "curlySpread",
     "cursor",
     "dashboard",
-    "database", 
+    "database",
     "diamond",
     "diamondFill",
     "digit0",
@@ -151,10 +154,10 @@ const icons = ref([
     "digit8",
     "digit9",
     "direction",
-    "document", 
+    "document",
     "doubleCheck",
     "doubleSpark",
-    "download", 
+    "download",
     "envelope",
     "excel",
     "exitFullscreen",
@@ -167,43 +170,43 @@ const icons = ref([
     "filePdf",
     "filePng",
     "fileSvg",
-    "focus", 
-    "folder", 
+    "focus",
+    "folder",
     "folderFill",
     "folderOpen",
-    "folderOpenFill", 
-    "fork", 
+    "folderOpenFill",
+    "fork",
     "frameLine",
     "fullscreen",
     "func",
-    "gisLayerQuery", 
-    "gisLayerSearch", 
+    "gisLayerQuery",
+    "gisLayerSearch",
     "hexagon",
     "hexagonFill",
-    "hierarchy", 
-    "hierarchyList", 
-    "histogram", 
-    "histogramDown", 
-    "histogramUp", 
+    "hierarchy",
+    "hierarchyList",
+    "histogram",
+    "histogramDown",
+    "histogramUp",
     "home",
     "homeFilled",
     "hourglass",
     "htmlTag",
     "icons",
     "image",
-    "key", 
-    "knobs", 
+    "key",
+    "knobs",
     "kpi",
     "kpiBox",
     "labelClose",
     "labelOpen",
     "lambda",
     "lap",
-    "laptop", 
+    "laptop",
     "legend",
     "lightBulbOff",
     "lightBulbOn",
-    "lineUp", 
+    "lineUp",
     "link",
     "listType",
     "lock",
@@ -211,8 +214,8 @@ const icons = ref([
     "menu",
     "microscope",
     "minimap",
-    "minus", 
-    "monitor", 
+    "minus",
+    "monitor",
     "monument",
     "moodEmbarrassed",
     "moodFlat",
@@ -224,28 +227,28 @@ const icons = ref([
     "moodWink",
     "move",
     "mu",
-    "network", 
+    "network",
     "nineToZero",
-    "npmx", 
+    "npmx",
     "numbers",
     "palette",
     "pause",
     "pdf",
     "pentagon",
     "pentagonFill",
-    "people", 
-    "percentage", 
-    "percentageDown", 
-    "percentageUp", 
-    "person", 
+    "people",
+    "percentage",
+    "percentageDown",
+    "percentageUp",
+    "person",
     "pi",
-    "pie", 
-    "pin", 
+    "pie",
+    "pin",
     "play",
     "plotLine",
     "plotArrow",
     "plug",
-    "plus", 
+    "plus",
     "pointer",
     "printer",
     "puzzle",
@@ -253,20 +256,20 @@ const icons = ref([
     "ratio",
     "recycle",
     "resize",
-    "resizeTLBR", 
-    "resizeTRBL", 
-    "resizeX", 
-    "resizeY", 
+    "resizeTLBR",
+    "resizeTRBL",
+    "resizeX",
+    "resizeY",
     "restart",
     "revert",
     "robot",
     "save",
-    "scada", 
+    "scada",
     "screenshot",
     "selectAndGroup",
     "settings",
-    "shield", 
-    "shieldExclam", 
+    "shield",
+    "shieldExclam",
     "sigma",
     "skeleton",
     "sliders",
@@ -280,9 +283,9 @@ const icons = ref([
     "spinner2",
     "spinner3",
     "spinner4",
-    "sql", 
-    "sqlQuery", 
-    "sqlSearch", 
+    "sql",
+    "sqlQuery",
+    "sqlSearch",
     "square",
     "squareFill",
     "stack",
@@ -290,14 +293,14 @@ const icons = ref([
     "starFace",
     "starFill",
     "stop",
-    "sun", 
+    "sun",
     "svg",
     "tableClose",
     "tableDialogClose",
     "tableDialogOpen",
     "tableOpen",
     "tag",
-    "target", 
+    "target",
     "test",
     "text",
     "tooltip",
@@ -312,18 +315,18 @@ const icons = ref([
     "triangleInformation",
     "twig",
     "unlock",
-    "unpin", 
+    "unpin",
     "unplug",
     "unstack",
-    "upload", 
+    "upload",
     "vueDataUi",
-    "wifi", 
+    "wifi",
     "window",
-    "workstation", 
+    "workstation",
     "world",
-    "wrench", 
-    "zToA", 
-    "zeroToNine", 
+    "wrench",
+    "zToA",
+    "zeroToNine",
     "zoomLock",
     "zoomMinus",
     "zoomPlus",
@@ -332,13 +335,13 @@ const icons = ref([
 
 const count = computed(() => icons.value.length);
 
-const selectedIcon = ref("smiley")
+const selectedIcon = ref("smiley");
 
 function useModal(state) {
-    const dialog = document.getElementById('iconDialog');
-    if(!dialog) return;
+    const dialog = document.getElementById("iconDialog");
+    if (!dialog) return;
 
-    if(state === "open") {
+    if (state === "open") {
         dialog.showModal();
     } else {
         dialog.close();
@@ -378,14 +381,14 @@ function requestCopy() {
         &lt;VueUiIcon
             name="${selectedIcon.value}"
             :size="24"
-            stroke="${ isDarkMode.value ? '___CCCCCC' : '___1A1A1A'}"
+            stroke="${isDarkMode.value ? "___CCCCCC" : "___1A1A1A"}"
         /&gt;
     `;
-    copyText(text, document.getElementById('iconDialog'));
+    copyText(text, document.getElementById("iconDialog"));
     isCopied.value = true;
     setTimeout(() => {
         isCopied.value = false;
-    }, 1000)
+    }, 1000);
 }
 
 const code = computed(() => {
@@ -393,16 +396,18 @@ const code = computed(() => {
     <VueUiIcon
         name="${selectedIcon.value}"
         :size="24"
-        stroke="${ isDarkMode.value ? '#CCCCCC' : '#1A1A1A'}"
+        stroke="${isDarkMode.value ? "#CCCCCC" : "#1A1A1A"}"
     />
-    `
+    `;
 });
 
-const search = ref('');
+const search = ref("");
 
 const filteredIcons = computed(() => {
     if (!search.value) return icons.value;
-    return icons.value.filter(icon => (icon.toUpperCase()).includes(search.value.toUpperCase()));
+    return icons.value.filter((icon) =>
+        icon.toUpperCase().includes(search.value.toUpperCase()),
+    );
 });
 
 const baseCodeExample = ref(`<VueUiIcon
@@ -428,29 +433,29 @@ const expExample = ref(`<VueUiIcon name="database">
         <VueUiIcon name="cloud" stroke="#5f8aee" />
     </template>
 </VueUiIcon>    
-`)
+`);
 
 const subExample = ref(`<VueUiIcon name="database">
     <template #sub>
         <VueUiIcon name="download" stroke="#5f8aee" />
     </template>
 </VueUiIcon>    
-`)
+`);
 
 const expAnimExample = ref(`<VueUiIcon name="database">
     <template #exp>
         <VueUiIcon name="spinner2" stroke="#42d392" :isSpin="true" spin-duration="1s"/>
     </template>
 </VueUiIcon>    
-`)
+`);
 
-const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-duration="5s">
+const fancyAnimExample =
+    ref(`<VueUiIcon name="square" :isSpin="true" spin-duration="5s">
     <template #exp>
         <VueUiIcon name="square" stroke="#42d392" :isSpin="true" spin-duration="1s"/>
     </template>
 </VueUiIcon>    
-`)
-
+`);
 </script>
 
 <template>
@@ -471,107 +476,207 @@ const fancyAnimExample = ref(`<VueUiIcon name="square" :isSpin="true" spin-durat
         <div class="w-fit mx-auto mt-6 mb-12">
             <BaseAutoComplete v-model="search" :items="[...icons]">
                 <template #before="{ suggestion }">
-                    <VueUiIcon :name="suggestion" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
+                    <VueUiIcon
+                        :name="suggestion"
+                        :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"
+                    />
                 </template>
             </BaseAutoComplete>
         </div>
 
         <BaseCard class="mb-6">
-            <CodeParser title="Usage" language="html" :content="baseCodeExample"/>
+            <CodeParser
+                title="Usage"
+                language="html"
+                :content="baseCodeExample"
+            />
         </BaseCard>
 
         <BaseCard>
-            <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
+            <div
+                class="flex flex-wrap gap-4 place-items-center place-content-center mt-12"
+            >
                 <div v-for="icon in filteredIcons">
-                    <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:scale-125 hover:bg-[#00000010] dark:hover:bg-[#00000020] transition-all" @click="selectIcon(icon)">
-                        <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                        <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
+                    <div
+                        class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:scale-125 hover:bg-[#00000010] dark:hover:bg-[#00000020] transition-all"
+                        @click="selectIcon(icon)"
+                    >
+                        <VueUiIcon
+                            :isSpin="icon === 'spin'"
+                            :name="icon"
+                            :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                        />
+                        <div class="dark:text-gray-400 text-black text-xs">
+                            {{ icon }}
+                        </div>
                     </div>
                 </div>
             </div>
         </BaseCard>
 
         <BaseCard class="mt-6 mb-2">
-            You can nest icons in <code class="text-app-green-dark dark:text-app-green">exp</code> and | or <code class="text-app-green-dark dark:text-app-green">sub</code> slots:
+            You can nest icons in
+            <code class="text-app-green-dark dark:text-app-green">exp</code> and
+            | or
+            <code class="text-app-green-dark dark:text-app-green">sub</code>
+            slots:
             <div class="flex flex-row gap-4 place-items-center my-2">
-                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
-                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                <BaseCard
+                    class="flex place-items-center justify-center h-fit"
+                    type="light"
+                >
+                    <VueUiIcon
+                        name="database"
+                        :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                    >
                         <template #exp>
-                            <VueUiIcon name="cloud" :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'" />
+                            <VueUiIcon
+                                name="cloud"
+                                :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'"
+                            />
                         </template>
                     </VueUiIcon>
                 </BaseCard>
-                <CodeParser language="html" :content="expExample"/>
+                <CodeParser language="html" :content="expExample" />
             </div>
 
             <div class="flex flex-row gap-4 place-items-center my-2">
-                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
-                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                <BaseCard
+                    class="flex place-items-center justify-center h-fit"
+                    type="light"
+                >
+                    <VueUiIcon
+                        name="database"
+                        :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                    >
                         <template #sub>
-                            <VueUiIcon name="download" :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'" />
+                            <VueUiIcon
+                                name="download"
+                                :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'"
+                            />
                         </template>
                     </VueUiIcon>
                 </BaseCard>
-                <CodeParser language="html" :content="subExample"/>
+                <CodeParser language="html" :content="subExample" />
             </div>
 
             <div class="flex flex-row gap-4 place-items-center my-2">
-                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
-                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                <BaseCard
+                    class="flex place-items-center justify-center h-fit"
+                    type="light"
+                >
+                    <VueUiIcon
+                        name="database"
+                        :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                    >
                         <template #exp>
-                            <VueUiIcon name="direction" :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'"/>
+                            <VueUiIcon
+                                name="direction"
+                                :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'"
+                            />
                         </template>
                         <template #sub>
-                            <VueUiIcon name="key" :stroke="isDarkMode ? '#42d392' : '#1d915d'" />
+                            <VueUiIcon
+                                name="key"
+                                :stroke="isDarkMode ? '#42d392' : '#1d915d'"
+                            />
                         </template>
                     </VueUiIcon>
                 </BaseCard>
-                <CodeParser language="html" :content="slotsExample"/>
+                <CodeParser language="html" :content="slotsExample" />
             </div>
 
             <div class="flex flex-row gap-4 place-items-center my-2">
-                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
-                    <VueUiIcon name="database" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'">
+                <BaseCard
+                    class="flex place-items-center justify-center h-fit"
+                    type="light"
+                >
+                    <VueUiIcon
+                        name="database"
+                        :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                    >
                         <template #exp>
-                            <VueUiIcon name="spinner2" :stroke="isDarkMode ? '#42d392' : '#1d915d'" :isSpin="true" />
+                            <VueUiIcon
+                                name="spinner2"
+                                :stroke="isDarkMode ? '#42d392' : '#1d915d'"
+                                :isSpin="true"
+                            />
                         </template>
                     </VueUiIcon>
                 </BaseCard>
-                <CodeParser language="html" :content="expAnimExample"/>
+                <CodeParser language="html" :content="expAnimExample" />
             </div>
 
             <div class="flex flex-row gap-4 place-items-center my-2">
-                <BaseCard class="flex place-items-center justify-center h-fit" type="light">
-                    <VueUiIcon name="square" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" :isSpin="true" spin-duration="5s">
+                <BaseCard
+                    class="flex place-items-center justify-center h-fit"
+                    type="light"
+                >
+                    <VueUiIcon
+                        name="square"
+                        :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                        :isSpin="true"
+                        spin-duration="5s"
+                    >
                         <template #exp>
-                            <VueUiIcon name="square" :stroke="isDarkMode ? '#42d392' : '#1d915d'" :isSpin="true" />
+                            <VueUiIcon
+                                name="square"
+                                :stroke="isDarkMode ? '#42d392' : '#1d915d'"
+                                :isSpin="true"
+                            />
                         </template>
                     </VueUiIcon>
                 </BaseCard>
-                <CodeParser language="html" :content="fancyAnimExample"/>
+                <CodeParser language="html" :content="fancyAnimExample" />
             </div>
         </BaseCard>
-        
-        <dialog id="iconDialog"  :class="`glass fixed h-screen max-h-[450px] w-full max-w-[400px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]`">
+
+        <dialog
+            id="iconDialog"
+            :class="`glass fixed h-screen max-h-[450px] w-full max-w-[400px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]`"
+        >
             <div class="z-10 w-full text-2xl sticky top-0 font-black">
-            <div class="select-none flex flex-row gap-2 place-items-center text-app-blue">
-                {{ selectedIcon }}
+                <div
+                    class="select-none flex flex-row gap-2 place-items-center text-app-blue"
+                >
+                    {{ selectedIcon }}
+                </div>
+                <button
+                    class="absolute top-2 right-2"
+                    @click="useModal('close')"
+                >
+                    <XIcon class="text-black dark:text-app-green" />
+                </button>
             </div>
-            <button class="absolute top-2 right-2" @click="useModal('close')">
-                <XIcon class="text-black dark:text-app-green" />
+
+            <button
+                class="absolute top-1/3 left-6 -translate-y-2/3"
+                @click="previous"
+            >
+                <VueUiIcon name="arrowLeft" stroke="#6A6A6A" />
             </button>
-            </div>
-            
-            <button class="absolute top-1/3 left-6 -translate-y-2/3" @click="previous">
-                <VueUiIcon name="arrowLeft" stroke="#6A6A6A"/>
-            </button>
-            <button class="absolute top-1/3 right-6 -translate-y-2/3" @click="next">
-                <VueUiIcon name="arrowRight" stroke="#6A6A6A"/>
+            <button
+                class="absolute top-1/3 right-6 -translate-y-2/3"
+                @click="next"
+            >
+                <VueUiIcon name="arrowRight" stroke="#6A6A6A" />
             </button>
 
-            <div class="mx-auto flex place-items-center justify-center flex-col gap-6 mt-6">
-                <VueUiIcon :name="selectedIcon" :size="128" :strokeWidth="1.2" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                <CodeParser :content="code" language="html" class="select-none" @copy="store.copy()"/>
+            <div
+                class="mx-auto flex place-items-center justify-center flex-col gap-6 mt-6"
+            >
+                <VueUiIcon
+                    :name="selectedIcon"
+                    :size="128"
+                    :strokeWidth="1.2"
+                    :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                />
+                <CodeParser
+                    :content="code"
+                    language="html"
+                    class="select-none"
+                    @copy="store.copy()"
+                />
             </div>
             <ConfirmCopy />
         </dialog>

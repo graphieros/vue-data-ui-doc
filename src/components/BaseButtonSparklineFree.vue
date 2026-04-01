@@ -1,37 +1,37 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import BasePopoverButton from "./BasePopoverButton.vue"
+import BasePopoverButton from "./BasePopoverButton.vue";
 import { useMainStore } from "../stores";
 import { UserIcon } from "vue-tabler-icons";
 
 const props = defineProps({
     buttonClass: {
         type: String,
-        default: ''
+        default: "",
     },
     popoverClass: {
         type: String,
-        default: ''
+        default: "",
     },
     sparklineConfig: {
         type: Object,
         default() {
-            return {}
-        }
+            return {};
+        },
     },
     sparklineDataset: {
         type: Array,
         default() {
-            return []
-        }
+            return [];
+        },
     },
     title: {
         type: String,
-        default: ''
+        default: "",
     },
-})
+});
 
-const emit = defineEmits(['open'])
+const emit = defineEmits(["open"]);
 
 const store = useMainStore();
 
@@ -40,7 +40,7 @@ const selectedIndex = ref(props.sparklineDataset.length - 1);
 
 function hoverIndex({ index }) {
     if (![null, undefined].includes(index)) {
-        selectedIndex.value = index
+        selectedIndex.value = index;
     } else {
         selectedIndex.value = props.sparklineDataset.length - 1;
     }
@@ -50,9 +50,8 @@ const isOpen = ref(false);
 
 function open(state) {
     isOpen.value = state;
-    emit('open', state);
+    emit("open", state);
 }
-
 </script>
 
 <template>
@@ -63,12 +62,14 @@ function open(state) {
             @open="open"
         >
             <template #button-content>
-                <div class="w-[200px] h-[200px] py-2 tabular-nums flex flex-row gap-2 justify-between px-3 place-items-center">
-                    <slot name="button-content"/>
+                <div
+                    class="w-[200px] h-[200px] py-2 tabular-nums flex flex-row gap-2 justify-between px-3 place-items-center"
+                >
+                    <slot name="button-content" />
                 </div>
             </template>
             <template #popover-content>
-                <slot name="popover-content"/>
+                <slot name="popover-content" />
             </template>
         </BasePopoverButton>
     </div>

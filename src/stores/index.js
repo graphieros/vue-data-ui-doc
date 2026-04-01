@@ -4,7 +4,52 @@ import { createUid } from "../components/maker/lib";
 export const useMainStore = defineStore("main", {
     state: () => {
         return {
-            locales: ['ar', 'be-cyrl', 'be-latn', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fa', 'fi', 'fr', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'it', 'ja', 'ka', 'ko', 'lt', 'lv', 'ms', 'nb', 'nl', 'pl', 'pt-br', 'pt', 'rs', 'ru', 'se', 'sk', 'sl', 'sq', 'th', 'tr', 'ua', 'vi', 'zh-cn', 'zh-tw'],
+            locales: [
+                "ar",
+                "be-cyrl",
+                "be-latn",
+                "ca",
+                "cs",
+                "da",
+                "de",
+                "el",
+                "en",
+                "es",
+                "et",
+                "fa",
+                "fi",
+                "fr",
+                "he",
+                "hi",
+                "hr",
+                "hu",
+                "hy",
+                "id",
+                "it",
+                "ja",
+                "ka",
+                "ko",
+                "lt",
+                "lv",
+                "ms",
+                "nb",
+                "nl",
+                "pl",
+                "pt-br",
+                "pt",
+                "rs",
+                "ru",
+                "se",
+                "sk",
+                "sl",
+                "sq",
+                "th",
+                "tr",
+                "ua",
+                "vi",
+                "zh-cn",
+                "zh-tw",
+            ],
             isSafari: false,
             docSnap: false,
             pack: {},
@@ -25,18 +70,18 @@ export const useMainStore = defineStore("main", {
             downloads: {
                 lib: [],
                 cli: [],
-                color_bridge: []
+                color_bridge: [],
             },
             repos: {
                 docs: {},
                 library: {},
                 cli: {},
-                hiCode: {}
+                hiCode: {},
             },
             ratings: {
                 show: true, // switch on | off all raters
                 average: 0,
-                breakdown: []
+                breakdown: [],
             },
             thresholds: [
                 { min: 1000, max: 1100 },
@@ -66,22 +111,22 @@ export const useMainStore = defineStore("main", {
                     ja: "グラフを固定して、スクロール時に設定変更を視覚化できます。",
                     es: "Fija el gráfico para visualizar los cambios de configuración al desplazarte.",
                     ko: "스크롤 시 구성 변경 사항을 시각화할 수 있도록 차트를 고정하세요.",
-                    ar: "ثبّت المخطط لتتمكن من تصور تغييرات التكوين عند التمرير."
-                }
+                    ar: "ثبّت المخطط لتتمكن من تصور تغييرات التكوين عند التمرير.",
+                },
             },
             lang: "en",
             translations: {
                 a11y: {
                     config_pointer_comment: {
-                        en: 'In most components, the attribute is placed inside `userOptions`',
-                        fr: 'Dans la plupart des composants, l’attribut est placé à l’intérieur de `userOptions`',
-                        pt: 'Na maioria dos componentes, o atributo é colocado dentro de `userOptions`',
-                        de: 'In den meisten Komponenten wird das Attribut innerhalb von `userOptions` platziert',
-                        zh: '在大多数组件中，该属性放置在 `userOptions` 内部',
-                        ja: 'ほとんどのコンポーネントでは、この属性は `userOptions` の中に配置されます',
-                        es: 'En la mayoría de los componentes, el atributo se coloca dentro de `userOptions`',
-                        ko: '대부분의 컴포넌트에서 해당 속성은 `userOptions` 내부에 배치됩니다',
-                        ar: 'في معظم المكونات، يتم وضع السمة داخل `userOptions`'
+                        en: "In most components, the attribute is placed inside `userOptions`",
+                        fr: "Dans la plupart des composants, l’attribut est placé à l’intérieur de `userOptions`",
+                        pt: "Na maioria dos componentes, o atributo é colocado dentro de `userOptions`",
+                        de: "In den meisten Komponenten wird das Attribut innerhalb von `userOptions` platziert",
+                        zh: "在大多数组件中，该属性放置在 `userOptions` 内部",
+                        ja: "ほとんどのコンポーネントでは、この属性は `userOptions` の中に配置されます",
+                        es: "En la mayoría de los componentes, el atributo se coloca dentro de `userOptions`",
+                        ko: "대부분의 컴포넌트에서 해당 속성은 `userOptions` 내부에 배치됩니다",
+                        ar: "في معظم المكونات، يتم وضع السمة داخل `userOptions`",
                     },
                     cursor_pointer: {
                         en: `Opt-in 'cursor pointer'`,
@@ -92,18 +137,18 @@ export const useMainStore = defineStore("main", {
                         ja: `「cursor: pointer」を有効にする`,
                         es: `Activar "cursor: pointer"`,
                         ko: `"cursor: pointer" 활성화`,
-                        ar: `تفعيل "cursor: pointer"`
+                        ar: `تفعيل "cursor: pointer"`,
                     },
                     cursor_pointer_updated_at: {
-                        en: '`false` by default since v3.15.0',
-                        fr: '`false` par défaut depuis la v3.15.0',
-                        pt: '`false` por padrão desde a v3.15.0',
-                        de: '`false` ist seit v3.15.0 der Standardwert',
-                        zh: '自 v3.15.0 起默认值为 `false`',
-                        ja: 'v3.15.0 以降のデフォルト値は `false` です',
-                        es: '`false` por defecto desde la v3.15.0',
-                        ko: 'v3.15.0부터 기본값은 `false`입니다',
-                        ar: '`false` هو الإعداد الافتراضي منذ الإصدار v3.15.0'
+                        en: "`false` by default since v3.15.0",
+                        fr: "`false` par défaut depuis la v3.15.0",
+                        pt: "`false` por padrão desde a v3.15.0",
+                        de: "`false` ist seit v3.15.0 der Standardwert",
+                        zh: "自 v3.15.0 起默认值为 `false`",
+                        ja: "v3.15.0 以降のデフォルト値は `false` です",
+                        es: "`false` por defecto desde la v3.15.0",
+                        ko: "v3.15.0부터 기본값은 `false`입니다",
+                        ar: "`false` هو الإعداد الافتراضي منذ الإصدار v3.15.0",
                     },
                     cursor_pointer_presentation: {
                         en: `Applying 'cursor: pointer' to clickable elements such as buttons is a design choice rather than a web standard requirement. Browsers already provide native interaction cues, and altering the cursor changes platform conventions. For this reason, we keep it opt-in, allowing teams to decide based on their design system and user experience goals.`,
@@ -114,29 +159,29 @@ export const useMainStore = defineStore("main", {
                         ja: `ボタンなどのクリック可能な要素に「cursor: pointer」を適用するかどうかは、Web標準の必須要件ではなくデザイン上の選択です。ブラウザはすでにネイティブの操作ヒントを提供しており、カーソルを変更することはプラットフォームの慣習を変えることになります。そのため、本設定はオプトインとし、デザインシステムやユーザー体験の方針に応じて選択できるようにしています。`,
                         es: `Aplicar 'cursor: pointer' a elementos interactivos como los botones es una decisión de diseño y no un requisito de los estándares web. Los navegadores ya ofrecen señales de interacción nativas, y modificar el cursor altera las convenciones de la plataforma. Por ello, lo mantenemos como una opción opt-in, permitiendo que cada equipo decida según su sistema de diseño y objetivos de experiencia de usuario.`,
                         ko: `'cursor: pointer'를 버튼과 같은 클릭 가능한 요소에 적용하는 것은 웹 표준의 필수 사항이 아니라 디자인 선택입니다. 브라우저는 이미 기본적인 상호작용 신호를 제공하며, 커서를 변경하면 플랫폼 관례가 달라집니다. 따라서 이 옵션은 기본 비활성화 상태로 두고, 디자인 시스템과 사용자 경험 목표에 따라 선택적으로 활성화할 수 있도록 합니다.`,
-                        ar: `إن تطبيق "cursor: pointer" على العناصر القابلة للنقر مثل الأزرار هو خيار تصميمي وليس متطلبًا من معايير الويب. توفر المتصفحات بالفعل إشارات تفاعل افتراضية، وتغيير شكل المؤشر يغيّر من أعراف المنصة. لذلك نجعل هذا السلوك اختياريًا، بحيث يمكن لكل فريق تفعيله وفقًا لنظام التصميم وأهداف تجربة المستخدم الخاصة به.`
+                        ar: `إن تطبيق "cursor: pointer" على العناصر القابلة للنقر مثل الأزرار هو خيار تصميمي وليس متطلبًا من معايير الويب. توفر المتصفحات بالفعل إشارات تفاعل افتراضية، وتغيير شكل المؤشر يغيّر من أعراف المنصة. لذلك نجعل هذا السلوك اختياريًا، بحيث يمكن لكل فريق تفعيله وفقًا لنظام التصميم وأهداف تجربة المستخدم الخاصة به.`,
                     },
                     alt_menu: {
-                        en: 'Copy alt text',
-                        fr: 'Copier le texte alternatif de l\'image',
-                        pt: 'Copiar o texto alternativo da imagem',
-                        de: 'Alternativtext des Bildes kopieren',
-                        zh: '复制图片的替代文本',
-                        ja: '画像の代替テキストをコピー',
-                        es: 'Copiar el texto alternativo de la imagen',
-                        ko: '이미지 대체 텍스트 복사',
-                        ar: 'نسخ النص البديل للصورة'
+                        en: "Copy alt text",
+                        fr: "Copier le texte alternatif de l'image",
+                        pt: "Copiar o texto alternativo da imagem",
+                        de: "Alternativtext des Bildes kopieren",
+                        zh: "复制图片的替代文本",
+                        ja: "画像の代替テキストをコピー",
+                        es: "Copiar el texto alternativo de la imagen",
+                        ko: "이미지 대체 텍스트 복사",
+                        ar: "نسخ النص البديل للصورة",
                     },
                     copy_alt_text_description: {
-                        en: 'A `Copy alt text` button can be displayed in the charts context menus. By plugging it to a callback, it is possible to tailor alt texts for your charts derived from the dataset and configuration, that can be copied to the clipboard.',
-                        fr: 'Un bouton `Copier le texte alternatif` peut être affiché dans les menus contextuels des graphiques. En le reliant à une fonction de rappel, il est possible de personnaliser des textes alternatifs pour vos graphiques à partir du jeu de données et de la configuration, puis de les copier dans le presse-papiers.',
-                        pt: 'Um botão `Copiar texto alternativo` pode ser exibido nos menus de contexto dos gráficos. Ao vinculá-lo a uma função de retorno, é possível personalizar textos alternativos para seus gráficos a partir do conjunto de dados e da configuração e copiá-los para a área de transferência.',
-                        de: 'In den Kontextmenüs der Diagramme kann eine Schaltfläche `Alternativtext kopieren` angezeigt werden. Durch die Verknüpfung mit einer Callback-Funktion können Alternativtexte für Ihre Diagramme basierend auf Datensatz und Konfiguration erstellt und in die Zwischenablage kopiert werden.',
-                        zh: '可以在图表的上下文菜单中显示“复制替代文本”按钮。通过将其连接到回调函数，可以根据数据集和配置自定义图表的替代文本，并将其复制到剪贴板。',
-                        ja: '「代替テキストをコピー」ボタンをチャートのコンテキストメニューに表示できます。コールバック関数に接続することで、データセットや設定に基づいてチャートの代替テキストをカスタマイズし、クリップボードにコピーできます。',
-                        es: 'Se puede mostrar un botón `Copiar texto alternativo` en los menús contextuales de los gráficos. Al conectarlo a una función de devolución de llamada, es posible personalizar textos alternativos para sus gráficos a partir del conjunto de datos y la configuración, y copiarlos al portapapeles.',
-                        ko: '차트의 컨텍스트 메뉴에 `대체 텍스트 복사` 버튼을 표시할 수 있습니다. 콜백 함수에 연결하면 데이터셋과 구성에 기반하여 차트의 대체 텍스트를 사용자 지정하고 이를 클립보드에 복사할 수 있습니다.',
-                        ar: 'يمكن عرض زر `نسخ النص البديل` في القوائم السياقية للمخططات. من خلال ربطه بدالة رد نداء، يمكن تخصيص نصوص بديلة للمخططات استنادًا إلى مجموعة البيانات والإعدادات ونسخها إلى الحافظة.'
+                        en: "A `Copy alt text` button can be displayed in the charts context menus. By plugging it to a callback, it is possible to tailor alt texts for your charts derived from the dataset and configuration, that can be copied to the clipboard.",
+                        fr: "Un bouton `Copier le texte alternatif` peut être affiché dans les menus contextuels des graphiques. En le reliant à une fonction de rappel, il est possible de personnaliser des textes alternatifs pour vos graphiques à partir du jeu de données et de la configuration, puis de les copier dans le presse-papiers.",
+                        pt: "Um botão `Copiar texto alternativo` pode ser exibido nos menus de contexto dos gráficos. Ao vinculá-lo a uma função de retorno, é possível personalizar textos alternativos para seus gráficos a partir do conjunto de dados e da configuração e copiá-los para a área de transferência.",
+                        de: "In den Kontextmenüs der Diagramme kann eine Schaltfläche `Alternativtext kopieren` angezeigt werden. Durch die Verknüpfung mit einer Callback-Funktion können Alternativtexte für Ihre Diagramme basierend auf Datensatz und Konfiguration erstellt und in die Zwischenablage kopiert werden.",
+                        zh: "可以在图表的上下文菜单中显示“复制替代文本”按钮。通过将其连接到回调函数，可以根据数据集和配置自定义图表的替代文本，并将其复制到剪贴板。",
+                        ja: "「代替テキストをコピー」ボタンをチャートのコンテキストメニューに表示できます。コールバック関数に接続することで、データセットや設定に基づいてチャートの代替テキストをカスタマイズし、クリップボードにコピーできます。",
+                        es: "Se puede mostrar un botón `Copiar texto alternativo` en los menús contextuales de los gráficos. Al conectarlo a una función de devolución de llamada, es posible personalizar textos alternativos para sus gráficos a partir del conjunto de datos y la configuración, y copiarlos al portapapeles.",
+                        ko: "차트의 컨텍스트 메뉴에 `대체 텍스트 복사` 버튼을 표시할 수 있습니다. 콜백 함수에 연결하면 데이터셋과 구성에 기반하여 차트의 대체 텍스트를 사용자 지정하고 이를 클립보드에 복사할 수 있습니다.",
+                        ar: "يمكن عرض زر `نسخ النص البديل` في القوائم السياقية للمخططات. من خلال ربطه بدالة رد نداء، يمكن تخصيص نصوص بديلة للمخططات استنادًا إلى مجموعة البيانات والإعدادات ونسخها إلى الحافظة.",
                     },
                     copy_alt_text_instructions: {
                         en: `Try it out: open the chart's context menu, and click on the 'Copy alt text' button.`,
@@ -147,41 +192,41 @@ export const useMainStore = defineStore("main", {
                         ja: `試してみてください：チャートのコンテキストメニューを開き、「代替テキストをコピー」ボタンをクリックします。`,
                         es: `Pruébelo: abra el menú contextual del gráfico y haga clic en el botón "Copiar texto alternativo".`,
                         ko: `사용해 보세요: 차트의 컨텍스트 메뉴를 열고 "대체 텍스트 복사" 버튼을 클릭하세요.`,
-                        ar: `جرّب ذلك: افتح القائمة السياقية للمخطط وانقر على زر "نسخ النص البديل".`
+                        ar: `جرّب ذلك: افتح القائمة السياقية للمخطط وانقر على زر "نسخ النص البديل".`,
                     },
                     enable_a11y_button: {
-                        en: 'enable the accessibility button',
-                        fr: 'activer le bouton d’accessibilité',
-                        pt: 'ativar o botão de acessibilidade',
-                        de: 'die Schaltfläche für Barrierefreiheit aktivieren',
-                        zh: '启用无障碍按钮',
-                        ja: 'アクセシビリティボタンを有効にする',
-                        es: 'activar el botón de accesibilidad',
-                        ko: '접근성 버튼 활성화',
-                        ar: 'تفعيل زر إمكانية الوصول'
+                        en: "enable the accessibility button",
+                        fr: "activer le bouton d’accessibilité",
+                        pt: "ativar o botão de acessibilidade",
+                        de: "die Schaltfläche für Barrierefreiheit aktivieren",
+                        zh: "启用无障碍按钮",
+                        ja: "アクセシビリティボタンを有効にする",
+                        es: "activar el botón de accesibilidad",
+                        ko: "접근성 버튼 활성화",
+                        ar: "تفعيل زر إمكانية الوصول",
                     },
                     use_success_feedback: {
-                        en: 'use your success feedback solution here',
-                        fr: 'utilisez ici votre solution de retour de succès',
-                        pt: 'use aqui sua solução de feedback de sucesso',
-                        de: 'verwenden Sie hier Ihre Erfolgsrückmeldungslösung',
-                        zh: '在此使用您的成功反馈方案',
-                        ja: 'ここで成功フィードバックの仕組みを使用してください',
-                        es: 'utilice aquí su solución de retroalimentación de éxito',
-                        ko: '여기에 성공 피드백 솔루션을 사용하세요',
-                        ar: 'استخدم هنا حل إشعار النجاح الخاص بك'
+                        en: "use your success feedback solution here",
+                        fr: "utilisez ici votre solution de retour de succès",
+                        pt: "use aqui sua solução de feedback de sucesso",
+                        de: "verwenden Sie hier Ihre Erfolgsrückmeldungslösung",
+                        zh: "在此使用您的成功反馈方案",
+                        ja: "ここで成功フィードバックの仕組みを使用してください",
+                        es: "utilice aquí su solución de retroalimentación de éxito",
+                        ko: "여기에 성공 피드백 솔루션을 사용하세요",
+                        ar: "استخدم هنا حل إشعار النجاح الخاص بك",
                     },
                 },
                 builtInThemes: {
-                    en: 'Built-in themes',
-                    fr: 'Thèmes intégrés',
-                    pt: 'Temas integrados',
-                    de: 'Integrierte Themen',
-                    zh: '内置主题',
-                    ja: '組み込みテーマ',
-                    es: 'Temas integrados',
-                    ko: '내장 테마',
-                    ar: 'سمات مدمجة'
+                    en: "Built-in themes",
+                    fr: "Thèmes intégrés",
+                    pt: "Temas integrados",
+                    de: "Integrierte Themen",
+                    zh: "内置主题",
+                    ja: "組み込みテーマ",
+                    es: "Temas integrados",
+                    ko: "내장 테마",
+                    ar: "سمات مدمجة",
                 },
                 customFormat: {
                     en: 'How to use the "customFormat" config attributes:',
@@ -192,29 +237,29 @@ export const useMainStore = defineStore("main", {
                     ja: '"customFormat" 設定属性の使用方法：',
                     es: 'Cómo usar los atributos de configuración "customFormat":',
                     ko: '"customFormat" 구성 속성을 사용하는 방법:',
-                    ar: 'كيفية استخدام سمات التكوين "customFormat":'
+                    ar: 'كيفية استخدام سمات التكوين "customFormat":',
                 },
                 customFormatArgs: {
-                    en: 'Use args to build your custom content',
-                    fr: 'Utilisez les arguments pour créer votre contenu personnalisé',
-                    pt: 'Use argumentos para criar seu conteúdo personalizado',
-                    de: 'Verwenden Sie Argumente, um Ihren benutzerdefinierten Inhalt zu erstellen',
-                    zh: '使用参数构建自定义内容',
-                    ja: '引数を使用してカスタムコンテンツを作成します',
-                    es: 'Usa argumentos para crear tu contenido personalizado',
-                    ko: '인수를 사용하여 사용자 지정 콘텐츠를 만드세요',
-                    ar: 'استخدم الوسائط لبناء المحتوى المخصص الخاص بك'
+                    en: "Use args to build your custom content",
+                    fr: "Utilisez les arguments pour créer votre contenu personnalisé",
+                    pt: "Use argumentos para criar seu conteúdo personalizado",
+                    de: "Verwenden Sie Argumente, um Ihren benutzerdefinierten Inhalt zu erstellen",
+                    zh: "使用参数构建自定义内容",
+                    ja: "引数を使用してカスタムコンテンツを作成します",
+                    es: "Usa argumentos para crear tu contenido personalizado",
+                    ko: "인수를 사용하여 사용자 지정 콘텐츠를 만드세요",
+                    ar: "استخدم الوسائط لبناء المحتوى المخصص الخاص بك",
                 },
                 customFormatCss: {
-                    en: 'Using custom mode, the tooltip will be headless. Target the following css class to apply custom styles:',
-                    fr: 'En mode personnalisé, l’infobulle sera sans structure. Ciblez la classe CSS suivante pour appliquer vos styles personnalisés :',
-                    pt: 'No modo personalizado, a dica de ferramenta será sem estrutura. Aponte para a seguinte classe CSS para aplicar estilos personalizados:',
-                    de: 'Im benutzerdefinierten Modus ist das Tooltip strukturlos. Ziel ist es, die folgende CSS-Klasse anzusprechen, um benutzerdefinierte Stile anzuwenden:',
-                    zh: '在自定义模式下，提示框将无结构。请针对以下 CSS 类应用自定义样式：',
-                    ja: 'カスタムモードでは、ツールチップは構造を持ちません。以下のCSSクラスをターゲットにしてカスタムスタイルを適用します：',
-                    es: 'En modo personalizado, el tooltip no tendrá estructura. Apunta a la siguiente clase CSS para aplicar estilos personalizados:',
-                    ko: '사용자 지정 모드에서는 툴팁에 구조가 없습니다. 다음 CSS 클래스를 지정하여 사용자 지정 스타일을 적용하세요:',
-                    ar: 'في الوضع المخصص، ستكون أداة التلميح بدون بنية. استهدف فئة CSS التالية لتطبيق الأنماط المخصصة:'
+                    en: "Using custom mode, the tooltip will be headless. Target the following css class to apply custom styles:",
+                    fr: "En mode personnalisé, l’infobulle sera sans structure. Ciblez la classe CSS suivante pour appliquer vos styles personnalisés :",
+                    pt: "No modo personalizado, a dica de ferramenta será sem estrutura. Aponte para a seguinte classe CSS para aplicar estilos personalizados:",
+                    de: "Im benutzerdefinierten Modus ist das Tooltip strukturlos. Ziel ist es, die folgende CSS-Klasse anzusprechen, um benutzerdefinierte Stile anzuwenden:",
+                    zh: "在自定义模式下，提示框将无结构。请针对以下 CSS 类应用自定义样式：",
+                    ja: "カスタムモードでは、ツールチップは構造を持ちません。以下のCSSクラスをターゲットにしてカスタムスタイルを適用します：",
+                    es: "En modo personalizado, el tooltip no tendrá estructura. Apunta a la siguiente clase CSS para aplicar estilos personalizados:",
+                    ko: "사용자 지정 모드에서는 툴팁에 구조가 없습니다. 다음 CSS 클래스를 지정하여 사용자 지정 스타일을 적용하세요:",
+                    ar: "في الوضع المخصص، ستكون أداة التلميح بدون بنية. استهدف فئة CSS التالية لتطبيق الأنماط المخصصة:",
                 },
                 xyInterLinePairs: {
                     en: `since v3.0.5 - Reference line series names by pairs, for example: [['serie A', 'serie B'], ['serie C', 'serie D']] to color interline areas. The names must be identical to the dataset serie names.`,
@@ -225,7 +270,7 @@ export const useMainStore = defineStore("main", {
                     ja: `v3.0.5 以降 - 線系列の名前をペアで参照します。例：[['シリーズA', 'シリーズB'], ['シリーズC', 'シリーズD']]。これにより線間領域に色が付きます。名前はデータセットのシリーズ名と同一である必要があります。`,
                     es: `desde v3.0.5 - Referencie los nombres de las series de líneas en pares, por ejemplo: [['serie A', 'serie B'], ['serie C', 'serie D']] para colorear las áreas entre líneas. Los nombres deben ser idénticos a los de las series en el conjunto de datos.`,
                     ko: `v3.0.5부터 - 선 시리즈 이름을 쌍으로 참조합니다. 예: [['시리즈 A', '시리즈 B'], ['시리즈 C', '시리즈 D']]로 선 사이 영역을 색칠합니다. 이름은 데이터셋의 시리즈 이름과 동일해야 합니다.`,
-                    ar: `منذ الإصدار v3.0.5 - اشِر إلى أسماء سلاسل الخطوط على شكل أزواج، على سبيل المثال: [['السلسلة A', 'السلسلة B'], ['السلسلة C', 'السلسلة D']] لتلوين المناطق بين الخطوط. يجب أن تكون الأسماء مطابقة تمامًا لأسماء السلاسل في مجموعة البيانات.`
+                    ar: `منذ الإصدار v3.0.5 - اشِر إلى أسماء سلاسل الخطوط على شكل أزواج، على سبيل المثال: [['السلسلة A', 'السلسلة B'], ['السلسلة C', 'السلسلة D']] لتلوين المناطق بين الخطوط. يجب أن تكون الأسماء مطابقة تمامًا لأسماء السلاسل في مجموعة البيانات.`,
                 },
                 xyInterLineColors: {
                     en: `since v3.0.5 - If left empty, colors defined by your dataset will be used. Use this to override colors for interline areas. For example: [['green', 'red'], ['blue', 'orange']]; or [['green', undefined]] to only override one.`,
@@ -236,65 +281,65 @@ export const useMainStore = defineStore("main", {
                     ja: `v3.0.5 以降 - 空にすると、データセットで定義された色が使用されます。これを使って線間領域の色を上書きできます。例：[['緑', '赤'], ['青', 'オレンジ']]、または [['緑', undefined]] で一方のみを上書き。`,
                     es: `desde v3.0.5 - Si se deja vacío, se usarán los colores definidos en el conjunto de datos. Use esto para sobrescribir los colores de las áreas entre líneas. Ejemplo: [['green', 'red'], ['blue', 'orange']]; o [['green', undefined]] para sobrescribir solo uno.`,
                     ko: `v3.0.5부터 - 비워두면 데이터셋에 정의된 색상이 사용됩니다. 이를 사용하여 선 사이 영역의 색상을 덮어쓸 수 있습니다. 예: [['#00FF00', '#FF0000'], ['#0000FF', '#FFAA00']]; 또는 [['#FF0000', undefined]]로 하나만 덮어쓸 수 있습니다.`,
-                    ar: `منذ الإصدار v3.0.5 - إذا تُرك فارغًا، ستُستخدم الألوان المعرفة في مجموعة البيانات. استخدم هذا الخيار لتجاوز الألوان للمناطق بين الخطوط. على سبيل المثال: [['أخضر', 'أحمر'], ['أزرق', 'برتقالي']]؛ أو [['أخضر', undefined]] لتجاوز لون واحد فقط.`
+                    ar: `منذ الإصدار v3.0.5 - إذا تُرك فارغًا، ستُستخدم الألوان المعرفة في مجموعة البيانات. استخدم هذا الخيار لتجاوز الألوان للمناطق بين الخطوط. على سبيل المثال: [['أخضر', 'أحمر'], ['أزرق', 'برتقالي']]؛ أو [['أخضر', undefined]] لتجاوز لون واحد فقط.`,
                 },
                 annotationsArray: {
-                    en: 'Provide an array of annotation objects',
-                    fr: 'Fournissez un tableau d’objets d’annotation',
-                    pt: 'Forneça um array de objetos de anotação',
-                    de: 'Geben Sie ein Array von Annotationsobjekten an',
-                    zh: '提供一个注释对象数组',
-                    ja: '注釈オブジェクトの配列を提供してください',
-                    es: 'Proporcione un arreglo de objetos de anotación',
-                    ko: '주석 객체 배열을 제공하세요',
-                    ar: 'قم بتوفير مصفوفة من كائنات التعليقات',
+                    en: "Provide an array of annotation objects",
+                    fr: "Fournissez un tableau d’objets d’annotation",
+                    pt: "Forneça um array de objetos de anotação",
+                    de: "Geben Sie ein Array von Annotationsobjekten an",
+                    zh: "提供一个注释对象数组",
+                    ja: "注釈オブジェクトの配列を提供してください",
+                    es: "Proporcione un arreglo de objetos de anotación",
+                    ko: "주석 객체 배열을 제공하세요",
+                    ar: "قم بتوفير مصفوفة من كائنات التعليقات",
                 },
                 annotationsYTop: {
-                    en: 'Provide a number in the scale of your dataset',
-                    fr: 'Fournissez un nombre selon l’échelle de votre jeu de données',
-                    pt: 'Forneça um número na escala do seu conjunto de dados',
-                    de: 'Geben Sie eine Zahl im Maßstab Ihres Datensatzes an',
-                    zh: '提供一个符合您数据集范围的数字',
-                    ja: 'データセットのスケールに合わせた数値を提供してください',
-                    es: 'Proporcione un número de acuerdo con la escala de su conjunto de datos',
-                    ko: '데이터 세트의 규모에 맞는 숫자를 제공하세요',
-                    ar: 'قم بتوفير رقم ضمن نطاق مجموعة البيانات الخاصة بك',
+                    en: "Provide a number in the scale of your dataset",
+                    fr: "Fournissez un nombre selon l’échelle de votre jeu de données",
+                    pt: "Forneça um número na escala do seu conjunto de dados",
+                    de: "Geben Sie eine Zahl im Maßstab Ihres Datensatzes an",
+                    zh: "提供一个符合您数据集范围的数字",
+                    ja: "データセットのスケールに合わせた数値を提供してください",
+                    es: "Proporcione un número de acuerdo con la escala de su conjunto de datos",
+                    ko: "데이터 세트의 규모에 맞는 숫자를 제공하세요",
+                    ar: "قم بتوفير رقم ضمن نطاق مجموعة البيانات الخاصة بك",
                 },
                 annotationsYBottom: {
-                    en: 'Provide another number in the scale of your dataset. If it is different from yTop, an area will be displayed',
-                    fr: 'Fournissez un autre nombre selon l’échelle de votre jeu de données. S’il est différent de yTop, une zone sera affichée',
-                    pt: 'Forneça outro número na escala do seu conjunto de dados. Se for diferente de yTop, uma área será exibida',
-                    de: 'Geben Sie eine weitere Zahl im Maßstab Ihres Datensatzes an. Wenn sie sich von yTop unterscheidet, wird ein Bereich angezeigt',
-                    zh: '提供另一个符合您数据集范围的数字。如果它与 yTop 不同，将显示一个区域',
-                    ja: 'データセットのスケールに合わせた別の数値を提供してください。yTopと異なる場合、エリアが表示されます',
-                    es: 'Proporcione otro número según la escala de su conjunto de datos. Si es diferente de yTop, se mostrará un área',
-                    ko: '데이터 세트의 규모에 맞는 또 다른 숫자를 제공하세요. yTop과 다르면 영역이 표시됩니다',
-                    ar: 'قم بتوفير رقم آخر ضمن نطاق مجموعة البيانات الخاصة بك. إذا كان مختلفًا عن yTop، فسيتم عرض منطقة',
+                    en: "Provide another number in the scale of your dataset. If it is different from yTop, an area will be displayed",
+                    fr: "Fournissez un autre nombre selon l’échelle de votre jeu de données. S’il est différent de yTop, une zone sera affichée",
+                    pt: "Forneça outro número na escala do seu conjunto de dados. Se for diferente de yTop, uma área será exibida",
+                    de: "Geben Sie eine weitere Zahl im Maßstab Ihres Datensatzes an. Wenn sie sich von yTop unterscheidet, wird ein Bereich angezeigt",
+                    zh: "提供另一个符合您数据集范围的数字。如果它与 yTop 不同，将显示一个区域",
+                    ja: "データセットのスケールに合わせた別の数値を提供してください。yTopと異なる場合、エリアが表示されます",
+                    es: "Proporcione otro número según la escala de su conjunto de datos. Si es diferente de yTop, se mostrará un área",
+                    ko: "데이터 세트의 규모에 맞는 또 다른 숫자를 제공하세요. yTop과 다르면 영역이 표시됩니다",
+                    ar: "قم بتوفير رقم آخر ضمن نطاق مجموعة البيانات الخاصة بك. إذا كان مختلفًا عن yTop، فسيتم عرض منطقة",
                 },
                 styleImport: {
-                    en: 'If you are using multiple components, place this style import in your main',
-                    fr: 'Si vous utilisez plusieurs composants, placez cette importation de style dans votre fichier principal',
-                    pt: 'Se você estiver usando vários componentes, coloque esta importação de estilo no seu arquivo principal',
-                    de: 'Wenn Sie mehrere Komponenten verwenden, platzieren Sie diesen Style-Import in Ihrer Hauptdatei',
-                    zh: '如果您使用多个组件，请将此样式导入放在您的主文件中',
-                    ja: '複数のコンポーネントを使用している場合は、このスタイルのインポートをメインファイルに配置してください',
-                    es: 'Si estás utilizando varios componentes, coloca esta importación de estilos en tu archivo principal',
-                    ko: '여러 컴포넌트를 사용하는 경우 이 스타일 임포트를 메인 파일에 배치하세요',
-                    ar: 'إذا كنت تستخدم مكونات متعددة، فضع استيراد النمط هذا في ملفك الرئيسي'
+                    en: "If you are using multiple components, place this style import in your main",
+                    fr: "Si vous utilisez plusieurs composants, placez cette importation de style dans votre fichier principal",
+                    pt: "Se você estiver usando vários componentes, coloque esta importação de estilo no seu arquivo principal",
+                    de: "Wenn Sie mehrere Komponenten verwenden, platzieren Sie diesen Style-Import in Ihrer Hauptdatei",
+                    zh: "如果您使用多个组件，请将此样式导入放在您的主文件中",
+                    ja: "複数のコンポーネントを使用している場合は、このスタイルのインポートをメインファイルに配置してください",
+                    es: "Si estás utilizando varios componentes, coloca esta importación de estilos en tu archivo principal",
+                    ko: "여러 컴포넌트를 사용하는 경우 이 스타일 임포트를 메인 파일에 배치하세요",
+                    ar: "إذا كنت تستخدم مكونات متعددة، فضع استيراد النمط هذا في ملفك الرئيسي",
                 },
                 viewComponentCode: {
-                    en: 'View component code',
-                    fr: 'Voir le code du composant',
-                    pt: 'Ver código do componente',
-                    de: 'Komponenten-Code anzeigen',
-                    zh: '查看组件代码',
-                    ja: 'コンポーネントのコードを表示',
-                    es: 'Ver código del componente',
-                    ko: '컴포넌트 코드 보기',
-                    ar: 'عرض شفرة المكون'
+                    en: "View component code",
+                    fr: "Voir le code du composant",
+                    pt: "Ver código do componente",
+                    de: "Komponenten-Code anzeigen",
+                    zh: "查看组件代码",
+                    ja: "コンポーネントのコードを表示",
+                    es: "Ver código del componente",
+                    ko: "컴포넌트 코드 보기",
+                    ar: "عرض شفرة المكون",
                 },
                 checkVueUiXyConfig: {
-                    en: 'The contents of this config attributes correspond to the config of VueUiXy.',
+                    en: "The contents of this config attributes correspond to the config of VueUiXy.",
                     fr: "Le contenu de ces attributs de configuration correspond à la configuration de VueUiXy.",
                     pt: "O conteúdo destes atributos de configuração corresponde à configuração do VueUiXy.",
                     de: "Der Inhalt dieser Konfigurationsattribute entspricht der Konfiguration von VueUiXy.",
@@ -302,51 +347,51 @@ export const useMainStore = defineStore("main", {
                     ja: "この構成属性の内容は VueUiXy の設定に対応しています。",
                     es: "El contenido de estos atributos de configuración corresponde a la configuración de VueUiXy.",
                     ko: "이 구성 속성의 내용은 VueUiXy의 구성에 해당합니다.",
-                    ar: "محتويات سمات التكوين هذه تتوافق مع تكوين VueUiXy."
+                    ar: "محتويات سمات التكوين هذه تتوافق مع تكوين VueUiXy.",
                 },
                 updateDatasetWillReset: {
-                    en: 'Dynamic updating the dataset results in a reset of the internal state of the component.',
-                    fr: 'La mise à jour dynamique du jeu de données réinitialise l’état interne du composant.',
-                    pt: 'A atualização dinâmica do conjunto de dados resulta na redefinição do estado interno do componente.',
-                    de: 'Das dynamische Aktualisieren des Datensatzes setzt den internen Zustand der Komponente zurück.',
-                    zh: '动态更新数据集会导致组件的内部状态重置。',
-                    ja: 'データセットを動的に更新すると、コンポーネントの内部状態がリセットされます。',
-                    es: 'La actualización dinámica del conjunto de datos restablece el estado interno del componente.',
-                    ko: '데이터셋을 동적으로 업데이트하면 컴포넌트의 내부 상태가 초기화됩니다.',
-                    ar: 'تحديث مجموعة البيانات ديناميكيًا يؤدي إلى إعادة تعيين الحالة الداخلية للمكوّن.'
+                    en: "Dynamic updating the dataset results in a reset of the internal state of the component.",
+                    fr: "La mise à jour dynamique du jeu de données réinitialise l’état interne du composant.",
+                    pt: "A atualização dinâmica do conjunto de dados resulta na redefinição do estado interno do componente.",
+                    de: "Das dynamische Aktualisieren des Datensatzes setzt den internen Zustand der Komponente zurück.",
+                    zh: "动态更新数据集会导致组件的内部状态重置。",
+                    ja: "データセットを動的に更新すると、コンポーネントの内部状態がリセットされます。",
+                    es: "La actualización dinámica del conjunto de datos restablece el estado interno del componente.",
+                    ko: "데이터셋을 동적으로 업데이트하면 컴포넌트의 내부 상태가 초기화됩니다.",
+                    ar: "تحديث مجموعة البيانات ديناميكيًا يؤدي إلى إعادة تعيين الحالة الداخلية للمكوّن.",
                 },
                 checkUtilityFunctions: {
-                    en: 'Check out the utility functions documentation',
-                    fr: 'Consultez la documentation des fonctions utilitaires',
-                    pt: 'Confira a documentação das funções utilitárias',
-                    de: 'Sehen Sie sich die Dokumentation der Utility-Funktionen an',
-                    zh: '查看实用程序函数文档',
-                    ja: 'ユーティリティ関数のドキュメントを確認する',
-                    es: 'Consulta la documentación de las funciones de utilidad',
-                    ko: '유틸리티 함수 문서를 확인하세요',
-                    ar: 'تحقق من وثائق دوال المرافق'
+                    en: "Check out the utility functions documentation",
+                    fr: "Consultez la documentation des fonctions utilitaires",
+                    pt: "Confira a documentação das funções utilitárias",
+                    de: "Sehen Sie sich die Dokumentation der Utility-Funktionen an",
+                    zh: "查看实用程序函数文档",
+                    ja: "ユーティリティ関数のドキュメントを確認する",
+                    es: "Consulta la documentación de las funciones de utilidad",
+                    ko: "유틸리티 함수 문서를 확인하세요",
+                    ar: "تحقق من وثائق دوال المرافق",
                 },
                 useCurvedMarkers: {
-                    en: 'Use curved markers',
-                    fr: 'Utiliser des marqueurs courbes',
-                    pt: 'Usar marcadores curvos',
-                    de: 'Gekrümmte Markierungen verwenden',
-                    zh: '使用弧形标记',
-                    ja: '曲線マーカーを使用',
-                    es: 'Usar marcadores curvos',
-                    ko: '곡선 마커 사용',
-                    ar: 'استخدام علامات منحنية'
+                    en: "Use curved markers",
+                    fr: "Utiliser des marqueurs courbes",
+                    pt: "Usar marcadores curvos",
+                    de: "Gekrümmte Markierungen verwenden",
+                    zh: "使用弧形标记",
+                    ja: "曲線マーカーを使用",
+                    es: "Usar marcadores curvos",
+                    ko: "곡선 마커 사용",
+                    ar: "استخدام علامات منحنية",
                 },
                 utilityFunctionsUsed: {
-                    en: 'Utility functions used',
-                    fr: 'Fonctions utilitaires utilisées',
-                    pt: 'Funções utilitárias usadas',
-                    de: 'Verwendete Hilfsfunktionen',
-                    zh: '使用的实用程序函数',
-                    ja: '使用されたユーティリティ関数',
-                    es: 'Funciones de utilidad utilizadas',
-                    ko: '사용된 유틸리티 함수',
-                    ar: 'الدوال المساعدة المستخدمة'
+                    en: "Utility functions used",
+                    fr: "Fonctions utilitaires utilisées",
+                    pt: "Funções utilitárias usadas",
+                    de: "Verwendete Hilfsfunktionen",
+                    zh: "使用的实用程序函数",
+                    ja: "使用されたユーティリティ関数",
+                    es: "Funciones de utilidad utilizadas",
+                    ko: "사용된 유틸리티 함수",
+                    ar: "الدوال المساعدة المستخدمة",
                 },
                 checkSlotsTab: {
                     en: "Check the 'Slots' tab of the documentation",
@@ -357,7 +402,7 @@ export const useMainStore = defineStore("main", {
                     ja: "ドキュメントの「スロット」タブを確認してください",
                     es: "Consulta la pestaña 'Slots' de la documentación",
                     ko: "'슬롯' 탭을 문서에서 확인하세요",
-                    ar: "تحقق من علامة التبويب 'Slots' في الوثائق"
+                    ar: "تحقق من علامة التبويب 'Slots' في الوثائق",
                 },
                 utilityFunctionsDescription: {
                     en: "A set of tested functions to ease-in development",
@@ -368,7 +413,7 @@ export const useMainStore = defineStore("main", {
                     ja: "開発を容易にするためのテスト済み関数のセット",
                     es: "Un conjunto de funciones probadas para facilitar el desarrollo",
                     ko: "개발을 용이하게 하기 위한 테스트된 함수 모음",
-                    ar: "مجموعة من الوظائف المجربة لتسهيل التطوير"
+                    ar: "مجموعة من الوظائف المجربة لتسهيل التطوير",
                 },
                 utilityFunctions: {
                     en: "Utility functions",
@@ -379,7 +424,7 @@ export const useMainStore = defineStore("main", {
                     ja: "ユーティリティ関数",
                     es: "Funciones de utilidad",
                     ko: "유틸리티 함수",
-                    ar: "وظائف مساعدة"
+                    ar: "وظائف مساعدة",
                 },
                 lttb: {
                     en: "This component uses the Largest-Triangle-Three-Bucket algorithm to downsample very large datasets above a certain threshold, while preserving the shape of the dataset. This threshold is configurable in the config object passed as props to the component.",
@@ -390,7 +435,7 @@ export const useMainStore = defineStore("main", {
                     ja: "このコンポーネントは、Largest-Triangle-Three-Bucket アルゴリズムを使用して、特定のしきい値を超える非常に大きなデータセットをダウンサンプリングし、データセットの形状を保持します。このしきい値は、プロップとしてコンポーネントに渡される設定オブジェクトで設定できます。",
                     es: "Este componente utiliza el algoritmo Largest-Triangle-Three-Bucket para reducir conjuntos de datos muy grandes por encima de un cierto umbral, preservando la forma del conjunto de datos. Este umbral es configurable en el objeto de configuración pasado como props al componente.",
                     ko: "이 구성 요소는 Largest-Triangle-Three-Bucket 알고리즘을 사용하여 특정 임계값을 초과하는 매우 큰 데이터 세트를 다운샘플링하면서 데이터 세트의 형태를 유지합니다. 이 임계값은 구성 요소에 props로 전달되는 구성 객체에서 구성할 수 있습니다.",
-                    ar: "يستخدم هذا المكون خوارزمية Largest-Triangle-Three-Bucket لتقليل حجم مجموعات البيانات الكبيرة جدًا التي تتجاوز حدًا معينًا، مع الحفاظ على شكل مجموعة البيانات. يمكن تكوين هذا الحد في كائن التكوين الممرر كـ props إلى المكون."
+                    ar: "يستخدم هذا المكون خوارزمية Largest-Triangle-Three-Bucket لتقليل حجم مجموعات البيانات الكبيرة جدًا التي تتجاوز حدًا معينًا، مع الحفاظ على شكل مجموعة البيانات. يمكن تكوين هذا الحد في كائن التكوين الممرر كـ props إلى المكون.",
                 },
                 makeNow: {
                     en: "Build your chart, copy paste the component!",
@@ -401,7 +446,7 @@ export const useMainStore = defineStore("main", {
                     ja: "チャートを作成して、コンポーネントをコピー＆ペースト！",
                     es: "Construye tu gráfico, copia y pega el componente.",
                     ko: "차트를 생성하고 구성 요소를 복사하여 붙여넣으세요!",
-                    ar: "قم بإنشاء الرسم البياني الخاص بك، انسخ والصق المكون!"
+                    ar: "قم بإنشاء الرسم البياني الخاص بك، انسخ والصق المكون!",
                 },
                 docTooltips: {
                     xy: {
@@ -414,7 +459,7 @@ export const useMainStore = defineStore("main", {
                             ja: "バーを使用する場合、位置を「開始」に設定するのは避けるべきです。",
                             es: "Debe evitar configurar la posición en 'inicio' al usar barras.",
                             ko: "막대를 사용할 때 위치를 '시작'으로 설정하지 않는 것이 좋습니다.",
-                            ar: "يجب تجنب ضبط الموضع على 'البدء' عند استخدام القضبان."
+                            ar: "يجب تجنب ضبط الموضع على 'البدء' عند استخدام القضبان.",
                         },
                         labelsShow: {
                             en: "Show or hide yAxis labels",
@@ -425,7 +470,7 @@ export const useMainStore = defineStore("main", {
                             ja: "y軸ラベルを表示または非表示にする",
                             es: "Mostrar u ocultar etiquetas del eje y",
                             ko: "y축 레이블 표시 또는 숨기기",
-                            ar: "عرض أو إخفاء تسميات المحور y"
+                            ar: "عرض أو إخفاء تسميات المحور y",
                         },
                         axisLabels: {
                             en: "Axis label will show only if a content is set. If the label appears cropped, you can tweak chart padding values.",
@@ -436,9 +481,9 @@ export const useMainStore = defineStore("main", {
                             ja: "軸ラベルはコンテンツが設定されている場合にのみ表示されます。ラベルが切れて表示される場合は、チャートのパディング値を調整できます。",
                             es: "La etiqueta del eje solo se mostrará si se ha establecido un contenido. Si la etiqueta aparece recortada, puedes ajustar los valores de margen del gráfico.",
                             ko: "축 레이블은 콘텐츠가 설정된 경우에만 표시됩니다. 레이블이 잘리는 경우 차트 여백 값을 조정할 수 있습니다.",
-                            ar: "سيظهر ملصق المحور فقط إذا تم تعيين محتوى. إذا ظهر الملصق مقطوعًا، يمكنك تعديل قيم الحشو في المخطط."
-                        }
-                    }
+                            ar: "سيظهر ملصق المحور فقط إذا تم تعيين محتوى. إذا ظهر الملصق مقطوعًا، يمكنك تعديل قيم الحشو في المخطط.",
+                        },
+                    },
                 },
                 randomData: {
                     en: "Show random dataset",
@@ -449,7 +494,7 @@ export const useMainStore = defineStore("main", {
                     ja: "ランダムなデータセットを表示",
                     es: "Mostrar conjunto de datos aleatorio",
                     ko: "무작위 데이터 세트 표시",
-                    ar: "عرض مجموعة بيانات عشوائية"
+                    ar: "عرض مجموعة بيانات عشوائية",
                 },
                 availableComponents: {
                     en: "Available components",
@@ -460,7 +505,7 @@ export const useMainStore = defineStore("main", {
                     ja: "利用可能なコンポーネント",
                     es: "Componentes disponibles",
                     ko: "사용 가능한 구성 요소",
-                    ar: "المكونات المتاحة"
+                    ar: "المكونات المتاحة",
                 },
                 examplesAndVariations: {
                     en: "Examples and variations",
@@ -471,295 +516,295 @@ export const useMainStore = defineStore("main", {
                     ja: "例とバリエーション",
                     es: "Ejemplos y variaciones",
                     ko: "예제 및 변형",
-                    ar: "أمثلة وتنوعات"
+                    ar: "أمثلة وتنوعات",
                 },
                 checkOutNewExamplePage: {
-                    en: 'Checkout the new example page !',
-                    fr: 'Découvrez la nouvelle page d\'exemples !',
-                    pt: 'Confira a nova página de exemplos !',
-                    de: 'Schauen Sie sich die neue Beispielseite an !',
-                    zh: '查看新的示例页面!',
-                    ja: '新しい例のページをご覧ください!',
-                    es: '¡Visita la nueva página de ejemplos!',
-                    ko: '새로운 예제 페이지를 확인하세요!',
-                    ar: 'اطلع على صفحة الأمثلة الجديدة!'
+                    en: "Checkout the new example page !",
+                    fr: "Découvrez la nouvelle page d'exemples !",
+                    pt: "Confira a nova página de exemplos !",
+                    de: "Schauen Sie sich die neue Beispielseite an !",
+                    zh: "查看新的示例页面!",
+                    ja: "新しい例のページをご覧ください!",
+                    es: "¡Visita la nueva página de ejemplos!",
+                    ko: "새로운 예제 페이지를 확인하세요!",
+                    ar: "اطلع على صفحة الأمثلة الجديدة!",
                 },
                 viewExamples: {
-                    en: 'View examples',
-                    fr: 'Voir des exemples',
-                    pt: 'Ver exemplos',
-                    de: 'Beispiele ansehen',
-                    zh: '查看示例',
-                    ja: '例を見る',
-                    ko: '예시 보기',
-                    es: 'Ver ejemplos',
-                    ar: 'عرض الأمثلة'
+                    en: "View examples",
+                    fr: "Voir des exemples",
+                    pt: "Ver exemplos",
+                    de: "Beispiele ansehen",
+                    zh: "查看示例",
+                    ja: "例を見る",
+                    ko: "예시 보기",
+                    es: "Ver ejemplos",
+                    ar: "عرض الأمثلة",
                 },
                 detailedDocumentation: {
-                    en: 'Detailed documentation',
-                    fr: 'Documentation détaillée',
-                    pt: 'Documentação detalhada',
-                    de: 'Ausführliche Dokumentation',
-                    zh: '详细文档',
-                    ja: '詳細なドキュメント',
-                    ko: '자세한 문서',
-                    es: 'Documentación detallada',
-                    ar: 'وثائق مفصلة'
+                    en: "Detailed documentation",
+                    fr: "Documentation détaillée",
+                    pt: "Documentação detalhada",
+                    de: "Ausführliche Dokumentation",
+                    zh: "详细文档",
+                    ja: "詳細なドキュメント",
+                    ko: "자세한 문서",
+                    es: "Documentación detallada",
+                    ar: "وثائق مفصلة",
                 },
                 formatter: {
-                    en: 'Chart data labels can be customized using the formatter config attribute. (Check component documentations under the config tab to see where the formatter attributes are located).',
-                    fr: 'Les étiquettes de données du graphique peuvent être personnalisées en utilisant l\'attribut de configuration du formateur. (Consultez la documentation des composants sous l\'onglet de configuration pour voir où se trouvent les attributs du formateur).',
-                    pt: 'Os rótulos de dados do gráfico podem ser personalizados usando o atributo de configuração do formatador. (Verifique a documentação do componente na guia de configuração para ver onde os atributos do formatador estão localizados).',
-                    de: 'Diagrammdatentitel können mit dem Formatter-Konfigurationsattribut angepasst werden. (Überprüfen Sie die Komponentendokumentation unter dem Konfigurationsreiter, um zu sehen, wo sich die Formatter-Attribute befinden).',
-                    zh: '图表数据标签可以使用格式化器配置属性进行自定义。 （查看组件文档的配置选项卡，以了解格式化器属性的位置）。',
-                    ja: 'グラフのデータラベルは、フォーマッターの設定属性を使用してカスタマイズできます。（設定タブのコンポーネントドキュメントで、フォーマッター属性がどこにあるか確認してください）。',
-                    es: 'Las etiquetas de datos del gráfico se pueden personalizar utilizando el atributo de configuración del formateador. (Consulta la documentación del componente en la pestaña de configuración para ver dónde se encuentran los atributos del formateador).',
-                    ko: '차트 데이터 라벨은 포매터 설정 속성을 사용하여 사용자 정의할 수 있습니다. (설정 탭 아래의 구성 요소 문서에서 포매터 속성의 위치를 확인하세요).',
-                    ar: 'يمكن تخصيص تسميات بيانات الرسم البياني باستخدام سمة تكوين المنسق. (تحقق من وثائق المكون ضمن علامة تبويب التكوين لمعرفة مكان وجود سمات المنسق).'
+                    en: "Chart data labels can be customized using the formatter config attribute. (Check component documentations under the config tab to see where the formatter attributes are located).",
+                    fr: "Les étiquettes de données du graphique peuvent être personnalisées en utilisant l'attribut de configuration du formateur. (Consultez la documentation des composants sous l'onglet de configuration pour voir où se trouvent les attributs du formateur).",
+                    pt: "Os rótulos de dados do gráfico podem ser personalizados usando o atributo de configuração do formatador. (Verifique a documentação do componente na guia de configuração para ver onde os atributos do formatador estão localizados).",
+                    de: "Diagrammdatentitel können mit dem Formatter-Konfigurationsattribut angepasst werden. (Überprüfen Sie die Komponentendokumentation unter dem Konfigurationsreiter, um zu sehen, wo sich die Formatter-Attribute befinden).",
+                    zh: "图表数据标签可以使用格式化器配置属性进行自定义。 （查看组件文档的配置选项卡，以了解格式化器属性的位置）。",
+                    ja: "グラフのデータラベルは、フォーマッターの設定属性を使用してカスタマイズできます。（設定タブのコンポーネントドキュメントで、フォーマッター属性がどこにあるか確認してください）。",
+                    es: "Las etiquetas de datos del gráfico se pueden personalizar utilizando el atributo de configuración del formateador. (Consulta la documentación del componente en la pestaña de configuración para ver dónde se encuentran los atributos del formateador).",
+                    ko: "차트 데이터 라벨은 포매터 설정 속성을 사용하여 사용자 정의할 수 있습니다. (설정 탭 아래의 구성 요소 문서에서 포매터 속성의 위치를 확인하세요).",
+                    ar: "يمكن تخصيص تسميات بيانات الرسم البياني باستخدام سمة تكوين المنسق. (تحقق من وثائق المكون ضمن علامة تبويب التكوين لمعرفة مكان وجود سمات المنسق).",
                 },
                 formatterLink: {
-                    en: 'Check out the customization page to see how to use the formatter callback function.',
-                    fr: 'Consultez la page de personnalisation pour voir comment utiliser la fonction de rappel du formateur.',
-                    pt: 'Confira a página de personalização para ver como usar a função de retorno de chamada do formatador.',
-                    de: 'Schauen Sie sich die Anpassungsseite an, um zu sehen, wie Sie die Formatter-Callback-Funktion verwenden.',
-                    zh: '查看自定义页面，了解如何使用格式化回调函数。',
-                    ja: 'フォーマッターのコールバック関数の使い方については、カスタマイズページをご覧ください。',
-                    es: 'Consulta la página de personalización para ver cómo usar la función de devolución de llamada del formateador.',
-                    ko: '포매터 콜백 함수 사용 방법은 사용자 정의 페이지를 확인하세요.',
-                    ar: 'اطّلع على صفحة التخصيص لمعرفة كيفية استخدام دالة رد الاستدعاء الخاصة بالمنسّق.'
+                    en: "Check out the customization page to see how to use the formatter callback function.",
+                    fr: "Consultez la page de personnalisation pour voir comment utiliser la fonction de rappel du formateur.",
+                    pt: "Confira a página de personalização para ver como usar a função de retorno de chamada do formatador.",
+                    de: "Schauen Sie sich die Anpassungsseite an, um zu sehen, wie Sie die Formatter-Callback-Funktion verwenden.",
+                    zh: "查看自定义页面，了解如何使用格式化回调函数。",
+                    ja: "フォーマッターのコールバック関数の使い方については、カスタマイズページをご覧ください。",
+                    es: "Consulta la página de personalización para ver cómo usar la función de devolución de llamada del formateador.",
+                    ko: "포매터 콜백 함수 사용 방법은 사용자 정의 페이지를 확인하세요.",
+                    ar: "اطّلع على صفحة التخصيص لمعرفة كيفية استخدام دالة رد الاستدعاء الخاصة بالمنسّق.",
                 },
                 useTs: {
-                    en: 'Use Typescript:',
-                    fr: 'Avec Typescript',
-                    pt: 'Usar TypeScript:',
-                    de: 'Verwenden Sie TypeScript:',
-                    zh: 'TypeScript 使用',
-                    ja: '「TypeScript」を使用する:',
-                    es: 'Usando TypeScript',
-                    ko: 'TypeScript 사용',
-                    ar: 'TypeScript باستخدام'
+                    en: "Use Typescript:",
+                    fr: "Avec Typescript",
+                    pt: "Usar TypeScript:",
+                    de: "Verwenden Sie TypeScript:",
+                    zh: "TypeScript 使用",
+                    ja: "「TypeScript」を使用する:",
+                    es: "Usando TypeScript",
+                    ko: "TypeScript 사용",
+                    ar: "TypeScript باستخدام",
                 },
                 universalBoilerplate: {
-                    en: 'VueDataUi universal component boilerplate:',
-                    fr: 'Modèle standard de composant universel VueDataUi:',
-                    pt: 'Padrão de componente universal VueDataUi:',
-                    de: 'VueDataUi-Universalkomponenten-Boilerplate:',
-                    zh: 'VueDataUi 通用组件样板：',
-                    ja: 'VueDataUi ユニバーサル コンポーネントのボイラープレート:',
-                    es: 'Texto estándar del componente universal de VueDataUi:',
-                    ko: 'VueDataUi 범용 구성 요소 상용구:',
-                    ar: 'نموذج VueDataUi للمكونات العالمية:'
+                    en: "VueDataUi universal component boilerplate:",
+                    fr: "Modèle standard de composant universel VueDataUi:",
+                    pt: "Padrão de componente universal VueDataUi:",
+                    de: "VueDataUi-Universalkomponenten-Boilerplate:",
+                    zh: "VueDataUi 通用组件样板：",
+                    ja: "VueDataUi ユニバーサル コンポーネントのボイラープレート:",
+                    es: "Texto estándar del componente universal de VueDataUi:",
+                    ko: "VueDataUi 범용 구성 요소 상용구:",
+                    ar: "نموذج VueDataUi للمكونات العالمية:",
                 },
                 clipboard: {
-                    en: 'Copied to clipboard',
-                    fr: 'Copié sur le presse-papier',
-                    pt: 'Copiado para a área de transferência',
-                    de: 'In die Zwischenablage kopiert',
-                    zh: '已复制到剪贴板',
-                    ja: 'クリップボードにコピーされました',
-                    es: 'Copiado al portapapeles',
-                    ko: '클립보드에 복사됨',
-                    ar: 'تم النسخ إلى الحافظة.'
+                    en: "Copied to clipboard",
+                    fr: "Copié sur le presse-papier",
+                    pt: "Copiado para a área de transferência",
+                    de: "In die Zwischenablage kopiert",
+                    zh: "已复制到剪贴板",
+                    ja: "クリップボードにコピーされました",
+                    es: "Copiado al portapapeles",
+                    ko: "클립보드에 복사됨",
+                    ar: "تم النسخ إلى الحافظة.",
                 },
                 noResultsFor: {
-                    en: 'No results for:',
-                    fr: 'Aucun résultat pour :',
-                    pt: 'Nenhum resultado para:',
-                    de: 'Keine Ergebnisse für:',
-                    zh: '没有结果：',
-                    ja: '次の結果はありません:',
-                    es: 'No hay resultados para:',
-                    ko: '다음에 대한 검색결과가 없습니다:',
-                    ar: 'لا توجد نتائج لـ'
+                    en: "No results for:",
+                    fr: "Aucun résultat pour :",
+                    pt: "Nenhum resultado para:",
+                    de: "Keine Ergebnisse für:",
+                    zh: "没有结果：",
+                    ja: "次の結果はありません:",
+                    es: "No hay resultados para:",
+                    ko: "다음에 대한 검색결과가 없습니다:",
+                    ar: "لا توجد نتائج لـ",
                 },
                 searchResultFor: {
-                    en: 'Search results for:',
-                    fr: 'Résultats de recherche pour :',
-                    pt: 'Resultados da pesquisa para:',
-                    de: 'Suchergebnisse für:',
-                    zh: '搜索结果：',
-                    ja: 'の検索結果:',
-                    es: 'Resultados de búsqueda para:',
-                    ko: '다음에 대한 검색 결과:',
-                    ar: 'نتائج البحث عن'
+                    en: "Search results for:",
+                    fr: "Résultats de recherche pour :",
+                    pt: "Resultados da pesquisa para:",
+                    de: "Suchergebnisse für:",
+                    zh: "搜索结果：",
+                    ja: "の検索結果:",
+                    es: "Resultados de búsqueda para:",
+                    ko: "다음에 대한 검색 결과:",
+                    ar: "نتائج البحث عن",
                 },
                 quickOverview: {
-                    en: 'Quick overview - Technical specs',
-                    fr: 'Aperçu rapide - Spécifications techniques',
-                    pt: 'Visão geral rápida - Especificações técnicas',
-                    de: 'Schneller Überblick – Technische Daten',
-                    zh: '快速概述 - 技术规格',
-                    ja: '概要 - 技術仕様',
-                    es: 'Descripción rápida: especificaciones técnicas',
-                    ko: '빠른 개요 - 기술 사양',
-                    ar: 'نظرة سريعة - المواصفات التقنية'
+                    en: "Quick overview - Technical specs",
+                    fr: "Aperçu rapide - Spécifications techniques",
+                    pt: "Visão geral rápida - Especificações técnicas",
+                    de: "Schneller Überblick – Technische Daten",
+                    zh: "快速概述 - 技术规格",
+                    ja: "概要 - 技術仕様",
+                    es: "Descripción rápida: especificaciones técnicas",
+                    ko: "빠른 개요 - 기술 사양",
+                    ar: "نظرة سريعة - المواصفات التقنية",
                 },
                 responsiveUnitPresentation: {
                     en: `This chart can be made 'responsive'. Place the chart inside a resizable container, or a container with fixed dimensions. Set the config attribute`,
                     fr: `Ce graphique peut être rendu « responsive ». Placez le graphique dans un conteneur redimensionnable ou dans un conteneur aux dimensions fixes. Définir l'attribut de configuration`,
                     pt: `Este gráfico pode ser tornado 'responsivo'. Coloque o gráfico dentro de um contêiner redimensionável ou de dimensões fixas. Defina o atributo de configuração`,
-                    de: 'Dieses Diagramm kann „responsiv“ gestaltet werden. Platzieren Sie das Diagramm in einem Container mit veränderbarer Größe oder einem Container mit festen Abmessungen. Legen Sie das Konfigurationsattribut fest',
-                    zh: '该图表可以设为“响应式”。将图表放置在可调整大小的容器或具有固定尺寸的容器内。设置配置属性',
-                    ja: 'このチャートは「レスポンシブ」にすることができます。サイズ変更可能なコンテナまたは固定寸法のコンテナ内にグラフを配置します。構成属性を設定する',
+                    de: "Dieses Diagramm kann „responsiv“ gestaltet werden. Platzieren Sie das Diagramm in einem Container mit veränderbarer Größe oder einem Container mit festen Abmessungen. Legen Sie das Konfigurationsattribut fest",
+                    zh: "该图表可以设为“响应式”。将图表放置在可调整大小的容器或具有固定尺寸的容器内。设置配置属性",
+                    ja: "このチャートは「レスポンシブ」にすることができます。サイズ変更可能なコンテナまたは固定寸法のコンテナ内にグラフを配置します。構成属性を設定する",
                     es: 'Este gráfico se puede hacer "responsive". Coloque el gráfico dentro de un contenedor de tamaño variable o un contenedor con dimensiones fijas. Establecer el atributo de configuración',
                     ko: `이 차트는 '반응형'으로 만들 수 있습니다. 크기 조정 가능한 컨테이너나 고정된 크기의 컨테이너 안에 차트를 배치합니다. 구성 속성 설정`,
-                    ar: `يمكن جعل هذا المخطط "متجاوبًا". ضع المخطط داخل حاوية قابلة لتغيير الحجم أو حاوية بأبعاد ثابتة. قم بتعيين خاصية التكوين (config).`
+                    ar: `يمكن جعل هذا المخطط "متجاوبًا". ضع المخطط داخل حاوية قابلة لتغيير الحجم أو حاوية بأبعاد ثابتة. قم بتعيين خاصية التكوين (config).`,
                 },
                 responsiveHandle: {
                     en: `Use the resize handle to check out 'responsive' behaviour:`,
                     fr: `Utilisez la poignée de redimensionnement pour vérifier le comportement « responsive » :`,
                     pt: `Use o identificador de redimensionamento para verificar o comportamento 'responsivo':`,
-                    de: 'Verwenden Sie den Größenänderungsgriff, um das „responsive“ Verhalten zu überprüfen:',
-                    zh: '使用调整大小手柄来检查“响应”行为：',
-                    ja: 'サイズ変更ハンドルを使用して「応答性」の動作を確認します。',
+                    de: "Verwenden Sie den Größenänderungsgriff, um das „responsive“ Verhalten zu überprüfen:",
+                    zh: "使用调整大小手柄来检查“响应”行为：",
+                    ja: "サイズ変更ハンドルを使用して「応答性」の動作を確認します。",
                     es: 'Utilice el controlador de cambio de tamaño para comprobar el comportamiento "receptivo":',
-                    ko: '반응형 동작을 확인하려면 크기 조정 핸들을 사용하세요.',
-                    ar: ':استخدم مقبض التغيير للتحقق من سلوك التجاوب'
+                    ko: "반응형 동작을 확인하려면 크기 조정 핸들을 사용하세요.",
+                    ar: ":استخدم مقبض التغيير للتحقق من سلوك التجاوب",
                 },
                 responsiveUsage: {
-                    en: 'By default, all charts will scale based on the width of the parent container. Charts with the responsive configuration option have it disabled by default. If a chart has the responsive configuration option available ',
+                    en: "By default, all charts will scale based on the width of the parent container. Charts with the responsive configuration option have it disabled by default. If a chart has the responsive configuration option available ",
                     fr: `Par défaut, tous les graphiques seront mis à l'échelle en fonction de la largeur du conteneur parent. Les graphiques avec l'option de configuration responsive l'ont désactivé par défaut. Si un graphique dispose de l'option de configuration responsive :`,
                     pt: `Por padrão, todos os gráficos serão dimensionados com base na largura do contêiner pai. Gráficos com opção de configuração 'responsiva' estão desabilitados por padrão. Se um gráfico tiver a opção de configuração 'responsiva' disponível:`,
-                    de: 'Standardmäßig werden alle Diagramme basierend auf der Breite des übergeordneten Containers skaliert. Bei Diagrammen mit der Konfigurationsoption „responsiv“ ist diese standardmäßig deaktiviert. Wenn für ein Diagramm die Konfigurationsoption „Responsiv“ verfügbar ist:',
-                    zh: '默认情况下，所有图表都将根据父容器的宽度进行缩放。具有“响应式”配置选项的图表默认情况下处于禁用状态。如果图表具有可用的“响应式”配置选项：',
-                    ja: 'デフォルトでは、すべてのグラフは親コンテナの幅に基づいて拡大縮小されます。 「応答性」構成オプションを含むチャートでは、デフォルトで無効になっています。チャートに「レスポンシブ」構成オプションが利用可能な場合:',
+                    de: "Standardmäßig werden alle Diagramme basierend auf der Breite des übergeordneten Containers skaliert. Bei Diagrammen mit der Konfigurationsoption „responsiv“ ist diese standardmäßig deaktiviert. Wenn für ein Diagramm die Konfigurationsoption „Responsiv“ verfügbar ist:",
+                    zh: "默认情况下，所有图表都将根据父容器的宽度进行缩放。具有“响应式”配置选项的图表默认情况下处于禁用状态。如果图表具有可用的“响应式”配置选项：",
+                    ja: "デフォルトでは、すべてのグラフは親コンテナの幅に基づいて拡大縮小されます。 「応答性」構成オプションを含むチャートでは、デフォルトで無効になっています。チャートに「レスポンシブ」構成オプションが利用可能な場合:",
                     es: 'De forma predeterminada, todos los gráficos se escalarán según el ancho del contenedor principal. Los gráficos con la opción de configuración "responsive" la tienen deshabilitada de forma predeterminada. Si un gráfico tiene disponible la opción de configuración "responsive":',
                     ko: `기본적으로 모든 차트는 상위 컨테이너의 너비를 기준으로 크기가 조정됩니다. '반응형' 구성 옵션이 있는 차트에서는 기본적으로 비활성화되어 있습니다. 차트에 '반응형' 구성 옵션을 사용할 수 있는 경우:`,
-                    ar: ':بشكل افتراضي، سيتم ضبط حجم جميع المخططات بناءً على عرض الحاوية الرئيسية. يتم تعطيل خيار التكوين الخاص بالتجاوب افتراضيًا. إذا كان المخطط يحتوي على خيار التكوين الخاص بالتجاوب متاحًا'
+                    ar: ":بشكل افتراضي، سيتم ضبط حجم جميع المخططات بناءً على عرض الحاوية الرئيسية. يتم تعطيل خيار التكوين الخاص بالتجاوب افتراضيًا. إذا كان المخطط يحتوي على خيار التكوين الخاص بالتجاوب متاحًا",
                 },
                 responsiveProportionalSizing: {
-                    en: 'In responsive mode, set this attribute to false to disable proportional sizing of fonts and other elements.',
-                    fr: 'En mode responsive, définissez cet attribut sur false pour désactiver la mise à l\'échelle proportionnelle des polices et d\'autres éléments.',
-                    pt: 'No modo responsivo, defina este atributo como false para desabilitar o dimensionamento proporcional de fontes e outros elementos.',
-                    de: 'Im responsiven Modus setzen Sie dieses Attribut auf false, um die proportionale Größenanpassung von Schriftarten und anderen Elementen zu deaktivieren.',
-                    zh: '在响应模式下，将此属性设置为 false 以禁用字体和其他元素的比例缩放。',
-                    ja: 'レスポンシブモードでは、この属性を false に設定してフォントやその他の要素の比例サイズ変更を無効にします。',
-                    es: 'En modo responsive, establece este atributo en false para deshabilitar el dimensionamiento proporcional de las fuentes y otros elementos.',
-                    ko: '반응형 모드에서 이 속성을 false로 설정하여 글꼴 및 기타 요소의 비례 크기 조정을 비활성화합니다.',
-                    ar: 'في الوضع المتجاوب، اضبط هذه الخاصية على false لتعطيل تغيير حجم الخطوط والعناصر الأخرى بشكل نسبي.'
+                    en: "In responsive mode, set this attribute to false to disable proportional sizing of fonts and other elements.",
+                    fr: "En mode responsive, définissez cet attribut sur false pour désactiver la mise à l'échelle proportionnelle des polices et d'autres éléments.",
+                    pt: "No modo responsivo, defina este atributo como false para desabilitar o dimensionamento proporcional de fontes e outros elementos.",
+                    de: "Im responsiven Modus setzen Sie dieses Attribut auf false, um die proportionale Größenanpassung von Schriftarten und anderen Elementen zu deaktivieren.",
+                    zh: "在响应模式下，将此属性设置为 false 以禁用字体和其他元素的比例缩放。",
+                    ja: "レスポンシブモードでは、この属性を false に設定してフォントやその他の要素の比例サイズ変更を無効にします。",
+                    es: "En modo responsive, establece este atributo en false para deshabilitar el dimensionamiento proporcional de las fuentes y otros elementos.",
+                    ko: "반응형 모드에서 이 속성을 false로 설정하여 글꼴 및 기타 요소의 비례 크기 조정을 비활성화합니다.",
+                    ar: "في الوضع المتجاوب، اضبط هذه الخاصية على false لتعطيل تغيير حجم الخطوط والعناصر الأخرى بشكل نسبي.",
                 },
                 responsive: {
-                    en: 'Set this attribute to true when the chart is placed inside a resizable container, or when the container has fixed dimensions. Never use when no height is set on the parent container, this will cause infinite height growth of the chart.',
+                    en: "Set this attribute to true when the chart is placed inside a resizable container, or when the container has fixed dimensions. Never use when no height is set on the parent container, this will cause infinite height growth of the chart.",
                     fr: `Définissez cet attribut sur true lorsque le graphique est placé dans un conteneur redimensionnable ou lorsque le conteneur a des dimensions fixes. Ne jamais utiliser lorsqu'aucune hauteur n'est définie sur le conteneur parent, cela entraînerait une croissance infinie de la hauteur du graphique.`,
-                    pt: 'Defina esse atributo como verdadeiro quando o gráfico for colocado dentro de um contêiner redimensionável ou quando o contêiner tiver dimensões fixas. Nunca use quando nenhuma altura estiver definida no contêiner pai, isso causará um crescimento infinito de altura do gráfico',
-                    de: 'Setzen Sie dieses Attribut auf „true“, wenn das Diagramm in einem Container mit veränderbarer Größe platziert wird oder wenn der Container feste Abmessungen hat. Niemals verwenden, wenn für den übergeordneten Container keine Höhe festgelegt ist, da dies zu einem unendlichen Höhenwachstum des Diagramms führt',
-                    zh: '当图表放置在可调整大小的容器内或容器具有固定尺寸时，请将此属性设置为 true。父容器未设置高度时切勿使用，这将导致图表的高度无限增长',
-                    ja: 'チャートがサイズ変更可能なコンテナー内に配置される場合、またはコンテナーの寸法が固定されている場合は、この属性を true に設定します。親コンテナに高さが設定されていない場合は決して使用しないでください。これにより、チャートの高さが無限に増加します。',
-                    es: 'Establezca este atributo en verdadero cuando el gráfico se coloque dentro de un contenedor de tamaño variable o cuando el contenedor tenga dimensiones fijas. Nunca lo use cuando no se haya establecido ninguna altura en el contenedor principal, esto provocará un crecimiento infinito de la altura del gráfico.',
-                    ko: '차트가 크기 조정 가능한 컨테이너 내에 배치되거나 컨테이너에 고정 크기가 있는 경우 이 특성을 true로 설정합니다. 상위 컨테이너에 높이가 설정되지 않은 경우에는 사용하지 마십시오. 이로 인해 차트의 높이가 무한히 증가합니다.',
-                    ar: 'قم بتعيين هذه الخاصية إلى "true" عندما يتم وضع المخطط داخل حاوية قابلة لتغيير الحجم أو عندما تكون للحاوية أبعاد ثابتة. لا تستخدم هذه الخاصية عندما لا يتم تحديد ارتفاع للحاوية الرئيسية، لأن هذا سيؤدي إلى نمو غير محدود في ارتفاع المخطط.'
+                    pt: "Defina esse atributo como verdadeiro quando o gráfico for colocado dentro de um contêiner redimensionável ou quando o contêiner tiver dimensões fixas. Nunca use quando nenhuma altura estiver definida no contêiner pai, isso causará um crescimento infinito de altura do gráfico",
+                    de: "Setzen Sie dieses Attribut auf „true“, wenn das Diagramm in einem Container mit veränderbarer Größe platziert wird oder wenn der Container feste Abmessungen hat. Niemals verwenden, wenn für den übergeordneten Container keine Höhe festgelegt ist, da dies zu einem unendlichen Höhenwachstum des Diagramms führt",
+                    zh: "当图表放置在可调整大小的容器内或容器具有固定尺寸时，请将此属性设置为 true。父容器未设置高度时切勿使用，这将导致图表的高度无限增长",
+                    ja: "チャートがサイズ変更可能なコンテナー内に配置される場合、またはコンテナーの寸法が固定されている場合は、この属性を true に設定します。親コンテナに高さが設定されていない場合は決して使用しないでください。これにより、チャートの高さが無限に増加します。",
+                    es: "Establezca este atributo en verdadero cuando el gráfico se coloque dentro de un contenedor de tamaño variable o cuando el contenedor tenga dimensiones fijas. Nunca lo use cuando no se haya establecido ninguna altura en el contenedor principal, esto provocará un crecimiento infinito de la altura del gráfico.",
+                    ko: "차트가 크기 조정 가능한 컨테이너 내에 배치되거나 컨테이너에 고정 크기가 있는 경우 이 특성을 true로 설정합니다. 상위 컨테이너에 높이가 설정되지 않은 경우에는 사용하지 마십시오. 이로 인해 차트의 높이가 무한히 증가합니다.",
+                    ar: 'قم بتعيين هذه الخاصية إلى "true" عندما يتم وضع المخطط داخل حاوية قابلة لتغيير الحجم أو عندما تكون للحاوية أبعاد ثابتة. لا تستخدم هذه الخاصية عندما لا يتم تحديد ارتفاع للحاوية الرئيسية، لأن هذا سيؤدي إلى نمو غير محدود في ارتفاع المخطط.',
                 },
                 overview: {
                     icon: {
-                        en: 'Icon',
-                        fr: 'Icone',
-                        pt: 'Ícone',
-                        de: 'Symbol',
-                        zh: '图标',
-                        ja: 'アイコン',
-                        es: 'Icono',
-                        ko: '상',
-                        ar: 'أيقونة'
+                        en: "Icon",
+                        fr: "Icone",
+                        pt: "Ícone",
+                        de: "Symbol",
+                        zh: "图标",
+                        ja: "アイコン",
+                        es: "Icono",
+                        ko: "상",
+                        ar: "أيقونة",
                     },
                     userOptions: {
-                        en: 'User options',
-                        fr: 'Options utilisateur',
-                        pt: 'Opções do usuário',
-                        de: 'Benutzeroptionen',
-                        zh: '用户选项',
-                        ja: 'ユーザーオプション',
-                        es: 'Opciones de usuario',
-                        ko: '사용자 옵션',
-                        ar: 'خيارات المستخدم'
+                        en: "User options",
+                        fr: "Options utilisateur",
+                        pt: "Opções do usuário",
+                        de: "Benutzeroptionen",
+                        zh: "用户选项",
+                        ja: "ユーザーオプション",
+                        es: "Opciones de usuario",
+                        ko: "사용자 옵션",
+                        ar: "خيارات المستخدم",
                     },
                     themes: {
-                        en: 'Themes',
-                        fr: 'Themes',
-                        pt: 'Temas',
-                        de: 'Themen',
-                        zh: '主题',
-                        ja: 'テーマ',
-                        es: 'Temas',
-                        ko: '테마',
-                        ar: 'سمات'
+                        en: "Themes",
+                        fr: "Themes",
+                        pt: "Temas",
+                        de: "Themen",
+                        zh: "主题",
+                        ja: "テーマ",
+                        es: "Temas",
+                        ko: "테마",
+                        ar: "سمات",
                     },
                     component: {
-                        en: 'Component',
+                        en: "Component",
                         fr: "Composant",
-                        pt: 'Componente',
-                        de: 'Komponente',
-                        zh: '成分',
-                        ja: '成分',
-                        es: 'Componente',
-                        ko: '요소',
-                        ar: 'مكون'
+                        pt: "Componente",
+                        de: "Komponente",
+                        zh: "成分",
+                        ja: "成分",
+                        es: "Componente",
+                        ko: "요소",
+                        ar: "مكون",
                     },
                     description: {
-                        en: 'Description',
+                        en: "Description",
                         fr: "Description",
-                        pt: 'Descrição',
-                        de: 'Beschreibung',
-                        zh: '描述',
-                        ja: '説明',
-                        es: 'Descripción',
-                        ko: '설명',
-                        ar: 'وصف'
+                        pt: "Descrição",
+                        de: "Beschreibung",
+                        zh: "描述",
+                        ja: "説明",
+                        es: "Descripción",
+                        ko: "설명",
+                        ar: "وصف",
                     },
                     features: {
-                        en: 'Features',
+                        en: "Features",
                         fr: "Caractéristiques",
-                        pt: 'Características',
-                        de: 'Merkmale',
-                        zh: '特征',
-                        ja: '特徴',
-                        es: 'Características',
-                        ko: '특징',
-                        ar: 'ميزات'
+                        pt: "Características",
+                        de: "Merkmale",
+                        zh: "特征",
+                        ja: "特徴",
+                        es: "Características",
+                        ko: "특징",
+                        ar: "ميزات",
                     },
                     exposedMethods: {
-                        en: 'Exposed methods',
+                        en: "Exposed methods",
                         fr: "Méthodes exposées",
-                        pt: 'Métodos expostos',
-                        de: 'Offengelegte Methoden',
-                        zh: '暴露方法',
-                        ja: '公開されたメソッド',
-                        es: 'Métodos expuestos',
-                        ko: '노출된 방법',
-                        ar: 'الطرق المعرضة'
+                        pt: "Métodos expostos",
+                        de: "Offengelegte Methoden",
+                        zh: "暴露方法",
+                        ja: "公開されたメソッド",
+                        es: "Métodos expuestos",
+                        ko: "노출된 방법",
+                        ar: "الطرق المعرضة",
                     },
                     basicRendering: {
-                        en: 'Basic rendering',
+                        en: "Basic rendering",
                         fr: "Rendu de base",
-                        pt: 'Renderização básica',
-                        de: 'Grundlegendes Rendering',
-                        zh: '基础渲染',
-                        ja: '基本レンダリング',
-                        es: 'Representación básica',
-                        ko: '기본 렌더링',
-                        ar: 'الرسم الأساسي'
+                        pt: "Renderização básica",
+                        de: "Grundlegendes Rendering",
+                        zh: "基础渲染",
+                        ja: "基本レンダリング",
+                        es: "Representación básica",
+                        ko: "기본 렌더링",
+                        ar: "الرسم الأساسي",
                     },
                     viewSampleDataset: {
-                        en: 'View sample dataset',
+                        en: "View sample dataset",
                         fr: "Afficher un exemple d'ensemble de données",
-                        pt: 'Ver conjunto de dados de amostra',
-                        de: 'Beispieldatensatz ansehen',
-                        zh: '查看示例数据集',
-                        ja: 'サンプル データセットを表示する',
-                        es: 'Ver conjunto de datos de muestra',
-                        ko: '샘플 데이터세트 보기',
-                        ar: 'عرض مجموعة بيانات عينة'
+                        pt: "Ver conjunto de dados de amostra",
+                        de: "Beispieldatensatz ansehen",
+                        zh: "查看示例数据集",
+                        ja: "サンプル データセットを表示する",
+                        es: "Ver conjunto de datos de muestra",
+                        ko: "샘플 데이터세트 보기",
+                        ar: "عرض مجموعة بيانات عينة",
                     },
                     title: {
-                        en: 'Quick components overview',
-                        fr: 'Présentation rapide des composants',
-                        pt: 'Visão geral rápida dos componentes',
-                        de: 'Schneller Komponentenüberblick',
-                        zh: '组件快速概览',
-                        ja: 'コンポーネントの簡単な概要',
-                        es: 'Descripción rápida de los componentes',
-                        ko: '빠른 구성 요소 개요',
-                        ar: 'نظرة سريعة على المكونات'
-                    }
+                        en: "Quick components overview",
+                        fr: "Présentation rapide des composants",
+                        pt: "Visão geral rápida dos componentes",
+                        de: "Schneller Komponentenüberblick",
+                        zh: "组件快速概览",
+                        ja: "コンポーネントの簡単な概要",
+                        es: "Descripción rápida de los componentes",
+                        ko: "빠른 구성 요소 개요",
+                        ar: "نظرة سريعة على المكونات",
+                    },
                 },
                 wordCloud: {
                     dataset: {
@@ -771,97 +816,97 @@ export const useMainStore = defineStore("main", {
                         ja: "プレーンテキストをデータセットプロップに渡すことができます。コンポーネントは単語数を計算します。また、「vue-data-ui」から「createWordCloudDatasetFromPlainText」メソッドをインポートして、プレーン テキストをデータセット オブジェクトに変換し、「dataset」プロパティに渡すこともできます。",
                         es: "Puede pasar texto sin formato al dataset prop. El componente calculará el recuento de palabras. También puede importar el método 'createWordCloudDatasetFromPlainText' desde 'vue-data-ui' para convertir texto sin formato en un objeto de conjunto de datos para pasarlo a la prop 'dataset'.",
                         ko: "데이터세트 소품에 일반 텍스트를 전달할 수 있습니다. 구성 요소는 단어 수를 계산합니다. 또한 'vue-data-ui'에서 'createWordCloudDatasetFromPlainText' 메소드를 가져와서 일반 텍스트를 데이터세트 객체로 변환하여 'dataset' prop에 전달할 수도 있습니다.",
-                        ar: `يمكنك تمرير نص عادي إلى خاصية مجموعة البيانات (dataset prop). سيقوم المكون بحساب عدد الكلمات. يمكنك أيضًا استيراد الطريقة 'createWordCloudDatasetFromPlainText' من 'vue-data-ui' لتحويل النص العادي إلى كائن مجموعة بيانات (dataset object) لتمريره إلى خاصية 'dataset' (prop)`
-                    }
+                        ar: `يمكنك تمرير نص عادي إلى خاصية مجموعة البيانات (dataset prop). سيقوم المكون بحساب عدد الكلمات. يمكنك أيضًا استيراد الطريقة 'createWordCloudDatasetFromPlainText' من 'vue-data-ui' لتحويل النص العادي إلى كائن مجموعة بيانات (dataset object) لتمريره إلى خاصية 'dataset' (prop)`,
+                    },
                 },
                 sideMenu: {
                     graphs: {
-                        en: 'Graphs',
-                        fr: 'Graphes',
-                        pt: 'Grafos',
-                        de: 'Graphen',
-                        zh: '图',
-                        ja: 'グラフ',
-                        es: 'Grafos',
-                        ko: '그래프',
-                        ar: 'رسوم بيانية'
+                        en: "Graphs",
+                        fr: "Graphes",
+                        pt: "Grafos",
+                        de: "Graphen",
+                        zh: "图",
+                        ja: "グラフ",
+                        es: "Grafos",
+                        ko: "그래프",
+                        ar: "رسوم بيانية",
                     },
                     searchPlaceholder: {
-                        en: 'Search a component',
-                        fr: 'Rechercher un composant',
-                        pt: 'Pesquisar um componente',
-                        de: 'Eine Komponente suchen',
-                        zh: '搜索组件',
-                        ja: 'コンポーネントを検索',
-                        es: 'Buscar un componente',
-                        ko: '컴포넌트 검색',
-                        ar: 'ابحث عن مكوّن'
+                        en: "Search a component",
+                        fr: "Rechercher un composant",
+                        pt: "Pesquisar um componente",
+                        de: "Eine Komponente suchen",
+                        zh: "搜索组件",
+                        ja: "コンポーネントを検索",
+                        es: "Buscar un componente",
+                        ko: "컴포넌트 검색",
+                        ar: "ابحث عن مكوّن",
                     },
                     lineAndBars: {
                         en: `Lines and bars`,
                         fr: `Lignes et barres`,
-                        pt: 'Linhas e barras',
-                        de: 'Linien und Balken',
-                        zh: '线条和条形',
-                        ja: '線と棒',
-                        es: 'Líneas y barras',
-                        ko: '선과 막대',
-                        ar: 'الخطوط والأشرطة'
+                        pt: "Linhas e barras",
+                        de: "Linien und Balken",
+                        zh: "线条和条形",
+                        ja: "線と棒",
+                        es: "Líneas y barras",
+                        ko: "선과 막대",
+                        ar: "الخطوط والأشرطة",
                     },
                     donuts: {
                         en: `Donuts / Proportions`,
                         fr: `Donuts / Proportions`,
-                        pt: 'Rosquinhas / Proporções',
-                        de: 'Donuts / Proportionen',
-                        zh: '甜甜圈/比例',
-                        ja: 'ドーナツ / プロポーション',
-                        es: 'Donuts / Proporciones',
-                        ko: '도넛 / 비율',
-                        ar: 'الدونات / النسب'
+                        pt: "Rosquinhas / Proporções",
+                        de: "Donuts / Proportionen",
+                        zh: "甜甜圈/比例",
+                        ja: "ドーナツ / プロポーション",
+                        es: "Donuts / Proporciones",
+                        ko: "도넛 / 비율",
+                        ar: "الدونات / النسب",
                     },
                     gauges: {
                         en: `Gauges`,
                         fr: `Jauges`,
-                        pt: 'Manômetros',
-                        de: 'Messgeräte',
-                        zh: '仪表',
-                        ja: 'ゲージ',
-                        es: 'Medidores',
-                        ko: '게이지',
-                        ar: 'عدادات'
+                        pt: "Manômetros",
+                        de: "Messgeräte",
+                        zh: "仪表",
+                        ja: "ゲージ",
+                        es: "Medidores",
+                        ko: "게이지",
+                        ar: "عدادات",
                     },
                     radars: {
                         en: `Radar`,
                         fr: `Radar`,
-                        pt: 'Radar',
-                        de: 'Radar',
-                        zh: '雷达',
-                        ja: 'レーダー',
-                        es: 'Radar',
-                        ko: '레이더',
-                        ar: 'رادار'
+                        pt: "Radar",
+                        de: "Radar",
+                        zh: "雷达",
+                        ja: "レーダー",
+                        es: "Radar",
+                        ko: "레이더",
+                        ar: "رادار",
                     },
                     semantic: {
-                        en: 'Semantic',
-                        fr: 'Sémantique',
-                        pt: 'Semântico',
-                        de: 'Semantisch',
-                        zh: '语义学',
-                        ja: 'セマンティック',
-                        es: 'Semántico',
-                        ko: '의미론적',
-                        ar: 'دلالي'
+                        en: "Semantic",
+                        fr: "Sémantique",
+                        pt: "Semântico",
+                        de: "Semantisch",
+                        zh: "语义学",
+                        ja: "セマンティック",
+                        es: "Semántico",
+                        ko: "의미론적",
+                        ar: "دلالي",
                     },
                     misc: {
                         en: `Misc charts`,
                         fr: `Divers`,
-                        pt: 'Diversos',
-                        de: 'Sonstiges',
-                        zh: '杂项',
-                        ja: 'その他',
-                        es: 'Varios',
-                        ko: '기타',
-                        ar: 'مخططات متنوعة'
+                        pt: "Diversos",
+                        de: "Sonstiges",
+                        zh: "杂项",
+                        ja: "その他",
+                        es: "Varios",
+                        ko: "기타",
+                        ar: "مخططات متنوعة",
                     },
                     miniCharts: {
                         en: "Mini charts",
@@ -872,7 +917,7 @@ export const useMainStore = defineStore("main", {
                         ja: "ミニチャート",
                         es: "Mini gráficos",
                         ko: "미니 차트",
-                        ar: 'مخططات مصغرة'
+                        ar: "مخططات مصغرة",
                     },
                     charts: {
                         en: "Charts",
@@ -883,7 +928,7 @@ export const useMainStore = defineStore("main", {
                         ja: "チャート",
                         es: "Gráficos",
                         ko: "차트",
-                        ar: 'مخططات'
+                        ar: "مخططات",
                     },
                     charts3d: {
                         en: "3d charts",
@@ -894,7 +939,7 @@ export const useMainStore = defineStore("main", {
                         ja: "3Dチャート",
                         es: "3d Gráficos",
                         ko: "3D 차트",
-                        ar: 'مخططات ثلاثية الأبعاد'
+                        ar: "مخططات ثلاثية الأبعاد",
                     },
                     tables: {
                         en: "Data tables",
@@ -905,7 +950,7 @@ export const useMainStore = defineStore("main", {
                         ja: "データテーブル",
                         es: "Tablas de datos",
                         ko: "데이터 테이블",
-                        ar: 'جداول البيانات'
+                        ar: "جداول البيانات",
                     },
                     rating: {
                         en: "Rating",
@@ -916,7 +961,7 @@ export const useMainStore = defineStore("main", {
                         ja: "評価",
                         es: "Clasificación",
                         ko: "평가",
-                        ar: 'تقييم'
+                        ar: "تقييم",
                     },
                     utilities: {
                         en: "Utilities",
@@ -927,8 +972,8 @@ export const useMainStore = defineStore("main", {
                         ja: "公共事業",
                         es: "Utilidades",
                         ko: "유용",
-                        ar: 'الأدوات'
-                    }
+                        ar: "الأدوات",
+                    },
                 },
                 maker: {
                     labels: {
@@ -941,12 +986,12 @@ export const useMainStore = defineStore("main", {
                             ja: "期間",
                             es: "Período",
                             ko: "기간",
-                            ar: 'فترة'
-                        }
+                            ar: "فترة",
+                        },
                     },
                     tooltips: {
                         addCategory: {
-                            en: 'Add category',
+                            en: "Add category",
                             fr: "Ajouter une catégorie",
                             pt: "Adicionar uma categoria",
                             de: "Fügen Sie eine Kategorie hinzu",
@@ -954,7 +999,7 @@ export const useMainStore = defineStore("main", {
                             ja: "カテゴリを追加する",
                             es: "Añadir una categoría",
                             ko: "카테고리 추가",
-                            ar: 'إضافة فئة'
+                            ar: "إضافة فئة",
                         },
                         addDataset: {
                             en: "Add dataset",
@@ -965,7 +1010,7 @@ export const useMainStore = defineStore("main", {
                             ja: "データセットの追加",
                             es: "Agregar conjunto de datos",
                             ko: "데이터 세트 추가",
-                            ar: 'إضافة مجموعة بيانات'
+                            ar: "إضافة مجموعة بيانات",
                         },
                         addData: {
                             en: "Add data",
@@ -975,7 +1020,7 @@ export const useMainStore = defineStore("main", {
                             zh: "添加数据",
                             ja: "データの追加",
                             ko: "データの追加",
-                            ar: 'إضافة بيانات'
+                            ar: "إضافة بيانات",
                         },
                         delete: {
                             en: "Delete",
@@ -986,9 +1031,9 @@ export const useMainStore = defineStore("main", {
                             ja: "消去",
                             es: "Borrar",
                             ko: "삭제",
-                            ar: 'حذف'
-                        }
-                    }
+                            ar: "حذف",
+                        },
+                    },
                 },
                 getTheme: {
                     en: `You can apply one of the available themes to all charts. Just set the 'theme' config attribute to either '', 'dark', 'zen', 'hack', 'concrete', 'celebration' or 'celebrationNight'. Theme objects can be retrieved by importing the getThemeConfig utility function, and calling it asynchroneously passing as a parameter the key corresponding to the component.`,
@@ -999,7 +1044,7 @@ export const useMainStore = defineStore("main", {
                     ja: `利用可能なテーマをすべてのチャートに適用できます。設定属性 'theme' を ''、'dark'、'zen'、'hack'、'concrete'、'celebration'、'celebrationNight' のいずれかに設定してください。テーマオブジェクトは、ユーティリティ関数 getThemeConfig をインポートして非同期に呼び出し、コンポーネントに対応するキーを引数として渡すことで取得できます。`,
                     es: `Puedes aplicar uno de los temas disponibles a todos los gráficos. Solo tienes que establecer el atributo de configuración 'theme' en '', 'dark', 'zen', 'hack', 'concrete', 'celebration' o 'celebrationNight'. Puedes obtener los objetos de tema importando la función utilitaria getThemeConfig y llamándola de forma asíncrona, pasando como parámetro la clave correspondiente al componente.`,
                     ko: `사용 가능한 테마를 모든 차트에 적용할 수 있습니다. 구성 속성 'theme'를 '', 'dark', 'zen', 'hack', 'concrete', 'celebration', 'celebrationNight' 중 하나로 설정하세요. 테마 객체는 유틸리티 함수 getThemeConfig를 임포트한 뒤, 컴포넌트에 해당하는 키를 인자로 비동기 호출하여 가져올 수 있습니다.`,
-                    ar: `يمكنك تطبيق أحد السمات المتاحة على جميع المخططات. ما عليك سوى تعيين خاصية الإعدادات 'theme' إلى '' أو 'dark' أو 'zen' أو 'hack' أو 'concrete' أو 'celebration' أو 'celebrationNight'. يمكن جلب كائنات السمة عبر استيراد دالة الأداة getThemeConfig واستدعائها بشكل غير متزامن مع تمرير المفتاح المطابق للمكوّن كوسيط.`
+                    ar: `يمكنك تطبيق أحد السمات المتاحة على جميع المخططات. ما عليك سوى تعيين خاصية الإعدادات 'theme' إلى '' أو 'dark' أو 'zen' أو 'hack' أو 'concrete' أو 'celebration' أو 'celebrationNight'. يمكن جلب كائنات السمة عبر استيراد دالة الأداة getThemeConfig واستدعائها بشكل غير متزامن مع تمرير المفتاح المطابق للمكوّن كوسيط.`,
                 },
                 getConfig: {
                     en: "Get any configuration object by importing and calling the getVueDataUiConfig function, passing as a parameter the key corresponding to the component. You can also quickly define a custom theme using optional color parameters.",
@@ -1010,7 +1055,7 @@ export const useMainStore = defineStore("main", {
                     ja: "対応するコンポーネントのキーをパラメータとして渡し、getVueDataUiConfig 関数をインポートして呼び出すことで、任意の設定オブジェクトを取得できます。また、任意のカラー パラメータを使用してカスタムテーマを素早く定義することもできます。",
                     es: "Obtén cualquier objeto de configuración importando y llamando a la función getVueDataUiConfig, pasando como parámetro la clave correspondiente al componente. También puedes definir rápidamente un tema personalizado usando parámetros de color opcionales.",
                     ko: "해당 컴포넌트에 대응하는 키를 매개변수로 전달하여 getVueDataUiConfig 함수를 가져와 호출하면 어떤 설정 객체든 얻을 수 있습니다. 또한 선택적 색상 매개변수를 사용해 사용자 정의 테마를 빠르게 정의할 수 있습니다.",
-                    ar: "احصل على أي كائن إعدادات عن طريق استيراد الدالة getVueDataUiConfig واستدعائها، مع تمرير المفتاح المقابل للمكوّن كمعامل. يمكنك أيضًا تعريف سمة مخصصة بسرعة باستخدام معاملات ألوان اختيارية."
+                    ar: "احصل على أي كائن إعدادات عن طريق استيراد الدالة getVueDataUiConfig واستدعائها، مع تمرير المفتاح المقابل للمكوّن كمعامل. يمكنك أيضًا تعريف سمة مخصصة بسرعة باستخدام معاملات ألوان اختيارية.",
                 },
                 viewSelectedTheme: {
                     en: "View selected themes",
@@ -1021,7 +1066,7 @@ export const useMainStore = defineStore("main", {
                     ja: "選択したテーマを表示する",
                     es: "Ver temas seleccionados",
                     ko: "선택한 테마 보기",
-                    ar: 'عرض السمات المحددة'
+                    ar: "عرض السمات المحددة",
                 },
                 viewSelectedConfig: {
                     en: "View selected config",
@@ -1032,7 +1077,7 @@ export const useMainStore = defineStore("main", {
                     ja: "選択した構成を表示する",
                     es: "Ver configuración seleccionada",
                     ko: "선택한 구성 보기",
-                    ar: 'عرض التكوين المحدد'
+                    ar: "عرض التكوين المحدد",
                 },
                 clickToCopy: {
                     en: "Click to copy",
@@ -1043,7 +1088,7 @@ export const useMainStore = defineStore("main", {
                     ja: "クリックしてコピー",
                     es: "Haga clic para copiar",
                     ko: "복사하려면 클릭하세요.",
-                    ar: 'انقر لنسخ'
+                    ar: "انقر لنسخ",
                 },
                 githubCode: {
                     en: "View source code",
@@ -1054,7 +1099,7 @@ export const useMainStore = defineStore("main", {
                     ja: "ソースコードを表示する",
                     es: "Ver código fuente",
                     ko: "소스 코드 보기",
-                    ar: 'عرض كود المصدر'
+                    ar: "عرض كود المصدر",
                 },
                 downloads: {
                     en: "Downloads:",
@@ -1065,7 +1110,7 @@ export const useMainStore = defineStore("main", {
                     ja: "ダウンロード:",
                     es: "Descargas:",
                     ko: "다운로드:",
-                    ar: ':التحميلات'
+                    ar: ":التحميلات",
                 },
                 tableCss: {
                     summary: {
@@ -1077,7 +1122,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このアイコンでマークされたコンポーネントには、デザイン システムに合わせて調整する公開 CSS クラスを備えた切り替え dataTable (ユーザー オプションがデフォルトで有効になっている場合に使用可能) が含まれています。",
                         es: "Los componentes marcados con este icono incluyen una tabla de datos de alternancia (que se puede utilizar si las opciones del usuario están habilitadas, lo cual es lo predeterminado), con clases CSS expuestas para ajustarse a su sistema de diseño.",
                         ko: "이 아이콘으로 표시된 구성 요소에는 토글 dataTable(기본적으로 사용자 옵션이 활성화된 경우 사용 가능)과 디자인 시스템에 맞게 조정하기 위한 노출된 CSS 클래스가 포함됩니다.",
-                        ar: 'المكونات المميزة بهذه الأيقونة تتضمن جدول بيانات قابل للتبديل (قابل للاستخدام إذا كانت خيارات المستخدم مفعلة، وهي مفعلة بشكل افتراضي)، مع فئات CSS معروضة لتعديلها لتناسب نظام تصميمك.'
+                        ar: "المكونات المميزة بهذه الأيقونة تتضمن جدول بيانات قابل للتبديل (قابل للاستخدام إذا كانت خيارات المستخدم مفعلة، وهي مفعلة بشكل افتراضي)، مع فئات CSS معروضة لتعديلها لتناسب نظام تصميمك.",
                     },
                     cta: {
                         en: "View css classes",
@@ -1088,87 +1133,87 @@ export const useMainStore = defineStore("main", {
                         ja: "公開された CSS を表示する",
                         es: "Ver CSS expuesto",
                         ko: "CSS 수업 보기",
-                        ar: 'عرض فئات CSS'
-                    }
+                        ar: "عرض فئات CSS",
+                    },
                 },
                 slots: {
                     datapoint: {
-                        en: 'Use this slot to customize datapoints by injecting svg elements.',
-                        fr: 'Utilisez ce slot pour personnaliser les points de données en injectant des éléments SVG.',
-                        pt: 'Use este slot para personalizar os pontos de dados inserindo elementos SVG.',
-                        de: 'Verwenden Sie diesen Slot, um Datenpunkte durch das Einfügen von SVG-Elementen anzupassen.',
-                        zh: '使用此插槽通过注入 SVG 元素来自定义数据点。',
-                        ja: 'このスロットを使用して、SVG 要素を挿入することでデータポイントをカスタマイズできます。',
-                        es: 'Utilice este slot para personalizar los puntos de datos insertando elementos SVG.',
-                        ko: '이 슬롯을 사용하여 SVG 요소를 삽입함으로써 데이터 포인트를 사용자 정의할 수 있습니다.',
-                        ar: 'استخدم هذا الـ slot لتخصيص نقاط البيانات عن طريق إدراج عناصر SVG.',
+                        en: "Use this slot to customize datapoints by injecting svg elements.",
+                        fr: "Utilisez ce slot pour personnaliser les points de données en injectant des éléments SVG.",
+                        pt: "Use este slot para personalizar os pontos de dados inserindo elementos SVG.",
+                        de: "Verwenden Sie diesen Slot, um Datenpunkte durch das Einfügen von SVG-Elementen anzupassen.",
+                        zh: "使用此插槽通过注入 SVG 元素来自定义数据点。",
+                        ja: "このスロットを使用して、SVG 要素を挿入することでデータポイントをカスタマイズできます。",
+                        es: "Utilice este slot para personalizar los puntos de datos insertando elementos SVG.",
+                        ko: "이 슬롯을 사용하여 SVG 요소를 삽입함으로써 데이터 포인트를 사용자 정의할 수 있습니다.",
+                        ar: "استخدم هذا الـ slot لتخصيص نقاط البيانات عن طريق إدراج عناصر SVG.",
                     },
                     node: {
-                        en: 'Use this slot to customize node content',
-                        fr: 'Utilisez ce slot pour personnaliser le contenu du nœud.',
-                        pt: 'Use este slot para personalizar o conteúdo do nó.',
-                        de: 'Verwenden Sie diesen Slot, um den Inhalt des Knotens anzupassen.',
-                        zh: '使用此插槽自定义节点内容。',
-                        ja: 'このスロットを使用してノードの内容をカスタマイズします。',
-                        es: 'Use este slot para personalizar el contenido del nodo.',
-                        ko: '이 슬롯을 사용하여 노드 콘텐츠를 커스터마이즈합니다.',
-                        ar: 'استخدم هذا الحيز لتخصيص محتوى العقدة.'
+                        en: "Use this slot to customize node content",
+                        fr: "Utilisez ce slot pour personnaliser le contenu du nœud.",
+                        pt: "Use este slot para personalizar o conteúdo do nó.",
+                        de: "Verwenden Sie diesen Slot, um den Inhalt des Knotens anzupassen.",
+                        zh: "使用此插槽自定义节点内容。",
+                        ja: "このスロットを使用してノードの内容をカスタマイズします。",
+                        es: "Use este slot para personalizar el contenido del nodo.",
+                        ko: "이 슬롯을 사용하여 노드 콘텐츠를 커스터마이즈합니다.",
+                        ar: "استخدم هذا الحيز لتخصيص محتوى العقدة.",
                     },
                     freeNodeLabel: {
-                        en: 'Use this slot to customize the node label in a g element, for example to place the label below the node, even add other svg elements',
-                        fr: 'Utilisez cet emplacement pour personnaliser le libellé du nœud dans un élément g, par exemple pour placer le libellé sous le nœud ou ajouter d’autres éléments svg',
-                        pt: 'Use este slot para personalizar o rótulo do nó em um elemento g, por exemplo, para posicionar o rótulo abaixo do nó ou até adicionar outros elementos svg',
-                        de: 'Verwenden Sie diesen Slot, um das Knotenlabel in einem g-Element anzupassen, zum Beispiel um das Label unter dem Knoten zu platzieren oder weitere svg-Elemente hinzuzufügen',
-                        zh: '使用此插槽来自定义 g 元素中的节点标签，例如将标签放在节点下方，甚至添加其他 svg 元素',
-                        ja: 'このスロットを使用すると、g 要素内のノードラベルをカスタマイズできます。たとえば、ラベルをノードの下に配置したり、他の svg 要素を追加したりできます',
-                        es: 'Use este espacio para personalizar la etiqueta del nodo en un elemento g, por ejemplo para colocar la etiqueta debajo del nodo o incluso añadir otros elementos svg',
-                        ko: '이 슬롯을 사용하면 g 요소에서 노드 레이블을 사용자 지정할 수 있습니다. 예를 들어 레이블을 노드 아래에 배치하거나 다른 svg 요소를 추가할 수도 있습니다',
-                        ar: 'استخدم هذه الفتحة لتخصيص وسم العقدة داخل عنصر g، على سبيل المثال لوضع الوسم أسفل العقدة أو حتى إضافة عناصر svg أخرى',
+                        en: "Use this slot to customize the node label in a g element, for example to place the label below the node, even add other svg elements",
+                        fr: "Utilisez cet emplacement pour personnaliser le libellé du nœud dans un élément g, par exemple pour placer le libellé sous le nœud ou ajouter d’autres éléments svg",
+                        pt: "Use este slot para personalizar o rótulo do nó em um elemento g, por exemplo, para posicionar o rótulo abaixo do nó ou até adicionar outros elementos svg",
+                        de: "Verwenden Sie diesen Slot, um das Knotenlabel in einem g-Element anzupassen, zum Beispiel um das Label unter dem Knoten zu platzieren oder weitere svg-Elemente hinzuzufügen",
+                        zh: "使用此插槽来自定义 g 元素中的节点标签，例如将标签放在节点下方，甚至添加其他 svg 元素",
+                        ja: "このスロットを使用すると、g 要素内のノードラベルをカスタマイズできます。たとえば、ラベルをノードの下に配置したり、他の svg 要素を追加したりできます",
+                        es: "Use este espacio para personalizar la etiqueta del nodo en un elemento g, por ejemplo para colocar la etiqueta debajo del nodo o incluso añadir otros elementos svg",
+                        ko: "이 슬롯을 사용하면 g 요소에서 노드 레이블을 사용자 지정할 수 있습니다. 예를 들어 레이블을 노드 아래에 배치하거나 다른 svg 요소를 추가할 수도 있습니다",
+                        ar: "استخدم هذه الفتحة لتخصيص وسم العقدة داخل عنصر g، على سبيل المثال لوضع الوسم أسفل العقدة أو حتى إضافة عناصر svg أخرى",
                     },
                     nodeLabel: {
-                        en: 'Use this slot to customize the node label',
-                        fr: 'Utilisez ce slot pour personnaliser le libellé du nœud.',
-                        pt: 'Use este slot para personalizar o rótulo do nó.',
-                        de: 'Verwenden Sie diesen Slot, um die Knotenbeschriftung anzupassen.',
-                        zh: '使用此插槽自定义节点标签。',
-                        ja: 'このスロットを使用してノードラベルをカスタマイズします。',
-                        es: 'Use este slot para personalizar la etiqueta del nodo.',
-                        ko: '이 슬롯을 사용하여 노드 레이블을 커스터마이즈합니다.',
-                        ar: 'استخدم هذا الحيز لتخصيص تسمية العقدة.'
+                        en: "Use this slot to customize the node label",
+                        fr: "Utilisez ce slot pour personnaliser le libellé du nœud.",
+                        pt: "Use este slot para personalizar o rótulo do nó.",
+                        de: "Verwenden Sie diesen Slot, um die Knotenbeschriftung anzupassen.",
+                        zh: "使用此插槽自定义节点标签。",
+                        ja: "このスロットを使用してノードラベルをカスタマイズします。",
+                        es: "Use este slot para personalizar la etiqueta del nodo.",
+                        ko: "이 슬롯을 사용하여 노드 레이블을 커스터마이즈합니다.",
+                        ar: "استخدم هذا الحيز لتخصيص تسمية العقدة.",
                     },
 
                     tooltipNode: {
-                        en: 'Use this slot to customize the node tooltip content',
-                        fr: 'Utilisez ce slot pour personnaliser le contenu de l’infobulle du nœud.',
-                        pt: 'Use este slot para personalizar o conteúdo da tooltip do nó.',
-                        de: 'Verwenden Sie diesen Slot, um den Inhalt der Knotentooltip anzupassen.',
-                        zh: '使用此插槽自定义节点提示内容。',
-                        ja: 'このスロットを使用してノードツールチップの内容をカスタマイズします。',
-                        es: 'Use este slot para personalizar el contenido del tooltip del nodo.',
-                        ko: '이 슬롯을 사용하여 노드 툴팁 내용을 커스터마이즈합니다.',
-                        ar: 'استخدم هذا الحيز لتخصيص محتوى التلميح الخاص بالعقدة.'
+                        en: "Use this slot to customize the node tooltip content",
+                        fr: "Utilisez ce slot pour personnaliser le contenu de l’infobulle du nœud.",
+                        pt: "Use este slot para personalizar o conteúdo da tooltip do nó.",
+                        de: "Verwenden Sie diesen Slot, um den Inhalt der Knotentooltip anzupassen.",
+                        zh: "使用此插槽自定义节点提示内容。",
+                        ja: "このスロットを使用してノードツールチップの内容をカスタマイズします。",
+                        es: "Use este slot para personalizar el contenido del tooltip del nodo.",
+                        ko: "이 슬롯을 사용하여 노드 툴팁 내용을 커스터마이즈합니다.",
+                        ar: "استخدم هذا الحيز لتخصيص محتوى التلميح الخاص بالعقدة.",
                     },
                     backgroundPattern: {
-                        en: 'Use this slot to customize the background pattern using svg elements',
-                        fr: 'Utilisez ce slot pour personnaliser le motif de fond à l’aide d’éléments SVG',
-                        pt: 'Use este slot para personalizar o padrão de fundo usando elementos SVG',
-                        de: 'Verwenden Sie diesen Slot, um das Hintergrundmuster mithilfe von SVG-Elementen anzupassen',
-                        zh: '使用此插槽通过 SVG 元素自定义背景图案',
-                        ja: 'SVG 要素を使用して背景パターンをカスタマイズするには、このスロットを使用してください',
-                        es: 'Use este slot para personalizar el patrón de fondo utilizando elementos SVG',
-                        ko: 'SVG 요소를 사용하여 배경 패턴을 사용자 지정하려면 이 슬롯을 사용하세요',
-                        ar: 'استخدم هذا الموضع لتخصيص نمط الخلفية باستخدام عناصر SVG'
+                        en: "Use this slot to customize the background pattern using svg elements",
+                        fr: "Utilisez ce slot pour personnaliser le motif de fond à l’aide d’éléments SVG",
+                        pt: "Use este slot para personalizar o padrão de fundo usando elementos SVG",
+                        de: "Verwenden Sie diesen Slot, um das Hintergrundmuster mithilfe von SVG-Elementen anzupassen",
+                        zh: "使用此插槽通过 SVG 元素自定义背景图案",
+                        ja: "SVG 要素を使用して背景パターンをカスタマイズするには、このスロットを使用してください",
+                        es: "Use este slot para personalizar el patrón de fondo utilizando elementos SVG",
+                        ko: "SVG 요소를 사용하여 배경 패턴을 사용자 지정하려면 이 슬롯을 사용하세요",
+                        ar: "استخدم هذا الموضع لتخصيص نمط الخلفية باستخدام عناصر SVG",
                     },
                     tooltipMidpoint: {
-                        en: 'Use this slot to customize the midpoint tooltip content',
-                        fr: 'Utilisez ce slot pour personnaliser le contenu de l’infobulle du point médian.',
-                        pt: 'Use este slot para personalizar o conteúdo da tooltip do ponto médio.',
-                        de: 'Verwenden Sie diesen Slot, um den Inhalt der Tooltip des Mittelpunktes anzupassen.',
-                        zh: '使用此插槽自定义中点提示内容。',
-                        ja: 'このスロットを使用して中点ツールチップの内容をカスタマイズします。',
-                        es: 'Use este slot para personalizar el contenido del tooltip del punto medio.',
-                        ko: '이 슬롯을 사용하여 중점 툴팁 내용을 커스터마이즈합니다.',
-                        ar: 'استخدم هذا الحيز لتخصيص محتوى تلميح نقطة المنتصف.'
+                        en: "Use this slot to customize the midpoint tooltip content",
+                        fr: "Utilisez ce slot pour personnaliser le contenu de l’infobulle du point médian.",
+                        pt: "Use este slot para personalizar o conteúdo da tooltip do ponto médio.",
+                        de: "Verwenden Sie diesen Slot, um den Inhalt der Tooltip des Mittelpunktes anzupassen.",
+                        zh: "使用此插槽自定义中点提示内容。",
+                        ja: "このスロットを使用して中点ツールチップの内容をカスタマイズします。",
+                        es: "Use este slot para personalizar el contenido del tooltip del punto medio.",
+                        ko: "이 슬롯을 사용하여 중점 툴팁 내용을 커스터마이즈합니다.",
+                        ar: "استخدم هذا الحيز لتخصيص محتوى تلميح نقطة المنتصف.",
                     },
                     groupLabel: {
                         en: "Use this slot to customize the group label",
@@ -1179,84 +1224,84 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用してグループラベルをカスタマイズします",
                         es: "Usa este slot para personalizar la etiqueta del grupo",
                         ko: "이 슬롯을 사용하여 그룹 레이블을 사용자 지정합니다",
-                        ar: "استخدم هذه الفتحة لتخصيص تسمية المجموعة"
+                        ar: "استخدم هذه الفتحة لتخصيص تسمية المجموعة",
                     },
                     annotatorActions: {
-                        en: 'The content of the annotator menu can be customized using the provided slots.',
-                        fr: 'Le contenu du menu d’annotation peut être personnalisé à l’aide des slots fournis.',
-                        pt: 'O conteúdo do menu do anotador pode ser personalizado usando os slots fornecidos.',
-                        de: 'Der Inhalt des Anmerkungsmenüs kann mit den bereitgestellten Slots angepasst werden.',
-                        zh: '可以使用提供的插槽自定义注释菜单的内容。',
-                        ja: '提供されたスロットを使用して、アノテーターメニューの内容をカスタマイズできます。',
-                        es: 'El contenido del menú del anotador se puede personalizar utilizando las ranuras proporcionadas.',
-                        ko: '제공된 슬롯을 사용하여 주석 메뉴의 내용을 사용자 지정할 수 있습니다.',
-                        ar: 'يمكن تخصيص محتوى قائمة المُعَلِّق باستخدام الفتحات المُقدَّمة.'
+                        en: "The content of the annotator menu can be customized using the provided slots.",
+                        fr: "Le contenu du menu d’annotation peut être personnalisé à l’aide des slots fournis.",
+                        pt: "O conteúdo do menu do anotador pode ser personalizado usando os slots fornecidos.",
+                        de: "Der Inhalt des Anmerkungsmenüs kann mit den bereitgestellten Slots angepasst werden.",
+                        zh: "可以使用提供的插槽自定义注释菜单的内容。",
+                        ja: "提供されたスロットを使用して、アノテーターメニューの内容をカスタマイズできます。",
+                        es: "El contenido del menú del anotador se puede personalizar utilizando las ranuras proporcionadas.",
+                        ko: "제공된 슬롯을 사용하여 주석 메뉴의 내용을 사용자 지정할 수 있습니다.",
+                        ar: "يمكن تخصيص محتوى قائمة المُعَلِّق باستخدام الفتحات المُقدَّمة.",
                     },
                     userMenu: {
-                        en: 'The content of the chart\'s context menu can be customized using the provided slots.',
-                        fr: 'Le contenu du menu contextuel du graphique peut être personnalisé à l’aide des slots fournis.',
-                        pt: 'O conteúdo do menu de contexto do gráfico pode ser personalizado usando os slots fornecidos.',
-                        de: 'Der Inhalt des Kontextmenüs des Diagramms kann mit den bereitgestellten Slots angepasst werden.',
-                        zh: '可以使用提供的插槽自定义图表的上下文菜单内容。',
-                        ja: '提供されたスロットを使用して、チャートのコンテキストメニューの内容をカスタマイズできます。',
-                        es: 'El contenido del menú contextual del gráfico se puede personalizar utilizando las ranuras proporcionadas.',
-                        ko: '제공된 슬롯을 사용하여 차트의 컨텍스트 메뉴 내용을 사용자 지정할 수 있습니다.',
-                        ar: 'يمكن تخصيص محتوى القائمة السياقية للمخطط باستخدام الفتحات المُقدَّمة.'
+                        en: "The content of the chart's context menu can be customized using the provided slots.",
+                        fr: "Le contenu du menu contextuel du graphique peut être personnalisé à l’aide des slots fournis.",
+                        pt: "O conteúdo do menu de contexto do gráfico pode ser personalizado usando os slots fornecidos.",
+                        de: "Der Inhalt des Kontextmenüs des Diagramms kann mit den bereitgestellten Slots angepasst werden.",
+                        zh: "可以使用提供的插槽自定义图表的上下文菜单内容。",
+                        ja: "提供されたスロットを使用して、チャートのコンテキストメニューの内容をカスタマイズできます。",
+                        es: "El contenido del menú contextual del gráfico se puede personalizar utilizando las ranuras proporcionadas.",
+                        ko: "제공된 슬롯을 사용하여 차트의 컨텍스트 메뉴 내용을 사용자 지정할 수 있습니다.",
+                        ar: "يمكن تخصيص محتوى القائمة السياقية للمخطط باستخدام الفتحات المُقدَّمة.",
                     },
                     freestyle: {
-                        en: 'Even more control can be obtained from the exposed data of the #svg slot, to inject precise content into the chart.',
-                        fr: 'Un contrôle encore plus précis peut être obtenu à partir des données exposées du slot #svg, afin d’injecter un contenu précis dans le graphique.',
-                        pt: 'Ainda mais controle pode ser obtido a partir dos dados expostos do slot #svg, para injetar conteúdo preciso no gráfico.',
-                        de: 'Noch mehr Kontrolle kann über die bereitgestellten Daten des #svg-Slots erlangt werden, um präzisen Inhalt in das Diagramm einzufügen.',
-                        zh: '通过 #svg 插槽公开的数据，可以获得更多控制，以将精确的内容注入图表中。',
-                        ja: '#svg スロットで公開されているデータから、チャートに正確なコンテンツを挿入するために、さらに詳細な制御が可能です。',
-                        es: 'Se puede obtener aún más control a partir de los datos expuestos del slot #svg, para inyectar contenido preciso en el gráfico.',
-                        ko: '#svg 슬롯에서 노출된 데이터를 통해 차트에 정밀한 콘텐츠를 주입하기 위한 더욱 세밀한 제어가 가능합니다.',
-                        ar: 'يمكن الحصول على مزيد من التحكم من البيانات المكشوفة في فتحة ‎#svg‎، لحقن محتوى دقيق في الرسم البياني.'
+                        en: "Even more control can be obtained from the exposed data of the #svg slot, to inject precise content into the chart.",
+                        fr: "Un contrôle encore plus précis peut être obtenu à partir des données exposées du slot #svg, afin d’injecter un contenu précis dans le graphique.",
+                        pt: "Ainda mais controle pode ser obtido a partir dos dados expostos do slot #svg, para injetar conteúdo preciso no gráfico.",
+                        de: "Noch mehr Kontrolle kann über die bereitgestellten Daten des #svg-Slots erlangt werden, um präzisen Inhalt in das Diagramm einzufügen.",
+                        zh: "通过 #svg 插槽公开的数据，可以获得更多控制，以将精确的内容注入图表中。",
+                        ja: "#svg スロットで公開されているデータから、チャートに正確なコンテンツを挿入するために、さらに詳細な制御が可能です。",
+                        es: "Se puede obtener aún más control a partir de los datos expuestos del slot #svg, para inyectar contenido preciso en el gráfico.",
+                        ko: "#svg 슬롯에서 노출된 데이터를 통해 차트에 정밀한 콘텐츠를 주입하기 위한 더욱 세밀한 제어가 가능합니다.",
+                        ar: "يمكن الحصول على مزيد من التحكم من البيانات المكشوفة في فتحة ‎#svg‎، لحقن محتوى دقيق في الرسم البياني.",
                     },
                     areaGradient: {
-                        en: 'Use this slot to apply a custom svg linearGradient on line types with useArea set to true',
-                        fr: 'Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de lignes lorsque useArea est défini sur true',
-                        pt: 'Use este slot para aplicar um SVG linearGradient personalizado em tipos de linha com useArea definido como true',
-                        de: 'Verwende diesen Slot, um ein benutzerdefiniertes SVG-linearGradient bei Linientypen zu verwenden, wenn useArea auf true gesetzt ist',
-                        zh: '在 useArea 设为 true 的折线类型上使用此插槽以应用自定义 SVG linearGradient',
-                        ja: 'useArea が true のラインタイプにカスタム SVG linearGradient を適用するためにこのスロットを使用します',
-                        es: 'Usa este slot para aplicar un SVG linearGradient personalizado en tipos de línea cuando useArea está establecido en true',
-                        ko: 'useArea가 true로 설정된 라인 타입에 사용자 지정 SVG linearGradient를 적용하려면 이 슬롯을 사용하세요',
-                        ar: 'استخدم هذه الخانة (slot) لتطبيق ‎SVG linearGradient‎ مخصّص على أنواع الخطوط عندما تكون ‎useArea‎ مضبوطة على ‎true‎'
+                        en: "Use this slot to apply a custom svg linearGradient on line types with useArea set to true",
+                        fr: "Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de lignes lorsque useArea est défini sur true",
+                        pt: "Use este slot para aplicar um SVG linearGradient personalizado em tipos de linha com useArea definido como true",
+                        de: "Verwende diesen Slot, um ein benutzerdefiniertes SVG-linearGradient bei Linientypen zu verwenden, wenn useArea auf true gesetzt ist",
+                        zh: "在 useArea 设为 true 的折线类型上使用此插槽以应用自定义 SVG linearGradient",
+                        ja: "useArea が true のラインタイプにカスタム SVG linearGradient を適用するためにこのスロットを使用します",
+                        es: "Usa este slot para aplicar un SVG linearGradient personalizado en tipos de línea cuando useArea está establecido en true",
+                        ko: "useArea가 true로 설정된 라인 타입에 사용자 지정 SVG linearGradient를 적용하려면 이 슬롯을 사용하세요",
+                        ar: "استخدم هذه الخانة (slot) لتطبيق ‎SVG linearGradient‎ مخصّص على أنواع الخطوط عندما تكون ‎useArea‎ مضبوطة على ‎true‎",
                     },
                     barGradient: {
-                        en: 'Use this slot to apply a custom svg linearGradient on bar types',
-                        fr: 'Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de barres',
-                        pt: 'Use este slot para aplicar um SVG linearGradient personalizado em tipos de barra',
-                        de: 'Verwende diesen Slot, um ein benutzerdefiniertes SVG-linearGradient auf Balkentypen anzuwenden',
-                        zh: '使用此插槽在柱状图类型上应用自定义 SVG linearGradient',
-                        ja: 'バータイプにカスタム SVG linearGradient を適用するためにこのスロットを使用します',
-                        es: 'Usa este slot para aplicar un SVG linearGradient personalizado en tipos de barras',
-                        ko: '막대 타입에 사용자 지정 SVG linearGradient를 적용하려면 이 슬롯을 사용하세요',
-                        ar: 'استخدم هذه الخانة (slot) لتطبيق ‎SVG linearGradient‎ مخصّص على أنواع الأعمدة'
+                        en: "Use this slot to apply a custom svg linearGradient on bar types",
+                        fr: "Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de barres",
+                        pt: "Use este slot para aplicar um SVG linearGradient personalizado em tipos de barra",
+                        de: "Verwende diesen Slot, um ein benutzerdefiniertes SVG-linearGradient auf Balkentypen anzuwenden",
+                        zh: "使用此插槽在柱状图类型上应用自定义 SVG linearGradient",
+                        ja: "バータイプにカスタム SVG linearGradient を適用するためにこのスロットを使用します",
+                        es: "Usa este slot para aplicar un SVG linearGradient personalizado en tipos de barras",
+                        ko: "막대 타입에 사용자 지정 SVG linearGradient를 적용하려면 이 슬롯을 사용하세요",
+                        ar: "استخدم هذه الخانة (slot) لتطبيق ‎SVG linearGradient‎ مخصّص على أنواع الأعمدة",
                     },
                     breadcrumbLabel: {
-                        en: 'Use this slot to customize the breadcrumb labels',
-                        fr: 'Utilisez ce slot pour personnaliser les étiquettes du fil d’Ariane',
-                        pt: 'Use este slot para personalizar os rótulos do caminho de navegação',
-                        de: 'Verwenden Sie diesen Slot, um die Breadcrumb-Bezeichnungen anzupassen',
-                        zh: '使用此插槽来自定义面包屑标签',
-                        ja: 'このスロットを使用してパンくずリストのラベルをカスタマイズします',
-                        es: 'Utilice este slot para personalizar las etiquetas de las migas de pan',
-                        ko: '이 슬롯을 사용하여 빵 부스러기 레이블을 사용자 지정하세요',
-                        ar: 'استخدم هذا الـ slot لتخصيص تسميات مسار التنقل'
+                        en: "Use this slot to customize the breadcrumb labels",
+                        fr: "Utilisez ce slot pour personnaliser les étiquettes du fil d’Ariane",
+                        pt: "Use este slot para personalizar os rótulos do caminho de navegação",
+                        de: "Verwenden Sie diesen Slot, um die Breadcrumb-Bezeichnungen anzupassen",
+                        zh: "使用此插槽来自定义面包屑标签",
+                        ja: "このスロットを使用してパンくずリストのラベルをカスタマイズします",
+                        es: "Utilice este slot para personalizar las etiquetas de las migas de pan",
+                        ko: "이 슬롯을 사용하여 빵 부스러기 레이블을 사용자 지정하세요",
+                        ar: "استخدم هذا الـ slot لتخصيص تسميات مسار التنقل",
                     },
                     breadcrumbArrow: {
-                        en: 'Use this slot to customize the breadcrumb arrows',
-                        fr: 'Utilisez ce slot pour personnaliser les flèches du fil d’Ariane',
-                        pt: 'Use este slot para personalizar as setas do caminho de navegação',
-                        de: 'Verwenden Sie diesen Slot, um die Breadcrumb-Pfeile anzupassen',
-                        zh: '使用此插槽来自定义面包屑箭头',
-                        ja: 'このスロットを使用してパンくずリストの矢印をカスタマイズします',
-                        es: 'Utilice este slot para personalizar las flechas de las migas de pan',
-                        ko: '이 슬롯을 사용하여 빵 부스러기 화살표를 사용자 지정하세요',
-                        ar: 'استخدم هذا الـ slot لتخصيص أسهم مسار التنقل'
+                        en: "Use this slot to customize the breadcrumb arrows",
+                        fr: "Utilisez ce slot pour personnaliser les flèches du fil d’Ariane",
+                        pt: "Use este slot para personalizar as setas do caminho de navegação",
+                        de: "Verwenden Sie diesen Slot, um die Breadcrumb-Pfeile anzupassen",
+                        zh: "使用此插槽来自定义面包屑箭头",
+                        ja: "このスロットを使用してパンくずリストの矢印をカスタマイズします",
+                        es: "Utilice este slot para personalizar las flechas de las migas de pan",
+                        ko: "이 슬롯을 사용하여 빵 부스러기 화살표를 사용자 지정하세요",
+                        ar: "استخدم هذا الـ slot لتخصيص أسهم مسار التنقل",
                     },
                     layerUnder: {
                         en: "Use this slot to customize rating units on their under layer.",
@@ -1267,7 +1312,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用して、評価単位の下層をカスタマイズします。",
                         es: "Usa este espacio para personalizar las unidades de calificación en su capa inferior.",
                         ko: "이 슬롯을 사용하여 평가 단위의 하위 레이어를 사용자 지정하세요.",
-                        ar: "استخدم هذه الفتحة لتخصيص وحدات التقييم على الطبقة السفلية."
+                        ar: "استخدم هذه الفتحة لتخصيص وحدات التقييم على الطبقة السفلية.",
                     },
                     layerAbove: {
                         en: "Use this slot to customize rating units on their above layer.",
@@ -1278,7 +1323,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用して、評価単位の上層をカスタマイズします。",
                         es: "Usa este espacio para personalizar las unidades de calificación en su capa superior.",
                         ko: "이 슬롯을 사용하여 평가 단위의 상위 레이어를 사용자 지정하세요.",
-                        ar: "استخدم هذه الفتحة لتخصيص وحدات التقييم على الطبقة العلوية."
+                        ar: "استخدم هذه الفتحة لتخصيص وحدات التقييم على الطبقة العلوية.",
                     },
                     zoomLabel: {
                         en: "Use this slot to customize the content of the zoom label",
@@ -1289,7 +1334,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用してズームラベルの内容をカスタマイズ",
                         es: "Utiliza este slot para personalizar el contenido de la etiqueta de zoom",
                         ko: "이 슬롯을 사용하여 확대 라벨의 내용을 사용자 지정",
-                        ar: "استخدم هذه الفتحة لتخصيص محتوى تسمية التكبير"
+                        ar: "استخدم هذه الفتحة لتخصيص محتوى تسمية التكبير",
                     },
                     pattern: {
                         en: "Use this slot to superimpose a pattern on datapoints.",
@@ -1300,29 +1345,29 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用して、データポイントにパターンを重ね合わせます。",
                         es: "Utilice este espacio para superponer un patrón en los puntos de datos.",
                         ko: "이 슬롯을 사용하여 데이터 포인트에 패턴을 겹쳐 표시하세요.",
-                        ar: "استخدم هذه الفتحة لإضافة نمط فوق نقاط البيانات."
+                        ar: "استخدم هذه الفتحة لإضافة نمط فوق نقاط البيانات.",
                     },
                     hintComment: {
-                        en: 'The slot wrapper is absolutely positioned below the chart area. You can tweak the css of your content to adjust the position.',
-                        fr: 'Le conteneur du slot est positionné en absolu sous la zone du graphique. Vous pouvez ajuster la position en modifiant le CSS de votre contenu.',
-                        pt: 'O contêiner do slot está posicionado de forma absoluta abaixo da área do gráfico. Você pode ajustar a posição modificando o CSS do seu conteúdo.',
-                        de: 'Der Slot-Wrapper ist absolut unterhalb des Diagrammbereichs positioniert. Sie können die Position anpassen, indem Sie das CSS Ihres Inhalts ändern.',
-                        zh: '该插槽容器被绝对定位在图表区域下方。您可以通过调整内容的 CSS 来修改位置。',
-                        ja: 'スロットのラッパーはチャート領域の下に絶対配置されています。コンテンツの CSS を調整して位置を変更できます。',
-                        es: 'El contenedor del slot está posicionado de forma absoluta debajo del área del gráfico. Puede ajustar la posición modificando el CSS de su contenido.',
-                        ko: '슬롯 래퍼는 차트 영역 아래에 절대 위치로 배치됩니다. 콘텐츠의 CSS를 조정하여 위치를 변경할 수 있습니다.',
-                        ar: 'يتم وضع غلاف الـ slot بشكل مطلق أسفل منطقة المخطط. يمكنك تعديل الموضع من خلال تغيير CSS الخاص بالمحتوى.'
+                        en: "The slot wrapper is absolutely positioned below the chart area. You can tweak the css of your content to adjust the position.",
+                        fr: "Le conteneur du slot est positionné en absolu sous la zone du graphique. Vous pouvez ajuster la position en modifiant le CSS de votre contenu.",
+                        pt: "O contêiner do slot está posicionado de forma absoluta abaixo da área do gráfico. Você pode ajustar a posição modificando o CSS do seu conteúdo.",
+                        de: "Der Slot-Wrapper ist absolut unterhalb des Diagrammbereichs positioniert. Sie können die Position anpassen, indem Sie das CSS Ihres Inhalts ändern.",
+                        zh: "该插槽容器被绝对定位在图表区域下方。您可以通过调整内容的 CSS 来修改位置。",
+                        ja: "スロットのラッパーはチャート領域の下に絶対配置されています。コンテンツの CSS を調整して位置を変更できます。",
+                        es: "El contenedor del slot está posicionado de forma absoluta debajo del área del gráfico. Puede ajustar la posición modificando el CSS de su contenido.",
+                        ko: "슬롯 래퍼는 차트 영역 아래에 절대 위치로 배치됩니다. 콘텐츠의 CSS를 조정하여 위치를 변경할 수 있습니다.",
+                        ar: "يتم وضع غلاف الـ slot بشكل مطلق أسفل منطقة المخطط. يمكنك تعديل الموضع من خلال تغيير CSS الخاص بالمحتوى.",
                     },
                     hint: {
-                        en: 'Use this slot to display a keyboard navigation hint when the chart is in focus.',
-                        fr: 'Utilisez ce slot pour afficher une indication de navigation au clavier lorsque le graphique est focalisé.',
-                        pt: 'Use este slot para exibir uma dica de navegação por teclado quando o gráfico estiver em foco.',
-                        de: 'Verwenden Sie diesen Slot, um einen Hinweis zur Tastaturnavigation anzuzeigen, wenn das Diagramm fokussiert ist.',
-                        zh: '当图表获得焦点时，使用此插槽显示键盘导航提示。',
-                        ja: 'チャートにフォーカスがあるときに、キーボードナビゲーションのヒントを表示するためにこのスロットを使用します。',
-                        es: 'Utilice este slot para mostrar una pista de navegación con teclado cuando el gráfico esté enfocado.',
-                        ar: 'استخدم هذا الـ slot لعرض تلميح للتنقل باستخدام لوحة المفاتيح عندما يكون المخطط في وضع التركيز.',
-                        ko: '차트에 포커스가 있을 때 키보드 탐색 안내를 표시하려면 이 슬롯을 사용하세요.'
+                        en: "Use this slot to display a keyboard navigation hint when the chart is in focus.",
+                        fr: "Utilisez ce slot pour afficher une indication de navigation au clavier lorsque le graphique est focalisé.",
+                        pt: "Use este slot para exibir uma dica de navegação por teclado quando o gráfico estiver em foco.",
+                        de: "Verwenden Sie diesen Slot, um einen Hinweis zur Tastaturnavigation anzuzeigen, wenn das Diagramm fokussiert ist.",
+                        zh: "当图表获得焦点时，使用此插槽显示键盘导航提示。",
+                        ja: "チャートにフォーカスがあるときに、キーボードナビゲーションのヒントを表示するためにこのスロットを使用します。",
+                        es: "Utilice este slot para mostrar una pista de navegación con teclado cuando el gráfico esté enfocado.",
+                        ar: "استخدم هذا الـ slot لعرض تلميح للتنقل باستخدام لوحة المفاتيح عندما يكون المخطط في وضع التركيز.",
+                        ko: "차트에 포커스가 있을 때 키보드 탐색 안내를 표시하려면 이 슬롯을 사용하세요.",
                     },
                     chartBackground: {
                         en: "Use this slot to customize the chart background (gradient, image, etc).",
@@ -1333,7 +1378,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用して、グラフの背景（グラデーション、画像など）をカスタマイズします。",
                         es: "Usa este slot para personalizar el fondo del gráfico (degradado, imagen, etc.).",
                         ko: "이 슬롯을 사용하여 차트 배경(그라데이션, 이미지 등)을 사용자 정의하세요.",
-                        ar: "استخدم هذه الفتحة لتخصيص خلفية المخطط (التدرج، الصورة، إلخ)."
+                        ar: "استخدم هذه الفتحة لتخصيص خلفية المخطط (التدرج، الصورة، إلخ).",
                     },
                     hideLegend: {
                         en: "Set legend.show to false in your config to hide default legend",
@@ -1344,18 +1389,18 @@ export const useMainStore = defineStore("main", {
                         ja: "設定で legend.show を false に設定してデフォルトの凡例を非表示にします",
                         es: "Establece legend.show en false en tu configuración para ocultar la leyenda predeterminada",
                         ko: "설정에서 legend.show를 false로 설정하여 기본 범례를 숨기세요",
-                        ar: "قم بتعيين legend.show إلى false في إعداداتك لإخفاء المفتاح الافتراضي"
+                        ar: "قم بتعيين legend.show إلى false في إعداداتك لإخفاء المفتاح الافتراضي",
                     },
                     plotComment: {
                         en: "If your dataset contains a 'comments' attribute, you can display comments on the chart using the #plot-comment slot",
-                        fr: "Si votre ensemble de données contient un attribut \"comments\", vous pouvez afficher les commentaires sur le graphique en utilisant l'emplacement #plot-comment",
-                        pt: "Se o seu conjunto de dados contém um atributo \"comments\", você pode exibir comentários no gráfico usando o slot #plot-comment",
-                        de: "Wenn Ihr Datensatz ein \"comments\"-Attribut enthält, können Sie Kommentare im Diagramm über den #plot-comment-Slot anzeigen",
+                        fr: 'Si votre ensemble de données contient un attribut "comments", vous pouvez afficher les commentaires sur le graphique en utilisant l\'emplacement #plot-comment',
+                        pt: 'Se o seu conjunto de dados contém um atributo "comments", você pode exibir comentários no gráfico usando o slot #plot-comment',
+                        de: 'Wenn Ihr Datensatz ein "comments"-Attribut enthält, können Sie Kommentare im Diagramm über den #plot-comment-Slot anzeigen',
                         zh: "如果您的数据集包含“comments”属性，您可以使用 #plot-comment 插槽在图表上显示评论",
                         ja: "データセットに「comments」属性が含まれている場合、#plot-comment スロットを使用してチャートにコメントを表示できます",
-                        es: "Si tu conjunto de datos contiene un atributo \"comments\", puedes mostrar comentarios en el gráfico utilizando el slot #plot-comment",
-                        ko: "데이터셋에 \"comments\" 속성이 포함되어 있으면 #plot-comment 슬롯을 사용하여 차트에 댓글을 표시할 수 있습니다",
-                        ar: "إذا كانت مجموعة البيانات تحتوي على خاصية \"comments\"، يمكنك عرض التعليقات على الرسم البياني باستخدام فتحة #plot-comment"
+                        es: 'Si tu conjunto de datos contiene un atributo "comments", puedes mostrar comentarios en el gráfico utilizando el slot #plot-comment',
+                        ko: '데이터셋에 "comments" 속성이 포함되어 있으면 #plot-comment 슬롯을 사용하여 차트에 댓글을 표시할 수 있습니다',
+                        ar: 'إذا كانت مجموعة البيانات تحتوي على خاصية "comments"، يمكنك عرض التعليقات على الرسم البياني باستخدام فتحة #plot-comment',
                     },
                     timeLabel: {
                         en: "Use this slot to customize time labels",
@@ -1366,7 +1411,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用して時間ラベルをカスタマイズします",
                         es: "Usa este espacio para personalizar las etiquetas de tiempo",
                         ko: "이 슬롯을 사용하여 시간 레이블을 사용자 정의하세요",
-                        ar: "استخدم هذه الفتحة لتخصيص تسميات الوقت"
+                        ar: "استخدم هذه الفتحة لتخصيص تسميات الوقت",
                     },
                     source: {
                         en: "Use this slot to add a source caption to your chart.",
@@ -1377,7 +1422,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このスロットを使用して、チャートにソースキャプションを追加します。",
                         es: "Utiliza este espacio para añadir una leyenda de fuente a tu gráfico.",
                         ko: "이 슬롯을 사용하여 차트에 소스 캡션을 추가하세요.",
-                        ar: "استخدم هذه الفتحة لإضافة تعليق مصدر إلى الرسم البياني الخاص بك."
+                        ar: "استخدم هذه الفتحة لإضافة تعليق مصدر إلى الرسم البياني الخاص بك.",
                     },
                     watermark: {
                         en: `Use this 'slot' to add a watermark to your chart`,
@@ -1388,62 +1433,62 @@ export const useMainStore = defineStore("main", {
                         ja: `この「スロット」を使用して、チャートに透かしを追加します。`,
                         es: `Utilice esta "slot" para agregar una marca de agua al gráfico`,
                         ko: `차트에 워터마크를 추가하려면 이 "슬롯"을 사용하십시오.`,
-                        ar: `استخدم هذا 'slot' لإضافة علامة مائية إلى المخطط الخاص بك.`
+                        ar: `استخدم هذا 'slot' لإضافة علامة مائية إلى المخطط الخاص بك.`,
                     },
                     caption: {
-                        en: 'Use this slot to customize the caption element.',
+                        en: "Use this slot to customize the caption element.",
                         fr: `Utilisez cet emplacement pour personnaliser l'élément de légende.`,
-                        pt: 'Use este slot para personalizar o elemento de legenda.',
-                        de: 'Verwenden Sie diesen Slot, um das Beschriftungselement anzupassen.',
-                        zh: '使用此槽来自定义标题元素。',
-                        ja: 'このスロットを使用して、キャプション要素をカスタマイズします。',
-                        es: 'Utilice esta ranura para personalizar el elemento de título.',
-                        ko: '캡션 요소를 사용자 정의하려면 이 슬롯을 사용하십시오.',
-                        ar: `استخدم هذا الـ "slot" لتخصيص عنصر التسمية.`
+                        pt: "Use este slot para personalizar o elemento de legenda.",
+                        de: "Verwenden Sie diesen Slot, um das Beschriftungselement anzupassen.",
+                        zh: "使用此槽来自定义标题元素。",
+                        ja: "このスロットを使用して、キャプション要素をカスタマイズします。",
+                        es: "Utilice esta ranura para personalizar el elemento de título.",
+                        ko: "캡션 요소를 사용자 정의하려면 이 슬롯을 사용하십시오.",
+                        ar: `استخدم هذا الـ "slot" لتخصيص عنصر التسمية.`,
                     },
                     th: {
-                        en: 'Use this slot to customize the table header cells.',
+                        en: "Use this slot to customize the table header cells.",
                         fr: `Utilisez cet emplacement pour personnaliser les cellules d'en-tête du tableau.`,
-                        pt: 'Use este slot para personalizar as células do cabeçalho da tabela.',
-                        de: 'Verwenden Sie diesen Slot, um die Tabellenkopfzellen anzupassen.',
-                        zh: '使用此插槽可以自定义表格标题单元格。',
-                        ja: 'このスロットを使用して、テーブルのヘッダー セルをカスタマイズします。',
-                        es: 'Utilice esta ranura para personalizar las celdas del encabezado de la tabla.',
-                        ko: '이 슬롯을 사용하여 테이블 헤더 셀을 사용자 정의합니다.',
-                        ar: `استخدم هذا الـ "slot" لتخصيص خلايا رأس الجدول.`
+                        pt: "Use este slot para personalizar as células do cabeçalho da tabela.",
+                        de: "Verwenden Sie diesen Slot, um die Tabellenkopfzellen anzupassen.",
+                        zh: "使用此插槽可以自定义表格标题单元格。",
+                        ja: "このスロットを使用して、テーブルのヘッダー セルをカスタマイズします。",
+                        es: "Utilice esta ranura para personalizar las celdas del encabezado de la tabla.",
+                        ko: "이 슬롯을 사용하여 테이블 헤더 셀을 사용자 정의합니다.",
+                        ar: `استخدم هذا الـ "slot" لتخصيص خلايا رأس الجدول.`,
                     },
                     td: {
-                        en: 'Use this slot to customize the table body cells.',
-                        fr: 'Utilisez cet emplacement pour personnaliser les cellules du corps du tableau.',
-                        pt: 'Use este slot para personalizar as células do corpo da tabela.',
-                        de: 'Verwenden Sie diesen Steckplatz, um die Tabellenkörperzellen anzupassen.',
-                        zh: '使用此插槽可以自定义表格主体单元格。',
-                        ja: 'このスロットを使用して、テーブル本体のセルをカスタマイズします。',
-                        es: 'Utilice esta ranura para personalizar las celdas del cuerpo de la tabla.',
-                        ko: '이 슬롯을 사용하여 테이블 본문 셀을 사용자 정의합니다.',
-                        ar: `استخدم هذا الـ "slot" لتخصيص خلايا جسم الجدول.`
+                        en: "Use this slot to customize the table body cells.",
+                        fr: "Utilisez cet emplacement pour personnaliser les cellules du corps du tableau.",
+                        pt: "Use este slot para personalizar as células do corpo da tabela.",
+                        de: "Verwenden Sie diesen Steckplatz, um die Tabellenkörperzellen anzupassen.",
+                        zh: "使用此插槽可以自定义表格主体单元格。",
+                        ja: "このスロットを使用して、テーブル本体のセルをカスタマイズします。",
+                        es: "Utilice esta ranura para personalizar las celdas del cuerpo de la tabla.",
+                        ko: "이 슬롯을 사용하여 테이블 본문 셀을 사용자 정의합니다.",
+                        ar: `استخدم هذا الـ "slot" لتخصيص خلايا جسم الجدول.`,
                     },
                     title: {
                         en: `This component contains a #title 'slot' exposing data to customize the chart title.`,
                         fr: `Ce composant contient un slot #title exposant des données pour personnaliser le titre du graphique.`,
                         pt: `Este componente contém um 'slot' #title que expõe dados para personalizar o título do gráfico.`,
-                        de: 'Diese Komponente enthält einen #title-Slot, der Daten zur Anpassung des Diagrammtitels bereitstellt.',
-                        zh: '该组件包含一个#title“槽”，公开数据以自定义图表标题。',
+                        de: "Diese Komponente enthält einen #title-Slot, der Daten zur Anpassung des Diagrammtitels bereitstellt.",
+                        zh: "该组件包含一个#title“槽”，公开数据以自定义图表标题。",
                         ja: `このコンポーネントには、グラフのタイトルをカスタマイズするためのデータを公開する #title 'スロット' が含まれています。`,
                         es: `Este componente contiene una 'slot' #title que expone datos para personalizar el título del gráfico.`,
                         ko: `이 구성 요소에는 차트 제목을 맞춤설정하기 위해 데이터를 노출하는 #title '슬롯'이 포함되어 있습니다.`,
-                        ar: `يحتوي هذا المكون على "slot" #title يعرض بيانات لتخصيص عنوان المخطط.`
+                        ar: `يحتوي هذا المكون على "slot" #title يعرض بيانات لتخصيص عنوان المخطط.`,
                     },
                     dataLabel: {
                         en: `This component contains a #data-label 'slot' exposing data to customize data labels.`,
                         fr: `Ce composant contient un slot #data-label exposant des données pour personnaliser les étiquettes de données.`,
                         pt: `Este componente contém um 'slot' #data-label expondo dados para personalizar rótulos de dados.`,
-                        de: 'Diese Komponente enthält einen #data-label-Slot, der Daten zur Anpassung von Datenbeschriftungen verfügbar macht.',
-                        zh: '该组件包含一个#data-label“槽”，用于公开数据以自定义数据标签。',
+                        de: "Diese Komponente enthält einen #data-label-Slot, der Daten zur Anpassung von Datenbeschriftungen verfügbar macht.",
+                        zh: "该组件包含一个#data-label“槽”，用于公开数据以自定义数据标签。",
                         ja: `このコンポーネントには、データ ラベルをカスタマイズするためのデータを公開する #data-label 'slot' が含まれています。`,
                         es: `Este componente contiene una 'slot' #data-label que expone datos para personalizar etiquetas de datos.`,
                         ko: `이 구성 요소에는 데이터 레이블을 맞춤설정하기 위해 데이터를 노출하는 #data-label '슬롯'이 포함되어 있습니다.`,
-                        ar: 'يحتوي هذا المكون على "slot" #data-label يعرض بيانات لتخصيص تسميات البيانات.'
+                        ar: 'يحتوي هذا المكون على "slot" #data-label يعرض بيانات لتخصيص تسميات البيانات.',
                     },
                     sparklineBefore: {
                         en: "This component contains a #before 'slot' exposing data you can use to customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value.",
@@ -1454,7 +1499,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このコンポーネントには、チャートのラベルをカスタマイズするために使用できるデータを公開する #before 'slot' が含まれています: 選択したデータポイントの詳細、合計、平均、中央値、トレンド、最新値。",
                         es: "Este componente contiene un 'espacio' #before que expone datos que puede usar para personalizar etiquetas para su gráfico: detalles del punto de datos seleccionado, suma, promedio, mediana, tendencia, valor más reciente.",
                         ko: "이 구성 요소에는 차트 레이블을 사용자 정의하는 데 사용할 수 있는 데이터(선택한 데이터 포인트, 합계, 평균, 중앙값, 추세, 최신 값)에 대한 세부 정보를 노출하는 #before '슬롯'이 포함되어 있습니다.",
-                        ar: `يحتوي هذا المكون على "slot" #before يعرض بيانات يمكنك استخدامها لتخصيص التسميات لمخططك: تفاصيل نقطة البيانات المحددة، المجموع، المتوسط، الوسيط، الاتجاه، وآخر قيمة.`
+                        ar: `يحتوي هذا المكون على "slot" #before يعرض بيانات يمكنك استخدامها لتخصيص التسميات لمخططك: تفاصيل نقطة البيانات المحددة، المجموع، المتوسط، الوسيط، الاتجاه، وآخر قيمة.`,
                     },
                     warning: {
                         en: "This component works with 'slots'. See the 'slots' tab for an example.",
@@ -1465,10 +1510,10 @@ export const useMainStore = defineStore("main", {
                         ja: "このコンポーネントは「スロット」で動作します。例については、「スロット」タブを参照してください。",
                         es: "Este componente funciona con 'slots'. Consulte la pestaña 'slots' para ver un ejemplo.",
                         ko: "이 구성요소는 '슬롯'과 함께 작동합니다. 예시는 '슬롯' 탭을 참조하세요.",
-                        ar: `يعمل هذا المكون مع "slots". راجع علامة التبويب "slots" لرؤية مثال.`
+                        ar: `يعمل هذا المكون مع "slots". راجع علامة التبويب "slots" لرؤية مثال.`,
                     },
                     resetButton: {
-                        en: 'This component contains a zoom slider, which reset button can be customized through the #reset-action slot.',
+                        en: "This component contains a zoom slider, which reset button can be customized through the #reset-action slot.",
                         fr: `Ce composant contient un curseur de zoom, dont le bouton de réinitialisation peut être personnalisé via l'emplacement #reset-action.`,
                         pt: `Este componente contém um controle deslizante de zoom, cujo botão de reset pode ser personalizado através do slot #reset-action.`,
                         de: `Diese Komponente enthält einen Zoom-Schieberegler, dessen Reset-Taste über den #reset-action-Slot angepasst werden kann.`,
@@ -1476,7 +1521,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このコンポーネントにはズーム スライダーが含まれており、このリセット ボタンは #reset-action スロットを通じてカスタマイズできます。",
                         es: "Este componente contiene un control deslizante de zoom, cuyo botón de reinicio se puede personalizar a través de la ranura #reset-action.",
                         ko: "이 구성 요소에는 #reset-action 슬롯을 통해 재설정 버튼을 사용자 정의할 수 있는 확대/축소 슬라이더가 포함되어 있습니다.",
-                        ar: `يحتوي هذا المكون على شريط تمرير للتكبير، ويمكن تخصيص زر إعادة الضبط من خلال "slot" #reset-action.`
+                        ar: `يحتوي هذا المكون على شريط تمرير للتكبير، ويمكن تخصيص زر إعادة الضبط من خلال "slot" #reset-action.`,
                     },
                     donutDataLabels: {
                         en: "Custom datalabels can be obtained using the #dataLabel scoped slot. You can place anything you want inside this slot (icon, image, another chart...).",
@@ -1487,7 +1532,7 @@ export const useMainStore = defineStore("main", {
                         ja: "カスタム データラベルは、#dataLabel スコープ スロットを使用して取得できます。このスロット内には何でも配置できます (アイコン、画像、別のグラフなど)。",
                         es: "Se pueden obtener etiquetas de datos personalizadas utilizando la ranura con alcance #dataLabel. Puedes colocar lo que quieras dentro de esta ranura (icono, imagen, otro gráfico...).",
                         ko: "#dataLabel 범위 슬롯을 사용하여 사용자 정의 데이터 라벨을 얻을 수 있습니다. 이 슬롯에는 원하는 것은 무엇이든 넣을 수 있습니다(아이콘, 이미지, 다른 차트...).",
-                        ar: `يمكن الحصول على تسميات بيانات مخصصة باستخدام "slot" #dataLabel المقيد. يمكنك وضع أي شيء تريده داخل هذا الـ "slot" (أيقونة، صورة، مخطط آخر...).`
+                        ar: `يمكن الحصول على تسميات بيانات مخصصة باستخدام "slot" #dataLabel المقيد. يمكنك وضع أي شيء تريده داخل هذا الـ "slot" (أيقونة، صورة، مخطط آخر...).`,
                     },
                     rect: {
                         en: "This component contains a #rect slot to customize the treemap's cells contents. Be sure to set the config option style.chart.layout.labels.showDefaultLabels to 'false'.",
@@ -1498,10 +1543,10 @@ export const useMainStore = defineStore("main", {
                         ja: "このコンポーネントには、ツリーマップのセルの内容をカスタマイズするための #rect スロットが含まれています。構成オプション style.chart.layout.labels.showDefaultLabels を必ず「false」に設定してください。",
                         es: "Este componente contiene una ranura #rect para personalizar el contenido de las celdas del mapa de árbol. Asegúrese de configurar la opción de configuración style.chart.layout.labels.showDefaultLabels en 'falso'.",
                         ko: "이 구성 요소에는 트리맵의 셀 내용을 사용자 정의하기 위한 #ect 슬롯이 포함되어 있습니다. 구성 옵션 style.chart.layout.labels.showDefaultLabels를 'false'로 설정하세요.",
-                        ar: `يحتوي هذا المكون على "slot" #rect لتخصيص محتويات خلايا خريطة الشجرة. تأكد من تعيين خيار التكوين style.chart.layout.labels.showDefaultLabels إلى 'false'`
+                        ar: `يحتوي هذا المكون على "slot" #rect لتخصيص محتويات خلايا خريطة الشجرة. تأكد من تعيين خيار التكوين style.chart.layout.labels.showDefaultLabels إلى 'false'`,
                     },
                     tooltip: {
-                        en: 'This component contains a #tooltip-before #tooltip and #tooltip-after slots, to customize the tooltip contents. Through these slots, you can inject images, charts, text etc.',
+                        en: "This component contains a #tooltip-before #tooltip and #tooltip-after slots, to customize the tooltip contents. Through these slots, you can inject images, charts, text etc.",
                         fr: "Ce composant contient des emplacements #tooltip-before #tooltip et #tooltip-after, pour personnaliser le contenu de l'info-bulle. Grâce à ces emplacements, vous pouvez injecter des images, des graphiques, du texte, etc.",
                         pt: "Este componente contém slots #tooltip-before #tooltip e #tooltip-after, para personalizar o conteúdo da dica de ferramenta. Através desses slots, você pode injetar imagens, gráficos, texto etc.",
                         de: "Diese Komponente enthält die Slots #tooltip-before #tooltip und #tooltip-after, um den Tooltip-Inhalt anzupassen. Über diese Slots können Sie Bilder, Diagramme, Text usw. einfügen.",
@@ -1509,7 +1554,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このコンポーネントには、ツールチップの内容をカスタマイズするための #tooltip-before #tooltip スロットと #tooltip-after スロットが含まれています。これらのスロットを通じて、画像、グラフ、テキストなどを挿入できます。",
                         es: "Este componente contiene espacios #tooltip-before #tooltip y #tooltip-after, para personalizar el contenido de la información sobre herramientas. A través de estas ranuras, puede inyectar imágenes, gráficos, texto, etc.",
                         ko: "이 구성 요소에는 도구 설명 내용을 사용자 정의하기 위한 #tooltip-before #tooltip 및 #tooltip-after 슬롯이 포함되어 있습니다. 이 슬롯을 통해 이미지, 차트, 텍스트 등을 삽입할 수 있습니다.",
-                        ar: `يحتوي هذا المكون على "slots" #tooltip-before #tooltip و#tooltip-after لتخصيص محتويات التلميح. من خلال هذه الـ "slots"، يمكنك إدخال صور، مخططات، نصوص، إلخ.`
+                        ar: `يحتوي هذا المكون على "slots" #tooltip-before #tooltip و#tooltip-after لتخصيص محتويات التلميح. من خلال هذه الـ "slots"، يمكنك إدخال صور، مخططات، نصوص، إلخ.`,
                     },
                     legendDetail: {
                         en: "This component contains a #legend slot you can use to customize your own legend. The slot provides formatted data you can use to ease the process.",
@@ -1520,7 +1565,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このコンポーネントには、独自の凡例をカスタマイズするために使用できる #legend スロットが含まれています。スロットは、プロセスを容易にするために使用できるフォーマットされたデータを提供します。",
                         es: "Este componente contiene una ranura #legend que puede utilizar para personalizar su propia leyenda. La ranura proporciona datos formateados que puede utilizar para facilitar el proceso.",
                         ko: "이 구성 요소에는 자신만의 범례를 사용자 정의하는 데 사용할 수 있는 #legend 슬롯이 포함되어 있습니다. 슬롯은 프로세스를 쉽게 하는 데 사용할 수 있는 형식화된 데이터를 제공합니다.",
-                        ar: `يحتوي هذا المكون على "slot" #legend يمكنك استخدامه لتخصيص الأسطورة الخاصة بك. يوفر الـ "slot" بيانات مُنسقة يمكنك استخدامها لتسهيل العملية`
+                        ar: `يحتوي هذا المكون على "slot" #legend يمكنك استخدامه لتخصيص الأسطورة الخاصة بك. يوفر الـ "slot" بيانات مُنسقة يمكنك استخدامها لتسهيل العملية`,
                     },
                     legend: {
                         en: "Components marked with this icon provide a #legend slot to create your own custom legend.",
@@ -1531,7 +1576,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このアイコンの付いたコンポーネントは、独自のカスタム凡例を作成するための #legend スロットを提供します。",
                         es: "Los componentes marcados con este ícono proporcionan una ranura #legend para crear su propia leyenda personalizada.",
                         ko: "이 아이콘이 표시된 구성요소는 사용자 정의 범례를 생성할 수 있는 #legend 슬롯을 제공합니다.",
-                        ar: `تقدم المكونات المميزة بهذه الأيقونة "slot" #legend لإنشاء أسطورتك المخصصة.`
+                        ar: `تقدم المكونات المميزة بهذه الأيقونة "slot" #legend لإنشاء أسطورتك المخصصة.`,
                     },
                     summary: {
                         en: "Components marked with this icon provide a #svg slot to extend the svg with custom elements.",
@@ -1542,7 +1587,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このアイコンの付いたコンポーネントは、カスタム要素で svg を拡張するための #svg スロットを提供します。",
                         es: "Los componentes marcados con este icono proporcionan una ranura (slot) #svg para ampliar el archivo svg con elementos personalizados.",
                         ko: "이 아이콘으로 표시된 구성 요소는 사용자 정의 요소로 svg를 확장할 수 있는 #svg 슬롯을 제공합니다.",
-                        ar: `تقدم المكونات المميزة بهذه الأيقونة "slot" #svg لتوسيع الـ SVG بعناصر مخصصة.`
+                        ar: `تقدم المكونات المميزة بهذه الأيقونة "slot" #svg لتوسيع الـ SVG بعناصر مخصصة.`,
                     },
                     summaryLink: {
                         en: "View an example",
@@ -1553,7 +1598,7 @@ export const useMainStore = defineStore("main", {
                         ja: "例を見る",
                         es: "Ver un ejemplo",
                         ko: "예시 보기",
-                        ar: 'عرض مثال'
+                        ar: "عرض مثال",
                     },
                     presentation: {
                         en: "This component contains a #svg slot you can use to introduce your own customized svg elements into the chart, and through which the dimensions of the svg viewBox are exposed. Any svg element added in this slot will be displayed on the last layer of the svg, enabling any mouse or touch events you might want to use, however possibly hindering the component's own mouse events.",
@@ -1564,8 +1609,8 @@ export const useMainStore = defineStore("main", {
                         ja: "このコンポーネントには、独自にカスタマイズした svg 要素をチャートに導入するために使用できる #svg スロットが含まれており、これを通じて svg viewBox の寸法が公開されます。このスロットに追加された svg 要素はすべて svg の最後のレイヤーに表示され、使用したいマウス イベントやタッチ イベントが有効になりますが、コンポーネント自体のマウス イベントが妨げられる可能性があります。",
                         es: "Este componente contiene una ranura #svg que puede utilizar para introducir sus propios elementos svg personalizados en el gráfico y a través de la cual se exponen las dimensiones del viewBox svg. Cualquier elemento svg agregado en esta ranura se mostrará en la última capa del svg, lo que permitirá cualquier evento táctil o de mouse que desee usar, aunque posiblemente obstaculice los eventos de mouse propios del componente.",
                         ko: "이 구성 요소에는 사용자 정의된 svg 요소를 차트에 도입하고 svg viewBox의 크기가 노출되는 데 사용할 수 있는 #svg 슬롯이 포함되어 있습니다. 이 슬롯에 추가된 모든 svg 요소는 svg의 마지막 레이어에 표시되어 사용하려는 마우스 또는 터치 이벤트를 활성화하지만 구성 요소 자체의 마우스 이벤트를 방해할 수도 있습니다.",
-                        ar: `يحتوي هذا المكون على "slot" #svg يمكنك استخدامه لإدخال عناصر SVG مخصصة في المخطط، ومن خلاله يتم الكشف عن أبعاد viewBox الخاصة بـ SVG. سيتم عرض أي عنصر SVG مضاف في هذا الـ "slot" على آخر طبقة من الـ SVG، مما يمكّن أي أحداث للماوس أو اللمس قد ترغب في استخدامها، ولكنه قد يعيق أحداث الماوس الخاصة بالمكون نفسه.`
-                    }
+                        ar: `يحتوي هذا المكون على "slot" #svg يمكنك استخدامه لإدخال عناصر SVG مخصصة في المخطط، ومن خلاله يتم الكشف عن أبعاد viewBox الخاصة بـ SVG. سيتم عرض أي عنصر SVG مضاف في هذا الـ "slot" على آخر طبقة من الـ SVG، مما يمكّن أي أحداث للماوس أو اللمس قد ترغب في استخدامها، ولكنه قد يعيق أحداث الماوس الخاصة بالمكون نفسه.`,
+                    },
                 },
                 search: {
                     componentSelect: {
@@ -1577,7 +1622,7 @@ export const useMainStore = defineStore("main", {
                         ja: "コンポーネントを選択...",
                         es: "Seleccionar componente...",
                         ko: "구성품을 선택하세요..",
-                        ar: '...اختر مكونًا'
+                        ar: "...اختر مكونًا",
                     },
                     noResults: {
                         en: "No results found",
@@ -1586,9 +1631,9 @@ export const useMainStore = defineStore("main", {
                         de: "keine Ergebnisse gefunden",
                         zh: "未找到结果",
                         ja: "結果が見つかりません",
-                        es: "No se han encontrado resultados" ,
+                        es: "No se han encontrado resultados",
                         ko: "검색 결과가 없습니다",
-                        ar: 'لم يتم العثور على نتائج'
+                        ar: "لم يتم العثور على نتائج",
                     },
                     viewComponentCode: {
                         en: "View component code",
@@ -1599,7 +1644,7 @@ export const useMainStore = defineStore("main", {
                         ja: "コンポーネントコードを表示する",
                         es: "Ver código de componente",
                         ko: "구성요소 코드 보기",
-                        ar: 'عرض كود المكون'
+                        ar: "عرض كود المكون",
                     },
                     viewComponent: {
                         en: "View component",
@@ -1610,7 +1655,7 @@ export const useMainStore = defineStore("main", {
                         ja: "ビューコンポーネント",
                         es: "Ver componente",
                         ko: "구성요소 보기",
-                        ar: 'عرض المكون'
+                        ar: "عرض المكون",
                     },
                     defaultValue: {
                         en: "Default value",
@@ -1621,7 +1666,7 @@ export const useMainStore = defineStore("main", {
                         ja: "デフォルト値",
                         es: "Valor por defecto",
                         ko: "기본값",
-                        ar: 'القيمة الافتراضية'
+                        ar: "القيمة الافتراضية",
                     },
                     close: {
                         en: "Close",
@@ -1632,7 +1677,7 @@ export const useMainStore = defineStore("main", {
                         ja: "近い",
                         es: "Cerca",
                         ko: "닫다",
-                        ar: 'إغلاق'
+                        ar: "إغلاق",
                     },
                     term: {
                         en: "Results for",
@@ -1643,7 +1688,7 @@ export const useMainStore = defineStore("main", {
                         ja: "の結果",
                         es: "Resultados para",
                         ko: "다음에 대한 결과",
-                        ar: 'النتائج لـ'
+                        ar: "النتائج لـ",
                     },
                     placeholder: {
                         en: "Search config... ex: 'tootlip'",
@@ -1654,8 +1699,8 @@ export const useMainStore = defineStore("main", {
                         ja: "設定を検索...例: 'tootlip'",
                         es: "Configuración... ej: 'tootlip'",
                         ko: "검색 구성... 예: 'tootlip'",
-                        ar: 'بحث عن التكوين'
-                    }
+                        ar: "بحث عن التكوين",
+                    },
                 },
                 types: {
                     classic: {
@@ -1666,7 +1711,7 @@ export const useMainStore = defineStore("main", {
                         zh: "经典的",
                         ja: "クラシック",
                         es: "Clásico",
-                        ko: "권위 있는"
+                        ko: "권위 있는",
                     },
                     measure: {
                         en: "Rating & Measure",
@@ -1676,7 +1721,7 @@ export const useMainStore = defineStore("main", {
                         zh: "评级与测量",
                         ja: "評価と測定",
                         es: "Calificación y medida",
-                        ko: "평가 및 측정"
+                        ko: "평가 및 측정",
                     },
                     mini: {
                         en: "Mini",
@@ -1686,7 +1731,7 @@ export const useMainStore = defineStore("main", {
                         zh: "微型",
                         ja: "ミニチュア",
                         es: "Miniatura",
-                        ko: "세밀화"
+                        ko: "세밀화",
                     },
                     combined: {
                         en: "Combined",
@@ -1696,7 +1741,7 @@ export const useMainStore = defineStore("main", {
                         zh: "组合",
                         ja: "組み合わせた",
                         es: "Conjunto",
-                        ko: "결합"
+                        ko: "결합",
                     },
                     table: {
                         en: "Table",
@@ -1706,7 +1751,7 @@ export const useMainStore = defineStore("main", {
                         zh: "数据表",
                         ja: "データ表",
                         es: "Tabla de datos",
-                        ko: "데이터 테이블"
+                        ko: "데이터 테이블",
                     },
                     semantic: {
                         en: "Semantic",
@@ -1717,7 +1762,7 @@ export const useMainStore = defineStore("main", {
                         ja: "セマンティック",
                         es: "Semántico",
                         ko: "의미론적",
-                        ar: 'دلالي'
+                        ar: "دلالي",
                     },
                     tool: {
                         en: "Tools",
@@ -1727,8 +1772,8 @@ export const useMainStore = defineStore("main", {
                         zh: "工具",
                         ja: "ツール",
                         es: "Herramientas",
-                        ko: "도구"
-                    }
+                        ko: "도구",
+                    },
                 },
                 nuxt: {
                     implementation: {
@@ -1740,8 +1785,8 @@ export const useMainStore = defineStore("main", {
                         ja: "Nuxt を使用している場合、インストールの例がこの Github リポジトリに提供されています。",
                         es: "Si está utilizando Nuxt, se proporciona un ejemplo de instalación en este repositorio de Github",
                         ko: "Nuxt를 사용하는 경우 Github 저장소에 설치 예가 제공됩니다.",
-                        ar: 'GitHub إذا كنت تستخدم Nuxt، يتم توفير مثال على التثبيت في هذا المستودع على'
-                    }
+                        ar: "GitHub إذا كنت تستخدم Nuxt، يتم توفير مثال على التثبيت في هذا المستودع على",
+                    },
                 },
                 tagline: {
                     en: "A user-empowering data visualization Vue3 components library for eloquent data storytelling.",
@@ -1752,7 +1797,7 @@ export const useMainStore = defineStore("main", {
                     ja: "ユーザーの能力を最大限に引き出す、洗練されたデータストーリーテリングのためのVue3データ可視化コンポーネントライブラリ。",
                     es: "Una biblioteca de componentes Vue3 para la visualización de datos, empoderando al usuario para contar historias de datos elocuentes.",
                     ko: "뛰어난 데이터 스토리텔링을 위한 사용자 친화적인 데이터 시각화 Vue3 컴포넌트 라이브러리입니다.",
-                    ar: 'مكتبة مكونات Vue3 لتصور البيانات تمكّن المستخدمين لرواية البيانات بشكل بليغ'
+                    ar: "مكتبة مكونات Vue3 لتصور البيانات تمكّن المستخدمين لرواية البيانات بشكل بليغ",
                 },
                 github: {
                     en: "Github repo",
@@ -1763,7 +1808,7 @@ export const useMainStore = defineStore("main", {
                     ja: "Github",
                     es: "Github",
                     ko: "Github 저장소",
-                    ar: 'مستودع GitHub'
+                    ar: "مستودع GitHub",
                 },
                 lightMode: {
                     en: "Switch to light mode",
@@ -1774,7 +1819,7 @@ export const useMainStore = defineStore("main", {
                     ja: "ライトモードに切り替える",
                     es: "Cambiar al modo de luz",
                     ko: "조명 모드로 전환",
-                    ar: 'التبديل إلى الوضع الفاتح'
+                    ar: "التبديل إلى الوضع الفاتح",
                 },
                 darkMode: {
                     en: "Switch to dark mode",
@@ -1785,63 +1830,63 @@ export const useMainStore = defineStore("main", {
                     ja: "ダークモードに切り替える",
                     es: "Cambiar al modo oscuro",
                     ko: "어두운 모드로 전환",
-                    ar: 'التبديل إلى الوضع الداكن'
+                    ar: "التبديل إلى الوضع الداكن",
                 },
                 menu: {
                     installationComment: {
-                        en: 'Integrate the library',
-                        fr: 'Intégrer la bibliothèque',
-                        pt: 'Integrar a biblioteca',
-                        de: 'Die Bibliothek integrieren',
-                        zh: '集成该库',
-                        ja: 'ライブラリを統合',
-                        es: 'Integrar la biblioteca',
-                        ko: '라이브러리를 통합',
-                        ar: 'دمج المكتبة'
+                        en: "Integrate the library",
+                        fr: "Intégrer la bibliothèque",
+                        pt: "Integrar a biblioteca",
+                        de: "Die Bibliothek integrieren",
+                        zh: "集成该库",
+                        ja: "ライブラリを統合",
+                        es: "Integrar la biblioteca",
+                        ko: "라이브러리를 통합",
+                        ar: "دمج المكتبة",
                     },
                     docsComment: {
-                        en: 'Access technical documentation',
-                        fr: 'Accéder à la documentation technique',
-                        pt: 'Acessar a documentação técnica',
-                        de: 'Auf technische Dokumentation zugreifen',
-                        zh: '访问技术文档',
-                        ja: '技術ドキュメントにアクセス',
-                        es: 'Acceder a la documentación técnica',
-                        ko: '기술 문서에 접근',
-                        ar: 'الوصول إلى الوثائق التقنية'
+                        en: "Access technical documentation",
+                        fr: "Accéder à la documentation technique",
+                        pt: "Acessar a documentação técnica",
+                        de: "Auf technische Dokumentation zugreifen",
+                        zh: "访问技术文档",
+                        ja: "技術ドキュメントにアクセス",
+                        es: "Acceder a la documentación técnica",
+                        ko: "기술 문서에 접근",
+                        ar: "الوصول إلى الوثائق التقنية",
                     },
                     builderComment: {
-                        en: 'Configure charts and generate code',
-                        fr: 'Configurer les graphiques et générer le code',
-                        pt: 'Configurar gráficos e gerar código',
-                        de: 'Diagramme konfigurieren und Code erzeugen',
-                        zh: '配置图表并生成代码',
-                        ja: 'チャートを設定してコードを生成',
-                        es: 'Configurar gráficos y generar código',
-                        ko: '차트를 구성하고 코드 생성',
-                        ar: 'تهيئة الرسوم البيانية وإنشاء الكود'
+                        en: "Configure charts and generate code",
+                        fr: "Configurer les graphiques et générer le code",
+                        pt: "Configurar gráficos e gerar código",
+                        de: "Diagramme konfigurieren und Code erzeugen",
+                        zh: "配置图表并生成代码",
+                        ja: "チャートを設定してコードを生成",
+                        es: "Configurar gráficos y generar código",
+                        ko: "차트를 구성하고 코드 생성",
+                        ar: "تهيئة الرسوم البيانية وإنشاء الكود",
                     },
                     customizationComment: {
-                        en: 'Explore customization capabilities',
-                        fr: 'Explorer les capacités de personnalisation',
-                        pt: 'Explorar capacidades de personalização',
-                        de: 'Anpassungsmöglichkeiten erkunden',
-                        zh: '探索自定义能力',
-                        ja: 'カスタマイズ機能を確認',
-                        es: 'Explorar capacidades de personalización',
-                        ko: '커스터마이징 기능 탐색',
-                        ar: 'استكشاف إمكانيات التخصيص'
+                        en: "Explore customization capabilities",
+                        fr: "Explorer les capacités de personnalisation",
+                        pt: "Explorar capacidades de personalização",
+                        de: "Anpassungsmöglichkeiten erkunden",
+                        zh: "探索自定义能力",
+                        ja: "カスタマイズ機能を確認",
+                        es: "Explorar capacidades de personalización",
+                        ko: "커스터마이징 기능 탐색",
+                        ar: "استكشاف إمكانيات التخصيص",
                     },
                     exampleComment: {
-                        en: 'Review usage scenarios',
-                        fr: 'Examiner les scénarios d’utilisation',
-                        pt: 'Revisar cenários de uso',
-                        de: 'Anwendungsszenarien prüfen',
-                        zh: '查看使用场景',
-                        ja: '利用シナリオを確認',
-                        es: 'Revisar escenarios de uso',
-                        ko: '사용 시나리오 검토',
-                        ar: 'مراجعة سيناريوهات الاستخدام'
+                        en: "Review usage scenarios",
+                        fr: "Examiner les scénarios d’utilisation",
+                        pt: "Revisar cenários de uso",
+                        de: "Anwendungsszenarien prüfen",
+                        zh: "查看使用场景",
+                        ja: "利用シナリオを確認",
+                        es: "Revisar escenarios de uso",
+                        ko: "사용 시나리오 검토",
+                        ar: "مراجعة سيناريوهات الاستخدام",
                     },
                     examples: {
                         en: "Examples",
@@ -1852,7 +1897,7 @@ export const useMainStore = defineStore("main", {
                         ja: "使用例",
                         es: "Ejemplos",
                         ko: "예",
-                        ar: 'أمثلة'
+                        ar: "أمثلة",
                     },
                     chartBuilder: {
                         en: "Chart builder",
@@ -1863,7 +1908,7 @@ export const useMainStore = defineStore("main", {
                         ja: "チャートビルダー",
                         es: "Chart builder",
                         ko: "차트 빌더",
-                        ar: 'منشئ المخططات'
+                        ar: "منشئ المخططات",
                     },
                     customization: {
                         en: "Customization",
@@ -1874,7 +1919,7 @@ export const useMainStore = defineStore("main", {
                         ja: "カスタマイズ",
                         es: "Personalización",
                         ko: "맞춤화",
-                        ar: 'تخصيص'
+                        ar: "تخصيص",
                     },
                     installation: {
                         en: "Installation",
@@ -1885,7 +1930,7 @@ export const useMainStore = defineStore("main", {
                         ja: "インストール",
                         es: "Instalación",
                         ko: "설치",
-                        ar: 'التثبيت'
+                        ar: "التثبيت",
                     },
                     docs: {
                         en: "Docs",
@@ -1896,7 +1941,7 @@ export const useMainStore = defineStore("main", {
                         ja: "ドキュメント",
                         es: "Documentación",
                         ko: "선적 서류 비치",
-                        ar: 'الوثائق'
+                        ar: "الوثائق",
                     },
                     dashboard: {
                         en: "Dashboard",
@@ -1907,7 +1952,7 @@ export const useMainStore = defineStore("main", {
                         ja: "ダッシュボード",
                         es: "Panel",
                         ko: "계기반",
-                        ar: 'لوحة التحكم'
+                        ar: "لوحة التحكم",
                     },
                     versions: {
                         en: "Versions",
@@ -1918,7 +1963,7 @@ export const useMainStore = defineStore("main", {
                         ja: "バージョン",
                         es: "Versiones",
                         ko: "버전",
-                        ar: 'الإصدارات'
+                        ar: "الإصدارات",
                     },
                     about: {
                         en: "About",
@@ -1929,8 +1974,8 @@ export const useMainStore = defineStore("main", {
                         ja: "Vue Data UIについて",
                         es: "A proposito",
                         ko: "에 대한",
-                        ar: 'حول'
-                    }
+                        ar: "حول",
+                    },
                 },
                 customization: {
                     injectImage: {
@@ -1942,7 +1987,7 @@ export const useMainStore = defineStore("main", {
                         ja: "画像を挿入",
                         es: "Insertar una imagen",
                         ko: "이미지 삽입",
-                        ar: "إدراج صورة"
+                        ar: "إدراج صورة",
                     },
                     source: {
                         en: "You can use the #source slot to add a source caption to your chart. This slot is available on all chart components.",
@@ -1953,18 +1998,18 @@ export const useMainStore = defineStore("main", {
                         ja: "チャートにソースキャプションを追加するには、#source スロットを使用できます。このスロットはすべてのチャートコンポーネントで利用可能です。",
                         es: "Puedes usar el espacio #source para añadir una leyenda de fuente a tu gráfico. Este espacio está disponible en todos los componentes de gráficos.",
                         ko: "#source 슬롯을 사용하여 차트에 소스 캡션을 추가할 수 있습니다. 이 슬롯은 모든 차트 구성 요소에서 사용할 수 있습니다.",
-                        ar: "يمكنك استخدام الفتحة #source لإضافة تعليق مصدر إلى الرسم البياني الخاص بك. هذه الفتحة متوفرة في جميع مكونات الرسوم البيانية."
+                        ar: "يمكنك استخدام الفتحة #source لإضافة تعليق مصدر إلى الرسم البياني الخاص بك. هذه الفتحة متوفرة في جميع مكونات الرسوم البيانية.",
                     },
                     palette: {
-                        en: 'The default color palette contains the following 40 colors, which are accessible through the getPalette method you can import from vue-data-ui:',
-                        fr: 'La palette de couleurs par défaut contient les 40 couleurs suivantes, accessibles via la méthode getPalette que vous pouvez importer depuis vue-data-ui :',
-                        pt: 'A paleta de cores padrão contém as 40 cores a seguir, que podem ser acessadas por meio do método getPalette que você pode importar de vue-data-ui:',
+                        en: "The default color palette contains the following 40 colors, which are accessible through the getPalette method you can import from vue-data-ui:",
+                        fr: "La palette de couleurs par défaut contient les 40 couleurs suivantes, accessibles via la méthode getPalette que vous pouvez importer depuis vue-data-ui :",
+                        pt: "A paleta de cores padrão contém as 40 cores a seguir, que podem ser acessadas por meio do método getPalette que você pode importar de vue-data-ui:",
                         de: "Die Standardfarbpalette enthält die folgenden 40 Farben, auf die über die getPalette-Methode zugegriffen werden kann, die Sie aus vue-data-ui importieren können:",
-                        zh: '默认调色板包含以下 40 种颜色，可以通过从 vue-data-ui 导入的 getPalette 方法访问这些颜色：',
+                        zh: "默认调色板包含以下 40 种颜色，可以通过从 vue-data-ui 导入的 getPalette 方法访问这些颜色：",
                         ja: "デフォルトのカラー パレットには次の 40 色が含まれており、vue-data-ui からインポートできる getPalette メソッドを通じてアクセスできます。",
                         es: "La paleta de colores predeterminada contiene los siguientes 40 colores, a los que se puede acceder mediante el método getPalette que puede importar desde vue-data-ui:",
                         ko: "기본 색상 팔레트에는 vue-data-ui에서 가져올 수 있는 getPalette 메소드를 통해 액세스할 수 있는 다음 40가지 색상이 포함되어 있습니다.",
-                        ar: 'تحتوي لوحة الألوان الافتراضية على الألوان الأربعين التالية، والتي يمكن الوصول إليها من خلال دالة getPalette التي يمكنك استيرادها من vue-data-ui.'
+                        ar: "تحتوي لوحة الألوان الافتراضية على الألوان الأربعين التالية، والتي يمكن الوصول إليها من خلال دالة getPalette التي يمكنك استيرادها من vue-data-ui.",
                     },
                     otherSlots: {
                         waffle: {
@@ -1976,11 +2021,11 @@ export const useMainStore = defineStore("main", {
                             ja: "セルの内容は、config.useCustomCells を「true」に設定し、#cell スロットを使用することでカスタマイズできます。",
                             es: `El contenido de la celda se puede personalizar configurando config.useCustomCells en "verdadero" y usando la ranura #cell.`,
                             ko: "config.useCustomCells를 'true'로 설정하고 #cell 슬롯을 사용하여 셀 내용을 사용자 정의할 수 있습니다.",
-                            ar: `يمكن تخصيص محتويات الخلايا من خلال تعيين config.useCustomCells إلى 'true'، واستخدام "slot" #cell`
-                        }
+                            ar: `يمكن تخصيص محتويات الخلايا من خلال تعيين config.useCustomCells إلى 'true'، واستخدام "slot" #cell`,
+                        },
                     },
                     tooltipSlot: {
-                        en: 'To further customize tooltip contents, #tooltip-before & #tooltip-after slots are made available on the following components (which can also be used on the VueDataUi universal component):',
+                        en: "To further customize tooltip contents, #tooltip-before & #tooltip-after slots are made available on the following components (which can also be used on the VueDataUi universal component):",
                         fr: "Pour personnaliser davantage le contenu des info-bulles, les emplacements #tooltip-before et #tooltip-after sont mis à disposition sur les composants suivants (qui peuvent également être utilisés sur le composant universel VueDataUi):",
                         pt: "Para personalizar ainda mais o conteúdo da dica de ferramenta, os slots #tooltip-before e #tooltip-after são disponibilizados nos seguintes componentes (que também podem ser usados ​​no componente universal VueDataUi):",
                         de: "Um den Tooltip-Inhalt weiter anzupassen, werden die Slots #tooltip-before und #tooltip-after auf den folgenden Komponenten verfügbar gemacht (die auch auf der VueDataUi-Universalkomponente verwendet werden können):",
@@ -1988,7 +2033,7 @@ export const useMainStore = defineStore("main", {
                         ja: "ツールチップの内容をさらにカスタマイズするには、次のコンポーネントで #tooltip-before および #tooltip-after スロットを使用できるようにします (VueDataUi ユニバーサル コンポーネントでも使用できます)。",
                         es: "Para personalizar aún más el contenido de la información sobre herramientas, las ranuras #tooltip-before y #tooltip-after están disponibles en los siguientes componentes (que también se pueden usar en el componente universal VueDataUi):",
                         ko: "도구 설명 내용을 추가로 사용자 정의하기 위해 다음 구성 요소에서 #tooltip-before 및 #tooltip-after 슬롯을 사용할 수 있습니다(VueDataUi 범용 구성 요소에서도 사용할 수 있음).",
-                        ar: 'لمزيد من تخصيص محتويات تلميحات الأدوات، يتم توفير فتحات #tooltip-before و #tooltip-after على المكونات التالية (والتي يمكن استخدامها أيضًا في المكون العالمي VueDataUi):'
+                        ar: "لمزيد من تخصيص محتويات تلميحات الأدوات، يتم توفير فتحات #tooltip-before و #tooltip-after على المكونات التالية (والتي يمكن استخدامها أيضًا في المكون العالمي VueDataUi):",
                     },
                     legendAllowed: {
                         en: "The #legend slot is enabled for the following components:",
@@ -1999,7 +2044,7 @@ export const useMainStore = defineStore("main", {
                         ja: "#legend スロットは次のコンポーネントに対して有効です。",
                         es: "El slot #legend está habilitado para los siguientes componentes:",
                         ko: "#legend 슬롯은 다음 구성 요소에 대해 활성화됩니다.",
-                        ar: 'يتم تمكين فتحة #legend للمكونات التالية:'
+                        ar: "يتم تمكين فتحة #legend للمكونات التالية:",
                     },
                     legend: {
                         en: "Most charts have a '#legend' slot, from which a custom legend can be built. The slot provides necessary formatted data to ease the process.",
@@ -2010,7 +2055,7 @@ export const useMainStore = defineStore("main", {
                         ja: "ほとんどのグラフには「#legend」スロットがあり、そこからカスタム凡例を作成できます。スロットは、プロセスを容易にするために必要なフォーマットされたデータを提供します。",
                         es: "La mayoría de los gráficos tienen una ranura '#leyenda', a partir de la cual se puede crear una leyenda personalizada. La ranura proporciona los datos formateados necesarios para facilitar el proceso.",
                         ko: "대부분의 차트에는 사용자 정의 범례를 작성할 수 있는 '#legend' 슬롯이 있습니다. 슬롯은 프로세스를 쉽게 하기 위해 필요한 형식의 데이터를 제공합니다.",
-                        ar: 'تحتوي معظم المخططات على فتحة "#وسيلة إيضاح"، والتي يمكن من خلالها إنشاء وسيلة إيضاح مخصصة. توفر الفتحة البيانات المنسقة اللازمة لتسهيل العملية.'
+                        ar: 'تحتوي معظم المخططات على فتحة "#وسيلة إيضاح"، والتي يمكن من خلالها إنشاء وسيلة إيضاح مخصصة. توفر الفتحة البيانات المنسقة اللازمة لتسهيل العملية.',
                     },
                     p1: {
                         en: "Most charts have a '#svg' slot you can use to inject any content you want, such as comments, descriptions, and even other charts. The slot provides the dimensions of the svg, so you can position your elements exactly where you need to. This page shows you how to do it.",
@@ -2021,7 +2066,7 @@ export const useMainStore = defineStore("main", {
                         ja: "ほとんどのチャートには、コメント、説明、さらには他のチャートなど、必要なコンテンツを挿入するために使用できる「#svg」スロットがあります。スロットは SVG の寸法を提供するため、必要な場所に要素を正確に配置できます。このページではその方法を説明します。",
                         es: "La mayoría de los gráficos tienen una ranura '#svg' que puede utilizar para insertar cualquier contenido que desee, como comentarios, descripciones e incluso otros gráficos. La ranura proporciona las dimensiones del svg, para que puedas colocar tus elementos exactamente donde los necesites. Esta página le muestra cómo hacerlo.",
                         ko: "대부분의 차트에는 설명, 설명, 기타 차트 등 원하는 콘텐츠를 삽입하는 데 사용할 수 있는 '#svg' 슬롯이 있습니다. 슬롯은 svg의 크기를 제공하므로 필요한 위치에 요소를 정확하게 배치할 수 있습니다. 이 페이지에서는 수행 방법을 보여줍니다.",
-                        ar: 'تحتوي معظم المخططات على فتحة "#svg" يمكنك استخدامها لإدخال أي محتوى تريده، مثل التعليقات والأوصاف وحتى المخططات الأخرى. توفر الفتحة أبعاد ملف svg، حتى تتمكن من وضع العناصر الخاصة بك في المكان الذي تريده بالضبط. هذه الصفحة توضح لك كيفية القيام بذلك.'
+                        ar: 'تحتوي معظم المخططات على فتحة "#svg" يمكنك استخدامها لإدخال أي محتوى تريده، مثل التعليقات والأوصاف وحتى المخططات الأخرى. توفر الفتحة أبعاد ملف svg، حتى تتمكن من وضع العناصر الخاصة بك في المكان الذي تريده بالضبط. هذه الصفحة توضح لك كيفية القيام بذلك.',
                     },
                     comment: {
                         en: "Injecting a comment",
@@ -2032,7 +2077,7 @@ export const useMainStore = defineStore("main", {
                         ja: "コメントの挿入",
                         es: "Inyectando un comentario",
                         ko: "댓글 삽입",
-                        ar: 'حقن تعليق'
+                        ar: "حقن تعليق",
                     },
                     otherChart: {
                         en: "Injecting another chart",
@@ -2043,7 +2088,7 @@ export const useMainStore = defineStore("main", {
                         ja: "別のチャートの挿入",
                         es: "Inyectando otro gráfico",
                         ko: "다른 차트 삽입",
-                        ar: 'حقن مخطط آخر'
+                        ar: "حقن مخطط آخر",
                     },
                     arrow: {
                         en: "Injecting an arrow element",
@@ -2054,7 +2099,7 @@ export const useMainStore = defineStore("main", {
                         ja: "矢印要素の挿入",
                         es: "Inyectar un elemento de flecha",
                         ko: "화살표 요소 삽입",
-                        ar: 'حقن عنصر السهم'
+                        ar: "حقن عنصر السهم",
                     },
                     arrowDetails: {
                         en: "View details about the Arrow component",
@@ -2065,8 +2110,8 @@ export const useMainStore = defineStore("main", {
                         ja: "Arrow コンポーネントの詳細を表示する",
                         es: "Ver detalles sobre el componente Arrow",
                         ko: "Arrow 구성요소에 대한 세부정보 보기",
-                        ar: 'عرض تفاصيل حول مكون السهم'
-                    }
+                        ar: "عرض تفاصيل حول مكون السهم",
+                    },
                 },
                 installation: {
                     tsUsers: {
@@ -2078,7 +2123,7 @@ export const useMainStore = defineStore("main", {
                         ja: "TypeScript ユーザーの場合: タイプは、パッケージの Types フォルダーにある「vue-data-ui.d.ts」ファイルで入手できます。",
                         es: "Para usuarios de TypeScript: los tipos están disponibles en el archivo 'vue-data-ui.d.ts' en la carpeta de tipos del paquete.",
                         ko: "TypeScript 사용자의 경우: 유형은 패키지의 유형 폴더 아래 'vue-data-ui.d.ts' 파일에서 사용할 수 있습니다.",
-                        ar: 'بالنسبة لمستخدمي TypeScript: الأنواع متاحة في ملف "vue-data-ui.d.ts" ضمن مجلد الأنواع الخاص بالحزمة.'
+                        ar: 'بالنسبة لمستخدمي TypeScript: الأنواع متاحة في ملف "vue-data-ui.d.ts" ضمن مجلد الأنواع الخاص بالحزمة.',
                     },
                     comments: {
                         or: {
@@ -2090,7 +2135,7 @@ export const useMainStore = defineStore("main", {
                             ja: `または、v.2.0.38 以降は、props にコンポーネント名を追加することで、ユニバーサル ラッパーを使用できます。`,
                             es: `O, desde la versión 2.0.38, puede usar el contenedor universal agregando el nombre del componente en los accesorios:`,
                             ko: `또는 v.2.0.38부터 props에 구성 요소 이름을 추가하여 범용 래퍼를 사용할 수 있습니다.`,
-                            ar: 'أو، منذ الإصدار v.2.0.38، يمكنك استخدام الغلاف العام، وذلك بإضافة اسم المكون في الخاصيات:'
+                            ar: "أو، منذ الإصدار v.2.0.38، يمكنك استخدام الغلاف العام، وذلك بإضافة اسم المكون في الخاصيات:",
                         },
                         universalComponent: {
                             en: 'Since v.2.0.38, the universal component "VueDataUi" can be used, instead of importing individual components. You just have to specify the component name in the props:',
@@ -2112,7 +2157,7 @@ export const useMainStore = defineStore("main", {
                             ja: "CSS を含めます。Nuxt を使用している場合は、このインポートを Nuxt の設定ではなく、必要なコンポーネント内でのみ直接読み込むことを推奨します。",
                             es: "Incluir el CSS. Si está utilizando Nuxt, se recomienda incluir esta importación solo directamente en los componentes que la necesiten y no en la configuración de Nuxt.",
                             ko: "CSS를 포함합니다. Nuxt를 사용하는 경우 이 import는 Nuxt 설정이 아니라 필요한 컴포넌트에서만 직접 포함하는 것이 권장됩니다.",
-                            ar: "تضمين ملف CSS. إذا كنت تستخدم Nuxt، فمن المستحسن تضمين هذا الاستيراد فقط داخل المكونات التي تحتاجه مباشرةً، وليس في إعدادات Nuxt."
+                            ar: "تضمين ملف CSS. إذا كنت تستخدم Nuxt، فمن المستحسن تضمين هذا الاستيراد فقط داخل المكونات التي تحتاجه مباشرةً، وليس في إعدادات Nuxt.",
                         },
                         global: {
                             en: "You can declare Vue Data UI components globally",
@@ -2123,7 +2168,7 @@ export const useMainStore = defineStore("main", {
                             ja: "Vue Data UI コンポーネントはグローバルに宣言できます",
                             es: "Puede declarar los componentes de la interfaz de usuario de Vue Data globalmente",
                             ko: "Vue Data UI 구성요소를 전역적으로 선언할 수 있습니다.",
-                            ar: 'يمكنك الإعلان عن مكونات Vue Data UI على مستوى العالم'
+                            ar: "يمكنك الإعلان عن مكونات Vue Data UI على مستوى العالم",
                         },
                         import: {
                             en: "Or you can import just what you need in your files",
@@ -2134,7 +2179,7 @@ export const useMainStore = defineStore("main", {
                             ja: "または、ファイル内の必要なものだけをインポートすることもできます",
                             es: "O puedes importar sólo lo que necesitas en tus archivos",
                             ko: "또는 파일에서 필요한 것만 가져올 수 있습니다.",
-                            ar: 'أو يمكنك استيراد ما تحتاجه فقط في ملفاتك'
+                            ar: "أو يمكنك استيراد ما تحتاجه فقط في ملفاتك",
                         },
                         types: {
                             en: "If you are using Typescript, you can paste the vue-data-ui.d.ts file into your src folder, and import types this way:",
@@ -2145,9 +2190,9 @@ export const useMainStore = defineStore("main", {
                             ja: "Typescript を使用している場合は、vue-data-ui.d.ts ファイルを src フォルダーに貼り付け、次の方法で型をインポートできます。",
                             es: "Si está utilizando Typecript, puede pegar el archivo vue-data-ui.d.ts en su carpeta src e importar tipos de esta manera:",
                             ko: "Typescript를 사용하는 경우 vue-data-ui.d.ts 파일을 src 폴더에 붙여넣고 다음 방법으로 유형을 가져올 수 있습니다.",
-                            ar: "إذا كنت تستخدم Typescript، فيمكنك لصق ملف vue-data-ui.d.ts في مجلد src الخاص بك، واستيراد الأنواع بهذه الطريقة"
-                        }
-                    }
+                            ar: "إذا كنت تستخدم Typescript، فيمكنك لصق ملف vue-data-ui.d.ts في مجلد src الخاص بك، واستيراد الأنواع بهذه الطريقة",
+                        },
+                    },
                 },
                 about: {
                     p1: {
@@ -2159,7 +2204,7 @@ export const useMainStore = defineStore("main", {
                         ja: "Vue Data UI は 1 つの疑問から生まれました。 「ダッシュボードがそれほど優れているのであれば、なぜユーザーは CSV エクスポート機能を必要とするのでしょうか?」",
                         es: "Vue Data UI nació de una sola pregunta: si sus paneles son tan buenos, ¿por qué sus usuarios solicitan funciones de exportación a CSV?",
                         ko: "Vue Data UI는 단 하나의 질문에서 탄생했습니다. 대시보드가 ​​그렇게 좋으면 사용자가 CSV 내보내기 기능을 요구하는 이유는 무엇입니까?",
-                        ar: 'نشأت Vue Data UI من سؤال واحد: إذا كانت لوحات المعلومات الخاصة بك جيدة جدًا، فلماذا يطلب المستخدمون ميزات تصدير ملف CSV؟'
+                        ar: "نشأت Vue Data UI من سؤال واحد: إذا كانت لوحات المعلومات الخاصة بك جيدة جدًا، فلماذا يطلب المستخدمون ميزات تصدير ملف CSV؟",
                     },
                     p2: {
                         en: "The purpose of this open-source library is to offer end users a set of in-built tools around charts and tables to reduce the friction of having to recompute exported data. Of course, Vue Data UI keeps the option to export to CSV and PDF, just in case.",
@@ -2170,7 +2215,7 @@ export const useMainStore = defineStore("main", {
                         ja: "このオープン ソース ライブラリの目的は、エクスポートされたデータを再計算する労力を軽減するためのチャートとテーブル用の一連の組み込みツールをエンド ユーザーに提供することです。もちろん、Vue Data UI には、万が一に備えて CSV または PDF にエクスポートするオプションが用意されています。",
                         es: "El propósito de esta biblioteca de código abierto es ofrecer a los usuarios finales un conjunto de herramientas integradas en torno a gráficos y tablas para reducir la fricción de tener que volver a calcular los datos exportados. Por supuesto, Vue Data UI mantiene la opción de exportar a CSV y PDF, por si acaso.",
                         ko: "이 오픈 소스 라이브러리의 목적은 최종 사용자에게 내보낸 데이터를 다시 계산해야 하는 어려움을 줄이기 위해 차트와 테이블에 내장된 도구 세트를 제공하는 것입니다. 물론 Vue Data UI는 만일을 대비해 CSV 및 PDF로 내보내는 옵션을 유지합니다.",
-                        ar: 'الغرض من هذه المكتبة مفتوحة المصدر هو تزويد المستخدمين النهائيين بمجموعة من الأدوات المضمنة حول المخططات والجداول لتقليل الاحتكاك الناتج عن الاضطرار إلى إعادة حساب البيانات المصدرة. بالطبع، تحتفظ Vue Data UI بخيار التصدير إلى CSV وPDF، في حالة حدوث ذلك.'
+                        ar: "الغرض من هذه المكتبة مفتوحة المصدر هو تزويد المستخدمين النهائيين بمجموعة من الأدوات المضمنة حول المخططات والجداول لتقليل الاحتكاك الناتج عن الاضطرار إلى إعادة حساب البيانات المصدرة. بالطبع، تحتفظ Vue Data UI بخيار التصدير إلى CSV وPDF، في حالة حدوث ذلك.",
                     },
                     p3: {
                         en: "Vue Data UI offers a set of classic chart types, along with new or rare items, such as",
@@ -2181,7 +2226,7 @@ export const useMainStore = defineStore("main", {
                         ja: "Vue Data UI は、一連の古典的なチャート タイプに加えて、などの新しいアイテムや珍しいアイテムを提供します",
                         es: "Vue Data UI ofrece un conjunto de tipos de gráficos clásicos, junto con elementos nuevos o raros, como",
                         ko: "Vue Data UI는 다음과 같은 새롭거나 희귀한 항목과 함께 일련의 클래식 차트 유형을 제공합니다.",
-                        ar: 'تقدم Vue Data UI مجموعة من أنواع المخططات الكلاسيكية، إلى جانب العناصر الجديدة أو النادرة، مثل'
+                        ar: "تقدم Vue Data UI مجموعة من أنواع المخططات الكلاسيكية، إلى جانب العناصر الجديدة أو النادرة، مثل",
                     },
                     p4: {
                         en: "To make the experience of your dashboards as smooth as possible, Vue Data UI also ships with a set of utilities, such as",
@@ -2192,18 +2237,18 @@ export const useMainStore = defineStore("main", {
                         ja: "ダッシュボードのエクスペリエンスをできるだけスムーズにするために、Vue Data UI には VueUiScreenshot や VueUiSkeleton などの一連のユーティリティも付属しています。",
                         es: "Para que la experiencia de sus paneles sea lo más fluida posible, Vue Data UI también incluye un conjunto de utilidades, como",
                         ko: "대시보드 경험을 최대한 원활하게 만들기 위해 Vue Data UI에는 다음과 같은 유틸리티 세트도 함께 제공됩니다.",
-                        ar: 'لجعل تجربة لوحات المعلومات الخاصة بك سلسة قدر الإمكان، تأتي Vue Data UI أيضًا مع مجموعة من الأدوات المساعدة، مثل'
+                        ar: "لجعل تجربة لوحات المعلومات الخاصة بك سلسة قدر الإمكان، تأتي Vue Data UI أيضًا مع مجموعة من الأدوات المساعدة، مثل",
                     },
                     contributors: {
-                        en: 'Contributors',
-                        fr: 'Contributeurs',
-                        pt: 'Contribuidores',
-                        de: 'Mitwirkende',
-                        zh: '贡献者',
-                        ja: '貢献者',
-                        es: 'Colaboradores',
-                        ko: '기여자',
-                        ar: 'المساهمين'
+                        en: "Contributors",
+                        fr: "Contributeurs",
+                        pt: "Contribuidores",
+                        de: "Mitwirkende",
+                        zh: "贡献者",
+                        ja: "貢献者",
+                        es: "Colaboradores",
+                        ko: "기여자",
+                        ar: "المساهمين",
                     },
                     maintainers: {
                         en: "Maintainer",
@@ -2214,7 +2259,7 @@ export const useMainStore = defineStore("main", {
                         ja: "メンテナー",
                         es: "Mantenedor",
                         ko: "유지관리자",
-                        ar: 'معيل'
+                        ar: "معيل",
                     },
                     alp: {
                         en: "Alec Lloyd Probert is a front-end developer, formerly a data analyst, with a strong passion for data visualization and VueJs.",
@@ -2225,8 +2270,8 @@ export const useMainStore = defineStore("main", {
                         ja: "Alec Lloyd Probert は、データ視覚化と VueJs に情熱を注ぐフロントエンド開発者であり、元データ アナリストです。",
                         es: "Alec Lloyd Probert es un desarrollador front-end, anteriormente analista de datos, con una gran pasión por la visualización de datos y VueJs.",
                         ko: "Alec Lloyd Probert는 프런트 엔드 개발자이자 이전에 데이터 분석가였으며 데이터 시각화 및 VueJ에 대한 강한 열정을 갖고 있습니다.",
-                        ar: 'أليك لويد بروبرت هو مطور الواجهة الأمامية، وكان في السابق محلل بيانات، ولديه شغف قوي بتصور البيانات وVueJs.'
-                    }
+                        ar: "أليك لويد بروبرت هو مطور الواجهة الأمامية، وكان في السابق محلل بيانات، ولديه شغف قوي بتصور البيانات وVueJs.",
+                    },
                 },
                 docs: {
                     props: {
@@ -2238,7 +2283,7 @@ export const useMainStore = defineStore("main", {
                         ja: "2 つの属性が必要です",
                         es: "Se requieren 2 props",
                         ko: "소품 2개가 필요합니다",
-                        ar: 'مطلوب 2 الدعائم'
+                        ar: "مطلوب 2 الدعائم",
                     },
                     dataset: {
                         en: "dataset",
@@ -2249,7 +2294,7 @@ export const useMainStore = defineStore("main", {
                         ja: "データセット",
                         es: "dataset",
                         ko: "데이터 세트",
-                        ar: 'مجموعة البيانات'
+                        ar: "مجموعة البيانات",
                     },
                     config: {
                         en: "config",
@@ -2260,7 +2305,7 @@ export const useMainStore = defineStore("main", {
                         ja: "構成",
                         es: "config",
                         ko: "구성",
-                        ar: 'إعدادات'
+                        ar: "إعدادات",
                     },
                     p1: {
                         en: "Documentation pages provide you with a config tab where you can tweak your config and save it as JSON. You can also switch from dark to light themes to save configs for both modes.",
@@ -2271,52 +2316,52 @@ export const useMainStore = defineStore("main", {
                         ja: "ドキュメント ページには、構成を調整して JSON として保存できる構成タブが表示されます。ダークテーマからライトテーマに切り替えて、両方のモードの設定を保存することもできます。",
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos.",
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다.",
-                        ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
+                        ar: "تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين",
                     },
                     tooltips: {
                         bump: {
-                            en: 'Visualize rank positions over time.',
-                            fr: 'Visualisez les positions de classement au fil du temps.',
-                            pt: 'Visualize as posições de classificação ao longo do tempo.',
-                            de: 'Visualisieren Sie Rangpositionen im Zeitverlauf.',
-                            zh: '可视化排名随时间的变化。',
-                            ja: '時間の経過に伴う順位の変化を可視化します。',
-                            es: 'Visualice las posiciones de clasificación a lo largo del tiempo.',
-                            ko: '시간에 따른 순위 변화를 시각화하세요.',
-                            ar: 'اعرض مراكز الترتيب عبر الزمن.'
+                            en: "Visualize rank positions over time.",
+                            fr: "Visualisez les positions de classement au fil du temps.",
+                            pt: "Visualize as posições de classificação ao longo do tempo.",
+                            de: "Visualisieren Sie Rangpositionen im Zeitverlauf.",
+                            zh: "可视化排名随时间的变化。",
+                            ja: "時間の経過に伴う順位の変化を可視化します。",
+                            es: "Visualice las posiciones de clasificación a lo largo del tiempo.",
+                            ko: "시간에 따른 순위 변화를 시각화하세요.",
+                            ar: "اعرض مراكز الترتيب عبر الزمن.",
                         },
                         geo: {
-                            en: 'Render any GeoJSON map and plot custom data points with full interaction and zoom control.',
-                            fr: 'Afficher n’importe quelle carte GeoJSON et tracer des points de données personnalisés avec interactions complètes et contrôle du zoom.',
-                            pt: 'Renderize qualquer mapa GeoJSON e plote pontos de dados personalizados com interação completa e controle de zoom.',
-                            de: 'Beliebige GeoJSON-Karten darstellen und benutzerdefinierte Datenpunkte mit vollständiger Interaktion und Zoom-Steuerung visualisieren.',
-                            zh: '渲染任意 GeoJSON 地图，并绘制自定义数据点，支持完整交互和缩放控制。',
-                            ja: '任意の GeoJSON マップを描画し、完全なインタラクションとズーム制御付きでカスタムデータポイントを表示します。',
-                            es: 'Renderiza cualquier mapa GeoJSON y muestra puntos de datos personalizados con interacción completa y control de zoom.',
-                            ko: '모든 GeoJSON 지도를 렌더링하고 완전한 상호작용 및 줌 제어를 통해 사용자 정의 데이터 포인트를 표시합니다.',
-                            ar: 'عرض أي خريطة GeoJSON ورسم نقاط بيانات مخصّصة مع تفاعل كامل والتحكم في التكبير.'
+                            en: "Render any GeoJSON map and plot custom data points with full interaction and zoom control.",
+                            fr: "Afficher n’importe quelle carte GeoJSON et tracer des points de données personnalisés avec interactions complètes et contrôle du zoom.",
+                            pt: "Renderize qualquer mapa GeoJSON e plote pontos de dados personalizados com interação completa e controle de zoom.",
+                            de: "Beliebige GeoJSON-Karten darstellen und benutzerdefinierte Datenpunkte mit vollständiger Interaktion und Zoom-Steuerung visualisieren.",
+                            zh: "渲染任意 GeoJSON 地图，并绘制自定义数据点，支持完整交互和缩放控制。",
+                            ja: "任意の GeoJSON マップを描画し、完全なインタラクションとズーム制御付きでカスタムデータポイントを表示します。",
+                            es: "Renderiza cualquier mapa GeoJSON y muestra puntos de datos personalizados con interacción completa y control de zoom.",
+                            ko: "모든 GeoJSON 지도를 렌더링하고 완전한 상호작용 및 줌 제어를 통해 사용자 정의 데이터 포인트를 표시합니다.",
+                            ar: "عرض أي خريطة GeoJSON ورسم نقاط بيانات مخصّصة مع تفاعل كامل والتحكم في التكبير.",
                         },
                         dag: {
-                            en: 'Visualize any directed graph structure, including workflows or system architectures, even when cycles are present.',
-                            fr: 'Visualisez toute structure de graphe orienté, y compris des flux de travail ou des architectures système, même en présence de cycles.',
-                            pt: 'Visualize qualquer estrutura de grafo direcionado, incluindo fluxos de trabalho ou arquiteturas de sistema, mesmo quando há ciclos.',
-                            de: 'Visualisieren Sie jede gerichtete Graphstruktur, einschließlich Workflows oder Systemarchitekturen, selbst wenn Zyklen vorhanden sind.',
-                            zh: '可视化任何有向图结构，包括工作流程或系统架构，即使存在循环也不受影响。',
-                            ja: 'ワークフローやシステムアーキテクチャなど、サイクルが存在しても任意の有向グラフ構造を可視化できます。',
-                            es: 'Visualice cualquier estructura de grafo dirigido, incluidos flujos de trabajo o arquitecturas de sistema, incluso cuando existen ciclos.',
-                            ko: '워크플로우나 시스템 아키텍처 등, 사이클이 있어도 모든 방향성 그래프 구조를 시각화할 수 있습니다.',
-                            ar: 'يمكنك عرض أي بنية رسم بياني موجه، بما في ذلك مسارات العمل أو هياكل الأنظمة، حتى عند وجود دورات.'
+                            en: "Visualize any directed graph structure, including workflows or system architectures, even when cycles are present.",
+                            fr: "Visualisez toute structure de graphe orienté, y compris des flux de travail ou des architectures système, même en présence de cycles.",
+                            pt: "Visualize qualquer estrutura de grafo direcionado, incluindo fluxos de trabalho ou arquiteturas de sistema, mesmo quando há ciclos.",
+                            de: "Visualisieren Sie jede gerichtete Graphstruktur, einschließlich Workflows oder Systemarchitekturen, selbst wenn Zyklen vorhanden sind.",
+                            zh: "可视化任何有向图结构，包括工作流程或系统架构，即使存在循环也不受影响。",
+                            ja: "ワークフローやシステムアーキテクチャなど、サイクルが存在しても任意の有向グラフ構造を可視化できます。",
+                            es: "Visualice cualquier estructura de grafo dirigido, incluidos flujos de trabajo o arquitecturas de sistema, incluso cuando existen ciclos.",
+                            ko: "워크플로우나 시스템 아키텍처 등, 사이클이 있어도 모든 방향성 그래프 구조를 시각화할 수 있습니다.",
+                            ar: "يمكنك عرض أي بنية رسم بياني موجه، بما في ذلك مسارات العمل أو هياكل الأنظمة، حتى عند وجود دورات.",
                         },
                         historyPlot: {
-                            en: 'Visualize the dynamic journey of two variables over time, with every point telling a story of change and connection in two-dimensional space.',
-                            fr: 'Visualisez le parcours dynamique de deux variables dans le temps, chaque point racontant une histoire de changement et de connexion dans un espace bidimensionnel.',
-                            pt: 'Visualize a jornada dinâmica de duas variáveis ao longo do tempo, com cada ponto contando uma história de mudança e conexão em um espaço bidimensional.',
-                            de: 'Visualisieren Sie die dynamische Reise von zwei Variablen im Laufe der Zeit, wobei jeder Punkt eine Geschichte von Veränderung und Verbindung im zweidimensionalen Raum erzählt.',
-                            zh: '可视化两个变量随时间动态变化的旅程，每个点都讲述了在二维空间中变化与连接的故事。',
-                            ja: '2次元空間で、時間の経過に伴う2つの変数の動的な軌跡を可視化し、各ポイントが変化と接続の物語を語ります。',
-                            es: 'Visualiza el viaje dinámico de dos variables a lo largo del tiempo, donde cada punto cuenta una historia de cambio y conexión en un espacio bidimensional.',
-                            ko: '시간에 따라 두 변수의 역동적인 여정을 시각화하며, 각 포인트가 2차원 공간에서 변화와 연결의 이야기를 전합니다.',
-                            ar: 'تصور الرحلة الديناميكية لمتغيرين بمرور الوقت، حيث يروي كل نقطة قصة تغيير واتصال في مساحة ثنائية الأبعاد.'
+                            en: "Visualize the dynamic journey of two variables over time, with every point telling a story of change and connection in two-dimensional space.",
+                            fr: "Visualisez le parcours dynamique de deux variables dans le temps, chaque point racontant une histoire de changement et de connexion dans un espace bidimensionnel.",
+                            pt: "Visualize a jornada dinâmica de duas variáveis ao longo do tempo, com cada ponto contando uma história de mudança e conexão em um espaço bidimensional.",
+                            de: "Visualisieren Sie die dynamische Reise von zwei Variablen im Laufe der Zeit, wobei jeder Punkt eine Geschichte von Veränderung und Verbindung im zweidimensionalen Raum erzählt.",
+                            zh: "可视化两个变量随时间动态变化的旅程，每个点都讲述了在二维空间中变化与连接的故事。",
+                            ja: "2次元空間で、時間の経過に伴う2つの変数の動的な軌跡を可視化し、各ポイントが変化と接続の物語を語ります。",
+                            es: "Visualiza el viaje dinámico de dos variables a lo largo del tiempo, donde cada punto cuenta una historia de cambio y conexión en un espacio bidimensional.",
+                            ko: "시간에 따라 두 변수의 역동적인 여정을 시각화하며, 각 포인트가 2차원 공간에서 변화와 연결의 이야기를 전합니다.",
+                            ar: "تصور الرحلة الديناميكية لمتغيرين بمرور الوقت، حيث يروي كل نقطة قصة تغيير واتصال في مساحة ثنائية الأبعاد.",
                         },
                         funnel: {
                             en: "Highlight the progression of attrition that occurs at each stage of a process.",
@@ -2327,10 +2372,10 @@ export const useMainStore = defineStore("main", {
                             ja: "プロセスの各段階で発生する減少の進行を強調します。",
                             es: "Resalta la progresión de la pérdida que ocurre en cada etapa de un proceso.",
                             ko: "프로세스의 각 단계에서 발생하는 감소의 진행을 강조합니다.",
-                            ar: "تسليط الضوء على تطور التآكل الذي يحدث في كل مرحلة من مراحل العملية."
+                            ar: "تسليط الضوء على تطور التآكل الذي يحدث في كل مرحلة من مراحل العملية.",
                         },
                         bullet: {
-                            en: 'A space-efficient alternative to gauge charts.',
+                            en: "A space-efficient alternative to gauge charts.",
                             fr: "Une alternative compacte aux graphiques de jauge.",
                             pt: "Uma alternativa compacta aos gráficos de medidor.",
                             de: "Eine platzsparende Alternative zu Tachodiagrammen.",
@@ -2338,62 +2383,62 @@ export const useMainStore = defineStore("main", {
                             ja: "ゲージチャートの省スペース代替。",
                             es: "Una alternativa eficiente en espacio a los gráficos de indicador.",
                             ko: "게이지 차트의 공간 효율적인 대안.",
-                            ar: "بديل موفر للمساحة عن المخططات المقياسية."
+                            ar: "بديل موفر للمساحة عن المخططات المقياسية.",
                         },
                         stackline: {
-                            en: 'Visualize cumulative totals on stacked lines, to easily compare parts of a whole across different categories.',
-                            fr: 'Visualisez les totaux cumulatifs sur des lignes empilées pour comparer facilement les parties d’un tout entre différentes catégories.',
-                            pt: 'Visualize totais cumulativos em linhas empilhadas para comparar facilmente partes de um todo em diferentes categorias.',
-                            de: 'Visualisieren Sie kumulative Summen auf gestapelten Linien, um Teile eines Ganzen über verschiedene Kategorien hinweg einfach zu vergleichen.',
-                            zh: '通过堆叠折线可视化累计总量，以便轻松比较不同类别中整体的各个部分。',
-                            ja: '積み上げ折れ線で累積合計を可視化し、さまざまなカテゴリ間で全体の構成要素を簡単に比較できます。',
-                            es: 'Visualiza los totales acumulativos en líneas apiladas para comparar fácilmente las partes de un todo entre diferentes categorías.',
-                            ko: '누적 합계를 누적 선으로 시각화하여 다양한 범주에서 전체의 부분을 쉽게 비교할 수 있습니다.',
-                            ar: 'اعرض الإجماليات التراكمية على خطوط مكدسة لمقارنة الأجزاء من الكل عبر فئات مختلفة بسهولة.'
+                            en: "Visualize cumulative totals on stacked lines, to easily compare parts of a whole across different categories.",
+                            fr: "Visualisez les totaux cumulatifs sur des lignes empilées pour comparer facilement les parties d’un tout entre différentes catégories.",
+                            pt: "Visualize totais cumulativos em linhas empilhadas para comparar facilmente partes de um todo em diferentes categorias.",
+                            de: "Visualisieren Sie kumulative Summen auf gestapelten Linien, um Teile eines Ganzen über verschiedene Kategorien hinweg einfach zu vergleichen.",
+                            zh: "通过堆叠折线可视化累计总量，以便轻松比较不同类别中整体的各个部分。",
+                            ja: "積み上げ折れ線で累積合計を可視化し、さまざまなカテゴリ間で全体の構成要素を簡単に比較できます。",
+                            es: "Visualiza los totales acumulativos en líneas apiladas para comparar fácilmente las partes de un todo entre diferentes categorías.",
+                            ko: "누적 합계를 누적 선으로 시각화하여 다양한 범주에서 전체의 부분을 쉽게 비교할 수 있습니다.",
+                            ar: "اعرض الإجماليات التراكمية على خطوط مكدسة لمقارنة الأجزاء من الكل عبر فئات مختلفة بسهولة.",
                         },
                         stackbarBig: {
-                            en: 'Visualize cumulative totals on stacked bars, to easily compare parts of a whole across different categories.',
-                            fr: 'Visualisez les totaux cumulatifs sur des barres empilées, pour comparer facilement les parties d’un tout à travers différentes catégories.',
-                            pt: 'Visualize totais cumulativos em barras empilhadas, para comparar facilmente partes de um todo em diferentes categorias.',
-                            de: 'Visualisieren Sie kumulative Summen auf gestapelten Balken, um Teile eines Ganzen in verschiedenen Kategorien leicht zu vergleichen.',
-                            zh: '在堆叠条形图上可视化累积总数，轻松比较不同类别的部分。',
-                            ja: '積み上げ棒グラフで累積合計を視覚化し、異なるカテゴリ間で全体の一部を簡単に比較します。',
-                            es: 'Visualiza los totales acumulativos en barras apiladas, para comparar fácilmente partes de un todo a través de diferentes categorías.',
-                            ko: '누적 막대 차트에서 누적 합계를 시각화하여 다양한 카테고리 간에 전체의 일부를 쉽게 비교합니다.',
-                            ar: 'تصور المجاميع التراكمية على الأشرطة المكدسة، لتسهيل مقارنة الأجزاء ضمن الكل عبر الفئات المختلفة.'
+                            en: "Visualize cumulative totals on stacked bars, to easily compare parts of a whole across different categories.",
+                            fr: "Visualisez les totaux cumulatifs sur des barres empilées, pour comparer facilement les parties d’un tout à travers différentes catégories.",
+                            pt: "Visualize totais cumulativos em barras empilhadas, para comparar facilmente partes de um todo em diferentes categorias.",
+                            de: "Visualisieren Sie kumulative Summen auf gestapelten Balken, um Teile eines Ganzen in verschiedenen Kategorien leicht zu vergleichen.",
+                            zh: "在堆叠条形图上可视化累积总数，轻松比较不同类别的部分。",
+                            ja: "積み上げ棒グラフで累積合計を視覚化し、異なるカテゴリ間で全体の一部を簡単に比較します。",
+                            es: "Visualiza los totales acumulativos en barras apiladas, para comparar fácilmente partes de un todo a través de diferentes categorías.",
+                            ko: "누적 막대 차트에서 누적 합계를 시각화하여 다양한 카테고리 간에 전체의 일부를 쉽게 비교합니다.",
+                            ar: "تصور المجاميع التراكمية على الأشرطة المكدسة، لتسهيل مقارنة الأجزاء ضمن الكل عبر الفئات المختلفة.",
                         },
                         carouselTable: {
-                            en: 'A flexible table component with carousel features. Animation is opt-in, and pauses when user hovers on the table.',
+                            en: "A flexible table component with carousel features. Animation is opt-in, and pauses when user hovers on the table.",
                             fr: `Un composant de table flexible avec des fonctionnalités de carrousel. L'animation est facultative et s'arrête lorsque l'utilisateur survole la table.`,
-                            pt: 'Um componente de tabela flexível com recursos de carrossel. A animação é opcional e pausa quando o usuário passa o mouse sobre a mesa.',
-                            de: 'Eine flexible Tischkomponente mit Karussellfunktionen. Die Animation ist optional und wird angehalten, wenn der Benutzer mit der Maus über den Tisch fährt.',
-                            zh: '具有轮播功能的灵活表格组件。动画是可选的，当用户将鼠标悬停在桌子上时会暂停。',
-                            ja: 'カルーセル機能を備えた柔軟なテーブル コンポーネント。アニメーションはオプトインであり、ユーザーがテーブル上にホバーすると一時停止します。',
-                            es: 'Un componente de mesa flexible con funciones de carrusel. La animación es voluntaria y se detiene cuando el usuario se desplaza sobre la mesa.',
-                            ko: '캐러셀 기능을 갖춘 유연한 테이블 구성 요소입니다. 애니메이션은 선택되어 있으며 사용자가 테이블 위에 마우스를 올리면 일시중지됩니다.',
-                            ar: 'مكون جدول مرن مع ميزات دائري. يتم تمكين الرسوم المتحركة، وتتوقف مؤقتًا عندما يقوم المستخدم بتحريك الماوس على الطاولة.'
+                            pt: "Um componente de tabela flexível com recursos de carrossel. A animação é opcional e pausa quando o usuário passa o mouse sobre a mesa.",
+                            de: "Eine flexible Tischkomponente mit Karussellfunktionen. Die Animation ist optional und wird angehalten, wenn der Benutzer mit der Maus über den Tisch fährt.",
+                            zh: "具有轮播功能的灵活表格组件。动画是可选的，当用户将鼠标悬停在桌子上时会暂停。",
+                            ja: "カルーセル機能を備えた柔軟なテーブル コンポーネント。アニメーションはオプトインであり、ユーザーがテーブル上にホバーすると一時停止します。",
+                            es: "Un componente de mesa flexible con funciones de carrusel. La animación es voluntaria y se detiene cuando el usuario se desplaza sobre la mesa.",
+                            ko: "캐러셀 기능을 갖춘 유연한 테이블 구성 요소입니다. 애니메이션은 선택되어 있으며 사용자가 테이블 위에 마우스를 올리면 일시중지됩니다.",
+                            ar: "مكون جدول مرن مع ميزات دائري. يتم تمكين الرسوم المتحركة، وتتوقف مؤقتًا عندما يقوم المستخدم بتحريك الماوس على الطاولة.",
                         },
                         timer: {
-                            en: 'A customizable stopwatch component',
-                            fr: 'Un composant chronomètre élégant et personnalisable',
-                            pt: 'Um componente de cronômetro lindo e personalizável',
-                            de: 'Eine wunderschöne und anpassbare Stoppuhrkomponente',
-                            zh: '一个华丽且可定制的秒表组件',
-                            ja: '豪華でカスタマイズ可能なストップウォッチ コンポーネント',
-                            es: 'Un componente de cronómetro magnífico y personalizable',
-                            ko: '멋지고 사용자 정의가 가능한 스톱워치 구성 요소',
-                            ar: 'عنصر ساعة توقيت للتخصيص'
+                            en: "A customizable stopwatch component",
+                            fr: "Un composant chronomètre élégant et personnalisable",
+                            pt: "Um componente de cronômetro lindo e personalizável",
+                            de: "Eine wunderschöne und anpassbare Stoppuhrkomponente",
+                            zh: "一个华丽且可定制的秒表组件",
+                            ja: "豪華でカスタマイズ可能なストップウォッチ コンポーネント",
+                            es: "Un componente de cronómetro magnífico y personalizable",
+                            ko: "멋지고 사용자 정의가 가능한 스톱워치 구성 요소",
+                            ar: "عنصر ساعة توقيت للتخصيص",
                         },
                         pcp: {
-                            en: 'Each data point is depicted as a line traversing a series of parallel axes, corresponding to a specific variable or dimension. This arrangement allows for the exploration of relationships, trends, and variations that might be obscured in raw data.',
+                            en: "Each data point is depicted as a line traversing a series of parallel axes, corresponding to a specific variable or dimension. This arrangement allows for the exploration of relationships, trends, and variations that might be obscured in raw data.",
                             fr: `Chaque point de données est représenté comme une ligne traversant une série d'axes parallèles, correspondant à une variable ou dimension spécifique. Cette disposition permet d'explorer les relations, les tendances et les variations qui pourraient être obscurcies dans les données brutes.`,
-                            pt: 'Cada ponto de dados é representado como uma linha que atravessa uma série de eixos paralelos, correspondendo a uma variável ou dimensão específica. Esse arranjo permite a exploração de relacionamentos, tendências e variações que podem estar obscurecidas nos dados brutos.',
-                            de: 'Jeder Datenpunkt wird als Linie dargestellt, die eine Reihe paralleler Achsen durchquert und einer bestimmten Variablen oder Dimension entspricht. Diese Anordnung ermöglicht die Untersuchung von Beziehungen, Trends und Variationen, die in Rohdaten möglicherweise verdeckt sind.',
-                            zh: '每个数据点都被描述为穿过一系列平行轴的线，对应于特定的变量或维度。这种安排允许探索原始数据中可能隐藏的关系、趋势和变化。',
-                            ja: '各データ ポイントは、特定の変数または次元に対応する、一連の平行軸を横切る線として表されます。この配置により、生データでは不明瞭な可能性のある関係、傾向、変動を調査することができます。',
-                            es: 'Cada punto de datos se representa como una línea que atraviesa una serie de ejes paralelos, correspondientes a una variable o dimensión específica. Esta disposición permite la exploración de relaciones, tendencias y variaciones que podrían quedar ocultas en los datos sin procesar.',
-                            ko: '각 데이터 포인트는 특정 변수 또는 차원에 해당하는 일련의 평행 축을 가로지르는 선으로 표시됩니다. 이러한 배열을 통해 원시 데이터에서 모호할 수 있는 관계, 추세 및 변형을 탐색할 수 있습니다.',
-                            ar: 'يتم تصوير كل نقطة بيانات كخط يمر عبر سلسلة من المحاور المتوازية، المقابلة لمتغير أو بعد محدد. يسمح هذا الترتيب باستكشاف العلاقات والاتجاهات والاختلافات التي قد تكون محجوبة في البيانات الأولية.'
+                            pt: "Cada ponto de dados é representado como uma linha que atravessa uma série de eixos paralelos, correspondendo a uma variável ou dimensão específica. Esse arranjo permite a exploração de relacionamentos, tendências e variações que podem estar obscurecidas nos dados brutos.",
+                            de: "Jeder Datenpunkt wird als Linie dargestellt, die eine Reihe paralleler Achsen durchquert und einer bestimmten Variablen oder Dimension entspricht. Diese Anordnung ermöglicht die Untersuchung von Beziehungen, Trends und Variationen, die in Rohdaten möglicherweise verdeckt sind.",
+                            zh: "每个数据点都被描述为穿过一系列平行轴的线，对应于特定的变量或维度。这种安排允许探索原始数据中可能隐藏的关系、趋势和变化。",
+                            ja: "各データ ポイントは、特定の変数または次元に対応する、一連の平行軸を横切る線として表されます。この配置により、生データでは不明瞭な可能性のある関係、傾向、変動を調査することができます。",
+                            es: "Cada punto de datos se representa como una línea que atraviesa una serie de ejes paralelos, correspondientes a una variable o dimensión específica. Esta disposición permite la exploración de relaciones, tendencias y variaciones que podrían quedar ocultas en los datos sin procesar.",
+                            ko: "각 데이터 포인트는 특정 변수 또는 차원에 해당하는 일련의 평행 축을 가로지르는 선으로 표시됩니다. 이러한 배열을 통해 원시 데이터에서 모호할 수 있는 관계, 추세 및 변형을 탐색할 수 있습니다.",
+                            ar: "يتم تصوير كل نقطة بيانات كخط يمر عبر سلسلة من المحاور المتوازية، المقابلة لمتغير أو بعد محدد. يسمح هذا الترتيب باستكشاف العلاقات والاتجاهات والاختلافات التي قد تكون محجوبة في البيانات الأولية.",
                         },
                         chord: {
                             en: "Reveal patterns of flow or connectivity in complex matrix or network data with a circular chart that uses arcs for each category and ribbons to encode the strength and direction of relationships between them.",
@@ -2404,7 +2449,7 @@ export const useMainStore = defineStore("main", {
                             ja: "複雑な行列やネットワークデータにおけるフローや接続性のパターンを、各カテゴリのアークと関係の強さと方向を表すリボンを用いた円形チャートで明らかにします。",
                             es: "Revelar patrones de flujo o conectividad en datos de matriz o red complejos con un gráfico circular que utiliza arcos para cada categoría y cintas para codificar la fuerza y la dirección de las relaciones entre ellas.",
                             ko: "원형 차트를 사용하여 복잡한 행렬 또는 네트워크 데이터에서 각 범주에 대한 호와 관계의 강도 및 방향을 인코딩하는 리본을 통해 흐름 또는 연결 패턴을 드러냅니다.",
-                            ar: "كشف أنماط التدفق أو الترابط في بيانات المصفوفة أو الشبكة المعقدة باستخدام مخطط دائري يستخدم أقواسًا لكل فئة وأشرطة لتشفير قوة واتجاه العلاقات بينها."
+                            ar: "كشف أنماط التدفق أو الترابط في بيانات المصفوفة أو الشبكة المعقدة باستخدام مخطط دائري يستخدم أقواسًا لكل فئة وأشرطة لتشفير قوة واتجاه العلاقات بينها.",
                         },
                         flow: {
                             en: "Classic Sankey diagram in which the width of the links is proportional to the flow depicted,used in particular to visualize process energy flows.",
@@ -2415,18 +2460,18 @@ export const useMainStore = defineStore("main", {
                             ja: "リンクの幅が描かれた流れに比例する古典的なサンキー ダイアグラム。特にプロセス エネルギー フローを視覚化するために使用されます。",
                             es: "Diagrama clásico de Sankey en el que el ancho de los enlaces es proporcional al flujo representado, utilizado en particular para visualizar los flujos de energía del proceso.",
                             ko: "링크의 폭이 묘사된 흐름에 비례하는 클래식 Sankey 다이어그램은 특히 프로세스 에너지 흐름을 시각화하는 데 사용됩니다.",
-                            ar: 'مخطط سانكي الكلاسيكي الذي يتناسب فيه عرض الوصلات مع التدفق الموضح، ويستخدم بشكل خاص لتصور تدفقات طاقة العملية.'
+                            ar: "مخطط سانكي الكلاسيكي الذي يتناسب فيه عرض الوصلات مع التدفق الموضح، ويستخدم بشكل خاص لتصور تدفقات طاقة العملية.",
                         },
                         xyCanvas: {
-                            en: 'High-performance evolution graph using a canvas, ideal for very large datasets.',
+                            en: "High-performance evolution graph using a canvas, ideal for very large datasets.",
                             fr: `Graphique d'évolution très performant utilisant un canvas, idéal pour les très grands ensembles de données.`,
-                            pt: 'Gráfico de evolução de alto desempenho usando canvas, ideal para conjuntos de dados muito grandes.',
-                            de: 'Hochleistungs-Evolutionsdiagramm mit Canvas, ideal für sehr große Datensätze.',
-                            zh: '使用画布的高性能演化图，非常适合非常大的数据集。',
-                            ja: 'キャンバスを使用した高性能の進化グラフ。非常に大規模なデータ セットに最適です。',
-                            es: 'Gráfico de evolución de alto rendimiento mediante lienzo, ideal para conjuntos de datos muy grandes.',
-                            ko: '매우 큰 데이터 세트에 이상적인 캔버스를 사용한 고성능 진화 그래프입니다.',
-                            ar: 'رسم بياني للتطور عالي الأداء باستخدام لوحة قماشية، وهو مثالي لمجموعات البيانات الكبيرة جدًا.'
+                            pt: "Gráfico de evolução de alto desempenho usando canvas, ideal para conjuntos de dados muito grandes.",
+                            de: "Hochleistungs-Evolutionsdiagramm mit Canvas, ideal für sehr große Datensätze.",
+                            zh: "使用画布的高性能演化图，非常适合非常大的数据集。",
+                            ja: "キャンバスを使用した高性能の進化グラフ。非常に大規模なデータ セットに最適です。",
+                            es: "Gráfico de evolución de alto rendimiento mediante lienzo, ideal para conjuntos de datos muy grandes.",
+                            ko: "매우 큰 데이터 세트에 이상적인 캔버스를 사용한 고성능 진화 그래프입니다.",
+                            ar: "رسم بياني للتطور عالي الأداء باستخدام لوحة قماشية، وهو مثالي لمجموعات البيانات الكبيرة جدًا.",
                         },
                         wordCloud: {
                             en: "Visualize predominant data in word form and in a scale from largest to smallest.",
@@ -2437,7 +2482,7 @@ export const useMainStore = defineStore("main", {
                             ja: "主要なデータをワード形式で、最大から最小までのスケールで視覚化します。",
                             es: "Visualice los datos predominantes en forma de palabras y en una escala de mayor a menor.",
                             ko: "주요 데이터를 단어 형식으로 시각화하고 가장 큰 것부터 가장 작은 것까지의 규모로 시각화합니다.",
-                            ar: 'تصور البيانات السائدة في شكل كلمة وبمقياس من الأكبر إلى الأصغر.'
+                            ar: "تصور البيانات السائدة في شكل كلمة وبمقياس من الأكبر إلى الأصغر.",
                         },
                         dumbbell: {
                             en: "Visualize changes between two points in time for many datapoints.",
@@ -2448,7 +2493,7 @@ export const useMainStore = defineStore("main", {
                             ja: "多くのデータポイントの 2 つの時点間の変化を視覚化",
                             es: "Visualice cambios entre dos puntos en el tiempo para muchos puntos de datos",
                             ko: "많은 데이터 포인트에 대해 두 시점 간의 변경 사항을 시각화합니다.",
-                            ar: 'تصور التغييرات بين نقطتين في الوقت المناسب للعديد من نقاط البيانات.'
+                            ar: "تصور التغييرات بين نقطتين في الوقت المناسب للعديد من نقاط البيانات.",
                         },
                         stripPlot: {
                             en: "Visualize the distribution of many individual one-dimensional values on a single-axis scatter plot chart.",
@@ -2459,7 +2504,7 @@ export const useMainStore = defineStore("main", {
                             ja: "多数の個々の 1 次元値の分布を単軸の散布図で視覚化します。",
                             es: "Visualice la distribución de muchos valores unidimensionales individuales en un gráfico de dispersión de un solo eje.",
                             ko: "단일 축 산점도 차트에서 많은 개별 1차원 값의 분포를 시각화합니다.",
-                            ar: 'تصور توزيع العديد من القيم الفردية أحادية البعد على مخطط رسم مبعثر أحادي المحور.'
+                            ar: "تصور توزيع العديد من القيم الفردية أحادية البعد على مخطط رسم مبعثر أحادي المحور.",
                         },
                         trend: {
                             en: "Quickly visualize a trend from a simple dataset.",
@@ -2470,7 +2515,7 @@ export const useMainStore = defineStore("main", {
                             ja: "シンプルなデータセットから傾向を素早く視覚化します。",
                             es: "Visualice rápidamente una tendencia a partir de un conjunto de datos simple.",
                             ko: "간단한 데이터 세트에서 추세를 빠르게 시각화합니다.",
-                            ar: 'تصور الاتجاه بسرعة من مجموعة بيانات بسيطة.'
+                            ar: "تصور الاتجاه بسرعة من مجموعة بيانات بسيطة.",
                         },
                         cursor: {
                             en: "A fancy decorative mouse cursor that also works on mobile.",
@@ -2481,21 +2526,21 @@ export const useMainStore = defineStore("main", {
                             ja: "モバイルでも動作する派手な装飾マウス カーソル。",
                             es: "Un elegante cursor de mouse decorativo que también funciona en dispositivos móviles.",
                             ko: "모바일에서도 작동하는 멋진 장식용 마우스 커서입니다.",
-                            ar: 'مؤشر ماوس مزخرف فاخر يعمل أيضًا على الهاتف المحمول.'
+                            ar: "مؤشر ماوس مزخرف فاخر يعمل أيضًا على الهاتف المحمول.",
                         },
                         gizmo: {
-                            en: 'A microscopic chart to visualize a percentage.',
-                            fr: 'Un graphique microscopique pour visualiser un pourcentage.',
-                            pt: 'Um gráfico microscópico para visualizar uma porcentagem.',
-                            de: 'Ein mikroskopisches Diagramm zur Visualisierung eines Prozentsatzes.',
-                            zh: '可视化百分比的微观图表。',
-                            ja: 'パーセンテージを視覚化する顕微鏡チャート。',
-                            es: 'Un gráfico microscópico para visualizar un porcentaje.',
-                            ko: '백분율을 시각화하는 미세한 차트입니다.',
-                            ar: 'مخطط مجهري لتصور النسبة المئوية.'
+                            en: "A microscopic chart to visualize a percentage.",
+                            fr: "Un graphique microscopique pour visualiser un pourcentage.",
+                            pt: "Um gráfico microscópico para visualizar uma porcentagem.",
+                            de: "Ein mikroskopisches Diagramm zur Visualisierung eines Prozentsatzes.",
+                            zh: "可视化百分比的微观图表。",
+                            ja: "パーセンテージを視覚化する顕微鏡チャート。",
+                            es: "Un gráfico microscópico para visualizar un porcentaje.",
+                            ko: "백분율을 시각화하는 미세한 차트입니다.",
+                            ar: "مخطط مجهري لتصور النسبة المئوية.",
                         },
                         quickChart: {
-                            en: 'A flexible component that will provide the most adapted chart type to your dataset.',
+                            en: "A flexible component that will provide the most adapted chart type to your dataset.",
                             fr: "Un composant flexible qui fournira le type de graphique le plus adapté à votre ensemble de données.",
                             pt: "Um componente flexível que fornecerá o tipo de gráfico mais adaptado ao seu conjunto de dados.",
                             de: "Eine flexible Komponente, die den am besten an Ihren Datensatz angepassten Diagrammtyp bereitstellt.",
@@ -2503,7 +2548,7 @@ export const useMainStore = defineStore("main", {
                             ja: "データセットに最も適合したグラフ タイプを提供する柔軟なコンポーネント。",
                             es: "Un componente flexible que proporcionará el tipo de gráfico más adaptado a su conjunto de datos.",
                             ko: "데이터 세트에 가장 적합한 차트 유형을 제공하는 유연한 구성 요소입니다.",
-                            ar: 'مكون مرن يوفر نوع المخطط الأكثر تكيفًا مع مجموعة البيانات الخاصة بك.'
+                            ar: "مكون مرن يوفر نوع المخطط الأكثر تكيفًا مع مجموعة البيانات الخاصة بك.",
                         },
                         accordion: {
                             en: "A highly customizable accordion component",
@@ -2514,7 +2559,7 @@ export const useMainStore = defineStore("main", {
                             ja: "高度にカスタマイズ可能なアコーディオン コンポーネント",
                             es: "Un componente de acordeón altamente personalizable",
                             ko: "고도로 사용자 정의 가능한 아코디언 구성 요소",
-                            ar: 'مكون الأكورديون قابل للتخصيص بدرجة كبيرة'
+                            ar: "مكون الأكورديون قابل للتخصيص بدرجة كبيرة",
                         },
                         tableHeatmap: {
                             en: "A responsive table with heatmap features",
@@ -2524,10 +2569,10 @@ export const useMainStore = defineStore("main", {
                             zh: "具有热图功能的响应式表格。",
                             ja: "ヒートマップ機能を備えたレスポンシブなテーブル。",
                             es: "Una tabla responsiva con funciones de mapa de calor.",
-                            ko: "히트맵 기능을 갖춘 반응형 테이블입니다."
+                            ko: "히트맵 기능을 갖춘 반응형 테이블입니다.",
                         },
                         treemap: {
-                            en: 'Visualize a large amount of data in a hierarchical, tree-structured diagram where the size of rectangles are organized from largest to smallest.',
+                            en: "Visualize a large amount of data in a hierarchical, tree-structured diagram where the size of rectangles are organized from largest to smallest.",
                             fr: "Visualisez une grande quantité de données dans un diagramme hiérarchique et arborescent où la taille des rectangles est organisée du plus grand au plus petit.",
                             pt: "Visualize uma grande quantidade de dados em um diagrama hierárquico estruturado em árvore, onde o tamanho dos retângulos é organizado do maior para o menor.",
                             de: "Visualisieren Sie große Datenmengen in einem hierarchischen, baumstrukturierten Diagramm, in dem die Größe der Rechtecke vom größten zum kleinsten geordnet ist.",
@@ -2535,7 +2580,7 @@ export const useMainStore = defineStore("main", {
                             ja: "大量のデータを、四角形のサイズが最大から最小の順に編成された階層ツリー構造図で視覚化します。",
                             es: "Visualice una gran cantidad de datos en un diagrama jerárquico con estructura de árbol donde el tamaño de los rectángulos se organiza de mayor a menor.",
                             ko: "직사각형의 크기가 가장 큰 것에서 가장 작은 것 순으로 구성된 계층적, 트리 구조 다이어그램에서 대량의 데이터를 시각화합니다.",
-                            ar: 'تصور كمية كبيرة من البيانات في رسم تخطيطي هرمي منظم على شكل شجرة حيث يتم تنظيم حجم المستطيلات من الأكبر إلى الأصغر.'
+                            ar: "تصور كمية كبيرة من البيانات في رسم تخطيطي هرمي منظم على شكل شجرة حيث يتم تنظيم حجم المستطيلات من الأكبر إلى الأصغر.",
                         },
                         kpi: {
                             en: "An animated and flexible component to display important KPI",
@@ -2546,7 +2591,7 @@ export const useMainStore = defineStore("main", {
                             ja: "重要な KPI を表示するアニメーション化された柔軟なコンポーネント",
                             es: "Un componente animado y flexible para mostrar KPI importantes",
                             ko: "중요한 KPI를 표시하는 애니메이션되고 유연한 구성 요소",
-                            ar: 'مكون متحرك ومرن لعرض مؤشرات الأداء الرئيسية المهمة'
+                            ar: "مكون متحرك ومرن لعرض مؤشرات الأداء الرئيسية المهمة",
                         },
                         galaxy: {
                             en: "Visualize relative proportions, favoring the visibility of small values.",
@@ -2557,7 +2602,7 @@ export const useMainStore = defineStore("main", {
                             ja: "相対的な比率を視覚化し、小さな値の視認性を優先します。",
                             es: "Visualizar proporciones relativas, favoreciendo la visibilidad de valores pequeños.",
                             ko: "작은 값의 가시성에 유리하도록 상대적 비율을 시각화합니다.",
-                            ar: 'تصور النسب النسبية، مع تفضيل رؤية القيم الصغيرة'
+                            ar: "تصور النسب النسبية، مع تفضيل رؤية القيم الصغيرة",
                         },
                         nestedDonuts: {
                             en: "Visualize breakdowns of comparable series",
@@ -2568,7 +2613,7 @@ export const useMainStore = defineStore("main", {
                             ja: "比較可能なシリーズの内訳を視覚化する",
                             es: "Visualice desgloses de series comparables",
                             ko: "비교 가능한 시리즈의 분석 시각화",
-                            ar: 'تصور انهيار سلسلة مماثلة'
+                            ar: "تصور انهيار سلسلة مماثلة",
                         },
                         miniLoader: {
                             en: "A customizable loader component to stand out",
@@ -2579,9 +2624,9 @@ export const useMainStore = defineStore("main", {
                             ja: "目立つようにカスタマイズ可能なローダー コンポーネント",
                             es: "Un componente de cargador personalizable para destacar",
                             ko: "눈에 띄는 맞춤형 로더 구성요소",
-                            ar: 'مكون محمل قابل للتخصيص ليبرز'
+                            ar: "مكون محمل قابل للتخصيص ليبرز",
                         },
-                        sparklineTable:{
+                        sparklineTable: {
                             en: "A responsive table with sparkline charts",
                             fr: "Un tableau responsive avec des graphiques sparkline",
                             pt: "Uma tabela responsiva com gráficos minigráficos",
@@ -2590,7 +2635,7 @@ export const useMainStore = defineStore("main", {
                             ja: "スパークライン グラフを備えた応答性の高いテーブル",
                             es: "Una tabla responsiva con minigráficos",
                             ko: "스파크라인 차트가 포함된 반응형 테이블",
-                            ar: 'جدول سريع الاستجابة مع مخططات خطية لامعة'
+                            ar: "جدول سريع الاستجابة مع مخططات خطية لامعة",
                         },
                         molecule: {
                             en: "Visualize a nested tree of nodes",
@@ -2601,7 +2646,7 @@ export const useMainStore = defineStore("main", {
                             ja: "ネストされたノードのツリーを視覚化する",
                             es: "Visualice un árbol de nodos anidado",
                             ko: "중첩된 노드 트리 시각화",
-                            ar: 'تصور شجرة متداخلة من العقد'
+                            ar: "تصور شجرة متداخلة من العقد",
                         },
                         digits: {
                             en: "Show numbers with a classic electronic display",
@@ -2612,7 +2657,7 @@ export const useMainStore = defineStore("main", {
                             ja: "クラシックな電子ディスプレイで数字を表示",
                             es: "Muestra números con una pantalla electrónica clásica.",
                             ko: "클래식 전자 디스플레이로 숫자 표시",
-                            ar: 'عرض الأرقام بشاشة إلكترونية كلاسيكية'
+                            ar: "عرض الأرقام بشاشة إلكترونية كلاسيكية",
                         },
                         bar3d: {
                             en: "Visualize percentages with a 3d bar",
@@ -2623,18 +2668,18 @@ export const useMainStore = defineStore("main", {
                             ja: "パーセンテージを 3D バーで視覚化する",
                             es: "Visualiza porcentajes con una barra 3d.",
                             ko: "3D 막대로 백분율 시각화",
-                            ar: 'تصور النسب المئوية باستخدام شريط ثلاثي الأبعاد'
+                            ar: "تصور النسب المئوية باستخدام شريط ثلاثي الأبعاد",
                         },
                         ridgeline: {
-                            en: 'Line plots stacked vertically to enable easy visualization of changes across space or time. The plots often slightly overlap to make differences stand out more clearly.',
+                            en: "Line plots stacked vertically to enable easy visualization of changes across space or time. The plots often slightly overlap to make differences stand out more clearly.",
                             fr: `Tracés linéaires combinés par empilement vertical pour permettre une visualisation facile des changements dans l'espace ou dans le temps. Les parcelles se chevauchent souvent légèrement pour permettre aux changements d'être plus clairement contrastés.`,
-                            pt: 'Gráficos de linhas empilhados verticalmente para facilitar a visualização de mudanças ao longo do espaço ou do tempo. Os gráficos geralmente se sobrepõem levemente para destacar melhor as diferenças.',
-                            de: 'Linien-Diagramme werden vertikal gestapelt, um Veränderungen im Raum oder über die Zeit leicht zu visualisieren. Die Diagramme überlappen sich oft leicht, um Unterschiede deutlicher hervorzuheben.',
-                            zh: '通过垂直堆叠的线图，便于直观展示空间或时间上的变化。这些图形通常会略有重叠，以更清晰地对比变化。',
-                            ja: '折れ線グラフを垂直に重ねて、空間や時間の変化を簡単に可視化します。グラフはしばしばわずかに重なり、違いがより明確に際立ちます。',
-                            es: 'Gráficas de líneas apiladas verticalmente que facilitan la visualización de cambios a través del espacio o del tiempo. Las curvas suelen superponerse ligeramente para contrastar más claramente los cambios.',
-                            ko: '선 그래프를 수직으로 쌓아 공간 또는 시간에 따른 변화를 쉽게 시각화할 수 있습니다. 그래프는 종종 약간 겹쳐져 변화가 더 뚜렷하게 드러납니다.',
-                            ar: 'مخططات خطية مكدسة رأسياً لتسهيل تصور التغيرات عبر المكان أو الزمن. غالبًا ما تتداخل المخططات قليلاً لإبراز الاختلافات بشكل أوضح.'
+                            pt: "Gráficos de linhas empilhados verticalmente para facilitar a visualização de mudanças ao longo do espaço ou do tempo. Os gráficos geralmente se sobrepõem levemente para destacar melhor as diferenças.",
+                            de: "Linien-Diagramme werden vertikal gestapelt, um Veränderungen im Raum oder über die Zeit leicht zu visualisieren. Die Diagramme überlappen sich oft leicht, um Unterschiede deutlicher hervorzuheben.",
+                            zh: "通过垂直堆叠的线图，便于直观展示空间或时间上的变化。这些图形通常会略有重叠，以更清晰地对比变化。",
+                            ja: "折れ線グラフを垂直に重ねて、空間や時間の変化を簡単に可視化します。グラフはしばしばわずかに重なり、違いがより明確に際立ちます。",
+                            es: "Gráficas de líneas apiladas verticalmente que facilitan la visualización de cambios a través del espacio o del tiempo. Las curvas suelen superponerse ligeramente para contrastar más claramente los cambios.",
+                            ko: "선 그래프를 수직으로 쌓아 공간 또는 시간에 따른 변화를 쉽게 시각화할 수 있습니다. 그래프는 종종 약간 겹쳐져 변화가 더 뚜렷하게 드러납니다.",
+                            ar: "مخططات خطية مكدسة رأسياً لتسهيل تصور التغيرات عبر المكان أو الزمن. غالبًا ما تتداخل المخططات قليلاً لإبراز الاختلافات بشكل أوضح.",
                         },
                         world: {
                             en: "An interactive world map that highlights countries and displays custom tooltips with country data.",
@@ -2645,7 +2690,7 @@ export const useMainStore = defineStore("main", {
                             ja: "国をハイライトし、国のデータ付きカスタムツールチップを表示するインタラクティブな世界地図です。",
                             es: "Un mapa mundial interactivo que resalta países y muestra información personalizada con datos de cada país.",
                             ko: "국가를 강조 표시하고 국가 데이터를 포함한 맞춤 툴팁을 표시하는 인터랙티브 세계 지도입니다.",
-                            ar: "خريطة عالمية تفاعلية تبرز البلدان وتعرض تلميحات مخصصة تحتوي على بيانات كل بلد."
+                            ar: "خريطة عالمية تفاعلية تبرز البلدان وتعرض تلميحات مخصصة تحتوي على بيانات كل بلد.",
                         },
                         circlePack: {
                             en: "Effectively represent hierarchical data, with each value proportionally scaled into a visually intuitive arrangement of packed circles.",
@@ -2656,7 +2701,7 @@ export const useMainStore = defineStore("main", {
                             ja: "階層データを効果的に表現し、各値が比例的にスケールされた直感的な配置のパックサークルとして表示されます。",
                             es: "Represente eficazmente datos jerárquicos, con cada valor escalado proporcionalmente en una disposición visual intuitiva de círculos empaquetados.",
                             ko: "계층적 데이터를 효과적으로 표현하며, 각 값이 비율에 맞게 조정되어 직관적인 원형 배열로 표시됩니다.",
-                            ar: "تمثيل البيانات الهرمية بفعالية، حيث يتم تحجيم كل قيمة بشكل متناسب ضمن ترتيب مرئي بديهي للدوائر المتراصة."
+                            ar: "تمثيل البيانات الهرمية بفعالية، حيث يتم تحجيم كل قيمة بشكل متناسب ضمن ترتيب مرئي بديهي للدوائر المتراصة.",
                         },
                         moodRadar: {
                             en: "Visualize rating statistics on a colorful and expressive radar chart",
@@ -2667,7 +2712,7 @@ export const useMainStore = defineStore("main", {
                             ja: "カラフルで表現力豊かなレーダー チャートで評価統計を視覚化します",
                             es: "Visualice estadísticas de calificación en un gráfico de radar colorido y expresivo",
                             ko: "다채롭고 표현력이 풍부한 방사형 차트로 등급 통계를 시각화합니다.",
-                            ar: 'تصور إحصائيات التصنيف على مخطط رادار ملون ومعبر'
+                            ar: "تصور إحصائيات التصنيف على مخطط رادار ملون ومعبر",
                         },
                         iconSpecial: {
                             en: "Other icons available :",
@@ -2678,7 +2723,7 @@ export const useMainStore = defineStore("main", {
                             ja: "他のアイコンも利用可能:",
                             es: "Otros iconos disponibles:",
                             ko: "사용 가능한 다른 아이콘:",
-                            ar: ':الرموز الأخرى المتاحة'
+                            ar: ":الرموز الأخرى المتاحة",
                         },
                         iconUserOptions: {
                             en: "Icons used in the user options menus:",
@@ -2689,7 +2734,7 @@ export const useMainStore = defineStore("main", {
                             ja: "ユーザー オプション メニューで使用されるアイコン:",
                             es: "Iconos utilizados en los menús de opciones de usuario:",
                             ko: "사용자 옵션 메뉴에 사용되는 아이콘:",
-                            ar: ':الرموز المستخدمة في قوائم خيارات المستخدم'
+                            ar: ":الرموز المستخدمة في قوائم خيارات المستخدم",
                         },
                         icon: {
                             en: "A collection of handcrafted icons, ideal if you choose to hide the built-in user options menu and make your own.",
@@ -2700,7 +2745,7 @@ export const useMainStore = defineStore("main", {
                             ja: "手作りのアイコンのコレクション。組み込みのユーザー オプション メニューを非表示にして独自のアイコンを作成する場合に最適です。",
                             es: "Una colección de íconos hechos a mano, ideal si eliges ocultar el menú de opciones de usuario integrado y crear el tuyo propio.",
                             ko: "손으로 만든 아이콘 모음으로, 내장된 사용자 옵션 메뉴를 숨기고 직접 만들려는 경우에 적합합니다.",
-                            ar: 'مجموعة من الأيقونات المصنوعة يدويًا، مثالية إذا اخترت إخفاء قائمة خيارات المستخدم المضمنة وإنشاء أيقونات خاصة بك'
+                            ar: "مجموعة من الأيقونات المصنوعة يدويًا، مثالية إذا اخترت إخفاء قائمة خيارات المستخدم المضمنة وإنشاء أيقونات خاصة بك",
                         },
                         donutEvolution: {
                             en: "A fusion of line and donut charts, to visualize growth and proportions in one go",
@@ -2711,7 +2756,7 @@ export const useMainStore = defineStore("main", {
                             ja: "折れ線グラフとドーナツ グラフを融合し、成長と比率を一度に視覚化",
                             es: "Una fusión de gráficos de líneas y de anillos para visualizar el crecimiento y las proporciones de una sola vez.",
                             ko: "성장과 비율을 한 번에 시각화하는 꺾은선형 차트와 도넛형 차트의 융합",
-                            ar: 'مزيج من المخططات الخطية والدائرية لتصور النمو والنسب دفعة واحدة'
+                            ar: "مزيج من المخططات الخطية والدائرية لتصور النمو والنسب دفعة واحدة",
                         },
                         tiremarks: {
                             en: "Visualize a percentage through a dynamic tiremarks-like layout",
@@ -2722,7 +2767,7 @@ export const useMainStore = defineStore("main", {
                             ja: "タイヤ跡のような動的なレイアウトでパーセンテージを視覚化",
                             es: "Visualice un porcentaje a través de un diseño dinámico similar a marcas de neumáticos",
                             ko: "동적 타이어 표시와 같은 레이아웃을 통해 백분율을 시각화합니다.",
-                            ar: 'تصور نسبة مئوية من خلال تخطيط ديناميكي يشبه علامات الإطارات'
+                            ar: "تصور نسبة مئوية من خلال تخطيط ديناميكي يشبه علامات الإطارات",
                         },
                         wheel: {
                             en: "Visualize a percentage through a dynamic wheel-type layout",
@@ -2733,7 +2778,7 @@ export const useMainStore = defineStore("main", {
                             ja: "動的なホイールタイプのレイアウトでパーセンテージを視覚化",
                             es: "Visualice un porcentaje a través de un diseño dinámico tipo rueda",
                             ko: "역동적인 휠형 레이아웃을 통해 백분율 시각화",
-                            ar: 'تصور النسبة المئوية من خلال تخطيط ديناميكي من نوع العجلة'
+                            ar: "تصور النسبة المئوية من خلال تخطيط ديناميكي من نوع العجلة",
                         },
                         rings: {
                             en: "Visualize relative proportions with a beautiful concentric layout",
@@ -2744,7 +2789,7 @@ export const useMainStore = defineStore("main", {
                             ja: "美しい同心円状のレイアウトで相対的な比率を視覚化",
                             es: "Visualice proporciones relativas con un hermoso diseño concéntrico",
                             ko: "아름다운 동심 레이아웃으로 상대적인 비율을 시각화하세요",
-                            ar: 'تصور النسب النسبية مع تخطيط جميل متحدة المركز'
+                            ar: "تصور النسب النسبية مع تخطيط جميل متحدة المركز",
                         },
                         histogram: {
                             en: "A compact and flexible mini histogram component.",
@@ -2755,7 +2800,7 @@ export const useMainStore = defineStore("main", {
                             ja: "コンパクトで柔軟なミニ ヒストグラム コンポーネント。",
                             es: "Un componente de mini histograma compacto y flexible.",
                             ko: "작고 유연한 미니 히스토그램 구성 요소입니다.",
-                            ar: 'مكون رسم بياني صغير مدمج ومرن'
+                            ar: "مكون رسم بياني صغير مدمج ومرن",
                         },
                         stackbar: {
                             en: "A compact way to represent proportions",
@@ -2766,7 +2811,7 @@ export const useMainStore = defineStore("main", {
                             ja: "プロポーションをコンパクトに表現する方法",
                             es: "Una forma compacta de representar proporciones.",
                             ko: "비율을 표현하는 간결한 방법",
-                            ar: 'طريقة مدمجة لتمثيل النسب'
+                            ar: "طريقة مدمجة لتمثيل النسب",
                         },
                         thermometer: {
                             en: "A component to visualize a KPI as a temperature",
@@ -2777,7 +2822,7 @@ export const useMainStore = defineStore("main", {
                             ja: "KPIを温度として可視化するコンポーネント",
                             es: "Un componente para visualizar un KPI como temperatura.",
                             ko: "KPI를 온도로 시각화하는 구성요소",
-                            ar: 'مكون لتصور مؤشر الأداء الرئيسي كدرجة حرارة'
+                            ar: "مكون لتصور مؤشر الأداء الرئيسي كدرجة حرارة",
                         },
                         relationCircle: {
                             en: "A component to visualize relationships between people, words, companies...",
@@ -2788,7 +2833,7 @@ export const useMainStore = defineStore("main", {
                             ja: "人、言葉、企業…の関係性を可視化するコンポーネント",
                             es: "Un componente para visualizar las relaciones entre personas, palabras, empresas...",
                             ko: "사람, 단어, 회사 간의 관계를 시각화하는 구성 요소...",
-                            ar: 'مكون لتصور العلاقات بين الأشخاص والكلمات والشركات'
+                            ar: "مكون لتصور العلاقات بين الأشخاص والكلمات والشركات",
                         },
                         annotator: {
                             en: "A component to wrap any content and make it annotatable.",
@@ -2799,7 +2844,7 @@ export const useMainStore = defineStore("main", {
                             ja: "コンテンツをラップして注釈を付けられるようにするコンポーネント。",
                             es: "Un componente para envolver cualquier contenido y hacerlo anotable.",
                             ko: "콘텐츠를 래핑하고 주석을 달 수 있도록 만드는 구성 요소입니다.",
-                            ar: 'مكون لتغليف أي محتوى وجعله قابلاً للتعليق'
+                            ar: "مكون لتغليف أي محتوى وجعله قابلاً للتعليق",
                         },
                         dashboard: {
                             en: "A drag and resize component to place your charts, and allow the user to save their position.",
@@ -2810,7 +2855,7 @@ export const useMainStore = defineStore("main", {
                             ja: "コンポーネントをドラッグしてサイズ変更してチャートを配置し、ユーザーがその位置を保存できるようにします。",
                             es: "Un componente de arrastrar y cambiar el tamaño para colocar sus gráficos y permitir al usuario guardar su posición.",
                             ko: "차트를 배치하고 사용자가 위치를 저장할 수 있도록 하는 드래그 및 크기 조정 구성 요소입니다.",
-                            ar: 'مكون السحب وتغيير الحجم لوضع المخططات الخاصة بك، والسماح للمستخدم بحفظ موقفه'
+                            ar: "مكون السحب وتغيير الحجم لوضع المخططات الخاصة بك، والسماح للمستخدم بحفظ موقفه",
                         },
                         xy: {
                             en: "Lines, bars, plots using classic x and y axis representation",
@@ -2821,7 +2866,7 @@ export const useMainStore = defineStore("main", {
                             ja: "従来の X 軸と Y 軸を使用した折れ線、棒、グラフ",
                             es: "Líneas, barras y gráficos utilizando la representación clásica de los ejes x e y",
                             ko: "전통적인 x 및 y축 표현을 사용한 선, 막대, 플롯",
-                            ar: 'الخطوط والأشرطة والمؤامرات باستخدام تمثيل محور x و y الكلاسيكي'
+                            ar: "الخطوط والأشرطة والمؤامرات باستخدام تمثيل محور x و y الكلاسيكي",
                         },
                         donut: {
                             en: "Visualize relative proportions with this classic representation",
@@ -2832,7 +2877,7 @@ export const useMainStore = defineStore("main", {
                             ja: "この古典的な表現で相対的な比率を視覚化します",
                             es: "Visualiza proporciones relativas con esta representación clásica.",
                             ko: "이 고전적인 표현으로 상대적인 비율을 시각화하세요",
-                            ar: 'تصور النسب النسبية مع هذا التمثيل الكلاسيكي'
+                            ar: "تصور النسب النسبية مع هذا التمثيل الكلاسيكي",
                         },
                         radar: {
                             en: "Reveal outliers and commonality of different measures on the same scale",
@@ -2843,7 +2888,7 @@ export const useMainStore = defineStore("main", {
                             ja: "同じスケール上のさまざまな指標にわたる外れ値と共通点を明らかにする",
                             es: "Revelar valores atípicos y puntos en común de diferentes medidas en la misma escala",
                             ko: "동일한 척도에서 다양한 측정값의 이상값과 공통성을 확인합니다.",
-                            ar: 'الكشف عن القيم المتطرفة والقواسم المشتركة بين التدابير المختلفة على نفس المقياس'
+                            ar: "الكشف عن القيم المتطرفة والقواسم المشتركة بين التدابير المختلفة على نفس المقياس",
                         },
                         waffle: {
                             en: "Visualize relative proportions with a representation known to be easier to grasp by the human brain",
@@ -2854,7 +2899,7 @@ export const useMainStore = defineStore("main", {
                             ja: "人間の脳にとって理解しやすいことが知られている表現を使用して、相対的な比率を視覚化します。",
                             es: "Visualice proporciones relativas con una representación que se sabe que es más fácil de captar para el cerebro humano.",
                             ko: "인간의 두뇌가 이해하기 더 쉬운 것으로 알려진 표현으로 상대적인 비율을 시각화합니다.",
-                            ar: 'تصور النسب النسبية مع تمثيل معروف أنه أسهل في الفهم من قبل الدماغ البشري'
+                            ar: "تصور النسب النسبية مع تمثيل معروف أنه أسهل في الفهم من قبل الدماغ البشري",
                         },
                         quadrant: {
                             en: "Identify patterns and trends to prioritize actions based on the position of data points",
@@ -2865,7 +2910,7 @@ export const useMainStore = defineStore("main", {
                             ja: "パターンと傾向を特定し、データ ポイントの位置に基づいてアクションに優先順位を付けます",
                             es: "Identificar patrones y tendencias para priorizar acciones en función de la posición de los puntos de datos.",
                             ko: "패턴과 추세를 식별하여 데이터 포인트의 위치에 따라 작업의 우선순위를 정합니다.",
-                            ar: 'تحديد الأنماط والاتجاهات لتحديد أولويات الإجراءات بناءً على موضع نقاط البيانات'
+                            ar: "تحديد الأنماط والاتجاهات لتحديد أولويات الإجراءات بناءً على موضع نقاط البيانات",
                         },
                         gauge: {
                             en: "Quickly show how well a given metric is performing against a target goal",
@@ -2876,7 +2921,7 @@ export const useMainStore = defineStore("main", {
                             ja: "特定の指標が目標目標に対してどの程度優れたパフォーマンスを発揮しているかをすぐに示します",
                             es: "Muestre rápidamente qué tan bien se está desempeñando una métrica determinada frente a un objetivo objetivo.",
                             ko: "특정 측정항목이 목표 목표에 비해 얼마나 잘 수행되고 있는지 빠르게 표시",
-                            ar: 'اعرض بسرعة مدى جودة أداء مقياس معين مقابل هدف مستهدف'
+                            ar: "اعرض بسرعة مدى جودة أداء مقياس معين مقابل هدف مستهدف",
                         },
                         chestnut: {
                             en: "Represent nested information from a general base to detailed breakdowns",
@@ -2887,7 +2932,7 @@ export const useMainStore = defineStore("main", {
                             ja: "一般的な基礎から詳細なセグメンテーションまでのネストされた情報を表現します",
                             es: "Representar información anidada desde una base general hasta desgloses detallados.",
                             ko: "일반적인 기반부터 세부적인 분석까지 중첩된 정보를 표현합니다.",
-                            ar: 'تمثيل المعلومات المتداخلة من قاعدة عامة إلى تفاصيل تفصيلية'
+                            ar: "تمثيل المعلومات المتداخلة من قاعدة عامة إلى تفاصيل تفصيلية",
                         },
                         onion: {
                             en: "Compare the values of multiple categories or groups in a single visualization",
@@ -2898,7 +2943,7 @@ export const useMainStore = defineStore("main", {
                             ja: "単一のビジュアライゼーションで複数のカテゴリまたはグループの値を比較します",
                             es: "Compare los valores de múltiples categorías o grupos en una sola visualización",
                             ko: "단일 시각화에서 여러 범주 또는 그룹의 값을 비교합니다.",
-                            ar: 'قارن قيم فئات أو مجموعات متعددة في تصور واحد'
+                            ar: "قارن قيم فئات أو مجموعات متعددة في تصور واحد",
                         },
                         verticalBar: {
                             en: "Compare different categorical or discrete variables, with the option to show their breakdowns",
@@ -2909,7 +2954,7 @@ export const useMainStore = defineStore("main", {
                             ja: "さまざまなカテゴリ変数または離散変数を、その内訳を表示するオプションを使用して比較します。",
                             es: "Compara diferentes variables categóricas o discretas, con la opción de mostrar sus desgloses",
                             ko: "분석을 표시하는 옵션을 사용하여 다양한 범주형 또는 이산형 변수를 비교합니다.",
-                            ar: 'قارن بين المتغيرات الفئوية أو المنفصلة المختلفة، مع خيار إظهار تفاصيلها'
+                            ar: "قارن بين المتغيرات الفئوية أو المنفصلة المختلفة، مع خيار إظهار تفاصيلها",
                         },
                         heatmap: {
                             en: "Show relationships and patterns between two variables by observing how cell colors change across each axis",
@@ -2920,7 +2965,7 @@ export const useMainStore = defineStore("main", {
                             ja: "各軸でセルの色がどのように変化するかを観察することで、2 つの変数間の関係とパターンを表示します",
                             es: "Muestre relaciones y patrones entre dos variables observando cómo cambian los colores de las celdas en cada eje.",
                             ko: "각 축에서 셀 색상이 어떻게 변하는지 관찰하여 두 변수 간의 관계와 패턴을 보여줍니다.",
-                            ar: 'إظهار العلاقات والأنماط بين متغيرين من خلال ملاحظة كيفية تغير ألوان الخلايا عبر كل محور'
+                            ar: "إظهار العلاقات والأنماط بين متغيرين من خلال ملاحظة كيفية تغير ألوان الخلايا عبر كل محور",
                         },
                         scatter: {
                             en: "From a large dataset, reveal the correlation between two variables",
@@ -2931,7 +2976,7 @@ export const useMainStore = defineStore("main", {
                             ja: "大規模なデータセットから 2 つの変数間の相関関係を明らかにする",
                             es: "A partir de un gran conjunto de datos, revele la correlación entre dos variables.",
                             ko: "대규모 데이터 세트에서 두 변수 간의 상관 관계를 밝힙니다.",
-                            ar: 'من مجموعة بيانات كبيرة، اكشف عن العلاقة بين متغيرين'
+                            ar: "من مجموعة بيانات كبيرة، اكشف عن العلاقة بين متغيرين",
                         },
                         candlestick: {
                             en: "Determine possible price movements based on past patterns",
@@ -2942,7 +2987,7 @@ export const useMainStore = defineStore("main", {
                             ja: "過去のパターンに基づいて起こり得る値動きを判断する",
                             es: "Determinar posibles movimientos de precios basados ​​en patrones pasados.",
                             ko: "과거 패턴을 기반으로 가능한 가격 변동 결정",
-                            ar: 'تحديد تحركات الأسعار المحتملة بناءً على الأنماط السابقة'
+                            ar: "تحديد تحركات الأسعار المحتملة بناءً على الأنماط السابقة",
                         },
                         agePyramid: {
                             en: "Show how populations are composed and how they are changing",
@@ -2953,7 +2998,7 @@ export const useMainStore = defineStore("main", {
                             ja: "人口がどのように構成され、どのように変化しているかを示す",
                             es: "Mostrar cómo se componen las poblaciones y cómo están cambiando.",
                             ko: "인구가 어떻게 구성되고 어떻게 변화하는지 보여줍니다.",
-                            ar: 'أظهر كيف يتكون السكان وكيف يتغيرون'
+                            ar: "أظهر كيف يتكون السكان وكيف يتغيرون",
                         },
                         sparkline: {
                             en: "Visualize evolution on a tiny line chart",
@@ -2964,7 +3009,7 @@ export const useMainStore = defineStore("main", {
                             ja: "小さな折れ線グラフで進化を視覚化する",
                             es: "Visualice la evolución en un pequeño gráfico de líneas",
                             ko: "작은 선 차트로 진화 시각화",
-                            ar: 'تصور التطور على مخطط خطي صغير'
+                            ar: "تصور التطور على مخطط خطي صغير",
                         },
                         sparkbar: {
                             en: "Show kpi performance with a tiny vertical bar chart",
@@ -2975,7 +3020,7 @@ export const useMainStore = defineStore("main", {
                             ja: "主要業績評価指標を小さな縦棒グラフで表示します",
                             es: "Muestre el rendimiento de los KPI con un pequeño gráfico de barras verticales",
                             ko: "작은 수직 막대 차트로 KPI 성능 표시",
-                            ar: 'اعرض أداء مؤشرات الأداء الرئيسية باستخدام مخطط شريطي رأسي صغير'
+                            ar: "اعرض أداء مؤشرات الأداء الرئيسية باستخدام مخطط شريطي رأسي صغير",
                         },
                         table: {
                             en: "Powerful dynamic table that allows the user to select data and calculate sums, averages, and visualize charts based on their selection",
@@ -2986,7 +3031,7 @@ export const useMainStore = defineStore("main", {
                             ja: "ユーザーがデータを選択し、選択に基づいて合計、平均、視覚的なグラフを計算できる強力な動的テーブル",
                             es: "Potente tabla dinámica que permite al usuario seleccionar datos y calcular sumas, promedios y visualizar gráficos en función de su selección.",
                             ko: "사용자가 데이터를 선택하고 합계, 평균을 계산하고 선택 항목에 따라 차트를 시각화할 수 있는 강력한 동적 테이블",
-                            ar: 'جدول ديناميكي قوي يسمح للمستخدم بتحديد البيانات وحساب المجاميع والمتوسطات وتصور الرسوم البيانية بناءً على اختياره'
+                            ar: "جدول ديناميكي قوي يسمح للمستخدم بتحديد البيانات وحساب المجاميع والمتوسطات وتصور الرسوم البيانية بناءً على اختياره",
                         },
                         rating: {
                             en: "A classic rating component to rate or visualize rating results. Control the number of stars to display, and their shape",
@@ -2997,7 +3042,7 @@ export const useMainStore = defineStore("main", {
                             ja: "評価または評価結果を視覚化するための古典的な評価コンポーネント。表示する星の数とその形を制御する",
                             es: "Un componente de calificación clásico para calificar o visualizar resultados de calificación. Controla el número de estrellas a mostrar y su forma.",
                             ko: "평가 결과를 평가하거나 시각화하는 전통적인 평가 구성 요소입니다. 표시할 별의 수와 모양을 제어합니다.",
-                            ar: 'مكون تصنيف كلاسيكي لتقييم نتائج التصنيف أو تصورها. التحكم في عدد النجوم المراد عرضها، وشكلها'
+                            ar: "مكون تصنيف كلاسيكي لتقييم نتائج التصنيف أو تصورها. التحكم في عدد النجوم المراد عرضها، وشكلها",
                         },
                         smiley: {
                             en: "A rating component using smiley icons",
@@ -3008,7 +3053,7 @@ export const useMainStore = defineStore("main", {
                             ja: "スマイリーアイコンを使用した評価コンポーネント",
                             es: "Un componente de calificación que utiliza íconos sonrientes",
                             ko: "스마일 아이콘을 사용한 평가 구성요소",
-                            ar: 'عنصر تصنيف باستخدام الرموز المبتسمة'
+                            ar: "عنصر تصنيف باستخدام الرموز المبتسمة",
                         },
                         screenshot: {
                             en: "Select an area on the screen and either download or post the image as base64 with additional metadata",
@@ -3019,7 +3064,7 @@ export const useMainStore = defineStore("main", {
                             ja: "画面上の領域を選択し、追加のメタデータを含む画像をダウンロードするか、base64 として投稿します。",
                             es: "Seleccione un área en la pantalla y descargue o publique la imagen como base64 con metadatos adicionales",
                             ko: "화면에서 영역을 선택하고 추가 메타데이터와 함께 이미지를 base64로 다운로드하거나 게시합니다.",
-                            ar: 'حدد منطقة على الشاشة وقم بتنزيل الصورة أو نشرها كـ base64 مع بيانات تعريف إضافية'
+                            ar: "حدد منطقة على الشاشة وقم بتنزيل الصورة أو نشرها كـ base64 مع بيانات تعريف إضافية",
                         },
                         skeleton: {
                             en: "Display gorgeous skeleton charts while data is loading",
@@ -3030,7 +3075,7 @@ export const useMainStore = defineStore("main", {
                             ja: "データのロード中に豪華なスケルトン チャートを表示",
                             es: "Muestre magníficos gráficos de esqueleto mientras se cargan los datos",
                             ko: "데이터가 로드되는 동안 멋진 뼈대 차트 표시",
-                            ar: 'عرض مخططات هيكلية رائعة أثناء تحميل البيانات'
+                            ar: "عرض مخططات هيكلية رائعة أثناء تحميل البيانات",
                         },
                     },
                     datastructure: {
@@ -3042,7 +3087,7 @@ export const useMainStore = defineStore("main", {
                         ja: "データ構造",
                         es: "Estructura de datos",
                         ko: "데이터 구조",
-                        ar: 'هيكل البيانات'
+                        ar: "هيكل البيانات",
                     },
                     copyDefaultConfig: {
                         en: "Copy default config as JSON",
@@ -3053,7 +3098,7 @@ export const useMainStore = defineStore("main", {
                         ja: "デフォルト設定をJSONとしてコピー",
                         es: "Copie la configuración predeterminada como JSON",
                         ko: "기본 구성을 JSON으로 복사",
-                        ar: 'انسخ التكوين الافتراضي كـ JSON'
+                        ar: "انسخ التكوين الافتراضي كـ JSON",
                     },
                     copyThisConfig: {
                         en: "Copy this config as JSON",
@@ -3064,18 +3109,18 @@ export const useMainStore = defineStore("main", {
                         ja: "この構成を JSON としてコピーします",
                         es: "Copie esta configuración como JSON",
                         ko: "이 구성을 JSON으로 복사",
-                        ar: 'انسخ هذا التكوين كـ JSON'
+                        ar: "انسخ هذا التكوين كـ JSON",
                     },
                     copyThisDataset: {
-                        en: 'Copy this dataset as JSON',
-                        fr: 'Copier cet ensemble de données en JSON',
-                        pt: 'Copiar este conjunto de dados como JSON',
-                        de: 'Diesen Datensatz als JSON kopieren',
-                        zh: '将此数据集复制为 JSON',
-                        ja: 'このデータセットをJSONとしてコピー',
-                        es: 'Copiar este conjunto de datos como JSON',
-                        ko: '이 데이터셋을 JSON으로 복사',
-                        ar: 'نسخ مجموعة البيانات هذه كـ JSON'
+                        en: "Copy this dataset as JSON",
+                        fr: "Copier cet ensemble de données en JSON",
+                        pt: "Copiar este conjunto de dados como JSON",
+                        de: "Diesen Datensatz als JSON kopieren",
+                        zh: "将此数据集复制为 JSON",
+                        ja: "このデータセットをJSONとしてコピー",
+                        es: "Copiar este conjunto de datos como JSON",
+                        ko: "이 데이터셋을 JSON으로 복사",
+                        ar: "نسخ مجموعة البيانات هذه كـ JSON",
                     },
                     loadingStates: {
                         en: "Loading states",
@@ -3086,18 +3131,18 @@ export const useMainStore = defineStore("main", {
                         ja: "ロード状態",
                         es: "Estados de carga",
                         ko: "로딩 상태",
-                        ar: "حالات التحميل"
+                        ar: "حالات التحميل",
                     },
                     configFlow: {
-                        en: 'Config trees',
-                        fr: 'Arbres de configuration',
-                        pt: 'Árvores de configuração',
-                        de: 'Konfigurationsbäume',
-                        zh: '配置树',
-                        ja: '設定ツリー',
-                        es: 'Árboles de configuración',
-                        ko: '구성 트리',
-                        ar: 'أشجار التكوين'
+                        en: "Config trees",
+                        fr: "Arbres de configuration",
+                        pt: "Árvores de configuração",
+                        de: "Konfigurationsbäume",
+                        zh: "配置树",
+                        ja: "設定ツリー",
+                        es: "Árboles de configuración",
+                        ko: "구성 트리",
+                        ar: "أشجار التكوين",
                     },
                     dontTryThisAtHome: {
                         en: "Don't try this at home",
@@ -3108,7 +3153,7 @@ export const useMainStore = defineStore("main", {
                         ja: "自宅で試さないでください",
                         es: "No intentes esto en casa",
                         ko: "집에서 따라 하지 마세요",
-                        ar: "لا تحاول هذا في المنزل"
+                        ar: "لا تحاول هذا في المنزل",
                     },
                     themeDashboards: {
                         en: "Themed dashboards",
@@ -3119,18 +3164,18 @@ export const useMainStore = defineStore("main", {
                         ja: "テーマ付きダッシュボード",
                         es: "Tableros temáticos",
                         ko: "테마 대시보드",
-                        ar: "لوحات القيادة ذات الطابع الخاص"
+                        ar: "لوحات القيادة ذات الطابع الخاص",
                     },
                     moreExamples: {
-                        en: 'More examples',
-                        fr: 'Plus d\'exemples',
-                        pt: 'Mais exemplos',
-                        de: 'Weitere Beispiele',
-                        zh: '更多示例',
-                        ja: 'さらに多くの例',
-                        es: 'Más ejemplos',
-                        ko: '더 많은 예제',
-                        ar: 'المزيد من الأمثلة'
+                        en: "More examples",
+                        fr: "Plus d'exemples",
+                        pt: "Mais exemplos",
+                        de: "Weitere Beispiele",
+                        zh: "更多示例",
+                        ja: "さらに多くの例",
+                        es: "Más ejemplos",
+                        ko: "더 많은 예제",
+                        ar: "المزيد من الأمثلة",
                     },
                     reset: {
                         en: "Reset",
@@ -3141,7 +3186,7 @@ export const useMainStore = defineStore("main", {
                         ja: "リセット",
                         es: "Reiniciar",
                         ko: "초기화",
-                        ar: 'إعادة ضبط'
+                        ar: "إعادة ضبط",
                     },
                     cssOverride: {
                         en: "You can override the css (check out the styles.css in the package)",
@@ -3152,368 +3197,346 @@ export const useMainStore = defineStore("main", {
                         ja: "CSS を再配置する (styles.css とパッケージを参照)",
                         es: "Puede anular el CSS (consulte estilos.css en el paquete)",
                         ko: "CSS를 재정의할 수 있습니다(패키지의 styles.css 확인).",
-                        ar: 'يمكنك تجاوز CSS (راجع ملف style.css الموجود في الحزمة)'
+                        ar: "يمكنك تجاوز CSS (راجع ملف style.css الموجود في الحزمة)",
                     },
                     emitted: {
                         start: {
-                            en: 'Emitted when the timer is started.',
-                            fr: 'Émis lorsque le minuteur est démarré.',
-                            pt: 'Emitido quando o temporizador é iniciado.',
-                            de: 'Wird ausgelöst, wenn der Timer gestartet wird.',
-                            zh: '当计时器启动时触发。',
-                            ja: 'タイマーが開始されたときに発行されます。',
-                            es: 'Emitido cuando el temporizador se inicia.',
-                            ko: '타이머가 시작될 때 발생합니다.',
-                            ar: 'يتم إرساله عند بدء المؤقت.'
+                            en: "Emitted when the timer is started.",
+                            fr: "Émis lorsque le minuteur est démarré.",
+                            pt: "Emitido quando o temporizador é iniciado.",
+                            de: "Wird ausgelöst, wenn der Timer gestartet wird.",
+                            zh: "当计时器启动时触发。",
+                            ja: "タイマーが開始されたときに発行されます。",
+                            es: "Emitido cuando el temporizador se inicia.",
+                            ko: "타이머가 시작될 때 발생합니다.",
+                            ar: "يتم إرساله عند بدء المؤقت.",
                         },
                         pause: {
-                            en: 'Emitted when the timer is paused.',
-                            fr: 'Émis lorsque le minuteur est mis en pause.',
-                            pt: 'Emitido quando o temporizador é pausado.',
-                            de: 'Wird ausgelöst, wenn der Timer pausiert wird.',
-                            zh: '当计时器暂停时触发。',
-                            ja: 'タイマーが一時停止されたときに発行されます。',
-                            es: 'Emitido cuando el temporizador se pausa.',
-                            ko: '타이머가 일시 중지될 때 발생합니다.',
-                            ar: 'يتم إرساله عند إيقاف المؤقت مؤقتًا.'
+                            en: "Emitted when the timer is paused.",
+                            fr: "Émis lorsque le minuteur est mis en pause.",
+                            pt: "Emitido quando o temporizador é pausado.",
+                            de: "Wird ausgelöst, wenn der Timer pausiert wird.",
+                            zh: "当计时器暂停时触发。",
+                            ja: "タイマーが一時停止されたときに発行されます。",
+                            es: "Emitido cuando el temporizador se pausa.",
+                            ko: "타이머가 일시 중지될 때 발생합니다.",
+                            ar: "يتم إرساله عند إيقاف المؤقت مؤقتًا.",
                         },
                         reset: {
-                            en: 'Emitted when the timer is reset.',
-                            fr: 'Émis lorsque le minuteur est réinitialisé.',
-                            pt: 'Emitido quando o temporizador é redefinido.',
-                            de: 'Wird ausgelöst, wenn der Timer zurückgesetzt wird.',
-                            zh: '当计时器被重置时触发。',
-                            ja: 'タイマーがリセットされたときに発行されます。',
-                            es: 'Emitido cuando el temporizador se restablece.',
-                            ko: '타이머가 초기화될 때 발생합니다.',
-                            ar: 'يتم إرساله عند إعادة ضبط المؤقت.'
+                            en: "Emitted when the timer is reset.",
+                            fr: "Émis lorsque le minuteur est réinitialisé.",
+                            pt: "Emitido quando o temporizador é redefinido.",
+                            de: "Wird ausgelöst, wenn der Timer zurückgesetzt wird.",
+                            zh: "当计时器被重置时触发。",
+                            ja: "タイマーがリセットされたときに発行されます。",
+                            es: "Emitido cuando el temporizador se restablece.",
+                            ko: "타이머가 초기화될 때 발생합니다.",
+                            ar: "يتم إرساله عند إعادة ضبط المؤقت.",
                         },
                         restart: {
-                            en: 'Emitted when the timer is restarted.',
-                            fr: 'Émis lorsque le minuteur est redémarré.',
-                            pt: 'Emitido quando o temporizador é reiniciado.',
-                            de: 'Wird ausgelöst, wenn der Timer neu gestartet wird.',
-                            zh: '当计时器重新启动时触发。',
-                            ja: 'タイマーが再開始されたときに発行されます。',
-                            es: 'Emitido cuando el temporizador se reinicia.',
-                            ko: '타이머가 다시 시작될 때 발생합니다.',
-                            ar: 'يتم إرساله عند إعادة تشغيل المؤقت.'
+                            en: "Emitted when the timer is restarted.",
+                            fr: "Émis lorsque le minuteur est redémarré.",
+                            pt: "Emitido quando o temporizador é reiniciado.",
+                            de: "Wird ausgelöst, wenn der Timer neu gestartet wird.",
+                            zh: "当计时器重新启动时触发。",
+                            ja: "タイマーが再開始されたときに発行されます。",
+                            es: "Emitido cuando el temporizador se reinicia.",
+                            ko: "타이머가 다시 시작될 때 발생합니다.",
+                            ar: "يتم إرساله عند إعادة تشغيل المؤقت.",
                         },
                         lap: {
-                            en: 'Emitted when a lap is completed. Returns the array of laps in memory.',
-                            fr: 'Émis lorsqu’un tour est terminé. Renvoie le tableau des tours en mémoire.',
-                            pt: 'Emitido quando uma volta é concluída. Retorna o array de voltas em memória.',
-                            de: 'Wird ausgelöst, wenn eine Runde abgeschlossen ist. Gibt das Array der gespeicherten Runden zurück.',
-                            zh: '当完成一圈时触发。返回内存中的圈数数组。',
-                            ja: 'ラップが完了したときに発行されます。メモリ内のラップ配列を返します。',
-                            es: 'Emitido cuando se completa una vuelta. Devuelve el array de vueltas en memoria.',
-                            ko: '랩이 완료되면 발생합니다. 메모리에 저장된 랩 배열을 반환합니다.',
-                            ar: 'يتم إرساله عند إكمال لفة. يعيد مصفوفة اللفات المخزنة في الذاكرة.'
+                            en: "Emitted when a lap is completed. Returns the array of laps in memory.",
+                            fr: "Émis lorsqu’un tour est terminé. Renvoie le tableau des tours en mémoire.",
+                            pt: "Emitido quando uma volta é concluída. Retorna o array de voltas em memória.",
+                            de: "Wird ausgelöst, wenn eine Runde abgeschlossen ist. Gibt das Array der gespeicherten Runden zurück.",
+                            zh: "当完成一圈时触发。返回内存中的圈数数组。",
+                            ja: "ラップが完了したときに発行されます。メモリ内のラップ配列を返します。",
+                            es: "Emitido cuando se completa una vuelta. Devuelve el array de vueltas en memoria.",
+                            ko: "랩이 완료되면 발생합니다. 메모리에 저장된 랩 배열을 반환합니다.",
+                            ar: "يتم إرساله عند إكمال لفة. يعيد مصفوفة اللفات المخزنة في الذاكرة.",
                         },
                     },
                     emits: {
                         selectSide: {
-                            en: 'Emits dataset related to the selected side of the quadrant.',
-                            fr: 'Émet le jeu de données lié au côté sélectionné du quadrant.',
-                            pt: 'Emite o conjunto de dados relacionado ao lado selecionado do quadrante.',
-                            de: 'Gibt den Datensatz aus, der mit der ausgewählten Seite des Quadranten verbunden ist.',
-                            zh: '触发与所选象限边相关的数据集。',
-                            ja: '選択された象限の側に関連するデータセットを発行します。',
-                            es: 'Emite el conjunto de datos relacionado con el lado seleccionado del cuadrante.',
-                            ko: '선택된 사분면 측면과 관련된 데이터셋을 전송합니다.',
-                            ar: 'يُصدر مجموعة البيانات المرتبطة بالجانب المحدد من الربع.'
+                            en: "Emits dataset related to the selected side of the quadrant.",
+                            fr: "Émet le jeu de données lié au côté sélectionné du quadrant.",
+                            pt: "Emite o conjunto de dados relacionado ao lado selecionado do quadrante.",
+                            de: "Gibt den Datensatz aus, der mit der ausgewählten Seite des Quadranten verbunden ist.",
+                            zh: "触发与所选象限边相关的数据集。",
+                            ja: "選択された象限の側に関連するデータセットを発行します。",
+                            es: "Emite el conjunto de datos relacionado con el lado seleccionado del cuadrante.",
+                            ko: "선택된 사분면 측면과 관련된 데이터셋을 전송합니다.",
+                            ar: "يُصدر مجموعة البيانات المرتبطة بالجانب المحدد من الربع.",
                         },
                         onNodeClick: {
-                            en: 'Emits the node data when clicking the node box.',
-                            fr: 'Émet les données du nœud lorsque la boîte du nœud est cliquée.',
-                            pt: 'Emite os dados do nó ao clicar na caixa do nó.',
-                            de: 'Gibt die Knotendaten aus, wenn auf die Knotenbox geklickt wird.',
-                            zh: '当点击节点框时，触发该节点的数据。',
-                            ja: 'ノードボックスをクリックすると、そのノードのデータを発行します。',
-                            es: 'Emite los datos del nodo cuando se hace clic en la caja del nodo.',
-                            ko: '노드 박스를 클릭하면 해당 노드의 데이터를 전송합니다.',
-                            ar: 'يُصدر بيانات العقدة عند النقر على مربع العقدة.'
+                            en: "Emits the node data when clicking the node box.",
+                            fr: "Émet les données du nœud lorsque la boîte du nœud est cliquée.",
+                            pt: "Emite os dados do nó ao clicar na caixa do nó.",
+                            de: "Gibt die Knotendaten aus, wenn auf die Knotenbox geklickt wird.",
+                            zh: "当点击节点框时，触发该节点的数据。",
+                            ja: "ノードボックスをクリックすると、そのノードのデータを発行します。",
+                            es: "Emite los datos del nodo cuando se hace clic en la caja del nodo.",
+                            ko: "노드 박스를 클릭하면 해당 노드의 데이터를 전송합니다.",
+                            ar: "يُصدر بيانات العقدة عند النقر على مربع العقدة.",
                         },
                         onMidpointEnter: {
-                            en: 'Emits the edge data when hovering a midpoint.',
-                            fr: 'Émet les données de l’arête lors du survol d’un point médian.',
-                            pt: 'Emite os dados da aresta ao passar o cursor sobre um ponto médio.',
-                            de: 'Gibt die Kantendaten aus, wenn über einen Mittelpunkt gefahren wird.',
-                            zh: '当悬停在中点上时，触发该边的数据。',
-                            ja: '中点にホバーすると、そのエッジのデータを発行します。',
-                            es: 'Emite los datos de la arista al pasar el cursor sobre un punto medio.',
-                            ko: '중간 지점에 마우스를 올리면 해당 엣지의 데이터를 전송합니다.',
-                            ar: 'يُصدر بيانات الحافة عند التحويم فوق نقطة المنتصف.'
+                            en: "Emits the edge data when hovering a midpoint.",
+                            fr: "Émet les données de l’arête lors du survol d’un point médian.",
+                            pt: "Emite os dados da aresta ao passar o cursor sobre um ponto médio.",
+                            de: "Gibt die Kantendaten aus, wenn über einen Mittelpunkt gefahren wird.",
+                            zh: "当悬停在中点上时，触发该边的数据。",
+                            ja: "中点にホバーすると、そのエッジのデータを発行します。",
+                            es: "Emite los datos de la arista al pasar el cursor sobre un punto medio.",
+                            ko: "중간 지점에 마우스를 올리면 해당 엣지의 데이터를 전송합니다.",
+                            ar: "يُصدر بيانات الحافة عند التحويم فوق نقطة المنتصف.",
                         },
                         onMidpointLeave: {
-                            en: 'Emits when mouse leaving a midpoint',
-                            fr: 'Émet un événement lorsque la souris quitte un point médian.',
-                            pt: 'Emite um evento quando o cursor sai de um ponto médio.',
-                            de: 'Gibt ein Ereignis aus, wenn die Maus einen Mittelpunkt verlässt.',
-                            zh: '当鼠标离开中点时触发事件。',
-                            ja: 'マウスが中点から離れたときにイベントを発行します。',
-                            es: 'Emite un evento cuando el cursor sale de un punto medio.',
-                            ko: '마우스가 중간 지점을 벗어날 때 이벤트를 전송합니다.',
-                            ar: 'يُصدر حدثًا عند مغادرة المؤشر لنقطة المنتصف.'
+                            en: "Emits when mouse leaving a midpoint",
+                            fr: "Émet un événement lorsque la souris quitte un point médian.",
+                            pt: "Emite um evento quando o cursor sai de um ponto médio.",
+                            de: "Gibt ein Ereignis aus, wenn die Maus einen Mittelpunkt verlässt.",
+                            zh: "当鼠标离开中点时触发事件。",
+                            ja: "マウスが中点から離れたときにイベントを発行します。",
+                            es: "Emite un evento cuando el cursor sale de un punto medio.",
+                            ko: "마우스가 중간 지점을 벗어날 때 이벤트를 전송합니다.",
+                            ar: "يُصدر حدثًا عند مغادرة المؤشر لنقطة المنتصف.",
                         },
                         rotate: {
-                            en: 'Emits the orientation when toggling the orientation button in the controls.',
-                            fr: 'Émet l’orientation lors du basculement du bouton d’orientation dans les contrôles.',
-                            pt: 'Emite a orientação ao alternar o botão de orientação nos controles.',
-                            de: 'Gibt die Ausrichtung aus, wenn die Ausrichtungsschaltfläche in den Steuerelementen umgeschaltet wird.',
-                            zh: '在控制中切换方向按钮时，触发当前方向。',
-                            ja: 'コントロールの向きボタンを切り替えたときに、向きを発行します。',
-                            es: 'Emite la orientación al alternar el botón de orientación en los controles.',
-                            ko: '컨트롤에서 방향 버튼을 전환할 때 방향을 전송합니다.',
-                            ar: 'يُصدر الاتجاه عند تبديل زر الاتجاه في عناصر التحكم.'
+                            en: "Emits the orientation when toggling the orientation button in the controls.",
+                            fr: "Émet l’orientation lors du basculement du bouton d’orientation dans les contrôles.",
+                            pt: "Emite a orientação ao alternar o botão de orientação nos controles.",
+                            de: "Gibt die Ausrichtung aus, wenn die Ausrichtungsschaltfläche in den Steuerelementen umgeschaltet wird.",
+                            zh: "在控制中切换方向按钮时，触发当前方向。",
+                            ja: "コントロールの向きボタンを切り替えたときに、向きを発行します。",
+                            es: "Emite la orientación al alternar el botón de orientación en los controles.",
+                            ko: "컨트롤에서 방향 버튼을 전환할 때 방향을 전송합니다.",
+                            ar: "يُصدر الاتجاه عند تبديل زر الاتجاه في عناصر التحكم.",
                         },
                         selectGroup: {
-                            en: 'Emits the dataset in a group when an arc is clicked.',
-                            fr: 'Émet le dataset du groupe lorsqu’un arc est cliqué.',
-                            pt: 'Emite o conjunto de dados de um grupo quando um arco é clicado.',
-                            de: 'Gibt den Datensatz einer Gruppe aus, wenn ein Bogen angeklickt wird.',
-                            zh: '当点击弧形时，触发该组的数据集。',
-                            ja: 'アークがクリックされたときに、そのグループのデータセットを発行します。',
-                            es: 'Emite el conjunto de datos de un grupo cuando se hace clic en un arco.',
-                            ko: '아크를 클릭하면 해당 그룹의 데이터셋을 전송합니다.',
-                            ar: 'يُصدر مجموعة بيانات المجموعة عند النقر على القوس.',
-                        },
-                        selectRibbon: {
-                            en: 'Emits the ribbon data when a ribbon is clicked.',
-                            fr: 'Émet les données du ruban lorsqu’un ruban est cliqué.',
-                            pt: 'Emite os dados da faixa quando uma faixa é clicada.',
-                            de: 'Gibt die Ribbon-Daten aus, wenn ein Ribbon angeklickt wird.',
-                            zh: '当点击带状连接时，触发该带状的数据。',
-                            ja: 'リボンがクリックされたときに、そのリボンのデータを発行します。',
-                            es: 'Emite los datos de la cinta cuando se hace clic en una cinta.',
-                            ko: '리본을 클릭하면 해당 리본의 데이터를 전송합니다.',
-                            ar: 'يُصدر بيانات الشريط عند النقر على الشريط.',
+                            en: "Emits the dataset in a group when an arc is clicked.",
+                            fr: "Émet le dataset du groupe lorsqu’un arc est cliqué.",
+                            pt: "Emite o conjunto de dados de um grupo quando um arco é clicado.",
+                            de: "Gibt den Datensatz einer Gruppe aus, wenn ein Bogen angeklickt wird.",
+                            zh: "当点击弧形时，触发该组的数据集。",
+                            ja: "アークがクリックされたときに、そのグループのデータセットを発行します。",
+                            es: "Emite el conjunto de datos de un grupo cuando se hace clic en un arco.",
+                            ko: "아크를 클릭하면 해당 그룹의 데이터셋을 전송합니다.",
+                            ar: "يُصدر مجموعة بيانات المجموعة عند النقر على القوس.",
                         },
                         start: {
-                            en: 'Start the timer.',
-                            fr: 'Démarrer le minuteur.',
-                            pt: 'Iniciar o temporizador.',
-                            de: 'Timer starten.',
-                            zh: '启动计时器。',
-                            ja: 'タイマーを開始します。',
-                            es: 'Iniciar el temporizador.',
-                            ko: '타이머를 시작합니다.',
-                            ar: 'ابدأ المؤقت.'
+                            en: "Start the timer.",
+                            fr: "Démarrer le minuteur.",
+                            pt: "Iniciar o temporizador.",
+                            de: "Timer starten.",
+                            zh: "启动计时器。",
+                            ja: "タイマーを開始します。",
+                            es: "Iniciar el temporizador.",
+                            ko: "타이머를 시작합니다.",
+                            ar: "ابدأ المؤقت.",
                         },
                         pause: {
-                            en: 'Pause the timer.',
-                            fr: 'Mettre le minuteur en pause.',
-                            pt: 'Pausar o temporizador.',
-                            de: 'Timer pausieren.',
-                            zh: '暂停计时器。',
-                            ja: 'タイマーを一時停止します。',
-                            es: 'Pausar el temporizador.',
-                            ko: '타이머를 일시 중지합니다.',
-                            ar: 'إيقاف المؤقت مؤقتًا.'
+                            en: "Pause the timer.",
+                            fr: "Mettre le minuteur en pause.",
+                            pt: "Pausar o temporizador.",
+                            de: "Timer pausieren.",
+                            zh: "暂停计时器。",
+                            ja: "タイマーを一時停止します。",
+                            es: "Pausar el temporizador.",
+                            ko: "타이머를 일시 중지합니다.",
+                            ar: "إيقاف المؤقت مؤقتًا.",
                         },
                         reset: {
-                            en: 'Reset the timer.',
-                            fr: 'Réinitialiser le minuteur.',
-                            pt: 'Redefinir o temporizador.',
-                            de: 'Timer zurücksetzen.',
-                            zh: '重置计时器。',
-                            ja: 'タイマーをリセットします。',
-                            es: 'Restablecer el temporizador.',
-                            ko: '타이머를 초기화합니다.',
-                            ar: 'إعادة ضبط المؤقت.'
+                            en: "Reset the timer.",
+                            fr: "Réinitialiser le minuteur.",
+                            pt: "Redefinir o temporizador.",
+                            de: "Timer zurücksetzen.",
+                            zh: "重置计时器。",
+                            ja: "タイマーをリセットします。",
+                            es: "Restablecer el temporizador.",
+                            ko: "타이머를 초기화합니다.",
+                            ar: "إعادة ضبط المؤقت.",
                         },
                         restart: {
-                            en: 'Resets and starts the timer.',
-                            fr: 'Réinitialise et démarre le minuteur.',
-                            pt: 'Redefine e inicia o temporizador.',
-                            de: 'Setzt den Timer zurück und startet ihn.',
-                            zh: '重置并启动计时器。',
-                            ja: 'タイマーをリセットして開始します。',
-                            es: 'Restablece e inicia el temporizador.',
-                            ko: '타이머를 초기화하고 시작합니다.',
-                            ar: 'يعيد ضبط المؤقت ويبدأه.'
+                            en: "Resets and starts the timer.",
+                            fr: "Réinitialise et démarre le minuteur.",
+                            pt: "Redefine e inicia o temporizador.",
+                            de: "Setzt den Timer zurück und startet ihn.",
+                            zh: "重置并启动计时器。",
+                            ja: "タイマーをリセットして開始します。",
+                            es: "Restablece e inicia el temporizador.",
+                            ko: "타이머를 초기화하고 시작합니다.",
+                            ar: "يعيد ضبط المؤقت ويبدأه.",
                         },
                         lap: {
-                            en: 'Stores laps on click. Used as an emit, returns the laps as an array.',
-                            fr: 'Enregistre les tours au clic. Utilisé comme emit, renvoie les tours sous forme de tableau.',
-                            pt: 'Armazena voltas ao clicar. Usado como emit, retorna as voltas como um array.',
-                            de: 'Speichert Runden beim Klicken. Wird als Emit verwendet und gibt die Runden als Array zurück.',
-                            zh: '点击时记录分段时间。作为 emit 使用，返回一个包含分段时间的数组。',
-                            ja: 'クリック時にラップを保存します。emit として使用され、ラップを配列で返します。',
-                            es: 'Guarda las vueltas al hacer clic. Se usa como emit y devuelve las vueltas como un array.',
-                            ko: '클릭 시 랩을 저장합니다. emit으로 사용되며 랩을 배열로 반환합니다.',
-                            ar: 'يخزن اللفات عند النقر. يُستخدم كـ emit ويعيد اللفات كمصفوفة.'
+                            en: "Stores laps on click. Used as an emit, returns the laps as an array.",
+                            fr: "Enregistre les tours au clic. Utilisé comme emit, renvoie les tours sous forme de tableau.",
+                            pt: "Armazena voltas ao clicar. Usado como emit, retorna as voltas como um array.",
+                            de: "Speichert Runden beim Klicken. Wird als Emit verwendet und gibt die Runden als Array zurück.",
+                            zh: "点击时记录分段时间。作为 emit 使用，返回一个包含分段时间的数组。",
+                            ja: "クリック時にラップを保存します。emit として使用され、ラップを配列で返します。",
+                            es: "Guarda las vueltas al hacer clic. Se usa como emit y devuelve las vueltas como un array.",
+                            ko: "클릭 시 랩을 저장합니다. emit으로 사용되며 랩을 배열로 반환합니다.",
+                            ar: "يخزن اللفات عند النقر. يُستخدم كـ emit ويعيد اللفات كمصفوفة.",
                         },
                         toggleAnnotator: {
-                            en: 'Call this method from the parent to open or close the built-in annotator.',
-                            fr: 'Appelez cette méthode depuis le composant parent pour ouvrir ou fermer l’annotateur intégré.',
-                            pt: 'Chame este método a partir do componente pai para abrir ou fechar o anotador integrado.',
-                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um den integrierten Annotator zu öffnen oder zu schließen.',
-                            zh: '从父组件调用此方法以打开或关闭内置标注工具。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、内蔵アノテーターを開閉します。',
-                            es: 'Llame a este método desde el componente padre para abrir o cerrar el anotador integrado.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 내장 주석 도구를 열거나 닫습니다.',
-                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لفتح أو إغلاق أداة التعليق المدمجة.',
+                            en: "Call this method from the parent to open or close the built-in annotator.",
+                            fr: "Appelez cette méthode depuis le composant parent pour ouvrir ou fermer l’annotateur intégré.",
+                            pt: "Chame este método a partir do componente pai para abrir ou fechar o anotador integrado.",
+                            de: "Rufen Sie diese Methode aus der Elternkomponente auf, um den integrierten Annotator zu öffnen oder zu schließen.",
+                            zh: "从父组件调用此方法以打开或关闭内置标注工具。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、内蔵アノテーターを開閉します。",
+                            es: "Llame a este método desde el componente padre para abrir o cerrar el anotador integrado.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 내장 주석 도구를 열거나 닫습니다.",
+                            ar: "استدعِ هذه الطريقة من المكوّن الأب لفتح أو إغلاق أداة التعليق المدمجة.",
                         },
                         toggleTooltip: {
-                            en: 'Call this method from the parent to disable or enable the tooltip.',
-                            fr: 'Appelez cette méthode depuis le composant parent pour activer ou désactiver l’infobulle.',
-                            pt: 'Chame este método a partir do componente pai para ativar ou desativar o tooltip.',
-                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um den Tooltip zu aktivieren oder zu deaktivieren.',
-                            zh: '从父组件调用此方法以启用或禁用提示框。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、ツールチップを有効または無効にします。',
-                            es: 'Llame a este método desde el componente padre para activar o desactivar el tooltip.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 툴팁을 활성화하거나 비활성화합니다.',
-                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لتمكين أو تعطيل التلميح.',
+                            en: "Call this method from the parent to disable or enable the tooltip.",
+                            fr: "Appelez cette méthode depuis le composant parent pour activer ou désactiver l’infobulle.",
+                            pt: "Chame este método a partir do componente pai para ativar ou desativar o tooltip.",
+                            de: "Rufen Sie diese Methode aus der Elternkomponente auf, um den Tooltip zu aktivieren oder zu deaktivieren.",
+                            zh: "从父组件调用此方法以启用或禁用提示框。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、ツールチップを有効または無効にします。",
+                            es: "Llame a este método desde el componente padre para activar o desactivar el tooltip.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 툴팁을 활성화하거나 비활성화합니다.",
+                            ar: "استدعِ هذه الطريقة من المكوّن الأب لتمكين أو تعطيل التلميح.",
                         },
                         toggleFullscreen: {
-                            en: 'Call this method from the parent to toggle fullscreen mode.',
-                            fr: 'Appelez cette méthode depuis le composant parent pour activer ou désactiver le mode plein écran.',
-                            pt: 'Chame este método a partir do componente pai para alternar o modo de tela cheia.',
-                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um den Vollbildmodus umzuschalten.',
-                            zh: '从父组件调用此方法以切换全屏模式。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、全画面モードを切り替えます。',
-                            es: 'Llame a este método desde el componente padre para alternar el modo de pantalla completa.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 전체 화면 모드를 전환합니다.',
-                            ar: 'استدعِ هذه الطريقة من المكوّن الأب للتبديل إلى وضع ملء الشاشة أو الخروج منه.',
+                            en: "Call this method from the parent to toggle fullscreen mode.",
+                            fr: "Appelez cette méthode depuis le composant parent pour activer ou désactiver le mode plein écran.",
+                            pt: "Chame este método a partir do componente pai para alternar o modo de tela cheia.",
+                            de: "Rufen Sie diese Methode aus der Elternkomponente auf, um den Vollbildmodus umzuschalten.",
+                            zh: "从父组件调用此方法以切换全屏模式。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、全画面モードを切り替えます。",
+                            es: "Llame a este método desde el componente padre para alternar el modo de pantalla completa.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 전체 화면 모드를 전환합니다.",
+                            ar: "استدعِ هذه الطريقة من المكوّن الأب للتبديل إلى وضع ملء الشاشة أو الخروج منه.",
                         },
                         focusLocation: {
-                            en: 'Call this method from the parent to focus the map on specific coordinates.',
-                            fr: 'Appelez cette méthode depuis le composant parent pour centrer la carte sur des coordonnées spécifiques.',
-                            pt: 'Chame este método a partir do componente pai para centralizar o mapa em coordenadas específicas.',
-                            de: 'Rufen Sie diese Methode aus der Elternkomponente auf, um die Karte auf bestimmte Koordinaten zu zentrieren.',
-                            zh: '从父组件调用此方法以将地图聚焦到指定坐标。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、指定した座標に地図をフォーカスします。',
-                            es: 'Llame a este método desde el componente padre para centrar el mapa en coordenadas específicas.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 지도를 특정 좌표로 이동합니다.',
-                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لتركيز الخريطة على إحداثيات محددة.',
+                            en: "Call this method from the parent to focus the map on specific coordinates.",
+                            fr: "Appelez cette méthode depuis le composant parent pour centrer la carte sur des coordonnées spécifiques.",
+                            pt: "Chame este método a partir do componente pai para centralizar o mapa em coordenadas específicas.",
+                            de: "Rufen Sie diese Methode aus der Elternkomponente auf, um die Karte auf bestimmte Koordinaten zu zentrieren.",
+                            zh: "从父组件调用此方法以将地图聚焦到指定坐标。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、指定した座標に地図をフォーカスします。",
+                            es: "Llame a este método desde el componente padre para centrar el mapa en coordenadas específicas.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 지도를 특정 좌표로 이동합니다.",
+                            ar: "استدعِ هذه الطريقة من المكوّن الأب لتركيز الخريطة على إحداثيات محددة.",
                         },
                         getData: {
-                            en: 'Call this method from the parent component to get the graph data',
-                            fr: 'Appelez cette méthode depuis le composant parent pour obtenir les données du graphe.',
-                            pt: 'Chame este método a partir do componente pai para obter os dados do grafo.',
-                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um die Graphdaten abzurufen.',
-                            zh: '从父组件调用此方法以获取图数据。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、グラフデータを取得します。',
-                            es: 'Llame a este método desde el componente padre para obtener los datos del grafo.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 그래프 데이터를 가져옵니다.',
-                            ar: 'استدعِ هذه الدالة من المكوّن الأب للحصول على بيانات الرسم البياني.'
+                            en: "Call this method from the parent component to get the graph data",
+                            fr: "Appelez cette méthode depuis le composant parent pour obtenir les données du graphe.",
+                            pt: "Chame este método a partir do componente pai para obter os dados do grafo.",
+                            de: "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um die Graphdaten abzurufen.",
+                            zh: "从父组件调用此方法以获取图数据。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、グラフデータを取得します。",
+                            es: "Llame a este método desde el componente padre para obtener los datos del grafo.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 그래프 데이터를 가져옵니다.",
+                            ar: "استدعِ هذه الدالة من المكوّن الأب للحصول على بيانات الرسم البياني.",
                         },
                         resetZoom: {
-                            en: 'Call this method from the parent component to reset zoom to 100%',
-                            fr: 'Appelez cette méthode depuis le composant parent pour réinitialiser le zoom à 100 %.',
-                            pt: 'Chame este método a partir do componente pai para redefinir o zoom para 100%.',
-                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um den Zoom auf 100 % zurückzusetzen.',
-                            zh: '从父组件调用此方法可将缩放重置为 100%。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、ズームを100％にリセットします。',
-                            es: 'Llame a este método desde el componente padre para restablecer el zoom al 100%.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 줌을 100%로 초기화합니다.',
-                            ar: 'استدعِ هذه الدالة من المكوّن الأب لإعادة التكبير إلى 100٪.'
+                            en: "Call this method from the parent component to reset zoom to 100%",
+                            fr: "Appelez cette méthode depuis le composant parent pour réinitialiser le zoom à 100 %.",
+                            pt: "Chame este método a partir do componente pai para redefinir o zoom para 100%.",
+                            de: "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um den Zoom auf 100 % zurückzusetzen.",
+                            zh: "从父组件调用此方法可将缩放重置为 100%。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、ズームを100％にリセットします。",
+                            es: "Llame a este método desde el componente padre para restablecer el zoom al 100%.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 줌을 100%로 초기화합니다.",
+                            ar: "استدعِ هذه الدالة من المكوّن الأب لإعادة التكبير إلى 100٪.",
                         },
 
                         zoomIn: {
-                            en: 'Call this method from the parent component to zoom in',
-                            fr: 'Appelez cette méthode depuis le composant parent pour effectuer un zoom avant.',
-                            pt: 'Chame este método a partir do componente pai para aumentar o zoom.',
-                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um hinein zu zoomen.',
-                            zh: '从父组件调用此方法可放大视图。',
-                            ja: '親コンポーネントからこのメソッドを呼び出してズームインします。',
-                            es: 'Llame a este método desde el componente padre para acercar.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 확대합니다.',
-                            ar: 'استدعِ هذه الدالة من المكوّن الأب للتكبير.'
+                            en: "Call this method from the parent component to zoom in",
+                            fr: "Appelez cette méthode depuis le composant parent pour effectuer un zoom avant.",
+                            pt: "Chame este método a partir do componente pai para aumentar o zoom.",
+                            de: "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um hinein zu zoomen.",
+                            zh: "从父组件调用此方法可放大视图。",
+                            ja: "親コンポーネントからこのメソッドを呼び出してズームインします。",
+                            es: "Llame a este método desde el componente padre para acercar.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 확대합니다.",
+                            ar: "استدعِ هذه الدالة من المكوّن الأب للتكبير.",
                         },
 
                         zoomOut: {
-                            en: 'Call this method from the parent component to zoom out',
-                            fr: 'Appelez cette méthode depuis le composant parent pour effectuer un zoom arrière.',
-                            pt: 'Chame este método a partir do componente pai para reduzir o zoom.',
-                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um heraus zu zoomen.',
-                            zh: '从父组件调用此方法可缩小视图。',
-                            ja: '親コンポーネントからこのメソッドを呼び出してズームアウトします。',
-                            es: 'Llame a este método desde el componente padre para alejar.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 축소합니다.',
-                            ar: 'استدعِ هذه الدالة من المكوّن الأب للتصغير.'
+                            en: "Call this method from the parent component to zoom out",
+                            fr: "Appelez cette méthode depuis le composant parent pour effectuer un zoom arrière.",
+                            pt: "Chame este método a partir do componente pai para reduzir o zoom.",
+                            de: "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um heraus zu zoomen.",
+                            zh: "从父组件调用此方法可缩小视图。",
+                            ja: "親コンポーネントからこのメソッドを呼び出してズームアウトします。",
+                            es: "Llame a este método desde el componente padre para alejar.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 축소합니다.",
+                            ar: "استدعِ هذه الدالة من المكوّن الأب للتصغير.",
                         },
 
                         switchDirection: {
-                            en: 'Call this method from the parent component to switch the direction of the graph',
-                            fr: 'Appelez cette méthode depuis le composant parent pour changer la direction du graphe.',
-                            pt: 'Chame este método a partir do componente pai para alterar a direção do grafo.',
-                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um die Richtung des Graphen zu wechseln.',
-                            zh: '从父组件调用此方法可切换图的方向。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、グラフの方向を切り替えます。',
-                            es: 'Llame a este método desde el componente padre para cambiar la dirección del grafo.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 그래프의 방향을 전환합니다.',
-                            ar: 'استدعِ هذه الدالة من المكوّن الأب لتغيير اتجاه الرسم البياني.'
+                            en: "Call this method from the parent component to switch the direction of the graph",
+                            fr: "Appelez cette méthode depuis le composant parent pour changer la direction du graphe.",
+                            pt: "Chame este método a partir do componente pai para alterar a direção do grafo.",
+                            de: "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um die Richtung des Graphen zu wechseln.",
+                            zh: "从父组件调用此方法可切换图的方向。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、グラフの方向を切り替えます。",
+                            es: "Llame a este método desde el componente padre para cambiar la dirección del grafo.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 그래프의 방향을 전환합니다.",
+                            ar: "استدعِ هذه الدالة من المكوّن الأب لتغيير اتجاه الرسم البياني.",
                         },
                         toggleTable: {
-                            en: 'Call this method from the parent component to toggle the visibility of the data table.',
+                            en: "Call this method from the parent component to toggle the visibility of the data table.",
                             fr: `Appelez cette méthode à partir du composant parent pour basculer la visibilité de la table de données.`,
-                            pt: 'Chame esse método do componente pai para alternar a visibilidade da tabela de dados.',
-                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sichtbarkeit der Datentabelle umzuschalten.',
-                            zh: '从父组件调用此方法可以切换数据表的可见性。',
-                            ja: 'データ テーブルの表示/非表示を切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
-                            es: 'Llame a este método desde el componente principal para alternar la visibilidad de la tabla de datos.',
-                            ko: '데이터 테이블의 가시성을 전환하려면 상위 구성요소에서 이 메소드를 호출하십시오.',
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل رؤية جدول البيانات.'
+                            pt: "Chame esse método do componente pai para alternar a visibilidade da tabela de dados.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sichtbarkeit der Datentabelle umzuschalten.",
+                            zh: "从父组件调用此方法可以切换数据表的可见性。",
+                            ja: "データ テーブルの表示/非表示を切り替えるには、親コンポーネントからこのメソッドを呼び出します。",
+                            es: "Llame a este método desde el componente principal para alternar la visibilidad de la tabla de datos.",
+                            ko: "데이터 테이블의 가시성을 전환하려면 상위 구성요소에서 이 메소드를 호출하십시오.",
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل رؤية جدول البيانات.",
                         },
                         toggleLabels: {
-                            en: 'Call this method from the parent component to toggle the visibility of data labels.',
+                            en: "Call this method from the parent component to toggle the visibility of data labels.",
                             fr: `Appelez cette méthode à partir du composant parent pour basculer la visibilité des étiquettes de données.`,
-                            pt: 'Chame esse método do componente pai para alternar a visibilidade dos rótulos de dados.',
-                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sichtbarkeit von Datenbeschriftungen umzuschalten.',
-                            zh: '从父组件调用此方法可以切换数据标签的可见性。',
-                            ja: 'データ ラベルの表示/非表示を切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
-                            es: 'Llame a este método desde el componente principal para alternar la visibilidad de las etiquetas de datos.',
-                            ko: '데이터 레이블의 가시성을 전환하려면 상위 구성요소에서 이 메소드를 호출하십시오.',
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل رؤية تسميات البيانات'
+                            pt: "Chame esse método do componente pai para alternar a visibilidade dos rótulos de dados.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sichtbarkeit von Datenbeschriftungen umzuschalten.",
+                            zh: "从父组件调用此方法可以切换数据标签的可见性。",
+                            ja: "データ ラベルの表示/非表示を切り替えるには、親コンポーネントからこのメソッドを呼び出します。",
+                            es: "Llame a este método desde el componente principal para alternar la visibilidad de las etiquetas de datos.",
+                            ko: "데이터 레이블의 가시성을 전환하려면 상위 구성요소에서 이 메소드를 호출하십시오.",
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل رؤية تسميات البيانات",
                         },
                         toggleStack: {
-                            en: 'Call this method from the parent component to toggle the stack mode.',
+                            en: "Call this method from the parent component to toggle the stack mode.",
                             fr: `Appelez cette méthode à partir du composant parent pour basculer en mode pile.`,
-                            pt: 'Chame esse método do componente pai para alternar o modo de pilha.',
-                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um den Stapelmodus umzuschalten.',
-                            zh: '从父组件调用此方法来切换堆栈模式。',
-                            ja: 'スタック モードを切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
-                            es: 'Llame a este método desde el componente principal para alternar el modo de pila.',
-                            ko: '스택 모드를 전환하려면 상위 구성 요소에서 이 메서드를 호출하세요.',
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل وضع المكدس'
+                            pt: "Chame esse método do componente pai para alternar o modo de pilha.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um den Stapelmodus umzuschalten.",
+                            zh: "从父组件调用此方法来切换堆栈模式。",
+                            ja: "スタック モードを切り替えるには、親コンポーネントからこのメソッドを呼び出します。",
+                            es: "Llame a este método desde el componente principal para alternar el modo de pila.",
+                            ko: "스택 모드를 전환하려면 상위 구성 요소에서 이 메서드를 호출하세요.",
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل وضع المكدس",
                         },
                         toggleSort: {
-                            en: 'Call this method from the parent component to toggle the sorting direction.',
+                            en: "Call this method from the parent component to toggle the sorting direction.",
                             fr: `Appelez cette méthode à partir du composant parent pour basculer le sens de tri.`,
-                            pt: 'Chame esse método do componente pai para alternar a direção de classificação.',
-                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sortierrichtung umzuschalten.',
-                            zh: '从父组件调用此方法可以切换排序方向。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、並べ替え方向を切り替えます。',
-                            es: 'Llame a este método desde el componente principal para alternar la dirección de clasificación.',
-                            ko: '정렬 방향을 전환하려면 상위 구성 요소에서 이 메서드를 호출하세요.',
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل اتجاه الفرز'
-                        },
-                        selectGroup: {
-                            en: 'Emits related data when clicking on a group arc.',
-                            fr: 'Émet les données associées lors du clic sur un arc de groupe.',
-                            pt: 'Emite dados relacionados ao clicar em um arco de grupo.',
-                            de: 'Gibt bei Klick auf einen Gruppenbogen zugehörige Daten aus.',
-                            zh: '点击组弧时，会发出相关数据。',
-                            ja: 'グループのアークをクリックすると関連データを発行します。',
-                            es: 'Emite datos relacionados al hacer clic en un arco de grupo.',
-                            ko: '그룹 호를 클릭할 때 관련 데이터를 방출합니다.',
-                            ar: 'يصدر البيانات ذات الصلة عند النقر على قوس المجموعة.'
+                            pt: "Chame esse método do componente pai para alternar a direção de classificação.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sortierrichtung umzuschalten.",
+                            zh: "从父组件调用此方法可以切换排序方向。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、並べ替え方向を切り替えます。",
+                            es: "Llame a este método desde el componente principal para alternar la dirección de clasificación.",
+                            ko: "정렬 방향을 전환하려면 상위 구성 요소에서 이 메서드를 호출하세요.",
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل اتجاه الفرز",
                         },
                         selectRibbon: {
-                            en: 'Emits related data when clicking on a ribbon.',
-                            fr: 'Émet les données associées lors du clic sur un ruban.',
-                            pt: 'Emite dados relacionados ao clicar em uma fita.',
-                            de: 'Gibt bei Klick auf ein Band zugehörige Daten aus.',
-                            zh: '点击绸带时，会发出相关数据。',
-                            ja: 'リボンをクリックすると関連データを発行します。',
-                            es: 'Emite datos relacionados al hacer clic en una cinta.',
-                            ko: '리본을 클릭할 때 관련 데이터를 방출합니다.',
-                            ar: 'يصدر البيانات ذات الصلة عند النقر على الشريط.'
+                            en: "Emits related data when clicking on a ribbon.",
+                            fr: "Émet les données associées lors du clic sur un ruban.",
+                            pt: "Emite dados relacionados ao clicar em uma fita.",
+                            de: "Gibt bei Klick auf ein Band zugehörige Daten aus.",
+                            zh: "点击绸带时，会发出相关数据。",
+                            ja: "リボンをクリックすると関連データを発行します。",
+                            es: "Emite datos relacionados al hacer clic en una cinta.",
+                            ko: "리본을 클릭할 때 관련 데이터를 방출합니다.",
+                            ar: "يصدر البيانات ذات الصلة عند النقر على الشريط.",
                         },
                         hoverIndex: {
-                            en: 'Emits the index of the current hovered datapoint.',
+                            en: "Emits the index of the current hovered datapoint.",
                             fr: "Émet l'index du point de données actuellement survolé.",
                             pt: "Emite o índice do ponto de dados atualmente em foco (hover).",
                             de: "Gibt den Index des aktuell überfahrenen Datenpunkts aus.",
@@ -3521,7 +3544,7 @@ export const useMainStore = defineStore("main", {
                             ja: "現在ホバーされているデータポイントのインデックスを出力します。",
                             es: "Emite el índice del punto de datos actualmente sobrevolado.",
                             ko: "현재 마우스를 올린 데이터 포인트의 인덱스를 전달합니다.",
-                            ar: "يُصدر فهرس نقطة البيانات التي يتم التحويم فوقها حاليًا."
+                            ar: "يُصدر فهرس نقطة البيانات التي يتم التحويم فوقها حاليًا.",
                         },
                         selectDatapoint: {
                             en: "Use this event on the component to get the selected datapoint and index on click",
@@ -3532,73 +3555,73 @@ export const useMainStore = defineStore("main", {
                             ja: "コンポーネント上でこのイベントを使用して、クリック時に選択されたデータポイントとインデックスを取得します。",
                             es: "Utilice este evento en el componente para obtener el punto de datos seleccionado y el índice al hacer clic",
                             ko: "클릭 시 선택한 데이터 포인트와 인덱스를 가져오려면 구성 요소에서 이 이벤트를 사용하세요.",
-                            ar: 'استخدم هذا الحدث على المكون للحصول على نقطة البيانات والفهرس المحددين عند النقر'
+                            ar: "استخدم هذا الحدث على المكون للحصول على نقطة البيانات والفهرس المحددين عند النقر",
                         },
                         pauseAnimation: {
-                            en: 'Call this method from the parent component to pause the carousel animation.',
+                            en: "Call this method from the parent component to pause the carousel animation.",
                             fr: `Appelez cette méthode à partir du composant parent pour suspendre l'animation du carrousel.`,
-                            pt: 'Chame esse método do componente pai para pausar a animação do carrossel.',
-                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation anzuhalten.',
-                            zh: '从父组件调用此方法可以暂停轮播动画。',
-                            ja: 'カルーセル アニメーションを一時停止するには、親コンポーネントからこのメソッドを呼び出します。',
-                            es: 'Llame a este método desde el componente principal para pausar la animación del carrusel.',
-                            ko: '캐러셀 애니메이션을 일시중지하려면 상위 구성요소에서 이 메소드를 호출하세요.',
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لإيقاف الرسوم المتحركة الدائرية مؤقتًا'
+                            pt: "Chame esse método do componente pai para pausar a animação do carrossel.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation anzuhalten.",
+                            zh: "从父组件调用此方法可以暂停轮播动画。",
+                            ja: "カルーセル アニメーションを一時停止するには、親コンポーネントからこのメソッドを呼び出します。",
+                            es: "Llame a este método desde el componente principal para pausar la animación del carrusel.",
+                            ko: "캐러셀 애니메이션을 일시중지하려면 상위 구성요소에서 이 메소드를 호출하세요.",
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لإيقاف الرسوم المتحركة الدائرية مؤقتًا",
                         },
                         autoSize: {
-                            en: 'Call this method from the parent component to force the svg viewBox to fit all its contents.',
-                            fr: 'Appelez cette méthode depuis le composant parent pour forcer le viewBox du SVG à englober tout son contenu.',
-                            pt: 'Chame este método a partir do componente pai para forçar o viewBox do SVG a ajustar todo o seu conteúdo.',
-                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um das SVG-viewBox so anzupassen, dass es alle Inhalte umfasst.',
-                            zh: '从父组件调用此方法，以强制 SVG 的 viewBox 适应其所有内容。',
-                            ja: 'このメソッドを親コンポーネントから呼び出して、SVG の viewBox がすべてのコンテンツを収めるように強制してください。',
-                            es: 'Llama a este método desde el componente padre para forzar que el viewBox del SVG abarque todo su contenido.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 SVG viewBox가 모든 콘텐츠를 포함하도록 강제합니다.',
-                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لإجبار viewBox الخاص بـ SVG على احتواء جميع محتوياته.',
+                            en: "Call this method from the parent component to force the svg viewBox to fit all its contents.",
+                            fr: "Appelez cette méthode depuis le composant parent pour forcer le viewBox du SVG à englober tout son contenu.",
+                            pt: "Chame este método a partir do componente pai para forçar o viewBox do SVG a ajustar todo o seu conteúdo.",
+                            de: "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um das SVG-viewBox so anzupassen, dass es alle Inhalte umfasst.",
+                            zh: "从父组件调用此方法，以强制 SVG 的 viewBox 适应其所有内容。",
+                            ja: "このメソッドを親コンポーネントから呼び出して、SVG の viewBox がすべてのコンテンツを収めるように強制してください。",
+                            es: "Llama a este método desde el componente padre para forzar que el viewBox del SVG abarque todo su contenido.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 SVG viewBox가 모든 콘텐츠를 포함하도록 강제합니다.",
+                            ar: "استدعِ هذه الطريقة من المكوّن الأب لإجبار viewBox الخاص بـ SVG على احتواء جميع محتوياته.",
                         },
                         showHideSeries: {
-                            en: 'Programmatically hide or show series',
-                            fr: 'Masquer ou afficher des séries par programmation',
-                            pt: 'Ocultar ou mostrar séries programaticamente',
-                            de: 'Serien programmgesteuert ein- oder ausblenden',
-                            zh: '以编程方式隐藏或显示系列',
-                            ja: 'シリーズをプログラムで表示または非表示にする',
-                            es: 'Ocultar o mostrar series mediante programación',
-                            ko: '시리즈를 프로그래밍 방식으로 표시하거나 숨기기',
-                            ar: 'إخفاء أو إظهار السلاسل برمجيًا'
+                            en: "Programmatically hide or show series",
+                            fr: "Masquer ou afficher des séries par programmation",
+                            pt: "Ocultar ou mostrar séries programaticamente",
+                            de: "Serien programmgesteuert ein- oder ausblenden",
+                            zh: "以编程方式隐藏或显示系列",
+                            ja: "シリーズをプログラムで表示または非表示にする",
+                            es: "Ocultar o mostrar series mediante programación",
+                            ko: "시리즈를 프로그래밍 방식으로 표시하거나 숨기기",
+                            ar: "إخفاء أو إظهار السلاسل برمجيًا",
                         },
                         getImage: {
-                            en: 'Call this method from the parent to get a base64 string of the chart, along with other metadata',
-                            fr: 'Appelez cette méthode depuis le composant parent pour obtenir une chaîne base64 du graphique, ainsi que d\'autres métadonnées.',
-                            pt: 'Chame este método a partir do componente pai para obter uma string base64 do gráfico, junto com outros metadados.',
-                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um einen Base64-String des Diagramms zusammen mit weiteren Metadaten zu erhalten.',
-                            zh: '从父组件调用此方法，以获取图表的 Base64 字符串及其他元数据。',
-                            ja: '親コンポーネントからこのメソッドを呼び出して、チャートの base64 文字列やその他のメタデータを取得します。',
-                            es: 'Llama a este método desde el componente padre para obtener una cadena base64 del gráfico, junto con otros metadatos.',
-                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 차트의 base64 문자열과 기타 메타데이터를 가져옵니다.',
-                            ar: 'استدعِ هذه الطريقة من المكوّن الأب للحصول على سلسلة base64 للرسم البياني، بالإضافة إلى بيانات وصفية أخرى.'
+                            en: "Call this method from the parent to get a base64 string of the chart, along with other metadata",
+                            fr: "Appelez cette méthode depuis le composant parent pour obtenir une chaîne base64 du graphique, ainsi que d'autres métadonnées.",
+                            pt: "Chame este método a partir do componente pai para obter uma string base64 do gráfico, junto com outros metadados.",
+                            de: "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um einen Base64-String des Diagramms zusammen mit weiteren Metadaten zu erhalten.",
+                            zh: "从父组件调用此方法，以获取图表的 Base64 字符串及其他元数据。",
+                            ja: "親コンポーネントからこのメソッドを呼び出して、チャートの base64 文字列やその他のメタデータを取得します。",
+                            es: "Llama a este método desde el componente padre para obtener una cadena base64 del gráfico, junto con otros metadatos.",
+                            ko: "부모 컴포넌트에서 이 메서드를 호출하여 차트의 base64 문자열과 기타 메타데이터를 가져옵니다.",
+                            ar: "استدعِ هذه الطريقة من المكوّن الأب للحصول على سلسلة base64 للرسم البياني، بالإضافة إلى بيانات وصفية أخرى.",
                         },
                         resumeAnimation: {
-                            en: 'Call this method from the parent component to resume the carousel animation after it was paused.',
+                            en: "Call this method from the parent component to resume the carousel animation after it was paused.",
                             fr: `Appelez cette méthode à partir du composant parent pour reprendre l'animation du carrousel après sa pause.`,
-                            pt: 'Chame esse método do componente pai para retomar a animação do carrossel após ela ter sido pausada.',
-                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation fortzusetzen, nachdem sie angehalten wurde.',
-                            zh: '从父组件调用此方法可在暂停后恢复轮播动画。',
-                            ja: '一時停止したカルーセル アニメーションを再開するには、親コンポーネントからこのメソッドを呼び出します。',
-                            es: 'Llame a este método desde el componente principal para reanudar la animación del carrusel después de que se detuvo.',
-                            ko: '회전식 애니메이션이 일시 중지된 후 다시 시작하려면 상위 구성 요소에서 이 메서드를 호출하세요.',
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لاستئناف الرسوم المتحركة الدائرية بعد إيقافها مؤقتًا'
+                            pt: "Chame esse método do componente pai para retomar a animação do carrossel após ela ter sido pausada.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation fortzusetzen, nachdem sie angehalten wurde.",
+                            zh: "从父组件调用此方法可在暂停后恢复轮播动画。",
+                            ja: "一時停止したカルーセル アニメーションを再開するには、親コンポーネントからこのメソッドを呼び出します。",
+                            es: "Llame a este método desde el componente principal para reanudar la animación del carrusel después de que se detuvo.",
+                            ko: "회전식 애니메이션이 일시 중지된 후 다시 시작하려면 상위 구성 요소에서 이 메서드를 호출하세요.",
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لاستئناف الرسوم المتحركة الدائرية بعد إيقافها مؤقتًا",
                         },
                         toggleAnimation: {
-                            en: 'Call this method from the parent component to toggle the carousel animation.',
+                            en: "Call this method from the parent component to toggle the carousel animation.",
                             fr: `Appelez cette méthode à partir du composant parent pour activer/désactiver l'animation du carrousel.`,
-                            pt: 'Chame esse método do componente pai para alternar a animação do carrossel.',
-                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation umzuschalten.',
-                            zh: '从父组件调用此方法来切换轮播动画。',
-                            ja: 'カルーセル アニメーションを切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
-                            es: 'Llame a este método desde el componente principal para alternar la animación del carrusel.',
-                            ko: '캐러셀 애니메이션을 전환하려면 상위 구성요소에서 이 메소드를 호출하세요.',
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل الرسوم المتحركة الدائرية'
+                            pt: "Chame esse método do componente pai para alternar a animação do carrossel.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation umzuschalten.",
+                            zh: "从父组件调用此方法来切换轮播动画。",
+                            ja: "カルーセル アニメーションを切り替えるには、親コンポーネントからこのメソッドを呼び出します。",
+                            es: "Llame a este método desde el componente principal para alternar la animación del carrusel.",
+                            ko: "캐러셀 애니메이션을 전환하려면 상위 구성요소에서 이 메소드를 호출하세요.",
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل الرسوم المتحركة الدائرية",
                         },
                         generateImage: {
                             en: "Call this method from the parent component to download as png image. This is especially useful if user options are hidden.",
@@ -3609,7 +3632,7 @@ export const useMainStore = defineStore("main", {
                             ja: "親コンポーネントからこのメソッドを呼び出して、PNG イメージとしてダウンロードします。これは、ユーザー オプションが非表示の場合に特に便利です。",
                             es: "Llame a este método desde el componente principal para descargarlo como imagen png. Esto es especialmente útil si las opciones de usuario están ocultas.",
                             ko: "png 이미지로 다운로드하려면 상위 구성 요소에서 이 메서드를 호출하세요. 이는 사용자 옵션이 숨겨져 있는 경우 특히 유용합니다.",
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتنزيلها كصورة png. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية'
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتنزيلها كصورة png. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية",
                         },
                         generateSvg: {
                             en: "Call this method from the parent component to download as SVG image. This is especially useful if user options are hidden.",
@@ -3620,7 +3643,7 @@ export const useMainStore = defineStore("main", {
                             ja: "親コンポーネントからこのメソッドを呼び出して、PNG イメージとしてダウンロードします。これは、ユーザー オプションが非表示の場合に特に便利です。",
                             es: "Llame a este método desde el componente principal para descargarlo como imagen SVG. Esto es especialmente útil si las opciones de usuario están ocultas.",
                             ko: "SVG 이미지로 다운로드하려면 상위 구성 요소에서 이 메서드를 호출하세요. 이는 사용자 옵션이 숨겨져 있는 경우 특히 유용합니다.",
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتنزيلها كصورة SVG. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية'
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتنزيلها كصورة SVG. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية",
                         },
                         generatePdf: {
                             en: "Call this method from the parent component to print as PDF. This is especially useful if user options are hidden.",
@@ -3631,7 +3654,7 @@ export const useMainStore = defineStore("main", {
                             ja: "PDF として印刷するには、親コンポーネントからこのメソッドを呼び出します。これは、ユーザー オプションが非表示の場合に特に便利です。",
                             es: "Llame a este método desde el componente principal para imprimir como PDF. Esto es especialmente útil si las opciones de usuario están ocultas.",
                             ko: "PDF로 인쇄하려면 상위 구성 요소에서 이 메서드를 호출하세요. 이는 사용자 옵션이 숨겨져 있는 경우 특히 유용합니다.",
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي للطباعة بتنسيق PDF. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية'
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي للطباعة بتنسيق PDF. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية",
                         },
                         generateCsv: {
                             en: "Call this method from the parent component to generate an CSV extraction. This is especially useful if user options are hidden.",
@@ -3642,7 +3665,7 @@ export const useMainStore = defineStore("main", {
                             ja: "CSV 抽出を生成するには、親コンポーネントからこのメソッドを呼び出します。これは、ユーザー オプションが非表示の場合に特に便利です。",
                             es: "Llame a este método desde el componente principal para generar una extracción de CSV. Esto es especialmente útil si las opciones de usuario están ocultas.",
                             ko: "CSV 추출을 생성하려면 상위 구성 요소에서 이 메서드를 호출하세요. 이는 사용자 옵션이 숨겨져 있는 경우 특히 유용합니다.",
-                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لإنشاء استخراج CSV. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية'
+                            ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لإنشاء استخراج CSV. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية",
                         },
                         dashboard: {
                             toggleLock: {
@@ -3654,7 +3677,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "親コンポーネントからこのメソッドを呼び出して、ダッシュボードのロック状態を切り替えます。",
                                 es: "Llame a este método desde el componente principal para alternar el estado de bloqueo del panel.",
                                 ko: "대시보드의 잠금 상태를 전환^하려면 상위 구성 요소에서 이 메서드를 호출하세요.",
-                                ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل حالة قفل لوحة المعلومات'
+                                ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لتبديل حالة قفل لوحة المعلومات",
                             },
                             change: {
                                 en: "Emits the updated config to the parent component",
@@ -3665,8 +3688,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "更新された構成を親コンポーネントに送信します",
                                 es: "Emite la configuración actualizada al componente principal.",
                                 ko: "업데이트된 구성을 상위 구성요소로 내보냅니다.",
-                                ar: 'يصدر التكوين المحدث إلى المكون الأصلي'
-                            }
+                                ar: "يصدر التكوين المحدث إلى المكون الأصلي",
+                            },
                         },
                         screenshot: {
                             postImage: {
@@ -3678,7 +3701,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "ポストモードでは、現在の画像データを返します。",
                                 es: "en modo publicación, devuelve los datos de la imagen actual:",
                                 ko: "포스트 모드에서는 현재 이미지 데이터를 반환합니다.",
-                                ar: ':في وضع النشر، يتم إرجاع بيانات الصورة الحالية'
+                                ar: ":في وضع النشر، يتم إرجاع بيانات الصورة الحالية",
                             },
                             shoot: {
                                 en: "call this method to open the component",
@@ -3689,7 +3712,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "このメソッドを呼び出してコンポーネントを開きます",
                                 es: "llame a este método para abrir el componente",
                                 ko: "구성 요소를 열려면 이 메서드를 호출하세요.",
-                                ar: 'استدعاء هذه الطريقة لفتح المكون'
+                                ar: "استدعاء هذه الطريقة لفتح المكون",
                             },
                             close: {
                                 en: "call this method to close the component",
@@ -3700,53 +3723,53 @@ export const useMainStore = defineStore("main", {
                                 ja: "このメソッドを呼び出してコンポーネントを閉じます",
                                 es: "call this method to close the component",
                                 ko: "구성 요소를 닫으려면 이 메서드를 호출하세요.",
-                                ar: 'استدعاء هذه الطريقة لإغلاق المكون'
-                            }
+                                ar: "استدعاء هذه الطريقة لإغلاق المكون",
+                            },
                         },
                         xy: {
                             zoomStart: {
-                                en: 'Emitted when the left handle of the zoom component is moved.',
-                                fr: 'Émis lorsque la poignée gauche du composant de zoom est déplacée.',
-                                pt: 'Emitido quando a alça esquerda do componente de zoom é movida.',
-                                de: 'Wird ausgelöst, wenn der linke Griff der Zoom-Komponente bewegt wird.',
-                                zh: '当缩放组件的左侧控制柄被移动时触发。',
-                                ja: 'ズームコンポーネントの左側ハンドルが移動したときに発行されます。',
-                                es: 'Emitido cuando se mueve el controlador izquierdo del componente de zoom.',
-                                ko: '줌 컴포넌트의 왼쪽 핸들이 이동될 때 발생합니다.',
-                                ar: 'يتم إصداره عند تحريك المقبض الأيسر لمكوّن التكبير.'
+                                en: "Emitted when the left handle of the zoom component is moved.",
+                                fr: "Émis lorsque la poignée gauche du composant de zoom est déplacée.",
+                                pt: "Emitido quando a alça esquerda do componente de zoom é movida.",
+                                de: "Wird ausgelöst, wenn der linke Griff der Zoom-Komponente bewegt wird.",
+                                zh: "当缩放组件的左侧控制柄被移动时触发。",
+                                ja: "ズームコンポーネントの左側ハンドルが移動したときに発行されます。",
+                                es: "Emitido cuando se mueve el controlador izquierdo del componente de zoom.",
+                                ko: "줌 컴포넌트의 왼쪽 핸들이 이동될 때 발생합니다.",
+                                ar: "يتم إصداره عند تحريك المقبض الأيسر لمكوّن التكبير.",
                             },
                             zoomEnd: {
-                                en: 'Emitted when the right handle of the zoom component is moved.',
-                                fr: 'Émis lorsque la poignée droite du composant de zoom est déplacée.',
-                                pt: 'Emitido quando a alça direita do componente de zoom é movida.',
-                                de: 'Wird ausgelöst, wenn der rechte Griff der Zoom-Komponente bewegt wird.',
-                                zh: '当缩放组件的右侧控制柄被移动时触发。',
-                                ja: 'ズームコンポーネントの右側ハンドルが移動したときに発行されます。',
-                                es: 'Emitido cuando se mueve el controlador derecho del componente de zoom.',
-                                ko: '줌 컴포넌트의 오른쪽 핸들이 이동될 때 발생합니다.',
-                                ar: 'يتم إصداره عند تحريك المقبض الأيمن لمكوّن التكبير.'
+                                en: "Emitted when the right handle of the zoom component is moved.",
+                                fr: "Émis lorsque la poignée droite du composant de zoom est déplacée.",
+                                pt: "Emitido quando a alça direita do componente de zoom é movida.",
+                                de: "Wird ausgelöst, wenn der rechte Griff der Zoom-Komponente bewegt wird.",
+                                zh: "当缩放组件的右侧控制柄被移动时触发。",
+                                ja: "ズームコンポーネントの右側ハンドルが移動したときに発行されます。",
+                                es: "Emitido cuando se mueve el controlador derecho del componente de zoom.",
+                                ko: "줌 컴포넌트의 오른쪽 핸들이 이동될 때 발생합니다.",
+                                ar: "يتم إصداره عند تحريك المقبض الأيمن لمكوّن التكبير.",
                             },
                             zoomReset: {
-                                en: 'Emitted when the reset button of the zoom component is clicked.',
-                                fr: 'Émis lorsque le bouton de réinitialisation du composant de zoom est cliqué.',
-                                pt: 'Emitido quando o botão de redefinição do componente de zoom é clicado.',
-                                de: 'Wird ausgelöst, wenn die Zurücksetzen-Schaltfläche der Zoom-Komponente angeklickt wird.',
-                                zh: '当点击缩放组件的重置按钮时触发。',
-                                ja: 'ズームコンポーネントのリセットボタンがクリックされたときに発行されます。',
-                                es: 'Emitido cuando se hace clic en el botón de restablecer del componente de zoom.',
-                                ko: '줌 컴포넌트의 재설정 버튼이 클릭될 때 발생합니다.',
-                                ar: 'يتم إصداره عند النقر على زر إعادة التعيين لمكوّن التكبير.'
+                                en: "Emitted when the reset button of the zoom component is clicked.",
+                                fr: "Émis lorsque le bouton de réinitialisation du composant de zoom est cliqué.",
+                                pt: "Emitido quando o botão de redefinição do componente de zoom é clicado.",
+                                de: "Wird ausgelöst, wenn die Zurücksetzen-Schaltfläche der Zoom-Komponente angeklickt wird.",
+                                zh: "当点击缩放组件的重置按钮时触发。",
+                                ja: "ズームコンポーネントのリセットボタンがクリックされたときに発行されます。",
+                                es: "Emitido cuando se hace clic en el botón de restablecer del componente de zoom.",
+                                ko: "줌 컴포넌트의 재설정 버튼이 클릭될 때 발생합니다.",
+                                ar: "يتم إصداره عند النقر على زر إعادة التعيين لمكوّن التكبير.",
                             },
                             copyAlt: {
-                                en: 'Emitted when the altCopy button in the chart\'s context menu is clicked.',
-                                fr: 'Émis lorsque le bouton altCopy du menu contextuel du graphique est cliqué.',
-                                pt: 'Emitido quando o botão altCopy no menu de contexto do gráfico é clicado.',
-                                de: 'Wird ausgelöst, wenn die altCopy-Schaltfläche im Kontextmenü des Diagramms angeklickt wird.',
-                                zh: '当点击图表上下文菜单中的 altCopy 按钮时触发。',
-                                ja: 'チャートのコンテキストメニュー内の altCopy ボタンがクリックされたときに発行されます。',
-                                es: 'Emitido cuando se hace clic en el botón altCopy en el menú contextual del gráfico.',
-                                ko: '차트의 컨텍스트 메뉴에서 altCopy 버튼이 클릭될 때 발생합니다.',
-                                ar: 'يتم إصداره عند النقر على زر altCopy في قائمة السياق الخاصة بالمخطط.'
+                                en: "Emitted when the altCopy button in the chart's context menu is clicked.",
+                                fr: "Émis lorsque le bouton altCopy du menu contextuel du graphique est cliqué.",
+                                pt: "Emitido quando o botão altCopy no menu de contexto do gráfico é clicado.",
+                                de: "Wird ausgelöst, wenn die altCopy-Schaltfläche im Kontextmenü des Diagramms angeklickt wird.",
+                                zh: "当点击图表上下文菜单中的 altCopy 按钮时触发。",
+                                ja: "チャートのコンテキストメニュー内の altCopy ボタンがクリックされたときに発行されます。",
+                                es: "Emitido cuando se hace clic en el botón altCopy en el menú contextual del gráfico.",
+                                ko: "차트의 컨텍스트 메뉴에서 altCopy 버튼이 클릭될 때 발생합니다.",
+                                ar: "يتم إصداره عند النقر على زر altCopy في قائمة السياق الخاصة بالمخطط.",
                             },
                             selectTimeLabel: {
                                 en: "returns the data associated with the selected time label",
@@ -3757,7 +3780,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "選択された時間ラベルに関連付けられたデータを返します",
                                 es: "devuelve los datos asociados con la etiqueta de tiempo seleccionada",
                                 ko: "선택된 시간 레이블과 연결된 데이터를 반환합니다",
-                                ar: "يُرجع البيانات المرتبطة بتسمية الوقت المحددة"
+                                ar: "يُرجع البيانات المرتبطة بتسمية الوقت المحددة",
                             },
                             selectLegend: {
                                 en: "returns the current visible series when selecting / unselecting the legend:",
@@ -3768,7 +3791,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "凡例を選択または選択解除するときに、現在表示されているシリーズを返します。",
                                 es: "devuelve la serie visible actual al seleccionar/deseleccionar la leyenda:",
                                 ko: "범례를 선택/선택 취소할 때 현재 표시되는 시리즈를 반환합니다.",
-                                ar: ':تقوم بإرجاع السلسلة المرئية الحالية عند تحديد / إلغاء تحديد وسيلة الإيضاح'
+                                ar: ":تقوم بإرجاع السلسلة المرئية الحالية عند تحديد / إلغاء تحديد وسيلة الإيضاح",
                             },
                             selectX: {
                                 en: "returns the current visible series at the selected x index when clicking on the chart :",
@@ -3779,7 +3802,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "チャートをクリックすると、選択された x インデックスで現在表示されているシリーズが返されます。",
                                 es: "devuelve la serie visible actual en el índice x seleccionado al hacer clic en el gráfico:",
                                 ko: "차트를 클릭할 때 선택한 x 인덱스에서 현재 표시되는 계열을 반환합니다.",
-                                ar: ':يقوم بإرجاع السلسلة المرئية الحالية في مؤشر x المحدد عند النقر على المخطط'
+                                ar: ":يقوم بإرجاع السلسلة المرئية الحالية في مؤشر x المحدد عند النقر على المخطط",
                             },
                             getData: {
                                 en: "call this method from the parent to get the full formatted dataset.",
@@ -3790,8 +3813,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "完全なフォーマット済みデータセットを取得するには、親からこのメソッドを呼び出します。",
                                 es: "Llame a este método desde el padre para obtener el conjunto de datos formateado completo.",
                                 ko: "전체 형식의 데이터세트를 얻으려면 상위 항목에서 이 메서드를 호출하세요.",
-                                ar: 'قم باستدعاء هذه الطريقة من الشركة الأم للحصول على مجموعة البيانات المنسقة بالكامل'
-                            }
+                                ar: "قم باستدعاء هذه الطريقة من الشركة الأم للحصول على مجموعة البيانات المنسقة بالكامل",
+                            },
                         },
                         quadrant: {
                             selectLegend: {
@@ -3803,7 +3826,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "凡例を選択または選択解除すると、現在表示されているカテゴリとその項目が返されます。",
                                 es: "devuelve las categorías visibles actuales con sus elementos al seleccionar/deseleccionar la leyenda:",
                                 ko: "범례를 선택/선택 취소할 때 항목과 함께 현재 표시되는 범주를 반환합니다.",
-                                ar: ':تقوم بإرجاع الفئات المرئية الحالية مع عناصرها عند تحديد / إلغاء تحديد وسيلة الإيضاح'
+                                ar: ":تقوم بإرجاع الفئات المرئية الحالية مع عناصرها عند تحديد / إلغاء تحديد وسيلة الإيضاح",
                             },
                             selectPlot: {
                                 en: "returns the data of the selected plot on click:",
@@ -3814,7 +3837,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "クリックすると、選択したプロットのデータが返されます。",
                                 es: "devuelve los datos del gráfico seleccionado al hacer clic:",
                                 ko: "클릭 시 선택한 플롯의 데이터를 반환합니다.",
-                                ar: ':إرجاع بيانات المؤامرة المحددة عند النقر'
+                                ar: ":إرجاع بيانات المؤامرة المحددة عند النقر",
                             },
                             selectSide: {
                                 en: "returns the data of all the plots located on the area on click of a corner label:",
@@ -3825,8 +3848,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "コーナーラベルをクリックすると、そのエリアにあるすべてのプロットのデータを返します。",
                                 es: "devuelve los datos de todas las parcelas ubicadas en el área al hacer clic en una etiqueta de esquina:",
                                 ko: "모서리 라벨을 클릭하면 해당 영역에 있는 모든 플롯의 데이터를 반환합니다.",
-                                ar: ':تقوم بإرجاع بيانات جميع قطع الأراضي الموجودة في المنطقة عند النقر فوق تسمية الزاوية'
-                            }
+                                ar: ":تقوم بإرجاع بيانات جميع قطع الأراضي الموجودة في المنطقة عند النقر فوق تسمية الزاوية",
+                            },
                         },
                         chestnut: {
                             selectRoot: {
@@ -3838,7 +3861,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "選択したルート データを返します",
                                 es: "devuelve los datos raíz seleccionados",
                                 ko: "선택한 루트 데이터를 반환합니다.",
-                                ar: 'إرجاع البيانات الجذرية المحددة'
+                                ar: "إرجاع البيانات الجذرية المحددة",
                             },
                             selectBranch: {
                                 en: "returns the selected branch data",
@@ -3849,7 +3872,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "選択されたブランチデータを返します",
                                 es: "devuelve los datos de la rama seleccionada",
                                 ko: "선택한 지점 데이터를 반환합니다.",
-                                ar: 'إرجاع بيانات الفرع المحدد'
+                                ar: "إرجاع بيانات الفرع المحدد",
                             },
                             selectNut: {
                                 en: "returns the selected donut data",
@@ -3860,8 +3883,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "選択されたドーナツ チャート データを返します",
                                 es: "devuelve los datos del donut seleccionado",
                                 ko: "선택한 도넛 데이터를 반환합니다.",
-                                ar: 'إرجاع بيانات الكعكة المحددة'
-                            }
+                                ar: "إرجاع بيانات الكعكة المحددة",
+                            },
                         },
                         onion: {
                             selectLegend: {
@@ -3873,8 +3896,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "凡例を選択または選択解除すると、現在表示されているシリーズを返します。",
                                 es: "devuelve la serie visible actual al seleccionar/deseleccionar la leyenda",
                                 ko: "범례를 선택/선택 취소할 때 현재 표시되는 시리즈를 반환합니다.",
-                                ar: 'تقوم بإرجاع السلسلة المرئية الحالية عند تحديد / إلغاء تحديد وسيلة الإيضاح'
-                            }
+                                ar: "تقوم بإرجاع السلسلة المرئية الحالية عند تحديد / إلغاء تحديد وسيلة الإيضاح",
+                            },
                         },
                         rating: {
                             rate: {
@@ -3886,7 +3909,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "選択した評価値を数値として返します",
                                 es: "devuelve el valor de calificación seleccionado como un número",
                                 ko: "선택한 등급 값을 숫자로 반환합니다.",
-                                ar: 'تقوم بإرجاع قيمة التصنيف المحددة كرقم'
+                                ar: "تقوم بإرجاع قيمة التصنيف المحددة كرقم",
                             },
                             getData: {
                                 en: "call this method from the parent component to get the current rating value",
@@ -3897,7 +3920,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "親コンポーネントからこのメソッドを呼び出して、現在の評価値を取得します。",
                                 es: "Llame a este método desde el componente principal para obtener el valor de calificación actual.",
                                 ko: "현재 등급 값을 얻으려면 상위 구성 요소에서 이 메서드를 호출하세요.",
-                                ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي للحصول على قيمة التصنيف الحالية'
+                                ar: "قم باستدعاء هذه الطريقة من المكون الأصلي للحصول على قيمة التصنيف الحالية",
                             },
                             toggleReadonly: {
                                 en: "call this method from the parent component to flip the readonly or active state",
@@ -3908,8 +3931,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "親コンポーネントからこのメソッドを呼び出して、読み取り専用状態とアクティブ状態を切り替えます。",
                                 es: "llame a este método desde el componente principal para cambiar el estado de solo lectura o activo",
                                 ko: "읽기 전용 또는 활성 상태를 전환하려면 상위 구성 요소에서 이 메서드를 호출하세요.",
-                                ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لقلب حالة القراءة فقط أو الحالة النشطة'
-                            }
+                                ar: "قم باستدعاء هذه الطريقة من المكون الأصلي لقلب حالة القراءة فقط أو الحالة النشطة",
+                            },
                         },
                     },
                     showMoreSeries: {
@@ -3921,7 +3944,7 @@ export const useMainStore = defineStore("main", {
                         ja: "シリーズの表示を増やす/減らす:",
                         es: "Mostrar más/menos series:",
                         ko: "시리즈 더보기 / 간략히 표시 :",
-                        ar: ':عرض المزيد / أقل سلسلة'
+                        ar: ":عرض المزيد / أقل سلسلة",
                     },
                     example: {
                         en: "Example",
@@ -3932,21 +3955,21 @@ export const useMainStore = defineStore("main", {
                         ja: "例",
                         es: "Ejemplo",
                         ko: "예",
-                        ar: 'مثال'
+                        ar: "مثال",
                     },
                     comments: {
                         sparkbar: {
                             target: {
-                                en: 'Set individual target. The length of the bar will be the ratio of its value to this target.',
-                                fr: 'Fixez un objectif individuel. La longueur de la barre sera le rapport de sa valeur à cet objectif.',
-                                pt: 'Defina uma meta individual. O comprimento da barra será a razão enqtre seu valor e esse alvo.',
-                                de: 'Individuelles Ziel festlegen. Die Länge des Balkens entspricht dem Verhältnis seines Wertes zu diesem Ziel.',
-                                zh: '设定个人目标。条形的长度将是其值与该目标的比率。',
-                                ja: '個別の目標を設定します。バーの長さは、このターゲットに対する値の比率になります。',
-                                es: 'Establecer un objetivo individual. La longitud de la barra será la relación entre su valor y este objetivo.',
-                                ko: '개별 목표를 설정하세요. 막대의 길이는 이 목표에 대한 값의 비율이 됩니다.',
-                                ar: 'تحديد الهدف الفردي. سيكون طول الشريط هو نسبة قيمته إلى هذا الهدف'
-                            }
+                                en: "Set individual target. The length of the bar will be the ratio of its value to this target.",
+                                fr: "Fixez un objectif individuel. La longueur de la barre sera le rapport de sa valeur à cet objectif.",
+                                pt: "Defina uma meta individual. O comprimento da barra será a razão enqtre seu valor e esse alvo.",
+                                de: "Individuelles Ziel festlegen. Die Länge des Balkens entspricht dem Verhältnis seines Wertes zu diesem Ziel.",
+                                zh: "设定个人目标。条形的长度将是其值与该目标的比率。",
+                                ja: "個別の目標を設定します。バーの長さは、このターゲットに対する値の比率になります。",
+                                es: "Establecer un objetivo individual. La longitud de la barra será la relación entre su valor y este objetivo.",
+                                ko: "개별 목표를 설정하세요. 막대의 길이는 이 목표에 대한 값의 비율이 됩니다.",
+                                ar: "تحديد الهدف الفردي. سيكون طول الشريط هو نسبة قيمته إلى هذا الهدف",
+                            },
                         },
                         quickChartKeys: {
                             en: "You can provide a simple array of numbers. Depending on its length, either a line chart or a bar chart will be generated. The threshold between bar and line is manageable in the configuration options. You can also provide an array of objects. Here are the sets of accepted keys for serie names and data:",
@@ -3957,7 +3980,7 @@ export const useMainStore = defineStore("main", {
                             ja: "単純な数値の配列を指定できます。長さに応じて、折れ線グラフまたは棒グラフが生成されます。バーとラインの間のしきい値は、設定オプションで管理できます。オブジェクトの配列を指定することもできます。シリーズ名とデータに対して受け入れられるキーのセットは次のとおりです。",
                             es: "Puede proporcionar una serie simple de números. Dependiendo de su longitud, se generará un gráfico de líneas o de barras. El umbral entre barra y línea es gestionable en las opciones de configuración. También puede proporcionar una variedad de objetos. Estos son los conjuntos de claves aceptadas para nombres de series y datos:",
                             ko: "간단한 숫자 배열을 제공할 수 있습니다. 길이에 따라 선형 차트 또는 막대 차트가 생성됩니다. 막대와 선 사이의 임계값은 구성 옵션에서 관리할 수 있습니다. 객체 배열을 제공할 수도 있습니다. 시리즈 이름과 데이터에 허용되는 키 세트는 다음과 같습니다.",
-                            ar: ':يمكنك توفير مجموعة بسيطة من الأرقام. اعتمادًا على طوله، سيتم إنشاء مخطط خطي أو مخطط شريطي. يمكن التحكم في العتبة بين الشريط والخط في خيارات التكوين. يمكنك أيضًا توفير مجموعة من الكائنات. فيما يلي مجموعات المفاتيح المقبولة لأسماء وبيانات السلسلة'
+                            ar: ":يمكنك توفير مجموعة بسيطة من الأرقام. اعتمادًا على طوله، سيتم إنشاء مخطط خطي أو مخطط شريطي. يمكن التحكم في العتبة بين الشريط والخط في خيارات التكوين. يمكنك أيضًا توفير مجموعة من الكائنات. فيما يلي مجموعات المفاتيح المقبولة لأسماء وبيانات السلسلة",
                         },
                         quickChart: {
                             en: "The shape of the dataset is very flexible. The most adapted chart will be computed from it (either a line, bar or donut chart).",
@@ -3968,7 +3991,7 @@ export const useMainStore = defineStore("main", {
                             ja: "データセットの形状は非常に柔軟です。そこから最も適合したグラフが計算されます (折れ線グラフ、棒グラフ、またはドーナツ グラフのいずれか)。",
                             es: "La forma del conjunto de datos es muy flexible. A partir de él se calculará el gráfico más adaptado (ya sea un gráfico de líneas, de barras o de anillos).",
                             ko: "데이터 세트의 모양은 매우 유연합니다. 가장 적합한 차트가 이 차트(선형, 막대형 또는 도넛형 차트)에서 계산됩니다.",
-                            ar: 'شكل مجموعة البيانات مرن للغاية. سيتم حساب المخطط الأكثر تكيفًا منه (إما مخطط خطي أو شريطي أو مخطط دائري مجوف)'
+                            ar: "شكل مجموعة البيانات مرن للغاية. سيتم حساب المخطط الأكثر تكيفًا منه (إما مخطط خطي أو شريطي أو مخطط دائري مجوف)",
                         },
                         scatterWeight: {
                             en: "To create a bubble chart. If not used, datapoints radius will use config.style.layout.plots.radius",
@@ -3979,7 +4002,7 @@ export const useMainStore = defineStore("main", {
                             ja: "バブル チャートを作成するには。使用しない場合、データポイント半径は config.style.layout.plots.radius を使用します。",
                             es: "Para crear un gráfico de burbujas. Si no se usa, el radio de los puntos de datos usará config.style.layout.plots.radius",
                             ko: "거품형 차트를 생성하려면 사용하지 않으면 데이터 포인트 반경은 config.style.layout.plots.radius를 사용합니다.",
-                            ar: 'لإنشاء مخطط فقاعي. إذا لم يتم استخدامه، فسيستخدم نصف قطر نقاط البيانات config.style.layout.plots.radius'
+                            ar: "لإنشاء مخطط فقاعي. إذا لم يتم استخدامه، فسيستخدم نصف قطر نقاط البيانات config.style.layout.plots.radius",
                         },
                         bar3d: {
                             mode: {
@@ -3991,8 +4014,8 @@ export const useMainStore = defineStore("main", {
                                 ja: `「スタック モード」は、データセットに「系列」配列を提供することによって取得されます。`,
                                 es: `El "modo de pila" se obtiene proporcionando una matriz de "serie" en el conjunto de datos.`,
                                 ko: `"스택 모드"는 데이터 세트에 "시리즈" 배열을 제공하여 얻습니다.`,
-                                ar: `يتم الحصول على "وضع المكدس" عن طريق توفير مصفوفة "سلسلة" في مجموعة البيانات.`
-                            }
+                                ar: `يتم الحصول على "وضع المكدس" عن طريق توفير مصفوفة "سلسلة" في مجموعة البيانات.`,
+                            },
                         },
                         relationCircle: {
                             limit: {
@@ -4004,7 +4027,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "表示する項目の数 (基本的に配列を 0 から n までスライスします)",
                                 es: "Número de elementos a mostrar (básicamente divide la matriz de 0 a n)",
                                 ko: "표시할 항목 수(기본적으로 배열을 0에서 n까지 분할)",
-                                ar: 'عدد العناصر المراد عرضها (تقسيم المصفوفة بشكل أساسي من 0 إلى n)'
+                                ar: "عدد العناصر المراد عرضها (تقسيم المصفوفة بشكل أساسي من 0 إلى n)",
                             },
                             weight: {
                                 en: "List the weight of each link in the same order as the relations array",
@@ -4015,7 +4038,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "各リンクの重みを関係配列と同じ順序でリストします。",
                                 es: "Enumere el peso de cada enlace en el mismo orden que la matriz de relaciones.",
                                 ko: "관계 배열과 동일한 순서로 각 링크의 가중치를 나열합니다.",
-                                ar: 'قم بإدراج وزن كل رابط بنفس ترتيب مصفوفة العلاقات'
+                                ar: "قم بإدراج وزن كل رابط بنفس ترتيب مصفوفة العلاقات",
                             },
                             relations: {
                                 en: "List all the ids of the items linked to this item.",
@@ -4026,8 +4049,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "このアイテムにリンクされているアイテムのすべての ID をリストします。",
                                 es: "Enumere todos los identificadores de los elementos vinculados a este elemento.",
                                 ko: "이 항목에 연결된 항목의 모든 ID를 나열합니다.",
-                                ar: 'قم بإدراج كافة معرفات العناصر المرتبطة بهذا العنصر'
-                            }
+                                ar: "قم بإدراج كافة معرفات العناصر المرتبطة بهذا العنصر",
+                            },
                         },
                         smiley: {
                             p1: {
@@ -4039,8 +4062,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "評価するコンポーネント、または評価結果を表示するコンポーネント。",
                                 es: "Un componente para calificar o mostrar resultados de calificación.",
                                 ko: "평가하거나 평가 결과를 표시하는 구성 요소입니다.",
-                                ar: 'مكون للتقييم أو عرض نتائج التصنيف'
-                            }
+                                ar: "مكون للتقييم أو عرض نتائج التصنيف",
+                            },
                         },
                         noDataset: {
                             en: "No dataset required",
@@ -4051,7 +4074,7 @@ export const useMainStore = defineStore("main", {
                             ja: "データセットは必要ありません",
                             es: "No se requiere conjunto de datos",
                             ko: "데이터 세트가 필요하지 않습니다",
-                            ar: 'لا توجد مجموعة بيانات مطلوبة'
+                            ar: "لا توجد مجموعة بيانات مطلوبة",
                         },
                         optional: {
                             en: "Optional",
@@ -4062,7 +4085,7 @@ export const useMainStore = defineStore("main", {
                             ja: "オプション",
                             es: "Opcional",
                             ko: "선택 과목",
-                            ar: 'خياري'
+                            ar: "خياري",
                         },
                         yourConfigHere: {
                             en: "Your config here",
@@ -4073,7 +4096,7 @@ export const useMainStore = defineStore("main", {
                             ja: "設定はここにあります",
                             es: "Su configuración aquí",
                             ko: "귀하의 구성은 여기에 있습니다",
-                            ar: 'التكوين الخاص بك هنا'
+                            ar: "التكوين الخاص بك هنا",
                         },
                         yourDatasetHere: {
                             en: "Your dataset here",
@@ -4084,7 +4107,7 @@ export const useMainStore = defineStore("main", {
                             ja: "データセットはここにあります",
                             es: "Su conjunto de datos aquí",
                             ko: "여기에 데이터세트가 있습니다",
-                            ar: 'مجموعة البيانات الخاصة بك هنا'
+                            ar: "مجموعة البيانات الخاصة بك هنا",
                         },
                         xy: {
                             showSerieName: {
@@ -4096,7 +4119,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "「line」または「plot」データポイントの開始点の末尾に系列の名前を表示します。",
                                 es: "Muestra el nombre de la serie al final del inicio de un punto de datos de 'líne' o 'plot'.",
                                 ko: "'line' 또는 'plot' 데이터 포인트의 시작 부분에 계열 이름을 표시합니다.",
-                                ar: 'اعرض اسم السلسلة في نهاية بداية نقطة بيانات "الخط" أو "المؤامرة".'
+                                ar: 'اعرض اسم السلسلة في نهاية بداية نقطة بيانات "الخط" أو "المؤامرة".',
                             },
                             autoScaling: {
                                 en: "In stacked mode, will attempt to harmonize the scale to the datapoint's min & max values",
@@ -4107,29 +4130,29 @@ export const useMainStore = defineStore("main", {
                                 ja: "スタックモードでは、スケールをデータポイントの最小値と最大値に調和させようとします。",
                                 es: "En modo apilado, intentará armonizar la escala con los valores mínimo y máximo del punto de datos.",
                                 ko: "스택 모드에서는 데이터 포인트의 최소 및 최대 값에 배율을 조화시키려고 시도합니다.",
-                                ar: 'في الوضع المكدس، سيحاول تنسيق المقياس مع قيم الحد الأدنى والحد الأقصى لنقطة البيانات'
+                                ar: "في الوضع المكدس، سيحاول تنسيق المقياس مع قيم الحد الأدنى والحد الأقصى لنقطة البيانات",
                             },
                             temperatureColors: {
-                                en: 'For line types only. Set an array of colors to use a gradient on the path.',
-                                fr: 'Uniquement pour les types ligne. Définissez un tableau de couleurs pour utiliser un dégradé sur le tracé.',
-                                pt: 'Apenas para tipos de linha. Defina um array de cores para usar um gradiente no traçado.',
-                                de: 'Nur für Linientypen. Legen Sie ein Array von Farben fest, um einen Farbverlauf auf der Linie zu verwenden.',
-                                zh: '仅适用于折线类型。设置一个颜色数组以在路径上使用渐变效果。',
-                                ja: 'ラインタイプのみ。パスにグラデーションを適用するための色配列を設定します。',
-                                es: 'Solo para tipos de línea. Establezca un arreglo de colores para usar un degradado en la línea.',
-                                ko: '라인 유형에만 해당합니다. 경로에 그라데이션을 적용하려면 색상 배열을 설정하세요.',
-                                ar: 'لأنواع الخطوط فقط. قم بتعيين مصفوفة من الألوان لاستخدام تدرج لوني على المسار.'
+                                en: "For line types only. Set an array of colors to use a gradient on the path.",
+                                fr: "Uniquement pour les types ligne. Définissez un tableau de couleurs pour utiliser un dégradé sur le tracé.",
+                                pt: "Apenas para tipos de linha. Defina um array de cores para usar um gradiente no traçado.",
+                                de: "Nur für Linientypen. Legen Sie ein Array von Farben fest, um einen Farbverlauf auf der Linie zu verwenden.",
+                                zh: "仅适用于折线类型。设置一个颜色数组以在路径上使用渐变效果。",
+                                ja: "ラインタイプのみ。パスにグラデーションを適用するための色配列を設定します。",
+                                es: "Solo para tipos de línea. Establezca un arreglo de colores para usar un degradado en la línea.",
+                                ko: "라인 유형에만 해당합니다. 경로에 그라데이션을 적용하려면 색상 배열을 설정하세요.",
+                                ar: "لأنواع الخطوط فقط. قم بتعيين مصفوفة من الألوان لاستخدام تدرج لوني على المسار.",
                             },
                             dashIndices: {
-                                en: 'Display segments as dashed lines for the provided indices. For line types only',
-                                fr: 'Afficher les segments en lignes pointillées pour les indices fournis. Uniquement pour les types ligne',
-                                pt: 'Exibir segmentos como linhas tracejadas para os índices fornecidos. Apenas para tipos de linha',
-                                de: 'Segmente für die angegebenen Indizes als gestrichelte Linien anzeigen. Nur für Linientypen',
-                                zh: '将指定索引的线段显示为虚线。仅适用于折线类型',
-                                ja: '指定されたインデックスのセグメントを破線で表示します。ラインタイプのみ対応',
-                                es: 'Mostrar los segmentos como líneas discontinuas para los índices proporcionados. Solo para tipos de línea',
-                                ko: '지정된 인덱스의 구간을 점선으로 표시합니다. 선 유형에만 적용됩니다',
-                                ar: 'عرض المقاطع كخطوط متقطعة للفهرس المحدد. لأنواع الخطوط فقط'
+                                en: "Display segments as dashed lines for the provided indices. For line types only",
+                                fr: "Afficher les segments en lignes pointillées pour les indices fournis. Uniquement pour les types ligne",
+                                pt: "Exibir segmentos como linhas tracejadas para os índices fornecidos. Apenas para tipos de linha",
+                                de: "Segmente für die angegebenen Indizes als gestrichelte Linien anzeigen. Nur für Linientypen",
+                                zh: "将指定索引的线段显示为虚线。仅适用于折线类型",
+                                ja: "指定されたインデックスのセグメントを破線で表示します。ラインタイプのみ対応",
+                                es: "Mostrar los segmentos como líneas discontinuas para los índices proporcionados. Solo para tipos de línea",
+                                ko: "지정된 인덱스의 구간을 점선으로 표시합니다. 선 유형에만 적용됩니다",
+                                ar: "عرض المقاطع كخطوط متقطعة للفهرس المحدد. لأنواع الخطوط فقط",
                             },
                             stackRatio: {
                                 en: "In stacked mode, force the height ratio of a datapoint to take more height space on the chart",
@@ -4140,7 +4163,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "積み上げモードでは、データポイントの高さの比率を強制的にグラフ上でより多くの高さのスペースに配置します。",
                                 es: "En modo apilado, fuerce la relación de altura de un punto de datos para que ocupe más espacio de altura en el gráfico.",
                                 ko: "누적 모드에서는 데이터 포인트의 높이 비율이 차트에서 더 많은 높이 공간을 차지하도록 강제합니다.",
-                                ar: 'في الوضع المكدس، قم بفرض نسبة الارتفاع لنقطة البيانات لتشغل مساحة ارتفاع أكبر على المخطط'
+                                ar: "في الوضع المكدس، قم بفرض نسبة الارتفاع لنقطة البيانات لتشغل مساحة ارتفاع أكبر على المخطط",
                             },
                             scaleMin: {
                                 en: "Set the minimum value for an individual scale",
@@ -4151,7 +4174,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "個々のスケールの最小値を設定する",
                                 es: "Establecer el valor mínimo para una escala individual",
                                 ko: "개별 눈금의 최소값 설정",
-                                ar: 'قم بتعيين الحد الأدنى لقيمة المقياس الفردي'
+                                ar: "قم بتعيين الحد الأدنى لقيمة المقياس الفردي",
                             },
                             scaleMax: {
                                 en: "Set the max value for an individual scale (can act like an offset Y of sorts)",
@@ -4162,7 +4185,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "個々のスケールの最大値を設定します (ある種のオフセット Y のように機能します)",
                                 es: "Establezca el valor máximo para una escala individual (puede actuar como una especie de compensación Y)",
                                 ko: "개별 눈금의 최대값 설정(일종의 오프셋 Y처럼 작동할 수 있음)",
-                                ar: 'قم بتعيين القيمة القصوى لمقياس فردي (يمكن أن يكون بمثابة إزاحة Y من الأنواع)'
+                                ar: "قم بتعيين القيمة القصوى لمقياس فردي (يمكن أن يكون بمثابة إزاحة Y من الأنواع)",
                             },
                             individualScales: {
                                 en: "It is possible to display all series with their indivudual scale, to show correlations between series with different magnitudes. It is recommended to use this config option when the dataset presents a limited number of datapoints, to avoid hindering the chart's readability.",
@@ -4173,10 +4196,10 @@ export const useMainStore = defineStore("main", {
                                 ja: "すべての系列を個別のスケールで表示し、異なる大きさの系列間の相関を示すことができます。データセットが提示するデータポイントの数が限られている場合は、グラフの読みやすさの妨げを避けるために、この構成オプションを使用することをお勧めします。",
                                 es: "Es posible visualizar todas las series con su escala individual, para mostrar correlaciones entre series con diferentes magnitudes. Se recomienda utilizar esta opción de configuración cuando el conjunto de datos presenta una cantidad limitada de puntos de datos, para evitar obstaculizar la legibilidad del gráfico.",
                                 ko: "모든 계열을 개별 규모로 표시하여 크기가 다른 계열 간의 상관 관계를 표시할 수 있습니다. 차트의 가독성을 방해하지 않도록 데이터 세트가 제한된 수의 데이터 포인트를 제공하는 경우 이 구성 옵션을 사용하는 것이 좋습니다.",
-                                ar: 'من الممكن عرض جميع السلاسل بمقياسها الفردي لإظهار الارتباطات بين السلاسل ذات الأحجام المختلفة. يوصى باستخدام خيار التكوين هذا عندما تقدم مجموعة البيانات عددًا محدودًا من نقاط البيانات، لتجنب إعاقة إمكانية قراءة المخطط'
+                                ar: "من الممكن عرض جميع السلاسل بمقياسها الفردي لإظهار الارتباطات بين السلاسل ذات الأحجام المختلفة. يوصى باستخدام خيار التكوين هذا عندما تقدم مجموعة البيانات عددًا محدودًا من نقاط البيانات، لتجنب إعاقة إمكانية قراءة المخطط",
                             },
                             scaleSteps: {
-                                en: 'Available since v2.1.52, to define the number of indentations in an individual scale.',
+                                en: "Available since v2.1.52, to define the number of indentations in an individual scale.",
                                 fr: "Disponible depuis la v2.1.52, pour définir le nombre d'indentations dans une échelle individuelle.",
                                 pt: "Disponível desde a v2.1.52, para definir o número de recuos em uma escala individual.",
                                 de: "Verfügbar seit v2.1.52, um die Anzahl der Einrückungen in einer einzelnen Skala zu definieren.",
@@ -4184,10 +4207,10 @@ export const useMainStore = defineStore("main", {
                                 ja: "v2.1.52 以降、個々のスケールのインデント数を定義するために使用できます。",
                                 es: "Disponible desde la v2.1.52, para definir el número de sangrías en una escala individual.",
                                 ko: "개별 눈금의 들여쓰기 수를 정의하기 위해 v2.1.52부터 사용할 수 있습니다.",
-                                ar: 'متاح منذ الإصدار 2.1.52 لتحديد عدد المسافات البادئة في مقياس فردي'
+                                ar: "متاح منذ الإصدار 2.1.52 لتحديد عدد المسافات البادئة في مقياس فردي",
                             },
                             scaleLabel: {
-                                en: 'Available since v2.1.52, to specify a label for individual scales.',
+                                en: "Available since v2.1.52, to specify a label for individual scales.",
                                 fr: "Disponible depuis la v2.1.52, pour spécifier une étiquette pour les échelles individuelles.",
                                 pt: "Disponível desde a v2.1.52, para especificar um rótulo para balanças individuais.",
                                 de: "Verfügbar seit v2.1.52, um eine Beschriftung für einzelne Skalen festzulegen.",
@@ -4195,7 +4218,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "v2.1.52 以降、個々のスケールのラベルを指定するために使用できます。",
                                 es: "Disponible desde v2.1.52, para especificar una etiqueta para básculas individuales.",
                                 ko: "개별 눈금에 대한 레이블을 지정하기 위해 v2.1.52부터 사용할 수 있습니다.",
-                                ar: 'متاح منذ الإصدار 2.1.52، لتحديد تسمية للمقاييس الفردية'
+                                ar: "متاح منذ الإصدار 2.1.52، لتحديد تسمية للمقاييس الفردية",
                             },
                             shape: {
                                 en: "Available since v.1.9.17 for line and plot types. Defaults to 'circle'",
@@ -4206,7 +4229,7 @@ export const useMainStore = defineStore("main", {
                                 zh: "自 v.1.9.17 起可用于线条和绘图类型。默认为“circle”",
                                 es: "Disponible desde la v.1.9.17 para tipos de línea y gráfico. El valor predeterminado es 'círcle'",
                                 ko: "선 및 플롯 유형에 대해 v.1.9.17부터 사용 가능합니다. 기본값은 '원'",
-                                ar: 'متوفر منذ الإصدار 1.9.17 لأنواع الخطوط والمؤامرة. الإعدادات الافتراضية إلى "الدائرة"'
+                                ar: 'متوفر منذ الإصدار 1.9.17 لأنواع الخطوط والمؤامرة. الإعدادات الافتراضية إلى "الدائرة"',
                             },
                             smooth2: {
                                 en: "Available since v.1.9.0 for line types, in SVG mode.",
@@ -4217,7 +4240,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "v.1.9.0 以降、SVG モードの線種で使用できます。",
                                 es: "Disponible desde la v.1.9.0 para tipos de línea, en modo SVG.",
                                 ko: "SVG 모드에서 선 유형에 대해 v.1.9.0부터 사용 가능합니다.",
-                                ar: 'متوفر منذ الإصدار 1.9.0 لأنواع الخطوط، في وضع SVG.'
+                                ar: "متوفر منذ الإصدار 1.9.0 لأنواع الخطوط، في وضع SVG.",
                             },
                             smooth: {
                                 en: "Since version 1.9.0, you can set this property on line types to make them curved.",
@@ -4228,7 +4251,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "バージョン 1.9.0 以降、線種にこのプロパティを設定して線種を曲線にすることができます。",
                                 es: "Desde la versión 1.9.0, puede establecer esta propiedad en tipos de líneas para hacerlas curvas.",
                                 ko: "버전 1.9.0부터 선 유형에 이 속성을 설정하여 곡선으로 만들 수 있습니다.",
-                                ar: 'منذ الإصدار 1.9.0، يمكنك تعيين هذه الخاصية على أنواع الخطوط لجعلها منحنية.'
+                                ar: "منذ الإصدار 1.9.0، يمكنك تعيين هذه الخاصية على أنواع الخطوط لجعلها منحنية.",
                             },
                             area: {
                                 en: "Since version v.1.8.7, you can set this property to show an area chart on line types",
@@ -4239,7 +4262,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "バージョン v.1.8.7 以降、このプロパティを設定して線種の面グラフを表示できます。",
                                 es: "Desde la versión v.1.8.7, puede configurar esta propiedad para mostrar un gráfico de áreas en tipos de línea",
                                 ko: "v.1.8.7 버전부터 이 속성을 설정하여 선 유형에 영역 차트를 표시할 수 있습니다.",
-                                ar: 'منذ الإصدار v.1.8.7، يمكنك تعيين هذه الخاصية لإظهار مخطط مساحي على أنواع الخطوط'
+                                ar: "منذ الإصدار v.1.8.7، يمكنك تعيين هذه الخاصية لإظهار مخطط مساحي على أنواع الخطوط",
                             },
                             canvas: {
                                 description: {
@@ -4251,7 +4274,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "このグラフは SVG または Canvas として表示できます。",
                                     es: "Este gráfico se puede mostrar como SVG o Canvas.",
                                     ko: "이 차트는 SVG 또는 캔버스로 표시될 수 있습니다.",
-                                    ar: 'يمكن عرض هذا المخطط بصيغة SVG أو Canvas.'
+                                    ar: "يمكن عرض هذا المخطط بصيغة SVG أو Canvas.",
                                 },
                                 moreInfo: {
                                     en: "More info",
@@ -4262,7 +4285,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "より詳しい情報",
                                     es: "Más información",
                                     ko: "더 많은 정보",
-                                    ar: 'مزيد من المعلومات'
+                                    ar: "مزيد من المعلومات",
                                 },
                                 detailsDisclaimer: {
                                     en: "In canvas mode, shapes are not yet available for 'line' and 'plot' types",
@@ -4273,7 +4296,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "キャンバス モードでは、「line」タイプと「plot」タイプでは形状をまだ使用できません。",
                                     es: "En el modo lienzo, las formas aún no están disponibles para los tipos 'line' y 'plots'",
                                     ko: "캔버스 모드에서는 아직 '선' 및 '플롯' 유형에 도형을 사용할 수 없습니다.",
-                                    ar: 'في وضع لوحة الرسم، لا تتوفر الأشكال بعد لأنواع "الخط" و"المؤامرة".'
+                                    ar: 'في وضع لوحة الرسم، لا تتوفر الأشكال بعد لأنواع "الخط" و"المؤامرة".',
                                 },
                                 details: {
                                     en: "By default, the configuration will generate a SVG. If you rather have less nodes in your HTML, you can display the chart as a Canvas. This is an experimental feature, you will need to adapt font sizes and chart padding in the options.",
@@ -4284,7 +4307,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "デフォルトでは、設定により SVG が生成されます。 HTML 内のノードを減らしたい場合は、チャートをキャンバスとして表示できます。これは実験的な機能であり、オプションでフォント サイズとグラフのパディングを調整する必要があります。",
                                     es: "De forma predeterminada, la configuración generará un SVG. Si prefiere tener menos nodos en su HTML, puede mostrar el gráfico como un lienzo. Esta es una característica experimental; deberá adaptar los tamaños de fuente y el relleno del gráfico en las opciones.",
                                     ko: "기본적으로 구성은 SVG를 생성합니다. HTML에 노드 수가 적은 경우 차트를 캔버스로 표시할 수 있습니다. 이는 실험적인 기능이므로 옵션에서 글꼴 크기와 차트 패딩을 조정해야 합니다.",
-                                    ar: 'افتراضيًا، سيقوم التكوين بإنشاء ملف SVG. إذا كنت تفضل أن يكون لديك عدد أقل من العقد في HTML الخاص بك، فيمكنك عرض المخطط كلوحة قماشية. هذه ميزة تجريبية، وسوف تحتاج إلى تعديل أحجام الخطوط ومساحة الرسم البياني في الخيارات'
+                                    ar: "افتراضيًا، سيقوم التكوين بإنشاء ملف SVG. إذا كنت تفضل أن يكون لديك عدد أقل من العقد في HTML الخاص بك، فيمكنك عرض المخطط كلوحة قماشية. هذه ميزة تجريبية، وسوف تحتاج إلى تعديل أحجام الخطوط ومساحة الرسم البياني في الخيارات",
                                 },
                                 advantage: {
                                     en: "Advantages",
@@ -4295,7 +4318,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "利点",
                                     es: "Ventajas",
                                     ko: "기본적으로 구성은 SVG를 생성합니다. HTML에 노드 수가 적은 경우 차트를 캔버스로 표시할 수 있습니다. 이는 실험적인 기능이므로 옵션에서 글꼴 크기와 차트 패딩을 조정해야 합니다.",
-                                    ar: 'المزايا'
+                                    ar: "المزايا",
                                 },
                                 drawbacks: {
                                     en: "Drawbacks",
@@ -4306,7 +4329,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "欠点",
                                     es: "Desventajas",
                                     ko: "단점",
-                                    ar: 'العيوب'
+                                    ar: "العيوب",
                                 },
                                 svgAdvantage: {
                                     en: `<ul class="pl-4"><li class="list-disc">Vectorized: graphics quality remains the same at all scales.</li><li class="list-disc">Acessibility: text nodes can be detected by screen readers.</li><li class="list-disc">Easier debugging, as nodes are part of the DOM</li></ul>`,
@@ -4317,7 +4340,7 @@ export const useMainStore = defineStore("main", {
                                     ja: `<ul class="pl-4"><li class="list-disc">ベクトル化: グラフィックスの品質はどのスケールでも同じままです。</li><li class="list-disc">アクセシビリティ: テキスト ノードはスクリーン リーダーによって検出できます。</li><li class="list-disc">ノードは DOM の一部であるため、デバッグが容易になります。</li></ul>`,
                                     es: `<ul class="pl-4"><li class="list-disc">Vectorizado: la calidad de los gráficos sigue siendo la misma en todas las escalas.</li><li class="list-disc">Accesibilidad: los lectores de pantalla pueden detectar nodos de texto.</li><li class="list-disc">Depuración más sencilla, ya que los nodos son parte del DOM</li></ul>`,
                                     ko: `<ul class="pl-4"><li class="list-disc">벡터화: 그래픽 품질은 모든 규모에서 동일하게 유지됩니다.</li><li class="list-disc">접근성: 텍스트 노드는 화면 판독기에 의해 감지됩니다.</li><li class="list-disc">노드가 DOM의 일부이므로 디버깅이 더 쉽습니다.</li></ul>`,
-                                    ar: `<ul class="pl-4"><li class="list-disc">متجه: تظل جودة الرسومات كما هي في جميع المقاييس.</li><li class="list-disc">إمكانية الوصول: يمكن للعقد النصية يمكن اكتشافها بواسطة قارئات الشاشة.</li><li class="list-disc">تصحيح أخطاء أسهل، حيث أن العقد جزء من DOM</li></ul>`
+                                    ar: `<ul class="pl-4"><li class="list-disc">متجه: تظل جودة الرسومات كما هي في جميع المقاييس.</li><li class="list-disc">إمكانية الوصول: يمكن للعقد النصية يمكن اكتشافها بواسطة قارئات الشاشة.</li><li class="list-disc">تصحيح أخطاء أسهل، حيث أن العقد جزء من DOM</li></ul>`,
                                 },
                                 svgDrawbacks: {
                                     en: `<ul class="pl-4"><li class="list-disc">Performance decreases with the number of nodes to paint on the HTML</li><li class="list-disc">PDF render can be unpredictable for fonts and styling</li></ul>`,
@@ -4328,7 +4351,7 @@ export const useMainStore = defineStore("main", {
                                     ja: `<ul class="pl-4"><li class="list-disc">HTML 上に描画するノードの数に応じてパフォーマンスが低下する</li><li class="list-disc">PDF レンダリングでは、フォントとスタイルは予測不可能</li></ul>`,
                                     es: `<ul class="pl-4"><li class="list-disc">El rendimiento disminuye con la cantidad de nodos para pintar en el HTML</li><li class="list-disc">El renderizado PDF se puede impredecible en cuanto a fuentes y estilos</li></ul>`,
                                     ko: `<ul class="pl-4"><li class="list-disc">HTML에 그릴 노드 수에 따라 성능이 감소합니다.</li><li class="list-disc">PDF 렌더링은 글꼴과 스타일을 예측할 수 없습니다</li></ul>`,
-                                    ar: `<ul class="pl-4"><li class="list-disc">يقل الأداء مع عدد العقد المراد رسمها على HTML</li><li class="list-disc">يمكن أن يكون عرض PDF لا يمكن التنبؤ بالخطوط والتصميم</li></ul>`
+                                    ar: `<ul class="pl-4"><li class="list-disc">يقل الأداء مع عدد العقد المراد رسمها على HTML</li><li class="list-disc">يمكن أن يكون عرض PDF لا يمكن التنبؤ بالخطوط والتصميم</li></ul>`,
                                 },
                                 canvasAdvantages: {
                                     en: `<ul class="pl-4"><li class="list-disc">Stable performance: only one node in the DOM.</li><li class="list-disc">PDF render is identical.</li><li class="list-disc">Can be copy pasted as an image</li></ul>`,
@@ -4339,7 +4362,7 @@ export const useMainStore = defineStore("main", {
                                     ja: `<ul class="pl-4"><li class="list-disc">安定したパフォーマンス: DOM 内のノードは 1 つだけです。</li><li class="list-disc">PDF レンダリングは同一です。< /li><li class="list-disc">画像としてコピー＆ペーストできます</li></ul>`,
                                     es: `<ul class="pl-4"><li class="list-disc">Rendimiento estable: solo un nodo en el DOM.</li><li class="list-disc">La representación del PDF es idéntica.< /li><li class="list-disc">Se puede copiar y pegar como imagen</li></ul>`,
                                     ko: `<ul class="pl-4"><li class="list-disc">안정적인 성능: DOM에 노드가 하나만 있습니다.</li><li class="list-disc">PDF 렌더링은 동일합니다.< /li><li class="list-disc">이미지로 복사하여 붙여넣기 가능</li></ul>`,
-                                    ar: `<ul class="pl-4"><li class="list-disc">أداء مستقر: عقدة واحدة فقط في DOM.</li><li class="list-disc">عرض PDF متطابق.< /li><li class="list-disc">يمكن نسخها ولصقها كصورة</li></ul>`
+                                    ar: `<ul class="pl-4"><li class="list-disc">أداء مستقر: عقدة واحدة فقط في DOM.</li><li class="list-disc">عرض PDF متطابق.< /li><li class="list-disc">يمكن نسخها ولصقها كصورة</li></ul>`,
                                 },
                                 canvasDrawbacks: {
                                     en: `<ul class="pl-4"><li class="list-disc">Image quality does not scale</li><li class="list-disc">Text elements are not accessible to screen readers</li><li class="list-disc">Harder debugging as the node is empty in the DOM.</li></ul>`,
@@ -4350,8 +4373,8 @@ export const useMainStore = defineStore("main", {
                                     ja: `<ul class="pl-4"><li class="list-disc">画質が調整されない</li><li class="list-disc">スクリーン リーダーがテキスト要素にアクセスできない</li ><li class="list-disc">DOM 内のノードが空であるため、デバッグが難しくなります。</li></ul>`,
                                     es: `<ul class="pl-4"><li class="list-disc">La calidad de la imagen no escala</li><li class="list-disc">Los lectores de pantalla no pueden acceder a los elementos de texto</li ><li class="list-disc">Depuración más difícil ya que el nodo está vacío en el DOM.</li></ul>`,
                                     ko: `<ul class="pl-4"><li class="list-disc">이미지 품질이 확장되지 않습니다</li><li class="list-disc">스크린 리더에서 텍스트 요소에 액세스할 수 없습니다</li ><li class="list-disc">DOM에서 노드가 비어 있으므로 디버깅이 더 어렵습니다.</li></ul>`,
-                                    ar: `<ul class="pl-4"><li class="list-disc">لا يتغير حجم جودة الصورة</li><li class="list-disc">لا يمكن لقارئات الشاشة الوصول إلى عناصر النص</li ><li class="list-disc">تصحيح الأخطاء أصعب لأن العقدة فارغة في DOM.</li></ul>`
-                                }
+                                    ar: `<ul class="pl-4"><li class="list-disc">لا يتغير حجم جودة الصورة</li><li class="list-disc">لا يمكن لقارئات الشاشة الوصول إلى عناصر النص</li ><li class="list-disc">تصحيح الأخطاء أصعب لأن العقدة فارغة في DOM.</li></ul>`,
+                                },
                             },
                             type: {
                                 en: "The following attributes are optional:",
@@ -4362,7 +4385,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "次のプロパティはオプションです。",
                                 es: "Los siguientes atributos son opcionales:",
                                 ko: "다음 속성은 선택사항입니다.",
-                                ar: ':السمات التالية اختيارية'
+                                ar: ":السمات التالية اختيارية",
                             },
                             color: {
                                 en: "If not provided, the default palette will be used by default",
@@ -4373,7 +4396,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "指定しない場合は、デフォルトのパレットがデフォルトで使用されます。",
                                 es: "Si no se proporciona, la paleta predeterminada se utilizará de forma predeterminada.",
                                 ko: "제공되지 않으면 기본 팔레트가 기본적으로 사용됩니다.",
-                                ar: 'إذا لم يتم توفيره، فسيتم استخدام اللوحة الافتراضية بشكل افتراضي'
+                                ar: "إذا لم يتم توفيره، فسيتم استخدام اللوحة الافتراضية بشكل افتراضي",
                             },
                             dashed: {
                                 en: "use 'true' on line types to display a dashed line",
@@ -4384,7 +4407,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "破線を表示するには、線種に「true」を使用します。",
                                 es: "use 'true' en los tipos de línea para mostrar una línea discontinua",
                                 ko: "점선을 표시하려면 선 유형에 'true'를 사용하세요.",
-                                ar: 'استخدم "صحيح" في أنواع الخطوط لعرض خط متقطع'
+                                ar: 'استخدم "صحيح" في أنواع الخطوط لعرض خط متقطع',
                             },
                             useTag: {
                                 en: "use for line or plot types to show the serie name as a tag",
@@ -4395,7 +4418,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "シリーズ名をラベルとして表示するためのラインまたはプロット タイプに使用されます。",
                                 es: "utilizar para tipos de líneas o gráficos para mostrar el nombre de la serie como una etiqueta",
                                 ko: "라인 또는 플롯 유형에 사용하여 시리즈 이름을 태그로 표시",
-                                ar: 'يُستخدم لأنواع الخطوط أو المخططات لإظهار اسم السلسلة كعلامة'
+                                ar: "يُستخدم لأنواع الخطوط أو المخططات لإظهار اسم السلسلة كعلامة",
                             },
                             dataLabels: {
                                 en: "hide or show specific serie dataLabels",
@@ -4406,7 +4429,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "特定のシリーズのデータ​​ラベルを表示または非表示にする",
                                 es: "ocultar o mostrar etiquetas de datos de series específicas",
                                 ko: "특정 계열 데이터 라벨 숨기기 또는 표시",
-                                ar: 'إخفاء أو إظهار dataLabels سلسلة محددة'
+                                ar: "إخفاء أو إظهار dataLabels سلسلة محددة",
                             },
                             useProgression: {
                                 en: "show a progression line, works for all types",
@@ -4417,7 +4440,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "進行線を表示し、すべてのタイプに機能します",
                                 es: "muestra una línea de progresión, funciona para todos los tipos",
                                 ko: "진행 라인을 표시하며 모든 유형에 적용됩니다.",
-                                ar: 'كيف يعمل خط التقدم لجميع الأنواع'
+                                ar: "كيف يعمل خط التقدم لجميع الأنواع",
                             },
                         },
                         donut: {
@@ -4430,7 +4453,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "タイトルと凡例を SVG の外に表示します。」",
                                 es: "mostrar título y leyenda fuera del svg",
                                 ko: "svg 외부에 제목과 범례 표시",
-                                ar: 'عرض العنوان والأسطورة خارج ملف svg'
+                                ar: "عرض العنوان والأسطورة خارج ملف svg",
                             },
                             hideUnderValue: {
                                 en: "hide datalabels under this value",
@@ -4441,8 +4464,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "この値の下のデータラベルを非表示にします",
                                 es: "ocultar etiquetas de datos bajo este valor",
                                 ko: "이 값 아래에 데이터 라벨 숨기기",
-                                ar: 'إخفاء datalabels تحت هذه القيمة'
-                            }
+                                ar: "إخفاء datalabels تحت هذه القيمة",
+                            },
                         },
                         waffle: {
                             gridSize: {
@@ -4454,8 +4477,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "結果は 20 x 20 グリッドになります",
                                 es: "da como resultado una cuadrícula de 20 x 20",
                                 ko: "결과는 20 x 20 그리드입니다.",
-                                ar: 'النتائج في شبكة 20 × 20'
-                            }
+                                ar: "النتائج في شبكة 20 × 20",
+                            },
                         },
                         radar: {
                             seriesValues: {
@@ -4467,7 +4490,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "カテゴリと同じ長さでなければなりません",
                                 es: "debe tener la misma longitud que las categorías",
                                 ko: "카테고리와 길이가 같아야 합니다.",
-                                ar: 'يجب أن تكون بنفس طول الفئات'
+                                ar: "يجب أن تكون بنفس طول الفئات",
                             },
                             target: {
                                 en: "if not used will default to max value",
@@ -4478,7 +4501,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "使用しない場合はデフォルトの最大値になります",
                                 es: "si no se usa, el valor predeterminado será el máximo",
                                 ko: "사용하지 않으면 기본값은 최대값으로 설정됩니다.",
-                                ar: 'إذا لم يتم استخدامه فسوف يتم تعيين القيمة الافتراضية إلى الحد الأقصى'
+                                ar: "إذا لم يتم استخدامه فسوف يتم تعيين القيمة الافتراضية إلى الحد الأقصى",
                             },
                             polygon: {
                                 en: "you must provide at least 3 series to create a polygon",
@@ -4489,7 +4512,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "ポリゴンを作成するには少なくとも 3 つのシリーズを指定する必要があります",
                                 es: "debes proporcionar al menos 3 series para crear un polígono",
                                 ko: "다각형을 만들려면 시리즈를 3개 이상 제공해야 합니다.",
-                                ar: 'يجب عليك توفير 3 سلاسل على الأقل لإنشاء مضلع'
+                                ar: "يجب عليك توفير 3 سلاسل على الأقل لإنشاء مضلع",
                             },
                             scale: {
                                 en: "Each serie can have its own scale using the target attribute, so you can represent all types of data relations (revenue, satisfaction, percentages...)",
@@ -4500,8 +4523,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "各シリーズはターゲット属性を使用して独自のスケールを持つことができるため、あらゆるタイプのデータ関係 (収益、満足度、パーセンテージなど) を表すことができます。",
                                 es: "Cada serie puede tener su propia escala utilizando el atributo objetivo, por lo que se pueden representar todo tipo de relaciones de datos (ingresos, satisfacción, porcentajes...)",
                                 ko: "각 계열은 대상 속성을 사용하여 자체 척도를 가질 수 있으므로 모든 유형의 데이터 관계(수익, 만족도, 백분율...)를 나타낼 수 있습니다.",
-                                ar: 'يمكن أن يكون لكل سلسلة مقياسها الخاص باستخدام السمة المستهدفة، بحيث يمكنك تمثيل جميع أنواع علاقات البيانات (الإيرادات، والرضا، والنسب المئوية...)'
-                            }
+                                ar: "يمكن أن يكون لكل سلسلة مقياسها الخاص باستخدام السمة المستهدفة، بحيث يمكنك تمثيل جميع أنواع علاقات البيانات (الإيرادات، والرضا، والنسب المئوية...)",
+                            },
                         },
                         quadrant: {
                             useWhenAutoFalse: {
@@ -4513,8 +4536,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "auto が「false」の場合に使用されます",
                                 es: "Se utiliza cuando auto es 'false'",
                                 ko: "auto가 'false'일 때 사용됩니다.",
-                                ar: 'يُستخدم عندما تكون القيمة التلقائية "خطأ"'
-                            }
+                                ar: 'يُستخدم عندما تكون القيمة التلقائية "خطأ"',
+                            },
                         },
                         gauge: {
                             steps: {
@@ -4526,8 +4549,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "ゲージステップを設定する",
                                 es: "Configurar los pasos del medidor",
                                 ko: "게이지 단계 설정",
-                                ar: 'قم بإعداد خطوات القياس'
-                            }
+                                ar: "قم بإعداد خطوات القياس",
+                            },
                         },
                         onion: {
                             optionalDisplay: {
@@ -4539,7 +4562,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "オプションで、データラベルに値を表示します。",
                                 es: "Opcional, muestra el valor en la etiqueta de datos.",
                                 ko: "선택사항, dataLabel에 값을 표시합니다.",
-                                ar: 'اختياريًا، قم بعرض القيمة في dataLabel'
+                                ar: "اختياريًا، قم بعرض القيمة في dataLabel",
                             },
                             prefix: {
                                 en: "Optional, display a symbol as a prefix before the value in the data label",
@@ -4550,7 +4573,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "オプションで、データラベルの値の前に接頭辞としてシンボルを表示します。",
                                 es: "Opcional, muestre un símbolo como prefijo antes del valor en la etiqueta de datos",
                                 ko: "선택 사항으로 데이터 레이블의 값 앞에 기호를 접두어로 표시합니다.",
-                                ar: 'اختياريًا، قم بعرض رمز كبادئة قبل القيمة الموجودة في تسمية البيانات'
+                                ar: "اختياريًا، قم بعرض رمز كبادئة قبل القيمة الموجودة في تسمية البيانات",
                             },
                             suffix: {
                                 en: "Optional, display a symbol as a suffix before the value in the data label",
@@ -4561,7 +4584,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "オプションで、データラベルの値の前に接尾辞としてシンボルを表示します。",
                                 es: "Opcional, muestre un símbolo como sufijo antes del valor en la etiqueta de datos",
                                 ko: "선택 사항, 데이터 레이블의 값 앞에 기호를 접미사로 표시합니다.",
-                                ar: 'اختياريًا، قم بعرض رمز كلاحقة قبل القيمة الموجودة في تسمية البيانات'
+                                ar: "اختياريًا، قم بعرض رمز كلاحقة قبل القيمة الموجودة في تسمية البيانات",
                             },
                             gradient: {
                                 en: "works best on a white background for now",
@@ -4572,8 +4595,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "今のところ白い背景で最適に動作します",
                                 es: "funciona mejor sobre un fondo blanco por ahora",
                                 ko: "지금은 흰색 배경에서 가장 잘 작동합니다.",
-                                ar: 'يعمل بشكل أفضل على خلفية بيضاء في الوقت الراهن'
-                            }
+                                ar: "يعمل بشكل أفضل على خلفية بيضاء في الوقت الراهن",
+                            },
                         },
                         verticalBar: {
                             breakdown: {
@@ -4585,8 +4608,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "この属性を使用してシリーズを分類します",
                                 es: "Utilice este atributo para desglosar una serie.",
                                 ko: "시리즈를 분류하려면 이 속성을 사용하세요.",
-                                ar: 'استخدم هذه السمة لتقسيم السلسلة'
-                            }
+                                ar: "استخدم هذه السمة لتقسيم السلسلة",
+                            },
                         },
                         candlestick: {
                             order: {
@@ -4598,8 +4621,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "この順序は厳密に遵守する必要があります。",
                                 es: "Este orden debe respetarse estrictamente:",
                                 ko: "이 순서는 엄격히 준수되어야 합니다.",
-                                ar: ':ويجب احترام هذا الأمر بدقة'
-                            }
+                                ar: ":ويجب احترام هذا الأمر بدقة",
+                            },
                         },
                         agePyramid: {
                             start: {
@@ -4611,7 +4634,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "最古の年からスタート",
                                 es: "empezar desde el año más antiguo",
                                 ko: "가장 오래된 연도부터 시작",
-                                ar: 'تبدأ من السنة الأقدم'
+                                ar: "تبدأ من السنة الأقدم",
                             },
                             arrayOfEach: {
                                 en: "Array of arrays each containing in order:",
@@ -4622,7 +4645,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "それぞれが順番に含む配列の配列:",
                                 es: "Matriz de matrices, cada una de las cuales contiene en orden:",
                                 ko: "각각 순서대로 포함된 배열의 배열:",
-                                ar: ':مجموعة من المصفوفات تحتوي كل منها على الترتيب'
+                                ar: ":مجموعة من المصفوفات تحتوي كل منها على الترتيب",
                             },
                             cols: {
                                 en: "year | age | number women | number men",
@@ -4633,8 +4656,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "年 |年齢 |数字の女性 |数字の男性",
                                 es: "año | edad | número de mujeres | numero hombres",
                                 ko: "년 | 나이 | 숫자 여성 | 번호 남자",
-                                ar: 'سنة | العمر | عدد النساء | عدد الرجال'
-                            }
+                                ar: "سنة | العمر | عدد النساء | عدد الرجال",
+                            },
                         },
                         table: {
                             header: {
@@ -4646,7 +4669,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "各列を個別のオブジェクトで構成する",
                                 es: "Configurar cada columna con un objeto separado",
                                 ko: "별도의 개체로 각 열을 구성합니다.",
-                                ar: 'قم بتكوين كل عمود بكائن منفصل'
+                                ar: "قم بتكوين كل عمود بكائن منفصل",
                             },
                             reference: {
                                 en: "reference to the name of another numeric column",
@@ -4657,7 +4680,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "別の数値列の名前への参照",
                                 es: "referencia al nombre de otra columna numérica",
                                 ko: "다른 숫자 열의 이름에 대한 참조",
-                                ar: 'إشارة إلى اسم عمود رقمي آخر'
+                                ar: "إشارة إلى اسم عمود رقمي آخر",
                             },
                             body: {
                                 en: "each row is represented in an object, leaving room for further config in the future",
@@ -4668,7 +4691,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "各行はオブジェクトで表され、将来さらに構成できる余地が残されています。",
                                 es: "cada fila está representada en un objeto, lo que deja espacio para más configuraciones en el futuro",
                                 ko: "각 행은 객체로 표시되므로 향후 추가 구성을 위한 공간이 남습니다.",
-                                ar: 'يتم تمثيل كل صف في كائن، مما يترك مجالًا لمزيد من التكوين في المستقبل'
+                                ar: "يتم تمثيل كل صف في كائن، مما يترك مجالًا لمزيد من التكوين في المستقبل",
                             },
                             td: {
                                 en: "Each element of the array is placed in the same order as the columns",
@@ -4679,7 +4702,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "配列の各要素は列と同じ順序で配置されます。",
                                 es: "Cada elemento de la matriz se coloca en el mismo orden que las columnas.",
                                 ko: "배열의 각 요소는 열과 동일한 순서로 배치됩니다.",
-                                ar: 'يتم وضع كل عنصر في المصفوفة بنفس ترتيب الأعمدة'
+                                ar: "يتم وضع كل عنصر في المصفوفة بنفس ترتيب الأعمدة",
                             },
                             warning1: {
                                 en: "requires an empty array in the body 'td' arrays!",
@@ -4690,7 +4713,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "本体の 'td' 配列に空の配列が必要です。",
                                 es: "¡Requiere una matriz vacía en las matrices 'td' del body!",
                                 ko: "본문 'td' 배열에 빈 배열이 필요합니다!",
-                                ar: 'يتطلب مصفوفة فارغة في مصفوفات "td" في الجسم!'
+                                ar: 'يتطلب مصفوفة فارغة في مصفوفات "td" في الجسم!',
                             },
                             warning2: {
                                 en: "notice the empty string, due to a config of the column with isPercentage = true and percentageTo set to another column",
@@ -4701,7 +4724,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "isPercentage = true およびpercentageToが別の列に設定されている列の構成により、空の文字列に注目してください。",
                                 es: "observe la cadena vacía, debido a una configuración de la columna con isPercentage = true y percentTo establecido en otra columna",
                                 ko: "isPercentage = true이고 PercentageTo가 다른 열로 설정된 열의 구성으로 인해 빈 문자열을 확인하세요.",
-                                ar: 'لاحظ السلسلة الفارغة، نظرًا لتكوين العمود باستخدام isPercentage = true والنسبة المئوية لتعيين عمود آخر'
+                                ar: "لاحظ السلسلة الفارغة، نظرًا لتكوين العمود باستخدام isPercentage = true والنسبة المئوية لتعيين عمود آخر",
                             },
                             fewRows: {
                                 en: "A few rows as an example",
@@ -4712,12 +4735,12 @@ export const useMainStore = defineStore("main", {
                                 ja: "例としていくつかの行",
                                 es: "Algunas filas como ejemplo.",
                                 ko: "예를 들어 몇 행",
-                                ar: 'بضعة صفوف كمثال'
-                            }
+                                ar: "بضعة صفوف كمثال",
+                            },
                         },
                         rating: {
                             readonly: {
-                                en: 'readonly',
+                                en: "readonly",
                                 fr: "lecture seule",
                                 pt: "somenta leitura",
                                 de: "schreibgeschützt",
@@ -4725,7 +4748,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "読み取り専用",
                                 es: "solo lectura",
                                 ko: "읽기 전용",
-                                ar: 'للقراءة فقط'
+                                ar: "للقراءة فقط",
                             },
                             active: {
                                 en: "active",
@@ -4736,7 +4759,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "アクティブ",
                                 es: "activo",
                                 ko: "활동적인",
-                                ar: 'نشيط'
+                                ar: "نشيط",
                             },
                             p1: {
                                 en: "A component to rate, or display rating results. Shows stars by default, and you can use an image if you prefer. You can display as many stars as you want.",
@@ -4747,7 +4770,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "スコアリングまたはスコアリング結果の表示に使用されるコンポーネント。デフォルトでは星が表示されますが、必要に応じて画像を使用できます。必要な数の星を表示できます。",
                                 es: "Un componente para calificar o mostrar resultados de calificación. Muestra estrellas de forma predeterminada y puedes usar una imagen si lo prefieres. Puedes mostrar tantas estrellas como quieras.",
                                 ko: "평가하거나 평가 결과를 표시하는 구성 요소입니다. 기본적으로 별표가 표시되며 원하는 경우 이미지를 사용할 수 있습니다. 원하는 만큼 별을 표시할 수 있습니다.",
-                                ar: 'مكون للتقييم أو عرض نتائج التصنيف. يظهر النجوم بشكل افتراضي، ويمكنك استخدام صورة إذا كنت تفضل ذلك. يمكنك عرض العديد من النجوم كما تريد'
+                                ar: "مكون للتقييم أو عرض نتائج التصنيف. يظهر النجوم بشكل افتراضي، ويمكنك استخدام صورة إذا كنت تفضل ذلك. يمكنك عرض العديد من النجوم كما تريد",
                             },
                             p2: {
                                 en: "In the active mode, the rating can be modified by the user. In readonly mode, it just displays the rating.",
@@ -4758,7 +4781,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "アクティブ モードでは、ユーザーは評価を変更できます。読み取り専用モードでは、評価のみが表示されます。",
                                 es: "En el modo activo, la calificación puede ser modificada por el usuario. En modo de solo lectura, solo muestra la calificación.",
                                 ko: "활성 모드에서는 사용자가 등급을 수정할 수 있습니다. 읽기 전용 모드에서는 등급만 표시됩니다.",
-                                ar: 'في الوضع النشط، يمكن للمستخدم تعديل التصنيف. في وضع القراءة فقط، فإنه يعرض التصنيف فقط'
+                                ar: "في الوضع النشط، يمكن للمستخدم تعديل التصنيف. في وضع القراءة فقط، فإنه يعرض التصنيف فقط",
                             },
                             simpleRating: {
                                 en: "If you have a simple rating to display",
@@ -4769,7 +4792,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "表示する簡単な評価がある場合",
                                 es: "Si tiene una calificación simple para mostrar",
                                 ko: "간단하게 표시할 평점이 있는 경우",
-                                ar: 'إذا كان لديك تقييم بسيط لعرضه'
+                                ar: "إذا كان لديك تقييم بسيط لعرضه",
                             },
                             breakdown: {
                                 en: "if you have a breakdown per value",
@@ -4780,7 +4803,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "それぞれの値の内訳があれば",
                                 es: "si tiene un desglose por valor",
                                 ko: "값별로 분류가 있는 경우",
-                                ar: 'إذا كان لديك تفصيل لكل قيمة'
+                                ar: "إذا كان لديك تفصيل لكل قيمة",
                             },
                             calculation: {
                                 en: "Rating will be calculated based on the breakdown provided.",
@@ -4791,7 +4814,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "評価は提供された内訳に基づいて計算されます。",
                                 es: "La calificación se calculará en función del desglose proporcionado.",
                                 ko: "등급은 제공된 분석을 기준으로 계산됩니다.",
-                                ar: 'سيتم احتساب التقييم بناءً على التفاصيل المقدمة'
+                                ar: "سيتم احتساب التقييم بناءً على التفاصيل المقدمة",
                             },
                             tooltip: {
                                 en: "The tooltip can be enabled, to display the values at the hovered item (use in readonly mode).",
@@ -4802,7 +4825,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "ツールチップを有効にすると、ホバーされた項目の値が表示されます (読み取り専用モードで使用)。",
                                 es: "La información sobre herramientas se puede habilitar para mostrar los valores en el elemento sobre el que se encuentra (usar en modo de solo lectura).",
                                 ko: "마우스로 가리킨 항목의 값을 표시하기 위해 도구 설명을 활성화할 수 있습니다(읽기 전용 모드에서 사용).",
-                                ar: 'يمكن تمكين تلميح الأداة لعرض القيم في العنصر الذي تم تمريره (استخدمه في وضع القراءة فقط).'
+                                ar: "يمكن تمكين تلميح الأداة لعرض القيم في العنصر الذي تم تمريره (استخدمه في وضع القراءة فقط).",
                             },
                             useImage: {
                                 en: 'or use "image" and provide url in image.src',
@@ -4813,7 +4836,7 @@ export const useMainStore = defineStore("main", {
                                 ja: `または、「image」を使用し、image.src に URL を指定します。`,
                                 es: `o utilice "image" y proporcione la URL en image.src`,
                                 ko: `또는 "image"를 사용하고 image.src에 URL을 제공하세요.`,
-                                ar: 'أو استخدم "صورة" وقم بتوفير عنوان url في image.src'
+                                ar: 'أو استخدم "صورة" وقم بتوفير عنوان url في image.src',
                             },
                             src: {
                                 en: "works like the regular src attribute",
@@ -4824,7 +4847,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "通常の src 属性と同じように機能します",
                                 es: "funciona como el atributo src normal",
                                 ko: "일반 src 속성처럼 작동합니다.",
-                                ar: 'يعمل مثل سمة src العادية'
+                                ar: "يعمل مثل سمة src العادية",
                             },
                             alt: {
                                 en: "In image mode, the value of each star will be appended to the provided alt text",
@@ -4835,8 +4858,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "画像モードでは、各星の値が指定された代替テキストに追加されます。",
                                 es: "En el modo de imagen, el valor de cada estrella se agregará al texto alternativo proporcionado.",
                                 ko: "이미지 모드에서는 각 별표의 값이 제공된 대체 텍스트에 추가됩니다.",
-                                ar: 'في وضع الصورة، سيتم إلحاق قيمة كل نجمة بالنص البديل المقدم'
-                            }
+                                ar: "في وضع الصورة، سيتم إلحاق قيمة كل نجمة بالنص البديل المقدم",
+                            },
                         },
                         skeleton: {
                             p1: {
@@ -4848,7 +4871,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "データを取得するときに表示されるプレースホルダー",
                                 es: "Marcadores de posición para mostrar mientras se recuperan sus datos",
                                 ko: "데이터를 가져오는 동안 표시할 자리 표시자",
-                                ar: 'العناصر النائبة التي سيتم عرضها أثناء جلب بياناتك'
+                                ar: "العناصر النائبة التي سيتم عرضها أثناء جلب بياناتك",
                             },
                             smiley: {
                                 en: "Use smiley icons instead of stars",
@@ -4859,8 +4882,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "星の代わりにスマイリーアイコンを使用する",
                                 es: "Utilice íconos sonrientes en lugar de estrellas",
                                 ko: "별 대신 스마일 아이콘을 사용하세요",
-                                ar: 'استخدم الرموز المبتسمة بدلاً من النجوم'
-                            }
+                                ar: "استخدم الرموز المبتسمة بدلاً من النجوم",
+                            },
                         },
                         screenshot: {
                             tryIt: {
@@ -4872,7 +4895,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "それを試してみてください",
                                 es: "Intentalo",
                                 ko: "시도 해봐",
-                                ar: 'جربه'
+                                ar: "جربه",
                             },
                             yourScreeshot: {
                                 en: "Your screenshot will appear here",
@@ -4883,7 +4906,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "スクリーンショットがここに表示されます",
                                 es: "Tu captura de pantalla aparecerá aquí.",
                                 ko: "스크린샷이 여기에 표시됩니다.",
-                                ar: 'سوف تظهر لقطة الشاشة الخاصة بك هنا'
+                                ar: "سوف تظهر لقطة الشاشة الخاصة بك هنا",
                             },
                             p1: {
                                 en: "A component to take screenshots in the current page, with 2 modes: download or post.",
@@ -4894,7 +4917,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "現在のページのスクリーンショットを取得するコンポーネントには、ダウンロードと投稿の 2 つのモードがあります。",
                                 es: "Un componente para tomar capturas de pantalla en la página actual, con 2 modos: descargar o publicar.",
                                 ko: "다운로드 또는 게시의 2가지 모드로 현재 페이지에서 스크린샷을 찍는 구성요소입니다.",
-                                ar: 'مكون لالتقاط لقطات الشاشة في الصفحة الحالية، مع وضعين: التنزيل أو النشر.'
+                                ar: "مكون لالتقاط لقطات الشاشة في الصفحة الحالية، مع وضعين: التنزيل أو النشر.",
                             },
                             refresh: {
                                 en: "Refresh to view your changes",
@@ -4905,7 +4928,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "更新して変更内容を確認する",
                                 es: "Actualiza para ver tus cambios",
                                 ko: "변경사항을 보려면 새로고침하세요.",
-                                ar: 'قم بالتحديث لعرض تغييراتك'
+                                ar: "قم بالتحديث لعرض تغييراتك",
                             },
                             metadata: {
                                 en: "In post mode, the following metadata will also be provided:",
@@ -4916,7 +4939,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "ポストモードでは、次のメタデータも提供されます。",
                                 es: "En el modo de publicación, también se proporcionarán los siguientes metadatos:",
                                 ko: "게시 모드에서는 다음 메타데이터도 제공됩니다.",
-                                ar: ':في وضع النشر، سيتم أيضًا توفير البيانات الوصفية التالية'
+                                ar: ":في وضع النشر، سيتم أيضًا توفير البيانات الوصفية التالية",
                             },
                             quality: {
                                 en: "don't set it up too high if you care about image size",
@@ -4927,7 +4950,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "画像サイズを気にする場合は、あまり高く設定しないでください",
                                 es: "no lo configures demasiado alto si le importa el tamaño de la imagen",
                                 ko: "이미지 크기가 중요하다면 너무 높게 설정하지 마세요.",
-                                ar: 'لا تقم بإعداده على مستوى عالٍ جدًا إذا كنت تهتم بحجم الصورة'
+                                ar: "لا تقم بإعداده على مستوى عالٍ جدًا إذا كنت تهتم بحجم الصورة",
                             },
                             x: {
                                 en: "the image's top left x coordinate on the page",
@@ -4938,7 +4961,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "ページ上の画像の左上の X 座標",
                                 es: "la coordenada x superior izquierda de la imagen en la página",
                                 ko: "페이지의 이미지 왼쪽 상단 x 좌표",
-                                ar: 'تنسيق x أعلى يسار الصورة على الصفحة'
+                                ar: "تنسيق x أعلى يسار الصورة على الصفحة",
                             },
                             y: {
                                 en: "the image's top left y coordinate on the page",
@@ -4949,7 +4972,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "ページ上の画像の左上の Y 座標",
                                 es: "Coordenada y superior izquierda de la imagen en la página.",
                                 ko: "페이지의 이미지 왼쪽 상단 y 좌표",
-                                ar: 'إحداثي y العلوي الأيسر للصورة على الصفحة'
+                                ar: "إحداثي y العلوي الأيسر للصورة على الصفحة",
                             },
                             timestamp: {
                                 en: "timestamp",
@@ -4960,8 +4983,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "タイムスタンプ",
                                 es: "marca de tiempo",
                                 ko: "타임스탬프",
-                                ar: 'الطابع الزمني'
-                            }
+                                ar: "الطابع الزمني",
+                            },
                         },
                         dashboard: {
                             p1: {
@@ -4973,7 +4996,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "ドラッグしてコンポーネントのサイズを変更してグラフを表示します。変更は @change 発行を通じて保存できます。",
                                 es: "Muestre sus gráficos en un componente de arrastrar y cambiar el tamaño. Los cambios se pueden guardar mediante @change emit.",
                                 ko: "드래그 및 크기 조정 구성 요소에 차트를 표시합니다. 변경 사항은 @change 내보내기를 통해 저장할 수 있습니다.",
-                                ar: 'اعرض مخططاتك في مكون السحب وتغيير الحجم. يمكن حفظ التغييرات عبر @change emit'
+                                ar: "اعرض مخططاتك في مكون السحب وتغيير الحجم. يمكن حفظ التغييرات عبر @change emit",
                             },
                             warning: {
                                 en: "On embedded VueUiXy and VueUiCandlestick components, it is recommended to disable the zoom functionality in the config, as it conflicts with the dashboard drag events for now.",
@@ -4984,8 +5007,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "埋め込まれた VueUiXy および VueUiCandlestick コンポーネントでは、現時点ではダッシュボードのドラッグ イベントと競合するため、設定でズーム機能を無効にすることをお勧めします。",
                                 es: "En los componentes integrados VueUiXy y VueUiCandlestick, se recomienda desactivar la funcionalidad de zoom en la configuración, ya que por ahora entra en conflicto con los eventos de arrastre del panel.",
                                 ko: "내장된 VueUiXy 및 VueUiCandlestick 구성 요소에서는 현재 대시보드 드래그 이벤트와 충돌하므로 구성에서 확대/축소 기능을 비활성화하는 것이 좋습니다.",
-                                ar: 'في مكونات VueUiXy وVueUiCandlestick المضمنة، يوصى بتعطيل وظيفة التكبير/التصغير في التكوين، لأنها تتعارض مع أحداث السحب في لوحة المعلومات في الوقت الحالي'
-                            }
+                                ar: "في مكونات VueUiXy وVueUiCandlestick المضمنة، يوصى بتعطيل وظيفة التكبير/التصغير في التكوين، لأنها تتعارض مع أحداث السحب في لوحة المعلومات في الوقت الحالي",
+                            },
                         },
                         annotator: {
                             emits: {
@@ -4998,7 +5021,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "アコーディオンを開閉するときに、次のオブジェクトを親コンポーネントに送信します。",
                                     es: "al abrir o cerrar el acordeón, emite el siguiente objeto al componente padre:",
                                     ko: "아코디언을 열거나 닫을 때 상위 구성 요소에 다음 개체를 내보냅니다.",
-                                    ar: ':عند فتح أو إغلاق الأكورديون، يصدر الكائن التالي إلى المكون الأصلي'
+                                    ar: ":عند فتح أو إغلاق الأكورديون، يصدر الكائن التالي إلى المكون الأصلي",
                                 },
                                 saveAnnotations: {
                                     en: "emits to the parent component the collection of items currently drawn on the annotator, so they can be saved, and injected back into the component 'dataset' prop later. The emit returns the following attributes:",
@@ -5009,7 +5032,7 @@ export const useMainStore = defineStore("main", {
                                     ja: "アノテーターに現在描画されている項目のコレクションを親コンポーネントに出力します。これにより、それらを保存して、後でコンポーネントの「データセット」プロパティに注入し直すことができます。エミットは次の属性を返します。",
                                     es: "emite al componente principal la colección de elementos actualmente dibujados en el anotador, para que puedan guardarse y volver a inyectarse en el componente 'conjunto de datos' más adelante. El emit devuelve los siguientes atributos:",
                                     ko: "현재 주석자에 그려진 항목 컬렉션을 상위 구성 요소에 내보내서 저장하고 나중에 구성 요소 '데이터 세트' 소품에 다시 주입할 수 있습니다. 내보내기는 다음 속성을 반환합니다.",
-                                    ar: ':يُرسل إلى المكون الأصلي مجموعة العناصر المرسومة حاليًا على المُعلق، بحيث يمكن حفظها وإدخالها مرة أخرى في دعامة "مجموعة البيانات" الخاصة بالمكون لاحقًا. يقوم الباعث بإرجاع السمات التالية'
+                                    ar: ':يُرسل إلى المكون الأصلي مجموعة العناصر المرسومة حاليًا على المُعلق، بحيث يمكن حفظها وإدخالها مرة أخرى في دعامة "مجموعة البيانات" الخاصة بالمكون لاحقًا. يقوم الباعث بإرجاع السمات التالية',
                                 },
                                 calledWhen: {
                                     en: "This emit is called when the user clicks the save button, provided the button is displayed by setting the config.style.showSave to 'true'",
@@ -5020,8 +5043,8 @@ export const useMainStore = defineStore("main", {
                                     ja: "このエミットは、config.style.showSave を「true」に設定してボタンが表示されている場合に、ユーザーが保存ボタンをクリックしたときに呼び出されます。",
                                     es: "Esta emisión se llama cuando el usuario hace clic en el botón Guardar, siempre que el botón se muestre configurando config.style.showSave en 'true'.",
                                     ko: "이 내보내기는 config.style.showSave를 'true'로 설정하여 버튼이 표시되는 경우 사용자가 저장 버튼을 클릭할 때 호출됩니다.",
-                                    ar: 'يتم استدعاء هذا البث عندما ينقر المستخدم على زر الحفظ، بشرط أن يتم عرض الزر عن طريق ضبط config.style.showSave على "true".'
-                                }
+                                    ar: 'يتم استدعاء هذا البث عندما ينقر المستخدم على زر الحفظ، بشرط أن يتم عرض الزر عن طريق ضبط config.style.showSave على "true".',
+                                },
                             },
                             description: {
                                 en: "Add and save annotations on any slotted content. It works with all 'Vue Data UI' charts, but also with any div, svg, canvas element you place inside.",
@@ -5032,7 +5055,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "スロット付きコンテンツに注釈を追加して保存します。すべての「Vue Data UI」チャートだけでなく、内部に配置したあらゆる div、svg、canvas 要素でも機能します。",
                                 es: "Agregue y guarde anotaciones sobre cualquier contenido ranurado. Funciona con todos los gráficos 'Vue Data UI', pero también con cualquier elemento div, svg o lienzo que coloque dentro.",
                                 ko: "슬롯 콘텐츠에 주석을 추가하고 저장합니다. 모든 'Vue 데이터 UI' 차트에서 작동하지만 내부에 배치한 모든 div, svg, 캔버스 요소에서도 작동합니다.",
-                                ar: 'أضف التعليقات التوضيحية واحفظها على أي محتوى محدد المدة. وهو يعمل مع جميع مخططات "Vue Data UI"، ولكن أيضًا مع أي عنصر div وsvg وcanvas تضعه بداخله.'
+                                ar: 'أضف التعليقات التوضيحية واحفظها على أي محتوى محدد المدة. وهو يعمل مع جميع مخططات "Vue Data UI"، ولكن أيضًا مع أي عنصر div وsvg وcanvas تضعه بداخله.',
                             },
                             warning: {
                                 en: "Touch events are supported since v.1.7.3, but may be glitchy",
@@ -5043,7 +5066,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "タッチ イベントは v.1.7.3 以降サポートされていますが、不具合が発生する可能性があります。",
                                 es: "Los eventos táctiles son compatibles desde la versión 1.7.3, pero pueden presentar fallos",
                                 ko: "터치 이벤트는 v.1.7.3부터 지원되지만 결함이 있을 수 있습니다.",
-                                ar: 'يتم دعم أحداث اللمس منذ الإصدار 1.7.3، ولكنها قد تكون معيبة'
+                                ar: "يتم دعم أحداث اللمس منذ الإصدار 1.7.3، ولكنها قد تكون معيبة",
                             },
                             closedState: {
                                 en: "VueUiAnnotator is in closed state. In the closed state, annotations are invisible, and user interactions with the content is unchanged.",
@@ -5054,7 +5077,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "VueUiAnnotator は閉じた状態です。閉じた状態では、注釈は表示されず、コンテンツに対するユーザーの操作は変わりません。",
                                 es: "VueUiAnnotator está en estado cerrado. En el estado cerrado, las anotaciones son invisibles y las interacciones del usuario con el contenido no cambian.",
                                 ko: "VueUiAnnotator가 닫힌 상태입니다. 닫힌 상태에서는 주석이 보이지 않으며 콘텐츠와의 사용자 상호 작용은 변경되지 않습니다.",
-                                ar: 'VueUiAnnotator في حالة مغلقة. في الحالة المغلقة، تكون التعليقات التوضيحية غير مرئية، ولا تتغير تفاعلات المستخدم مع المحتوى.'
+                                ar: "VueUiAnnotator في حالة مغلقة. في الحالة المغلقة، تكون التعليقات التوضيحية غير مرئية، ولا تتغير تفاعلات المستخدم مع المحتوى.",
                             },
                             openState: {
                                 en: "VueUiAnnotator is in open state. In the open state, all interactions with the slotted content are muted, to allow the user to add, move and resize shapes.",
@@ -5065,7 +5088,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "VueUiAnnotator はオープン状態です。開いた状態では、スロット付きコンテンツとのすべてのインタラクションがミュートされ、ユーザーが図形を追加、移動、サイズ変更できるようになります。",
                                 es: "VueUiAnnotator está en estado abierto. En el estado abierto, todas las interacciones con el contenido ranurado están silenciadas para permitir al usuario agregar, mover y cambiar el tamaño de las formas.",
                                 ko: "VueUiAnnotator가 열린 상태입니다. 열린 상태에서는 슬롯이 있는 콘텐츠와의 모든 상호 작용이 음소거되어 사용자가 모양을 추가, 이동 및 크기 조정할 수 있습니다.",
-                                ar: 'VueUiAnnotator في حالة مفتوحة. في الحالة المفتوحة، يتم كتم جميع التفاعلات مع المحتوى المحدد للسماح للمستخدم بإضافة الأشكال ونقلها وتغيير حجمها'
+                                ar: "VueUiAnnotator في حالة مفتوحة. في الحالة المفتوحة، يتم كتم جميع التفاعلات مع المحتوى المحدد للسماح للمستخدم بإضافة الأشكال ونقلها وتغيير حجمها",
                             },
                             datastructure: {
                                 en: "Saved annotations can be passed to the dataset attribute to be displayed onload. Check the 'EMITS' section to learn how to save annotations.",
@@ -5076,7 +5099,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "保存されたアノテーションをデータセットのプロパティに渡して、読み込み時に表示することができます。コメントを保存する方法については、「EMIT」セクションを確認してください。",
                                 es: "Las anotaciones guardadas se pueden pasar a las propiedades del conjunto de datos para que se muestren al cargar. Consulte la sección 'emit' para saber cómo guardar comentarios.",
                                 ko: "저장된 주석은 데이터 세트 속성에 전달되어 로드 시 표시될 수 있습니다. 주석을 저장하는 방법을 알아보려면 'EMITS' 섹션을 확인하세요.",
-                                ar: 'يمكن تمرير التعليقات التوضيحية المحفوظة إلى سمة مجموعة البيانات ليتم عرضها عند التحميل. راجع قسم "EMITS" لمعرفة كيفية حفظ التعليقات التوضيحية'
+                                ar: 'يمكن تمرير التعليقات التوضيحية المحفوظة إلى سمة مجموعة البيانات ليتم عرضها عند التحميل. راجع قسم "EMITS" لمعرفة كيفية حفظ التعليقات التوضيحية',
                             },
                             notByYourself: {
                                 en: "Important: you should never have to hardcode this dataset, as you can retrieve it from the component's '@saveAnnotations' emit, to save on your database or localStorage.",
@@ -5087,24 +5110,23 @@ export const useMainStore = defineStore("main", {
                                 ja: "重要: このデータセットはコンポーネントの「@saveAnnotations」出力から取得してデータベースまたは localStorage に保存できるため、ハードコードする必要はありません。",
                                 es: "Importante: nunca debería tener que codificar este conjunto de datos, ya que puede recuperarlo de la emisión '@saveAnnotations' del componente para guardarlo en su base de datos o en el localStorage.",
                                 ko: "중요: 이 데이터 세트는 구성 요소의 '@saveAnnotations' 내보내기에서 검색하여 데이터베이스나 localStorage에 저장할 수 있으므로 하드코딩할 필요가 없습니다.",
-                                ar: 'هام: يجب ألا تضطر أبدًا إلى ترميز مجموعة البيانات هذه، حيث يمكنك استردادها من إصدار "@saveAnnotations" الخاص بالمكون، لحفظها في قاعدة البيانات أو التخزين المحلي.'
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                                ar: 'هام: يجب ألا تضطر أبدًا إلى ترميز مجموعة البيانات هذه، حيث يمكنك استردادها من إصدار "@saveAnnotations" الخاص بالمكون، لحفظها في قاعدة البيانات أو التخزين المحلي.',
+                            },
+                        },
+                    },
+                },
+            },
+        };
     },
     actions: {
-        copy({ message, type } = { message: '', type: 'success'}){
-            
-            if (!!message) {
+        copy({ message, type } = { message: "", type: "success" }) {
+            if (message) {
                 this.isMessage = true;
                 this.messages.push({
                     id: createUid(),
                     content: message,
                     visible: true,
-                    type
+                    type,
                 });
             } else {
                 this.isCopy = true;
@@ -5114,7 +5136,7 @@ export const useMainStore = defineStore("main", {
             }
         },
         deleteMessage(id) {
-            this.messages = this.messages.filter(m => m.id !== id)
-        }
-    }
-})
+            this.messages = this.messages.filter((m) => m.id !== id);
+        },
+    },
+});

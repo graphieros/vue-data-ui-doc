@@ -1,12 +1,12 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, XIcon } from "vue-tabler-icons"
+import { PlusIcon, XIcon } from "vue-tabler-icons";
 import Tooltip from "../../components/FlexibleTooltip.vue";
-import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
-import { useDefaultDataStore } from "../../stores/defaultData"
-import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue"
+import { useMakerStore } from "../../stores/maker";
+import { copyComponent, convertArrayToObject, createUid } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData";
+import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
@@ -38,68 +38,73 @@ const isDarkMode = computed(() => {
 const CONFIG_CATEGORIES = computed(() => {
     return [
         {
-            key: 'general',
-            title: makerTranslations.value.categories.general[store.lang]
+            key: "general",
+            title: makerTranslations.value.categories.general[store.lang],
         },
         {
-            key: 'padding',
-            title: makerTranslations.value.categories.padding[store.lang]
+            key: "padding",
+            title: makerTranslations.value.categories.padding[store.lang],
         },
         {
-            key: 'grid',
-            title: makerTranslations.value.categories.grid[store.lang]
+            key: "grid",
+            title: makerTranslations.value.categories.grid[store.lang],
         },
         {
-            key: 'plots',
-            title: makerTranslations.value.categories.plot[store.lang]
+            key: "plots",
+            title: makerTranslations.value.categories.plot[store.lang],
         },
         {
-            key: 'labels',
-            title: makerTranslations.value.categories.labels[store.lang]
+            key: "labels",
+            title: makerTranslations.value.categories.labels[store.lang],
         },
         {
-            key: 'title',
-            title: makerTranslations.value.categories.title[store.lang]
+            key: "title",
+            title: makerTranslations.value.categories.title[store.lang],
         },
         {
-            key: 'subtitle',
-            title: makerTranslations.value.categories.subtitle[store.lang]
+            key: "subtitle",
+            title: makerTranslations.value.categories.subtitle[store.lang],
         },
         {
-            key: 'tooltip',
-            title: makerTranslations.value.categories.tooltip[store.lang]
+            key: "tooltip",
+            title: makerTranslations.value.categories.tooltip[store.lang],
         },
         {
-            key: 'table',
-            title: makerTranslations.value.categories.table[store.lang]
-        }
-    ]
-})
+            key: "table",
+            title: makerTranslations.value.categories.table[store.lang],
+        },
+    ];
+});
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_strip_plot.model)))
+const CONFIG_MODEL = ref(
+    JSON.parse(JSON.stringify(defaultData.vue_ui_strip_plot.model)),
+);
 
 const options = ref({
     category: {
-        name: 'Category',
+        name: "Category",
         plots: [],
-        color: '#6A6A6A'
+        color: "#6A6A6A",
     },
     plot: {
-        name: 'Plot',
-        value: 0
-    }
-})
+        name: "Plot",
+        value: 0,
+    },
+});
 
-const datasetItems = ref(defaultData.vue_ui_strip_plot.dataset)
+const datasetItems = ref(defaultData.vue_ui_strip_plot.dataset);
 
 onMounted(() => {
-    if(localStorage.stripPlotConfig) {
+    if (localStorage.stripPlotConfig) {
         CONFIG_MODEL.value = JSON.parse(localStorage.stripPlotConfig);
-    } 
-    if(localStorage.stripPlotDataset) {
-        datasetItems.value = JSON.parse(localStorage.stripPlotDataset)
-    }else {
-        localStorage.setItem('stripPlotDataset', JSON.stringify(defaultData.vue_ui_strip_plot.dataset))
+    }
+    if (localStorage.stripPlotDataset) {
+        datasetItems.value = JSON.parse(localStorage.stripPlotDataset);
+    } else {
+        localStorage.setItem(
+            "stripPlotDataset",
+            JSON.stringify(defaultData.vue_ui_strip_plot.dataset),
+        );
     }
     step.value += 1;
 });
@@ -115,54 +120,68 @@ function saveConfigToLocalStorage() {
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_strip_plot.model))
+    CONFIG_MODEL.value = JSON.parse(
+        JSON.stringify(defaultData.vue_ui_strip_plot.model),
+    );
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.stripPlotConfig) {
-        localStorage.setItem('stripPlotConfig', {})
+    if (!localStorage.stripPlotConfig) {
+        localStorage.setItem("stripPlotConfig", {});
     }
-    saveConfigToLocalStorage()
+    saveConfigToLocalStorage();
     step.value += 1;
 }
 
 function addCategory() {
-    datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.category)), id: createUid()});
+    datasetItems.value.push({
+        ...JSON.parse(JSON.stringify(options.value.category)),
+        id: createUid(),
+    });
     step.value += 1;
-    saveDatasetToLocalStorage()
+    saveDatasetToLocalStorage();
 }
 
 function deleteCategory(id) {
-    datasetItems.value = datasetItems.value.filter(_ => _.id !== id);
-    saveDatasetToLocalStorage()
+    datasetItems.value = datasetItems.value.filter((_) => _.id !== id);
+    saveDatasetToLocalStorage();
 }
 
 function addPlot(catId) {
-    const cat = datasetItems.value.find(el => el.id === catId);
-    cat.plots.push({...JSON.parse(JSON.stringify(options.value.plot)), id: createUid()});
-    saveDatasetToLocalStorage()
+    const cat = datasetItems.value.find((el) => el.id === catId);
+    cat.plots.push({
+        ...JSON.parse(JSON.stringify(options.value.plot)),
+        id: createUid(),
+    });
+    saveDatasetToLocalStorage();
 }
 
 function deletePlot(catId, plotId) {
-    const cat = datasetItems.value.find(el => el.id === catId);
-    cat.plots = cat.plots.filter(el => el.id !== plotId);
+    const cat = datasetItems.value.find((el) => el.id === catId);
+    cat.plots = cat.plots.filter((el) => el.id !== plotId);
     saveDatasetToLocalStorage();
 }
 
 const finalConfig = computed(() => {
-    return convertArrayToObject(CONFIG_MODEL.value)
+    return convertArrayToObject(CONFIG_MODEL.value);
 });
 </script>
 
 <template>
     <div>
+        <ClearStorageAndRefresh
+            keyConfig="stripPlotConfig"
+            keyDataset="stripPlotDataset"
+            :key="`clear_${clearStep}`"
+        />
+        <BaseDocExampleLink
+            link="vue-ui-strip-plot"
+            componentName="VueUiStripPlot"
+        />
 
-        <ClearStorageAndRefresh keyConfig="stripPlotConfig" keyDataset="stripPlotDataset" :key="`clear_${clearStep}`"/>
-        <BaseDocExampleLink link="vue-ui-strip-plot" componentName="VueUiStripPlot"/>
-    
-        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+        <div class="w-full mt-[64px]" style="height: calc(100% - 64px)">
             <Transition name="fade">
                 <BaseMakerChart
                     v-if="!isFixed"
@@ -171,17 +190,28 @@ const finalConfig = computed(() => {
                     @resetModel="resetModel"
                     expandedWidth="max-w-[400px]"
                 >
-                    <VueDataUi ref="chart" component="VueUiStripPlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                    <VueDataUi
+                        ref="chart"
+                        component="VueUiStripPlot"
+                        :dataset="datasetItems"
+                        :config="finalConfig"
+                        :key="`chart_${step}`"
+                    />
                 </BaseMakerChart>
             </Transition>
         </div>
-    
+
         <BaseCard>
             <details open>
-                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+                <summary class="cursor-pointer mb-4">
+                    {{ makerTranslations.dataset[store.lang] }}
+                </summary>
                 <div class="flex flex-col gap-2">
-                    <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-
+                    <div
+                        v-for="(ds, i) in datasetItems"
+                        :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 pl-6 rounded flex flex-row gap-3`"
+                        :style="`background:${ds.color}30`"
+                    >
                         <BaseButton
                             color="error"
                             :size="6"
@@ -195,46 +225,110 @@ const finalConfig = computed(() => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ makerTranslations.labels.categoryName[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ makerTranslations.labels.plots[store.lang] }}</th>
+                                    <th class="text-left text-xs h-[40px]">
+                                        {{
+                                            makerTranslations.labels.color[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                    <th class="text-left text-xs">
+                                        {{
+                                            makerTranslations.labels
+                                                .categoryName[store.lang]
+                                        }}
+                                    </th>
+                                    <th class="text-left text-xs">
+                                        {{
+                                            makerTranslations.labels.plots[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                                    <td class="flex flex-row place-items-center gap-4">
+                                    <td>
+                                        <input
+                                            type="color"
+                                            v-model="datasetItems[i].color"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            class="h-[36px]"
+                                            type="text"
+                                            v-model="ds.name"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td
+                                        class="flex flex-row place-items-center gap-4"
+                                    >
                                         <div class="flex flex-row gap-4">
-                                            <div v-for="p in datasetItems[i].plots" class="bg-[#FFFFFF10] rounded-md p-1 shadow-md flex flex-col gap-4 relative">
-                                                <div class="flex flex-col gap-2">
-                                                    <label class="text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</label>
-                                                    <input type="text" v-model="p.name" @change="saveDatasetToLocalStorage"/>
+                                            <div
+                                                v-for="p in datasetItems[i]
+                                                    .plots"
+                                                class="bg-[#FFFFFF10] rounded-md p-1 shadow-md flex flex-col gap-4 relative"
+                                            >
+                                                <div
+                                                    class="flex flex-col gap-2"
+                                                >
+                                                    <label class="text-xs">{{
+                                                        makerTranslations.labels
+                                                            .serieName[
+                                                            store.lang
+                                                        ]
+                                                    }}</label>
+                                                    <input
+                                                        type="text"
+                                                        v-model="p.name"
+                                                        @change="
+                                                            saveDatasetToLocalStorage
+                                                        "
+                                                    />
                                                 </div>
-                                                <div class="flex flex-col gap-2">
-                                                    <label class="text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
-                                                    <input type="number" v-model="p.value" @change="saveDatasetToLocalStorage"/>
+                                                <div
+                                                    class="flex flex-col gap-2"
+                                                >
+                                                    <label class="text-xs">{{
+                                                        makerTranslations.labels
+                                                            .value[store.lang]
+                                                    }}</label>
+                                                    <input
+                                                        type="number"
+                                                        v-model="p.value"
+                                                        @change="
+                                                            saveDatasetToLocalStorage
+                                                        "
+                                                    />
                                                 </div>
 
                                                 <BaseButton
                                                     color="error"
                                                     :size="4"
                                                     fab
-                                                    @click="deletePlot(ds.id, p.id)"
+                                                    @click="
+                                                        deletePlot(ds.id, p.id)
+                                                    "
                                                     tw="absolute -top-[130px] -right-0"
                                                 >
                                                     <XIcon size="12" />
-                                                </BaseButton>  
-
+                                                </BaseButton>
                                             </div>
                                         </div>
-                                        <BaseButton 
-                                            color="success" 
+                                        <BaseButton
+                                            color="success"
                                             fab
                                             @click="addPlot(ds.id)"
-                                            :tooltip="translations.maker.tooltips.addData[store.lang]"
+                                            :tooltip="
+                                                translations.maker.tooltips
+                                                    .addData[store.lang]
+                                            "
                                         >
-                                            <PlusIcon/>
+                                            <PlusIcon />
                                         </BaseButton>
                                     </td>
                                 </tr>
@@ -244,50 +338,65 @@ const finalConfig = computed(() => {
                 </div>
                 <div class="flex flex-row gap-4 mt-4 mb-6">
                     <BaseButton
-                        color="success" 
+                        color="success"
                         fab
                         :size="10"
                         @click="addCategory"
-                        :tooltip="translations.maker.tooltips.addCategory[store.lang]"
+                        :tooltip="
+                            translations.maker.tooltips.addCategory[store.lang]
+                        "
                         tooltip-position="right"
                     >
-                        <PlusIcon/>
+                        <PlusIcon />
                     </BaseButton>
                 </div>
             </details>
         </BaseCard>
-    
+
         <details open class="mt-6" v-if="makerTranslations.labels">
-            <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-    
+            <summary class="cursor-pointer">
+                {{ makerTranslations.config[store.lang] }}
+            </summary>
+
             <MakerKnobs
                 :categories="CONFIG_CATEGORIES"
                 :model="CONFIG_MODEL"
                 @change="forceChartUpdate"
             />
         </details>
-    
+
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
             <ComponentContent
-                :dataset="datasetItems.map(({name, plots}) => { return {name, plots: plots.map(p => {
-                    return {
-                        name: p.name,
-                        value: p.value
-                    }
-                })}})"
+                :dataset="
+                    datasetItems.map(({ name, plots }) => {
+                        return {
+                            name,
+                            plots: plots.map((p) => {
+                                return {
+                                    name: p.name,
+                                    value: p.value,
+                                };
+                            }),
+                        };
+                    })
+                "
                 :config="finalConfig"
                 componentName="VueUiStripPlot"
                 configName="vue_ui_strip_plot"
                 @click="() => copyComponent('componentContent', store)"
-                :copyComponentFunc="() => copyComponent('componentContent', store)"
+                :copyComponentFunc="
+                    () => copyComponent('componentContent', store)
+                "
                 keyConfig="stripPlotConfig"
                 keyDataset="stripPlotDataset"
             >
                 <template #component-copy>
-                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                    <CopyComponent
+                        @click="() => copyComponent('componentContent', store)"
+                    />
                 </template>
-            </ComponentContent>      
-            <slot name="rater"/>    
+            </ComponentContent>
+            <slot name="rater" />
         </div>
     </div>
     <Transition name="fade">
@@ -298,7 +407,12 @@ const finalConfig = computed(() => {
             @resetModel="resetModel"
             fixedWidth="max-w-[300px]"
         >
-            <VueDataUi component="VueUiStripPlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+            <VueDataUi
+                component="VueUiStripPlot"
+                :dataset="datasetItems"
+                :config="finalConfig"
+                :key="`chart_${step}`"
+            />
         </BaseMakerChart>
     </Transition>
 </template>

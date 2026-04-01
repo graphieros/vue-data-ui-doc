@@ -11,24 +11,27 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 
-const mainConfig = useConfig()
+const mainConfig = useConfig();
 
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
 
-onMounted(() => store.docSnap = false);
-const { isMobile } = useMobile()
+onMounted(() => (store.docSnap = false));
+const { isMobile } = useMobile();
 
-watch(() => store.isDarkMode, (val) => {
-    nextTick(() => {
-        key.value += 1;
-    })
-});
+watch(
+    () => store.isDarkMode,
+    (val) => {
+        nextTick(() => {
+            key.value += 1;
+        });
+    },
+);
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
+});
 
 const config = ref({
     type: "onion",
@@ -38,7 +41,7 @@ const config = ref({
         gutterBlur: 0,
         trackHueRotate: 360,
         trackBlur: 1,
-        trackColor: "#42d392"
+        trackColor: "#42d392",
     },
     line: {
         gutterColor: "#CCCCCC",
@@ -46,7 +49,7 @@ const config = ref({
         gutterBlur: 0,
         trackHueRotate: 360,
         trackBlur: 1,
-        trackColor: "#42d392"
+        trackColor: "#42d392",
     },
     bar: {
         gutterColor: "#CCCCCC",
@@ -54,9 +57,9 @@ const config = ref({
         gutterBlur: 0,
         trackHueRotate: 360,
         trackBlur: 1,
-        trackColor: "#42d392"
-    }
-})
+        trackColor: "#42d392",
+    },
+});
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 
@@ -69,16 +72,16 @@ function forceChartUpdate() {
 }
 
 function copyToClipboard(conf) {
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
+    let selBox = document.createElement("textarea");
+    selBox.style.position = "fixed";
+    selBox.style.left = "0";
+    selBox.style.top = "0";
+    selBox.style.opacity = "0";
     selBox.value = JSON.stringify(conf);
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -88,15 +91,16 @@ const isFixed = ref(false);
 function fixChart() {
     isFixed.value = !isFixed.value;
     store.docSnap = !store.docSnap;
-} 
-
+}
 </script>
 
 <template>
     <div>
         <BaseDocTitle name="VueUiMiniLoader" />
 
-        <BaseDocDescription :text="translations.docs.tooltips.miniLoader[store.lang]" />
+        <BaseDocDescription
+            :text="translations.docs.tooltips.miniLoader[store.lang]"
+        />
 
         <BaseDocHeaderActions
             targetLink="vue-ui-mini-loader"
@@ -109,13 +113,23 @@ function fixChart() {
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+                @copyToClipboard="
+                    copyToClipboard(isDarkMode ? darkModeConfig : config)
+                "
             >
                 <BaseCard>
-                    <div class="flex flex-row gap-6 place-items-center justify-center max-w-[300px] mx-auto">            
-                        <VueUiMiniLoader :config="{...mutableConfig, type: 'line'}" :key="key"/>
-                        <VueUiMiniLoader :config="{...mutableConfig, type: 'bar'}" :key="key"/>
-                        <VueUiMiniLoader :config="mutableConfig" :key="key"/>
+                    <div
+                        class="flex flex-row gap-6 place-items-center justify-center max-w-[300px] mx-auto"
+                    >
+                        <VueUiMiniLoader
+                            :config="{ ...mutableConfig, type: 'line' }"
+                            :key="key"
+                        />
+                        <VueUiMiniLoader
+                            :config="{ ...mutableConfig, type: 'bar' }"
+                            :key="key"
+                        />
+                        <VueUiMiniLoader :config="mutableConfig" :key="key" />
                     </div>
                 </BaseCard>
             </DocSnapper>
@@ -127,13 +141,25 @@ function fixChart() {
             </template>
             <template #tab1>
                 <div class="flex gap-2">
-                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
-                    <button @click="copyToClipboard(mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                    <button
+                        @click="resetDefault"
+                        class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all"
+                    >
+                        {{ translations.docs.reset[store.lang] }}
+                    </button>
+                    <button
+                        @click="copyToClipboard(mutableConfig)"
+                        class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"
+                    >
+                        <CopyIcon />
+                        {{ translations.docs.copyThisConfig[store.lang] }}
+                    </button>
                 </div>
                 <div class="mt-4">
-                    TS type: <code class="text-app-blue">VueUiMiniLoaderConfig</code>
+                    TS type:
+                    <code class="text-app-blue">VueUiMiniLoaderConfig</code>
                 </div>
-<pre>
+                <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiMiniLoaderConfig</span> = {
     type: "line" | "bar" | "onion", (default: "onion")

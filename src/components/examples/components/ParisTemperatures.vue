@@ -10,7 +10,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 Date.prototype.getWeek = function () {
     const d = new Date(
-        Date.UTC(this.getFullYear(), this.getMonth(), this.getDate())
+        Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()),
     );
     const dayNum = d.getUTCDay() || 7;
     d.setUTCDate(d.getUTCDate() + 4 - dayNum);
@@ -112,7 +112,7 @@ const config = computed(() => {
                         color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                         bold: false,
                         offsetX: 0,
-                        showOnlyAtModulo: 4
+                        showOnlyAtModulo: 4,
                     },
                     yAxis: {
                         show: true,

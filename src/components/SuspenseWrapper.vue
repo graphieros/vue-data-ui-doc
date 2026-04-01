@@ -4,27 +4,32 @@ import { ref, computed } from "vue";
 const props = defineProps({
     height: {
         type: Number,
-        default: 1
+        default: 1,
     },
     width: {
         type: Number,
-        default: 1
+        default: 1,
     },
     background: {
         type: String,
-        default: 'inherit'
-    }
+        default: "inherit",
+    },
 });
-    
 </script>
 
 <template>
     <Suspense>
         <template #default>
-            <slot/>
+            <slot />
         </template>
         <template #fallback>
-            <div :style="{ background: background, width: '100%', aspectRatio: `${width} / ${height}` }"/>
+            <div
+                :style="{
+                    background: background,
+                    width: '100%',
+                    aspectRatio: `${width} / ${height}`,
+                }"
+            />
         </template>
     </Suspense>
 </template>

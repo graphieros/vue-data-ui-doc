@@ -4,8 +4,12 @@ import BaseSpinner from "./BaseSpinner.vue";
 
 const showSpinner = ref(true);
 
-function onFallback() { showSpinner.value = true; }
-function onResolve() { showSpinner.value = false; }
+function onFallback() {
+    showSpinner.value = true;
+}
+function onResolve() {
+    showSpinner.value = false;
+}
 </script>
 
 <template>
@@ -13,10 +17,10 @@ function onResolve() { showSpinner.value = false; }
 
     <Suspense @fallback="onFallback" @resolve="onResolve">
         <template #default>
-            <slot name="default"/>
+            <slot name="default" />
         </template>
         <template #fallback>
-            <slot name="fallback"/>
+            <slot name="fallback" />
         </template>
     </Suspense>
 </template>

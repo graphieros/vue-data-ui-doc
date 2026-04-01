@@ -31,12 +31,16 @@ const home = ref({
 </script>
 
 <template>
-    <div class="w-full flex flex-col place-items-center justify-center h-screen gap-6">
+    <div
+        class="w-full flex flex-col place-items-center justify-center h-screen gap-6"
+    >
         <VueUiIcon name="moodNeutral" stroke="#5f8aee" :size="130" />
         <p class="text-xl" dir="auto">{{ _404[store.lang] }}</p>
         <router-link to="/">
             <button
-                class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-bold hover:from-app-blue hover:to-app-green transition-colors flex flex-row place-items-center gap-2" dir="auto">
+                class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-bold hover:from-app-blue hover:to-app-green transition-colors flex flex-row place-items-center gap-2"
+                dir="auto"
+            >
                 <VueUiIcon name="homeFilled" stroke="#1A1A1A" />
                 {{ home[store.lang] }}
             </button>

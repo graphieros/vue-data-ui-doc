@@ -3,11 +3,19 @@ export function isValidUserValue(val) {
 }
 
 export function checkArray({ userConfig, key }) {
-    return Object.hasOwn(userConfig, key) && Array.isArray(userConfig[key]) && userConfig[key].length >= 0;
+    return (
+        Object.hasOwn(userConfig, key) &&
+        Array.isArray(userConfig[key]) &&
+        userConfig[key].length >= 0
+    );
 }
 
 export function checkObj({ userConfig, key }) {
-    return Object.hasOwn(userConfig, key) && !Array.isArray(userConfig[key]) && typeof userConfig[key] === "object";
+    return (
+        Object.hasOwn(userConfig, key) &&
+        !Array.isArray(userConfig[key]) &&
+        typeof userConfig[key] === "object"
+    );
 }
 
 export function decimalToHex(decimal) {
@@ -198,7 +206,8 @@ export function hslToRgba(h, s, l, alpha = 1) {
 export function convertColorToHex(color) {
     const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i;
     const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/i;
-    const hslRegex = /^hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%(?:,\s*([\d.]+))?\)$/i;
+    const hslRegex =
+        /^hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%(?:,\s*([\d.]+))?\)$/i;
 
     if ([undefined, null, NaN].includes(color)) {
         return null;
@@ -206,7 +215,7 @@ export function convertColorToHex(color) {
 
     color = convertNameColorToHex(color);
 
-    if (color === 'transparent') {
+    if (color === "transparent") {
         return "#FFFFFF00";
     }
 
@@ -233,13 +242,21 @@ export function convertColorToHex(color) {
 
 export function convertConfigColors(config) {
     for (const key in config) {
-        if (typeof config[key] === 'object' && !Array.isArray(config[key]) && config[key] !== null) {
+        if (
+            typeof config[key] === "object" &&
+            !Array.isArray(config[key]) &&
+            config[key] !== null
+        ) {
             convertConfigColors(config[key]);
-        } else if (key === 'color' || key === 'backgroundColor' || key === 'stroke') {
-            if (config[key] === '') {
-                config[key] = '#000000';
-            } else if (config[key] === 'transparent') {
-                config[key] = '#FFFFFF00'
+        } else if (
+            key === "color" ||
+            key === "backgroundColor" ||
+            key === "stroke"
+        ) {
+            if (config[key] === "") {
+                config[key] = "#000000";
+            } else if (config[key] === "transparent") {
+                config[key] = "#FFFFFF00";
             } else {
                 config[key] = convertColorToHex(config[key]);
             }
@@ -251,12 +268,12 @@ export function convertConfigColors(config) {
 export function treeShake({ defaultConfig, userConfig }) {
     const finalConfig = { ...defaultConfig };
 
-    Object.keys(finalConfig).forEach(key => {
+    Object.keys(finalConfig).forEach((key) => {
         if (Object.hasOwn(userConfig, key)) {
-            const currentVal = userConfig[key]
-            if  (currentVal === null) {
+            const currentVal = userConfig[key];
+            if (currentVal === null) {
                 finalConfig[key] = currentVal;
-            } else if (['boolean', 'function'].includes(typeof currentVal)) {
+            } else if (["boolean", "function"].includes(typeof currentVal)) {
                 finalConfig[key] = currentVal;
             } else if (["string", "number"].includes(typeof currentVal)) {
                 if (isValidUserValue(currentVal)) {
@@ -269,7 +286,7 @@ export function treeShake({ defaultConfig, userConfig }) {
             } else if (checkObj({ userConfig, key })) {
                 finalConfig[key] = treeShake({
                     defaultConfig: finalConfig[key],
-                    userConfig: currentVal
+                    userConfig: currentVal,
                 });
             }
         }
@@ -278,12 +295,12 @@ export function treeShake({ defaultConfig, userConfig }) {
 }
 
 export function useNestedProp({ defaultConfig, userConfig }) {
-    if(!Object.keys(userConfig || {}).length) {
+    if (!Object.keys(userConfig || {}).length) {
         return defaultConfig;
     }
     const reconciled = treeShake({
         defaultConfig: defaultConfig,
-        userConfig
+        userConfig,
     });
-    return convertConfigColors(reconciled)
+    return convertConfigColors(reconciled);
 }

@@ -6,10 +6,10 @@ const props = defineProps({
     config: {
         type: Object,
         default() {
-            return {}
-        }
-    }
-})
+            return {};
+        },
+    },
+});
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -85,7 +85,10 @@ function objectToDag(input, options) {
      */
     const previewValue = (v) => {
         if (typeof v === "string") {
-            const s = v.length > maxValuePreviewLength ? `${v.slice(0, maxValuePreviewLength)}…` : v;
+            const s =
+                v.length > maxValuePreviewLength
+                    ? `${v.slice(0, maxValuePreviewLength)}…`
+                    : v;
             return `"${s}"`;
         }
         if (typeof v === "number" || typeof v === "boolean") return String(v);
@@ -93,13 +96,15 @@ function objectToDag(input, options) {
         if (v === undefined) return "undefined";
         if (typeof v === "function") return "function";
         if (Array.isArray(v)) return `Array(${v.length})`;
-        if (v instanceof Date) return `Date(${isNaN(v.getTime()) ? "Invalid" : v.toISOString()})`;
+        if (v instanceof Date)
+            return `Date(${isNaN(v.getTime()) ? "Invalid" : v.toISOString()})`;
         if (v instanceof RegExp) return `RegExp(${String(v)})`;
         if (typeof v === "object") return "Object";
         return String(v);
     };
 
-    const pathId = (parentPath, key) => (parentPath ? `${parentPath}.${key}` : String(key));
+    const pathId = (parentPath, key) =>
+        parentPath ? `${parentPath}.${key}` : String(key);
 
     const buildArray = (arr, parentNodeId, parentPath, depth) => {
         for (let i = 0; i < arr.length; i += 1) {
@@ -118,10 +123,10 @@ function objectToDag(input, options) {
                 kind: Array.isArray(childValue)
                     ? "array"
                     : isPlainObject(childValue)
-                        ? "object"
-                        : childValue === null
-                            ? "null"
-                            : typeof childValue,
+                      ? "object"
+                      : childValue === null
+                        ? "null"
+                        : typeof childValue,
             });
 
             if (parentNodeId) addEdge(parentNodeId, childPath);
@@ -151,10 +156,10 @@ function objectToDag(input, options) {
                     kind: Array.isArray(childValue)
                         ? "array"
                         : isPlainObject(childValue)
-                            ? "object"
-                            : childValue === null
-                                ? "null"
-                                : typeof childValue,
+                          ? "object"
+                          : childValue === null
+                            ? "null"
+                            : typeof childValue,
                 });
 
                 if (parentNodeId) addEdge(parentNodeId, childPath);
@@ -182,7 +187,11 @@ function objectToDag(input, options) {
             key: rootLabel,
             path: rootId,
             depth: 0,
-            kind: Array.isArray(input) ? "array" : isPlainObject(input) ? "object" : typeof input,
+            kind: Array.isArray(input)
+                ? "array"
+                : isPlainObject(input)
+                  ? "object"
+                  : typeof input,
             isRoot: true,
         });
         build(input, rootId, "", 1);
@@ -223,61 +232,66 @@ watch(
         step.value += 1;
         ready.value = true;
     },
-    { immediate: true, deep: true, flush: "post" }
+    { immediate: true, deep: true, flush: "post" },
 );
-
 
 const cfg = computed(() => {
     return {
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         style: {
-            fontFamily: 'Courier New',
+            fontFamily: "Courier New",
             chart: {
                 layout: {
                     rankSeparation: 100,
                     nodeSeparation: 20,
                     edgeSeparation: 20,
-                    nodeWidth: 150, 
+                    nodeWidth: 150,
                     nodeHeight: 28,
-                    rankDirection: 'LR'
+                    rankDirection: "LR",
                 },
                 nodes: {
-                    backgroundColor: isDarkMode.value ? '#2A2A2A' : undefined,
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : undefined,
                     tooltip: {
                         showOnClick: true,
                     },
                     selected: {
-                        stroke: isDarkMode.value ? '#42d392' : '#ff3700',
+                        stroke: isDarkMode.value ? "#42d392" : "#ff3700",
                         strokeWidth: 2,
-                        backgroundColor: isDarkMode.value ? '#42d39290' : '#ff370030',
-                        labelColor: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                        backgroundColor: isDarkMode.value
+                            ? "#42d39290"
+                            : "#ff370030",
+                        labelColor: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                         downstreamEdges: {
-                            stroke: isDarkMode.value ? '#42d392' : '#ff3700',
-                        }
-                    }
+                            stroke: isDarkMode.value ? "#42d392" : "#ff3700",
+                        },
+                    },
                 },
                 edges: {
-                    strokeWidth: 2
+                    strokeWidth: 2,
                 },
                 midpoints: {
                     show: true,
                     radius: 8,
                     selectedEdge: {
-                        stroke: isDarkMode.value ? '#42d392' : '#ff3700',
-                    }
+                        stroke: isDarkMode.value ? "#42d392" : "#ff3700",
+                    },
                 },
                 controls: {
-                    position: 'top'
-                }
-            }
-        }
-    }
-})
-
+                    position: "top",
+                },
+            },
+        },
+    };
+});
 </script>
 
 <template>
     <div class="border border-[#6A6A6A] p-2 bg-white dark:bg-[#1A1A1A]">
-        <VueUiDag v-if="ready" :dataset="datasetDag" :config="cfg" :key="step" />
+        <VueUiDag
+            v-if="ready"
+            :dataset="datasetDag"
+            :config="cfg"
+            :key="step"
+        />
     </div>
 </template>

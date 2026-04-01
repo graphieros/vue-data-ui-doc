@@ -2,9 +2,9 @@
 import { computed, watch, ref } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
-import colorBridge from "color-bridge"
+import colorBridge from "color-bridge";
 import { shiftColorHue, VueDataUi, VueUiSparkHistogram } from "vue-data-ui";
-import mockStats from './mockStats.json'
+import mockStats from "./mockStats.json";
 import { createUid, fillEmptyDays } from "./maker/lib";
 import BaseCard from "./BaseCard.vue";
 import { getCumulativeAverage } from "vue-data-ui";
@@ -13,9 +13,7 @@ import BaseSpinner from "./BaseSpinner.vue";
 
 const { utils } = colorBridge();
 
-const {
-    shiftHue,
-} = utils();
+const { shiftHue } = utils();
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -23,7 +21,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 const stats = computed(() => {
     // return mockStats;
     return store.ratings.breakdown;
-})
+});
 
 const selectedXIndex = ref(null);
 
@@ -36,51 +34,58 @@ function groupByItemId(data) {
 }
 
 const ratedComponents = computed(() => {
-    return groupByItemId(stats.value)
+    return groupByItemId(stats.value);
 });
 
-watch(() => stats, () => {
-    setTimeout(() => {
-        const texts = document.querySelectorAll('.gauge-sat text');
-        const withPath = Array.from(texts).filter(text => !!text.querySelector('textPath'));
-        withPath.forEach((p, i) => {
-            if (i === 0) {
-                p.style.filter = 'hue-rotate(330deg)'
-            }
-            if (i === 1) {
-                p.style.filter = 'hue-rotate(0deg)'
-            }
-            if (i === 2) {
-                p.style.filter = 'hue-rotate(30deg)'
-            }
-            if (i === 3) {
-                p.style.filter = 'hue-rotate(50deg)'
-            }
-        })
-    },100)
-}, { immediate: true, deep: true })
+watch(
+    () => stats,
+    () => {
+        setTimeout(() => {
+            const texts = document.querySelectorAll(".gauge-sat text");
+            const withPath = Array.from(texts).filter(
+                (text) => !!text.querySelector("textPath"),
+            );
+            withPath.forEach((p, i) => {
+                if (i === 0) {
+                    p.style.filter = "hue-rotate(330deg)";
+                }
+                if (i === 1) {
+                    p.style.filter = "hue-rotate(0deg)";
+                }
+                if (i === 2) {
+                    p.style.filter = "hue-rotate(30deg)";
+                }
+                if (i === 3) {
+                    p.style.filter = "hue-rotate(50deg)";
+                }
+            });
+        }, 100);
+    },
+    { immediate: true, deep: true },
+);
 
 const heatmapDataset = computed(() => {
-
     function getISOWeek(date) {
-        const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        const d = new Date(
+            Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+        );
         d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
         const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
         return weekNo;
     }
 
     function addDayAndWeek(data) {
         const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-        return data.map(item => {
+        return data.map((item) => {
             const dateObj = new Date(item.created_at.replace(" ", "T"));
             const day = daysMapping[dateObj.getDay()];
             const week = getISOWeek(dateObj);
             return {
                 ...item,
                 day,
-                week
+                week,
             };
         });
     }
@@ -88,24 +93,26 @@ const heatmapDataset = computed(() => {
     const augmentedData = addDayAndWeek(stats.value);
 
     const uniqueWeeks = Array.from(
-        new Set(augmentedData.map(item => item.week))
+        new Set(augmentedData.map((item) => item.week)),
     ).sort((a, b) => a - b);
 
     const orderedDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const grouped = {};
 
-    augmentedData.forEach(item => {
+    augmentedData.forEach((item) => {
         if (!grouped[item.day]) {
             grouped[item.day] = {};
         }
         grouped[item.day][item.week] = (grouped[item.day][item.week] || 0) + 1;
     });
 
-    const result = orderedDays.map(day => {
-        const values = uniqueWeeks.map(week => (grouped[day] && grouped[day][week]) || 0);
+    const result = orderedDays.map((day) => {
+        const values = uniqueWeeks.map(
+            (week) => (grouped[day] && grouped[day][week]) || 0,
+        );
         return {
             name: day,
-            values: values
+            values: values,
         };
     });
 
@@ -113,10 +120,12 @@ const heatmapDataset = computed(() => {
 });
 
 function getISOWeek(date) {
-    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const d = new Date(
+        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+    );
     d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
     const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
     return { year: d.getUTCFullYear(), week: weekNo };
 }
 
@@ -131,15 +140,16 @@ function getWeekBoundary(date) {
 }
 
 function revertComponentName(str) {
-    return str.split(/(?=[A-Z0-9])/).map(el => el.toLowerCase()).join('_')
+    return str
+        .split(/(?=[A-Z0-9])/)
+        .map((el) => el.toLowerCase())
+        .join("_");
 }
 
 function getWeekRanges(data) {
-
     const weekGroups = {};
 
-    data.forEach(item => {
-
+    data.forEach((item) => {
         const date = new Date(item.created_at.replace(" ", "T"));
         const { year, week } = getISOWeek(date);
         const key = `${year}-${week}`;
@@ -151,14 +161,14 @@ function getWeekRanges(data) {
 
     const results = [];
 
-    Object.keys(weekGroups).forEach(key => {
-        const [, weekStr] = key.split('-');
+    Object.keys(weekGroups).forEach((key) => {
+        const [, weekStr] = key.split("-");
         const weekNum = weekStr;
         const repDate = weekGroups[key];
 
         const { monday, sunday } = getWeekBoundary(repDate);
-        const mondayStr = monday.toISOString().split('T')[0];
-        const sundayStr = sunday.toISOString().split('T')[0];
+        const mondayStr = monday.toISOString().split("T")[0];
+        const sundayStr = sunday.toISOString().split("T")[0];
 
         // results.push(`Week ${weekNum}: ${mondayStr} to ${sundayStr}`);
         results.push(`Week ${weekNum} `);
@@ -179,15 +189,15 @@ const heatmapConfig = computed(() => {
     return {
         userOptions: { show: false },
         style: {
-            backgroundColor: 'transparent',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            backgroundColor: "transparent",
+            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             layout: {
                 padding: {
                     top: 6,
                 },
                 crosshairs: {
                     show: true,
-                    stroke: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    stroke: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     strokeDasharray: 4,
                 },
                 cells: {
@@ -196,71 +206,71 @@ const heatmapConfig = computed(() => {
                             show: true,
                         },
                         color: {
-                            show: true
-                        }
+                            show: true,
+                        },
                     },
                     columnTotal: {
                         value: {
                             show: true,
                             rotation: 0,
                             offsetX: 0,
-                            offsetY: 6
+                            offsetY: 6,
                         },
                         color: {
-                            show: true
+                            show: true,
                         },
                     },
                     colors: {
-                        hot: '#1F77B4',
-                        cold: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
-                        underlayer: 'transparent'
+                        hot: "#1F77B4",
+                        cold: isDarkMode.value ? "#3A3A3A" : "#FFFFFF",
+                        underlayer: "transparent",
                     },
                     spacing: 0,
                     selected: {
                         border: 2,
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-                    }
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    },
                 },
                 dataLabels: {
                     yAxis: {
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     },
                     xAxis: {
                         values: getWeekRanges(stats.value),
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                         fontSize: 9,
                         autoRotate: {
                             enable: true,
-                            angle: -90
-                        }
-                    }
+                            angle: -90,
+                        },
+                    },
                 },
             },
             legend: { show: false },
             title: {
-                text: 'Number of votes per day',
-                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                text: "Number of votes per day",
+                color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                 bold: true,
-                textAlign: 'center',
+                textAlign: "center",
                 subtitle: {
                     text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
-                    color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
-                }
+                    color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                },
             },
             tooltip: {
-                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                 backgroundOpacity: 20,
-                borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             },
-        }
-    }
-})
+        },
+    };
+});
 
 function getCumulativeAveragePerDayWithMissingDays(statistics) {
     const ratingsByDate = {};
-    statistics.forEach(entry => {
-        const date = entry.created_at.split(' ')[0];
+    statistics.forEach((entry) => {
+        const date = entry.created_at.split(" ")[0];
         if (!ratingsByDate[date]) {
             ratingsByDate[date] = [];
         }
@@ -268,7 +278,7 @@ function getCumulativeAveragePerDayWithMissingDays(statistics) {
     });
 
     const ratingDates = Object.keys(ratingsByDate).sort(
-        (a, b) => new Date(a) - new Date(b)
+        (a, b) => new Date(a) - new Date(b),
     );
 
     const allDates = fillEmptyDays(ratingDates);
@@ -277,20 +287,20 @@ function getCumulativeAveragePerDayWithMissingDays(statistics) {
     let cumulativeCount = 0;
     const cumulativeAverages = [];
 
-    allDates.forEach(date => {
+    allDates.forEach((date) => {
         if (ratingsByDate[date]) {
-            ratingsByDate[date].forEach(rating => {
+            ratingsByDate[date].forEach((rating) => {
                 cumulativeSum += rating;
                 cumulativeCount++;
             });
             cumulativeAverages.push({
                 date: date,
-                cumulativeAverage: cumulativeSum / cumulativeCount
+                cumulativeAverage: cumulativeSum / cumulativeCount,
             });
         } else {
             cumulativeAverages.push({
                 date: date,
-                cumulativeAverage: null
+                cumulativeAverage: null,
             });
         }
     });
@@ -299,16 +309,32 @@ function getCumulativeAveragePerDayWithMissingDays(statistics) {
 }
 
 function getMonthlyStatistics(statistics) {
-    const monthLabels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const monthLabels = [
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEP",
+        "OCT",
+        "NOV",
+        "DEC",
+    ];
     const monthsData = {};
 
-    statistics.forEach(entry => {
+    statistics.forEach((entry) => {
         const date = new Date(entry.created_at);
         const monthIndex = date.getMonth();
         if (!monthsData[monthIndex]) {
             monthsData[monthIndex] = { ratings: [] };
         }
-        const rating = typeof entry.rating === 'number' ? entry.rating : parseFloat(entry.rating);
+        const rating =
+            typeof entry.rating === "number"
+                ? entry.rating
+                : parseFloat(entry.rating);
         monthsData[monthIndex].ratings.push(rating);
     });
 
@@ -322,196 +348,220 @@ function getMonthlyStatistics(statistics) {
         result.push({
             x: count,
             y: average,
-            label: monthLabels[index]
+            label: monthLabels[index],
         });
     }
-    result.sort((a, b) => monthLabels.indexOf(a.label) - monthLabels.indexOf(b.label));
+    result.sort(
+        (a, b) => monthLabels.indexOf(a.label) - monthLabels.indexOf(b.label),
+    );
     return result;
 }
 
-
 const historyPlotDataset = computed(() => {
-    return [{
-        name: 'Average monthly rating and total votes',
-        values: getMonthlyStatistics(JSON.parse(JSON.stringify(stats.value)))
-    }]
+    return [
+        {
+            name: "Average monthly rating and total votes",
+            values: getMonthlyStatistics(
+                JSON.parse(JSON.stringify(stats.value)),
+            ),
+        },
+    ];
 });
 
 const minPlot = computed(() => {
-    return Math.min(...historyPlotDataset.value.flatMap(d => d?.values.map(v => v?.y ?? 0)))
-})
+    return Math.min(
+        ...historyPlotDataset.value.flatMap((d) =>
+            d?.values.map((v) => v?.y ?? 0),
+        ),
+    );
+});
 
 const maxPlot = computed(() => {
-    return Math.max(...historyPlotDataset.value.flatMap(d => d?.values.map(v => v?.y ?? 0)))
-})
+    return Math.max(
+        ...historyPlotDataset.value.flatMap((d) =>
+            d?.values.map((v) => v?.y ?? 0),
+        ),
+    );
+});
 
 const historyPlotConfig = computed(() => {
     return {
         userOptions: { show: false },
         style: {
             chart: {
-                backgroundColor: 'transparent',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                backgroundColor: "transparent",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 axes: {
                     x: {
                         labels: {
-                            color: isDarkMode.value ? '#8A8A8A' : '#8A8A8A'
+                            color: isDarkMode.value ? "#8A8A8A" : "#8A8A8A",
                         },
                         name: {
-                            text: 'Number of votes',
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                            offsetY: -12
-                        }
+                            text: "Number of votes",
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                            offsetY: -12,
+                        },
                     },
                     y: {
                         scaleMin: minPlot.value,
                         scaleMax: maxPlot.value,
                         ticks: 5,
                         labels: {
-                            color: isDarkMode.value ? '#8A8A8A' : '#8A8A8A',
-                            rounding: 2
+                            color: isDarkMode.value ? "#8A8A8A" : "#8A8A8A",
+                            rounding: 2,
                         },
                         name: {
-                            text: 'Average rating',
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                        }
-                    }
+                            text: "Average rating",
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        },
+                    },
                 },
                 grid: {
                     xAxis: {
-                        stroke: '#CCCCCC'
+                        stroke: "#CCCCCC",
                     },
                     horizontalLines: {
-                        stroke: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                        stroke: isDarkMode.value ? "#4A4A4A" : "#E1E5E8",
                     },
                     verticalLines: {
-                        stroke: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                        stroke: isDarkMode.value ? "#4A4A4A" : "#E1E5E8",
                     },
                     yAxis: {
-                        stroke: '#CCCCCC'
+                        stroke: "#CCCCCC",
                     },
                 },
                 legend: { show: false },
                 paths: {
                     strokeWidth: 6,
                     useSerieColor: false,
-                    stroke: isDarkMode.value ? '#FFFFFF20' : '#1A1A1A20'
+                    stroke: isDarkMode.value ? "#FFFFFF20" : "#1A1A1A20",
                 },
                 plots: {
                     radius: 6,
-                    stroke: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+                    stroke: isDarkMode.value ? "#3A3A3A" : "#FFFFFF",
                     indexLabels: {
                         show: false,
-                        fontSize: 8
+                        fontSize: 8,
                     },
                     labels: {
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                         offsetY: 6,
-                        fontSize: 10
-                    }
+                        fontSize: 10,
+                    },
                 },
                 title: {
-                    text: 'Monthly average rating & number of votes',
-                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    text: "Monthly average rating & number of votes",
+                    color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                     bold: true,
-                    textAlign: 'center',
+                    textAlign: "center",
                     subtitle: {
                         text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
-                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
-                    }
+                        color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                    },
                 },
                 tooltip: {
-                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                     backgroundOpacity: 20,
-                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    roundingValue: 3
+                    borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    roundingValue: 3,
                 },
-            }
-        }
-    }
-})
+            },
+        },
+    };
+});
 
 function calcAverage(ds) {
-    let arr = []
-    let sum = []
-    Object.keys(ds).forEach(key => {
-        arr.push(Number(key) * ds[key])
-        sum.push(ds[key])
-    })
-    return arr.reduce((a, b) => a + b, 0) / sum.reduce((a, b) => a + b, 0)
+    let arr = [];
+    let sum = [];
+    Object.keys(ds).forEach((key) => {
+        arr.push(Number(key) * ds[key]);
+        sum.push(ds[key]);
+    });
+    return arr.reduce((a, b) => a + b, 0) / sum.reduce((a, b) => a + b, 0);
 }
 
 const gaugeDataset = computed(() => {
     return {
         value: calcAverage(history.value.ratingBreakdown),
         series: [
-            { from: 1, to: 2, color: '#c97047', name: '🙁' },
-            { from: 2, to: 3, color: '#c5c947', name: '😐' },
-            { from: 3, to: 4, color: '#86c947', name: '🙂' },
-            { from: 4, to: 5, color: '#54b840', name: '😀' },
-        ]
-    }
-})
+            { from: 1, to: 2, color: "#c97047", name: "🙁" },
+            { from: 2, to: 3, color: "#c5c947", name: "😐" },
+            { from: 3, to: 4, color: "#86c947", name: "🙂" },
+            { from: 4, to: 5, color: "#54b840", name: "😀" },
+        ],
+    };
+});
 
 const ratings = computed(() => {
     const groups = Object.groupBy(stats.value, ({ item_id }) => item_id);
     return Object.keys(groups).map((component) => {
         const raters = groups[component].length;
-        const breakdown = countRatings(Object.groupBy(groups[component], ({ rating }) => rating));
+        const breakdown = countRatings(
+            Object.groupBy(groups[component], ({ rating }) => rating),
+        );
         return {
             id: createUid(),
             name: component,
             raters,
             breakdown,
             average:
-                groups[component].map((r) => r.rating).reduce((a, b) => a + b, 0) /
-                raters || 0,
+                groups[component]
+                    .map((r) => r.rating)
+                    .reduce((a, b) => a + b, 0) / raters || 0,
         };
-    })
+    });
 });
 
 const individualRatings = computed(() => {
-    return [...ratings.value].toSorted((a, b) => detailSortMode.value === 'byVotes' ? b.raters - a.raters : b.average - a.average)
-})
+    return [...ratings.value].toSorted((a, b) =>
+        detailSortMode.value === "byVotes"
+            ? b.raters - a.raters
+            : b.average - a.average,
+    );
+});
 
-const today = new Date().toISOString().slice(0, 10)
-const selectedDate = ref(today)
+const today = new Date().toISOString().slice(0, 10);
+const selectedDate = ref(today);
 
 const latestItems = computed(() => {
-    if (!Array.isArray(stats.value) || !stats.value.length || !selectedDate.value) return [];
+    if (
+        !Array.isArray(stats.value) ||
+        !stats.value.length ||
+        !selectedDate.value
+    )
+        return [];
     return stats.value
-        .filter(item => item && typeof item.created_at === 'string')
-        .filter(item => item.created_at.split(' ')[0] === selectedDate.value)
-        .map(item => ({
-        ...item,
-        stars: Array(item.rating).fill('⭐').join(''),
-        name: item.item_id
-            .split('_')
-            .map(capitalizeFirstLetter)
-            .join('')
-        }))
+        .filter((item) => item && typeof item.created_at === "string")
+        .filter((item) => item.created_at.split(" ")[0] === selectedDate.value)
+        .map((item) => ({
+            ...item,
+            stars: Array(item.rating).fill("⭐").join(""),
+            name: item.item_id.split("_").map(capitalizeFirstLetter).join(""),
+        }));
 });
 
 const stackData = computed(() => {
-    const stripped = stats.value.map(s => ({
+    const stripped = stats.value.map((s) => ({
         ...s,
-        created_at: s.created_at.split(' ')[0]
+        created_at: s.created_at.split(" ")[0],
     }));
 
     const groups = Object.groupBy(stripped, ({ created_at }) => created_at);
 
     const dates = fillEmptyDays(
-        Object.keys(groups).toSorted((a, b) => dateToTimestamp(a) - dateToTimestamp(b))
+        Object.keys(groups).toSorted(
+            (a, b) => dateToTimestamp(a) - dateToTimestamp(b),
+        ),
     );
 
     const defaultRatings = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
-    const t = dates.map(date => {
+    const t = dates.map((date) => {
         let series;
         if (groups[date]) {
             series = countRatings(
-                Object.groupBy(groups[date], ({ rating }) => rating)
+                Object.groupBy(groups[date], ({ rating }) => rating),
             );
             series = { ...defaultRatings, ...series };
         } else {
@@ -520,43 +570,40 @@ const stackData = computed(() => {
         return series;
     });
 
-    const colors = [
-        '#fc5603',
-        '#ff8c00',
-        '#ffd500',
-        '#07e319',
-        '#1F77B4'
-    ];
+    const colors = ["#fc5603", "#ff8c00", "#ffd500", "#07e319", "#1F77B4"];
 
     const arr = [];
     for (let i = 1; i <= 5; i += 1) {
         arr.push({
             name: String(i),
-            series: t.map(series => series[i]).map(n => n === 0 ? null : n),
+            series: t
+                .map((series) => series[i])
+                .map((n) => (n === 0 ? null : n)),
             color: colors[i - 1],
-            shape: 'star'
+            shape: "star",
         });
     }
 
-    const cumulativeAvg = getCumulativeAverage({ values: arr.reduce((acc, curr) => {
-        curr.series.forEach((value, i) => {
-            acc[i] = (acc[i] || 0) + (value || 0);
-        });
-        return acc;
-    }, [])})
+    const cumulativeAvg = getCumulativeAverage({
+        values: arr.reduce((acc, curr) => {
+            curr.series.forEach((value, i) => {
+                acc[i] = (acc[i] || 0) + (value || 0);
+            });
+            return acc;
+        }, []),
+    });
 
     return [
         ...arr,
         {
-            name: 'Nb. votes / day cumul. avg.',
+            name: "Nb. votes / day cumul. avg.",
             series: cumulativeAvg,
-            shape: 'diamond',
-            color: isDarkMode.value ? '#9A9A9A' : '#6A6A6A',
-            standalone: true
-        }
+            shape: "diamond",
+            color: isDarkMode.value ? "#9A9A9A" : "#6A6A6A",
+            standalone: true,
+        },
     ];
 });
-
 
 const stacklineConfig = computed(() => {
     return {
@@ -566,13 +613,13 @@ const stacklineConfig = computed(() => {
             },
             datapointLeave: () => {
                 selectedXIndex.value = undefined;
-            }
+            },
         },
         userOptions: { show: false },
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                backgroundColor: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 height: 300,
                 lines: {
                     smooth: true,
@@ -580,83 +627,83 @@ const stacklineConfig = computed(() => {
                     distributed: false,
                     areaOpacity: 70,
                     totalValues: {
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     },
                     dataLabels: {
                         show: false,
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     },
                     dot: {
                         radius: 3,
-                        strokeWidth: 1
-                    }
+                        strokeWidth: 1,
+                    },
                 },
                 grid: {
                     x: {
-                        axisColor: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                        axisColor: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                         timeLabels: {
                             show: false,
-                            values: history.value.dates
-                        }
+                            values: history.value.dates,
+                        },
                     },
                     y: {
-                        axisColor: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                        axisColor: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                         axisName: {
                             show: true,
-                            text: 'Number of votes',
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                            fontSize: 16
+                            text: "Number of votes",
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                            fontSize: 16,
                         },
                         axisLabels: {
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                             fontSize: 16,
-                            rounding: 1
-                        }
-                    }
+                            rounding: 1,
+                        },
+                    },
                 },
                 highlighter: {
-                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                    color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                 },
                 legend: {
-                    backgroundColor: 'transparent',
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    position: 'top'
+                    backgroundColor: "transparent",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    position: "top",
                 },
                 title: {
-                    text: 'Satisfaction survey, ratings breakdown',
-                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    text: "Satisfaction survey, ratings breakdown",
+                    color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                     bold: true,
-                    textAlign: 'left',
+                    textAlign: "left",
                     paddingLeft: 12,
                     subtitle: {
                         text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
-                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
-                    }
+                        color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                    },
                 },
                 tooltip: {
-                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                     backgroundOpacity: 20,
-                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     roundingValue: 1,
                 },
                 zoom: {
-                    color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-                    highlightColor: '#1F77B4',
+                    color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
+                    highlightColor: "#1F77B4",
                     focusOnDrag: true,
                     focusRangeRatio: 0.1,
                     minimap: {
                         show: true,
-                        frameColor: isDarkMode.value ? '#4A4A4A' : '#CCCCCC'
+                        frameColor: isDarkMode.value ? "#4A4A4A" : "#CCCCCC",
                     },
                     preview: {
-                        enable: true
-                    }
-                }
-            }
-        }
-    }
-})
+                        enable: true,
+                    },
+                },
+            },
+        },
+    };
+});
 
 function dateToTimestamp(dateStr) {
     const date = new Date(dateStr);
@@ -678,35 +725,51 @@ function countRatings(ratingsObj) {
 }
 
 const history = computed(() => {
-    const groups = Object.groupBy(stats.value.map(s => {
-        const created_at = s.created_at.split(' ')[0];
-        return {
-            ...s,
-            created_at,
-            timestamp: dateToTimestamp(created_at)
-        }
-    }), ({ created_at }) => created_at)
+    const groups = Object.groupBy(
+        stats.value.map((s) => {
+            const created_at = s.created_at.split(" ")[0];
+            return {
+                ...s,
+                created_at,
+                timestamp: dateToTimestamp(created_at),
+            };
+        }),
+        ({ created_at }) => created_at,
+    );
 
-    const dates = fillEmptyDays(Object.keys(groups).toSorted((a, b) => dateToTimestamp(a) - dateToTimestamp(b)))
+    const dates = fillEmptyDays(
+        Object.keys(groups).toSorted(
+            (a, b) => dateToTimestamp(a) - dateToTimestamp(b),
+        ),
+    );
 
-    const ratingsPerDay = dates.map(date => {
-        return groups[date] ? groups[date].length : null
+    const ratingsPerDay = dates.map((date) => {
+        return groups[date] ? groups[date].length : null;
     });
-    const averagePerDay = dates.map(date => {
-        return groups[date] ? groups[date].map(user => user.rating).reduce((a, b) => a + b, 0) / groups[date].length : null
-    })
+    const averagePerDay = dates.map((date) => {
+        return groups[date]
+            ? groups[date]
+                  .map((user) => user.rating)
+                  .reduce((a, b) => a + b, 0) / groups[date].length
+            : null;
+    });
 
-    const ratingBreakdown = countRatings(Object.groupBy(stats.value, ({ rating }) => rating));
+    const ratingBreakdown = countRatings(
+        Object.groupBy(stats.value, ({ rating }) => rating),
+    );
 
     return {
         dates,
         ratingsPerDay,
         averagePerDay,
-        ratingBreakdown
-    }
+        ratingBreakdown,
+    };
 });
 
-const navOptions = computed(() => ['All components', ...availableComponents.value]);
+const navOptions = computed(() => [
+    "All components",
+    ...availableComponents.value,
+]);
 
 function goTo(dir) {
     const list = navOptions.value;
@@ -714,9 +777,9 @@ function goTo(dir) {
     let idx = list.indexOf(selectedComponent.value);
     if (idx === -1) idx = 0;
 
-    if (dir === 'next') {
+    if (dir === "next") {
         selectedComponent.value = list[(idx + 1) % list.length];
-    } else if (dir === 'prev') {
+    } else if (dir === "prev") {
         selectedComponent.value = list[(idx - 1 + list.length) % list.length];
     }
 }
@@ -727,31 +790,32 @@ function makeHistoryForComponent(entry) {
         return { ...s, created_at };
     });
 
-    const groups = Object.groupBy(
-        normalized,
-        ({ created_at }) => created_at
-    );
+    const groups = Object.groupBy(normalized, ({ created_at }) => created_at);
 
     const dates = fillEmptyDays(
         Object.keys(groups).toSorted(
-        (a, b) => dateToTimestamp(a) - dateToTimestamp(b)
-        )
+            (a, b) => dateToTimestamp(a) - dateToTimestamp(b),
+        ),
     );
 
     const ratingsPerDay = dates.map((date) =>
-        groups[date] ? groups[date].length : null
+        groups[date] ? groups[date].length : null,
     );
 
     const averagePerDay = dates.map((date) =>
         groups[date]
-        ? groups[date]
-            .map((u) => (typeof u.rating === "number" ? u.rating : parseFloat(u.rating)))
-            .reduce((a, b) => a + b, 0) / groups[date].length
-        : null
+            ? groups[date]
+                  .map((u) =>
+                      typeof u.rating === "number"
+                          ? u.rating
+                          : parseFloat(u.rating),
+                  )
+                  .reduce((a, b) => a + b, 0) / groups[date].length
+            : null,
     );
 
     const ratingBreakdown = countRatings(
-        Object.groupBy(entry, ({ rating }) => rating)
+        Object.groupBy(entry, ({ rating }) => rating),
     );
 
     return {
@@ -768,81 +832,87 @@ function makeHistoryForRatedComponent(itemId) {
 }
 
 const ratingBreakdownBarDataset = computed(() => {
-    const source = Object.keys(history.value.ratingBreakdown)
-    const bd = source.map(key => {
-        return history.value.ratingBreakdown[key] || 0
-    })
+    const source = Object.keys(history.value.ratingBreakdown);
+    const bd = source.map((key) => {
+        return history.value.ratingBreakdown[key] || 0;
+    });
     return [
         {
-            name: 'Number of votes',
+            name: "Number of votes",
             series: bd,
-            type: 'bar',
-            dataLabels: true
-        }
-    ]
-})
+            type: "bar",
+            dataLabels: true,
+        },
+    ];
+});
 
 function makeRatingBreakdown(ratingBreakdown, name, type = "bar") {
     const source = Object.keys(ratingBreakdown);
-    const series = source.map(key => {
-        return ratingBreakdown[key] || 0
-    })
+    const series = source.map((key) => {
+        return ratingBreakdown[key] || 0;
+    });
     return [
         {
             name,
             series,
             type,
-            dataLabels: true
-        }
-    ]
+            dataLabels: true,
+        },
+    ];
 }
 
 const area = computed(() => {
     if (!history.value || !history.value.dates) {
         return {
             from: 0,
-            to: 1
-        }
+            to: 1,
+        };
     }
     return {
-        from: history.value.dates.indexOf('2026-03-03'),
-        to: history.value.dates.length - 1
-    }
-})
+        from: history.value.dates.indexOf("2026-03-03"),
+        to: history.value.dates.length - 1,
+    };
+});
 
 const ratingBreakdownBarConfig = computed(() => {
     return {
         chart: {
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
             grid: {
                 labels: {
                     show: false,
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     xAxisLabels: {
-                        values: ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'],
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                        fontSize: 24
+                        values: [
+                            "⭐",
+                            "⭐⭐",
+                            "⭐⭐⭐",
+                            "⭐⭐⭐⭐",
+                            "⭐⭐⭐⭐⭐",
+                        ],
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        fontSize: 24,
                     },
                     yAxis: {
                         showBaseline: false,
-                    }
+                    },
                 },
-                stroke: isDarkMode.value ? '#6A6A6A' : '#CCCCCC'
+                stroke: isDarkMode.value ? "#6A6A6A" : "#CCCCCC",
             },
             highlighter: {
-                color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
             },
             labels: {
-                fontSize: 28
+                fontSize: 28,
             },
             legend: {
                 show: false,
             },
             tooltip: {
-                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                 backgroundOpacity: 20,
-                borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 showPercentage: false,
             },
             userOptions: { show: false },
@@ -850,157 +920,165 @@ const ratingBreakdownBarConfig = computed(() => {
         bar: {
             labels: {
                 show: true,
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 offsetY: -12,
-            }
-        }
-    }
-})
+            },
+        },
+    };
+});
 
-const ALL_COMPONENTS = 'All components'
-const selectedComponent = ref(ALL_COMPONENTS)
+const ALL_COMPONENTS = "All components";
+const selectedComponent = ref(ALL_COMPONENTS);
 
 const availableComponents = computed(() => {
     return Object.keys(ratedComponents.value);
-})
+});
 
 const sparkHistogramDataset = computed(() => {
-    const values  = [...history.value.averagePerDay].slice(-15);
+    const values = [...history.value.averagePerDay].slice(-15);
     const perDay = [...history.value.ratingsPerDay].slice(-15);
     const max = Math.max(...perDay);
     const _dates = [...history.value.dates].slice(-15);
     return values.map((d, i) => {
-        const intensity = ((perDay[i] ?? 0) / (max ?? 1)) ?? 0;
+        const intensity = (perDay[i] ?? 0) / (max ?? 1) || 0;
         return {
             value: d,
             intensity,
             timeLabel: _dates[i],
-            valueLabel: `${perDay[i] ?? 0} vote${perDay[i] === 1 ? '' : 's'}`
-        }
-    })
+            valueLabel: `${perDay[i] ?? 0} vote${perDay[i] === 1 ? "" : "s"}`,
+        };
+    });
 });
 
 const sparkHistogramConfig = computed(() => {
     return {
         style: {
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
             bars: {
-                shape: 'star',
+                shape: "star",
                 colors: {
-                    positive: isDarkMode.value ? '#fdd663' : '#bd992f'
-                }
+                    positive: isDarkMode.value ? "#fdd663" : "#bd992f",
+                },
             },
             labels: {
                 timeLabel: {
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 },
                 value: {
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    offsetY: -6
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    offsetY: -6,
                 },
                 valueLabel: {
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    fontSize: 10
-                }
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    fontSize: 10,
+                },
             },
             selector: {
-                stroke: isDarkMode.value ? '#fdd663' : '#bd992f',
+                stroke: isDarkMode.value ? "#fdd663" : "#bd992f",
                 strokeWidth: 0,
                 strokeDasharray: 3,
-                fill: isDarkMode.value ? '#FFFFFF10' : '#CCCCCC30'
+                fill: isDarkMode.value ? "#FFFFFF10" : "#CCCCCC30",
             },
             title: {
-                text: 'Voting intensity',
-                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                text: "Voting intensity",
+                color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                 bold: true,
                 fontSize: 20,
                 subtitle: {
-                    text: 'Last 15 days',
-                    color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1",
-                    fontSize: 16
-                }
-            }
-        }
-    }
-})
+                    text: "Last 15 days",
+                    color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                    fontSize: 16,
+                },
+            },
+        },
+    };
+});
 
 const xyDataset = computed(() => {
     if (selectedComponent.value === ALL_COMPONENTS) {
         return [
             {
-                name: 'Average rating',
+                name: "Average rating",
                 series: history.value.averagePerDay.slice(1),
-                type: 'line',
+                type: "line",
                 smooth: true,
                 scaleMin: 0,
                 scaleMax: 5,
                 scaleSteps: 5,
-                suffix: ' ⭐',
-                scaleLabel: 'Satisfaction rating'
+                suffix: " ⭐",
+                scaleLabel: "Satisfaction rating",
             },
             {
-                name: 'Cumulative average',
-                series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage).slice(1),
-                type: 'line',
+                name: "Cumulative average",
+                series: getCumulativeAveragePerDayWithMissingDays(stats.value)
+                    .map((d) => d.cumulativeAverage)
+                    .slice(1),
+                type: "line",
                 smooth: true,
                 scaleMin: 0,
                 scaleMax: 5,
                 scaleSteps: 5,
-                suffix: ' ⭐',
-                color: '#ff7f0e',
-                scaleLabel: 'Satisfaction rating'
+                suffix: " ⭐",
+                color: "#ff7f0e",
+                scaleLabel: "Satisfaction rating",
             },
             {
-                name: 'Number of daily votes',
+                name: "Number of daily votes",
                 series: history.value.ratingsPerDay.slice(1),
-                type: 'bar',
+                type: "bar",
                 scaleSteps: 5,
-                color: '#aec7e8'
+                color: "#aec7e8",
             },
-        ]
+        ];
     } else {
-        const { averagePerDay, ratingsPerDay } = makeHistoryForRatedComponent(selectedComponent.value);
+        const { averagePerDay, ratingsPerDay } = makeHistoryForRatedComponent(
+            selectedComponent.value,
+        );
 
         return [
             {
                 name: selectedComponent.value,
                 series: averagePerDay.slice(1),
-                type: 'line',
+                type: "line",
                 smooth: true,
                 scaleMin: 0,
                 scaleMax: 5,
                 scaleSteps: 5,
-                suffix: ' ⭐',
-                scaleLabel: 'Satisfaction rating'
+                suffix: " ⭐",
+                scaleLabel: "Satisfaction rating",
             },
             {
-                name: 'Number of daily votes',
+                name: "Number of daily votes",
                 series: ratingsPerDay.slice(1),
-                type: 'bar',
+                type: "bar",
                 scaleSteps: 5,
-                color: '#aec7e8'
+                color: "#aec7e8",
             },
-        ]
+        ];
     }
 });
 
 const xyDatasetCumAvg = computed(() => {
     return [
         {
-            name: 'Cumulative rating average',
-            series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage).slice(1),
-            type: 'line',
+            name: "Cumulative rating average",
+            series: getCumulativeAveragePerDayWithMissingDays(stats.value)
+                .map((d) => d.cumulativeAverage)
+                .slice(1),
+            type: "line",
             smooth: true,
-            suffix: ' ⭐',
-            color: '#ff7f0e',
+            suffix: " ⭐",
+            color: "#ff7f0e",
         },
-    ]
-})
+    ];
+});
 
 const cutNullValues = ref(false);
 
 const xyConfig = computed(() => {
-    const { dates: c_dates } = makeHistoryForRatedComponent(selectedComponent.value);
+    const { dates: c_dates } = makeHistoryForRatedComponent(
+        selectedComponent.value,
+    );
     return {
         events: {
             datapointEnter: ({ seriesIndex }) => {
@@ -1009,11 +1087,11 @@ const xyConfig = computed(() => {
             },
             datapointLeave: () => {
                 selectedXIndex.value = undefined;
-            }
+            },
         },
         chart: {
-            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            backgroundColor: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
+            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             height: 300,
             padding: {
                 top: 20,
@@ -1029,87 +1107,88 @@ const xyConfig = computed(() => {
                         labelWidth: 32,
                         scaleLabelOffsetX: 0,
                         scaleValueOffsetX: 0,
-                        groupColor: isDarkMode.value ? '#8A8A8A' : '#1A1A1A'
-
+                        groupColor: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
                     },
                     xAxisLabels: {
-                        values: selectedComponent.value === ALL_COMPONENTS ? history.value.dates : c_dates,
+                        values:
+                            selectedComponent.value === ALL_COMPONENTS
+                                ? history.value.dates
+                                : c_dates,
                         show: false,
                         datetimeFormatter: {
-                            enable: true
-                        }
-                    }
-                }
+                            enable: true,
+                        },
+                    },
+                },
             },
             highlightArea: [
                 {
                     show: true,
                     from: area.value.from,
                     to: area.value.to,
-                    color: '#42d392',
+                    color: "#42d392",
                     opacity: isDarkMode.value ? 12 : 20,
                     caption: {
-                        text: 'npmx launch',
-                        fontFamily: 'inherit',
-                        width: 'auto',
+                        text: "npmx launch",
+                        fontFamily: "inherit",
+                        width: "auto",
                         padding: 3,
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                         fontSize: 20,
                         bold: false,
                         offsetY: -36,
-                        textAlign: 'center'
-                    }
-                }
+                        textAlign: "center",
+                    },
+                },
             ],
             highlighter: {
-                color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                 useLine: true,
             },
             legend: {
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                position: 'top'
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                position: "top",
             },
             title: {
-                text: 'Satisfaction survey history',
-                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                text: "Satisfaction survey history",
+                color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                 bold: true,
-                textAlign: 'left',
+                textAlign: "left",
                 paddingLeft: 12,
                 subtitle: {
                     text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
-                    color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
-                }
+                    color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                },
             },
             tooltip: {
-                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                 backgroundOpacity: 20,
-                borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 showPercentage: false,
-                roundingValue: 2,
                 useDefaultTimeFormat: false,
-                timeFormat: 'yyyy-MM-dd',
-                roundingValue: 3
+                timeFormat: "yyyy-MM-dd",
+                roundingValue: 3,
             },
             userOptions: {
                 buttons: {
                     labels: false,
                     table: false,
-                }
+                },
             },
             zoom: {
-                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-                highlightColor: '#1F77B4',
+                color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
+                highlightColor: "#1F77B4",
                 useDefaultFormat: false,
-                timeFormat: 'yyyy-MM-dd',
+                timeFormat: "yyyy-MM-dd",
                 focusOnDrag: true,
                 focusRangeRatio: 0.15,
                 minimap: {
                     show: true,
-                }
+                },
                 // startIndex: history.value.averagePerDay.length - 14,
                 // endIndex: history.value.averagePerDay.length - 1
-            }
+            },
         },
         bar: {
             periodGap: 0.01,
@@ -1121,30 +1200,29 @@ const xyConfig = computed(() => {
             strokeWidth: 1.5,
             dot: {
                 useSerieColor: false,
-                fill: isDarkMode.value ? '#AEC7E8' : '#FFFFFF',
-                strokeWidth: 2
+                fill: isDarkMode.value ? "#AEC7E8" : "#FFFFFF",
+                strokeWidth: 2,
             },
             labels: {
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-            }
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            },
         },
         table: {
             showSum: false,
             th: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             },
             td: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             },
-        }
-    }
-})
+        },
+    };
+});
 
 const xyConfigCumAvg = computed(() => {
-    const result = xyDatasetCumAvg.value[0].series
-        .filter(n => n != null)
+    const result = xyDatasetCumAvg.value[0].series.filter((n) => n != null);
 
     return {
         events: {
@@ -1154,105 +1232,104 @@ const xyConfigCumAvg = computed(() => {
             },
             datapointLeave: () => {
                 selectedXIndex.value = undefined;
-            }
+            },
         },
         chart: {
-            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            backgroundColor: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
+            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             height: 300,
             padding: {
                 top: 24,
             },
             grid: {
                 labels: {
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     yAxis: {
                         labelWidth: 32,
                         scaleLabelOffsetX: 0,
                         scaleValueOffsetX: 4,
                         scaleMin: Math.min(...result),
-                        commonScaleSteps: 5
+                        commonScaleSteps: 5,
                     },
                     xAxisLabels: {
                         values: history.value.dates,
                         show: true,
                         datetimeFormatter: {
-                            enable: true
+                            enable: true,
                         },
                         showOnlyAtModulo: 12,
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    }
-                }
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    },
+                },
             },
             highlightArea: [
                 {
                     show: true,
                     from: area.value.from,
                     to: area.value.to,
-                    color: '#42d392',
+                    color: "#42d392",
                     opacity: isDarkMode.value ? 12 : 20,
                     caption: {
-                        text: 'npmx launch',
-                        fontFamily: 'inherit',
-                        width: 'auto',
+                        text: "npmx launch",
+                        fontFamily: "inherit",
+                        width: "auto",
                         padding: 3,
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                         fontSize: 20,
                         bold: false,
                         offsetY: -36,
-                        textAlign: 'center'
-                    }
+                        textAlign: "center",
+                    },
                 },
             ],
             highlighter: {
-                color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                 useLine: true,
             },
             legend: {
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                position: 'top'
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                position: "top",
             },
             title: {
-                text: 'Satisfaction survey history',
-                color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                text: "Satisfaction survey history",
+                color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                 bold: true,
-                textAlign: 'left',
+                textAlign: "left",
                 paddingLeft: 12,
                 subtitle: {
                     text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
-                    color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
-                }
+                    color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                },
             },
             tooltip: {
-                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                 backgroundOpacity: 20,
-                borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 showPercentage: false,
-                roundingValue: 2,
                 useDefaultTimeFormat: false,
-                timeFormat: 'yyyy-MM-dd',
-                roundingValue: 3
+                timeFormat: "yyyy-MM-dd",
+                roundingValue: 3,
             },
             userOptions: {
                 buttons: {
                     labels: false,
                     table: false,
-                }
+                },
             },
             zoom: {
-                color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-                highlightColor: '#1F77B4',
+                color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
+                highlightColor: "#1F77B4",
                 useDefaultFormat: false,
-                timeFormat: 'yyyy-MM-dd',
+                timeFormat: "yyyy-MM-dd",
                 focusOnDrag: true,
                 focusRangeRatio: 0.15,
                 minimap: {
                     show: true,
-                }
+                },
                 // startIndex: history.value.averagePerDay.length - 14,
                 // endIndex: history.value.averagePerDay.length - 1
-            }
+            },
         },
         line: {
             cutNullValues: cutNullValues.value,
@@ -1261,47 +1338,52 @@ const xyConfigCumAvg = computed(() => {
             strokeWidth: 1.5,
             dot: {
                 useSerieColor: false,
-                fill: isDarkMode.value ? '#AEC7E8' : '#FFFFFF',
-                strokeWidth: 2
+                fill: isDarkMode.value ? "#AEC7E8" : "#FFFFFF",
+                strokeWidth: 2,
             },
             labels: {
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-            }
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            },
         },
         table: {
             showSum: false,
             th: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             },
             td: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             },
-        }
-    }
-})
+        },
+    };
+});
 
 const verticalBarDataset = computed(() => {
-    return ratings.value.sort((a, b) => b.raters - a.raters).map((r, i) => {
-        const comp = r.name.split('_').map(w => capitalizeFirstLetter(w)).join('')
-        return {
-            name: `${comp} ( ${r.raters} )`,
-            component: comp,
-            value: r.average,
-            raters: r.raters
-        }
-    })
+    return ratings.value
+        .sort((a, b) => b.raters - a.raters)
+        .map((r, i) => {
+            const comp = r.name
+                .split("_")
+                .map((w) => capitalizeFirstLetter(w))
+                .join("");
+            return {
+                name: `${comp} ( ${r.raters} )`,
+                component: comp,
+                value: r.average,
+                raters: r.raters,
+            };
+        })
         .toSorted((a, b) => b.value - a.value)
         .map((r, i) => {
             return {
                 ...r,
                 color: shiftHue({
-                    hexColor: '#1F77B4',
-                    force: -i / ratings.value.length / 5
-                })
-            }
-        })
+                    hexColor: "#1F77B4",
+                    force: -i / ratings.value.length / 5,
+                }),
+            };
+        });
 });
 
 function getColorFromRating(rating) {
@@ -1309,18 +1391,24 @@ function getColorFromRating(rating) {
     const maximumRating = 5;
     const badColorHexadecimal = "#fc5603";
     const goodColorHexadecimal = "#1F77B4";
-    const clampedRating = Math.min(Math.max(rating, minimumRating), maximumRating);
-    const interpolationFactor = (clampedRating - minimumRating) / (maximumRating - minimumRating);
+    const clampedRating = Math.min(
+        Math.max(rating, minimumRating),
+        maximumRating,
+    );
+    const interpolationFactor =
+        (clampedRating - minimumRating) / (maximumRating - minimumRating);
     const startColor = convertHexadecimalToRedGreenBlue(badColorHexadecimal);
     const endColor = convertHexadecimalToRedGreenBlue(goodColorHexadecimal);
     const red = Math.round(
-        startColor.red + (endColor.red - startColor.red) * interpolationFactor
+        startColor.red + (endColor.red - startColor.red) * interpolationFactor,
     );
     const green = Math.round(
-        startColor.green + (endColor.green - startColor.green) * interpolationFactor
+        startColor.green +
+            (endColor.green - startColor.green) * interpolationFactor,
     );
     const blue = Math.round(
-        startColor.blue + (endColor.blue - startColor.blue) * interpolationFactor
+        startColor.blue +
+            (endColor.blue - startColor.blue) * interpolationFactor,
     );
 
     return convertRedGreenBlueToHexadecimal({ red, green, blue });
@@ -1334,7 +1422,9 @@ function convertHexadecimalToRedGreenBlue(hexadecimal) {
     }
 
     if (cleanHexadecimal.length !== 6) {
-        throw new Error("Hexadecimal color must be in the format RRGGBB or #RRGGBB");
+        throw new Error(
+            "Hexadecimal color must be in the format RRGGBB or #RRGGBB",
+        );
     }
 
     const red = parseInt(cleanHexadecimal.slice(0, 2), 16);
@@ -1364,20 +1454,22 @@ function convertComponentToHexadecimal(component) {
         : hexadecimalComponent;
 }
 
-
 const treemapDataset = computed(() => {
-    return verticalBarDataset.value.map((d, i) => {
-        return {
-            name: `${d.component} (${d.value.toFixed(1)})`,
-            value: d.raters,
-            average: d.value,
-        }
-    }).toSorted((a, b) => b.value - a.value ).map((d, i) => {
-        return {
-            ...d,
-            color: getColorFromRating(d.average)
-        }
-    })
+    return verticalBarDataset.value
+        .map((d, i) => {
+            return {
+                name: `${d.component} (${d.value.toFixed(1)})`,
+                value: d.raters,
+                average: d.value,
+            };
+        })
+        .toSorted((a, b) => b.value - a.value)
+        .map((d, i) => {
+            return {
+                ...d,
+                color: getColorFromRating(d.average),
+            };
+        });
 });
 
 const treemapConfig = computed(() => {
@@ -1387,44 +1479,44 @@ const treemapConfig = computed(() => {
             chart: {
                 width: 1200,
                 height: 700,
-                backgroundColor: 'transparent',
+                backgroundColor: "transparent",
                 legend: { show: false },
                 layout: {
                     labels: {
-                        prefix: '',
+                        prefix: "",
                     },
                     rects: {
-                        stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                        gradient: { show: false }
-                    }
+                        stroke: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                        gradient: { show: false },
+                    },
                 },
                 title: {
-                    text: 'Breakdown by number of ratings',
-                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    text: "Breakdown by number of ratings",
+                    color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                     bold: true,
-                    textAlign: 'left',
+                    textAlign: "left",
                     subtitle: {
                         text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
-                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
-                    }
+                        color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                    },
                 },
                 tooltip: {
-                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                     backgroundOpacity: 20,
-                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 },
-            }
-        }
-    }
-})
+            },
+        },
+    };
+});
 
 const verticalBarConfig = computed(() => {
     return {
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                backgroundColor: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 height: 1300,
                 width: 800,
                 layout: {
@@ -1433,62 +1525,62 @@ const verticalBarConfig = computed(() => {
                         gap: 2,
                         offsetX: 12,
                         dataLabels: {
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                             offsetX: 8,
                             percentage: {
-                                show: false
+                                show: false,
                             },
                             value: {
-                                suffix: ' ⭐',
-                                roundingValue: 1
-                            }
+                                suffix: " ⭐",
+                                roundingValue: 1,
+                            },
                         },
                         nameLabels: {
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                             offsetX: -12,
-                            fontSize: 14
-                        }
+                            fontSize: 14,
+                        },
                     },
                     highlighter: {
-                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                        color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                     },
                     separators: {
-                        show: false
-                    }
+                        show: false,
+                    },
                 },
                 legend: {
-                    show: false
+                    show: false,
                 },
                 title: {
-                    text: 'Component satisfaction ranking',
-                    color: isDarkMode.value ? '#579ecf' : '#1A1A1A',
+                    text: "Component satisfaction ranking",
+                    color: isDarkMode.value ? "#579ecf" : "#1A1A1A",
                     bold: true,
-                    textAlign: 'center',
+                    textAlign: "center",
                     subtitle: {
                         text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
-                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
-                    }
+                        color: isDarkMode.value ? "#AEC7E8" : "#A1A1A1",
+                    },
                 },
                 tooltip: {
                     showPercentage: false,
-                    suffix: ' ⭐',
-                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    suffix: " ⭐",
+                    backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                     backgroundOpacity: 20,
-                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    borderColor: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     roundingValue: 1,
                     customFormat: ({ datapoint }) => {
-                        const [name, ...rest] = datapoint.name.split(' ');
+                        const [name, ...rest] = datapoint.name.split(" ");
                         const cmp = revertComponentName(name);
-                        const rat = ratings.value.find(r => r.name === cmp);
+                        const rat = ratings.value.find((r) => r.name === cmp);
                         const total = rat.raters;
                         const avg = rat.average.toFixed(2);
                         return `
                             <div
                                 style="
                                     padding: 6px 12px;
-                                    background: ${isDarkMode.value ? '#1A1A1A80' : '#FFFFFF80'};
-                                    color: ${isDarkMode.value ? '#CCCCCC' : '#1A1A1A'};
+                                    background: ${isDarkMode.value ? "#1A1A1A80" : "#FFFFFF80"};
+                                    color: ${isDarkMode.value ? "#CCCCCC" : "#1A1A1A"};
                                     font-variant-numeric: tabular-nums;
                                     font-family: 'Inter';
                                     box-shadow: 0 12px 6px -6px rgba(0,0,0,0.2);
@@ -1503,28 +1595,28 @@ const verticalBarConfig = computed(() => {
                                         flex-direction:column;
                                         padding-top: 3px;
                                         margin-top: 3px;
-                                        border-top: 1px solid ${isDarkMode.value ? '#8A8A8A' : '#4A4A4A'}
+                                        border-top: 1px solid ${isDarkMode.value ? "#8A8A8A" : "#4A4A4A"}
                                     "
                                 >
-                                    <small>${rat.breakdown[5]} ⭐⭐⭐⭐⭐ (${(rat.breakdown[5] / total * 100).toFixed(1)}%)</small>
-                                    <small>${rat.breakdown[4]} ⭐⭐⭐⭐ (${(rat.breakdown[4] / total * 100).toFixed(1)}%)</small>
-                                    <small>${rat.breakdown[3]} ⭐⭐⭐ (${(rat.breakdown[3] / total * 100).toFixed(1)}%)</small>
-                                    <small>${rat.breakdown[2]} ⭐⭐ (${(rat.breakdown[2] / total * 100).toFixed(1)}%)</small>
-                                    <small>${rat.breakdown[1]} ⭐ (${(rat.breakdown[1] / total * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[5]} ⭐⭐⭐⭐⭐ (${((rat.breakdown[5] / total) * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[4]} ⭐⭐⭐⭐ (${((rat.breakdown[4] / total) * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[3]} ⭐⭐⭐ (${((rat.breakdown[3] / total) * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[2]} ⭐⭐ (${((rat.breakdown[2] / total) * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[1]} ⭐ (${((rat.breakdown[1] / total) * 100).toFixed(1)}%)</small>
                                 </div>
                             </div>
-                        `
-                    }
-                }
-            }
+                        `;
+                    },
+                },
+            },
         },
         userOptions: {
             buttons: {
-                table: false
-            }
-        }
-    }
-})
+                table: false,
+            },
+        },
+    };
+});
 
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
@@ -1533,56 +1625,59 @@ function capitalizeFirstLetter(val) {
 function toVueUiMoodRadarDataset(data) {
     return data.reduce(
         (acc, { rating }) => {
-        const key = String(rating);
-        if (acc.hasOwnProperty(key)) acc[key]++;
-        return acc;
+            const key = String(rating);
+            if (acc.hasOwnProperty(key)) acc[key]++;
+            return acc;
         },
-        { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 }
+        { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
     );
 }
 
 const radarDataset = computed(() => {
-    if(!stats.value) return undefined
-    return toVueUiMoodRadarDataset(stats.value)
-})
+    if (!stats.value) return undefined;
+    return toVueUiMoodRadarDataset(stats.value);
+});
 
 const radarConfig = computed(() => {
     return {
         userOptions: { show: false },
         style: {
             chart: {
-                backgroundColor: 'transparent',
+                backgroundColor: "transparent",
                 layout: {
                     dataLabel: {
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                        roundingPercentage: 2
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        roundingPercentage: 2,
                     },
                     dataPolygon: {
-                        color: '#1f77b4',
-                        stroke: '#1f77b4',
+                        color: "#1f77b4",
+                        stroke: "#1f77b4",
                         strokeWidth: 1,
                         gradient: {
-                            intensity: 7
-                        }
+                            intensity: 7,
+                        },
                     },
                     grid: {
-                        stroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                        stroke: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                     },
                     outerPolygon: {
-                        stroke: isDarkMode.value ? '#7A7A7A' : '#BBBBBB'
-                    }
+                        stroke: isDarkMode.value ? "#7A7A7A" : "#BBBBBB",
+                    },
                 },
                 legend: {
-                    show: false
-                }
-            }
-        }
-    }
-})
+                    show: false,
+                },
+            },
+        },
+    };
+});
 
-const detailSortMode = ref('byVotes') // or 'byRatings'
+const detailSortMode = ref("byVotes"); // or 'byRatings'
 
-function getDateFromAxis({ xAxisName, yAxisName }, year = new Date().getFullYear()) {
+function getDateFromAxis(
+    { xAxisName, yAxisName },
+    year = new Date().getFullYear(),
+) {
     const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const weekNum = parseInt(xAxisName.replace(/[^0-9]/g, ""), 10);
     const dayIndex = daysMapping.indexOf(yAxisName);
@@ -1599,10 +1694,16 @@ function getDateFromAxis({ xAxisName, yAxisName }, year = new Date().getFullYear
             }
             if (date.getUTCDay() !== dayIndex) continue;
 
-            const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+            const d = new Date(
+                Date.UTC(
+                    date.getUTCFullYear(),
+                    date.getUTCMonth(),
+                    date.getUTCDate(),
+                ),
+            );
             d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
             const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-            const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+            const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
 
             if (weekNo === weekNum) {
                 const yyyy = date.getUTCFullYear();
@@ -1616,294 +1717,364 @@ function getDateFromAxis({ xAxisName, yAxisName }, year = new Date().getFullYear
 }
 
 function selectHeatmapCell(cell) {
-    console.log(cell)
+    console.log(cell);
     selectedDate.value = getDateFromAxis(cell);
 }
 
-const stackComponent = ref('VueUiStackbar');
+const stackComponent = ref("VueUiStackbar");
 
 const tabs = ref([
-    'latest_votes',
-    'voting_intensity',
-    'ratings_history',
-    'sat_ranking',
-    'rating_breakdown',
-    'heatmap',
-    'treemap',
-    'individual_components',
-    'bump'
+    "latest_votes",
+    "voting_intensity",
+    "ratings_history",
+    "sat_ranking",
+    "rating_breakdown",
+    "heatmap",
+    "treemap",
+    "individual_components",
+    "bump",
 ]);
 
 const tabTranslations = ref({
     latest_votes: {
-        en: 'Latest votes',
-        fr: 'Derniers votes',
-        pt: 'Votos mais recentes',
-        de: 'Neueste Abstimmungen',
-        zh: '最新投票',
-        ja: '最新の投票',
-        es: 'Ultimos votos',
-        ko: '최신 투표',
-        ar: 'أحدث التصويتات',
+        en: "Latest votes",
+        fr: "Derniers votes",
+        pt: "Votos mais recentes",
+        de: "Neueste Abstimmungen",
+        zh: "最新投票",
+        ja: "最新の投票",
+        es: "Ultimos votos",
+        ko: "최신 투표",
+        ar: "أحدث التصويتات",
     },
     voting_intensity: {
-        en: 'Voting intensity',
-        fr: 'Intensité des votes',
-        pt: 'Intensidade de votacao',
-        de: 'Intensitat der Abstimmungen',
-        zh: '投票强度',
-        ja: '投票の強度',
-        es: 'Intensidad de votacion',
-        ko: '투표 강도',
-        ar: 'شدة التصويت',
+        en: "Voting intensity",
+        fr: "Intensité des votes",
+        pt: "Intensidade de votacao",
+        de: "Intensitat der Abstimmungen",
+        zh: "投票强度",
+        ja: "投票の強度",
+        es: "Intensidad de votacion",
+        ko: "투표 강도",
+        ar: "شدة التصويت",
     },
     ratings_history: {
-        en: 'Ratings history',
-        fr: 'Historique des évaluations',
-        pt: 'Historico das avaliacoes',
-        de: 'Bewertungsverlauf',
-        zh: '评分历史',
-        ja: '評価履歴',
-        es: 'Historial de calificaciones',
-        ko: '평가 기록',
-        ar: 'سجل التقييمات',
+        en: "Ratings history",
+        fr: "Historique des évaluations",
+        pt: "Historico das avaliacoes",
+        de: "Bewertungsverlauf",
+        zh: "评分历史",
+        ja: "評価履歴",
+        es: "Historial de calificaciones",
+        ko: "평가 기록",
+        ar: "سجل التقييمات",
     },
     sat_ranking: {
-        en: 'Satisfaction rankings',
-        fr: 'Classement de satisfaction',
-        pt: 'Classificacao de satisfacao',
-        de: 'Zufriedenheitsrangliste',
-        zh: '满意度排名',
-        ja: '満足度ランキング',
-        es: 'Clasificacion de satisfaccion',
-        ko: '만족도 순위',
-        ar: 'ترتيب الرضا',
+        en: "Satisfaction rankings",
+        fr: "Classement de satisfaction",
+        pt: "Classificacao de satisfacao",
+        de: "Zufriedenheitsrangliste",
+        zh: "满意度排名",
+        ja: "満足度ランキング",
+        es: "Clasificacion de satisfaccion",
+        ko: "만족도 순위",
+        ar: "ترتيب الرضا",
     },
     rating_breakdown: {
-        en: 'Ratings breakdown',
-        fr: 'Répartition des évaluations',
-        pt: 'Distribuicao das avaliacoes',
-        de: 'Aufschlüsselung der Bewertungen',
-        zh: '评分细分',
-        ja: '評価の内訳',
-        es: 'Desglose de calificaciones',
-        ko: '평가 세부 내역',
-        ar: 'تفصيل التقييمات',
+        en: "Ratings breakdown",
+        fr: "Répartition des évaluations",
+        pt: "Distribuicao das avaliacoes",
+        de: "Aufschlüsselung der Bewertungen",
+        zh: "评分细分",
+        ja: "評価の内訳",
+        es: "Desglose de calificaciones",
+        ko: "평가 세부 내역",
+        ar: "تفصيل التقييمات",
     },
     heatmap: {
-        en: 'Rating intensity heatmap',
-        fr: 'Carte thermique de l\'intensité des évaluations',
-        pt: 'Mapa de calor da intensidade das avaliacoes',
-        de: 'Heatmap der Bewertungsintensitat',
-        zh: '评分强度热力图',
-        ja: '評価強度ヒートマップ',
-        es: 'Mapa de calor de intensidad de calificaciones',
-        ko: '평가 강도 히트맵',
-        ar: 'خريطة حرارية لشدة التقييمات',
+        en: "Rating intensity heatmap",
+        fr: "Carte thermique de l'intensité des évaluations",
+        pt: "Mapa de calor da intensidade das avaliacoes",
+        de: "Heatmap der Bewertungsintensitat",
+        zh: "评分强度热力图",
+        ja: "評価強度ヒートマップ",
+        es: "Mapa de calor de intensidad de calificaciones",
+        ko: "평가 강도 히트맵",
+        ar: "خريطة حرارية لشدة التقييمات",
     },
     treemap: {
-        en: 'Ratings component treemap',
-        fr: 'Treemap des évaluations des composants',
-        pt: 'Treemap das avaliacoes dos componentes',
-        de: 'Treemap der Komponentenbewertungen',
-        zh: '组件评分树图',
-        ja: 'コンポーネント評価ツリーマップ',
-        es: 'Treemap de calificaciones por componente',
-        ko: '구성 요소별 평가 트리맵',
-        ar: 'خريطة شجرية لتقييمات المكونات',
+        en: "Ratings component treemap",
+        fr: "Treemap des évaluations des composants",
+        pt: "Treemap das avaliacoes dos componentes",
+        de: "Treemap der Komponentenbewertungen",
+        zh: "组件评分树图",
+        ja: "コンポーネント評価ツリーマップ",
+        es: "Treemap de calificaciones por componente",
+        ko: "구성 요소별 평가 트리맵",
+        ar: "خريطة شجرية لتقييمات المكونات",
     },
     individual_components: {
-        en: 'Per component ratings breakdown',
-        fr: 'Répartition des évaluations par composant',
-        pt: 'Distribuicao das avaliacoes por componente',
-        de: 'Aufschlüsselung der Bewertungen nach Komponente',
-        zh: '按组件划分的评分细分',
-        ja: 'コンポーネント別評価内訳',
-        es: 'Desglose de calificaciones por componente',
-        ko: '구성 요소별 평가 세부 내역',
-        ar: 'تفصيل التقييمات حسب المكون',
+        en: "Per component ratings breakdown",
+        fr: "Répartition des évaluations par composant",
+        pt: "Distribuicao das avaliacoes por componente",
+        de: "Aufschlüsselung der Bewertungen nach Komponente",
+        zh: "按组件划分的评分细分",
+        ja: "コンポーネント別評価内訳",
+        es: "Desglose de calificaciones por componente",
+        ko: "구성 요소별 평가 세부 내역",
+        ar: "تفصيل التقييمات حسب المكون",
     },
     bump: {
-        en: 'Per component ratings intensity',
-        fr: 'Intensité des évaluations par composant',
-        pt: 'Intensidade das avaliacoes por componente',
-        de: 'Bewertungsintensitat pro Komponente',
-        zh: '按组件划分的评分强度',
-        ja: 'コンポーネント別評価強度',
-        es: 'Intensidad de calificaciones por componente',
-        ko: '구성 요소별 평가 강도',
-        ar: 'شدة التقييمات حسب المكون',
+        en: "Per component ratings intensity",
+        fr: "Intensité des évaluations par composant",
+        pt: "Intensidade das avaliacoes por componente",
+        de: "Bewertungsintensitat pro Komponente",
+        zh: "按组件划分的评分强度",
+        ja: "コンポーネント別評価強度",
+        es: "Intensidad de calificaciones por componente",
+        ko: "구성 요소별 평가 강도",
+        ar: "شدة التقييمات حسب المكون",
     },
-})
+});
 
-const currentTab = ref('heatmap');
-
+const currentTab = ref("heatmap");
 </script>
 
 <template>
     <div class="mt-6" v-if="ratings.length">
+        <BaseCard>
+            <div class="flex flex-row flex-wrap gap-2 px-2">
+                <button
+                    v-for="tab in tabs"
+                    @click="currentTab = tab"
+                    :class="`px-2 ${currentTab === tab ? 'bg-[#E1E5E8] dark:bg-[#4A4A4A] shadow-md' : 'hover:underline'} rounded`"
+                >
+                    {{ tabTranslations[tab][store.lang] }}
+                </button>
+            </div>
 
-    <BaseCard>
-        <div class="flex flex-row flex-wrap gap-2 px-2">
-            <button v-for="tab in tabs" @click="currentTab = tab" :class="`px-2 ${currentTab === tab ? 'bg-[#E1E5E8] dark:bg-[#4A4A4A] shadow-md' : 'hover:underline'} rounded`">
-                {{ tabTranslations[tab][store.lang] }}
-            </button>
-        </div>
+            <BaseCard
+                v-if="currentTab === 'latest_votes'"
+                class="w-full mt-6"
+                type="light"
+            >
+                <div class="p-4">
+                    <div class="text-xl text-center mb-4 flex flex-col">
+                        <span>Latest votes ({{ latestItems.length }})</span>
+                        <input
+                            id="date"
+                            type="date"
+                            v-model="selectedDate"
+                            class="mx-auto mt-3 block w-52 px-3 py-1 rounded-xl shadow focus:ring-2 focus:ring-app-blue focus:border-app-blue border border-gray-300 bg-white text-gray-800 hover:border-blue-400 transition duration-200 outline-none dark:border-gray-700 dark:bg-[#FFFFFF50] dark:text-[#1A1A1A] dark:focus:border-app-blue dark:focus:ring-app-blue dark:hover:border-app-blue dark:placeholder-gray-400"
+                            placeholder="YYYY-MM-DD"
+                        />
+                    </div>
+                    <div
+                        class="w-full text-center text-gray-500"
+                        v-if="latestItems.length === 0"
+                    >
+                        No votes were cast on this day.
+                    </div>
+                    <ul>
+                        <li
+                            v-for="item in latestItems"
+                            class="flex flex-row gap-2"
+                        >
+                            <span>{{ item.stars }}</span>
+                            <span class="text-gray-400 dark:text-gray-500"
+                                >VueUi<span
+                                    class="text-black dark:text-gray-200"
+                                    >{{
+                                        item.name.replaceAll("VueUi", "")
+                                    }}</span
+                                ></span
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </BaseCard>
 
-        <BaseCard v-if="currentTab === 'latest_votes'" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <div class="text-xl text-center mb-4 flex flex-col">
-                    <span>Latest votes ({{ latestItems.length }})</span>
-                    <input
-                        id="date"
-                        type="date"
-                        v-model="selectedDate"
-                        class="
-                            mx-auto
-                            mt-3
-                            block w-52 px-3 py-1 rounded-xl shadow
-                            focus:ring-2 focus:ring-app-blue focus:border-app-blue
-                            border border-gray-300 bg-white text-gray-800
-                            hover:border-blue-400
-                            transition duration-200 outline-none
-                            dark:border-gray-700 dark:bg-[#FFFFFF50] dark:text-[#1A1A1A]
-                            dark:focus:border-app-blue dark:focus:ring-app-blue
-                            dark:hover:border-app-blue
-                            dark:placeholder-gray-400
-                        "
-                        placeholder="YYYY-MM-DD"
+            <BaseCard
+                v-if="currentTab === 'voting_intensity'"
+                class="w-full mt-6"
+                type="light"
+            >
+                <div class="p-4">
+                    <VueUiSparkHistogram
+                        :dataset="sparkHistogramDataset"
+                        :config="sparkHistogramConfig"
                     />
                 </div>
-                <div class="w-full text-center text-gray-500" v-if="latestItems.length === 0">
-                    No votes were cast on this day.
-                </div>
-                <ul>
-                    <li v-for="item in latestItems" class="flex flex-row gap-2">
-                        <span>{{ item.stars }}</span>
-                        <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{
-                            item.name.replaceAll('VueUi', '') }}</span></span>
-                    </li>
-                </ul>
-            </div>
-        </BaseCard>
+            </BaseCard>
 
-        <BaseCard v-if="currentTab === 'voting_intensity'" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <VueUiSparkHistogram :dataset="sparkHistogramDataset" :config="sparkHistogramConfig" />
-            </div>
-        </BaseCard>
-
-        <BaseCard v-if="currentTab === 'ratings_history'" class="w-full mt-6" type="light">
-            <Suspense>
-                <template #default>
-                    <div>
-                        <div class="p-4">
-                            <div class="flex flex-col gap-2 mb-4">
-                                <label>
-                                    Cut null values
-                                    <input type="checkbox" v-model="cutNullValues">
-                                </label>    
-                                <label class="flex flex-row gap-2 place-items-center w-full">
-                                    History for:
-                                    <button @click="goTo('prev')">
-                                        <VueUiIcon name="arrowLeft" :size="16"/>
-                                    </button>
-                                    <select v-model="selectedComponent" class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner w-full max-w-[250px]">
-                                        <option>All components</option>
-                                        <option v-for="o in availableComponents">
-                                            {{ o }}
-                                        </option>
-                                    </select>
-                                    <button @click="goTo('next')">
-                                        <VueUiIcon name="arrowRight" :size="16"/>
-                                    </button>
-                                </label>
+            <BaseCard
+                v-if="currentTab === 'ratings_history'"
+                class="w-full mt-6"
+                type="light"
+            >
+                <Suspense>
+                    <template #default>
+                        <div>
+                            <div class="p-4">
+                                <div class="flex flex-col gap-2 mb-4">
+                                    <label>
+                                        Cut null values
+                                        <input
+                                            type="checkbox"
+                                            v-model="cutNullValues"
+                                        />
+                                    </label>
+                                    <label
+                                        class="flex flex-row gap-2 place-items-center w-full"
+                                    >
+                                        History for:
+                                        <button @click="goTo('prev')">
+                                            <VueUiIcon
+                                                name="arrowLeft"
+                                                :size="16"
+                                            />
+                                        </button>
+                                        <select
+                                            v-model="selectedComponent"
+                                            class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner w-full max-w-[250px]"
+                                        >
+                                            <option>All components</option>
+                                            <option
+                                                v-for="o in availableComponents"
+                                            >
+                                                {{ o }}
+                                            </option>
+                                        </select>
+                                        <button @click="goTo('next')">
+                                            <VueUiIcon
+                                                name="arrowRight"
+                                                :size="16"
+                                            />
+                                        </button>
+                                    </label>
+                                </div>
+                                <VueUiXy
+                                    :selectedXIndex="selectedXIndex"
+                                    :dataset="xyDataset"
+                                    :config="xyConfig"
+                                />
+                                <VueUiXy
+                                    :selectedXIndex="selectedXIndex"
+                                    :dataset="xyDatasetCumAvg"
+                                    :config="xyConfigCumAvg"
+                                />
                             </div>
-                            <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDataset" :config="xyConfig" />
-                            <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDatasetCumAvg" :config="xyConfigCumAvg" />
+                            <div class="p-4">
+                                <VueUiStackline
+                                    :dataset="stackData"
+                                    :config="stacklineConfig"
+                                    :selectedXIndex="selectedXIndex"
+                                />
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <VueUiStackline
-                                :dataset="stackData" 
-                                :config="stacklineConfig"
-                                :selectedXIndex="selectedXIndex"
+                    </template>
+                    <template #fallback>
+                        <div class="h-[500px]">
+                            <BaseSpinner />
+                        </div>
+                    </template>
+                </Suspense>
+            </BaseCard>
+
+            <BaseCard
+                v-if="currentTab === 'sat_ranking'"
+                class="w-full mt-6"
+                type="light"
+            >
+                <div class="p-4">
+                    <VueUiVerticalBar
+                        :dataset="verticalBarDataset"
+                        :config="verticalBarConfig"
+                    />
+                </div>
+            </BaseCard>
+
+            <BaseCard
+                v-if="currentTab === 'rating_breakdown'"
+                class="w-full mt-6"
+                type="light"
+            >
+                <div class="p-4">
+                    <div class="text-center text-xl">
+                        Ratings breakdown ({{ stats.length }} votes)
+                    </div>
+                    <div class="flex flex-row place-items-center gap-2">
+                        <div class="w-full">
+                            <VueUiGauge
+                                :dataset="gaugeDataset"
+                                :config="{
+                                    userOptions: { show: false },
+                                    style: {
+                                        chart: {
+                                            backgroundColor: 'transparent',
+                                            color: isDarkMode
+                                                ? '#CCCCCC'
+                                                : '#1A1A1A',
+                                            layout: {
+                                                radiusRatio: 0.8,
+                                                track: { size: 0.1 },
+                                                markers: {
+                                                    offsetY: 40,
+                                                    color: isDarkMode
+                                                        ? '#8A8A8A'
+                                                        : '#1A1A1A',
+                                                },
+                                                segmentNames: { fontSize: 55 },
+                                                segmentSeparators: {
+                                                    show: true,
+                                                    stroke: isDarkMode
+                                                        ? '#4A4A4A'
+                                                        : '#CCCCCC',
+                                                    offsetOut: 36,
+                                                    offsetIn: 150,
+                                                },
+                                                pointer: {
+                                                    size: 1.1,
+                                                    stroke: 'transparent',
+                                                    circle: {
+                                                        color: isDarkMode
+                                                            ? '#6A6A6A'
+                                                            : '#FFFFFF',
+                                                    },
+                                                },
+                                                indicatorArc: {
+                                                    show: true,
+                                                    fill: isDarkMode
+                                                        ? '#FFFFFF10'
+                                                        : '#00000010',
+                                                    radius: 1000,
+                                                },
+                                            },
+                                            legend: {
+                                                showPlusSymbol: false,
+                                                roundingValue: 2,
+                                            },
+                                            // title: {
+                                            //     text: `Ratings breakdown (${stats.length} votes)`,
+                                            //     color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                            //     fontSize: 20,
+                                            //     bold: false,
+                                            //     offsetY: 40,
+                                            // },
+                                        },
+                                    },
+                                }"
+                            />
+                        </div>
+                        <div class="w-full">
+                            <VueUiMoodRadar
+                                :dataset="radarDataset"
+                                :config="radarConfig"
                             />
                         </div>
                     </div>
-                </template>
-                <template #fallback>
-                    <div class="h-[500px]">
-                        <BaseSpinner />
-                    </div>
-                </template>
-            </Suspense>
-        </BaseCard>
-    
-        <BaseCard v-if="currentTab === 'sat_ranking'" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <VueUiVerticalBar :dataset="verticalBarDataset" :config="verticalBarConfig" />
-            </div>
-        </BaseCard>
-    
-        <BaseCard v-if="currentTab === 'rating_breakdown'" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <div class="text-center text-xl">Ratings breakdown ({{ stats.length }} votes)</div>
-                <div class="flex flex-row place-items-center gap-2">
-                    <div class="w-full">
-                        <VueUiGauge :dataset="gaugeDataset" :config="{
-                            userOptions: { show: false },
-                            style: {
-                                chart: {
-                                    backgroundColor: 'transparent',
-                                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                                    layout: {
-                                        radiusRatio: 0.8,
-                                        track: { size: 0.1 },
-                                        markers: {
-                                            offsetY: 40,
-                                            color: isDarkMode ? '#8A8A8A' : '#1A1A1A'
-                                        },
-                                        segmentNames: { fontSize: 55 },
-                                        segmentSeparators: {
-                                            show: true,
-                                            stroke: isDarkMode ? '#4A4A4A' : '#CCCCCC',
-                                            offsetOut: 36,
-                                            offsetIn: 150
-                                        },
-                                        pointer: {
-                                            size: 1.1,
-                                            stroke: 'transparent',
-                                            circle: {
-                                                color: isDarkMode ? '#6A6A6A' : '#FFFFFF'
-                                            }
-                                        },
-                                        indicatorArc: {
-                                            show: true,
-                                            fill: isDarkMode ? '#FFFFFF10' : '#00000010',
-                                            radius: 1000
-                                        },
-                                    },
-                                    legend: {
-                                        showPlusSymbol: false,
-                                        roundingValue: 2
-                                    },
-                                    // title: {
-                                    //     text: `Ratings breakdown (${stats.length} votes)`,
-                                    //     color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                                    //     fontSize: 20,
-                                    //     bold: false,
-                                    //     offsetY: 40,
-                                    // },
-                                }
-                            }
-                        }" />
-                    </div>
-                    <div class="w-full">
-                        <VueUiMoodRadar :dataset="radarDataset" :config="radarConfig"/>
-                    </div>
-                </div>
-        
-                <!-- <VueUiRating :dataset="{
+
+                    <!-- <VueUiRating :dataset="{
                     rating: history.ratingBreakdown
                 }" :config="{
                         type: 'star',
@@ -1928,155 +2099,242 @@ const currentTab = ref('heatmap');
                             }
                         }
                     }" /> -->
-                <VueUiXy :dataset="ratingBreakdownBarDataset" :config="{
-                    ...ratingBreakdownBarConfig,
-                    bar: {
-                        ...ratingBreakdownBarConfig.bar,
-                        labels: {
-                            ...ratingBreakdownBarConfig.bar.labels,
-                            formatter: ({ value }) => {
-                                if (!value) return value
-                                return `${value} (${Math.round(value / stats.length * 100)}%)`
-                            }
-                        }
-                    }
-                }" />
-            </div>
-        </BaseCard>
-    
-        <BaseCard v-if="currentTab === 'heatmap'" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" @selectDatapoint="selectHeatmapCell"/>
-            </div>
-        </BaseCard>
-
-        <BaseCard v-if="currentTab === 'treemap'" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <VueDataUi 
-                    component="VueUiTreemap"
-                    :dataset="treemapDataset"
-                    :config="treemapConfig"
-                >
-                </VueDataUi>
-            </div>
-        </BaseCard>
-    
-        <template v-if="currentTab === 'individual_components'">
-            <h2 v-if="ratings.length" class="mt-12 mb-3 text-xl text-center">
-                User ratings of individual components
-            </h2>
-        
-            <div class="flex flex-row place-items-center justify-center mb-6 gap-4">
-                <label class="flex flex-row gap-1 place-items-center cursor-pointer">
-                    <span :class="`select-none ${detailSortMode === 'byVotes' ? 'text-app-blue' : ''}`">By votes</span>
-                    <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byVotes">
-                </label>
-                <label class="flex flex-row gap-1 place-items-center cursor-pointer">
-                    <span :class="`select-none ${detailSortMode === 'byRatings' ? 'text-app-blue' : ''}`">By ratings</span>
-                    <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byRatings">
-                </label>
-            </div>
-        
-            <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
-                <ButtonSatisfactionBreakdown
-                    v-for="c in individualRatings"
-                    :key="c.id"
-                    :dataset-gauge="{
-                    value: c.average,
-                    series: [
-                        { from: 1, to: 3, color: '#c97047' , name: 'BAD' },
-                        { from: 3, to: 4, color: '#FFDD00', name: 'ACCEPTABLE' },
-                        { from: 4, to: 5, color: '#54b840', name: 'VERY GOOD' }
-                    ]
-                }" 
-                    :total="c.raters"
-                    :datasetRating="{ rating: c.average }"
-                    :configRating="{
-                        readonly: true,
-                        style: {
-                            backgroundColor: 'transparent',
-                            star: {
-                                inactiveColor: 'transparent'
-                            }
-                        }
-                    }"
-                    :name="c.name
-                        .split('_')
-                        .map((w, _i) => {
-                            return capitalizeFirstLetter(w);
-                        })
-                        .join('')"
-                :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
-                    userOptions: { show: false },
-                    style: {
-                        chart: {
-                            backgroundColor: 'transparent',
-                            layout: {
-                                indicatorArc: {
-                                    show: true,
-                                    fill: isDarkMode ? '#4A4A4A' : '#E1E5E8',
-                                    radius: 100
+                    <VueUiXy
+                        :dataset="ratingBreakdownBarDataset"
+                        :config="{
+                            ...ratingBreakdownBarConfig,
+                            bar: {
+                                ...ratingBreakdownBarConfig.bar,
+                                labels: {
+                                    ...ratingBreakdownBarConfig.bar.labels,
+                                    formatter: ({ value }) => {
+                                        if (!value) return value;
+                                        return `${value} (${Math.round((value / stats.length) * 100)}%)`;
+                                    },
                                 },
-                                markers: {
-                                    show: false,
-                                },
-                                pointer: {
-                                    stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                                    circle: {
-                                        radius: 18,
-                                        stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                                        color: isDarkMode ? '#5A5A5A' : '#8A8A8A'
-                                    }
-                                },
-                                segmentNames: {
-                                    fontSize: 24
-                                }
                             },
-                            legend: {
-                                roundingValue: 2,
-                                fontSize: 63
-                            }
-                        }
-                    },
-                }" :config-xy="{
-                    ...ratingBreakdownBarConfig,
-                    chart: {
-                        ...ratingBreakdownBarConfig.chart,
-                        grid: {
-                            ...ratingBreakdownBarConfig.chart.grid,
-                            labels: {
-                                ...ratingBreakdownBarConfig.chart.grid.labels,
-                                xAxisLabels: {
-                                    ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
-                                    values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
-                                    fontSize: isDarkMode ? 24 : 36,
-                                    yOffset: isDarkMode ? 4 : -4
-                                }
-                            }
-                        },
-                        labels: {
-                            fontSize: 64
-                        },
-                        padding: {
-                            top: 100
-                        }
-                    },
-                    bar: {
-                        ...ratingBreakdownBarConfig.bar,
-                        labels: {
-                            ...ratingBreakdownBarConfig.bar.labels,
-                            offsetY: -36
-                        }
-                    }
-                }" />
-            </div>
-        </template>
-    
-        <BumpStats :stats="stats" v-if="currentTab === 'bump'"/>
-    </BaseCard>
+                        }"
+                    />
+                </div>
+            </BaseCard>
 
-    
-        
+            <BaseCard
+                v-if="currentTab === 'heatmap'"
+                class="w-full mt-6"
+                type="light"
+            >
+                <div class="p-4">
+                    <VueDataUi
+                        component="VueUiHeatmap"
+                        :dataset="heatmapDataset"
+                        :config="heatmapConfig"
+                        @selectDatapoint="selectHeatmapCell"
+                    />
+                </div>
+            </BaseCard>
+
+            <BaseCard
+                v-if="currentTab === 'treemap'"
+                class="w-full mt-6"
+                type="light"
+            >
+                <div class="p-4">
+                    <VueDataUi
+                        component="VueUiTreemap"
+                        :dataset="treemapDataset"
+                        :config="treemapConfig"
+                    >
+                    </VueDataUi>
+                </div>
+            </BaseCard>
+
+            <template v-if="currentTab === 'individual_components'">
+                <h2
+                    v-if="ratings.length"
+                    class="mt-12 mb-3 text-xl text-center"
+                >
+                    User ratings of individual components
+                </h2>
+
+                <div
+                    class="flex flex-row place-items-center justify-center mb-6 gap-4"
+                >
+                    <label
+                        class="flex flex-row gap-1 place-items-center cursor-pointer"
+                    >
+                        <span
+                            :class="`select-none ${detailSortMode === 'byVotes' ? 'text-app-blue' : ''}`"
+                            >By votes</span
+                        >
+                        <input
+                            type="radio"
+                            v-model="detailSortMode"
+                            class="accent-app-blue"
+                            value="byVotes"
+                        />
+                    </label>
+                    <label
+                        class="flex flex-row gap-1 place-items-center cursor-pointer"
+                    >
+                        <span
+                            :class="`select-none ${detailSortMode === 'byRatings' ? 'text-app-blue' : ''}`"
+                            >By ratings</span
+                        >
+                        <input
+                            type="radio"
+                            v-model="detailSortMode"
+                            class="accent-app-blue"
+                            value="byRatings"
+                        />
+                    </label>
+                </div>
+
+                <div
+                    class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10"
+                    v-if="ratings.length"
+                >
+                    <ButtonSatisfactionBreakdown
+                        v-for="c in individualRatings"
+                        :key="c.id"
+                        :dataset-gauge="{
+                            value: c.average,
+                            series: [
+                                {
+                                    from: 1,
+                                    to: 3,
+                                    color: '#c97047',
+                                    name: 'BAD',
+                                },
+                                {
+                                    from: 3,
+                                    to: 4,
+                                    color: '#FFDD00',
+                                    name: 'ACCEPTABLE',
+                                },
+                                {
+                                    from: 4,
+                                    to: 5,
+                                    color: '#54b840',
+                                    name: 'VERY GOOD',
+                                },
+                            ],
+                        }"
+                        :total="c.raters"
+                        :datasetRating="{ rating: c.average }"
+                        :configRating="{
+                            readonly: true,
+                            style: {
+                                backgroundColor: 'transparent',
+                                star: {
+                                    inactiveColor: 'transparent',
+                                },
+                            },
+                        }"
+                        :name="
+                            c.name
+                                .split('_')
+                                .map((w, _i) => {
+                                    return capitalizeFirstLetter(w);
+                                })
+                                .join('')
+                        "
+                        :dataset-xy="
+                            makeRatingBreakdown(c.breakdown, 'Number of votes')
+                        "
+                        :config-gauge="{
+                            userOptions: { show: false },
+                            style: {
+                                chart: {
+                                    backgroundColor: 'transparent',
+                                    layout: {
+                                        indicatorArc: {
+                                            show: true,
+                                            fill: isDarkMode
+                                                ? '#4A4A4A'
+                                                : '#E1E5E8',
+                                            radius: 100,
+                                        },
+                                        markers: {
+                                            show: false,
+                                        },
+                                        pointer: {
+                                            stroke: isDarkMode
+                                                ? '#2A2A2A'
+                                                : '#FFFFFF',
+                                            circle: {
+                                                radius: 18,
+                                                stroke: isDarkMode
+                                                    ? '#2A2A2A'
+                                                    : '#FFFFFF',
+                                                color: isDarkMode
+                                                    ? '#5A5A5A'
+                                                    : '#8A8A8A',
+                                            },
+                                        },
+                                        segmentNames: {
+                                            fontSize: 24,
+                                        },
+                                    },
+                                    legend: {
+                                        roundingValue: 2,
+                                        fontSize: 63,
+                                    },
+                                },
+                            },
+                        }"
+                        :config-xy="{
+                            ...ratingBreakdownBarConfig,
+                            chart: {
+                                ...ratingBreakdownBarConfig.chart,
+                                grid: {
+                                    ...ratingBreakdownBarConfig.chart.grid,
+                                    labels: {
+                                        ...ratingBreakdownBarConfig.chart.grid
+                                            .labels,
+                                        xAxisLabels: {
+                                            ...ratingBreakdownBarConfig.chart
+                                                .grid.labels.xAxisLabels,
+                                            values: isDarkMode
+                                                ? [
+                                                      '⭐',
+                                                      '⭐⭐',
+                                                      '⭐⭐⭐',
+                                                      '⭐⭐⭐⭐',
+                                                      '⭐⭐⭐⭐⭐',
+                                                  ]
+                                                : [
+                                                      '★',
+                                                      '★★',
+                                                      '★★★',
+                                                      '★★★★',
+                                                      '★★★★★',
+                                                  ],
+                                            fontSize: isDarkMode ? 24 : 36,
+                                            yOffset: isDarkMode ? 4 : -4,
+                                        },
+                                    },
+                                },
+                                labels: {
+                                    fontSize: 64,
+                                },
+                                padding: {
+                                    top: 100,
+                                },
+                            },
+                            bar: {
+                                ...ratingBreakdownBarConfig.bar,
+                                labels: {
+                                    ...ratingBreakdownBarConfig.bar.labels,
+                                    offsetY: -36,
+                                },
+                            },
+                        }"
+                    />
+                </div>
+            </template>
+
+            <BumpStats :stats="stats" v-if="currentTab === 'bump'" />
+        </BaseCard>
     </div>
 </template>
 

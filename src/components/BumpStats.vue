@@ -4,16 +4,18 @@ import { useMainStore } from "../stores";
 import { shiftHue } from "./maker/lib";
 
 const props = defineProps({
-    stats: { type: Array}
-})
+    stats: { type: Array },
+});
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const parseCreatedAtToUtcMonthKey = (createdAt) => {
-    const [datePart = "1970-01-01", timePart = "00:00:00"] = String(createdAt).split(" ");
+    const [datePart = "1970-01-01", timePart = "00:00:00"] =
+        String(createdAt).split(" ");
     const [yearStr, monthStr, dayStr] = datePart.split("-");
-    const [hourStr = "0", minuteStr = "0", secondStr = "0"] = timePart.split(":");
+    const [hourStr = "0", minuteStr = "0", secondStr = "0"] =
+        timePart.split(":");
 
     const year = Number(yearStr);
     const monthIndex = Number(monthStr) - 1;
@@ -44,7 +46,7 @@ const buildContinuousMonthAxis = (monthKeys) => {
     if (!monthKeys.length) return [];
 
     const unique = [...new Set(monthKeys)].sort(
-        (a, b) => monthKeyToUtcTs(a) - monthKeyToUtcTs(b)
+        (a, b) => monthKeyToUtcTs(a) - monthKeyToUtcTs(b),
     );
 
     const axis = [unique[0]];
@@ -72,9 +74,7 @@ const ratingsToBumpDataset = (rows, options = {}) => {
         options.monthAxis ??
         buildContinuousMonthAxis(parsed.map((p) => p.monthKey));
 
-    const monthIndexByKey = Object.fromEntries(
-        monthAxis.map((k, i) => [k, i])
-    );
+    const monthIndexByKey = Object.fromEntries(monthAxis.map((k, i) => [k, i]));
 
     // itemId -> monthKey -> count
     const agg = {};
@@ -110,63 +110,68 @@ const ratingsToBumpDataset = (rows, options = {}) => {
     return { monthAxis, dataset };
 };
 
-
 const bumper = computed(() => {
     return ratingsToBumpDataset(props.stats);
-})
+});
 
-const dataset = computed(() => bumper.value.dataset.toSorted((a, b) => b.values[0] - a.values[0]).map((d, i) => {
-    return {
-        ...d,
-        name: d.name.replaceAll('vue_ui_', ''),
-        color: shiftHue('#5f8aee', i / bumper.value.dataset.length / 1.5),
-    }
-}))
+const dataset = computed(() =>
+    bumper.value.dataset
+        .toSorted((a, b) => b.values[0] - a.values[0])
+        .map((d, i) => {
+            return {
+                ...d,
+                name: d.name.replaceAll("vue_ui_", ""),
+                color: shiftHue(
+                    "#5f8aee",
+                    i / bumper.value.dataset.length / 1.5,
+                ),
+            };
+        }),
+);
 
 const config = computed(() => ({
     userOptions: { show: false },
     style: {
         chart: {
             height: 1300,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
             title: {
-                text: 'Number of votes',
-                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                text: "Number of votes",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 subtitle: {
-                    text: 'Monthly ranking'
-                }
+                    text: "Monthly ranking",
+                },
             },
             padding: {
-                bottom: 48
+                bottom: 48,
             },
             layout: {
                 lines: {
-                    coatingColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF'
+                    coatingColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
                 },
                 plots: {
-                    stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                    stroke: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
                     labels: {
-                        fontSize: 10
-                    }
+                        fontSize: 10,
+                    },
                 },
                 nameLabels: {
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     useSerieColor: isDarkMode.value,
                 },
                 timeLabels: {
                     values: bumper.value.monthAxis,
                     offsetY: 24,
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                }
-            }
-        }
-    }
-}))
-
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                },
+            },
+        },
+    },
+}));
 </script>
 
 <template>
     <div>
-        <VueUiBump :dataset="dataset" :config="config"/>
+        <VueUiBump :dataset="dataset" :config="config" />
     </div>
 </template>

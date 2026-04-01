@@ -7,36 +7,39 @@ import BaseCard from "./BaseCard.vue";
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => store.translations);
-const router = useRouter()
+const router = useRouter();
 
 const props = defineProps({
     link: {
         type: String,
-        default: ''
+        default: "",
     },
     componentName: {
         type: String,
-        default: ''
+        default: "",
     },
     example: {
         type: Boolean,
-        default: true
-    }
+        default: true,
+    },
 });
 
 function goToDocs() {
     nextTick(() => {
-        router.push({ path: `/docs`, hash: `#${props.link}`})
-        window.scrollTo(0,0)
-    })
+        router.push({ path: `/docs`, hash: `#${props.link}` });
+        window.scrollTo(0, 0);
+    });
 }
-    
 </script>
 
 <template>
     <BaseCard class="mx-auto w-fit" rounding="rounded-full" type="dark">
-        <div class="flex flex-row flex-wrap gap-4 place-items-center justify-center">
-            <button @click="goToDocs" :class="`
+        <div
+            class="flex flex-row flex-wrap gap-4 place-items-center justify-center"
+        >
+            <button
+                @click="goToDocs"
+                :class="`
             flex flex-row place-items-center gap-2
             py-2 px-4 rounded-full
             bg-gray-100 dark:bg-[#3A3A3A]
@@ -46,10 +49,18 @@ function goToDocs() {
             dark:hover:bg-[#3D5F54]   /* more visible on dark */
             hover:shadow-xl
             transition-colors
-            `">
-    <VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" size="20"/> {{ componentName }} {{ translations.menu.docs[store.lang] }}</button>
+            `"
+            >
+                <VueUiIcon
+                    name="clipBoard"
+                    :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"
+                    size="20"
+                />
+                {{ componentName }} {{ translations.menu.docs[store.lang] }}
+            </button>
             <RouterLink v-if="example" :to="`/examples/categories#${link}`">
-                <button :class="`
+                <button
+                    :class="`
             flex flex-row place-items-center gap-2
             py-2 px-4 rounded-full
             bg-gray-100 dark:bg-[#3A3A3A]
@@ -59,8 +70,13 @@ function goToDocs() {
             dark:hover:bg-[#3D5F54]   /* more visible on dark */
             hover:shadow-xl
             transition-colors
-            `">
-                    <VueUiIcon name="clipboardLine" :stroke="isDarkMode ? '#42D392' : '#1A1A1A'" :size="20"/>
+            `"
+                >
+                    <VueUiIcon
+                        name="clipboardLine"
+                        :stroke="isDarkMode ? '#42D392' : '#1A1A1A'"
+                        :size="20"
+                    />
                     {{ translations.viewExamples[store.lang] }}
                 </button>
             </RouterLink>

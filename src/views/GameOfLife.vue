@@ -389,7 +389,9 @@ function draw() {
     const osc = oscillatorMask.value;
 
     // color for "real" live cells (dynamic, non-stale, non-oscillator)
-    const dynamicColor = isDarkMode.value ? { r: 66, g: 211, b: 146, a: 255 } : { r: 95, g: 138, b: 238, a: 255 };
+    const dynamicColor = isDarkMode.value
+        ? { r: 66, g: 211, b: 146, a: 255 }
+        : { r: 95, g: 138, b: 238, a: 255 };
 
     for (let i = 0, p = 0; i < grid.length; i += 1, p += 4) {
         const alive = grid[i] === 1;
@@ -575,11 +577,12 @@ const chartConfig = computed(() => {
                 zoom: { show: false },
                 title: {
                     text:
-                        (hasStalled.value || !isRunning.value) && dataset.value.length > 0
+                        (hasStalled.value || !isRunning.value) &&
+                        dataset.value.length > 0
                             ? "Full history"
                             : dataset.value.length === 0
-                                ? "Click start to play"
-                                : "Running...",
+                              ? "Click start to play"
+                              : "Running...",
                     color: isDarkMode.value ? "#8A8A8A" : "#4A4A4A",
                     textAlign: "left",
                     paddingLeft: 68,
@@ -656,7 +659,12 @@ const chartConfig = computed(() => {
                 dataLabels: {
                     show: false,
                 },
-                paddingProportions: { top: 0.1, right: 0.05, bottom: 0.12, left: 0.1 },
+                paddingProportions: {
+                    top: 0.1,
+                    right: 0.05,
+                    bottom: 0.12,
+                    left: 0.1,
+                },
             },
         },
         table: {
@@ -736,77 +744,116 @@ const kpiConfig = computed(() => {
     </h1>
     <BaseCard class="max-w-[1200px] mx-auto">
         <div
-            class="flex flex-row align-center gap-4 flex-wrap justify-center max-w-[1200px] mx-auto p-2 bg-gray-100 dark:bg-[#2A2A2A]">
+            class="flex flex-row align-center gap-4 flex-wrap justify-center max-w-[1200px] mx-auto p-2 bg-gray-100 dark:bg-[#2A2A2A]"
+        >
             <VueUiKpi :dataset="generations" :config="kpiConfig" />
-            <VueUiKpi :dataset="livingCount" :config="{
-                ...kpiConfig,
-                title: 'Cell count',
-            }" />
+            <VueUiKpi
+                :dataset="livingCount"
+                :config="{
+                    ...kpiConfig,
+                    title: 'Cell count',
+                }"
+            />
 
             <div class="flex flex-row align-center gap-4 self-center">
-                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10] disabled:opacity-45"
-                    @click="start" :disabled="isRunning">
+                <button
+                    class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10] disabled:opacity-45"
+                    @click="start"
+                    :disabled="isRunning"
+                >
                     START
                 </button>
-                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]" @click="pause">
+                <button
+                    class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]"
+                    @click="pause"
+                >
                     PAUSE
                 </button>
-                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]" @click="reset">
+                <button
+                    class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]"
+                    @click="reset"
+                >
                     RESET
                 </button>
-                <button class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]" @click="makeRand">
+                <button
+                    class="rounded py-2 px-4 h-[40px] bg-white shadow dark:bg-[#FFFFFF10]"
+                    @click="makeRand"
+                >
                     RAND
                 </button>
             </div>
 
             <label class="py-2 flex flex-col gap-2">
                 Delay (ms):
-                <input type="range" class="accent-app-blue" min="0" max="200" v-model.number="delay" />
+                <input
+                    type="range"
+                    class="accent-app-blue"
+                    min="0"
+                    max="200"
+                    v-model.number="delay"
+                />
                 <BaseDigit :value="delay" />
             </label>
 
             <label class="py-2 flex flex-col gap-2">
                 Size:
-                <input type="range" class="accent-app-blue" :min="100" :max="300" :step="10" v-model.number="SIZE" />
+                <input
+                    type="range"
+                    class="accent-app-blue"
+                    :min="100"
+                    :max="300"
+                    :step="10"
+                    v-model.number="SIZE"
+                />
                 <BaseDigit :value="SIZE" />
             </label>
         </div>
 
-        <div class="flex flex-row max-w-[1200px] mx-auto relative p-4 bg-gray-100 dark:bg-[#2A2A2A]">
-            <canvas ref="canvasEl"
-                class="w-full max-w-[400px] border border-[#CCCCCC] dark:border-[#4A4A4A] rounded-l-lg p-4 bg-white dark:bg-[#2A2A2A]" />
+        <div
+            class="flex flex-row max-w-[1200px] mx-auto relative p-4 bg-gray-100 dark:bg-[#2A2A2A]"
+        >
+            <canvas
+                ref="canvasEl"
+                class="w-full max-w-[400px] border border-[#CCCCCC] dark:border-[#4A4A4A] rounded-l-lg p-4 bg-white dark:bg-[#2A2A2A]"
+            />
             <div
-                class="bg-white dark:bg-[#2A2A2A] w-full border border-[#CCCCCC] dark:border-[#4A4A4A] p-2 rounded-r-lg">
-                <VueUiXyCanvas :dataset="[
-                    {
-                        name: 'Generations',
-                        series:
-                            hasStalled || !isRunning
-                                ? dataset.map((d) => d.value)
-                                : dataset.map((d) => d.value).slice(-301),
-                        type: 'line',
-                        smooth: true,
-                        dataLabels: false,
-                        color: isDarkMode ? '#42d392' : '#5f8aee',
-                        useArea: true,
-                    },
-                ]" :config="{
-            ...chartConfig,
-            style: {
-                ...chartConfig.style,
-                chart: {
-                    ...chartConfig.style.chart,
-                    scale: {
-                        ...chartConfig.style.chart.scale,
-                        max,
-                    },
-                },
-            },
-        }" />
+                class="bg-white dark:bg-[#2A2A2A] w-full border border-[#CCCCCC] dark:border-[#4A4A4A] p-2 rounded-r-lg"
+            >
+                <VueUiXyCanvas
+                    :dataset="[
+                        {
+                            name: 'Generations',
+                            series:
+                                hasStalled || !isRunning
+                                    ? dataset.map((d) => d.value)
+                                    : dataset.map((d) => d.value).slice(-301),
+                            type: 'line',
+                            smooth: true,
+                            dataLabels: false,
+                            color: isDarkMode ? '#42d392' : '#5f8aee',
+                            useArea: true,
+                        },
+                    ]"
+                    :config="{
+                        ...chartConfig,
+                        style: {
+                            ...chartConfig.style,
+                            chart: {
+                                ...chartConfig.style.chart,
+                                scale: {
+                                    ...chartConfig.style.chart.scale,
+                                    max,
+                                },
+                            },
+                        },
+                    }"
+                />
             </div>
-            <SkullIcon v-if="hasStalled"
+            <SkullIcon
+                v-if="hasStalled"
                 class="animate-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center"
-                size="64" />
+                size="64"
+            />
         </div>
     </BaseCard>
 </template>

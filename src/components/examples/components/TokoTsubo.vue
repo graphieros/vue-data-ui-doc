@@ -1,9 +1,8 @@
 <script setup>
-import Grabber from '../Grabber.vue';
-import BaseDocHeaderActions from '../../BaseDocHeaderActions.vue';
+import Grabber from "../Grabber.vue";
+import BaseDocHeaderActions from "../../BaseDocHeaderActions.vue";
 
-defineProps(["componentName", "dataset", "config", "id", "link", "hideMaker"])
-
+defineProps(["componentName", "dataset", "config", "id", "link", "hideMaker"]);
 </script>
 
 <template>
@@ -14,7 +13,13 @@ defineProps(["componentName", "dataset", "config", "id", "link", "hideMaker"])
             :defaultConfig="false"
         >
             <template #grabber>
-                <Grabber v-if="dataset" :dataset="dataset" :config="config" :componentName="componentName" :id="id">
+                <Grabber
+                    v-if="dataset"
+                    :dataset="dataset"
+                    :config="config"
+                    :componentName="componentName"
+                    :id="id"
+                >
                     <template #icon>
                         <slot name="icon"></slot>
                     </template>

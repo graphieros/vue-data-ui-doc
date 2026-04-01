@@ -1,6 +1,6 @@
 import { useConfig } from "./assets/useConfig";
 
-const config = useConfig()
+const config = useConfig();
 
 export function searchInConfig(searchTerm) {
     const results = [];
@@ -9,22 +9,24 @@ export function searchInConfig(searchTerm) {
         if (Array.isArray(value)) return "Array";
         if (typeof value === "function") return "Function";
         if (value === null) {
-            if ([
-                "endIndex",
-                "height",
-                "hideUnderPercentage",
-                "hideUnderValue",
-                "max",
-                "min",
-                "scaleMax",
-                "scaleMin",
-                "startIndex",
-                "width",
-                "yBottom",
-                "yTop",
-                "zoomEndIndex",
-                "zoomStartIndex",
-            ].includes(key)) {
+            if (
+                [
+                    "endIndex",
+                    "height",
+                    "hideUnderPercentage",
+                    "hideUnderValue",
+                    "max",
+                    "min",
+                    "scaleMax",
+                    "scaleMin",
+                    "startIndex",
+                    "width",
+                    "yBottom",
+                    "yTop",
+                    "zoomEndIndex",
+                    "zoomStartIndex",
+                ].includes(key)
+            ) {
                 return "null | number";
             }
             return "null | Function";
@@ -38,7 +40,9 @@ export function searchInConfig(searchTerm) {
         for (let key in obj) {
             if (obj.hasOwnProperty(key)) {
                 const newPath = path ? `${path}.${key}` : key;
-                const fullPath = objName ? `${formatString(objName)} : ${newPath}` : newPath;
+                const fullPath = objName
+                    ? `${formatString(objName)} : ${newPath}`
+                    : newPath;
 
                 if (key.toUpperCase() === searchTerm.toUpperCase()) {
                     results.push({
@@ -47,7 +51,7 @@ export function searchInConfig(searchTerm) {
                         value: obj[key] === null ? null : obj[key],
                         type: getType(obj[key], key),
                         route: objName.replaceAll("_", "-"),
-                        componentName: formatString(objName)
+                        componentName: formatString(objName),
                     });
                 }
 

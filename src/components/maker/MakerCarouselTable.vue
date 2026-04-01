@@ -1,10 +1,10 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, XIcon } from "vue-tabler-icons"
-import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject } from "./lib.js"
-import { useDefaultDataStore } from "../../stores/defaultData"
+import { PlusIcon, XIcon } from "vue-tabler-icons";
+import { useMakerStore } from "../../stores/maker";
+import { copyComponent, convertArrayToObject } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
@@ -39,39 +39,44 @@ const isDarkMode = computed(() => {
 const CONFIG_CATEGORIES = computed(() => {
     return [
         {
-            key: 'general',
-            title: makerTranslations.value.categories.general[store.lang]
+            key: "general",
+            title: makerTranslations.value.categories.general[store.lang],
         },
         {
-            key: 'userOptions',
-            title: makerTranslations.value.categories.userOptions[store.lang]
+            key: "userOptions",
+            title: makerTranslations.value.categories.userOptions[store.lang],
         },
         {
-            key: 'title',
-            title: makerTranslations.value.categories.title[store.lang]
+            key: "title",
+            title: makerTranslations.value.categories.title[store.lang],
         },
         {
-            key: 'table',
-            title: makerTranslations.value.categories.table[store.lang]
-        }
-    ]
-})
+            key: "table",
+            title: makerTranslations.value.categories.table[store.lang],
+        },
+    ];
+});
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_carousel_table.model)))
+const CONFIG_MODEL = ref(
+    JSON.parse(JSON.stringify(defaultData.vue_ui_carousel_table.model)),
+);
 
 const currentDataset = ref(defaultData.vue_ui_carousel_table.dataset);
 
 onMounted(() => {
-    if(localStorage.carouselTableConfig) {
+    if (localStorage.carouselTableConfig) {
         CONFIG_MODEL.value = JSON.parse(localStorage.carouselTableConfig);
-    } 
-    if(localStorage.carouselTableDataset) {
-        currentDataset.value = JSON.parse(localStorage.carouselTableDataset)
-    }else {
-        localStorage.setItem('carouselTableDataset', JSON.stringify(defaultData.vue_ui_carousel_table.dataset))
+    }
+    if (localStorage.carouselTableDataset) {
+        currentDataset.value = JSON.parse(localStorage.carouselTableDataset);
+    } else {
+        localStorage.setItem(
+            "carouselTableDataset",
+            JSON.stringify(defaultData.vue_ui_carousel_table.dataset),
+        );
     }
     step.value += 1;
-})
+});
 
 function saveDatasetToLocalStorage() {
     step.value += 1;
@@ -80,55 +85,61 @@ function saveDatasetToLocalStorage() {
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.carouselTableConfig = JSON.stringify(CONFIG_MODEL.value)
+    localStorage.carouselTableConfig = JSON.stringify(CONFIG_MODEL.value);
     clearStep.value += 1;
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_carousel_table.model))
+    CONFIG_MODEL.value = JSON.parse(
+        JSON.stringify(defaultData.vue_ui_carousel_table.model),
+    );
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.carouselTableConfig) {
-        localStorage.setItem('carouselTableConfig', {})
+    if (!localStorage.carouselTableConfig) {
+        localStorage.setItem("carouselTableConfig", {});
     }
-    saveConfigToLocalStorage()
+    saveConfigToLocalStorage();
     step.value += 1;
 }
 
 const finalConfig = computed(() => {
-    return convertArrayToObject(CONFIG_MODEL.value)
-})
+    return convertArrayToObject(CONFIG_MODEL.value);
+});
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => {
-        if(! makerTranslations.value.labels[l]) return l
-        return  makerTranslations.value.labels[l][store.lang]
-    }).join(" ") :
-    makerTranslations.value.labels[label] ?
-    makerTranslations.value.labels[label][store.lang] : label
+    return Array.isArray(label)
+        ? label
+              .map((l) => {
+                  if (!makerTranslations.value.labels[l]) return l;
+                  return makerTranslations.value.labels[l][store.lang];
+              })
+              .join(" ")
+        : makerTranslations.value.labels[label]
+          ? makerTranslations.value.labels[label][store.lang]
+          : label;
 }
 
 function addCol() {
-    currentDataset.value.head.push('...');
-    currentDataset.value.body.forEach(el => {
-        el.push(0)
-    })
-    saveDatasetToLocalStorage()
+    currentDataset.value.head.push("...");
+    currentDataset.value.body.forEach((el) => {
+        el.push(0);
+    });
+    saveDatasetToLocalStorage();
 }
 
 function deleteCol(index) {
-    currentDataset.value.head.splice(index, 1)
-    currentDataset.value.body.forEach(row => row.splice(index, 1))
-    saveDatasetToLocalStorage()
+    currentDataset.value.head.splice(index, 1);
+    currentDataset.value.body.forEach((row) => row.splice(index, 1));
+    saveDatasetToLocalStorage();
 }
 
 function addRow() {
-    const arr = new Array(currentDataset.value.head.length).fill(0)
-    currentDataset.value.body.push(arr)
-    saveDatasetToLocalStorage()
+    const arr = new Array(currentDataset.value.head.length).fill(0);
+    currentDataset.value.body.push(arr);
+    saveDatasetToLocalStorage();
 }
 
 function deleteRow(index) {
@@ -142,11 +153,18 @@ const colDeleteIndexIndicator = ref(null);
 
 <template>
     <div>
+        <ClearStorageAndRefresh
+            keyConfig="carouselTableConfig"
+            keyDataset="carouselTableDataset"
+            :key="`clear_${clearStep}`"
+        />
+        <BaseDocExampleLink
+            link="vue-ui-carousel-table"
+            :example="false"
+            componentName="VueUiCarouselTable"
+        />
 
-        <ClearStorageAndRefresh keyConfig="carouselTableConfig" keyDataset="carouselTableDataset" :key="`clear_${clearStep}`"/>
-        <BaseDocExampleLink link="vue-ui-carousel-table" :example="false" componentName="VueUiCarouselTable"/>
-    
-        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+        <div class="w-full mt-[64px]" style="height: calc(100% - 64px)">
             <Transition name="fade">
                 <BaseMakerChart
                     v-if="!isFixed"
@@ -154,28 +172,55 @@ const colDeleteIndexIndicator = ref(null);
                     @fixChart="fixChart"
                     @resetModel="resetModel"
                 >
-                    <VueUiCarouselTable ref="chart" :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
+                    <VueUiCarouselTable
+                        ref="chart"
+                        :dataset="currentDataset"
+                        :config="finalConfig"
+                        :key="`chart_${step}`"
+                    />
                 </BaseMakerChart>
             </Transition>
         </div>
-    
+
         <BaseCard>
             <details open>
-                <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-                <div class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md overflow-x-auto">
+                <summary class="cursor-pointer mb-4">
+                    {{ makerTranslations.dataset[store.lang] }}
+                </summary>
+                <div
+                    class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md overflow-x-auto"
+                >
                     {{ makerTranslations.tableHeader[store.lang] }}
-                    <table class="table-auto border-collapse border border-slate-500 my-4 w-full">
+                    <table
+                        class="table-auto border-collapse border border-slate-500 my-4 w-full"
+                    >
                         <thead>
                             <tr>
-                                <th v-for="(h,i) in currentDataset.head" :class="`relative border border-gray-400 p-2 ${i === colDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]' }`">
-                                    <div class="flex flex-col gap-2 place-items-center">
-                                        <label :for="`th_${i}`" class="w-full">th index {{ i }}</label>
-                                        <input :id="`th_${i}`" type="text" v-model="currentDataset.head[i]" class="pl-2 h-[40px]">
+                                <th
+                                    v-for="(h, i) in currentDataset.head"
+                                    :class="`relative border border-gray-400 p-2 ${i === colDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]'}`"
+                                >
+                                    <div
+                                        class="flex flex-col gap-2 place-items-center"
+                                    >
+                                        <label :for="`th_${i}`" class="w-full"
+                                            >th index {{ i }}</label
+                                        >
+                                        <input
+                                            :id="`th_${i}`"
+                                            type="text"
+                                            v-model="currentDataset.head[i]"
+                                            class="pl-2 h-[40px]"
+                                        />
                                     </div>
                                     <div class="absolute top-2 left-2 z-10">
                                         <BaseButton
-                                            @mouseenter="colDeleteIndexIndicator = i" 
-                                            @mouseleave="colDeleteIndexIndicator = null"
+                                            @mouseenter="
+                                                colDeleteIndexIndicator = i
+                                            "
+                                            @mouseleave="
+                                                colDeleteIndexIndicator = null
+                                            "
                                             color="error"
                                             :size="6"
                                             fab
@@ -190,27 +235,44 @@ const colDeleteIndexIndicator = ref(null);
                     </table>
                     <div class="flex flex-row gap-4">
                         <BaseButton
-                            color="success" 
+                            color="success"
                             fab
                             :size="10"
                             @click="addCol"
-                            :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                            :tooltip="
+                                translations.maker.tooltips.addDataset[
+                                    store.lang
+                                ]
+                            "
                             tooltip-position="right"
                         >
-                            <PlusIcon/>
+                            <PlusIcon />
                         </BaseButton>
                     </div>
                 </div>
-                <div class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md mt-4 overflow-x-auto">
+                <div
+                    class="flex flex-col gap-2 bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md mt-4 overflow-x-auto"
+                >
                     {{ makerTranslations.tableBody[store.lang] }}
-                    <table class="table-auto border-collapse border border-slate-500 my-4 w-full">
+                    <table
+                        class="table-auto border-collapse border border-slate-500 my-4 w-full"
+                    >
                         <thead>
-                            <tr v-for="(row, i) in currentDataset.body" class="relative">
+                            <tr
+                                v-for="(row, i) in currentDataset.body"
+                                class="relative"
+                            >
                                 <td>
-                                    <div class="w-full flex place-items-center justify-center">
+                                    <div
+                                        class="w-full flex place-items-center justify-center"
+                                    >
                                         <BaseButton
-                                            @mouseenter="rowDeleteIndexIndicator = i" 
-                                            @mouseleave="rowDeleteIndexIndicator = null"
+                                            @mouseenter="
+                                                rowDeleteIndexIndicator = i
+                                            "
+                                            @mouseleave="
+                                                rowDeleteIndexIndicator = null
+                                            "
                                             color="error"
                                             :size="6"
                                             fab
@@ -220,14 +282,26 @@ const colDeleteIndexIndicator = ref(null);
                                         </BaseButton>
                                     </div>
                                 </td>
-                                <td v-for="(td, j) in row" :class="`relative border border-gray-400 p-2 ${ i === rowDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]'}`">
-                                    <input v-model="currentDataset.body[i][j]" class="pl-2 h-[40px]">
+                                <td
+                                    v-for="(td, j) in row"
+                                    :class="`relative border border-gray-400 p-2 ${i === rowDeleteIndexIndicator ? 'bg-[#FF640050]' : 'bg-gray-300 dark:bg-[#FFFFFF10]'}`"
+                                >
+                                    <input
+                                        v-model="currentDataset.body[i][j]"
+                                        class="pl-2 h-[40px]"
+                                    />
                                 </td>
                                 <td>
-                                    <div class="w-full flex place-items-center justify-center">
+                                    <div
+                                        class="w-full flex place-items-center justify-center"
+                                    >
                                         <BaseButton
-                                            @mouseenter="rowDeleteIndexIndicator = i" 
-                                            @mouseleave="rowDeleteIndexIndicator = null"
+                                            @mouseenter="
+                                                rowDeleteIndexIndicator = i
+                                            "
+                                            @mouseleave="
+                                                rowDeleteIndexIndicator = null
+                                            "
                                             color="error"
                                             :size="6"
                                             fab
@@ -242,30 +316,36 @@ const colDeleteIndexIndicator = ref(null);
                     </table>
                     <div class="flex flex-row gap-4">
                         <BaseButton
-                            color="success" 
+                            color="success"
                             fab
                             :size="10"
                             @click="addRow"
-                            :tooltip="translations.maker.tooltips.addDataset[store.lang]"
+                            :tooltip="
+                                translations.maker.tooltips.addDataset[
+                                    store.lang
+                                ]
+                            "
                             tooltip-position="right"
                         >
-                            <PlusIcon/>
+                            <PlusIcon />
                         </BaseButton>
                     </div>
                 </div>
             </details>
         </BaseCard>
-    
+
         <details open class="mt-6" v-if="makerTranslations.labels">
-            <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-    
+            <summary class="cursor-pointer">
+                {{ makerTranslations.config[store.lang] }}
+            </summary>
+
             <MakerKnobs
                 :categories="CONFIG_CATEGORIES"
                 :model="CONFIG_MODEL"
                 @change="forceChartUpdate"
             />
         </details>
-    
+
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
             <ComponentContent
                 :dataset="currentDataset"
@@ -273,15 +353,19 @@ const colDeleteIndexIndicator = ref(null);
                 componentName="VueUiCarouselTable"
                 configName="vue_ui_carousel_table"
                 @click="() => copyComponent('componentContent', store)"
-                :copyComponentFunc="() => copyComponent('componentContent', store)"
+                :copyComponentFunc="
+                    () => copyComponent('componentContent', store)
+                "
                 keyConfig="carouselTableConfig"
                 keyDataset="carouselTableDataset"
             >
                 <template #component-copy>
-                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                    <CopyComponent
+                        @click="() => copyComponent('componentContent', store)"
+                    />
                 </template>
             </ComponentContent>
-            <slot name="rater"/>          
+            <slot name="rater" />
         </div>
     </div>
     <Transition name="fade">
@@ -291,7 +375,11 @@ const colDeleteIndexIndicator = ref(null);
             @fixChart="fixChart"
             @resetModel="resetModel"
         >
-            <VueUiCarouselTable :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
+            <VueUiCarouselTable
+                :dataset="currentDataset"
+                :config="finalConfig"
+                :key="`chart_${step}`"
+            />
         </BaseMakerChart>
     </Transition>
 </template>

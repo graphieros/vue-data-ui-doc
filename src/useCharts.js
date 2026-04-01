@@ -1,9 +1,9 @@
-import { computed } from "vue"
-import { useMainStore } from "./stores"
+import { computed } from "vue";
+import { useMainStore } from "./stores";
 
 export default function useCharts() {
-    const store = useMainStore()
-    const translations = computed(() => store.translations)
+    const store = useMainStore();
+    const translations = computed(() => store.translations);
 
     const classification = computed(() => {
         return {
@@ -16,7 +16,7 @@ export default function useCharts() {
                 ja: "時系列データ",
                 es: "datos a lo largo del tiempo",
                 ko: "시간에 따른 데이터",
-                ar: "البيانات مع مرور الوقت"
+                ar: "البيانات مع مرور الوقت",
             },
             proportions: {
                 en: "proportions",
@@ -27,7 +27,7 @@ export default function useCharts() {
                 ja: "割合",
                 es: "proporciones",
                 ko: "비율",
-                ar: "النسب"
+                ar: "النسب",
             },
             comparisons: {
                 en: "comparisons",
@@ -38,7 +38,7 @@ export default function useCharts() {
                 ja: "比較",
                 es: "comparaciones",
                 ko: "비교",
-                ar: "المقارنات"
+                ar: "المقارنات",
             },
             rating: {
                 en: "rating",
@@ -49,7 +49,7 @@ export default function useCharts() {
                 ja: "評価",
                 es: "clasificación",
                 ko: "평점",
-                ar: "التقييم"
+                ar: "التقييم",
             },
             dataTables: {
                 en: "data tables",
@@ -60,7 +60,7 @@ export default function useCharts() {
                 ja: "データテーブル",
                 es: "tablas de datos",
                 ko: "데이터 테이블",
-                ar: "جداول البيانات"
+                ar: "جداول البيانات",
             },
             relationships: {
                 en: "relationships",
@@ -71,7 +71,7 @@ export default function useCharts() {
                 ja: "関係",
                 es: "relaciones",
                 ko: "관계",
-                ar: "العلاقات"
+                ar: "العلاقات",
             },
             hierarchy: {
                 en: "hierarchy",
@@ -82,7 +82,7 @@ export default function useCharts() {
                 ja: "階層",
                 es: "jerarquía",
                 ko: "계층",
-                ar: "التسلسل الهرمي"
+                ar: "التسلسل الهرمي",
             },
             partToAWhole: {
                 en: "part to a whole",
@@ -93,7 +93,7 @@ export default function useCharts() {
                 ja: "全体の一部",
                 es: "parte de un todo",
                 ko: "전체의 일부",
-                ar: "جزء من الكل"
+                ar: "جزء من الكل",
             },
             distribution: {
                 en: "distribution",
@@ -104,7 +104,7 @@ export default function useCharts() {
                 ja: "分布",
                 es: "distribución",
                 ko: "분포",
-                ar: "التوزيع"
+                ar: "التوزيع",
             },
             range: {
                 en: "range",
@@ -115,7 +115,7 @@ export default function useCharts() {
                 ja: "範囲",
                 es: "rango",
                 ko: "범위",
-                ar: "النطاق"
+                ar: "النطاق",
             },
             semantic: {
                 en: "semantic",
@@ -126,7 +126,7 @@ export default function useCharts() {
                 ja: "セマンティック",
                 es: "semántico",
                 ko: "의미론적",
-                ar: "الدلالي"
+                ar: "الدلالي",
             },
             uiTools: {
                 en: "UI tools",
@@ -137,20 +137,20 @@ export default function useCharts() {
                 ja: "UIツール",
                 es: "herramientas de UI",
                 ko: "UI 도구",
-                ar: "أدوات واجهة المستخدم"
+                ar: "أدوات واجهة المستخدم",
             },
             maps: {
-                en: 'Maps',
-                fr: 'Cartes',
-                pt: 'Mapas',
-                de: 'Karten',
-                zh: '地图',
-                ja: '地図',
-                es: 'Mapas',
-                ko: '지도',
-                ar: 'خرائط'
-            }
-        }
+                en: "Maps",
+                fr: "Cartes",
+                pt: "Mapas",
+                de: "Karten",
+                zh: "地图",
+                ja: "地図",
+                es: "Mapas",
+                ko: "지도",
+                ar: "خرائط",
+            },
+        };
     });
 
     const classificationDescription = computed(() => {
@@ -164,7 +164,7 @@ export default function useCharts() {
                 ja: "データを一定期間にわたって表示し、傾向や変化を見つけるための視覚化方法。",
                 es: "Métodos de visualización que muestran datos a lo largo de un período para identificar tendencias o cambios.",
                 ko: "기간 동안 데이터를 보여주어 트렌드나 변화를 찾는 시각화 방법.",
-                ar: "طرق العرض التي تُظهر البيانات خلال فترة زمنية لتحديد الاتجاهات أو التغيرات."
+                ar: "طرق العرض التي تُظهر البيانات خلال فترة زمنية لتحديد الاتجاهات أو التغيرات.",
             },
             proportions: {
                 en: "Visualization methods that use size or area to show differences or similarities between values or for parts to a whole.",
@@ -175,7 +175,7 @@ export default function useCharts() {
                 ja: "サイズや面積を使用して値の違いや類似性、または部分と全体を示す視覚化方法。",
                 es: "Métodos de visualización que utilizan tamaño o área para mostrar diferencias o similitudes entre valores o partes de un todo.",
                 ko: "크기나 면적을 사용하여 값 간의 차이나 유사성을 나타내거나 전체의 일부를 보여주는 시각화 방법.",
-                ar: "طرق العرض التي تستخدم الحجم أو المساحة لإظهار الاختلافات أو التشابهات بين القيم أو بين أجزاء الكل."
+                ar: "طرق العرض التي تستخدم الحجم أو المساحة لإظهار الاختلافات أو التشابهات بين القيم أو بين أجزاء الكل.",
             },
             comparisons: {
                 en: "Visualisation methods that help show the differences or similarities between values.",
@@ -186,7 +186,7 @@ export default function useCharts() {
                 ja: "値の違いや類似性を示すための視覚化方法。",
                 es: "Métodos de visualización que ayudan a mostrar las diferencias o similitudes entre valores.",
                 ko: "값 간의 차이점이나 유사성을 보여주는 시각화 방법.",
-                ar: "طرق العرض التي تساعد في إظهار الاختلافات أو التشابهات بين القيم."
+                ar: "طرق العرض التي تساعد في إظهار الاختلافات أو التشابهات بين القيم.",
             },
             rating: {
                 en: "Rating components to show rating results or ask users to rate a topic.",
@@ -197,7 +197,7 @@ export default function useCharts() {
                 ja: "評価結果を表示したり、ユーザーにトピックを評価してもらうためのコンポーネント。",
                 es: "Componentes de calificación para mostrar resultados o pedir a los usuarios que califiquen un tema.",
                 ko: "평가 결과를 표시하거나 사용자가 주제를 평가하도록 요청하는 구성 요소.",
-                ar: "مكونات التقييم لإظهار النتائج أو طلب تقييم المستخدمين لموضوع معين."
+                ar: "مكونات التقييم لإظهار النتائج أو طلب تقييم المستخدمين لموضوع معين.",
             },
             dataTables: {
                 en: "Table components to organize and highlight trends in a dataset.",
@@ -208,7 +208,7 @@ export default function useCharts() {
                 ja: "データセットの傾向を整理し、強調するためのテーブルコンポーネント。",
                 es: "Componentes de tabla para organizar y resaltar tendencias en un conjunto de datos.",
                 ko: "데이터셋의 트렌드를 정리하고 강조하기 위한 테이블 구성 요소.",
-                ar: "مكونات الجداول لتنظيم وإبراز الاتجاهات في مجموعة البيانات."
+                ar: "مكونات الجداول لتنظيم وإبراز الاتجاهات في مجموعة البيانات.",
             },
             relationships: {
                 en: "Visualization methods that show relationships and connections between the data or show correlations between two or more variables.",
@@ -219,7 +219,7 @@ export default function useCharts() {
                 ja: "データ間の関係や接続、または2つ以上の変数間の相関を示す視覚化方法。",
                 es: "Métodos de visualización que muestran relaciones y conexiones entre los datos o correlaciones entre dos o más variables.",
                 ko: "데이터 간의 관계와 연결 또는 두 개 이상의 변수 간의 상관관계를 보여주는 시각화 방법.",
-                ar: "طرق العرض التي تظهر العلاقات والروابط بين البيانات أو العلاقات بين متغيرين أو أكثر."
+                ar: "طرق العرض التي تظهر العلاقات والروابط بين البيانات أو العلاقات بين متغيرين أو أكثر.",
             },
             hierarchy: {
                 en: "Visualization methods that show how data or objects are ranked and ordered together in an organisation or system.",
@@ -230,7 +230,7 @@ export default function useCharts() {
                 ja: "データやオブジェクトが組織やシステム内でどのようにランク付けおよび整理されているかを示す可視化方法。",
                 es: "Métodos de visualización que muestran cómo los datos u objetos están clasificados y ordenados en una organización o sistema.",
                 ko: "데이터나 객체가 조직이나 시스템 내에서 어떻게 계층화되고 정렬되는지를 보여주는 시각화 방법.",
-                ar: "طرق عرض البيانات التي توضح كيف يتم تصنيف وترتيب البيانات أو الكائنات في منظمة أو نظام."
+                ar: "طرق عرض البيانات التي توضح كيف يتم تصنيف وترتيب البيانات أو الكائنات في منظمة أو نظام.",
             },
             partToAWhole: {
                 en: "Visualisation methods that show part (or parts) of a variable to its total. Often used to show how something is divided up.",
@@ -241,7 +241,7 @@ export default function useCharts() {
                 ja: "変数の一部（または複数部分）が全体に対してどのように構成されているかを示す可視化方法。何かの分割を示す際によく使用されます。",
                 es: "Métodos de visualización que muestran parte (o partes) de una variable respecto a su total. A menudo se usan para mostrar cómo se divide algo.",
                 ko: "변수의 일부(또는 여러 부분)가 전체와 어떻게 연관되는지를 보여주는 시각화 방법. 무언가가 어떻게 나뉘어지는지를 보여줄 때 자주 사용됩니다.",
-                ar: "طرق عرض البيانات التي توضح جزء (أو أجزاء) من متغير بالنسبة إلى إجماليه. غالبًا ما تُستخدم لعرض كيفية تقسيم شيء ما."
+                ar: "طرق عرض البيانات التي توضح جزء (أو أجزاء) من متغير بالنسبة إلى إجماليه. غالبًا ما تُستخدم لعرض كيفية تقسيم شيء ما.",
             },
             distribution: {
                 en: "Visualization methods that display frequency, how data spread out over an interval or is grouped.",
@@ -252,7 +252,7 @@ export default function useCharts() {
                 ja: "頻度、データが区間内でどのように分布またはグループ化されているかを示す可視化方法。",
                 es: "Métodos de visualización que muestran la frecuencia, cómo los datos se distribuyen en un intervalo o se agrupan.",
                 ko: "빈도 및 데이터가 간격에 따라 어떻게 분산되거나 그룹화되는지를 표시하는 시각화 방법.",
-                ar: "طرق عرض البيانات التي تعرض التردد وكيفية انتشار البيانات على فترة زمنية أو تجميعها."
+                ar: "طرق عرض البيانات التي تعرض التردد وكيفية انتشار البيانات على فترة زمنية أو تجميعها.",
             },
             range: {
                 en: "Visualization methods that display the variations between upper and lower limits on a scale.",
@@ -263,7 +263,7 @@ export default function useCharts() {
                 ja: "スケールの上下限間の変動を表示する可視化方法。",
                 es: "Métodos de visualización que muestran las variaciones entre los límites superior e inferior en una escala.",
                 ko: "스케일의 상한선과 하한선 간의 변화를 표시하는 시각화 방법.",
-                ar: "طرق عرض البيانات التي تعرض التغيرات بين الحدود العليا والسفلى على مقياس."
+                ar: "طرق عرض البيانات التي تعرض التغيرات بين الحدود العليا والسفلى على مقياس.",
             },
             semantic: {
                 en: "Visualisation methods that reveal patterns and insights from textual sources.",
@@ -274,7 +274,7 @@ export default function useCharts() {
                 ja: "テキスト情報からパターンや洞察を明らかにする可視化方法。",
                 es: "Métodos de visualización que revelan patrones e ideas a partir de fuentes textuales.",
                 ko: "텍스트 소스에서 패턴과 통찰력을 드러내는 시각화 방법.",
-                ar: "طرق عرض البيانات التي تكشف الأنماط والرؤى من المصادر النصية."
+                ar: "طرق عرض البيانات التي تكشف الأنماط والرؤى من المصادر النصية.",
             },
             uiTools: {
                 en: "Cool tools to level-up your UI.",
@@ -285,7 +285,7 @@ export default function useCharts() {
                 ja: "UIをレベルアップさせるクールなツール。",
                 es: "Herramientas geniales para mejorar tu interfaz de usuario.",
                 ko: "UI를 업그레이드할 멋진 도구들.",
-                ar: "أدوات رائعة لتحسين واجهة المستخدم الخاصة بك."
+                ar: "أدوات رائعة لتحسين واجهة المستخدم الخاصة بك.",
             },
             maps: {
                 en: "Maps",
@@ -296,507 +296,578 @@ export default function useCharts() {
                 ja: "地図",
                 es: "Mapas",
                 ko: "지도",
-                ar: "خرائط"
-            }
-        }
-    })
-
+                ar: "خرائط",
+            },
+        };
+    });
 
     const taxinomy = computed(() => {
         return {
             VueUiGeo: {
-                icon: 'chartGeo',
-                link: '/docs#vue-ui-geo',
+                icon: "chartGeo",
+                link: "/docs#vue-ui-geo",
                 description: translations.value.docs.tooltips.geo[store.lang],
-                taxinomy: ['maps'],
-                singleTaxinomy: 'maps',
+                taxinomy: ["maps"],
+                singleTaxinomy: "maps",
             },
             VueUiWorld: {
-                icon: 'world',
-                link: '/docs#vue-ui-world',
+                icon: "world",
+                link: "/docs#vue-ui-world",
                 description: translations.value.docs.tooltips.world[store.lang],
-                taxinomy: ['maps'],
-                singleTaxinomy: 'maps',
+                taxinomy: ["maps"],
+                singleTaxinomy: "maps",
             },
             VueUiXy: {
-                icon: 'chartLine',
-                link: '/docs#vue-ui-xy',
+                icon: "chartLine",
+                link: "/docs#vue-ui-xy",
                 description: translations.value.docs.tooltips.xy[store.lang],
-                taxinomy: ['comparisons', 'distribution', 'dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                taxinomy: ["comparisons", "distribution", "dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiXyCanvas: {
-                icon: 'chartLine',
-                link: '/docs#vue-ui-xy-canvas',
-                description: translations.value.docs.tooltips.xyCanvas[store.lang],
-                taxinomy: ['comparisons', 'distribution', 'dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                icon: "chartLine",
+                link: "/docs#vue-ui-xy-canvas",
+                description:
+                    translations.value.docs.tooltips.xyCanvas[store.lang],
+                taxinomy: ["comparisons", "distribution", "dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiBullet: {
-                icon: 'chartBullet',
-                link: '/docs#vue-ui-bullet',
-                description: translations.value.docs.tooltips.bullet[store.lang],
-                taxinomy: ['comparisons', 'range'],
-                singleTaxinomy: 'range'
+                icon: "chartBullet",
+                link: "/docs#vue-ui-bullet",
+                description:
+                    translations.value.docs.tooltips.bullet[store.lang],
+                taxinomy: ["comparisons", "range"],
+                singleTaxinomy: "range",
             },
             VueUi3dBar: {
-                icon: 'chart3dBar',
-                link: '/docs#vue-ui-3d-bar',
+                icon: "chart3dBar",
+                link: "/docs#vue-ui-3d-bar",
                 description: translations.value.docs.tooltips.bar3d[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'proportions'
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "proportions",
             },
             VueUiKpi: {
-                icon: 'kpiBox',
-                link: '/docs#vue-ui-kpi',
+                icon: "kpiBox",
+                link: "/docs#vue-ui-kpi",
                 description: translations.value.docs.tooltips.kpi[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiAccordion: {
-                icon: 'accordion',
-                link: '/docs#vue-ui-accordion',
-                description: translations.value.docs.tooltips.accordion[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                icon: "accordion",
+                link: "/docs#vue-ui-accordion",
+                description:
+                    translations.value.docs.tooltips.accordion[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiAgePyramid: {
-                icon: 'chartAgePyramid',
-                link: '/docs#vue-ui-age-pyramid',
-                description: translations.value.docs.tooltips.agePyramid[store.lang],
-                taxinomy: ['comparisons', 'distribution'],
-                singleTaxinomy: 'distribution'
+                icon: "chartAgePyramid",
+                link: "/docs#vue-ui-age-pyramid",
+                description:
+                    translations.value.docs.tooltips.agePyramid[store.lang],
+                taxinomy: ["comparisons", "distribution"],
+                singleTaxinomy: "distribution",
             },
             VueUiAnnotator: {
-                icon: 'annotator',
-                link: '/docs#vue-ui-annotator',
-                description: translations.value.docs.tooltips.annotator[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                icon: "annotator",
+                link: "/docs#vue-ui-annotator",
+                description:
+                    translations.value.docs.tooltips.annotator[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiCandlestick: {
-                icon: 'chartCandlestick',
-                link: '/docs#vue-ui-candlestick',
-                description: translations.value.docs.tooltips.candlestick[store.lang],
-                taxinomy: ['distribution', 'range', 'dataOverTime'],
-                singleTaxinomy: 'dataOverTIme'
+                icon: "chartCandlestick",
+                link: "/docs#vue-ui-candlestick",
+                description:
+                    translations.value.docs.tooltips.candlestick[store.lang],
+                taxinomy: ["distribution", "range", "dataOverTime"],
+                singleTaxinomy: "dataOverTIme",
             },
             VueUiCarouselTable: {
-                icon: 'carouselTable',
-                link: '/docs#vue-ui-carousel-table',
-                description: translations.value.docs.tooltips.carouselTable[store.lang],
-                taxinomy: ['dataTables'],
-                singleTaxinomy: 'dataTables'
+                icon: "carouselTable",
+                link: "/docs#vue-ui-carousel-table",
+                description:
+                    translations.value.docs.tooltips.carouselTable[store.lang],
+                taxinomy: ["dataTables"],
+                singleTaxinomy: "dataTables",
             },
             VueUiChestnut: {
-                icon: 'chartChestnut',
-                link: '/docs#vue-ui-chestnut',
-                description: translations.value.docs.tooltips.chestnut[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'hierarchy', 'partToAWhole'],
-                singleTaxinomy: 'partToAWhole'
+                icon: "chartChestnut",
+                link: "/docs#vue-ui-chestnut",
+                description:
+                    translations.value.docs.tooltips.chestnut[store.lang],
+                taxinomy: [
+                    "comparisons",
+                    "proportions",
+                    "hierarchy",
+                    "partToAWhole",
+                ],
+                singleTaxinomy: "partToAWhole",
             },
             VueUiCursor: {
-                icon: 'cursor',
-                link: '/docs#vue-ui-cursor',
-                description: translations.value.docs.tooltips.cursor[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                icon: "cursor",
+                link: "/docs#vue-ui-cursor",
+                description:
+                    translations.value.docs.tooltips.cursor[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiDashboard: {
-                icon: 'dashboard',
-                link: '/docs#vue-ui-dashboard',
-                description: translations.value.docs.tooltips.dashboard[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                icon: "dashboard",
+                link: "/docs#vue-ui-dashboard",
+                description:
+                    translations.value.docs.tooltips.dashboard[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiDigits: {
-                icon: 'digit8',
-                link: '/docs#vue-ui-digits',
-                description: translations.value.docs.tooltips.digits[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                icon: "digit8",
+                link: "/docs#vue-ui-digits",
+                description:
+                    translations.value.docs.tooltips.digits[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiDonut: {
-                icon: 'chartDonut',
-                link: '/docs#vue-ui-donut',
+                icon: "chartDonut",
+                link: "/docs#vue-ui-donut",
                 description: translations.value.docs.tooltips.donut[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'partToAWhole'],
-                singleTaxinomy: 'proportions'
+                taxinomy: ["comparisons", "proportions", "partToAWhole"],
+                singleTaxinomy: "proportions",
             },
             VueUiDonutEvolution: {
-                icon: 'chartDonutEvolution',
-                link: '/docs#vue-ui-donut-evolution',
-                description: translations.value.docs.tooltips.donutEvolution[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                icon: "chartDonutEvolution",
+                link: "/docs#vue-ui-donut-evolution",
+                description:
+                    translations.value.docs.tooltips.donutEvolution[store.lang],
+                taxinomy: ["comparisons", "proportions", "dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiDumbbell: {
-                icon: 'chartDumbbell',
-                link: '/docs#vue-ui-dumbbell',
-                description: translations.value.docs.tooltips.dumbbell[store.lang],
-                taxinomy: ['comparisons', 'range'],
-                singleTaxinomy: 'range'
+                icon: "chartDumbbell",
+                link: "/docs#vue-ui-dumbbell",
+                description:
+                    translations.value.docs.tooltips.dumbbell[store.lang],
+                taxinomy: ["comparisons", "range"],
+                singleTaxinomy: "range",
             },
             VueUiFlow: {
-                icon: 'chartFlow',
-                link: '/docs#vue-ui-flow',
+                icon: "chartFlow",
+                link: "/docs#vue-ui-flow",
                 description: translations.value.docs.tooltips.flow[store.lang],
-                taxinomy: ['proportions', 'distribution'],
-                singleTaxinomy: 'distribution'
+                taxinomy: ["proportions", "distribution"],
+                singleTaxinomy: "distribution",
             },
             VueUiGalaxy: {
-                icon: 'chartGalaxy',
-                link: '/docs#vue-ui-galaxy',
-                description: translations.value.docs.tooltips.galaxy[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'proportions'
+                icon: "chartGalaxy",
+                link: "/docs#vue-ui-galaxy",
+                description:
+                    translations.value.docs.tooltips.galaxy[store.lang],
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "proportions",
             },
             VueUiGauge: {
-                icon: 'chartGauge',
-                link: '/docs#vue-ui-gauge',
+                icon: "chartGauge",
+                link: "/docs#vue-ui-gauge",
                 description: translations.value.docs.tooltips.gauge[store.lang],
-                taxinomy: ['range'],
-                singleTaxinomy: 'range'
+                taxinomy: ["range"],
+                singleTaxinomy: "range",
             },
             VueUiHeatmap: {
-                icon: 'chartHeatmap',
-                link: '/docs#vue-ui-heatmap',
-                description: translations.value.docs.tooltips.heatmap[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'relationships'],
-                singleTaxinomy: 'proportions'
+                icon: "chartHeatmap",
+                link: "/docs#vue-ui-heatmap",
+                description:
+                    translations.value.docs.tooltips.heatmap[store.lang],
+                taxinomy: ["comparisons", "proportions", "relationships"],
+                singleTaxinomy: "proportions",
             },
             VueUiIcon: {
-                icon: 'icons',
-                link: '/docs#vue-ui-icon',
+                icon: "icons",
+                link: "/docs#vue-ui-icon",
                 description: translations.value.docs.tooltips.icon[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiMiniLoader: {
-                icon: 'chartWheel',
-                link: '/docs#vue-ui-mini-loader',
-                description: translations.value.docs.tooltips.miniLoader[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                icon: "chartWheel",
+                link: "/docs#vue-ui-mini-loader",
+                description:
+                    translations.value.docs.tooltips.miniLoader[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiDag: {
-                icon: 'chartDag',
-                link: '/docs#vue-ui-dag',
+                icon: "chartDag",
+                link: "/docs#vue-ui-dag",
                 description: translations.value.docs.tooltips.dag[store.lang],
-                taxinomy: ['hierarchy'],
-                singleTaxinomy: 'hierarchy'
+                taxinomy: ["hierarchy"],
+                singleTaxinomy: "hierarchy",
             },
             VueUiTreemap: {
-                icon: 'chartTreemap',
-                link: '/docs#vue-ui-treemap',
-                description: translations.value.docs.tooltips.treemap[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'hierarchy', 'partToAWhole'],
-                singleTaxinomy: 'hierarchy'
+                icon: "chartTreemap",
+                link: "/docs#vue-ui-treemap",
+                description:
+                    translations.value.docs.tooltips.treemap[store.lang],
+                taxinomy: [
+                    "comparisons",
+                    "proportions",
+                    "hierarchy",
+                    "partToAWhole",
+                ],
+                singleTaxinomy: "hierarchy",
             },
             VueUiCirclePack: {
-                icon: 'chartCirclePack',
-                link: '/docs#vue-ui-circle-pack',
-                description: translations.value.docs.tooltips.circlePack[store.lang],
-                taxinomy: ['proportions', 'hierarchy'],
-                singleTaxinomy: 'hierarchy'
+                icon: "chartCirclePack",
+                link: "/docs#vue-ui-circle-pack",
+                description:
+                    translations.value.docs.tooltips.circlePack[store.lang],
+                taxinomy: ["proportions", "hierarchy"],
+                singleTaxinomy: "hierarchy",
             },
             VueUiMolecule: {
-                icon: 'chartCluster',
-                link: '/docs#vue-ui-molecule',
-                description: translations.value.docs.tooltips.molecule[store.lang],
-                taxinomy: ['relationships', 'hierarchy'],
-                singleTaxinomy: 'hierarchy'
+                icon: "chartCluster",
+                link: "/docs#vue-ui-molecule",
+                description:
+                    translations.value.docs.tooltips.molecule[store.lang],
+                taxinomy: ["relationships", "hierarchy"],
+                singleTaxinomy: "hierarchy",
             },
             VueUiMoodRadar: {
-                icon: 'chartMoodRadar',
-                link: '/docs#vue-ui-mood-radar',
-                description: translations.value.docs.tooltips.moodRadar[store.lang],
-                taxinomy: ['comparisons', 'relationships'],
-                singleTaxinomy: 'comparisons'
+                icon: "chartMoodRadar",
+                link: "/docs#vue-ui-mood-radar",
+                description:
+                    translations.value.docs.tooltips.moodRadar[store.lang],
+                taxinomy: ["comparisons", "relationships"],
+                singleTaxinomy: "comparisons",
             },
             VueUiNestedDonuts: {
-                icon: 'chartNestedDonuts',
-                link: '/docs#vue-ui-nested-donuts',
-                description: translations.value.docs.tooltips.nestedDonuts[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'proportions'
+                icon: "chartNestedDonuts",
+                link: "/docs#vue-ui-nested-donuts",
+                description:
+                    translations.value.docs.tooltips.nestedDonuts[store.lang],
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "proportions",
             },
             VueUiOnion: {
-                icon: 'chartOnion',
-                link: '/docs#vue-ui-onion',
+                icon: "chartOnion",
+                link: "/docs#vue-ui-onion",
                 description: translations.value.docs.tooltips.onion[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'proportions'
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "proportions",
             },
             VueUiParallelCoordinatePlot: {
-                icon: 'chartParallelCoordinatePlot',
-                link: '/docs#vue-ui-parallel-coordinate-plot',
+                icon: "chartParallelCoordinatePlot",
+                link: "/docs#vue-ui-parallel-coordinate-plot",
                 description: translations.value.docs.tooltips.pcp[store.lang],
-                taxinomy: ['comparisons', 'relationships'],
-                singleTaxinomy: 'comparisons'
+                taxinomy: ["comparisons", "relationships"],
+                singleTaxinomy: "comparisons",
             },
             VueUiQuadrant: {
-                icon: 'chartQuadrant',
-                link: '/docs#vue-ui-quadrant',
-                description: translations.value.docs.tooltips.quadrant[store.lang],
-                taxinomy: ['comparisons', 'distribution'],
-                singleTaxinomy: 'distribution'
+                icon: "chartQuadrant",
+                link: "/docs#vue-ui-quadrant",
+                description:
+                    translations.value.docs.tooltips.quadrant[store.lang],
+                taxinomy: ["comparisons", "distribution"],
+                singleTaxinomy: "distribution",
             },
             VueUiQuickChart: {
-                icon: 'vueDataUi',
-                link: '/docs#vue-ui-quick-chart',
-                description: translations.value.docs.tooltips.quickChart[store.lang],
-                taxinomy: ['comparisons', 'dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                icon: "vueDataUi",
+                link: "/docs#vue-ui-quick-chart",
+                description:
+                    translations.value.docs.tooltips.quickChart[store.lang],
+                taxinomy: ["comparisons", "dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiRadar: {
-                icon: 'chartRadar',
-                link: '/docs#vue-ui-radar',
+                icon: "chartRadar",
+                link: "/docs#vue-ui-radar",
                 description: translations.value.docs.tooltips.radar[store.lang],
-                taxinomy: ['comparisons', 'relationships'],
-                singleTaxinomy: 'comparisons'
+                taxinomy: ["comparisons", "relationships"],
+                singleTaxinomy: "comparisons",
             },
             VueUiRating: {
-                icon: 'star',
-                link: '/docs#vue-ui-rating',
-                description: translations.value.docs.tooltips.rating[store.lang],
-                taxinomy: ['rating'],
-                singleTaxinomy: 'rating'
+                icon: "star",
+                link: "/docs#vue-ui-rating",
+                description:
+                    translations.value.docs.tooltips.rating[store.lang],
+                taxinomy: ["rating"],
+                singleTaxinomy: "rating",
             },
             VueUiRelationCircle: {
-                icon: 'chartRelationCircle',
-                link: '/docs#vue-ui-relation-circle',
-                description: translations.value.docs.tooltips.relationCircle[store.lang],
-                taxinomy: ['comparisons', 'relationships', 'semantic'],
-                singleTaxinomy: 'semantic'
+                icon: "chartRelationCircle",
+                link: "/docs#vue-ui-relation-circle",
+                description:
+                    translations.value.docs.tooltips.relationCircle[store.lang],
+                taxinomy: ["comparisons", "relationships", "semantic"],
+                singleTaxinomy: "semantic",
             },
             VueUiChord: {
-                icon: 'chartChord',
-                link: '/docs#vue-ui-chord',
+                icon: "chartChord",
+                link: "/docs#vue-ui-chord",
                 description: translations.value.docs.tooltips.chord[store.lang],
-                taxinomy: ['comparisons', 'relationships', 'semantic'],
-                singleTaxinomy: 'semantic'
+                taxinomy: ["comparisons", "relationships", "semantic"],
+                singleTaxinomy: "semantic",
             },
             VueUiRings: {
-                icon: 'chartRings',
-                link: '/docs#vue-ui-rings',
+                icon: "chartRings",
+                link: "/docs#vue-ui-rings",
                 description: translations.value.docs.tooltips.rings[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'proportions'
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "proportions",
             },
             VueUiScatter: {
-                icon: 'chartScatter',
-                link: '/docs#vue-ui-scatter',
-                description: translations.value.docs.tooltips.scatter[store.lang],
-                taxinomy: ['comparisons', 'relationships', 'distribution'],
-                singleTaxinomy: 'distribution'
+                icon: "chartScatter",
+                link: "/docs#vue-ui-scatter",
+                description:
+                    translations.value.docs.tooltips.scatter[store.lang],
+                taxinomy: ["comparisons", "relationships", "distribution"],
+                singleTaxinomy: "distribution",
             },
             VueUiSkeleton: {
-                icon: 'skeleton',
-                link: '/docs#vue-ui-skeleton',
-                description: translations.value.docs.tooltips.skeleton[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                icon: "skeleton",
+                link: "/docs#vue-ui-skeleton",
+                description:
+                    translations.value.docs.tooltips.skeleton[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiSmiley: {
-                icon: 'smiley',
-                link: '/docs#vue-ui-smiley',
-                description: translations.value.docs.tooltips.smiley[store.lang],
-                taxinomy: ['rating'],
-                singleTaxinomy: 'rating'
+                icon: "smiley",
+                link: "/docs#vue-ui-smiley",
+                description:
+                    translations.value.docs.tooltips.smiley[store.lang],
+                taxinomy: ["rating"],
+                singleTaxinomy: "rating",
             },
             VueUiSparkHistogram: {
-                icon: 'chartSparkHistogram',
-                link: '/docs#vue-ui-sparkhistogram',
-                description: translations.value.docs.tooltips.histogram[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'proportions'
+                icon: "chartSparkHistogram",
+                link: "/docs#vue-ui-sparkhistogram",
+                description:
+                    translations.value.docs.tooltips.histogram[store.lang],
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "proportions",
             },
             VueUiSparkStackbar: {
-                icon: 'chartSparkStackbar',
-                link: '/docs#vue-ui-sparkstackbar',
-                description: translations.value.docs.tooltips.stackbar[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'partToAWhole'],
-                singleTaxinomy: 'comparisons'
+                icon: "chartSparkStackbar",
+                link: "/docs#vue-ui-sparkstackbar",
+                description:
+                    translations.value.docs.tooltips.stackbar[store.lang],
+                taxinomy: ["comparisons", "proportions", "partToAWhole"],
+                singleTaxinomy: "comparisons",
             },
             VueUiSparkTrend: {
-                icon: 'trend',
-                link: '/docs#vue-ui-spark-trend',
+                icon: "trend",
+                link: "/docs#vue-ui-spark-trend",
                 description: translations.value.docs.tooltips.trend[store.lang],
-                taxinomy: ['dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                taxinomy: ["dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiSparkbar: {
-                icon: 'chartSparkbar',
-                link: '/docs#vue-ui-sparkbar',
-                description: translations.value.docs.tooltips.sparkbar[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'proportions'
+                icon: "chartSparkbar",
+                link: "/docs#vue-ui-sparkbar",
+                description:
+                    translations.value.docs.tooltips.sparkbar[store.lang],
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "proportions",
             },
             VueUiSparkgauge: {
-                icon: 'chartGauge',
-                link: '/docs#vue-ui-sparkgauge',
+                icon: "chartGauge",
+                link: "/docs#vue-ui-sparkgauge",
                 description: translations.value.docs.tooltips.gauge[store.lang],
-                taxinomy: ['range'],
-                singleTaxinomy: 'range'
+                taxinomy: ["range"],
+                singleTaxinomy: "range",
             },
             VueUiSparkline: {
-                icon: 'chartSparkline',
-                link: '/docs#vue-ui-sparkline',
-                description: translations.value.docs.tooltips.sparkline[store.lang],
-                taxinomy: ['dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                icon: "chartSparkline",
+                link: "/docs#vue-ui-sparkline",
+                description:
+                    translations.value.docs.tooltips.sparkline[store.lang],
+                taxinomy: ["dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiStripPlot: {
-                icon: 'chartStripPlot',
-                link: '/docs#vue-ui-strip-plot',
-                description: translations.value.docs.tooltips.stripPlot[store.lang],
-                taxinomy: ['comparisons'],
-                singleTaxinomy: 'comparisons'
+                icon: "chartStripPlot",
+                link: "/docs#vue-ui-strip-plot",
+                description:
+                    translations.value.docs.tooltips.stripPlot[store.lang],
+                taxinomy: ["comparisons"],
+                singleTaxinomy: "comparisons",
             },
             VueUiTableSparkline: {
-                icon: 'chartTableSparkline',
-                link: '/docs#vue-ui-table-sparkline',
-                description: translations.value.docs.tooltips.sparklineTable[store.lang],
-                taxinomy: ['dataTables', 'dataOverTime'],
-                singleTaxinomy: 'dataTables'
+                icon: "chartTableSparkline",
+                link: "/docs#vue-ui-table-sparkline",
+                description:
+                    translations.value.docs.tooltips.sparklineTable[store.lang],
+                taxinomy: ["dataTables", "dataOverTime"],
+                singleTaxinomy: "dataTables",
             },
             VueUiTable: {
-                icon: 'chartTable',
-                link: '/docs#vue-ui-table',
+                icon: "chartTable",
+                link: "/docs#vue-ui-table",
                 description: translations.value.docs.tooltips.table[store.lang],
-                taxinomy: ['dataTables'],
-                singleTaxinomy: 'dataTables'
+                taxinomy: ["dataTables"],
+                singleTaxinomy: "dataTables",
             },
             VueUiTableHeatmap: {
-                icon: 'chartTable',
-                link: '/docs#vue-ui-table-heatmap',
-                description: translations.value.docs.tooltips.tableHeatmap[store.lang],
-                taxinomy: ['dataTables', 'relationships'],
-                singleTaxinomy: 'dataTables'
+                icon: "chartTable",
+                link: "/docs#vue-ui-table-heatmap",
+                description:
+                    translations.value.docs.tooltips.tableHeatmap[store.lang],
+                taxinomy: ["dataTables", "relationships"],
+                singleTaxinomy: "dataTables",
             },
             VueUiThermometer: {
-                icon: 'chartThermometer',
-                link: '/docs#vue-ui-thermometer',
-                description: translations.value.docs.tooltips.thermometer[store.lang],
-                taxinomy: ['range'],
-                singleTaxinomy: 'range'
+                icon: "chartThermometer",
+                link: "/docs#vue-ui-thermometer",
+                description:
+                    translations.value.docs.tooltips.thermometer[store.lang],
+                taxinomy: ["range"],
+                singleTaxinomy: "range",
             },
             VueUiTimer: {
-                icon: 'lap',
-                link: '/docs#vue-ui-timer',
+                icon: "lap",
+                link: "/docs#vue-ui-timer",
                 description: translations.value.docs.tooltips.timer[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
             },
             VueUiTiremarks: {
-                icon: 'chartTiremarks',
-                link: '/docs#vue-ui-tiremarks',
-                description: translations.value.docs.tooltips.tiremarks[store.lang],
-                taxinomy: ['range'],
-                singleTaxinomy: 'range'
+                icon: "chartTiremarks",
+                link: "/docs#vue-ui-tiremarks",
+                description:
+                    translations.value.docs.tooltips.tiremarks[store.lang],
+                taxinomy: ["range"],
+                singleTaxinomy: "range",
             },
             VueUiHorizontalBar: {
-                icon: 'chartVerticalBar',
-                link: '/docs#vue-ui-horizontal-bar',
-                description: translations.value.docs.tooltips.verticalBar[store.lang],
-                taxinomy: ['comparisons', 'proportions'],
-                singleTaxinomy: 'comparisons'
+                icon: "chartVerticalBar",
+                link: "/docs#vue-ui-horizontal-bar",
+                description:
+                    translations.value.docs.tooltips.verticalBar[store.lang],
+                taxinomy: ["comparisons", "proportions"],
+                singleTaxinomy: "comparisons",
             },
             VueUiWaffle: {
-                icon: 'chartWaffle',
-                link: '/docs#vue-ui-waffle',
-                description: translations.value.docs.tooltips.waffle[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'distribution'],
-                singleTaxinomy: 'proportions'
+                icon: "chartWaffle",
+                link: "/docs#vue-ui-waffle",
+                description:
+                    translations.value.docs.tooltips.waffle[store.lang],
+                taxinomy: ["comparisons", "proportions", "distribution"],
+                singleTaxinomy: "proportions",
             },
             VueUiWheel: {
-                icon: 'chartWheel',
-                link: '/docs#vue-ui-wheel',
+                icon: "chartWheel",
+                link: "/docs#vue-ui-wheel",
                 description: translations.value.docs.tooltips.wheel[store.lang],
-                taxinomy: ['range'],
-                singleTaxinomy: 'range'
+                taxinomy: ["range"],
+                singleTaxinomy: "range",
             },
             VueUiWordCloud: {
-                icon: 'chartWordCloud',
-                link: '/docs#vue-ui-word-cloud',
-                description: translations.value.docs.tooltips.wordCloud[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'semantic'],
-                singleTaxinomy: 'semantic'
+                icon: "chartWordCloud",
+                link: "/docs#vue-ui-word-cloud",
+                description:
+                    translations.value.docs.tooltips.wordCloud[store.lang],
+                taxinomy: ["comparisons", "proportions", "semantic"],
+                singleTaxinomy: "semantic",
             },
             VueUiGizmo: {
-                icon: 'battery',
-                link: '/docs#vue-ui-gizmo',
+                icon: "battery",
+                link: "/docs#vue-ui-gizmo",
                 description: translations.value.docs.tooltips.gizmo[store.lang],
-                taxinomy: ['range'],
-                singleTaxinomy: 'range'
+                taxinomy: ["range"],
+                singleTaxinomy: "range",
             },
             VueUiStackbar: {
-                icon: 'chartStackbar',
-                link: '/docs#vue-ui-stackbar',
-                description: translations.value.docs.tooltips.stackbarBig[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'partToAWhole', 'distribution', 'dataOverTime'],
-                singleTaxinomy: 'partToAWhole'
+                icon: "chartStackbar",
+                link: "/docs#vue-ui-stackbar",
+                description:
+                    translations.value.docs.tooltips.stackbarBig[store.lang],
+                taxinomy: [
+                    "comparisons",
+                    "proportions",
+                    "partToAWhole",
+                    "distribution",
+                    "dataOverTime",
+                ],
+                singleTaxinomy: "partToAWhole",
             },
             VueUiStackline: {
-                icon: 'chartStackline',
-                link: '/docs#vue-ui-stackline',
-                description: translations.value.docs.tooltips.stackline[store.lang],
-                taxinomy: ['comparisons', 'proportions', 'partToAWhole', 'distribution', 'dataOverTime'],
-                singleTaxinomy: 'partToAWhole'
+                icon: "chartStackline",
+                link: "/docs#vue-ui-stackline",
+                description:
+                    translations.value.docs.tooltips.stackline[store.lang],
+                taxinomy: [
+                    "comparisons",
+                    "proportions",
+                    "partToAWhole",
+                    "distribution",
+                    "dataOverTime",
+                ],
+                singleTaxinomy: "partToAWhole",
             },
             VueUiFunnel: {
-                icon: 'chartFunnel',
-                link: '/docs#vue-ui-funnel',
-                description: translations.value.docs.tooltips.funnel[store.lang],
-                taxinomy: ['comparisons', 'distribution'],
-                singleTaxinomy: 'distribution'
+                icon: "chartFunnel",
+                link: "/docs#vue-ui-funnel",
+                description:
+                    translations.value.docs.tooltips.funnel[store.lang],
+                taxinomy: ["comparisons", "distribution"],
+                singleTaxinomy: "distribution",
             },
             VueUiHistoryPlot: {
-                icon: 'chartHistoryPlot',
-                link: '/docs#vue-ui-history-plot',
-                description: translations.value.docs.tooltips.historyPlot[store.lang],
-                taxinomy: ['comparisons', 'dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                icon: "chartHistoryPlot",
+                link: "/docs#vue-ui-history-plot",
+                description:
+                    translations.value.docs.tooltips.historyPlot[store.lang],
+                taxinomy: ["comparisons", "dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiRidgeline: {
-                icon: 'chartRidgeline',
-                link: '/docs#vue-ui-ridgeline',
-                description: translations.value.docs.tooltips.ridgeline[store.lang],
-                taxinomy: ['comparisons', 'dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                icon: "chartRidgeline",
+                link: "/docs#vue-ui-ridgeline",
+                description:
+                    translations.value.docs.tooltips.ridgeline[store.lang],
+                taxinomy: ["comparisons", "dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
             VueUiBump: {
-                icon: 'chartBump',
-                link: '/docs#vue-ui-bump',
+                icon: "chartBump",
+                link: "/docs#vue-ui-bump",
                 description: translations.value.docs.tooltips.bump[store.lang],
-                taxinomy: ['dataOverTime'],
-                singleTaxinomy: 'dataOverTime'
+                taxinomy: ["dataOverTime"],
+                singleTaxinomy: "dataOverTime",
             },
-        }
-    })
+        };
+    });
 
     const simpleMenu = computed(() => {
         const keys = Object.keys(classification.value);
 
-        return keys.map(key => {
-            const components = Object.keys(taxinomy.value).filter(t => taxinomy.value[t].singleTaxinomy === key).map(k => {
+        return keys
+            .map((key) => {
+                const components = Object.keys(taxinomy.value)
+                    .filter((t) => taxinomy.value[t].singleTaxinomy === key)
+                    .map((k) => {
+                        return {
+                            ...taxinomy.value[k],
+                            name: k,
+                        };
+                    });
                 return {
-                    ...taxinomy.value[k],
-                    name: k
-                }
+                    category: classification.value[key][store.lang],
+                    components,
+                };
             })
-            return {
-                category: classification.value[key][store.lang],
-                components
-            }
-        }).toSorted((a, b) => b.components.length - a.components.length).filter(el => el.components.length)
-    })
+            .toSorted((a, b) => b.components.length - a.components.length)
+            .filter((el) => el.components.length);
+    });
 
     return {
         classification,
         classificationDescription,
         taxinomy,
-        simpleMenu
-    }
+        simpleMenu,
+    };
 }

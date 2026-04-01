@@ -1,22 +1,24 @@
 import { isRef } from "vue";
 
 export function createUid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-        .replace(/[xy]/g, function (c) {
-            const r = Math.random() * 16 | 0,
-                v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+        /[xy]/g,
+        function (c) {
+            const r = (Math.random() * 16) | 0,
+                v = c == "x" ? r : (r & 0x3) | 0x8;
             return v.toString(16);
-            });
+        },
+    );
 }
 
 export function getValueByPath(referenceObject, path) {
-    const pathArray = path.split('.');
+    const pathArray = path.split(".");
     let currentObject = referenceObject;
     for (const attr of pathArray) {
         if (currentObject.hasOwnProperty(attr)) {
-        currentObject = currentObject[attr];
+            currentObject = currentObject[attr];
         } else {
-        return undefined;
+            return undefined;
         }
     }
     return currentObject;
@@ -26,7 +28,7 @@ export function convertArrayToObject(configArray) {
     const resultObject = {};
 
     configArray.forEach(({ key, def }) => {
-        const keys = key.split('.');
+        const keys = key.split(".");
         let currentObject = resultObject;
 
         keys.forEach((nestedKey, index) => {
@@ -45,42 +47,45 @@ export function convertArrayToObject(configArray) {
 }
 
 export function copyComponent(id, store) {
-    const content = document.getElementById(id).innerHTML
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = content.replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+    const content = document.getElementById(id).innerHTML;
+    let selBox = document.createElement("textarea");
+    selBox.style.position = "fixed";
+    selBox.style.left = "0";
+    selBox.style.top = "0";
+    selBox.style.opacity = "0";
+    selBox.value = content.replaceAll("&lt;", "<").replaceAll("&gt;", ">");
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(selBox);
     store.copy();
 }
 
 export function copyText(text, parent) {
-    const content = text
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = content.replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('___', '#');
+    const content = text;
+    let selBox = document.createElement("textarea");
+    selBox.style.position = "fixed";
+    selBox.style.left = "0";
+    selBox.style.top = "0";
+    selBox.style.opacity = "0";
+    selBox.value = content
+        .replaceAll("&lt;", "<")
+        .replaceAll("&gt;", ">")
+        .replaceAll("___", "#");
     parent.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     parent.removeChild(selBox);
 }
 
 export async function copyCode(str) {
     try {
         await navigator.clipboard.writeText(str);
-        console.log('Content copied to clipboard!');
+        console.log("Content copied to clipboard!");
     } catch (err) {
-        console.error('Failed to copy text: ', err);
+        console.error("Failed to copy text: ", err);
     }
 }
 
@@ -105,9 +110,10 @@ export function adaptColorToBackground(bgColor) {
 }
 
 export function shiftHue(hexColor, shiftAmount) {
-
-    const nakedHex = hexColor.length === 9 ? hexColor.substring(0, 7) : hexColor;
-    const alphaChannel = hexColor.length === 9 ? hexColor.substring(7, 9) : null;
+    const nakedHex =
+        hexColor.length === 9 ? hexColor.substring(0, 7) : hexColor;
+    const alphaChannel =
+        hexColor.length === 9 ? hexColor.substring(7, 9) : null;
 
     const hexToRgb = (hex) => ({
         r: parseInt(hex.substring(1, 3), 16),
@@ -121,7 +127,9 @@ export function shiftHue(hexColor, shiftAmount) {
         b /= 255;
         const max = Math.max(r, g, b);
         const min = Math.min(r, g, b);
-        let h, s, l = (max + min) / 2;
+        let h,
+            s,
+            l = (max + min) / 2;
 
         if (max === min) {
             h = s = 0;
@@ -129,9 +137,15 @@ export function shiftHue(hexColor, shiftAmount) {
             const d = max - min;
             s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
             switch (max) {
-                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                case g: h = (b - r) / d + 2; break;
-                case b: h = (r - g) / d + 4; break;
+                case r:
+                    h = (g - b) / d + (g < b ? 6 : 0);
+                    break;
+                case g:
+                    h = (b - r) / d + 2;
+                    break;
+                case b:
+                    h = (r - g) / d + 4;
+                    break;
             }
             h /= 6;
         }
@@ -173,10 +187,9 @@ export function shiftHue(hexColor, shiftAmount) {
     hslColor.h = (hslColor.h + 1) % 1;
 
     const shiftedRgbColor = hslToRgb(hslColor);
-    const shiftedHexColor = `#${(shiftedRgbColor.r << 16 | shiftedRgbColor.g << 8 | shiftedRgbColor.b).toString(16).padStart(6, '0')}`;
+    const shiftedHexColor = `#${((shiftedRgbColor.r << 16) | (shiftedRgbColor.g << 8) | shiftedRgbColor.b).toString(16).padStart(6, "0")}`;
 
-
-    return shiftedHexColor + (alphaChannel || '');
+    return shiftedHexColor + (alphaChannel || "");
 }
 
 const COLOR_MAP = {
@@ -320,18 +333,18 @@ const COLOR_MAP = {
     WHITESMOKE: "#F5F5F5",
     YELLOW: "#FFFF00",
     YELLOWGREEN: "#9ACD32",
-    REBECCAPURPLE: "#663399"
+    REBECCAPURPLE: "#663399",
 };
 
 export function convertNameColorToHex(colorName) {
     const v = isRef?.(colorName) ? unref(colorName) : colorName;
-    if (typeof v !== 'string') return v;
+    if (typeof v !== "string") return v;
     const s = v.trim();
-    if (s === '') return s;
-    if (s[0] === '#') return s;
-    if (s.toLowerCase() === 'transparent') return '#FFFFFF00';
+    if (s === "") return s;
+    if (s[0] === "#") return s;
+    if (s.toLowerCase() === "transparent") return "#FFFFFF00";
     const upper = s.toUpperCase();
-    const normalized = upper.replace(/GRAY/g, 'GREY');
+    const normalized = upper.replace(/GRAY/g, "GREY");
     return COLOR_MAP[upper] || COLOR_MAP[normalized] || s;
 }
 
@@ -343,7 +356,8 @@ export function decimalToHex(decimal) {
 export function convertColorToHex(color) {
     const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i;
     const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/i;
-    const hslRegex = /^hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%(?:,\s*([\d.]+))?\)$/i;
+    const hslRegex =
+        /^hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%(?:,\s*([\d.]+))?\)$/i;
 
     if ([undefined, null, NaN].includes(color)) {
         return null;
@@ -351,7 +365,7 @@ export function convertColorToHex(color) {
 
     color = convertNameColorToHex(color);
 
-    if (color === 'transparent') {
+    if (color === "transparent") {
         return "#FFFFFF00";
     }
 
@@ -376,24 +390,27 @@ export function convertColorToHex(color) {
     return null;
 }
 
-export function jsonToJsObject(json, indent = 0, colorAuto=false) {
+export function jsonToJsObject(json, indent = 0, colorAuto = false) {
     function formatValue(value, currentIndent) {
         const nextIndent = currentIndent + 4;
-        const indentSpace = ' '.repeat(currentIndent);
-        const nextIndentSpace = ' '.repeat(nextIndent);
+        const indentSpace = " ".repeat(currentIndent);
+        const nextIndentSpace = " ".repeat(nextIndent);
 
-        if (typeof value === 'string') {
+        if (typeof value === "string") {
             return `'${value.replace(/'/g, "\\'")}'`;
         } else if (Array.isArray(value)) {
-            return value.length === 0 ? '[]' : `[
-${nextIndentSpace}${value.map(v => formatValue(v, nextIndent)).join(`,
+            return value.length === 0
+                ? "[]"
+                : `[
+${nextIndentSpace}${value.map((v) => formatValue(v, nextIndent)).join(`,
 ${nextIndentSpace}`)}
 ${indentSpace}]`;
-        } else if (typeof value === 'object' && value !== null) {
+        } else if (typeof value === "object" && value !== null) {
             return `{
-${nextIndentSpace}${Object.entries(value)
-                    .map(([key, val]) => `${typeof Number(key) === 'number' && !isNaN(Number(key)) ? `'${key}'` : key}: ${colorAuto && key === 'color' && !val ? `'auto'`: formatValue(val, nextIndent)}`)
-                    .join(`,
+${nextIndentSpace}${Object.entries(value).map(
+                ([key, val]) =>
+                    `${typeof Number(key) === "number" && !isNaN(Number(key)) ? `'${key}'` : key}: ${colorAuto && key === "color" && !val ? `'auto'` : formatValue(val, nextIndent)}`,
+            ).join(`,
 ${nextIndentSpace}`)}
 ${indentSpace}}`;
         }
@@ -404,8 +421,8 @@ ${indentSpace}}`;
 }
 
 export function fillEmptyDays(dates) {
-    const parsedDates = dates.map(dateStr => {
-        const parts = dateStr.split('-');
+    const parsedDates = dates.map((dateStr) => {
+        const parts = dateStr.split("-");
         return new Date(parts[0], parseInt(parts[1]) - 1, parts[2]);
     });
 
@@ -422,14 +439,17 @@ export function fillEmptyDays(dates) {
 
     while (currentDate <= endDate) {
         const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        const day = String(currentDate.getDate()).padStart(2, "0");
         result.push(`${year}-${month}-${day}`);
-        currentDate = new Date(year, currentDate.getMonth(), currentDate.getDate() + 1);
+        currentDate = new Date(
+            year,
+            currentDate.getMonth(),
+            currentDate.getDate() + 1,
+        );
     }
     return result;
 }
-
 
 const lib = {
     adaptColorToBackground,
@@ -441,8 +461,7 @@ const lib = {
     shiftHue,
     convertColorToHex,
     jsonToJsObject,
-    fillEmptyDays
-}
+    fillEmptyDays,
+};
 
-export default lib
-
+export default lib;

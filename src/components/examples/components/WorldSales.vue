@@ -2,7 +2,6 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../../stores";
 
-
 const store = useMainStore();
 const lang = computed(() => store.lang);
 const translations = computed(() => store.translations);
@@ -10,176 +9,182 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const config = computed(() => {
     return {
-    style: {
-        fontFamily: "inherit",
-        chart: {
-            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#f3f4f6',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            layout: {
-                grandTotal: {
-                    show: true,
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    fontSize: 20,
-                    text: "Grand total",
-                    bold: true,
-                    prefix: "$ ",
-                    suffix: "",
-                    roundingValue: 0,
-                    offsetY: 0,
-                },
-                roots: {
-                    stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                    strokeWidth: 5,
-                    useGradient: true,
-                    gradientIntensity: 20,
-                    underlayerColor: "#FFFFFF",
-                    labels: {
+        style: {
+            fontFamily: "inherit",
+            chart: {
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#f3f4f6",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                layout: {
+                    grandTotal: {
                         show: true,
-                        adaptColorToBackground: true,
-                        color: "#FFFFFF",
-                        fontSize: 16,
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        fontSize: 20,
+                        text: "Grand total",
                         bold: true,
                         prefix: "$ ",
                         suffix: "",
                         roundingValue: 0,
-                        name: {
-                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        offsetY: 0,
+                    },
+                    roots: {
+                        stroke: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                        strokeWidth: 5,
+                        useGradient: true,
+                        gradientIntensity: 20,
+                        underlayerColor: "#FFFFFF",
+                        labels: {
+                            show: true,
+                            adaptColorToBackground: true,
+                            color: "#FFFFFF",
                             fontSize: 16,
                             bold: true,
-                        },
-                    },
-                },
-                verticalSeparator: {
-                    stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                    strokeWidth: 5,
-                },
-                links: {
-                    opacity: 10,
-                },
-                branches: {
-                    stroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                    strokeWidth: 0,
-                    borderRadius: 6,
-                    useGradient: true,
-                    gradientIntensity: 20,
-                    underlayerColor: "#FFFFFF",
-                    widthRatio: 1.5,
-                    labels: {
-                        show: true,
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                        fontSize: 14,
-                        bold: true,
-                        dataLabels: {
-                            show: true,
-                            fontSize: 14,
-                            hideUnderValue: 5,
-                            roundingValue: 0,
-                            roundingPercentage: 0,
                             prefix: "$ ",
                             suffix: "",
+                            roundingValue: 0,
+                            name: {
+                                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                                fontSize: 16,
+                                bold: true,
+                            },
                         },
                     },
-                },
-                nuts: {
-                    useGradient: true,
-                    gradientIntensity: 30,
-                    offsetX: 0,
-                    selected: {
-                        useMotion: true,
+                    verticalSeparator: {
+                        stroke: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                        strokeWidth: 5,
+                    },
+                    links: {
+                        opacity: 10,
+                    },
+                    branches: {
+                        stroke: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                        strokeWidth: 0,
+                        borderRadius: 6,
                         useGradient: true,
-                        gradientIntensity: 40,
-                        roundingValue: 0,
-                        roundingPercentage: 0,
+                        gradientIntensity: 20,
+                        underlayerColor: "#FFFFFF",
+                        widthRatio: 1.5,
                         labels: {
+                            show: true,
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                            fontSize: 14,
+                            bold: true,
                             dataLabels: {
+                                show: true,
+                                fontSize: 14,
                                 hideUnderValue: 5,
-                                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                                fontSize: 12,
-                                bold: true,
+                                roundingValue: 0,
+                                roundingPercentage: 0,
                                 prefix: "$ ",
                                 suffix: "",
                             },
-                            core: {
-                                total: {
-                                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                                    fontSize: 14,
-                                    bold: true,
-                                },
-                                value: {
-                                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                                    fontSize: 14,
+                        },
+                    },
+                    nuts: {
+                        useGradient: true,
+                        gradientIntensity: 30,
+                        offsetX: 0,
+                        selected: {
+                            useMotion: true,
+                            useGradient: true,
+                            gradientIntensity: 40,
+                            roundingValue: 0,
+                            roundingPercentage: 0,
+                            labels: {
+                                dataLabels: {
+                                    hideUnderValue: 5,
+                                    color: isDarkMode.value
+                                        ? "#CCCCCC"
+                                        : "#1A1A1A",
+                                    fontSize: 12,
                                     bold: true,
                                     prefix: "$ ",
                                     suffix: "",
                                 },
+                                core: {
+                                    total: {
+                                        color: isDarkMode.value
+                                            ? "#CCCCCC"
+                                            : "#1A1A1A",
+                                        fontSize: 14,
+                                        bold: true,
+                                    },
+                                    value: {
+                                        color: isDarkMode.value
+                                            ? "#CCCCCC"
+                                            : "#1A1A1A",
+                                        fontSize: 14,
+                                        bold: true,
+                                        prefix: "$ ",
+                                        suffix: "",
+                                    },
+                                },
                             },
                         },
                     },
-                },
-                legend: {
-                    fontSize: 16,
-                    roundingValue: 0,
-                    roundingPercentage: 0,
-                    prefix: "$ ",
-                    suffix: "",
-                },
-                title: {
-                    text: "Retail revenue",
-                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    fontSize: 20,
-                    bold: true,
-                    offsetY: 0,
-                    subtitle: {
-                        text: "2025 projections",
-                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    legend: {
                         fontSize: 16,
-                        bold: false,
+                        roundingValue: 0,
+                        roundingPercentage: 0,
+                        prefix: "$ ",
+                        suffix: "",
+                    },
+                    title: {
+                        text: "Retail revenue",
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        fontSize: 20,
+                        bold: true,
                         offsetY: 0,
+                        subtitle: {
+                            text: "2025 projections",
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                            fontSize: 16,
+                            bold: false,
+                            offsetY: 0,
+                        },
                     },
                 },
             },
         },
-    },
-    table: {
-        show: false,
-        responsiveBreakpoint: 400,
-        th: {
-            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            outline: "none",
-            translations: {
-                rootName: "Region",
-                rootValue: "Region value",
-                rootToTotal: "% / total",
-                branchName: "Country",
-                branchValue: "Country value",
-                branchToRoot: "% / region",
-                branchToTotal: "% / total",
-                nutName: "breakdown name",
-                nutValue: "breakdown value",
-                nutToBranch: "% / country",
-                nutToRoot: "% / region",
-                nutToTotal: "% / total",
+        table: {
+            show: false,
+            responsiveBreakpoint: 400,
+            th: {
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                outline: "none",
+                translations: {
+                    rootName: "Region",
+                    rootValue: "Region value",
+                    rootToTotal: "% / total",
+                    branchName: "Country",
+                    branchValue: "Country value",
+                    branchToRoot: "% / region",
+                    branchToTotal: "% / total",
+                    nutName: "breakdown name",
+                    nutValue: "breakdown value",
+                    nutToBranch: "% / country",
+                    nutToRoot: "% / region",
+                    nutToTotal: "% / total",
+                },
+            },
+            td: {
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                outline: "none",
+                roundingValue: 0,
+                roundingPercentage: 0,
             },
         },
-        td: {
-            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            outline: "none",
-            roundingValue: 0,
-            roundingPercentage: 0,
+        userOptions: {
+            show: true,
         },
-    },
-    userOptions: {
-        show: true,
-    },
-    translations: {
-        total: "Total",
-        proportionToTree: "of grand total",
-        of: "of",
-    },
-}
-})
+        translations: {
+            total: "Total",
+            proportionToTree: "of grand total",
+            of: "of",
+        },
+    };
+});
 
 const dataset = ref([
     {
@@ -349,14 +354,13 @@ const dataset = ref([
 function getData() {
     return {
         config: config.value,
-        dataset: dataset.value
-    }
+        dataset: dataset.value,
+    };
 }
 
 defineExpose({
-    getData
-})
-
+    getData,
+});
 </script>
 
 <template>

@@ -6,10 +6,10 @@ const props = defineProps({
     dataset: {
         type: Array,
         default() {
-            return []
-        }
-    }
-})
+            return [];
+        },
+    },
+});
 
 const config = ref({
     style: {
@@ -17,13 +17,12 @@ const config = ref({
             title: {
                 text: "Title",
                 subtitle: {
-                    text: "Subtitle"
-                }
-            }
-        }
-    }
-})
-
+                    text: "Subtitle",
+                },
+            },
+        },
+    },
+});
 </script>
 
 <template>

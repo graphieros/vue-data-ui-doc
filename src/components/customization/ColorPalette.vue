@@ -161,31 +161,47 @@ const description = ref({
 <template>
     <ConfirmCopy />
 
-    <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 max-w-[1200px] mx-auto mb-12">
+    <div
+        class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 max-w-[1200px] mx-auto mb-12"
+    >
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
 
         <BaseCard v-for="palette in Object.keys(codeContent)" class="my-4">
             <h2 class="mb-2 font-inter-medium text-xl pl-2">
                 <div class="flex flex-row gap-2 align-center">
-                    <VueUiIcon name="colorPicker" :stroke="isDarkMode ? '#8A8A8A' : '#8A8A8A'"/>
+                    <VueUiIcon
+                        name="colorPicker"
+                        :stroke="isDarkMode ? '#8A8A8A' : '#8A8A8A'"
+                    />
                     <code>
                         {{ palette }}
                     </code>
                 </div>
             </h2>
-            <CodeParser :content="codeContent[palette]" language="javascript" @copy="store.copy()" />
-            <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center mt-4">
-                <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
-                    v-for="(color, i) in getPalette(palette)">
-                    <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+            <CodeParser
+                :content="codeContent[palette]"
+                language="javascript"
+                @copy="store.copy()"
+            />
+            <div
+                class="flex flex-row flex-wrap gap-2 justify-center place-items-center mt-4"
+            >
+                <div
+                    class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                    v-for="(color, i) in getPalette(palette)"
+                >
+                    <div
+                        :style="`background:${color};color:${adaptColorToBackground(color)}`"
                         class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
-                        @click="() => copyContent(color)">
+                        @click="() => copyContent(color)"
+                    >
                         {{ color.toUpperCase() }}
                         <div class="absolute top-0 left-1 text-xs">
                             {{ i }}
                         </div>
                         <div
-                            class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
+                            class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"
+                        />
                     </div>
                 </div>
             </div>
@@ -199,21 +215,29 @@ const description = ref({
             </div>
 
             <BaseCard class="w-full my-6">
-                <CodeParser :content="colorBridgeCode" language="javascript" @copy="store.copy()" />
+                <CodeParser
+                    :content="colorBridgeCode"
+                    language="javascript"
+                    @copy="store.copy()"
+                />
             </BaseCard>
 
             <div class="flex flex-row justify-center mt-6">
                 <button
-                    class="py-2 px-5 rounded flex flew-row place-items-center gap-2 bg-gray-200 dark:bg-[#FFFFFF20] shadow-md hover:shadow-lg transition-all">
+                    class="py-2 px-5 rounded flex flew-row place-items-center gap-2 bg-gray-200 dark:bg-[#FFFFFF20] shadow-md hover:shadow-lg transition-all"
+                >
                     <ColorBridgeIcon />
-                    <a href="https://color-bridge.graphieros.com/" target="_blank">
+                    <a
+                        href="https://color-bridge.graphieros.com/"
+                        target="_blank"
+                    >
                         Color Bridge docs
                     </a>
                 </button>
             </div>
         </div>
 
-                <p class="my-6" dir="auto">
+        <p class="my-6" dir="auto">
             {{ description[store.lang] }}
         </p>
 
@@ -224,16 +248,33 @@ const description = ref({
 
             <template #Component="{ row }">
                 <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
-                    <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
-                        <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+                    <VueUiIcon
+                        :name="row.icon"
+                        :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'"
+                    />
+                    <RouterLink
+                        :to="`/docs#${row.link}`"
+                        class="hover:underline"
+                    >
+                        <span class="text-gray-500">VueUi</span
+                        ><span>{{ row.name.replaceAll("VueUi", "") }}</span>
                     </RouterLink>
                 </div>
             </template>
 
             <template #customPalette="{ row }">
-                <div class="w-full h-full flex justify-center" :style="{ background: row.customPalette ? '#42d39230' : 'transparent'}">
-                    <CheckIcon v-if="row.customPalette" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+                <div
+                    class="w-full h-full flex justify-center"
+                    :style="{
+                        background: row.customPalette
+                            ? '#42d39230'
+                            : 'transparent',
+                    }"
+                >
+                    <CheckIcon
+                        v-if="row.customPalette"
+                        :stroke="isDarkMode ? '#42d392' : '#1d915d'"
+                    />
                 </div>
             </template>
         </ComponentsTable>

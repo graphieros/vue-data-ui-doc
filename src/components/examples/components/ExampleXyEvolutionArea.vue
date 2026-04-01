@@ -25,7 +25,7 @@ const config = computed(() => {
                 },
                 minimap: {
                     show: true,
-                }
+                },
             },
             highlighter: {
                 color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
@@ -112,7 +112,7 @@ const config = computed(() => {
                             1790812800000, // Oct 2026
                             1793491200000, // Nov 2026
                             1796083200000, // Dec 2026
-                            1798761600000  // Jan 2027
+                            1798761600000, // Jan 2027
                         ],
                         datetimeFormatter: {
                             enable: true,
@@ -129,7 +129,7 @@ const config = computed(() => {
                 suffix: "%",
             },
             legend: {
-                position: 'top',
+                position: "top",
                 show: true,
                 color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 fontSize: 16,
@@ -168,7 +168,7 @@ const config = computed(() => {
                 show: true,
                 offsetY: -8,
                 rounding: 0,
-                color: isDarkMode.value ? "#CCCCCC" : '#1A1A1A'
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             },
             serieName: {
                 show: false,
@@ -195,8 +195,8 @@ const config = computed(() => {
                 opacity: "26",
             },
             tag: {
-                followValue: true
-            }
+                followValue: true,
+            },
         },
         plot: {
             radius: 6,
@@ -235,7 +235,32 @@ const config = computed(() => {
 const dataset = ref([
     {
         name: "France",
-        series: [25, 35, 44, 24, 22, 27, 47, 43, 55, 81, 89, 92, null, null, 87, 63, 35, 47, 67, 72, 85, 86, 89, 67],
+        series: [
+            25,
+            35,
+            44,
+            24,
+            22,
+            27,
+            47,
+            43,
+            55,
+            81,
+            89,
+            92,
+            null,
+            null,
+            87,
+            63,
+            35,
+            47,
+            67,
+            72,
+            85,
+            86,
+            89,
+            67,
+        ],
         type: "line",
         shape: "circle",
         useArea: true,
@@ -247,10 +272,13 @@ const dataset = ref([
     },
     {
         name: "China",
-        series: [87, 76, 65, 55, 43, 19, 86, 88, 45, 67, 43, 76, 72, 66, 52, 44, 27, 85, 91, 85, 65, 61, 41, 78],
+        series: [
+            87, 76, 65, 55, 43, 19, 86, 88, 45, 67, 43, 76, 72, 66, 52, 44, 27,
+            85, 91, 85, 65, 61, 41, 78,
+        ],
         type: "bar",
         shape: "circle",
-        color: '#d62728',
+        color: "#d62728",
         useArea: true,
         useProgression: false,
         dataLabels: true,
@@ -260,7 +288,10 @@ const dataset = ref([
     },
     {
         name: "Target",
-        series: [65, 66, 65, 45, 43, 45, 65, 65, 70, 72, 75, 85, 85, 85, 80, 65, 65, 70, 72, 80, 75, 75, 72, 75],
+        series: [
+            65, 66, 65, 45, 43, 45, 65, 65, 70, 72, 75, 85, 85, 85, 80, 65, 65,
+            70, 72, 80, 75, 75, 72, 75,
+        ],
         color: "#d2a441",
         type: "line",
         shape: "circle",
@@ -290,10 +321,18 @@ defineExpose({
         <template #bar-gradient="{ series, positiveId, negativeId }">
             <linearGradient :id="positiveId" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%" :stop-color="series.color" />
-                <stop offset="100%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0" />
+                <stop
+                    offset="100%"
+                    :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'"
+                    stop-opacity="0"
+                />
             </linearGradient>
             <linearGradient :id="negativeId" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0" />
+                <stop
+                    offset="0%"
+                    :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'"
+                    stop-opacity="0"
+                />
                 <stop offset="100%" :stop-color="series.color" />
             </linearGradient>
         </template>

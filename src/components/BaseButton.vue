@@ -5,11 +5,12 @@ const props = defineProps({
     text: String,
     colorClasses: {
         type: String,
-        default: "bg-gradient-to-br from-app-green to-app-blue text-white dark:text-black hover:from-app-blue hover:to-app-green"
+        default:
+            "bg-gradient-to-br from-app-green to-app-blue text-white dark:text-black hover:from-app-blue hover:to-app-green",
     },
-})
+});
 
-const btn = ref(null)
+const btn = ref(null);
 
 const isClicked = ref(false);
 
@@ -18,14 +19,17 @@ function btnClick(e) {
     props.callback();
     setTimeout(() => {
         isClicked.value = false;
-    }, 200)
+    }, 200);
 }
-
 </script>
 
 <template>
-    <button ref="btn" @click="btnClick" :class="`${isClicked ? 'clicked' : ''} overflow-hidden relative flex gap-1  py-3 px-5 rounded-md  font-inter-medium hover:shadow-xl transition-all ${colorClasses}`">
-        <slot name="icon"/>
+    <button
+        ref="btn"
+        @click="btnClick"
+        :class="`${isClicked ? 'clicked' : ''} overflow-hidden relative flex gap-1  py-3 px-5 rounded-md  font-inter-medium hover:shadow-xl transition-all ${colorClasses}`"
+    >
+        <slot name="icon" />
         {{ text }}
     </button>
 </template>
@@ -36,7 +40,7 @@ function btnClick(e) {
 }
 @keyframes clicked {
     0% {
-        transform: scale(0.95,0.95);
+        transform: scale(0.95, 0.95);
     }
     70% {
         transform: scale(1.03, 1.03);
@@ -48,7 +52,7 @@ function btnClick(e) {
         transform: scale(1.01, 1.01);
     }
     100% {
-        transform:  scale(1,1)
+        transform: scale(1, 1);
     }
 }
 </style>

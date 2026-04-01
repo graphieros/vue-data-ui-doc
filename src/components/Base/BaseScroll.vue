@@ -57,16 +57,29 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div class="scrollable-fade-wrapper" :style="{ '--scrollable-fade-background-color': fadeColor }">
-        <div ref="scrollingContainerElement" class="scrollable-fade-wrapper__content" :class="userClasses"
-            @scroll="handleScroll">
+    <div
+        class="scrollable-fade-wrapper"
+        :style="{ '--scrollable-fade-background-color': fadeColor }"
+    >
+        <div
+            ref="scrollingContainerElement"
+            class="scrollable-fade-wrapper__content"
+            :class="userClasses"
+            @scroll="handleScroll"
+        >
             <slot />
         </div>
         <Transition name="fade">
-            <div v-if="showTopFade" class="scrollable-fade-wrapper__fade scrollable-fade-wrapper__fade--top"></div>
+            <div
+                v-if="showTopFade"
+                class="scrollable-fade-wrapper__fade scrollable-fade-wrapper__fade--top"
+            ></div>
         </Transition>
         <Transition name="fade">
-            <div v-if="showBottomFade" class="scrollable-fade-wrapper__fade scrollable-fade-wrapper__fade--bottom"></div>
+            <div
+                v-if="showBottomFade"
+                class="scrollable-fade-wrapper__fade scrollable-fade-wrapper__fade--bottom"
+            ></div>
         </Transition>
     </div>
 </template>
@@ -94,12 +107,20 @@ onBeforeUnmount(() => {
 .scrollable-fade-wrapper__fade--top {
     top: 0;
     height: 2.5rem;
-    background: linear-gradient(to bottom, var(--fade-background-color) 0%, transparent 100%);
+    background: linear-gradient(
+        to bottom,
+        var(--fade-background-color) 0%,
+        transparent 100%
+    );
 }
 
 .scrollable-fade-wrapper__fade--bottom {
     bottom: 0;
     height: 2.5rem;
-    background: linear-gradient(to top, var(--fade-background-color) 0%, transparent 100%);
+    background: linear-gradient(
+        to top,
+        var(--fade-background-color) 0%,
+        transparent 100%
+    );
 }
 </style>

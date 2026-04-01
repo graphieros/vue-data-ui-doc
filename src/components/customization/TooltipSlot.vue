@@ -10,512 +10,512 @@ const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const translations = computed(() => {
-  return store.translations;
+    return store.translations;
 });
 
 const dataset = ref([
-  {
-    name: "Serie 1",
-    values: [100]
-  },
-  {
-    name: "Serie 2",
-    values: [200]
-  },
-  {
-    name: "Serie 3",
-    values: [300, 1]
-  },
+    {
+        name: "Serie 1",
+        values: [100],
+    },
+    {
+        name: "Serie 2",
+        values: [200],
+    },
+    {
+        name: "Serie 3",
+        values: [300, 1],
+    },
 ]);
 
 const darkModeConfig = ref({
-  useBlurOnHover: true,
-  useCssAnimation: true,
-  style: {
-    fontFamily: "inherit",
-    chart: {
-      useGradient: true,
-      gradientIntensity: 40,
-      backgroundColor: "#1A1A1A",
-      color: "#CCCCCC",
-      layout: {
-        curvedMarkers: true,
-        labels: {
-          dataLabels: {
-            show: true,
-            hideUnderValue: 3,
-            prefix: "",
-            suffix: ""
-          },
-          value: {
-            rounding: 0,
-            show: true,
-          },
-          percentage: {
+    useBlurOnHover: true,
+    useCssAnimation: true,
+    style: {
+        fontFamily: "inherit",
+        chart: {
+            useGradient: true,
+            gradientIntensity: 40,
+            backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
-            bold: true,
-            fontSize: 18
-          },
-          name: {
-            color: "#CCCCCC",
-            bold: false,
-            fontSize: 14,
-          },
-          hollow: {
-            total: {
-              show: true,
-              bold: false,
-              fontSize: 18,
-              color: "#CCCCCC",
-              text: "Total",
-              offsetY: -16,
-              value: {
-                color: "#CCCCCC",
-                fontSize: 18,
-                bold: true,
-                suffix: "",
-                prefix: "",
-                offsetY: -12,
-                rounding: 0,
-              }
+            layout: {
+                curvedMarkers: true,
+                labels: {
+                    dataLabels: {
+                        show: true,
+                        hideUnderValue: 3,
+                        prefix: "",
+                        suffix: "",
+                    },
+                    value: {
+                        rounding: 0,
+                        show: true,
+                    },
+                    percentage: {
+                        color: "#CCCCCC",
+                        bold: true,
+                        fontSize: 18,
+                    },
+                    name: {
+                        color: "#CCCCCC",
+                        bold: false,
+                        fontSize: 14,
+                    },
+                    hollow: {
+                        total: {
+                            show: true,
+                            bold: false,
+                            fontSize: 18,
+                            color: "#CCCCCC",
+                            text: "Total",
+                            offsetY: -16,
+                            value: {
+                                color: "#CCCCCC",
+                                fontSize: 18,
+                                bold: true,
+                                suffix: "",
+                                prefix: "",
+                                offsetY: -12,
+                                rounding: 0,
+                            },
+                        },
+                        average: {
+                            show: true,
+                            bold: false,
+                            fontSize: 18,
+                            color: "#CCCCCC",
+                            text: "Average",
+                            offsetY: 0,
+                            value: {
+                                color: "#CCCCCC",
+                                fontSize: 18,
+                                bold: true,
+                                suffix: "",
+                                prefix: "",
+                                offsetY: 6,
+                                rounding: 0,
+                            },
+                        },
+                    },
+                },
+                donut: {
+                    strokeWidth: 64,
+                    borderWidth: 2,
+                },
             },
-            average: {
-              show: true,
-              bold: false,
-              fontSize: 18,
-              color: "#CCCCCC",
-              text: "Average",
-              offsetY: 0,
-              value: {
+            legend: {
+                backgroundColor: "#1A1A1A",
                 color: "#CCCCCC",
-                fontSize: 18,
+                show: true,
+                fontSize: 16,
+                bold: false,
+                roundingValue: 0,
+                roundingPercentage: 0,
+            },
+            title: {
+                text: "",
+                color: "#FAFAFA",
+                fontSize: 20,
                 bold: true,
-                suffix: "",
-                prefix: "",
-                offsetY: 6,
-                rounding: 0,
-              }
-            }
-          }
+                subtitle: {
+                    color: "#CCCCCC",
+                    text: "",
+                    fontSize: 16,
+                    bold: false,
+                },
+            },
+            tooltip: {
+                show: true,
+                color: "#CCCCCC",
+                backgroundColor: "#1A1A1A",
+                fontSize: 14,
+                showValue: true,
+                showPercentage: true,
+                roundingValue: 0,
+                roundingPercentage: 0,
+            },
         },
-        donut: {
-          strokeWidth: 64,
-          borderWidth: 2,
+    },
+    userOptions: {
+        show: false,
+    },
+    translations: {
+        total: "Total",
+        average: "Average",
+    },
+    table: {
+        show: false,
+        responsiveBreakpoint: 300,
+        columnNames: {
+            series: "Series",
+            value: "Value",
+            percentage: "Percentage",
         },
-      },
-      legend: {
-        backgroundColor: "#1A1A1A",
-        color: "#CCCCCC",
-        show: true,
-        fontSize: 16,
-        bold: false,
-        roundingValue: 0,
-        roundingPercentage: 0,
-      },
-      title: {
-        text: "",
-        color: "#FAFAFA",
-        fontSize: 20,
-        bold: true,
-        subtitle: {
-          color: "#CCCCCC",
-          text: "",
-          fontSize: 16,
-          bold: false
-        }
-      },
-      tooltip: {
-        show: true,
-        color: "#CCCCCC",
-        backgroundColor: "#1A1A1A",
-        fontSize: 14,
-        showValue: true,
-        showPercentage: true,
-        roundingValue: 0,
-        roundingPercentage: 0,
-      }
-    }
-  },
-  userOptions: {
-    show: false
-  },
-  translations: {
-    total: "Total",
-    average: "Average",
-  },
-  table: {
-    show: false,
-    responsiveBreakpoint: 300,
-    columnNames: {
-      series: "Series",
-      value: "Value",
-      percentage: "Percentage"
+        th: {
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
+            outline: "none",
+        },
+        td: {
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
+            outline: "none",
+            roundingValue: 0,
+            roundingPercentage: 0,
+        },
     },
-    th: {
-      backgroundColor: "#1A1A1A",
-      color: "#CCCCCC",
-      outline: "none"
-    },
-    td: {
-      backgroundColor: "#1A1A1A",
-      color: "#CCCCCC",
-      outline: "none",
-      roundingValue: 0,
-      roundingPercentage: 0
-    }
-  }
 });
 
 const config = ref({
-  useBlurOnHover: true,
-  useCssAnimation: true,
-  style: {
-    fontFamily: "inherit",
-    chart: {
-      useGradient: true,
-      gradientIntensity: 40,
-      backgroundColor: "#F3F4F6",
-      color: "#1A1A1A",
-      layout: {
-        labels: {
-          dataLabels: {
-            show: true,
-            hideUnderValue: 3,
-            prefix: "",
-            suffix: ""
-          },
-          value: {
-            rounding: 0,
-            show: true
-          },
-          percentage: {
+    useBlurOnHover: true,
+    useCssAnimation: true,
+    style: {
+        fontFamily: "inherit",
+        chart: {
+            useGradient: true,
+            gradientIntensity: 40,
+            backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
-            bold: true,
-            fontSize: 18
-          },
-          name: {
-            color: "#1A1A1A",
-            bold: false,
-            fontSize: 14,
-          },
-          hollow: {
-            total: {
-              show: true,
-              bold: false,
-              fontSize: 18,
-              color: "#1A1A1A",
-              text: "Total",
-              offsetY: -16,
-              value: {
-                color: "#1A1A1A",
-                fontSize: 18,
-                bold: true,
-                suffix: "",
-                prefix: "",
-                offsetY: -12,
-                rounding: 0,
-              }
+            layout: {
+                labels: {
+                    dataLabels: {
+                        show: true,
+                        hideUnderValue: 3,
+                        prefix: "",
+                        suffix: "",
+                    },
+                    value: {
+                        rounding: 0,
+                        show: true,
+                    },
+                    percentage: {
+                        color: "#1A1A1A",
+                        bold: true,
+                        fontSize: 18,
+                    },
+                    name: {
+                        color: "#1A1A1A",
+                        bold: false,
+                        fontSize: 14,
+                    },
+                    hollow: {
+                        total: {
+                            show: true,
+                            bold: false,
+                            fontSize: 18,
+                            color: "#1A1A1A",
+                            text: "Total",
+                            offsetY: -16,
+                            value: {
+                                color: "#1A1A1A",
+                                fontSize: 18,
+                                bold: true,
+                                suffix: "",
+                                prefix: "",
+                                offsetY: -12,
+                                rounding: 0,
+                            },
+                        },
+                        average: {
+                            show: true,
+                            bold: false,
+                            fontSize: 18,
+                            color: "#1A1A1A",
+                            text: "Average",
+                            offsetY: 0,
+                            value: {
+                                color: "#1A1A1A",
+                                fontSize: 18,
+                                bold: true,
+                                suffix: "",
+                                prefix: "",
+                                offsetY: 6,
+                                rounding: 0,
+                            },
+                        },
+                    },
+                },
+                donut: {
+                    strokeWidth: 54,
+                    borderWidth: 2,
+                },
             },
-            average: {
-              show: true,
-              bold: false,
-              fontSize: 18,
-              color: "#1A1A1A",
-              text: "Average",
-              offsetY: 0,
-              value: {
+            legend: {
+                backgroundColor: "#F3F4F6",
                 color: "#1A1A1A",
-                fontSize: 18,
+                show: true,
+                fontSize: 16,
+                bold: false,
+                roundingValue: 0,
+                roundingPercentage: 0,
+            },
+            title: {
+                text: "",
+                color: "#1A1A1A",
+                fontSize: 20,
                 bold: true,
-                suffix: "",
-                prefix: "",
-                offsetY: 6,
-                rounding: 0,
-              }
-            }
-          }
+                subtitle: {
+                    color: "#565656",
+                    text: "",
+                    fontSize: 16,
+                    bold: false,
+                },
+            },
+            tooltip: {
+                show: true,
+                color: "#1A1A1A",
+                backgroundColor: "#F3F4F6",
+                fontSize: 14,
+                showValue: true,
+                showPercentage: true,
+                roundingValue: 0,
+                roundingPercentage: 0,
+                customFormat: null,
+            },
         },
-        donut: {
-          strokeWidth: 54,
-          borderWidth: 2
+    },
+    userOptions: {
+        show: false,
+    },
+    translations: {
+        total: "Total",
+        average: "Average",
+    },
+    table: {
+        show: false,
+        responsiveBreakpoint: 300,
+        columnNames: {
+            series: "Series",
+            value: "Value",
+            percentage: "Percentage",
         },
-      },
-      legend: {
-        backgroundColor: "#F3F4F6",
-        color: "#1A1A1A",
-        show: true,
-        fontSize: 16,
-        bold: false,
-        roundingValue: 0,
-        roundingPercentage: 0,
-      },
-      title: {
-        text: "",
-        color: "#1A1A1A",
-        fontSize: 20,
-        bold: true,
-        subtitle: {
-          color: "#565656",
-          text: '',
-          fontSize: 16,
-          bold: false
-        }
-      },
-      tooltip: {
-        show: true,
-        color: "#1A1A1A",
-        backgroundColor: "#F3F4F6",
-        fontSize: 14,
-        showValue: true,
-        showPercentage: true,
-        roundingValue: 0,
-        roundingPercentage: 0,
-        customFormat: null
-      }
-    }
-  },
-  userOptions: {
-    show: false
-  },
-  translations: {
-    total: "Total",
-    average: "Average",
-  },
-  table: {
-    show: false,
-    responsiveBreakpoint: 300,
-    columnNames: {
-      series: "Series",
-      value: "Value",
-      percentage: "Percentage"
+        th: {
+            backgroundColor: "#F3F4F6",
+            color: "#1A1A1A",
+            outline: "none",
+        },
+        td: {
+            backgroundColor: "#F3F4F6",
+            color: "#1A1A1A",
+            outline: "none",
+            roundingValue: 0,
+            roundingPercentage: 0,
+        },
     },
-    th: {
-      backgroundColor: "#F3F4F6",
-      color: "#1A1A1A",
-      outline: "none"
-    },
-    td: {
-      backgroundColor: "#F3F4F6",
-      color: "#1A1A1A",
-      outline: "none",
-      roundingValue: 0,
-      roundingPercentage: 0
-    }
-  }
 });
 
 function makeDs(max) {
-  const arr = [];
-  let m = max;
-  let i = 0;
-  while (m > 1) {
-    const value = max / 10 + (i * i * i);
-    m -= value;
-    i += 1;
-    arr.push({
-      period: `period ${i}`,
-      value 
-    })
-  }
-  return arr;
+    const arr = [];
+    let m = max;
+    let i = 0;
+    while (m > 1) {
+        const value = max / 10 + i * i * i;
+        m -= value;
+        i += 1;
+        arr.push({
+            period: `period ${i}`,
+            value,
+        });
+    }
+    return arr;
 }
 
 const sparklineDataset = ref([
-  {
-    period: "period 1",
-    value: 0
-  },
-  {
-    period: "period 2",
-    value: 1
-  },
-  {
-    period: "period 3",
-    value: 0
-  },
-  {
-    period: "period 4",
-    value: 2
-  },
-  {
-    period: "period 5",
-    value: 1
-  },
-  {
-    period: "period 6",
-    value: 3
-  },
-  {
-    period: "period 7",
-    value: 2
-  },
-  {
-    period: "period 8",
-    value: 5
-  },
-  {
-    period: "period 9",
-    value: 3
-  },
-  {
-    period: "period 10",
-    value: 8
-  },
-  {
-    period: "period 11",
-    value: 5
-  },
-  {
-    period: "period 12",
-    value: 13
-  },
-  {
-    period: "period 13",
-    value: 8
-  },
-  {
-    period: "period 14",
-    value: 21
-  },
-  {
-    period: "period 15",
-    value: 13
-  },
-  {
-    period: "period 16",
-    value: 34
-  },
-  {
-    period: "period 17",
-    value: 21
-  },
+    {
+        period: "period 1",
+        value: 0,
+    },
+    {
+        period: "period 2",
+        value: 1,
+    },
+    {
+        period: "period 3",
+        value: 0,
+    },
+    {
+        period: "period 4",
+        value: 2,
+    },
+    {
+        period: "period 5",
+        value: 1,
+    },
+    {
+        period: "period 6",
+        value: 3,
+    },
+    {
+        period: "period 7",
+        value: 2,
+    },
+    {
+        period: "period 8",
+        value: 5,
+    },
+    {
+        period: "period 9",
+        value: 3,
+    },
+    {
+        period: "period 10",
+        value: 8,
+    },
+    {
+        period: "period 11",
+        value: 5,
+    },
+    {
+        period: "period 12",
+        value: 13,
+    },
+    {
+        period: "period 13",
+        value: 8,
+    },
+    {
+        period: "period 14",
+        value: 21,
+    },
+    {
+        period: "period 15",
+        value: 13,
+    },
+    {
+        period: "period 16",
+        value: 34,
+    },
+    {
+        period: "period 17",
+        value: 21,
+    },
 ]);
 
 const darkModeConfigSparkline = computed(() => {
-  return (color) => ({
-  type: 'line',
-  style: {
-    backgroundColor: "#1A1A1A",
-    fontFamily: "inherit",
-    animation: {
-      show: false,
-      animationFrames: 360,
-    },
-    line: {
-      color: color,
-      strokeWidth: 3,
-      smooth: true,
-    },
-    bar: {
-      borderRadius: 3,
-      color: color,
-    },
-    zeroLine: {
-      color: "#505050",
-      strokeWidth: 1
-    },
-    plot: {
-      show: true,
-      radius: 4,
-      stroke: "#FFFFFF",
-      strokeWidth: 1
-    },
-    verticalIndicator: {
-      show: true,
-      strokeWidth: 1.5,
-      color: color,
-      strokeDasharray: 3
-    },
-    dataLabel: {
-      position: "left",
-      fontSize: 36,
-      bold: true,
-      color: "#CCCCCC",
-      roundingValue: 1,
-      valueType: "average",
-      prefix: "avg: ",
-      suffix: ""
-    },
-    title: {
-      show: true,
-      textAlign: "left",
-      color: "#FAFAFA",
-      fontSize: 14,
-      bold: false,
-      text: "Evolution"
-    },
-    area: {
-      show: true,
-      useGradient: true,
-      opacity: 30,
-      color: color
-    }
-  }
-})
-})
+    return (color) => ({
+        type: "line",
+        style: {
+            backgroundColor: "#1A1A1A",
+            fontFamily: "inherit",
+            animation: {
+                show: false,
+                animationFrames: 360,
+            },
+            line: {
+                color: color,
+                strokeWidth: 3,
+                smooth: true,
+            },
+            bar: {
+                borderRadius: 3,
+                color: color,
+            },
+            zeroLine: {
+                color: "#505050",
+                strokeWidth: 1,
+            },
+            plot: {
+                show: true,
+                radius: 4,
+                stroke: "#FFFFFF",
+                strokeWidth: 1,
+            },
+            verticalIndicator: {
+                show: true,
+                strokeWidth: 1.5,
+                color: color,
+                strokeDasharray: 3,
+            },
+            dataLabel: {
+                position: "left",
+                fontSize: 36,
+                bold: true,
+                color: "#CCCCCC",
+                roundingValue: 1,
+                valueType: "average",
+                prefix: "avg: ",
+                suffix: "",
+            },
+            title: {
+                show: true,
+                textAlign: "left",
+                color: "#FAFAFA",
+                fontSize: 14,
+                bold: false,
+                text: "Evolution",
+            },
+            area: {
+                show: true,
+                useGradient: true,
+                opacity: 30,
+                color: color,
+            },
+        },
+    });
+});
 
 const configSparkline = computed(() => {
-  return (color) => ({
-  type: 'line',
-  style: {
-    backgroundColor: "#F3F4F6",
-    fontFamily: "inherit",
-    animation: {
-      show: false,
-      animationFrames: 360
-    },
-    line: {
-      color: color,
-      strokeWidth: 3,
-      smooth: true
-    },
-    bar: {
-      borderRadius: 3,
-      color: color,
-    },
-    zeroLine: {
-      color: "#505050",
-      strokeWidth: 1
-    },
-    plot: {
-      show: true,
-      radius: 4,
-      stroke: "#FFFFFF",
-      strokeWidth: 1
-    },
-    verticalIndicator: {
-      show: true,
-      strokeWidth: 1.5,
-      color: color,
-      strokeDasharray: 3
-    },
-    dataLabel: {
-      position: "left",
-      fontSize: 36,
-      bold: true,
-      color: "#1A1A1A",
-      roundingValue: 1,
-      valueType: "average",
-      prefix: "avg: ",
-      suffix: ""
-    },
-    title: {
-      show: true,
-      textAlign: "left",
-      color: "#1A1A1A",
-      fontSize: 14,
-      bold: false,
-      text: "Evolution"
-    },
-    area: {
-      show: true,
-      useGradient: true,
-      opacity: 30,
-      color: color
-    }
-  }
-})
-})
+    return (color) => ({
+        type: "line",
+        style: {
+            backgroundColor: "#F3F4F6",
+            fontFamily: "inherit",
+            animation: {
+                show: false,
+                animationFrames: 360,
+            },
+            line: {
+                color: color,
+                strokeWidth: 3,
+                smooth: true,
+            },
+            bar: {
+                borderRadius: 3,
+                color: color,
+            },
+            zeroLine: {
+                color: "#505050",
+                strokeWidth: 1,
+            },
+            plot: {
+                show: true,
+                radius: 4,
+                stroke: "#FFFFFF",
+                strokeWidth: 1,
+            },
+            verticalIndicator: {
+                show: true,
+                strokeWidth: 1.5,
+                color: color,
+                strokeDasharray: 3,
+            },
+            dataLabel: {
+                position: "left",
+                fontSize: 36,
+                bold: true,
+                color: "#1A1A1A",
+                roundingValue: 1,
+                valueType: "average",
+                prefix: "avg: ",
+                suffix: "",
+            },
+            title: {
+                show: true,
+                textAlign: "left",
+                color: "#1A1A1A",
+                fontSize: 14,
+                bold: false,
+                text: "Evolution",
+            },
+            area: {
+                show: true,
+                useGradient: true,
+                opacity: 30,
+                color: color,
+            },
+        },
+    });
+});
 
 const code = ref(`<template>
   <VueUiDonut
@@ -529,57 +529,82 @@ const code = ref(`<template>
       This content shows last
     </template>
   </VueUiDonut>
-</template>`)
-
+</template>`);
 </script>
 
 <template>
-  <div class="px-4 max-w-[1200px] mx-auto mt-4 mb-8" dir="auto">
-    {{ translations.customization.tooltipSlot[store.lang] }}
-  </div>
+    <div class="px-4 max-w-[1200px] mx-auto mt-4 mb-8" dir="auto">
+        {{ translations.customization.tooltipSlot[store.lang] }}
+    </div>
 
-  <BaseCustomizationBox>
-    <template #code>
-      <CodeParser :content="code" language="html" @copy="store.copy()"/>
-    </template>
-    <template #chart>
-      <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
-        <template #tooltip-before>
-          <div class="text-xs max-w-[200px] text-left border-b pb-2 mb-2">
-            This comment was added inside the #tooltip-before slot.
-          </div>
+    <BaseCustomizationBox>
+        <template #code>
+            <CodeParser :content="code" language="html" @copy="store.copy()" />
         </template>
-        <template #tooltip-after="{ datapoint }">
-          <div class="w-full max-w-[200px]">
-            <div class="text-xs max-w-[200px] text-left pb-2 mb-2">
-              This comment and chart are added inside the #tooltip-after slot.
-            </div>
-            <VueDataUi component="VueUiSparkline" :dataset="makeDs(datapoint.value)"
-              :config="isDarkMode ? darkModeConfigSparkline(datapoint.color) : configSparkline(datapoint.color)"></VueDataUi>
-          </div>
+        <template #chart>
+            <VueDataUi
+                component="VueUiDonut"
+                :dataset="dataset"
+                :config="isDarkMode ? darkModeConfig : config"
+            >
+                <template #tooltip-before>
+                    <div
+                        class="text-xs max-w-[200px] text-left border-b pb-2 mb-2"
+                    >
+                        This comment was added inside the #tooltip-before slot.
+                    </div>
+                </template>
+                <template #tooltip-after="{ datapoint }">
+                    <div class="w-full max-w-[200px]">
+                        <div class="text-xs max-w-[200px] text-left pb-2 mb-2">
+                            This comment and chart are added inside the
+                            #tooltip-after slot.
+                        </div>
+                        <VueDataUi
+                            component="VueUiSparkline"
+                            :dataset="makeDs(datapoint.value)"
+                            :config="
+                                isDarkMode
+                                    ? darkModeConfigSparkline(datapoint.color)
+                                    : configSparkline(datapoint.color)
+                            "
+                        ></VueDataUi>
+                    </div>
+                </template>
+            </VueDataUi>
         </template>
-      </VueDataUi>
-    </template>
-  </BaseCustomizationBox>
+    </BaseCustomizationBox>
 
     <ComponentsTable :cols="['Component', 'Tooltip']" class="mx-auto">
-      <template #th="{ col }">
-          {{ col }}
-      </template>
+        <template #th="{ col }">
+            {{ col }}
+        </template>
 
-      <template #Component="{ row }">
-          <div class="flex flex-row gap-2 place-items-center">
-              <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
-              <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
-                  <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
-              </RouterLink>
-          </div>
-      </template>
+        <template #Component="{ row }">
+            <div class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon
+                    :name="row.icon"
+                    :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'"
+                />
+                <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
+                    <span class="text-gray-500">VueUi</span
+                    ><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+                </RouterLink>
+            </div>
+        </template>
 
-      <template #Tooltip="{ row }">
-          <div class="w-full h-full flex justify-center" :style="{ background: row.tooltip ? '#42d39230' : 'transparent'}">
-              <CheckIcon v-if="row.tooltip" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
-          </div>
-      </template>
-  </ComponentsTable>
+        <template #Tooltip="{ row }">
+            <div
+                class="w-full h-full flex justify-center"
+                :style="{
+                    background: row.tooltip ? '#42d39230' : 'transparent',
+                }"
+            >
+                <CheckIcon
+                    v-if="row.tooltip"
+                    :stroke="isDarkMode ? '#42d392' : '#1d915d'"
+                />
+            </div>
+        </template>
+    </ComponentsTable>
 </template>
