@@ -1048,6 +1048,7 @@ function makeMapLinks({ data }) {
                                                     height: 100%;
                                                     width: 100%;
                                                 "
+                                                v-if="rect.url"
                                             >
                                                 <img
                                                     :src="rect.url"
@@ -1062,6 +1063,15 @@ function makeMapLinks({ data }) {
                                                             : 0.6,
                                                     }"
                                                 />
+                                            </div>
+                                            <div v-else :style="{
+                                                color: textColor,
+                                                textAlign: 'left',
+                                                paddingLeft: '12px',
+                                                fontSize: '1.5rem',
+                                                fontWeight: 'bold'
+                                            }">
+                                                {{ rect.name }}
                                             </div>
                                         </template>
 
