@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.17.7",
+        "date": "2026-04-03",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix table toggle issue",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.17.6",
         "date": "2026-04-03",
         "updates": [
