@@ -124,7 +124,7 @@ const dataset = ref([
                 value: 10,
                 children: [
                     {
-                        name: "P3 C8 CC1",
+                        name: "P3 C8 CC1 qskdjh qksjdh qkjshdk qjsd",
                         value: 5,
                     },
                     {
@@ -222,8 +222,8 @@ const config = ref({
         chart: {
             backgroundColor: "#f3f4f6",
             color: "#2D353C",
-            height: 500,
-            width: 800,
+            height: 800,
+            width: 1300,
             padding: {
                 top: 0,
                 left: 0,
@@ -400,8 +400,8 @@ const darkModeConfig = ref({
         chart: {
             backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
-            height: 500,
-            width: 800,
+            height: 800,
+            width: 1300,
             padding: {
                 top: 0,
                 left: 0,
@@ -691,7 +691,7 @@ const customFormatCode =
             :configSource="mainConfig.vue_ui_treemap"
         />
 
-        <div :class="`transition-all mx-auto w-full sm:w-1/2`">
+        <div :class="`transition-all mx-auto w-full sm:w-3/4`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"

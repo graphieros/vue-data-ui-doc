@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.17.5",
+        "date": "2026-04-03",
+        "updates": [
+            {
+                "component": "VueUiTreemap",
+                "description": "Fix missing hierarchy rendering and enable individual node coloring",
+                "link": "/docs#vue-ui-treemap"
+            }
+        ]
+    },
+    {
         "version": "v 3.17.3",
         "date": "2026-04-01",
         "updates": [

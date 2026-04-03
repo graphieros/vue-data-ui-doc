@@ -350,6 +350,7 @@ const code = ref(`<VueUiTreemap :dataset="dataset" :config="config">
                 <div
                     :style="{ width: '100%', height: '100%' }"
                     xmlns="http://www.w3.org/1999/xhtml"
+                    v-if="sparklines[rect.name]?.dataset"
                 >
                     <VueDataUi
                         component="VueUiXy"
