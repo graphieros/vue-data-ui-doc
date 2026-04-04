@@ -39,16 +39,28 @@ const codeParserConfig = computed(() => {
     };
 });
 
+const warning = ref({
+    en: "Using the universal component will pull all the components of the library into your build. Use this component for quick mock-ups, or if your project intends on using most components of the library. You should generally prefer the treeshaken imports, as documented on the component pages.",
+    fr: "L’utilisation du composant universel inclura tous les composants de la bibliothèque dans votre build. Utilisez ce composant pour des maquettes rapides ou si votre projet prévoit d’utiliser la majorité des composants de la bibliothèque. Il est généralement préférable d’utiliser les imports optimisés (treeshaking), comme indiqué dans la documentation des composants.",
+    pt: "Usar o componente universal irá incluir todos os componentes da biblioteca no seu build. Utilize este componente para protótipos rápidos ou se o seu projeto pretende usar a maioria dos componentes da biblioteca. Em geral, é preferível usar imports com treeshaking, conforme documentado nas páginas dos componentes.",
+    de: "Die Verwendung der universellen Komponente fügt alle Komponenten der Bibliothek in Ihren Build ein. Verwenden Sie diese Komponente für schnelle Prototypen oder wenn Ihr Projekt die meisten Komponenten der Bibliothek nutzt. In der Regel sollten Sie die treeshaken Imports bevorzugen, wie in der Komponentendokumentation beschrieben.",
+    zh: "使用通用组件会将库中的所有组件打包到你的构建中。该组件适用于快速原型开发，或当你的项目需要使用库中大多数组件时。通常建议优先使用按需引入（treeshaking），详见各组件文档。",
+    ja: "ユニバーサルコンポーネントを使用すると、ライブラリ内のすべてのコンポーネントがビルドに含まれます。このコンポーネントは、迅速なモックアップや、プロジェクトでライブラリの大部分のコンポーネントを使用する場合に適しています。通常は、各コンポーネントのドキュメントに記載されているツリーシェイキングされたインポートを優先してください。",
+    es: "El uso del componente universal incluirá todos los componentes de la biblioteca en tu build. Utiliza este componente para prototipos rápidos o si tu proyecto pretende usar la mayoría de los componentes de la biblioteca. Generalmente, es preferible usar imports con treeshaking, como se documenta en las páginas de los componentes.",
+    ko: "유니버설 컴포넌트를 사용하면 라이브러리의 모든 컴포넌트가 빌드에 포함됩니다. 빠른 목업을 만들거나 프로젝트에서 대부분의 컴포넌트를 사용할 경우에 적합합니다. 일반적으로는 각 컴포넌트 문서에 설명된 트리쉐이킹(import)을 사용하는 것이 좋습니다.",
+    ar: "سيؤدي استخدام المكوّن الشامل إلى تضمين جميع مكوّنات المكتبة في عملية البناء الخاصة بك. استخدم هذا المكوّن للنماذج الأولية السريعة، أو إذا كان مشروعك يهدف إلى استخدام معظم مكوّنات المكتبة. يُفضل عادةً استخدام الاستيرادات المعتمدة على التقليم (treeshaking)، كما هو موضح في صفحات توثيق المكوّنات.",
+});
+
 const mainCodeContent = computed(() => {
     return `import { createApp } from 'vue';
 import App from "./App.vue"; 
 import "vue-data-ui/style.css"; // ${translations.value.installation.comments.includeCss[store.lang]}
 
+// Since v3.2.0 treeshake import (recommended):
+import { VueUiXy } from "vue-data-ui/vue-ui-xy";
+
 // ${translations.value.installation.comments.global[store.lang]}
 import { VueUiRadar } from "vue-data-ui";
-
-// Since v3.2.0 treeshake import (recommended):
-import VueUiXy from "vue-data-ui/vue-ui-xy";
 
 const app = createApp(App);
 
@@ -61,8 +73,8 @@ app.mount('#app');
 const componentContent = computed(() => {
     return `// ${translations.value.installation.comments.import[store.lang]}
 import { ref } from "vue";
+import { VueUiXy } from "vue-data-ui/vue-ui-xy"; // treeshaken (recommended)
 import { VueUiRadar } from "vue-data-ui"; // not treeshaken
-import VueUiXy from "vue-data-ui/vue-ui-xy"; // treeshaken (recommended)
 
 // With Typescript:
 import {
@@ -78,6 +90,8 @@ const config = ref<VueUiRadarConfig>(/* your config (optional) */);
 
 const universalComponentContent = computed(() => {
     return `// ${translations.value.installation.comments.universalComponent[store.lang]}
+
+// ${warning.value[store.lang]}
 
 import { ref } from "vue";
 import { VueDataUi } from "vue-data-ui";
