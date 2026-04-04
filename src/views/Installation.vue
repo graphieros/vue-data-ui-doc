@@ -10,6 +10,7 @@ import "vue-hi-code/style.css";
 import BaseCard from "../components/BaseCard.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
+import sdk from "@stackblitz/sdk";
 
 const store = useMainStore();
 const { utils } = colorBridge();
@@ -22,6 +23,11 @@ const translations = computed(() => {
 
 onMounted(() => {
     window.scrollTo(0, 0);
+
+    sdk.embedProjectId("stackblitz", "vitejs-vite-cjmxbt3n", {
+        forceEmbedLayout: true,
+        openFile: "src/App.vue",
+    });
 });
 
 function gotoMaker() {
@@ -266,6 +272,13 @@ const universalComponentTemplateContent = computed(() => {
                     {{ translations.makeNow[store.lang] }}
                 </button>
             </div>
+        </div>
+
+        <div class="px-16 w-full">
+            <div class="text-left font-mono">
+                Stackblitz example
+            </div>
+            <div id="stackblitz" class="w-full mx-auto min-h-[1000px] mt-6" />
         </div>
 
         <ChartSeeker class="mt-12 z-10 max-w-[800px]" />

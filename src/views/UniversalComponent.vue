@@ -4,8 +4,6 @@ import { useMainStore } from "../stores";
 import { useUniversalStore } from "../stores/universal";
 import SideMenu from "../components/SideMenu.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
-
-import sdk from "@stackblitz/sdk";
 import BaseDocTitle from "../components/BaseDocTitle.vue";
 import BaseCard from "../components/BaseCard.vue";
 
@@ -13,11 +11,6 @@ onMounted(() => {
     window.Prism = window.Prism || {};
     window.Prism.manual = true;
     Prism.highlightAll();
-
-    sdk.embedProjectId("stackblitz", "vitejs-vite-cjmxbt3n", {
-        forceEmbedLayout: true,
-        openFile: "src/App.vue",
-    });
 });
 
 const store = useMainStore();
@@ -122,6 +115,5 @@ const warning = ref({
                 />
             </div>
         </BaseCard>
-        <div id="stackblitz" class="w-full mx-auto min-h-[1000px]" />
     </div>
 </template>
