@@ -18262,6 +18262,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "general",
                     },
                     {
+                        key: 'zoomEnabled',
+                        def: true,
+                        type: 'checkbox',
+                        label: ['zoom', 'is', 'show'],
+                        category: 'general'
+                    },
+                    {
                         key: "downsample.threshold",
                         def: 1500,
                         type: "number",

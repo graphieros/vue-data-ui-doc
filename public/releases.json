@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.17.8",
+        "date": "2026-04-05",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Make zoom optional",
+                "link": "/docs#vue-ui-quadrant"
+            }
+        ]
+    },
+    {
         "version": "v 3.17.7",
         "date": "2026-04-03",
         "updates": [
