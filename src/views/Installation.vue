@@ -62,10 +62,11 @@ const mainCodeContent = computed(() => {
 import App from "./App.vue"; 
 import "vue-data-ui/style.css"; // ${translations.value.installation.comments.includeCss[store.lang]}
 
+// ${translations.value.installation.comments.global[store.lang]}
 // Since v3.2.0 treeshake import (recommended):
 import { VueUiXy } from "vue-data-ui/vue-ui-xy";
 
-// ${translations.value.installation.comments.global[store.lang]}
+// Not treeshaken! (backwards compatible before v3.2.0)
 import { VueUiRadar } from "vue-data-ui";
 
 const app = createApp(App);
