@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.17.13",
+        "date": "2026-04-11",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Various configuration new options",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 3.17.11",
         "date": "2026-04-06",
         "updates": [
