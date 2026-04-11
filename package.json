@@ -13,7 +13,7 @@
         "site": "node publish-site.cjs",
         "lint": "oxlint",
         "lint:fix": "oxlint --fix",
-        "pretty": "prettier . --check"
+        "pretty": "prettier . --write"
     },
     "dependencies": {
         "@stackblitz/sdk": "^1.11.0",

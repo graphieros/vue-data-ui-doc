@@ -1064,13 +1064,16 @@ function makeMapLinks({ data }) {
                                                     }"
                                                 />
                                             </div>
-                                            <div v-else :style="{
-                                                color: textColor,
-                                                textAlign: 'left',
-                                                paddingLeft: '12px',
-                                                fontSize: '1.5rem',
-                                                fontWeight: 'bold'
-                                            }">
+                                            <div
+                                                v-else
+                                                :style="{
+                                                    color: textColor,
+                                                    textAlign: 'left',
+                                                    paddingLeft: '12px',
+                                                    fontSize: '1.5rem',
+                                                    fontWeight: 'bold',
+                                                }"
+                                            >
                                                 {{ rect.name }}
                                             </div>
                                         </template>

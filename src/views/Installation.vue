@@ -276,9 +276,7 @@ const universalComponentTemplateContent = computed(() => {
         </div>
 
         <div class="px-16 w-full">
-            <div class="text-left font-mono">
-                Stackblitz example
-            </div>
+            <div class="text-left font-mono">Stackblitz example</div>
             <div id="stackblitz" class="w-full mx-auto min-h-[1000px] mt-6" />
         </div>
 

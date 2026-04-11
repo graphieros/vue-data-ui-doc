@@ -162,7 +162,7 @@ const darkModeConfig = ref({
                     show: false,
                     fontSize: 12,
                     offsetY: 0,
-                    color: '#CCCCCC',
+                    color: "#CCCCCC",
                 },
                 significance: {
                     show: true,
@@ -233,19 +233,19 @@ const darkModeConfig = ref({
                     offsetX: 0,
                     offsetY: 0,
                     showValue: true,
-                     scales: {
+                    scales: {
                         show: false,
                         steps: 10,
                         useNiceScale: true,
                         labels: {
                             formatter: null,
-                            color: '#CCCCCC',
+                            color: "#CCCCCC",
                             fontSize: 12,
                             offsetY: 0,
                         },
                         verticalLines: {
                             show: false,
-                            stroke: '#4A4A4A',
+                            stroke: "#4A4A4A",
                             strokeWidth: 1,
                         },
                     },
@@ -266,13 +266,13 @@ const darkModeConfig = ref({
                         useNiceScale: true,
                         labels: {
                             formatter: null,
-                            color: '#CCCCCC',
+                            color: "#CCCCCC",
                             fontSize: 12,
                             offsetX: 0,
                         },
                         horizontalLines: {
                             show: false,
-                            stroke: '#4A4A4A',
+                            stroke: "#4A4A4A",
                             strokeWidth: 1,
                         },
                     },
@@ -459,7 +459,7 @@ const config = ref({
                     show: false,
                     fontSize: 12,
                     offsetY: 0,
-                    color: '#1A1A1A',
+                    color: "#1A1A1A",
                 },
                 significance: {
                     show: true,
@@ -536,13 +536,13 @@ const config = ref({
                         useNiceScale: true,
                         labels: {
                             formatter: null,
-                            color: '#1A1A1A',
+                            color: "#1A1A1A",
                             fontSize: 12,
                             offsetY: 0,
                         },
                         verticalLines: {
                             show: false,
-                            stroke: '#E1E5E8',
+                            stroke: "#E1E5E8",
                             strokeWidth: 1,
                         },
                     },
@@ -563,13 +563,13 @@ const config = ref({
                         useNiceScale: true,
                         labels: {
                             formatter: null,
-                            color: '#1A1A1A',
+                            color: "#1A1A1A",
                             fontSize: 12,
                             offsetX: 0,
                         },
                         horizontalLines: {
                             show: false,
-                            stroke: '#E1E5E8',
+                            stroke: "#E1E5E8",
                             strokeWidth: 1,
                         },
                     },
@@ -1189,10 +1189,38 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
-                                    <BaseAttr name="xMin" attr="style.layout.axis.xMin" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="xMax" attr="style.layout.axis.xMax" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="yMin" attr="style.layout.axis.yMin" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="yMax" attr="style.layout.axis.yMax" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr
+                                        name="xMin"
+                                        attr="style.layout.axis.xMin"
+                                        type="number"
+                                        defaultVal="null"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="xMax"
+                                        attr="style.layout.axis.xMax"
+                                        type="number"
+                                        defaultVal="null"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="yMin"
+                                        attr="style.layout.axis.yMin"
+                                        type="number"
+                                        defaultVal="null"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="yMax"
+                                        attr="style.layout.axis.yMax"
+                                        type="number"
+                                        defaultVal="null"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                 </BaseDetails>
                                 <BaseDetails
                                     attr="correlation"
@@ -1293,7 +1321,14 @@ const customFormatCode =
                                     :level="3"
                                     title="style.layout.dataLabels"
                                 >
-                                    <BaseAttr name="reverseAxisLabels" attr="style.layout.dataLabels.reverseAxisLabels" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr
+                                        name="reverseAxisLabels"
+                                        attr="style.layout.dataLabels.reverseAxisLabels"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseDetails
                                         attr="xAxis"
                                         :level="4"
@@ -1351,21 +1386,130 @@ const customFormatCode =
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />
-                                        <BaseAttr name="showValue" attr="style.layout.dataLabels.xAxis.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseDetails attr="scales" :level="5" title="style.layout.dataLabels.xAxis.scales">
-                                            <BaseAttr name="show" attr="style.layout.dataLabels.xAxis.scales.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="steps" attr="style.layout.dataLabels.xAxis.scales.steps" type="number" defaultVal="10" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="useNiceScale" attr="style.layout.dataLabels.xAxis.scales.useNiceScale" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseDetails attr="labels" :level="6" title="style.layout.dataLabels.xAxis.scales.labels">
-                                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
-                                                <BaseAttr name="color" attr="style.layout.dataLabels.xAxis.scales.color" type="color" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="fontSize" attr="style.layout.dataLabels.xAxis.scales.fontSize" type="number" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="offsetY" attr="style.layout.dataLabels.xAxis.scales.offsetY" type="number" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr
+                                            name="showValue"
+                                            attr="style.layout.dataLabels.xAxis.showValue"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseDetails
+                                            attr="scales"
+                                            :level="5"
+                                            title="style.layout.dataLabels.xAxis.scales"
+                                        >
+                                            <BaseAttr
+                                                name="show"
+                                                attr="style.layout.dataLabels.xAxis.scales.show"
+                                                type="checkbox"
+                                                defaultVal="false"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="steps"
+                                                attr="style.layout.dataLabels.xAxis.scales.steps"
+                                                type="number"
+                                                defaultVal="10"
+                                                :min="0"
+                                                :max="20"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="useNiceScale"
+                                                attr="style.layout.dataLabels.xAxis.scales.useNiceScale"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseDetails
+                                                attr="labels"
+                                                :level="6"
+                                                title="style.layout.dataLabels.xAxis.scales.labels"
+                                            >
+                                                <BaseAttr
+                                                    inactive
+                                                    name="formatter"
+                                                    defaultVal="null"
+                                                    :comment="
+                                                        translations
+                                                            .formatterLink[
+                                                            store.lang
+                                                        ]
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="color"
+                                                    attr="style.layout.dataLabels.xAxis.scales.color"
+                                                    type="color"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="fontSize"
+                                                    attr="style.layout.dataLabels.xAxis.scales.fontSize"
+                                                    type="number"
+                                                    :min="8"
+                                                    :max="42"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="offsetY"
+                                                    attr="style.layout.dataLabels.xAxis.scales.offsetY"
+                                                    type="number"
+                                                    :min="-100"
+                                                    :max="100"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
                                             </BaseDetails>
-                                            <BaseDetails attr="verticalLines" :level="6" title="style.layout.dataLabels.xAxis.scales.verticalLines">
-                                                <BaseAttr name="show" attr="style.layout.dataLabels.xAxis.scales.verticalLines.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="stroke" attr="style.layout.dataLabels.xAxis.scales.verticalLines.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="strokeWidth" attr="style.layout.dataLabels.xAxis.scales.verticalLines.strokeWidth" type="number" :min="0" :max="4" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 
+                                            <BaseDetails
+                                                attr="verticalLines"
+                                                :level="6"
+                                                title="style.layout.dataLabels.xAxis.scales.verticalLines"
+                                            >
+                                                <BaseAttr
+                                                    name="show"
+                                                    attr="style.layout.dataLabels.xAxis.scales.verticalLines.show"
+                                                    type="checkbox"
+                                                    defaultVal="false"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="stroke"
+                                                    attr="style.layout.dataLabels.xAxis.scales.verticalLines.stroke"
+                                                    type="color"
+                                                    defaultVal="#E1E5E8"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="strokeWidth"
+                                                    attr="style.layout.dataLabels.xAxis.scales.verticalLines.strokeWidth"
+                                                    type="number"
+                                                    :min="0"
+                                                    :max="4"
+                                                    :step="0.1"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
                                             </BaseDetails>
                                         </BaseDetails>
                                     </BaseDetails>
@@ -1426,21 +1570,130 @@ const customFormatCode =
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />
-                                        <BaseAttr name="showValue" attr="style.layout.dataLabels.yAxis.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseDetails attr="scales" :level="5" title="style.layout.dataLabels.yAxis.scales">
-                                            <BaseAttr name="show" attr="style.layout.dataLabels.yAxis.scales.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="steps" attr="style.layout.dataLabels.yAxis.scales.steps" type="number" defaultVal="10" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="useNiceScale" attr="style.layout.dataLabels.yAxis.scales.useNiceScale" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseDetails attr="labels" :level="6" title="style.layout.dataLabels.yAxis.scales.labels">
-                                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
-                                                <BaseAttr name="color" attr="style.layout.dataLabels.yAxis.scales.color" type="color" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="fontSize" attr="style.layout.dataLabels.yAxis.scales.fontSize" type="number" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="offsetY" attr="style.layout.dataLabels.yAxis.scales.offsetY" type="number" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr
+                                            name="showValue"
+                                            attr="style.layout.dataLabels.yAxis.showValue"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseDetails
+                                            attr="scales"
+                                            :level="5"
+                                            title="style.layout.dataLabels.yAxis.scales"
+                                        >
+                                            <BaseAttr
+                                                name="show"
+                                                attr="style.layout.dataLabels.yAxis.scales.show"
+                                                type="checkbox"
+                                                defaultVal="false"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="steps"
+                                                attr="style.layout.dataLabels.yAxis.scales.steps"
+                                                type="number"
+                                                defaultVal="10"
+                                                :min="0"
+                                                :max="20"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="useNiceScale"
+                                                attr="style.layout.dataLabels.yAxis.scales.useNiceScale"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseDetails
+                                                attr="labels"
+                                                :level="6"
+                                                title="style.layout.dataLabels.yAxis.scales.labels"
+                                            >
+                                                <BaseAttr
+                                                    inactive
+                                                    name="formatter"
+                                                    defaultVal="null"
+                                                    :comment="
+                                                        translations
+                                                            .formatterLink[
+                                                            store.lang
+                                                        ]
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="color"
+                                                    attr="style.layout.dataLabels.yAxis.scales.color"
+                                                    type="color"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="fontSize"
+                                                    attr="style.layout.dataLabels.yAxis.scales.fontSize"
+                                                    type="number"
+                                                    :min="8"
+                                                    :max="42"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="offsetY"
+                                                    attr="style.layout.dataLabels.yAxis.scales.offsetY"
+                                                    type="number"
+                                                    :min="-100"
+                                                    :max="100"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
                                             </BaseDetails>
-                                            <BaseDetails attr="horizontalLines" :level="6" title="style.layout.dataLabels.yAxis.scales.horizontalLines">
-                                                <BaseAttr name="show" attr="style.layout.dataLabels.yAxis.scales.horizontalLines.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="stroke" attr="style.layout.dataLabels.yAxis.scales.horizontalLines.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                                <BaseAttr name="strokeWidth" attr="style.layout.dataLabels.yAxis.scales.horizontalLines.strokeWidth" type="number" :min="0" :max="4" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 
+                                            <BaseDetails
+                                                attr="horizontalLines"
+                                                :level="6"
+                                                title="style.layout.dataLabels.yAxis.scales.horizontalLines"
+                                            >
+                                                <BaseAttr
+                                                    name="show"
+                                                    attr="style.layout.dataLabels.yAxis.scales.horizontalLines.show"
+                                                    type="checkbox"
+                                                    defaultVal="false"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="stroke"
+                                                    attr="style.layout.dataLabels.yAxis.scales.horizontalLines.stroke"
+                                                    type="color"
+                                                    defaultVal="#E1E5E8"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="strokeWidth"
+                                                    attr="style.layout.dataLabels.yAxis.scales.horizontalLines.strokeWidth"
+                                                    type="number"
+                                                    :min="0"
+                                                    :max="4"
+                                                    :step="0.1"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
                                             </BaseDetails>
                                         </BaseDetails>
                                     </BaseDetails>
@@ -1691,8 +1944,27 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
-                                    <BaseAttr name="hoverRadiusRatio" attr="style.layout.plots.hoverRadiusRatio" defaultVal="2" type="number" :min="0" :max="5" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="opacityNotSelected" attr="style.layout.plots.opacityNotSelected" defaultVal="0.6" type="number" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr
+                                        name="hoverRadiusRatio"
+                                        attr="style.layout.plots.hoverRadiusRatio"
+                                        defaultVal="2"
+                                        type="number"
+                                        :min="0"
+                                        :max="5"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="opacityNotSelected"
+                                        attr="style.layout.plots.opacityNotSelected"
+                                        defaultVal="0.6"
+                                        type="number"
+                                        :min="0"
+                                        :max="1"
+                                        :step="0.01"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseAttr
                                         name="stroke"
                                         attr="style.layout.plots.stroke"
@@ -1723,11 +1995,47 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
-                                    <BaseDetails attr="name" :level="4" title="style.layout.plots.name">
-                                        <BaseAttr name="show" attr="style.layout.plots.name.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseAttr name="fontSize" attr="style.layout.plots.name.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseAttr name="offsetY" attr="style.layout.plots.name.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaeAttr name="color" attr="style.layout.plots.name.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails
+                                        attr="name"
+                                        :level="4"
+                                        title="style.layout.plots.name"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.layout.plots.name.show"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="fontSize"
+                                            attr="style.layout.plots.name.fontSize"
+                                            type="number"
+                                            defaultVal="12"
+                                            :min="8"
+                                            :max="42"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="offsetY"
+                                            attr="style.layout.plots.name.offsetY"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="-100"
+                                            :max="100"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaeAttr
+                                            name="color"
+                                            attr="style.layout.plots.name.color"
+                                            type="color"
+                                            defaultVal="#2D353C"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
                                     </BaseDetails>
                                     <BaseDetails
                                         attr="deviation"

@@ -912,8 +912,14 @@ const datapointSlot = ref(`
                                 :dark="mutableConfigDarkMode"
                                 @change="forceChartUpdate()"
                             />
-                            <BaseAttr name="zoomEnabled" attr="zoomEnabled" type="checkbox" defaultVal="true" :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"/>
+                            <BaseAttr
+                                name="zoomEnabled"
+                                attr="zoomEnabled"
+                                type="checkbox"
+                                defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
                             <BaseDetails attr="a11y" :level="1">
                                 <BaseDetails
                                     attr="translations"
