@@ -3893,6 +3893,49 @@ export default function useExamples() {
         return arr;
     }
 
+    const DATASET_SCATTER_SMALL = ref([
+        {
+            name: 'Series A',
+            values: [{
+                x: 10,
+                y: 10,
+                name: 'Series A'
+            }]
+        },
+        {
+            name: 'Series B',
+            values: [{
+                x: 55,
+                y: 29,
+                name: 'Series B'
+            }]
+        },
+        {
+            name: 'Series C',
+            values: [{
+                x: 37,
+                y: 62,
+                name: 'Series C'
+            }]
+        },
+        {
+            name: 'Series D',
+            values: [{
+                x: 87,
+                y: 22,
+                name: 'Series D'
+            }]
+        },
+        {
+            name: 'Series E',
+            values: [{
+                x: 76,
+                y: 72,
+                name: 'Series E'
+            }]
+        },
+    ])
+
     const DATASET_SCATTER_BASIC = ref([
         {
             name: "Serie",
@@ -11038,6 +11081,88 @@ export default function useExamples() {
                     es: "100000 puntos de datos usando el modo de rendimiento",
                     ko: "성능 모드를 사용한 100000 데이터 포인트",
                     ar: "100000 نقطة بيانات باستخدام وضع الأداء",
+                },
+            },
+            // SCATTER WITH SCALES
+            {
+                dataset: DATASET_SCATTER_SMALL.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SCATTER_BASIC.value,
+                    userConfig: {
+                        style: {
+                            layout: {
+                                padding: {
+                                    bottom: 32,
+                                    left: 32
+                                },
+                                dataLabels: {
+                                    reverseAxisLabels: true,
+                                    xAxis: {
+                                        show: true,
+                                        name: 'X-AXIS',
+                                        showValue: false,
+                                        scales: {
+                                            show: true,
+                                            labels: {
+                                                color: colors.value.textColor
+                                            },
+                                            verticalLines: {
+                                                show: true,
+                                                stroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
+                                            }
+                                        }
+                                    },
+                                    yAxis: {
+                                        show: true,
+                                        name: 'Y-AXIS',
+                                        showValue: false,
+                                        scales: {
+                                            show: true,
+                                            labels: {
+                                                color: colors.value.textColor
+                                            },
+                                            horizontalLines: {
+                                                show: true,
+                                                stroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
+                                            }
+                                        }
+                                    }
+                                },
+                                plots: {
+                                    radius: 3,
+                                    hoverRadiusRatio: 1.5,
+                                    opacity: 1,
+                                    opacityNotSelected: 0.2,
+                                    name: {
+                                        show: true,
+                                        color: colors.value.textColor,
+                                        offsetY: 4
+                                    },
+                                    significance: { show: false, useDistanceOpacity: false },
+                                },
+                                correlation: { show: false }
+                            },
+                            tooltip: { show: false },
+                            legend: {
+                                position: 'top'
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiScatter",
+                icon: "chartScatter",
+                id: "scatter-scales",
+                link: "vue-ui-scatter",
+                description: {
+                    en: "Scatter small dataset with scales and visible datapoint names",
+                    fr: "Nuage de points avec petit jeu de données, axes gradués et noms des points visibles",
+                    pt: "Gráfico de dispersão com pequeno conjunto de dados, escalas e nomes dos pontos visíveis",
+                    de: "Streudiagramm mit kleinem Datensatz, Skalen und sichtbaren Datenpunktnamen",
+                    zh: "带有小数据集、刻度和可见数据点名称的散点图",
+                    ja: "小規模データセット、スケール付きでデータポイント名が表示される散布図",
+                    es: "Gráfico de dispersión con conjunto de datos pequeño, escalas y nombres de puntos visibles",
+                    ko: "소규모 데이터셋, 축 눈금 및 데이터 포인트 이름이 표시된 산점도",
+                    ar: "مخطط مبعثر يحتوي على مجموعة بيانات صغيرة مع مقاييس وأسماء نقاط بيانات مرئية",
                 },
             },
             // WHEEL BASIC
