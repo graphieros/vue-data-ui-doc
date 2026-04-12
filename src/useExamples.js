@@ -3895,46 +3895,56 @@ export default function useExamples() {
 
     const DATASET_SCATTER_SMALL = ref([
         {
-            name: 'Series A',
-            values: [{
-                x: 10,
-                y: 10,
-                name: 'Series A'
-            }]
+            name: "Series A",
+            values: [
+                {
+                    x: 10,
+                    y: 10,
+                    name: "Series A",
+                },
+            ],
         },
         {
-            name: 'Series B',
-            values: [{
-                x: 55,
-                y: 29,
-                name: 'Series B'
-            }]
+            name: "Series B",
+            values: [
+                {
+                    x: 55,
+                    y: 29,
+                    name: "Series B",
+                },
+            ],
         },
         {
-            name: 'Series C',
-            values: [{
-                x: 37,
-                y: 62,
-                name: 'Series C'
-            }]
+            name: "Series C",
+            values: [
+                {
+                    x: 37,
+                    y: 62,
+                    name: "Series C",
+                },
+            ],
         },
         {
-            name: 'Series D',
-            values: [{
-                x: 87,
-                y: 22,
-                name: 'Series D'
-            }]
+            name: "Series D",
+            values: [
+                {
+                    x: 87,
+                    y: 22,
+                    name: "Series D",
+                },
+            ],
         },
         {
-            name: 'Series E',
-            values: [{
-                x: 76,
-                y: 72,
-                name: 'Series E'
-            }]
+            name: "Series E",
+            values: [
+                {
+                    x: 76,
+                    y: 72,
+                    name: "Series E",
+                },
+            ],
         },
-    ])
+    ]);
 
     const DATASET_SCATTER_BASIC = ref([
         {
@@ -11093,40 +11103,44 @@ export default function useExamples() {
                             layout: {
                                 padding: {
                                     bottom: 32,
-                                    left: 32
+                                    left: 32,
                                 },
                                 dataLabels: {
                                     reverseAxisLabels: true,
                                     xAxis: {
                                         show: true,
-                                        name: 'X-AXIS',
+                                        name: "X-AXIS",
                                         showValue: false,
                                         scales: {
                                             show: true,
                                             labels: {
-                                                color: colors.value.textColor
+                                                color: colors.value.textColor,
                                             },
                                             verticalLines: {
                                                 show: true,
-                                                stroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
-                                            }
-                                        }
+                                                stroke: isDarkMode.value
+                                                    ? "#3A3A3A"
+                                                    : "#E1E5E8",
+                                            },
+                                        },
                                     },
                                     yAxis: {
                                         show: true,
-                                        name: 'Y-AXIS',
+                                        name: "Y-AXIS",
                                         showValue: false,
                                         scales: {
                                             show: true,
                                             labels: {
-                                                color: colors.value.textColor
+                                                color: colors.value.textColor,
                                             },
                                             horizontalLines: {
                                                 show: true,
-                                                stroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
-                                            }
-                                        }
-                                    }
+                                                stroke: isDarkMode.value
+                                                    ? "#3A3A3A"
+                                                    : "#E1E5E8",
+                                            },
+                                        },
+                                    },
                                 },
                                 plots: {
                                     radius: 3,
@@ -11136,18 +11150,21 @@ export default function useExamples() {
                                     name: {
                                         show: true,
                                         color: colors.value.textColor,
-                                        offsetY: 4
+                                        offsetY: 4,
                                     },
-                                    significance: { show: false, useDistanceOpacity: false },
+                                    significance: {
+                                        show: false,
+                                        useDistanceOpacity: false,
+                                    },
                                 },
-                                correlation: { show: false }
+                                correlation: { show: false },
                             },
                             tooltip: { show: false },
                             legend: {
-                                position: 'top'
-                            }
-                        }
-                    }
+                                position: "top",
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiScatter",
                 icon: "chartScatter",
