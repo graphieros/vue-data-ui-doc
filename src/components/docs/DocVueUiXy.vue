@@ -1581,14 +1581,6 @@ const customFormatCode =
                                 :light="mutableConfig"
                                 :dark="mutableConfigDarkMode"
                             />
-                            <BaseAttr
-                                name="showTable"
-                                attr="showTable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
                             <BaseDetails attr="a11y" :level="1">
                                 <BaseDetails
                                     attr="translations"
@@ -4645,6 +4637,14 @@ const customFormatCode =
                                     </div>
                                 </BaseDetails>
                             </BaseDetails>
+                            <BaseAttr
+                                name="showTable"
+                                attr="showTable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
                             <BaseDetails attr="table" :level="1">
                                 <BaseAttr
                                     name="useDialog"
