@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, watch, nextTick, watchEffect } from "vue";
+import { ref, computed, onMounted, watch, nextTick } from "vue";
 import { useMainStore } from "../stores";
 import staticReleases from "../../public/releases.json";
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
@@ -11,16 +11,8 @@ import { shiftHue } from "../components/maker/lib";
 import RepoStars from "../components/RepoStars.vue";
 import { darkenColor, lightenColor } from "vue-data-ui";
 import Downloads from "../components/Downloads.vue";
-import {
-    BugIcon,
-    GitForkIcon,
-    StarFilledIcon,
-    ToolIcon,
-    UserHeartIcon,
-    XIcon,
-} from "vue-tabler-icons";
+import { XIcon } from "vue-tabler-icons";
 import BaseCard from "../components/BaseCard.vue";
-import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import { useIconMapUnderscore } from "../useIconMapUnderscore";
 import BaseScroll from "../components/Base/BaseScroll.vue";
