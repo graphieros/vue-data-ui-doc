@@ -188,11 +188,9 @@ const datasetRefContent = computed(() => {
         <span class="code-attr">{{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '').replace(excl5, '') }}</span>, 
         </span><span class="code-attr">{{ selectedComponent.types.config }}</span> <span v-pre>
     }</span> <span class="code-key">from</span> <span class="code-string">"vue-data-ui"</span>;
-    <span class="code-key">import</span> <span class="code-string">"vue-data-ui/style.css"</span>;
-    </span>
+    <span class="code-key">import</span> <span class="code-string">"vue-data-ui/style.css"</span>;</span>
     <span v-if="!isTs"><span class="code-key">import</span> { <span class="code-attr">{{ selectedComponent.name }}</span> } <span class="code-key">from</span> <span class="code-string">"vue-data-ui/{{ component.replaceAll('_', '-') }}"</span>;
-    <span class="code-key">import</span> <span class="code-string">"vue-data-ui/style.css"</span>;
-    </span>
+    <span class="code-key">import</span> <span class="code-string">"vue-data-ui/style.css"</span>;</span>
     <span class="code-html">const</span> <span class="code-attr">dataset</span> = <span class="code-fn">ref</span><span v-if="isTs"><<span class="code-type">{{ selectedComponent.types.dataset.includes('[]') ? selectedComponent.types.dataset.replace('[]', '') : selectedComponent.types.dataset}}</span><span>{{ selectedComponent.types.dataset.includes('[]') ? '[]' : '' }}</span>></span>();
     <span class="code-html">const</span> <span class="code-attr">config</span> = <span class="code-fn">ref</span><span v-if="isTs"><span class="code-type">{{ selectedComponent.types.config }}</span></span>();
 &lt;/<span class="code-html">script</span>&gt;
