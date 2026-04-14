@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import BaseCard from "../../BaseCard.vue";
 import BIBLIOTEK_SYSTEMER from "../../../assets/sponsors/bibliotek_systemer.png";
+import ANTHONY_FU_FUND from "../../../assets/sponsors/aff.png"
 
 const props = defineProps({
     card: {
@@ -13,6 +14,11 @@ const props = defineProps({
 });
 
 const sponsors = ref([
+    {
+        name: "Anthony Fu Fund",
+        logo: ANTHONY_FU_FUND,
+        link: "https://opencollective.com/antfu",
+    },
     {
         name: "Bibliotek Systemer",
         logo: BIBLIOTEK_SYSTEMER,
@@ -63,7 +69,9 @@ const sponsors = ref([
                     height="100"
                     class="fit-cover grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
                     :src="sponsor.logo"
+                    :alt="sponsor.name"
                 />
+                <div class="text-xs text-center w-full mt-2">{{ sponsor.name }}</div>
             </a>
             <div
                 class="h-[100px] w-[100px] border border-dashed border-[#9A9A9A] dark:border-[#4A4A4A]"
