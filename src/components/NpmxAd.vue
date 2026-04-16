@@ -31,31 +31,35 @@ const npmx_what_we_are = shallowRef({
 });
 
 const vduIsOnNpmx = shallowRef({
-    en: "npmx has chosen Vue Data UI for its data visualisations",
-    fr: "npmx a choisi Vue Data UI pour ses visualisations de données",
-    pt: "A npmx escolheu o Vue Data UI para suas visualizações de dados",
-    de: "npmx hat sich für Vue Data UI für seine Datenvisualisierungen entschieden",
-    zh: "npmx 选择了 Vue Data UI 作为其数据可视化解决方案",
-    ja: "npmx はデータ可視化に Vue Data UI を採用しました",
-    es: "npmx ha elegido Vue Data UI para sus visualizaciones de datos",
-    ko: "npmx는 데이터 시각화를 위해 Vue Data UI를 선택했습니다",
-    ar: "اختارت npmx ‏Vue Data UI لتصورات البيانات الخاصة بها",
+    en: "<span class=\"font-inter-bold\">npmx</span> has chosen Vue Data UI for its data visualisations",
+    fr: "<span class=\"font-inter-bold\">npmx</span> a choisi Vue Data UI pour ses visualisations de données",
+    pt: "A <span class=\"font-inter-bold\">npmx</span> escolheu o Vue Data UI para suas visualizações de dados",
+    de: "<span class=\"font-inter-bold\">npmx</span> hat sich für Vue Data UI für seine Datenvisualisierungen entschieden",
+    zh: "<span class=\"font-inter-bold\">npmx</span> 选择了 Vue Data UI 作为其数据可视化解决方案",
+    ja: "<span class=\"font-inter-bold\">npmx</span> はデータ可視化に Vue Data UI を採用しました",
+    es: "<span class=\"font-inter-bold\">npmx</span> ha elegido Vue Data UI para sus visualizaciones de datos",
+    ko: "<span class=\"font-inter-bold\">npmx</span>는 데이터 시각화를 위해 Vue Data UI를 선택했습니다",
+    ar: "اختارت <span class=\"font-inter-bold\">npmx</span> ‏Vue Data UI لتصورات البيانات الخاصة بها",
 });
 </script>
 
 <template>
     <div class="ml-12 sm:mx-auto max-w-[1000px] px-12 sm:px-20" dir="auto">
-        <div
-            class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-2 place-items-center"
-        >
-            <VueUiIcon
-                name="externalLink"
-                :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
-            />
-            {{ vduIsOnNpmx[store.lang] }}
-        </div>
+        <a href="https://npmx.dev/" target="_blank">
+            <div
+                class="mt-8 w-full max-w-[800px] text-[18px] pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-4 place-items-center"
+            >
+                <div class="w-[24px] h-[24px]">
+                    <VueUiIcon
+                    name="externalLink"
+                    :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
+                    />
+                </div>
+                <span v-html="vduIsOnNpmx[store.lang]"></span>
+            </div>
+        </a>
 
-        <BaseCard type="dark">
+        <div class="bg-gray-100 dark:bg-[#2A2A2A] py-4 px-2">
             <a href="https://npmx.dev/" target="_blank">
                 <div
                     class="flex flex-row gap-2 place-items-center justify-start"
@@ -87,6 +91,6 @@ const vduIsOnNpmx = shallowRef({
                     v-html="npmx_what_we_are[store.lang]"
                 />
             </a>
-        </BaseCard>
+        </div>
     </div>
 </template>

@@ -7,6 +7,7 @@ import FncsyAd from "./FncsyAd.vue";
 import { ChevronDownIcon, ChevronUpIcon } from "vue-tabler-icons";
 import useMobile from "../useMobile";
 import NpmxAd from "./NpmxAd.vue";
+import CockpitAd from "./CockpitAd.vue";
 
 const store = useMainStore();
 const router = useRouter();
@@ -193,6 +194,8 @@ s
                 </div>
             </div>
         </div>
+
+        <CockpitAd/>
 
         <NpmxAd />
 
