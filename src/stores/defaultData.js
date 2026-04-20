@@ -27193,7 +27193,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: ["value", "is", "rounding"],
                         category: "correlation",
                     },
-
+                    {
+                        key: 'style.layout.dataLabels.reverseAxisLabels',
+                        def: true,
+                        type: 'checkbox',
+                        label: ['axis', 'labels', 'is', 'reverse'],
+                        category: 'labels'
+                    },
                     {
                         key: "style.layout.dataLabels.xAxis.show",
                         def: true,
