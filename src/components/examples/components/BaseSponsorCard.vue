@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import BaseCard from "../../BaseCard.vue";
 import BIBLIOTEK_SYSTEMER from "../../../assets/sponsors/bibliotek_systemer.png";
 import ANTHONY_FU_FUND from "../../../assets/sponsors/aff.png"
+import SERHALP from "../../../assets/sponsors/serhalp.png"
 
 const props = defineProps({
     card: {
@@ -14,6 +15,11 @@ const props = defineProps({
 });
 
 const sponsors = ref([
+    {
+        name: "Philippe Serhal",
+        logo: SERHALP,
+        link: "https://philippeserhal.com/",
+    },
     {
         name: "Anthony Fu Fund",
         logo: ANTHONY_FU_FUND,
