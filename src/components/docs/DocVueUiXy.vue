@@ -122,6 +122,16 @@ const dataset = computed(() => {
             showSerieName: "end",
             dashIndices: [6],
         },
+        {
+            name: "Series 4",
+            series: [40, 45, 30, 35, 30, 40, 45, 55, 50, 45, 30, 20],
+            type: "line",
+            useStepper: true,
+            useArea: false,
+            dataLabels: false,
+            color: "rgb(200,55,50)",
+            scaleSteps: 3,
+        },
     ];
 });
 
@@ -155,6 +165,16 @@ const codeDataset = ref(`const dataset: VueUiXyDatasetItem[] = [
         scaleSteps: 5,
         showSerieName: 'end',
         dashIndices: [5] // ${translations.value.docs.comments.xy.dashIndices[store.lang]}
+    },
+    {
+        name: "Series 4",
+        series: [40, 45, 30, 35, 30, 40, 45, 55, 50, 45, 30, 20],
+        type: "line",
+        useStepper: true,
+        useArea: false,
+        dataLabels: false,
+        color: "rgb(200,55,50)",
+        scaleSteps: 3,
     },
 ]`);
 
@@ -1156,6 +1176,10 @@ function randomizeData(N = 11) {
             mutableDataset.value[1].series.length);
 }
 
+const typeImports = computed(() => {
+    return `import { VueUiXy, type VueUiXyDatasetItem, type VueUiXyConfig } from "vue-data-ui/vue-ui-xy"`
+})
+
 const dsTypeCode = computed(() => {
     return `type VueUiXyDatasetItem = {
     name: string
@@ -1168,6 +1192,7 @@ const dsTypeCode = computed(() => {
     dataLabels?: boolean // ${translations.value.docs.comments.xy.dataLabels[store.lang]}
     useProgression?: boolean // ${translations.value.docs.comments.xy.useProgression[store.lang]}
     useArea?: boolean // ${translations.value.docs.comments.xy.area[store.lang]}
+    useStepper?: boolean // ${translations.value.docs.comments.xy.useStepper[store.lang]}
     smooth?: boolean // ${translations.value.docs.comments.xy.smooth[store.lang]}
     shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // ${translations.value.docs.comments.xy.shape[store.lang]}
     scaleSteps?: number // ${translations.value.docs.comments.xy.scaleSteps[store.lang]}

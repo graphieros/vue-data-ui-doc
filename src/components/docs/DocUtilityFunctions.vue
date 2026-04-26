@@ -146,6 +146,17 @@ const utilityTranslations = ref({
         ko: "숫자 시계열에 두 단계 데이터 보정 파이프라인을 적용합니다. 이 유틸리티는 경계 값을 왜곡하거나 피크 및 전환을 이동시키지 않으면서 부드러움이 필요한 시각적 데이터 정제를 위해 설계되었습니다.",
         ar: "يطبق خط معالجة لتصحيح البيانات من مرحلتين على سلسلة زمنية رقمية. تم تصميم هذه الأداة لتحسين عرض البيانات بصريًا عند الحاجة إلى السلاسة دون تشويه القيم الحدّية أو إزاحة القمم والانتقالات.",
     },
+    adaptColorToBackground: {
+        en: "Returns the most adapted text color for a given background.",
+        fr: "Retourne la couleur de texte la plus adaptée pour un arrière-plan donné.",
+        pt: "Retorna a cor de texto mais adequada para um determinado fundo.",
+        de: "Gibt die am besten geeignete Textfarbe für einen bestimmten Hintergrund zurück.",
+        zh: "为给定背景返回最合适的文本颜色。",
+        ja: "指定された背景に最も適したテキストカラーを返します。",
+        es: "Devuelve el color de texto más adecuado para un fondo dado.",
+        ko: "주어진 배경에 가장 적합한 텍스트 색상을 반환합니다.",
+        ar: "تُرجع لون النص الأكثر ملاءمة لخلفية معينة."
+    }
 });
 
 const colorDark = ref("#FF0000");
@@ -196,8 +207,23 @@ const merged = computed(() => {
 */
 `);
 
+const adaptColorToBackgroundCode = ref(`import { adaptColorToBackground } from "vue-data-ui/utils";
+
+// The background color can be of any format (rgb, rgba, hsl, oklch, name color)
+const textColor1 = adaptColorToBackground('#000000') // Result: '#FFFFFF'
+const textColor2 = adaptColorToBackground('#FFFFFF') // Result: '#000000',
+const textColor3 = adaptColorToBackground('#000000', {
+    light: '#00FF00',
+    dark: '#FF0000'
+}) // Result: '#00FF00'
+const textColor4 = adaptColorToBackground('#FFFFFF', {
+    light: '#00FF00',
+    dark: '#FF0000'
+}) // Result: '#FF0000'
+`)
+
 const getVueDataUiConfigAndMergeConfigsContent =
-    ref(`import { getVueDataUiConfig, mergeConfigs } from "vue-data-ui";
+    ref(`import { getVueDataUiConfig, mergeConfigs } from "vue-data-ui/utils;";
 
 // Get the default config and set color options for a given component
 const customTheme = getVueDataUiConfig("vue_ui_xy", {
@@ -234,7 +260,7 @@ const abbreviated = computed(() => {
 });
 
 const abbrContent = computed(
-    () => `import { abbreviate } from "vue-data-ui";
+    () => `import { abbreviate } from "vue-data-ui/utils";
 
 const text = "${abbrSource.value}";
 const abbreviated = abbreviate({
@@ -247,7 +273,7 @@ const abbreviated = abbreviate({
 );
 
 const darkenContent = computed(
-    () => `import { darkenColor } from "vue-data-ui";
+    () => `import { darkenColor } from "vue-data-ui/utils";
 
 const color = "${colorDark.value}";
 const darkened = darkenColor(color, ${strengthDark.value});
@@ -257,7 +283,7 @@ const darkened = darkenColor(color, ${strengthDark.value});
 );
 
 const lightenContent = computed(
-    () => `import { lightenColor } from "vue-data-ui";
+    () => `import { lightenColor } from "vue-data-ui/utils";
 
 const color = "${colorLight.value}";
 const lightened = lightenColor(color, ${strengthLight.value});
@@ -267,7 +293,7 @@ const lightened = lightenColor(color, ${strengthLight.value});
 );
 
 const shiftColorContent = computed(
-    () => `import { shiftColorHue } from "vue-data-ui";
+    () => `import { shiftColorHue } from "vue-data-ui/utils";
 
 // Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color
 const color = "${colorHue.value}";
@@ -278,7 +304,7 @@ const shifted = shiftColorHue(color, ${Math.round(strengthHue.value * 100) / 100
 );
 
 const createTSpanContent = computed(
-    () => `import { createTSpans } from "vue-data-ui";
+    () => `import { createTSpans } from "vue-data-ui/utils";
 
 const textContent = createTSpans({
     content: "This is an example of multiline text",
@@ -302,7 +328,7 @@ const createTSpanTemplate = computed(
 );
 
 const bindingsContent = computed(
-    () => `import { useObjectBindings, getVueDataUiConfig } from "vue-data-ui";
+    () => `import { useObjectBindings, getVueDataUiConfig } from "vue-data-ui/utils";
 
 const config = ref(getVueDataUiConfig('vue_ui_donut'));
 const bindings = useObjectBindings(config);
@@ -380,7 +406,7 @@ const comments = ref({
 });
 
 const getCumulativeAverageTemplate = computed(
-    () => `import { getCumulativeAverage } from "vue-data-ui";
+    () => `import { getCumulativeAverage } from "vue-data-ui/utils";
 
 // ${comments.value.simpleUsage[store.lang]}
 const arr = [0, 1, 2, 3, 4];
@@ -402,7 +428,7 @@ const cumulativeAvgZeroed = getCumulativeAverage({
 );
 
 const getCumulativeMedianTemplate = computed(
-    () => `import { getCumulativeMedian } from "vue-data-ui";
+    () => `import { getCumulativeMedian } from "vue-data-ui/utils";
 
 // ${comments.value.simpleUsage[store.lang]}
 const arr = [0, 1, 2, 3, 4];
@@ -497,6 +523,7 @@ const dataset = computed(() => ([
 const importSnippet = computed(
     () => `import {
     abbreviate,
+    adaptColorToBackground,
     applyDataCorrection,
     createTSpans,
     darkenColor,
@@ -512,6 +539,7 @@ const importSnippet = computed(
 
 const utilityMenu = [
     "applyDataCorrection",
+    "adaptColorToBackground",
     "useObjectBindings",
     "mergeConfigs",
     "getVueDataUiConfig",
@@ -693,6 +721,23 @@ onBeforeUnmount(() => {
                     <CodeParser
                         language="javascript"
                         :content="dataCorrectionCode"
+                        @copy="store.copy()"
+                    />
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="adaptColorToBackground">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">adaptColorToBackground</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">
+                    {{ utilityTranslations.adaptColorToBackground[store.lang] }}
+                </p>
+
+                <div class="p-4 overflow-auto">
+                    <CodeParser
+                        language="javascript"
+                        :content="adaptColorToBackgroundCode"
                         @copy="store.copy()"
                     />
                 </div>

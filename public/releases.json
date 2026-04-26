@@ -1,5 +1,36 @@
 [
     {
+        "version": "v 3.18.0",
+        "date": "2026-04-26",
+        "updates": [
+            {
+                "component": "Slots",
+                "description": "Add type definitions for all slots",
+                "link": ""
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Add optional step rendering for line series",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiCirclePack",
+                "description": "Improve packing algorithm",
+                "link": "/docs#vue-ui-circle-pack"
+            },
+            {
+                "component": "Zoom minimaps",
+                "description": "Fix draggable issue on range handles in some edge cases",
+                "link": ""
+            },
+            {
+                "component": "Utility functions",
+                "description": "Expose the adaptColorToBackground utility function",
+                "link": "/docs#utility-functions"
+            }
+        ]
+    },
+    {
         "version": "v 3.17.13",
         "date": "2026-04-11",
         "updates": [

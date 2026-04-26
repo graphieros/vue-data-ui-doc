@@ -4253,6 +4253,17 @@ export const useMainStore = defineStore("main", {
                                 ko: "버전 1.9.0부터 선 유형에 이 속성을 설정하여 곡선으로 만들 수 있습니다.",
                                 ar: "منذ الإصدار 1.9.0، يمكنك تعيين هذه الخاصية على أنواع الخطوط لجعلها منحنية.",
                             },
+                            useStepper: {
+                                en: "Since version 3.18.0, set this property to true to show line types with steps (staircase).",
+                                fr: "Depuis la version 3.18.0, définissez cette propriété sur true pour afficher des lignes avec des paliers (en escalier).",
+                                pt: "Desde a versão 3.18.0, defina esta propriedade como true para exibir linhas com etapas (em escada).",
+                                de: "Seit Version 3.18.0 setzen Sie diese Eigenschaft auf true, um Linien mit Stufen (Treppenform) anzuzeigen.",
+                                zh: "自版本 3.18.0 起，将此属性设置为 true 以显示阶梯（阶梯状）折线。",
+                                ja: "バージョン3.18.0以降、このプロパティをtrueに設定すると、階段状のラインを表示します。",
+                                es: "Desde la versión 3.18.0, establezca esta propiedad en true para mostrar líneas con escalones (en forma de escalera).",
+                                ko: "버전 3.18.0부터 이 속성을 true로 설정하면 계단형 선을 표시합니다.",
+                                ar: "ابتداءً من الإصدار 3.18.0، اضبط هذه الخاصية على true لعرض الخطوط بشكل متدرج (على شكل درجات)."
+                            },
                             area: {
                                 en: "Since version v.1.8.7, you can set this property to show an area chart on line types",
                                 fr: "Depuis la version v.1.8.7, vous pouvez définir cette propriété pour afficher un graphique en aires sur les types ligne",

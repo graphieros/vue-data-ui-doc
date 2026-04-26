@@ -58,7 +58,6 @@ const imp = useImportMap(props.name);
         <CodeParser
             language="javascript"
             :content="imp.treeshaken || imp.treeshaken"
-            line-height="0.8rem"
             tw="mr-8"
             @copy="store.copy()"
         />

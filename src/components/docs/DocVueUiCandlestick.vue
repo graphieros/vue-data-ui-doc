@@ -642,7 +642,7 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode();
 
 const dsTypeCode = computed(() => {
-    return `import { type OHLC } from "vue-data-ui";
+    return `import { type OHLC } from "vue-data-ui/vue-ui-candlestick";
 // Array<OHLC>`;
 });
 

@@ -6439,6 +6439,31 @@ export default function useExamples() {
                     ar: "مخطط خطي ناعم أساسي",
                 },
             },
+            // XY BASIC LINE WITH STEPS
+            {
+                dataset: DATASET_XY_SINUSOID2.value.map(d => {
+                    return {
+                        ...d,
+                        useStepper: true
+                    }
+                }),
+                config: BASE_XY_CONFIG.value,
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "basic-line-staircase",
+                link: "vue-ui-xy",
+                description: {
+                    en: "Basic staircase line chart",
+                    fr: "Graphique en ligne en escalier de base",
+                    pt: "Gráfico de linha em escada básico",
+                    de: "Einfaches Treppenliniendiagramm",
+                    zh: "基础阶梯折线图",
+                    ja: "基本的な階段状折れ線グラフ",
+                    es: "Gráfico de líneas escalonado básico",
+                    ko: "기본 계단형 선 그래프",
+                    ar: "مخطط خطي متدرج أساسي",
+                },
+            },
             // XY BASIC BAR
             {
                 dataset: DATASET_XY_BASIC_BAR.value,
@@ -7831,6 +7856,52 @@ export default function useExamples() {
                     es: "Degradado de área personalizado con línea suave",
                     ko: "부드러운 선이 있는 사용자 지정 영역 그라데이션",
                     ar: "تدرّج مساحي مخصّص مع خط سلس",
+                },
+            },
+            // XY CUSTOM GRADIENT LINE STAIRCASE
+            {
+                dataset: DATASET_XY_SINUSOID2_SMOOTH_AREA.value.map(d => {
+                    return {
+                        ...d,
+                        useStepper: true
+                    }
+                }),
+                config: BASE_XY_CONFIG.value,
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "area-custom-gradient-stepper",
+                link: "vue-ui-xy",
+                tags: ["#area-gradient"],
+                customGradient: true,
+                slot: `<template #area-gradient="{ series, id }">
+                <linearGradient 
+                    :id="id" 
+                    x1="0" 
+                    x2="0" 
+                    y1="0" 
+                    y2="1"
+                >
+                    <stop 
+                        offset="0%" 
+                        :stop-color="series.color"
+                    />
+                    <stop 
+                        offset="100%" 
+                        stop-color="#FFFFFF" 
+                        stop-opacity="0"
+                    />
+                </linearGradient>
+            </template>`,
+                description: {
+                    en: "Custom area gradient with staircase line",
+                    fr: "Dégradé de zone personnalisé avec ligne en escalier",
+                    pt: "Gradiente de área personalizado com linha em escada",
+                    de: "Benutzerdefinierter Flächenverlauf mit Treppenlinie",
+                    zh: "带阶梯线的自定义区域渐变",
+                    ja: "階段状の線を伴うカスタムエリアグラデーション",
+                    es: "Gradiente de área personalizado con línea escalonada",
+                    ko: "계단형 선이 있는 사용자 정의 영역 그라데이션",
+                    ar: "تدرج مساحة مخصص مع خط متدرج"
                 },
             },
             // XY CUSTOM GRADIENT BAR
