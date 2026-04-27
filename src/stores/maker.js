@@ -15,6 +15,17 @@ export const useMakerStore = defineStore("maker", {
                 ar: "",
             },
             translations: {
+                useTs: {
+                    en: 'Use Typescript',
+                    fr: 'Utiliser Typescript',
+                    pt: 'Usar Typescript',
+                    de: 'Typescript verwenden',
+                    zh: '使用 Typescript',
+                    ja: 'Typescript を使用する',
+                    es: 'Usar Typescript',
+                    ko: 'Typescript 사용',
+                    ar: 'استخدام Typescript'
+                },
                 datapointName: {
                     en: "Datapoint name",
                     fr: "Nom du point de données",

@@ -55,9 +55,10 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const emit = defineEmits(["click"]);
 
-const isComputed = ref(false);
+const isComputed = ref(true);
 const isVapor = ref(false);
 const isUniversal = ref(false);
+const isTs = ref(true);
 
 const finalConfig = computed(() => {
     if (!props.configName) return props.config;
@@ -159,26 +160,26 @@ const universalWarning = ref({
 });
 
 const scriptTag = computed(() => {
-    return `<script${isVapor.value ? " vapor" : ""} setup>`;
+    return `<script${isVapor.value ? " vapor" : ""} setup${isTs.value ? ' lang="ts"' : ''}>`;
 });
 
 const generatedScript = computed(() => {
     return `import { ${isComputed.value ? "computed" : "ref"} } from "vue";
-${isTreeshaken.value ? imp.treeshaken : `import { ${isUniversal.value ? "VueDataUi" : props.componentName} } from "vue-data-ui";`}${isUniversal.value ? ` // ${universalWarning.value[store.lang]}` : ""}
+${isUniversal.value && isTs.value ? imp.universalTyped : isUniversal.value && !isTs.value ? imp.universal : isTreeshaken.value && isTs.value ? imp.treeshaken : isTreeshaken.value && !isTs.value ? imp.untyped : !isTreeshaken.value && isTs.value ? imp.classic : imp.untypedNotTreeshaken}${isUniversal.value ? ` // ${universalWarning.value[store.lang]}` : ""}
 import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
 ${
     isComputed.value
-        ? `const config = computed(() => {
+        ? `const config = computed${isTs.value ? `<${imp.configType}>` : ''}(() => {
 return ${jsonToJsObject(finalConfig.value, 4, true)} });`
-        : `const config = ref(${jsonToJsObject(finalConfig.value, 4, true)});`
+        : `const config = ref${isTs.value ? `<${imp.configType}>` : ''}(${jsonToJsObject(finalConfig.value, 4, true)});`
 }
 
 ${
     isComputed.value
-        ? `const dataset = computed(() => {
+        ? `const dataset = computed${isTs.value ? `<${imp.datasetType}>`: ''}(() => {
 return ${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)} });`
-        : `const dataset = ref(${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)});`
+        : `const dataset = ref${isTs.value ? `<${imp.datasetType}>`: ''}(${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)});`
 }
 `;
 });
@@ -316,6 +317,12 @@ function toggleStorage() {
             <input id="treesh" type="checkbox" v-model="isTreeshaken" />
             <label for="treesh" class="text-sm cursor-pointer"
                 >Treeshaken import ( v3.2.0+ )</label
+            >
+        </div>
+        <div class="mb-4 flex flex-row gap-4 place-items-center">
+            <input id="useTs" type="checkbox" v-model="isTs" />
+            <label for="useTs" class="text-sm cursor-pointer"
+                >Use Typescript</label
             >
         </div>
         <div

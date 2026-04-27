@@ -273,7 +273,8 @@ const config = computed(() => {
             "VueUiIcon",
             "VueUiDigits",
             "VueUiCursor",
-            "VueUiMiniLoader"
+            "VueUiMiniLoader",
+            "VueDataUi"
         ],
     };
 });
