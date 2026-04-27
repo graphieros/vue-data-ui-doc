@@ -23,6 +23,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -1071,7 +1072,13 @@ function goToPage(route) {
                         'tooltip-after',
                         'source',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-sparkstackbar.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
 
             <template #tab6>

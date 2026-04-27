@@ -23,6 +23,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -859,6 +860,9 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
             </template>
 
             <template #tab3>
+                <BaseSlotsImplementationLink
+                    link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-table-heatmap.vue"
+                />
                 <ul class="mb-6">
                     <li>#caption</li>
                     <li>#rowTitle</li>

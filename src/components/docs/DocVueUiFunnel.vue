@@ -25,6 +25,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -1585,7 +1586,13 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiFunnel"
                     :types="['svg', 'watermark', 'source', 'chart-background']"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-funnel.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
 
             <!--THEMES-->

@@ -25,6 +25,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ThemesVueUiDag from "../themes/ThemesVueUiDag.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -1638,7 +1639,13 @@ function goToPage(route) {
                         'tooltip-node',
                         'tooltip-midpoint',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-dag.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
 
             <template #tab6>

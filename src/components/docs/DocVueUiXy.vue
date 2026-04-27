@@ -31,6 +31,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -1189,8 +1190,8 @@ function randomizeData(N = 11) {
 }
 
 const typeImports = computed(() => {
-    return `import { VueUiXy, type VueUiXyDatasetItem, type VueUiXyConfig } from "vue-data-ui/vue-ui-xy"`
-})
+    return `import { VueUiXy, type VueUiXyDatasetItem, type VueUiXyConfig } from "vue-data-ui/vue-ui-xy"`;
+});
 
 const dsTypeCode = computed(() => {
     return `type VueUiXyDatasetItem = {
@@ -4121,10 +4122,48 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
-                                    <BaseAttr name="offsetX" attr="bar.labels.offsetX" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="rotation" attr="bar.labels.rotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="textAnchor" attr="bar.labels.textAnchor" type="select" defaultVal="null" :options="[null, 'start', 'middle', 'end']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="alwaysOnTop" attr="bar.labels.alwaysOnTop" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr
+                                        name="offsetX"
+                                        attr="bar.labels.offsetX"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-50"
+                                        :max="50"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="rotation"
+                                        attr="bar.labels.rotation"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-360"
+                                        :max="360"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="textAnchor"
+                                        attr="bar.labels.textAnchor"
+                                        type="select"
+                                        defaultVal="null"
+                                        :options="[
+                                            null,
+                                            'start',
+                                            'middle',
+                                            'end',
+                                        ]"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="alwaysOnTop"
+                                        attr="bar.labels.alwaysOnTop"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseAttr
                                         name="rounding"
                                         attr="bar.labels.rounding"
@@ -4399,10 +4438,48 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
-                                    <BaseAttr name="offsetX" attr="line.labels.offsetX" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="rotation" attr="line.labels.rotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="textAnchor" attr="line.labels.textAnchor" type="select" defaultVal="null" :options="[null, 'start', 'middle', 'end']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="alwaysOnTop" attr="line.labels.alwaysOnTop" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr
+                                        name="offsetX"
+                                        attr="line.labels.offsetX"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-50"
+                                        :max="50"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="rotation"
+                                        attr="line.labels.rotation"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-360"
+                                        :max="360"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="textAnchor"
+                                        attr="line.labels.textAnchor"
+                                        type="select"
+                                        defaultVal="null"
+                                        :options="[
+                                            null,
+                                            'start',
+                                            'middle',
+                                            'end',
+                                        ]"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="alwaysOnTop"
+                                        attr="line.labels.alwaysOnTop"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseAttr
                                         name="rounding"
                                         attr="line.labels.rounding"
@@ -4584,10 +4661,48 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
-                                    <BaseAttr name="offsetX" attr="plot.labels.offsetX" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="rotation" attr="plot.labels.rotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="textAnchor" attr="plot.labels.textAnchor" type="select" defaultVal="null" :options="[null, 'start', 'middle', 'end']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="alwaysOnTop" attr="plot.labels.alwaysOnTop" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr
+                                        name="offsetX"
+                                        attr="plot.labels.offsetX"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-50"
+                                        :max="50"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="rotation"
+                                        attr="plot.labels.rotation"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-360"
+                                        :max="360"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="textAnchor"
+                                        attr="plot.labels.textAnchor"
+                                        type="select"
+                                        defaultVal="null"
+                                        :options="[
+                                            null,
+                                            'start',
+                                            'middle',
+                                            'end',
+                                        ]"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="alwaysOnTop"
+                                        attr="plot.labels.alwaysOnTop"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseAttr
                                         name="rounding"
                                         attr="plot.labels.rounding"
@@ -4942,6 +5057,12 @@ const customFormatCode =
                         'annotator-actions',
                     ]"
                 >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-xy.vue"
+                        />
+                    </template>
+
                     <template #after="item">
                         <div v-if="item.names.includes('svg')" class="p-6">
                             {{ item.freestyle }}

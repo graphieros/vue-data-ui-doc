@@ -155,8 +155,8 @@ const utilityTranslations = ref({
         ja: "指定された背景に最も適したテキストカラーを返します。",
         es: "Devuelve el color de texto más adecuado para un fondo dado.",
         ko: "주어진 배경에 가장 적합한 텍스트 색상을 반환합니다.",
-        ar: "تُرجع لون النص الأكثر ملاءمة لخلفية معينة."
-    }
+        ar: "تُرجع لون النص الأكثر ملاءمة لخلفية معينة.",
+    },
 });
 
 const colorDark = ref("#FF0000");
@@ -207,7 +207,8 @@ const merged = computed(() => {
 */
 `);
 
-const adaptColorToBackgroundCode = ref(`import { adaptColorToBackground } from "vue-data-ui/utils";
+const adaptColorToBackgroundCode =
+    ref(`import { adaptColorToBackground } from "vue-data-ui/utils";
 
 // The background color can be of any format (rgb, rgba, hsl, oklch, name color)
 const textColor1 = adaptColorToBackground('#000000') // Result: '#FFFFFF'
@@ -220,7 +221,7 @@ const textColor4 = adaptColorToBackground('#FFFFFF', {
     light: '#00FF00',
     dark: '#FF0000'
 }) // Result: '#FF0000'
-`)
+`);
 
 const getVueDataUiConfigAndMergeConfigsContent =
     ref(`import { getVueDataUiConfig, mergeConfigs } from "vue-data-ui/utils;";

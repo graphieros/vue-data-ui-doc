@@ -27,6 +27,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseComment from "../BaseComment.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -1707,7 +1708,13 @@ const prefersReduced = ref({
                         'source',
                         'chart-background',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-sparkline.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
 
             <template #tab5>

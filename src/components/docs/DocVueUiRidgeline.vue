@@ -28,6 +28,7 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -2587,7 +2588,13 @@ function goToPage(route) {
                         'user-menu',
                         'annotator-actions',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-ridgeline.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
 
             <template #tab6>

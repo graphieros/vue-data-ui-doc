@@ -77,21 +77,28 @@ export function useImportMap(c) {
         VueDataUi: null,
         VueUi3dBar: ", type VueUi3dBarDataset, type VueUi3dBarConfig",
         VueUiAccordion: ", type VueUiAccordionConfig",
-        VueUiAgePyramid: ", type VueUiAgePyramidDataset, type VueUiAgePyramidConfig",
-        VueUiAnnotator: ", type VueUiAnnotatorDataset, type VueUiAnnotatorConfig",
+        VueUiAgePyramid:
+            ", type VueUiAgePyramidDataset, type VueUiAgePyramidConfig",
+        VueUiAnnotator:
+            ", type VueUiAnnotatorDataset, type VueUiAnnotatorConfig",
         VueUiBullet: ", type VueUiBulletDataset, type VueUiBulletConfig",
         VueUiBump: ", type VueUiBumpDatasetItem, type VueUiBumpConfig",
         VueUiCandlestick: ", type OHLC, type VueUiCandlestickConfig",
-        VueUiCarouselTable: ", type VueUiCarouselTableDataset, type VueUiCarouselTableConfig",
-        VueUiChestnut: ", type VueUiChestnutDatasetRoot, type VueUiChestnutConfig",
+        VueUiCarouselTable:
+            ", type VueUiCarouselTableDataset, type VueUiCarouselTableConfig",
+        VueUiChestnut:
+            ", type VueUiChestnutDatasetRoot, type VueUiChestnutConfig",
         VueUiChord: ", type VueUiChordDataset, type VueUiChordConfig",
-        VueUiCirclePack: ", type VueUiCirclePackDatasetItem, type VueUiCirclePackConfig",
+        VueUiCirclePack:
+            ", type VueUiCirclePackDatasetItem, type VueUiCirclePackConfig",
         VueUiCursor: ", type VueUiCursorConfig",
         VueUiDag: ", type VueUiDagDataset, type VueUiDagConfig",
-        VueUiDashboard: ", type VueUiDashboardElement, type VueUiDashboardConfig",
+        VueUiDashboard:
+            ", type VueUiDashboardElement, type VueUiDashboardConfig",
         VueUiDigits: ", type VueUiDigitsConfig",
         VueUiDonut: ", type VueUiDonutDatasetItem, type VueUiDonutConfig",
-        VueUiDonutEvolution: ", type VueUiDonutEvolutionDatasetItem, type VueUiDonutEvolutionConfig",
+        VueUiDonutEvolution:
+            ", type VueUiDonutEvolutionDatasetItem, type VueUiDonutEvolutionConfig",
         VueUiDumbbell: ", type VueUiDumbbellDataset, type VueUiDumbbellConfig",
         VueUiFlow: ", type VueUiFlowDatasetItem, type VueUiFlowConfig",
         VueUiFunnel: ", type VueUiFunnelDatasetItem, type VueUiFunnelConfig",
@@ -100,52 +107,76 @@ export function useImportMap(c) {
         VueUiGeo: ", type VueUiGeoDatasetItem, type VueUiGeoConfig",
         VueUiGizmo: ", type VueUiGizmoDataset, type VueUiGizmoConfig",
         VueUiHeatmap: ", type VueUiHeatmapDatasetItem, type VueUiHeatmapConfig",
-        VueUiHistoryPlot: ", type VueUiHistoryPlotDatasetItem, type VueUiHistoryPlotConfig",
-        VueUiHorizontalBar: ", type VueUiHorizontalBarDatasetItem, type VueUiHorizontalBarConfig",
+        VueUiHistoryPlot:
+            ", type VueUiHistoryPlotDatasetItem, type VueUiHistoryPlotConfig",
+        VueUiHorizontalBar:
+            ", type VueUiHorizontalBarDatasetItem, type VueUiHorizontalBarConfig",
         VueUiIcon: "",
         VueUiKpi: ", type VueUiKpiConfig",
         VueUiMiniLoader: ", type VueUiMiniLoaderConfig",
-        VueUiMolecule: ", type VueUiMoleculeDatasetNode, type VueUiMoleculeConfig",
-        VueUiMoodRadar: ", type VueUiMoodRadarDataset, type VueUiMoodRadarConfig",
-        VueUiNestedDonuts: ", type VueUiNestedDonutsDatasetItem, type VueUiNestedDonutsConfig",
+        VueUiMolecule:
+            ", type VueUiMoleculeDatasetNode, type VueUiMoleculeConfig",
+        VueUiMoodRadar:
+            ", type VueUiMoodRadarDataset, type VueUiMoodRadarConfig",
+        VueUiNestedDonuts:
+            ", type VueUiNestedDonutsDatasetItem, type VueUiNestedDonutsConfig",
         VueUiOnion: ", type VueUiOnionDatasetItem, type VueUiOnionConfig",
-        VueUiParallelCoordinatePlot: ", type VueUiParallelCoordinatePlotDatasetItem, type VueUiParallelCoordinatePlotConfig",
+        VueUiParallelCoordinatePlot:
+            ", type VueUiParallelCoordinatePlotDatasetItem, type VueUiParallelCoordinatePlotConfig",
         VueUiPattern: "",
         VueUiPatternSeed: "",
-        VueUiQuadrant: ", type VueUiQuadrantDatasetItem, type VueUiQuadrantConfig",
-        VueUiQuickChart: ", type VueUiQuickChartDataset, type VueUiQuickChartConfig",
+        VueUiQuadrant:
+            ", type VueUiQuadrantDatasetItem, type VueUiQuadrantConfig",
+        VueUiQuickChart:
+            ", type VueUiQuickChartDataset, type VueUiQuickChartConfig",
         VueUiRadar: ", type VueUiRadarDataset, type VueUiRadarConfig",
         VueUiRating: ", type VueUiRatingDataset, type VueUiRatingConfig",
-        VueUiRelationCircle: ", type VueUiRelationCircleDatasetItem, type VueUiRelationCircleConfig",
-        VueUiRidgeline: ", type VueUiRidgelineDatasetItem, type VueUiRidgelineConfig",
+        VueUiRelationCircle:
+            ", type VueUiRelationCircleDatasetItem, type VueUiRelationCircleConfig",
+        VueUiRidgeline:
+            ", type VueUiRidgelineDatasetItem, type VueUiRidgelineConfig",
         VueUiRings: ", type VueUiRingsDatasetItem, type VueUiRingsConfig",
         VueUiScatter: ", type VueUiScatterDatasetItem, type VueUiScatterConfig",
         VueUiScreenshot: "",
         VueUiSkeleton: ", type VueUiSkeletonConfig",
         VueUiSmiley: ", type VueUiRatingDataset, type VueUiSmileyConfig",
-        VueUiSparkHistogram: ", type VueUiSparkHistogramDatasetItem, type VueUiSparkHistogramConfig",
-        VueUiSparkStackbar: ", type VueUiSparkStackbarDatasetItem, type VueUiSparkStackbarConfig",
+        VueUiSparkHistogram:
+            ", type VueUiSparkHistogramDatasetItem, type VueUiSparkHistogramConfig",
+        VueUiSparkStackbar:
+            ", type VueUiSparkStackbarDatasetItem, type VueUiSparkStackbarConfig",
         VueUiSparkTrend: ", type VueUiSparkTrendConfig",
-        VueUiSparkbar: ", type VueUiSparkbarDatasetItem, type VueUiSparkbarConfig",
-        VueUiSparkgauge: ", type VueUiSparkgaugeDataset, type VueUiSparkgaugeConfig",
-        VueUiSparkline: ", type VueUiSparklineDatasetItem, type VueUiSparklineConfig",
-        VueUiStackbar: ", type VueUiStackbarDatasetItem, type VueUiStackbarConfig",
-        VueUiStackline: ", type VueUiStacklineDatasetItem, type VueUiStacklineConfig",
-        VueUiStripPlot: ", type VueUiStripPlotDataset, type VueUiStripPlotConfig",
+        VueUiSparkbar:
+            ", type VueUiSparkbarDatasetItem, type VueUiSparkbarConfig",
+        VueUiSparkgauge:
+            ", type VueUiSparkgaugeDataset, type VueUiSparkgaugeConfig",
+        VueUiSparkline:
+            ", type VueUiSparklineDatasetItem, type VueUiSparklineConfig",
+        VueUiStackbar:
+            ", type VueUiStackbarDatasetItem, type VueUiStackbarConfig",
+        VueUiStackline:
+            ", type VueUiStacklineDatasetItem, type VueUiStacklineConfig",
+        VueUiStripPlot:
+            ", type VueUiStripPlotDataset, type VueUiStripPlotConfig",
         VueUiTable: ", type VueUiTableDataset, type VueUiTableConfig",
-        VueUiTableHeatmap: ", type VueUiTableHeatmapDatasetItem, type VueUiTableHeatmapConfig",
-        VueUiTableSparkline: ", type VueUiTableSparklineDatasetItem, type VueUiTableSparklineConfig",
-        VueUiThermometer: ", type VueUiThermometerDataset, type VueUiThermometerConfig",
+        VueUiTableHeatmap:
+            ", type VueUiTableHeatmapDatasetItem, type VueUiTableHeatmapConfig",
+        VueUiTableSparkline:
+            ", type VueUiTableSparklineDatasetItem, type VueUiTableSparklineConfig",
+        VueUiThermometer:
+            ", type VueUiThermometerDataset, type VueUiThermometerConfig",
         VueUiTimer: ", type VueUiTimerConfig",
-        VueUiTiremarks: ", type VueUiTiremarksDataset, type VueUiTiremarksConfig",
+        VueUiTiremarks:
+            ", type VueUiTiremarksDataset, type VueUiTiremarksConfig",
         VueUiTreemap: ", type VueUiTreemapDatasetItem, type VueUiTreemapConfig",
         VueUiWaffle: ", type VueUiWaffleDatasetItem, type VueUiWaffleConfig",
         VueUiWheel: ", type VueUiWheelDataset, type VueUiWheelConfig",
-        VueUiWordCloud: ", type VueUiWordCloudDatasetItem, type VueUiWordCloudConfig",
+        VueUiWordCloud:
+            ", type VueUiWordCloudDatasetItem, type VueUiWordCloudConfig",
         VueUiWorld: ", type VueUiWorldDataset, type VueUiWorldConfig",
         VueUiXy: ", type VueUiXyDatasetItem, type VueUiXyConfig",
-        VueUiXyCanvas: ", type VueUiXyCanvasDatasetItem, type VueUiXyCanvasConfig",
-    }
+        VueUiXyCanvas:
+            ", type VueUiXyCanvasDatasetItem, type VueUiXyCanvasConfig",
+    };
 
     const datasetTypeMap = {
         VueDataUi: "",
@@ -219,7 +250,7 @@ export function useImportMap(c) {
         VueUiWorld: "VueUiWorldDataset",
         VueUiXy: "VueUiXyDatasetItem[]",
         VueUiXyCanvas: "VueUiXyCanvasDatasetItem[]",
-    }
+    };
 
     const configTypeMap = {
         VueDataUi: "",
@@ -293,18 +324,18 @@ export function useImportMap(c) {
         VueUiWorld: "VueUiWorldConfig",
         VueUiXy: "VueUiXyConfig",
         VueUiXyCanvas: "VueUiXyCanvasConfig",
-    }
+    };
 
     return mapping[c]
         ? {
-            universal: `import { VueDataUi } from "vue-data-ui";`,
-            universalTyped: `import { VueDataUi${typesMapping[c]} } from "vue-data-ui";`,
-            untyped: `import { ${c} } from "vue-data-ui/${mapping[c]}";`,
-            untypedNotTreeshaken: `import { ${c} } from "vue-data-ui";`,
-            classic: `import { ${c}${typesMapping[c]} } from "vue-data-ui";`,
-            treeshaken: `import { ${c}${typesMapping[c]} } from "vue-data-ui/${mapping[c]}";`,
-            datasetType: datasetTypeMap[c],
-            configType: configTypeMap[c]
+              universal: `import { VueDataUi } from "vue-data-ui";`,
+              universalTyped: `import { VueDataUi${typesMapping[c]} } from "vue-data-ui";`,
+              untyped: `import { ${c} } from "vue-data-ui/${mapping[c]}";`,
+              untypedNotTreeshaken: `import { ${c} } from "vue-data-ui";`,
+              classic: `import { ${c}${typesMapping[c]} } from "vue-data-ui";`,
+              treeshaken: `import { ${c}${typesMapping[c]} } from "vue-data-ui/${mapping[c]}";`,
+              datasetType: datasetTypeMap[c],
+              configType: configTypeMap[c],
           }
         : null;
 }

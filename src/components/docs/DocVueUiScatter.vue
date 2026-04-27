@@ -26,6 +26,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -3259,6 +3260,11 @@ const customFormatCode =
                         'annotator-actions',
                     ]"
                 >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-scatter.vue"
+                        />
+                    </template>
                     <template #after="item">
                         <div v-if="item.names.includes('svg')" class="p-6">
                             {{ item.freestyle }}

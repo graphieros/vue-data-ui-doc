@@ -2,8 +2,8 @@
 import { ref, computed } from "vue";
 import BaseCard from "../../BaseCard.vue";
 import BIBLIOTEK_SYSTEMER from "../../../assets/sponsors/bibliotek_systemer.png";
-import ANTHONY_FU_FUND from "../../../assets/sponsors/aff.png"
-import SERHALP from "../../../assets/sponsors/serhalp.png"
+import ANTHONY_FU_FUND from "../../../assets/sponsors/aff.png";
+import SERHALP from "../../../assets/sponsors/serhalp.png";
 
 const props = defineProps({
     card: {
@@ -77,7 +77,9 @@ const sponsors = ref([
                     :src="sponsor.logo"
                     :alt="sponsor.name"
                 />
-                <div class="text-xs text-center w-full mt-2">{{ sponsor.name }}</div>
+                <div class="text-xs text-center w-full mt-2">
+                    {{ sponsor.name }}
+                </div>
             </a>
             <div
                 class="h-[100px] w-[100px] border border-dashed border-[#9A9A9A] dark:border-[#4A4A4A]"

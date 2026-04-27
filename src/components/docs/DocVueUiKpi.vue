@@ -15,6 +15,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import DocSnapper from "../DocSnapper.vue";
 import useMobile from "../../useMobile";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -466,7 +467,13 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                         'comment-before',
                         'comment-after',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-kpi.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
         </Box>
     </div>

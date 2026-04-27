@@ -24,6 +24,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -1684,7 +1685,13 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                         'user-menu',
                         'annotator-actions',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-3d-bar.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
 
             <template #tab6>

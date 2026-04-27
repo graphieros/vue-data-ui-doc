@@ -31,15 +31,15 @@ const npmx_what_we_are = shallowRef({
 });
 
 const vduIsOnNpmx = shallowRef({
-    en: "<span class=\"font-inter-bold\">npmx</span> has chosen Vue Data UI for its data visualisations",
-    fr: "<span class=\"font-inter-bold\">npmx</span> a choisi Vue Data UI pour ses visualisations de données",
-    pt: "A <span class=\"font-inter-bold\">npmx</span> escolheu o Vue Data UI para suas visualizações de dados",
-    de: "<span class=\"font-inter-bold\">npmx</span> hat sich für Vue Data UI für seine Datenvisualisierungen entschieden",
-    zh: "<span class=\"font-inter-bold\">npmx</span> 选择了 Vue Data UI 作为其数据可视化解决方案",
-    ja: "<span class=\"font-inter-bold\">npmx</span> はデータ可視化に Vue Data UI を採用しました",
-    es: "<span class=\"font-inter-bold\">npmx</span> ha elegido Vue Data UI para sus visualizaciones de datos",
-    ko: "<span class=\"font-inter-bold\">npmx</span>는 데이터 시각화를 위해 Vue Data UI를 선택했습니다",
-    ar: "اختارت <span class=\"font-inter-bold\">npmx</span> ‏Vue Data UI لتصورات البيانات الخاصة بها",
+    en: '<span class="font-inter-bold">npmx</span> has chosen Vue Data UI for its data visualisations',
+    fr: '<span class="font-inter-bold">npmx</span> a choisi Vue Data UI pour ses visualisations de données',
+    pt: 'A <span class="font-inter-bold">npmx</span> escolheu o Vue Data UI para suas visualizações de dados',
+    de: '<span class="font-inter-bold">npmx</span> hat sich für Vue Data UI für seine Datenvisualisierungen entschieden',
+    zh: '<span class="font-inter-bold">npmx</span> 选择了 Vue Data UI 作为其数据可视化解决方案',
+    ja: '<span class="font-inter-bold">npmx</span> はデータ可視化に Vue Data UI を採用しました',
+    es: '<span class="font-inter-bold">npmx</span> ha elegido Vue Data UI para sus visualizaciones de datos',
+    ko: '<span class="font-inter-bold">npmx</span>는 데이터 시각화를 위해 Vue Data UI를 선택했습니다',
+    ar: 'اختارت <span class="font-inter-bold">npmx</span> ‏Vue Data UI لتصورات البيانات الخاصة بها',
 });
 </script>
 
@@ -51,8 +51,8 @@ const vduIsOnNpmx = shallowRef({
             >
                 <div class="w-[24px] h-[24px]">
                     <VueUiIcon
-                    name="externalLink"
-                    :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
+                        name="externalLink"
+                        :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
                     />
                 </div>
                 <span v-html="vduIsOnNpmx[store.lang]"></span>

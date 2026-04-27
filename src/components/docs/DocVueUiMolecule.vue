@@ -22,6 +22,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -1680,7 +1681,13 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                         'user-menu',
                         'annotator-actions',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-molecule.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
             <template #tab4>
                 <h3 class="mb-4">

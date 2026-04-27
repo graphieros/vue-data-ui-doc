@@ -26,6 +26,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ThemesVueUiGeo from "../themes/ThemesVueUiGeo.vue";
 import FRANCE from "../../resources/FRANCE.json";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -1486,7 +1487,13 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                         'user-menu',
                         'annotator-actions',
                     ]"
-                />
+                >
+                    <template #top>
+                        <BaseSlotsImplementationLink
+                            link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-geo.vue"
+                        />
+                    </template>
+                </BaseSlotDocumenter>
             </template>
 
             <template #tab6>

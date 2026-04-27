@@ -24,6 +24,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 
 const mainConfig = useConfig();
 
@@ -607,6 +608,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
 </pre>
             </template>
             <template #tab3>
+                <BaseSlotsImplementationLink
+                    link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-dashboard.vue"
+                />
+
                 To display charts on the dashboard, use the #content slot:
 
                 <pre>

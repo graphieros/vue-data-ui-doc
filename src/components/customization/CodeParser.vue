@@ -274,7 +274,7 @@ const config = computed(() => {
             "VueUiDigits",
             "VueUiCursor",
             "VueUiMiniLoader",
-            "VueDataUi"
+            "VueDataUi",
         ],
     };
 });

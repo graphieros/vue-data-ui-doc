@@ -195,7 +195,7 @@ s
             </div>
         </div>
 
-        <CockpitAd/>
+        <CockpitAd />
 
         <NpmxAd />
 

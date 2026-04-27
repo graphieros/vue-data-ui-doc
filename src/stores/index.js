@@ -116,6 +116,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                slotImplementation: {
+                    en: "View an example implementation of the component with all its slots",
+                    fr: "Voir un exemple d’implémentation du composant avec tous ses slots",
+                    pt: "Veja um exemplo de implementação do componente com todos os seus slots",
+                    de: "Sehen Sie sich ein Beispiel für die Implementierung der Komponente mit all ihren Slots an",
+                    zh: "查看包含所有插槽的组件实现示例",
+                    ja: "すべてのスロットを含むコンポーネントの実装例を見る",
+                    ko: "모든 슬롯이 포함된 컴포넌트 구현 예제를 확인하세요",
+                    es: "Consulta un ejemplo de implementación del componente con todos sus slots",
+                    ar: "اطّلع على مثال لتطبيق المكوّن مع جميع المنافذ",
+                },
                 a11y: {
                     config_pointer_comment: {
                         en: "In most components, the attribute is placed inside `userOptions`",
@@ -4262,7 +4273,7 @@ export const useMainStore = defineStore("main", {
                                 ja: "バージョン3.18.0以降、このプロパティをtrueに設定すると、階段状のラインを表示します。",
                                 es: "Desde la versión 3.18.0, establezca esta propiedad en true para mostrar líneas con escalones (en forma de escalera).",
                                 ko: "버전 3.18.0부터 이 속성을 true로 설정하면 계단형 선을 표시합니다.",
-                                ar: "ابتداءً من الإصدار 3.18.0، اضبط هذه الخاصية على true لعرض الخطوط بشكل متدرج (على شكل درجات)."
+                                ar: "ابتداءً من الإصدار 3.18.0، اضبط هذه الخاصية على true لعرض الخطوط بشكل متدرج (على شكل درجات).",
                             },
                             area: {
                                 en: "Since version v.1.8.7, you can set this property to show an area chart on line types",

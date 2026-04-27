@@ -6441,11 +6441,11 @@ export default function useExamples() {
             },
             // XY BASIC LINE WITH STEPS
             {
-                dataset: DATASET_XY_SINUSOID2.value.map(d => {
+                dataset: DATASET_XY_SINUSOID2.value.map((d) => {
                     return {
                         ...d,
-                        useStepper: true
-                    }
+                        useStepper: true,
+                    };
                 }),
                 config: BASE_XY_CONFIG.value,
                 component: "VueUiXy",
@@ -7860,11 +7860,11 @@ export default function useExamples() {
             },
             // XY CUSTOM GRADIENT LINE STAIRCASE
             {
-                dataset: DATASET_XY_SINUSOID2_SMOOTH_AREA.value.map(d => {
+                dataset: DATASET_XY_SINUSOID2_SMOOTH_AREA.value.map((d) => {
                     return {
                         ...d,
-                        useStepper: true
-                    }
+                        useStepper: true,
+                    };
                 }),
                 config: BASE_XY_CONFIG.value,
                 component: "VueUiXy",
@@ -7901,7 +7901,7 @@ export default function useExamples() {
                     ja: "階段状の線を伴うカスタムエリアグラデーション",
                     es: "Gradiente de área personalizado con línea escalonada",
                     ko: "계단형 선이 있는 사용자 정의 영역 그라데이션",
-                    ar: "تدرج مساحة مخصص مع خط متدرج"
+                    ar: "تدرج مساحة مخصص مع خط متدرج",
                 },
             },
             // XY CUSTOM GRADIENT BAR

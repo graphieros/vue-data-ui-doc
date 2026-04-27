@@ -160,7 +160,7 @@ const universalWarning = ref({
 });
 
 const scriptTag = computed(() => {
-    return `<script${isVapor.value ? " vapor" : ""} setup${isTs.value ? ' lang="ts"' : ''}>`;
+    return `<script${isVapor.value ? " vapor" : ""} setup${isTs.value ? ' lang="ts"' : ""}>`;
 });
 
 const generatedScript = computed(() => {
@@ -170,16 +170,16 @@ import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
 ${
     isComputed.value
-        ? `const config = computed${isTs.value ? `<${imp.configType}>` : ''}(() => {
+        ? `const config = computed${isTs.value ? `<${imp.configType}>` : ""}(() => {
 return ${jsonToJsObject(finalConfig.value, 4, true)} });`
-        : `const config = ref${isTs.value ? `<${imp.configType}>` : ''}(${jsonToJsObject(finalConfig.value, 4, true)});`
+        : `const config = ref${isTs.value ? `<${imp.configType}>` : ""}(${jsonToJsObject(finalConfig.value, 4, true)});`
 }
 
 ${
     isComputed.value
-        ? `const dataset = computed${isTs.value ? `<${imp.datasetType}>`: ''}(() => {
+        ? `const dataset = computed${isTs.value ? `<${imp.datasetType}>` : ""}(() => {
 return ${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)} });`
-        : `const dataset = ref${isTs.value ? `<${imp.datasetType}>`: ''}(${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)});`
+        : `const dataset = ref${isTs.value ? `<${imp.datasetType}>` : ""}(${typeof dataset === "string" ? `"${props.dataset}"` : jsonToJsObject(props.dataset)});`
 }
 `;
 });
