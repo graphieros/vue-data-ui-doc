@@ -546,6 +546,10 @@ const config = ref({
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
+            offsetX: 0,
+            rotation: 0,
+            textAnchor: null,
+            alwaysOnTop: false,
         },
         serieName: {
             show: false,
@@ -579,6 +583,10 @@ const config = ref({
             offsetY: -12,
             rounding: 0,
             color: "#1A1A1A",
+            offsetX: 0,
+            rotation: 0,
+            textAnchor: null,
+            alwaysOnTop: false,
         },
         area: {
             useGradient: true,
@@ -604,6 +612,10 @@ const config = ref({
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
+            offsetX: 0,
+            rotation: 0,
+            textAnchor: null,
+            alwaysOnTop: false,
         },
         tag: {
             followValue: true,
@@ -4109,6 +4121,10 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
+                                    <BaseAttr name="offsetX" attr="bar.labels.offsetX" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="rotation" attr="bar.labels.rotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="textAnchor" attr="bar.labels.textAnchor" type="select" defaultVal="null" :options="[null, 'start', 'middle', 'end']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="alwaysOnTop" attr="bar.labels.alwaysOnTop" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr
                                         name="rounding"
                                         attr="bar.labels.rounding"
@@ -4383,6 +4399,10 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
+                                    <BaseAttr name="offsetX" attr="line.labels.offsetX" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="rotation" attr="line.labels.rotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="textAnchor" attr="line.labels.textAnchor" type="select" defaultVal="null" :options="[null, 'start', 'middle', 'end']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="alwaysOnTop" attr="line.labels.alwaysOnTop" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr
                                         name="rounding"
                                         attr="line.labels.rounding"
@@ -4564,6 +4584,10 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
+                                    <BaseAttr name="offsetX" attr="plot.labels.offsetX" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="rotation" attr="plot.labels.rotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="textAnchor" attr="plot.labels.textAnchor" type="select" defaultVal="null" :options="[null, 'start', 'middle', 'end']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="alwaysOnTop" attr="plot.labels.alwaysOnTop" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr
                                         name="rounding"
                                         attr="plot.labels.rounding"

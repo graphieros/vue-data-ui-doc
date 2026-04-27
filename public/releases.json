@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.18.1",
+        "date": "2026-04-27",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improve datapoint labels display options",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.18.0",
         "date": "2026-04-26",
         "updates": [

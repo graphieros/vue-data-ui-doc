@@ -13243,6 +13243,10 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: "offsetYDataLabels",
                         category: "bar",
                     },
+                    { key: 'bar.labels.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['label', 'is', 'offsetX'], category: 'bar'},
+                    { key: 'bar.labels.rotation', def: 0, type: 'number', min: -360, max: 360, label: ['label', 'is', 'rotation'], category: 'bar'},
+                    { key: 'bar.labels.textAnchor', def: null, type: 'select', options: [null, 'start', 'middle', 'end'], label: ['label', 'is', 'text-anchor'], category: 'bar'},
+                    { key: 'bar.labels.alwaysOnTop', def: false, type: 'checkbox', label: ['label', 'is', 'always on top'], category: 'bar'},
                     {
                         key: "bar.labels.rounding",
                         def: 0,
@@ -13428,6 +13432,10 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: "offsetYDataLabels",
                         category: "line",
                     },
+                    { key: 'line.labels.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['label', 'is', 'offsetX'], category: 'line'},
+                    { key: 'line.labels.rotation', def: 0, type: 'number', min: -360, max: 360, label: ['label', 'is', 'rotation'], category: 'line'},
+                    { key: 'line.labels.textAnchor', def: null, type: 'select', options: [null, 'start', 'middle', 'end'], label: ['label', 'is', 'text-anchor'], category: 'line'},
+                    { key: 'line.labels.alwaysOnTop', def: false, type: 'checkbox', label: ['label', 'is', 'always on top'], category: 'line'},
                     {
                         key: "line.labels.rounding",
                         def: 0,
@@ -13551,6 +13559,10 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: "offsetYDataLabels",
                         category: "plot",
                     },
+                    { key: 'plot.labels.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['label', 'is', 'offsetX'], category: 'plot'},
+                    { key: 'plot.labels.rotation', def: 0, type: 'number', min: -360, max: 360, label: ['label', 'is', 'rotation'], category: 'plot'},
+                    { key: 'plot.labels.textAnchor', def: null, type: 'select', options: [null, 'start', 'middle', 'end'], label: ['label', 'is', 'text-anchor'], category: 'plot'},
+                    { key: 'plot.labels.alwaysOnTop', def: false, type: 'checkbox', label: ['label', 'is', 'always on top'], category: 'plot'},
                     {
                         key: "plot.labels.rounding",
                         def: 0,
