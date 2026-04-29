@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.18.2",
+        "date": "2026-04-29",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Add onEnter and onLeave events in the #legend slot",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 3.18.1",
         "date": "2026-04-27",
         "updates": [
