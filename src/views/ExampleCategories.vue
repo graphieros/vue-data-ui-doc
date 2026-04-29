@@ -532,7 +532,6 @@ const dialogExample = ref(null);
 const showDialogExample = ref(false);
 
 function openComponentCode(example) {
-    console.log(example);
     dialogExample.value = example;
     showDialogExample.value = true;
 }
@@ -2250,7 +2249,9 @@ function makeMapLinks({ data }) {
         />
     </div>
 
+
     <BaseExampleComponentDialog
+        v-if="showDialogExample"
         :isOpen="showDialogExample"
         :example="dialogExample"
         @close="closeDialogExample"

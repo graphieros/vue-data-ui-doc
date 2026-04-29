@@ -9,6 +9,7 @@ import { CopyIcon, XIcon } from "vue-tabler-icons";
 import { useNestedProp } from "../useNestedProp";
 import { useMakerStore } from "../stores/maker";
 import BaseButton from "./Base/BaseButton.vue";
+import { useImportMap } from "../useImportMap";
 
 const store = useMainStore();
 
@@ -37,14 +38,21 @@ const finalConfig = computed(() => {
     return props.example.config;
 });
 
+const imp = useImportMap(props.example?.component)
+
 const generatedScript = computed(() => {
-    return `import { ref } from "vue";
-import { ${props.example.component}${props.example.pattern || props.example.multiPattern ? ", VueUiPattern" : ""} } from "vue-data-ui";
+    return `import { computed } from "vue";
+${props.example.pattern || props.example.multiPattern ? `import { VueUiPattern } from "vue-data-ui/vue-ui-pattern";`: ''}
+${imp.treeshaken}
 import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
-const config = ref(${jsonToJsObject(finalConfig.value, 4, true)});
+const config = computed<${imp.configType}>(() => {
+    return ${jsonToJsObject(finalConfig.value, 4, true)}
+});
 
-const dataset = ref(${typeof props.example.dataset === "string" ? `"${props.example.dataset}"` : jsonToJsObject(props.example.dataset)});
+const dataset = computed<${imp.datasetType}>(() => {
+    return ${typeof props.example.dataset === "string" ? `"${props.example.dataset}"` : jsonToJsObject(props.example.dataset)}
+});
 `;
 });
 
@@ -59,6 +67,8 @@ const generatedTemplate = computed(() => {
     </div>
 </template>`;
 });
+
+const headerCode = `<script setup lang="ts">`
 
 const compContent = ref(null);
 
@@ -127,7 +137,7 @@ function copyComponent() {
                 >
                     <div class="h-full w-full overflow-visible">
                         <CodeParser
-                            :content="'<script setup>'"
+                            :content="headerCode"
                             language="html"
                             :withCopy="false"
                             noPointerEvents
