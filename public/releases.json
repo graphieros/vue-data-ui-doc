@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.18.3",
+        "date": "2026-05-01",
+        "updates": [
+            {
+                "component": "Zoom component",
+                "description": "Fix handle dragging issue in Firefox",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.18.2",
         "date": "2026-04-29",
         "updates": [
