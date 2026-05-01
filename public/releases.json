@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.18.4",
+        "date": "2026-05-01",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Expose zoom start & end index in svg slot",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Render gradient on a flat line when using temperatureColors",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.18.3",
         "date": "2026-05-01",
         "updates": [
