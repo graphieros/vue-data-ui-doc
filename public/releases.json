@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.18.5",
+        "date": "2026-05-01",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Expose resetZoom public method",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.18.4",
         "date": "2026-05-01",
         "updates": [
