@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.19.1",
+        "date": "2026-05-03",
+        "updates": [
+            {
+                "component": "VueUiCirclePack",
+                "description": "Add support for recursive children",
+                "link": "/docs#vue-ui-circle-pack"
+            }
+        ]
+    },
+    {
         "version": "v 3.18.5",
         "date": "2026-05-01",
         "updates": [
