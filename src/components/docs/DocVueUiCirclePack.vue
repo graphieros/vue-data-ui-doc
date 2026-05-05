@@ -59,23 +59,23 @@ const dataset = ref([
             {
                 name: "Child A-1",
                 value: 100,
-                color: '#d62728',
+                color: "#d62728",
                 children: [
                     {
-                        name: 'GrandChild 1',
+                        name: "GrandChild 1",
                         value: 70,
                     },
                     {
-                        name: 'GrandChild 2',
+                        name: "GrandChild 2",
                         value: 30,
                     },
-                ]
+                ],
             },
             {
                 name: "Child A-2",
-                value: 100
+                value: 100,
             },
-        ]
+        ],
     },
     {
         name: "Datapoint B",
@@ -83,21 +83,21 @@ const dataset = ref([
         children: [
             {
                 name: "Child B-1",
-                value: 50
+                value: 50,
             },
             {
                 name: "Child B-2",
-                value: 80
+                value: 80,
             },
             {
                 name: "Child B-3",
-                value: 20
+                value: 20,
             },
-        ]
+        ],
     },
     {
         name: "Datapoint C",
-        value: 100
+        value: 100,
     },
 ]);
 
@@ -165,10 +165,10 @@ const config = ref({
             outline: "none",
         },
         columnNames: {
-            datapoint: 'Datapoint',
-            parent: 'Parent',
-            depth: 'Depth',
-            value: 'Value',
+            datapoint: "Datapoint",
+            parent: "Parent",
+            depth: "Depth",
+            value: "Value",
         },
     },
     style: {
@@ -197,19 +197,19 @@ const config = ref({
                 show: true,
                 fontSizeRatio: 1,
                 borderRadiusRatio: 1,
-                color: '#2D353C',
-                filter: 'drop-shadow(0 2px 4px #2D353C30)',
-                backgroundColor: '#F3F4F6',
+                color: "#2D353C",
+                filter: "drop-shadow(0 2px 4px #2D353C30)",
+                backgroundColor: "#F3F4F6",
                 strokeWidth: 1,
                 useSerieColor: true,
-                stroke: '#2D353C',
+                stroke: "#2D353C",
                 link: {
                     strokeWidth: 1,
                     strokeDasharray: 0,
                     opacity: 0.6,
                     useSerieColor: false,
-                    stroke: '#2D353C'
-                }
+                    stroke: "#2D353C",
+                },
             },
             tooltip: {
                 teleportTo: "body",
@@ -261,8 +261,8 @@ const config = ref({
             },
             zoom: {
                 show: true,
-                speed: 1
-            }
+                speed: 1,
+            },
         },
     },
 });
@@ -332,10 +332,10 @@ const darkModeConfig = ref({
             outline: "none",
         },
         columnNames: {
-            datapoint: 'Datapoint',
-            parent: 'Parent',
-            depth: 'Depth',
-            value: 'Value',
+            datapoint: "Datapoint",
+            parent: "Parent",
+            depth: "Depth",
+            value: "Value",
         },
     },
     style: {
@@ -364,19 +364,19 @@ const darkModeConfig = ref({
                 show: true,
                 fontSizeRatio: 1,
                 borderRadiusRatio: 1,
-                color: '#CCCCCC',
-                filter: 'drop-shadow(0 2px 4px #00000090)',
-                backgroundColor: '#2A2A2A',
+                color: "#CCCCCC",
+                filter: "drop-shadow(0 2px 4px #00000090)",
+                backgroundColor: "#2A2A2A",
                 strokeWidth: 1,
                 useSerieColor: true,
-                stroke: '#CCCCCC',
+                stroke: "#CCCCCC",
                 link: {
                     strokeWidth: 1,
                     strokeDasharray: 0,
                     opacity: 0.6,
                     useSerieColor: false,
-                    stroke: '#CCCCCC'
-                }
+                    stroke: "#CCCCCC",
+                },
             },
             tooltip: {
                 teleportTo: "body",
@@ -428,8 +428,8 @@ const darkModeConfig = ref({
             },
             zoom: {
                 show: true,
-                speed: 1
-            }
+                speed: 1,
+            },
         },
     },
 });
@@ -865,11 +865,33 @@ const customFormatCode =
                                     :level="4"
                                     title="style.chart.circles.labels"
                                 >
-                                    <BaseDetails attr="parents" :level="5" title="style.chart.circles.labels.parents">
-                                        <BaseAttr name="show" attr="style.chart.circles.labels.parents.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails
+                                        attr="parents"
+                                        :level="5"
+                                        title="style.chart.circles.labels.parents"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.chart.circles.labels.parents.show"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
                                     </BaseDetails>
-                                    <BaseDetails attr="children" :level="5" title="style.chart.circles.labels.children">
-                                        <BaseAttr name="show" attr="style.chart.circles.labels.children.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails
+                                        attr="children"
+                                        :level="5"
+                                        title="style.chart.circles.labels.children"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.chart.circles.labels.children.show"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
                                     </BaseDetails>
                                     <BaseDetails
                                         attr="name"
@@ -1151,21 +1173,135 @@ const customFormatCode =
                                 </BaseDetails>
                             </BaseDetails>
 
-                            <BaseDetails attr="parentTooltips" :level="3" title="style.chart.parentTooltips">
-                                <BaseAttr name="show" attr="style.chart.parentTooltips.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="fontSizeRatio" attr="style.chart.parentTooltips.fontSizeRatio" type="number" defaultVal="1" :min="0.5" :max="2" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="borderRadiusRatio" attr="style.chart.parentTooltips.borderRadiusRatio" type="number" defaultVal="1" :min="0" :max="2" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="filter" attr="style.chart.parentTooltips.filter" defaultVal="drop-shadow(0 2px 4px #2D353C30)" type="text" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="backgroundColor" attr="style.chart.parentTooltips.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="strokeWidth" attr="style.chart.parentTooltips.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="useSerieColor" attr="style.chart.parentTooltips.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="stroke" attr="style.chart.parentTooltips.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseDetails attr="link" :level="4" title="style.chart.parentTooltips.link">
-                                    <BaseAttr name="strokeWidth" attr="style.chart.parentTooltips.link.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="strokeDasharray" attr="style.chart.parentTooltips.link.strokeDasharray" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="opacity" attr="style.chart.parentTooltips.link.opacity" type="number" defaultVal="0.6" :min="0" :max="1" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="useSerieColor" attr="style.chart.parentTooltips.link.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="stroke" attr="style.chart.parentTooltips.link.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseDetails
+                                attr="parentTooltips"
+                                :level="3"
+                                title="style.chart.parentTooltips"
+                            >
+                                <BaseAttr
+                                    name="show"
+                                    attr="style.chart.parentTooltips.show"
+                                    type="checkbox"
+                                    defaultVal="true"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="fontSizeRatio"
+                                    attr="style.chart.parentTooltips.fontSizeRatio"
+                                    type="number"
+                                    defaultVal="1"
+                                    :min="0.5"
+                                    :max="2"
+                                    :step="0.1"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="borderRadiusRatio"
+                                    attr="style.chart.parentTooltips.borderRadiusRatio"
+                                    type="number"
+                                    defaultVal="1"
+                                    :min="0"
+                                    :max="2"
+                                    :step="0.1"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="filter"
+                                    attr="style.chart.parentTooltips.filter"
+                                    defaultVal="drop-shadow(0 2px 4px #2D353C30)"
+                                    type="text"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="backgroundColor"
+                                    attr="style.chart.parentTooltips.backgroundColor"
+                                    type="color"
+                                    defaultVal="#FFFFFF"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="strokeWidth"
+                                    attr="style.chart.parentTooltips.strokeWidth"
+                                    type="number"
+                                    defaultVal="1"
+                                    :min="0"
+                                    :max="6"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="useSerieColor"
+                                    attr="style.chart.parentTooltips.useSerieColor"
+                                    type="checkbox"
+                                    defaultVal="true"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="stroke"
+                                    attr="style.chart.parentTooltips.stroke"
+                                    type="color"
+                                    defaultVal="#2D353C"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseDetails
+                                    attr="link"
+                                    :level="4"
+                                    title="style.chart.parentTooltips.link"
+                                >
+                                    <BaseAttr
+                                        name="strokeWidth"
+                                        attr="style.chart.parentTooltips.link.strokeWidth"
+                                        type="number"
+                                        defaultVal="1"
+                                        :min="0"
+                                        :max="6"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="strokeDasharray"
+                                        attr="style.chart.parentTooltips.link.strokeDasharray"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="0"
+                                        :max="12"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="opacity"
+                                        attr="style.chart.parentTooltips.link.opacity"
+                                        type="number"
+                                        defaultVal="0.6"
+                                        :min="0"
+                                        :max="1"
+                                        :step="0.1"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="useSerieColor"
+                                        attr="style.chart.parentTooltips.link.useSerieColor"
+                                        type="checkbox"
+                                        defaultVal="true"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="stroke"
+                                        attr="style.chart.parentTooltips.link.stroke"
+                                        type="color"
+                                        defaultVal="#2D353C"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                 </BaseDetails>
                             </BaseDetails>
 
@@ -1323,9 +1459,30 @@ const customFormatCode =
                                 />
                             </BaseDetails>
 
-                            <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
-                                <BaseAttr name="show" attr="style.chart.zoom.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="speed" attr="style.chart.zoom.speed" type="number" defaultVal="1" :min="0.1" :max="10" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseDetails
+                                attr="zoom"
+                                :level="3"
+                                title="style.chart.zoom"
+                            >
+                                <BaseAttr
+                                    name="show"
+                                    attr="style.chart.zoom.show"
+                                    type="checkbox"
+                                    defaultVal="true"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="speed"
+                                    attr="style.chart.zoom.speed"
+                                    type="number"
+                                    defaultVal="1"
+                                    :min="0.1"
+                                    :max="10"
+                                    :step="0.1"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
                             </BaseDetails>
                         </BaseDetails>
                     </BaseDetails>

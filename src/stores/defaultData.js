@@ -9251,6 +9251,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "line",
                     },
                     {
+                        key: "style.chart.lines.dot.stroke",
+                        def: "#FFFFFF",
+                        type: "color",
+                        label: ["plot", "border", "is", "color"],
+                        category: "line",
+                    },
+                    {
                         key: "style.chart.lines.dot.strokeWidth",
                         def: 0.5,
                         type: "range",

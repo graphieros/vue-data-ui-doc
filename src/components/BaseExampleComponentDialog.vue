@@ -38,11 +38,11 @@ const finalConfig = computed(() => {
     return props.example.config;
 });
 
-const imp = useImportMap(props.example?.component)
+const imp = useImportMap(props.example?.component);
 
 const generatedScript = computed(() => {
     return `import { computed } from "vue";
-${props.example.pattern || props.example.multiPattern ? `import { VueUiPattern } from "vue-data-ui/vue-ui-pattern";`: ''}
+${props.example.pattern || props.example.multiPattern ? `import { VueUiPattern } from "vue-data-ui/vue-ui-pattern";` : ""}
 ${imp.treeshaken}
 import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
@@ -68,7 +68,7 @@ const generatedTemplate = computed(() => {
 </template>`;
 });
 
-const headerCode = `<script setup lang="ts">`
+const headerCode = `<script setup lang="ts">`;
 
 const compContent = ref(null);
 

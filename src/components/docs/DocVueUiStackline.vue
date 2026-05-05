@@ -21,7 +21,6 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
-import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
@@ -274,6 +273,10 @@ const config = ref({
                     show: true,
                     intensity: 20,
                 },
+                path: {
+                    useSerieColor: true,
+                    stroke: "#FFFFFF",
+                },
                 totalValues: {
                     show: true,
                     offsetY: 0,
@@ -285,6 +288,7 @@ const config = ref({
                     hideAboveMaxSerieLength: 62,
                     useSerieColor: true,
                     fill: "#FFFFFF",
+                    stroke: "#FFFFFF",
                     strokeWidth: 0.5,
                     radius: 4,
                 },
@@ -590,10 +594,15 @@ const darkModeConfig = ref({
                     show: true,
                     intensity: 20,
                 },
+                path: {
+                    useSerieColor: true,
+                    stroke: "#2A2A2A",
+                },
                 dot: {
                     hideAboveMaxSerieLength: 62,
                     useSerieColor: true,
                     fill: "#2A2A2A",
+                    stroke: "#2A2A2A",
                     strokeWidth: 0.5,
                     radius: 4,
                 },
@@ -2133,7 +2142,29 @@ const customFormatCode =
                                         :dark="mutableConfigDarkMode"
                                     />
                                     <BaseDetails
-                                        attr="dots"
+                                        attr="path"
+                                        :level="4"
+                                        title="style.chart.lines.path"
+                                    >
+                                        <BaseDetails
+                                            name="useSerieColor"
+                                            attr="style.chart.lines.path.useSerieColor"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseDetails
+                                            name="stroke"
+                                            attr="style.chart.lines.path.stroke"
+                                            type="color"
+                                            defaultVal="#FFFFFF"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
+                                    <BaseDetails
+                                        attr="dot"
                                         :level="4"
                                         title="style.chart.lines.dot"
                                     >
@@ -2158,7 +2189,15 @@ const customFormatCode =
                                         <BaseAttr
                                             name="fill"
                                             attr="style.chart.lines.dot.fill"
-                                            type="string"
+                                            type="color"
+                                            defaultVal="#2D353C"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="stroke"
+                                            attr="style.chart.lines.dot.stroke"
+                                            type="color"
                                             defaultVal="#2D353C"
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"

@@ -2249,7 +2249,6 @@ function makeMapLinks({ data }) {
         />
     </div>
 
-
     <BaseExampleComponentDialog
         v-if="showDialogExample"
         :isOpen="showDialogExample"
