@@ -248,6 +248,7 @@ const config = ref({
                 backgroundOpacity: 30,
                 position: "center",
                 offsetY: 24,
+                offsetX: 0,
                 showValue: true,
                 showPercentage: true,
                 roundingValue: 0,
@@ -550,6 +551,7 @@ const darkModeConfig = ref({
                 backgroundOpacity: 30,
                 position: "center",
                 offsetY: 24,
+                offsetX: 0,
                 showValue: true,
                 showPercentage: true,
                 roundingValue: 0,
@@ -1942,12 +1944,22 @@ const customFormatCode =
                                         :dark="mutableConfigDarkMode"
                                     />
                                     <BaseAttr
+                                        name="offsetX"
+                                        attr="style.chart.tooltip.offsetX"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-100"
+                                        :max="100"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
                                         name="offsetY"
                                         attr="style.chart.tooltip.offsetY"
                                         type="number"
                                         defaultVal="24"
-                                        :min="0"
-                                        :max="64"
+                                        :min="-100"
+                                        :max="100"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />

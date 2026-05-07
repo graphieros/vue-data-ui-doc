@@ -149,6 +149,7 @@ const config = ref({
             backgroundOpacity: 30,
             position: "center",
             offsetY: 24,
+            offsetX: 0,
             smooth: true,
             smoothForce: 0.18,
             smoothSnapThreshold: 0.25,
@@ -240,6 +241,7 @@ const darkModeConfig = ref({
             backgroundOpacity: 30,
             position: "center",
             offsetY: 24,
+            offsetX: 0,
             smooth: true,
             smoothForce: 0.18,
             smoothSnapThreshold: 0.25,
@@ -1006,6 +1008,16 @@ function goToPage(route) {
                                     type="select"
                                     defaultVal="center"
                                     :options="['left', 'center', 'right']"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="offsetX"
+                                    attr="style.tooltip.offsetX"
+                                    type="number"
+                                    defaultVal="0"
+                                    :min="-100"
+                                    :max="100"
                                     :light="mutableConfig"
                                     :dark="mutableConfigDarkMode"
                                 />

@@ -258,6 +258,7 @@ const config = ref({
     tooltipFontSize: 14,
     tooltipBackgroundOpacity: 30,
     tooltipPosition: "center",
+    tooltipOffsetX: 0,
     tooltipOffsetY: 24,
     tooltipSmooth: true,
     tooltipSmoothForce: 0.18,
@@ -430,6 +431,7 @@ const darkModeConfig = ref({
     tooltipFontSize: 14,
     tooltipBackgroundOpacity: 30,
     tooltipPosition: "center",
+    tooltipOffsetX: 0,
     tooltipOffsetY: 24,
     tooltipSmooth: true,
     tooltipSmoothForce: 0.18,
@@ -2058,12 +2060,22 @@ const customFormatCode =
                             :dark="mutableConfigDarkMode"
                         />
                         <BaseAttr
+                            name="tooltipOffsetX"
+                            attr="tooltipOffsetX"
+                            type="number"
+                            defaultVal="0"
+                            :min="-100"
+                            :max="100"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
                             name="tooltipOffsetY"
                             attr="tooltipOffsetY"
                             type="number"
                             defaultVal="24"
-                            :min="0"
-                            :max="64"
+                            :min="-100"
+                            :max="100"
                             :light="mutableConfig"
                             :dark="mutableConfigDarkMode"
                         />

@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.19.4",
+        "date": "2026-05-07",
+        "updates": [
+            {
+                "component": "All charts with tooltips",
+                "description": "Add the offsetX option, active when the tooltip's position is set to 'left' or 'right'",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.19.3",
         "date": "2026-05-05",
         "updates": [

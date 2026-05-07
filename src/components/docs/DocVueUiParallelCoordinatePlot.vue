@@ -247,6 +247,7 @@ const config = ref({
                 backgroundOpacity: 30,
                 position: "center",
                 offsetY: 24,
+                offsetX: 0,
                 smooth: true,
                 smoothForce: 0.18,
                 smoothSnapThreshold: 0.25,
@@ -432,6 +433,7 @@ const darkModeConfig = ref({
                 backgroundOpacity: 30,
                 position: "center",
                 offsetY: 24,
+                offsetX: 0,
                 smooth: true,
                 smoothForce: 0.18,
                 smoothSnapThreshold: 0.25,
@@ -1371,12 +1373,23 @@ const customFormatCode =
                                         @change="forceChartUpdate()"
                                     />
                                     <BaseAttr
+                                        name="offsetX"
+                                        attr="style.chart.tooltip.offsetX"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="-100"
+                                        :max="100"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                        @change="forceChartUpdate()"
+                                    />
+                                    <BaseAttr
                                         name="offsetY"
                                         attr="style.chart.tooltip.offsetY"
                                         type="number"
                                         defaultVal="24"
-                                        :min="0"
-                                        :max="64"
+                                        :min="-100"
+                                        :max="100"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                         @change="forceChartUpdate()"
