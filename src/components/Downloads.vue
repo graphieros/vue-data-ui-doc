@@ -7,7 +7,7 @@ import { fillEmptyDays } from "./maker/lib";
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
-const selectedPeriod = ref("_60D");
+const selectedPeriod = ref("_6M");
 
 const periods = ref({
     _7D: { id: "_7D", name: "Last 7 days", value: 8, plotRadius: 8 },
@@ -17,6 +17,8 @@ const periods = ref({
     _90D: { id: "_90D", name: "Last 90 days", value: 91, plotRadius: 3 },
     _6M: { id: "_6M", name: "Last 6 months", value: 181, plotRadius: 0.1 },
     _1Y: { id: "_1Y", name: "Last year", value: 365, plotRadius: 0.1 },
+    _2Y: { id: "_2Y", name: "Last 2 years", value: 730, plotRadius: 0.1 },
+    _3Y: { id: "_3Y", name: "Last 3 years", value: 1095, plotRadius: 0.1 },
     _ALL: {
         id: "_ALL",
         name: "Full history",
@@ -52,6 +54,43 @@ const data_vue_hi_code = computed(() => {
 });
 
 const { isMobile } = useMobile();
+
+const dates = computed(() => {
+    return store.downloads.cli
+        .map((d) => d.day)
+        .slice(-periods.value[selectedPeriod.value].value)
+        .slice(0, -1)
+})
+
+const source = [
+    {
+        date: '2026-01-24',
+        name: 'npmx'
+    },
+    {
+        date: '2026-05-03',
+        name: 'agentscan'
+    }
+]
+
+const keyDates = computed(() => {
+    return source
+        .map((item) => {
+            const index = dates.value.indexOf(item.date)
+
+            return index !== -1
+                ? {
+                    ...item,
+                    index
+                }
+                : null
+        })
+        .filter(Boolean)
+})
+
+function log(n) {
+    console.log(n)
+}
 
 const dataset = computed(() => {
     return [
@@ -195,10 +234,7 @@ const config = computed(() => {
                     xAxisLabels: {
                         color: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
                         show: false,
-                        values: store.downloads.cli
-                            .map((d) => d.day)
-                            .slice(-periods.value[selectedPeriod.value].value)
-                            .slice(0, -1),
+                        values: dates.value,
                         fontSize: 14,
                         showOnlyFirstAndLast: true,
                         showOnlyAtModulo: false,
@@ -526,6 +562,33 @@ function freestyle({ drawingArea, data }) {
         >
             <template #svg="{ svg }">
                 <g v-html="freestyle(svg)" />
+
+                <!-- Key dates -->
+                <g v-for="(stone, i) in svg.data[0].plots" :key="`plot_${i}`" style="pointer-events:none">
+                    <template v-for="(s, j) in keyDates" :key="s.name">
+                        <g v-if="s.index === i + svg.slicer.start && periods[selectedPeriod].value >= i + svg.slicer.start">
+                            <line 
+                                :x1="stone.x" 
+                                :x2="stone.x" 
+                                :y1="svg.drawingArea.top" 
+                                :y2="svg.drawingArea.bottom" 
+                                :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                                stroke-linecap="round"
+                                stroke-dasharray="0.5 12"
+                                stroke-width="3"
+                            />
+                            <text
+                                :fill="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                                font-size="18"
+                                :transform="`translate(${stone.x + 14}, ${svg.drawingArea.top + 4}) rotate(-90)`"
+                                text-anchor="end"
+                                dominant-baseline="middle"
+                            >
+                                {{ s.name }}
+                            </text>
+                        </g>
+                    </template>
+                </g>
             </template>
             <template #chart-background>
                 <div
