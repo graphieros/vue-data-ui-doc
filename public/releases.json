@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.19.5",
+        "date": "2026-05-08",
+        "updates": [
+            {
+                "component": "VueUiStackline",
+                "description": "Add zoom.keepState config option and persist legend state when config is mutated.",
+                "link": "/docs#vue-ui-stackline"
+            },
+            {
+                "component": "VueUiStackbar",
+                "description": "Add zoom.keepState config option and persist legend state when config is mutated.",
+                "link": "/docs#vue-ui-stackbar"
+            }
+        ]
+    },
+    {
         "version": "v 3.19.4",
         "date": "2026-05-07",
         "updates": [

@@ -197,6 +197,7 @@ const config = ref({
             },
             zoom: {
                 show: true,
+                keepState: false,
                 maxWidth: 450,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
@@ -500,6 +501,7 @@ const darkModeConfig = ref({
             },
             zoom: {
                 show: true,
+                keepState: false,
                 maxWidth: 450,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
@@ -1491,6 +1493,14 @@ const customFormatCode =
                                         attr="style.chart.zoom.show"
                                         type="checkbox"
                                         defaultVal="true"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="keepState"
+                                        attr="style.chart.zoom.keepState"
+                                        type="checkbox"
+                                        defaultVal="false"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
