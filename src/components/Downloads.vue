@@ -146,7 +146,7 @@ const config = computed(() => {
         responsive: false,
         customPalette: [],
         useCssAnimation: true,
-        downsample: { threshold: 500 },
+        downsample: { threshold: 3000 },
         chart: {
             fontFamily: "inherit",
             backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
