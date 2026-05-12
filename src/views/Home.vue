@@ -11,6 +11,7 @@ import BaseBubbles from "../components/BaseBubbles.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import Fireworks from "../components/special/Fireworks.vue";
+import BaseNpmx from "../components/BaseNpmx.vue";
 
 const configs = useConfig();
 
@@ -742,11 +743,7 @@ onBeforeUnmount(() => {
                                 <div
                                     class="bg-[#0A0A0A] h-8 w-8 flex justify-center place-items-center"
                                 >
-                                    <img
-                                        src="../assets/npmx.png"
-                                        alt="npmx"
-                                        class="w-5 h-5 -mt-0.5 ml-0.5"
-                                    />
+                                    <BaseNpmx />
                                 </div>
                                 <div
                                     class="h-full flex items-center bg-[#FAFAFA] text-[#0A0A0A] font-inter-medium px-2"

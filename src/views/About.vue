@@ -10,6 +10,7 @@ import BaseCard from "../components/BaseCard.vue";
 import ContributorsBars from "../components/ContributorsBars.vue";
 import BaseSponsorCard from "../components/examples/components/BaseSponsorCard.vue";
 import PACKAGE from "../../package.json";
+import BaseNpmx from "../components/BaseNpmx.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -545,11 +546,7 @@ const wheelConfig = computed(() => {
             <div
                 class="bg-[#0A0A0A] h-8 w-8 flex justify-center place-items-center"
             >
-                <img
-                    src="../assets/npmx.png"
-                    alt="npmx"
-                    class="w-5 h-5 -mt-0.5 ml-0.5"
-                />
+                <BaseNpmx />
             </div>
             <div
                 class="h-full flex items-center bg-[#FAFAFA] text-[#0A0A0A] font-inter-medium px-2"
