@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.19.6",
+        "date": "2026-05-12",
+        "updates": [
+            {
+                "component": "Chart menu",
+                "description": "Add #custom-menu-before and #custom-menu-after slots",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.19.5",
         "date": "2026-05-08",
         "updates": [
