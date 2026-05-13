@@ -452,6 +452,18 @@ const categories = computed(() => {
             description: translations.value.docs.tooltips.rings,
             raterId: "vue_ui_rings",
         },
+        {
+            link: "vue-ui-circle-pack",
+            icon: "chartCirclePack",
+            component: "VueUiCirclePack",
+            thumb: new URL("../assets/thumb_circle_pack.png", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_circle_pack_light.png",
+                import.meta.url,
+            ).href,
+            description: translations.value.docs.tooltips.circlePack,
+            raterId: "vue_ui_cirle_pack",
+        },
     ].map((c, i) => {
         return {
             ...c,

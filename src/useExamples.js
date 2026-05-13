@@ -68,6 +68,117 @@ export default function useExamples() {
             },
         };
     });
+    
+    //-------------- VUE-UI-CIRCLE-PACK --------------//
+    const DATASET_CIRCLE_PACK_SIMPLE = ref([
+        { name: 'A', value: 100 },
+        { name: 'B', value: 90 },
+        { name: 'C', value: 80 },
+        { name: 'D', value: 70 },
+        { name: 'E', value: 60 },
+        { name: 'F', value: 50 },
+        { name: 'G', value: 40 },
+        { name: 'H', value: 30 },
+        { name: 'I', value: 20 },
+        { name: 'J', value: 10 },
+        { name: 'K', value: 5 },
+        { name: 'L', value: 2.5 },
+    ]);
+
+    const DATASET_CIRCLE_PACK_NESTED = ref([
+        {
+            name: 'A',
+            value:  42
+        },
+        {
+            name: 'B',
+            value: 100,
+            children: [
+                { 
+                    name: 'B1', 
+                    value: 50,
+                    color: colors.value.green,
+                    children: [
+                        { 
+                            name: 'B1A', 
+                            value: 20,
+                            color: colors.value.red,
+                            children: [
+                                { name: 'B1A1', value: 10, color: colors.value.orange },
+                                { name: 'B1A2', value: 5, color: colors.value.orange },
+                                { name: 'B1A3', value: 2.5, color: colors.value.orange },
+                                { name: 'B1A4', value: 2.5, color: colors.value.orange },
+                            ]
+                        },
+                        { name: 'B1B', value: 10 },
+                        { name: 'B1C', value: 10 },
+                        { name: 'B1D', value: 5 },
+                        { name: 'B1E', value: 5 },
+                    ]
+                },
+                { name: 'B2', value: 40 },
+                { name: 'B3', value: 30 },
+                { name: 'B4', value: 20 },
+                { name: 'B5', value: 10 },
+            ]
+        },
+        {
+            name: 'C',
+            value: 80,
+            children: [
+                { 
+                    name: 'C1', 
+                    value: 30,
+                    color: colors.value.yellow,
+                    children: [
+                        { name: 'C1A', value: 10 },
+                        { name: 'C1B', value: 5 },
+                        { name: 'C1C', value: 5 },
+                        { name: 'C1D', value: 5 },
+                        { name: 'C1E', value: 5 },
+                    ]
+                },
+                { name: 'C2', value: 40 },
+                { name: 'C3', value: 10 },
+            ]
+        },
+    ])
+
+    const CONFIG_CIRCLE_PACK_BASE = computed(() => ({
+        style: {
+            chart: {
+                backgroundColor: colors.value.bg,
+                color: colors.value.textColor,
+                circles: {
+                    stroke: colors.value.greyStroke,
+                    strokeWidth: 0.5,
+                },
+                parentTooltips: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    link: {
+                        stroke: colors.value.textColor
+                    }
+                },
+                title: {
+                    text: "Title",
+                    color: colors.value.textColor,
+                    textAlign: "left",
+                    paddingLeft: 24,
+                    subtitle: {
+                        text: "Subtitle",
+                    },
+                },
+                tooltip: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    showPercentage: false,
+                    borderColor: colors.value.gridStroke,
+                    backgroundOpacity: 70,
+                },
+            }
+        }
+    }))
 
     //-------------- VUE-UI-RINGS --------------//
     const DATASET_RINGS_BASIC = ref([
@@ -13508,6 +13619,108 @@ export default function useExamples() {
                     es: "Con etiquetas de datos en el lado derecho",
                     ko: "오른쪽에 데이터 레이블 포함",
                     ar: "مع تسميات البيانات على الجانب الأيمن",
+                },
+            },
+            // CIRCLE PACK SIMPLE
+            {
+                dataset: DATASET_CIRCLE_PACK_SIMPLE.value,
+                config: CONFIG_CIRCLE_PACK_BASE.value,
+                component: "VueUiCirclePack",
+                icon: "chartCirclePack",
+                id: "circle-pack-simple",
+                link: "vue-ui-circle-pack",
+                description: {
+                    en: "Simple one-level circle packing",
+                    fr: "Empilement de cercles simple à un niveau",
+                    pt: "Empacotamento de círculos simples de um nível",
+                    de: "Einfaches einstufiges Kreispacken",
+                    zh: "简单单层圆形打包图",
+                    ja: "シンプルな単層サークルパッキング",
+                    es: "Empaquetado de círculos simple de un nivel",
+                    ko: "단순한 단일 레벨 원형 패킹",
+                    ar: "تعبئة دائرية بسيطة بمستوى واحد"
+                },
+            },
+            // CIRCLE PACK NESTED
+            {
+                dataset: DATASET_CIRCLE_PACK_NESTED.value,
+                config: CONFIG_CIRCLE_PACK_BASE.value,
+                component: "VueUiCirclePack",
+                icon: "chartCirclePack",
+                id: "circle-pack-nested",
+                link: "vue-ui-circle-pack",
+                description: {
+                    en: "Circle packing with nested hierarchy",
+                    fr: "Empilement de cercles avec hiérarchie imbriquée",
+                    pt: "Empacotamento de círculos com hierarquia aninhada",
+                    de: "Kreispackung mit verschachtelter Hierarchie",
+                    zh: "具有嵌套层级的圆形打包图",
+                    ja: "ネストされた階層を持つサークルパッキング",
+                    es: "Empaquetado de círculos con jerarquía anidada",
+                    ko: "중첩 계층 구조를 가진 원형 패킹",
+                    ar: "تعبئة دائرية بهيكل هرمي متداخل"
+                },
+            },
+            // CIRCLE PACK SIMPLE NO GRADIENT
+            {
+                dataset: DATASET_CIRCLE_PACK_SIMPLE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_CIRCLE_PACK_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                circles: {
+                                    gradient: { show: false }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiCirclePack",
+                icon: "chartCirclePack",
+                id: "circle-pack-simple-no-gradient",
+                link: "vue-ui-circle-pack",
+                description: {
+                    en: "Simple one-level circle packing, no gradient",
+                    fr: "Empilement de cercles simple à un niveau, sans dégradé",
+                    pt: "Empacotamento de círculos simples de um nível, sem gradiente",
+                    de: "Einfaches einstufiges Kreispacken ohne Farbverlauf",
+                    zh: "简单单层圆形打包图，无渐变",
+                    ja: "グラデーションなしのシンプルな単層サークルパッキング",
+                    es: "Empaquetado de círculos simple de un nivel, sin degradado",
+                    ko: "그라디언트 없는 단순한 단일 레벨 원형 패킹",
+                    ar: "تعبئة دائرية بسيطة بمستوى واحد بدون تدرج"
+                },
+            },
+            // CIRCLE PACK NESTED - NO GRADIENT
+            {
+                dataset: DATASET_CIRCLE_PACK_NESTED.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_CIRCLE_PACK_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                circles: {
+                                    gradient: { show: false }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiCirclePack",
+                icon: "chartCirclePack",
+                id: "circle-pack-nested-no-gradient",
+                link: "vue-ui-circle-pack",
+                description: {
+                    en: "Circle packing with nested hierarchy, no gradient",
+                    fr: "Empilement de cercles avec hiérarchie imbriquée, sans dégradé",
+                    pt: "Empacotamento de círculos com hierarquia aninhada, sem gradiente",
+                    de: "Kreispackung mit verschachtelter Hierarchie ohne Farbverlauf",
+                    zh: "具有嵌套层级的圆形打包图，无渐变",
+                    ja: "グラデーションなしのネストされた階層を持つサークルパッキング",
+                    es: "Empaquetado de círculos con jerarquía anidada, sin degradado",
+                    ko: "그라디언트 없는 중첩 계층 구조 원형 패킹",
+                    ar: "تعبئة دائرية بهيكل هرمي متداخل بدون تدرج"
                 },
             },
         ];
