@@ -456,7 +456,8 @@ const categories = computed(() => {
             link: "vue-ui-circle-pack",
             icon: "chartCirclePack",
             component: "VueUiCirclePack",
-            thumb: new URL("../assets/thumb_circle_pack.png", import.meta.url).href,
+            thumb: new URL("../assets/thumb_circle_pack.png", import.meta.url)
+                .href,
             thumbLight: new URL(
                 "../assets/thumb_circle_pack_light.png",
                 import.meta.url,

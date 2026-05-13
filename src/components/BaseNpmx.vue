@@ -2,17 +2,17 @@
 defineProps({
     dot: {
         type: String,
-        default: '#FAFAFA'
+        default: "#FAFAFA",
     },
     barStart: {
-        type:String,
-        default: '#42d392'
+        type: String,
+        default: "#42d392",
     },
     barEnd: {
-        type:String,
-        default: '#5f8aee'
+        type: String,
+        default: "#5f8aee",
     },
-})
+});
 </script>
 
 <template>
@@ -29,6 +29,10 @@ defineProps({
             :fill="dot"
             stroke="none"
         />
-        <path d="M 16.8 2 L 15 2 L 10 17 L 11.8 17 L 16.8 2" stroke="none" fill="url(#npmxgrad)"/>
+        <path
+            d="M 16.8 2 L 15 2 L 10 17 L 11.8 17 L 16.8 2"
+            stroke="none"
+            fill="url(#npmxgrad)"
+        />
     </svg>
 </template>

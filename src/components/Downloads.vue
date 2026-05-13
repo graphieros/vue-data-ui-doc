@@ -59,37 +59,37 @@ const dates = computed(() => {
     return store.downloads.cli
         .map((d) => d.day)
         .slice(-periods.value[selectedPeriod.value].value)
-        .slice(0, -1)
-})
+        .slice(0, -1);
+});
 
 const source = [
     {
-        date: '2026-01-24',
-        name: 'npmx'
+        date: "2026-01-24",
+        name: "npmx",
     },
     {
-        date: '2026-05-03',
-        name: 'agentscan'
-    }
-]
+        date: "2026-05-03",
+        name: "agentscan",
+    },
+];
 
 const keyDates = computed(() => {
     return source
         .map((item) => {
-            const index = dates.value.indexOf(item.date)
+            const index = dates.value.indexOf(item.date);
 
             return index !== -1
                 ? {
-                    ...item,
-                    index
-                }
-                : null
+                      ...item,
+                      index,
+                  }
+                : null;
         })
-        .filter(Boolean)
-})
+        .filter(Boolean);
+});
 
 function log(n) {
-    console.log(n)
+    console.log(n);
 }
 
 const dataset = computed(() => {
@@ -564,14 +564,24 @@ function freestyle({ drawingArea, data }) {
                 <g v-html="freestyle(svg)" />
 
                 <!-- Key dates -->
-                <g v-for="(stone, i) in svg.data[0].plots" :key="`plot_${i}`" style="pointer-events:none">
+                <g
+                    v-for="(stone, i) in svg.data[0].plots"
+                    :key="`plot_${i}`"
+                    style="pointer-events: none"
+                >
                     <template v-for="(s, j) in keyDates" :key="s.name">
-                        <g v-if="s.index === i + svg.slicer.start && periods[selectedPeriod].value >= i + svg.slicer.start">
-                            <line 
-                                :x1="stone.x" 
-                                :x2="stone.x" 
-                                :y1="svg.drawingArea.top" 
-                                :y2="svg.drawingArea.bottom" 
+                        <g
+                            v-if="
+                                s.index === i + svg.slicer.start &&
+                                periods[selectedPeriod].value >=
+                                    i + svg.slicer.start
+                            "
+                        >
+                            <line
+                                :x1="stone.x"
+                                :x2="stone.x"
+                                :y1="svg.drawingArea.top"
+                                :y2="svg.drawingArea.bottom"
                                 :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
                                 stroke-linecap="round"
                                 stroke-dasharray="0.5 12"
