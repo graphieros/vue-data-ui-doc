@@ -624,6 +624,10 @@ const customFormatCode =
         <!-- <BaseRandomButton @click="randomizeData" /> -->
     </div>
 
+    <div class="w-full flex justify-center">
+        <BaseViewExampleButton link="/examples/categories#vue-ui-circle-pack" />
+    </div>
+
     <Rater itemId="vue_ui_circle_pack" />
 
     <BaseMigrationInfo debug />
