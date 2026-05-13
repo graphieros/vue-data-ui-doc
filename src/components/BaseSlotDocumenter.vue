@@ -475,6 +475,9 @@ const items = computed(() => {
             <MyCloseIcon v-if="isOpen"/>
             <MyOpenIcon v-else/>
         </template>
+        <template #custom-menu-before>
+            <!-- Your custom actions can go here -->
+        </template>
         <template #optionTooltip>
             <MyTooltipIcon/>
         </template>
@@ -510,6 +513,9 @@ const items = computed(() => {
         </template>
         <template #optionZoom="{ isZoomLocked }">
             <MyZoomIcon />
+        </template>
+        <template #custom-menu-after>
+            <!-- Your custom actions can go here -->
         </template>
     </${props.componentName}>
             `,
