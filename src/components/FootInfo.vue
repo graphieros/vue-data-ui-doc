@@ -195,10 +195,8 @@ s
             </div>
         </div>
 
-        <CockpitAd />
-
         <NpmxAd />
-
+        <CockpitAd />
         <!-- <FncsyAd /> -->
     </div>
 </template>
