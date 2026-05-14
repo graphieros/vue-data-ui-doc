@@ -1,5 +1,36 @@
 [
     {
+        "version": "v 3.19.7",
+        "date": "2026-05-14",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Add config option to set yAxis to the right",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Add config option to set yAxis to the right",
+                "link": "/docs#vue-ui-candlestick"
+            },
+            {
+                "component": "VueUiStackbar",
+                "description": "Add config option to set yAxis to the right",
+                "link": "/docs#vue-ui-stackbar"
+            },
+            {
+                "component": "VueUiStackline",
+                "description": "Add config option to set yAxis to the right",
+                "link": "/docs#vue-ui-stackline"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Add config option to set yAxis to the right",
+                "link": "/docs#vue-ui-donut-evolution"
+            }
+        ]
+    },
+    {
         "version": "v 3.19.6",
         "date": "2026-05-12",
         "updates": [

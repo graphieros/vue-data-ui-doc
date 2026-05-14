@@ -380,6 +380,7 @@ const config = ref({
                     show: true,
                 },
                 yAxis: {
+                    position: 'left',
                     commonScaleSteps: 10,
                     useIndividualScale: false,
                     useNiceScale: true,
@@ -837,6 +838,7 @@ const darkModeConfig = ref({
                     show: true,
                 },
                 yAxis: {
+                    position: 'left',
                     commonScaleSteps: 10,
                     useIndividualScale: false,
                     useNiceScale: true,
@@ -2427,6 +2429,7 @@ const customFormatCode =
                                             :level="4"
                                             title="chart.grid.labels.yAxis"
                                         >
+                                            <BaseAttr name="position" attr="chart.grid.labels.yAxis.position" type="select" :options="['left', 'right']" defaultVal="left" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                             <BaseAttr
                                                 name="commonScaleSteps"
                                                 attr="chart.grid.labels.yAxis.commonScaleSteps"

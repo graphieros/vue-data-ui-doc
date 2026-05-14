@@ -370,6 +370,7 @@ const config = ref({
                     },
                 },
                 y: {
+                    position: 'left',
                     showAxis: true,
                     showVerticalLines: true,
                     axisColor: "#e1e5e8",
@@ -693,6 +694,7 @@ const darkModeConfig = ref({
                     },
                 },
                 y: {
+                    position: 'left',
                     showAxis: true,
                     showVerticalLines: true,
                     axisColor: "#3A3A3A",
@@ -2885,6 +2887,7 @@ const customFormatCode =
                                         :level="4"
                                         title="style.chart.grid.y"
                                     >
+                                        <BaseAttr name="position" attr="style.chart.grid.y.position" type="select" :options="['left', 'right']" defaultVal="left" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr
                                             name="showAxis"
                                             attr="style.chart.grid.y.showAxis"
