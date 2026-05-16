@@ -64,60 +64,23 @@ watch(
     { immediate: true, deep: true },
 );
 
-const heatmapDataset = computed(() => {
-    function getISOWeek(date) {
-        const d = new Date(
-            Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
-        );
-        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
-        return weekNo;
-    }
+const orderedHeatmapDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    function addDayAndWeek(data) {
-        const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+function parseCreatedAtDate(createdAt) {
+    const [datePart] = String(createdAt || "").split(" ");
+    const [year, month, day] = datePart.split("-").map(Number);
 
-        return data.map((item) => {
-            const dateObj = new Date(item.created_at.replace(" ", "T"));
-            const day = daysMapping[dateObj.getDay()];
-            const week = getISOWeek(dateObj);
-            return {
-                ...item,
-                day,
-                week,
-            };
-        });
-    }
+    if (!year || !month || !day) return null;
 
-    const augmentedData = addDayAndWeek(stats.value);
+    return new Date(year, month - 1, day);
+}
 
-    const uniqueWeeks = Array.from(
-        new Set(augmentedData.map((item) => item.week)),
-    ).sort((a, b) => a - b);
-
-    const orderedDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const grouped = {};
-
-    augmentedData.forEach((item) => {
-        if (!grouped[item.day]) {
-            grouped[item.day] = {};
-        }
-        grouped[item.day][item.week] = (grouped[item.day][item.week] || 0) + 1;
-    });
-
-    const result = orderedDays.map((day) => {
-        const values = uniqueWeeks.map(
-            (week) => (grouped[day] && grouped[day][week]) || 0,
-        );
-        return {
-            name: day,
-            values: values,
-        };
-    });
-
-    return result;
-});
+function formatDateKey(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
 
 function getISOWeek(date) {
     const d = new Date(
@@ -133,11 +96,71 @@ function getWeekBoundary(date) {
     const day = date.getDay();
     const isoDay = day === 0 ? 7 : day;
     const monday = new Date(date);
+    monday.setHours(0, 0, 0, 0);
     monday.setDate(date.getDate() - (isoDay - 1));
     const sunday = new Date(monday);
     sunday.setDate(monday.getDate() + 6);
     return { monday, sunday };
 }
+
+function getHeatmapWeekColumns(data) {
+    const weekGroups = new Map();
+
+    data.forEach((item) => {
+        const date = parseCreatedAtDate(item.created_at);
+        if (!date) return;
+
+        const { year, week } = getISOWeek(date);
+        const key = `${year}-${String(week).padStart(2, "0")}`;
+
+        if (!weekGroups.has(key)) {
+            const { monday, sunday } = getWeekBoundary(date);
+            weekGroups.set(key, {
+                key,
+                year,
+                week,
+                monday,
+                sunday,
+            });
+        }
+    });
+
+    return Array.from(weekGroups.values()).sort((a, b) => {
+        if (a.year !== b.year) return a.year - b.year;
+        return a.week - b.week;
+    });
+}
+
+const heatmapDataset = computed(() => {
+    const columns = getHeatmapWeekColumns(stats.value);
+    const grouped = {};
+
+    stats.value.forEach((item) => {
+        const date = parseCreatedAtDate(item.created_at);
+        if (!date) return;
+
+        const { year, week } = getISOWeek(date);
+        const key = `${year}-${String(week).padStart(2, "0")}`;
+        const day = orderedHeatmapDays[date.getDay()];
+
+        if (!grouped[day]) {
+            grouped[day] = {};
+        }
+
+        grouped[day][key] = (grouped[day][key] || 0) + 1;
+    });
+
+    return orderedHeatmapDays.map((day) => {
+        const values = columns.map(
+            ({ key }) => (grouped[day] && grouped[day][key]) || 0,
+        );
+
+        return {
+            name: day,
+            values,
+        };
+    });
+});
 
 function revertComponentName(str) {
     return str
@@ -147,42 +170,9 @@ function revertComponentName(str) {
 }
 
 function getWeekRanges(data) {
-    const weekGroups = {};
-
-    data.forEach((item) => {
-        const date = new Date(item.created_at.replace(" ", "T"));
-        const { year, week } = getISOWeek(date);
-        const key = `${year}-${week}`;
-
-        if (!weekGroups[key]) {
-            weekGroups[key] = date;
-        }
+    return getHeatmapWeekColumns(data).map(({ week, monday, sunday }) => {
+        return `${formatDateKey(monday)} to ${formatDateKey(sunday)}`;
     });
-
-    const results = [];
-
-    Object.keys(weekGroups).forEach((key) => {
-        const [, weekStr] = key.split("-");
-        const weekNum = weekStr;
-        const repDate = weekGroups[key];
-
-        const { monday, sunday } = getWeekBoundary(repDate);
-        const mondayStr = monday.toISOString().split("T")[0];
-        const sundayStr = sunday.toISOString().split("T")[0];
-
-        // results.push(`Week ${weekNum}: ${mondayStr} to ${sundayStr}`);
-        results.push(`Week ${weekNum} `);
-    });
-
-    results.sort((a, b) => {
-        const aWeek = parseInt(a.match(/^Week (\d+)/)[1], 10);
-        const bWeek = parseInt(b.match(/^Week (\d+)/)[1], 10);
-        // const aWeek = parseInt(a.match(/^Week (\d+):/)[1], 10);
-        // const bWeek = parseInt(b.match(/^Week (\d+):/)[1], 10);
-        return aWeek - bWeek;
-    });
-
-    return results;
 }
 
 const heatmapConfig = computed(() => {
@@ -192,8 +182,10 @@ const heatmapConfig = computed(() => {
             backgroundColor: "transparent",
             color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             layout: {
+                height: 150,
                 padding: {
                     top: 6,
+                    right: 42,
                 },
                 crosshairs: {
                     show: true,
@@ -203,7 +195,7 @@ const heatmapConfig = computed(() => {
                 cells: {
                     rowTotal: {
                         value: {
-                            show: true,
+                            show: false,
                         },
                         color: {
                             show: true,
@@ -211,9 +203,13 @@ const heatmapConfig = computed(() => {
                     },
                     columnTotal: {
                         value: {
-                            show: true,
+                            show: false,
                             rotation: 0,
-                            offsetX: 0,
+                            autoRotate: {
+                                enable: true,
+                                angle: -90
+                            },
+                            offsetX: 3,
                             offsetY: 6,
                         },
                         color: {
@@ -236,9 +232,9 @@ const heatmapConfig = computed(() => {
                         color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     },
                     xAxis: {
+                        show: false,
                         values: getWeekRanges(stats.value),
                         color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-                        fontSize: 9,
                         autoRotate: {
                             enable: true,
                             angle: -90,
@@ -1674,46 +1670,26 @@ const radarConfig = computed(() => {
 
 const detailSortMode = ref("byVotes"); // or 'byRatings'
 
-function getDateFromAxis(
-    { xAxisName, yAxisName },
-    year = new Date().getFullYear(),
-) {
-    const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const weekNum = parseInt(xAxisName.replace(/[^0-9]/g, ""), 10);
-    const dayIndex = daysMapping.indexOf(yAxisName);
-    if (isNaN(weekNum) || dayIndex === -1) return null;
+function getDateFromAxis({ xAxisName, yAxisName }) {
+    const dayIndex = orderedHeatmapDays.indexOf(yAxisName);
+    if (dayIndex === -1 || !xAxisName) return null;
 
-    for (let month = 0; month < 12; month += 1) {
-        for (let day = 1; day <= 31; day += 1) {
-            let date;
-            try {
-                date = new Date(Date.UTC(year, month, day));
-                if (date.getUTCMonth() !== month) continue;
-            } catch {
-                continue;
-            }
-            if (date.getUTCDay() !== dayIndex) continue;
+    const rangeMatch = xAxisName.match(
+        /(\d{4}-\d{2}-\d{2})\s+to\s+(\d{4}-\d{2}-\d{2})/,
+    );
+    if (!rangeMatch) return null;
 
-            const d = new Date(
-                Date.UTC(
-                    date.getUTCFullYear(),
-                    date.getUTCMonth(),
-                    date.getUTCDate(),
-                ),
-            );
-            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-            const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-            const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+    const monday = parseCreatedAtDate(rangeMatch[1]);
+    const sunday = parseCreatedAtDate(rangeMatch[2]);
+    if (!monday || !sunday) return null;
 
-            if (weekNo === weekNum) {
-                const yyyy = date.getUTCFullYear();
-                const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
-                const dd = String(date.getUTCDate()).padStart(2, "0");
-                return `${yyyy}-${mm}-${dd}`;
-            }
-        }
-    }
-    return null;
+    const offsetFromMonday = dayIndex === 0 ? 6 : dayIndex - 1;
+    const selected = new Date(monday);
+    selected.setDate(monday.getDate() + offsetFromMonday);
+
+    if (selected < monday || selected > sunday) return null;
+
+    return formatDateKey(selected);
 }
 
 function selectHeatmapCell(cell) {
@@ -2129,7 +2105,8 @@ const currentTab = ref("heatmap");
                         :dataset="heatmapDataset"
                         :config="heatmapConfig"
                         @selectDatapoint="selectHeatmapCell"
-                    />
+                    >
+                </VueDataUi>
                 </div>
             </BaseCard>
 
