@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.19.8",
+        "date": "2026-05-16",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improve chart layout when grid.position is set to 'start'",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.19.7",
         "date": "2026-05-14",
         "updates": [
