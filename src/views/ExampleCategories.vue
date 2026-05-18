@@ -796,7 +796,7 @@ function makeMapLinks({ data }) {
                 class="flex-col inline-flex w-full"
                 :id="example.id"
             >
-                <BaseLazy>
+                <BaseLazy once>
                     <template #placeholder>
                         <BaseCard>
                             <div class="w-full h-[700px]" />
