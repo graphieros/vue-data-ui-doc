@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.19.9",
+        "date": "2026-05-19",
+        "updates": [
+            {
+                "component": "All components with legends",
+                "description": "Emit @selectLegend when using the legend toggle",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.19.8",
         "date": "2026-05-16",
         "updates": [

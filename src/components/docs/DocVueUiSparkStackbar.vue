@@ -1069,7 +1069,7 @@ function goToPage(route) {
             <template #tab2>
                 <ComponentEmits
                     component="VueUiSparkStackbar"
-                    :names="['selectDatapoint']"
+                    :names="['selectDatapoint', 'selectLegend']"
                 />
                 <ExposedMethods component="VueUiSparkStackbar" showHideSeries />
             </template>
