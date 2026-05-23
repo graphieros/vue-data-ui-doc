@@ -1689,6 +1689,55 @@ export default function useExamples() {
         120, 130, 80, 90, 78, 100, 110, 120, 115, 100, 80, 105,
     ]);
 
+    const DATASET_XY_CONTINUOUS = ref([
+        {
+            name: "Serie 1",
+            type: "line",
+            series: [
+                { x: 0, y: 14 },
+                { x: 0.2, y: 18 },
+                { x: 0.5, y: 24 },
+                { x: 0.9, y: 20 },
+                { x: 1.4, y: 32 },
+                { x: 2, y: 40 },
+                { x: 2.8, y: 36 },
+                { x: 3.9, y: 52 },
+                { x: 5.3, y: 64 },
+                { x: 7, y: 58 },
+                { x: 9, y: 78 },
+                { x: 11.5, y: 88 },
+                { x: 14.5, y: 82 },
+                { x: 18, y: 96 },
+                { x: 22, y: 90 },
+                { x: 35, y: 104 },
+            ],
+            dataLabels: false,
+        },
+        {
+            name: "Serie 2",
+            type: "plot",
+            series: [
+                { x: 0, y: 96 },
+                { x: 0.35, y: 92 },
+                { x: 1.1, y: 88 },
+                { x: 1.9, y: 82 },
+                { x: 3.7, y: 76 },
+                { x: 4.4, y: 70 },
+                { x: 6.8, y: 66 },
+                { x: 7.5, y: 60 },
+                { x: 10.2, y: 54 },
+                { x: 12.8, y: 50 },
+                { x: 13.6, y: 44 },
+                { x: 17.9, y: 38 },
+                { x: 19.1, y: 34 },
+                { x: 24.7, y: 28 },
+                { x: 26.2, y: 22 },
+                { x: 31, y: 16 },
+            ],
+            dataLabels: false,
+        },
+    ])
+
     const DATASET_XY_ESTIMATES = ref([
         {
             name: "Serie 1",
@@ -2299,6 +2348,15 @@ export default function useExamples() {
                     },
                 },
             },
+            plot: {
+                radius: 5,
+                labels: {
+                    show: true,
+                    color: colors.value.textColor,
+                    offsetY: -12,
+                    rounding: 1
+                }
+            },
             line: {
                 radius: 5,
                 useGradient: false,
@@ -2306,6 +2364,7 @@ export default function useExamples() {
                     show: true,
                     color: colors.value.textColor,
                     offsetY: -12,
+                    rounding: 1
                 },
             },
             bar: {
@@ -2313,6 +2372,7 @@ export default function useExamples() {
                     show: true,
                     color: colors.value.textColor,
                     offsetY: -6,
+                    rounding: 1
                 },
             },
         };
@@ -8100,6 +8160,109 @@ export default function useExamples() {
                     es: "Degradado de barras personalizado",
                     ko: "사용자 지정 막대 그라데이션",
                     ar: "تدرّج أعمدة مخصّص",
+                },
+            },
+            // XY CONTINUOUS
+            {
+                dataset: DATASET_XY_CONTINUOUS.value,
+                config: mergeConfigs({
+                    defaultConfig: BASE_XY_CONFIG.value,
+                    userConfig: {
+                        line: {
+                            labels: {
+                                show: false,
+                                rounding: 1,
+                            }
+                        },
+                        plot: {
+                            labels: {
+                                show: false,
+                            }
+                        },
+                        chart: {
+                            highlightArea: { show: false },
+                            tooltip: {
+                                roundingValue: 3,
+                            },
+                            grid: {
+                                labels: {
+                                    yAxis: {
+                                        useNiceScale: true
+                                    },
+                                    xAxis: {
+                                        useNiceScale: true,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-continuous-x",
+                link: "vue-ui-xy",
+                description: {
+                    en: "Continuous series on x",
+                    fr: "Série continue sur x",
+                    pt: "Série contínua em x",
+                    de: "Kontinuierliche Reihe auf x",
+                    zh: "x 上的连续序列",
+                    ja: "x 上の連続系列",
+                    es: "Serie continua en x",
+                    ko: "x축의 연속 시리즈",
+                    ar: "سلسلة مستمرة على x",
+                },
+            },
+            // XY CONTINUOUS REVERSED
+            {
+                dataset: DATASET_XY_CONTINUOUS.value,
+                config: mergeConfigs({
+                    defaultConfig: BASE_XY_CONFIG.value,
+                    userConfig: {
+                        line: {
+                            labels: {
+                                show: false,
+                                rounding: 1,
+                            }
+                        },
+                        plot: {
+                            labels: {
+                                show: false,
+                            }
+                        },
+                        chart: {
+                            highlightArea: { show: false },
+                            tooltip: {
+                                roundingValue: 3,
+                            },
+                            grid: {
+                                labels: {
+                                    yAxis: {
+                                        reverse: true,
+                                        useNiceScale: true
+                                    },
+                                    xAxis: {
+                                        useNiceScale: true,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-continuous-x-reversed-y",
+                link: "vue-ui-xy",
+                description: {
+                    en: "Continuous series on x with reversed y-axis",
+                    fr: "Série continue sur x avec axe y inversé",
+                    pt: "Série contínua em x com eixo y invertido",
+                    de: "Kontinuierliche Reihe auf x mit umgekehrter y-Achse",
+                    zh: "x 上的连续序列，y 轴反转",
+                    ja: "y軸が反転した x 上の連続系列",
+                    es: "Serie continua en x con eje y invertido",
+                    ko: "y축이 반전된 x축의 연속 시리즈",
+                    ar: "سلسلة مستمرة على x مع محور y معكوس"
                 },
             },
             // DONUT BASIC

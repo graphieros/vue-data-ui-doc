@@ -380,6 +380,7 @@ const config = ref({
                     show: true,
                 },
                 yAxis: {
+                    reverse: false,
                     position: 'left',
                     commonScaleSteps: 10,
                     useIndividualScale: false,
@@ -402,6 +403,18 @@ const config = ref({
                     showCrosshairs: true,
                     crosshairsAlwaysAtZero: false,
                     crosshairSize: 6,
+                    /**
+                     * For continuous mode:
+                     * . line and plot types
+                     * . series with Array<{x, y}> instead of number[]
+                     */
+                    commonScaleSteps: 10, // continuous mode only
+                    useNiceScale: true, // continuous mode only
+                    scaleMin: null, // continuous mode only
+                    scaleMax: null, // continuous mode only
+                    rounding: 1, // continuous mode only
+                    formatter: null, // continuous mode only
+                    reverse: false, // continuous mode only
                 },
                 xAxisLabels: {
                     color: "#1A1A1A",
@@ -838,6 +851,7 @@ const darkModeConfig = ref({
                     show: true,
                 },
                 yAxis: {
+                    reverse: false,
                     position: 'left',
                     commonScaleSteps: 10,
                     useIndividualScale: false,
@@ -860,6 +874,18 @@ const darkModeConfig = ref({
                     showCrosshairs: true,
                     crosshairSize: 6,
                     crosshairsAlwaysAtZero: false,
+                    /**
+                     * For continuous mode:
+                     * . line and plot types
+                     * . series with Array<{x, y}> instead of number[]
+                     */
+                    commonScaleSteps: 10, // continuous mode only
+                    useNiceScale: true, // continuous mode only
+                    scaleMin: null, // continuous mode only
+                    scaleMax: null, // continuous mode only
+                    rounding: 1, // continuous mode only
+                    formatter: null, // continuous mode only
+                    reverse: false, // continuous mode only
                 },
                 xAxisLabels: {
                     color: "#c8c8c8",
@@ -1198,7 +1224,7 @@ const typeImports = computed(() => {
 const dsTypeCode = computed(() => {
     return `type VueUiXyDatasetItem = {
     name: string
-    series: number[]
+    series: number[] | Array<{ x: number | null; y: number | null }> //  ${translations.value.docs.comments.xy.continuousX[store.lang]}
     type: "bar" | "line" | "plot"
     // ${translations.value.docs.comments.xy.type[store.lang]}
     color?: string // ${translations.value.docs.comments.xy.color[store.lang]}
@@ -2176,6 +2202,7 @@ const customFormatCode =
                                             :level="4"
                                             title="chart.grid.labels.xAxis"
                                         >
+                                            <BaseAttr name="reverse" attr="chart.grid.labels.xAxis.reverse" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                             <BaseAttr
                                                 name="showBaseline"
                                                 attr="chart.grid.labels.xAxis.showBaseline"
@@ -2209,6 +2236,25 @@ const customFormatCode =
                                                 defaultVal="false"
                                                 :light="mutableConfig"
                                                 :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseComment>
+                                                The following settings will work only for continuous series (line or plot datasets series using {x,y}[] instead of number[]):
+                                            </BaseComment>
+                                            <BaseAttr name="commonScaleSteps" attr="chart.grid.labels.xAxis.commonScaleSteps" type="number" :min="2" :max="20" defaultVal="10" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
+                                            <BaseAttr name="useNiceScale" attr="chart.grid.labels.xAxis.useNiceScale" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only" />
+                                            <BaseAttr inactive name="scaleMin" attr="chart.grid.labels.xAxis.scaleMin" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
+                                            <BaseAttr inactive name="scaleMax" attr="chart.grid.labels.xAxis.scaleMax" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
+                                            <BaseAttr name="rounding" attr="chart.grid.labels.xAxis.rounding" type="number" :min="0" :max="6" defaultVal="1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
+                                            <BaseAttr
+                                                inactive
+                                                name="formatter"
+                                                defaultVal="null"
+                                                :comment="
+                                                    translations
+                                                        .formatterLink[
+                                                        store.lang
+                                                    ]
+                                                "
                                             />
                                         </BaseDetails>
                                         <BaseDetails
@@ -2430,6 +2476,7 @@ const customFormatCode =
                                             title="chart.grid.labels.yAxis"
                                         >
                                             <BaseAttr name="position" attr="chart.grid.labels.yAxis.position" type="select" :options="['left', 'right']" defaultVal="left" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="reverse" attr="chart.grid.labels.yAxis.reverse" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                             <BaseAttr
                                                 name="commonScaleSteps"
                                                 attr="chart.grid.labels.yAxis.commonScaleSteps"
