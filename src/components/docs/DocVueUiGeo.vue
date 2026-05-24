@@ -27,6 +27,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ThemesVueUiGeo from "../themes/ThemesVueUiGeo.vue";
 import FRANCE from "../../resources/FRANCE.json";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -1466,6 +1467,13 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
             </template>
 
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiGeo"
+                    :names="[
+                        'copyAlt',
+                    ]"
+                />
+
                 <ExposedMethods
                     component="VueUiGeo"
                     getImage

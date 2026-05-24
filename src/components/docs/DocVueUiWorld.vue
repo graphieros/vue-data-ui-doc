@@ -25,6 +25,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -1751,36 +1752,14 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
             </template>
 
             <template #tab2>
-                @selectDatapoint<br /><br />
-
-                Emitted when clicing on a country
-
-                {{ translations.docs.emits.selectDatapoint[store.lang] }}
-                <br /><br />
-                <pre>
-<code>
-&lt;template&gt;
-  &lt;VueUiWorld
-    :dataset="dataset"
-    :config="config"
-    @selectDatapoint="selectDatapoint"
-  /&gt;
-&lt;/template&gt;
-
-&lt;script setup lang="ts"&gt;
-  function selectDatapoint(datapoint) {
-    console.log(datapoint)
-  }
-&lt;/script&gt;
-</code>
-</pre>
-
-                <div>
-                    <code><b>@selectLegend</b></code>
-                </div>
-                <div class="text-gray-400 pl-5">
-                    {{ translations.docs.emits.xy.selectLegend[store.lang] }}
-                </div>
+                <ComponentEmits
+                    component="VueUiWorld"
+                    :names="[
+                        'selectLegend',
+                        'selectDatapoint',
+                        'copyAlt',
+                    ]"
+                />
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>

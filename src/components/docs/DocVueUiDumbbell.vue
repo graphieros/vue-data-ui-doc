@@ -24,6 +24,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig();
 
@@ -2294,6 +2295,14 @@ function goToPage(route) {
                 </code>
             </template>
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiDumbbell"
+                    :names="[
+                        'selectDatapoint',
+                        'copyAlt',
+                    ]"
+                />
+
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">

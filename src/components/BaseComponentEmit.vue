@@ -1,12 +1,17 @@
 <script setup>
 import { ref, computed } from "vue";
 import CodeParser from "./customization/CodeParser.vue";
+import { getEmitType } from "../emit-mapping";
 
 const props = defineProps({
     component: { type: String },
     name: { type: String },
     description: { type: String },
 });
+
+const emitTypeDef = computed(() => {
+    return getEmitType({ componentName: props.component, emitName: props.name })
+})
 
 const contentTemplate = computed(
     () => `<${props.component}
@@ -17,10 +22,10 @@ const contentTemplate = computed(
 `,
 );
 
-const noArgs = ["start", "pause", "reset", "restart", "onMidpointLeave"];
+const noArgs = ["start", "pause", "reset", "restart", "onMidpointLeave", "zoomReset"];
 
 const contentScript = computed(
-    () => `function ${props.name}(${noArgs.includes(props.name) ? "" : "args"}) {
+    () => `function ${props.name}(${noArgs.includes(props.name) ? "" : `args${emitTypeDef.value ? `: ${emitTypeDef.value}` : ''}`}) {
     ${noArgs.includes(props.name) ? "// do something" : "console.log({ args });"}
 }`,
 );

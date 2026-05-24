@@ -3449,7 +3449,7 @@ const customFormatCode =
 
             <template #tab2>
                 <ComponentEmits
-                    component="VueUiStackbar"
+                    component="VueUiStackline"
                     :names="[
                         'selectLegend',
                         'selectDatapoint',

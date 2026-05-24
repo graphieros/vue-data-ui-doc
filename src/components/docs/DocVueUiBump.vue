@@ -26,6 +26,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ThemesVueUiBump from "../themes/ThemesVueUiBump.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -1747,6 +1748,12 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
             </template>
 
             <template #tab2>
+                <ComponentEmits
+                    component="VueUiBump"
+                    :names="[
+                        'copyAlt',
+                    ]"
+                />
                 <ExposedMethods
                     component="VueUiBump"
                     :names="[

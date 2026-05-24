@@ -3,6 +3,7 @@ import { computed, watch, ref } from "vue";
 import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css";
 import { useMainStore } from "../../stores";
+import { getAllTypes } from "../../emit-mapping";
 
 const props = defineProps({
     content: {
@@ -48,6 +49,10 @@ const emit = defineEmits(["copy"]);
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 const step = ref(0);
+
+const emitTypes = computed(() => {
+    return getAllTypes();
+})
 
 const config = computed(() => {
     return {
@@ -275,6 +280,9 @@ const config = computed(() => {
             "VueUiCursor",
             "VueUiMiniLoader",
             "VueDataUi",
+
+            // Emits
+            ...emitTypes.value
         ],
     };
 });

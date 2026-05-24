@@ -29,6 +29,7 @@ import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import ComponentEmits from "../ComponentEmits.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -2526,39 +2527,15 @@ function goToPage(route) {
             </template>
 
             <template #tab2>
-                <div>Emits:</div>
-                <ul>
-                    <li>
-                        <code>@selectDatapoint</code> :
-                        {{
-                            translations.docs.emits.selectDatapoint[store.lang]
-                        }}
-                    </li>
-                    <li>
-                        <code>@selectLegend</code> :
-                        {{
-                            translations.docs.emits.xy.selectLegend[
-                                store.lang
-                            ].replaceAll(":", "")
-                        }}
-                    </li>
-                    <li>
-                        <code>@selectX</code> :
-                        {{
-                            translations.docs.emits.xy.selectX[
-                                store.lang
-                            ].replaceAll(":", "")
-                        }}
-                    </li>
-                </ul>
-
-                <div class="mt-6">Exposed methods:</div>
-                <ul>
-                    <li>
-                        <code>getData</code> :
-                        {{ translations.docs.emits.xy.getData[store.lang] }}
-                    </li>
-                </ul>
+              <ComponentEmits
+                    component="VueUiRidgeline"
+                    :names="[
+                        'selectLegend',
+                        'selectDatapoint',
+                        'selectX',
+                        'copyAlt',
+                    ]"
+                />
                 <ExposedMethods
                     component="VueUiRidgeline"
                     getImage
