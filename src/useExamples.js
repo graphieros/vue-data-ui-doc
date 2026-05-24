@@ -8232,17 +8232,29 @@ export default function useExamples() {
                         },
                         chart: {
                             highlightArea: { show: false },
-                            tooltip: {
-                                roundingValue: 3,
+                            highlighter: {
+                                crosshairs: {
+                                    show: true,
+                                    stroke: colors.value.gridStrokeLight,
+                                    dot: {
+                                        fill: colors.value.textColor,
+                                        stroke: colors.value.bg
+                                    }
+                                }
                             },
+                            tooltip: { show: false },
                             grid: {
                                 labels: {
+                                    fontSize: 20,
                                     yAxis: {
                                         reverse: true,
                                         useNiceScale: true
                                     },
                                     xAxis: {
                                         useNiceScale: true,
+                                    },
+                                    xAxisLabels: {
+                                        fontSize: 20,
                                     }
                                 }
                             }
@@ -8254,15 +8266,15 @@ export default function useExamples() {
                 id: "xy-continuous-x-reversed-y",
                 link: "vue-ui-xy",
                 description: {
-                    en: "Continuous series on x with reversed y-axis",
-                    fr: "Série continue sur x avec axe y inversé",
-                    pt: "Série contínua em x com eixo y invertido",
-                    de: "Kontinuierliche Reihe auf x mit umgekehrter y-Achse",
-                    zh: "x 上的连续序列，y 轴反转",
-                    ja: "y軸が反転した x 上の連続系列",
-                    es: "Serie continua en x con eje y invertido",
-                    ko: "y축이 반전된 x축의 연속 시리즈",
-                    ar: "سلسلة مستمرة على x مع محور y معكوس"
+                    en: "Continuous series on x with reversed y-axis with crosshair selection",
+                    fr: "Séries continues sur l’axe x avec axe y inversé et sélection par réticule",
+                    pt: "Séries contínuas no eixo x com eixo y invertido e seleção por mira",
+                    de: "Kontinuierliche Reihen auf der x-Achse mit umgekehrter y-Achse und Fadenkreuzauswahl",
+                    zh: "x 轴连续序列，带反向 y 轴和十字准线选择",
+                    ja: "x軸上の連続系列、反転したy軸とクロスヘア選択付き",
+                    es: "Series continuas en el eje x con eje y invertido y selección con cruz guía",
+                    ko: "반전된 y축과 크로스헤어 선택 기능이 있는 x축 연속 시리즈",
+                    ar: "سلاسل مستمرة على المحور x مع محور y معكوس وتحديد بواسطة المؤشر المتقاطع"
                 },
             },
             // DONUT BASIC

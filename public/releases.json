@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.20.8",
+        "date": "2026-05-24",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Add optional selection crosshairs",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.20.7",
         "date": "2026-05-23",
         "updates": [
