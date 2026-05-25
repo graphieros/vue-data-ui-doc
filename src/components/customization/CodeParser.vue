@@ -313,24 +313,3 @@ watch(
         />
     </div>
 </template>
-
-
-const config = computed<VueUiXyConfig>(() => ({
-    chart: {
-        highlighter: {
-            crosshairs: {
-                show: false,
-                stroke: '#2D353C',
-                strokeWidth: 1,
-                strokeDasharray: 3,
-                stopOnPoint: false,
-                dot: {
-                    radius: 2,
-                    fill: '#2D353C',
-                    stroke: '#FFFFFF',
-                    strokeWidth: 1,
-                }
-            }
-        }
-    }
-}))

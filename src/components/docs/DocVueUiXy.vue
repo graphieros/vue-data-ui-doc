@@ -270,6 +270,19 @@ const config = ref({
             useLine: false,
             lineDasharray: 2,
             lineWidth: 1,
+            crosshairs: {
+                show: false,
+                stroke: "#1A1A1A",
+                strokeWidth: 1,
+                strokeDasharray: 3,
+                stopOnPoint: false,
+                dot: {
+                    radius: 2,
+                    fill: "#1A1A1A",
+                    stroke: "#FFFFFF",
+                    strokeWidth: 1,
+                },
+            },
         },
         timeTag: {
             show: false,
@@ -742,6 +755,19 @@ const darkModeConfig = ref({
             useLine: false,
             lineDasharray: 2,
             lineWidth: 1,
+            crosshairs: {
+                show: false,
+                stroke: "#e1e5e8",
+                strokeWidth: 1,
+                strokeDasharray: 3,
+                stopOnPoint: false,
+                dot: {
+                    radius: 2,
+                    fill: "#e1e5e8",
+                    stroke: "#1A1A1A",
+                    strokeWidth: 1,
+                },
+            },
         },
         timeTag: {
             show: false,
@@ -2853,6 +2879,19 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
+                                    <BaseDetails attr="crosshairs" :level="3" title="chart.highlighter.crosshairs">
+                                        <BaseAttr name="show" attr="chart.highlighter.crosshairs.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="stroke" attr="chart.highlighter.crosshairs.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="strokeWidth" attr="chart.highlighter.crosshairs.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="strokeDasharray" attr="chart.highlighter.crosshairs.strokeDasharray" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="startOnPoint" attr="chart.highlighter.crosshairs.startOnPoint" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseDetails attr="dot" :level="4" title="chart.highlighter.crosshairs.dot">
+                                            <BaseAttr name="radius" attr="chart.highlighter.crosshairs.dot.radius" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="fill" attr="chart.highlighter.crosshairs.dot.fill" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="stroke" attr="chart.highlighter.crosshairs.dot.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="strokeWidth" attr="chart.highlighter.crosshairs.dot.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        </BaseDetails>
+                                    </BaseDetails>
                                 </BaseDetails>
                                 <BaseDetails
                                     attr="labels"
