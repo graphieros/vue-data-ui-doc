@@ -99,22 +99,22 @@ const dataset = computed(() => {
             series: data_lib.value,
             type: "line",
             dataLabels: false,
-            useTag: isMobile.value ? undefined : "end",
+            // useTag: isMobile.value ? undefined : "end",
             marked: true,
             temperatureColors: ["#83a4f2", "#3456a3"],
             color: "#83a4f2",
         },
-        {
-            name: "vue-data-ui-cli",
-            series: data_cli.value,
-            type: "line",
-            dataLabels: false,
-            temperatureColors: ["#faa770", "#ff7f0e"],
-            color: "#ff7f0e",
-            shape: "diamond",
-            useTag: isMobile.value ? undefined : "end",
-            marked: true,
-        },
+        // {
+        //     name: "vue-data-ui-cli",
+        //     series: data_cli.value,
+        //     type: "line",
+        //     dataLabels: false,
+        //     temperatureColors: ["#faa770", "#ff7f0e"],
+        //     color: "#ff7f0e",
+        //     shape: "diamond",
+        //     useTag: isMobile.value ? undefined : "end",
+        //     marked: true,
+        // },
         // {
         //   name: "color-bridge",
         //   series: data_color_bridge.value,
@@ -153,10 +153,15 @@ const config = computed(() => {
             color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             height: 600,
             width: 1000,
+            padding: {
+                bottom: 24,
+                left: 80,
+                right: 0,
+            },
             zoom: {
                 show: true,
                 color: isDarkMode.value ? "#8A8A8A" : "#CCCCCC",
-                highlightColor: "#1f77b4",
+                highlightColor: isDarkMode.value ? "#314063" : "#3456a3",
                 fontSize: 14,
                 useResetSlot: false,
                 startIndex: null,
@@ -167,9 +172,10 @@ const config = computed(() => {
                 minimap: {
                     show: true,
                     smooth: false,
-                    selectedColor: "#1f77b4",
+                    selectedColor: "#5f8aee",
                     selectedColorOpacity: 0.2,
                     lineColor: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
+                    frameColor: 'transparent',
                     selectionRadius: 2,
                     indicatorColor: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                     verticalHandles: false,
@@ -186,6 +192,17 @@ const config = computed(() => {
                 useLine: true,
                 lineDasharray: 2,
                 lineWidth: 1,
+                crosshairs: {
+                    show: true,
+                    stroke: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    strokeWidth: 0.6,
+                    strokeDasharray: 0,
+                    // dot: {
+                    //     fill: '',
+                    //     stroke: '',
+                    //     strokeWidth: 1
+                    // }
+                }
             },
             timeTag: {
                 show: true,
@@ -199,14 +216,6 @@ const config = computed(() => {
                 showVerticalLines: false,
                 showHorizontalLines: false,
                 position: "middle",
-                frame: {
-                    show: true,
-                    stroke: isDarkMode.value ? "#4A4A4A" : "#E1E5E8",
-                    strokeWidth: 1,
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round",
-                    strokeDasharray: 0,
-                },
                 labels: {
                     show: true,
                     color: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
@@ -221,6 +230,8 @@ const config = computed(() => {
                     zeroLine: { show: true },
                     xAxis: { showBaseline: false },
                     yAxis: {
+                        position: 'right',
+                        useNiceScale: true,
                         showBaseline: true,
                         commonScaleSteps: 10,
                         useIndividualScale: false,
@@ -228,6 +239,7 @@ const config = computed(() => {
                         gap: 12,
                         labelWidth: 40,
                         formatter: null,
+                        scaleValueOffsetX: 0,
                         // scaleMin: null,
                         // scaleMax: Math.ceil(max.value / 100) * 100,
                     },
@@ -235,12 +247,12 @@ const config = computed(() => {
                         color: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
                         show: false,
                         values: dates.value,
-                        fontSize: 14,
+                        fontSize: 16,
                         showOnlyFirstAndLast: true,
                         showOnlyAtModulo: false,
                         modulo: 12,
                         yOffset: 0,
-                        rotation: -33,
+                        rotation: 0,
                     },
                 },
             },
@@ -561,7 +573,7 @@ function freestyle({ drawingArea, data }) {
             @selectTimeLabel="selectTimeLabel"
         >
             <template #svg="{ svg }">
-                <g v-html="freestyle(svg)" />
+                <!-- <g v-html="freestyle(svg)" /> -->
 
                 <!-- Key dates -->
                 <g
@@ -582,7 +594,7 @@ function freestyle({ drawingArea, data }) {
                                 :x2="stone.x"
                                 :y1="svg.drawingArea.top"
                                 :y2="svg.drawingArea.bottom"
-                                :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                                :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"
                                 stroke-linecap="round"
                                 stroke-dasharray="0.5 12"
                                 stroke-width="3"
