@@ -12,7 +12,7 @@ const store = useMainStore();
 const dataset = ref([
     {
         name: "Series A",
-        series: [0, 1, 1, 2, 3, 5],
+        series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34],
         type: "line",
         useArea: true,
         smooth: true,
@@ -50,12 +50,30 @@ const config = computed(() => {
         defaultConfig: custom.value,
         userConfig: {
             chart: {
+                grid: {
+                    position: 'start',
+                    labels: {
+                        yAxis: {
+                            useNiceScale: true,
+                        }
+                    }
+                },
+                legend: {
+                    position: 'top'
+                },
                 title: {
                     text: "Title",
+                    textAlign: 'left',
                     subtitle: {
                         text: "Subtitle",
                     },
                 },
+                zoom: {
+                    keepState: true,
+                    minimap: {
+                        show: true,
+                    }
+                }
             },
         },
     });
@@ -84,10 +102,28 @@ const config = computed(() => {
         defaultConfig: custom.value,
         userConfig: {
             chart: {
+                grid: {
+                    position: 'start',
+                    labels: {
+                        yAxis: {
+                            useNiceScale: true,
+                        }
+                    }
+                },
+                legend: {
+                    position: 'top'
+                },
                 title: {
                     text: "Title",
+                    textAlign: 'left',
                     subtitle: {
-                        text: "Subtitle"
+                        text: "Subtitle",
+                    },
+                },
+                zoom: {
+                    keepState: true,
+                    minimap: {
+                        show: true,
                     }
                 }
             }
@@ -98,7 +134,7 @@ const config = computed(() => {
 const dataset = ref([
     {
         name: "Series A",
-        series: [0, 1, 1, 2, 3, 5],
+        series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34],
         type: "line",
         useArea: true,
         smooth: true
