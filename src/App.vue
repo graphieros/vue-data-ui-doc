@@ -118,22 +118,27 @@ function fetchDocStats() {
     });
 }
 
+const githubClankers = [
+    "dependabot[bot]",
+    "github-actions[bot]"
+]
+
 function fetchContributors() {
     return useFetch({
         url: "https://api.github.com/repos/graphieros/vue-data-ui/contributors",
         _then: (data) => {
             store.contributors = data?.filter(
-                (d) => d?.login !== "dependabot[bot]",
+                (d) => !githubClankers.includes(d?.login),
             );
             if (![null, undefined].includes("contributors")) {
                 localStorage.contributors = JSON.stringify(
-                    data?.filter((d) => d?.login !== "dependabot[bot]"),
+                    data?.filter((d) => !githubClankers.includes(d?.login)),showUnderlay
                 );
             } else {
                 localStorage.setItem(
                     "contributors",
                     JSON.stringify(
-                        data?.filter((d) => d?.login !== "dependabot[bot]"),
+                        data?.filter((d) => !githubClankers.includes(d?.login)),
                     ),
                 );
             }
