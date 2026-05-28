@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.20.11",
+        "date": "2026-05-28",
+        "updates": [
+            {
+                "component": "Zoom minimap",
+                "description": "Fix precision issue with very large datasets",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.20.10",
         "date": "2026-05-25",
         "updates": [
