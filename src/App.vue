@@ -168,6 +168,15 @@ onMounted(() => {
         })
         .then((json) => {
             store.downloads.lib = json.downloads;
+            store.npmDownloadsHome = json.downloads
+                .map((d) => {
+                    return {
+                        period: d.day,
+                        value: d.downloads
+                    }
+                })
+                .slice(0, -1)
+                .slice(-365)
             store.npmDownloads = json.downloads
                 .map((d) => {
                     return {

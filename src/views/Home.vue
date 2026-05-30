@@ -592,6 +592,100 @@ onBeforeUnmount(() => {
             <rect x="0" y="0" width="100%" height="100%" fill="url(#griddit)" />
         </svg>
     </div>
+        <div class="w-full fixed left-0 -bottom-2 sm:bottom-8 h-32 home-sparkline opacity-100">
+        <VueUiSparkline
+            :dataset="store.npmDownloadsHome"
+            :config="{
+                responsive: true,
+                type: 'line',
+                skeletonDataset: Array.from({ length: 365 }, () => 0),
+                skeletonConfig: {
+                    temperatureColors: {
+                        show: true,
+                        colors: isDarkMode ? [
+                            '#abc2f6',
+                            '#83a4f2',
+                            '#5f8aee'
+                        ] : [
+                            '#1d915d',
+                            '#42d392',
+                        ]
+                    },
+                    style: {
+                        backgroundColor: 'transparent',
+                        chartWidth: 800,
+                        padding: {
+                            top: 0,
+                            right: 0,
+                            left: isMobile ? 0 : -110,
+                            bottom: 20,
+                        },
+                        dataLabel: {
+                            show: true,
+                            color: 'transparent',
+                        },
+                        area: {
+                            useGradient: false,
+                            color: isDarkMode ? '#5f8aee' : '#87e6bb',
+                            opacity: 20,
+                        },
+                        line: {
+                            color: isDarkMode ? '#83a4f2' : '#87e6bb',
+                        },
+                    },
+                },
+                temperatureColors: {
+                    show: true,
+                    colors: isDarkMode ? [
+                        '#abc2f6',
+                        '#83a4f2',
+                        '#5f8aee'
+                    ] : [
+                        '#1d915d',
+                        '#42d392',
+                    ]
+                },
+                style: {
+                    scaleMax: maxDownload,
+                    backgroundColor: '#FFFFFF00',
+                    chartWidth: 300,
+                    dataLabel: { show: false },
+                    title: { show: false },
+                    animation: { show: false },
+                    padding: {
+                        top: 0,
+                        right: 0,
+                        left: isMobile ? 0 : -110,
+                        bottom: 20,
+                    },
+                    area: {
+                        useGradient: false,
+                        color: isDarkMode ? '#5f8aee' : '#87e6bb',
+                        opacity: 20,
+                    },
+                    line: {
+                        color: isDarkMode ? '#83a4f2' : '#87e6bb',
+                        strokeWidth: 1.6,
+                        pulse: {
+                            show: true,
+                            radius: 2,
+                            color: isDarkMode ? '#87e6bb' : '#3456a3',
+                            durationMs: 15000,
+                            trail: {
+                                show: true,
+                                length: 120,
+                            },
+                        },
+                    },
+                },
+            }"
+        >
+            <template #skeleton>
+                <!-- This empty div overrides the default built-in scanning animation on load -->
+                <div></div>
+            </template>
+        </VueUiSparkline>
+    </div>
     <div
         ref="resizeContainer"
         class="absolute top-0 left-0"
@@ -1175,5 +1269,10 @@ onBeforeUnmount(() => {
         transparent,
         transparent
     );
+}
+
+.home-sparkline path {
+    animation: none !important;
+    transition: none !important;
 }
 </style>
