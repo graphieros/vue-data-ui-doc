@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.21.0",
+        "date": "2026-06-01",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Add support for ssr static rendering",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.20.11",
         "date": "2026-05-28",
         "updates": [

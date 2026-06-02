@@ -205,7 +205,7 @@ const config = ref({
                         color: "#1A1A1A",
                     },
                     yAxis: {
-                        position: 'left',
+                        position: "left",
                         scaleMin: null,
                         scaleMax: null,
                         autoScale: false,
@@ -482,7 +482,7 @@ const darkModeConfig = ref({
                         color: "#CCCCCC",
                     },
                     yAxis: {
-                        position: 'left',
+                        position: "left",
                         scaleMin: null,
                         scaleMax: null,
                         autoScale: false,
@@ -1469,7 +1469,15 @@ function goToPage(route) {
                                             :level="5"
                                             title="style.chart.layout.grid.yAxis"
                                         >
-                                            <BaseAttr name="position" attr="style.chart.layout.grid.yAxis.position" type="select" :options="['left', 'right']" defaultVal="left" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                                            <BaseAttr
+                                                name="position"
+                                                attr="style.chart.layout.grid.yAxis.position"
+                                                type="select"
+                                                :options="['left', 'right']"
+                                                defaultVal="left"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
                                             <BaseAttr
                                                 name="autoScale"
                                                 attr="style.chart.layout.grid.yAxis.autoScale"

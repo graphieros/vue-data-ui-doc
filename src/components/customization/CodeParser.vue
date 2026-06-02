@@ -52,7 +52,7 @@ const step = ref(0);
 
 const emitTypes = computed(() => {
     return getAllTypes();
-})
+});
 
 const config = computed(() => {
     return {
@@ -282,7 +282,7 @@ const config = computed(() => {
             "VueDataUi",
 
             // Emits
-            ...emitTypes.value
+            ...emitTypes.value,
         ],
     };
 });

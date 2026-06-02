@@ -118,10 +118,7 @@ function fetchDocStats() {
     });
 }
 
-const githubClankers = [
-    "dependabot[bot]",
-    "github-actions[bot]"
-]
+const githubClankers = ["dependabot[bot]", "github-actions[bot]"];
 
 function fetchContributors() {
     return useFetch({
@@ -132,7 +129,8 @@ function fetchContributors() {
             );
             if (![null, undefined].includes("contributors")) {
                 localStorage.contributors = JSON.stringify(
-                    data?.filter((d) => !githubClankers.includes(d?.login)),showUnderlay
+                    data?.filter((d) => !githubClankers.includes(d?.login)),
+                    showUnderlay,
                 );
             } else {
                 localStorage.setItem(
@@ -172,11 +170,11 @@ onMounted(() => {
                 .map((d) => {
                     return {
                         period: d.day,
-                        value: d.downloads
-                    }
+                        value: d.downloads,
+                    };
                 })
                 .slice(0, -1)
-                .slice(-365)
+                .slice(-365);
             store.npmDownloads = json.downloads
                 .map((d) => {
                     return {

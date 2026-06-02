@@ -10,8 +10,11 @@ const props = defineProps({
 });
 
 const emitTypeDef = computed(() => {
-    return getEmitType({ componentName: props.component, emitName: props.name })
-})
+    return getEmitType({
+        componentName: props.component,
+        emitName: props.name,
+    });
+});
 
 const contentTemplate = computed(
     () => `<${props.component}
@@ -22,10 +25,17 @@ const contentTemplate = computed(
 `,
 );
 
-const noArgs = ["start", "pause", "reset", "restart", "onMidpointLeave", "zoomReset"];
+const noArgs = [
+    "start",
+    "pause",
+    "reset",
+    "restart",
+    "onMidpointLeave",
+    "zoomReset",
+];
 
 const contentScript = computed(
-    () => `function ${props.name}(${noArgs.includes(props.name) ? "" : `args${emitTypeDef.value ? `: ${emitTypeDef.value}` : ''}`}) {
+    () => `function ${props.name}(${noArgs.includes(props.name) ? "" : `args${emitTypeDef.value ? `: ${emitTypeDef.value}` : ""}`}) {
     ${noArgs.includes(props.name) ? "// do something" : "console.log({ args });"}
 }`,
 );

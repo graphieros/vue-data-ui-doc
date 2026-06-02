@@ -1467,12 +1467,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
             </template>
 
             <template #tab2>
-                <ComponentEmits
-                    component="VueUiGeo"
-                    :names="[
-                        'copyAlt',
-                    ]"
-                />
+                <ComponentEmits component="VueUiGeo" :names="['copyAlt']" />
 
                 <ExposedMethods
                     component="VueUiGeo"

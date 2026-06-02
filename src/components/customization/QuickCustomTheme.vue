@@ -51,19 +51,19 @@ const config = computed(() => {
         userConfig: {
             chart: {
                 grid: {
-                    position: 'start',
+                    position: "start",
                     labels: {
                         yAxis: {
                             useNiceScale: true,
-                        }
-                    }
+                        },
+                    },
                 },
                 legend: {
-                    position: 'top'
+                    position: "top",
                 },
                 title: {
                     text: "Title",
-                    textAlign: 'left',
+                    textAlign: "left",
                     subtitle: {
                         text: "Subtitle",
                     },
@@ -72,8 +72,8 @@ const config = computed(() => {
                     keepState: true,
                     minimap: {
                         show: true,
-                    }
-                }
+                    },
+                },
             },
         },
     });

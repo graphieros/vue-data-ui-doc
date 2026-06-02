@@ -1748,12 +1748,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
             </template>
 
             <template #tab2>
-                <ComponentEmits
-                    component="VueUiBump"
-                    :names="[
-                        'copyAlt',
-                    ]"
-                />
+                <ComponentEmits component="VueUiBump" :names="['copyAlt']" />
                 <ExposedMethods
                     component="VueUiBump"
                     :names="[

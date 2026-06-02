@@ -1215,9 +1215,7 @@ function goToPage(route) {
             <template #tab2>
                 <ComponentEmits
                     component="VueUiTableSparkline"
-                    :names="[
-                        'copyAlt',
-                    ]"
+                    :names="['copyAlt']"
                 />
 
                 <ExposedMethods

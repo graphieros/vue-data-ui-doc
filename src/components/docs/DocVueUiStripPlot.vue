@@ -2157,10 +2157,7 @@ const customFormatCode =
             <template #tab2>
                 <ComponentEmits
                     component="VueUiStripPlot"
-                    :names="[
-                        'selectDatapoint',
-                        'copyAlt',
-                    ]"
+                    :names="['selectDatapoint', 'copyAlt']"
                 />
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>

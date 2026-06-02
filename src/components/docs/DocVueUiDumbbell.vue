@@ -2297,10 +2297,7 @@ function goToPage(route) {
             <template #tab2>
                 <ComponentEmits
                     component="VueUiDumbbell"
-                    :names="[
-                        'selectDatapoint',
-                        'copyAlt',
-                    ]"
+                    :names="['selectDatapoint', 'copyAlt']"
                 />
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">

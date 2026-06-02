@@ -167,7 +167,7 @@ const config = ref({
                     },
                 },
                 yAxis: {
-                    position: 'left',
+                    position: "left",
                     scale: {
                         min: null,
                         max: null,
@@ -428,7 +428,7 @@ const darkModeConfig = ref({
                     },
                 },
                 yAxis: {
-                    position: 'left',
+                    position: "left",
                     scale: {
                         min: null,
                         max: null,
@@ -1496,7 +1496,15 @@ const customFormatCode =
                                         :level="4"
                                         title="style.layout.grid.yAxis"
                                     >
-                                        <BaseAttr name="position" attr="style.layout.grid.yAxis.position" type="select" :options="['left', 'right']" defaultVal="left" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                                        <BaseAttr
+                                            name="position"
+                                            attr="style.layout.grid.yAxis.position"
+                                            type="select"
+                                            :options="['left', 'right']"
+                                            defaultVal="left"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
                                         <BaseDetails
                                             attr="scale"
                                             :level="5"

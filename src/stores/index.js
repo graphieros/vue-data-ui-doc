@@ -4474,8 +4474,8 @@ export const useMainStore = defineStore("main", {
                                 ja: "`number[]` は、x 値が暗黙的にラベル、日付、または x 軸上の順序位置に対応するカテゴリベースのチャートに使用します。`{ x, y }[]` は、両方の座標が明示的に定義され、x 値の間隔が不規則になる可能性がある連続データセットに使用します。連続 (x,y) 系列は v3.20.0 以降でサポートされており、'line' および 'plot' タイプでのみ利用可能です。",
                                 es: "Use `number[]` para gráficos basados en categorías donde los valores x son implícitos y se asignan a etiquetas, fechas o posiciones ordenadas en el eje x. Use `{ x, y }[]` para conjuntos de datos continuos donde ambas coordenadas están definidas explícitamente y los valores x pueden tener intervalos irregulares. Las series continuas (x,y) son compatibles desde la v3.20.0 y solo están disponibles para los tipos 'line' y 'plot'.",
                                 ko: "`number[]`는 x 값이 암시적으로 정의되고 레이블, 날짜 또는 x축의 순서 위치에 매핑되는 카테고리 기반 차트에 사용합니다. `{ x, y }[]`는 두 좌표가 명시적으로 정의되고 x 값 간 간격이 불규칙할 수 있는 연속 데이터셋에 사용합니다. 연속 (x,y) 시리즈는 v3.20.0부터 지원되며 'line' 및 'plot' 유형에서만 사용할 수 있습니다.",
-                                ar: "استخدم `number[]` للمخططات المعتمدة على الفئات حيث تكون قيم x ضمنية ومرتبطة بتسميات أو تواريخ أو مواقع مرتبة على المحور x. استخدم `{ x, y }[]` للبيانات المستمرة حيث يتم تعريف الإحداثيين بشكل صريح ويمكن أن تكون قيم x متباعدة بشكل غير منتظم. السلاسل المستمرة (x,y) مدعومة منذ الإصدار v3.20.0 ومتاحة فقط لأنواع 'line' و 'plot'."
-                            }
+                                ar: "استخدم `number[]` للمخططات المعتمدة على الفئات حيث تكون قيم x ضمنية ومرتبطة بتسميات أو تواريخ أو مواقع مرتبة على المحور x. استخدم `{ x, y }[]` للبيانات المستمرة حيث يتم تعريف الإحداثيين بشكل صريح ويمكن أن تكون قيم x متباعدة بشكل غير منتظم. السلاسل المستمرة (x,y) مدعومة منذ الإصدار v3.20.0 ومتاحة فقط لأنواع 'line' و 'plot'.",
+                            },
                         },
                         donut: {
                             layoutTitle: {

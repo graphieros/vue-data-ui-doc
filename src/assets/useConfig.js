@@ -1,16 +1,16 @@
 export function useConfig(options = {}) {
-    const COLOR_BLACK = '#2D353C';
-    const COLOR_GREY = '#A1A1A1';
-    const COLOR_GREY_LIGHT = '#e1e5e8';
-    const COLOR_GREY_MID = '#CCCCCC';
-    const COLOR_GREY_DARK = '#4A4A4A';
-    const COLOR_WHITE = '#FFFFFF';
-    const COLOR_WHITE_ALMOST = '#fafafa';
-    const COLOR_BLUE = '#1f77b4';
-    const COLOR_RED = '#d62728';
-    const COLOR_GREEN = '#2ca02c';
-    const COLOR_VUE = '#42d392';
-    const COLOR_YELLOW = '#FFD055';
+    const COLOR_BLACK = "#2D353C";
+    const COLOR_GREY = "#A1A1A1";
+    const COLOR_GREY_LIGHT = "#e1e5e8";
+    const COLOR_GREY_MID = "#CCCCCC";
+    const COLOR_GREY_DARK = "#4A4A4A";
+    const COLOR_WHITE = "#FFFFFF";
+    const COLOR_WHITE_ALMOST = "#fafafa";
+    const COLOR_BLUE = "#1f77b4";
+    const COLOR_RED = "#d62728";
+    const COLOR_GREEN = "#2ca02c";
+    const COLOR_VUE = "#42d392";
+    const COLOR_YELLOW = "#FFD055";
 
     const COLOR_BACKGROUND = options.colorBackground ?? COLOR_WHITE;
     const COLOR_TEXT_PRIMARY = options.colorTextPrimary ?? COLOR_BLACK;
@@ -21,9 +21,9 @@ export function useConfig(options = {}) {
     const A11Y = {
         translations: {
             keyboardNavigation:
-                'Use the left and right arrow keys to move between data points.',
-            tableAvailable: 'A data table for this chart is available below.',
-            tableCaption: 'Chart data table',
+                "Use the left and right arrow keys to move between data points.",
+            tableAvailable: "A data table for this chart is available below.",
+            tableCaption: "Chart data table",
         },
     };
 
@@ -44,27 +44,27 @@ export function useConfig(options = {}) {
     const MIN_FONT_SIZE = FONT._6;
 
     const SHAPE = {
-        LINE: 'line',
-        SQUARE: 'square',
-        ROUND: 'round',
-        CIRCLE: 'circle',
-        CURVED: 'curved',
-        BAR: 'bar',
-        STAR: 'star',
+        LINE: "line",
+        SQUARE: "square",
+        ROUND: "round",
+        CIRCLE: "circle",
+        CURVED: "curved",
+        BAR: "bar",
+        STAR: "star",
     };
 
     const POSITION = {
-        LEFT: 'left',
-        CENTER: 'center',
-        RIGHT: 'right',
-        BOTTOM: 'bottom',
-        TOP: 'top',
+        LEFT: "left",
+        CENTER: "center",
+        RIGHT: "right",
+        BOTTOM: "bottom",
+        TOP: "top",
     };
 
     const SORT = {
-        ASC: 'asc',
-        DESC: 'desc',
-        NONE: 'none',
+        ASC: "asc",
+        DESC: "desc",
+        NONE: "none",
     };
 
     const LTTB = {
@@ -78,7 +78,7 @@ export function useConfig(options = {}) {
     };
 
     const TITLE = {
-        text: '',
+        text: "",
         color: COLOR_TEXT_PRIMARY,
         fontSize: FONT._20,
         bold: true,
@@ -87,7 +87,7 @@ export function useConfig(options = {}) {
         paddingRight: 0,
         subtitle: {
             color: COLOR_TEXT_SECONDARY,
-            text: '',
+            text: "",
             fontSize: FONT._16,
             bold: false,
         },
@@ -123,21 +123,21 @@ export function useConfig(options = {}) {
         backdropFilter: true, // v3
         smoothForce: 0.18,
         smoothSnapThreshold: 0.25,
-        teleportTo: 'body', // or any other css selector (used in the `to` attr of the Teleport component)
+        teleportTo: "body", // or any other css selector (used in the `to` attr of the Teleport component)
     };
 
     const AXIS_DATE_FORMATTER = {
         enable: false,
-        locale: 'en',
+        locale: "en",
         useUTC: false,
         januaryAsYear: false,
         options: {
-            year: 'yyyy',
+            year: "yyyy",
             month: `MMM 'yy`,
-            day: 'dd MMM',
-            hour: 'HH:mm',
-            minute: 'HH:mm:ss',
-            second: 'HH:mm:ss',
+            day: "dd MMM",
+            hour: "HH:mm",
+            minute: "HH:mm:ss",
+            second: "HH:mm:ss",
         },
     };
 
@@ -158,22 +158,22 @@ export function useConfig(options = {}) {
         altCopy = false,
     }) => {
         const buttonTitles = {
-            open: 'Open options',
-            close: 'Close options',
-            tooltip: 'Toggle tooltip',
-            pdf: 'Download PDF',
-            csv: 'Download CSV',
-            img: 'Download PNG',
-            table: 'Toggle table',
-            labels: 'Toggle labels',
-            fullscreen: 'Toggle fullscreen',
-            sort: 'Toggle sort',
-            stack: 'Toggle stack mode',
-            animation: 'Toggle animation',
-            annotator: 'Toggle annotator',
-            svg: 'Download SVG',
-            zoom: 'Toggle zoom lock',
-            altCopy: 'Copy alt text',
+            open: "Open options",
+            close: "Close options",
+            tooltip: "Toggle tooltip",
+            pdf: "Download PDF",
+            csv: "Download CSV",
+            img: "Download PNG",
+            table: "Toggle table",
+            labels: "Toggle labels",
+            fullscreen: "Toggle fullscreen",
+            sort: "Toggle sort",
+            stack: "Toggle stack mode",
+            animation: "Toggle animation",
+            annotator: "Toggle annotator",
+            svg: "Download SVG",
+            zoom: "Toggle zoom lock",
+            altCopy: "Copy alt text",
         };
 
         if (!tooltip) delete buttonTitles.tooltip;
@@ -194,7 +194,7 @@ export function useConfig(options = {}) {
             show: true,
             showOnChartHover: false,
             keepStateOnChartLeave: true,
-            position: 'right',
+            position: "right",
             buttons: {
                 tooltip,
                 pdf,
@@ -230,7 +230,7 @@ export function useConfig(options = {}) {
             buttonTitles,
             print: {
                 scale: 2,
-                orientation: 'auto', // 'auto' | 'l' | 'p'
+                orientation: "auto", // 'auto' | 'l' | 'p'
                 overflowTolerance: 0.2,
             },
             useCursorPointer: false,
@@ -252,13 +252,13 @@ export function useConfig(options = {}) {
     const TABLE_TH = {
         backgroundColor: COLOR_BACKGROUND,
         color: COLOR_TEXT_PRIMARY,
-        outline: 'none',
+        outline: "none",
     };
 
     const TABLE_TD = {
         backgroundColor: COLOR_BACKGROUND,
         color: COLOR_TEXT_PRIMARY,
-        outline: 'none',
+        outline: "none",
     };
 
     const TABLE = {
@@ -296,7 +296,7 @@ export function useConfig(options = {}) {
         handleBorderColor: null,
         handleFill: null,
         handleWidth: 20,
-        handleType: 'grab', // 'empty' | 'chevron' | 'grab' | 'arrow'
+        handleType: "grab", // 'empty' | 'chevron' | 'grab' | 'arrow'
     };
 
     const MINIMAP = {
@@ -312,7 +312,7 @@ export function useConfig(options = {}) {
         skeletonConfig: null,
         loading: false,
         debug: false,
-        theme: '',
+        theme: "",
         responsive: false,
         a11y: A11Y,
         events: {
@@ -326,8 +326,8 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                period: 'Period',
-                total: 'Total',
+                period: "Period",
+                total: "Total",
             },
             th: TABLE_TH,
             td: {
@@ -347,7 +347,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -357,20 +357,20 @@ export function useConfig(options = {}) {
                 title: TITLE,
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 zoom: {
                     ...ZOOM,
                     minimap: MINIMAP_BASE,
                     preview: {
                         enable: true,
-                        fill: '#CCCCCC50',
-                        stroke: '#6A6A6A',
+                        fill: "#CCCCCC50",
+                        stroke: "#6A6A6A",
                         strokeWidth: 2,
                         strokeDasharray: 0,
                     },
                     useDefaultFormat: true,
-                    timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled and useDefaultFormat is false
+                    timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled and useDefaultFormat is false
                     customFormat: null, // overrides all if callback => string
                 },
                 highlighter: {
@@ -388,9 +388,9 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showTimeLabel: true,
                     showTotal: false,
-                    totalTranslation: 'Total',
+                    totalTranslation: "Total",
                     useDefaultTimeFormat: true,
-                    timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled and useDefaultFormat is false
+                    timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled and useDefaultFormat is false
                 },
                 grid: {
                     scale: {
@@ -402,8 +402,8 @@ export function useConfig(options = {}) {
                         show: false,
                         stroke: COLOR_GRID,
                         strokeWidth: 2,
-                        strokeLinecap: 'round',
-                        strokeLinejoin: 'round',
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
                         strokeDasharray: 0,
                     },
                     x: {
@@ -416,7 +416,7 @@ export function useConfig(options = {}) {
                         axisThickness: 2,
                         axisName: {
                             show: true,
-                            text: '',
+                            text: "",
                             fontSize: FONT._14,
                             color: COLOR_TEXT_PRIMARY,
                             bold: false,
@@ -441,7 +441,7 @@ export function useConfig(options = {}) {
                         },
                     },
                     y: {
-                        position: 'left', // or 'right
+                        position: "left", // or 'right
                         showAxis: true,
                         showVerticalLines: false,
                         linesColor: COLOR_GRID,
@@ -451,7 +451,7 @@ export function useConfig(options = {}) {
                         axisThickness: 2,
                         axisName: {
                             show: true,
-                            text: '',
+                            text: "",
                             fontSize: FONT._14,
                             color: COLOR_TEXT_PRIMARY,
                             bold: false,
@@ -509,8 +509,8 @@ export function useConfig(options = {}) {
                         fontSize: FONT._14,
                         bold: false,
                         rounding: 0,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         formatter: null,
                     },
                 },
@@ -523,14 +523,14 @@ export function useConfig(options = {}) {
         skeletonConfig: null,
         loading: false, // v3
         debug: false, // v3
-        theme: '',
+        theme: "",
         responsive: false,
         a11y: {
             ...A11Y,
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -541,13 +541,13 @@ export function useConfig(options = {}) {
         },
         customPalette: [],
         useCssAnimation: false, // v3 (v2 = true)
-        orientation: 'vertical', // or 'horizontal'
+        orientation: "vertical", // or 'horizontal'
         table: {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                period: 'Period',
-                total: 'Total',
+                period: "Period",
+                total: "Total",
             },
             th: TABLE_TH,
             td: {
@@ -567,7 +567,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -577,20 +577,20 @@ export function useConfig(options = {}) {
                 title: TITLE,
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 zoom: {
                     ...ZOOM,
                     minimap: MINIMAP_BASE,
                     preview: {
                         enable: true,
-                        fill: '#CCCCCC50',
-                        stroke: '#6A6A6A',
+                        fill: "#CCCCCC50",
+                        stroke: "#6A6A6A",
                         strokeWidth: 2,
                         strokeDasharray: 0,
                     },
                     useDefaultFormat: true,
-                    timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled and useDefaultFormat is false
+                    timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled and useDefaultFormat is false
                     customFormat: null, // overrides all if callback => string
                 },
                 tooltip: {
@@ -601,9 +601,9 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showTimeLabel: true,
                     showTotal: false,
-                    totalTranslation: 'Total',
+                    totalTranslation: "Total",
                     useDefaultTimeFormat: true,
-                    timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled and useDefaultFormat is false
+                    timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled and useDefaultFormat is false
                 },
                 highlighter: {
                     color: COLOR_TEXT_PRIMARY,
@@ -638,8 +638,8 @@ export function useConfig(options = {}) {
                         fontSize: FONT._14,
                         bold: false,
                         rounding: 0,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         formatter: null,
                     },
                 },
@@ -653,8 +653,8 @@ export function useConfig(options = {}) {
                         show: false,
                         stroke: COLOR_GRID,
                         strokeWidth: 2,
-                        strokeLinecap: 'round',
-                        strokeLinejoin: 'round',
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
                         strokeDasharray: 0,
                     },
                     x: {
@@ -667,7 +667,7 @@ export function useConfig(options = {}) {
                         axisThickness: 2,
                         axisName: {
                             show: true,
-                            text: '',
+                            text: "",
                             fontSize: FONT._14,
                             color: COLOR_TEXT_PRIMARY,
                             bold: false,
@@ -693,7 +693,7 @@ export function useConfig(options = {}) {
                         },
                     },
                     y: {
-                        position: 'left', // or 'right'
+                        position: "left", // or 'right'
                         showAxis: true,
                         showVerticalLines: false,
                         linesColor: COLOR_GRID,
@@ -703,7 +703,7 @@ export function useConfig(options = {}) {
                         axisThickness: 2,
                         axisName: {
                             show: true,
-                            text: '',
+                            text: "",
                             fontSize: FONT._14,
                             color: COLOR_TEXT_PRIMARY,
                             bold: false,
@@ -728,7 +728,7 @@ export function useConfig(options = {}) {
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
-        theme: '',
+        theme: "",
         responsive: false,
         loading: false, // v3
         a11y: A11Y,
@@ -743,7 +743,7 @@ export function useConfig(options = {}) {
         useCssAnimation: false, // v3 (v2 = true)
         downsample: LTTB,
         chart: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             height: 600,
@@ -756,9 +756,9 @@ export function useConfig(options = {}) {
                         yTop: null,
                         yBottom: null,
                         label: {
-                            text: '',
-                            textAnchor: 'start', // or middle or end
-                            position: 'start', // or end
+                            text: "",
+                            textAnchor: "start", // or middle or end
+                            position: "start", // or end
                             offsetX: 0,
                             offsetY: 0,
                             padding: PADDING([12, 12, 12, 12]),
@@ -790,13 +790,13 @@ export function useConfig(options = {}) {
                 preview: {
                     // v3
                     enable: true,
-                    fill: '#CCCCCC50',
-                    stroke: '#6A6A6A',
+                    fill: "#CCCCCC50",
+                    stroke: "#6A6A6A",
                     strokeWidth: 2,
                     strokeDasharray: 0,
                 },
                 useDefaultFormat: true,
-                timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled
+                timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled
                 customFormat: null, // overrides all if callback => string
             },
             padding: PADDING([12, 12, 6, 6]),
@@ -829,12 +829,12 @@ export function useConfig(options = {}) {
                 color: COLOR_BLACK,
                 opacity: 20,
                 caption: {
-                    text: '',
+                    text: "",
                     fontSize: FONT._10,
                     color: COLOR_TEXT_PRIMARY,
                     bold: false,
                     offsetY: 0,
-                    width: 'auto',
+                    width: "auto",
                     padding: 3,
                     textAlign: POSITION.CENTER,
                 },
@@ -849,20 +849,20 @@ export function useConfig(options = {}) {
                     color: COLOR_TEXT_PRIMARY,
                 },
                 useDefaultFormat: true,
-                timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled
+                timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled
                 customFormat: null, // overrides all if callback => string
             },
             grid: {
                 stroke: COLOR_GRID,
                 showVerticalLines: false,
                 showHorizontalLines: false,
-                position: 'middle', // or 'start'
+                position: "middle", // or 'start'
                 frame: {
                     show: false,
                     stroke: COLOR_GRID,
                     strokeWidth: 2,
-                    strokeLinecap: 'round',
-                    strokeLinejoin: 'round',
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
                     strokeDasharray: 0,
                 },
                 labels: {
@@ -870,9 +870,9 @@ export function useConfig(options = {}) {
                     color: COLOR_TEXT_PRIMARY,
                     fontSize: FONT._16,
                     axis: {
-                        yLabel: '',
+                        yLabel: "",
                         yLabelOffsetX: 0,
-                        xLabel: '',
+                        xLabel: "",
                         xLabelOffsetY: 0,
                         fontSize: FONT._14,
                     },
@@ -899,7 +899,7 @@ export function useConfig(options = {}) {
                     },
                     yAxis: {
                         reverse: false,
-                        position: 'left', // or 'right'
+                        position: "left", // or 'right'
                         showBaseline: true,
                         showCrosshairs: true,
                         crosshairSize: 6,
@@ -946,14 +946,14 @@ export function useConfig(options = {}) {
             },
             labels: {
                 fontSize: FONT._10,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
             },
             legend: {
                 color: COLOR_TEXT_PRIMARY,
                 show: true,
                 fontSize: FONT._14,
-                position: 'bottom', // bottom | top
+                position: "bottom", // bottom | top
                 selectAllToggle: {
                     show: false,
                     backgroundColor: COLOR_BORDER,
@@ -972,7 +972,7 @@ export function useConfig(options = {}) {
                 roundingValue: 0,
                 roundingPercentage: 0,
                 useDefaultTimeFormat: true,
-                timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is used
+                timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is used
             },
             userOptions: USER_OPTIONS({
                 tooltip: true,
@@ -1093,13 +1093,13 @@ export function useConfig(options = {}) {
             sparkline: true,
             showSum: true,
             columnNames: {
-                period: 'Period',
-                total: 'Total',
+                period: "Period",
+                total: "Total",
             },
             th: TABLE_TH,
             td: TABLE_TD,
             useDefaultTimeFormat: true,
-            timeFormat: 'yyyy-MM-dd HH:mm:ss',
+            timeFormat: "yyyy-MM-dd HH:mm:ss",
         },
         showTable: false,
     };
@@ -1108,12 +1108,12 @@ export function useConfig(options = {}) {
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
-        type: 'classic',
+        type: "classic",
         loading: false, // v3
         pie: false, // v3
         autoSize: true, // false = v2
         responsive: false,
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v3 (v2 = true)
         a11y: {
@@ -1121,7 +1121,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -1152,8 +1152,8 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         translations: {
-            total: 'Total',
-            average: 'Average',
+            total: "Total",
+            average: "Average",
         },
         table: {
             ...TABLE,
@@ -1165,13 +1165,13 @@ export function useConfig(options = {}) {
                 roundingPercentage: 0,
             },
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 useGradient: true,
                 gradientIntensity: 40,
@@ -1191,8 +1191,8 @@ export function useConfig(options = {}) {
                             smallArcClusterThreshold: 8, // percentage under which dataLabels are clusted on a side
                             smallArcClusterFontSize: FONT._12,
                             oneLine: false,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                         },
                         value: {
                             rounding: 0,
@@ -1222,14 +1222,14 @@ export function useConfig(options = {}) {
                                 bold: false,
                                 fontSize: FONT._18,
                                 color: COLOR_TEXT_PRIMARY,
-                                text: 'Total',
+                                text: "Total",
                                 offsetY: 0,
                                 value: {
                                     color: COLOR_TEXT_PRIMARY,
                                     fontSize: FONT._18,
                                     bold: true,
-                                    suffix: '',
-                                    prefix: '',
+                                    suffix: "",
+                                    prefix: "",
                                     offsetY: 0,
                                     rounding: 0,
                                     formatter: null,
@@ -1240,14 +1240,14 @@ export function useConfig(options = {}) {
                                 bold: false,
                                 fontSize: FONT._18,
                                 color: COLOR_TEXT_SECONDARY,
-                                text: 'Average',
+                                text: "Average",
                                 offsetY: 0,
                                 value: {
                                     color: COLOR_TEXT_PRIMARY,
                                     fontSize: FONT._18,
                                     bold: true,
-                                    suffix: '',
-                                    prefix: '',
+                                    suffix: "",
+                                    prefix: "",
                                     offsetY: 0,
                                     rounding: 0,
                                     formatter: null,
@@ -1262,7 +1262,7 @@ export function useConfig(options = {}) {
                         useShadow: false,
                         shadowColor: COLOR_BLACK,
                         emptyFill: COLOR_GRID,
-                        selectedColor: '#0000001A',
+                        selectedColor: "#0000001A",
                         borderColorAuto: true,
                         borderColor: COLOR_BORDER,
                     },
@@ -1281,7 +1281,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showPercentage: true,
                     showValue: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 tooltip: {
                     ...TOOLTIP,
@@ -1307,7 +1307,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -1316,7 +1316,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         userOptions: USER_OPTIONS({
             tooltip: true,
@@ -1329,7 +1329,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -1368,8 +1368,8 @@ export function useConfig(options = {}) {
                         fontSize: FONT._24,
                         minFontSize: FONT._10,
                         hideUnderProportion: 0.03,
-                        prefix: 'Value: ',
-                        suffix: '',
+                        prefix: "Value: ",
+                        suffix: "",
                         rounding: 0,
                         formatter: null,
                         name: {
@@ -1388,7 +1388,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 title: TITLE,
                 tooltip: {
@@ -1401,9 +1401,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
             th: TABLE_TH,
             td: {
@@ -1425,7 +1425,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -1434,13 +1434,13 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useBlurOnHover: true,
         useCustomCells: false,
         useAnimation: true,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -1448,8 +1448,8 @@ export function useConfig(options = {}) {
                     labels: {
                         dataLabels: {
                             ...LABEL_VP_ORDER,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             formatter: null,
                         },
                         captions: {
@@ -1496,7 +1496,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
             },
         },
@@ -1514,9 +1514,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
             th: TABLE_TH,
             td: {
@@ -1538,7 +1538,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -1547,11 +1547,11 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -1599,7 +1599,7 @@ export function useConfig(options = {}) {
                 legend: {
                     ...LEGEND,
                     roundingPercentage: 0,
-                    position: 'bottom',
+                    position: "bottom",
                 },
             },
         },
@@ -1624,9 +1624,9 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         translations: {
-            target: 'Target',
-            value: 'Value',
-            datapoint: 'Datapoint',
+            target: "Target",
+            value: "Value",
+            datapoint: "Datapoint",
         },
     };
 
@@ -1641,7 +1641,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -1650,14 +1650,14 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         zoomAnimationFrames: 20,
         zoomEnabled: true,
         downsample: LTTB,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 height: 512,
                 width: 512,
@@ -1668,25 +1668,25 @@ export function useConfig(options = {}) {
                         quadrantLabels: {
                             show: true,
                             tl: {
-                                text: '',
+                                text: "",
                                 color: COLOR_TEXT_PRIMARY,
                                 fontSize: FONT._16,
                                 bold: true,
                             },
                             tr: {
-                                text: '',
+                                text: "",
                                 color: COLOR_TEXT_PRIMARY,
                                 fontSize: FONT._16,
                                 bold: true,
                             },
                             br: {
-                                text: '',
+                                text: "",
                                 color: COLOR_TEXT_PRIMARY,
                                 fontSize: FONT._16,
                                 bold: true,
                             },
                             bl: {
-                                text: '',
+                                text: "",
                                 color: COLOR_TEXT_PRIMARY,
                                 fontSize: FONT._16,
                                 bold: true,
@@ -1732,14 +1732,14 @@ export function useConfig(options = {}) {
                             min: -100,
                             max: 100,
                             auto: true,
-                            name: '',
+                            name: "",
                             show: true,
                         },
                         yAxis: {
                             min: -100,
                             max: 100,
                             auto: true,
-                            name: '',
+                            name: "",
                             show: true,
                         },
                     },
@@ -1763,7 +1763,7 @@ export function useConfig(options = {}) {
                 },
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
             },
         },
@@ -1788,9 +1788,9 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         translations: {
-            category: 'Category',
-            item: 'Item',
-            side: 'Side',
+            category: "Category",
+            item: "Item",
+            side: "Side",
         },
     };
 
@@ -1800,10 +1800,10 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false,
-        theme: '',
+        theme: "",
         customPalette: [],
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -1827,8 +1827,8 @@ export function useConfig(options = {}) {
                         offsetY: 0,
                         roundingValue: 0,
                         formatter: null,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                     },
                     segmentSeparators: {
                         show: false,
@@ -1854,7 +1854,7 @@ export function useConfig(options = {}) {
                     },
                     pointer: {
                         show: true,
-                        type: 'pointy',
+                        type: "pointy",
                         size: 1,
                         stroke: COLOR_WHITE,
                         strokeWidth: 12,
@@ -1871,8 +1871,8 @@ export function useConfig(options = {}) {
                 legend: {
                     show: true,
                     fontSize: FONT._48,
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     roundingValue: 1,
                     showPlusSymbol: true,
                     useRatingColor: true,
@@ -1890,7 +1890,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         translations: {
-            base: 'Base',
+            base: "Base",
         },
     };
 
@@ -1900,10 +1900,10 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false,
-        theme: '',
-        layout: 'classic', // or '3d'
+        theme: "",
+        layout: "classic", // or '3d'
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -1917,14 +1917,14 @@ export function useConfig(options = {}) {
                         radiusRatio: 1,
                         tiltAngle3d: 50,
                         ticks: {
-                            type: 'classic', // or 'arc'
+                            type: "classic", // or 'arc'
                             rounded: true,
                             inactiveColor: COLOR_GRID,
                             activeColor: COLOR_BLUE,
                             sizeRatio: 0.9,
                             quantity: 100, // min: 12, max: 200
                             strokeWidth: 5,
-                            stroke: 'transparent',
+                            stroke: "transparent",
                             spacingRatio3d: 1,
                             shadeColorRatio3d: 0.15,
                             depth3d: 0,
@@ -1948,7 +1948,7 @@ export function useConfig(options = {}) {
                         formatter: null,
                         offsetX: 0,
                         offsetY: 0,
-                        stroke: 'transparent',
+                        stroke: "transparent",
                         strokeWidth: 0,
                     },
                 },
@@ -1970,9 +1970,9 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
-        theme: '',
+        theme: "",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -1984,7 +1984,7 @@ export function useConfig(options = {}) {
                     acceleration: 1,
                 },
                 layout: {
-                    display: 'horizontal',
+                    display: "horizontal",
                     crescendo: false,
                     curved: false,
                     curveAngleX: 10,
@@ -2024,18 +2024,18 @@ export function useConfig(options = {}) {
     const vue_ui_chestnut = {
         debug: false, // v3
         loading: false, // v3
-        theme: '',
+        theme: "",
         customPalette: [],
         a11y: {
             ...A11Y,
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -2044,11 +2044,11 @@ export function useConfig(options = {}) {
                         show: true,
                         fontSize: FONT._20,
                         bold: true,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         roundingValue: 0,
                         color: COLOR_TEXT_PRIMARY,
-                        text: 'Grand total',
+                        text: "Grand total",
                         offsetY: 0,
                         formatter: null,
                     },
@@ -2065,8 +2065,8 @@ export function useConfig(options = {}) {
                             color: COLOR_WHITE,
                             bold: true,
                             roundingValue: 0,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             formatter: null,
                             name: {
                                 color: COLOR_TEXT_PRIMARY,
@@ -2101,8 +2101,8 @@ export function useConfig(options = {}) {
                                 fontSize: FONT._14,
                                 roundingValue: 0,
                                 roundingPercentage: 0,
-                                prefix: '',
-                                suffix: '',
+                                prefix: "",
+                                suffix: "",
                                 formatter: null,
                             },
                         },
@@ -2123,8 +2123,8 @@ export function useConfig(options = {}) {
                                     color: COLOR_TEXT_PRIMARY,
                                     fontSize: FONT._12,
                                     bold: true,
-                                    prefix: '',
-                                    suffix: '',
+                                    prefix: "",
+                                    suffix: "",
                                     formatter: null,
                                 },
                                 core: {
@@ -2137,8 +2137,8 @@ export function useConfig(options = {}) {
                                         color: COLOR_TEXT_PRIMARY,
                                         fontSize: FONT._24,
                                         bold: true,
-                                        prefix: '',
-                                        suffix: '',
+                                        prefix: "",
+                                        suffix: "",
                                     },
                                 },
                             },
@@ -2149,8 +2149,8 @@ export function useConfig(options = {}) {
                         color: COLOR_TEXT_PRIMARY,
                         roundingValue: 0,
                         roundingPercentage: 0,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                     },
                     title: {
                         ...TITLE,
@@ -2169,18 +2169,18 @@ export function useConfig(options = {}) {
             th: {
                 ...TABLE_TH,
                 translations: {
-                    rootName: 'root name',
-                    rootValue: 'root value',
-                    rootToTotal: '%/total',
-                    branchName: 'branch name',
-                    branchValue: 'branch value',
-                    branchToRoot: '%/root',
-                    branchToTotal: '%/total',
-                    nutName: 'nut name',
-                    nutValue: 'nut value',
-                    nutToBranch: '%/branch',
-                    nutToRoot: '%/root',
-                    nutToTotal: '%/total',
+                    rootName: "root name",
+                    rootValue: "root value",
+                    rootToTotal: "%/total",
+                    branchName: "branch name",
+                    branchValue: "branch value",
+                    branchToRoot: "%/root",
+                    branchToTotal: "%/total",
+                    nutName: "nut name",
+                    nutValue: "nut value",
+                    nutToBranch: "%/branch",
+                    nutToRoot: "%/root",
+                    nutToTotal: "%/total",
                 },
             },
             td: {
@@ -2199,9 +2199,9 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         translations: {
-            total: 'Total',
-            proportionToTree: 'of grand total',
-            of: 'of',
+            total: "Total",
+            proportionToTree: "of grand total",
+            of: "of",
         },
     };
 
@@ -2216,7 +2216,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -2225,13 +2225,13 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         useStartAnimation: true,
         useBlurOnHover: true,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -2274,7 +2274,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 tooltip: {
                     ...TOOLTIP,
@@ -2306,9 +2306,9 @@ export function useConfig(options = {}) {
                 roundingPercentage: 0,
             },
             translations: {
-                value: 'Value',
-                percentage: 'Percentage',
-                serie: 'Serie',
+                value: "Value",
+                percentage: "Percentage",
+                serie: "Serie",
             },
         },
     };
@@ -2321,7 +2321,7 @@ export function useConfig(options = {}) {
         loading: false, // v3
         autoSize: true, // Legacy - removed
         responsive: false,
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v3 (v2 = true)
         a11y: {
@@ -2329,7 +2329,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -2338,7 +2338,7 @@ export function useConfig(options = {}) {
             datapointClick: null,
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -2367,8 +2367,8 @@ export function useConfig(options = {}) {
                             value: {
                                 show: true,
                                 roundingValue: 0,
-                                prefix: '',
-                                suffix: '',
+                                prefix: "",
+                                suffix: "",
                                 formatter: null,
                             },
                             percentage: {
@@ -2410,8 +2410,8 @@ export function useConfig(options = {}) {
                     position: POSITION.TOP,
                     roundingValue: 0,
                     roundingPercentage: 0,
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                 },
                 tooltip: {
                     ...TOOLTIP,
@@ -2419,8 +2419,8 @@ export function useConfig(options = {}) {
                     showPercentage: true,
                     roundingValue: 0,
                     roundingPercentage: 0,
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                 },
             },
         },
@@ -2443,16 +2443,16 @@ export function useConfig(options = {}) {
                 ...TABLE_TD,
                 roundingValue: 0,
                 roundingPercentage: 0,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
             },
         },
         translations: {
-            parentName: 'Serie',
-            childName: 'Child',
-            value: 'value',
-            percentageToTotal: '%/total',
-            percentageToSerie: '%/serie',
+            parentName: "Serie",
+            childName: "Child",
+            value: "value",
+            percentageToTotal: "%/total",
+            percentageToSerie: "%/serie",
         },
     };
 
@@ -2469,7 +2469,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -2478,9 +2478,9 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             layout: {
@@ -2539,8 +2539,8 @@ export function useConfig(options = {}) {
                     },
                 },
                 dataLabels: {
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     xAxis: {
                         show: true,
                         values: [],
@@ -2598,7 +2598,7 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             colNames: {
-                xAxis: 'X',
+                xAxis: "X",
             },
             th: TABLE_TH,
             td: {
@@ -2619,7 +2619,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -2627,13 +2627,13 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         downsample: LTTB,
         usePerformanceMode: false,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             layout: {
@@ -2691,7 +2691,7 @@ export function useConfig(options = {}) {
                         opacity: 0.3,
                     },
                     deviation: {
-                        translation: 'deviation',
+                        translation: "deviation",
                         roundingValue: 1,
                     },
                     giftWrap: {
@@ -2711,8 +2711,8 @@ export function useConfig(options = {}) {
                             rounding: 2,
                             bold: false,
                             showName: true,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             x: {
                                 formatter: null,
                             },
@@ -2744,7 +2744,7 @@ export function useConfig(options = {}) {
                 dataLabels: {
                     reverseAxisLabels: false,
                     xAxis: {
-                        name: '',
+                        name: "",
                         show: true,
                         fontSize: FONT._10,
                         color: COLOR_TEXT_PRIMARY,
@@ -2771,7 +2771,7 @@ export function useConfig(options = {}) {
                         },
                     },
                     yAxis: {
-                        name: '',
+                        name: "",
                         show: true,
                         fontSize: FONT._10,
                         color: COLOR_TEXT_PRIMARY,
@@ -2803,14 +2803,14 @@ export function useConfig(options = {}) {
             legend: {
                 ...LEGEND,
                 roundingValue: 0,
-                position: 'bottom',
+                position: "bottom",
             },
             tooltip: {
                 ...TOOLTIP,
                 roundingValue: 2,
                 showShape: true,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
             },
         },
         userOptions: USER_OPTIONS({
@@ -2833,10 +2833,10 @@ export function useConfig(options = {}) {
                 roundingAverage: 1,
             },
             translations: {
-                correlationCoefficient: 'Correlation Coef.',
-                nbrPlots: 'Nbr plots',
-                average: 'Average',
-                series: 'Series',
+                correlationCoefficient: "Correlation Coef.",
+                nbrPlots: "Nbr plots",
+                average: "Average",
+                series: "Series",
             },
         },
     };
@@ -2844,7 +2844,7 @@ export function useConfig(options = {}) {
     const vue_ui_candlestick = {
         skeletonDataset: null,
         skeletonConfig: null,
-        type: 'candlestick', // or 'ohlc'
+        type: "candlestick", // or 'ohlc'
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -2856,10 +2856,10 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         useCssAnimation: false, // v3 (v2 = true)
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             height: 316,
@@ -2909,7 +2909,7 @@ export function useConfig(options = {}) {
                         },
                     },
                     yAxis: {
-                        position: 'left',
+                        position: "left",
                         scale: {
                             min: null,
                             max: null,
@@ -2922,8 +2922,8 @@ export function useConfig(options = {}) {
                             offsetX: 0,
                             bold: false,
                             steps: 10,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                         },
                     },
                 },
@@ -2932,7 +2932,7 @@ export function useConfig(options = {}) {
                     strokeWidth: 0.5,
                     extremity: {
                         shape: SHAPE.LINE,
-                        size: 'auto',
+                        size: "auto",
                         color: COLOR_BLACK,
                     },
                 },
@@ -2956,33 +2956,33 @@ export function useConfig(options = {}) {
                 minimap: MINIMAP_BASE,
                 preview: {
                     enable: true,
-                    fill: '#CCCCCC50',
-                    stroke: '#6A6A6A',
+                    fill: "#CCCCCC50",
+                    stroke: "#6A6A6A",
                     strokeWidth: 2,
                     strokeDasharray: 0,
                 },
                 useDefaultFormat: true,
-                timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled and useDefaultFormat is false
+                timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled and useDefaultFormat is false
                 customFormat: null, // overrides all if callback => string
             },
             title: TITLE,
             tooltip: {
                 ...TOOLTIP,
                 roundingValue: 0,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
                 showChart: true,
                 useDefaultTimeFormat: true,
-                timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled and useDefaultFormat is false
+                timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled and useDefaultFormat is false
             },
         },
         translations: {
-            period: 'Period',
-            open: 'Open',
-            high: 'High',
-            low: 'Low',
-            last: 'Close',
-            volume: 'Volume',
+            period: "Period",
+            open: "Open",
+            high: "High",
+            low: "Low",
+            last: "Close",
+            volume: "Volume",
         },
         userOptions: USER_OPTIONS({
             tooltip: true,
@@ -3001,8 +3001,8 @@ export function useConfig(options = {}) {
             td: {
                 ...TABLE_TD,
                 roundingValue: 2,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
             },
         },
     };
@@ -3012,14 +3012,14 @@ export function useConfig(options = {}) {
         skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
-        theme: '',
+        theme: "",
         responsive: false,
         type: SHAPE.LINE,
         downsample: LTTB,
         a11y: A11Y,
         translations: {
-            period: 'period',
-            value: 'value',
+            period: "period",
+            value: "value",
         },
         // `gradientPath` creates multiple path segments to fake a gradient that follows the path
         // Only 2 colors are possible.
@@ -3028,8 +3028,8 @@ export function useConfig(options = {}) {
             show: false,
             segments: 256,
             colors: {
-                high: '#34eb96',
-                low: '#eb4034',
+                high: "#34eb96",
+                low: "#eb4034",
             },
         },
         // `temperatureColors` applies a color linearGradient def to the exsiting path.
@@ -3037,7 +3037,7 @@ export function useConfig(options = {}) {
         // and allows the usage of any number of colors in its `colors` array.
         temperatureColors: {
             show: false,
-            colors: ['#34eb96', '#eb4034'],
+            colors: ["#34eb96", "#eb4034"],
         },
         events: {
             // v3
@@ -3052,7 +3052,7 @@ export function useConfig(options = {}) {
                 animationFrames: 360,
             },
             padding: PADDING([12, 12, 3, 0]),
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             scaleMin: null,
             scaleMax: null,
@@ -3067,7 +3067,7 @@ export function useConfig(options = {}) {
                     loop: true,
                     color: COLOR_WHITE,
                     durationMs: 4000,
-                    easing: 'ease-in-out',
+                    easing: "ease-in-out",
                     radius: 2,
                     cubicBezier: [0.45, 0.45, 0.55, 0.55],
                     trail: {
@@ -3106,9 +3106,9 @@ export function useConfig(options = {}) {
                 bold: true,
                 color: COLOR_TEXT_PRIMARY,
                 roundingValue: 0,
-                valueType: 'latest',
-                prefix: '',
-                suffix: '',
+                valueType: "latest",
+                prefix: "",
+                suffix: "",
                 formatter: null,
                 datetimeFormatter: AXIS_DATE_FORMATTER, // v3
             },
@@ -3118,7 +3118,7 @@ export function useConfig(options = {}) {
                 color: COLOR_TEXT_PRIMARY,
                 fontSize: FONT._16,
                 bold: true,
-                text: '',
+                text: "",
             },
             tooltip: {
                 show: false,
@@ -3151,10 +3151,10 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             animation: {
                 show: true,
@@ -3165,7 +3165,7 @@ export function useConfig(options = {}) {
                 percentage: true,
                 target: 0,
                 showTargetValue: false,
-                targetValueText: '',
+                targetValueText: "",
             },
             gutter: {
                 backgroundColor: COLOR_GRID,
@@ -3181,8 +3181,8 @@ export function useConfig(options = {}) {
             labels: {
                 fontSize: FONT._16,
                 name: {
-                    position: 'top-left',
-                    width: '100%',
+                    position: "top-left",
+                    width: "100%",
                     color: COLOR_TEXT_PRIMARY,
                     bold: false,
                 },
@@ -3192,15 +3192,15 @@ export function useConfig(options = {}) {
                 },
             },
             title: {
-                text: '',
+                text: "",
                 color: COLOR_TEXT_PRIMARY,
                 fontSize: FONT._16,
                 bold: true,
                 textAlign: POSITION.LEFT,
-                margin: '0 0 6px 0',
+                margin: "0 0 6px 0",
                 subtitle: {
                     color: COLOR_TEXT_SECONDARY,
-                    text: '',
+                    text: "",
                     fontSize: FONT._12,
                     bold: false,
                 },
@@ -3219,9 +3219,9 @@ export function useConfig(options = {}) {
             ...A11Y,
             translations: {
                 ...A11Y.translations,
-                series: 'Series',
-                percentage: 'Percentage',
-                value: 'Value',
+                series: "Series",
+                percentage: "Percentage",
+                value: "Value",
             },
         },
         events: {
@@ -3230,10 +3230,10 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             animation: {
                 show: true,
@@ -3250,7 +3250,7 @@ export function useConfig(options = {}) {
                 show: true,
                 textAlign: POSITION.LEFT,
                 fontSize: FONT._12,
-                margin: '6px 0 0 0',
+                margin: "6px 0 0 0",
                 name: {
                     color: COLOR_TEXT_PRIMARY,
                     bold: false,
@@ -3259,8 +3259,8 @@ export function useConfig(options = {}) {
                     show: true,
                     bold: false,
                     color: COLOR_TEXT_PRIMARY,
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     rounding: 0,
                     formatter: null,
                 },
@@ -3279,7 +3279,7 @@ export function useConfig(options = {}) {
             title: {
                 ...TITLE,
                 textAlign: POSITION.LEFT,
-                margin: '0 0 6px 0',
+                margin: "0 0 6px 0",
             },
             tooltip: {
                 ...TOOLTIP,
@@ -3297,10 +3297,10 @@ export function useConfig(options = {}) {
             ...A11Y,
             translations: {
                 ...A11Y.translations,
-                series: 'Series',
-                time: 'Time',
-                value: 'Value',
-                label: 'Label',
+                series: "Series",
+                time: "Time",
+                value: "Value",
+                label: "Label",
             },
         },
         events: {
@@ -3308,9 +3308,9 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             animation: {
                 show: true,
@@ -3342,8 +3342,8 @@ export function useConfig(options = {}) {
                     color: COLOR_TEXT_PRIMARY,
                     bold: true,
                     rounding: 1,
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     offsetY: 0,
                     formatter: null,
                 },
@@ -3365,24 +3365,24 @@ export function useConfig(options = {}) {
             },
             selector: {
                 stroke: COLOR_BLUE,
-                fill: '#2D353C10',
+                fill: "#2D353C10",
                 strokeWidth: 2,
                 strokeDasharray: 0,
                 borderRadius: 2,
             },
             title: {
-                text: '',
+                text: "",
                 color: COLOR_TEXT_PRIMARY,
                 fontSize: FONT._16,
                 bold: true,
                 textAlign: POSITION.LEFT,
                 subtitle: {
                     color: COLOR_TEXT_SECONDARY,
-                    text: '',
+                    text: "",
                     fontSize: FONT._12,
                     bold: false,
                 },
-                margin: '0 0 6px 0',
+                margin: "0 0 6px 0",
             },
         },
     };
@@ -3392,9 +3392,9 @@ export function useConfig(options = {}) {
         skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
-        theme: '',
+        theme: "",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             background: COLOR_WHITE,
             height: 84,
             basePosition: 72,
@@ -3417,8 +3417,8 @@ export function useConfig(options = {}) {
                 offsetY: 0,
                 bold: true,
                 rounding: 0,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
                 formatter: null,
             },
             colors: {
@@ -3444,10 +3444,10 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
-        theme: '',
+        theme: "",
         downsample: LTTB,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             height: 80,
             width: 300,
@@ -3474,13 +3474,13 @@ export function useConfig(options = {}) {
                 color: COLOR_TEXT_PRIMARY,
                 fontSize: FONT._14,
                 bold: false,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
                 rounding: 0,
                 formatter: null,
             },
             trendLabel: {
-                trendType: 'global',
+                trendType: "global",
                 useColorTrend: true,
                 color: COLOR_TEXT_PRIMARY,
                 fontSize: FONT._14,
@@ -3511,7 +3511,7 @@ export function useConfig(options = {}) {
             datapointClick: null, // v3
         },
         responsive: false,
-        theme: '',
+        theme: "",
         axisLabelsFontSize: FONT._12,
         backgroundColor: COLOR_BACKGROUND,
         barGap: 12,
@@ -3534,16 +3534,16 @@ export function useConfig(options = {}) {
         donutThicknessRatio: 0.18,
         donutTotalLabelFontSize: FONT._24,
         donutTotalLabelOffsetY: 0,
-        donutTotalLabelText: 'Total',
+        donutTotalLabelText: "Total",
         donutUseShadow: false,
         donutShadowColor: COLOR_BLACK,
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
         formatter: null,
         height: 338,
         legendFontSize: FONT._12,
-        legendIcon: 'circleFill',
+        legendIcon: "circleFill",
         legendIconSize: FONT._12,
-        legendPosition: 'bottom',
+        legendPosition: "bottom",
         showLegendSelectAllToggle: false,
         legendSelectAllToggleBackgroundColor: COLOR_BORDER,
         legendSelectAllToggleColor: COLOR_TEXT_PRIMARY,
@@ -3555,7 +3555,7 @@ export function useConfig(options = {}) {
         showLegend: true,
         showTooltip: true,
         showUserOptions: true,
-        userOptionsPosition: 'right',
+        userOptionsPosition: "right",
         showUserOptionsOnChartHover: false,
         keepUserOptionsStateOnChartLeave: true,
         useCursorPointer: false,
@@ -3569,19 +3569,19 @@ export function useConfig(options = {}) {
             altCopy: false,
         },
         userOptionsButtonTitles: {
-            open: 'Open options',
-            close: 'Close options',
-            tooltip: 'Toggle tooltip',
-            pdf: 'Download PDF',
-            img: 'Download PNG',
-            fullscreen: 'Toggle fullscreen',
-            annotator: 'Toggle annotator',
-            svg: 'Download SVG',
-            altCopy: 'Copy alt text',
+            open: "Open options",
+            close: "Close options",
+            tooltip: "Toggle tooltip",
+            pdf: "Download PDF",
+            img: "Download PNG",
+            fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator",
+            svg: "Download SVG",
+            altCopy: "Copy alt text",
         },
         userOptionsPrint: {
             overflowTolerance: 0.2,
-            orientation: 'auto',
+            orientation: "auto",
             scale: 2,
         },
         userOptionsCallbacks: {
@@ -3593,11 +3593,11 @@ export function useConfig(options = {}) {
             svg: null,
             altCopy: null,
         },
-        title: '',
+        title: "",
         titleBold: true,
         titleFontSize: FONT._16,
-        titleTextAlign: 'center',
-        tooltipTeleportTo: 'body',
+        titleTextAlign: "center",
+        tooltipTeleportTo: "body",
         tooltipCustomFormat: null,
         tooltipBackgroundOpacity: 100,
         tooltipBorderRadius: 4,
@@ -3612,10 +3612,10 @@ export function useConfig(options = {}) {
         tooltipSmoothSnapThreshold: 0.25,
         tooltipBackdropFilter: true,
         useCustomLegend: false,
-        valuePrefix: '',
-        valueSuffix: '',
+        valuePrefix: "",
+        valueSuffix: "",
         width: 512,
-        xAxisLabel: '',
+        xAxisLabel: "",
         xyAxisStroke: COLOR_GRID,
         xyAxisStrokeWidth: 1,
         xyGridStroke: COLOR_GRID,
@@ -3642,7 +3642,7 @@ export function useConfig(options = {}) {
         xyShowAxis: true,
         xyShowGrid: true,
         xyShowScale: true,
-        yAxisLabel: '',
+        yAxisLabel: "",
         zoomXy: true,
         zoomColor: COLOR_GREY_MID,
         zoomHighlightColor: COLOR_GREY_DARK,
@@ -3669,7 +3669,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -3678,9 +3678,9 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             height: 500,
@@ -3707,7 +3707,7 @@ export function useConfig(options = {}) {
                         color: COLOR_TEXT_PRIMARY,
                         bold: false,
                         scale: 1000,
-                        translation: 'in thousands',
+                        translation: "in thousands",
                         formatter: null,
                         rotation: 0, // v3
                         autoRotate: {
@@ -3718,7 +3718,7 @@ export function useConfig(options = {}) {
                     },
                     yAxis: {
                         show: true,
-                        display: 'age',
+                        display: "age",
                         fontSize: FONT._12,
                         color: COLOR_TEXT_PRIMARY,
                         bold: false,
@@ -3757,11 +3757,11 @@ export function useConfig(options = {}) {
             },
         },
         translations: {
-            age: 'age',
-            male: 'male',
-            female: 'female',
-            total: 'total',
-            year: 'year',
+            age: "age",
+            male: "male",
+            female: "female",
+            total: "total",
+            year: "year",
         },
         userOptions: USER_OPTIONS({
             tooltip: true,
@@ -3792,7 +3792,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -3802,10 +3802,10 @@ export function useConfig(options = {}) {
             datapointClick: null, // v3
         },
         responsiveProportionalSizing: true,
-        theme: '',
+        theme: "",
         customPalette: [],
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             size: 400,
@@ -3823,8 +3823,8 @@ export function useConfig(options = {}) {
                 size: 8,
                 show: true,
                 formatter: null,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
                 rounding: 0,
             },
             links: {
@@ -3859,10 +3859,10 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
-        theme: '',
+        theme: "",
         customPalette: [],
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -3878,7 +3878,7 @@ export function useConfig(options = {}) {
                 },
                 graduations: {
                     show: true,
-                    sides: 'both',
+                    sides: "both",
                     height: 2,
                     stroke: COLOR_GRID,
                     strokeWidth: 1,
@@ -3899,8 +3899,8 @@ export function useConfig(options = {}) {
                     rounding: 1,
                     bold: true,
                     color: COLOR_TEXT_PRIMARY,
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     formatter: null,
                 },
             },
@@ -3926,7 +3926,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -3934,12 +3934,12 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         useBlurOnHover: true,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -3948,8 +3948,8 @@ export function useConfig(options = {}) {
                     labels: {
                         dataLabels: {
                             ...LABEL_VP_ORDER,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             formatter: null,
                             show: false,
                             offsetX: 0,
@@ -3962,10 +3962,10 @@ export function useConfig(options = {}) {
                             showPercentage: true,
                             // Markers are applied when labels are enabled
                             markers: {
-                                stroke: '#8A8A8A',
+                                stroke: "#8A8A8A",
                                 strokeWidth: 1,
                                 radius: 3,
-                                position: 'right',
+                                position: "right",
                             },
                         },
                     },
@@ -3986,7 +3986,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 title: TITLE,
                 tooltip: {
@@ -4013,9 +4013,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
             th: TABLE_TH,
             td: {
@@ -4032,7 +4032,7 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
-        theme: '',
+        theme: "",
         a11y: A11Y,
         events: {
             // v3
@@ -4042,7 +4042,7 @@ export function useConfig(options = {}) {
         },
         customPalette: [],
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -4120,15 +4120,15 @@ export function useConfig(options = {}) {
                         strokeWidth: 0.7,
                         showVerticalLines: true,
                         axis: {
-                            yLabel: '',
+                            yLabel: "",
                             yLabelOffsetX: 0,
-                            xLabel: '',
+                            xLabel: "",
                             xLabelOffsetY: 0,
                             fontSize: FONT._14,
                             color: COLOR_TEXT_PRIMARY,
                         },
                         yAxis: {
-                            position: 'left',
+                            position: "left",
                             scaleMin: null,
                             scaleMax: null,
                             autoScale: false,
@@ -4175,8 +4175,8 @@ export function useConfig(options = {}) {
                         color: COLOR_TEXT_PRIMARY,
                         bold: false,
                         rounding: 0,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         offsetY: 0,
                         formatter: null,
                     },
@@ -4188,7 +4188,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
             },
         },
@@ -4205,8 +4205,8 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                period: 'Period',
-                total: 'Total',
+                period: "Period",
+                total: "Total",
             },
             th: TABLE_TH,
             td: {
@@ -4228,7 +4228,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -4236,9 +4236,9 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -4265,11 +4265,11 @@ export function useConfig(options = {}) {
                     smileys: {
                         strokeWidth: 1,
                         colors: {
-                            1: '#e20001',
-                            2: '#ff9f03',
-                            3: '#ffd004',
-                            4: '#9ac900',
-                            5: '#059f00',
+                            1: "#e20001",
+                            2: "#ff9f03",
+                            3: "#ffd004",
+                            4: "#9ac900",
+                            5: "#059f00",
                         },
                     },
                     dataLabel: {
@@ -4277,8 +4277,8 @@ export function useConfig(options = {}) {
                         roundingValue: 0,
                         roundingPercentage: 0,
                         bold: true,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         formatter: null,
                     },
                 },
@@ -4287,7 +4287,7 @@ export function useConfig(options = {}) {
                     ...LEGEND,
                     roundingValue: 0,
                     roundingPercentage: 0,
-                    position: 'bottom',
+                    position: "bottom",
                 },
             },
         },
@@ -4304,9 +4304,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
             th: TABLE_TH,
             td: {
@@ -4328,10 +4328,10 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -4370,9 +4370,9 @@ export function useConfig(options = {}) {
             th: TABLE_TH,
             td: TABLE_TD,
             translations: {
-                nodeName: 'Node name',
-                details: 'Details',
-                ancestor: 'Parent node',
+                nodeName: "Node name",
+                details: "Details",
+                ancestor: "Parent node",
             },
         },
     };
@@ -4383,7 +4383,7 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false,
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v3 (v2 = true)
         useBlurOnHover: true,
@@ -4392,7 +4392,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -4422,7 +4422,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -4436,8 +4436,8 @@ export function useConfig(options = {}) {
                         dataLabels: {
                             ...LABEL_VP_ORDER,
                             show: true,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             hideUnderValue: 3,
                             fontSize: FONT._14,
                             offsetX: 4,
@@ -4466,7 +4466,7 @@ export function useConfig(options = {}) {
                         useShadow: false,
                         shadowColor: COLOR_BLACK,
                         emptyFill: COLOR_GRID,
-                        selectedColor: '#0000001A',
+                        selectedColor: "#0000001A",
                         borderColorAuto: true,
                         borderColor: COLOR_BORDER,
                     },
@@ -4478,7 +4478,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 title: TITLE,
                 tooltip: {
@@ -4496,9 +4496,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
             th: TABLE_TH,
             td: {
@@ -4520,7 +4520,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -4529,12 +4529,12 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         useBlurOnHover: true,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -4557,8 +4557,8 @@ export function useConfig(options = {}) {
                     labels: {
                         dataLabels: {
                             ...LABEL_VP_ORDER,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             formatter: null,
                         },
                     },
@@ -4569,7 +4569,7 @@ export function useConfig(options = {}) {
                     roundingPercentage: 0,
                     showValue: true,
                     showPercentage: true,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 title: TITLE,
                 tooltip: {
@@ -4595,9 +4595,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
             th: TABLE_TH,
             td: {
@@ -4619,7 +4619,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -4629,7 +4629,7 @@ export function useConfig(options = {}) {
             datapointClick: null, // v3
         },
         responsiveProportionalSizing: true,
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: true,
         userOptions: USER_OPTIONS({
@@ -4644,7 +4644,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -4682,8 +4682,8 @@ export function useConfig(options = {}) {
                     },
                 },
                 labels: {
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     formatter: null,
                     bestPlotLabel: {
                         show: true,
@@ -4694,9 +4694,9 @@ export function useConfig(options = {}) {
                         offsetY: 0,
                     },
                     axis: {
-                        xLabel: '',
+                        xLabel: "",
                         xLabelOffsetY: 0,
-                        yLabel: '',
+                        yLabel: "",
                         yLabelOffsetX: 0,
                         fontSize: FONT._14,
                         color: COLOR_TEXT_PRIMARY,
@@ -4732,8 +4732,8 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
+                series: "Series",
+                value: "Value",
             },
             th: TABLE_TH,
             td: {
@@ -4754,7 +4754,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -4763,7 +4763,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         useAnimation: false, // v2 = true
         animationSpeed: 2,
         userOptions: USER_OPTIONS({
@@ -4776,7 +4776,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -4789,9 +4789,9 @@ export function useConfig(options = {}) {
                     evaluationColors: {
                         // v3
                         enable: false, // v3
-                        positive: '#2ca02c', // v3
-                        negative: '#d62728', // v3
-                        neutral: '#c7c7c7', // v3
+                        positive: "#2ca02c", // v3
+                        negative: "#d62728", // v3
+                        neutral: "#c7c7c7", // v3
                     },
                     radius: 6,
                     stroke: COLOR_WHITE,
@@ -4841,14 +4841,14 @@ export function useConfig(options = {}) {
                     opacity: 5, // v3
                 },
                 labels: {
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     formatter: null,
                     axis: {
                         // v3
-                        yLabel: '', // v3
+                        yLabel: "", // v3
                         yLabelOffsetX: 0, // v3
-                        xLabel: '', // v3
+                        xLabel: "", // v3
                         xLabelOffsetY: 0, // v3
                         fontSize: FONT._14, // v3
                         color: COLOR_TEXT_PRIMARY, // v3
@@ -4898,12 +4898,12 @@ export function useConfig(options = {}) {
                 },
                 legend: {
                     ...LEGEND,
-                    labelStart: 'start',
-                    labelEnd: 'end',
-                    labelPositive: 'positive', // v3
-                    labelNegative: 'negative', // v3
-                    labelNeutral: 'neutral', // v3
-                    position: 'bottom',
+                    labelStart: "start",
+                    labelEnd: "end",
+                    labelPositive: "positive", // v3
+                    labelNegative: "negative", // v3
+                    labelNeutral: "neutral", // v3
+                    position: "bottom",
                 },
                 title: TITLE,
             },
@@ -4912,10 +4912,10 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                start: 'Start value',
-                end: 'End value',
-                progression: 'Progression',
+                series: "Series",
+                start: "Start value",
+                end: "End value",
+                progression: "Progression",
             },
             th: TABLE_TH,
             td: {
@@ -4937,7 +4937,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -4946,11 +4946,11 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v3
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             shape: SHAPE.BAR,
             chart: {
                 animation: {
@@ -4988,8 +4988,8 @@ export function useConfig(options = {}) {
                     bold: false,
                     roundingValue: 0,
                     roundingPercentage: 0,
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     hideUnderPercentage: 3,
                 },
                 dataLabel: {
@@ -5015,9 +5015,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Series",
+                value: "Value",
+                percentage: "Percentage",
             },
             th: TABLE_TH,
             td: {
@@ -5029,7 +5029,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_table_sparkline = {
-        theme: '',
+        theme: "",
         customPalette: [],
         responsiveBreakpoint: 500,
         showAverage: true,
@@ -5039,11 +5039,11 @@ export function useConfig(options = {}) {
         roundingMedian: 0,
         roundingValues: 0,
         roundingTotal: 0,
-        prefix: '',
-        suffix: '',
+        prefix: "",
+        suffix: "",
         formatter: null,
         showSparklines: true,
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
         colNames: [],
         sortedDataColumnIndices: [],
         sortedSeriesName: false,
@@ -5067,22 +5067,22 @@ export function useConfig(options = {}) {
             },
         },
         translations: {
-            serie: 'Serie',
-            total: 'Total',
-            average: 'Average',
-            median: 'Median',
-            chart: 'Evolution',
+            serie: "Serie",
+            total: "Total",
+            average: "Average",
+            median: "Median",
+            chart: "Evolution",
         },
         title: {
-            text: '',
+            text: "",
             color: COLOR_TEXT_PRIMARY,
             fontSize: FONT._20,
             bold: true,
-            textAlign: 'center',
+            textAlign: "center",
             backgroundColor: COLOR_BACKGROUND,
             subtitle: {
                 color: COLOR_TEXT_SECONDARY,
-                text: '',
+                text: "",
                 fontSize: FONT._16,
                 bold: false,
             },
@@ -5091,7 +5091,7 @@ export function useConfig(options = {}) {
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             fontSize: FONT._14,
-            outline: 'none',
+            outline: "none",
             textAlign: POSITION.LEFT,
             bold: false,
         },
@@ -5100,7 +5100,7 @@ export function useConfig(options = {}) {
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             fontSize: FONT._14,
-            outline: 'none',
+            outline: "none",
             textAlign: POSITION.LEFT,
             bold: false,
             selectedColor: {
@@ -5117,9 +5117,9 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_table_heatmap = {
-        theme: '',
+        theme: "",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
             shapeSize: FONT._14,
@@ -5160,7 +5160,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -5169,7 +5169,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         animationDelayMs: 20,
@@ -5188,7 +5188,7 @@ export function useConfig(options = {}) {
         nodeCategories: {},
         nodeCategoryColors: {},
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -5198,7 +5198,7 @@ export function useConfig(options = {}) {
                     show: true,
                 },
                 controls: {
-                    position: 'bottom',
+                    position: "bottom",
                     show: true,
                     backgroundColor: COLOR_GRID,
                     buttonColor: COLOR_GRID,
@@ -5217,7 +5217,7 @@ export function useConfig(options = {}) {
                     color: COLOR_TEXT_PRIMARY,
                     usePalette: true,
                     hoverOpacity: 0.5,
-                    selectedStroke: 'transparent',
+                    selectedStroke: "transparent",
                 },
                 title: TITLE,
                 tooltip: {
@@ -5230,15 +5230,15 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Word',
-                value: 'Value',
+                series: "Word",
+                value: "Value",
             },
             th: TABLE_TH,
             td: {
                 ...TABLE_TD,
                 roundingValue: 0,
-                prefix: '',
-                suffix: '',
+                prefix: "",
+                suffix: "",
             },
         },
     };
@@ -5249,7 +5249,7 @@ export function useConfig(options = {}) {
         debug: false,
         loading: false,
         responsive: false,
-        theme: '',
+        theme: "",
         customPalette: [],
         a11y: A11Y,
         downsample: {
@@ -5267,11 +5267,11 @@ export function useConfig(options = {}) {
             annotator: true,
         }),
         style: {
-            fontFamily: 'Arial', // A defined font must be provided as 'inherit' fails with canvas
+            fontFamily: "Arial", // A defined font must be provided as 'inherit' fails with canvas
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
-                aspectRatio: '12 / 9',
+                aspectRatio: "12 / 9",
                 stacked: false,
                 stackGap: 20,
                 scale: {
@@ -5285,13 +5285,13 @@ export function useConfig(options = {}) {
                     preview: {
                         // v3
                         enable: false,
-                        fill: '#CCCCCC50',
-                        stroke: '#6A6A6A',
+                        fill: "#CCCCCC50",
+                        stroke: "#6A6A6A",
                         strokeWidth: 2,
                         strokeDasharray: 0,
                     },
                     useDefaultFormat: true,
-                    timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled
+                    timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled
                     customFormat: null, // overrides all if callback => string
                 },
                 selector: {
@@ -5304,11 +5304,11 @@ export function useConfig(options = {}) {
                     ...TOOLTIP,
                     showTimeLabel: true,
                     useDefaultTimeFormat: true,
-                    timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled and useDefaultFormat is false
+                    timeFormat: "yyyy-MM-dd HH:mm:ss", // When datetimeFormatter is enabled and useDefaultFormat is false
                 },
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 title: TITLE,
                 grid: {
@@ -5316,29 +5316,29 @@ export function useConfig(options = {}) {
                         showAxis: true,
                         axisColor: COLOR_BLACK,
                         axisThickness: 2,
-                        axisName: '',
+                        axisName: "",
                         axisLabels: {
                             show: true,
                             fontSizeRatio: 1,
                             color: COLOR_TEXT_PRIMARY,
                             offsetX: 0,
                             rounding: 1,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             bold: false,
                         },
                         verticalLines: {
                             show: true,
                             color: COLOR_GREY_MID,
                             hideUnderXLength: 20,
-                            position: 'middle', // 'start'
+                            position: "middle", // 'start'
                         },
                     },
                     x: {
                         showAxis: true,
                         axisColor: COLOR_BLACK,
                         axisThickness: 2,
-                        axisName: '',
+                        axisName: "",
                         horizontalLines: {
                             show: true,
                             color: COLOR_GREY_MID,
@@ -5401,8 +5401,8 @@ export function useConfig(options = {}) {
             useDialog: false,
             rounding: 1,
             columnNames: {
-                period: 'Period',
-                total: 'Total',
+                period: "Period",
+                total: "Total",
             },
             th: TABLE_TH,
             td: TABLE_TD,
@@ -5420,7 +5420,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -5429,7 +5429,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         userOptions: USER_OPTIONS({
             pdf: true,
@@ -5444,7 +5444,7 @@ export function useConfig(options = {}) {
         nodeCategories: {},
         nodeCategoryColors: {},
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 width: 1000, // v3
@@ -5457,14 +5457,14 @@ export function useConfig(options = {}) {
                     showPercentage: true,
                     roundingPercentage: 0,
                     translations: {
-                        from: 'From:',
-                        to: 'To:',
-                        percentOfTotal: 'Percent of total:',
+                        from: "From:",
+                        to: "To:",
+                        percentOfTotal: "Percent of total:",
                     },
                 },
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 nodes: {
                     gap: 10,
@@ -5478,8 +5478,8 @@ export function useConfig(options = {}) {
                             use: true,
                             length: 3,
                         },
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         rounding: 0,
                         formatter: null,
                     },
@@ -5500,9 +5500,9 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                source: 'Source',
-                target: 'Target',
-                value: 'Value',
+                source: "Source",
+                target: "Target",
+                value: "Value",
             },
             th: TABLE_TH,
             td: TABLE_TD,
@@ -5520,7 +5520,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -5530,7 +5530,7 @@ export function useConfig(options = {}) {
             datapointClick: null, // v3
         },
         responsiveProportionalSizing: true,
-        theme: '',
+        theme: "",
         useCssAnimation: false, // v3
         customPalette: [],
         userOptions: USER_OPTIONS({
@@ -5545,7 +5545,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -5611,7 +5611,7 @@ export function useConfig(options = {}) {
                 title: TITLE,
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 tooltip: TOOLTIP,
             },
@@ -5620,8 +5620,8 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                item: 'Item',
+                series: "Series",
+                item: "Item",
             },
             th: TABLE_TH,
             td: TABLE_TD,
@@ -5629,12 +5629,12 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_timer = {
-        type: 'stopwatch',
+        type: "stopwatch",
         responsive: false,
         responsiveProportionalSizing: true,
         useCursorPointer: false,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             backgroundColor: COLOR_BACKGROUND,
             height: 300,
             width: 300,
@@ -5688,12 +5688,12 @@ export function useConfig(options = {}) {
                     iconColor: COLOR_BLACK,
                 },
                 buttonTitles: {
-                    start: 'Start',
-                    pause: 'Pause',
-                    resume: 'Resume',
-                    reset: 'Reset',
-                    restart: 'Restart',
-                    lap: 'Lap',
+                    start: "Start",
+                    pause: "Pause",
+                    resume: "Resume",
+                    reset: "Reset",
+                    restart: "Restart",
+                    lap: "Lap",
                 },
             },
         },
@@ -5719,7 +5719,7 @@ export function useConfig(options = {}) {
         intersectCirclesFill: COLOR_GREY_MID,
         intersectCirclesRadius: 2,
         isLoading: false,
-        parentId: '',
+        parentId: "",
         showCenterCircle: true,
         showCoordinates: true,
         showCrosshair: true,
@@ -5737,8 +5737,8 @@ export function useConfig(options = {}) {
             color: COLOR_TEXT_PRIMARY,
             iconColor: COLOR_BLUE,
             iconSize: 20,
-            icon: 'arrowRight',
-            padding: '12px 6px',
+            icon: "arrowRight",
+            padding: "12px 6px",
         },
         body: {
             backgroundColor: COLOR_BACKGROUND,
@@ -5751,22 +5751,22 @@ export function useConfig(options = {}) {
         animationFrames: 60,
         animationValueStart: 0,
         backgroundColor: COLOR_BACKGROUND,
-        fontFamily: 'inherit',
-        layoutClass: '',
-        layoutCss: '',
-        prefix: '',
-        suffix: '',
-        title: '',
+        fontFamily: "inherit",
+        layoutClass: "",
+        layoutCss: "",
+        prefix: "",
+        suffix: "",
+        title: "",
         titleBold: true,
         titleColor: COLOR_TEXT_PRIMARY,
-        titleClass: '',
-        titleCss: '',
+        titleClass: "",
+        titleCss: "",
         titleFontSize: FONT._16,
         useAnimation: true,
         valueBold: true,
         valueColor: COLOR_BLUE,
-        valueClass: '',
-        valueCss: '',
+        valueClass: "",
+        valueCss: "",
         valueFontSize: FONT._32,
         valueRounding: 0,
         formatter: null,
@@ -5779,7 +5779,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_mini_loader = {
-        type: 'onion',
+        type: "onion",
         onion: {
             gutterColor: COLOR_GREY_MID,
             gutterOpacity: 0.3,
@@ -5810,18 +5810,18 @@ export function useConfig(options = {}) {
         readonly: false,
         useCursorPointer: false,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             itemSize: 32,
             backgroundColor: COLOR_BACKGROUND,
             colors: {
                 activeReadonly: [
-                    '#e20001',
-                    '#ff9f03',
-                    '#ffd004',
-                    '#61c900',
-                    '#059f00',
+                    "#e20001",
+                    "#ff9f03",
+                    "#ffd004",
+                    "#61c900",
+                    "#059f00",
                 ],
-                active: ['#e20001', '#ff9f03', '#ffd004', '#61c900', '#059f00'],
+                active: ["#e20001", "#ff9f03", "#ffd004", "#61c900", "#059f00"],
                 inactive: [
                     COLOR_GRID,
                     COLOR_GRID,
@@ -5862,7 +5862,7 @@ export function useConfig(options = {}) {
                 backgroundColor: COLOR_BACKGROUND,
                 borderColor: COLOR_BORDER,
                 borderRadius: 4,
-                boxShadow: '0 6px 12px -6px rgba(0,0,0,0.2)',
+                boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
                 roundingValue: 0,
                 formatter: null,
             },
@@ -5876,7 +5876,7 @@ export function useConfig(options = {}) {
         to: 5,
         useCursorPointer: false,
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             animated: true,
             itemSize: 32,
             backgroundColor: COLOR_BACKGROUND,
@@ -5889,22 +5889,22 @@ export function useConfig(options = {}) {
                 useGradient: true,
             },
             image: {
-                src: '',
+                src: "",
                 inactiveOpacity: 0.3,
-                alt: 'rating image',
+                alt: "rating image",
             },
             title: {
                 textAlign: POSITION.CENTER,
                 fontSize: FONT._20,
                 color: COLOR_TEXT_PRIMARY,
                 bold: true,
-                text: '',
+                text: "",
                 offsetY: 6,
                 subtitle: {
                     fontSize: FONT._14,
                     color: COLOR_GREY_MID,
                     bold: false,
-                    text: '',
+                    text: "",
                     offsetY: 12,
                 },
             },
@@ -5927,7 +5927,7 @@ export function useConfig(options = {}) {
                 backgroundColor: COLOR_BACKGROUND,
                 borderColor: COLOR_BORDER,
                 borderRadius: 4,
-                boxShadow: '0 6px 12px -6px rgba(0,0,0,0.2)',
+                boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
                 roundingValue: 0,
                 formatter: null,
             },
@@ -5940,7 +5940,7 @@ export function useConfig(options = {}) {
         style: {
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             showPrint: false,
             showSave: true,
             showImage: true,
@@ -5950,7 +5950,7 @@ export function useConfig(options = {}) {
                 controls: {
                     backgroundColor: COLOR_BACKGROUND,
                     color: COLOR_TEXT_PRIMARY,
-                    border: '1px solid #262626',
+                    border: "1px solid #262626",
                     selected: {
                         backgroundColor: COLOR_BLACK,
                         color: COLOR_WHITE_ALMOST,
@@ -5960,7 +5960,7 @@ export function useConfig(options = {}) {
                 shapes: {
                     backgroundColor: COLOR_BACKGROUND,
                     color: COLOR_TEXT_PRIMARY,
-                    border: '1px solid #262626',
+                    border: "1px solid #262626",
                     selected: {
                         backgroundColor: COLOR_TEXT_PRIMARY,
                         color: COLOR_BACKGROUND,
@@ -5973,41 +5973,41 @@ export function useConfig(options = {}) {
                 color: COLOR_TEXT_PRIMARY,
                 border: `1px solid ${COLOR_BORDER}`,
                 borderRadius: 6,
-                boxShadow: '0 6px 12px -6px rgba(0,0,0,0.2)',
+                boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
             },
         },
         translations: {
-            colorAlpha: 'Color alpha',
-            dashedLines: 'Dashed lines',
-            filled: 'Filled',
-            fontSize: 'Font size',
-            thickness: 'Thickness',
-            title: 'Annotations',
-            tooltipGroup: 'Select & group',
-            tooltipDelete: 'Delete',
-            tooltipMove: 'Move',
-            tooltipResize: 'Resize',
-            tooltipBringToFront: 'Bring to front',
-            tooltipBringToBack: 'Bring to back',
-            tooltipDuplicate: 'Duplicate',
-            tooltipUndo: 'Undo last shape',
-            tooltipRedo: 'Redo last shape',
-            tooltipPdf: 'Save pdf',
-            tooltipSave: 'Save annotations',
-            tooltipShapeCircle: 'Draw circle',
-            tooltipShapeRect: 'Draw rect',
-            tooltipShapeArrow: 'Draw arrow',
-            tooltipShapeFreehand: 'Freehand line',
-            tooltipShapeText: 'Text mode',
-            tooltipShapeTextLeft: 'Align left',
-            tooltipShapeTextCenter: 'Align center',
-            tooltipShapeTextRight: 'Align right',
-            tooltipShapeTextBullet: 'Bullet points',
-            tooltipShapeTextBold: 'Bold',
-            tooltipShapeTextItalic: 'Italic',
-            tooltipShapeTextUnderline: 'Underlined',
-            tooltipShapeColor: 'Color',
-            tooltipImage: 'Download PNG',
+            colorAlpha: "Color alpha",
+            dashedLines: "Dashed lines",
+            filled: "Filled",
+            fontSize: "Font size",
+            thickness: "Thickness",
+            title: "Annotations",
+            tooltipGroup: "Select & group",
+            tooltipDelete: "Delete",
+            tooltipMove: "Move",
+            tooltipResize: "Resize",
+            tooltipBringToFront: "Bring to front",
+            tooltipBringToBack: "Bring to back",
+            tooltipDuplicate: "Duplicate",
+            tooltipUndo: "Undo last shape",
+            tooltipRedo: "Redo last shape",
+            tooltipPdf: "Save pdf",
+            tooltipSave: "Save annotations",
+            tooltipShapeCircle: "Draw circle",
+            tooltipShapeRect: "Draw rect",
+            tooltipShapeArrow: "Draw arrow",
+            tooltipShapeFreehand: "Freehand line",
+            tooltipShapeText: "Text mode",
+            tooltipShapeTextLeft: "Align left",
+            tooltipShapeTextCenter: "Align center",
+            tooltipShapeTextRight: "Align right",
+            tooltipShapeTextBullet: "Bullet points",
+            tooltipShapeTextBold: "Bold",
+            tooltipShapeTextItalic: "Italic",
+            tooltipShapeTextUnderline: "Underlined",
+            tooltipShapeColor: "Color",
+            tooltipImage: "Download PNG",
         },
     };
 
@@ -6017,8 +6017,8 @@ export function useConfig(options = {}) {
             board: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
-                aspectRatio: '1/1.4141',
-                border: 'none',
+                aspectRatio: "1/1.4141",
+                border: "none",
             },
             item: {
                 backgroundColor: COLOR_BACKGROUND,
@@ -6033,7 +6033,7 @@ export function useConfig(options = {}) {
             useCursorPointer: false,
             showOnChartHover: false,
             keepStateOnChartLeave: true,
-            position: 'right',
+            position: "right",
             buttons: {
                 pdf: true,
                 img: true,
@@ -6047,14 +6047,14 @@ export function useConfig(options = {}) {
                 altCopy: null,
             },
             buttonTitles: {
-                pdf: 'Download PDF',
-                img: 'Download PNG',
-                annotator: 'Toggle annotator',
-                altCopy: 'Copy alt text',
+                pdf: "Download PDF",
+                img: "Download PNG",
+                annotator: "Toggle annotator",
+                altCopy: "Copy alt text",
             },
             print: {
                 scale: 2,
-                filename: '',
+                filename: "",
             },
         },
     };
@@ -6249,7 +6249,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_table = {
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
         maxHeight: 500,
         rowsPerPage: 25,
         useCursorPointer: false,
@@ -6283,7 +6283,7 @@ export function useConfig(options = {}) {
                             color: COLOR_BLACK,
                         },
                         active: {
-                            backgroundColor: '#F17171',
+                            backgroundColor: "#F17171",
                             color: COLOR_WHITE,
                         },
                     },
@@ -6292,14 +6292,14 @@ export function useConfig(options = {}) {
             rows: {
                 outline: `1px solid ${COLOR_BACKGROUND}`,
                 even: {
-                    backgroundColor: '#f3f5f7',
+                    backgroundColor: "#f3f5f7",
                     color: COLOR_TEXT_PRIMARY,
                     selectedCell: {
-                        backgroundColor: '#1f77b45b',
+                        backgroundColor: "#1f77b45b",
                         color: COLOR_TEXT_PRIMARY,
                     },
                     selectedNeighbors: {
-                        backgroundColor: '#63dd821e',
+                        backgroundColor: "#63dd821e",
                         color: COLOR_TEXT_PRIMARY,
                     },
                 },
@@ -6307,11 +6307,11 @@ export function useConfig(options = {}) {
                     backgroundColor: COLOR_BACKGROUND,
                     color: COLOR_TEXT_PRIMARY,
                     selectedCell: {
-                        backgroundColor: '#1f77b45b',
+                        backgroundColor: "#1f77b45b",
                         color: COLOR_TEXT_PRIMARY,
                     },
                     selectedNeighbors: {
-                        backgroundColor: '#63dd821e',
+                        backgroundColor: "#63dd821e",
                         color: COLOR_TEXT_PRIMARY,
                     },
                 },
@@ -6328,11 +6328,11 @@ export function useConfig(options = {}) {
                 icons: {
                     selected: {
                         color: COLOR_GREEN,
-                        unicode: '✔',
+                        unicode: "✔",
                     },
                     unselected: {
                         color: COLOR_RED,
-                        unicode: '✖',
+                        unicode: "✖",
                     },
                 },
             },
@@ -6358,12 +6358,12 @@ export function useConfig(options = {}) {
                     backgroundColor: COLOR_WHITE_ALMOST,
                     color: COLOR_TEXT_PRIMARY,
                 },
-                filename: '',
+                filename: "",
             },
             closeButtons: {
-                backgroundColor: 'transparent',
+                backgroundColor: "transparent",
                 color: COLOR_TEXT_PRIMARY,
-                borderRadius: '50%',
+                borderRadius: "50%",
             },
             chart: {
                 modal: {
@@ -6383,7 +6383,7 @@ export function useConfig(options = {}) {
                 layout: {
                     backgroundColor: COLOR_BACKGROUND,
                     axis: {
-                        stroke: '#ccd1d4',
+                        stroke: "#ccd1d4",
                         strokeWidth: 2,
                     },
                     bar: {
@@ -6406,7 +6406,7 @@ export function useConfig(options = {}) {
                         },
                         selector: {
                             // DEPRECATED
-                            stroke: '#ccc', // DEPRECATED
+                            stroke: "#ccc", // DEPRECATED
                             strokeWidth: 1, // DEPRECATED
                             strokeDasharray: 5, // DEPRECATED
                         },
@@ -6435,32 +6435,32 @@ export function useConfig(options = {}) {
             },
         },
         translations: {
-            average: 'Average',
-            by: 'by',
-            chooseCategoryColumn: 'Choose category column',
-            exportAllButton: 'CSV all',
-            exportAllLabel: 'Export all rows of your current filtered dataset',
-            exportPageButton: 'CSV page',
-            exportPageLabel: 'Export rows of the current page',
-            from: 'From',
-            inputPlaceholder: 'Search...',
-            makeDonut: 'Generate',
-            nb: 'Nb',
-            page: 'Page',
-            paginatorLabel: 'Rows per page',
+            average: "Average",
+            by: "by",
+            chooseCategoryColumn: "Choose category column",
+            exportAllButton: "CSV all",
+            exportAllLabel: "Export all rows of your current filtered dataset",
+            exportPageButton: "CSV page",
+            exportPageLabel: "Export rows of the current page",
+            from: "From",
+            inputPlaceholder: "Search...",
+            makeDonut: "Generate",
+            nb: "Nb",
+            page: "Page",
+            paginatorLabel: "Rows per page",
             sizeWarning:
-                'Displaying too many rows at a time can lead to slower performance',
-            sum: 'Sum',
-            to: 'To',
-            total: 'Total',
-            totalRows: 'Total rows',
-            filename: 'File name',
-            xAxisLabels: 'X axis labels',
+                "Displaying too many rows at a time can lead to slower performance",
+            sum: "Sum",
+            to: "To",
+            total: "Total",
+            totalRows: "Total rows",
+            filename: "File name",
+            xAxisLabels: "X axis labels",
         },
         useChart: true,
     };
     const vue_ui_digits = {
-        height: '100%',
+        height: "100%",
         width: null,
         backgroundColor: COLOR_BACKGROUND,
         digits: {
@@ -6484,7 +6484,7 @@ export function useConfig(options = {}) {
             animation: true,
         }),
         animation: {
-            type: 'scroll', // 'scroll' | 'marquee'
+            type: "scroll", // 'scroll' | 'marquee'
             use: true,
             speedMs: 1000,
             pauseOnHover: true,
@@ -6492,21 +6492,21 @@ export function useConfig(options = {}) {
         style: {
             backgroundColor: COLOR_BACKGROUND,
             color: COLOR_TEXT_PRIMARY,
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
         },
         border: {
             size: 0,
             color: COLOR_BLACK,
         },
         caption: {
-            text: '',
+            text: "",
             padding: PADDING([12, 12, 12, 12]),
             style: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
                 fontSize: `${FONT._16}px`,
-                fontWeight: 'bold',
-                textAlign: 'left',
+                fontWeight: "bold",
+                textAlign: "left",
             },
         },
         scrollbar: {
@@ -6515,7 +6515,7 @@ export function useConfig(options = {}) {
         },
         thead: {
             style: {
-                verticalAlign: 'middle',
+                verticalAlign: "middle",
             },
             tr: {
                 height: 32,
@@ -6536,9 +6536,9 @@ export function useConfig(options = {}) {
                     padding: PADDING([0, 12, 0, 0]),
                     style: {
                         borderSpacing: 0,
-                        border: 'none',
-                        textAlign: 'right',
-                        fontVariantNumeric: 'tabular-nums',
+                        border: "none",
+                        textAlign: "right",
+                        fontVariantNumeric: "tabular-nums",
                     },
                 },
             },
@@ -6565,8 +6565,8 @@ export function useConfig(options = {}) {
                     },
                     padding: PADDING([0, 12, 0, 0]),
                     style: {
-                        fontVariantNumeric: 'tabular-nums',
-                        textAlign: 'right',
+                        fontVariantNumeric: "tabular-nums",
+                        textAlign: "right",
                         backgroundColor: COLOR_GRID,
                     },
                 },
@@ -6577,22 +6577,22 @@ export function useConfig(options = {}) {
     const vue_ui_gizmo = {
         a11y: {
             translations: {
-                label: 'Progress',
+                label: "Progress",
             },
         },
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
         loading: false, // v3
-        type: 'battery', // battery | gauge
+        type: "battery", // battery | gauge
         size: 64,
         stroke: COLOR_GREY_MID,
         color: COLOR_BLUE,
         useGradient: true,
-        gradientColor: '#9db5ed',
+        gradientColor: "#9db5ed",
         showPercentage: true,
         textColor: COLOR_BLACK,
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
         formatter: null,
     };
 
@@ -6600,7 +6600,7 @@ export function useConfig(options = {}) {
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
-        theme: '',
+        theme: "",
         userOptions: USER_OPTIONS({
             tooltip: false,
             pdf: true,
@@ -6614,7 +6614,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -6626,22 +6626,22 @@ export function useConfig(options = {}) {
                     animationFrames: 60,
                 },
                 segments: {
-                    baseColor: '#9A9A9A', // default if dataset.segments colors are not provided
+                    baseColor: "#9A9A9A", // default if dataset.segments colors are not provided
                     dataLabels: {
                         show: true,
                         color: COLOR_TEXT_PRIMARY,
                         fontSize: FONT._10,
                         formatter: null,
                         bold: false,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         rounding: 0,
                         offsetY: 0,
                     },
                     ticks: {
                         show: true,
                         divisions: 10,
-                        stroke: '#8A8A8A',
+                        stroke: "#8A8A8A",
                     },
                 },
                 target: {
@@ -6655,7 +6655,7 @@ export function useConfig(options = {}) {
                     width: 6,
                 },
                 valueBar: {
-                    color: '#3A3A3A',
+                    color: "#3A3A3A",
                     heightRatio: 0.33,
                     stroke: COLOR_WHITE,
                     strokeWidth: 1,
@@ -6675,14 +6675,14 @@ export function useConfig(options = {}) {
                 legend: {
                     ...LEGEND,
                     roundingValue: 0,
-                    position: 'bottom',
+                    position: "bottom",
                 },
             },
         },
     };
 
     const vue_ui_funnel = {
-        theme: '',
+        theme: "",
         responsive: false,
         responsiveProportionalSizing: true,
         useCssAnimation: true,
@@ -6696,9 +6696,9 @@ export function useConfig(options = {}) {
                 roundingPercentage: 0,
             },
             columnNames: {
-                series: 'Step',
-                value: 'Value',
-                percentage: 'Percentage',
+                series: "Step",
+                value: "Value",
+                percentage: "Percentage",
             },
         },
         userOptions: USER_OPTIONS({
@@ -6714,7 +6714,7 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -6765,8 +6765,8 @@ export function useConfig(options = {}) {
                             rounding: 0,
                             bold: false,
                             color: COLOR_TEXT_PRIMARY,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             offsetX: 0,
                             offsetY: 0,
                         },
@@ -6787,7 +6787,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -6797,7 +6797,7 @@ export function useConfig(options = {}) {
             datapointClick: null, // v3
         },
         responsiveProportionalSizing: true,
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         userOptions: USER_OPTIONS({
@@ -6821,14 +6821,14 @@ export function useConfig(options = {}) {
                 roundingValue: 0,
             },
             columnNames: {
-                series: 'Series',
-                datapoint: 'Datapoint',
-                x: 'x',
-                y: 'y',
+                series: "Series",
+                datapoint: "Datapoint",
+                x: "x",
+                y: "y",
             },
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -6876,11 +6876,11 @@ export function useConfig(options = {}) {
                                 angle: -30, // v3
                             },
                             formatter: null,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                         },
                         name: {
-                            text: '',
+                            text: "",
                             fontSize: FONT._16,
                             offsetX: 0,
                             offsetY: 0,
@@ -6900,11 +6900,11 @@ export function useConfig(options = {}) {
                             rounding: 1,
                             offsetX: 0,
                             formatter: null,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                         },
                         name: {
-                            text: '',
+                            text: "",
                             fontSize: FONT._16,
                             offsetX: 0,
                             offsetY: 0,
@@ -6948,7 +6948,7 @@ export function useConfig(options = {}) {
                 },
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 title: TITLE,
                 tooltip: TOOLTIP,
@@ -6965,7 +6965,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -6974,7 +6974,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         userOptions: USER_OPTIONS({
             tooltip: true,
@@ -6995,14 +6995,14 @@ export function useConfig(options = {}) {
             th: TABLE_TH,
             td: TABLE_TD,
             columnNames: {
-                datapoint: 'Datapoint',
-                parent: 'Parent',
-                depth: 'Depth',
-                value: 'Value',
+                datapoint: "Datapoint",
+                parent: "Parent",
+                depth: "Depth",
+                value: "Value",
             },
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -7025,15 +7025,15 @@ export function useConfig(options = {}) {
                             show: true,
                             bold: false,
                             offsetY: 0,
-                            color: 'auto',
+                            color: "auto",
                         },
                         value: {
                             fontSizeRatio: 1,
                             show: true,
-                            color: 'auto',
+                            color: "auto",
                             rounding: 0,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             formatter: null,
                             bold: false,
                             offsetY: 0,
@@ -7045,7 +7045,7 @@ export function useConfig(options = {}) {
                     fontSizeRatio: 1,
                     borderRadiusRatio: 1,
                     color: COLOR_BLACK,
-                    filter: 'drop-shadow(0 2px 4px #2D353C30)',
+                    filter: "drop-shadow(0 2px 4px #2D353C30)",
                     backgroundColor: COLOR_WHITE,
                     strokeWidth: 1,
                     useSerieColor: true,
@@ -7091,16 +7091,16 @@ export function useConfig(options = {}) {
             svg: true,
         }),
         customPalette: [],
-        projection: 'globe',
+        projection: "globe",
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
                 padding: PADDING([12, 12, 12, 12]),
                 dataLabels: {
-                    prefix: '',
-                    suffix: '',
+                    prefix: "",
+                    suffix: "",
                     rounding: 0,
                     formatter: null,
                 },
@@ -7122,12 +7122,12 @@ export function useConfig(options = {}) {
                     waterColor: COLOR_BLUE,
                 },
                 territory: {
-                    stroke: '#666666',
-                    emptyColor: '#E0E0E0',
+                    stroke: "#666666",
+                    emptyColor: "#E0E0E0",
                     strokeWidth: 0.5,
                     strokeWidthSelected: 2,
                     colors: {
-                        min: '#E0E0E0',
+                        min: "#E0E0E0",
                         max: null, // defaults to palette[0] if kept null
                     },
                     showTaiwanAsPartOfChina: false,
@@ -7139,7 +7139,7 @@ export function useConfig(options = {}) {
                 title: TITLE,
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
             },
         },
@@ -7152,9 +7152,9 @@ export function useConfig(options = {}) {
                 roundingValue: 0,
             },
             columnNames: {
-                series: 'Country',
-                value: 'Value',
-                category: 'Category',
+                series: "Country",
+                value: "Value",
+                category: "Category",
             },
         },
     };
@@ -7170,7 +7170,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -7179,7 +7179,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false, // v2 = true
         userOptions: USER_OPTIONS({
@@ -7203,11 +7203,11 @@ export function useConfig(options = {}) {
                 roundingValue: 0,
             },
             columnNames: {
-                series: 'Series',
+                series: "Series",
             },
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -7305,8 +7305,8 @@ export function useConfig(options = {}) {
                 },
                 xAxis: {
                     labels: {
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         rotation: 0,
                         autoRotate: {
                             // v3
@@ -7345,7 +7345,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -7353,7 +7353,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
-        theme: '',
+        theme: "",
         customPalette: [],
         enableRotation: true,
         initialRotation: 0,
@@ -7377,13 +7377,13 @@ export function useConfig(options = {}) {
             td: TABLE_TD,
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
                 legend: {
                     ...LEGEND,
-                    position: 'bottom',
+                    position: "bottom",
                 },
                 title: TITLE,
                 arcs: {
@@ -7411,8 +7411,8 @@ export function useConfig(options = {}) {
                     labels: {
                         show: true,
                         formatter: null,
-                        prefix: '',
-                        suffix: '',
+                        prefix: "",
+                        suffix: "",
                         rounding: 0,
                         fontSize: 14,
                         bold: false,
@@ -7442,13 +7442,13 @@ export function useConfig(options = {}) {
         loading: false,
         debug: false,
         responsive: false,
-        theme: '',
+        theme: "",
         a11y: {
             ...A11Y,
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         userOptions: USER_OPTIONS({
@@ -7462,7 +7462,7 @@ export function useConfig(options = {}) {
             zoom: true,
         }),
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -7476,7 +7476,7 @@ export function useConfig(options = {}) {
                     opacity: 1,
                 },
                 layout: {
-                    rankDirection: 'TB',
+                    rankDirection: "TB",
                     rankSeparation: 60,
                     nodeSeparation: 50,
                     edgeSeparation: 30,
@@ -7484,7 +7484,7 @@ export function useConfig(options = {}) {
                     nodeHeight: 40,
                     curvedEdges: true,
                     padding: 48,
-                    arrowShape: 'vee',
+                    arrowShape: "vee",
                     arrowSize: 8,
                     align: undefined,
                 },
@@ -7502,7 +7502,7 @@ export function useConfig(options = {}) {
                         showOnClick: false,
                         backgroundColor: COLOR_GRID,
                         color: COLOR_TEXT_PRIMARY,
-                        maxWidth: '300px',
+                        maxWidth: "300px",
                     },
                     selected: {
                         stroke: null,
@@ -7523,7 +7523,7 @@ export function useConfig(options = {}) {
                     stroke: COLOR_GREY_MID,
                     strokeWidth: 1,
                     animations: {
-                        dasharray: '2 6',
+                        dasharray: "2 6",
                         animationDurationMs: 1000,
                     },
                 },
@@ -7534,7 +7534,7 @@ export function useConfig(options = {}) {
                     fill: COLOR_WHITE,
                     strokeWidth: 1,
                     tooltip: {
-                        maxWidth: '300px',
+                        maxWidth: "300px",
                         backgroundColor: COLOR_GRID,
                         color: COLOR_TEXT_PRIMARY,
                     },
@@ -7544,7 +7544,7 @@ export function useConfig(options = {}) {
                     },
                 },
                 controls: {
-                    position: 'bottom',
+                    position: "bottom",
                     show: true,
                     backgroundColor: COLOR_GRID,
                     buttonColor: COLOR_GRID,
@@ -7568,14 +7568,14 @@ export function useConfig(options = {}) {
         loading: false,
         debug: false,
         responsive: false,
-        projection: 'equirectangular',
-        theme: '',
+        projection: "equirectangular",
+        theme: "",
         a11y: {
             ...A11Y,
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         userOptions: USER_OPTIONS({
@@ -7604,7 +7604,7 @@ export function useConfig(options = {}) {
             territoryClick: null,
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 dimensions: {
                     width: null,
@@ -7613,8 +7613,8 @@ export function useConfig(options = {}) {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
                 territory: {
-                    fill: '#F2F3F5',
-                    stroke: '#D0D4D8',
+                    fill: "#F2F3F5",
+                    stroke: "#D0D4D8",
                     strokeWidth: 1,
                     hover: {
                         enabledWhenEmpty: false,
@@ -7637,7 +7637,7 @@ export function useConfig(options = {}) {
                     },
                 },
                 controls: {
-                    position: 'bottom',
+                    position: "bottom",
                     show: true,
                     backgroundColor: COLOR_GRID,
                     buttonColor: COLOR_GRID,
@@ -7662,7 +7662,7 @@ export function useConfig(options = {}) {
         loading: false,
         debug: false,
         responsive: false,
-        theme: '',
+        theme: "",
         customPalette: [],
         useCssAnimation: false,
         a11y: {
@@ -7670,7 +7670,7 @@ export function useConfig(options = {}) {
             translations: {
                 ...A11Y.translations,
                 keyboardNavigation:
-                    'Use the left and right, or up and down arrow keys to move between datapoints',
+                    "Use the left and right, or up and down arrow keys to move between datapoints",
             },
         },
         events: {
@@ -7697,10 +7697,10 @@ export function useConfig(options = {}) {
             ...TABLE,
             useDialog: false,
             columnNames: {
-                series: 'Series',
-                period: 'Period',
-                values: 'Values',
-                ranking: 'Ranking',
+                series: "Series",
+                period: "Period",
+                values: "Values",
+                ranking: "Ranking",
             },
             th: TABLE_TH,
             td: {
@@ -7709,7 +7709,7 @@ export function useConfig(options = {}) {
             },
         },
         style: {
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
             chart: {
                 backgroundColor: COLOR_BACKGROUND,
                 color: COLOR_TEXT_PRIMARY,
@@ -7743,13 +7743,13 @@ export function useConfig(options = {}) {
                         strokeWidth: 1,
                         radius: 12,
                         labels: {
-                            color: 'auto',
+                            color: "auto",
                             show: true,
                             bold: true,
-                            displayedValue: 'value', // 'rank' | 'value'
+                            displayedValue: "value", // 'rank' | 'value'
                             fontSize: FONT._12,
-                            prefix: '',
-                            suffix: '',
+                            prefix: "",
+                            suffix: "",
                             rounding: 0,
                             formatter: null,
                         },

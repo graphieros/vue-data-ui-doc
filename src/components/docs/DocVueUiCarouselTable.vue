@@ -1379,9 +1379,7 @@ const slotCode = computed(() => {
             <template #tab2>
                 <ComponentEmits
                     component="VueUiCarouselTable"
-                    :names="[
-                        'copyAlt',
-                    ]"
+                    :names="['copyAlt']"
                 />
 
                 <ExposedMethods

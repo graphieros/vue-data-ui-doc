@@ -2527,7 +2527,7 @@ function goToPage(route) {
             </template>
 
             <template #tab2>
-              <ComponentEmits
+                <ComponentEmits
                     component="VueUiRidgeline"
                     :names="[
                         'selectLegend',

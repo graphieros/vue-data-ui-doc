@@ -175,7 +175,7 @@ const config = computed(() => {
                     selectedColor: "#5f8aee",
                     selectedColorOpacity: 0.2,
                     lineColor: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
-                    frameColor: 'transparent',
+                    frameColor: "transparent",
                     selectionRadius: 2,
                     indicatorColor: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                     verticalHandles: false,
@@ -194,7 +194,7 @@ const config = computed(() => {
                 lineWidth: 1,
                 crosshairs: {
                     show: true,
-                    stroke: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    stroke: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                     strokeWidth: 0.6,
                     strokeDasharray: 0,
                     // dot: {
@@ -202,7 +202,7 @@ const config = computed(() => {
                     //     stroke: '',
                     //     strokeWidth: 1
                     // }
-                }
+                },
             },
             timeTag: {
                 show: true,
@@ -230,7 +230,7 @@ const config = computed(() => {
                     zeroLine: { show: true },
                     xAxis: { showBaseline: false },
                     yAxis: {
-                        position: 'right',
+                        position: "right",
                         useNiceScale: true,
                         showBaseline: true,
                         commonScaleSteps: 10,

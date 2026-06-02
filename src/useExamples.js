@@ -1736,7 +1736,7 @@ export default function useExamples() {
             ],
             dataLabels: false,
         },
-    ])
+    ]);
 
     const DATASET_XY_ESTIMATES = ref([
         {
@@ -2354,8 +2354,8 @@ export default function useExamples() {
                     show: true,
                     color: colors.value.textColor,
                     offsetY: -12,
-                    rounding: 1
-                }
+                    rounding: 1,
+                },
             },
             line: {
                 radius: 5,
@@ -2364,7 +2364,7 @@ export default function useExamples() {
                     show: true,
                     color: colors.value.textColor,
                     offsetY: -12,
-                    rounding: 1
+                    rounding: 1,
                 },
             },
             bar: {
@@ -2372,7 +2372,7 @@ export default function useExamples() {
                     show: true,
                     color: colors.value.textColor,
                     offsetY: -6,
-                    rounding: 1
+                    rounding: 1,
                 },
             },
         };
@@ -6889,7 +6889,7 @@ export default function useExamples() {
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
+                            position: "start",
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
@@ -7341,7 +7341,7 @@ export default function useExamples() {
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
+                            position: "start",
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
@@ -7394,7 +7394,7 @@ export default function useExamples() {
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
+                            position: "start",
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
@@ -7447,7 +7447,7 @@ export default function useExamples() {
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
+                            position: "start",
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
@@ -7508,7 +7508,7 @@ export default function useExamples() {
                         ...BASE_XY_CONFIG.value.chart,
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
+                            position: "start",
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
@@ -7564,7 +7564,7 @@ export default function useExamples() {
                         ...BASE_XY_CONFIG.value.chart,
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
+                            position: "start",
                             showVerticalLines: true,
                             showHorizontalLines: true,
                             labels: {
@@ -8172,12 +8172,12 @@ export default function useExamples() {
                             labels: {
                                 show: false,
                                 rounding: 1,
-                            }
+                            },
                         },
                         plot: {
                             labels: {
                                 show: false,
-                            }
+                            },
                         },
                         chart: {
                             highlightArea: { show: false },
@@ -8187,15 +8187,15 @@ export default function useExamples() {
                             grid: {
                                 labels: {
                                     yAxis: {
-                                        useNiceScale: true
+                                        useNiceScale: true,
                                     },
                                     xAxis: {
                                         useNiceScale: true,
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiXy",
                 icon: "chartLine",
@@ -8223,12 +8223,12 @@ export default function useExamples() {
                             labels: {
                                 show: false,
                                 rounding: 1,
-                            }
+                            },
                         },
                         plot: {
                             labels: {
                                 show: false,
-                            }
+                            },
                         },
                         chart: {
                             highlightArea: { show: false },
@@ -8238,9 +8238,9 @@ export default function useExamples() {
                                     stroke: colors.value.gridStrokeLight,
                                     dot: {
                                         fill: colors.value.textColor,
-                                        stroke: colors.value.bg
-                                    }
-                                }
+                                        stroke: colors.value.bg,
+                                    },
+                                },
                             },
                             tooltip: { show: false },
                             grid: {
@@ -8248,18 +8248,18 @@ export default function useExamples() {
                                     fontSize: 20,
                                     yAxis: {
                                         reverse: true,
-                                        useNiceScale: true
+                                        useNiceScale: true,
                                     },
                                     xAxis: {
                                         useNiceScale: true,
                                     },
                                     xAxisLabels: {
                                         fontSize: 20,
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiXy",
                 icon: "chartLine",
@@ -8274,7 +8274,7 @@ export default function useExamples() {
                     ja: "x軸上の連続系列、反転したy軸とクロスヘア選択付き",
                     es: "Series continuas en el eje x con eje y invertido y selección con cruz guía",
                     ko: "반전된 y축과 크로스헤어 선택 기능이 있는 x축 연속 시리즈",
-                    ar: "سلاسل مستمرة على المحور x مع محور y معكوس وتحديد بواسطة المؤشر المتقاطع"
+                    ar: "سلاسل مستمرة على المحور x مع محور y معكوس وتحديد بواسطة المؤشر المتقاطع",
                 },
             },
             // DONUT BASIC

@@ -3177,10 +3177,7 @@ const customFormatCode =
             <template v-slot:tab2>
                 <ComponentEmits
                     component="VueUiScatter"
-                    :names="[
-                        'selectLegend',
-                        'copyAlt',
-                    ]"
+                    :names="['selectLegend', 'copyAlt']"
                 />
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">

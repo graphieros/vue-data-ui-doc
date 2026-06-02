@@ -592,7 +592,9 @@ onBeforeUnmount(() => {
             <rect x="0" y="0" width="100%" height="100%" fill="url(#griddit)" />
         </svg>
     </div>
-        <div class="w-full fixed left-0 -bottom-2 sm:bottom-8 h-32 home-sparkline opacity-100">
+    <div
+        class="w-full fixed left-0 -bottom-2 sm:bottom-8 h-32 home-sparkline opacity-100"
+    >
         <VueUiSparkline
             :dataset="store.npmDownloadsHome"
             :config="{
@@ -602,14 +604,9 @@ onBeforeUnmount(() => {
                 skeletonConfig: {
                     temperatureColors: {
                         show: true,
-                        colors: isDarkMode ? [
-                            '#abc2f6',
-                            '#83a4f2',
-                            '#5f8aee'
-                        ] : [
-                            '#1d915d',
-                            '#42d392',
-                        ]
+                        colors: isDarkMode
+                            ? ['#abc2f6', '#83a4f2', '#5f8aee']
+                            : ['#1d915d', '#42d392'],
                     },
                     style: {
                         backgroundColor: 'transparent',
@@ -636,14 +633,9 @@ onBeforeUnmount(() => {
                 },
                 temperatureColors: {
                     show: true,
-                    colors: isDarkMode ? [
-                        '#abc2f6',
-                        '#83a4f2',
-                        '#5f8aee'
-                    ] : [
-                        '#1d915d',
-                        '#42d392',
-                    ]
+                    colors: isDarkMode
+                        ? ['#abc2f6', '#83a4f2', '#5f8aee']
+                        : ['#1d915d', '#42d392'],
                 },
                 style: {
                     scaleMax: maxDownload,

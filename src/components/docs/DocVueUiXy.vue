@@ -394,7 +394,7 @@ const config = ref({
                 },
                 yAxis: {
                     reverse: false,
-                    position: 'left',
+                    position: "left",
                     commonScaleSteps: 10,
                     useIndividualScale: false,
                     useNiceScale: true,
@@ -878,7 +878,7 @@ const darkModeConfig = ref({
                 },
                 yAxis: {
                     reverse: false,
-                    position: 'left',
+                    position: "left",
                     commonScaleSteps: 10,
                     useIndividualScale: false,
                     useNiceScale: true,
@@ -2228,7 +2228,14 @@ const customFormatCode =
                                             :level="4"
                                             title="chart.grid.labels.xAxis"
                                         >
-                                            <BaseAttr name="reverse" attr="chart.grid.labels.xAxis.reverse" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr
+                                                name="reverse"
+                                                attr="chart.grid.labels.xAxis.reverse"
+                                                type="checkbox"
+                                                defaultVal="false"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
                                             <BaseAttr
                                                 name="showBaseline"
                                                 attr="chart.grid.labels.xAxis.showBaseline"
@@ -2264,20 +2271,68 @@ const customFormatCode =
                                                 :dark="mutableConfigDarkMode"
                                             />
                                             <BaseComment>
-                                                The following settings will work only for continuous series (line or plot datasets series using {x,y}[] instead of number[]):
+                                                The following settings will work
+                                                only for continuous series (line
+                                                or plot datasets series using
+                                                {x,y}[] instead of number[]):
                                             </BaseComment>
-                                            <BaseAttr name="commonScaleSteps" attr="chart.grid.labels.xAxis.commonScaleSteps" type="number" :min="2" :max="20" defaultVal="10" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
-                                            <BaseAttr name="useNiceScale" attr="chart.grid.labels.xAxis.useNiceScale" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only" />
-                                            <BaseAttr inactive name="scaleMin" attr="chart.grid.labels.xAxis.scaleMin" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
-                                            <BaseAttr inactive name="scaleMax" attr="chart.grid.labels.xAxis.scaleMax" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
-                                            <BaseAttr name="rounding" attr="chart.grid.labels.xAxis.rounding" type="number" :min="0" :max="6" defaultVal="1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For continuous series only"/>
+                                            <BaseAttr
+                                                name="commonScaleSteps"
+                                                attr="chart.grid.labels.xAxis.commonScaleSteps"
+                                                type="number"
+                                                :min="2"
+                                                :max="20"
+                                                defaultVal="10"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="For continuous series only"
+                                            />
+                                            <BaseAttr
+                                                name="useNiceScale"
+                                                attr="chart.grid.labels.xAxis.useNiceScale"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="For continuous series only"
+                                            />
+                                            <BaseAttr
+                                                inactive
+                                                name="scaleMin"
+                                                attr="chart.grid.labels.xAxis.scaleMin"
+                                                type="number"
+                                                defaultVal="null"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="For continuous series only"
+                                            />
+                                            <BaseAttr
+                                                inactive
+                                                name="scaleMax"
+                                                attr="chart.grid.labels.xAxis.scaleMax"
+                                                type="number"
+                                                defaultVal="null"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="For continuous series only"
+                                            />
+                                            <BaseAttr
+                                                name="rounding"
+                                                attr="chart.grid.labels.xAxis.rounding"
+                                                type="number"
+                                                :min="0"
+                                                :max="6"
+                                                defaultVal="1"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="For continuous series only"
+                                            />
                                             <BaseAttr
                                                 inactive
                                                 name="formatter"
                                                 defaultVal="null"
                                                 :comment="
-                                                    translations
-                                                        .formatterLink[
+                                                    translations.formatterLink[
                                                         store.lang
                                                     ]
                                                 "
@@ -2501,8 +2556,23 @@ const customFormatCode =
                                             :level="4"
                                             title="chart.grid.labels.yAxis"
                                         >
-                                            <BaseAttr name="position" attr="chart.grid.labels.yAxis.position" type="select" :options="['left', 'right']" defaultVal="left" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="reverse" attr="chart.grid.labels.yAxis.reverse" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr
+                                                name="position"
+                                                attr="chart.grid.labels.yAxis.position"
+                                                type="select"
+                                                :options="['left', 'right']"
+                                                defaultVal="left"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="reverse"
+                                                attr="chart.grid.labels.yAxis.reverse"
+                                                type="checkbox"
+                                                defaultVal="false"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
                                             <BaseAttr
                                                 name="commonScaleSteps"
                                                 attr="chart.grid.labels.yAxis.commonScaleSteps"
@@ -2879,17 +2949,96 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
-                                    <BaseDetails attr="crosshairs" :level="3" title="chart.highlighter.crosshairs">
-                                        <BaseAttr name="show" attr="chart.highlighter.crosshairs.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseAttr name="stroke" attr="chart.highlighter.crosshairs.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseAttr name="strokeWidth" attr="chart.highlighter.crosshairs.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseAttr name="strokeDasharray" attr="chart.highlighter.crosshairs.strokeDasharray" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseAttr name="startOnPoint" attr="chart.highlighter.crosshairs.startOnPoint" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <BaseDetails attr="dot" :level="4" title="chart.highlighter.crosshairs.dot">
-                                            <BaseAttr name="radius" attr="chart.highlighter.crosshairs.dot.radius" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="fill" attr="chart.highlighter.crosshairs.dot.fill" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="stroke" attr="chart.highlighter.crosshairs.dot.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="strokeWidth" attr="chart.highlighter.crosshairs.dot.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails
+                                        attr="crosshairs"
+                                        :level="3"
+                                        title="chart.highlighter.crosshairs"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="chart.highlighter.crosshairs.show"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="stroke"
+                                            attr="chart.highlighter.crosshairs.stroke"
+                                            type="color"
+                                            defaultVal="#2D353C"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeWidth"
+                                            attr="chart.highlighter.crosshairs.strokeWidth"
+                                            type="number"
+                                            defaultVal="1"
+                                            :min="0"
+                                            :max="12"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeDasharray"
+                                            attr="chart.highlighter.crosshairs.strokeDasharray"
+                                            type="number"
+                                            defaultVal="3"
+                                            :min="0"
+                                            :max="12"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="startOnPoint"
+                                            attr="chart.highlighter.crosshairs.startOnPoint"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseDetails
+                                            attr="dot"
+                                            :level="4"
+                                            title="chart.highlighter.crosshairs.dot"
+                                        >
+                                            <BaseAttr
+                                                name="radius"
+                                                attr="chart.highlighter.crosshairs.dot.radius"
+                                                type="number"
+                                                defaultVal="2"
+                                                :min="0"
+                                                :max="12"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="fill"
+                                                attr="chart.highlighter.crosshairs.dot.fill"
+                                                type="color"
+                                                defaultVal="#2D353C"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="stroke"
+                                                attr="chart.highlighter.crosshairs.dot.stroke"
+                                                type="color"
+                                                defaultVal="#FFFFFF"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="strokeWidth"
+                                                attr="chart.highlighter.crosshairs.dot.strokeWidth"
+                                                type="number"
+                                                defaultVal="1"
+                                                :min="0"
+                                                :max="6"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
                                         </BaseDetails>
                                     </BaseDetails>
                                 </BaseDetails>

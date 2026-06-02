@@ -207,7 +207,7 @@ const heatmapConfig = computed(() => {
                             rotation: 0,
                             autoRotate: {
                                 enable: true,
-                                angle: -90
+                                angle: -90,
                             },
                             offsetX: 3,
                             offsetY: 6,
@@ -2106,7 +2106,7 @@ const currentTab = ref("heatmap");
                         :config="heatmapConfig"
                         @selectDatapoint="selectHeatmapCell"
                     >
-                </VueDataUi>
+                    </VueDataUi>
                 </div>
             </BaseCard>
 

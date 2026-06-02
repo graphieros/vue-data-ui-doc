@@ -1754,11 +1754,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
             <template #tab2>
                 <ComponentEmits
                     component="VueUiWorld"
-                    :names="[
-                        'selectLegend',
-                        'selectDatapoint',
-                        'copyAlt',
-                    ]"
+                    :names="['selectLegend', 'selectDatapoint', 'copyAlt']"
                 />
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
