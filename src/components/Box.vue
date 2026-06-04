@@ -31,6 +31,7 @@ type BoxProps = {
     signInfo?: string;
     showDatetimeFormatter?: string;
     showCallbacks?: boolean;
+    showSsr?: boolean;
 };
 
 const props = withDefaults(defineProps<BoxProps>(), {
@@ -48,6 +49,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     signInfo: "",
     showDatetimeFormatter: false,
     showCallbacks: false,
+    showSsr: false,
 });
 
 const { isMobile } = useMobile();
@@ -240,6 +242,17 @@ const menuTranslations = computed(() => {
             ko: "사용자 메뉴 콜백",
             ar: "Callbacks لقائمة المستخدم",
         },
+        ssr: {
+            en: "SSR static generation",
+            fr: "Génération statique SSR",
+            pt: "Geração estática SSR",
+            de: "SSR-statische Generierung",
+            zh: "SSR 静态生成",
+            ja: "SSR静的生成",
+            es: "Generación estática SSR",
+            ko: "SSR 정적 생성",
+            ar: "التوليد الثابت باستخدام SSR"
+        }
     };
 });
 
@@ -329,6 +342,13 @@ const menuItems = computed(() => {
             active: props.showCallbacks,
             order: 11,
         },
+        {
+            name: menuTranslations.value.ssr[store.lang],
+            icon: "network",
+            color: isDarkMode.value ? "#50aaDD" : "#FFFFFF",
+            active: props.showSsr,
+            order: 12,
+        }
     ].filter((menu) => menu.active);
 });
 
@@ -560,6 +580,9 @@ function selectTabFromMini(order) {
         </div>
         <div v-if="activeTab === 11">
             <slot name="tab11" />
+        </div>
+        <div v-if="activeTab === 12">
+            <slot name="tab12"/>
         </div>
     </div>
 </template>

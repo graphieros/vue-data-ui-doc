@@ -336,6 +336,7 @@ export function useImportMap(c) {
               treeshaken: `import { ${c}${typesMapping[c]} } from "vue-data-ui/${mapping[c]}";`,
               datasetType: datasetTypeMap[c],
               configType: configTypeMap[c],
+              importName: mapping[c]
           }
         : null;
 }

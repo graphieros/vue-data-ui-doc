@@ -29,6 +29,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import SsrGeneration from "../SsrGeneration.vue";
 
 const mainConfig = useConfig();
 
@@ -898,6 +899,7 @@ const customFormatCode =
             showThemes
             showResponsive
             showPatterns
+            showSsr
             schema="vue_ui_donut"
             signInfo="positiveOrNegativeOnly"
         >
@@ -3206,6 +3208,10 @@ const customFormatCode =
                         'svg',
                     ]"
                 />
+            </template>
+
+            <template #tab12>
+                <SsrGeneration component="VueUiDonut"/>
             </template>
         </Box>
     </div>

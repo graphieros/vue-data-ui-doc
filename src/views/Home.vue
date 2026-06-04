@@ -593,7 +593,7 @@ onBeforeUnmount(() => {
         </svg>
     </div>
     <div
-        class="w-full fixed left-0 -bottom-2 sm:bottom-8 h-32 home-sparkline opacity-100"
+        class="w-full fixed left-0 -bottom-2 sm:bottom-8 h-12 sm:h-32 home-sparkline opacity-100"
     >
         <VueUiSparkline
             :dataset="store.npmDownloadsHome"

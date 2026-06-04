@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.21.1",
+        "date": "2026-06-04",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Add support for ssr static rendering",
+                "link": "/docs#vue-ui-donut"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Add treeshaken import for ssr static rendering",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.21.0",
         "date": "2026-06-01",
         "updates": [

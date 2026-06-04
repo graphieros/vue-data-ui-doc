@@ -32,6 +32,7 @@ import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import SsrGeneration from "../SsrGeneration.vue";
 
 const mainConfig = useConfig();
 
@@ -1558,6 +1559,7 @@ const customFormatCode =
             showResponsive
             showPatterns
             showCallbacks
+            showSsr
             schema="vue_ui_xy"
             signInfo="both"
         >
@@ -5493,6 +5495,10 @@ const customFormatCode =
                     ]"
                     path="chart"
                 />
+            </template>
+
+            <template #tab12>
+                <SsrGeneration component="VueUiXy"/>
             </template>
         </Box>
     </div>
