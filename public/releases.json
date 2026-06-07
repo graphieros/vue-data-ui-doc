@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.21.2",
+        "date": "2026-06-07",
+        "updates": [
+            {
+                "component": "VueUiXy (ssr)",
+                "description": "Fix issue in ssr version with annotations when yBottom is set to null",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.21.1",
         "date": "2026-06-04",
         "updates": [

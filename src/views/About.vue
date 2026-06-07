@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
 import AboutComponentTypes from "../components/AboutComponentTypes.vue";
 import SatisfactionStats from "../components/SatisfactionStats.vue";
@@ -512,6 +512,7 @@ const wheelConfig = computed(() => {
         },
     };
 });
+
 </script>
 
 <template>
@@ -733,6 +734,10 @@ const wheelConfig = computed(() => {
             </BaseCard>
             <SatisfactionStats />
         </BaseCard>
+
+        <!-- <div class="w-full mt-6">
+            <img class="rounded" width="100%" src="https://npmx.dev/api/embed/downloads.svg?packages=vue-data-ui&metric=downloads&mode=dark&granularity=weekly&locale=en-GB&accent=oklch%280.78+0.148+286.067%29&yLabel=Weekly+Downloads">
+        </div> -->
 
         <div
             v-if="isDarkMode"
