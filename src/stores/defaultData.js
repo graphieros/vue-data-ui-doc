@@ -16158,6 +16158,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: "textColor",
                         category: "general",
                     },
+                    { key: 'style.chart.layout.scaleToAxisMax', def: false, type: 'checkbox', label: ['scale', 'to', 'axis', 'max'], category: 'grid'},
+                    { key: 'style.chart.layout.targetReference.show', def: false, type: 'checkbox', label: ['target', 'reference', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.layout.targetReference.stroke', def: '#1A1A1A', type: "color", label: ['target', 'reference', 'is', 'stroke'], category: 'grid'},
+                    { key: 'style.chart.layout.targetReference.strokeWidth', def: 1, type: 'number', min: 0, max: 6, label: ['target', 'reference', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.layout.targetReference.strokeDasharray', def: 4, type: 'number', min: 0, max: 12, label: ['target', 'reference', 'is', 'strokeDasharray'], category: 'grid'},
+                    { key: 'style.chart.layout.targetReference.showInLegend', def: true, type: 'checkbox', label: ['target', 'reference', 'is', 'show', 'in', 'legend'], category: 'grid'},
+                    { key: 'style.chart.layout.targetReference.legendLabel', def: 'Target', type:'text', label: ['target', 'reference', 'is', 'legend', 'label'], category: 'grid'},
                     {
                         key: "style.chart.layout.plots.show",
                         def: true,

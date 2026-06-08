@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.21.3",
+        "date": "2026-06-09",
+        "updates": [
+            {
+                "component": "VueUiRadar",
+                "description": "Add config options to handle values higher than set targets.",
+                "link": "/docs#vue-ui-radar"
+            }
+        ]
+    },
+    {
         "version": "v 3.21.2",
         "date": "2026-06-07",
         "updates": [
