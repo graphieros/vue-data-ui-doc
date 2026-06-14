@@ -1844,12 +1844,12 @@ export default function useExamples() {
             name: "Serie 1",
             type: "line",
             smooth: true,
-            series: [null, 64, 29, 55, 44, null, null, 77, 65, 45, 89],
+            series: [null, 64, 29, 55, 44, null, null, 25, null, null, 77, 65, null, 89],
         },
         {
             name: "Serie 2",
             type: "line",
-            series: [53, 24, 19, 35, null, null, null, 47, 25, 35, null],
+            series: [53, 24, 19, 35, null, null, 64, null, null, 47, 25, 35, null, 24],
         },
     ]);
 

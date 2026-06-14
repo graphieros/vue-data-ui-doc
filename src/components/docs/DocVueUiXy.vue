@@ -606,6 +606,7 @@ const config = ref({
             useSerieColor: true,
             fill: "#FFFFFF",
             strokeWidth: 0.5,
+            selectedRadius: 4.5
         },
         labels: {
             show: true,
@@ -1086,6 +1087,7 @@ const darkModeConfig = ref({
             useSerieColor: true,
             fill: "#FFFFFF",
             strokeWidth: 0.5,
+            selectedRadius: 4.5
         },
         labels: {
             show: true,
@@ -4603,6 +4605,16 @@ const customFormatCode =
                                     :level="2"
                                     title="line.dot"
                                 >
+                                    <BaseAttr
+                                        name="selectedRadius"
+                                        attr="line.dot.selectedRadius"
+                                        type="number"
+                                        defaultVal="4.5"
+                                        :min="0"
+                                        :max="12"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseAttr
                                         name="useSerieColor"
                                         attr="line.dot.useSerieColor"

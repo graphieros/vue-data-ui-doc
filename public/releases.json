@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.21.4",
+        "date": "2026-06-14",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Allow zero radius on line dots, add config option to set selected dot radius for line type.",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.21.3",
         "date": "2026-06-09",
         "updates": [

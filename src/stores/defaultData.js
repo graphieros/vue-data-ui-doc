@@ -13455,6 +13455,15 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "line",
                     },
                     {
+                        key: 'line.dot.selectedRadius',
+                        def: 4.5,
+                        type: 'number',
+                        min: 0,
+                        max: 24,
+                        label: ['dot', 'selected', 'is', 'radius'],
+                        category: 'line'
+                    },
+                    {
                         key: "line.dot.useSerieColor",
                         def: false,
                         type: "checkbox",
