@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.21.5",
+        "date": "2026-06-15",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Disable line dots transitions when resizing the zoom range.",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiSparkline",
+                "description": "Expose data series and current hovered index in #svg slot",
+                "link": "/docs#vue-ui-sparkline"
+            }
+        ]
+    },
+    {
         "version": "v 3.21.4",
         "date": "2026-06-14",
         "updates": [
