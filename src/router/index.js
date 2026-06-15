@@ -110,6 +110,11 @@ const routes = [
         component: () => import("../views/A11y.vue"),
     },
     {
+        path: "/friends",
+        name: "Friends",
+        component: () => import('../views/Friends.vue')
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound,
     },

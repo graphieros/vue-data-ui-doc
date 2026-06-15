@@ -1988,6 +1988,17 @@ export const useMainStore = defineStore("main", {
                         ko: "에 대한",
                         ar: "حول",
                     },
+                    friends: {
+                        en: "Friends",
+                        fr: "Partenaires",
+                        pt: "Parceiros",
+                        de: "Partner",
+                        zh: "友链",
+                        ja: "リンク",
+                        es: "Socios",
+                        ko: "제휴",
+                        ar: "شركاء"
+                    }
                 },
                 customization: {
                     injectImage: {

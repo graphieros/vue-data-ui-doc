@@ -241,7 +241,7 @@ const showUnderlay = computed(() => {
         <router-view />
         <UpToTop />
         <GithubButton v-if="route.name !== 'Home'" />
-        <FootInfo v-if="route.name !== 'Home'" class="foot-info-root" />
+        <FootInfo v-if="!['Home', 'Friends'].includes(route.name)" class="foot-info-root" />
     </div>
     <!-- <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/> -->
     <BaseFooter v-if="!['/'].includes(currentRoute)" />

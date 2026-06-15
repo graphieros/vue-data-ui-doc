@@ -32,6 +32,16 @@
     src: url("./fonts/JetBrainsMono-Regular.woff2");
 }
 
+@font-face {
+    font-family: "Roboto";
+    src: url("./fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("./fonts/OpenSans-Regular.ttf");
+}
+
 * {
     scrollbar-color: #8a8a8a transparent;
     scrollbar-width: thin;
@@ -344,4 +354,8 @@ code {
 
 .vue-data-ui-component svg:focus-visible {
     outline-offset: 0 !important;
+}
+
+html {
+    scrollbar-gutter: stable;
 }
