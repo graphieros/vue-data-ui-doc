@@ -236,6 +236,7 @@ const dsTypeCode = computed(() => {
     return `type VueUiSparkbarDatasetItem = {
     name: string
     value: number
+    color?: string
     prefix?: string // ${translations.value.docs.comments.onion.prefix[store.lang]}
     suffix?: string // ${translations.value.docs.comments.onion.suffix[store.lang]}
     rounding?: number
