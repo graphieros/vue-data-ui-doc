@@ -205,6 +205,7 @@ const config = ref({
                 roundingPercentage: 0,
                 prefix: "",
                 suffix: "",
+                showValue: true,
                 selectAllToggle: {
                     show: false,
                     backgroundColor: "#E1E5E8",
@@ -406,6 +407,7 @@ const darkModeConfig = ref({
                 roundingPercentage: 0,
                 prefix: "",
                 suffix: "",
+                showValue: true,
                 selectAllToggle: {
                     show: false,
                     backgroundColor: "#3A3A3A",
@@ -1344,6 +1346,14 @@ const customFormatCode =
                                     <BaseAttr
                                         name="show"
                                         attr="style.chart.legend.show"
+                                        type="checkbox"
+                                        defaultVal="true"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="showValue"
+                                        attr="style.chart.legend.showValue"
                                         type="checkbox"
                                         defaultVal="true"
                                         :light="mutableConfig"

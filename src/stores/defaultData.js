@@ -21920,6 +21920,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "legend",
                     },
                     {
+                        key: "style.chart.legend.showValue",
+                        def: true,
+                        type: "checkbox",
+                        label: ['value', 'is', 'show'],
+                        category: "legend",
+                    },
+                    {
                         key: "style.chart.legend.position",
                         def: "top",
                         type: "select",

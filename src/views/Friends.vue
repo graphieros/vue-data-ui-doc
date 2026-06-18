@@ -27,7 +27,7 @@ const translations = computed(() => store.translations);
                 {{ translations.menu.friends[store.lang] }}
             </h1>
     </div>
-    <div>
+    <div class="pb-12">
       <AgentScanAd/>
       <NpmxAd/>
       <CockpitAd/>

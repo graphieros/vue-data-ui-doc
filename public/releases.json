@@ -1,5 +1,26 @@
 [
     {
+        "version": "v 3.21.6",
+        "date": "2026-06-18",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Performance rewrite",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Fix data labels x value in continuous mode",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiHorizontalBar",
+                "description": "Add config option to show/hide value in legend",
+                "link": "/docs#vue-ui-horizontal-bar"
+            }
+        ]
+    },
+    {
         "version": "v 3.21.5",
         "date": "2026-06-15",
         "updates": [
