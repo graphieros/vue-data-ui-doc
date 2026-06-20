@@ -1,5 +1,27 @@
 [
     {
+        "version": "v 3.21.10",
+        "date": "2026-06-20",
+        "updates": [
+            {
+                "component": "Zoom minimap",
+                "description": "Fix runtime freeze when clicking the zoom, when focusOnDrag is true",
+                "link": ""
+            }
+        ]
+    },
+    {
+        "version": "v 3.21.9",
+        "date": "2026-06-19",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix issues with path and dot transitions",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.21.7",
         "date": "2026-06-18",
         "updates": [
