@@ -28,6 +28,7 @@ import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import { useMenuItems } from "../components/useMenuItems";
 import BaseColorInput from "../components/BaseColorInput.vue";
+import DocComposables from "../components/docs/DocComposables.vue";
 
 const DocVueUiXy = defineAsyncComponent(
     () => import("../components/docs/DocVueUiXy.vue"),
@@ -212,6 +213,7 @@ const DocVueUiHistoryPlot = defineAsyncComponent(
 const DocUtilityFunctions = defineAsyncComponent(
     () => import("../components/docs/DocUtilityFunctions.vue"),
 );
+const DocComposabled = defineAsyncComponent(() => import('../components/docs/DocComposables.vue'));
 const DocVueUiCirclePack = defineAsyncComponent(
     () => import("../components/docs/DocVueUiCirclePack.vue"),
 );
@@ -995,6 +997,9 @@ const selectedConfig = computed(() => {
                         '/docs#utility-functions'
                     "
                 />
+            </Transition>
+            <Transition name="fade">
+                <DocComposables v-if="router.currentRoute.value.fullPath === '/docs#composables'"/>
             </Transition>
             <Transition name="fade">
                 <DocVueUiCirclePack

@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.22.0",
+        "date": "2026-06-23",
+        "updates": [
+            {
+                "component": "Composables",
+                "description": "Add new useTooltipPosition composable",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.21.10",
         "date": "2026-06-20",
         "updates": [

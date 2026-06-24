@@ -839,6 +839,14 @@ const smallMenu = ref([
         tooltipContent: "",
         component: "Utils",
     },
+    {
+        route: "/docs#composables",
+        icon: 'vueDataUi',
+        cssClasses: "",
+        isSelected: isSelected,
+        tooltipContent: "",
+        component: "Composables"
+    }
 ]);
 
 const isTooltip = ref(false);
@@ -849,6 +857,8 @@ function showTooltip(source) {
 
     if (source.route === "/docs#utility-functions") {
         tooltipContent.value = `<div>${translations.value.utilityFunctions[store.lang]}</div>`;
+    } else if(source.route === "/docs#composables") {
+        tooltipContent.value = '<div>Composables</div>';
     } else {
         tooltipContent.value = `<div class="flex flex-center flex-col gap-2 place-items-center"><div class="flex flex-row place-items-center"><span>VueUi</span><b class="text-app-blue">${source.tooltipContent}</b></div>${
             source.thumb
@@ -1281,6 +1291,11 @@ const sideMenuItems = computed(() => {
                         translations.value.utilityFunctions[store.lang],
                     icon: "func",
                 },
+                {
+                    route: "/docs#composables",
+                    componentName: 'Composables',
+                    icon: 'vueDataUi'
+                }
             ],
             icon: "func",
         },
