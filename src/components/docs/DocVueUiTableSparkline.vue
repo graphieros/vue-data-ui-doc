@@ -100,6 +100,7 @@ const config = ref({
         strokeWidth: 3,
         type: "line",
         smooth: true,
+        cutNullValues: false,
         dimensions: {
             width: 150,
             heightRatio: 1,
@@ -205,6 +206,7 @@ const darkModeConfig = ref({
         strokeWidth: 3,
         type: "line",
         smooth: true,
+        cutNullValues: false,
         dimensions: {
             width: 150,
             heightRatio: 1,
@@ -710,6 +712,15 @@ function goToPage(route) {
                                 attr="sparkline.smooth"
                                 type="checkbox"
                                 defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                                @change="forceChartUpdate()"
+                            />
+                            <BaseAttr
+                                name="cutNullValues"
+                                attr="sparkline.cutNullValues"
+                                type="checkbox"
+                                defaultVal="false"
                                 :light="mutableConfig"
                                 :dark="mutableConfigDarkMode"
                                 @change="forceChartUpdate()"

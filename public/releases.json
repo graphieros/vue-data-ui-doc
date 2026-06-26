@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.22.1",
+        "date": "2026-06-26",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Add config option to cut null values",
+                "link": "/docs#vue-ui-sparkline"
+            },
+            {
+                "component": "VueUiTableSparkline",
+                "description": "Add config option to cut null values in sparklines",
+                "link": "/docs#vue-ui-table-sparkline"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.0",
         "date": "2026-06-23",
         "updates": [

@@ -2609,6 +2609,30 @@ export default function useExamples() {
         { period: "T19", value: 55 },
     ]);
 
+    const DATASET_SPARKLINE_WITH_NULLS = ref([
+        { period: "T1", value: 55 },
+        { period: "T0", value: 89 },
+        { period: "T3", value: 21 },
+        { period: "T2", value: 34 },
+        { period: "T4", value: null },
+        { period: "T6", value: null },
+        { period: "T5", value: null },
+        { period: "T9", value: 36 },
+        { period: "T7", value: null },
+        { period: "T8", value: 24 },
+        { period: "T11", value: 21 },
+        { period: "T10", value: null },
+        { period: "T17", value: 21 },
+        { period: "T12", value: 6 },
+        { period: "T13", value: 9 },
+        { period: "T18", value: 34 },
+        { period: "T20", value: 89 },
+        { period: "T14", value: 5 },
+        { period: "T16", value: 13 },
+        { period: "T15", value: 8 },
+        { period: "T19", value: 55 },
+    ]);
+
     //-------------- VUE-UI-STACKLINE --------------//
     const CONFIG_STACKLINE_BASE = computed(() => {
         return {
@@ -8972,6 +8996,132 @@ export default function useExamples() {
                     es: "Spline con segmentos discontinuos",
                     ko: "점선 구간이 있는 스플라인 곡선",
                     ar: "منحنى سبلاين مع مقاطع متقطعة",
+                },
+            },
+            // SPARKLINE STRAIGHT CUT NULL VALUES
+            {
+                dataset: DATASET_SPARKLINE_WITH_NULLS.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        style: {
+                            line: {
+                                cutNullValues: true
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-cut-nulls",
+                link: "vue-ui-sparkline",
+                description: {
+                    en: "Line with cut null values",
+                    fr: "Ligne avec valeurs nulles coupées",
+                    pt: "Linha com valores nulos cortados",
+                    de: "Linie mit ausgeschnittenen Nullwerten",
+                    zh: "截断空值的折线",
+                    ja: "null値を切断した線",
+                    es: "Línea con valores nulos cortados",
+                    ko: "null 값이 잘린 선",
+                    ar: "خط مع قيم فارغة مقطوعة",
+                },
+            },
+            // SPARKLINE STRIAGHT AREA CUT NULL VALUES
+            {
+                dataset: DATASET_SPARKLINE_WITH_NULLS.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        style: {
+                            line: {
+                                cutNullValues: true,
+                            },
+                            area: {
+                                show: true,
+                                color: "#1F77B4",
+                            },
+                        }
+                    }
+                }),
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-cut-nulls-area",
+                link: "vue-ui-sparkline",
+                description: {
+                    en: "Line with area with cut null values",
+                    fr: "Ligne avec aire et valeurs nulles coupées",
+                    pt: "Linha com área e valores nulos cortados",
+                    de: "Linie mit Fläche und ausgeschnittenen Nullwerten",
+                    zh: "带面积且截断空值的折线",
+                    ja: "null値を切断したエリア付き線",
+                    es: "Línea con área y valores nulos cortados",
+                    ko: "null 값이 잘린 영역 포함 선",
+                    ar: "خط مع مساحة وقيم فارغة مقطوعة",
+                },
+            },
+            // SPARKLINE SPLINE CUT NULL VALUES
+            {
+                dataset: DATASET_SPARKLINE_WITH_NULLS.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        style: {
+                            line: {
+                                cutNullValues: true,
+                                smooth: true,
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-cut-nulls-spline",
+                link: "vue-ui-sparkline",
+                description: {
+                    en: "Spline with cut null values",
+                    fr: "Courbe avec valeurs nulles coupées",
+                    pt: "Curva spline com valores nulos cortados",
+                    de: "Splinekurve mit ausgeschnittenen Nullwerten",
+                    zh: "截断空值的样条曲线",
+                    ja: "null値を切断したスプライン曲線",
+                    es: "Curva spline con valores nulos cortados",
+                    ko: "null 값이 잘린 스플라인 곡선",
+                    ar: "منحنى سبلاين مع قيم فارغة مقطوعة",
+                },
+            },
+            // SPARKLINE SPLINE AREA CUT NULL VALUES
+            {
+                dataset: DATASET_SPARKLINE_WITH_NULLS.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_SPARKLINE_BASE.value,
+                    userConfig: {
+                        style: {
+                            line: {
+                                cutNullValues: true,
+                                smooth: true,
+                            },
+                            area: {
+                                show: true,
+                                color: "#1F77B4",
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiSparkline",
+                icon: "chartSparkline",
+                id: "sparkline-cut-nulls-spline-area",
+                link: "vue-ui-sparkline",
+                description: {
+                    en: "Spline with area with cut null values",
+                    fr: "Courbe avec aire et valeurs nulles coupées",
+                    pt: "Curva spline com área e valores nulos cortados",
+                    de: "Splinekurve mit Fläche und ausgeschnittenen Nullwerten",
+                    zh: "带面积且截断空值的样条曲线",
+                    ja: "null値を切断したエリア付きスプライン曲線",
+                    es: "Curva spline con área y valores nulos cortados",
+                    ko: "null 값이 잘린 영역 포함 스플라인 곡선",
+                    ar: "منحنى سبلاين مع مساحة وقيم فارغة مقطوعة",
                 },
             },
             // SPARKLINE TERMPERATURE COLORS
