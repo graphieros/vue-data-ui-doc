@@ -3557,6 +3557,9 @@ export default function useExamples() {
                 chart: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
+                    words: {
+                        proximity: 0,
+                    },
                     tooltip: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
@@ -11316,6 +11319,33 @@ export default function useExamples() {
                     es: "Paleta personalizada con cambio progresivo de tono",
                     ko: "점진적인 색조 변화를 포함한 사용자 정의 팔레트",
                     ar: "لوحة ألوان مخصصة مع انتقال تدريجي في درجات اللون",
+                },
+            },
+            // WORD CLOUD ENGLISH WITH HIGHLIGHTED WORDS
+            {
+                dataset: DATASET_WORDCLOUD_ENGLISH.value.map(w => ({
+                    ...w,
+                    name: w.name.toLowerCase(),
+                    color: ['server', 'backend', 'protocol', 'authentication', 'authorization'].includes(w.name.toLowerCase()) ? '#FF6600' : '#666666'
+                })),
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_WORD_WLOUD_BASIC.value,
+                    userConfig: {}
+                }),
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-english-highlights",
+                link: "vue-ui-word-cloud",
+                description: {
+                    en: "Word cloud with custom individual colors",
+                    fr: "Nuage de mots avec des couleurs individuelles personnalisées",
+                    pt: "Nuvem de palavras com cores individuais personalizadas",
+                    de: "Wortwolke mit benutzerdefinierten individuellen Farben",
+                    zh: "带有自定义单独颜色的词云",
+                    ja: "カスタムの個別色を使用したワードクラウド",
+                    es: "Nube de palabras con colores individuales personalizados",
+                    ko: "사용자 지정 개별 색상이 적용된 단어 구름",
+                    ar: "سحابة كلمات بألوان فردية مخصصة",
                 },
             },
             // WORD CLOUD CUSTOM PALETTE BACKGROUND

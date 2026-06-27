@@ -33654,20 +33654,11 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                     {
                         key: "style.chart.words.proximity",
-                        def: 10,
+                        def: 0,
                         type: "number",
-                        min: 1,
-                        max: 100,
+                        min: 0,
+                        max: 20,
                         label: ["words", "is", "proximity"],
-                        category: "general",
-                    },
-                    {
-                        key: "style.chart.words.packingWeight",
-                        def: 1,
-                        type: "number",
-                        min: 1,
-                        max: 50,
-                        label: ["words", "is", "packing force"],
                         category: "general",
                     },
                     {
@@ -33683,6 +33674,14 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         type: "checkbox",
                         label: ["words", "is", "use color palette"],
                         category: "general",
+                    },
+                    {
+                        key: 'quality',
+                        def: 'fast',
+                        type: 'select',
+                        options: ['fast', 'balanced', 'precise'],
+                        label: ['quality'],
+                        category: 'general'
                     },
                     {
                         key: "style.chart.title.text",

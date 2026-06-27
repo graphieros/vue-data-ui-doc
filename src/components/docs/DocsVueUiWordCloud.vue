@@ -95,6 +95,7 @@ const config = ref({
     }),
     useCssAnimation: true,
     animationDelayMs: 20,
+    quality: 'fast',
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -154,8 +155,7 @@ const config = ref({
                 maxFontSize: 100,
                 minFontSize: 20,
                 bold: false,
-                proximity: 20,
-                packingWeight: 10,
+                proximity: 0,
                 color: "#2D353C",
                 usePalette: true,
                 hoverOpacity: 0.5,
@@ -242,6 +242,7 @@ const darkModeConfig = ref({
     }),
     useCssAnimation: true,
     animationDelayMs: 20,
+    quality: 'fast',
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -301,8 +302,7 @@ const darkModeConfig = ref({
                 maxFontSize: 100,
                 minFontSize: 20,
                 bold: false,
-                proximity: 20,
-                packingWeight: 10,
+                proximity: 0,
                 color: "#CCCCCC",
                 usePalette: true,
                 hoverOpacity: 0.5,
@@ -620,6 +620,7 @@ function goToPage(route) {
                             :dark="mutableConfigDarkMode"
                             @change="forceChartUpdate()"
                         />
+                        <BaseAttr name="quality" attr="quality" type="select" defaultVal="fast" :options="['fast', 'balanced', 'precise']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails
                                 attr="translations"
@@ -968,20 +969,9 @@ function goToPage(route) {
                                         name="proximity"
                                         attr="style.chart.words.proximity"
                                         type="number"
-                                        defaultVal="10"
+                                        defaultVal="0"
                                         :min="0"
                                         :max="100"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="packingWeight"
-                                        attr="style.chart.words.packingWeight"
-                                        type="number"
-                                        defaultVal="1"
-                                        :min="0"
-                                        :max="20"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                         @change="forceChartUpdate()"

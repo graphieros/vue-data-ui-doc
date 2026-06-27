@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.22.2",
+        "date": "2026-06-27",
+        "updates": [
+            {
+                "component": "VueUiWordCloud",
+                "description": "Improve layout for arabic words, add individual datapoint colors, add quality config option",
+                "link": "/docs#vue-ui-word-cloud"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.1",
         "date": "2026-06-26",
         "updates": [
