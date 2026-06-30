@@ -1,5 +1,26 @@
 [
     {
+        "version": "v 3.22.3",
+        "date": "2026-06-30",
+        "updates": [
+            {
+                "component": "VueUiStackbar",
+                "description": "Fix reactivity issue of the chart area when scale labels auto-resize",
+                "link": "/docs#vue-ui-stackbar"
+            },
+            {
+                "component": "VueUiStackline",
+                "description": "Fix reactivity issue of the chart area when scale labels auto-resize",
+                "link": "/docs#vue-ui-stackline"
+            },
+            {
+                "component": "VueUiRidgeline",
+                "description": "Keep Unicode letters and numbers in slugs",
+                "link": "/docs#vue-ui-ridgeline"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.2",
         "date": "2026-06-27",
         "updates": [
