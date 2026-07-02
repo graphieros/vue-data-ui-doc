@@ -5411,6 +5411,58 @@ export default function useExamples() {
         },
     ]);
 
+    const DATASET_HISTORY_PLOT_TEMPERATURE = ref([
+        {
+            name: "2024",
+            values: [
+                { x: 355, y: 2.3, label: "January" },
+                { x: 112, y: 1.2, label: "February" },
+                { x: 313, y: 0.4, label: "March" },
+                { x: 555, y: 1.2, label: "April" },
+            ],
+            temperatureColors: ["#00FF00", '#FF0000'],
+            temperatureAngle: 0,
+            usePlotTemperatureColors: true,
+            temperatureIndependant: false
+        },
+        {
+            name: "2025",
+            values: [
+                { x: 1000, y: 2, label: "January" },
+                { x: 655, y: 4, label: "February" },
+                { x: 350, y: 3, label: "March" },
+                { x: 815, y: 2.5, label: "April" },
+            ],
+            temperatureColors: ["#00FF00", '#FF0000'],
+            temperatureAngle: 0,
+            usePlotTemperatureColors: true,
+            temperatureIndependant: false
+        },
+    ]);
+
+    const DATASET_HISTORY_PLOT_SMOOTH = ref([
+        {
+            name: "2024",
+            values: [
+                { x: 355, y: 2.3, label: "January" },
+                { x: 112, y: 1.2, label: "February" },
+                { x: 313, y: 0.4, label: "March" },
+                { x: 555, y: 1.2, label: "April" },
+            ],
+            smooth: true
+        },
+        {
+            name: "2025",
+            values: [
+                { x: 1000, y: 2, label: "January" },
+                { x: 655, y: 4, label: "February" },
+                { x: 350, y: 3, label: "March" },
+                { x: 815, y: 2.5, label: "April" },
+            ],
+            smooth: true
+        },
+    ]);
+
     const CONFIG_HISTORY_PLOT_BASIC = computed(() => {
         return {
             table: {
@@ -12764,6 +12816,99 @@ export default function useExamples() {
                     ar: "علامات نقاط البيانات بأشكال هندسية",
                 },
             },
+            // STRIP PLOT SCATTER
+            {
+                dataset: DATASET_STRIP_PLOT_BASIC.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STRIP_PLOT_BASE.value,
+                    userConfig: {
+                        type: 'scatter'
+                    }
+                }),
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-scatter",
+                link: "vue-ui-strip-plot",
+                description: {
+                    en: "With plots displayed as scattered clusters",
+                    fr: "Avec des points affichés en groupes dispersés",
+                    pt: "Com pontos exibidos como agrupamentos dispersos",
+                    de: "Mit Punkten, die als verstreute Cluster angezeigt werden",
+                    zh: "点以分散的簇状显示",
+                    ja: "点を散在するクラスターとして表示",
+                    es: "Con puntos mostrados como grupos dispersos",
+                    ko: "점이 흩어진 클러스터로 표시됨",
+                    ar: "مع عرض النقاط كمجموعات متناثرة",
+                },
+            },
+            // STRIP PLOT VIOLIN
+            {
+                dataset: DATASET_STRIP_PLOT_BASIC.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STRIP_PLOT_BASE.value,
+                    userConfig: {
+                        type: 'violin',
+                        style: {
+                            chart: {
+                                violin: {
+                                    boxPlot: {
+                                        medianCircleFill: isDarkMode.value ? '#3A3A3A' : '#FFFFFF'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-violin",
+                link: "vue-ui-strip-plot",
+                description: {
+                    en: "Display as violin chart",
+                    fr: "Afficher sous forme de graphique en violon",
+                    pt: "Exibir como gráfico de violino",
+                    de: "Als Violindiagramm anzeigen",
+                    zh: "显示为小提琴图",
+                    ja: "バイオリンチャートとして表示",
+                    es: "Mostrar como gráfico de violín",
+                    ko: "바이올린 차트로 표시",
+                    ar: "عرض كمخطط كمان",
+                },
+            },
+            // STRIP PLOT SCATTER VIOLIN
+            {
+                dataset: DATASET_STRIP_PLOT_BASIC.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STRIP_PLOT_BASE.value,
+                    userConfig: {
+                        type: 'violin',
+                        style: {
+                            chart: {
+                                violin: {
+                                    boxPlot: {
+                                        show: false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }),
+                component: "VueUiStripPlot",
+                icon: "chartStripPlot",
+                id: "strip-plot-scatter-violin",
+                link: "vue-ui-strip-plot",
+                description: {
+                    en: "Display as violin chart with scattered plots",
+                    fr: "Afficher sous forme de graphique en violon avec des points dispersés",
+                    pt: "Exibir como gráfico de violino com pontos dispersos",
+                    de: "Als Violindiagramm mit verstreuten Punkten anzeigen",
+                    zh: "显示为带分散点的小提琴图",
+                    ja: "散在する点付きのバイオリンチャートとして表示",
+                    es: "Mostrar como gráfico de violín con puntos dispersos",
+                    ko: "흩어진 점이 있는 바이올린 차트로 표시",
+                    ar: "عرض كمخطط كمان مع نقاط متناثرة",
+                },
+            },
             // STRIP PLOT SHAPES STAR, BACKGROUND
             {
                 dataset: DATASET_STRIP_PLOT_BASIC.value,
@@ -13721,7 +13866,7 @@ export default function useExamples() {
                 id: "history-plot-thick-path",
                 link: "vue-ui-history-plot",
                 description: {
-                    en: "With Thick path",
+                    en: "With thick path",
                     fr: "Avec chemin épais",
                     pt: "Com caminho grosso",
                     de: "Mit dickem Pfad",
@@ -13730,6 +13875,46 @@ export default function useExamples() {
                     es: "Con trazo grueso",
                     ko: "두꺼운 경로 포함",
                     ar: "بمسار سميك",
+                },
+            },
+            // HISTORY PLOT SMOOTH
+            {
+                dataset: DATASET_HISTORY_PLOT_SMOOTH.value,
+                config: CONFIG_HISTORY_PLOT_BASIC.value,
+                component: "VueUiHistoryPlot",
+                icon: "chartHistoryPlot",
+                id: "history-plot-smooth",
+                link: "vue-ui-history-plot",
+                description: {
+                    en: "With curved lines",
+                    fr: "Avec des lignes courbes",
+                    pt: "Com linhas curvas",
+                    de: "Mit gekrümmten Linien",
+                    zh: "使用曲线",
+                    ja: "曲線を使用",
+                    es: "Con líneas curvas",
+                    ko: "곡선 사용",
+                    ar: "مع خطوط منحنية",
+                },
+            },
+            // HISTORY PLOT TEMPERATURE
+            {
+                dataset: DATASET_HISTORY_PLOT_TEMPERATURE.value,
+                config: CONFIG_HISTORY_PLOT_BASIC.value,
+                component: "VueUiHistoryPlot",
+                icon: "chartHistoryPlot",
+                id: "history-plot-temperature",
+                link: "vue-ui-history-plot",
+                description: {
+                    en: "With per-series temperature colors",
+                    fr: "Avec des couleurs de température par série",
+                    pt: "Com cores de temperatura por série",
+                    de: "Mit Temperaturfarben pro Serie",
+                    zh: "使用按系列设置的温度颜色",
+                    ja: "系列ごとの温度カラーを使用",
+                    es: "Con colores de temperatura por serie",
+                    ko: "시리즈별 온도 색상 사용",
+                    ar: "مع ألوان حرارة لكل سلسلة",
                 },
             },
             // BASIC HISTORY PLOT BACKGROUND

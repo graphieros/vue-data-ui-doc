@@ -85,6 +85,7 @@ const options = ref({
         name: "...",
         color: "#CCCCCC",
         values: [{ x: 0, y: 0, label: "..." }],
+        smooth: false,
     },
 });
 
@@ -233,6 +234,13 @@ const finalConfig = computed(() => {
                                     </th>
                                     <th class="text-left text-xs">
                                         {{
+                                            makerTranslations.labels.smooth[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                    <th class="text-left text-xs">
+                                        {{
                                             makerTranslations.labels.series[
                                                 store.lang
                                             ]
@@ -270,6 +278,13 @@ const finalConfig = computed(() => {
                                             class="h-[36px]"
                                             type="color"
                                             v-model="datasetItems[i].color"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td class="px-4">
+                                        <input
+                                            type="checkbox"
+                                            v-model="datasetItems[i].smooth"
                                             @change="saveDatasetToLocalStorage"
                                         />
                                     </td>

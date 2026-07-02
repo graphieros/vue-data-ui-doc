@@ -1,5 +1,26 @@
 [
     {
+        "version": "v 3.22.5",
+        "date": "2026-07-02",
+        "updates": [
+            {
+                "component": "PNG prints",
+                "description": "Shave-off extra white space when the chart contains a zoom range slider",
+                "link": ""
+            },
+            {
+                "component": "VueUiStripPlot",
+                "description": "Add 'scatter' and 'violin' optional display types",
+                "link": "/docs#vue-ui-strip-plot"
+            },
+            {
+                "component": "VueUiHistoryPlot",
+                "description": "Add temperature colors and optional smooth lines",
+                "link": "/docs#vue-ui-history-plot"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.3",
         "date": "2026-06-30",
         "updates": [

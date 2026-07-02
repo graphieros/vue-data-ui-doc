@@ -5112,6 +5112,16 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "datapoints",
                     },
                     {
+                        key: "style.chart.plots.unselectedOpacity",
+                        def: 0.1,
+                        type: "number",
+                        min: 0,
+                        max: 1,
+                        step: 0.1,
+                        label: ["plot", "unselected", "is", "opacity"],
+                        category: "datapoints",
+                    },
+                    {
                         key: "style.chart.plots.gradient.show",
                         def: true,
                         type: "checkbox",
@@ -32698,6 +32708,11 @@ export const useDefaultDataStore = defineStore("defaultData", {
                                 value: 30,
                                 id: "33",
                             },
+                            {
+                                name: "C1 P4",
+                                value: 31,
+                                id: "33",
+                            },
                         ],
                     },
                     {
@@ -32715,10 +32730,23 @@ export const useDefaultDataStore = defineStore("defaultData", {
                                 value: 20,
                                 id: "55",
                             },
+                            {
+                                name: "C2 P3",
+                                value: 17,
+                                id: "55",
+                            },
                         ],
                     },
                 ],
                 model: [
+                    {
+                        key: 'type',
+                        def: 'classic',
+                        type: 'select',
+                        label: 'type',
+                        category: 'general',
+                        options: ['classic', 'scatter', 'violin']
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -32940,7 +32968,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                     {
                         key: "style.chart.plots.opacity",
-                        def: 0.5,
+                        def: 0.9,
                         type: "number",
                         min: 0.1,
                         max: 1,
@@ -32950,9 +32978,9 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                     {
                         key: "style.chart.plots.radius",
-                        def: 20,
+                        def: 4,
                         type: "number",
-                        min: 5,
+                        min: 2,
                         max: 64,
                         label: "radius",
                         category: "plots",
@@ -33005,6 +33033,163 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         max: 100,
                         label: ["gradient", "is", "intensity"],
                         category: "plots",
+                    },
+                    {
+                        key: 'style.chart.violin.widthRatio',
+                        def: 1,
+                        type: 'number',
+                        min: 0.1,
+                        max: 1,
+                        step: 0.1,
+                        label: ['violin', 'width', 'is', 'ratio'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.strokeWidth',
+                        def: 1,
+                        type: 'number',
+                        min: 0,
+                        max: 6,
+                        label: ['violin', 'border', 'is', 'thickness'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.opacity',
+                        def: 0.2,
+                        type: 'number',
+                        min: 0,
+                        max: 1.05,
+                        step: 0.05,
+                        label: ['violin', 'is', 'opacity'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.strokeOpacity',
+                        def: 0.35,
+                        type: 'number',
+                        min: 0,
+                        max: 1.05,
+                        step: 0.05,
+                        label: ['violin', 'border', 'is', 'opacity'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.useSerieColor',
+                        def: true,
+                        type: 'checkbox',
+                        label: ['violin', 'is', 'use serie color'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.stroke',
+                        def: '#5A5A5A',
+                        type: 'color',
+                        label: ['violin', 'border', 'is', 'color'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.fill',
+                        def: '#5A5A5A',
+                        type: 'color',
+                        label: ['violin', 'is', 'backgroundColor'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.boxPlot.show',
+                        def: true,
+                        type: 'checkbox',
+                        label: ['violin', 'box plot', 'is', 'show'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.boxPlot.widthRatio',
+                        def: 1,
+                        type: 'number',
+                        min: 0.1,
+                        max: 1.5,
+                        step: 0.1,
+                        label: ['violin', 'box plot', 'is', 'width', 'ratio'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.boxPlot.useSerieColor',
+                        def: true,
+                        type: 'checkbox',
+                        label: ['violin', 'box plot', 'is', 'use serie color'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.boxPlot.color',
+                        def: '#5A5A5A',
+                        type: 'color',
+                        label: ['violin', 'box plot', 'is', 'color'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.boxPlot.medianCircleRadiusRatio',
+                        def: 1,
+                        type: 'number',
+                        min: 0.1,
+                        max: 1,
+                        step: 0.1,
+                        label: ['violin', 'box plot', 'median circle', 'is', 'radius', 'ratio'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.boxPlot.medianCircleFill',
+                        def: '#FFFFFF',
+                        type: 'color',
+                        label: ['violin', 'box plot', 'median circle', 'is', 'fill'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.tooltipLabels.upperAdjacent',
+                        def: 'Upper adjacent',
+                        type: 'text',
+                        label: ['violin', 'box plot', 'translation', 'is', 'Upper adjacent'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.tooltipLabels.q3',
+                        def: 'Q3',
+                        type: 'text',
+                        label: ['violin', 'box plot', 'translation', 'is', 'Q3'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.tooltipLabels.median',
+                        def: 'Median',
+                        type: 'text',
+                        label: ['violin', 'box plot', 'translation', 'is', 'median'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.tooltipLabels.q1',
+                        def: 'Q1',
+                        type: 'text',
+                        label: ['violin', 'box plot', 'translation', 'is', 'Q1'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.tooltipLabels.lowerAdjacent',
+                        def: 'Lower adjacent',
+                        type: 'text',
+                        label: ['violin', 'box plot', 'translation', 'is', 'Lower adjacent'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.tooltipLabels.iqr',
+                        def: 'IQR',
+                        type: 'text',
+                        label: ['violin', 'box plot', 'translation', 'is', 'IQR'],
+                        category: 'plots'
+                    },
+                    {
+                        key: 'style.chart.violin.tooltipLabels.count',
+                        def: 'Count',
+                        type: 'text',
+                        label: ['violin', 'box plot', 'translation', 'is', 'Count'],
+                        category: 'plots'
                     },
                     {
                         key: "style.chart.labels.prefix",

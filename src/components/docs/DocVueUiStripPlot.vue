@@ -134,6 +134,7 @@ const config = ref({
     responsive: false,
     responsiveProportionalSizing: true,
     useCssAnimation: true,
+    type: 'classic',
     a11y: {
         translations: {
             keyboardNavigation:
@@ -228,14 +229,40 @@ const config = ref({
                 },
             },
             plots: {
-                opacity: 0.5,
-                radius: 20,
+                opacity: 0.9,
+                radius: 4,
                 stroke: "#FFFFFF",
                 strokeWidth: 1,
                 shape: "circle",
                 gradient: {
                     show: true,
                     intensity: 40,
+                },
+            },
+            violin: {
+                widthRatio: 1,
+                strokeWidth: 1,
+                opacity: 0.2,
+                strokeOpacity: 0.35,
+                useSerieColor: true,
+                stroke: '#5A5A5A',
+                fill: '#5A5A5A',
+                boxPlot: {
+                    show: true,
+                    widthRatio: 1,
+                    useSerieColor: true,
+                    color: '#5A5A5A',
+                    medianCircleRadiusRatio: 1,
+                    medianCircleFill: '#F3F4F6',
+                },
+                tooltipLabels: {
+                    upperAdjacent: 'Upper adjacent',
+                    q3: 'Q3',
+                    median: 'Median',
+                    q1: 'Q1',
+                    lowerAdjacent: 'Lower adjacent',
+                    iqr: 'IQR',
+                    count: 'Count',
                 },
             },
             labels: {
@@ -320,6 +347,7 @@ const darkModeConfig = ref({
     responsive: false,
     responsiveProportionalSizing: true,
     useCssAnimation: true,
+    type: 'classic',
     a11y: {
         translations: {
             keyboardNavigation:
@@ -414,14 +442,40 @@ const darkModeConfig = ref({
                 },
             },
             plots: {
-                opacity: 0.5,
-                radius: 20,
+                opacity: 0.9,
+                radius: 4,
                 stroke: "#2A2A2A",
                 strokeWidth: 1,
                 shape: "circle",
                 gradient: {
                     show: true,
                     intensity: 40,
+                },
+            },
+            violin: {
+                widthRatio: 1,
+                strokeWidth: 1,
+                opacity: 0.2,
+                strokeOpacity: 0.35,
+                useSerieColor: true,
+                stroke: '#5A5A5A',
+                fill: '#5A5A5A',
+                boxPlot: {
+                    show: true,
+                    widthRatio: 1,
+                    useSerieColor: true,
+                    color: '#5A5A5A',
+                    medianCircleRadiusRatio: 1,
+                    medianCircleFill: '#2A2A2A',
+                },
+                tooltipLabels: {
+                    upperAdjacent: 'Upper adjacent',
+                    q3: 'Q3',
+                    median: 'Median',
+                    q1: 'Q1',
+                    lowerAdjacent: 'Lower adjacent',
+                    iqr: 'IQR',
+                    count: 'Count',
                 },
             },
             labels: {
@@ -762,6 +816,7 @@ const customFormatCode =
                         attr="const config: VueUiStripPlotConfig"
                         equal
                     >
+                        <BaseAttr name="type" attr="type" type="select" :options="['classic', 'scatter', 'violin']" defaultVal="classic" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr
                             inactive
                             name="responsive"
@@ -1470,6 +1525,32 @@ const customFormatCode =
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />
+                                    </BaseDetails>
+                                </BaseDetails>
+                                <BaseDetails attr="violin" :level="3" title="style.chart.violin">
+                                    <BaseAttr name="widthRatio" attr="style.chart.violin.widthRatio" type="number" defaultVal="1" :min="0" :max="1" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="strokeWidth" attr="style.chart.violin.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :step="0.5" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="opacity" attr="style.chart.violin.opacity" type="number" defaultVal="0.2" :min="0" :max="1" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="strokeOpacity" attr="style.chart.violin.strokeOpacity" type="number" defaultVal="0.35" :min="0" :max="1.05" :step="0.05" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="useSerieColor" attr="style.chart.violin.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="stroke" attr="style.chart.violin.stroke" type="color" defaultVal="#5A5A5A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="fill" attr="style.chart.violin.fill" type="color" defaultVal="#5A5A5A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails attr="boxPlot" :level="4" title="style.chart.violin.boxPlot">
+                                        <BaseAttr name="show" attr="style.chart.violin.boxPlot.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="widthRatio" attr="style.chart.violin.boxPlot.widthRatio" type="number" defaultVal="1" :min="0" :max="1" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="useSerieColor" attr="style.chart.violin.boxPlot.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="color" attr="style.chart.violin.boxPlot.color" type="color" defaultVal="#5A5A5A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="medianCircleRadiusRatio" attr="style.chart.violin.boxPlot.medianCircleRadiusRatio" type="number" defaultVal="1" :min="0" :max="1.5" :step="0.05" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="medianCircleFill" attr="style.chart.violin.boxPlot.medianCircleFill" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    </BaseDetails>
+                                    <BaseDetails attr="tooltipLabels" :level="4" title="style.chart.violin.tooltipLabels">
+                                        <BaseAttr name="upperAdjacent" attr="style.chart.violin.tooltipLabels.upperAdjacent" type="text" defaultVal="Upper adjacent" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                                        <BaseAttr name="q3" attr="style.chart.violin.tooltipLabels.q3" type="text" defaultVal="Q3" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                                        <BaseAttr name="median" attr="style.chart.violin.tooltipLabels.median" type="text" defaultVal="Median" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                                        <BaseAttr name="q1" attr="style.chart.violin.tooltipLabels.q1" type="text" defaultVal="Q1" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                                        <BaseAttr name="lowerAdjacent" attr="style.chart.violin.tooltipLabels.lowerAdjacent" type="text" defaultVal="Lower adjacent" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                                        <BaseAttr name="iqr" attr="style.chart.violin.tooltipLabels.iqr" type="text" defaultVal="IQR" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+                                        <BaseAttr name="count" attr="style.chart.violin.tooltipLabels.count" type="text" defaultVal="Count" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                                     </BaseDetails>
                                 </BaseDetails>
                                 <BaseDetails
