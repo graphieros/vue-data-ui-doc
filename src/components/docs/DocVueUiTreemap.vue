@@ -225,6 +225,9 @@ const config = ref({
             color: "#2D353C",
             height: 800,
             width: 1300,
+            zoom: {
+                show: false,
+            },
             padding: {
                 top: 0,
                 left: 0,
@@ -263,7 +266,7 @@ const config = ref({
                     fontSize: 24,
                     minFontSize: 10,
                     hideUnderProportion: 0.03,
-                    prefix: "Value: ",
+                    prefix: "",
                     suffix: "",
                     rounding: 0,
                     name: {
@@ -404,6 +407,9 @@ const darkModeConfig = ref({
             color: "#CCCCCC",
             height: 800,
             width: 1300,
+            zoom: {
+                show: false,
+            },
             padding: {
                 top: 0,
                 left: 0,
@@ -442,7 +448,7 @@ const darkModeConfig = ref({
                     fontSize: 24,
                     minFontSize: 10,
                     hideUnderProportion: 0.03,
-                    prefix: "Value: ",
+                    prefix: "",
                     suffix: "",
                     rounding: 0,
                     name: {
@@ -919,6 +925,9 @@ const customFormatCode =
                                     :dark="mutableConfigDarkMode"
                                     @change="forceChartUpdate()"
                                 />
+                                <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
+                                    <BaseAttr name="show" attr="style.chart.zoom.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                                </BaseDetails>
                                 <BaseDetails
                                     attr="layout"
                                     :level="3"

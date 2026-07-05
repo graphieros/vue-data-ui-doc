@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.22.6",
+        "date": "2026-07-05",
+        "updates": [
+            {
+                "component": "VueUiTreemap",
+                "description": "Add optional pan zoom feature",
+                "link": "/docs#vue-ui-treemap"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.5",
         "date": "2026-07-02",
         "updates": [

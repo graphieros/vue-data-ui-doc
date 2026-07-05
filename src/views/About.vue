@@ -11,6 +11,7 @@ import ContributorsBars from "../components/ContributorsBars.vue";
 import BaseSponsorCard from "../components/examples/components/BaseSponsorCard.vue";
 import PACKAGE from "../../package.json";
 import BaseNpmx from "../components/BaseNpmx.vue";
+import PackageBreakdown from "../components/PackageBreakdown.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -599,7 +600,7 @@ const wheelConfig = computed(() => {
             </Suspense>
         </div>
 
-        <BaseSponsorCard card tw="my-10 w-full" />
+        <BaseSponsorCard card tw="mt-10 mb-4 w-full" />
 
         <!-- <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors"
       class="w-full mt-12 flex flex-row gap-4 place-items-center justify-center">
@@ -618,8 +619,13 @@ const wheelConfig = computed(() => {
       </div>
     </a> -->
 
+        <BaseCard class="w-full mb-4">
+            <img class="rounded-md" width="100%" :src="`https://npmx.dev/api/embed/downloads.svg?packages=vue-data-ui&metric=downloads&mode=${isDarkMode ? 'dark' : 'light'}&granularity=weekly&locale=en-GB&accent=oklch%280.792+0.153+166.95%29&yLabel=Weekly+Downloads`">
+        </BaseCard>
+
         <BaseCard class="w-full">
             <AboutComponentTypes />
+            <PackageBreakdown />
             <BaseCard type="light">
                 <div class="w-full mb-3 overflow-x-auto">
                     <table
@@ -734,10 +740,6 @@ const wheelConfig = computed(() => {
             </BaseCard>
             <SatisfactionStats />
         </BaseCard>
-
-        <!-- <div class="w-full mt-6">
-            <img class="rounded" width="100%" src="https://npmx.dev/api/embed/downloads.svg?packages=vue-data-ui&metric=downloads&mode=dark&granularity=weekly&locale=en-GB&accent=oklch%280.78+0.148+286.067%29&yLabel=Weekly+Downloads">
-        </div> -->
 
         <div
             v-if="isDarkMode"

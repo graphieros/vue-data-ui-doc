@@ -270,7 +270,7 @@ const config = computed(() => {
             :config="configBar"
         />
     </div>
-    <div class="mx-auto max-w-[500px]">
+    <!-- <div class="mx-auto max-w-[500px]">
         <VueUiNestedDonuts :dataset="nestedDataset" :config="nestedConfig" />
-    </div>
+    </div> -->
 </template>
