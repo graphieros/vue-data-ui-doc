@@ -12,6 +12,7 @@ import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import Fireworks from "../components/special/Fireworks.vue";
 import BaseNpmx from "../components/BaseNpmx.vue";
+import useMobile from "../useMobile.js";
 
 const configs = useConfig();
 
@@ -27,6 +28,8 @@ function changeTheme() {
         store.isDarkMode = true;
     }
 }
+
+const { isMobile } = useMobile()
 
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
@@ -624,7 +627,7 @@ onBeforeUnmount(() => {
                         area: {
                             useGradient: false,
                             color: isDarkMode ? '#5f8aee' : '#87e6bb',
-                            opacity: 20,
+                            opacity: 0,
                         },
                         line: {
                             color: isDarkMode ? '#83a4f2' : '#87e6bb',
@@ -647,13 +650,13 @@ onBeforeUnmount(() => {
                     padding: {
                         top: 0,
                         right: 0,
-                        left: isMobile ? 0 : -110,
+                        left: isMobile ? -50 : -110,
                         bottom: 20,
                     },
                     area: {
                         useGradient: false,
                         color: isDarkMode ? '#5f8aee' : '#87e6bb',
-                        opacity: 20,
+                        opacity: isMobile ? 20 : 100,
                     },
                     line: {
                         color: isDarkMode ? '#83a4f2' : '#87e6bb',

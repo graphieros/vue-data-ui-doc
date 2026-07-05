@@ -80,7 +80,7 @@ const CONFIG_XY = computed(() => {
                 right: 24,
             },
             grid: {
-                // position: 'start',
+                position: 'start',
                 frame: {
                     show: true,
                     stroke: "#9F8A8A",
