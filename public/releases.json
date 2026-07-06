@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.22.7",
+        "date": "2026-07-06",
+        "updates": [
+            {
+                "component": "getImage",
+                "description": "Substract ignored height of zoom slider in the dimensions returned by getImage",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.22.6",
         "date": "2026-07-05",
         "updates": [
