@@ -149,12 +149,22 @@ function fetchContributors() {
     });
 }
 
+function fetchStarHistory() {
+    return useFetch({
+        url: "https://vue-data-ui.graphieros.com/api/get_stars.php",
+        _then: (data) => {
+            store.starHistory = data?.history ?? []
+        }
+    })
+}
+
 onMounted(() => {
     fetchGithubStats();
     fetchCliStats();
     fetchNuxtStats();
     fetchDocStats();
     fetchContributors();
+    fetchStarHistory();
 
     fetch(url.value, {
         method: "GET",

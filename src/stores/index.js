@@ -68,6 +68,7 @@ export const useMainStore = defineStore("main", {
             npmDownloads: [],
             npmDownloadsHome: [],
             contributors: [],
+            starHistory: [],
             downloads: {
                 lib: [],
                 cli: [],

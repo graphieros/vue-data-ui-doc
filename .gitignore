@@ -23,4 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 publish-site.cjs
+stars-cron.cjs
 backend/
