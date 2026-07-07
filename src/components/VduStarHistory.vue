@@ -4,70 +4,70 @@ import { useMainStore } from "../stores";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
-const source = ref([
-    {
-        snapshot_date: "2023-07-24",
-        stars: 0,
-        fetched_at: "2023-07-24 07:59:14",
-    },
-    {
-        snapshot_date: "2023-08-11",
-        stars: 1,
-        fetched_at: "2023-08-11 07:59:14",
-    },
-    {
-        snapshot_date: "2024-03-22",
-        stars: 100,
-        fetched_at: "2024-03-22 07:59:14",
-    },
-    {
-        snapshot_date: "2024-09-23",
-        stars: 400,
-        fetched_at: "2024-09-23 07:59:14",
-    },
-    {
-        snapshot_date: "2024-10-01",
-        stars: 700,
-        fetched_at: "2024-10-01 07:59:14",
-    },
-    {
-        snapshot_date: "2024-10-28",
-        stars: 900,
-        fetched_at: "2024-10-28 07:59:14",
-    },
-    {
-        snapshot_date: "2025-01-01",
-        stars: 1200,
-        fetched_at: "2025-01-01 07:59:14",
-    },
-    {
-        snapshot_date: "2025-05-21",
-        stars: 1400,
-        fetched_at: "2025-05-21 07:59:14",
-    },
-    {
-        snapshot_date: "2025-06-03",
-        stars: 1700,
-        fetched_at: "2025-06-03 07:59:14",
-    },
-    {
-        snapshot_date: "2025-09-19",
-        stars: 1900,
-        fetched_at: "2025-09-19 07:59:14",
-    },
-    {
-        snapshot_date: "2026-03-03",
-        stars: 2200,
-        fetched_at: "2026-03-03 07:59:14",
-    },
-    {
-        snapshot_date: "2026-07-07",
-        stars: 2421,
-        fetched_at: "2026-07-07 07:59:14",
-    },
-])
+// const source = ref([
+//     {
+//         snapshot_date: "2023-07-24",
+//         stars: 0,
+//         fetched_at: "2023-07-24 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2023-08-11",
+//         stars: 1,
+//         fetched_at: "2023-08-11 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2024-03-22",
+//         stars: 100,
+//         fetched_at: "2024-03-22 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2024-09-23",
+//         stars: 400,
+//         fetched_at: "2024-09-23 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2024-10-01",
+//         stars: 700,
+//         fetched_at: "2024-10-01 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2024-10-28",
+//         stars: 900,
+//         fetched_at: "2024-10-28 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2025-01-01",
+//         stars: 1200,
+//         fetched_at: "2025-01-01 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2025-05-21",
+//         stars: 1400,
+//         fetched_at: "2025-05-21 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2025-06-03",
+//         stars: 1700,
+//         fetched_at: "2025-06-03 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2025-09-19",
+//         stars: 1900,
+//         fetched_at: "2025-09-19 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2026-03-03",
+//         stars: 2200,
+//         fetched_at: "2026-03-03 07:59:14",
+//     },
+//     {
+//         snapshot_date: "2026-07-07",
+//         stars: 2421,
+//         fetched_at: "2026-07-07 07:59:14",
+//     },
+// ])
 
-// const source = computed(() => store.starHistory);
+const source = computed(() => store.starHistory);
 const lastStar = computed(() => store.stars);
 
 const sourceWithLastStar = computed(() => {
