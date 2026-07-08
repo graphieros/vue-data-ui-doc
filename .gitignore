@@ -22,6 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Jobs & scripts
 publish-site.cjs
 stars-cron.cjs
+run-stars-now.cjs
 backend/

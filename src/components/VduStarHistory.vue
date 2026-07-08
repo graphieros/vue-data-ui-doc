@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
+import { ZoomCancelIcon, ZoomCheckIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -142,6 +143,11 @@ const dataset = computed(() => {
     ];
 });
 
+const isZoom = ref(false);
+
+function toggleZoom() {
+  isZoom.value = !isZoom.value;
+}
 
 const config = computed(() => ({
   theme: isDarkMode.value ? 'dark' : '',
@@ -152,7 +158,7 @@ const config = computed(() => ({
     backgroundColor: 'transparent',
     userOptions: { show: false },
     padding: {
-      right: 90
+      right: 105
     },
     grid: {
       showHorizontalLines: true,
@@ -205,7 +211,21 @@ const config = computed(() => ({
       }
     },
     tooltip: {show: false },
-    zoom: { show: false },
+    zoom: { 
+      show: isZoom.value,
+      maxWidth: 720,
+      highlightColor: isDarkMode.value ? '#2A2A2A' : '#E1E5E8',
+      minimap: {
+        show: true,
+        frameColor: 'transparent',
+        indicatorColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        selectedColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        selectedColorOpacity: 0.06
+      },
+      preview: {
+        fill: isDarkMode.value ? '#CCCCCC10' : '#1A1A1A10'
+      }
+    },
   }
 }));
 
@@ -259,7 +279,7 @@ function drawLastLabel(svg) {
       <text
         text-anchor="start"
         dominant-baseline="middle"
-        x="${lastPlot.x + 12}"
+        x="${lastPlot.x + 24}"
         y="${lastPlot.y}"
         font-size="24"
         fill="${isDarkMode.value ? '#fdd663' : '#1A1A1A'}"
@@ -283,7 +303,16 @@ function drawLastLabel(svg) {
 </script>
 
 <template>
-    <div class="p-4 bg-[#FFFFFF] dark:bg-[#1A1A1A] rounded-md mb-4">
+    <div class="p-4 bg-[#FFFFFF] dark:bg-[#1A1A1A] rounded-md mb-4 relative">
+      <div class="absolute top-2 right-2 z-10">
+        <button 
+          @click="toggleZoom" 
+          class="bg-[#FFFFFF] dark:bg-[#1A1A1A] text-[#3A3A3A] dark:text-[#8A8A8A] p-2 hover:bg-[#E1E5E8] dark:hover:bg-[#2A2A2A] transition-colors rounded">
+          <ZoomCheckIcon v-if="isZoom"/>
+          <ZoomCancelIcon v-else/>
+        </button>
+      </div>
+
       <VueUiXy :dataset :config>
         <template #svg="{ svg }">
           <g>
