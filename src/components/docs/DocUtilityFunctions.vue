@@ -14,7 +14,7 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
-import { applyDataCorrection } from "vue-data-ui/utils";
+import { adaptColorToBackground, applyDataCorrection, createColorWheel } from "vue-data-ui/utils";
 
 const store = useMainStore();
 
@@ -25,6 +25,17 @@ const isMenuOpen = computed(() => store.isMenuOpen);
 onMounted(() => (store.docSnap = false));
 
 const utilityTranslations = ref({
+    createColorWheel: {
+        en: "From a starting color and a number of desired colors, get an array of colors distributed on the color wheel.",
+        fr: "À partir d’une couleur de départ et d’un nombre de couleurs souhaitées, obtenez un tableau de couleurs réparties sur le cercle chromatique.",
+        pt: "A partir de uma cor inicial e de um número de cores desejadas, obtenha uma matriz de cores distribuídas no círculo cromático.",
+        de: "Erhalte ausgehend von einer Startfarbe und einer gewünschten Anzahl von Farben ein Array von Farben, die auf dem Farbkreis verteilt sind.",
+        zh: "根据起始颜色和所需颜色数量，获取一组分布在色轮上的颜色。",
+        ja: "開始色と希望する色数から、カラーホイール上に分布した色の配列を取得します。",
+        es: "A partir de un color inicial y un número de colores deseado, obtén una matriz de colores distribuidos en la rueda de color.",
+        ko: "시작 색상과 원하는 색상 수를 기준으로, 색상환에 분포된 색상 배열을 가져옵니다.",
+        ar: "من لون ابتدائي وعدد الألوان المطلوبة، احصل على مصفوفة من الألوان الموزعة على عجلة الألوان.",
+    },
     mergeConfigs: {
         en: "Use the `mergeConfigs` utility to deeply merge a default config with a user config. Attributes provided in the user config will surgically override the default config, while preserving all other attributes of the original object.",
         fr: "Utilisez l’utilitaire `mergeConfigs` pour fusionner en profondeur une configuration par défaut avec une configuration utilisateur. Les attributs fournis dans la configuration utilisateur remplacent précisément ceux de la configuration par défaut, tout en préservant tous les autres attributs de l’objet original.",
@@ -272,6 +283,13 @@ const abbreviated = abbreviate({
 // Result: ${abbreviated.value}
 `,
 );
+
+const colorWheelStart = ref('#6376DD');
+const colorWheelRange = ref(6);
+
+const colorWheelContent = computed(() => `import { createColorWheel } from "vue-data-ui/utils;
+
+const colorWheel = createColorWheel('${colorWheelStart.value}', ${colorWheelRange.value});`);
 
 const darkenContent = computed(
     () => `import { darkenColor } from "vue-data-ui/utils";
@@ -526,6 +544,7 @@ const importSnippet = computed(
     abbreviate,
     adaptColorToBackground,
     applyDataCorrection,
+    createColorWheel,
     createTSpans,
     darkenColor,
     getCumulativeAverage,
@@ -545,6 +564,7 @@ const utilityMenu = [
     "mergeConfigs",
     "getVueDataUiConfig",
     "abbreviate",
+    "createColorWheel",
     "darkenColor",
     "lightenColor",
     "shiftColorHue",
@@ -865,6 +885,65 @@ onBeforeUnmount(() => {
                         class="bg-gray-200 dark:bg-[#FFFFFF10] w-full py-1 px-2 rounded"
                     >
                         {{ abbreviated }}
+                    </div>
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="createColorWheel">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">createColorWheel</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">
+                    {{ utilityTranslations.createColorWheel[store.lang] }}
+                </p>
+            </div>
+
+            <div class="p-4 overflow-auto">
+                <CodeParser
+                    :content="colorWheelContent"
+                    language="javascript"
+                    @copy="store.copy()"
+                />
+            </div>
+
+            <div class="p-4 flex flex-col gap-2 w-fit">
+                <BaseColorInput
+                    v-model:value="colorWheelStart"
+                    label="Color source"
+                    label-id="source-light"
+                />
+                <div
+                    class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md dark:border-t dark:border-[#6A6A6A]"
+                >
+                    <label
+                        for="range-light"
+                        class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums"
+                        >Number of colors</label
+                    >
+                    <input
+                        id="range-light"
+                        type="range"
+                        v-model="colorWheelRange"
+                        :min="2"
+                        :max="24"
+                        class="accent-app-blue z-0"
+                    />
+                </div>
+            </div>
+
+            Result:
+            <div class="flex flex-row place-items-center gap-2 h-[150px]">
+                <div class="flex flex-row flex-wrap">
+                    <div v-for="c in createColorWheel(colorWheelStart, colorWheelRange)" :style="{
+                        background: c,
+                        height: '40px',
+                        width: '100px'
+                    }" class="flex align-center justify-center place-items-center">
+                        <span :style="{
+                            color: adaptColorToBackground(c)
+                        }">
+                            {{ c }}
+                        </span>
                     </div>
                 </div>
             </div>

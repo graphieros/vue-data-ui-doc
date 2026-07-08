@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.22.8",
+        "date": "2026-07-08",
+        "updates": [
+            {
+                "component": "Utility functions",
+                "description": "Add new createColorWheel utility",
+                "link": "/docs#utility-functions"
+            },
+            {
+                "component": "VueUiWorld",
+                "description": "Reduce component size, improve performance, fix edge artefacts in the globe projection",
+                "link": "/docs#vue-ui-world"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.7",
         "date": "2026-07-06",
         "updates": [
