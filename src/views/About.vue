@@ -621,7 +621,7 @@ const wheelConfig = computed(() => {
     </a> -->
 
         <BaseCard class="w-full mb-4">
-            <VduStarHistory/>
+            <VduStarHistory />
             <AboutComponentTypes />
             <PackageBreakdown />
             <BaseCard type="light">
