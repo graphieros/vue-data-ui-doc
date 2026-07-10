@@ -641,7 +641,7 @@ onBeforeUnmount(() => {
                         : ['#1d915d', '#42d392'],
                 },
                 style: {
-                    scaleMax: maxDownload,
+
                     backgroundColor: '#FFFFFF00',
                     chartWidth: 300,
                     dataLabel: { show: false },
