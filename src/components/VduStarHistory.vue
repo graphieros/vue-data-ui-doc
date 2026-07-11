@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, useTemplateRef, nextTick } from "vue";
 import { useMainStore } from "../stores";
 import { ZoomCancelIcon, ZoomCheckIcon } from "vue-tabler-icons";
 import { useAppEnv } from "../useAppEnv";
@@ -154,6 +154,25 @@ function toggleZoom() {
   isZoom.value = !isZoom.value;
 }
 
+const chart = useTemplateRef('chart')
+
+const scaleMin = ref(0);
+
+const to = ref(null);
+
+async function zoomEnd() {
+  to.value = setTimeout(() => {
+    const d = chart.value.getData()
+    const min = Math.min(...d[0].values)
+    if (!d) return
+    scaleMin.value = Math.min(...d[0].values)
+  }, 10)
+}
+
+function zoomReset() {
+  scaleMin.value = 0;
+}
+
 const config = computed(() => ({
   theme: isDarkMode.value ? 'dark' : '',
   downsample: {
@@ -174,6 +193,8 @@ const config = computed(() => ({
         },
         yAxis: {
           useNiceScale: true,
+          scaleMin: scaleMin.value,
+          commonScaleSteps: 6
         },
         xAxisLabels: {
           values: normalizedSource.value.map(s => s.snapshot_date),
@@ -218,6 +239,7 @@ const config = computed(() => ({
     tooltip: {show: false },
     zoom: { 
       show: isZoom.value,
+      keepState: true,
       maxWidth: 720,
       highlightColor: isDarkMode.value ? '#2A2A2A' : '#E1E5E8',
       minimap: {
@@ -318,7 +340,7 @@ function drawLastLabel(svg) {
         </button>
       </div>
 
-      <VueUiXy :dataset :config>
+      <VueUiXy :dataset :config @zoomEnd="zoomEnd" @zoomReset="zoomReset" ref="chart">
         <template #svg="{ svg }">
           <g>
             <polygon
