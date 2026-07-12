@@ -140,6 +140,7 @@ const dataset = computed(() => {
             name: "vue-data-ui",
             series: normalizedSource.value.map(({ stars }) => stars),
             type: "line",
+            shape: 'star',
             smooth: true,
             temperatureColors: isDarkMode.value ? ["#fdd663", "#42d392"] : ["#42d392", "#5f8aee"],
             color: isDarkMode.value ? "#fdd663" : "#42d392",
@@ -253,6 +254,9 @@ const config = computed(() => ({
         fill: isDarkMode.value ? '#CCCCCC10' : '#1A1A1A10'
       }
     },
+  },
+  line: {
+    radius: 4,
   }
 }));
 
@@ -330,7 +334,7 @@ function drawLastLabel(svg) {
 </script>
 
 <template>
-    <div class="p-4 bg-[#FFFFFF] dark:bg-[#1A1A1A] rounded-md mb-4 relative">
+    <div :class="`p-4 bg-[#FFFFFF] dark:bg-[#1A1A1A] rounded-md mb-4 relative ${isDarkMode ? 'dark-mode' : 'light-mode'}`">
       <div class="absolute top-2 right-2 z-10">
         <button 
           @click="toggleZoom" 
@@ -360,3 +364,14 @@ function drawLastLabel(svg) {
       </VueUiXy>
     </div>
 </template>
+
+<style scoped>
+.dark-mode :deep(.vdui-shape-star) {
+  stroke: #1A1A1A;
+  stroke-width: 1 !important;
+}
+.light-mode :deep(.vdui-shape-star) {
+  stroke: #FFFFFF;
+  stroke-width: 1 !important;
+}
+</style>
