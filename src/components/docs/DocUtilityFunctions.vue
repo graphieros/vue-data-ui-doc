@@ -1,20 +1,24 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from "vue";
 import { useMainStore } from "../../stores";
-import {
-    abbreviate,
-    darkenColor,
-    getVueDataUiConfig,
-    lightenColor,
-    shiftColorHue,
-    useObjectBindings,
-} from "vue-data-ui";
 import BaseColorInput from "../BaseColorInput.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
-import { adaptColorToBackground, applyDataCorrection, createColorWheel } from "vue-data-ui/utils";
+import { 
+    abbreviate,
+    darkenColor,
+    getVueDataUiConfig,
+    lightenColor,
+    shiftColorHue,
+    useObjectBindings, 
+    adaptColorToBackground, 
+    applyDataCorrection, 
+    createColorWheel,
+    average,
+    median,
+} from "vue-data-ui/utils";
 
 const store = useMainStore();
 
@@ -25,6 +29,28 @@ const isMenuOpen = computed(() => store.isMenuOpen);
 onMounted(() => (store.docSnap = false));
 
 const utilityTranslations = ref({
+    average: {
+        en: 'Calculates the average of all finite numbers in an array. Invalid values are ignored, and the original array is not mutated. Returns null when the input is not an array or contains no finite numbers.',
+        fr: 'Calcule la moyenne de tous les nombres finis d’un tableau. Les valeurs invalides sont ignorées et le tableau d’origine n’est pas modifié. Retourne null si l’entrée n’est pas un tableau ou ne contient aucun nombre fini.',
+        pt: 'Calcula a média de todos os números finitos de um array. Valores inválidos são ignorados e o array original não é modificado. Retorna null se a entrada não for um array ou não contiver nenhum número finito.',
+        de: 'Berechnet den Durchschnitt aller endlichen Zahlen in einem Array. Ungültige Werte werden ignoriert und das ursprüngliche Array wird nicht verändert. Gibt null zurück, wenn die Eingabe kein Array ist oder keine endlichen Zahlen enthält.',
+        zh: '计算数组中所有有限数字的平均值。无效值会被忽略，原始数组不会被修改。如果输入不是数组或不包含任何有限数字，则返回 null。',
+        ja: '配列内のすべての有限数の平均値を計算します。無効な値は無視され、元の配列は変更されません。入力が配列でない場合、または有限数が含まれていない場合は null を返します。',
+        es: 'Calcula la media de todos los números finitos de un arreglo. Los valores no válidos se ignoran y el arreglo original no se modifica. Devuelve null si la entrada no es un arreglo o no contiene ningún número finito.',
+        ko: '배열에 포함된 모든 유한한 숫자의 평균을 계산합니다. 유효하지 않은 값은 무시되며 원본 배열은 변경되지 않습니다. 입력이 배열이 아니거나 유한한 숫자를 포함하지 않으면 null을 반환합니다.',
+        ar: 'يحسب متوسط جميع الأعداد المنتهية في المصفوفة. يتم تجاهل القيم غير الصالحة ولا يتم تعديل المصفوفة الأصلية. يُرجع null إذا لم تكن القيمة المدخلة مصفوفة أو لم تحتوي على أي أعداد منتهية.'
+    },
+    median: {
+        en: 'Calculates the median of all finite numbers in an array. Invalid values are ignored, and the original array is not mutated. Returns null when the input is not an array or contains no finite numbers.',
+        fr: 'Calcule la médiane de tous les nombres finis d’un tableau. Les valeurs invalides sont ignorées et le tableau d’origine n’est pas modifié. Retourne null si l’entrée n’est pas un tableau ou ne contient aucun nombre fini.',
+        pt: 'Calcula a mediana de todos os números finitos de um array. Valores inválidos são ignorados e o array original não é modificado. Retorna null se a entrada não for um array ou não contiver nenhum número finito.',
+        de: 'Berechnet den Median aller endlichen Zahlen in einem Array. Ungültige Werte werden ignoriert und das ursprüngliche Array wird nicht verändert. Gibt null zurück, wenn die Eingabe kein Array ist oder keine endlichen Zahlen enthält.',
+        zh: '计算数组中所有有限数字的中位数。无效值会被忽略，原始数组不会被修改。如果输入不是数组或不包含任何有限数字，则返回 null。',
+        ja: '配列内のすべての有限数の中央値を計算します。無効な値は無視され、元の配列は変更されません。入力が配列でない場合、または有限数が含まれていない場合は null を返します。',
+        es: 'Calcula la mediana de todos los números finitos de un arreglo. Los valores no válidos se ignoran y el arreglo original no se modifica. Devuelve null si la entrada no es un arreglo o no contiene ningún número finito.',
+        ko: '배열에 포함된 모든 유한한 숫자의 중앙값을 계산합니다. 유효하지 않은 값은 무시되며 원본 배열은 변경되지 않습니다. 입력이 배열이 아니거나 유한한 숫자를 포함하지 않으면 null을 반환합니다.',
+        ar: 'يحسب الوسيط لجميع الأعداد المنتهية في المصفوفة. يتم تجاهل القيم غير الصالحة ولا يتم تعديل المصفوفة الأصلية. يُرجع null إذا لم تكن القيمة المدخلة مصفوفة أو لم تحتوي على أي أعداد منتهية.'
+    },
     createColorWheel: {
         en: "From a starting color and a number of desired colors, get an array of colors distributed on the color wheel.",
         fr: "À partir d’une couleur de départ et d’un nombre de couleurs souhaitées, obtenez un tableau de couleurs réparties sur le cercle chromatique.",
@@ -217,6 +243,29 @@ const merged = computed(() => {
 *   }
 */
 `);
+
+const averageCode = ref(`import { average } from "vue-data-ui/utils";
+const arr = [0, 40, 45, 48, 52, 57, 1000];
+const avg = average(arr); // result: ${average([0, 40, 45, 48, 52, 57, 1000])}
+
+const arrWithInvalid = [0, 40, undefined, Infinity, NaN, null, 45, 48, 52, 57, 1000];
+const avgWithInvalid = average(arrWithInvalid); // result: ${average([0, 40, undefined, Infinity, NaN, null, 45, 48, 52, 57, 1000])}
+
+const invalid = [];
+const avgInvalid = average(invalid); // result: ${average([])}
+`);
+
+const medianCode = ref(`import { median } from "vue-data-ui/utils";
+const arr = [0, 40, 45, 48, 52, 57, 1000];
+const med = median(arr); // result: ${median([0, 40, 45, 48, 52, 57, 1000])}
+
+const arrWithInvalid = [0, 40, undefined, Infinity, NaN, null, 45, 48, 52, 57, 1000];
+const medWithInvalid = median(arrWithInvalid); // result: ${median([0, 40, undefined, Infinity, NaN, null, 45, 48, 52, 57, 100])}
+
+const invalid = [];
+const medInvalid = median(invalid); // result: ${median([])}
+`);
+
 
 const adaptColorToBackgroundCode =
     ref(`import { adaptColorToBackground } from "vue-data-ui/utils";
@@ -541,6 +590,8 @@ const dataset = computed(() => ([
 
 const importSnippet = computed(
     () => `import {
+    average,
+    median,
     abbreviate,
     adaptColorToBackground,
     applyDataCorrection,
@@ -558,6 +609,8 @@ const importSnippet = computed(
 );
 
 const utilityMenu = [
+    "average",
+    "median",
     "applyDataCorrection",
     "adaptColorToBackground",
     "useObjectBindings",
@@ -688,6 +741,38 @@ onBeforeUnmount(() => {
                 :content="importSnippet"
                 @copy="store.copy()"
             />
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="average">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">average</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">
+                    {{ utilityTranslations.average[store.lang] }}
+                </p>
+                <div class="p-4 overflow-auto">
+                    <CodeParser
+                        language="javascript"
+                        :content="averageCode"
+                        @copy="store.copy()"
+                    />
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="mt-6" id="median">
+            <div class="p-4" dir="auto">
+                <code class="text-xl">median</code>
+                <p class="mt-2 text-gray-500 dark:text-app-blue-light">
+                    {{ utilityTranslations.median[store.lang] }}
+                </p>
+                <div class="p-4 overflow-auto">
+                    <CodeParser
+                        language="javascript"
+                        :content="medianCode"
+                        @copy="store.copy()"
+                    />
+                </div>
+            </div>
         </BaseCard>
 
         <BaseCard class="mt-6" id="applyDataCorrection">
