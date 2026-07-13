@@ -174,6 +174,8 @@ function zoomReset() {
   scaleMin.value = 0;
 }
 
+const dates = computed(() => normalizedSource.value.map(s => s.snapshot_date))
+
 const config = computed(() => ({
   theme: isDarkMode.value ? 'dark' : '',
   downsample: {
@@ -198,7 +200,7 @@ const config = computed(() => ({
           commonScaleSteps: 6
         },
         xAxisLabels: {
-          values: normalizedSource.value.map(s => s.snapshot_date),
+          values: dates.value,
           showOnlyAtModulo: 12,
           rotation: -30,
           autoRotate: {
@@ -331,16 +333,68 @@ function drawLastLabel(svg) {
 
   return dataLabels.join('\n')
 }
+
+const landmarks = [
+  {
+    date: '2024-09-22',
+    name: 'tweet',
+    description: '@posva tweets about vue-data-ui',
+  },
+  {
+    date: '2025-05-22',
+    name: 'blog',
+    description: 'popular blog article on XMSUMI',
+  },
+]
+
+const keyDates = computed(() => {
+  const dateList = dates.value ?? []
+  const lastDate = dateList.at(-1)
+  if (!lastDate) {
+    return []
+  }
+
+  const millisecondsInADay = 1 * 24 * 60 * 60 * 1000
+  const lastDateTime = new Date(lastDate).getTime()
+
+  return landmarks
+    .map((item) => {
+      const index = dateList.indexOf(item.date)
+      if (index === -1) {
+        return null
+      }
+      const landmarkDateTime = new Date(item.date).getTime()
+
+      return {
+        ...item,
+        index,
+        visible: lastDateTime - landmarkDateTime >= millisecondsInADay,
+      }
+    })
+    .filter(Boolean)
+})
+
+const showLandmarks = ref(false);
+function toggleLandmarks() {
+  showLandmarks.value = !showLandmarks.value;
+}
+
 </script>
 
 <template>
     <div :class="`p-4 bg-[#FFFFFF] dark:bg-[#1A1A1A] rounded-md mb-4 relative ${isDarkMode ? 'dark-mode' : 'light-mode'}`">
-      <div class="absolute top-2 right-2 z-10">
+      <div class="absolute top-2 right-2 z-10 flex flex-row">
         <button 
           @click="toggleZoom" 
-          class="bg-[#FFFFFF] dark:bg-[#1A1A1A] text-[#3A3A3A] dark:text-[#8A8A8A] p-2 hover:bg-[#E1E5E8] dark:hover:bg-[#2A2A2A] transition-colors rounded">
+          class="bg-[#FFFFFF] dark:bg-[#1A1A1A] text-[#3A3A3A] dark:text-[#8A8A8A] p-2 hover:bg-[#E1E5E8] dark:hover:bg-[#2A2A2A] transition-colors rounded w-10 flex align-center items-center justify-center">
           <ZoomCheckIcon v-if="isZoom"/>
           <ZoomCancelIcon v-else/>
+        </button>
+        <button 
+          @click="toggleLandmarks" 
+          class="bg-[#FFFFFF] dark:bg-[#1A1A1A] text-[#3A3A3A] dark:text-[#8A8A8A] p-2 hover:bg-[#E1E5E8] dark:hover:bg-[#2A2A2A] transition-colors rounded w-10 flex align-center items-center justify-center">
+          <VueUiIcon name="tooltip" v-if="showLandmarks" :stroke="isDarkMode ? '#8A8A8A' : '#3A3A3A'" :size="18"/>
+          <VueUiIcon v-else name="tooltipDisabled" :stroke="isDarkMode ? '#8A8A8A' : '#3A3A3A'" :size="18"/>
         </button>
       </div>
 
@@ -353,6 +407,44 @@ function drawLastLabel(svg) {
             />
             <g v-html="drawLastLabel(svg)"/>
           </g>
+
+                <g
+                v-for="(plot, i) in svg?.data?.[0]?.plots"
+                :key="`plot_${i}`"
+                style="pointer-events: none"
+              >
+                <template
+                  v-for="(landmark, j) in keyDates"
+                  :key="`${landmark?.date}-${landmark?.name}-${j}`"
+                >
+                  <g
+                    v-if="
+                      landmark &&
+                      landmark.index === i + svg.slicer.start
+                      && showLandmarks
+                    "
+                  >
+                    <line
+                      :x1="plot.x"
+                      :x2="plot.x"
+                      :y1="svg.drawingArea.top"
+                      :y2="svg.drawingArea.bottom"
+                      :stroke="isDarkMode ? '#CCCCCC40' : '#2A2A2A40'"
+                      :stroke-width="2"
+                      stroke-dasharray="2 4"
+                    />
+                    <!-- Landmark label -->
+                    <text
+                      :transform="`translate(${plot.x - 8}, ${svg.drawingArea.top + 6}) rotate(-90)`"
+                      text-anchor="end"
+                      :font-size="14"
+                      :fill="isDarkMode ? '#CCCCCC' : '#2A2A2A'"
+                    >
+                      {{ landmark.description }}
+                    </text>
+                  </g>
+                </template>
+              </g>
         </template>
 
         <template #area-gradient="{ series, id: gradientId }">
