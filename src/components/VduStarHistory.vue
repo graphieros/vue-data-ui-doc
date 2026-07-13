@@ -3,6 +3,7 @@ import { ref, computed, useTemplateRef, nextTick } from "vue";
 import { useMainStore } from "../stores";
 import { ZoomCancelIcon, ZoomCheckIcon } from "vue-tabler-icons";
 import { useAppEnv } from "../useAppEnv";
+import Shape from "./Shape.vue";
 
 
 const { isProd } = useAppEnv()
@@ -433,12 +434,34 @@ function toggleLandmarks() {
                       :stroke-width="2"
                       stroke-dasharray="2 4"
                     />
+                    <Shape
+                    
+                    />
+                    <circle
+                      :cx="plot.x"
+                      :cy="plot.y"
+                      :r="4"
+                      :fill="isDarkMode ? '#fdd663' : '#42d392'"
+                      :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'"
+                    />
+                    <circle
+                      :cx="plot.x"
+                      :cy="plot.y"
+                      :r="18"
+                      fill="transparent"
+                      :stroke="isDarkMode ? '#8A8A8A' : '#3A3A3A'"
+                    />
                     <!-- Landmark label -->
                     <text
                       :transform="`translate(${plot.x - 8}, ${svg.drawingArea.top + 6}) rotate(-90)`"
                       text-anchor="end"
                       :font-size="14"
                       :fill="isDarkMode ? '#CCCCCC' : '#2A2A2A'"
+                      :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'"
+                      stroke-width="4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      paint-order="stroke fill"
                     >
                       {{ landmark.description }}
                     </text>
