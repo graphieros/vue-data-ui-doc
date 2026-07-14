@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.22.11",
+        "date": "2026-07-14",
+        "updates": [
+            {
+                "component": "VueUiTreemap",
+                "description": "Scale rect strokes and label fotn sizes on zoom, improve performance",
+                "link": "/docs#vue-ui-treemap"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.10",
         "date": "2026-07-12",
         "updates": [

@@ -102,8 +102,12 @@ const treemapConfig = computed(() => ({
         labels: {
           fontSize: 24,
           minFontSize: 3,
-          hideUnderProportion: 0.00000001,
+          hideUnderProportion: 0,
           formatter: ({ value }) => formatBytes({ value }),
+        },
+        rects: {
+          strokeWidth: 1,
+          proportionalStrokeWidthMuliplier: 120,
         }
       }
     }

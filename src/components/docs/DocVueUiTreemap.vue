@@ -265,6 +265,7 @@ const config = ref({
                     showDefaultLabels: true,
                     fontSize: 24,
                     minFontSize: 10,
+                    fontSizeZoomFactor: 6,
                     hideUnderProportion: 0.03,
                     prefix: "",
                     suffix: "",
@@ -447,6 +448,7 @@ const darkModeConfig = ref({
                     showDefaultLabels: true,
                     fontSize: 24,
                     minFontSize: 10,
+                    fontSizeZoomFactor: 6,
                     hideUnderProportion: 0.03,
                     prefix: "",
                     suffix: "",
@@ -971,6 +973,16 @@ const customFormatCode =
                                             defaultVal="10"
                                             :min="8"
                                             :max="100"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="fontSizeZoomFactor"
+                                            attr="style.chart.layout.labels.fontSizeZoomFactor"
+                                            type="number"
+                                            defaultVal="6"
+                                            :min="1"
+                                            :max="12"
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />

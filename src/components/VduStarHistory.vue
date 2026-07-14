@@ -183,7 +183,7 @@ const config = computed(() => ({
     threshold: 20000,
   },
   chart:{
-    backgroundColor: 'transparent',
+    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
     userOptions: { show: false },
     padding: {
       right: 105
