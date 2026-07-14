@@ -10458,6 +10458,43 @@ export default function useExamples() {
                     ar: "مع فواصل مرئية لتقليل الفراغات عندما تكون الأسماء طويلة.",
                 },
             },
+            // HORIZONTAL BAR MINIMALIST
+            {
+                dataset: DATASET_HORIZONTAL_BAR_LONG.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_VERTICAL_BAR_BASIC.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                layout: {
+                                    bars: {
+                                        useStroke: true,
+                                        fillOpacity: 0,
+                                        useGradient: false,
+                                        underlayerColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF'
+                                    },
+                                    separators: { show: false },
+                                },
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiHorizontalBar",
+                icon: "chartVerticalBar",
+                id: "horizontal-bar-minimalist",
+                link: "vue-ui-horizontal-bar",
+                description: {
+                    en: "Borders only",
+                    fr: "Juste avec les bordures",
+                    pt: "Apenas bordas",
+                    de: "Nur Rahmen",
+                    zh: "仅边框",
+                    ja: "枠線のみ",
+                    es: "Solo bordes",
+                    ko: "테두리만",
+                    ar: "الحدود فقط",
+                },
+            },
             // VERTICAL BAR BACKGROUND
             {
                 dataset: DATASET_VERTICAL_BAR_BASE.value,
