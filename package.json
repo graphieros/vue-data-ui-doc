@@ -20,7 +20,7 @@
         "color-bridge": "^2.1.0",
         "cypress": "^15.16.0",
         "jspdf": "^4.2.1",
-        "pinia": "^2.1.6",
+        "pinia": "^4.0.0",
         "prismjs": "^1.29.0",
         "ssh2": "^1.16.0",
         "target-highlight": "^0.1.0",
