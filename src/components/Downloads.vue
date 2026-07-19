@@ -27,39 +27,46 @@ const periods = ref({
     },
 });
 
+function getPeriodSlice(data, periodOffset = 0) {
+    if (!Array.isArray(data) || data.length === 0) return [];
+
+    const periodLength = Math.max(
+        periods.value[selectedPeriod.value].value - 1,
+        0,
+    );
+    if (periodLength === 0) return [];
+    const end = data.length - 1 - periodLength * periodOffset;
+    if (end <= 0) return [];
+    const start = Math.max(0, end - periodLength);
+    return data.slice(start, end);
+}
+
 const data_lib = computed(() => {
-    return store.downloads.lib
-        .map((d) => d.downloads)
-        .slice(-periods.value[selectedPeriod.value].value)
-        .slice(0, -1);
+    return getPeriodSlice(store.downloads.lib).map((d) => d.downloads);
 });
+
+const data_lib_previous = computed(() => {
+    return getPeriodSlice(store.downloads.lib, 1).map((d) => d.downloads);
+});
+
 const data_cli = computed(() => {
-    return store.downloads.cli
-        .map((d) => d.downloads)
-        .slice(-periods.value[selectedPeriod.value].value)
-        .slice(0, -1);
+    return getPeriodSlice(store.downloads.cli).map((d) => d.downloads);
 });
+
 const data_color_bridge = computed(() => {
-    return store.downloads.color_bridge
-        .map((d) => d.downloads)
-        .slice(-periods.value[selectedPeriod.value].value)
-        .slice(0, -1);
+    return getPeriodSlice(store.downloads.color_bridge).map(
+        (d) => d.downloads,
+    );
 });
+
 const data_vue_hi_code = computed(() => {
-    if (!store.downloads.hiCode) return [];
-    return store.downloads.hiCode
-        .map((d) => d.downloads)
-        .slice(-periods.value[selectedPeriod.value].value)
-        .slice(0, -1);
+    return getPeriodSlice(store.downloads.hiCode).map((d) => d.downloads);
 });
 
 const { isMobile } = useMobile();
 
 const dates = computed(() => {
-    return store.downloads.cli
-        .map((d) => d.day)
-        .slice(-periods.value[selectedPeriod.value].value)
-        .slice(0, -1);
+    return getPeriodSlice(store.downloads.cli).map((d) => d.day);
 });
 
 const source = [
@@ -99,45 +106,23 @@ const dataset = computed(() => {
             series: data_lib.value,
             type: "line",
             dataLabels: false,
-            // useTag: isMobile.value ? undefined : "end",
             marked: true,
             temperatureColors: ["#83a4f2", "#3456a3"],
             color: "#83a4f2",
         },
-        // {
-        //     name: "vue-data-ui-cli",
-        //     series: data_cli.value,
-        //     type: "line",
-        //     dataLabels: false,
-        //     temperatureColors: ["#faa770", "#ff7f0e"],
-        //     color: "#ff7f0e",
-        //     shape: "diamond",
-        //     useTag: isMobile.value ? undefined : "end",
-        //     marked: true,
-        // },
-        // {
-        //   name: "color-bridge",
-        //   series: data_color_bridge.value,
-        //   type: "line",
-        //   dataLabels: false,
-        //   color: '#d62728',
-        //   shape: 'circle',
-        //   useTag: isMobile.value ? undefined : 'end'
-        // },
-        // {
-        //   name: "vue-hi-code",
-        //   series: data_vue_hi_code.value,
-        //   type: "line",
-        //   dataLabels: false,
-        //   color: '#239e33',
-        //   shape: 'hexagon',
-        //   useTag: isMobile.value ? undefined : 'end'
-        // },
+        {
+            name: "vue-data-ui (previous period)",
+            series: data_lib_previous.value,
+            type: "bar",
+            dataLabels: false,
+            marked: false,
+            color: "#66666650",
+        },
     ];
 });
 
 const max = computed(() => {
-    return Math.max(Math.max(...data_lib.value), Math.max(...data_cli.value));
+    return Math.max(Math.max(...data_lib.value), Math.max(...data_lib_previous.value));
 });
 
 const config = computed(() => {
@@ -145,7 +130,7 @@ const config = computed(() => {
         theme: "",
         responsive: false,
         customPalette: [],
-        useCssAnimation: true,
+        useCssAnimation: false,
         downsample: { threshold: 3000 },
         chart: {
             fontFamily: "inherit",

@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.22.13",
+        "date": "2026-07-19",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix crosshair highlighting wrong index for bar series",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.12",
         "date": "2026-07-17",
         "updates": [
