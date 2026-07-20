@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.22.14",
+        "date": "2026-07-20",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix interline areas for stepped line series",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.22.13",
         "date": "2026-07-19",
         "updates": [

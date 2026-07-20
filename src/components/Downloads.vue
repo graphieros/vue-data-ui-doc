@@ -109,14 +109,16 @@ const dataset = computed(() => {
             marked: true,
             temperatureColors: ["#83a4f2", "#3456a3"],
             color: "#83a4f2",
+            useStepper: false
         },
         {
             name: "vue-data-ui (previous period)",
             series: data_lib_previous.value,
-            type: "bar",
+            type: "line",
             dataLabels: false,
             marked: false,
-            color: "#66666650",
+            color: isDarkMode.value ? "#ff8c0050" : "#ff370050",
+            useStepper: false
         },
     ];
 });
@@ -258,7 +260,7 @@ const config = computed(() => {
                 paddingRight: 0,
                 subtitle: {
                     color: "#A1A1A1",
-                    text: "@Graphieros packages",
+                    text: "Vue Data UI",
                     fontSize: 16,
                     bold: false,
                 },
@@ -312,6 +314,11 @@ const config = computed(() => {
                 formatter: null,
             },
             area: { useGradient: true, opacity: 30 },
+            interLine: {
+                pairs: [
+                    ['vue-data-ui', 'vue-data-ui (previous period)']
+                ],
+            }
         },
         table: {
             responsiveBreakpoint: 400,
