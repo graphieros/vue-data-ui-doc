@@ -1630,7 +1630,7 @@ const wordCloudConfig = computed(() => {
             },
         },
         style: {
-            fontFamily: "Inter",
+            fontFamily: "InterMedium",
             chart: {
                 color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 backgroundColor: "transparent",
