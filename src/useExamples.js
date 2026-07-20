@@ -1839,6 +1839,23 @@ export default function useExamples() {
         },
     ]);
 
+    const DATASET_XY_INTERLINE_STEPPER = ref([
+        {
+            name: "Performance",
+            type: "line",
+            series: [
+                0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0,
+            ],
+            useStepper: true
+        },
+        {
+            name: "Target",
+            type: "line",
+            series: [10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10],
+            useStepper: true
+        },
+    ]);
+
     const DATASET_XY_WITH_NULL = ref([
         {
             name: "Serie 1",
@@ -7979,7 +7996,7 @@ export default function useExamples() {
             },
             // XY INTERLINE DEFAULT
             {
-                dataset: DATASET_XY_INTERLINE,
+                dataset: DATASET_XY_INTERLINE.value,
                 config: {
                     ...BASE_XY_CONFIG.value,
                     chart: {
@@ -8014,7 +8031,7 @@ export default function useExamples() {
             },
             // XY INTERLINE CUSTOM COLORS
             {
-                dataset: DATASET_XY_INTERLINE_SMOOTH,
+                dataset: DATASET_XY_INTERLINE_SMOOTH.value,
                 config: {
                     ...BASE_XY_CONFIG.value,
                     chart: {
@@ -8046,6 +8063,42 @@ export default function useExamples() {
                     es: "Con coloreado entre líneas de pares de líneas con colores personalizados",
                     ko: "사용자 정의 색상으로 선 쌍 사이 인터라인 색상 적용",
                     ar: "مع تلوين بيني لأزواج الخطوط باستخدام ألوان مخصصة",
+                },
+            },
+            // XY INTERLINE STEPPER CUSTOM COLORS
+            {
+                dataset: DATASET_XY_INTERLINE_STEPPER.value,
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                    },
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        labels: {
+                            ...BASE_XY_CONFIG.value.line.labels,
+                            rounding: 1,
+                        },
+                        interLine: {
+                            pairs: [["Performance", "Target"]],
+                            colors: [["green", "red"]],
+                        },
+                    },
+                },
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-interline-custom-colors-steps",
+                link: "vue-ui-xy",
+                description: {
+                    en: "With interline coloring of step line pairs with custom colors",
+                    fr: "Avec coloration interligne des paires de lignes de pas à l’aide de couleurs personnalisées",
+                    pt: "Com coloração entre linhas dos pares de linhas de passos usando cores personalizadas",
+                    de: "Mit individueller Zwischenzeilenfärbung für Paare von Schrittlinien",
+                    zh: "使用自定义颜色为成对的步进线进行交错着色",
+                    ja: "ステップラインのペアをカスタムカラーで交互に色分け",
+                    es: "Con coloreado interlineado de los pares de líneas de pasos mediante colores personalizados",
+                    ko: "사용자 지정 색상으로 단계선 쌍을 교차 색상 처리",
+                    ar: "مع تلوين متداخل لأزواج خطوط الخطوات باستخدام ألوان مخصصة",
                 },
             },
             // XY CUSTOM GRADIENT LINE
