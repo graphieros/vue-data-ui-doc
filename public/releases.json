@@ -5,7 +5,7 @@
         "updates": [
             {
                 "component": "VueUiXy",
-                "description": "Fix crosshair highlighting wrong index for bar series",
+                "description": "Fix crosshair highlighting off-by-one index for bar series",
                 "link": "/docs#vue-ui-xy"
             }
         ]
