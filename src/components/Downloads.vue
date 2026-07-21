@@ -97,6 +97,7 @@ const keyDates = computed(() => {
 
 function log(n) {
     console.log(n);
+    return ''
 }
 
 const dataset = computed(() => {
@@ -127,6 +128,16 @@ const max = computed(() => {
     return Math.max(Math.max(...data_lib.value), Math.max(...data_lib_previous.value));
 });
 
+function getProgress({ data, index }) {
+    const n = data[0]?.series[index];
+    const n_1 = data[1]?.series[index];
+    if (n === undefined || n_1 === undefined) return '';
+    const ratio = Math.round(((n / n_1) - 1) * 100);
+    return `${ratio > 0 ? '+' : ''}${ratio}%`;
+}
+
+const selectedX = ref(null);
+
 const config = computed(() => {
     return {
         theme: "",
@@ -134,6 +145,14 @@ const config = computed(() => {
         customPalette: [],
         useCssAnimation: false,
         downsample: { threshold: 3000 },
+        events: {
+            datapointEnter: ({ datapoint, seriesIndex }) => {
+                selectedX.value = seriesIndex;
+            },
+            datapointLeave: () => {
+                selectedX.value = null;
+            }
+        },
         chart: {
             fontFamily: "inherit",
             backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
@@ -345,8 +364,8 @@ function selectLegend(legend) {
     console.log({ legend });
 }
 
-function selectX(selectedX) {
-    console.log({ selectedX });
+function selectX(x) {
+    console.log(x)
 }
 
 function selectTimeLabel(selectedTimeLabel) {
@@ -601,6 +620,30 @@ function freestyle({ drawingArea, data }) {
                                 {{ s.name }}
                             </text>
                         </g>
+                    </template>
+                </g>
+
+                <!-- n-1 -->
+                <g v-if="selectedX != null">
+                    <template v-for="(point, i) in svg.data[0].plots">
+                        <text 
+                            v-if="selectedX === i + svg.slicer.start"
+                            :x="point.x"
+                            :y="point.y - 16"
+                            :fill="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                            font-size="20"
+                            text-anchor="middle"
+                            :stroke="isDarkMode ? '#2A2A2A' : '#FFFFFF'"
+                            stroke-width="6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            paint-order="stroke fill"
+                        >
+                            {{ getProgress({
+                                index: i,
+                                data: svg.data
+                            }) }}
+                        </text>
                     </template>
                 </g>
             </template>
