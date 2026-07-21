@@ -445,7 +445,7 @@ onMounted(() => {
                     };
                 })
                 .slice(0, -1);
-            isLoadingLine.value = false;
+            
             xyDataset.value = [
                 {
                     name: "Daily npm downloads",
@@ -468,6 +468,7 @@ onMounted(() => {
             data.value = [{ period: "", value: 0 }];
         })
         .finally(() => {
+            isLoadingLine.value = false;
             store.isFetching = false;
             step.value += 1;
         });
@@ -775,6 +776,9 @@ const sparklineConfig = ref({
             show: true,
             backgroundOpacity: 30,
         },
+        animation: {
+            show: false, 
+        }
     },
 });
 
@@ -850,6 +854,9 @@ const darkModeSparklineConfig = ref({
             color: "#CCCCCC",
             backgroundOpacity: 30,
         },
+        animation: {
+            show: false
+        }
     },
 });
 
@@ -2335,6 +2342,7 @@ const digitsConfigVersion = computed(() => {
                                     component="VueUiKpi"
                                     :dataset="kpi.value"
                                     :config="{
+                                        animationFrames: 0,
                                         backgroundColor: 'transparent',
                                         layoutClass:
                                             'p-4 rounded-md shadow-md relative overflow-hidden',
