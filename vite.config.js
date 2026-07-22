@@ -3,6 +3,11 @@ import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
 import fs from "fs";
 
+const isolationHeaders = {
+    "Cross-Origin-Opener-Policy": "same-origin",
+    "Cross-Origin-Embedder-Policy": "credentialless",
+};
+
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
@@ -17,4 +22,10 @@ export default defineConfig({
             },
         },
     ],
+    server: {
+        headers: isolationHeaders,
+    },
+    preview: {
+        headers: isolationHeaders,
+    },
 });

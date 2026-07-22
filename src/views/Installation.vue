@@ -21,13 +21,22 @@ const translations = computed(() => {
     return store.translations;
 });
 
-onMounted(() => {
+onMounted(async () => {
     window.scrollTo(0, 0);
 
-    sdk.embedProjectId("stackblitz", "vitejs-vite-cjmxbt3n", {
-        forceEmbedLayout: true,
-        openFile: "src/App.vue",
-    });
+    try {
+        await sdk.embedProjectId(
+            "stackblitz",
+            "vitejs-vite-cjmxbt3n",
+            {
+                openFile: "src/App.vue",
+                height: 1000,
+                crossOriginIsolated: true,
+            },
+        );
+    } catch (error) {
+        console.error("StackBlitz embed failed:", error);
+    }
 });
 
 function gotoMaker() {
