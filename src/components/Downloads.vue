@@ -9,65 +9,255 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const selectedPeriod = ref("_6M");
 
-const periods = ref({
-    _7D: { id: "_7D", name: "Last 7 days", value: 8, plotRadius: 8 },
-    _15D: { id: "_15D", name: "Last 15 days", value: 16, plotRadius: 8 },
-    _30D: { id: "_30D", name: "Last 30 days", value: 31, plotRadius: 6 },
-    _60D: { id: "_60D", name: "Last 60 days", value: 61, plotRadius: 4 },
-    _90D: { id: "_90D", name: "Last 90 days", value: 91, plotRadius: 3 },
-    _6M: { id: "_6M", name: "Last 6 months", value: 181, plotRadius: 0.1 },
-    _1Y: { id: "_1Y", name: "Last year", value: 365, plotRadius: 0.1 },
-    _2Y: { id: "_2Y", name: "Last 2 years", value: 730, plotRadius: 0.1 },
-    _3Y: { id: "_3Y", name: "Last 3 years", value: 1095, plotRadius: 0.1 },
+const periods = computed(() => ({
+    _7D: {
+        id: "_7D",
+        name: "Last 7 days",
+        amount: 7,
+        unit: "day",
+        plotRadius: 8,
+    },
+    _15D: {
+        id: "_15D",
+        name: "Last 15 days",
+        amount: 15,
+        unit: "day",
+        plotRadius: 8,
+    },
+    _30D: {
+        id: "_30D",
+        name: "Last 30 days",
+        amount: 30,
+        unit: "day",
+        plotRadius: 6,
+    },
+    _60D: {
+        id: "_60D",
+        name: "Last 60 days",
+        amount: 60,
+        unit: "day",
+        plotRadius: 4,
+    },
+    _90D: {
+        id: "_90D",
+        name: "Last 90 days",
+        amount: 90,
+        unit: "day",
+        plotRadius: 3,
+    },
+    _6M: {
+        id: "_6M",
+        name: "Last 6 months",
+        amount: 6,
+        unit: "month",
+        plotRadius: 0.1,
+    },
+    _1Y: {
+        id: "_1Y",
+        name: "Last year",
+        amount: 1,
+        unit: "year",
+        plotRadius: 0.1,
+    },
+    _2Y: {
+        id: "_2Y",
+        name: "Last 2 years",
+        amount: 2,
+        unit: "year",
+        plotRadius: 0.1,
+    },
+    _3Y: {
+        id: "_3Y",
+        name: "Last 3 years",
+        amount: 3,
+        unit: "year",
+        plotRadius: 0.1,
+    },
     _ALL: {
         id: "_ALL",
         name: "Full history",
-        value: store.downloads.lib.map((d) => d.downloads).length,
+        amount: null,
+        unit: "all",
         plotRadius: 0.1,
     },
-});
+}));
 
-function getPeriodSlice(data, periodOffset = 0) {
-    if (!Array.isArray(data) || data.length === 0) return [];
+function parseDay(day) {
+    if (typeof day !== "string") return null;
 
-    const periodLength = Math.max(
-        periods.value[selectedPeriod.value].value - 1,
-        0,
-    );
-    if (periodLength === 0) return [];
-    const end = data.length - 1 - periodLength * periodOffset;
-    if (end <= 0) return [];
-    const start = Math.max(0, end - periodLength);
-    return data.slice(start, end);
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(day);
+    if (!match) return null;
+
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    const date = Number(match[3]);
+    const parsed = new Date(Date.UTC(year, month - 1, date));
+
+    if (
+        parsed.getUTCFullYear() !== year ||
+        parsed.getUTCMonth() !== month - 1 ||
+        parsed.getUTCDate() !== date
+    ) {
+        return null;
+    }
+
+    return parsed;
 }
 
-const data_lib = computed(() => {
-    return getPeriodSlice(store.downloads.lib).map((d) => d.downloads);
+function formatDay(date) {
+    return date.toISOString().slice(0, 10);
+}
+
+function addDays(day, amount) {
+    const date = parseDay(day);
+    if (!date) return null;
+
+    date.setUTCDate(date.getUTCDate() + amount);
+    return formatDay(date);
+}
+
+function shiftCalendarDay(day, { amount, unit }) {
+    const date = parseDay(day);
+    if (!date) return null;
+
+    if (unit === "day") {
+        date.setUTCDate(date.getUTCDate() - amount);
+        return formatDay(date);
+    }
+
+    const originalDate = date.getUTCDate();
+    date.setUTCDate(1);
+
+    if (unit === "month") {
+        date.setUTCMonth(date.getUTCMonth() - amount);
+    } else if (unit === "year") {
+        date.setUTCFullYear(date.getUTCFullYear() - amount);
+    } else {
+        return null;
+    }
+
+    const lastDateOfTargetMonth = new Date(
+        Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0),
+    ).getUTCDate();
+
+    date.setUTCDate(Math.min(originalDate, lastDateOfTargetMonth));
+    return formatDay(date);
+}
+
+function shiftOneYearBack(day) {
+    const date = parseDay(day);
+    if (!date) return null;
+
+    const year = date.getUTCFullYear() - 1;
+    const month = date.getUTCMonth();
+    const dayOfMonth = date.getUTCDate();
+    const shifted = new Date(Date.UTC(year, month, dayOfMonth));
+
+    // There is no exact year-over-year counterpart for February 29.
+    if (
+        shifted.getUTCFullYear() !== year ||
+        shifted.getUTCMonth() !== month ||
+        shifted.getUTCDate() !== dayOfMonth
+    ) {
+        return null;
+    }
+
+    return formatDay(shifted);
+}
+
+function normalizeData(data) {
+    if (!Array.isArray(data)) return [];
+
+    return [...data]
+        .filter((entry) => parseDay(entry?.day))
+        .sort((a, b) => a.day.localeCompare(b.day));
+}
+
+function createDataMap(data) {
+    return new Map(normalizeData(data).map((entry) => [entry.day, entry]));
+}
+
+function createDayRange(startDay, endDayExclusive) {
+    if (!startDay || !endDayExclusive || startDay >= endDayExclusive) {
+        return [];
+    }
+
+    const days = [];
+    let cursor = startDay;
+
+    while (cursor < endDayExclusive) {
+        days.push(cursor);
+        cursor = addDays(cursor, 1);
+        if (!cursor) break;
+    }
+
+    return days;
+}
+
+const normalizedLibData = computed(() => normalizeData(store.downloads.lib));
+
+// The API always includes the current day as a trailing zero.
+// That date is our exclusive cutoff and is never included in a chart series.
+const cutoffDay = computed(() => normalizedLibData.value.at(-1)?.day ?? null);
+
+const currentDates = computed(() => {
+    const cutoff = cutoffDay.value;
+    const period = periods.value[selectedPeriod.value];
+
+    if (!cutoff || !period) return [];
+
+    if (period.unit === "all") {
+        const firstCompleteDay = normalizedLibData.value.find(
+            (entry) => entry.day < cutoff,
+        )?.day;
+
+        return createDayRange(firstCompleteDay, cutoff);
+    }
+
+    const startDay = shiftCalendarDay(cutoff, period);
+    return createDayRange(startDay, cutoff);
 });
 
-const data_lib_previous = computed(() => {
-    return getPeriodSlice(store.downloads.lib, 1).map((d) => d.downloads);
-});
+// The comparison is always year-over-year. It is not the block immediately
+// preceding the selected period. Therefore every selector ends on the same
+// previous-year date.
+const previousDates = computed(() =>
+    currentDates.value.map((day) => shiftOneYearBack(day)),
+);
 
-const data_cli = computed(() => {
-    return getPeriodSlice(store.downloads.cli).map((d) => d.downloads);
-});
+function getSeriesForDates(data, days) {
+    const dataByDay = createDataMap(data);
 
-const data_color_bridge = computed(() => {
-    return getPeriodSlice(store.downloads.color_bridge).map(
-        (d) => d.downloads,
-    );
-});
+    return days.map((day) => {
+        if (!day) return null;
+        const value = dataByDay.get(day)?.downloads;
+        return Number.isFinite(value) ? value : null;
+    });
+}
 
-const data_vue_hi_code = computed(() => {
-    return getPeriodSlice(store.downloads.hiCode).map((d) => d.downloads);
-});
+const data_lib = computed(() =>
+    getSeriesForDates(store.downloads.lib, currentDates.value),
+);
+
+const data_lib_previous = computed(() =>
+    getSeriesForDates(store.downloads.lib, previousDates.value),
+);
+
+const data_cli = computed(() =>
+    getSeriesForDates(store.downloads.cli, currentDates.value),
+);
+
+const data_color_bridge = computed(() =>
+    getSeriesForDates(store.downloads.color_bridge, currentDates.value),
+);
+
+const data_vue_hi_code = computed(() =>
+    getSeriesForDates(store.downloads.hiCode, currentDates.value),
+);
 
 const { isMobile } = useMobile();
 
-const dates = computed(() => {
-    return getPeriodSlice(store.downloads.cli).map((d) => d.day);
-});
+const dates = computed(() => currentDates.value);
 
 const source = [
     {
@@ -113,7 +303,7 @@ const dataset = computed(() => {
             useStepper: false
         },
         {
-            name: "vue-data-ui (previous period)",
+            name: "vue-data-ui (same period last year)",
             series: data_lib_previous.value,
             type: "line",
             dataLabels: false,
@@ -125,13 +315,16 @@ const dataset = computed(() => {
 });
 
 const max = computed(() => {
-    return Math.max(Math.max(...data_lib.value), Math.max(...data_lib_previous.value));
+    const values = [...data_lib.value, ...data_lib_previous.value].filter(
+        Number.isFinite,
+    );
+    return values.length ? Math.max(...values) : 0;
 });
 
 function getProgress({ data, index }) {
     const n = data[0]?.series[index];
     const n_1 = data[1]?.series[index];
-    if (n === undefined || n_1 === undefined) return '';
+    if (!Number.isFinite(n) || !Number.isFinite(n_1) || n_1 === 0) return '';
     const ratio = Math.round(((n / n_1) - 1) * 100);
     return `${ratio > 0 ? '+' : ''}${ratio}%`;
 }
@@ -335,7 +528,7 @@ const config = computed(() => {
             area: { useGradient: true, opacity: 30 },
             interLine: {
                 pairs: [
-                    ['vue-data-ui', 'vue-data-ui (previous period)']
+                    ['vue-data-ui', 'vue-data-ui (same period last year)']
                 ],
             }
         },
@@ -594,11 +787,7 @@ function freestyle({ drawingArea, data }) {
                 >
                     <template v-for="(s, j) in keyDates" :key="s.name">
                         <g
-                            v-if="
-                                s.index === i + svg.slicer.start &&
-                                periods[selectedPeriod].value >=
-                                    i + svg.slicer.start
-                            "
+                            v-if="s.index === i + svg.slicer.start"
                         >
                             <line
                                 :x1="stone.x"
