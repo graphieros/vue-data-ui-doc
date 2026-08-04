@@ -42,6 +42,7 @@ const isDarkMode = computed(() => {
 });
 
 const config = ref({
+    devHints: { enable: false },
     type: "stopwatch",
     responsive: false,
     responsiveProportionalSizing: true,
@@ -127,6 +128,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     type: "stopwatch",
     responsive: false,
     useCursorPointer: false,
@@ -349,6 +351,16 @@ const { configCode, showAllConfig } = useConfigCode();
                             attr="const config: VueUiTimerConfig"
                             equal
                         >
+                            <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="responsive"

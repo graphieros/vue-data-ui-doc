@@ -72,6 +72,7 @@ function initDataset() {
 const dataset = ref(initDataset());
 
 const config = ref({
+    devHints: { enable: false },
     a11y: {
         translations: {
             keyboardNavigation:
@@ -285,6 +286,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     a11y: {
         translations: {
             keyboardNavigation:
@@ -725,6 +727,16 @@ const customFormatCode =
                                 "zen" | "hack" | "concrete" | ""</BaseComment
                             ></span
                         >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails
                                 attr="translations"

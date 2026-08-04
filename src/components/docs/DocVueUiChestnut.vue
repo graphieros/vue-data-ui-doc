@@ -256,6 +256,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     a11y: {
@@ -464,7 +465,9 @@ const config = ref({
         of: "of",
     },
 });
+
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     a11y: {
@@ -922,6 +925,16 @@ function goToPage(route) {
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiChestnutConfig" equal>
                         <BaseAttr inactive name="debug" defaultVal="false" />
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="loading"
                             attr="loading"

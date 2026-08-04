@@ -66,6 +66,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     a11y: {
@@ -158,6 +159,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     a11y: {
@@ -435,6 +437,16 @@ function goToPage(route) {
                         attr="const config: VueUiSparkStackBarConfig"
                         equal
                     >
+                    <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr inactive name="debug" defaultVal="false" />
                         <BaseAttr
                             name="loading"
@@ -517,19 +529,19 @@ function goToPage(route) {
                                 inactive
                                 name="datapointEnter"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointLeave"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointClick"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                         </BaseDetails>
                         <BaseDetails attr="style" :level="1">

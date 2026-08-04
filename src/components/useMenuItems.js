@@ -976,6 +976,22 @@ export function useMenuItems() {
             hasTableCss: true,
             hasLegend: true,
         },
+        {
+            name: "Hill",
+            icon: "chartHill",
+            tooltip: translations.value.docs.tooltips.hill[store.lang],
+            link: "/docs#vue-ui-hill",
+            type: "productivity",
+            thumb: new URL("../assets/thumb_hill.png", import.meta.url)
+                .href,
+            thumbLight: new URL(
+                "../assets/thumb_hill_light.png",
+                import.meta.url,
+            ).href,
+            hasSlot: true,
+            hasTableCss: false,
+            hasLegend: false,
+        },
     ]);
 
     const menuCategories = computed(() => {
@@ -1019,6 +1035,10 @@ export function useMenuItems() {
             {
                 filterBy: "table",
                 title: translations.value.sideMenu.tables[store.lang],
+            },
+            {
+                filterBy: "productivity",
+                title: translations.value.sideMenu.productivity[store.lang],
             },
             {
                 filterBy: "rating",

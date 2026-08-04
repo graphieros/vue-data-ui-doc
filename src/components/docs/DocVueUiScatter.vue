@@ -93,6 +93,7 @@ const dataset = computed(() => {
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     a11y: {
@@ -102,6 +103,12 @@ const darkModeConfig = ref({
             tableAvailable: "A data table for this chart is available below.",
             tableCaption: "Chart data table",
         },
+    },
+    transitions: {
+        enable: true,
+        pauseOnLoad: true,
+        pauseOnDatasetChange: false,
+        activationDelayMs: 300,
     },
     downsample: {
         threshold: 1095,
@@ -391,6 +398,7 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     a11y: {
@@ -400,6 +408,12 @@ const config = ref({
             tableAvailable: "A data table for this chart is available below.",
             tableCaption: "Chart data table",
         },
+    },
+    transitions: {
+        enable: true,
+        pauseOnLoad: true,
+        pauseOnDatasetChange: false,
+        activationDelayMs: 300,
     },
     downsample: {
         threshold: 1095,
@@ -1010,6 +1024,16 @@ const customFormatCode =
                                 translations.responsive[store.lang]
                             }}</BaseComment></span
                         >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr inactive name="debug" defaultVal="false" />
                         <BaseAttr
                             name="loading"
@@ -1049,6 +1073,12 @@ const customFormatCode =
                             :comment="performanceModeComment[store.lang]"
                             @change="forceChartUpdate()"
                         />
+                        <BaseDetails attr="transitions" :level="1">
+                            <BaseAttr name="enable" attr="transitions.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate"/>
+                            <BaseAttr name="pauseOnLoad" attr="transitions.pauseOnLoad" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            <BaseAttr name="pauseOnDatasetChange" attr="transitions.pauseOnDatasetChange" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            <BaseAttr name="activationDelayMs" attr="transitions.activationDelayMs" type="number" :min="100" :max="1000" :step="50" defaultVal="300" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                        </BaseDetails>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails
                                 attr="translations"
@@ -1086,19 +1116,19 @@ const customFormatCode =
                                 inactive
                                 name="datapointEnter"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointLeave"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointClick"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                         </BaseDetails>
                         <BaseDetails attr="downsample" :level="1">

@@ -238,6 +238,7 @@ const dataset = ref({
 });
 
 const config = ref({
+    devHints: { enable: false },
     fontFamily: "inherit",
     maxHeight: 700,
     rowsPerPage: 25,
@@ -467,7 +468,9 @@ const config = ref({
     },
     useChart: true,
 });
+
 const darkModeConfig = ref({
+    devHints: { enable: false },
     fontFamily: "inherit",
     maxHeight: 700,
     rowsPerPage: 25,
@@ -1110,6 +1113,16 @@ const { configCode, showAllConfig } = useConfigCode();
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiTableConfig" equal>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             inactive
                             name="fontFamily"

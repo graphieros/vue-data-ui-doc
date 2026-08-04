@@ -55,6 +55,7 @@ const dataset = ref({
 });
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -153,6 +154,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -437,6 +439,16 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                                 translations.responsive[store.lang]
                             }}</BaseComment></span
                         >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr inactive name="debug" defaultVal="false" />
                         <BaseAttr
                             name="loading"

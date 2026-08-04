@@ -72,6 +72,7 @@ const dataset = ref([
 ]);
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     pie: false,
@@ -330,6 +331,7 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+    devHints: { enable: false },
     type: "classic",
     responsive: false,
     useBlurOnHover: true,
@@ -957,6 +959,16 @@ const customFormatCode =
                 </div>
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiDonutConfig" equal>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="type"
                             attr="type"
@@ -1063,19 +1075,19 @@ const customFormatCode =
                                 inactive
                                 name="datapointEnter"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointLeave"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointClick"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                         </BaseDetails>
                         <BaseDetails attr="serieToggleAnimation" :level="1">

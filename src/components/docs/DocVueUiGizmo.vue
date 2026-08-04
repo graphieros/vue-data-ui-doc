@@ -43,6 +43,7 @@ const isDarkMode = computed(() => {
 const dataset = ref(66);
 
 const config = ref({
+    devHints: { enable: false },
     a11y: {
         translations: {
             label: "Progress",
@@ -62,6 +63,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     a11y: {
         translations: {
             label: "Progress",
@@ -225,6 +227,16 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGizmoDataset</s
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiGizmoConfig" equal>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails
                                 attr="translations"

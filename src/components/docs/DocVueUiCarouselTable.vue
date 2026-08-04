@@ -62,6 +62,7 @@ const dataset = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     responsiveBreakpoint: 400,
     userOptions: {
         show: true,
@@ -203,6 +204,7 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+    devHints: { enable: false },
     responsiveBreakpoint: 400,
     userOptions: {
         show: true,
@@ -541,6 +543,16 @@ const slotCode = computed(() => {
                         attr="const config: VueUiCarouselTableConfig"
                         equal
                     >
+                    <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="responsiveBreakpoint"
                             attr="responsiveBreakpoint"

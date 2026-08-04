@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
+import { defaultDataHill } from "./chunks/defaultDataHill";
 
 export const useDefaultDataStore = defineStore("defaultData", {
     state: () => {
         return {
+            vue_ui_hill: defaultDataHill,
             vue_ui_bump: {
                 dataset: [
                     {
@@ -165,7 +167,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                     {
                         key: "userOptions.buttonTitles.svg",
-                        def: "Download PNG",
+                        def: "Download SVG",
                         type: "text",
                         label: ["button", "svg", "title", "is", "textContent"],
                         category: "userOptions",

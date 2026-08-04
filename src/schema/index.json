@@ -1,4 +1,187 @@
 {
+    "vue_ui_hill": {
+        "name": "VueUiHill",
+        "icon": "chartHill",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-hill",
+        "path": "/docs#vue-ui-hill",
+        "description": "hill",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "responsive": false,
+        "props": ["dataset", "config"],
+        "types": {
+            "config": "VueUiHillConfig",
+            "dataset": "VueUiHillDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    { "label": "TASK A", "position": 0 },
+                    { "label": "TASK B", "position": 0 },
+                    { "label": "TASK C", "position": 0 },
+                    { "label": "TASK D", "position": 1 },
+                    { "label": "TASK E", "position": 0.6 },
+                    { "label": "TASK F", "position": 0.3 },
+                    { "label": "TASK G", "position": 0.75 },
+                    { "label": "TASK H", "position": 1 }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "display a watermark"
+            },
+            {
+                "name": "chart-background",
+                "description": "customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "hill-edit",
+                "description": "customize the content of the edit button"
+            },
+            {
+                "name": "hill-save",
+                "description": "customize the content of the save button"
+            },
+            {
+                "name": "hill-cancel",
+                "description": "customize the content of the cancel button"
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionCsv",
+                "description": "customize the context menu csv icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "isEditing",
+                "description": "Boolean, true in edit mode."
+            },
+            {
+                "name": "getImage",
+                "description": "Returns the base64 image data of the chart"
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Triggers svg download."
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Triggers toggling of the built-in annotator tool"
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Triggers toggling of the fullscreen mode"
+            },
+            {
+                "name": "save",
+                "description": "Triggers the internal save function, that in turns, emits @save."
+            },
+            {
+                "name": "cancel",
+                "description": "Triggers the toggle of the edit mode, to its closed state, when open."
+            }
+        ]
+    },
     "vue_ui_bump": {
         "name": "VueUiBump",
         "icon": "chartBump",

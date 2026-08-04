@@ -1,4 +1,16 @@
 const mapping = {
+    VueUiHill: {
+        edit: "VueUiHillFormattedDatasetItem[]",
+        save: "VueUiHillFormattedDatasetItem[]",
+        cancel: "VueUiHillFormattedDatasetItem[]",
+        change: "VueUiHillEmitChange",
+        dragStart: "VueUiHillFormattedDatasetItem",
+        dragEnd: "VueUiHillFormattedDatasetItem",
+        datapointEnter: "VueUiHillEmitDatapointEnter",
+        datapointLeave: "VueUiHillEmitDatapointLeave",
+        selectDatapoint: "VueUiHillEmitSelectDatapoint",
+        copyAlt: "VueUiHillEmitCopyAlt"
+    },
     VueUiSparkline: {
         hoverIndex: "VueUiSparklineEmitHoverIndex",
         selectDatapoint: "VueUiSparklineEmitSelectDatapoint",

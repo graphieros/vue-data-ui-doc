@@ -747,9 +747,18 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Smiley",
         thumb: new URL("../assets/thumb_smiley.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_smiley_light.png", import.meta.url)
-            .href,
+        thumbLight: new URL("../assets/thumb_smiley_light.png", import.meta.url).href,
         component: "Smiley",
+    },
+    {
+        route: "/docs#vue-ui-hill",
+        icon: "chartHill",
+        cssClasses: "",
+        isSelected: isSelected,
+        tooltipContent: "Hill",
+        thumb: new URL("../assets/thumb_hill.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_hill_light.png", import.meta.url).href,
+        component: "Hill",
     },
     {
         route: "/docs#vue-ui-accordion",
@@ -1241,6 +1250,17 @@ const sideMenuItems = computed(() => {
                 },
             ],
             icon: "starFill",
+        },
+        {
+            title: translations.value.sideMenu.productivity[store.lang],
+            items: [
+                {
+                    route: "/docs#vue-ui-hill",
+                    componentName: "Hill",
+                    icon: "chartHill"
+                }
+            ],
+            icon: "monitor"
         },
         {
             title: translations.value.sideMenu.utilities[store.lang],

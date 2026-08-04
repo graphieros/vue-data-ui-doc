@@ -150,6 +150,17 @@ export default function useCharts() {
                 ko: "지도",
                 ar: "خرائط",
             },
+            productivity: {
+                en: "Productivity",
+                fr: "Productivité",
+                pt: "Produtividade",
+                de: "Produktivität",
+                zh: "生产力",
+                ja: "生産性",
+                es: "Productividad",
+                ko: "생산성",
+                ar: "الإنتاجية"
+            }
         };
     });
 
@@ -298,6 +309,17 @@ export default function useCharts() {
                 ko: "지도",
                 ar: "خرائط",
             },
+            productivity: {
+                en: "",
+                fr: "",
+                pt: "",
+                de: "",
+                zh: "",
+                ja: "",
+                es: "",
+                ko: "",
+                ar: ""
+            }
         };
     });
 
@@ -839,6 +861,13 @@ export default function useCharts() {
                 taxinomy: ["dataOverTime"],
                 singleTaxinomy: "dataOverTime",
             },
+            VueUiHill: {
+                icon: "chartHill",
+                link: "/docs#vue-ui-hill",
+                description: translations.value.docs.tooltips.hill[store.lang],
+                taxinomy: ["productivity"],
+                singleTaxinomy: "productivity"
+            }
         };
     });
 

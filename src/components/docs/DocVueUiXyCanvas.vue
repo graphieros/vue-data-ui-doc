@@ -99,6 +99,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -377,6 +378,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -925,6 +927,16 @@ const customFormatCode =
                                     }}</span
                                 ></span
                             >
+                            <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="debug"

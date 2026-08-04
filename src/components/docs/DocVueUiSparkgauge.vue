@@ -67,6 +67,7 @@ const dataset3 = ref({
 });
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     style: {
@@ -114,6 +115,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     style: {
@@ -357,6 +359,16 @@ function goToPage(route) {
                         attr="const config: VueUiSparkgaugeConfig"
                         equal
                     >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr inactive name="debug" defaultVal="false" />
                         <BaseAttr
                             name="loading"

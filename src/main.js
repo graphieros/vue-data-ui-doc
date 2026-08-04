@@ -59,6 +59,7 @@ import {
     VueUiDag,
     VueUiGeo,
     VueUiBump,
+    VueUiHill
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -126,5 +127,6 @@ app.component("VueUiStackline", VueUiStackline);
 app.component("VueUiDag", VueUiDag);
 app.component("VueUiGeo", VueUiGeo);
 app.component("VueUiBump", VueUiBump);
+app.component("VueUiHill", VueUiHill);
 
 app.mount("#app");

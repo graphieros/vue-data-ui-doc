@@ -14,15 +14,15 @@ const translations = computed(() => store.translations);
 
 const content = computed(() => {
     return `
-    import { ref, onMounted } from "vue";
+    import { useTemplateRef, onMounted } from "vue";
 
     // Add this ref to the chart component
-    const ${props.component}Ref = ref(null);
+    const chartRef = useTemplateRef('chartRef');
 
     const chartImageData = ref({})
 
     onMounted(async () => {
-        if (${props.component}Ref.value) {
+        if (chartRef.value) {
             const {
                 imageUri,
                 base64,
@@ -30,7 +30,7 @@ const content = computed(() => {
                 width,
                 height,
                 aspectRatio
-            } = await ${props.component}Ref.value.getImage({ scale: 2 });
+            } = await chartRef.value.getImage({ scale: 2 });
 
             chartImageData.value = {
                 imageUri,

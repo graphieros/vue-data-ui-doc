@@ -32,7 +32,8 @@ watch(
     },
 );
 
-const config = ref({
+const config = computed(() => ({
+    devHints: { enable: false },
     alwaysVisible: false,
     style: {
         backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
@@ -106,7 +107,7 @@ const config = ref({
         tooltipShapeColor: "Color",
         tooltipImage: "Download PNG",
     },
-});
+}));
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 
@@ -427,6 +428,16 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
                         attr="const config: VueUiAnnotatorConfig"
                         equal
                     >
+                    <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfig"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="alwaysVisible"
                             attr="alwaysVisible"

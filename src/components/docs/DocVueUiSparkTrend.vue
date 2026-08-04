@@ -50,6 +50,7 @@ const neutralDs = ref([10, 12, 8, 4, 9, 6, 7, 4, 8, 8]);
 const negativeDs = ref([89, 55, 34, 21, 13, 8, 5, 3, 2, 1]);
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -111,6 +112,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -346,6 +348,16 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr inactive name="debug" defaultVal="false" />
                         <BaseAttr
                             name="loading"

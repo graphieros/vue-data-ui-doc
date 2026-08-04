@@ -108,6 +108,7 @@ type VueUiDagDataset = {
 }`);
 
 const config = ref({
+    devHints: { enable: false },
     loading: false,
     debug: false,
     theme: "",
@@ -264,6 +265,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     loading: false,
     debug: false,
     theme: "",
@@ -573,6 +575,16 @@ function goToPage(route) {
                 </div>
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiDagConfig" equal>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="loading"
                             attr="loading"

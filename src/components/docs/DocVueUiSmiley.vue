@@ -40,6 +40,7 @@ const isDarkMode = computed(() => {
 });
 
 const config = ref({
+    devHints: { enable: false },
     readonly: false,
     style: {
         fontFamily: "inherit",
@@ -102,6 +103,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     readonly: false,
     style: {
         fontFamily: "inherit",
@@ -418,6 +420,16 @@ const { configCode, showAllConfig } = useConfigCode();
                                 ></span
                             ></span
                         >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseDetails attr="style" :level="1">
                             <span>fontFamily: "inherit",</span>
                             <BaseAttr

@@ -65,6 +65,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    devHints: { enable: false },
     theme: "",
     responsive: false,
     responsiveProportionalSizing: true,
@@ -208,7 +209,9 @@ const config = ref({
         },
     },
 });
+
 const darkModeConfig = ref({
+    devHints: { enable: false },
     theme: "",
     responsive: false,
     responsiveProportionalSizing: true,
@@ -540,6 +543,16 @@ function goToPage(route) {
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiFunnelConfig" equal>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             inactive
                             name="responsive"

@@ -74,6 +74,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    devHints: { enable: false },
     responsiveBreakpoint: 500,
     showAverage: true,
     showMedian: true,
@@ -180,6 +181,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     responsiveBreakpoint: 500,
     showAverage: true,
     showMedian: true,
@@ -493,6 +495,16 @@ function goToPage(route) {
                             <BaseComment>string[]</BaseComment></span
                         >
                         <span>fontFamily: "inherit",</span>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="responsiveBreakpoint"
                             attr="responsiveBreakpoint"

@@ -43,6 +43,7 @@ const isDarkMode = computed(() => {
 });
 
 const config = ref({
+    devHints: { enable: false },
     type: "star",
     readonly: true,
     from: 1,
@@ -105,7 +106,9 @@ const config = ref({
         },
     },
 });
+
 const darkModeConfig = ref({
+    devHints: { enable: false },
     type: "star",
     readonly: true,
     from: 1,
@@ -417,6 +420,16 @@ const { configCode, showAllConfig } = useConfigCode();
                             :dark="mutableConfigDarkMode"
                             @change="forceChartUpdate()"
                         />
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <span
                             >readonly:
                             {{ mode === "readonly" ? "true" : "false" }},

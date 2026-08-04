@@ -149,6 +149,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -243,6 +244,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -595,6 +597,16 @@ function goToPage(route) {
                         attr="const config: VueUiRelationCircleConfig"
                         equal
                     >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             inactive
                             name="responsive"
@@ -669,19 +681,19 @@ function goToPage(route) {
                                 inactive
                                 name="datapointEnter"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointLeave"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointClick"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                         </BaseDetails>
                         <BaseDetails attr="style">

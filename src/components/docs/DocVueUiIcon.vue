@@ -81,6 +81,7 @@ const icons = ref([
     "chartGauge",
     "chartGeo",
     "chartHeatmap",
+    "chartHill",
     "chartHistoryPlot",
     "chartLine",
     "chartMoodRadar",

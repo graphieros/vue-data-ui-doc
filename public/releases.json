@@ -1,5 +1,26 @@
 [
     {
+        "version": "v 3.23.0",
+        "date": "2026-08-04",
+        "updates": [
+            {
+                "component": "VueUiHill",
+                "description": "Add new chart component",
+                "link": "/docs#vue-ui-hill"
+            },
+            {
+                "component": "All components",
+                "description": "Add dev hints",
+                "link": ""
+            },
+            {
+                "component": "All components",
+                "description": "Standardize css transitions",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.22.14",
         "date": "2026-07-20",
         "updates": [

@@ -138,6 +138,7 @@ const dataset = ref([
 ]);
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -279,6 +280,7 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+    devHints: { enable: false },
     debug: false,
     loading: false,
     responsive: false,
@@ -717,6 +719,16 @@ const prefersReduced = ref({
                             attr="const config: VueUiSparklineConfig"
                             equal
                         >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="responsive"
@@ -850,19 +862,19 @@ const prefersReduced = ref({
                                     inactive
                                     name="datapointEnter"
                                     defaultVal="null"
-                                    comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                    comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                                 />
                                 <BaseAttr
                                     inactive
                                     name="datapointLeave"
                                     defaultVal="null"
-                                    comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                    comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                                 />
                                 <BaseAttr
                                     inactive
                                     name="datapointClick"
                                     defaultVal="null"
-                                    comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                    comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                                 />
                             </BaseDetails>
                             <BaseDetails attr="downsample" :level="1">

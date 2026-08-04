@@ -71,6 +71,10 @@ export function useConfig(options = {}) {
         threshold: 1095, // v2 = 500
     };
 
+    const DEV_HINTS = {
+        enable: false,
+    };
+
     const LABEL_VP_ORDER = {
         showValueFirst: true,
         usePercentageParens: true,
@@ -124,6 +128,13 @@ export function useConfig(options = {}) {
         smoothForce: 0.18,
         smoothSnapThreshold: 0.25,
         teleportTo: 'body', // or any other css selector (used in the `to` attr of the Teleport component)
+    };
+
+    const TRANSITIONS = {
+        enable: true, // forcefully disabled when `prefers-reduced-motion: reduce`
+        pauseOnLoad: true,
+        pauseOnDatasetChange: false, // can be expensive
+        activationDelayMs: 300,
     };
 
     const AXIS_DATE_FORMATTER = {
@@ -307,7 +318,226 @@ export function useConfig(options = {}) {
         merged: false,
     };
 
+    const vue_ui_hill = {
+        devHints: DEV_HINTS,
+        loading: false,
+        readonly: false,
+        editing: false,
+        theme: '',
+        customPalette: [],
+        transitions: TRANSITIONS,
+        userOptions: USER_OPTIONS({
+            tooltip: false,
+            pdf: true,
+            csv: true,
+            img: true,
+            table: false,
+            labels: false,
+            fullscreen: true,
+            annotator: true,
+            svg: true,
+        }),
+        a11y: {
+            ...A11Y,
+            translations: {
+                ...A11Y.translations,
+                keyboardNavigation:
+                    'Use the left and right arrow keys to adjust the selected datapoint.',
+                topOfHill: 'Top of the hill',
+            },
+        },
+        events: {
+            edit: null,
+            save: null,
+            cancel: null,
+            change: null,
+            dragStart: null,
+            dragEnd: null,
+            datapointEnter: null,
+            datapointLeave: null,
+            selectDatapoint: null,
+        },
+        interaction: {
+            keyboardStep: 0.01,
+            peakTolerance: 0.005, // controls phase text
+        },
+        style: {
+            fontFamily: 'inherit',
+            chart: {
+                backgroundColor: COLOR_BACKGROUND,
+                color: COLOR_TEXT_PRIMARY,
+                width: 800,
+                height: 300,
+                title: TITLE,
+                toolbar: {
+                    show: true,
+                    status: {
+                        lastUpdated: 'Last updated just now',
+                        editInstruction: 'Drag each dot to adjust its position',
+                        color: COLOR_TEXT_PRIMARY,
+                        fontSize: FONT._14,
+                        bold: false,
+                        lineHeight: 1.3,
+                    },
+                    buttons: {
+                        translations: {
+                            edit: 'Edit',
+                            cancel: 'Cancel',
+                            save: 'Save',
+                        },
+                    },
+                },
+                layout: {
+                    hill: {
+                        geometry: {
+                            horizontalPaddingRatio: 0.05,
+                            topPaddingRatio: 0.15,
+                            bottomPaddingRatio: 0.15,
+                            curvature: 0.7,
+                        },
+                        baseline: {
+                            show: true,
+                            stroke: COLOR_GREY_MID,
+                            strokeWidth: 1,
+                            strokeDasharray: 0,
+                        },
+                        midline: {
+                            show: true,
+                            stroke: COLOR_GREY_MID,
+                            strokeWidth: 1,
+                            strokeDasharray: '2.5 3.5',
+                        },
+                        curve: {
+                            stroke: COLOR_GREY,
+                            strokeWidth: 1.5,
+                            strokeDasharray: 0,
+                        },
+                    },
+                    plots: {
+                        radius: 10,
+                        hitRadius: 10,
+                        stroke: COLOR_BACKGROUND,
+                        strokeWidth: 2,
+                        mutedOpacity: 0.4,
+                        disabledOpacity: 0.4,
+                        shadow: {
+                            show: true,
+                            color: COLOR_TEXT_PRIMARY,
+                            offsetX: 0,
+                            offsetY: 0.5,
+                            blur: 0.4,
+                        },
+                        stacking: {
+                            show: true,
+                            // Stack when overlap exceeds 70% of the circle radius.
+                            // 0 = stack on any overlap
+                            // 0.5 = stack when overlap exceeds half the radius
+                            // 1 = stack when overlap exceeds the full radius
+                            overlapThresholdRatio: 0.8,
+                            gap: 5, // plot.radius / 2
+                            overflow: {
+                                show: true,
+                                transitionDuration: 300,
+                                marker: {
+                                    radius: 10,
+                                    stroke: COLOR_BACKGROUND,
+                                    strokeWidth: 1,
+                                    labelColor: COLOR_TEXT_PRIMARY,
+                                    labelOffsetY: 0,
+                                    fontSize: FONT._14,
+                                    bold: false,
+                                    fill: COLOR_GREY_MID,
+                                },
+                                menu: {
+                                    width: 220,
+                                    maxHeight: 220,
+                                    backgroundColor: COLOR_BACKGROUND,
+                                    color: COLOR_TEXT_PRIMARY,
+                                    borderColor: 'transparent',
+                                    borderRadius: 3,
+                                    title: '',
+                                },
+                            },
+                        },
+                        dragMarker: {
+                            show: true,
+                            strokeWidth: 1.5,
+                            crossPath: 'M-5 0H5M0-5V5',
+                            positionIndicator: {
+                                show: true,
+                                useSerieColor: true,
+                                color: COLOR_GREY_LIGHT,
+                                strokeWidth: 1,
+                                strokeDasharray: '2 4',
+                                circle: {
+                                    show: true,
+                                    radius: 3,
+                                    stroke: COLOR_BACKGROUND,
+                                    strokeWidth: 1,
+                                },
+                                value: {
+                                    show: true,
+                                    offsetY: 0,
+                                    fontSize: FONT._12,
+                                    useSerieColor: false,
+                                    color: COLOR_TEXT_PRIMARY,
+                                    formatter: null,
+                                    rounding: 0,
+                                },
+                            },
+                        },
+                    },
+                    labels: {
+                        item: {
+                            ellipsisThresholdChars: 24, // can be null = no ellipsis
+                            show: true,
+                            useSerieColor: false,
+                            color: COLOR_TEXT_PRIMARY,
+                            fontSize: FONT._14,
+                            bold: false,
+                            offsetX: 0,
+                            offsetY: 0,
+                            autoSideThreshold: 0.75,
+                            stroke: COLOR_BACKGROUND,
+                            strokeWidth: 5,
+                        },
+                        phases: {
+                            show: true,
+                            color: COLOR_TEXT_SECONDARY,
+                            fontSize: FONT._14,
+                            bold: true,
+                            letterSpacing: '0.1em',
+                            offsetY: 0,
+                            left: {
+                                text: 'FIGURING THINGS OUT',
+                            },
+                            right: {
+                                text: 'MAKING IT HAPPEN',
+                            },
+                        },
+                    },
+                    stackbar: {
+                        show: true,
+                        paddingTop: 0,
+                        paddingBottom: 12,
+                        height: 14,
+                        stroke: COLOR_BACKGROUND,
+                        strokeWidth: 1.5,
+                        gutterColor: COLOR_GREY_LIGHT,
+                        label: {
+                            show: true,
+                            color: COLOR_TEXT_PRIMARY,
+                            fontSize: FONT._12,
+                            formatter: null,
+                        },
+                    },
+                },
+            },
+        },
+    };
+
     const vue_ui_stackline = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         loading: false,
@@ -315,6 +545,7 @@ export function useConfig(options = {}) {
         theme: '',
         responsive: false,
         a11y: A11Y,
+        transitions: TRANSITIONS,
         events: {
             datapointEnter: null,
             datapointLeave: null,
@@ -519,6 +750,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_stackbar = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         loading: false, // v3
@@ -533,6 +765,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -725,6 +958,7 @@ export function useConfig(options = {}) {
 
     // NOTE: Any update to this config will be reflected in VueUiRidgeline, which uses VueUiXy in its dialog.
     const vue_ui_xy = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -742,6 +976,7 @@ export function useConfig(options = {}) {
         customPalette: [],
         useCssAnimation: false, // v3 (v2 = true)
         downsample: LTTB,
+        transitions: TRANSITIONS,
         chart: {
             fontFamily: 'inherit',
             backgroundColor: COLOR_BACKGROUND,
@@ -1106,6 +1341,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_donut = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -1298,6 +1534,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_treemap = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -1311,6 +1548,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -1370,7 +1608,7 @@ export function useConfig(options = {}) {
                         fontSize: FONT._24,
                         fontSizeZoomFactor: 6,
                         minFontSize: FONT._10,
-                        hideUnderProportion: 0.03,
+                        hideUnderProportion: 0, // 3.23.0
                         prefix: '',
                         suffix: '',
                         rounding: 0,
@@ -1421,6 +1659,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_waffle = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -1534,6 +1773,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_radar = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -1646,6 +1886,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_quadrant = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -1810,6 +2051,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_gauge = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -1910,6 +2152,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_wheel = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -1980,6 +2223,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_tiremarks = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -2037,6 +2281,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_chestnut = {
+        devHints: DEV_HINTS,
         debug: false, // v3
         loading: false, // v3
         theme: '',
@@ -2221,6 +2466,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_onion = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -2234,6 +2480,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -2330,6 +2577,7 @@ export function useConfig(options = {}) {
 
     const vue_ui_vertical_bar = {
         // v3 renamed to _horizontal_ (yet still works)
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -2339,6 +2587,7 @@ export function useConfig(options = {}) {
         theme: '',
         customPalette: [],
         useCssAnimation: false, // v3 (v2 = true)
+        transitions: TRANSITIONS,
         a11y: {
             ...A11Y,
             translations: {
@@ -2475,6 +2724,7 @@ export function useConfig(options = {}) {
     const vue_ui_horizontal_bar = vue_ui_vertical_bar;
 
     const vue_ui_heatmap = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -2625,6 +2875,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_scatter = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -2638,6 +2889,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             datapointEnter: null, // v3
             datapointLeave: null, // v3
@@ -2858,6 +3110,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_candlestick = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         type: 'candlestick', // or 'ohlc'
@@ -2866,6 +3119,7 @@ export function useConfig(options = {}) {
         responsive: false,
         responsiveProportionalSizing: true,
         a11y: A11Y,
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -3024,6 +3278,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_sparkline = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -3158,6 +3413,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_sparkbar = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -3227,6 +3483,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_sparkstackbar = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -3305,6 +3562,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_sparkhistogram = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -3405,6 +3663,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_sparkgauge = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -3456,6 +3715,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_spark_trend = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -3516,6 +3776,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_quick_chart = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -3527,12 +3788,13 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
+        transitions: TRANSITIONS,
         responsive: false,
         theme: '',
         axisLabelsFontSize: FONT._12,
         backgroundColor: COLOR_BACKGROUND,
         barGap: 12,
-        barAnimated: true,
+        barAnimated: true, // deprecated
         barStrokeWidth: 1,
         blurOnHover: true,
         chartIsBarUnderDatasetLength: 6,
@@ -3564,7 +3826,7 @@ export function useConfig(options = {}) {
         showLegendSelectAllToggle: false,
         legendSelectAllToggleBackgroundColor: COLOR_BORDER,
         legendSelectAllToggleColor: COLOR_TEXT_PRIMARY,
-        lineAnimated: true,
+        lineAnimated: true, // deprecated
         lineSmooth: true,
         lineStrokeWidth: 2,
         paletteStartIndex: 0,
@@ -3676,6 +3938,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_age_pyramid = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -3799,6 +4062,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_relation_circle = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -3871,6 +4135,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_thermometer = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -3933,6 +4198,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_rings = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -3946,6 +4212,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             datapointEnter: null, // v3
             datapointLeave: null, // v3
@@ -4044,6 +4311,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_donut_evolution = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -4057,6 +4325,7 @@ export function useConfig(options = {}) {
             datapointLeave: null, // v3
             datapointClick: null, // v3
         },
+        transitions: TRANSITIONS,
         customPalette: [],
         style: {
             fontFamily: 'inherit',
@@ -4235,6 +4504,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_mood_radar = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -4335,6 +4605,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_molecule = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -4395,6 +4666,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_nested_donuts = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -4527,6 +4799,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_galaxy = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -4540,6 +4813,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -4626,6 +4900,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_strip_plot = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -4640,6 +4915,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -4788,6 +5064,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_dumbbell = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -4971,6 +5248,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_3d_bar = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -5073,6 +5351,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_table_sparkline = {
+        devHints: DEV_HINTS,
         theme: '',
         customPalette: [],
         responsiveBreakpoint: 500,
@@ -5162,6 +5441,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_table_heatmap = {
+        devHints: DEV_HINTS,
         theme: '',
         style: {
             fontFamily: 'inherit',
@@ -5195,6 +5475,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_word_cloud = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -5290,6 +5571,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_xy_canvas = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false,
@@ -5456,6 +5738,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_flow = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -5556,6 +5839,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_parallel_coordinate_plot = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         debug: false, // v3
@@ -5569,6 +5853,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -5675,6 +5960,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_timer = {
+        devHints: DEV_HINTS,
         type: 'stopwatch',
         responsive: false,
         responsiveProportionalSizing: true,
@@ -5793,6 +6079,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_kpi = {
+        devHints: DEV_HINTS,
         debug: false, // v3
         animationFrames: 60,
         animationValueStart: 0,
@@ -5825,6 +6112,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_mini_loader = {
+        devHints: DEV_HINTS,
         type: 'onion',
         onion: {
             gutterColor: COLOR_GREY_MID,
@@ -5853,6 +6141,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_smiley = {
+        devHints: DEV_HINTS,
         readonly: false,
         useCursorPointer: false,
         style: {
@@ -5916,6 +6205,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_rating = {
+        devHints: DEV_HINTS,
         type: SHAPE.STAR,
         readonly: false,
         from: 1,
@@ -5981,6 +6271,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_annotator = {
+        devHints: DEV_HINTS,
         alwaysVisible: false,
         useCursorPointer: false,
         style: {
@@ -6058,6 +6349,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_dashboard = {
+        devHints: DEV_HINTS,
         locked: false,
         style: {
             board: {
@@ -6106,6 +6398,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_skeleton = {
+        devHints: DEV_HINTS,
         type: SHAPE.LINE,
         style: {
             backgroundColor: COLOR_BACKGROUND,
@@ -6295,6 +6588,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_table = {
+        devHints: DEV_HINTS,
         fontFamily: 'inherit',
         maxHeight: 500,
         rowsPerPage: 25,
@@ -6506,6 +6800,7 @@ export function useConfig(options = {}) {
         useChart: true,
     };
     const vue_ui_digits = {
+        devHints: DEV_HINTS,
         height: '100%',
         width: null,
         backgroundColor: COLOR_BACKGROUND,
@@ -6517,6 +6812,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_carousel_table = {
+        devHints: DEV_HINTS,
         responsiveBreakpoint: 400,
         userOptions: USER_OPTIONS({
             tooltip: false,
@@ -6621,6 +6917,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_gizmo = {
+        devHints: DEV_HINTS,
         a11y: {
             translations: {
                 label: 'Progress',
@@ -6643,6 +6940,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_bullet = {
+        devHints: DEV_HINTS,
         debug: false, // v3
         loading: false, // v3
         responsive: false, // v3
@@ -6728,6 +7026,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_funnel = {
+        devHints: DEV_HINTS,
         theme: '',
         responsive: false,
         responsiveProportionalSizing: true,
@@ -6823,6 +7122,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_history_plot = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -6836,6 +7136,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -7004,6 +7305,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_circle_pack = {
+        devHints: DEV_HINTS,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -7015,6 +7317,7 @@ export function useConfig(options = {}) {
                     'Use the left and right, or up and down arrow keys to move between datapoints',
             },
         },
+        transitions: TRANSITIONS,
         events: {
             // v3
             datapointEnter: null, // v3
@@ -7115,6 +7418,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_world = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -7207,6 +7511,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_ridgeline = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         debug: false, // v3
@@ -7384,6 +7689,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_chord = {
+        devHints: DEV_HINTS,
         debug: false, // v3
         loading: false, // v3
         responsive: false,
@@ -7484,6 +7790,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_dag = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         loading: false,
@@ -7610,6 +7917,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_geo = {
+        devHints: DEV_HINTS,
         skeletonDataset: null,
         skeletonConfig: null,
         loading: false,
@@ -7704,6 +8012,7 @@ export function useConfig(options = {}) {
     };
 
     const vue_ui_bump = {
+        devHints: DEV_HINTS,
         skeletonConfig: null,
         skeletonDataset: null,
         loading: false,
@@ -7877,6 +8186,7 @@ export function useConfig(options = {}) {
         vue_ui_dag,
         vue_ui_geo,
         vue_ui_bump,
+        vue_ui_circle_pack,
         // non chart components
         vue_ui_cursor,
         vue_ui_accordion,
@@ -7889,6 +8199,6 @@ export function useConfig(options = {}) {
         vue_ui_skeleton,
         vue_ui_table,
         vue_ui_digits,
-        vue_ui_circle_pack,
+        vue_ui_hill,
     };
 }

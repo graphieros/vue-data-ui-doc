@@ -39,6 +39,7 @@ const isDarkMode = computed(() => {
 const dataset = ref(299792458);
 
 const config = ref({
+    devHints: { enable: false },
     height: "100%",
     width: null,
     backgroundColor: "#F3F4F6",
@@ -50,6 +51,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     height: "100%",
     width: null,
     backgroundColor: "#2A2A2A",
@@ -197,6 +199,16 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiDigitsConfig" equal>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="height"
                             attr="height"

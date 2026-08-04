@@ -154,6 +154,7 @@ const MakerDag = defineAsyncComponent(
 const MakerBump = defineAsyncComponent(
     () => import("../components/maker/MakerBump.vue"),
 );
+const MakerHill = defineAsyncComponent(() => import('../components/maker/MakerHill.vue'))
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -570,6 +571,14 @@ const options = ref([
         icon: "chartBump",
         thumb: new URL("../assets/thumb_bump_light.png", import.meta.url).href,
         description: translations.value.docs.tooltips.bump,
+    },
+    {
+        component: markRaw(MakerHill),
+        key: "vue_ui_hill",
+        name: "VueUiHill",
+        icon: "chartHill",
+        thumb: new URL("../assets/thumb_hill_light.png", import.meta.url).href,
+        description: translations.value.docs.tooltips.hill,
     },
 ]);
 

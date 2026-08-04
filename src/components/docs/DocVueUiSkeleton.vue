@@ -36,6 +36,7 @@ const isDarkMode = computed(() => {
 
 const config = computed(() => {
     return {
+        devHints: { enable: false },
         type: type.value,
         style: {
             backgroundColor: "#F3F4F6",
@@ -176,6 +177,7 @@ const config = computed(() => {
 
 const darkModeConfig = computed(() => {
     return {
+        devHints: { enable: false },
         type: type.value.text,
         style: {
             backgroundColor: "#2A2A2A",

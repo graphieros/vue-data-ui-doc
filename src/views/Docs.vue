@@ -235,6 +235,7 @@ const DocVueUiGeo = defineAsyncComponent(
 const DocVueUiBump = defineAsyncComponent(
     () => import("../components/docs/DocVueUiBump.vue"),
 );
+const DocVueUiHill = defineAsyncComponent((() => import('../components/docs/DocVueUiHill.vue')))
 
 const mainConfig = useConfig();
 
@@ -1054,6 +1055,14 @@ const selectedConfig = computed(() => {
                     v-if="
                         router.currentRoute.value.fullPath ===
                         '/docs#vue-ui-bump'
+                    "
+                />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiHill
+                    v-if="
+                        router.currentRoute.value.fullPath ===
+                        '/docs#vue-ui-hill'
                     "
                 />
             </Transition>

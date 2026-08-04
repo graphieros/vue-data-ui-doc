@@ -95,6 +95,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    devHints: { enable: false },
     loading: false,
     debug: false,
     responsive: false,
@@ -291,6 +292,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     loading: false,
     debug: false,
     responsive: false,
@@ -710,6 +712,16 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                             >customPalette: [],
                             <BaseComment>string[]</BaseComment></span
                         >
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr inactive name="debug" defaultVal="false" />
                         <BaseAttr
                             name="loading"
@@ -764,19 +776,19 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                                 inactive
                                 name="datapointEnter"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointLeave"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointClick"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                         </BaseDetails>
                         <BaseDetails attr="style" :level="1">

@@ -380,6 +380,15 @@ function toggleLandmarks() {
   showLandmarks.value = !showLandmarks.value;
 }
 
+function firstLast(svg) {
+  const d = svg.data[0];
+  const first = d.plots[0];
+  const last = d.plots.at(-1);
+  return `
+    <path style="transition: all 0.2s" d="M${first.x},${first.y} ${last.x},${last.y}" stroke="red" stroke-dasharray="2 12" stroke-width="2" stroke-linecap="round"/>
+  `
+}
+
 </script>
 
 <template>
@@ -401,6 +410,7 @@ function toggleLandmarks() {
 
       <VueUiXy :dataset :config @zoomEnd="zoomEnd" @zoomReset="zoomReset" ref="chart">
         <template #svg="{ svg }">
+          <g v-html="firstLast(svg)"/>
           <g>
             <polygon
               :points="createStar({ plot: { x: svg.drawingArea.left + svg.drawingArea.width / 2, y: svg.drawingArea.top + svg.drawingArea.height / 2 }, radius: svg.drawingArea.height / 3 })"

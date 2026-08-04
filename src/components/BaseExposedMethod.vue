@@ -25,17 +25,18 @@ const params = computed(() => {
     );
 });
 
+const lowercaseFirst = (str) =>
+  str ? str[0].toLowerCase() + str.slice(1) : str;
+
 const content = computed(() => {
     return `
-    import { ref } from "vue";
+    import { useTemplateRef } from "vue";
 
     // Add this ref to the chart component
-    const ${props.component}Ref = ref(null);
+    const chartRef = useTemplateRef('chartRef');
 
     function ${props.name}()  {
-        if (${props.component}Ref.value) {
-            ${props.component}Ref.value.${props.name}(${params.value});
-        }
+        chartRef.value?.${props.name}(${params.value});
     }
 `;
 });

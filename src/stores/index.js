@@ -899,6 +899,17 @@ export const useMainStore = defineStore("main", {
                         ko: "레이더",
                         ar: "رادار",
                     },
+                    productivity: {
+                        en: "Productivity",
+                        fr: "Productivité",
+                        pt: "Produtividade",
+                        de: "Produktivität",
+                        zh: "生产力",
+                        ja: "生産性",
+                        es: "Productividad",
+                        ko: "생산성",
+                        ar: "الإنتاجية"
+                    },
                     semantic: {
                         en: "Semantic",
                         fr: "Sémantique",
@@ -1150,6 +1161,39 @@ export const useMainStore = defineStore("main", {
                     },
                 },
                 slots: {
+                    hill: {
+                        en: "Use these slots for custom icons or button contents for the edit/save menu.",
+                        fr: "Utilisez ces slots pour personnaliser les icônes ou le contenu des boutons du menu d’édition et d’enregistrement.",
+                        pt: "Use estes slots para personalizar os ícones ou o conteúdo dos botões do menu de edição e salvamento.",
+                        de: "Verwenden Sie diese Slots für benutzerdefinierte Symbole oder Schaltflächeninhalte im Bearbeiten-/Speichern-Menü.",
+                        zh: "使用这些插槽自定义编辑/保存菜单中的图标或按钮内容。",
+                        ja: "これらのスロットを使用して、編集／保存メニューのアイコンやボタンの内容をカスタマイズします。",
+                        es: "Utilice estos slots para personalizar los iconos o el contenido de los botones del menú de edición y guardado.",
+                        ko: "이 슬롯을 사용하여 편집/저장 메뉴의 아이콘이나 버튼 내용을 사용자 지정하세요.",
+                        ar: "استخدم هذه الفتحات لتخصيص الأيقونات أو محتوى الأزرار في قائمة التعديل والحفظ."
+                    },
+                    analysis: {
+                        en: "Use this slot, which exposes the formatted dataset, to display another chart below.",
+                        fr: "Utilisez ce slot, qui expose le jeu de données formaté, pour afficher un autre graphique en dessous.",
+                        pt: "Use este slot, que disponibiliza o conjunto de dados formatado, para exibir outro gráfico abaixo.",
+                        de: "Verwenden Sie diesen Slot, der den formatierten Datensatz bereitstellt, um darunter ein weiteres Diagramm anzuzeigen.",
+                        zh: "使用此插槽获取格式化后的数据集，并在下方显示另一个图表。",
+                        ja: "フォーマット済みのデータセットを公開するこのスロットを使用して、下部に別のチャートを表示します。",
+                        es: "Utilice este slot, que expone el conjunto de datos formateado, para mostrar otro gráfico debajo.",
+                        ko: "형식이 지정된 데이터세트를 제공하는 이 슬롯을 사용하여 아래에 다른 차트를 표시하세요.",
+                        ar: "استخدم هذه الفتحة، التي تتيح مجموعة البيانات المنسقة، لعرض مخطط آخر في الأسفل."
+                    },
+                    loading: {
+                        en: "Use this slot to customize the content when the component is in loading mode.",
+                        fr: "Utilisez ce slot pour personnaliser le contenu lorsque le composant est en cours de chargement.",
+                        pt: "Use este slot para personalizar o conteúdo enquanto o componente estiver no modo de carregamento.",
+                        de: "Verwenden Sie diesen Slot, um den Inhalt anzupassen, während sich die Komponente im Lademodus befindet.",
+                        zh: "使用此插槽自定义组件处于加载状态时显示的内容。",
+                        ja: "このスロットを使用して、コンポーネントの読み込み中に表示される内容をカスタマイズします。",
+                        es: "Utilice este slot para personalizar el contenido mientras el componente está en modo de carga.",
+                        ko: "이 슬롯을 사용하여 컴포넌트가 로딩 중일 때 표시되는 내용을 사용자 지정하세요.",
+                        ar: "استخدم هذه الفتحة لتخصيص المحتوى المعروض عندما يكون المكوّن في وضع التحميل."
+                    },
                     datapoint: {
                         en: "Use this slot to customize datapoints by injecting svg elements.",
                         fr: "Utilisez ce slot pour personnaliser les points de données en injectant des éléments SVG.",
@@ -2343,6 +2387,17 @@ export const useMainStore = defineStore("main", {
                         ar: "تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين",
                     },
                     tooltips: {
+                        hill: {
+                            en: `Interactive hill chart component for visualizing and editing the progression of multiple items from “to do” to “done.”`,
+                            fr: `Composant de graphique en colline interactif permettant de visualiser et de modifier la progression de plusieurs éléments de « à faire » à « terminé ».`,
+                            pt: `Componente interativo de gráfico de colina para visualizar e editar o progresso de vários itens de “a fazer” até “concluído”.`,
+                            de: `Interaktive Hill-Chart-Komponente zur Visualisierung und Bearbeitung des Fortschritts mehrerer Elemente von „zu erledigen“ bis „erledigt“.`,
+                            zh: `交互式山丘图组件，用于可视化和编辑多个项目从“待办”到“完成”的进度。`,
+                            ja: `複数の項目が「未着手」から「完了」へ進む過程を可視化および編集するための、インタラクティブなヒルチャートコンポーネントです。`,
+                            es: `Componente interactivo de gráfico de colina para visualizar y editar el progreso de varios elementos desde “por hacer” hasta “completado”.`,
+                            ko: `여러 항목이 “할 일”에서 “완료”로 진행되는 과정을 시각화하고 편집할 수 있는 인터랙티브 힐 차트 컴포넌트입니다.`,
+                            ar: `مكوّن مخطط تلي تفاعلي لعرض تقدّم عدة عناصر وتعديله من «قيد التنفيذ» إلى «مكتمل».`,
+                        },
                         bump: {
                             en: "Visualize rank positions over time.",
                             fr: "Visualisez les positions de classement au fil du temps.",
@@ -3748,6 +3803,96 @@ export const useMainStore = defineStore("main", {
                                 es: "call this method to close the component",
                                 ko: "구성 요소를 닫으려면 이 메서드를 호출하세요.",
                                 ar: "استدعاء هذه الطريقة لإغلاق المكون",
+                            },
+                        },
+                        hill: {
+                            edit: {
+                                en: 'Emitted when clicking on the edit button.',
+                                fr: 'Émis lors d’un clic sur le bouton de modification.',
+                                pt: 'Emitido ao clicar no botão de edição.',
+                                de: 'Wird beim Klicken auf die Schaltfläche „Bearbeiten“ ausgelöst.',
+                                zh: '单击编辑按钮时触发。',
+                                ja: '編集ボタンをクリックしたときに発生します。',
+                                es: 'Se emite al hacer clic en el botón de edición.',
+                                ko: '편집 버튼을 클릭할 때 발생합니다.',
+                                ar: 'يُطلق عند النقر على زر التعديل.'
+                            },
+                            save: {
+                                en: 'Emitted when clicking the save button.',
+                                fr: 'Émis lors d’un clic sur le bouton d’enregistrement.',
+                                pt: 'Emitido ao clicar no botão de salvar.',
+                                de: 'Wird beim Klicken auf die Schaltfläche „Speichern“ ausgelöst.',
+                                zh: '单击保存按钮时触发。',
+                                ja: '保存ボタンをクリックしたときに発生します。',
+                                es: 'Se emite al hacer clic en el botón de guardar.',
+                                ko: '저장 버튼을 클릭할 때 발생합니다.',
+                                ar: 'يُطلق عند النقر على زر الحفظ.'
+                            },
+                            cancel: {
+                                en: 'Emitted when clicking the cancel button.',
+                                fr: 'Émis lors d’un clic sur le bouton d’annulation.',
+                                pt: 'Emitido ao clicar no botão de cancelar.',
+                                de: 'Wird beim Klicken auf die Schaltfläche „Abbrechen“ ausgelöst.',
+                                zh: '单击取消按钮时触发。',
+                                ja: 'キャンセルボタンをクリックしたときに発生します。',
+                                es: 'Se emite al hacer clic en el botón de cancelar.',
+                                ko: '취소 버튼을 클릭할 때 발생합니다.',
+                                ar: 'يُطلق عند النقر على زر الإلغاء.'
+                            },
+                            change: {
+                                en: 'Emitted whenever a change occurs on any datapoint.',
+                                fr: 'Émis chaque fois qu’une modification est apportée à un point de données.',
+                                pt: 'Emitido sempre que ocorre uma alteração em qualquer ponto de dados.',
+                                de: 'Wird ausgelöst, sobald sich ein Datenpunkt ändert.',
+                                zh: '任何数据点发生更改时触发。',
+                                ja: 'いずれかのデータポイントに変更が発生するたびに発生します。',
+                                es: 'Se emite cada vez que se produce un cambio en cualquier punto de datos.',
+                                ko: '데이터 포인트에 변경이 발생할 때마다 발생합니다.',
+                                ar: 'يُطلق عند حدوث أي تغيير في أي نقطة بيانات.'
+                            },
+                            dragStart: {
+                                en: 'Emitted when starting to drag a datapoint.',
+                                fr: 'Émis lorsque le déplacement d’un point de données commence.',
+                                pt: 'Emitido ao iniciar o arraste de um ponto de dados.',
+                                de: 'Wird beim Starten des Ziehens eines Datenpunkts ausgelöst.',
+                                zh: '开始拖动数据点时触发。',
+                                ja: 'データポイントのドラッグを開始したときに発生します。',
+                                es: 'Se emite al comenzar a arrastrar un punto de datos.',
+                                ko: '데이터 포인트를 드래그하기 시작할 때 발생합니다.',
+                                ar: 'يُطلق عند بدء سحب نقطة بيانات.'
+                            },
+                            dragEnd: {
+                                en: 'Emitted when dragging a datapoint ends.',
+                                fr: 'Émis lorsque le déplacement d’un point de données se termine.',
+                                pt: 'Emitido ao terminar o arraste de um ponto de dados.',
+                                de: 'Wird ausgelöst, wenn das Ziehen eines Datenpunkts endet.',
+                                zh: '结束拖动数据点时触发。',
+                                ja: 'データポイントのドラッグが終了したときに発生します。',
+                                es: 'Se emite cuando termina el arrastre de un punto de datos.',
+                                ko: '데이터 포인트 드래그가 끝날 때 발생합니다.',
+                                ar: 'يُطلق عند انتهاء سحب نقطة بيانات.'
+                            },
+                            datapointEnter: {
+                                en: 'Emitted when hovering over a datapoint.',
+                                fr: 'Émis lors du survol d’un point de données.',
+                                pt: 'Emitido ao passar o cursor sobre um ponto de dados.',
+                                de: 'Wird beim Bewegen des Mauszeigers über einen Datenpunkt ausgelöst.',
+                                zh: '将鼠标悬停在数据点上时触发。',
+                                ja: 'データポイントにカーソルを合わせたときに発生します。',
+                                es: 'Se emite al pasar el cursor sobre un punto de datos.',
+                                ko: '데이터 포인트 위에 마우스를 올릴 때 발생합니다.',
+                                ar: 'يُطلق عند تمرير المؤشر فوق نقطة بيانات.'
+                            },
+                            datapointLeave: {
+                                en: 'Emitted when leaving a datapoint.',
+                                fr: 'Émis lorsque le pointeur quitte un point de données.',
+                                pt: 'Emitido quando o cursor sai de um ponto de dados.',
+                                de: 'Wird ausgelöst, wenn der Mauszeiger einen Datenpunkt verlässt.',
+                                zh: '鼠标离开数据点时触发。',
+                                ja: 'カーソルがデータポイントから離れたときに発生します。',
+                                es: 'Se emite cuando el cursor abandona un punto de datos.',
+                                ko: '마우스가 데이터 포인트에서 벗어날 때 발생합니다.',
+                                ar: 'يُطلق عند مغادرة المؤشر لنقطة بيانات.'
                             },
                         },
                         xy: {

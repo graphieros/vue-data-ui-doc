@@ -14,20 +14,18 @@ const translations = computed(() => store.translations);
 
 const content = computed(() => {
     return `
-    import { ref, onMounted } from "vue";
+    import { useTemplateRef, onMounted } from "vue";
 
     // Add this ref to the chart component
-    const ${props.component}Ref = ref(null);
+    const chartRef = useTemplateRef('chartRef');
 
     // Create a wrapper around exposed functions
     function showSeriesByName(name) {
-        if (!${props.component}Ref.value) return;
-        ${props.component}Ref.value.showSeries(name);
+        chartRef.value?.showSeries(name);
     }
 
     function hideSeriesByName(name) {
-        if (!${props.component}Ref.value) return;
-        ${props.component}Ref.value.hideSeries(name);
+        chartRef.value?.hideSeries(name);
     }
 
     // Example:

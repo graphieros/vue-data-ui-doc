@@ -87,12 +87,19 @@ console.log(generateRandomCandlestickData({ count: 6 }));
 const dataset = ref(generateRandomCandlestickData({ count: 100 }));
 
 const config = ref({
+    devHints: { enable: false },
     type: "candlestick",
     debug: false,
     loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     useCssAnimation: true,
+    transitions: {
+        enable: true,
+        pauseOnLoad: true,
+        pauseOnDatasetChange: false,
+        activationDelayMs: 300,
+    },
     a11y: {
         translations: {
             keyboardNavigation:
@@ -348,12 +355,19 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    devHints: { enable: false },
     type: "candlestick",
     debug: false,
     loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     useCssAnimation: true,
+    transitions: {
+        enable: true,
+        pauseOnLoad: true,
+        pauseOnDatasetChange: false,
+        activationDelayMs: 300,
+    },
     a11y: {
         translations: {
             keyboardNavigation:
@@ -898,6 +912,16 @@ const customFormatCode =
                         attr="const config: VueUiCandlestickConfig"
                         equal
                     >
+                    <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr
                             name="type"
                             attr="type"
@@ -947,6 +971,12 @@ const customFormatCode =
                             :dark="mutableConfigDarkMode"
                             @change="forceChartUpdate()"
                         />
+                        <BaseDetails attr="transitions" :level="1">
+                            <BaseAttr name="enable" attr="transitions.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate"/>
+                            <BaseAttr name="pauseOnLoad" attr="transitions.pauseOnLoad" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            <BaseAttr name="pauseOnDatasetChange" attr="transitions.pauseOnDatasetChange" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            <BaseAttr name="activationDelayMs" attr="transitions.activationDelayMs" type="number" :min="100" :max="1000" :step="50" defaultVal="300" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                        </BaseDetails>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails
                                 attr="translations"
@@ -984,19 +1014,19 @@ const customFormatCode =
                                 inactive
                                 name="datapointEnter"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointLeave"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                             <BaseAttr
                                 inactive
                                 name="datapointClick"
                                 defaultVal="null"
-                                comment="({datapoint, seriesIndex} => { console.log(datapoint)})"
+                                comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                             />
                         </BaseDetails>
                         <BaseDetails attr="style" :level="1">

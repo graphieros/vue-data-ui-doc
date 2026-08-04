@@ -34,6 +34,7 @@ const isDarkMode = computed(() => {
 });
 
 const config = ref({
+    devHints: { enable: false },
     type: "onion",
     onion: {
         gutterColor: "#CCCCCC",

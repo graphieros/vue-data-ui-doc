@@ -17,6 +17,10 @@ const props = defineProps({
         type: String,
         default: "__NO_COMPONENT!__",
     },
+    withSvgContent: {
+        type: Boolean,
+        default: true
+    }
 });
 
 const store = useMainStore();
@@ -43,7 +47,7 @@ const items = computed(() => {
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #svg="{ svg }">
-            <circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="red"/>
+            ${props.withSvgContent ? `<circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="red"/>`: `<!-- Use custom svg elements with the data provided by the slot -->`}
         </template>
     </${props.componentName}>
             `,
@@ -521,6 +525,46 @@ const items = computed(() => {
             `,
         },
         {
+            names: ["hill-actions"],
+            description: translations.value.slots.hill[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #hill-edit>
+            <MyEditIcon/>
+        </template>
+        <template #hill-save>
+            <MySaveIcon/>
+        </template>
+        <template #hill-cancel>
+            <MyCancelIcon/>
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
+            names: ["loading"],
+            description: translations.value.slots.loading[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #loading>
+            <!-- Only visible if config.loading is true -->
+            LOADING...
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
+            names: ["analysis"],
+            description: translations.value.slots.analysis[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #analysis="{ data }">
+            <!-- Add a chart to analyze the data below the component -->
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
             names: ["annotator-actions"],
             description: translations.value.slots.annotatorActions[store.lang],
             snippet: `
@@ -668,6 +712,7 @@ function copyToClipboard(conf) {
                         class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow"
                     >
                         #{{
+                            tag === 'hill-actions' ? "hill-xxx" :
                             tag === "annotator-actions"
                                 ? "annotator-action-xxx"
                                 : tag === "user-menu"

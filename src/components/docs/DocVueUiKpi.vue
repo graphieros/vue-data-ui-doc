@@ -45,6 +45,7 @@ const dataset2 = ref(384400);
 
 const config = computed(() => {
     return {
+        devHints: { enable: false },
         debug: false,
         animationFrames: 60,
         animationValueStart: 0,
@@ -78,6 +79,7 @@ const config = computed(() => {
 
 const darkModeConfig = computed(() => {
     return {
+        devHints: { enable: false },
         debug: false,
         animationFrames: 60,
         animationValueStart: 0,
@@ -257,6 +259,16 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiKpiConfig" equal>
+                        <BaseDetails attr="devHints" :level="1">                        
+                            <BaseAttr
+                                name="enable"
+                                attr="devHints.enable"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseAttr inactive name="debug" defaultVal="false" />
                         <BaseAttr
                             name="animationFrames"
