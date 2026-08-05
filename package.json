@@ -13,7 +13,8 @@
         "site": "node publish-site.cjs",
         "lint": "oxlint",
         "lint:fix": "oxlint --fix",
-        "pretty": "prettier . --write"
+        "pretty": "prettier . --write",
+        "vdu:breakdown": "node file-size-breakdown.cjs node_modules/vue-data-ui"
     },
     "dependencies": {
         "@stackblitz/sdk": "^1.11.1",
