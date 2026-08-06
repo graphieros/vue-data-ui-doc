@@ -2717,6 +2717,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "dialog",
                     },
                     {
+                        key: "style.chart.dialog.xyChart.chart.zoom.autoFit",
+                        def: true,
+                        type: "checkbox",
+                        label: ["xy chart", "zoom", "is", "auto fit"],
+                        category: "dialog",
+                    },
+                    {
                         key: "style.chart.dialog.xyChart.chart.zoom.color",
                         def: "#CCCCCC",
                         type: "color",
@@ -7630,7 +7637,14 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         key: "style.chart.zoom.show",
                         def: true,
                         type: "checkbox",
-                        label: "zoom",
+                        label: ['zoom', 'is', 'show'],
+                        category: "zoom",
+                    },
+                    {
+                        key: "style.chart.zoom.autoFit",
+                        def: false,
+                        type: "checkbox",
+                        label: ['zoom', 'is', 'auto fit'],
                         category: "zoom",
                     },
                     {
@@ -9038,12 +9052,18 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: ["line :", "strokeWidth"],
                         category: "highlight",
                     },
-
                     {
                         key: "style.chart.zoom.show",
                         def: true,
                         type: "checkbox",
-                        label: "zoom",
+                        label: ['zoom', 'is', 'show'],
+                        category: "zoom",
+                    },
+                    {
+                        key: "style.chart.zoom.autoFit",
+                        def: false,
+                        type: "checkbox",
+                        label: ['zoom', 'is', 'auto fit'],
                         category: "zoom",
                     },
                     {
@@ -12030,12 +12050,18 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: "width",
                         category: "general",
                     },
-
                     {
                         key: "chart.zoom.show",
                         def: true,
                         type: "checkbox",
-                        label: "zoom",
+                        label: ['zoom', 'is', 'show'],
+                        category: "zoom",
+                    },
+                    {
+                        key: "chart.zoom.autoFit",
+                        def: false,
+                        type: "checkbox",
+                        label: ['zoom', 'is', 'autoFit'],
                         category: "zoom",
                     },
                     {
@@ -25206,6 +25232,20 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "general",
                     },
                     {
+                        key: 'style.chart.zoom.show',
+                        def: true,
+                        type: 'checkbox',
+                        label: ['zoom', 'is', 'show'],
+                        category: 'general'
+                    },
+                    {
+                        key: 'style.chart.zoom.autoFit',
+                        def: false,
+                        type: 'checkbox',
+                        label: ['zoom', 'is', 'auto'],
+                        category: 'general'
+                    },
+                    {
                         key: "userOptions.showOnChartHover",
                         def: false,
                         type: "checkbox",
@@ -33931,7 +33971,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         key: "style.chart.zoom.show",
                         def: true,
                         type: "checkbox",
-                        label: "zoom",
+                        label: ['zoom', 'is', 'show'],
                         category: "general",
                     },
 

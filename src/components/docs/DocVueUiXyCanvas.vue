@@ -167,7 +167,8 @@ const config = ref({
             },
             zoom: {
                 show: true,
-                maxWidth: 450,
+                autoFit: true,
+                maxWidth: null,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -350,7 +351,7 @@ const config = ref({
             paddingProportions: {
                 top: 0.1,
                 left: 0.1,
-                right: 0.05,
+                right: 0.08,
                 bottom: 0.1,
             },
         },
@@ -446,7 +447,8 @@ const darkModeConfig = ref({
             },
             zoom: {
                 show: true,
-                maxWidth: 450,
+                autoFit: true,
+                maxWidth: null,
                 color: "#6A6A6A",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -629,7 +631,7 @@ const darkModeConfig = ref({
             paddingProportions: {
                 top: 0.1,
                 left: 0.1,
-                right: 0.05,
+                right: 0.08,
                 bottom: 0.1,
             },
         },
@@ -2288,6 +2290,15 @@ const customFormatCode =
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                             @change="forceChartUpdate()"
+                                        />
+                                        <BaseAttr
+                                            name="autoFit"
+                                            attr="style.chart.zoom.autoFit"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                            comment="Since v3.23.1"
                                         />
                                         <BaseAttr
                                             name="maxWidth"

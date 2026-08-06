@@ -177,7 +177,8 @@ const config = ref({
             },
             zoom: {
                 show: true,
-                maxWidth: 450,
+                autoFit: true,
+                maxWidth: null,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -461,7 +462,8 @@ const darkModeConfig = ref({
             },
             zoom: {
                 show: true,
-                maxWidth: 450,
+                autoFit: true,
+                maxWidth: null,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -1970,6 +1972,15 @@ function goToPage(route) {
                                         defaultVal="true"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="autoFit"
+                                        attr="style.chart.zoom.autoFit"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                        comment="Since v3.23.1"
                                     />
                                     <BaseAttr
                                         name="maxWidth"

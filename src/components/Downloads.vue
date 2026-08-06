@@ -359,6 +359,7 @@ const config = computed(() => {
             },
             zoom: {
                 show: true,
+                autoFit: true,
                 color: isDarkMode.value ? "#8A8A8A" : "#CCCCCC",
                 highlightColor: isDarkMode.value ? "#314063" : "#3456a3",
                 fontSize: 14,
@@ -648,6 +649,7 @@ const configCumulativeAverage = computed(() => {
             ...config.value.chart,
             zoom: {
                 focusOnDrag: true,
+                autoFit: true,
                 minimap: {
                     show: true,
                 },

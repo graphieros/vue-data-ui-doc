@@ -440,6 +440,7 @@ const config = ref({
                 },
                 zoom: {
                     show: true,
+                    autoFit: true
                 },
             },
         },
@@ -672,6 +673,7 @@ const darkModeConfig = ref({
                 },
                 zoom: {
                     show: true,
+                    autoFit: true,
                 },
             },
         },
@@ -2155,6 +2157,14 @@ const { configCode, showAllConfig } = useConfigCode();
                                         <BaseAttr
                                             name="show"
                                             attr="style.chart.layout.zoom.show"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="autoFit"
+                                            attr="style.chart.layout.zoom.autoFit"
                                             type="checkbox"
                                             defaultVal="true"
                                             :light="mutableConfig"

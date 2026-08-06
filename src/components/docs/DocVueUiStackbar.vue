@@ -170,7 +170,7 @@ const config = ref({
             width: 800,
             padding: {
                 top: 12,
-                right: 12,
+                right: 36,
                 bottom: 12,
                 left: 12,
             },
@@ -204,8 +204,9 @@ const config = ref({
             },
             zoom: {
                 show: true,
+                autoFit: true,
                 keepState: false,
-                maxWidth: 450,
+                maxWidth: null,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -482,7 +483,7 @@ const darkModeConfig = ref({
             width: 800,
             padding: {
                 top: 12,
-                right: 12,
+                right: 36,
                 bottom: 12,
                 left: 12,
             },
@@ -516,8 +517,9 @@ const darkModeConfig = ref({
             },
             zoom: {
                 show: true,
+                autoFit: true,
                 keepState: false,
-                maxWidth: 450,
+                maxWidth: null,
                 color: "#CCCCCC",
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
@@ -1527,6 +1529,15 @@ const customFormatCode =
                                         defaultVal="true"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="autoFit"
+                                        attr="style.chart.zoom.autoFit"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                        comment="Since v3.23.1"
                                     />
                                     <BaseAttr
                                         name="keepState"

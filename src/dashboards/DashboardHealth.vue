@@ -36,6 +36,10 @@ const CONFIG_XY = computed(() => {
                     stroke: "#8A9F8A",
                 },
                 labels: {
+                    axis: {
+                        yLabel: 'Age',
+                        fontSize: 20,
+                    },
                     yAxis: {
                         scaleMax: 80,
                         scaleMin: 60,
@@ -55,7 +59,7 @@ const CONFIG_XY = computed(() => {
             padding: {
                 left: 12,
                 top: 12,
-                right: 12,
+                right: 56,
                 bottom: 12,
             },
             title: {
@@ -71,6 +75,7 @@ const CONFIG_XY = computed(() => {
                 backgroundOpacity: 30,
             },
             zoom: {
+                autoFit: true,
                 minimap: {
                     show: true,
                     selectedColor: "#4A6A75",

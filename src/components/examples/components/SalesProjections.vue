@@ -11,6 +11,9 @@ const config = computed(() => {
     return {
         style: {
             chart: {
+                zoom: {
+                    autoFit: true,
+                },
                 layout: {
                     grid: {
                         xAxis: {
@@ -50,7 +53,9 @@ const config = computed(() => {
                             },
                         },
                     },
-                    padding: {},
+                    padding: {
+                        right: 36
+                    },
                     line: {
                         show: true,
                         stroke: isDarkMode.value ? "#6A6A6A" : "#CCCCCC",

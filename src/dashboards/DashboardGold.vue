@@ -77,7 +77,7 @@ const CONFIG_XY = computed(() => {
     return {
         chart: {
             padding: {
-                right: 24,
+                right: 56,
             },
             grid: {
                 position: 'start',
@@ -113,6 +113,7 @@ const CONFIG_XY = computed(() => {
                 showPercentage: false,
             },
             zoom: {
+                autoFit: true,
                 preview: {
                     fill: "#91792f30",
                     stroke: "#91792f",
@@ -277,7 +278,7 @@ const CONFIG_CANDLESTICK = computed(() => {
                     },
                 },
                 padding: {
-                    right: 16,
+                    right: 36,
                 },
             },
             title: {
@@ -292,6 +293,7 @@ const CONFIG_CANDLESTICK = computed(() => {
                 prefix: "$",
             },
             zoom: {
+                autoFit: true,
                 preview: {
                     fill: "#91792f30",
                     stroke: "#91792f",
@@ -405,7 +407,7 @@ const CONFIG_STACKBAR = computed(() => {
                 padding: {
                     top: 0,
                     left: 12,
-                    right: 12,
+                    right: 50,
                     bottom: 0,
                 },
                 title: {
@@ -425,6 +427,7 @@ const CONFIG_STACKBAR = computed(() => {
                     },
                 },
                 zoom: {
+                    autoFit: true,
                     preview: {
                         fill: "#91792f30",
                         stroke: "#91792f",

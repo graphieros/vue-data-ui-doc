@@ -284,7 +284,7 @@ const config = ref({
     xyLabelsYFontSize: 12,
     xyPaddingBottom: 24,
     xyPaddingLeft: 24,
-    xyPaddingRight: 12,
+    xyPaddingRight: 36,
     xyPaddingTop: 24,
     xyPeriods: monthValues.value,
     datetimeFormatter: {
@@ -317,6 +317,7 @@ const config = ref({
     axisLabelsFontSize: 12,
     userOptionsPosition: "right",
     zoomXy: true,
+    zoomXyAutoFit: true,
     zoomColor: "#CCCCCC",
     zoomHighlightColor: "#4A4A4A",
     zoomFontSize: 14,
@@ -341,7 +342,7 @@ const config = ref({
         handleWidth: 20, // clamped from 20 to 40
         handleType: "grab", // 'empty' | 'chevron' | 'grab' | 'arrow'
     },
-    zoomMaxWidth: 450,
+    zoomMaxWidth: null,
     zoomStartIndex: null,
     zoomEndIndex: null,
     showUserOptionsOnChartHover: false,
@@ -464,7 +465,7 @@ const darkModeConfig = ref({
     xyLabelsYFontSize: 12,
     xyPaddingBottom: 24,
     xyPaddingLeft: 24,
-    xyPaddingRight: 12,
+    xyPaddingRight: 36,
     xyPaddingTop: 24,
     xyPeriods: monthValues.value,
     datetimeFormatter: {
@@ -496,6 +497,7 @@ const darkModeConfig = ref({
     xAxisLabel: "Time",
     axisLabelsFontSize: 12,
     zoomXy: true,
+    zoomXyAutoFit: true,
     zoomColor: "#CCCCCC",
     zoomHighlightColor: "#4A4A4A",
     zoomFontSize: 14,
@@ -521,7 +523,7 @@ const darkModeConfig = ref({
         handleWidth: 20, // clamped from 20 to 40
         handleType: "grab", // 'empty' | 'chevron' | 'grab' | 'arrow'
     },
-    zoomMaxWidth: 450,
+    zoomMaxWidth: null,
     zoomStartIndex: null,
     zoomEndIndex: null,
     showUserOptionsOnChartHover: false,
@@ -2509,6 +2511,15 @@ const customFormatCode =
                                 defaultVal="true"
                                 :light="mutableConfig"
                                 :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="zoomXyAutoFit"
+                                attr="zoomXyAutoFit"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                                comment="Since v3.23.1"
                             />
                             <BaseAttr
                                 name="zoomMaxWidth"

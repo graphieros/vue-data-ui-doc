@@ -2290,6 +2290,7 @@ export default function useExamples() {
                 padding: {
                     top: 18,
                     bottom: 0,
+                    right: 36,
                 },
                 legend: {
                     color: colors.value.textColor,
@@ -2355,7 +2356,7 @@ export default function useExamples() {
                     fontSize: 20,
                 },
                 zoom: {
-                    maxWidth: 500,
+                    autoFit: true,
                     minimap: {
                         show: true,
                         lineColor: "#1F77B4",
@@ -2658,8 +2659,11 @@ export default function useExamples() {
                 chart: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
+                    padding: {
+                        right: 36,
+                    },
                     zoom: {
-                        maxWidth: 500,
+                        autoFit: true,
                         minimap: {
                             show: true,
                             indicatorColor: colors.value.textColor,
@@ -2794,8 +2798,11 @@ export default function useExamples() {
                 chart: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
+                    padding: {
+                        right: 36,
+                    },
                     zoom: {
-                        maxWidth: 500,
+                        autoFit: true,
                         minimap: {
                             show: true,
                         },

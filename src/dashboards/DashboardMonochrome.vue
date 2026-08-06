@@ -274,6 +274,9 @@ const configs = computed(() => ({
                 color: colors.value.TEXT_PRIMARY,
                 height: 500,
                 width: 1500,
+                padding: {
+                    right: 48,
+                },
                 grid: {
                     scale: {
                         scaleMax: 400,
@@ -327,6 +330,7 @@ const configs = computed(() => ({
                     backgroundOpacity: 80,
                 },
                 zoom: {
+                    autoFit: true,
                     minimap: {
                         show: true,
                         indicatorColor: colors.value.TEXT_PRIMARY,

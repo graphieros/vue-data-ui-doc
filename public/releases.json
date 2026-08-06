@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.23.1",
+        "date": "2026-08-06",
+        "updates": [
+            {
+                "component": "VueUiCirclePack",
+                "description": "Do not scale circle borders when zooming",
+                "link": "/docs#vue-ui-circle-pack"
+            },
+            {
+                "component": "All components with zoom range inputs",
+                "description": "Add autoFit config attribute",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.23.0",
         "date": "2026-08-04",
         "updates": [

@@ -1690,6 +1690,7 @@ const xyCanvasConfig = computed(() => {
                     },
                 },
                 zoom: {
+                    autoFit: true,
                     highlightColor: "#42d392",
                     color: isDarkMode.value ? "#616161" : "#CCCCCC",
                     minimap: {
@@ -2970,19 +2971,6 @@ const digitsConfigVersion = computed(() => {
         </div>
     </div>
 </template>
-
-<style scoped>
-:deep(.vue-data-ui-zoom) {
-    width: 100% !important;
-    max-width: clamp(200px, 70%, 800px) !important;
-    margin: 0 auto !important;
-}
-
-:deep(.vue-data-ui-refresh-button) {
-    top: -8px !important;
-    left: calc(100% + 36px) !important;
-}
-</style>
 
 <style>
 .treemap-icon svg {

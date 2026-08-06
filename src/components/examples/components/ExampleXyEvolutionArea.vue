@@ -17,8 +17,12 @@ const config = computed(() => {
             color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
             height: 700,
             width: 1800,
+            padding: {
+                right: 48,
+            },
             zoom: {
                 show: true,
+                autoFit: true,
                 focusOnDrag: true,
                 preview: {
                     enable: false,
