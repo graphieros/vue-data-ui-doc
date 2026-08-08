@@ -65,6 +65,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
     devHints: { enable: false },
     theme: "",
     responsive: false,
@@ -211,6 +212,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
     devHints: { enable: false },
     theme: "",
     responsive: false,
@@ -543,6 +545,7 @@ function goToPage(route) {
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiFunnelConfig" equal>
+                        <BaseAttr inactive name="debug" defaultVal="false," />
                         <BaseDetails attr="devHints" :level="1">                        
                             <BaseAttr
                                 name="enable"

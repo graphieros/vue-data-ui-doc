@@ -74,6 +74,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
     devHints: { enable: false },
     responsiveBreakpoint: 500,
     showAverage: true,
@@ -181,6 +182,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
     devHints: { enable: false },
     responsiveBreakpoint: 500,
     showAverage: true,
@@ -475,6 +477,7 @@ function goToPage(route) {
                         attr="const config: VueUiTableSparklineConfig"
                         equal
                     >
+                        <BaseAttr inactive name="debug" defaultVal="false," />
                         <span
                             >theme: "",
                             <BaseComment

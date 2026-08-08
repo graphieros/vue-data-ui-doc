@@ -43,6 +43,7 @@ const isDarkMode = computed(() => {
 });
 
 const config = ref({
+    debug: false,
     devHints: { enable: false },
     type: "star",
     readonly: true,
@@ -108,6 +109,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
     devHints: { enable: false },
     type: "star",
     readonly: true,
@@ -410,6 +412,7 @@ const { configCode, showAllConfig } = useConfigCode();
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiRatingConfig" equal>
+                        <BaseAttr inactive name="debug" defaultVal="false," />
                         <BaseAttr
                             name="type"
                             attr="type"

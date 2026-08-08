@@ -81,6 +81,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
     devHints: { enable: false },
     style: {
         backgroundColor: "#F3F4F6",
@@ -145,6 +146,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
     devHints: { enable: false },
     style: {
         backgroundColor: "#2A2A2A",
@@ -556,6 +558,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                         attr="const config: VueUiTableHeatmapConfig"
                         equal
                     >
+                        <BaseAttr inactive name="debug" defaultVal="false," />
                         <BaseDetails attr="devHints" :level="1">                        
                             <BaseAttr
                                 name="enable"

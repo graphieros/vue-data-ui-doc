@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.23.2",
+        "date": "2026-08-08",
+        "updates": [
+            {
+                "component": "Debug logs",
+                "description": "Some logs were not hidden when debug:false",
+                "link": ""
+            },
+            {
+                "component": "Package size",
+                "description": "Slightly reduce package size",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.23.1",
         "date": "2026-08-06",
         "updates": [

@@ -40,6 +40,7 @@ const isDarkMode = computed(() => {
 });
 
 const config = ref({
+    debug: false,
     devHints: { enable: false },
     readonly: false,
     style: {
@@ -103,6 +104,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
     devHints: { enable: false },
     readonly: false,
     style: {
@@ -403,6 +405,7 @@ const { configCode, showAllConfig } = useConfigCode();
 
                 <code ref="configCode">
                     <BaseDetails attr="const config:VueUiSmileyConfig" equal>
+                        <BaseAttr inactive name="debug" defaultVal="false," />
                         <span
                             >readonly:
                             {{ mode === "readonly" ? "true" : "false" }},

@@ -1,33 +1,7 @@
-Notes for 3.23.1
+Notes for 3.23.2
 
-## `VueUiCirclePack`
+## Stanardize debug warnings #372
 
-- circle borders now do not scale when zooming, to preserve readability of very small circles when reaching high zoom values.
-- tooltips now keep the same size when zooming
+- Some warnings that should only be logged when users opt-in by setting `config.debug` to `true` were not. This is now fixed. It is recommended to set this flag with an environment variable, so you can benefit from them during developement (same goes with the `config.devHints.enable` flag). Note that some critical warnings will still be displayed, when they are related to a breaking outcome.
 
-## New zoom range input auto fit config option
-
-The zoom range input can now be made to fit the left and right positions of the chart.
-By default, this option is turned off, therefore **this is not a breaking change**.
-
-To opt-in, set the `zoom.autoFit` config to `true`.
-
-Notes:
-
-- `autoFit: true` takes precedence over `zoom.maxWidth`.
-- with `autoFit: true`, you might consider adding some padding (right or left, depending on the position of the y-axis labels), using the `padding` object in your configuration. Without padding, range handles might overflow the sides of the chart.
-- for the `VueUiQuickChart` component, the new attribute is `zoomXyAutoFit`
-
-Components concerned with this change:
-
-- VueUiXy
-- VueUiXyCanvas
-- VueUiQuickChart
-- VueUiStackbar
-- VueUiStackline
-- VueUiDonutEvolution
-- VueUiCandlestick
-- VueUiRidgeline (embedded VueUiXy chart in the built-in dialog)
-- VueUiTable (embedded VueUiXy chart in the built-in dialog)
-
-Docs are up to date
+## Reduced package size through refactoring
