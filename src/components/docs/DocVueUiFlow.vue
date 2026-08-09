@@ -26,6 +26,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -232,9 +233,7 @@ const config = ref({
                 backgroundColor: "#F3F4F6",
                 fontSize: 14,
                 showValue: true,
-                showPercentage: true,
                 roundingValue: 0,
-                roundingPercentage: 0,
                 customFormat: null,
                 borderRadius: 4,
                 borderColor: "#e1e5e8",
@@ -441,9 +440,7 @@ const darkModeConfig = ref({
                 backgroundColor: "#1A1A1A",
                 fontSize: 14,
                 showValue: true,
-                showPercentage: true,
                 roundingValue: 0,
-                roundingPercentage: 0,
                 customFormat: null,
                 borderRadius: 4,
                 borderColor: "#3A3A3A",
@@ -697,6 +694,9 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
 
             <!-- CONFIG -->
             <template #tab1>
+
+                <DebugHint component="VueUiFlow" configType="VueUiFlowConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

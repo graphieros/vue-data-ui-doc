@@ -16,6 +16,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -372,6 +373,9 @@ const { configCode, showAllConfig } = useConfigCode();
             </template>
 
             <template #tab1>
+
+                <DebugHint component="VueUiSmiley" configType="VueUiSmileyConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

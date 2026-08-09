@@ -30,6 +30,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import SsrGeneration from "../SsrGeneration.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -927,6 +928,9 @@ const customFormatCode =
             </template>
 
             <template v-slot:tab1>
+
+                <DebugHint component="VueUiDonut" configType="VueUiDonutConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

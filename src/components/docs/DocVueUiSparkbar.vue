@@ -22,6 +22,7 @@ import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -339,6 +340,9 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
             </template>
             <template #tab1>
                 <div class="w-full overflow-x-auto">
+
+                    <DebugHint component="VueUiSparkbar" configType="VueUiSparkbarConfig"/>
+
                     <div class="flex gap-2">
                         <button
                             @click="resetDefault"

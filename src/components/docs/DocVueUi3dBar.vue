@@ -25,6 +25,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -639,6 +640,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUi3dBar" configType="VueUi3dBarConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

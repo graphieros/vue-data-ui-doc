@@ -30,6 +30,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import DebugHint from "../DebugHint.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -532,7 +533,6 @@ const darkModeConfig = ref({
                 height: 60,
                 rowHeight: 30,
                 strokeWidth: 1,
-                useCommonColor: false,
                 useGradient: true,
                 stroke: {
                     useSerieColor: false,
@@ -882,7 +882,6 @@ const config = ref({
                 height: 60,
                 rowHeight: 30,
                 strokeWidth: 1,
-                useCommonColor: false,
                 useGradient: true,
                 stroke: {
                     useSerieColor: false,
@@ -1139,6 +1138,9 @@ function goToPage(route) {
             </template>
 
             <template #tab1>
+
+                <DebugHint component="VueUiRidgeline" configType="VueUiRidgelineConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

@@ -27,6 +27,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import ComponentEmits from "../ComponentEmits.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -793,6 +794,9 @@ const customFormatCode =
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUiStripPlot" configType="VueUiStripPlotConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

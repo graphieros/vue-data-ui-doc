@@ -23,6 +23,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -323,6 +324,9 @@ function goToPage(route) {
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUiSparkgauge" configType="VueUiSparkgaugeConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

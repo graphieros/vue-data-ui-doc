@@ -28,6 +28,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -603,6 +604,9 @@ const customFormatCode =
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUiRings" configType="VueUiRingsConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

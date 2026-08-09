@@ -25,6 +25,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -890,6 +891,9 @@ function goToPage(route) {
             </template>
 
             <template v-slot:tab1>
+
+                <DebugHint component="VueUiChestnut" configType="VueUiChestnutConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

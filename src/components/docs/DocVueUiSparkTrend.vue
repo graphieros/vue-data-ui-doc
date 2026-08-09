@@ -22,6 +22,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -304,6 +305,9 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUiSparkTrend" configType="VueUiSparkTrendConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

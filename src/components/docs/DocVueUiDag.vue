@@ -26,6 +26,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ThemesVueUiDag from "../themes/ThemesVueUiDag.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -544,6 +545,9 @@ function goToPage(route) {
             </template>
 
             <template #tab1>
+
+                <DebugHint component="VueUiDag" configType="VueUiDagConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

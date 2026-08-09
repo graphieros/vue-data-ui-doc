@@ -19,6 +19,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -379,6 +380,9 @@ const { configCode, showAllConfig } = useConfigCode();
                 </div>
             </template>
             <template v-slot:tab1>
+
+                <DebugHint component="VueUiRating" configType="VueUiRatingConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

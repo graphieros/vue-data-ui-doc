@@ -27,6 +27,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -580,6 +581,9 @@ const customFormatCode =
             </template>
 
             <template v-slot:tab1>
+
+                <DebugHint component="VueUiWaffle" configType="VueUiWaffleConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

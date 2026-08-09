@@ -26,6 +26,7 @@ import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -705,6 +706,9 @@ const customFormatCode =
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUiParallelCoordinatePlot" configType="VueUiParallelCoordinatePlotConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

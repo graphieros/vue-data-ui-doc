@@ -26,6 +26,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -365,6 +366,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUiTiremarks" configType="VueUiTiremarksConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

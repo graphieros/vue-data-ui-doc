@@ -28,6 +28,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseComment from "../BaseComment.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -683,6 +684,9 @@ const prefersReduced = ref({
             </template>
             <template v-slot:tab1>
                 <div class="w-full overflow-x-auto">
+
+                    <DebugHint component="VueUiSparkline" configType="VueUiSparklineConfig"/>
+
                     <div class="flex gap-2">
                         <button
                             @click="resetDefault"

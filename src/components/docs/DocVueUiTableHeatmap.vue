@@ -24,6 +24,7 @@ import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -522,6 +523,9 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
             </template>
 
             <template #tab1>
+
+                <DebugHint component="VueUiTableHeatmap" configType="VueUiTableHeatmapConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"

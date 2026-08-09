@@ -27,6 +27,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -829,6 +830,9 @@ const datapointSlot = ref(`
             </template>
 
             <template v-slot:tab1>
+
+                <DebugHint component="VueUiQuadrant" configType="VueUiQuadrantConfig"/>
+
                 <div class="w-full overflow-x-auto">
                     <div class="flex gap-2">
                         <button

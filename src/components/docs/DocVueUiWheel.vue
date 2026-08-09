@@ -27,6 +27,7 @@ import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 
@@ -401,6 +402,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 </div>
             </template>
             <template #tab1>
+
+                <DebugHint component="VueUiWheel" configType="VueUiWheelConfig"/>
+
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"
