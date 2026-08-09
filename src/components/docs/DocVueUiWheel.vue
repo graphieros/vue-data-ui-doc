@@ -402,8 +402,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiWheel" configType="VueUiWheelConfig"/>
+                <DebugHint
+                    component="VueUiWheel"
+                    configType="VueUiWheelConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -443,7 +445,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                                 translations.responsive[store.lang]
                             }}</BaseComment></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

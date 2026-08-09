@@ -73,7 +73,11 @@ function getIconColor(route) {
                 :stroke="getIconColor(itsRoute)"
             />
             <span
-                v-if="!['/docs#utility-functions', '/docs#composables'].includes(itsRoute)"
+                v-if="
+                    !['/docs#utility-functions', '/docs#composables'].includes(
+                        itsRoute,
+                    )
+                "
                 :class="`
                 text-gray-500
                 ${isDarkMode && isSelected(itsRoute) ? 'dark:text-app-blue-mid' : ''}

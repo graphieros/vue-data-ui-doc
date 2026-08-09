@@ -42,7 +42,7 @@ const DATASET_XY_IT_SPENDING = computed(() => {
             series: globalITSpending.value.map((d) => d.spending),
             type: "bar",
             dataLabels: true,
-            color: 'transparent',
+            color: "transparent",
             comments: [
                 "",
                 "",
@@ -77,7 +77,7 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
                 show: false,
             },
             height: 400,
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
             grid: {
                 stroke: "transparent",
                 showHorizontalLines: true,
@@ -119,19 +119,18 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
                 fontSize: 32,
                 subtitle: {
                     text: "2000 - 2025 in Trillion $",
-                    color: '#1A1A1A'
+                    color: "#1A1A1A",
                 },
             },
             tooltip: {
                 // color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-                backgroundColor: 'transparent',
+                backgroundColor: "transparent",
                 backgroundOpacity: 0,
                 showPercentage: false,
                 roundingValue: 2,
-                borderColor: 'transparent',
+                borderColor: "transparent",
                 backdropFilter: false,
-                teleportTo: "#it-dash"
-
+                teleportTo: "#it-dash",
             },
             zoom: {
                 show: false,
@@ -157,7 +156,6 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
         },
     };
 });
-
 </script>
 
 <template>
@@ -166,59 +164,59 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
         class="flex flex-row flex-wrap max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A] font-inter-bold"
     >
         <div class="flex w-full mx-auto px-4" id="it-chart">
-        <div
-            class="w-full p-2 rounded shadow-md font-inter-bold"
-        >
-            <VueDataUi
-                component="VueUiXy"
-                :dataset="DATASET_XY_IT_SPENDING"
-                :config="CONFIG_XY_IT_SPENDING"
-            >
-                <template #tooltip="{ datapoint, timeLabel }">
-                    <div class="paper-bg font-inter-bold p-4 flex flex-col rounded min-w-[100px]">
-                        <span>
-                            {{ timeLabel.text }}
-                        </span>
-                        <span class="text-2xl">
-                            {{ datapoint[0].value }}
-                        </span>
-                    </div>
-                </template>
-
-                <template #pattern="{ seriesIndex, patternId }">
-                    <VueUiPatternSeed
-                        :id="patternId"
-                        :seed="seriesIndex"
-                        foreground-color="#1A1A1A"
-                        background-color="transparent"
-                        :max-size="2"
-                        :min-size="12"
-                        :disambiguator="0.58"
-                    />
-                </template>
-
-                <template #plot-comment="{ plot }">
-                    <div
-                        :style="{
-                            width: '100%',
-                            textAlign: 'center',
-                            marginTop: '-80px',
-                        }"
-                        class="flex flex-col place-items-center text-xs gap-2"
-                    >
-                        {{ plot.comment }}
-                        <div class="animate-ping">
-                            <VueUiIcon
-                                name="circleExclamation"
-                                :size="16"
-                                :stroke="isDarkMode ? '#ff6600' : '#ff6600'"
-                            />
+            <div class="w-full p-2 rounded shadow-md font-inter-bold">
+                <VueDataUi
+                    component="VueUiXy"
+                    :dataset="DATASET_XY_IT_SPENDING"
+                    :config="CONFIG_XY_IT_SPENDING"
+                >
+                    <template #tooltip="{ datapoint, timeLabel }">
+                        <div
+                            class="paper-bg font-inter-bold p-4 flex flex-col rounded min-w-[100px]"
+                        >
+                            <span>
+                                {{ timeLabel.text }}
+                            </span>
+                            <span class="text-2xl">
+                                {{ datapoint[0].value }}
+                            </span>
                         </div>
-                    </div>
-                </template>
-            </VueDataUi>
+                    </template>
+
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPatternSeed
+                            :id="patternId"
+                            :seed="seriesIndex"
+                            foreground-color="#1A1A1A"
+                            background-color="transparent"
+                            :max-size="2"
+                            :min-size="12"
+                            :disambiguator="0.58"
+                        />
+                    </template>
+
+                    <template #plot-comment="{ plot }">
+                        <div
+                            :style="{
+                                width: '100%',
+                                textAlign: 'center',
+                                marginTop: '-80px',
+                            }"
+                            class="flex flex-col place-items-center text-xs gap-2"
+                        >
+                            {{ plot.comment }}
+                            <div class="animate-ping">
+                                <VueUiIcon
+                                    name="circleExclamation"
+                                    :size="16"
+                                    :stroke="isDarkMode ? '#ff6600' : '#ff6600'"
+                                />
+                            </div>
+                        </div>
+                    </template>
+                </VueDataUi>
+            </div>
         </div>
-    </div>
         <div
             class="flex-1 min-w-[300px] p-4 bg-[#FAFAFA] dark:bg-[#4A4A4A] rounded shadow-md"
         >

@@ -440,7 +440,7 @@ const config = ref({
                 },
                 zoom: {
                     show: true,
-                    autoFit: true
+                    autoFit: true,
                 },
             },
         },
@@ -1115,7 +1115,7 @@ const { configCode, showAllConfig } = useConfigCode();
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiTableConfig" equal>
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

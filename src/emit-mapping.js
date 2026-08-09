@@ -9,7 +9,7 @@ const mapping = {
         datapointEnter: "VueUiHillEmitDatapointEnter",
         datapointLeave: "VueUiHillEmitDatapointLeave",
         selectDatapoint: "VueUiHillEmitSelectDatapoint",
-        copyAlt: "VueUiHillEmitCopyAlt"
+        copyAlt: "VueUiHillEmitCopyAlt",
     },
     VueUiSparkline: {
         hoverIndex: "VueUiSparklineEmitHoverIndex",

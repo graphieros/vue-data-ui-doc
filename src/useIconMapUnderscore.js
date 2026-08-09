@@ -68,7 +68,7 @@ export function useIconMapUnderscore(componentName) {
         vue_ui_dag: "chartDag",
         vue_ui_geo: "chartGeo",
         vue_ui_bump: "chartBump",
-        vue_ui_hill: "chartHill"
+        vue_ui_hill: "chartHill",
     };
     return mapping[componentName] || "clipBoard";
 }

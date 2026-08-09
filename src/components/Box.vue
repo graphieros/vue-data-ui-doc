@@ -251,8 +251,8 @@ const menuTranslations = computed(() => {
             ja: "SSR静的生成",
             es: "Generación estática SSR",
             ko: "SSR 정적 생성",
-            ar: "التوليد الثابت باستخدام SSR"
-        }
+            ar: "التوليد الثابت باستخدام SSR",
+        },
     };
 });
 
@@ -348,7 +348,7 @@ const menuItems = computed(() => {
             color: isDarkMode.value ? "#50aaDD" : "#FFFFFF",
             active: props.showSsr,
             order: 12,
-        }
+        },
     ].filter((menu) => menu.active);
 });
 
@@ -582,7 +582,7 @@ function selectTabFromMini(order) {
             <slot name="tab11" />
         </div>
         <div v-if="activeTab === 12">
-            <slot name="tab12"/>
+            <slot name="tab12" />
         </div>
     </div>
 </template>

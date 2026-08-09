@@ -891,8 +891,10 @@ function goToPage(route) {
             </template>
 
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiChestnut" configType="VueUiChestnutConfig"/>
+                <DebugHint
+                    component="VueUiChestnut"
+                    configType="VueUiChestnutConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -929,7 +931,7 @@ function goToPage(route) {
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiChestnutConfig" equal>
                         <BaseAttr inactive name="debug" defaultVal="false" />
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

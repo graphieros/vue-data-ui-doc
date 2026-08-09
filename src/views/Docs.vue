@@ -213,7 +213,9 @@ const DocVueUiHistoryPlot = defineAsyncComponent(
 const DocUtilityFunctions = defineAsyncComponent(
     () => import("../components/docs/DocUtilityFunctions.vue"),
 );
-const DocComposabled = defineAsyncComponent(() => import('../components/docs/DocComposables.vue'));
+const DocComposabled = defineAsyncComponent(
+    () => import("../components/docs/DocComposables.vue"),
+);
 const DocVueUiCirclePack = defineAsyncComponent(
     () => import("../components/docs/DocVueUiCirclePack.vue"),
 );
@@ -235,7 +237,9 @@ const DocVueUiGeo = defineAsyncComponent(
 const DocVueUiBump = defineAsyncComponent(
     () => import("../components/docs/DocVueUiBump.vue"),
 );
-const DocVueUiHill = defineAsyncComponent((() => import('../components/docs/DocVueUiHill.vue')))
+const DocVueUiHill = defineAsyncComponent(
+    () => import("../components/docs/DocVueUiHill.vue"),
+);
 
 const mainConfig = useConfig();
 
@@ -1000,7 +1004,12 @@ const selectedConfig = computed(() => {
                 />
             </Transition>
             <Transition name="fade">
-                <DocComposables v-if="router.currentRoute.value.fullPath === '/docs#composables'"/>
+                <DocComposables
+                    v-if="
+                        router.currentRoute.value.fullPath ===
+                        '/docs#composables'
+                    "
+                />
             </Transition>
             <Transition name="fade">
                 <DocVueUiCirclePack

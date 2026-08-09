@@ -366,8 +366,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiTiremarks" configType="VueUiTiremarksConfig"/>
+                <DebugHint
+                    component="VueUiTiremarks"
+                    configType="VueUiTiremarksConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -412,7 +414,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

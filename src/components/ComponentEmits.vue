@@ -134,37 +134,39 @@ const emitMap = computed(() => ({
     },
 
     // VueUiHill specials
-     edit: {
-        name: 'edit',
+    edit: {
+        name: "edit",
         description: translations.value.docs.emits.hill.edit[store.lang],
     },
     save: {
-        name: 'save',
+        name: "save",
         description: translations.value.docs.emits.hill.save[store.lang],
     },
     cancel: {
-        name: 'cancel',
+        name: "cancel",
         description: translations.value.docs.emits.hill.cancel[store.lang],
     },
     change: {
-        name: 'change',
+        name: "change",
         description: translations.value.docs.emits.hill.change[store.lang],
     },
     dragStart: {
-        name: 'dragStart',
+        name: "dragStart",
         description: translations.value.docs.emits.hill.dragStart[store.lang],
     },
     dragEnd: {
-        name: 'dragEnd',
+        name: "dragEnd",
         description: translations.value.docs.emits.hill.dragEnd[store.lang],
     },
     datapointEnter: {
-        name: 'datapointEnter',
-        description: translations.value.docs.emits.hill.datapointEnter[store.lang],
+        name: "datapointEnter",
+        description:
+            translations.value.docs.emits.hill.datapointEnter[store.lang],
     },
     datapointLeave: {
-        name: 'datapointLeave',
-        description: translations.value.docs.emits.hill.datapointLeave[store.lang],
+        name: "datapointLeave",
+        description:
+            translations.value.docs.emits.hill.datapointLeave[store.lang],
     },
 }));
 </script>

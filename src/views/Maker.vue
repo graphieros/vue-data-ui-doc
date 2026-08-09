@@ -154,7 +154,9 @@ const MakerDag = defineAsyncComponent(
 const MakerBump = defineAsyncComponent(
     () => import("../components/maker/MakerBump.vue"),
 );
-const MakerHill = defineAsyncComponent(() => import('../components/maker/MakerHill.vue'))
+const MakerHill = defineAsyncComponent(
+    () => import("../components/maker/MakerHill.vue"),
+);
 
 const store = useMainStore();
 const makerStore = useMakerStore();

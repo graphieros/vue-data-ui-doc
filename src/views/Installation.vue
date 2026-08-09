@@ -25,15 +25,11 @@ onMounted(async () => {
     window.scrollTo(0, 0);
 
     try {
-        await sdk.embedProjectId(
-            "stackblitz",
-            "vitejs-vite-cjmxbt3n",
-            {
-                openFile: "src/App.vue",
-                height: 1000,
-                crossOriginIsolated: true,
-            },
-        );
+        await sdk.embedProjectId("stackblitz", "vitejs-vite-cjmxbt3n", {
+            openFile: "src/App.vue",
+            height: 1000,
+            crossOriginIsolated: true,
+        });
     } catch (error) {
         console.error("StackBlitz embed failed:", error);
     }

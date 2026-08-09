@@ -54,7 +54,7 @@ const config = computed(() => {
                         },
                     },
                     padding: {
-                        right: 36
+                        right: 36,
                     },
                     line: {
                         show: true,

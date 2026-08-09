@@ -352,8 +352,8 @@ const charts = ref({
     VueUiHill: {
         name: "VueUiHill",
         icon: "chartHill",
-        link: "/docs#vue-ui-hill"
-    }
+        link: "/docs#vue-ui-hill",
+    },
 });
 
 const items = ref([
@@ -425,7 +425,7 @@ const items = ref([
             "VueUi3dBar",
             "VueUiCirclePack",
             "VueUiBump",
-            "VueUiHill"
+            "VueUiHill",
         ],
     },
     {
@@ -472,7 +472,7 @@ const items = ref([
             "VueUi3dBar",
             "VueUiCirclePack",
             "VueUiBump",
-            "VueUiHill"
+            "VueUiHill",
         ],
     },
     {

@@ -663,8 +663,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiBump" configType="VueUiBumpConfig"/>
+                <DebugHint component="VueUiBump" configType="VueUiBumpConfig" />
 
                 <div class="flex gap-2">
                     <button
@@ -716,7 +715,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                             >customPalette: [],
                             <BaseComment>string[]</BaseComment></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

@@ -150,7 +150,7 @@ export function isValidComponent(content) {
         "VueUiDag",
         "VueUiBump",
         "VueUiSparkstackbar",
-        "VueUiHill"
+        "VueUiHill",
     ];
 
     return valid.includes(content);

@@ -659,8 +659,10 @@ function goToPage(route) {
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiDumbbell" configType="VueUiDumbbellConfig"/>
+                <DebugHint
+                    component="VueUiDumbbell"
+                    configType="VueUiDumbbellConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -702,7 +704,7 @@ function goToPage(route) {
                                 translations.responsive[store.lang]
                             }}</BaseComment></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

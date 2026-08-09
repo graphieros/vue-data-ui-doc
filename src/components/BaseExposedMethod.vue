@@ -26,7 +26,7 @@ const params = computed(() => {
 });
 
 const lowercaseFirst = (str) =>
-  str ? str[0].toLowerCase() + str.slice(1) : str;
+    str ? str[0].toLowerCase() + str.slice(1) : str;
 
 const content = computed(() => {
     return `

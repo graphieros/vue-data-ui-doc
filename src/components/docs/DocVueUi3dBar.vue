@@ -640,8 +640,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUi3dBar" configType="VueUi3dBarConfig"/>
+                <DebugHint
+                    component="VueUi3dBar"
+                    configType="VueUi3dBarConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -682,7 +684,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

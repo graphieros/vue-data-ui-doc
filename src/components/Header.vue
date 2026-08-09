@@ -241,8 +241,8 @@ const dropdownItems = computed(() => {
         {
             link: "/friends",
             title: translations.value.menu.friends[store.lang],
-            clickableWhenActive: false
-        }
+            clickableWhenActive: false,
+        },
     ];
 });
 
@@ -341,7 +341,9 @@ const message = ref({
             </router-link>
             <div v-else />
 
-            <nav class="hidden min-[1600px]:flex flex-row gap-1 justify-end w-full place-items-center">
+            <nav
+                class="hidden min-[1600px]:flex flex-row gap-1 justify-end w-full place-items-center"
+            >
                 <router-link
                     data-cy="link-installation"
                     to="/installation"
@@ -562,7 +564,7 @@ const message = ref({
                         {{ translations.menu.versions[store.lang] }}
                     </span>
                 </router-link>
-                
+
                 <router-link
                     data-cy="link-about"
                     to="/about"
@@ -579,7 +581,7 @@ const message = ref({
                     </span>
                 </router-link>
 
-                                <router-link
+                <router-link
                     data-cy="link-friends"
                     to="/friends"
                     @mouseenter="closeDocsMenu"

@@ -523,8 +523,10 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiTableHeatmap" configType="VueUiTableHeatmapConfig"/>
+                <DebugHint
+                    component="VueUiTableHeatmap"
+                    configType="VueUiTableHeatmapConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -563,7 +565,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                         equal
                     >
                         <BaseAttr inactive name="debug" defaultVal="false," />
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

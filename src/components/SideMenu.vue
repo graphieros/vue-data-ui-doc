@@ -747,7 +747,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Smiley",
         thumb: new URL("../assets/thumb_smiley.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_smiley_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_smiley_light.png", import.meta.url)
+            .href,
         component: "Smiley",
     },
     {
@@ -757,7 +758,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: "Hill",
         thumb: new URL("../assets/thumb_hill.png", import.meta.url).href,
-        thumbLight: new URL("../assets/thumb_hill_light.png", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_hill_light.png", import.meta.url)
+            .href,
         component: "Hill",
     },
     {
@@ -850,12 +852,12 @@ const smallMenu = ref([
     },
     {
         route: "/docs#composables",
-        icon: 'vueDataUi',
+        icon: "vueDataUi",
         cssClasses: "",
         isSelected: isSelected,
         tooltipContent: "",
-        component: "Composables"
-    }
+        component: "Composables",
+    },
 ]);
 
 const isTooltip = ref(false);
@@ -866,8 +868,8 @@ function showTooltip(source) {
 
     if (source.route === "/docs#utility-functions") {
         tooltipContent.value = `<div>${translations.value.utilityFunctions[store.lang]}</div>`;
-    } else if(source.route === "/docs#composables") {
-        tooltipContent.value = '<div>Composables</div>';
+    } else if (source.route === "/docs#composables") {
+        tooltipContent.value = "<div>Composables</div>";
     } else {
         tooltipContent.value = `<div class="flex flex-center flex-col gap-2 place-items-center"><div class="flex flex-row place-items-center"><span>VueUi</span><b class="text-app-blue">${source.tooltipContent}</b></div>${
             source.thumb
@@ -1257,10 +1259,10 @@ const sideMenuItems = computed(() => {
                 {
                     route: "/docs#vue-ui-hill",
                     componentName: "Hill",
-                    icon: "chartHill"
-                }
+                    icon: "chartHill",
+                },
             ],
-            icon: "monitor"
+            icon: "monitor",
         },
         {
             title: translations.value.sideMenu.utilities[store.lang],
@@ -1313,9 +1315,9 @@ const sideMenuItems = computed(() => {
                 },
                 {
                     route: "/docs#composables",
-                    componentName: 'Composables',
-                    icon: 'vueDataUi'
-                }
+                    componentName: "Composables",
+                    icon: "vueDataUi",
+                },
             ],
             icon: "func",
         },

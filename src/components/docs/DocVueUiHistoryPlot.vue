@@ -55,7 +55,7 @@ const dataset = ref([
             { x: 350, y: 3, label: "March" },
             { x: 815, y: 2.5, label: "April" },
         ],
-        smooth: true
+        smooth: true,
     },
     {
         name: "Series 3",
@@ -66,8 +66,8 @@ const dataset = ref([
             { x: 800, y: 1.5, label: "April" },
         ],
         smooth: true,
-        temperatureColors: ['#42d392', '#ff3700'],
-        temperatureAngle: 90
+        temperatureColors: ["#42d392", "#ff3700"],
+        temperatureAngle: 90,
     },
 ]);
 
@@ -633,31 +633,31 @@ const additionalTranslations = ref({
         ja: '色の配列を使用して線をグラデーションとして表示します。例: ["#FF0000", "#00FF00"]',
         es: 'Muestra la línea como un degradado usando un array de colores, por ejemplo ["#FF0000", "#00FF00"]',
         ko: '색상 배열을 사용하여 선을 그라데이션으로 표시합니다. 예: ["#FF0000", "#00FF00"]',
-        ar: 'اعرض الخط كتدرج لوني باستخدام مصفوفة من الألوان، على سبيل المثال ["#FF0000", "#00FF00"]'
+        ar: 'اعرض الخط كتدرج لوني باستخدام مصفوفة من الألوان، على سبيل المثال ["#FF0000", "#00FF00"]',
     },
     temperatureAngle: {
-        en: 'Defaults to 0. (0: top-bottom; 90: left-right; 180: bottom-top, etc)',
-        fr: 'La valeur par défaut est 0. (0 : haut-bas ; 90 : gauche-droite ; 180 : bas-haut, etc.)',
-        pt: 'O padrão é 0. (0: cima-baixo; 90: esquerda-direita; 180: baixo-cima, etc.)',
-        de: 'Standardwert ist 0. (0: oben-unten; 90: links-rechts; 180: unten-oben usw.)',
-        zh: '默认为 0。（0：从上到下；90：从左到右；180：从下到上，等等）',
-        ja: 'デフォルトは 0 です。（0: 上から下、90: 左から右、180: 下から上、など）',
-        es: 'El valor predeterminado es 0. (0: arriba-abajo; 90: izquierda-derecha; 180: abajo-arriba, etc.)',
-        ko: '기본값은 0입니다. (0: 위-아래; 90: 왼쪽-오른쪽; 180: 아래-위 등)',
-        ar: 'القيمة الافتراضية هي 0. (0: من الأعلى إلى الأسفل؛ 90: من اليسار إلى اليمين؛ 180: من الأسفل إلى الأعلى، إلخ)'
+        en: "Defaults to 0. (0: top-bottom; 90: left-right; 180: bottom-top, etc)",
+        fr: "La valeur par défaut est 0. (0 : haut-bas ; 90 : gauche-droite ; 180 : bas-haut, etc.)",
+        pt: "O padrão é 0. (0: cima-baixo; 90: esquerda-direita; 180: baixo-cima, etc.)",
+        de: "Standardwert ist 0. (0: oben-unten; 90: links-rechts; 180: unten-oben usw.)",
+        zh: "默认为 0。（0：从上到下；90：从左到右；180：从下到上，等等）",
+        ja: "デフォルトは 0 です。（0: 上から下、90: 左から右、180: 下から上、など）",
+        es: "El valor predeterminado es 0. (0: arriba-abajo; 90: izquierda-derecha; 180: abajo-arriba, etc.)",
+        ko: "기본값은 0입니다. (0: 위-아래; 90: 왼쪽-오른쪽; 180: 아래-위 등)",
+        ar: "القيمة الافتراضية هي 0. (0: من الأعلى إلى الأسفل؛ 90: من اليسار إلى اليمين؛ 180: من الأسفل إلى الأعلى، إلخ)",
     },
     usePlotTemperatureColors: {
-        en: 'If temperatureColors are used, defaults to true if not set. Use false to opt out, and circles will take the colors of the series.',
-        fr: 'Si temperatureColors est utilisé, la valeur par défaut est true si elle n’est pas définie. Utilisez false pour désactiver cette option, et les cercles prendront les couleurs de la série.',
-        pt: 'Se temperatureColors for usado, o padrão será true se não estiver definido. Use false para desativar, e os círculos usarão as cores da série.',
-        de: 'Wenn temperatureColors verwendet wird, ist der Standardwert true, falls nicht festgelegt. Verwenden Sie false zum Deaktivieren; die Kreise übernehmen dann die Farben der Reihe.',
-        zh: '如果使用了 temperatureColors，未设置时默认值为 true。使用 false 可选择退出，圆点将采用系列的颜色。',
-        ja: 'temperatureColors が使用されている場合、未設定時のデフォルトは true です。無効にするには false を使用します。円は系列の色を使用します。',
-        es: 'Si se usa temperatureColors, el valor predeterminado será true si no está definido. Usa false para desactivarlo, y los círculos tomarán los colores de la serie.',
-        ko: 'temperatureColors를 사용하는 경우 설정하지 않으면 기본값은 true입니다. 비활성화하려면 false를 사용하세요. 그러면 원은 시리즈의 색상을 사용합니다.',
-        ar: 'إذا تم استخدام temperatureColors، فستكون القيمة الافتراضية true إذا لم يتم تعيينها. استخدم false لإلغاء ذلك، وستأخذ الدوائر ألوان السلسلة.'
+        en: "If temperatureColors are used, defaults to true if not set. Use false to opt out, and circles will take the colors of the series.",
+        fr: "Si temperatureColors est utilisé, la valeur par défaut est true si elle n’est pas définie. Utilisez false pour désactiver cette option, et les cercles prendront les couleurs de la série.",
+        pt: "Se temperatureColors for usado, o padrão será true se não estiver definido. Use false para desativar, e os círculos usarão as cores da série.",
+        de: "Wenn temperatureColors verwendet wird, ist der Standardwert true, falls nicht festgelegt. Verwenden Sie false zum Deaktivieren; die Kreise übernehmen dann die Farben der Reihe.",
+        zh: "如果使用了 temperatureColors，未设置时默认值为 true。使用 false 可选择退出，圆点将采用系列的颜色。",
+        ja: "temperatureColors が使用されている場合、未設定時のデフォルトは true です。無効にするには false を使用します。円は系列の色を使用します。",
+        es: "Si se usa temperatureColors, el valor predeterminado será true si no está definido. Usa false para desactivarlo, y los círculos tomarán los colores de la serie.",
+        ko: "temperatureColors를 사용하는 경우 설정하지 않으면 기본값은 true입니다. 비활성화하려면 false를 사용하세요. 그러면 원은 시리즈의 색상을 사용합니다.",
+        ar: "إذا تم استخدام temperatureColors، فستكون القيمة الافتراضية true إذا لم يتم تعيينها. استخدم false لإلغاء ذلك، وستأخذ الدوائر ألوان السلسلة.",
     },
-})
+});
 
 const dsTypeCode = computed(() => {
     return `type VueUiHistoryPlotDatasetItem = {
@@ -808,8 +808,10 @@ const customFormatCode =
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiHistoryPlot" configType="VueUiHistoryPlotConfig"/>
+                <DebugHint
+                    component="VueUiHistoryPlot"
+                    configType="VueUiHistoryPlotConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -848,7 +850,7 @@ const customFormatCode =
                         attr="const config: VueUiHistoryPlotConfig"
                         equal
                     >
-                    <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"
@@ -904,10 +906,42 @@ const customFormatCode =
                             :dark="mutableConfigDarkMode"
                         />
                         <BaseDetails attr="transitions" :level="1">
-                            <BaseAttr name="enable" attr="transitions.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate"/>
-                            <BaseAttr name="pauseOnLoad" attr="transitions.pauseOnLoad" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                            <BaseAttr name="pauseOnDatasetChange" attr="transitions.pauseOnDatasetChange" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                            <BaseAttr name="activationDelayMs" attr="transitions.activationDelayMs" type="number" :min="100" :max="1000" :step="50" defaultVal="300" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            <BaseAttr
+                                name="enable"
+                                attr="transitions.enable"
+                                type="checkbox"
+                                defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                                @change="forceChartUpdate"
+                            />
+                            <BaseAttr
+                                name="pauseOnLoad"
+                                attr="transitions.pauseOnLoad"
+                                type="checkbox"
+                                defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="pauseOnDatasetChange"
+                                attr="transitions.pauseOnDatasetChange"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="activationDelayMs"
+                                attr="transitions.activationDelayMs"
+                                type="number"
+                                :min="100"
+                                :max="1000"
+                                :step="50"
+                                defaultVal="300"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
                         </BaseDetails>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails

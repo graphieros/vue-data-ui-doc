@@ -19,8 +19,8 @@ const props = defineProps({
     },
     withSvgContent: {
         type: Boolean,
-        default: true
-    }
+        default: true,
+    },
 });
 
 const store = useMainStore();
@@ -47,7 +47,7 @@ const items = computed(() => {
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #svg="{ svg }">
-            ${props.withSvgContent ? `<circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="red"/>`: `<!-- Use custom svg elements with the data provided by the slot -->`}
+            ${props.withSvgContent ? `<circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="red"/>` : `<!-- Use custom svg elements with the data provided by the slot -->`}
         </template>
     </${props.componentName}>
             `,
@@ -539,7 +539,7 @@ const items = computed(() => {
             <MyCancelIcon/>
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
             names: ["loading"],
@@ -551,7 +551,7 @@ const items = computed(() => {
             LOADING...
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
             names: ["analysis"],
@@ -562,7 +562,7 @@ const items = computed(() => {
             <!-- Add a chart to analyze the data below the component -->
         </template>
     </${props.componentName}>
-            `
+            `,
         },
         {
             names: ["annotator-actions"],
@@ -712,14 +712,15 @@ function copyToClipboard(conf) {
                         class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow"
                     >
                         #{{
-                            tag === 'hill-actions' ? "hill-xxx" :
-                            tag === "annotator-actions"
-                                ? "annotator-action-xxx"
-                                : tag === "user-menu"
-                                  ? "menuIcon, #optionXxx"
-                                  : tag
-                                        .replaceAll("_", "")
-                                        .replaceAll("-circlePack", "")
+                            tag === "hill-actions"
+                                ? "hill-xxx"
+                                : tag === "annotator-actions"
+                                  ? "annotator-action-xxx"
+                                  : tag === "user-menu"
+                                    ? "menuIcon, #optionXxx"
+                                    : tag
+                                          .replaceAll("_", "")
+                                          .replaceAll("-circlePack", "")
                         }}
                     </div>
                 </div>

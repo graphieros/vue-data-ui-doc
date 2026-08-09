@@ -159,8 +159,8 @@ export default function useCharts() {
                 ja: "生産性",
                 es: "Productividad",
                 ko: "생산성",
-                ar: "الإنتاجية"
-            }
+                ar: "الإنتاجية",
+            },
         };
     });
 
@@ -318,8 +318,8 @@ export default function useCharts() {
                 ja: "",
                 es: "",
                 ko: "",
-                ar: ""
-            }
+                ar: "",
+            },
         };
     });
 
@@ -866,8 +866,8 @@ export default function useCharts() {
                 link: "/docs#vue-ui-hill",
                 description: translations.value.docs.tooltips.hill[store.lang],
                 taxinomy: ["productivity"],
-                singleTaxinomy: "productivity"
-            }
+                singleTaxinomy: "productivity",
+            },
         };
     });
 

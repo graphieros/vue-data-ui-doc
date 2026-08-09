@@ -445,7 +445,7 @@ onMounted(() => {
                     };
                 })
                 .slice(0, -1);
-            
+
             xyDataset.value = [
                 {
                     name: "Daily npm downloads",
@@ -777,8 +777,8 @@ const sparklineConfig = ref({
             backgroundOpacity: 30,
         },
         animation: {
-            show: false, 
-        }
+            show: false,
+        },
     },
 });
 
@@ -855,8 +855,8 @@ const darkModeSparklineConfig = ref({
             backgroundOpacity: 30,
         },
         animation: {
-            show: false
-        }
+            show: false,
+        },
     },
 });
 

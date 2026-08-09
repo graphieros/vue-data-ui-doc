@@ -153,11 +153,11 @@ const config = ref({
                 scaleToAxisMax: false,
                 targetReference: {
                     show: false,
-                    stroke: '#1A1A1A',
+                    stroke: "#1A1A1A",
                     strokeWidth: 1,
                     strokeDasharray: 4,
                     showInLegend: true,
-                    legendLabel: 'Target',
+                    legendLabel: "Target",
                 },
                 plots: {
                     show: true,
@@ -322,11 +322,11 @@ const darkModeConfig = ref({
                 scaleToAxisMax: false,
                 targetReference: {
                     show: false,
-                    stroke: '#CCCCCC',
+                    stroke: "#CCCCCC",
                     strokeWidth: 1,
                     strokeDasharray: 4,
                     showInLegend: true,
-                    legendLabel: 'Target',
+                    legendLabel: "Target",
                 },
                 plots: {
                     show: true,
@@ -706,8 +706,10 @@ const customFormatCode =
             </template>
 
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiRadar" configType="VueUiRadarConfig"/>
+                <DebugHint
+                    component="VueUiRadar"
+                    configType="VueUiRadarConfig"
+                />
 
                 <div class="w-full overflow-x-auto">
                     <div class="flex gap-2">
@@ -752,16 +754,16 @@ const customFormatCode =
                                     translations.responsive[store.lang]
                                 }}</BaseComment></span
                             >
-                            <BaseDetails attr="devHints" :level="1">                        
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
+                            <BaseDetails attr="devHints" :level="1">
+                                <BaseAttr
+                                    name="enable"
+                                    attr="devHints.enable"
+                                    type="checkbox"
+                                    defaultVal="false"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                            </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="debug"
@@ -864,13 +866,62 @@ const customFormatCode =
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />
-                                        <BaseDetails attr="targetReference" :level="4" title="style.chart.layout.targetReference">
-                                            <BaseAttr name="show" attr="style.chart.layout.targetReference.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                                            <BaseAttr name="stroke" attr="style.chart.layout.targetReference.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="strokeWidth" attr="style.chart.layout.targetReference.strokeWidth" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="strokeDasharray" attr="style.chart.layout.targetReference.strokeDasharray" defaultVal="4" type="number" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="showInLegend" attr="style.chart.layout.targetReference.showInLegend" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                            <BaseAttr name="legendLabel" attr="style.chart.layout.targetReference.legendLabel" type="text" defaultVal="Target" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseDetails
+                                            attr="targetReference"
+                                            :level="4"
+                                            title="style.chart.layout.targetReference"
+                                        >
+                                            <BaseAttr
+                                                name="show"
+                                                attr="style.chart.layout.targetReference.show"
+                                                type="checkbox"
+                                                defaultVal="false"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="stroke"
+                                                attr="style.chart.layout.targetReference.stroke"
+                                                type="color"
+                                                defaultVal="#2D353C"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="strokeWidth"
+                                                attr="style.chart.layout.targetReference.strokeWidth"
+                                                defaultVal="1"
+                                                :min="0"
+                                                :max="6"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="strokeDasharray"
+                                                attr="style.chart.layout.targetReference.strokeDasharray"
+                                                defaultVal="4"
+                                                type="number"
+                                                :min="0"
+                                                :max="12"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="showInLegend"
+                                                attr="style.chart.layout.targetReference.showInLegend"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="legendLabel"
+                                                attr="style.chart.layout.targetReference.legendLabel"
+                                                type="text"
+                                                defaultVal="Target"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
                                         </BaseDetails>
                                         <BaseDetails
                                             attr="dataPolygon"

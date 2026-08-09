@@ -688,8 +688,10 @@ const customFormatCode =
                 </div>
             </template>
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiHeatmap" configType="VueUiHeatmapConfig"/>
+                <DebugHint
+                    component="VueUiHeatmap"
+                    configType="VueUiHeatmapConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -731,7 +733,7 @@ const customFormatCode =
                                 "zen" | "hack" | "concrete" | ""</BaseComment
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

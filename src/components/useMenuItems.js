@@ -982,8 +982,7 @@ export function useMenuItems() {
             tooltip: translations.value.docs.tooltips.hill[store.lang],
             link: "/docs#vue-ui-hill",
             type: "productivity",
-            thumb: new URL("../assets/thumb_hill.png", import.meta.url)
-                .href,
+            thumb: new URL("../assets/thumb_hill.png", import.meta.url).href,
             thumbLight: new URL(
                 "../assets/thumb_hill_light.png",
                 import.meta.url,

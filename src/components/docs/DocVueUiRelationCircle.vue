@@ -561,8 +561,10 @@ function goToPage(route) {
             </template>
 
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiRelationCircle" configType="VueUiReltionCircleConfig"/>
+                <DebugHint
+                    component="VueUiRelationCircle"
+                    configType="VueUiReltionCircleConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -601,7 +603,7 @@ function goToPage(route) {
                         attr="const config: VueUiRelationCircleConfig"
                         equal
                     >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

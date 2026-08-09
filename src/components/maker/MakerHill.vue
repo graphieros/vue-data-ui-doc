@@ -73,8 +73,8 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.stackbar[store.lang],
         },
         {
-          key: "editMenu",
-          title: makerTranslations.value.categories.editMenu[store.lang]
+            key: "editMenu",
+            title: makerTranslations.value.categories.editMenu[store.lang],
         },
         {
             key: "userOptions",
@@ -174,19 +174,23 @@ function deleteDatasetItem(id) {
 }
 
 function saveDs(ds) {
-  datasetItems.value = ds;
-  saveDatasetToLocalStorage();
+    datasetItems.value = ds;
+    saveDatasetToLocalStorage();
 }
 </script>
 
 <template>
     <div>
-      <ClearStorageAndRefresh
+        <ClearStorageAndRefresh
             keyConfig="hillConfig"
             keyDataset="hillDataset"
             :key="`clear_${clearStep}`"
         />
-        <BaseDocExampleLink link="vue-ui-hill" componentName="VueUiHill" :example="false"/>
+        <BaseDocExampleLink
+            link="vue-ui-hill"
+            componentName="VueUiHill"
+            :example="false"
+        />
 
         <div class="w-full mt-[64px]" style="height: calc(100% - 64px)">
             <Transition name="fade">
@@ -208,109 +212,122 @@ function saveDs(ds) {
         </div>
 
         <details open>
-          <summary class="cursor-pointer mb-4">
+            <summary class="cursor-pointer mb-4">
                 {{ makerTranslations.dataset[store.lang] }}
             </summary>
             <div class="flex flex-col gap-2">
-              <BaseCard>
-                <div
-                    v-for="(ds, i) in datasetItems"
-                    :key="ds.id"
-                    class="w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3"
-                    :style="`background:${ds.color}30`"
-                  >
-                  <BaseButton
-                      color="error"
-                      :size="6"
-                      fab
-                      @click="deleteDatasetItem(ds.id)"
-                      tw="absolute -top-2 -left-2"
-                  >
-                      <XIcon size="14" />
-                  </BaseButton>
+                <BaseCard>
+                    <div
+                        v-for="(ds, i) in datasetItems"
+                        :key="ds.id"
+                        class="w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3"
+                        :style="`background:${ds.color}30`"
+                    >
+                        <BaseButton
+                            color="error"
+                            :size="6"
+                            fab
+                            @click="deleteDatasetItem(ds.id)"
+                            tw="absolute -top-2 -left-2"
+                        >
+                            <XIcon size="14" />
+                        </BaseButton>
 
-                  <table>
-                    <thead>
-                        <tr>
-                            <th class="text-left text-xs h-[40px] px-2">
-                                {{
-                                    makerTranslations.labels.color[
-                                        store.lang
-                                    ]
-                                }}
-                            </th>
-                            <th class="text-left text-xs px-2">
-                                {{
-                                    makerTranslations.labels.serieName[
-                                        store.lang
-                                    ]
-                                }}
-                            </th>
-                            <th class="text-left text-xs px-2">
-                                {{
-                                    makerTranslations.labels.muted[
-                                        store.lang
-                                    ]
-                                }}
-                            </th>
-                            <th class="text-left text-xs px-2">
-                                {{
-                                    makerTranslations.labels.disabled[
-                                        store.lang
-                                    ]
-                                }}
-                            </th>
-                            <th class="text-left text-xs px-2">
-                                {{
-                                    makerTranslations.labels.position[
-                                        store.lang
-                                    ]
-                                }}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                          <td class="px-2">
-                              <input
-                                  type="color"
-                                  v-model="datasetItems[i].color"
-                                  @change="saveDatasetToLocalStorage"
-                              />
-                          </td>
-                          <td class="px-2">
-                              <input
-                                  class="h-[36px]"
-                                  type="text"
-                                  v-model="ds.label"
-                                  @change="saveDatasetToLocalStorage"
-                              />
-                          </td>
-                          <td class="px-2">
-                            <input type="checkbox" v-model="ds.muted" @change="saveDatasetToLocalStorage"/>
-                          </td>
-                          <td class="px-2">
-                            <input type="checkbox" v-model="ds.disabled" @change="saveDatasetToLocalStorage"/>
-                          </td>
-                          <td class="px-2 flex flex-row align-center gap-4 justify-center place-items-center">
-                              <input
-                                  class="h-[36px] accent-app-blue"
-                                  type="range"
-                                  :min="0"
-                                  :max="1"
-                                  :step="0.01"
-                                  v-model="ds.position"
-                                  @change="saveDatasetToLocalStorage"
-                              />
-                              <span style="font-variant: numeric">
-                                {{ Math.round(ds.position * 100) / 100 }}
-                              </span>
-                          </td>
-                      </tr>
-                  </tbody>
-                  </table>
-                </div>
-              </BaseCard>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="text-left text-xs h-[40px] px-2">
+                                        {{
+                                            makerTranslations.labels.color[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                    <th class="text-left text-xs px-2">
+                                        {{
+                                            makerTranslations.labels.serieName[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                    <th class="text-left text-xs px-2">
+                                        {{
+                                            makerTranslations.labels.muted[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                    <th class="text-left text-xs px-2">
+                                        {{
+                                            makerTranslations.labels.disabled[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                    <th class="text-left text-xs px-2">
+                                        {{
+                                            makerTranslations.labels.position[
+                                                store.lang
+                                            ]
+                                        }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="px-2">
+                                        <input
+                                            type="color"
+                                            v-model="datasetItems[i].color"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td class="px-2">
+                                        <input
+                                            class="h-[36px]"
+                                            type="text"
+                                            v-model="ds.label"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td class="px-2">
+                                        <input
+                                            type="checkbox"
+                                            v-model="ds.muted"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td class="px-2">
+                                        <input
+                                            type="checkbox"
+                                            v-model="ds.disabled"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                    </td>
+                                    <td
+                                        class="px-2 flex flex-row align-center gap-4 justify-center place-items-center"
+                                    >
+                                        <input
+                                            class="h-[36px] accent-app-blue"
+                                            type="range"
+                                            :min="0"
+                                            :max="1"
+                                            :step="0.01"
+                                            v-model="ds.position"
+                                            @change="saveDatasetToLocalStorage"
+                                        />
+                                        <span style="font-variant: numeric">
+                                            {{
+                                                Math.round(ds.position * 100) /
+                                                100
+                                            }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </BaseCard>
             </div>
             <div class="flex flex-row gap-4 mt-4 mb-6">
                 <BaseButton
@@ -343,9 +360,11 @@ function saveDs(ds) {
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
             <ComponentContent
                 :dataset="
-                    datasetItems.map(({ label, position, color, muted, disabled}) => {
-                        return { label, position, color, muted, disabled };
-                    })
+                    datasetItems.map(
+                        ({ label, position, color, muted, disabled }) => {
+                            return { label, position, color, muted, disabled };
+                        },
+                    )
                 "
                 :config="finalConfig"
                 componentName="VueUiHill"

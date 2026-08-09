@@ -873,8 +873,10 @@ const customFormatCode =
 
             <template #tab1>
                 <div class="w-full overflow-x-auto">
-
-                    <DebugHint component="VueUiXyCanvas" configType="VueUiXyCanvasConfig"/>
+                    <DebugHint
+                        component="VueUiXyCanvas"
+                        configType="VueUiXyCanvasConfig"
+                    />
 
                     <div class="flex gap-2">
                         <button
@@ -933,16 +935,16 @@ const customFormatCode =
                                     }}</span
                                 ></span
                             >
-                            <BaseDetails attr="devHints" :level="1">                        
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
+                            <BaseDetails attr="devHints" :level="1">
+                                <BaseAttr
+                                    name="enable"
+                                    attr="devHints.enable"
+                                    type="checkbox"
+                                    defaultVal="false"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                            </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="debug"

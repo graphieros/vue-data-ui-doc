@@ -354,7 +354,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
                         attr="const config: VueUiDashboardConfig"
                         equal
                     >
-                    <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

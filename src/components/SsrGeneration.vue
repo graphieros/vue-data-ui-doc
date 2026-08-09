@@ -8,7 +8,7 @@ import { createStaticVueUiDonut } from "vue-data-ui/ssr/vue-ui-donut";
 
 const props = defineProps({
     component: { type: String },
-})
+});
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -35,7 +35,7 @@ const translations = shallowRef({
         ja: "パラメータ内のコンテキストによって提供される座標を使用して、追加コンテンツをSVGに挿入します。",
         es: "Inserta cualquier contenido adicional en el SVG utilizando las coordenadas proporcionadas por el contexto en los parámetros.",
         ko: "매개변수의 컨텍스트에서 제공된 좌표를 사용하여 추가 콘텐츠를 SVG에 삽입합니다.",
-        ar: "أدرج أي محتوى إضافي داخل ملف SVG باستخدام الإحداثيات التي يوفّرها السياق في المعلمات."
+        ar: "أدرج أي محتوى إضافي داخل ملف SVG باستخدام الإحداثيات التي يوفّرها السياق في المعلمات.",
     },
     dataset: {
         en: `Use the dataset required for the ${props.component} component`,
@@ -60,7 +60,7 @@ const translations = shallowRef({
         ar: `استخدم الإعدادات المطلوبة لمكوّن ${props.component}`,
     },
     result: {
-        en: 'The result is an svg string, that can be injected into HTML, or generated via an endpoint, to be inserted into the src attribute of an image element.',
+        en: "The result is an svg string, that can be injected into HTML, or generated via an endpoint, to be inserted into the src attribute of an image element.",
         fr: "Le résultat est une chaîne SVG qui peut être injectée dans du HTML, ou générée via un point de terminaison, afin d'être insérée dans l'attribut src d'un élément image.",
         pt: "O resultado é uma string SVG que pode ser inserida em HTML ou gerada por meio de um endpoint para ser utilizada no atributo src de um elemento de imagem.",
         de: "Das Ergebnis ist ein SVG-String, der in HTML eingefügt oder über einen Endpunkt erzeugt werden kann, um in das src-Attribut eines Bildelements eingefügt zu werden.",
@@ -69,119 +69,123 @@ const translations = shallowRef({
         es: "El resultado es una cadena SVG que puede insertarse en HTML o generarse mediante un endpoint para ser utilizada en el atributo src de un elemento de imagen.",
         ko: "결과는 SVG 문자열이며, HTML에 삽입하거나 엔드포인트를 통해 생성하여 이미지 요소의 src 속성에 사용할 수 있습니다.",
         ar: "الناتج عبارة عن سلسلة SVG يمكن إدراجها في HTML أو إنشاؤها عبر نقطة نهاية لاستخدامها في خاصية src لعنصر صورة.",
-    }
+    },
 });
 
 const methods = shallowRef({
-    VueUiXy: 'createStaticVueUiXy',
-    VueUiDonut: 'createStaticVueUiDonut'
-})
+    VueUiXy: "createStaticVueUiXy",
+    VueUiDonut: "createStaticVueUiDonut",
+});
 
 const generators = computed(() => ({
     VueUiXy: createStaticVueUiXy,
-    VueUiDonut: createStaticVueUiDonut
+    VueUiDonut: createStaticVueUiDonut,
 }));
 
 const datasets = ref({
     VueUiXy: [
         {
-            name: 'Series A',
-            type: 'line',
-            series: [0, 1, 3, 1, 2, 5, 3, 5, 13, 8, 13, 34, 21, 34, 89, 55, 89, 134],
+            name: "Series A",
+            type: "line",
+            series: [
+                0, 1, 3, 1, 2, 5, 3, 5, 13, 8, 13, 34, 21, 34, 89, 55, 89, 134,
+            ],
             smooth: true,
-            useArea: true
-        }
+            useArea: true,
+        },
     ],
     VueUiDonut: [
         {
-            name: 'Series A',
-            values: [100]
+            name: "Series A",
+            values: [100],
         },
         {
-            name: 'Series B',
-            values: [50]
-        }
-    ]
+            name: "Series B",
+            values: [50],
+        },
+    ],
 });
 
 const configs = computed(() => ({
     VueUiXy: {
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         chart: {
             grid: {
-                position: 'start',
+                position: "start",
                 showHorizontalLines: true,
                 labels: {
                     axis: {
-                        yLabel: 'Y-AXIS',
-                        xLabel: 'X-AXIS'
+                        yLabel: "Y-AXIS",
+                        xLabel: "X-AXIS",
                     },
-                    yAxis: { useNiceScale: true }
-                }
+                    yAxis: { useNiceScale: true },
+                },
             },
             legend: {
-                position: 'top'
+                position: "top",
             },
             padding: {
                 right: 90,
-            }
-        }
+            },
+        },
     },
     VueUiDonut: {
-        theme: isDarkMode.value ? 'dark' : '',
+        theme: isDarkMode.value ? "dark" : "",
         style: {
             chart: {
                 layout: {
-                    curvedMarkers: true
-                }
-            }
-        }
-    }
-}))
+                    curvedMarkers: true,
+                },
+            },
+        },
+    },
+}));
 
-const svgContent = ref('');
+const svgContent = ref("");
 
 watchEffect(async () => {
     svgContent.value = await generators.value[props.component]({
         dataset: datasets.value[props.component],
-        config: configs.value[props.component]
-    })
-})
+        config: configs.value[props.component],
+    });
+});
 
 function stringifyCompactArrays(obj) {
-  const placeholderMap = new Map();
-  let index = 0;
+    const placeholderMap = new Map();
+    let index = 0;
 
-  const json = JSON.stringify(
-    obj,
-    (_, value) => {
-      if (
-        Array.isArray(value) &&
-        value.every(item => ["number", "string", "boolean"].includes(typeof item))
-      ) {
-        const key = `__ARRAY_${index++}__`;
-        placeholderMap.set(key, JSON.stringify(value));
-        return key;
-      }
-      return value;
-    },
-    2
-  );
+    const json = JSON.stringify(
+        obj,
+        (_, value) => {
+            if (
+                Array.isArray(value) &&
+                value.every((item) =>
+                    ["number", "string", "boolean"].includes(typeof item),
+                )
+            ) {
+                const key = `__ARRAY_${index++}__`;
+                placeholderMap.set(key, JSON.stringify(value));
+                return key;
+            }
+            return value;
+        },
+        2,
+    );
 
-  return json.replace(
-    /"(__ARRAY_\d+__)"/g,
-    (_, key) => placeholderMap.get(key)
-  );
+    return json.replace(/"(__ARRAY_\d+__)"/g, (_, key) =>
+        placeholderMap.get(key),
+    );
 }
 
 function formatObj(json) {
-    return json.replace(/"([^"]+)":/g, '$1:');
+    return json.replace(/"([^"]+)":/g, "$1:");
 }
 
 const additionalContentParams = shallowRef({
     VueUiXy: "series, drawingArea, scale, config",
-    VueUiDonut: "series, drawingArea, center, innerRadius, radius, thickness, config"
-})
+    VueUiDonut:
+        "series, drawingArea, center, innerRadius, radius, thickness, config",
+});
 
 const code = computed(() => {
     return `import { ${methods.value[props.component]} } from "vue-data-ui/ssr/${importName}";
@@ -209,9 +213,8 @@ watchEffect(async () => {
     
     console.log(svgRender.value);
 })
-    `
-})
-
+    `;
+});
 </script>
 
 <template>
@@ -224,9 +227,11 @@ watchEffect(async () => {
             :content="code"
             @copy="store.copy()"
         />
-        <div class="max-w-[500px] mx-auto p-4 bg-white dark:bg-[#1A1A1A] rounded">
+        <div
+            class="max-w-[500px] mx-auto p-4 bg-white dark:bg-[#1A1A1A] rounded"
+        >
             <h3>{{ translations.result[store.lang] }}</h3>
-            <div v-html="svgContent"/>
+            <div v-html="svgContent" />
         </div>
     </div>
 </template>

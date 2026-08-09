@@ -305,8 +305,10 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiSparkTrend" configType="VueUiSparkTrendConfig"/>
+                <DebugHint
+                    component="VueUiSparkTrend"
+                    configType="VueUiSparkTrendConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -352,7 +354,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

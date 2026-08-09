@@ -545,8 +545,7 @@ function goToPage(route) {
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiDag" configType="VueUiDagConfig"/>
+                <DebugHint component="VueUiDag" configType="VueUiDagConfig" />
 
                 <div class="flex gap-2">
                     <button
@@ -579,7 +578,7 @@ function goToPage(route) {
                 </div>
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiDagConfig" equal>
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

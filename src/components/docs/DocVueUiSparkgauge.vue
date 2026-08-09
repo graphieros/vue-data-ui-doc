@@ -324,8 +324,10 @@ function goToPage(route) {
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiSparkgauge" configType="VueUiSparkgaugeConfig"/>
+                <DebugHint
+                    component="VueUiSparkgauge"
+                    configType="VueUiSparkgaugeConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -363,7 +365,7 @@ function goToPage(route) {
                         attr="const config: VueUiSparkgaugeConfig"
                         equal
                     >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

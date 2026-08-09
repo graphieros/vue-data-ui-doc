@@ -29,7 +29,7 @@ function changeTheme() {
     }
 }
 
-const { isMobile } = useMobile()
+const { isMobile } = useMobile();
 
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
@@ -641,7 +641,6 @@ onBeforeUnmount(() => {
                         : ['#1d915d', '#42d392'],
                 },
                 style: {
-
                     backgroundColor: '#FFFFFF00',
                     chartWidth: 300,
                     dataLabel: { show: false },

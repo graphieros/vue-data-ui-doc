@@ -830,8 +830,10 @@ const datapointSlot = ref(`
             </template>
 
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiQuadrant" configType="VueUiQuadrantConfig"/>
+                <DebugHint
+                    component="VueUiQuadrant"
+                    configType="VueUiQuadrantConfig"
+                />
 
                 <div class="w-full overflow-x-auto">
                     <div class="flex gap-2">
@@ -876,16 +878,16 @@ const datapointSlot = ref(`
                                     translations.responsive[store.lang]
                                 }}</BaseComment></span
                             >
-                            <BaseDetails attr="devHints" :level="1">                        
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
+                            <BaseDetails attr="devHints" :level="1">
+                                <BaseAttr
+                                    name="enable"
+                                    attr="devHints.enable"
+                                    type="checkbox"
+                                    defaultVal="false"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                            </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="debug"

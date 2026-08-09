@@ -581,8 +581,10 @@ const customFormatCode =
             </template>
 
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiWaffle" configType="VueUiWaffleConfig"/>
+                <DebugHint
+                    component="VueUiWaffle"
+                    configType="VueUiWaffleConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -623,7 +625,7 @@ const customFormatCode =
                                 translations.responsive[store.lang]
                             }}</BaseComment></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

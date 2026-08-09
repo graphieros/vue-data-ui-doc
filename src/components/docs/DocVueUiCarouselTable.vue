@@ -206,7 +206,7 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
-    debug:false,
+    debug: false,
     devHints: { enable: false },
     responsiveBreakpoint: 400,
     userOptions: {
@@ -510,9 +510,11 @@ const slotCode = computed(() => {
             </template>
 
             <template #tab1>
+                <DebugHint
+                    component="VueUiCarouselTable"
+                    configType="VueUiCarouselTableConfig"
+                />
 
-                <DebugHint component="VueUiCarouselTable" configType="VueUiCarouselTableConfig"/>
-                
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"
@@ -549,8 +551,8 @@ const slotCode = computed(() => {
                         attr="const config: VueUiCarouselTableConfig"
                         equal
                     >
-                    <BaseAttr inactive name="debug" defaultVal="false," />
-                    <BaseDetails attr="devHints" :level="1">                        
+                        <BaseAttr inactive name="debug" defaultVal="false," />
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

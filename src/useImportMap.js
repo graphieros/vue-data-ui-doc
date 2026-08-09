@@ -71,7 +71,7 @@ export function useImportMap(c) {
         VueUiBump: "vue-ui-bump",
         VueUiPattern: "vue-ui-pattern",
         VueUiPatternSeed: "vue-ui-pattern-seed",
-        VueUiHill: "vue-ui-hill"
+        VueUiHill: "vue-ui-hill",
     };
 
     const typesMapping = {
@@ -177,7 +177,7 @@ export function useImportMap(c) {
         VueUiXy: ", type VueUiXyDatasetItem, type VueUiXyConfig",
         VueUiXyCanvas:
             ", type VueUiXyCanvasDatasetItem, type VueUiXyCanvasConfig",
-        VueUiHill: ", type VueUiHillDatasetItem, type VueUiHillConfig"
+        VueUiHill: ", type VueUiHillDatasetItem, type VueUiHillConfig",
     };
 
     const datasetTypeMap = {
@@ -252,7 +252,7 @@ export function useImportMap(c) {
         VueUiWorld: "VueUiWorldDataset",
         VueUiXy: "VueUiXyDatasetItem[]",
         VueUiXyCanvas: "VueUiXyCanvasDatasetItem[]",
-        VueUiHill: "VueUiHillDatasetItem[]"
+        VueUiHill: "VueUiHillDatasetItem[]",
     };
 
     const configTypeMap = {
@@ -327,7 +327,7 @@ export function useImportMap(c) {
         VueUiWorld: "VueUiWorldConfig",
         VueUiXy: "VueUiXyConfig",
         VueUiXyCanvas: "VueUiXyCanvasConfig",
-        VueUiHill: "VueUiHillConfig"
+        VueUiHill: "VueUiHillConfig",
     };
 
     return mapping[c]
@@ -340,7 +340,7 @@ export function useImportMap(c) {
               treeshaken: `import { ${c}${typesMapping[c]} } from "vue-data-ui/${mapping[c]}";`,
               datasetType: datasetTypeMap[c],
               configType: configTypeMap[c],
-              importName: mapping[c]
+              importName: mapping[c],
           }
         : null;
 }

@@ -196,7 +196,7 @@ s
             </div>
         </div>
 
-        <AgentScanAd/>
+        <AgentScanAd />
         <NpmxAd />
         <CockpitAd />
         <!-- <FncsyAd /> -->

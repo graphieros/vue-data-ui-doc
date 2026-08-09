@@ -614,7 +614,7 @@ const config = ref({
             useSerieColor: true,
             fill: "#FFFFFF",
             strokeWidth: 0.5,
-            selectedRadius: 4.5
+            selectedRadius: 4.5,
         },
         labels: {
             show: true,
@@ -1103,7 +1103,7 @@ const darkModeConfig = ref({
             useSerieColor: true,
             fill: "#FFFFFF",
             strokeWidth: 0.5,
-            selectedRadius: 4.5
+            selectedRadius: 4.5,
         },
         labels: {
             show: true,
@@ -1606,8 +1606,7 @@ const customFormatCode =
 
             <template v-slot:tab1>
                 <div class="w-full overflow-x-auto">
-
-                    <DebugHint component="VueUiXy" configType="VueUiXyConfig"/>
+                    <DebugHint component="VueUiXy" configType="VueUiXyConfig" />
 
                     <div class="flex gap-2">
                         <button
@@ -1647,7 +1646,7 @@ const customFormatCode =
                     </div>
                     <code ref="configCode">
                         <BaseDetails attr="const config: VueUiXyConfig" equal>
-                            <BaseDetails attr="devHints" :level="1">                        
+                            <BaseDetails attr="devHints" :level="1">
                                 <BaseAttr
                                     name="enable"
                                     attr="devHints.enable"
@@ -1707,11 +1706,43 @@ const customFormatCode =
                                 :dark="mutableConfigDarkMode"
                             />
                             <BaseDetails attr="transitions" :level="1">
-                            <BaseAttr name="enable" attr="transitions.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate"/>
-                            <BaseAttr name="pauseOnLoad" attr="transitions.pauseOnLoad" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                            <BaseAttr name="pauseOnDatasetChange" attr="transitions.pauseOnDatasetChange" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                            <BaseAttr name="activationDelayMs" attr="transitions.activationDelayMs" type="number" :min="100" :max="1000" :step="50" defaultVal="300" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                        </BaseDetails>
+                                <BaseAttr
+                                    name="enable"
+                                    attr="transitions.enable"
+                                    type="checkbox"
+                                    defaultVal="true"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                    @change="forceChartUpdate"
+                                />
+                                <BaseAttr
+                                    name="pauseOnLoad"
+                                    attr="transitions.pauseOnLoad"
+                                    type="checkbox"
+                                    defaultVal="true"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="pauseOnDatasetChange"
+                                    attr="transitions.pauseOnDatasetChange"
+                                    type="checkbox"
+                                    defaultVal="false"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseAttr
+                                    name="activationDelayMs"
+                                    attr="transitions.activationDelayMs"
+                                    type="number"
+                                    :min="100"
+                                    :max="1000"
+                                    :step="50"
+                                    defaultVal="300"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                            </BaseDetails>
                             <BaseDetails attr="a11y" :level="1">
                                 <BaseDetails
                                     attr="translations"
@@ -5554,7 +5585,7 @@ const customFormatCode =
             </template>
 
             <template #tab12>
-                <SsrGeneration component="VueUiXy"/>
+                <SsrGeneration component="VueUiXy" />
             </template>
         </Box>
     </div>

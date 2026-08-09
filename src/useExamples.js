@@ -1846,13 +1846,13 @@ export default function useExamples() {
             series: [
                 0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0,
             ],
-            useStepper: true
+            useStepper: true,
         },
         {
             name: "Target",
             type: "line",
             series: [10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10],
-            useStepper: true
+            useStepper: true,
         },
     ]);
 
@@ -1861,12 +1861,42 @@ export default function useExamples() {
             name: "Serie 1",
             type: "line",
             smooth: true,
-            series: [null, 64, 29, 55, 44, null, null, 25, null, null, 77, 65, null, 89],
+            series: [
+                null,
+                64,
+                29,
+                55,
+                44,
+                null,
+                null,
+                25,
+                null,
+                null,
+                77,
+                65,
+                null,
+                89,
+            ],
         },
         {
             name: "Serie 2",
             type: "line",
-            series: [53, 24, 19, 35, null, null, 64, null, null, 47, 25, 35, null, 24],
+            series: [
+                53,
+                24,
+                19,
+                35,
+                null,
+                null,
+                64,
+                null,
+                null,
+                47,
+                25,
+                35,
+                null,
+                24,
+            ],
         },
     ]);
 
@@ -5444,10 +5474,10 @@ export default function useExamples() {
                 { x: 313, y: 0.4, label: "March" },
                 { x: 555, y: 1.2, label: "April" },
             ],
-            temperatureColors: ["#00FF00", '#FF0000'],
+            temperatureColors: ["#00FF00", "#FF0000"],
             temperatureAngle: 0,
             usePlotTemperatureColors: true,
-            temperatureIndependant: false
+            temperatureIndependant: false,
         },
         {
             name: "2025",
@@ -5457,10 +5487,10 @@ export default function useExamples() {
                 { x: 350, y: 3, label: "March" },
                 { x: 815, y: 2.5, label: "April" },
             ],
-            temperatureColors: ["#00FF00", '#FF0000'],
+            temperatureColors: ["#00FF00", "#FF0000"],
             temperatureAngle: 0,
             usePlotTemperatureColors: true,
-            temperatureIndependant: false
+            temperatureIndependant: false,
         },
     ]);
 
@@ -5473,7 +5503,7 @@ export default function useExamples() {
                 { x: 313, y: 0.4, label: "March" },
                 { x: 555, y: 1.2, label: "April" },
             ],
-            smooth: true
+            smooth: true,
         },
         {
             name: "2025",
@@ -5483,7 +5513,7 @@ export default function useExamples() {
                 { x: 350, y: 3, label: "March" },
                 { x: 815, y: 2.5, label: "April" },
             ],
-            smooth: true
+            smooth: true,
         },
     ]);
 
@@ -9121,10 +9151,10 @@ export default function useExamples() {
                     userConfig: {
                         style: {
                             line: {
-                                cutNullValues: true
-                            }
-                        }
-                    }
+                                cutNullValues: true,
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiSparkline",
                 icon: "chartSparkline",
@@ -9156,8 +9186,8 @@ export default function useExamples() {
                                 show: true,
                                 color: "#1F77B4",
                             },
-                        }
-                    }
+                        },
+                    },
                 }),
                 component: "VueUiSparkline",
                 icon: "chartSparkline",
@@ -9185,9 +9215,9 @@ export default function useExamples() {
                             line: {
                                 cutNullValues: true,
                                 smooth: true,
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiSparkline",
                 icon: "chartSparkline",
@@ -9219,9 +9249,9 @@ export default function useExamples() {
                             area: {
                                 show: true,
                                 color: "#1F77B4",
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiSparkline",
                 icon: "chartSparkline",
@@ -10531,7 +10561,9 @@ export default function useExamples() {
                                         useStroke: true,
                                         fillOpacity: 0,
                                         useGradient: false,
-                                        underlayerColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF'
+                                        underlayerColor: isDarkMode.value
+                                            ? "#2A2A2A"
+                                            : "#FFFFFF",
                                     },
                                     separators: { show: false },
                                 },
@@ -11472,14 +11504,22 @@ export default function useExamples() {
             },
             // WORD CLOUD ENGLISH WITH HIGHLIGHTED WORDS
             {
-                dataset: DATASET_WORDCLOUD_ENGLISH.value.map(w => ({
+                dataset: DATASET_WORDCLOUD_ENGLISH.value.map((w) => ({
                     ...w,
                     name: w.name.toLowerCase(),
-                    color: ['server', 'backend', 'protocol', 'authentication', 'authorization'].includes(w.name.toLowerCase()) ? '#FF6600' : '#666666'
+                    color: [
+                        "server",
+                        "backend",
+                        "protocol",
+                        "authentication",
+                        "authorization",
+                    ].includes(w.name.toLowerCase())
+                        ? "#FF6600"
+                        : "#666666",
                 })),
                 config: mergeConfigs({
                     defaultConfig: CONFIG_WORD_WLOUD_BASIC.value,
-                    userConfig: {}
+                    userConfig: {},
                 }),
                 component: "VueUiWordCloud",
                 icon: "chartWordCloud",
@@ -12919,8 +12959,8 @@ export default function useExamples() {
                 config: mergeConfigs({
                     defaultConfig: CONFIG_STRIP_PLOT_BASE.value,
                     userConfig: {
-                        type: 'scatter'
-                    }
+                        type: "scatter",
+                    },
                 }),
                 component: "VueUiStripPlot",
                 icon: "chartStripPlot",
@@ -12944,17 +12984,19 @@ export default function useExamples() {
                 config: mergeConfigs({
                     defaultConfig: CONFIG_STRIP_PLOT_BASE.value,
                     userConfig: {
-                        type: 'violin',
+                        type: "violin",
                         style: {
                             chart: {
                                 violin: {
                                     boxPlot: {
-                                        medianCircleFill: isDarkMode.value ? '#3A3A3A' : '#FFFFFF'
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        medianCircleFill: isDarkMode.value
+                                            ? "#3A3A3A"
+                                            : "#FFFFFF",
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiStripPlot",
                 icon: "chartStripPlot",
@@ -12978,17 +13020,17 @@ export default function useExamples() {
                 config: mergeConfigs({
                     defaultConfig: CONFIG_STRIP_PLOT_BASE.value,
                     userConfig: {
-                        type: 'violin',
+                        type: "violin",
                         style: {
                             chart: {
                                 violin: {
                                     boxPlot: {
-                                        show: false
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                        show: false,
+                                    },
+                                },
+                            },
+                        },
+                    },
                 }),
                 component: "VueUiStripPlot",
                 icon: "chartStripPlot",

@@ -37,7 +37,7 @@ const CONFIG_XY = computed(() => {
                 },
                 labels: {
                     axis: {
-                        yLabel: 'Age',
+                        yLabel: "Age",
                         fontSize: 20,
                     },
                     yAxis: {

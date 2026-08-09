@@ -112,7 +112,7 @@ const routes = [
     {
         path: "/friends",
         name: "Friends",
-        component: () => import('../views/Friends.vue')
+        component: () => import("../views/Friends.vue"),
     },
     {
         path: "/:catchAll(.*)",

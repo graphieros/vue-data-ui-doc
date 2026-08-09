@@ -694,8 +694,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
 
             <!-- CONFIG -->
             <template #tab1>
-
-                <DebugHint component="VueUiFlow" configType="VueUiFlowConfig"/>
+                <DebugHint component="VueUiFlow" configType="VueUiFlowConfig" />
 
                 <div class="flex gap-2">
                     <button
@@ -742,7 +741,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

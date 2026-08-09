@@ -401,8 +401,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiThermometer" configType="VueUiThermometerConfig"/>
+                <DebugHint
+                    component="VueUiThermometer"
+                    configType="VueUiThermometerConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -447,7 +449,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"
@@ -479,7 +481,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
                         >
                         <BaseDetails attr="style" :level="1">
                             <span>fontFamily: "inherit",</span>
-                            
+
                             <BaseDetails
                                 attr="chart"
                                 :level="2"

@@ -373,8 +373,10 @@ const { configCode, showAllConfig } = useConfigCode();
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiSmiley" configType="VueUiSmileyConfig"/>
+                <DebugHint
+                    component="VueUiSmiley"
+                    configType="VueUiSmileyConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -427,7 +429,7 @@ const { configCode, showAllConfig } = useConfigCode();
                                 ></span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

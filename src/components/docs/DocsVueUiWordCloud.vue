@@ -97,7 +97,7 @@ const config = ref({
     }),
     useCssAnimation: true,
     animationDelayMs: 20,
-    quality: 'fast',
+    quality: "fast",
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -245,7 +245,7 @@ const darkModeConfig = ref({
     }),
     useCssAnimation: true,
     animationDelayMs: 20,
-    quality: 'fast',
+    quality: "fast",
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -543,8 +543,10 @@ function goToPage(route) {
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiWordCloud" configType="VueUiWordCloudConfig"/>
+                <DebugHint
+                    component="VueUiWordCloud"
+                    configType="VueUiWordCloudConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -589,7 +591,7 @@ function goToPage(route) {
                                 translations.responsive[store.lang]
                             }}</BaseComment></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"
@@ -636,7 +638,16 @@ function goToPage(route) {
                             :dark="mutableConfigDarkMode"
                             @change="forceChartUpdate()"
                         />
-                        <BaseAttr name="quality" attr="quality" type="select" defaultVal="fast" :options="['fast', 'balanced', 'precise']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr
+                            name="quality"
+                            attr="quality"
+                            type="select"
+                            defaultVal="fast"
+                            :options="['fast', 'balanced', 'precise']"
+                            :light="mutableConfig"
+                            :dark="mutableConfigDarkMode"
+                            @change="forceChartUpdate()"
+                        />
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails
                                 attr="translations"

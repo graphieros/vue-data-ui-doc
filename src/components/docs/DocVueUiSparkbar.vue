@@ -340,8 +340,10 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
             </template>
             <template #tab1>
                 <div class="w-full overflow-x-auto">
-
-                    <DebugHint component="VueUiSparkbar" configType="VueUiSparkbarConfig"/>
+                    <DebugHint
+                        component="VueUiSparkbar"
+                        configType="VueUiSparkbarConfig"
+                    />
 
                     <div class="flex gap-2">
                         <button
@@ -379,16 +381,16 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
                             attr="const config: VueUiSparkbarConfig"
                             equal
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
+                            <BaseDetails attr="devHints" :level="1">
+                                <BaseAttr
+                                    name="enable"
+                                    attr="devHints.enable"
+                                    type="checkbox"
+                                    defaultVal="false"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                            </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="debug"

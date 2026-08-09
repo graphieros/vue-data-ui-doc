@@ -677,8 +677,10 @@ const customFormatCode =
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiNestedDonuts" configType="VueUiNestedDonutsConfig"/>
+                <DebugHint
+                    component="VueUiNestedDonuts"
+                    configType="VueUiNestedDonutsConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -734,7 +736,7 @@ const customFormatCode =
                             >customPalette: [];
                             <BaseComment>string[]</BaseComment></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

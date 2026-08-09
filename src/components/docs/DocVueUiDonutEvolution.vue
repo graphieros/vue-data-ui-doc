@@ -804,8 +804,10 @@ function goToPage(route) {
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiDonutEvolution" configType="VueUiDonutEvolutionConfig"/>
+                <DebugHint
+                    component="VueUiDonutEvolution"
+                    configType="VueUiDonutEvolutionConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -863,7 +865,7 @@ function goToPage(route) {
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"
@@ -882,10 +884,42 @@ function goToPage(route) {
                             :dark="mutableConfigDarkMode"
                         />
                         <BaseDetails attr="transitions" :level="1">
-                            <BaseAttr name="enable" attr="transitions.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate"/>
-                            <BaseAttr name="pauseOnLoad" attr="transitions.pauseOnLoad" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                            <BaseAttr name="pauseOnDatasetChange" attr="transitions.pauseOnDatasetChange" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                            <BaseAttr name="activationDelayMs" attr="transitions.activationDelayMs" type="number" :min="100" :max="1000" :step="50" defaultVal="300" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            <BaseAttr
+                                name="enable"
+                                attr="transitions.enable"
+                                type="checkbox"
+                                defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                                @change="forceChartUpdate"
+                            />
+                            <BaseAttr
+                                name="pauseOnLoad"
+                                attr="transitions.pauseOnLoad"
+                                type="checkbox"
+                                defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="pauseOnDatasetChange"
+                                attr="transitions.pauseOnDatasetChange"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="activationDelayMs"
+                                attr="transitions.activationDelayMs"
+                                type="number"
+                                :min="100"
+                                :max="1000"
+                                :step="50"
+                                defaultVal="300"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
                         </BaseDetails>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails

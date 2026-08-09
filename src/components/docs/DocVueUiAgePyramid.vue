@@ -654,8 +654,10 @@ const customFormatCode =
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiAgePyramid" configType="VueUiAgePyramidConfig"/>
+                <DebugHint
+                    component="VueUiAgePyramid"
+                    configType="VueUiAgePyramidConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -700,7 +702,7 @@ const customFormatCode =
                                 {{ translations.responsive[store.lang] }}</span
                             ></span
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

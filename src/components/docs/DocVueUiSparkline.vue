@@ -684,8 +684,10 @@ const prefersReduced = ref({
             </template>
             <template v-slot:tab1>
                 <div class="w-full overflow-x-auto">
-
-                    <DebugHint component="VueUiSparkline" configType="VueUiSparklineConfig"/>
+                    <DebugHint
+                        component="VueUiSparkline"
+                        configType="VueUiSparklineConfig"
+                    />
 
                     <div class="flex gap-2">
                         <button
@@ -723,16 +725,16 @@ const prefersReduced = ref({
                             attr="const config: VueUiSparklineConfig"
                             equal
                         >
-                        <BaseDetails attr="devHints" :level="1">                        
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
+                            <BaseDetails attr="devHints" :level="1">
+                                <BaseAttr
+                                    name="enable"
+                                    attr="devHints.enable"
+                                    type="checkbox"
+                                    defaultVal="false"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                            </BaseDetails>
                             <BaseAttr
                                 inactive
                                 name="responsive"

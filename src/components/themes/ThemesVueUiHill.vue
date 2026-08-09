@@ -39,10 +39,10 @@ const config = ref({
                 },
             },
             layout: {
-              stackbar: {
-                paddingBottom: 12,
-              }
-            }
+                stackbar: {
+                    paddingBottom: 12,
+                },
+            },
         },
     },
 });

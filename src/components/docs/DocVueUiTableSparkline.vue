@@ -441,8 +441,10 @@ function goToPage(route) {
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiTableSparkline" configType="VueUiTableSparklineConfig"/>
+                <DebugHint
+                    component="VueUiTableSparkline"
+                    configType="VueUiTableSparklineConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -502,7 +504,7 @@ function goToPage(route) {
                             <BaseComment>string[]</BaseComment></span
                         >
                         <span>fontFamily: "inherit",</span>
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

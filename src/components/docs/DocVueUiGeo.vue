@@ -560,8 +560,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiGeo" configType="VueUiGeoConfig"/>
+                <DebugHint component="VueUiGeo" configType="VueUiGeoConfig" />
 
                 <div class="flex gap-2">
                     <button
@@ -593,7 +592,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 </div>
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiGeoConfig" equal>
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

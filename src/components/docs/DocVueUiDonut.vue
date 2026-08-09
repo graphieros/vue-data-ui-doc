@@ -928,8 +928,10 @@ const customFormatCode =
             </template>
 
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiDonut" configType="VueUiDonutConfig"/>
+                <DebugHint
+                    component="VueUiDonut"
+                    configType="VueUiDonutConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -963,7 +965,7 @@ const customFormatCode =
                 </div>
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiDonutConfig" equal>
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"
@@ -3227,7 +3229,7 @@ const customFormatCode =
             </template>
 
             <template #tab12>
-                <SsrGeneration component="VueUiDonut"/>
+                <SsrGeneration component="VueUiDonut" />
             </template>
         </Box>
     </div>

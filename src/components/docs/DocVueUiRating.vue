@@ -380,8 +380,10 @@ const { configCode, showAllConfig } = useConfigCode();
                 </div>
             </template>
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiRating" configType="VueUiRatingConfig"/>
+                <DebugHint
+                    component="VueUiRating"
+                    configType="VueUiRatingConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -427,7 +429,7 @@ const { configCode, showAllConfig } = useConfigCode();
                             :dark="mutableConfigDarkMode"
                             @change="forceChartUpdate()"
                         />
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

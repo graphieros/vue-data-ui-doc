@@ -59,7 +59,7 @@ import {
     VueUiDag,
     VueUiGeo,
     VueUiBump,
-    VueUiHill
+    VueUiHill,
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 

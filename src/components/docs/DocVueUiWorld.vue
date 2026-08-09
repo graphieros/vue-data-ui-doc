@@ -722,8 +722,10 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
             </template>
 
             <template v-slot:tab1>
-
-                <DebugHint component="VueUiWorld" configType="VueUiWorldConfig"/>
+                <DebugHint
+                    component="VueUiWorld"
+                    configType="VueUiWorldConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -758,7 +760,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiWorldConfig" equal>
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

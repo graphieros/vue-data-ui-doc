@@ -763,8 +763,10 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 </div>
             </template>
             <template #tab1>
-
-                <DebugHint component="VueUiMolecule" configType="VueUiMoleculeConfig"/>
+                <DebugHint
+                    component="VueUiMolecule"
+                    configType="VueUiMoleculeConfig"
+                />
 
                 <div class="flex gap-2">
                     <button
@@ -800,7 +802,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiMoleculeConfig">
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

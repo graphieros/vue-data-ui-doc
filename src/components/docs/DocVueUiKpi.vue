@@ -228,8 +228,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
             </template>
 
             <template #tab1>
-
-                <DebugHint component="VueUiKpi" configType="VueUiKpiConfig"/>
+                <DebugHint component="VueUiKpi" configType="VueUiKpiConfig" />
 
                 <div class="flex gap-2">
                     <button
@@ -263,7 +262,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiKpiConfig" equal>
-                        <BaseDetails attr="devHints" :level="1">                        
+                        <BaseDetails attr="devHints" :level="1">
                             <BaseAttr
                                 name="enable"
                                 attr="devHints.enable"

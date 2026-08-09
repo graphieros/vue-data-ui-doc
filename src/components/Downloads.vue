@@ -287,7 +287,7 @@ const keyDates = computed(() => {
 
 function log(n) {
     console.log(n);
-    return ''
+    return "";
 }
 
 const dataset = computed(() => {
@@ -300,7 +300,7 @@ const dataset = computed(() => {
             marked: true,
             temperatureColors: ["#83a4f2", "#3456a3"],
             color: "#83a4f2",
-            useStepper: false
+            useStepper: false,
         },
         {
             name: "vue-data-ui (same period last year)",
@@ -309,7 +309,7 @@ const dataset = computed(() => {
             dataLabels: false,
             marked: false,
             color: isDarkMode.value ? "#ff8c0050" : "#ff370050",
-            useStepper: false
+            useStepper: false,
         },
     ];
 });
@@ -324,9 +324,9 @@ const max = computed(() => {
 function getProgress({ data, index }) {
     const n = data[0]?.series[index];
     const n_1 = data[1]?.series[index];
-    if (!Number.isFinite(n) || !Number.isFinite(n_1) || n_1 === 0) return '';
-    const ratio = Math.round(((n / n_1) - 1) * 100);
-    return `${ratio > 0 ? '+' : ''}${ratio}%`;
+    if (!Number.isFinite(n) || !Number.isFinite(n_1) || n_1 === 0) return "";
+    const ratio = Math.round((n / n_1 - 1) * 100);
+    return `${ratio > 0 ? "+" : ""}${ratio}%`;
 }
 
 const selectedX = ref(null);
@@ -344,7 +344,7 @@ const config = computed(() => {
             },
             datapointLeave: () => {
                 selectedX.value = null;
-            }
+            },
         },
         chart: {
             fontFamily: "inherit",
@@ -528,10 +528,8 @@ const config = computed(() => {
             },
             area: { useGradient: true, opacity: 30 },
             interLine: {
-                pairs: [
-                    ['vue-data-ui', 'vue-data-ui (same period last year)']
-                ],
-            }
+                pairs: [["vue-data-ui", "vue-data-ui (same period last year)"]],
+            },
         },
         table: {
             responsiveBreakpoint: 400,
@@ -559,7 +557,7 @@ function selectLegend(legend) {
 }
 
 function selectX(x) {
-    console.log(x)
+    console.log(x);
 }
 
 function selectTimeLabel(selectedTimeLabel) {
@@ -788,9 +786,7 @@ function freestyle({ drawingArea, data }) {
                     style="pointer-events: none"
                 >
                     <template v-for="(s, j) in keyDates" :key="s.name">
-                        <g
-                            v-if="s.index === i + svg.slicer.start"
-                        >
+                        <g v-if="s.index === i + svg.slicer.start">
                             <line
                                 :x1="stone.x"
                                 :x2="stone.x"
@@ -817,7 +813,7 @@ function freestyle({ drawingArea, data }) {
                 <!-- n-1 -->
                 <g v-if="selectedX != null">
                     <template v-for="(point, i) in svg.data[0].plots">
-                        <text 
+                        <text
                             v-if="selectedX === i + svg.slicer.start"
                             :x="point.x"
                             :y="point.y - 16"
@@ -830,10 +826,12 @@ function freestyle({ drawingArea, data }) {
                             stroke-linejoin="round"
                             paint-order="stroke fill"
                         >
-                            {{ getProgress({
-                                index: i,
-                                data: svg.data
-                            }) }}
+                            {{
+                                getProgress({
+                                    index: i,
+                                    data: svg.data,
+                                })
+                            }}
                         </text>
                     </template>
                 </g>
