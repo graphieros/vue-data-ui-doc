@@ -349,6 +349,11 @@ const charts = ref({
         icon: "chartBump",
         link: "/docs#vue-ui-bump",
     },
+    VueUiHill: {
+        name: "VueUiHill",
+        icon: "chartHill",
+        link: "/docs#vue-ui-hill"
+    }
 });
 
 const items = ref([
@@ -420,6 +425,7 @@ const items = ref([
             "VueUi3dBar",
             "VueUiCirclePack",
             "VueUiBump",
+            "VueUiHill"
         ],
     },
     {
@@ -466,6 +472,7 @@ const items = ref([
             "VueUi3dBar",
             "VueUiCirclePack",
             "VueUiBump",
+            "VueUiHill"
         ],
     },
     {
