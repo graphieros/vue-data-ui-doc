@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.23.3",
+        "date": "2026-08-10",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix minimap mirroring issues when using continuous dataset with reversed axes.",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.23.2",
         "date": "2026-08-08",
         "updates": [
