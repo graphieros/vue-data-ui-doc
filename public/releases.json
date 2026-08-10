@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.23.4",
+        "date": "2026-08-10",
+        "updates": [
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Fix error when setting zoom.endIndex",
+                "link": "/docs#vue-ui-donut-evolution"
+            }
+        ]
+    },
+    {
         "version": "v 3.23.3",
         "date": "2026-08-10",
         "updates": [
