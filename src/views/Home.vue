@@ -935,7 +935,7 @@ onBeforeUnmount(() => {
                                         data-cy="app-logo"
                                         src="../assets/logo3.png"
                                         alt="vue data ui logo"
-                                        class="h-[48px] mx-auto drop-shadow-xl logo-shape mt-2 ml-1"
+                                        class="h-[48px] mx-auto logo-shape mt-2 ml-1"
                                     />
                                 </div>
                             </div>
