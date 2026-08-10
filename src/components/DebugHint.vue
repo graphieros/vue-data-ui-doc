@@ -70,6 +70,10 @@ const code = computed(
             </h3>
         </div>
         <p class="my-2 pl-10">{{ translations.p[store.lang] }}</p>
-        <CodeParser language="typescript" :content="code" />
+        <CodeParser
+            language="typescript"
+            :content="code"
+            @copy="store.copy()"
+        />
     </div>
 </template>
