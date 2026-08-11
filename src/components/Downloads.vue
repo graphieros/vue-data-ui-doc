@@ -415,7 +415,7 @@ const config = computed(() => {
                 stroke: isDarkMode.value ? "#6A6A6A" : "#E1E5E8",
                 showVerticalLines: false,
                 showHorizontalLines: false,
-                position: "middle",
+                position: "start",
                 labels: {
                     show: true,
                     color: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
