@@ -10,6 +10,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseCopyConfig from "../BaseCopyConfig.vue";
 
 const mainConfig = useConfig();
 
@@ -186,21 +187,10 @@ const { configCode, showAllConfig } = useConfigCode();
                     {{ translations.docs.comments.noDataset[store.lang] }}
                 </template>
                 <template #tab1>
-                    <div class="flex gap-2">
-                        <button
-                            @click="resetDefault"
-                            class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6"
-                        >
-                            {{ translations.docs.reset[store.lang] }}
-                        </button>
-                        <button
-                            @click="copyToClipboard"
-                            class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"
-                        >
-                            <CopyIcon />
-                            {{ translations.docs.copyThisConfig[store.lang] }}
-                        </button>
-                    </div>
+                    <BaseCopyConfig
+                        :config="isDarkMode ? darkModeConfig : config"
+                        @reset="resetDefault"
+                    />
 
                     <div class="mt-4">
                         TS type:

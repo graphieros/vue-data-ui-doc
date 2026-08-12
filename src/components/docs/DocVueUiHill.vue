@@ -24,6 +24,8 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import ThemesVueUiHill from "../themes/ThemesVueUiHill.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import BaseCopyConfig from "../BaseCopyConfig.vue";
+import DebugHint from "../DebugHint.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -793,28 +795,12 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
             </template>
 
             <template #tab1>
-                <div class="flex gap-2">
-                    <button
-                        @click="resetDefault"
-                        class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all"
-                    >
-                        {{ translations.docs.reset[store.lang] }}
-                    </button>
-                    <button
-                        @click="
-                            copyToClipboard(
-                                isDarkMode
-                                    ? mutableConfigDarkMode
-                                    : mutableConfig,
-                            )
-                        "
-                        class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"
-                    >
-                        <CopyIcon />{{
-                            translations.docs.copyThisConfig[store.lang]
-                        }}
-                    </button>
-                </div>
+                <DebugHint component="VueUiHill" configType="VueUiHillConfig" />
+
+                <BaseCopyConfig
+                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+                    @reset="resetDefault"
+                />
 
                 <div class="my-4">
                     TS type: <code class="text-app-blue">VueUiHillConfig</code>

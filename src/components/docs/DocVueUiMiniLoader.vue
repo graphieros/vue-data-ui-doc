@@ -10,6 +10,7 @@ import DocSnapper from "../DocSnapper.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
+import BaseCopyConfig from "../BaseCopyConfig.vue";
 
 const mainConfig = useConfig();
 
@@ -141,21 +142,8 @@ function fixChart() {
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
             <template #tab1>
-                <div class="flex gap-2">
-                    <button
-                        @click="resetDefault"
-                        class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all"
-                    >
-                        {{ translations.docs.reset[store.lang] }}
-                    </button>
-                    <button
-                        @click="copyToClipboard(mutableConfig)"
-                        class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"
-                    >
-                        <CopyIcon />
-                        {{ translations.docs.copyThisConfig[store.lang] }}
-                    </button>
-                </div>
+                <BaseCopyConfig :config="mutableConfig" @reset="resetDefault" />
+
                 <div class="mt-4">
                     TS type:
                     <code class="text-app-blue">VueUiMiniLoaderConfig</code>

@@ -210,6 +210,8 @@ const config = computed(() => {
             "VueUiGizmoDataset",
             "VueUiQuadrantConfig",
             "VueUiStacklineConfig",
+            "VueUiHillConfig",
+            "VueUiHillDatasetItem",
 
             // components
             "VueUiSparkline",
@@ -280,6 +282,7 @@ const config = computed(() => {
             "VueUiCursor",
             "VueUiMiniLoader",
             "VueDataUi",
+            "VueUiHill",
 
             // Emits
             ...emitTypes.value,
