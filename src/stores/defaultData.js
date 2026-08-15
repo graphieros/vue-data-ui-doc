@@ -16362,6 +16362,15 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "grid",
                     },
                     {
+                        key: "style.chart.layout.grid.rotation",
+                        def: 0,
+                        type: "number",
+                        min: -360,
+                        max: 360,
+                        label: ["radar", "is", "rotation"],
+                        category: "grid",
+                    },
+                    {
                         key: "style.chart.layout.labels.dataLabels.show",
                         def: true,
                         type: "checkbox",
@@ -16375,6 +16384,15 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         min: 6,
                         max: 42,
                         label: "fontSize",
+                        category: "labels",
+                    },
+                    {
+                        key: "style.chart.layout.labels.dataLabels.offset",
+                        def: 0,
+                        type: "number",
+                        min: -100,
+                        max: 100,
+                        label: "offset",
                         category: "labels",
                     },
                     {

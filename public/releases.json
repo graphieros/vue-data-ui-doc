@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.23.5",
+        "date": "2026-08-15",
+        "updates": [
+            {
+                "component": "VueUiRadar",
+                "description": "Add config attributes (radar rotation, labels offset, tooltip when hovering plots)",
+                "link": "/docs#vue-ui-radar"
+            }
+        ]
+    },
+    {
         "version": "v 3.23.4",
         "date": "2026-08-10",
         "updates": [

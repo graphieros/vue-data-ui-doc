@@ -768,8 +768,7 @@ function freestyle({ drawingArea, data }) {
                 </option>
             </select>
         </div>
-        <VueDataUi
-            component="VueUiXy"
+        <VueUiXy
             :dataset="dataset"
             :config="config"
             @selectLegend="selectLegend"
@@ -838,10 +837,10 @@ function freestyle({ drawingArea, data }) {
             </template>
             <template #chart-background>
                 <div
-                    class="w-full h-full bg-gradient-to-br from-white dark:from-[#FFFFFF10] to-transparent"
+                    class="w-full h-full bg-gradient-to-bl from-white dark:from-[#FFFFFF10] to-transparent"
                 />
             </template>
-        </VueDataUi>
+        </VueUiXy>
 
         <div class="border-t border-gray-500 my-12" />
         <VueDataUi

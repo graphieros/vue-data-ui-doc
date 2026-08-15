@@ -179,12 +179,14 @@ const config = ref({
                     stroke: "#C4C4C4",
                     strokeWidth: 0.5,
                     graduations: 5,
+                    rotation: 0,
                 },
                 labels: {
                     dataLabels: {
                         show: true,
                         fontSize: 12,
                         color: "#1A1A1A",
+                        offset: 0,
                     },
                 },
             },
@@ -348,12 +350,14 @@ const darkModeConfig = ref({
                     stroke: "#565756",
                     strokeWidth: 0.5,
                     graduations: 5,
+                    rotation: 0,
                 },
                 labels: {
                     dataLabels: {
                         show: true,
                         fontSize: 12,
                         color: "#CCCCCC",
+                        offset: 0,
                     },
                 },
             },
@@ -991,6 +995,16 @@ const customFormatCode =
                                                 :light="mutableConfig"
                                                 :dark="mutableConfigDarkMode"
                                             />
+                                            <BaseAttr
+                                                name="rotation"
+                                                attr="style.chart.layout.grid.rotation"
+                                                type="number"
+                                                defaultVal="0"
+                                                :min="-360"
+                                                :max="360"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
                                         </BaseDetails>
                                         <BaseDetails
                                             attr="labels"
@@ -1029,6 +1043,18 @@ const customFormatCode =
                                                     attr="style.chart.layout.labels.dataLabels.color"
                                                     type="color"
                                                     defaultVal="#2D353C"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="offset"
+                                                    attr="style.chart.layout.labels.dataLabels.offset"
+                                                    type="number"
+                                                    defaultVal="0"
+                                                    :min="-100"
+                                                    :max="100"
                                                     :light="mutableConfig"
                                                     :dark="
                                                         mutableConfigDarkMode
