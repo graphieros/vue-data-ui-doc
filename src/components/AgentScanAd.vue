@@ -44,7 +44,10 @@ function goToProfile() {
 </script>
 
 <template>
-    <div class="ml-12 sm:mx-auto max-w-[1000px] px-12 sm:px-20" dir="auto">
+    <div
+        class="ml-12 sm:mx-auto w-full max-w-[1000px] px-12 sm:px-20"
+        dir="auto"
+    >
         <a href="https://agentscan.tools/" target="_blank">
             <div
                 class="mt-8 w-full max-w-[800px] text-[18px] pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-4 place-items-center"
