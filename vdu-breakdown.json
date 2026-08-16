@@ -1,19 +1,19 @@
 {
     "folder": "node_modules/vue-data-ui",
-    "totalBytes": 5183851,
+    "totalBytes": 5187673,
     "totalSize": "4.9 MB",
     "fileCount": 341,
     "byExtension": [
         {
             "extension": ".js",
             "files": 260,
-            "bytes": 4126980,
+            "bytes": 4130682,
             "size": "3.9 MB"
         },
         {
             "extension": ".d.ts",
             "files": 76,
-            "bytes": 782872,
+            "bytes": 782992,
             "size": "765 KB"
         },
         {
@@ -51,15 +51,15 @@
         {
             "path": "dist/types/vue-data-ui.d.ts",
             "filename": "vue-data-ui",
-            "bytes": 584911,
+            "bytes": 585031,
             "size": "571 KB",
             "extension": ".d.ts"
         },
         {
             "path": "dist/vue-ui-xy.js",
             "filename": "vue-ui-xy",
-            "bytes": 188076,
-            "size": "184 KB",
+            "bytes": 189998,
+            "size": "186 KB",
             "extension": ".js"
         },
         {
@@ -72,7 +72,7 @@
         {
             "path": "dist/useConfig.js",
             "filename": "useConfig",
-            "bytes": 136738,
+            "bytes": 136774,
             "size": "134 KB",
             "extension": ".js"
         },
@@ -345,8 +345,8 @@
         {
             "path": "dist/vue-ui-radar.js",
             "filename": "vue-ui-radar",
-            "bytes": 44401,
-            "size": "43 KB",
+            "bytes": 46145,
+            "size": "45 KB",
             "extension": ".js"
         },
         {
