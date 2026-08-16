@@ -117,12 +117,19 @@ const configs = computed(() => ({
                     axis: {
                         yLabel: "Y-AXIS",
                         xLabel: "X-AXIS",
+                        xLabelOffsetY: 24,
+                    },
+                    xAxisLabels: {
+                        autoRotate: {
+                            enable: false,
+                        },
                     },
                     yAxis: { useNiceScale: true },
                 },
             },
             legend: {
                 position: "top",
+                fontSize: 18,
             },
             padding: {
                 right: 90,
@@ -227,10 +234,10 @@ watchEffect(async () => {
             :content="code"
             @copy="store.copy()"
         />
+        <h3 class="mt-6">{{ translations.result[store.lang] }}</h3>
         <div
-            class="max-w-[500px] mx-auto p-4 bg-white dark:bg-[#1A1A1A] rounded"
+            class="w-full mx-auto p-4 bg-white dark:bg-[#1A1A1A] rounded-xl mt-6"
         >
-            <h3>{{ translations.result[store.lang] }}</h3>
             <div v-html="svgContent" />
         </div>
     </div>
