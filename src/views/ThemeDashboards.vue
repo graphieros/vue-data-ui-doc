@@ -13,9 +13,11 @@ import {
     ChevronUpIcon,
     CurrencyEuroIcon,
     DeviceDesktopAnalyticsIcon,
+    GridDotsIcon,
     LeafIcon,
     PaintIcon,
 } from "vue-tabler-icons";
+import DashboardHitsPerHour from "../dashboards/DashboardHitsPerHour.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -121,6 +123,13 @@ const themes = computed(() => {
             color: adaptColorToBackground(baseColor.value),
             icon: markRaw(PaintIcon),
         },
+        {
+            link: "waffle",
+            name: "Waffles",
+            backgroundColor: "#f6f6fb",
+            color: "#50606C",
+            icon: markRaw(GridDotsIcon),
+        },
     ];
 });
 
@@ -184,4 +193,5 @@ function changeBaseColor(c) {
         v-if="selectedLink === 'monochrome'"
         @changeBaseColor="changeBaseColor"
     />
+    <DashboardHitsPerHour v-if="selectedLink === 'waffle'" />
 </template>
