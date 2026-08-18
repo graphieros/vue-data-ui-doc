@@ -45,22 +45,42 @@ function makeDs(n) {
     return arr;
 }
 
+const units = makeDs(24);
+
+const merged = ref(false);
+
 const waffles = computed(() => {
-    const units = makeDs(24);
     return units.map((unit) => {
         return {
             ...unit,
             config: {
                 userOptions: { show: false },
+                useBlurOnHover: false,
                 style: {
                     chart: {
-                        backgroundColor: "transparent",
+                        backgroundColor: isDarkMode.value
+                            ? "#1A1A1A"
+                            : "#f3f4f6",
                         layout: {
                             grid: {
                                 size: Math.ceil(Math.sqrt(unit.total)) || 1,
                             },
                             rect: {
+                                merged: merged.value,
+                                rounded: false,
                                 useGradient: false,
+                                stroke: "#1A1A1A",
+                                selection: {
+                                    unselectedOpacity: 1,
+                                    wrap: {
+                                        show: true,
+                                        stroke: isDarkMode.value
+                                            ? "#f3f4f6"
+                                            : "#1A1A1A",
+                                        strokeWidth: 12,
+                                        strokeLinejoin: "miter",
+                                    },
+                                },
                             },
                         },
                         legend: {
@@ -83,6 +103,12 @@ const waffles = computed(() => {
 
 <template>
     <div class="text-center mt-12 text-2xl">Visitors per hour</div>
+    <div class="flex flex-row place-items-center justify-center mt-6">
+        <label>
+            <input type="checkbox" v-model="merged" />
+            Merge mode
+        </label>
+    </div>
     <div class="w-full flex flex-row flex-wrap gap-1 justify-center px-6 my-12">
         <div
             class="w-[100px] sm:w-[200px] flex flex-col"

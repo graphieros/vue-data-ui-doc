@@ -98,6 +98,12 @@ const darkModeConfig = ref({
             tableCaption: "Chart data table",
         },
     },
+    transitions: {
+        enable: true,
+        pauseOnLoad: true,
+        pauseOnDatasetChange: false,
+        activationDelayMs: 300,
+    },
     style: {
         fontFamily: "inherit",
         chart: {
@@ -138,6 +144,16 @@ const darkModeConfig = ref({
                     strokeWidth: 3,
                     useGradient: true,
                     gradientIntensity: 40,
+                    merged: false,
+                    selection: {
+                        unselectedOpacity: 0.6,
+                        wrap: {
+                            show: true,
+                            stroke: "#CCCCCC",
+                            strokeWidth: 3,
+                            strokeLinejoin: "round",
+                        },
+                    },
                 },
             },
             title: {
@@ -266,6 +282,12 @@ const config = ref({
     useBlurOnHover: true,
     useCustomCells: false,
     useAnimation: true,
+    transitions: {
+        enable: true,
+        pauseOnLoad: true,
+        pauseOnDatasetChange: false,
+        activationDelayMs: 300,
+    },
     a11y: {
         translations: {
             keyboardNavigation:
@@ -314,6 +336,16 @@ const config = ref({
                     strokeWidth: 3,
                     useGradient: true,
                     gradientIntensity: 20,
+                    merged: false,
+                    selection: {
+                        unselectedOpacity: 0.6,
+                        wrap: {
+                            show: true,
+                            stroke: "#1A1A1A",
+                            strokeWidth: 3,
+                            strokeLinejoin: "round",
+                        },
+                    },
                 },
             },
             title: {
@@ -664,6 +696,44 @@ const customFormatCode =
                             :light="mutableConfig"
                             :dark="mutableConfigDarkMode"
                         />
+                        <BaseDetails attr="transitions" :level="1">
+                            <BaseAttr
+                                name="enable"
+                                attr="transitions.enable"
+                                type="checkbox"
+                                defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                                @change="forceChartUpdate"
+                            />
+                            <BaseAttr
+                                name="pauseOnLoad"
+                                attr="transitions.pauseOnLoad"
+                                type="checkbox"
+                                defaultVal="true"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="pauseOnDatasetChange"
+                                attr="transitions.pauseOnDatasetChange"
+                                type="checkbox"
+                                defaultVal="false"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                            <BaseAttr
+                                name="activationDelayMs"
+                                attr="transitions.activationDelayMs"
+                                type="number"
+                                :min="100"
+                                :max="1000"
+                                :step="50"
+                                defaultVal="300"
+                                :light="mutableConfig"
+                                :dark="mutableConfigDarkMode"
+                            />
+                        </BaseDetails>
                         <BaseDetails attr="a11y" :level="1">
                             <BaseDetails
                                 attr="translations"
@@ -1036,6 +1106,84 @@ const customFormatCode =
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />
+                                        <BaseAttr
+                                            name="merged"
+                                            attr="style.chart.layout.rect.merged"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseDetails
+                                            attr="selection"
+                                            :level="5"
+                                            title="style.chart.layout.rect.selection"
+                                        >
+                                            <BaseAttr
+                                                name="unselectedOpacity"
+                                                attr="style.chart.layout.rect.selection.unselectedOpacity"
+                                                type="number"
+                                                defaultVal="0.6"
+                                                :min="0"
+                                                :max="1"
+                                                :step="0.1"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseDetails
+                                                attr="wrap"
+                                                :level="6"
+                                                title="style.chart.layout.rect.selection.wrap"
+                                            >
+                                                <BaseAttr
+                                                    name="show"
+                                                    attr="style.chart.layout.rect.selection.wrap.show"
+                                                    type="checkbox"
+                                                    defaultVal="true"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="stroke"
+                                                    attr="style.chart.layout.rect.selection.wrap.stroke"
+                                                    type="color"
+                                                    defaultVal="#2D3536"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="strokeWidth"
+                                                    attr="style.chart.layout.rect.selection.wrap.strokeWidth"
+                                                    type="number"
+                                                    :min="0"
+                                                    :max="24"
+                                                    defaultVal="3"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="strokeLinejoin"
+                                                    attr="style.chart.layout.rect.selection.wrap.strokeLinejoin"
+                                                    type="select"
+                                                    :options="[
+                                                        'bevel',
+                                                        'round',
+                                                        'miter',
+                                                    ]"
+                                                    defaultVal="round"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                            </BaseDetails>
+                                        </BaseDetails>
                                     </BaseDetails>
                                 </BaseDetails>
                                 <BaseDetails

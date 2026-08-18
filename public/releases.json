@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.23.6",
+        "date": "2026-08-18",
+        "updates": [
+            {
+                "component": "VueUiWaffle",
+                "description": "Add config attributes for more alternatives to signal series highlighting.",
+                "link": "/docs#vue-ui-waffle"
+            }
+        ]
+    },
+    {
         "version": "v 3.23.5",
         "date": "2026-08-15",
         "updates": [

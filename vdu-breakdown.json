@@ -1,25 +1,25 @@
 {
     "folder": "node_modules/vue-data-ui",
-    "totalBytes": 5187673,
-    "totalSize": "4.9 MB",
+    "totalBytes": 5195619,
+    "totalSize": "5.0 MB",
     "fileCount": 341,
     "byExtension": [
         {
             "extension": ".js",
             "files": 260,
-            "bytes": 4130682,
+            "bytes": 4137822,
             "size": "3.9 MB"
         },
         {
             "extension": ".d.ts",
             "files": 76,
-            "bytes": 782992,
+            "bytes": 783492,
             "size": "765 KB"
         },
         {
             "extension": ".css",
             "files": 1,
-            "bytes": 173780,
+            "bytes": 174086,
             "size": "170 KB"
         },
         {
@@ -51,8 +51,8 @@
         {
             "path": "dist/types/vue-data-ui.d.ts",
             "filename": "vue-data-ui",
-            "bytes": 585031,
-            "size": "571 KB",
+            "bytes": 585531,
+            "size": "572 KB",
             "extension": ".d.ts"
         },
         {
@@ -65,14 +65,14 @@
         {
             "path": "dist/style.css",
             "filename": "style",
-            "bytes": 173780,
+            "bytes": 174086,
             "size": "170 KB",
             "extension": ".css"
         },
         {
             "path": "dist/useConfig.js",
             "filename": "useConfig",
-            "bytes": 136774,
+            "bytes": 136985,
             "size": "134 KB",
             "extension": ".js"
         },
@@ -238,6 +238,13 @@
             "extension": ".js"
         },
         {
+            "path": "dist/vue-ui-waffle.js",
+            "filename": "vue-ui-waffle",
+            "bytes": 56066,
+            "size": "55 KB",
+            "extension": ".js"
+        },
+        {
             "path": "dist/vue-ui-nested-donuts.js",
             "filename": "vue-ui-nested-donuts",
             "bytes": 55433,
@@ -298,13 +305,6 @@
             "filename": "vue-ui-word-cloud",
             "bytes": 50018,
             "size": "49 KB",
-            "extension": ".js"
-        },
-        {
-            "path": "dist/vue-ui-waffle.js",
-            "filename": "vue-ui-waffle",
-            "bytes": 49466,
-            "size": "48 KB",
             "extension": ".js"
         },
         {
@@ -840,6 +840,13 @@
             "extension": ".js"
         },
         {
+            "path": "dist/vue_ui_waffle.js",
+            "filename": "vue_ui_waffle",
+            "bytes": 5347,
+            "size": "5.2 KB",
+            "extension": ".js"
+        },
+        {
             "path": "dist/vue-ui-mini-loader.js",
             "filename": "vue-ui-mini-loader",
             "bytes": 5327,
@@ -872,13 +879,6 @@
             "filename": "vue_ui_dag",
             "bytes": 5116,
             "size": "5.0 KB",
-            "extension": ".js"
-        },
-        {
-            "path": "dist/vue_ui_waffle.js",
-            "filename": "vue_ui_waffle",
-            "bytes": 5018,
-            "size": "4.9 KB",
             "extension": ".js"
         },
         {
