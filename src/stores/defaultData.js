@@ -15409,6 +15409,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         key: "style.chart.layout.rect.selection.wrap.strokeLinejoin",
                         def: "round",
                         type: "select",
+                        options: ["round", "miter", "bevel"],
                         label: [
                             "selection",
                             "wrap",
