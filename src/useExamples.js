@@ -3169,6 +3169,17 @@ export default function useExamples() {
                 chart: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
+                    layout: {
+                        rect: {
+                            selection: {
+                                wrap: {
+                                    stroke: isDarkMode.value
+                                        ? "#CCCCCC"
+                                        : "#1A1A1A",
+                                },
+                            },
+                        },
+                    },
                     legend: {
                         backgroundColor: colors.value.bg,
                         color: colors.value.textColor,
@@ -10258,7 +10269,10 @@ export default function useExamples() {
                         chart: {
                             ...CONFIG_WAFFLE_BASE.value.style.chart,
                             layout: {
+                                ...CONFIG_WAFFLE_BASE.value.style.chart.layout,
                                 grid: {
+                                    ...CONFIG_WAFFLE_BASE.value.style.chart
+                                        .layout.grid,
                                     vertical: true,
                                 },
                             },
@@ -10281,44 +10295,6 @@ export default function useExamples() {
                     ar: "تخطيط عمودي",
                 },
             },
-            // WAFFLE MORE CELLS
-            {
-                dataset: DATASET_DONUT_BASIC.value,
-                config: {
-                    ...CONFIG_WAFFLE_BASE.value,
-                    style: {
-                        ...CONFIG_WAFFLE_BASE.value.style,
-                        chart: {
-                            ...CONFIG_WAFFLE_BASE.value.style.chart,
-                            layout: {
-                                grid: {
-                                    size: 20,
-                                    spaceBetween: 0,
-                                },
-                                rect: {
-                                    useGradient: false,
-                                    rounding: 0,
-                                },
-                            },
-                        },
-                    },
-                },
-                component: "VueUiWaffle",
-                icon: "chartWaffle",
-                id: "waffle-no-gradient",
-                link: "vue-ui-waffle",
-                description: {
-                    en: "More cells, no gradient",
-                    fr: "Plus de cellules, sans dégradé",
-                    pt: "Mais células, sem gradiente",
-                    de: "Mehr Zellen, ohne Verlauf",
-                    zh: "更多单元格，无渐变",
-                    ja: "セルを増やして、グラデーションなし",
-                    es: "Más celdas, sin degradado",
-                    ko: "더 많은 셀, 그라디언트 없음",
-                    ar: "مزيد من الخلايا، بدون تدرج",
-                },
-            },
             // WAFFLE ROUNDED CELLS
             {
                 dataset: DATASET_DONUT_BASIC.value,
@@ -10329,11 +10305,16 @@ export default function useExamples() {
                         chart: {
                             ...CONFIG_WAFFLE_BASE.value.style.chart,
                             layout: {
+                                ...CONFIG_WAFFLE_BASE.value.style.chart.layout,
                                 grid: {
+                                    ...CONFIG_WAFFLE_BASE.value.style.chart
+                                        .layout.grid,
                                     size: 10,
                                     spaceBetween: 10,
                                 },
                                 rect: {
+                                    ...CONFIG_WAFFLE_BASE.value.style.chart
+                                        .layout.rect,
                                     useGradient: true,
                                     rounding: 24,
                                 },
@@ -10367,6 +10348,7 @@ export default function useExamples() {
                         chart: {
                             ...CONFIG_WAFFLE_BASE.value.style.chart,
                             layout: {
+                                ...CONFIG_WAFFLE_BASE.value.style.chart.layout,
                                 labels: {
                                     captions: {
                                         show: true,
@@ -10392,6 +10374,47 @@ export default function useExamples() {
                     es: "Con etiquetas",
                     ko: "레이블 포함",
                     ar: "مع تسميات",
+                },
+            },
+            // WAFFLE MERGED
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_WAFFLE_BASE.value,
+                    style: {
+                        ...CONFIG_WAFFLE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_WAFFLE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_WAFFLE_BASE.value.style.chart.layout,
+                                rect: {
+                                    merged: true,
+                                },
+                                labels: {
+                                    captions: {
+                                        show: true,
+                                        showSerieName: true,
+                                        fontSize: 16,
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+                component: "VueUiWaffle",
+                icon: "chartWaffle",
+                id: "waffle-merged",
+                link: "vue-ui-waffle",
+                description: {
+                    en: "With merged cells",
+                    fr: "Avec des cellules fusionnées",
+                    pt: "Com células mescladas",
+                    de: "Mit zusammengeführten Zellen",
+                    zh: "使用合并单元格",
+                    ja: "セルを結合",
+                    es: "Con celdas combinadas",
+                    ko: "병합된 셀 사용",
+                    ar: "مع خلايا مدمجة",
                 },
             },
             // VERTICAL BAR BASIC
