@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.23.8",
+        "date": "2026-08-19",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Remove duplicate click handler from the chart wrapper that prevented any boolean toggle from the consumer, from the @selectX emit or config.event.datapointClick event.",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.23.7",
         "date": "2026-08-19",
         "updates": [
