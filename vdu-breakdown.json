@@ -1,26 +1,26 @@
 {
     "folder": "node_modules/vue-data-ui",
-    "totalBytes": 5195619,
+    "totalBytes": 5200523,
     "totalSize": "5.0 MB",
     "fileCount": 341,
     "byExtension": [
         {
             "extension": ".js",
             "files": 260,
-            "bytes": 4137822,
-            "size": "3.9 MB"
+            "bytes": 4142091,
+            "size": "4.0 MB"
         },
         {
             "extension": ".d.ts",
             "files": 76,
-            "bytes": 783492,
+            "bytes": 783570,
             "size": "765 KB"
         },
         {
             "extension": ".css",
             "files": 1,
-            "bytes": 174086,
-            "size": "170 KB"
+            "bytes": 174643,
+            "size": "171 KB"
         },
         {
             "extension": ".md",
@@ -51,7 +51,7 @@
         {
             "path": "dist/types/vue-data-ui.d.ts",
             "filename": "vue-data-ui",
-            "bytes": 585531,
+            "bytes": 585609,
             "size": "572 KB",
             "extension": ".d.ts"
         },
@@ -65,14 +65,14 @@
         {
             "path": "dist/style.css",
             "filename": "style",
-            "bytes": 174086,
-            "size": "170 KB",
+            "bytes": 174643,
+            "size": "171 KB",
             "extension": ".css"
         },
         {
             "path": "dist/useConfig.js",
             "filename": "useConfig",
-            "bytes": 136985,
+            "bytes": 137027,
             "size": "134 KB",
             "extension": ".js"
         },
@@ -226,7 +226,14 @@
         {
             "path": "dist/vue-ui-strip-plot.js",
             "filename": "vue-ui-strip-plot",
-            "bytes": 56671,
+            "bytes": 56811,
+            "size": "55 KB",
+            "extension": ".js"
+        },
+        {
+            "path": "dist/vue-ui-waffle.js",
+            "filename": "vue-ui-waffle",
+            "bytes": 56628,
             "size": "55 KB",
             "extension": ".js"
         },
@@ -234,13 +241,6 @@
             "path": "dist/vue-ui-donut-evolution.js",
             "filename": "vue-ui-donut-evolution",
             "bytes": 56144,
-            "size": "55 KB",
-            "extension": ".js"
-        },
-        {
-            "path": "dist/vue-ui-waffle.js",
-            "filename": "vue-ui-waffle",
-            "bytes": 56066,
             "size": "55 KB",
             "extension": ".js"
         },
@@ -462,6 +462,13 @@
             "extension": ".js"
         },
         {
+            "path": "dist/PenAndPaper.js",
+            "filename": "PenAndPaper",
+            "bytes": 24850,
+            "size": "24 KB",
+            "extension": ".js"
+        },
+        {
             "path": "dist/vue-ui-thermometer.js",
             "filename": "vue-ui-thermometer",
             "bytes": 24479,
@@ -473,13 +480,6 @@
             "filename": "vue-ui-sparkstackbar",
             "bytes": 22924,
             "size": "22 KB",
-            "extension": ".js"
-        },
-        {
-            "path": "dist/PenAndPaper.js",
-            "filename": "PenAndPaper",
-            "bytes": 21325,
-            "size": "21 KB",
             "extension": ".js"
         },
         {

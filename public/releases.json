@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.23.7",
+        "date": "2026-08-19",
+        "updates": [
+            {
+                "component": "VueUiStripPlot",
+                "description": "Add scaleMin & scaleMax config attributes to force Y axis scales",
+                "link": "/docs#vue-ui-strip-plot"
+            },
+            {
+                "component": "Built-in chart annotator",
+                "description": "Make the annotator menu draggable",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.23.6",
         "date": "2026-08-18",
         "updates": [

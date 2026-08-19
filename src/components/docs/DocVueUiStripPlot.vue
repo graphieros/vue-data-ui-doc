@@ -224,6 +224,8 @@ const config = ref({
                 stroke: "#cccccc",
                 strokeWidth: 1,
                 scaleSteps: 10,
+                scaleMin: null,
+                scaleMax: null,
                 horizontalGrid: {
                     show: true,
                     stroke: "#cccccc",
@@ -444,6 +446,8 @@ const darkModeConfig = ref({
                 stroke: "#8A8A8A",
                 strokeWidth: 1,
                 scaleSteps: 10,
+                scaleMin: null,
+                scaleMax: null,
                 horizontalGrid: {
                     show: true,
                     stroke: "#8A8A8A",
@@ -1059,6 +1063,30 @@ const customFormatCode =
                                         :options="[2, 5, 10, 20]"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        inactive
+                                        name="scaleMin"
+                                        attr="style.chart.grid.scaleMin"
+                                        type="number"
+                                        defaultVal="null"
+                                        :min="-100000"
+                                        :max="100000"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                        comment="Since 3.23.7"
+                                    />
+                                    <BaseAttr
+                                        inactive
+                                        name="scaleMax"
+                                        attr="style.chart.grid.scaleMax"
+                                        type="number"
+                                        defaultVal="null"
+                                        :min="-100000"
+                                        :max="100000"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                        comment="Since 3.23.7"
                                     />
                                     <BaseDetails
                                         attr="horizontalGrid"
