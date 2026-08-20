@@ -357,6 +357,11 @@ const landmarks = [
         name: "blog",
         description: "popular blog article on XMSUMI",
     },
+    {
+        date: "2026-01-24",
+        name: "./npmx",
+        description: "vue-data-ui used on ./npmx",
+    },
 ];
 
 const keyDates = computed(() => {
