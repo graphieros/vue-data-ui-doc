@@ -155,6 +155,7 @@ const methodMap = computed(() => {
 </script>
 
 <template>
+    <slot name="before" />
     <BaseExposedMethod
         v-for="m in names"
         :component="component"
@@ -163,4 +164,5 @@ const methodMap = computed(() => {
     />
     <ExposedShowHide v-if="showHideSeries" :component="component" />
     <ExposedGetImage v-if="getImage" :component="component" />
+    <slot name="after" />
 </template>

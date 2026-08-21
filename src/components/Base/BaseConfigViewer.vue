@@ -238,6 +238,7 @@ watch(
 const cfg = computed(() => {
     return {
         theme: isDarkMode.value ? "dark" : "",
+        responsive: true,
         style: {
             fontFamily: "Courier New",
             chart: {
@@ -286,7 +287,9 @@ const cfg = computed(() => {
 </script>
 
 <template>
-    <div class="border border-[#6A6A6A] p-2 bg-white dark:bg-[#1A1A1A]">
+    <div
+        class="border border-[#6A6A6A] p-2 bg-white dark:bg-[#1A1A1A] w-full h-full"
+    >
         <VueUiDag
             v-if="ready"
             :dataset="datasetDag"

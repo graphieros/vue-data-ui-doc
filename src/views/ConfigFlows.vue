@@ -280,7 +280,7 @@ const DAG_OBJ = computed(() => {
             style="
                 min-width: 300px;
                 max-width: 90%;
-                resize: horizontal;
+                resize: both;
                 overflow: auto;
                 background: transparent;
             "

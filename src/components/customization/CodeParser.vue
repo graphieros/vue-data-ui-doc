@@ -212,6 +212,7 @@ const config = computed(() => {
             "VueUiStacklineConfig",
             "VueUiHillConfig",
             "VueUiHillDatasetItem",
+            "VueUiDagFocusOnNodeOptions",
 
             // components
             "VueUiSparkline",

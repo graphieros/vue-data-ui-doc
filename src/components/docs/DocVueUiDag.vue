@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick, computed, onMounted } from "vue";
+import { ref, watch, nextTick, computed, onMounted, useTemplateRef } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
@@ -67,6 +67,99 @@ const dataset = ref({
         { from: "D", to: "A" },
     ],
 });
+
+const message = ref({ text: "", type: "success" });
+
+const chartRef = useTemplateRef("chartRef");
+
+const selectedId = ref(null);
+const detailsOpen = ref(false);
+
+const detailsRef = useTemplateRef("detailsRef");
+
+function closeDetails() {
+    detailsRef.value.removeAttribute("open");
+}
+
+const defaultFocusOptions = {
+    smooth: true,
+    duration: 300,
+    zoomReset: true,
+    zoom: null,
+};
+
+const focusOptions = ref({
+    smooth: true,
+    duration: 300,
+    zoomReset: true,
+    zoom: null,
+});
+
+function resetFocusOptions() {
+    focusOptions.value = defaultFocusOptions;
+}
+
+async function focusOnNode(id, options) {
+    if (!chartRef.value) {
+        return;
+    }
+
+    selectedId.value = id;
+
+    const success = await chartRef.value.focusOnNode(id, {
+        ...options,
+        zoom: options.zoom == null ? null : Number(options.zoom),
+    });
+
+    if (success) {
+        message.value = {
+            text: `Successfully focused on node with id: ${id}`,
+            type: "success",
+        };
+    } else {
+        message.value = {
+            text: `Invalid node id: ${id}`,
+            type: "error",
+        };
+    }
+}
+
+const codeFocus = computed(
+    () => `import { type VueUiDagFocusOnNodeOptions } from "vue-data-ui/vue-ui-dag";
+const chartRef = useTemplateRef('chartRef');
+
+// Not really necessary, just for dev mode maybe
+const message = ref<{ text: string; type: 'success' | 'error' }>({});
+
+const focusOnNodeOptions: VueUiDagFocusOnNodeOptions = {
+    smooth: true,
+    duration: 300,
+    zoomReset: true,
+    zoom: null,
+}
+
+// Plug this method on a list of nodes for example
+async function focusOnNode(id: string) {
+    if (!chartRef.value) {
+        return;
+    }
+
+    const success = await chartRef.value.focusOnNode(id, focusOnNodeOptions);
+
+    if (success) {
+        message.value = {
+            text: \`Successfully focused on node with id: \${id}\`,
+            type: "success",
+        }
+    } else {
+        message.value = {
+            text: \`Invalid node id: \${id}\`,
+            type: "error",
+        };
+    }
+}
+`,
+);
 
 const codeDataset = ref(`const dataset: VueUiDagDataset = {
     nodes: [
@@ -498,6 +591,7 @@ function goToPage(route) {
             >
                 <BaseCard>
                     <VueUiDag
+                        ref="chartRef"
                         :dataset="dataset"
                         :config="
                             isDarkMode ? mutableConfigDarkMode : mutableConfig
@@ -506,6 +600,96 @@ function goToPage(route) {
                     />
                 </BaseCard>
             </DocSnapper>
+        </div>
+
+        <div
+            class="w-full flex flex-col mt-6 p-2 justify-center place-items-center"
+        >
+            <div
+                class="flex flex-row gap-2 flex-wrap justify-center border-b border-gray-200 dark:border-[#FFFFFF50] pb-2 mb-2"
+            >
+                <code>focusOnNode</code><span>exposed method</span> (since
+                <code>v3.23.11</code>)
+            </div>
+            <details ref="detailsRef">
+                <summary class="w-full text-center select-none mb-4">
+                    Try it out:
+                </summary>
+                <p class="text-center">
+                    Click on a node id to focus on a node:
+                </p>
+                <div
+                    class="flex flex-row gap-2 flex-wrap justify-center mt-2 mb-4"
+                >
+                    <button
+                        v-for="node in dataset.nodes"
+                        @click="focusOnNode(node.id, focusOptions)"
+                        :class="`px-2 border rounded transition-colors ${selectedId === node.id ? 'border border-app-green bg-app-green-dark text-white' : 'border-gray-400 hover:bg-gray-300 dark:hover:bg-[#FFFFFF20]'}`"
+                    >
+                        {{ node.id }}
+                    </button>
+                </div>
+                <div
+                    class="flex flex-col py-4 px-8 border border-gray-400 dark:border-[#FFFFFF30] bg-gray-300 dark:bg-[#FFFFFF10] rounded font-jetbrains text-xs relative"
+                >
+                    <div class="font-inter-medium text-xl mb-2">
+                        <code>focusOnNode</code>
+                        <span class="text-gray-500 pl-2">options</span>
+                    </div>
+                    <div class="absolute top-2 right-2">
+                        <button @click="closeDetails">
+                            <VueUiIcon
+                                name="close"
+                                :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+                            />
+                        </button>
+                    </div>
+                    <BaseAttr
+                        name="smooth"
+                        attr="smooth"
+                        type="checkbox"
+                        defaultVal="true"
+                        :light="focusOptions"
+                        :dark="focusOptions"
+                    />
+                    <BaseAttr
+                        name="duration"
+                        attr="duration"
+                        type="range"
+                        :min="0"
+                        :max="1000"
+                        :step="50"
+                        defaultVal="300"
+                        :light="focusOptions"
+                        :dark="focusOptions"
+                    />
+                    <BaseAttr
+                        name="zoomReset"
+                        attr="zoomReset"
+                        type="checkbox"
+                        defaultVal="false"
+                        :light="focusOptions"
+                        :dark="focusOptions"
+                    />
+                    <BaseAttr
+                        name="zoom"
+                        attr="zoom"
+                        type="range"
+                        :min="50"
+                        :max="200"
+                        :step="10"
+                        defaultVal="null"
+                        :light="focusOptions"
+                        :dark="focusOptions"
+                    />
+                    <CodeParser
+                        class="mt-6"
+                        language="typescript"
+                        :content="codeFocus"
+                        @copy="store.copy()"
+                    />
+                </div>
+            </details>
         </div>
 
         <div class="w-full flex justify-center mt-6">
@@ -1619,7 +1803,27 @@ function goToPage(route) {
                         'zoomOut',
                         'switchDirection',
                     ]"
-                />
+                >
+                    <template #before>
+                        <div class="flex flex-col mt-4 py-4 gap-2">
+                            <div
+                                class="text-xs bg-[#DCDCAA] text-[#1A1A1A] font-inter-medium px-2 py-0.5 rounded-full w-fit"
+                            >
+                                EXPOSED METHOD
+                            </div>
+                            <code
+                                class="text-xl text-[#559AD3] dark:text-[#DCDCAA]"
+                                >focusOnNode</code
+                            >
+                            <div class="text-gray-500">{{ description }}</div>
+                        </div>
+                        <CodeParser
+                            :content="codeFocus"
+                            language="typescript"
+                            @copy="store.copy()"
+                        />
+                    </template>
+                </ExposedMethods>
             </template>
 
             <template #tab3>
