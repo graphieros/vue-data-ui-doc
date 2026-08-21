@@ -257,6 +257,7 @@ const config = computed(() => ({
             keepState: true,
             maxWidth: 720,
             highlightColor: isDarkMode.value ? "#2A2A2A" : "#E1E5E8",
+            autoFit: true,
             minimap: {
                 show: true,
                 frameColor: "transparent",
