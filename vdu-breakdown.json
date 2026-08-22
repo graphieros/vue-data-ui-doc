@@ -1,13 +1,13 @@
 {
     "folder": "node_modules/vue-data-ui",
-    "totalBytes": 5200138,
+    "totalBytes": 5200191,
     "totalSize": "5.0 MB",
     "fileCount": 341,
     "byExtension": [
         {
             "extension": ".js",
             "files": 260,
-            "bytes": 4141169,
+            "bytes": 4141170,
             "size": "3.9 MB"
         },
         {
@@ -19,7 +19,7 @@
         {
             "extension": ".css",
             "files": 1,
-            "bytes": 174403,
+            "bytes": 174455,
             "size": "170 KB"
         },
         {
@@ -65,7 +65,7 @@
         {
             "path": "dist/style.css",
             "filename": "style",
-            "bytes": 174403,
+            "bytes": 174455,
             "size": "170 KB",
             "extension": ".css"
         },
@@ -261,7 +261,7 @@
         {
             "path": "dist/SlicerPreview.js",
             "filename": "SlicerPreview",
-            "bytes": 55053,
+            "bytes": 55054,
             "size": "54 KB",
             "extension": ".js"
         },
