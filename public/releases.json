@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.23.12",
+        "date": "2026-08-22",
+        "updates": [
+            {
+                "component": "VueUiWaffle",
+                "description": "Fix proportion inconistencies whith custom grid sizes.",
+                "link": "/docs#vue-ui-waffle"
+            }
+        ]
+    },
+    {
         "version": "v 3.23.11",
         "date": "2026-08-21",
         "updates": [
