@@ -1,13 +1,13 @@
 {
     "folder": "node_modules/vue-data-ui",
-    "totalBytes": 5199703,
+    "totalBytes": 5200138,
     "totalSize": "5.0 MB",
     "fileCount": 341,
     "byExtension": [
         {
             "extension": ".js",
             "files": 260,
-            "bytes": 4140494,
+            "bytes": 4141169,
             "size": "3.9 MB"
         },
         {
@@ -19,8 +19,8 @@
         {
             "extension": ".css",
             "files": 1,
-            "bytes": 174643,
-            "size": "171 KB"
+            "bytes": 174403,
+            "size": "170 KB"
         },
         {
             "extension": ".md",
@@ -65,8 +65,8 @@
         {
             "path": "dist/style.css",
             "filename": "style",
-            "bytes": 174643,
-            "size": "171 KB",
+            "bytes": 174403,
+            "size": "170 KB",
             "extension": ".css"
         },
         {
@@ -259,17 +259,17 @@
             "extension": ".js"
         },
         {
-            "path": "dist/vue-ui-heatmap.js",
-            "filename": "vue-ui-heatmap",
-            "bytes": 55031,
+            "path": "dist/SlicerPreview.js",
+            "filename": "SlicerPreview",
+            "bytes": 55053,
             "size": "54 KB",
             "extension": ".js"
         },
         {
-            "path": "dist/SlicerPreview.js",
-            "filename": "SlicerPreview",
-            "bytes": 54378,
-            "size": "53 KB",
+            "path": "dist/vue-ui-heatmap.js",
+            "filename": "vue-ui-heatmap",
+            "bytes": 55031,
+            "size": "54 KB",
             "extension": ".js"
         },
         {

@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.23.13",
+        "date": "2026-08-22",
+        "updates": [
+            {
+                "component": "All charts with zoom minimap",
+                "description": "Fix touch target area too small.",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.23.12",
         "date": "2026-08-22",
         "updates": [
