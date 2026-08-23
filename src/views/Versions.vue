@@ -154,6 +154,120 @@ const usableWeekData = computed(() => {
     return weeklyData.slice(-52);
 });
 
+const heatmapConfig = computed(() => {
+    return {
+        style: {
+            backgroundColor: isDarkMode.value ? "#2A2A2A" : "transparent",
+            color: "#2D353C",
+            fontFamily: "inherit",
+            layout: {
+                height: 160,
+                padding: {
+                    top: 0,
+                },
+                cells: {
+                    height: 24,
+                    rowTotal: {
+                        value: {
+                            show: false,
+                        },
+                        color: {
+                            show: false,
+                        },
+                    },
+                    columnTotal: {
+                        value: {
+                            show: false,
+                            rotation: 0,
+                            offsetX: 0,
+                            offsetY: 0,
+                        },
+                        color: {
+                            show: false,
+                        },
+                    },
+                    value: {
+                        show: false,
+                        fontSize: 8,
+                        bold: false,
+                        roundingValue: 0,
+                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A",
+                    },
+                    colors: {
+                        hot: isDarkMode.value ? "#42d392" : "#1f77b4",
+                        cold: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                        underlayer: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                    },
+                    spacing: 0,
+                    selected: {
+                        border: 2,
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    },
+                },
+                dataLabels: {
+                    xAxis: {
+                        show: true,
+                        values: usableWeekData.value.map((p) => p.short),
+                        fontSize: 14,
+                        color: isDarkMode.value ? "#BBBBBB" : "#1A1A1A",
+                        bold: false,
+                        offsetX: 0,
+                        offsetY: 0,
+                        showOnlyAtModulo: 4,
+                    },
+                    yAxis: {
+                        show: true,
+                        values: [],
+                        fontSize: 14,
+                        color: isDarkMode.value ? "#BBBBBB" : "#1A1A1A",
+                        bold: false,
+                        offsetY: 0,
+                        offsetX: 0,
+                    },
+                },
+            },
+            title: {
+                textAlign: "left",
+                text: "Downloads heatmap",
+                color: isDarkMode.value ? "#9A9A9A" : "#2D353C",
+                fontSize: 16,
+                bold: true,
+                margin: "0 0 6px 0",
+                subtitle: {
+                    color: "#A1A1A1",
+                    text: "Last 52 weeks",
+                    fontSize: 12,
+                    bold: false,
+                },
+            },
+            legend: {
+                show: true,
+                backgroundColor: isDarkMode.value ? "#1A1A1A" : "#f3f4f6",
+                color: isDarkMode.value ? "#BBBBBB" : "#1A1A1A",
+                fontSize: 12,
+                bold: true,
+                roundingValue: 0,
+                width: 48,
+            },
+            tooltip: {
+                show: true,
+                backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                color: isDarkMode.value ? "#BBBBBB" : "#1A1A1A",
+                fontSize: 14,
+                roundingValue: 0,
+                backgroundOpacity: 0,
+                borderColor: isDarkMode.value ? "#4A4A4A" : "#e1e5e8",
+                // customFormat: ({datapoint}) => {
+                //   return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">${datapoint.value}</div>`
+                // }
+            },
+        },
+        userOptions: {
+            show: false,
+        },
+    };
+});
+
 const histoData = computed(() => {
     return (data.value || []).slice(-30).map((d) => {
         return {

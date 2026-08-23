@@ -171,7 +171,7 @@ const config = computed(() => {
             color: "#2D353C",
             fontFamily: "inherit",
             layout: {
-                height: 160,
+                height: 165,
                 padding: {
                     top: 0,
                 },
@@ -254,7 +254,7 @@ const config = computed(() => {
                 },
             },
             legend: {
-                show: true,
+                show: false,
                 backgroundColor: isDarkMode.value ? "#1A1A1A" : "#f3f4f6",
                 color: isDarkMode.value ? "#BBBBBB" : "#1A1A1A",
                 fontSize: 12,
@@ -280,7 +280,7 @@ const config = computed(() => {
 </script>
 
 <template>
-    <BaseCard v-if="data.length" class="max-w-[800px] mx-auto mt-6">
+    <BaseCard v-if="data" class="max-w-[800px] mx-auto mt-6">
         <VueUiSkeleton v-if="isLoading" :config="skeletonConfig" />
         <VueUiHeatmap v-else :dataset :config>
             <template #tooltip="{ datapoint, seriesIndex, series }">
