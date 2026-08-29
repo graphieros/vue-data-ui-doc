@@ -1,5 +1,6 @@
 export function useChartSlots(component) {
     const VDUI_SLOTS = {
+        AFTER: "after",
         ARROW: "arrow",
         AVERAGE: "average",
         BEFORE: "before",
@@ -618,6 +619,12 @@ export function useChartSlots(component) {
         vue_ui_digits: [],
         vue_ui_cursor: [],
         vue_ui_mini_loader: [],
+        vue_ui_label: [
+            VDUI_SLOTS.AFTER,
+            VDUI_SLOTS.BEFORE,
+            VDUI_SLOTS.TITLE,
+            VDUI_SLOTS.CONTENT,
+        ],
     };
 
     return slotsMap[component];

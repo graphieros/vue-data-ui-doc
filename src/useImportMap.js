@@ -72,10 +72,12 @@ export function useImportMap(c) {
         VueUiPattern: "vue-ui-pattern",
         VueUiPatternSeed: "vue-ui-pattern-seed",
         VueUiHill: "vue-ui-hill",
+        VueUiLabel: "vue-ui-label",
     };
 
     const typesMapping = {
         VueDataUi: null,
+        VueUiLabel: ", type VueUiLabelDataset, type VueUiLabelConfig",
         VueUi3dBar: ", type VueUi3dBarDataset, type VueUi3dBarConfig",
         VueUiAccordion: ", type VueUiAccordionConfig",
         VueUiAgePyramid:
@@ -182,6 +184,7 @@ export function useImportMap(c) {
 
     const datasetTypeMap = {
         VueDataUi: "",
+        VueUiLabel: "VueUiLabelDataset",
         VueUi3dBar: "VueUi3dBarDataset",
         VueUiAccordion: "",
         VueUiAgePyramid: "VueUiAgePyramidDataset",
@@ -257,6 +260,7 @@ export function useImportMap(c) {
 
     const configTypeMap = {
         VueDataUi: "",
+        VueUiLabel: "VueUiLabelConfig",
         VueUi3dBar: "VueUi3dBarConfig",
         VueUiAccordion: "VueUiAccordionConfig",
         VueUiAgePyramid: "VueUiAgePyramidConfig",

@@ -240,6 +240,9 @@ const DocVueUiBump = defineAsyncComponent(
 const DocVueUiHill = defineAsyncComponent(
     () => import("../components/docs/DocVueUiHill.vue"),
 );
+const DocVueUiLabel = defineAsyncComponent(
+    () => import("../components/docs/DocVueUiLabel.vue"),
+);
 
 const mainConfig = useConfig();
 
@@ -359,6 +362,7 @@ const chartKeys = computed(() => {
                 "vue_ui_table_heatmap",
                 "vue_ui_table",
                 "vue_ui_timer",
+                "vue_ui_label",
             ].includes(key);
         });
 });
@@ -1072,6 +1076,14 @@ const selectedConfig = computed(() => {
                     v-if="
                         router.currentRoute.value.fullPath ===
                         '/docs#vue-ui-hill'
+                    "
+                />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiLabel
+                    v-if="
+                        router.currentRoute.value.fullPath ===
+                        '/docs#vue-ui-label'
                     "
                 />
             </Transition>

@@ -155,6 +155,50 @@ const items = computed(() => {
             `,
         },
         {
+            names: ["VueUiLabel__before"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #before="{ dataset, config, box }">
+            <!-- Use SVG elements -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["VueUiLabel__after"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #after="{ dataset, config, box }">
+            <!-- Use SVG elements -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["VueUiLabel__title"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #title="{ dataset, config, box }">
+            <!-- Use SVG elements -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["VueUiLabel__content"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #content="{ dataset, config, box }">
+            <!-- Use SVG elements -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
             names: ["source"],
             description: translations.value.slots.source[store.lang],
             snippet: `
@@ -712,15 +756,23 @@ function copyToClipboard(conf) {
                         class="font-inter-medium bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow"
                     >
                         #{{
-                            tag === "hill-actions"
-                                ? "hill-xxx"
-                                : tag === "annotator-actions"
-                                  ? "annotator-action-xxx"
-                                  : tag === "user-menu"
-                                    ? "menuIcon, #optionXxx"
-                                    : tag
-                                          .replaceAll("_", "")
-                                          .replaceAll("-circlePack", "")
+                            tag === "VueUiLabel__content"
+                                ? "content"
+                                : tag === "VueUiLabel__title"
+                                  ? "title"
+                                  : tag === "VueUiLabel__after"
+                                    ? "after"
+                                    : tag === "VueUiLabel__before"
+                                      ? "before"
+                                      : tag === "hill-actions"
+                                        ? "hill-xxx"
+                                        : tag === "annotator-actions"
+                                          ? "annotator-action-xxx"
+                                          : tag === "user-menu"
+                                            ? "menuIcon, #optionXxx"
+                                            : tag
+                                                  .replaceAll("_", "")
+                                                  .replaceAll("-circlePack", "")
                         }}
                     </div>
                 </div>

@@ -168,6 +168,32 @@ const emitMap = computed(() => ({
         description:
             translations.value.docs.emits.hill.datapointLeave[store.lang],
     },
+
+    // VueUiLabel specials
+    drag: {
+        name: "drag",
+        description: translations.value.docs.emits.label.drag[store.lang],
+    },
+    mouseleave: {
+        name: "mouseleave",
+        description: "", // TODO
+    },
+    mouseenter: {
+        name: "mouseenter",
+        description: "", // TODO
+    },
+    click: {
+        name: "click",
+        description: "", // TODO
+    },
+    focus: {
+        name: "focus",
+        description: "", // TODO
+    },
+    blur: {
+        name: "blur",
+        description: "", // TODO
+    },
 }));
 </script>
 

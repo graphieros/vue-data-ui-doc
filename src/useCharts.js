@@ -376,6 +376,13 @@ export default function useCharts() {
                 taxinomy: ["uiTools"],
                 singleTaxinomy: "uiTools",
             },
+            VueUiLabel: {
+                icon: "labelOpen",
+                link: "/docs#vue-ui-label",
+                description: translations.value.docs.tooltips.label[store.lang],
+                taxinomy: ["uiTools"],
+                singleTaxinomy: "uiTools",
+            },
             VueUiAccordion: {
                 icon: "accordion",
                 link: "/docs#vue-ui-accordion",

@@ -2387,6 +2387,17 @@ export const useMainStore = defineStore("main", {
                         ar: "تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين",
                     },
                     tooltips: {
+                        label: {
+                            en: "Draggable label to insert into any chart #svg slot, or into any svg element.",
+                            fr: "Étiquette déplaçable à insérer dans n’importe quel slot #svg de graphique, ou dans n’importe quel élément SVG.",
+                            pt: "Rótulo arrastável para inserir em qualquer slot #svg de gráfico ou em qualquer elemento SVG.",
+                            de: "Verschiebbares Label zum Einfügen in einen beliebigen #svg-Slot eines Diagramms oder in ein beliebiges SVG-Element.",
+                            zh: "可拖动标签，可插入任何图表的 #svg 插槽或任意 SVG 元素中。",
+                            ja: "任意のチャートの #svg スロット、または任意の SVG 要素に挿入できるドラッグ可能なラベルです。",
+                            es: "Etiqueta arrastrable para insertar en cualquier slot #svg de un gráfico o en cualquier elemento SVG.",
+                            ko: "차트의 모든 #svg 슬롯 또는 모든 SVG 요소에 삽입할 수 있는 드래그 가능한 레이블입니다.",
+                            ar: "تسمية قابلة للسحب يمكن إدراجها في أي فتحة #svg داخل أي مخطط، أو في أي عنصر SVG.",
+                        },
                         hill: {
                             en: `Interactive hill chart component for visualizing and editing the progression of multiple items from “to do” to “done.”`,
                             fr: `Composant de graphique en colline interactif permettant de visualiser et de modifier la progression de plusieurs éléments de « à faire » à « terminé ».`,
@@ -3336,6 +3347,19 @@ export const useMainStore = defineStore("main", {
                         },
                     },
                     emits: {
+                        label: {
+                            drag: {
+                                en: "Emits the current state of the label during drag.",
+                                fr: "Émet l’état actuel de l’étiquette pendant le déplacement.",
+                                pt: "Emite o estado atual do rótulo durante o arrasto.",
+                                de: "Gibt während des Ziehens den aktuellen Zustand des Labels aus.",
+                                zh: "在拖动过程中发出标签的当前状态。",
+                                ja: "ドラッグ中のラベルの現在の状態を送出します。",
+                                es: "Emite el estado actual de la etiqueta durante el arrastre.",
+                                ko: "드래그하는 동안 레이블의 현재 상태를 내보냅니다.",
+                                ar: "يُصدر الحالة الحالية للتسمية أثناء السحب.",
+                            },
+                        },
                         selectSide: {
                             en: "Emits dataset related to the selected side of the quadrant.",
                             fr: "Émet le jeu de données lié au côté sélectionné du quadrant.",
@@ -3434,6 +3458,17 @@ export const useMainStore = defineStore("main", {
                             es: "Restablecer el temporizador.",
                             ko: "타이머를 초기화합니다.",
                             ar: "إعادة ضبط المؤقت.",
+                        },
+                        reorder: {
+                            en: "Call this exposed method to reset the initial coordinates of the label as defined in its dataset.",
+                            fr: "Appelez cette méthode exposée pour réinitialiser les coordonnées initiales du label telles que définies dans son dataset.",
+                            pt: "Chame este método exposto para redefinir as coordenadas iniciais do rótulo conforme definidas em seu dataset.",
+                            de: "Rufen Sie diese bereitgestellte Methode auf, um die ursprünglichen Koordinaten des Labels auf die im Dataset definierten Werte zurückzusetzen.",
+                            zh: "调用此公开方法，将标签的坐标重置为其 dataset 中定义的初始值。",
+                            ja: "この公開メソッドを呼び出すと、ラベルの座標が dataset で定義された初期値にリセットされます。",
+                            es: "Llame a este método expuesto para restablecer las coordenadas iniciales de la etiqueta según se definen en su dataset.",
+                            ko: "이 공개 메서드를 호출하면 라벨의 좌표가 dataset에 정의된 초기값으로 재설정됩니다.",
+                            ar: "استدعِ هذه الطريقة المكشوفة لإعادة تعيين الإحداثيات الأولية للتسمية كما هي محددة في مجموعة البيانات الخاصة بها.",
                         },
                         restart: {
                             en: "Resets and starts the timer.",

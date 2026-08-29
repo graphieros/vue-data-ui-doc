@@ -708,6 +708,15 @@ export function useMenuItems() {
             hasTableCss: false,
         },
         {
+            name: "Label",
+            icon: "labelOpen",
+            tooltip: translations.value.docs.tooltips.label[store.lang],
+            link: "/docs#vue-ui-label",
+            type: "tool",
+            hasSlot: false,
+            hasTableCss: false,
+        },
+        {
             name: "Accordion",
             icon: "accordion",
             tooltip: translations.value.docs.tooltips.accordion[store.lang],

@@ -284,6 +284,12 @@ const config = computed(() => {
             "VueUiMiniLoader",
             "VueDataUi",
             "VueUiHill",
+            "VueUiLabel",
+            "VueUiLabelEmitDragStart",
+            "VueUiLabelEmitDrag",
+            "VueUiLabelEmitDragEnd",
+            "VueUiLabelDataset",
+            "VueUiLabelConfig",
 
             // Emits
             ...emitTypes.value,

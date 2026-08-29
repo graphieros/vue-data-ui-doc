@@ -1111,6 +1111,10 @@ const darkModeConfig = ref({
             offsetY: -12,
             rounding: 0,
             color: "#c8c8c8",
+            offsetX: 0,
+            rotation: 0,
+            textAnchor: null,
+            alwaysOnTop: false,
         },
         area: {
             useGradient: true,
@@ -4700,6 +4704,16 @@ const customFormatCode =
                                         :min="0"
                                         :max="12"
                                         :step="0.1"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="hideAboveMaxSerieLength"
+                                        attr="line.dot.hideAboveMaxSerieLength"
+                                        defaultVal="62"
+                                        type="number"
+                                        :min="12"
+                                        :max="256"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />

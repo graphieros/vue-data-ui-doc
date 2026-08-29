@@ -228,6 +228,16 @@ const mapping = {
     VueUiCarouselTable: {
         copyAlt: "VueUiCarouselTableEmitCopyAlt",
     },
+    VueUiLabel: {
+        dragStart: "VueUiLabelEmitDragStart",
+        drag: "VueUiLabelEmitDrag",
+        dragEnd: "VueUiLabelEmitDragEnd",
+        mouseenter: "VueUiLabelDataset",
+        mouseleave: "VueUiLabelDataset",
+        click: "VueUiLabelDataset",
+        focus: "VueUiLabelDataset",
+        blur: "VueUiLabelDataset",
+    },
 };
 
 export function getEmitType({ componentName, emitName }) {

@@ -32,7 +32,7 @@ const content = computed(() => {
     return `
     import { useTemplateRef } from "vue";
 
-    // Add this ref to the chart component
+    // Add a ref to the component
     const chartRef = useTemplateRef('chartRef');
 
     function ${props.name}()  {

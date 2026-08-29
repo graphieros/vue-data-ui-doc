@@ -5,6 +5,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import ThemeTag from "../ThemeTag.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { getThemeConfig } from "vue-data-ui";
+import VueUiLabel from "vue-data-ui/vue-ui-label";
 
 const props = defineProps({
     component: {
@@ -139,6 +140,8 @@ async function copyToClipboard(theme) {
         store.copy();
     }
 }
+
+const isCustom = computed(() => ["VueUiLabel"].includes(props.component));
 </script>
 
 <template>
@@ -150,7 +153,36 @@ async function copyToClipboard(theme) {
             v-for="theme in themes"
         >
             <ThemeTag :type="theme.name" />
+            <template v-if="isCustom">
+                <svg
+                    v-if="props.component === 'VueUiLabel'"
+                    viewBox="0 0 500 500"
+                    :style="{
+                        width: '100%',
+                        backgroundColor: [
+                            '',
+                            'default',
+                            'minimal',
+                            'concrete',
+                            'zen',
+                            'celebration',
+                        ].includes(theme.name)
+                            ? '#FFFFFF'
+                            : '#1A1A1A',
+                    }"
+                    class="border border-gray-400 border-dashed"
+                >
+                    <VueUiLabel
+                        :config="{
+                            ...props.config,
+                            theme: theme.name,
+                        }"
+                        :dataset="props.dataset"
+                    />
+                </svg>
+            </template>
             <VueDataUi
+                v-else
                 :component="component"
                 :dataset="dataset"
                 :config="{ ...config, theme: theme.name }"

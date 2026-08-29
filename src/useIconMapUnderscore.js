@@ -1,6 +1,7 @@
 export function useIconMapUnderscore(componentName) {
     const mapping = {
         vue_ui_bullet: "chartBullet",
+        vue_ui_label: "labelOpen",
         vue_ui_3d_bar: "chart3dBar",
         vue_ui_accordion: "accordion",
         vue_ui_age_pyramid: "chartAgePyramid",

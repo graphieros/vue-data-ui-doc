@@ -150,6 +150,12 @@ const methodMap = computed(() => {
             name: "lap",
             description: translations.value.docs.emits.lap[store.lang],
         },
+
+        // VueUiLabel specials:
+        reorder: {
+            name: "reorder",
+            description: translations.value.docs.emits.reorder[store.lang],
+        },
     };
 });
 </script>

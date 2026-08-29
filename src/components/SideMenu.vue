@@ -795,6 +795,14 @@ const smallMenu = ref([
         component: "Annotator",
     },
     {
+        route: "/docs#vue-ui-label",
+        icon: "labelOpen",
+        classClasses: "",
+        isSelected: isSelected,
+        tooltipContent: "Label",
+        component: "Label",
+    },
+    {
         route: "/docs#vue-ui-icon",
         icon: "icons",
         cssClasses: "",
@@ -1267,6 +1275,11 @@ const sideMenuItems = computed(() => {
         {
             title: translations.value.sideMenu.utilities[store.lang],
             items: [
+                {
+                    route: "/docs#vue-ui-label",
+                    componentName: "Label",
+                    icon: "labelOpen",
+                },
                 {
                     route: "/docs#vue-ui-accordion",
                     componentName: "Accordion",
