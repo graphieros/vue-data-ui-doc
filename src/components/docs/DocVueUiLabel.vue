@@ -25,6 +25,7 @@ import { useRouter } from "vue-router";
 import ComponentEmits from "../ComponentEmits.vue";
 import ThemesVueUiLabel from "../themes/ThemesVueUiLabel.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import UcLabel from "../useCases/uc-label.vue";
 
 const mainConfig = useConfig();
 
@@ -417,7 +418,7 @@ function goToPage(route) {
 
         <Rater itemId="vue_ui_label" />
 
-        <Box ref="box" showEmits showSlots showThemes>
+        <Box ref="box" showEmits showSlots showThemes showUseCases>
             <template #tab0>
                 <CodeParser
                     language="typescript"
@@ -970,6 +971,10 @@ function goToPage(route) {
                         'VueUiLabel__content',
                     ]"
                 />
+            </template>
+
+            <template #tab5>
+                <UcLabel />
             </template>
 
             <template #tab6>
