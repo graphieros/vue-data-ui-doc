@@ -3,8 +3,9 @@ import { ref, computed, watch, nextTick } from "vue";
 import { useMainStore } from "../../stores";
 import BaseDialog from "../BaseDialog.vue";
 import VueUiLabel from "vue-data-ui/vue-ui-label";
-const store = useMainStore();
+import { createUid } from "../maker/lib";
 
+const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const datasetLine = computed(() => [
@@ -47,6 +48,7 @@ async function addLabel() {
         position: inputs.value.position,
         marker: inputs.value.marker,
         color: inputs.value.color,
+        id: createUid(),
     });
     await nextTick();
     dialogOpen.value = false;
@@ -107,9 +109,7 @@ async function editLabel(label) {
 const labelStep = ref(0);
 
 function saveLabel() {
-    const thisLabel = labels.value.find(
-        (l) => l.index === labelToUpdate.value.index,
-    );
+    const thisLabel = labels.value.find((l) => l.id === labelToUpdate.value.id);
     thisLabel.title = inputs.value.title;
     thisLabel.content = inputs.value.content;
     thisLabel.position = inputs.value.position;
@@ -120,9 +120,7 @@ function saveLabel() {
 }
 
 function deleteLabel() {
-    labels.value = labels.value.filter(
-        (l) => l.index !== labelToUpdate.value.index,
-    );
+    labels.value = labels.value.filter((l) => l.id !== labelToUpdate.value.id);
     dialogOpen.value = false;
 }
 
@@ -172,12 +170,14 @@ const seeHow = ref({
             @selectX="openDialog"
         >
             <template #svg="{ svg }">
-                <VueUiLabel
-                    @click="() => editLabel(label)"
-                    v-for="label in labels"
-                    :key="`label_${label.index}_${labelStep}`"
-                    v-bind="getLabel(label, svg)"
-                />
+                <g v-if="labels.length">
+                    <VueUiLabel
+                        @click="() => editLabel(label)"
+                        v-for="label in labels"
+                        :key="`label_${label.index}_${labelStep}`"
+                        v-bind="getLabel(label, svg)"
+                    />
+                </g>
             </template>
         </VueUiXy>
     </div>
