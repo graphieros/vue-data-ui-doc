@@ -35,6 +35,8 @@ const inputs = ref({
     position: "top",
     marker: "",
     color: null,
+    textColor: "#1A1A1A",
+    backgroundColor: "#FFFFFF",
 });
 
 const dialogOpen = ref(false);
@@ -48,6 +50,8 @@ async function addLabel() {
         position: inputs.value.position,
         marker: inputs.value.marker,
         color: inputs.value.color,
+        textColor: inputs.value.textColor,
+        backgroundColor: inputs.value.backgroundColor,
         id: createUid(),
     });
     await nextTick();
@@ -70,6 +74,8 @@ watch(dialogOpen, (isOpen) => {
         inputs.value.position = "top";
         inputs.value.marker = "";
         inputs.value.color = null;
+        inputs.value.textColor = "#1A1A1A";
+        inputs.value.backgroundColor = "#FFFFFF";
         isUpdate.value = false;
         labelToUpdate.value = null;
     }
@@ -83,6 +89,7 @@ function getLabel(label, svg) {
             position: label.position,
             title: {
                 text: label.title,
+                color: label.textColor,
                 marker: {
                     color: label.color,
                     shape: label.marker,
@@ -90,6 +97,13 @@ function getLabel(label, svg) {
             },
             content: {
                 text: label.content,
+                color: label.textColor,
+            },
+            box: {
+                backgroundColor: label.backgroundColor,
+            },
+            drag: {
+                iconColor: label.textColor,
             },
         },
     };
@@ -104,6 +118,8 @@ async function editLabel(label) {
     inputs.value.position = label.position;
     inputs.value.marker = label.marker ?? "";
     inputs.value.color = label.color ?? null;
+    inputs.value.textColor = label.textColor ?? "#1A1A1A";
+    inputs.value.backgroundColor = label.backgroundColor ?? "#FFFFFF";
 }
 
 const labelStep = ref(0);
@@ -115,6 +131,8 @@ function saveLabel() {
     thisLabel.position = inputs.value.position;
     thisLabel.marker = inputs.value.marker;
     thisLabel.color = inputs.value.color;
+    thisLabel.textColor = inputs.value.textColor;
+    thisLabel.backgroundColor = inputs.value.backgroundColor;
     dialogOpen.value = false;
     labelStep.value += 1;
 }
@@ -227,6 +245,17 @@ const seeHow = ref({
                 <label class="flex flex-row gap-2">
                     Marker color
                     <input type="color" v-model="inputs.color" />
+                </label>
+            </div>
+
+            <div class="flex flex-row flex-wrap gap-4">
+                <label class="flex flex-row gap-2">
+                    Background color
+                    <input type="color" v-model="inputs.backgroundColor" />
+                </label>
+                <label class="flex flex-row flex-wrap gap-4">
+                    Text color
+                    <input type="color" v-model="inputs.textColor" />
                 </label>
             </div>
 
