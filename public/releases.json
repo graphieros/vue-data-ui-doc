@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.24.1",
+        "date": "2026-09-04",
+        "updates": [
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Add borderRadius config attribute",
+                "link": "/docs#vue-ui-sparkstackbar"
+            },
+            {
+                "component": "VueUiSparkbar",
+                "description": "Add borderRadius config attribute",
+                "link": "/docs#vue-ui-sparkbar"
+            }
+        ]
+    },
+    {
         "version": "v 3.24.0",
         "date": "2026-08-29",
         "updates": [
