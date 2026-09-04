@@ -24096,6 +24096,15 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "general",
                     },
                     {
+                        key: "style.bar.borderRadius",
+                        def: null,
+                        type: "number",
+                        label: ["bar", "border", "is", "radius"],
+                        min: 0,
+                        max: 24,
+                        category: "general",
+                    },
+                    {
                         key: "style.bar.gradient.show",
                         def: true,
                         type: "checkbox",
@@ -24563,6 +24572,15 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         min: 0,
                         max: 100,
                         label: ["gutter", "is", "opacity"],
+                        category: "general",
+                    },
+                    {
+                        key: "style.bar.borderRadius",
+                        def: null,
+                        type: "number",
+                        label: ["bar", "border", "is", "radius"],
+                        min: 0,
+                        max: 24,
                         category: "general",
                     },
                     {

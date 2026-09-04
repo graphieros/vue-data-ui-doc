@@ -90,6 +90,7 @@ const config = ref({
             animationFrames: 60,
         },
         bar: {
+            borderRadius: null,
             gradient: {
                 show: true,
                 intensity: 40,
@@ -176,13 +177,14 @@ const darkModeConfig = ref({
         },
     },
     style: {
-        backgroundColor: "#1A1A1A00",
+        backgroundColor: "#2A2A2A",
         fontFamily: "inherit",
         animation: {
             show: true,
             animationFrames: 60,
         },
         bar: {
+            borderRadius: null,
             gradient: {
                 show: true,
                 intensity: 40,
@@ -579,6 +581,16 @@ function goToPage(route) {
                                 :level="2"
                                 title="style.bar"
                             >
+                                <BaseAttr
+                                    name="borderRadius"
+                                    attr="style.bar.borderRadius"
+                                    type="number"
+                                    defaultVal="null"
+                                    :min="0"
+                                    :max="24"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
                                 <BaseDetails
                                     attr="gradient"
                                     :level="3"

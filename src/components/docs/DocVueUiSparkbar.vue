@@ -92,6 +92,7 @@ const darkModeConfig = ref({
             opacity: 100,
         },
         bar: {
+            borderRadius: null,
             gradient: {
                 show: true,
                 intensity: 40,
@@ -153,6 +154,7 @@ const config = ref({
             opacity: 100,
         },
         bar: {
+            borderRadius: null,
             gradient: {
                 show: true,
                 intensity: 40,
@@ -474,6 +476,16 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
                                     :level="2"
                                     title="style.bar"
                                 >
+                                    <BaseAttr
+                                        name="borderRadius"
+                                        attr="style.bar.borderRadius"
+                                        type="number"
+                                        defaultVal="null"
+                                        :min="0"
+                                        :max="24"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseDetails
                                         attr="gradient"
                                         :level="3"
