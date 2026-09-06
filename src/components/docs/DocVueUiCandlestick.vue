@@ -171,6 +171,7 @@ const config = ref({
                             },
                         },
                         showOnlyFirstAndLast: false,
+                        showFirstAndLast: true,
                         showOnlyAtModulo: true,
                         modulo: 12,
                     },
@@ -440,6 +441,7 @@ const darkModeConfig = ref({
                             },
                         },
                         showOnlyFirstAndLast: false,
+                        showFirstAndLast: true,
                         showOnlyAtModulo: true,
                         modulo: 12,
                     },
@@ -1527,6 +1529,15 @@ const customFormatCode =
                                                 :dark="mutableConfigDarkMode"
                                             />
                                             <BaseAttr
+                                                name="showFirstAndLast"
+                                                attr="style.layout.grid.xAxis.dataLabels.showFirstAndLast"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="Since v3.25.0"
+                                            />
+                                            <BaseAttr
                                                 name="showOnlyAtModulo"
                                                 attr="style.layout.grid.xAxis.dataLabels.showOnlyAtModulo"
                                                 type="checkbox"
@@ -1538,7 +1549,7 @@ const customFormatCode =
                                                 name="modulo"
                                                 attr="style.layout.grid.xAxis.dataLabels.modulo"
                                                 type="number"
-                                                defaultVal="12"
+                                                defaultVal="2"
                                                 :min="2"
                                                 :max="24"
                                                 :light="mutableConfig"

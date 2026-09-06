@@ -7862,8 +7862,8 @@ export default function useExamples() {
                                     ...BASE_XY_CONFIG.value.chart.grid.labels
                                         .xAxisLabels,
                                     showOnlyAtModulo: true,
-                                    values: makeDs(1000, 100, "T"),
-                                    modulo: 9,
+                                    values: makeDs(10000, 100, "T"),
+                                    modulo: 49,
                                     rotation: 0,
                                     datetimeFormatter: {
                                         enable: false,
@@ -8014,8 +8014,8 @@ export default function useExamples() {
                                     ...BASE_XY_CONFIG.value.chart.grid.labels
                                         .xAxisLabels,
                                     showOnlyAtModulo: true,
-                                    values: makeDs(1000, 100, "T"),
-                                    modulo: 9,
+                                    values: makeDs(500, 100, "T"),
+                                    modulo: 26,
                                     rotation: 0,
                                     datetimeFormatter: {
                                         enable: false,

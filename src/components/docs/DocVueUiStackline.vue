@@ -354,6 +354,8 @@ const config = ref({
                     timeLabels: {
                         show: true,
                         values: monthValues.value,
+                        showOnlyFirstAndLast: false,
+                        showFirstAndLast: true,
                         datetimeFormatter: {
                             enable: true,
                             locale: "en",
@@ -686,6 +688,8 @@ const darkModeConfig = ref({
                     timeLabels: {
                         show: true,
                         values: monthValues.value,
+                        showOnlyFirstAndLast: false,
+                        showFirstAndLast: true,
                         datetimeFormatter: {
                             enable: true,
                             locale: "en",
@@ -2768,6 +2772,23 @@ const customFormatCode =
                                                 :dark="mutableConfigDarkMode"
                                             />
                                             <span>values: string[],</span>
+                                            <BaseAttr
+                                                name="showOnlyFirstAndLast"
+                                                attr="style.chart.grid.x.timeLabels.showOnlyFirstAndLast"
+                                                type="checkbox"
+                                                defaultVal="false"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="showFirstAndLast"
+                                                attr="style.chart.grid.x.timeLabels.showFirstAndLast"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="Since v3.25.0"
+                                            />
                                             <BaseDetails
                                                 attr="datetimeFormatter"
                                                 :level="6"

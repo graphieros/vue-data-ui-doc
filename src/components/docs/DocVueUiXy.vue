@@ -443,6 +443,7 @@ const config = ref({
                     color: "#1A1A1A",
                     show: true,
                     showOnlyFirstAndLast: false,
+                    showFirstAndLast: true,
                     values: monthValues.value,
                     datetimeFormatter: {
                         enable: true,
@@ -936,6 +937,7 @@ const darkModeConfig = ref({
                     color: "#c8c8c8",
                     show: true,
                     showOnlyFirstAndLast: false,
+                    showFirstAndLast: true,
                     values: monthValues.value,
                     datetimeFormatter: {
                         enable: true,
@@ -2420,6 +2422,15 @@ const customFormatCode =
                                                 :dark="mutableConfigDarkMode"
                                             />
                                             <BaseAttr
+                                                name="showFirstAndLast"
+                                                attr="chart.grid.labels.xAxisLabels.showFirstAndLast"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                                comment="Since v.3.25.0"
+                                            />
+                                            <BaseAttr
                                                 name="color"
                                                 attr="chart.grid.labels.xAxisLabels.color"
                                                 type="color"
@@ -2568,7 +2579,7 @@ const customFormatCode =
                                                 name="modulo"
                                                 attr="chart.grid.labels.xAxisLabels.modulo"
                                                 type="number"
-                                                defaultVal="12"
+                                                defaultVal="2"
                                                 :min="1"
                                                 :max="24"
                                                 :light="mutableConfig"

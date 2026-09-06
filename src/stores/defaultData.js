@@ -3071,7 +3071,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                     {
                         key: "style.chart.dialog.xyChart.chart.grid.labels.xAxisLabels.modulo",
-                        def: 12,
+                        def: 2,
                         type: "number",
                         min: 2,
                         max: 365,
@@ -3221,7 +3221,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                     {
                         key: "style.chart.xAxis.labels.modulo",
-                        def: 12,
+                        def: 2,
                         type: "number",
                         min: 2,
                         max: 12,
@@ -12622,7 +12622,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                     {
                         key: "chart.grid.labels.xAxisLabels.modulo",
-                        def: 12,
+                        def: 2,
                         type: "number",
                         min: 2,
                         max: 365,
