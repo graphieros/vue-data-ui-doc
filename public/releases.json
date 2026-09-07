@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.25.1",
+        "date": "2026-09-07",
+        "updates": [
+            {
+                "component": "Time labels",
+                "description": "Resotre dedupe of x-axis time labels removed in 3.25.0",
+                "link": ""
+            },
+            {
+                "component": "Built-in chart annotator",
+                "description": "Add editing features for already positioned annotations",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.25.0",
         "date": "2026-09-06",
         "updates": [
