@@ -188,6 +188,8 @@ const dates = computed(() =>
     normalizedSource.value.map((s) => s.snapshot_date),
 );
 
+const XAXIS_LABELS_MOD_THRESHOLD = 12;
+
 const config = computed(() => ({
     theme: isDarkMode.value ? "dark" : "",
     downsample: {
@@ -213,7 +215,14 @@ const config = computed(() => ({
                 },
                 xAxisLabels: {
                     values: dates.value,
-                    showOnlyAtModulo: 12,
+                    showOnlyAtModulo:
+                        dates.value.length > XAXIS_LABELS_MOD_THRESHOLD,
+                    modulo: Math.max(
+                        1,
+                        Math.round(
+                            dates.value.length / XAXIS_LABELS_MOD_THRESHOLD,
+                        ),
+                    ),
                     rotation: -30,
                     autoRotate: {
                         enable: false,
@@ -226,6 +235,7 @@ const config = computed(() => ({
                             day: "yyyy-MM-dd",
                             hour: "yyyy-MM-dd",
                             minute: "yyyy-MM-dd",
+                            second: "yyyy-MM-dd",
                         },
                     },
                 },
