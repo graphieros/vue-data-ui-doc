@@ -140,9 +140,6 @@ function goToProfile() {
                     </button>
                 </div>
             </div>
-            <span class="text-transparent select-none">
-                __________________________________________________________________________________________________________
-            </span>
         </div>
     </div>
 </template>
