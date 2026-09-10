@@ -26,6 +26,7 @@ import ThemesVueUiHill from "../themes/ThemesVueUiHill.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import DebugHint from "../DebugHint.vue";
+import { COLOR_PICKER_PALETTE } from "../../consts.js";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -92,6 +93,7 @@ const config = ref({
         activationDelayMs: 300,
     },
     userOptions: {
+        annotatorPalette: COLOR_PICKER_PALETTE,
         show: true,
         showOnChartHover: false,
         keepStateOnChartLeave: true,
@@ -371,6 +373,7 @@ const darkModeConfig = ref({
         activationDelayMs: 300,
     },
     userOptions: {
+        annotatorPalette: COLOR_PICKER_PALETTE,
         show: true,
         showOnChartHover: false,
         keepStateOnChartLeave: true,

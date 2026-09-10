@@ -14,6 +14,7 @@ import BaseAttr from "../BaseAttr.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig();
 
@@ -291,7 +292,41 @@ const exampleTemplate = ref(`<VueUiAnnotator
             />
         </div>
 
-        <Box showEmits>
+        <Box showEmits showSlots>
+            <template #tab3>
+                <BaseSlotDocumenter
+                    componentName="VueUiAnnotator"
+                    :types="[
+                        'toggle',
+                        'icon-move',
+                        'icon-resize',
+                        'icon-delete',
+                        'icon-select-group',
+                        'icon-bring-to-front',
+                        'icon-bring-to-back',
+                        'icon-copy',
+                        'icon-undo',
+                        'icon-redo',
+                        'icon-print',
+                        'icon-export-image',
+                        'icon-save',
+                        'icon-circle',
+                        'icon-rect',
+                        'icon-arrow',
+                        'icon-freehand',
+                        'icon-text',
+                        'icon-text-align-left',
+                        'icon-text-align-center',
+                        'icon-text-align-right',
+                        'icon-text-bullet-points',
+                        'icon-text-bold',
+                        'icon-text-italic',
+                        'icon-text-underline',
+                        'icon-color',
+                    ]"
+                />
+            </template>
+
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}<br />
                 {{

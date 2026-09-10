@@ -32,6 +32,7 @@ import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue
 import ComponentEmits from "../ComponentEmits.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -604,7 +605,7 @@ const darkModeConfig = ref({
                     fontSize: 14,
                     bold: false,
                     showOnlyAtModulo: true,
-                    modulo: 6,
+                    modulo: 2,
                     showOnlyFirstAndLast: false,
                     offsetY: 0,
                 },
@@ -615,6 +616,8 @@ const darkModeConfig = ref({
                     bold: false,
                     color: "#8A8A8A",
                     offsetX: 0,
+                    offsetY: 0,
+                    centered: false,
                 },
             },
         },
@@ -854,20 +857,21 @@ const config = ref({
                                     color: "#1A1A1A",
                                     show: true,
                                     showOnlyFirstAndLast: false,
-                                    values: [
-                                        "JAN",
-                                        "FEB",
-                                        "MAR",
-                                        "APR",
-                                        "MAY",
-                                        "JUN",
-                                        "JUL",
-                                        "AUG",
-                                        "SEP",
-                                        "OCT",
-                                        "NOV",
-                                        "DEC",
-                                    ],
+                                    values: monthValues.value,
+                                    datetimeFormatter: {
+                                        enable: true,
+                                        locale: "en",
+                                        useUTC: false,
+                                        januaryAsYear: false,
+                                        options: {
+                                            year: "yyyy",
+                                            month: `MMM 'yy`,
+                                            day: "dd MMM",
+                                            hour: "HH:mm",
+                                            minute: "HH:mm:ss",
+                                            second: "HH:mm:ss",
+                                        },
+                                    },
                                     fontSize: 18,
                                     yOffset: 0,
                                     showOnlyAtModulo: false,
@@ -947,7 +951,7 @@ const config = ref({
                     fontSize: 14,
                     bold: false,
                     showOnlyAtModulo: true,
-                    modulo: 6,
+                    modulo: 2,
                     showOnlyFirstAndLast: false,
                     offsetY: 0,
                     rotation: 0,
@@ -963,6 +967,8 @@ const config = ref({
                     bold: false,
                     color: "#1A1A1A",
                     offsetX: 0,
+                    offsetY: 0,
+                    centered: false,
                 },
             },
         },
@@ -2203,6 +2209,24 @@ function goToPage(route) {
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />
+                                        <BaseAttr
+                                            name="offsetY"
+                                            attr="style.chart.yAxis.labels.offsetY"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="-100"
+                                            :max="100"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="centered"
+                                            attr="style.chart.yAxis.labels.centered"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
                                     </BaseDetails>
                                 </BaseDetails>
                             </BaseDetails>
@@ -2250,6 +2274,7 @@ function goToPage(route) {
                                 :light="mutableConfig"
                                 :dark="mutableConfigDarkMode"
                             />
+                            <BaseAttrAnnotatorPalette />
                             <BaseDetails
                                 attr="buttons"
                                 :level="2"

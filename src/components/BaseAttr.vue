@@ -192,7 +192,9 @@ const translatedTooltip = computed(() => {
                     >{{ name }}:</label
                 >
                 <span v-if="inactive" class="ml-1">
-                    {{ defaultVal }}
+                    <slot name="inactive-default-val">
+                        {{ defaultVal }}
+                    </slot>
                 </span>
                 <template v-else>
                     <template v-if="type === 'number'">

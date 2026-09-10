@@ -29,6 +29,8 @@ import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue
 import ComponentEmits from "../ComponentEmits.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import { COLOR_PICKER_PALETTE } from "../../consts.js";
+import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -118,6 +120,7 @@ const config = ref({
         datapointClick: null,
     },
     userOptions: {
+        annotatorPalette: COLOR_PICKER_PALETTE,
         show: true,
         showOnChartHover: false,
         keepStateOnChartLeave: true,
@@ -315,6 +318,7 @@ const darkModeConfig = ref({
         datapointClick: null,
     },
     userOptions: {
+        annotatorPalette: COLOR_PICKER_PALETTE,
         show: true,
         showOnChartHover: false,
         keepStateOnChartLeave: true,
@@ -1577,6 +1581,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                                 :light="mutableConfig"
                                 :dark="mutableConfigDarkMode"
                             />
+                            <BaseAttrAnnotatorPalette />
                             <BaseDetails
                                 attr="buttons"
                                 :level="2"

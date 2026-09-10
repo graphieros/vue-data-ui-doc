@@ -28,6 +28,8 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import { COLOR_PICKER_PALETTE } from "../../consts.js";
+import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 
 const mainConfig = useConfig();
 
@@ -181,6 +183,7 @@ const config = ref({
         secondary: "#20B2AA", // Light sea green - reuse/recover
     },
     userOptions: {
+        annotatorPalette: COLOR_PICKER_PALETTE,
         show: true,
         showOnChartHover: false,
         keepStateOnChartLeave: true,
@@ -382,6 +385,7 @@ const darkModeConfig = ref({
         secondary: "#20B2AA",
     },
     userOptions: {
+        annotatorPalette: COLOR_PICKER_PALETTE,
         show: true,
         showOnChartHover: false,
         keepStateOnChartLeave: true,
@@ -1659,6 +1663,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                                 :light="mutableConfig"
                                 :dark="mutableConfigDarkMode"
                             />
+                            <BaseAttrAnnotatorPalette />
                             <BaseDetails
                                 attr="buttons"
                                 :level="2"

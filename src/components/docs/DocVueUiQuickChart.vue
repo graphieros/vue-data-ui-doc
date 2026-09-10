@@ -27,6 +27,7 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import { COLOR_PICKER_PALETTE } from "../../consts.js";
 
 const mainConfig = useConfig();
 
@@ -175,6 +176,7 @@ const quickDatasetBar = ref([
 ]);
 
 const config = ref({
+    annotatorPalette: COLOR_PICKER_PALETTE,
     devHints: { enable: false },
     a11y: {
         translations: {
@@ -356,6 +358,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    annotatorPalette: COLOR_PICKER_PALETTE,
     devHints: { enable: false },
     a11y: {
         translations: {

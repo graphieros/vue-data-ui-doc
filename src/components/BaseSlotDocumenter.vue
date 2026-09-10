@@ -715,6 +715,292 @@ const items = computed(() => {
     </${props.componentName}>
             `,
         },
+        {
+            names: ["toggle"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #toggle="{ toggle, isOpen }">
+            <!-- Use this slot to replace the built-in accordion menu with your own toggle mechanism -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-move"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-move="{ active }">
+            <!-- Use your own icon for the move action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-resize"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-resize="{ active }">
+            <!-- Use your own icon for the resize/edit action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-delete"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-delete="{ active }">
+            <!-- Use your own icon for the delete action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-select-group"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-select-group="{ active }">
+            <!-- Use your own icon for the select & group action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-bring-to-front"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-bring-to-front>
+            <!-- Use your own icon for the bring to front action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-bring-to-back"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-bring-to-back>
+            <!-- Use your own icon for the bring to back action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-copy"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-copy>
+            <!-- Use your own icon for the copy action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-undo"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-undo>
+            <!-- Use your own icon for the undo action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-redo"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-redo>
+            <!-- Use your own icon for the redo action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-print"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-print>
+            <!-- Use your own icon for the print action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-export-image"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-export-image>
+            <!-- Use your own icon for the export png image action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-save"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-save>
+            <!-- Use your own icon for the save action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-circle"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-circle="{ filled }">
+            <!-- Use your own icon for the circle shape action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-rect"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-rect="{ filled }">
+            <!-- Use your own icon for the rect shape action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-arrow"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-arrow>
+            <!-- Use your own icon for the arrow shape action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-freehand"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-freehand>
+            <!-- Use your own icon for the freehand draw action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text="{ active }">
+            <!-- Use your own icon for the text action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text-align-left"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text-align-left>
+            <!-- Use your own icon for the text align left action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text-align-center"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text-align-center>
+            <!-- Use your own icon for the text align center action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text-align-right"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text-align-right>
+            <!-- Use your own icon for the text align right action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text-bullet-points"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text-bullet-points>
+            <!-- Use your own icon for the text bullet points action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text-bold"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text-bold>
+            <!-- Use your own icon for the text bold action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text-italic"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text-italic>
+            <!-- Use your own icon for the text italic action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-text-underline"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-text-underline>
+            <!-- Use your own icon for the text underline action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["icon-color"],
+            description: "",
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #icon-color>
+            <!-- Use your own icon for the color action -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
     ];
 });
 

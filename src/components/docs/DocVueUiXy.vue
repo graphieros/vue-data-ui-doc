@@ -35,6 +35,8 @@ import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue
 import SsrGeneration from "../SsrGeneration.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import { COLOR_PICKER_PALETTE } from "../../consts.js";
+import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 
 const mainConfig = useConfig();
 
@@ -534,6 +536,7 @@ const config = ref({
             smoothSnapThreshold: 0.25,
         },
         userOptions: {
+            annotatorPalette: COLOR_PICKER_PALETTE,
             useCursorPointer: false,
             print: {
                 scale: 2,
@@ -1028,6 +1031,7 @@ const darkModeConfig = ref({
             smoothSnapThreshold: 0.25,
         },
         userOptions: {
+            annotatorPalette: COLOR_PICKER_PALETTE,
             useCursorPointer: false,
             print: {
                 scale: 2,
@@ -3730,6 +3734,7 @@ const customFormatCode =
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
+                                    <BaseAttrAnnotatorPalette />
                                     <BaseDetails
                                         attr="buttons"
                                         :level="3"

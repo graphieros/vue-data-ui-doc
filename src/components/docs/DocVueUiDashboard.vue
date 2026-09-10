@@ -26,6 +26,8 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import { COLOR_PICKER_PALETTE } from "../../consts.js";
+import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 
 const mainConfig = useConfig();
 
@@ -65,6 +67,7 @@ const config = ref({
         },
     },
     userOptions: {
+        annotatorPalette: COLOR_PICKER_PALETTE,
         show: true,
         showOnChartHover: false,
         keepStateOnChartLeave: true,
@@ -475,6 +478,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
                                 :light="mutableConfig"
                                 :dark="mutableConfig"
                             />
+                            <BaseAttrAnnotatorPalette />
                             <BaseDetails
                                 attr="buttons"
                                 :level="2"

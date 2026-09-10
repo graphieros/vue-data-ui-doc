@@ -1,11 +1,32 @@
 [
     {
+        "version": "v 3.25.5",
+        "date": "2026-09-10",
+        "updates": [
+            {
+                "component": "VueUiRidgeline",
+                "description": "Add config attributes for better customization of y-axis labels. Improve readaility of the chart data labels.",
+                "link": "/docs#vue-ui-ridgeline"
+            },
+            {
+                "component": "VueUiAnnotator",
+                "description": "Improve shape editing. Add slots to customize menu toggle mechanism and button icons.",
+                "link": "/docs#vue-ui-annotator"
+            },
+            {
+                "component": "Built-in chart annotator",
+                "description": "Add config option in charts userOptions config to customize the annotator's default colors in its color picker popover.",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.25.4",
         "date": "2026-09-07",
         "updates": [
             {
                 "component": "Time labels",
-                "description": "Resotre dedupe of x-axis time labels removed in 3.25.0",
+                "description": "Restore dedupe of x-axis time labels removed in 3.25.0",
                 "link": ""
             },
             {
