@@ -237,11 +237,20 @@ const config = ref({
                     intensity: 60,
                     shiftHue: 0.05,
                 },
+                labels: {
+                    show: true,
+                    showOnHover: true,
+                    fontSize: 12,
+                    color: "#1A1A1A",
+                    bold: false,
+                    formatter: null,
+                    offsetX: 0,
+                },
             },
         },
         highlighter: {
             color: "#1A1A1A",
-            opacity: 10,
+            opacity: 0,
         },
         title: {
             text: "Title",
@@ -414,11 +423,20 @@ const darkModeConfig = ref({
                     intensity: 60,
                     shiftHue: 0.05,
                 },
+                labels: {
+                    show: true,
+                    showOnHover: true,
+                    fontSize: 12,
+                    color: "#CCCCCC",
+                    bold: false,
+                    formatter: null,
+                    offsetX: 0,
+                },
             },
         },
         highlighter: {
             color: "#FFFFFF",
-            opacity: 15,
+            opacity: 0,
         },
         title: {
             text: "Title",

@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.25.6",
+        "date": "2026-09-13",
+        "updates": [
+            {
+                "component": "VueUiRidgeline",
+                "description": "Add config attribute to show the last label when the chart is not hovered.",
+                "link": "/docs#vue-ui-ridgeline"
+            },
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Add config attribute to display bar data labels.",
+                "link": "/docs#vue-ui-age-pyramid"
+            }
+        ]
+    },
+    {
         "version": "v 3.25.5",
         "date": "2026-09-10",
         "updates": [

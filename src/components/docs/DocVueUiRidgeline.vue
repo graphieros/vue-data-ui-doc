@@ -561,6 +561,7 @@ const darkModeConfig = ref({
                     formatter: null,
                     rounding: 0,
                     color: "#CCCCCC",
+                    showLast: false,
                 },
                 dot: {
                     radius: 4,
@@ -913,6 +914,7 @@ const config = ref({
                     formatter: null,
                     rounding: 0,
                     color: "#1A1A1A",
+                    showLast: false,
                 },
                 dot: {
                     radius: 4,
@@ -1789,6 +1791,14 @@ function goToPage(route) {
                                             defaultVal="12"
                                             :min="8"
                                             :max="48"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="showLast"
+                                            attr="style.chart.selector.labels.showLast"
+                                            type="checkbox"
+                                            defaultVal="false"
                                             :light="mutableConfig"
                                             :dark="mutableConfigDarkMode"
                                         />
