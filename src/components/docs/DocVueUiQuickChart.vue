@@ -15,7 +15,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import Rater from "../Rater.vue";
 import CodeParser from "../customization/CodeParser.vue";
-import { jsonToJsObject, copyCode } from "../maker/lib";
+import { jsonToJsObject, copyCode, createNumbers } from "../maker/lib";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
@@ -145,19 +145,21 @@ const quickDatasetDonut = ref([
 const quickDatasetLine = ref([
     {
         name: "Serie1",
-        values: [1, 2, 3, 2, 3, 4, 3, 4, 5],
+        values: createNumbers({ count: 10, seed: "M", trend: "up", mult: 100 }),
     },
     {
         name: "Serie2",
-        values: [5, 6, 7, 6, 7, 8, 7, 8, 9],
+        values: createNumbers({ count: 10, seed: "B", trend: "up", mult: 75 }),
     },
     {
         name: "Serie3",
-        values: [1, 2, 3, 5, 8, 13, 21, 13, 8],
+        values: createNumbers({ count: 10, seed: "C", trend: "up", mult: 25 }),
     },
 ]);
 
-const quickDatasetSimpleLine = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89]);
+const quickDatasetSimpleLine = ref(
+    createNumbers({ count: 10, seed: "M", trend: "up", mult: 100 }),
+);
 const quickDatasetSimpleBar = ref([1, 2, -3, 5, 8]);
 
 const quickDatasetBar = ref([
@@ -583,15 +585,15 @@ const datasetSnippets = ref({
     lines: `const dataset = ref([
     {
         name: 'Serie1',
-        values: [1, 2, 3, 2, 3, 4, 3, 4, 5]
+        values: [${createNumbers({ count: 10, seed: "M", trend: "up", mult: 100 })}]
     },
     {
         name: 'Serie2',
-        values: [5, 6, 7, 6, 7, 8, 7, 8, 9]
+        values: [${createNumbers({ count: 10, seed: "B", trend: "up", mult: 75 })}]
     },
     {
         name: 'Serie3',
-        values: [1, 2, 3, 5, 8, 13, 21, 13, 8]
+        values: [${createNumbers({ count: 10, seed: "C", trend: "up", mult: 25 })}]
     },
 ])`,
     donut: `const dataset = ref([
