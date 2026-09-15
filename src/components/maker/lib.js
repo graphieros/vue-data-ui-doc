@@ -451,7 +451,7 @@ export function fillEmptyDays(dates) {
     return result;
 }
 
-export function createNumbers({ count, seed, trend = null }) {
+export function createNumbers({ count, seed, trend = null, mult = 1 }) {
     const seedString = String(seed);
     let hash = 2166136261;
     for (let i = 0; i < seedString.length; i++) {
@@ -464,7 +464,7 @@ export function createNumbers({ count, seed, trend = null }) {
         let t = state;
         t = Math.imul(t ^ (t >>> 15), t | 1);
         t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        return (((t ^ (t >>> 14)) >>> 0) / 4294967296) * mult;
     };
 
     const numbers = Array.from({ length: count }, random);

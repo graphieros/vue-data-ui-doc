@@ -24,6 +24,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import { createNumbers } from "../maker/lib.js";
 
 const mainConfig = useConfig();
 
@@ -47,9 +48,15 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
-const positiveDs = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89]);
-const neutralDs = ref([10, 12, 8, 4, 9, 6, 7, 4, 8, 8]);
-const negativeDs = ref([89, 55, 34, 21, 13, 8, 5, 3, 2, 1]);
+const positiveDs = ref(
+    createNumbers({ count: 10, seed: "V", trend: null, mult: 10000 }),
+);
+const neutralDs = ref([
+    10000, 1200, 8000, 4000, 9000, 6000, 7000, 4000, 8000, 8000,
+]);
+const negativeDs = ref(
+    createNumbers({ count: 10, seed: "R", trend: null, mult: 10000 }),
+);
 
 const config = ref({
     devHints: { enable: false },
