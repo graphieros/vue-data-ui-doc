@@ -30,6 +30,7 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import { createNumbers } from "../maker/lib.js";
 
 const mainConfig = useConfig();
 
@@ -68,76 +69,90 @@ const isDarkMode = computed(() => {
 //   })
 // );
 
-const dataset = ref([
-    {
-        period: "period 1",
-        value: 0,
-    },
-    {
-        period: "period 2",
-        value: 1,
-    },
-    {
-        period: "period 3",
-        value: 0,
-    },
-    {
-        period: "period 4",
-        value: 2,
-    },
-    {
-        period: "period 5",
-        value: 1,
-    },
-    {
-        period: "period 6",
-        value: 3,
-    },
-    {
-        period: "period 7",
-        value: 2,
-    },
-    {
-        period: "period 8",
-        value: 5,
-    },
-    {
-        period: "period 9",
-        value: 3,
-    },
-    {
-        period: "period 10",
-        value: 8,
-    },
-    {
-        period: "period 11",
-        value: 5,
-    },
-    {
-        period: "period 12",
-        value: 13,
-    },
-    {
-        period: "period 13",
-        value: 8,
-    },
-    {
-        period: "period 14",
-        value: 21,
-    },
-    {
-        period: "period 15",
-        value: 13,
-    },
-    {
-        period: "period 16",
-        value: 34,
-    },
-    {
-        period: "period 17",
-        value: 21,
-    },
-]);
+const nums = createNumbers({
+    count: 16,
+    seed: "patak",
+    trend: null,
+    mult: 100,
+});
+
+const dataset = ref(
+    nums.map((n, i) => ({
+        period: `period ${i + 1}`,
+        value: n,
+    })),
+);
+
+// const dataset = ref([
+//     {
+//         period: "period 1",
+//         value: 0,
+//     },
+//     {
+//         period: "period 2",
+//         value: 1,
+//     },
+//     {
+//         period: "period 3",
+//         value: 0,
+//     },
+//     {
+//         period: "period 4",
+//         value: 2,
+//     },
+//     {
+//         period: "period 5",
+//         value: 1,
+//     },
+//     {
+//         period: "period 6",
+//         value: 3,
+//     },
+//     {
+//         period: "period 7",
+//         value: 2,
+//     },
+//     {
+//         period: "period 8",
+//         value: 5,
+//     },
+//     {
+//         period: "period 9",
+//         value: 3,
+//     },
+//     {
+//         period: "period 10",
+//         value: 8,
+//     },
+//     {
+//         period: "period 11",
+//         value: 5,
+//     },
+//     {
+//         period: "period 12",
+//         value: 13,
+//     },
+//     {
+//         period: "period 13",
+//         value: 8,
+//     },
+//     {
+//         period: "period 14",
+//         value: 21,
+//     },
+//     {
+//         period: "period 15",
+//         value: 13,
+//     },
+//     {
+//         period: "period 16",
+//         value: 34,
+//     },
+//     {
+//         period: "period 17",
+//         value: 21,
+//     },
+// ]);
 
 const darkModeConfig = ref({
     devHints: { enable: false },
