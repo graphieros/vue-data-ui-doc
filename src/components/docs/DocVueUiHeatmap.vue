@@ -105,6 +105,8 @@ const config = ref({
                 strokeDasharray: 0,
             },
             cells: {
+                scaleMax: null,
+                scaleMin: null,
                 rowTotal: {
                     value: {
                         show: true,
@@ -320,6 +322,8 @@ const darkModeConfig = ref({
                 strokeDasharray: 0,
             },
             cells: {
+                scaleMax: null,
+                scaleMin: null,
                 rowTotal: {
                     value: {
                         show: true,
@@ -856,6 +860,26 @@ const customFormatCode =
                                     :level="3"
                                     title="style.layout.cells"
                                 >
+                                    <BaseAttr
+                                        name="scaleMax"
+                                        attr="style.layout.cells.scaleMax"
+                                        type="number"
+                                        defaultVal="null"
+                                        :min="-100000"
+                                        :max="100000"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="scaleMin"
+                                        attr="style.layout.cells.scaleMin"
+                                        type="number"
+                                        defaultVal="null"
+                                        :min="-100000"
+                                        :max="100000"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
                                     <BaseAttr
                                         name="height"
                                         attr="style.layout.cells.height"

@@ -1,46 +1,18 @@
-## `VueUiRidgeline` improvements
+## `VueUiHeatmap` improvements
 
-- New config attribute to show the last label when the chart is not hovered:
+- `scaleMax` and `scaleMin` optional config attributes are added, to control the strength of cell colors on a fixed bounds, instead of relying on the default max value of the dataset.
 
-```ts
-const config = computed<VueUiRidgelineConfig>(() => ({
-    style: {
-        chart: {
-            yAxis: {
-                labels: {
-                    showLast: false, // new
-                },
-            },
-        },
-    },
-}));
-```
-
-## `VueUiAgePyramid` improvements
-
-- Optional display of bar data labels:
+- The previous behavior is unchanged, since these new properties are set to `null` by default.
 
 ```ts
-const config = computed<VueUiAgePyramidConfig>(() => ({
+const config = computed<VueUiHeatmapConfig>(() => ({
     style: {
         layout: {
-            bars: {
-                // new
-                labels: {
-                    show: true,
-                    showOnHover: true, // set to false, always shows labels if labels.show is also true
-                    fontSize: 12,
-                    color: "#2D353C",
-                    bold: false,
-                    formatter: null,
-                    offsetX: 0,
-                },
+            cells: {
+                scaleMax: null, // new
+                scaleMin: null, // new
             },
         },
     },
 }));
 ```
-
-## Other
-
-- Reduce package size (-133 Ko)

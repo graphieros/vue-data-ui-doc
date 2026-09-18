@@ -22834,7 +22834,24 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         label: ["crosshairs", "is", "thickness"],
                         category: "general",
                     },
-
+                    {
+                        key: "style.layout.cells.scaleMax",
+                        def: null,
+                        type: "number",
+                        label: ["cells", "scale", "is", "max"],
+                        category: "general",
+                        min: -1000000,
+                        max: 1000000,
+                    },
+                    {
+                        key: "style.layout.cells.scaleMin",
+                        def: null,
+                        type: "number",
+                        label: ["cells", "scale", "is", "min"],
+                        category: "general",
+                        min: -1000000,
+                        max: 1000000,
+                    },
                     {
                         key: "style.layout.cells.value.show",
                         def: true,

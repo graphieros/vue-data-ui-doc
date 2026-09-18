@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.25.8",
+        "date": "2026-09-18",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Add optional scaleMax and scaleMin config attributes.",
+                "link": "/docs#vue-ui-heatmap"
+            }
+        ]
+    },
+    {
         "version": "v 3.25.7",
         "date": "2026-09-15",
         "updates": [
