@@ -839,7 +839,7 @@ const kpiConfig = computed(() => {
                             useArea: true,
                         },
                         {
-                            name: 'Cumulative average',
+                            name: 'Cumulative median',
                             series:
                                 hasStalled || !isRunning
                                     ? median
