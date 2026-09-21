@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
-import { VueUiKpi, VueUiXyCanvas } from "vue-data-ui";
+import { VueUiKpi, VueUiXyCanvas, getCumulativeMedian } from "vue-data-ui";
 import "vue-data-ui/style.css";
 import { useMainStore } from "../stores";
 import { SkullIcon } from "vue-tabler-icons";
@@ -237,6 +237,10 @@ function step() {
     }
 }
 
+const median = computed(() =>
+    getCumulativeMedian({ values: dataset.value.map((d) => d.value) }),
+);
+
 function start() {
     if (isRunning.value) return;
 
@@ -264,6 +268,7 @@ function pause() {
 function clearChart() {
     generations.value = 0;
     dataset.value = [];
+    median.value = [];
 }
 
 function reset() {
@@ -832,6 +837,17 @@ const kpiConfig = computed(() => {
                             dataLabels: false,
                             color: isDarkMode ? '#42d392' : '#5f8aee',
                             useArea: true,
+                        },
+                        {
+                            name: 'Cumulative average',
+                            series:
+                                hasStalled || !isRunning
+                                    ? median
+                                    : median.slice(-301),
+                            type: 'line',
+                            smooth: true,
+                            color: '#ff3700',
+                            useArea: false,
                         },
                     ]"
                     :config="{
