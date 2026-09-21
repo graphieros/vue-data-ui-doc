@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.25.9",
+        "date": "2026-09-21",
+        "updates": [
+            {
+                "component": "All components with tooltips",
+                "description": "Do not re-render components when only the tooltip config changes.",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.25.8",
         "date": "2026-09-18",
         "updates": [

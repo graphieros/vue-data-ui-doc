@@ -1194,7 +1194,6 @@ const customFormatCode =
                                         defaultVal="true"
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
                                     />
                                     <BaseAttr
                                         name="backgroundColor"
