@@ -1,3 +1,4 @@
-## Fix (all components with tooltips)
+## VueUiHorizontalBar fixes
 
-- Do not re-render components when only the tooltip configuration changes dynamically
+- The legend slot is now available when `legend.position` is set to `top`
+- Fix `bars.sort` not responding dynamically from the configuration

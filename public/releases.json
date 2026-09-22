@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.25.10",
+        "date": "2026-09-22",
+        "updates": [
+            {
+                "component": "VueUiHorizontalBar",
+                "description": "Make #legend slot available when legend.position is set to 'top'. Fix 'bars.sort' not responding dynamically from the config.",
+                "link": "/docs#vue-ui-horizontal-bar"
+            }
+        ]
+    },
+    {
         "version": "v 3.25.9",
         "date": "2026-09-21",
         "updates": [
