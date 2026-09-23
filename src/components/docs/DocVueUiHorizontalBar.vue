@@ -31,8 +31,6 @@ import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
-import BaseTipsAndTricks from "../BaseTipsAndTricks.vue";
-import BaseTip from "./BaseTip.vue";
 import TricksVueUiHorizontalBar from "./tricks/TricksVueUiHorizontalBar.vue";
 
 const mainConfig = useConfig();
