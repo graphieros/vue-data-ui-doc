@@ -31,6 +31,9 @@ import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
+import BaseTipsAndTricks from "../BaseTipsAndTricks.vue";
+import BaseTip from "./BaseTip.vue";
+import TricksVueUiHorizontalBar from "./tricks/TricksVueUiHorizontalBar.vue";
 
 const mainConfig = useConfig();
 
@@ -735,6 +738,7 @@ const customFormatCode =
             showResponsive
             showPatterns
             showCallbacks
+            showTricks
             schema="vue_ui_horizontal_bar"
             signInfo="both"
         >
@@ -2491,6 +2495,10 @@ const customFormatCode =
                         'svg',
                     ]"
                 />
+            </template>
+
+            <template #tab13>
+                <TricksVueUiHorizontalBar />
             </template>
         </Box>
     </div>
