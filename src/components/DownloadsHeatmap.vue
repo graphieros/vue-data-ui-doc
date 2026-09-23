@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, useTemplateRef, onMounted, nextTick, watch } from "vue";
 import BaseCard from "./BaseCard.vue";
 import { useMainStore } from "../stores/index.js";
 import { adaptColorToBackground } from "vue-data-ui/utils";
@@ -277,12 +277,31 @@ const config = computed(() => {
         },
     };
 });
+
+function log(n) {
+    console.log(n);
+}
 </script>
 
 <template>
     <BaseCard v-if="data" class="max-w-[800px] mx-auto mt-6">
         <VueUiSkeleton v-if="isLoading" :config="skeletonConfig" />
         <VueUiHeatmap v-else :dataset :config>
+            <template #svg="{ svg }">
+                <template v-for="cell in svg.cells" :key="cell.datapoint.id">
+                    <rect
+                        v-if="
+                            cell.datapoint.value === 0 && cell.columnIndex >= 51
+                        "
+                        :x="cell.x + 2"
+                        :y="cell.y + 2"
+                        :width="cell.width - 4"
+                        :height="cell.height - 4"
+                        fill="red"
+                        style="pointer-events: none"
+                    />
+                </template>
+            </template>
             <template #tooltip="{ datapoint, seriesIndex, series }">
                 <div class="px-3 py-2 text-left">
                     <div
@@ -325,6 +344,12 @@ const config = computed(() => {
                     <a class="text-app-blue underline" :href="url">
                         api.npmjs.org
                     </a>
+                </div>
+                <div class="flex flew-row mt-2 pl-2 items-center gap-2">
+                    <div class="h-2.5 w-2.5 bg-[#FF0000]" />
+                    <span class="text-xs">
+                        Days when npm downloads were not recorded
+                    </span>
                 </div>
             </template>
         </VueUiHeatmap>

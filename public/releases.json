@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.25.11",
+        "date": "2026-09-23",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Expose cells data in #svg slot.",
+                "link": "/docs#vue-ui-heatmap"
+            }
+        ]
+    },
+    {
         "version": "v 3.25.10",
         "date": "2026-09-22",
         "updates": [
