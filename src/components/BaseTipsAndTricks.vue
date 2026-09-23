@@ -2,13 +2,6 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 
-const props = defineProps({
-    component: {
-        type: String,
-        required: true,
-    },
-});
-
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
