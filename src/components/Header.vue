@@ -301,6 +301,19 @@ const message = ref({
     ko: "귀사의 연 매출이 200만 달러를 넘더라도 Vue Data UI는 여전히 무료입니다",
     ar: "حتى إذا حققت شركتك أكثر من 2 مليون دولار سنويًا، يظل Vue Data UI مجانًا",
 });
+
+function getHighlightStyle(item) {
+    if (item.link === router.currentRoute.value.fullPath) {
+        const color = isDarkMode.value ? "#42d392" : "#5f8aee";
+        return {
+            background: `${color}20`,
+            borderLeft: `1px solid ${color}`,
+            borderRight: `1px solid ${color}`,
+        };
+    } else {
+        return {};
+    }
+}
 </script>
 
 <template>
@@ -402,9 +415,9 @@ const message = ref({
                             </div>
                             <div
                                 v-for="menu in simpleMenu"
-                                class="flex flex-col bg-gray-100 dark:bg-[#2A2A2A] pl-2 pt-2 rounded-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] pb-2"
+                                class="flex flex-col bg-gray-100 dark:bg-[#2A2A2A] pt-2 rounded-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] pb-2"
                             >
-                                <div class="text-s mb-4 font-inter-medium">
+                                <div class="text-s mb-4 font-inter-medium pl-2">
                                     {{ menu.category }}
                                 </div>
                                 <FlexibleTooltip
@@ -432,30 +445,11 @@ const message = ref({
                                         @click="closeDocsMenu"
                                     >
                                         <div
-                                            class="flex flex-row place-items-center py-1 gap-2 relative"
+                                            class="flex flex-row place-items-center py-1 gap-2 relative pl-2"
+                                            :style="{
+                                                ...getHighlightStyle(item),
+                                            }"
                                         >
-                                            <svg
-                                                v-if="
-                                                    item.link ===
-                                                    router.currentRoute.value
-                                                        .fullPath
-                                                "
-                                                viewBox="0 0 10 10"
-                                                height="10"
-                                                width="10"
-                                                class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse"
-                                            >
-                                                <circle
-                                                    cx="5"
-                                                    cy="5"
-                                                    r="5"
-                                                    :fill="
-                                                        isDarkMode
-                                                            ? '#42d392'
-                                                            : '#83a4f2'
-                                                    "
-                                                />
-                                            </svg>
                                             <div class="h-[16px] w-[16px]">
                                                 <VueUiIcon
                                                     :name="item.icon"
