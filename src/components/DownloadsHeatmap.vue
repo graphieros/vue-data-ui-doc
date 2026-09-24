@@ -278,8 +278,11 @@ const config = computed(() => {
     };
 });
 
-function log(n) {
-    console.log(n);
+function getNpmFukkupPathCoords(cell) {
+    const cx = cell.x + cell.width / 2;
+    const cy = cell.y + cell.height / 2;
+    const cross = "-6-6m6 6 6 6m0-12-12 12";
+    return `m${cx} ${cy}${cross}`;
 }
 </script>
 
@@ -289,17 +292,31 @@ function log(n) {
         <VueUiHeatmap v-else :dataset :config>
             <template #svg="{ svg }">
                 <template v-for="cell in svg.cells" :key="cell.datapoint.id">
-                    <rect
+                    <g
                         v-if="
-                            cell.datapoint.value === 0 && cell.columnIndex >= 51
+                            cell.datapoint.value === 0 && cell.columnIndex < 51
                         "
-                        :x="cell.x + 2"
-                        :y="cell.y + 2"
-                        :width="cell.width - 4"
-                        :height="cell.height - 4"
-                        fill="red"
                         style="pointer-events: none"
-                    />
+                    >
+                        <rect
+                            v-if="
+                                cell.datapoint.value === 0 &&
+                                cell.columnIndex < 51
+                            "
+                            :x="cell.x + 2"
+                            :y="cell.y + 2"
+                            :width="cell.width - 4"
+                            :height="cell.height - 4"
+                            :fill="isDarkMode ? '#ff3700' : '#a32300'"
+                            style="pointer-events: none"
+                        />
+                        <path
+                            :d="getNpmFukkupPathCoords(cell)"
+                            :stroke="isDarkMode ? '#ff8c00' : '#ffb152'"
+                            stroke-linecap="round"
+                            stroke-width="2"
+                        />
+                    </g>
                 </template>
             </template>
             <template #tooltip="{ datapoint, seriesIndex, series }">
@@ -346,7 +363,17 @@ function log(n) {
                     </a>
                 </div>
                 <div class="flex flew-row mt-2 pl-2 items-center gap-2">
-                    <div class="h-2.5 w-2.5 bg-[#FF0000]" />
+                    <div
+                        class="h-2.5 w-2.5 bg-app-red-dark dark:bg-app-red relative flex"
+                    >
+                        <VueUiIcon
+                            name="close"
+                            :stroke="isDarkMode ? '#ff8c00' : '#ffb152'"
+                            :size="14"
+                            :stroke-width="2"
+                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        />
+                    </div>
                     <span class="text-xs">
                         Days when npm downloads were not recorded
                     </span>
