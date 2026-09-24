@@ -1,53 +1,38 @@
-## VueUiHeatmap improvement
+## VueUiXy
 
-- Expose the cells data in the #svg slot:
+### Edge case fixes for line types
+
+- `useArea` now always cuts around null values, even when `line.cutNullValues: false`, while the line still connects non null edges. Interline areas follow the same rule.
+
+- fix areas offset when zooming on datasets with interlines, resulting in diagonal cuts
+
+- fix dashIndices getting offset when using the zoom
+
+- fix line series with `useStepper:true` rendering issue with null values associated with `config.line.cutNullValues:false`
+
+### Improvements
+
+- For line types: add option to show null values as dashed segments
 
 ```ts
-// #svg slot contents:
-
-{
-    drawingArea: {
-        bottom: number;
-        cellSize: { height: number; width: number };
-        height: number;
-        left: number;
-        right: number;
-        sumCellXHeight: number;
-        top: number;
-        topLabelsHeight: number;
-        width: number;
-    };
-    height: number;
-    isPrintingImg: boolean;
-    isPrintingSvg: boolean;
-    width: number;
-    cells: VueUiHeatmapCell[];
-};
-
+const config = computed<VueUiXyConfig>(() => ({
+    line: {
+        nullDashes: {
+            show: false, // default
+        },
+    },
+}));
 ```
 
-```ts
-type VueUiHeatmapCell = {
-    datapoint: VueUiHeatmapDatapoint;
-    rowIndex: number;
-    columnIndex: number;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    labelX: number;
-    labelY: number;
-    selectionX: number;
-    selectionY: number;
-};
+To show null values as dashed segments:
 
-type VueUiHeatmapDatapoint = {
-    color: string;
-    id: string;
-    ratio: number;
-    side: "up" | "down";
-    value: number | null;
-    xAxisName: string | undefined;
-    yAxisName: string | undefined;
-};
+```ts
+const config = computed<VueUiXyConfig>(() => ({
+    line: {
+        cutNullValues: false,
+        nullDashes: {
+            show: true,
+        },
+    },
+}));
 ```

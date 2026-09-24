@@ -294,13 +294,15 @@ const dataset = computed(() => {
     return [
         {
             name: "vue-data-ui",
-            series: data_lib.value,
+            series: data_lib.value.map((d) => d || null),
             type: "line",
             dataLabels: false,
             marked: true,
             temperatureColors: ["#83a4f2", "#3456a3"],
             color: "#83a4f2",
             useStepper: false,
+            useArea: false,
+            smooth: false,
         },
         {
             name: "vue-data-ui (same period last year)",
@@ -502,6 +504,10 @@ const config = computed(() => {
             radius: 3,
             useGradient: false,
             strokeWidth: 3,
+            cutNullValues: false,
+            nullDashes: {
+                show: true,
+            },
             tag: {
                 followValue: true,
                 formatter: ({ value, config }) => {

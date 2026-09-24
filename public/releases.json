@@ -1,5 +1,31 @@
 [
     {
+        "version": "v 3.25.12",
+        "date": "2026-09-24",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "`useArea` now always cuts around null values, even when `line.cutNullValues: false`, while the line still connects non null edges. Interline areas follow the same rule.",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Fix areas offset when zooming on datasets with interlines, resulting in diagonal cuts. Also fix areas offset when zooming on datasets with interlines, resulting in diagonal cuts. Also fix dashIndices getting offset when using the zoom.",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "fix line series with `useStepper:true` rendering issue with null values associated with `config.line.cutNullValues:false`",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Add new config attribute for line types to show null values as dashed segments, connecting valid edges.",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.25.11",
         "date": "2026-09-23",
         "updates": [

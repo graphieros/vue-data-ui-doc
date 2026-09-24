@@ -126,7 +126,7 @@ const dataset = computed(() => {
             shape: "circle",
             scaleSteps: 5,
             showSerieName: "end",
-            dashIndices: [6],
+            dashIndices: [8],
         },
         {
             name: "Series 4",
@@ -609,6 +609,9 @@ const config = ref({
         useGradient: true,
         strokeWidth: 2,
         cutNullValues: false,
+        nullDashes: {
+            show: false,
+        },
         interLine: {
             pairs: [],
             colors: [],
@@ -1100,6 +1103,9 @@ const darkModeConfig = ref({
         useGradient: true,
         strokeWidth: 2,
         cutNullValues: false,
+        nullDashes: {
+            show: false,
+        },
         interLine: {
             pairs: [],
             colors: [],
@@ -4647,6 +4653,21 @@ const customFormatCode =
                                     :dark="mutableConfigDarkMode"
                                     comment="Since v2.7.2"
                                 />
+                                <BaseDetails
+                                    attr="nullDashes"
+                                    :level="2"
+                                    title="line.nullDashes"
+                                >
+                                    <BaseAttr
+                                        name="show"
+                                        attr="line.nullDashes.show"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                        comment="Since v3.25.12"
+                                    />
+                                </BaseDetails>
                                 <BaseDetails
                                     attr="interLine"
                                     :level="2"

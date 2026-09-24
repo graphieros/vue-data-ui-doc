@@ -13441,9 +13441,9 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     {
                         key: "bar.border.useSerieColor",
                         def: false,
-                        type: "checkbox",
                         label: ["border", "is", "serie color"],
                         type: "checkbox",
+                        category: "bar",
                     },
                     {
                         key: "bar.border.strokeWidth",
@@ -13474,6 +13474,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         def: false,
                         type: "checkbox",
                         label: "Cut null values",
+                        category: "line",
+                    },
+                    {
+                        key: "line.nullDashes.show",
+                        def: false,
+                        type: "checkbox",
+                        label: "Show null values as dashed",
                         category: "line",
                     },
                     {
