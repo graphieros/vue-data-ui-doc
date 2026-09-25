@@ -135,6 +135,9 @@ const darkModeConfig = ref({
             cutNullValues: false,
             dashIndices: [],
             dashArray: 4,
+            nullDashes: {
+                show: false,
+            },
             pulse: {
                 show: false,
                 loop: true,
@@ -275,6 +278,9 @@ const config = ref({
             strokeWidth: 3,
             smooth: true,
             cutNullValues: false,
+            nullDashes: {
+                show: false,
+            },
             dashIndices: [],
             dashArray: 4,
             pulse: {
@@ -1286,6 +1292,20 @@ const prefersReduced = ref({
                                         :light="mutableConfig"
                                         :dark="mutableConfigDarkMode"
                                     />
+                                    <BaseDetails
+                                        attr="nullDashes"
+                                        :level="3"
+                                        title="style.line.nullDashes"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.line.nullDashes.show"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
                                     <BaseDetails
                                         attr="pulse"
                                         :level="3"

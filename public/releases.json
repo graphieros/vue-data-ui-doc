@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.25.13",
+        "date": "2026-09-25",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Add new config attribute for line types to show null values as dashed segments, connecting valid edges.",
+                "link": "/docs#vue-ui-sparkline"
+            }
+        ]
+    },
+    {
         "version": "v 3.25.12",
         "date": "2026-09-24",
         "updates": [
