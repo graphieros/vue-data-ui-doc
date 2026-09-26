@@ -312,7 +312,9 @@ function isLastWeek(colIndex) {
                             :height="cell.height - 4"
                             :fill="
                                 isLastWeek(cell.columnIndex)
-                                    ? '#1A1A1A'
+                                    ? isDarkMode
+                                        ? '#1A1A1A'
+                                        : '#CCCCCC'
                                     : isDarkMode
                                       ? '#ff3700'
                                       : '#a32300'
@@ -325,7 +327,15 @@ function isLastWeek(colIndex) {
                                     isLastWeek(cell.columnIndex),
                                 )
                             "
-                            :stroke="isDarkMode ? '#ff8c00' : '#ffb152'"
+                            :stroke="
+                                isLastWeek(cell.columnIndex)
+                                    ? isDarkMode
+                                        ? '#ff8c00'
+                                        : '#1A1A1A'
+                                    : isDarkMode
+                                      ? '#ff8c00'
+                                      : '#ffb152'
+                            "
                             stroke-linecap="round"
                             :stroke-width="
                                 isLastWeek(cell.columnIndex) ? 1.5 : 2
@@ -395,7 +405,9 @@ function isLastWeek(colIndex) {
                     </span>
                 </div>
                 <div class="flex flew-row mt-2 pl-2 items-center gap-2">
-                    <div class="h-2.5 w-2.5 bg-black relative flex">
+                    <div
+                        class="h-2.5 w-2.5 bg-[#CCCCCC] dark:bg-black relative flex"
+                    >
                         <svg
                             viewBox="2 1 18 18"
                             class="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -403,7 +415,7 @@ function isLastWeek(colIndex) {
                             <path
                                 d="M11 10Q15 10 15 7C15 4 7 4 7 7M11 10 11 12M11 14A1 1 0 0011 16 1 1 0 0011 14"
                                 fill="none"
-                                :stroke="isDarkMode ? '#ff8c00' : '#ffb152'"
+                                :stroke="isDarkMode ? '#ff8c00' : '#1A1A1A'"
                                 stroke-width="2"
                             />
                         </svg>
