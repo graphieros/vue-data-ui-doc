@@ -18,6 +18,7 @@ import { useIconMapUnderscore } from "../useIconMapUnderscore";
 import BaseScroll from "../components/Base/BaseScroll.vue";
 import { useCompactNumberFormatter } from "../useCompactNumberFormatter";
 import DownloadsHeatmap from "../components/DownloadsHeatmap.vue";
+import ReleaseKeywordsBar from "../components/ReleaseKeywordsBar.vue";
 
 const globalConfig = useConfig();
 const store = useMainStore();
@@ -2814,6 +2815,7 @@ const digitsConfigVersion = computed(() => {
                                 </div>
                             </template>
                         </VueDataUi>
+                        <ReleaseKeywordsBar :data="wordCloudDataset" />
                     </div>
                 </BaseCard>
 
