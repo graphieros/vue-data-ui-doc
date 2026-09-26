@@ -36,6 +36,13 @@ const crumbs = ref([
 
 const menuItems = computed(() => [
     {
+        name: translations.value.docs.moreExamples[store.lang],
+        icon: "clipboardLine",
+        callback: () => {},
+        link: "/examples/categories",
+        selected: currentMenu.value === "categories",
+    },
+    {
         name: translations.value.sideMenu.miniCharts[store.lang],
         icon: "chartSparkline",
         callback: () => (currentMenu.value = "mini"),
@@ -55,13 +62,6 @@ const menuItems = computed(() => [
         callback: () => (currentMenu.value = "kpi"),
         link: "#",
         selected: currentMenu.value === "kpi",
-    },
-    {
-        name: translations.value.docs.moreExamples[store.lang],
-        icon: "clipboardLine",
-        callback: () => {},
-        link: "/examples/categories",
-        selected: currentMenu.value === "categories",
     },
     {
         name: translations.value.docs.themeDashboards[store.lang],
@@ -147,8 +147,32 @@ const menuItems = computed(() => [
             <template #item="{ item }">
                 <RouterLink :to="item.link">
                     <button
+                        v-if="item.link === '/examples/categories'"
+                        @click="item.callback()"
+                        :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between bg-gradient-to-b from-app-green-light to-app-blue hover:from-app-blue hover:to-app-green-light transition-colors`"
+                    >
+                        <div
+                            class="h-fit w-fit flex place-items-center justify-center"
+                        >
+                            <VueUiIcon
+                                :name="item.icon"
+                                stroke="#1A1A1A"
+                                :size="isMobile ? 20 : 28"
+                            />
+                        </div>
+                        <div
+                            class="text-sm text-black font-inter-medium"
+                            :style="{
+                                lineHeight: isMobile ? '16px' : '20px',
+                            }"
+                        >
+                            {{ item.name }}
+                        </div>
+                    </button>
+                    <button
                         :class="`h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${item.selected ? 'bg-gradient-to-b from-[#f18a5e] to-[#de6937] dark:from-[#de693780] dark:to-[#de693720] text-white' : 'bg-white dark:bg-[#de693715] hover:bg-[#FBFBFB] dark:hover:bg-[#de693730]'} transition-colors`"
                         @click="item.callback()"
+                        v-if="item.link !== '/examples/categories'"
                     >
                         <div
                             class="h-fit w-fit flex place-items-center justify-center"
