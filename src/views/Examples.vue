@@ -36,13 +36,6 @@ const crumbs = ref([
 
 const menuItems = computed(() => [
     {
-        name: translations.value.docs.moreExamples[store.lang],
-        icon: "clipboardLine",
-        callback: () => {},
-        link: "/examples/categories",
-        selected: currentMenu.value === "categories",
-    },
-    {
         name: translations.value.sideMenu.miniCharts[store.lang],
         icon: "chartSparkline",
         callback: () => (currentMenu.value = "mini"),
@@ -104,6 +97,13 @@ const menuItems = computed(() => [
         callback: () => {},
         link: "/examples/themes",
         selected: currentMenu.value === "themes",
+    },
+    {
+        name: translations.value.docs.moreExamples[store.lang],
+        icon: "clipboardLine",
+        callback: () => {},
+        link: "/examples/categories",
+        selected: currentMenu.value === "categories",
     },
 ]);
 </script>
