@@ -278,11 +278,17 @@ const config = computed(() => {
     };
 });
 
-function getNpmFukkupPathCoords(cell) {
+function getNpmFukkupPathCoords(cell, isLastWeek = false) {
     const cx = cell.x + cell.width / 2;
     const cy = cell.y + cell.height / 2;
-    const cross = "-6-6m6 6 6 6m0-12-12 12";
+    const cross = isLastWeek
+        ? "q4 0 4-3c0-3-8-3-8 0m4 3 0 2m0 2a1 1 0 000 2 1 1 0 000-2"
+        : "-6-6m6 6 6 6m0-12-12 12";
     return `m${cx} ${cy}${cross}`;
+}
+
+function isLastWeek(colIndex) {
+    return colIndex >= 51;
 }
 </script>
 
@@ -293,28 +299,38 @@ function getNpmFukkupPathCoords(cell) {
             <template #svg="{ svg }">
                 <template v-for="cell in svg.cells" :key="cell.datapoint.id">
                     <g
-                        v-if="
-                            cell.datapoint.value === 0 && cell.columnIndex < 51
-                        "
-                        style="pointer-events: none"
+                        v-if="cell.datapoint.value === 0"
+                        :style="{
+                            pointerEvents: 'none',
+                        }"
                     >
                         <rect
-                            v-if="
-                                cell.datapoint.value === 0 &&
-                                cell.columnIndex < 51
-                            "
+                            v-if="cell.datapoint.value === 0"
                             :x="cell.x + 2"
                             :y="cell.y + 2"
                             :width="cell.width - 4"
                             :height="cell.height - 4"
-                            :fill="isDarkMode ? '#ff3700' : '#a32300'"
-                            style="pointer-events: none"
+                            :fill="
+                                isLastWeek(cell.columnIndex)
+                                    ? '#1A1A1A'
+                                    : isDarkMode
+                                      ? '#ff3700'
+                                      : '#a32300'
+                            "
                         />
                         <path
-                            :d="getNpmFukkupPathCoords(cell)"
+                            :d="
+                                getNpmFukkupPathCoords(
+                                    cell,
+                                    isLastWeek(cell.columnIndex),
+                                )
+                            "
                             :stroke="isDarkMode ? '#ff8c00' : '#ffb152'"
                             stroke-linecap="round"
-                            stroke-width="2"
+                            :stroke-width="
+                                isLastWeek(cell.columnIndex) ? 1.5 : 2
+                            "
+                            fill="none"
                         />
                     </g>
                 </template>
@@ -376,6 +392,24 @@ function getNpmFukkupPathCoords(cell) {
                     </div>
                     <span class="text-xs">
                         Days when npm downloads were not recorded
+                    </span>
+                </div>
+                <div class="flex flew-row mt-2 pl-2 items-center gap-2">
+                    <div class="h-2.5 w-2.5 bg-black relative flex">
+                        <svg
+                            viewBox="2 1 18 18"
+                            class="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        >
+                            <path
+                                d="M11 10Q15 10 15 7C15 4 7 4 7 7M11 10 11 12M11 14A1 1 0 0011 16 1 1 0 0011 14"
+                                fill="none"
+                                :stroke="isDarkMode ? '#ff8c00' : '#ffb152'"
+                                stroke-width="2"
+                            />
+                        </svg>
+                    </div>
+                    <span class="text-xs">
+                        Days in the current week with 0 downloads
                     </span>
                 </div>
             </template>

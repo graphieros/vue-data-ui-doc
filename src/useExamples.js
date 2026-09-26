@@ -2,7 +2,6 @@ import { ref, computed } from "vue";
 import { useMainStore } from "./stores";
 import { getCumulativeAverage, mergeConfigs } from "vue-data-ui";
 import { shiftHue } from "./components/maker/lib";
-import colorBridge from "color-bridge";
 import FRANCE from "../src/resources/FRANCE.json";
 import CHINA from "../src/resources/CHINA.json";
 import BRAZIL from "../src/resources/BRAZIL.json";
@@ -26,8 +25,6 @@ import WINTER2 from "./assets/treemap/winter2.png";
 import WINTER3 from "./assets/treemap/winter3.png";
 
 // nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
-
-const { utils } = colorBridge();
 
 export default function useExamples() {
     const store = useMainStore();
