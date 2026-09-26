@@ -26,11 +26,12 @@ async function fetchIssues() {
             return response.json();
         })
         .then((json) => {
-            issues.value = (json || []).filter(
-                (issue) => issue?.state !== "closed",
-            );
-            closedIssues.value = (json || []).filter(
-                (issue) => issue?.state === "closed",
+            if (json?.message?.startsWith("API rate limit exceeded")) {
+                return;
+            }
+            issues.value = json.filter((issue) => issue.state !== "closed");
+            closedIssues.value = json.filter(
+                (issue) => issue.state === "closed",
             );
         });
 }
