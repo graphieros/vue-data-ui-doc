@@ -1,13 +1,13 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 5199068,
+  "totalBytes": 5199501,
   "totalSize": "5.0 MB",
   "fileCount": 345,
   "byExtension": [
     {
       "extension": ".js",
       "files": 263,
-      "bytes": 4120878,
+      "bytes": 4121311,
       "size": "3.9 MB"
     },
     {
@@ -58,7 +58,7 @@
     {
       "path": "dist/vue-ui-xy.js",
       "filename": "vue-ui-xy",
-      "bytes": 188954,
+      "bytes": 189387,
       "size": "185 KB",
       "extension": ".js"
     },
