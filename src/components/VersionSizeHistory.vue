@@ -47,7 +47,7 @@ function resetZoom() {
     setZoom({ from: "end", payload: { index: stableVersions.length - 1 } });
 }
 
-const temperatureColors = computed(() => ["#ff3700", "#42d392"]);
+const temperatureColors = computed(() => ["#ff3700", "#ff8c00", "#42d392"]);
 
 const datasetPackageSize = computed(() => [
     {
@@ -66,8 +66,6 @@ const datasetFileCount = computed(() => [
         type: "line",
         series: stableVersions.map((v) => v.fileCount),
         useStepper: true,
-        temperatureColors: temperatureColors.value,
-        color: isDarkMode.value ? "#CCCCCC" : "#2A2A2A",
     },
 ]);
 
@@ -89,6 +87,9 @@ const configBase = computed(() => ({
         datapointLeave: () => {
             selectedXIndex.value = undefined;
         },
+    },
+    line: {
+        strokeWidth: 1.5,
     },
     chart: {
         backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
