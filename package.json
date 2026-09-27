@@ -14,7 +14,9 @@
         "lint": "oxlint",
         "lint:fix": "oxlint --fix",
         "pretty": "prettier . --write",
-        "vdu:breakdown": "node file-size-breakdown.cjs node_modules/vue-data-ui"
+        "vdu:breakdown": "node file-size-breakdown.cjs node_modules/vue-data-ui",
+        "vdu:history-size": "node vue-data-ui-size-history.cjs",
+        "vdu:history-size-update": "node vue-data-ui-update-size-history.cjs"
     },
     "dependencies": {
         "@stackblitz/sdk": "^1.11.1",

@@ -19,6 +19,7 @@ import BaseScroll from "../components/Base/BaseScroll.vue";
 import { useCompactNumberFormatter } from "../useCompactNumberFormatter";
 import DownloadsHeatmap from "../components/DownloadsHeatmap.vue";
 import ReleaseKeywordsBar from "../components/ReleaseKeywordsBar.vue";
+import VersionSizeHistory from "../components/VersionSizeHistory.vue";
 
 const globalConfig = useConfig();
 const store = useMainStore();
@@ -2755,26 +2756,8 @@ const digitsConfigVersion = computed(() => {
 
                 <DownloadsHeatmap :isLoading="isLoadingLine" :data :url />
 
-                <BaseCard
-                    class="max-w-[800px] mx-auto mt-6"
-                    v-if="!isLoadingLine"
-                >
-                    <VueDataUi
-                        v-if="xyDataset.length"
-                        component="VueUiXyCanvas"
-                        :dataset="xyDataset"
-                        :config="xyCanvasConfig"
-                        :key="`xystep_${step}`"
-                    >
-                        <template #source>
-                            <div class="text-xs text-gray-500 text-left pl-2">
-                                Source:
-                                <a class="text-app-blue underline" :href="url"
-                                    >api.npmjs.org</a
-                                >
-                            </div>
-                        </template>
-                    </VueDataUi>
+                <BaseCard class="max-w-[800px] mx-auto mt-6">
+                    <VersionSizeHistory />
                 </BaseCard>
 
                 <BaseCard
