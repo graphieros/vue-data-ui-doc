@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, useTemplateRef, nextTick } from "vue";
 import SOURCE from "../../vue-data-ui-size-history.json";
 import VueUiXy from "vue-data-ui/vue-ui-xy";
 import { useMainStore } from "../stores";
@@ -21,7 +21,31 @@ function useNumberFormatter(options = {}) {
     return computed(() => new Intl.NumberFormat(locale.value, options));
 }
 
+const packageSizeRef = useTemplateRef("packageSizeRef");
+const fileCountRef = useTemplateRef("fileCountRef");
+
 const stableVersions = filterStableVersions(SOURCE.versions);
+
+const start = ref(0);
+const end = ref(stableVersions.length - 1);
+const step = ref(0);
+
+async function setZoom({ payload, from }) {
+    if (from === "start") {
+        start.value = payload.index;
+    }
+    if (from === "end") {
+        end.value = payload.index;
+    }
+    await nextTick();
+    await nextTick();
+    fileCountRef.value.resetZoom();
+}
+
+function resetZoom() {
+    setZoom({ from: "start", payload: { index: 0 } });
+    setZoom({ from: "end", payload: { index: stableVersions.length - 1 } });
+}
 
 const temperatureColors = computed(() => ["#ff3700", "#42d392"]);
 
@@ -60,7 +84,6 @@ const configBase = computed(() => ({
     theme: isDarkMode.value ? "dark" : "",
     events: {
         datapointEnter: ({ seriesIndex }) => {
-            console.log(seriesIndex);
             selectedXIndex.value = seriesIndex;
         },
         datapointLeave: () => {
@@ -68,9 +91,6 @@ const configBase = computed(() => ({
         },
     },
     chart: {
-        // userOptions: {
-        //     position: "left",
-        // },
         backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
         height: 300,
         padding: {
@@ -147,26 +167,36 @@ const configPackageSize = computed(() =>
     }),
 );
 
-const configFileCount = computed(() =>
-    mergeConfigs({
+const configFileCount = computed(() => {
+    return mergeConfigs({
         defaultConfig: configBase.value,
         userConfig: {
             chart: {
                 title: {
                     text: "File count",
                 },
+                zoom: {
+                    show: false,
+                    startIndex: start.value,
+                    endIndex: end.value,
+                    preview: { enable: false },
+                },
             },
         },
-    }),
-);
+    });
+});
 </script>
 
 <template>
     <div>
         <VueUiXy
+            ref="packageSizeRef"
             :dataset="datasetPackageSize"
             :config="configPackageSize"
             :selectedXIndex
+            @zoom-start="(payload) => setZoom({ payload, from: 'start' })"
+            @zoom-end="(payload) => setZoom({ payload, from: 'end' })"
+            @zoom-reset="resetZoom"
         >
             <template #reset-action="{ reset }">
                 <button
@@ -178,9 +208,11 @@ const configFileCount = computed(() =>
             </template>
         </VueUiXy>
         <VueUiXy
+            ref="fileCountRef"
             :dataset="datasetFileCount"
             :config="configFileCount"
             :selectedXIndex
+            :key="`fc_${step}`"
         >
             <template #reset-action="{ reset }">
                 <button
