@@ -24,8 +24,6 @@ import WINTER1 from "./assets/treemap/winter1.png";
 import WINTER2 from "./assets/treemap/winter2.png";
 import WINTER3 from "./assets/treemap/winter3.png";
 
-// nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
-
 export default function useExamples() {
     const store = useMainStore();
     const isDarkMode = computed(() => store.isDarkMode);
@@ -6876,6 +6874,35 @@ export default function useExamples() {
                     es: "Con datos incompletos (valores nulos) cortados",
                     ko: "불완전한 데이터(널 값)이 잘라짐",
                     ar: "مع قطع البيانات غير المكتملة (القيم الفارغة)",
+                },
+            },
+            // XY WITH NULL VALUES DASHED
+            {
+                dataset: DATASET_XY_WITH_NULL.value,
+                config: mergeConfigs({
+                    defaultConfig: BASE_XY_CONFIG.value,
+                    userConfig: {
+                        line: {
+                            nullDashes: {
+                                show: true,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "null-dashed",
+                link: "vue-ui-xy",
+                description: {
+                    en: "With incomplete data (null values) dashed",
+                    fr: "Avec des données incomplètes (valeurs nulles) en pointillés",
+                    pt: "Com dados incompletos (valores nulos) tracejados",
+                    de: "Bei unvollständigen Daten (Nullwerten) gestrichelt",
+                    zh: "数据不完整（空值）时使用虚线",
+                    ja: "不完全なデータ（null値）の場合は破線",
+                    es: "Con datos incompletos (valores nulos) en línea discontinua",
+                    ko: "불완전한 데이터(null 값)는 점선으로 표시",
+                    ar: "تُعرض البيانات غير المكتملة (القيم الفارغة) بخط متقطع",
                 },
             },
             // XY SIGNALING ESTIMATIONS
