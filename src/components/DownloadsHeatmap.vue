@@ -290,6 +290,188 @@ function getNpmFukkupPathCoords(cell, isLastWeek = false) {
 function isLastWeek(colIndex) {
     return colIndex >= 51;
 }
+
+function getMonthKey(date) {
+    return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(
+        2,
+        "0",
+    )}`;
+}
+
+function getCellDate(cell) {
+    const weekStartValue = heatmap.value.weekStarts?.[cell.columnIndex];
+    if (!weekStartValue) return null;
+    return addDays(parseUtcDate(weekStartValue), cell.rowIndex);
+}
+
+function getPointKey(point) {
+    return `${point.x.toFixed(6)}:${point.y.toFixed(6)}`;
+}
+
+function simplifyContour(points) {
+    if (points.length < 4) return points;
+
+    const firstKey = getPointKey(points[0]);
+    const lastKey = getPointKey(points[points.length - 1]);
+    const ring = firstKey === lastKey ? points.slice(0, -1) : points.slice();
+    const epsilon = 0.000001;
+
+    return ring.filter((point, index) => {
+        const previous = ring[(index - 1 + ring.length) % ring.length];
+        const next = ring[(index + 1) % ring.length];
+
+        const vertical =
+            Math.abs(previous.x - point.x) < epsilon &&
+            Math.abs(point.x - next.x) < epsilon;
+
+        const horizontal =
+            Math.abs(previous.y - point.y) < epsilon &&
+            Math.abs(point.y - next.y) < epsilon;
+
+        return !vertical && !horizontal;
+    });
+}
+
+function getMonthOutline(cells) {
+    const occupied = new Set(
+        cells.map((cell) => `${cell.rowIndex}:${cell.columnIndex}`),
+    );
+
+    const edges = [];
+
+    function addEdge(x1, y1, x2, y2) {
+        edges.push({
+            start: { x: x1, y: y1 },
+            end: { x: x2, y: y2 },
+        });
+    }
+
+    for (const cell of cells) {
+        const row = cell.rowIndex;
+        const column = cell.columnIndex;
+
+        const x1 = cell.x;
+        const y1 = cell.y;
+        const x2 = cell.x + cell.width;
+        const y2 = cell.y + cell.height;
+
+        // Clockwise edges. Only exposed edges are retained.
+
+        if (!occupied.has(`${row - 1}:${column}`)) {
+            addEdge(x1, y1, x2, y1);
+        }
+
+        if (!occupied.has(`${row}:${column + 1}`)) {
+            addEdge(x2, y1, x2, y2);
+        }
+
+        if (!occupied.has(`${row + 1}:${column}`)) {
+            addEdge(x2, y2, x1, y2);
+        }
+
+        if (!occupied.has(`${row}:${column - 1}`)) {
+            addEdge(x1, y2, x1, y1);
+        }
+    }
+
+    const outgoing = new Map();
+
+    edges.forEach((edge, index) => {
+        const key = getPointKey(edge.start);
+
+        if (!outgoing.has(key)) {
+            outgoing.set(key, []);
+        }
+
+        outgoing.get(key).push(index);
+    });
+
+    const used = new Set();
+    const contours = [];
+
+    for (let index = 0; index < edges.length; index += 1) {
+        if (used.has(index)) continue;
+
+        const startEdge = edges[index];
+        const startKey = getPointKey(startEdge.start);
+        const points = [startEdge.start];
+        let currentIndex = index;
+
+        while (currentIndex !== undefined) {
+            const edge = edges[currentIndex];
+
+            used.add(currentIndex);
+            points.push(edge.end);
+
+            const endKey = getPointKey(edge.end);
+
+            if (endKey === startKey) {
+                break;
+            }
+
+            currentIndex = outgoing
+                .get(endKey)
+                ?.find((candidateIndex) => !used.has(candidateIndex));
+        }
+
+        if (getPointKey(points[points.length - 1]) === startKey) {
+            contours.push(simplifyContour(points));
+        }
+    }
+
+    const formatCoordinate = (value) => Number(value.toFixed(3));
+
+    return contours
+        .map((points) => {
+            if (!points.length) return "";
+
+            const [first, ...rest] = points;
+
+            const commands = rest
+                .map(
+                    (point) =>
+                        `L ${formatCoordinate(point.x)} ${formatCoordinate(point.y)}`,
+                )
+                .join(" ");
+
+            return [
+                `M ${formatCoordinate(first.x)} ${formatCoordinate(first.y)}`,
+                commands,
+                "Z",
+            ]
+                .filter(Boolean)
+                .join(" ");
+        })
+        .join(" ");
+}
+
+function getMonthPaths(cells) {
+    const months = new Map();
+
+    for (const cell of cells ?? []) {
+        const date = getCellDate(cell);
+        if (!date) continue;
+
+        const key = getMonthKey(date);
+
+        if (!months.has(key)) {
+            months.set(key, {
+                key,
+                date,
+                cells: [],
+            });
+        }
+
+        months.get(key).cells.push(cell);
+    }
+
+    return Array.from(months.values())
+        .sort((a, b) => a.date - b.date)
+        .map((month) => ({
+            key: month.key,
+            d: getMonthOutline(month.cells),
+        }));
+}
 </script>
 
 <template>
@@ -305,7 +487,6 @@ function isLastWeek(colIndex) {
                         }"
                     >
                         <rect
-                            v-if="cell.datapoint.value === 0"
                             :x="cell.x + 2"
                             :y="cell.y + 2"
                             :width="cell.width - 4"
@@ -320,6 +501,7 @@ function isLastWeek(colIndex) {
                                       : '#a32300'
                             "
                         />
+
                         <path
                             :d="
                                 getNpmFukkupPathCoords(
@@ -344,6 +526,18 @@ function isLastWeek(colIndex) {
                         />
                     </g>
                 </template>
+
+                <path
+                    v-for="month in getMonthPaths(svg.cells)"
+                    :key="month.key"
+                    :d="month.d"
+                    fill="none"
+                    :stroke="isDarkMode ? '#737373' : '#9CA3AF'"
+                    stroke-width="1.25"
+                    stroke-linejoin="round"
+                    vector-effect="non-scaling-stroke"
+                    pointer-events="none"
+                />
             </template>
             <template #tooltip="{ datapoint, seriesIndex, series }">
                 <div class="px-3 py-2 text-left">
