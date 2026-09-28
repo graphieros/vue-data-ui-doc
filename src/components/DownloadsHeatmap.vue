@@ -535,7 +535,6 @@ function getMonthPaths(cells) {
                     :stroke="isDarkMode ? '#737373' : '#9CA3AF'"
                     stroke-width="1.25"
                     stroke-linejoin="round"
-                    vector-effect="non-scaling-stroke"
                     pointer-events="none"
                 />
             </template>

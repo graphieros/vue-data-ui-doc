@@ -1,10 +1,11 @@
 <script setup>
-import { ref, computed, useTemplateRef, nextTick } from "vue";
+import { ref, computed, useTemplateRef, nextTick, watch } from "vue";
 import SOURCE from "../../vue-data-ui-size-history.json";
 import VueUiXy from "vue-data-ui/vue-ui-xy";
 import { useMainStore } from "../stores";
 import { useBytesFormatter } from "../../useNumberFormatter";
 import { mergeConfigs } from "vue-data-ui/utils";
+import VueUiLabel from "vue-data-ui/vue-ui-label";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -92,6 +93,7 @@ const configBase = computed(() => ({
         strokeWidth: 1.5,
     },
     chart: {
+        userOptions: { show: false },
         backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
         height: 300,
         padding: {
@@ -186,6 +188,94 @@ const configFileCount = computed(() => {
         },
     });
 });
+
+const labels = [
+    {
+        version: "v2.3.4",
+        text: "Implemented tree-shaking",
+        position: "top",
+        maxWidth: 120,
+        linkLen: 60,
+        markerColor: "#42d392",
+    },
+    {
+        version: "v3.14.0",
+        text: "A mishap",
+        position: "left",
+        maxWidth: 120,
+        linkLen: 30,
+        markerColor: "#ff3700",
+    },
+    {
+        version: "v3.20.1",
+        text: "Other mishap trying to implement provenance",
+        position: "top",
+        maxWidth: 120,
+        linkLen: 80,
+        markerColor: "#ff3700",
+    },
+];
+
+const showComments = ref(false);
+const labelStep = ref(0);
+
+watch(showComments, () => {
+    labelStep.value += 1;
+});
+
+function getLabel(label, svg) {
+    const plots = svg.data[0].plots;
+    const index =
+        versionNames.value.findIndex((v) => v === label.version) -
+        svg.slicer.start;
+
+    const thatPlot = plots[index];
+
+    if (!thatPlot) return undefined;
+
+    const textColor = isDarkMode.value ? "#CCCCCC" : "#1A1A1A";
+
+    return {
+        dataset: {
+            x: plots[index].x,
+            y: plots[index].y,
+        },
+        config: {
+            box: {
+                maxWidth: label.maxWidth,
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                borderColor: "#6A6A6A",
+            },
+            content: {
+                text: label.text,
+                color: textColor,
+                fontSize: 14,
+                lineHeight: 18,
+            },
+            drag: {
+                iconColor: textColor,
+            },
+            link: {
+                length: label.linkLen,
+                stroke: "#6A6A6A",
+                strokeDasharray: "1 3",
+                targetPlot: {
+                    stroke: label.markerColor,
+                },
+            },
+            title: {
+                text: label.version,
+                color: textColor,
+                bold: true,
+                marker: {
+                    color: label.markerColor,
+                    size: 8,
+                },
+            },
+            position: label.position,
+        },
+    };
+}
 </script>
 
 <template>
@@ -213,7 +303,7 @@ const configFileCount = computed(() => {
             :dataset="datasetFileCount"
             :config="configFileCount"
             :selectedXIndex
-            :key="`fc_${step}`"
+            :key="`fc_${step}_${labelStep}`"
         >
             <template #reset-action="{ reset }">
                 <button
@@ -223,7 +313,21 @@ const configFileCount = computed(() => {
                     RESET ZOOM
                 </button>
             </template>
+
+            <template #svg="{ svg }">
+                <template v-if="showComments">
+                    <VueUiLabel
+                        v-for="label in labels"
+                        :key="`file_count_label_${label.version}_${labelStep}`"
+                        v-bind="getLabel(label, svg)"
+                    />
+                </template>
+            </template>
         </VueUiXy>
+        <label class="flex flex-row gap-2 justify-center items-center mt-4">
+            <span>Show comments</span>
+            <input type="checkbox" v-model="showComments" />
+        </label>
     </div>
 </template>
 
