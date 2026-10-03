@@ -745,7 +745,7 @@ const darkModeSparklineConfig = ref({
             backgroundOpacity: 30,
         },
         animation: {
-            show: true,
+            show: false,
         },
     },
 });
@@ -2800,18 +2800,6 @@ const digitsConfigVersion = computed(() => {
                     class="max-w-[800px] mx-auto mt-6"
                     v-if="sparklineReleases.length"
                 >
-                    <VueUiSparkline
-                        :dataset="versionsReleases"
-                        :config="sparklineConfigForReleases"
-                    >
-                        <template #source>
-                            <div
-                                class="text-xs text-gray-500 text-right mt-3 pl-2"
-                            >
-                                Source: Vue Data UI
-                            </div>
-                        </template>
-                    </VueUiSparkline>
                     <div style="height: 48px" />
                     <div class="w-full" v-if="showWC">
                         <VueDataUi

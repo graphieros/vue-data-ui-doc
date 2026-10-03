@@ -384,8 +384,18 @@ const config = computed(() => {
                 },
                 preview: {
                     fill: "#42d39220",
-                    stroke: "#42d39240",
-                    strokeDasharray: 4,
+                    stroke: "transparent",
+                },
+                dragToZoom: {
+                    show: true,
+                    selection: {
+                        fill: "#42d392",
+                        stroke: "#42d392",
+                        fillOpacity: 0.2,
+                        strokeOpacity: 0.5,
+                        strokeWidth: 0,
+                        strokeDasharray: 0,
+                    },
                 },
             },
             highlighter: {
@@ -656,11 +666,23 @@ const configCumulativeAverage = computed(() => {
                 autoFit: true,
                 minimap: {
                     show: true,
+                    frameColor: "transparent",
                 },
                 preview: {
                     fill: "#42d39220",
-                    stroke: "#42d39240",
+                    stroke: "#transparent",
                     strokeDasharray: 4,
+                },
+                dragToZoom: {
+                    show: true,
+                    selection: {
+                        fill: "#42d392",
+                        stroke: "#42d392",
+                        fillOpacity: 0.2,
+                        strokeOpacity: 0.5,
+                        strokeWidth: 0,
+                        strokeDasharray: 0,
+                    },
                 },
             },
             tooltip: {
