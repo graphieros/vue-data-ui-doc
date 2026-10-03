@@ -32,6 +32,8 @@ import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
+import BaseZoomState from "../Base/BaseZoomState.vue";
+import ZoomStateVueUiXyCanvas from "./zoom-state/ZoomStateVueUiXyCanvas.vue";
 
 const mainConfig = useConfig();
 
@@ -120,6 +122,11 @@ const config = ref({
     downsample: {
         threshold: 10000,
     },
+    events: {
+        datapointEnter: null,
+        datapointLeave: null,
+        datapointClick: null,
+    },
     userOptions: {
         annotatorPalette: COLOR_PICKER_PALETTE,
         useCursorPointer: false,
@@ -206,6 +213,17 @@ const config = ref({
                     stroke: "#6A6A6A",
                     strokeWidth: 1,
                     strokeDasharray: 3,
+                },
+                dragToZoom: {
+                    show: true,
+                    selection: {
+                        fill: "#6A6A6A",
+                        stroke: "#6A6A6A",
+                        fillOpacity: 0.2,
+                        strokeOpacity: 0.5,
+                        strokeWidth: 1,
+                        strokeDasharray: 0,
+                    },
                 },
                 useDefaultFormat: true,
                 timeFormat: "yyyy-MM-dd HH:mm:ss",
@@ -400,6 +418,11 @@ const darkModeConfig = ref({
     downsample: {
         threshold: 10000,
     },
+    events: {
+        datapointEnter: null,
+        datapointLeave: null,
+        datapointClick: null,
+    },
     customPalette: [],
     userOptions: {
         annotatorPalette: COLOR_PICKER_PALETTE,
@@ -487,6 +510,17 @@ const darkModeConfig = ref({
                     stroke: "#6A6A6A",
                     strokeWidth: 1,
                     strokeDasharray: 3,
+                },
+                dragToZoom: {
+                    show: true,
+                    selection: {
+                        fill: "#CCCCCC",
+                        stroke: "#CCCCCC",
+                        fillOpacity: 0.2,
+                        strokeOpacity: 0.5,
+                        strokeWidth: 1,
+                        strokeDasharray: 0,
+                    },
                 },
                 useDefaultFormat: true,
                 timeFormat: "yyyy-MM-dd HH:mm:ss",
@@ -850,6 +884,7 @@ const customFormatCode =
             showTooltip
             showResponsive
             showCallbacks
+            showZoomState
             schema="vue_ui_xy_canvas"
             signInfo="both"
         >
@@ -991,6 +1026,26 @@ const customFormatCode =
                                     :light="mutableConfig"
                                     :dark="mutableConfigDarkMode"
                                     comment="Threshold above which LTTB algorithm kicks in"
+                                />
+                            </BaseDetails>
+                            <BaseDetails attr="events" :level="1">
+                                <BaseAttr
+                                    inactive
+                                    name="datapointEnter"
+                                    defaultVal="null"
+                                    comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
+                                />
+                                <BaseAttr
+                                    inactive
+                                    name="datapointLeave"
+                                    defaultVal="null"
+                                    comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
+                                />
+                                <BaseAttr
+                                    inactive
+                                    name="datapointClick"
+                                    defaultVal="null"
+                                    comment="({datapoint, seriesIndex}) => { console.log(datapoint) }"
                                 />
                             </BaseDetails>
                             <BaseDetails attr="style" :level="1">
@@ -2573,6 +2628,98 @@ const customFormatCode =
                                                 :dark="mutableConfigDarkMode"
                                             />
                                         </BaseDetails>
+                                        <BaseDetails
+                                            attr="dragToZoom"
+                                            :level="4"
+                                            title="style.chart.zoom.dragToZoom"
+                                        >
+                                            <BaseComment
+                                                >Drag-to-zoom since
+                                                v3.26.0</BaseComment
+                                            >
+                                            <BaseAttr
+                                                name="show"
+                                                attr="style.chart.zoom.dragToZoom.show"
+                                                type="checkbox"
+                                                defaultVal="false"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseDetails
+                                                attr="selection"
+                                                :level="5"
+                                                title="style.chart.zoom.dragToZoom.selection"
+                                            >
+                                                <BaseAttr
+                                                    name="fill"
+                                                    attr="style.chart.zoom.dragToZoom.selection.fill"
+                                                    type="color"
+                                                    defaultVal="#1f77b4"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="stroke"
+                                                    attr="style.chart.zoom.dragToZoom.selection.stroke"
+                                                    type="color"
+                                                    defaultVal="#A1A1A1"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="fillOpacity"
+                                                    attr="style.chart.zoom.dragToZoom.selection.fillOpacity"
+                                                    type="number"
+                                                    defaultVal="0.2"
+                                                    :min="0.1"
+                                                    :max="0.5"
+                                                    :step="0.1"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="strokeOpacity"
+                                                    attr="style.chart.zoom.dragToZoom.selection.strokeOpacity"
+                                                    type="number"
+                                                    defaultVal="0.5"
+                                                    :min="0"
+                                                    :max="1"
+                                                    :step="0.1"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="strokeWidth"
+                                                    attr="style.chart.zoom.dragToZoom.selection.strokeWidth"
+                                                    type="number"
+                                                    defaultVal="1"
+                                                    :min="0"
+                                                    :max="6"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                                <BaseAttr
+                                                    name="strokeDasharray"
+                                                    attr="style.chart.zoom.dragToZoom.selection.strokeDasharray"
+                                                    type="text"
+                                                    defaultVal="0"
+                                                    :light="mutableConfig"
+                                                    :dark="
+                                                        mutableConfigDarkMode
+                                                    "
+                                                />
+                                            </BaseDetails>
+                                        </BaseDetails>
                                         <BaseAttr
                                             name="useDefaultFormat"
                                             attr="style.chart.zoom.useDefaultFormat"
@@ -3229,6 +3376,12 @@ const customFormatCode =
                         'svg',
                     ]"
                 />
+            </template>
+
+            <template #tab14>
+                <BaseZoomState component="VueUiXyCanvas">
+                    <ZoomStateVueUiXyCanvas />
+                </BaseZoomState>
             </template>
         </Box>
     </div>

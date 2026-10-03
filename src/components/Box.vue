@@ -33,6 +33,7 @@ type BoxProps = {
     showCallbacks?: boolean;
     showSsr?: boolean;
     showTricks?: boolean;
+    showZoomState?: boolean;
 };
 
 const props = withDefaults(defineProps<BoxProps>(), {
@@ -52,6 +53,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     showCallbacks: false,
     showSsr: false,
     showTricks: false,
+    showZoomState: false,
 });
 
 const { isMobile } = useMobile();
@@ -155,6 +157,17 @@ const menuTranslations = computed(() => {
             es: "Slots",
             ko: "슬롯",
             ar: "فتحات",
+        },
+        zoomState: {
+            fr: "Synchroniser l’état du zoom",
+            en: "Sync zoom state",
+            pt: "Sincronizar estado do zoom",
+            de: "Zoomstatus synchronisieren",
+            zh: "同步缩放状态",
+            ja: "ズーム状態を同期",
+            es: "Sincronizar estado del zoom",
+            ko: "확대/축소 상태 동기화",
+            ar: "مزامنة حالة التكبير/التصغير",
         },
         customTooltip: {
             fr: "Custom tooltip",
@@ -368,6 +381,13 @@ const menuItems = computed(() => {
             color: isDarkMode.value ? "#fdd663" : "#FFFFFF",
             active: props.showTricks,
             order: 13,
+        },
+        {
+            name: menuTranslations.value.zoomState[store.lang],
+            icon: "focus",
+            color: isDarkMode.value ? "#a763ff" : "#FFFFFF",
+            active: props.showZoomState,
+            order: 14,
         },
     ].filter((menu) => menu.active);
 });
@@ -606,6 +626,9 @@ function selectTabFromMini(order) {
         </div>
         <div v-if="activeTab === 13">
             <slot name="tab13" />
+        </div>
+        <div v-if="activeTab === 14">
+            <slot name="tab14" />
         </div>
     </div>
 </template>

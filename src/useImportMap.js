@@ -336,6 +336,7 @@ export function useImportMap(c) {
 
     return mapping[c]
         ? {
+              docLink: `/docs#${mapping[c]}`,
               universal: `import { VueDataUi } from "vue-data-ui";`,
               universalTyped: `import { VueDataUi${typesMapping[c]} } from "vue-data-ui";`,
               untyped: `import { ${c} } from "vue-data-ui/${mapping[c]}";`,

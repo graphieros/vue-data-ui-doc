@@ -31,6 +31,8 @@ import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { createNumbers } from "../maker/lib.js";
+import BaseZoomState from "../Base/BaseZoomState.vue";
+import ZoomStateVueUiSparkline from "./zoom-state/ZoomStateVueUiSparkline.vue";
 
 const mainConfig = useConfig();
 
@@ -84,6 +86,7 @@ const dataset = ref(
 );
 
 const darkModeConfig = ref({
+    useCursorPointer: false,
     devHints: { enable: false },
     debug: false,
     loading: false,
@@ -120,7 +123,7 @@ const darkModeConfig = ref({
         scaleMax: null,
         padding: {
             top: 12,
-            right: 12,
+            right: 24,
             bottom: 3,
             left: 0,
         },
@@ -130,7 +133,7 @@ const darkModeConfig = ref({
         },
         line: {
             color: "#1f77b4",
-            strokeWidth: 3,
+            strokeWidth: 2,
             smooth: true,
             cutNullValues: false,
             dashIndices: [],
@@ -225,6 +228,23 @@ const darkModeConfig = ref({
             opacity: 30,
             color: "#1f77b4",
         },
+        zoom: {
+            show: true,
+            selection: {
+                fill: "#CCCCCC",
+                stroke: "transparent",
+                fillOpacity: 0.1,
+                strokeOpacity: 0.5,
+                strokeWidth: 1,
+                strokeDasharray: 0,
+            },
+            resetButton: {
+                show: true,
+                title: "Reset zoom · double-click chart or press Esc",
+                ariaLabel: "Reset zoom",
+                color: "#CCCCCC",
+            },
+        },
     },
 });
 
@@ -265,7 +285,7 @@ const config = ref({
         scaleMax: null,
         padding: {
             top: 12,
-            right: 12,
+            right: 24,
             bottom: 3,
             left: 0,
         },
@@ -369,6 +389,23 @@ const config = ref({
             useGradient: true,
             opacity: 30,
             color: "#1f77b4",
+        },
+        zoom: {
+            show: true,
+            selection: {
+                fill: "#1A1A1A",
+                stroke: "transparent",
+                fillOpacity: 0.1,
+                strokeOpacity: 0.5,
+                strokeWidth: 1,
+                strokeDasharray: 0,
+            },
+            resetButton: {
+                show: true,
+                title: "Reset zoom · double-click chart or press Esc",
+                ariaLabel: "Reset zoom",
+                color: "#1A1A1A",
+            },
         },
     },
 });
@@ -604,6 +641,7 @@ const prefersReduced = ref({
             showUseCases
             showThemes
             showResponsive
+            showZoomState
             schema="vue_ui_sparkline"
             signInfo="both"
         >
@@ -1255,7 +1293,7 @@ const prefersReduced = ref({
                                         name="strokeWidth"
                                         attr="style.line.strokeWidth"
                                         type="number"
-                                        defaultVal="3"
+                                        defaultVal="2"
                                         :min="0.1"
                                         :max="10"
                                         :step="0.1"
@@ -1664,6 +1702,123 @@ const prefersReduced = ref({
                                         :dark="mutableConfigDarkMode"
                                     />
                                 </BaseDetails>
+                                <BaseDetails
+                                    attr="zoom"
+                                    :level="2"
+                                    title="style.zoom"
+                                >
+                                    <BaseComment
+                                        >Drag-to-zoom since v3.26.0</BaseComment
+                                    >
+                                    <BaseAttr
+                                        name="show"
+                                        attr="style.zoom.show"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseDetails
+                                        attr="selection"
+                                        :level="3"
+                                        title="style.zoom.selection"
+                                    >
+                                        <BaseAttr
+                                            name="fill"
+                                            attr="style.zoom.selection.fill"
+                                            type="color"
+                                            defaultVal="#1f77b4"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="stroke"
+                                            attr="style.zoom.selection.stroke"
+                                            type="color"
+                                            defaultVal="#A1A1A1"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="fillOpacity"
+                                            attr="style.zoom.selection.fillOpacity"
+                                            type="number"
+                                            defaultVal="0.2"
+                                            :min="0.1"
+                                            :max="0.5"
+                                            :step="0.1"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeOpacity"
+                                            attr="style.zoom.selection.strokeOpacity"
+                                            type="number"
+                                            defaultVal="0.5"
+                                            :min="0"
+                                            :max="1"
+                                            :step="0.1"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeWidth"
+                                            attr="style.zoom.selection.strokeWidth"
+                                            type="number"
+                                            defaultVal="1"
+                                            :min="0"
+                                            :max="6"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeDasharray"
+                                            attr="style.zoom.selection.strokeDasharray"
+                                            type="text"
+                                            defaultVal="0"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
+                                    <BaseDetails
+                                        attr="resetButton"
+                                        :level="3"
+                                        title="style.zoom.resetButton"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.zoom.resetButton.show"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="title"
+                                            attr="style.zoom.resetButton.title"
+                                            type="text"
+                                            defaultVal="Reset zoom · double-click chart or press Esc"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="ariaLabel"
+                                            attr="style.zoom.resetButton.ariaLabel"
+                                            type="text"
+                                            defaultVal="Reset zoom"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="color"
+                                            attr="style.zoom.resetButton.color"
+                                            type="color"
+                                            defaultVal="#2D353C"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
+                                </BaseDetails>
                             </BaseDetails>
                         </BaseDetails>
                     </code>
@@ -1730,6 +1885,12 @@ const prefersReduced = ref({
                 <DatetimeFormatterDoc
                     path="style.dataLabel.datetimeFormatter"
                 />
+            </template>
+
+            <template #tab14>
+                <BaseZoomState component="VueUiSparkline">
+                    <ZoomStateVueUiSparkline />
+                </BaseZoomState>
             </template>
         </Box>
 

@@ -67,9 +67,11 @@ const CONFIG_CATEGORIES = computed(() => {
         },
         {
             key: "tooltip",
-            title:
-                makerTranslations.value.categories.tooltip[store.lang] +
-                " (since v2.6.18)",
+            title: makerTranslations.value.categories.tooltip[store.lang],
+        },
+        {
+            key: "zoom",
+            title: makerTranslations.value.categories.zoom[store.lang],
         },
     ];
 });

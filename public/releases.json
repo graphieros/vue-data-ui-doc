@@ -1,5 +1,35 @@
 [
     {
+        "version": "v 3.26.0",
+        "date": "2026-09-25",
+        "updates": [
+            {
+                "components": [
+                    "VueUiXy",
+                    "VueUiXyCanvas",
+                    "VueUiCandlestick",
+                    "VueUiStackbar",
+                    "VueUiStackline",
+                    "VueUiQuickChart",
+                    "VueUiSparkline"
+                ],
+                "component": "",
+                "description": "Add zoom sync feature. Add optional drag-to-zoom feature.",
+                "link": ""
+            },
+            {
+                "component": "VueUiXyCanvas",
+                "description": "Add config events",
+                "link": "/docs#vue-ui-xy-canvas"
+            },
+            {
+                "component": "VueUiSparkline",
+                "description": "Fix bars overflow in bar mode. Disable loading animation by default.",
+                "link": "/docs#vue-ui-sparkline"
+            }
+        ]
+    },
+    {
         "version": "v 3.25.13",
         "date": "2026-09-25",
         "updates": [

@@ -20,6 +20,7 @@ import { useCompactNumberFormatter } from "../useCompactNumberFormatter";
 import DownloadsHeatmap from "../components/DownloadsHeatmap.vue";
 import ReleaseKeywordsBar from "../components/ReleaseKeywordsBar.vue";
 import VersionSizeHistory from "../components/VersionSizeHistory.vue";
+import { useImportMap } from "../useImportMap.js";
 
 const globalConfig = useConfig();
 const store = useMainStore();
@@ -744,7 +745,7 @@ const darkModeSparklineConfig = ref({
             backgroundOpacity: 30,
         },
         animation: {
-            show: false,
+            show: true,
         },
     },
 });
@@ -2520,46 +2521,81 @@ const digitsConfigVersion = computed(() => {
                                             <div
                                                 :class="`text-gray-500 dark:text-[#CCCCCC]`"
                                             >
-                                                <a
-                                                    class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2"
+                                                <template
                                                     v-if="
-                                                        update.component &&
-                                                        update.link
+                                                        update?.components
+                                                            ?.length
                                                     "
-                                                    :href="update.link"
                                                 >
-                                                    <VueUiIcon
-                                                        :name="
-                                                            useIconMap(
-                                                                update.component,
-                                                            )
+                                                    <a
+                                                        v-for="c in update.components"
+                                                        class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2"
+                                                        :href="
+                                                            useImportMap(c)
+                                                                .docLink
                                                         "
-                                                        :stroke="
-                                                            isDarkMode
-                                                                ? '#8A8A8A'
-                                                                : '#1A1A1A'
+                                                    >
+                                                        <VueUiIcon
+                                                            :name="
+                                                                useIconMap(c)
+                                                            "
+                                                            :stroke="
+                                                                isDarkMode
+                                                                    ? '#8A8A8A'
+                                                                    : '#1A1A1A'
+                                                            "
+                                                        />
+                                                        {{ c }}
+                                                    </a>
+                                                </template>
+
+                                                <template v-else>
+                                                    <a
+                                                        class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2"
+                                                        v-if="
+                                                            update.component &&
+                                                            update.link
                                                         "
-                                                    />
-                                                    {{ update.component }}</a
-                                                >
-                                                <span
-                                                    v-else-if="update.component"
-                                                    class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap"
-                                                >
-                                                    <VueUiIcon
-                                                        :name="
-                                                            useIconMap(
-                                                                update.component,
-                                                            )
+                                                        :href="update.link"
+                                                    >
+                                                        <VueUiIcon
+                                                            :name="
+                                                                useIconMap(
+                                                                    update.component,
+                                                                )
+                                                            "
+                                                            :stroke="
+                                                                isDarkMode
+                                                                    ? '#8A8A8A'
+                                                                    : '#1A1A1A'
+                                                            "
+                                                        />
+                                                        {{
+                                                            update.component
+                                                        }}</a
+                                                    >
+                                                    <span
+                                                        v-else-if="
+                                                            update.component
                                                         "
-                                                        :stroke="
-                                                            isDarkMode
-                                                                ? '#8A8A8A'
-                                                                : '#1A1A1A'
-                                                        "
-                                                    />
-                                                    {{ update.component }}
-                                                </span>
+                                                        class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap"
+                                                    >
+                                                        <VueUiIcon
+                                                            :name="
+                                                                useIconMap(
+                                                                    update.component,
+                                                                )
+                                                            "
+                                                            :stroke="
+                                                                isDarkMode
+                                                                    ? '#8A8A8A'
+                                                                    : '#1A1A1A'
+                                                            "
+                                                        />
+                                                        {{ update.component }}
+                                                    </span>
+                                                </template>
+
                                                 <div class="pl-8">
                                                     {{ update.description }}
                                                 </div>

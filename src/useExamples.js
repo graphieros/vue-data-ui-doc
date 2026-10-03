@@ -7975,51 +7975,6 @@ export default function useExamples() {
                     ar: "مقاييس محور Y مجمعة",
                 },
             },
-            // XY LIVE DATA
-            {
-                dataset: DATASET_XY_LIVE_DATA.value,
-                config: {
-                    ...BASE_XY_CONFIG.value,
-                    chart: {
-                        ...BASE_XY_CONFIG.value.chart,
-                        zoom: {
-                            show: false,
-                        },
-                        grid: {
-                            ...BASE_XY_CONFIG.value.chart.grid,
-                            showHorizontalLines: true,
-                            labels: {
-                                ...BASE_XY_CONFIG.value.chart.grid.labels,
-                                yAxis: {
-                                    useIndividualScale: true,
-                                    stacked: true,
-                                    gap: 48,
-                                },
-                                xAxisLabels: {
-                                    color: colors.value.textColor,
-                                    values: [],
-                                    rotation: -45,
-                                },
-                            },
-                        },
-                    },
-                },
-                component: "VueUiXy",
-                icon: "chartLine",
-                id: "xy-live",
-                link: "vue-ui-xy",
-                description: {
-                    en: "Frequent data update",
-                    fr: "Mise à jour fréquente des données",
-                    pt: "Atualização frequente de dados",
-                    de: "Häufige Datenaktualisierung",
-                    zh: "频繁的数据更新",
-                    ja: "頻繁なデータ更新",
-                    es: "Actualización frecuente de datos",
-                    ko: "빈번한 데이터 업데이트",
-                    ar: "تحديث متكرر للبيانات",
-                },
-            },
             // XY CUMULATIVE AVERAGE
             {
                 dataset: DATASET_XY_CUMULATIVE_AVERAGE.value,

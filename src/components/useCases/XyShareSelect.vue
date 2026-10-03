@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import { mergeConfigs } from "vue-data-ui";
+import { createNumbers } from "../maker/lib";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -33,7 +34,12 @@ const datasets = computed(() => {
         chartA: [
             {
                 name: "Series A",
-                series: makeDs(100),
+                series: createNumbers({
+                    count: 30,
+                    seed: "fukkit",
+                    mult: 100,
+                    rounded: true,
+                }),
                 type: "line",
                 smooth: true,
                 color: "#1f77b4",
@@ -43,7 +49,12 @@ const datasets = computed(() => {
         chartB: [
             {
                 name: "Series B",
-                series: makeDs(100),
+                series: createNumbers({
+                    count: 30,
+                    seed: "wut",
+                    mult: 100,
+                    rounded: true,
+                }),
                 type: "line",
                 smooth: true,
                 color: "#ff7f0e",
@@ -78,10 +89,18 @@ const config = computed(() => {
             userOptions: { show: false },
             backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
             color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            // padding: {
+            //     left: 36,
+            // },
             grid: {
+                position: "start",
                 stroke: isDarkMode.value ? "#8A8A8A" : "#8A8A8A",
                 labels: {
                     color: isDarkMode.value ? "#9A9A9A" : "#1A1A1A",
+                    yAxis: {
+                        scaleMax: 100,
+                        scaleValueOffsetX: 36,
+                    },
                     xAxisLabels: {
                         color: isDarkMode.value ? "#9A9A9A" : "#1A1A1A",
                         values: getLastDaysTimestamps(100),
@@ -96,9 +115,10 @@ const config = computed(() => {
                             },
                         },
                         showOnlyAtModulo: true,
-                        modulo: 12,
+                        modulo: 2,
+                        rotation: -45,
                         autoRotate: {
-                            angle: -45,
+                            enable: false,
                         },
                     },
                 },
@@ -122,14 +142,17 @@ const config = computed(() => {
                 backgroundOpacity: 10,
             },
             zoom: {
+                autoFit: true,
                 focusOnDrag: true,
                 preview: {
                     fill: isDarkMode.value ? "#1A1A1A50" : "#1A1A1A10",
                     strokeDasharray: 8,
                 },
                 minimap: {
+                    additionalHeight: -14,
                     show: true,
                     indicatorColor: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    frameColor: "transparent",
                 },
             },
         },

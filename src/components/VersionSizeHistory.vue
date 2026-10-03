@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, useTemplateRef, nextTick, watch } from "vue";
+import { ref, computed, watch } from "vue";
 import SOURCE from "../../vue-data-ui-size-history.json";
 import VueUiXy from "vue-data-ui/vue-ui-xy";
 import { useMainStore } from "../stores";
@@ -16,37 +16,9 @@ function filterStableVersions(versions) {
     return versions.filter(({ version }) => /^\d+\.\d+\.\d+$/.test(version));
 }
 
-function useNumberFormatter(options = {}) {
-    const { locale } = useI18n();
-
-    return computed(() => new Intl.NumberFormat(locale.value, options));
-}
-
-const packageSizeRef = useTemplateRef("packageSizeRef");
-const fileCountRef = useTemplateRef("fileCountRef");
-
 const stableVersions = filterStableVersions(SOURCE.versions);
 
-const start = ref(0);
-const end = ref(stableVersions.length - 1);
-const step = ref(0);
-
-async function setZoom({ payload, from }) {
-    if (from === "start") {
-        start.value = payload.index;
-    }
-    if (from === "end") {
-        end.value = payload.index;
-    }
-    await nextTick();
-    await nextTick();
-    fileCountRef.value.resetZoom();
-}
-
-function resetZoom() {
-    setZoom({ from: "start", payload: { index: 0 } });
-    setZoom({ from: "end", payload: { index: stableVersions.length - 1 } });
-}
+const zoomState = ref(null);
 
 const temperatureColors = computed(() => ["#ff3700", "#ff8c00", "#42d392"]);
 
@@ -139,11 +111,17 @@ const configBase = computed(() => ({
         },
         tooltip: { show: false },
         zoom: {
+            preview: {
+                enable: true,
+            },
             autoFit: true,
             minimap: {
                 show: true,
                 frameColor: "transparent",
                 selectedColor: isDarkMode.value ? undefined : "#CCCCCC",
+            },
+            dragToZoom: {
+                show: true,
             },
         },
     },
@@ -160,6 +138,9 @@ const configPackageSize = computed(() =>
                 grid: {
                     labels: {
                         yAxis: {
+                            scaleMax: Math.max(
+                                ...datasetPackageSize.value[0].series,
+                            ),
                             formatter: ({ value }) =>
                                 bytesFormatter.format(value ?? 0),
                         },
@@ -178,11 +159,14 @@ const configFileCount = computed(() => {
                 title: {
                     text: "File count",
                 },
-                zoom: {
-                    show: false,
-                    startIndex: start.value,
-                    endIndex: end.value,
-                    preview: { enable: false },
+                grid: {
+                    labels: {
+                        yAxis: {
+                            scaleMax: Math.max(
+                                ...datasetFileCount.value[0].series,
+                            ),
+                        },
+                    },
                 },
             },
         },
@@ -281,13 +265,10 @@ function getLabel(label, svg) {
 <template>
     <div>
         <VueUiXy
-            ref="packageSizeRef"
+            v-model:zoom-state="zoomState"
             :dataset="datasetPackageSize"
             :config="configPackageSize"
             :selectedXIndex
-            @zoom-start="(payload) => setZoom({ payload, from: 'start' })"
-            @zoom-end="(payload) => setZoom({ payload, from: 'end' })"
-            @zoom-reset="resetZoom"
         >
             <template #reset-action="{ reset }">
                 <button
@@ -299,11 +280,11 @@ function getLabel(label, svg) {
             </template>
         </VueUiXy>
         <VueUiXy
-            ref="fileCountRef"
+            v-model:zoom-state="zoomState"
             :dataset="datasetFileCount"
             :config="configFileCount"
             :selectedXIndex
-            :key="`fc_${step}_${labelStep}`"
+            :key="`fc_${labelStep}`"
         >
             <template #reset-action="{ reset }">
                 <button

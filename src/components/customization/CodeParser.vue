@@ -290,6 +290,7 @@ const config = computed(() => {
             "VueUiLabelEmitDragEnd",
             "VueUiLabelDataset",
             "VueUiLabelConfig",
+            "VueUiZoomState",
 
             // Emits
             ...emitTypes.value,

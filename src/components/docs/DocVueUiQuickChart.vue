@@ -28,6 +28,8 @@ import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
+import BaseZoomState from "../Base/BaseZoomState.vue";
+import ZoomStateVueUiQuickChart from "./zoom-state/ZoomStateVueUiQuickChart.vue";
 
 const mainConfig = useConfig();
 
@@ -357,6 +359,17 @@ const config = ref({
     zoomEnableSelectionDrag: true,
     zoomFocusOnDrag: false,
     zoomFocusRangeRatio: 0.2,
+    dragToZoom: {
+        show: true,
+        selection: {
+            fill: "#6A6A6A",
+            stroke: "#6A6A6A",
+            fillOpacity: 0.2,
+            strokeOpacity: 0.5,
+            strokeWidth: 1,
+            strokeDasharray: 0,
+        },
+    },
 });
 
 const darkModeConfig = ref({
@@ -539,6 +552,17 @@ const darkModeConfig = ref({
     zoomEnableSelectionDrag: true,
     zoomFocusOnDrag: false,
     zoomFocusRangeRatio: 0.2,
+    dragToZoom: {
+        show: true,
+        selection: {
+            fill: "#CCCCCC",
+            stroke: "#CCCCCC",
+            fillOpacity: 0.2,
+            strokeOpacity: 0.5,
+            strokeWidth: 1,
+            strokeDasharray: 0,
+        },
+    },
 });
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -1189,6 +1213,7 @@ const customFormatCode =
             showThemes
             showResponsive
             showCallbacks
+            showZoomState
             schema="vue_ui_quick_chart"
         >
             <template #tab0>
@@ -2815,6 +2840,85 @@ const customFormatCode =
                                 :light="mutableConfig"
                                 :dark="mutableConfigDarkMode"
                             />
+                            <BaseDetails
+                                attr="dragToZoom"
+                                :level="1"
+                                title="dragToZoom"
+                            >
+                                <BaseComment
+                                    >Drag-to-zoom since v3.26.0</BaseComment
+                                >
+                                <BaseAttr
+                                    name="show"
+                                    attr="dragToZoom.show"
+                                    type="checkbox"
+                                    defaultVal="false"
+                                    :light="mutableConfig"
+                                    :dark="mutableConfigDarkMode"
+                                />
+                                <BaseDetails
+                                    attr="selection"
+                                    :level="5"
+                                    title="dragToZoom.selection"
+                                >
+                                    <BaseAttr
+                                        name="fill"
+                                        attr="dragToZoom.selection.fill"
+                                        type="color"
+                                        defaultVal="#1f77b4"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="stroke"
+                                        attr="dragToZoom.selection.stroke"
+                                        type="color"
+                                        defaultVal="#A1A1A1"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="fillOpacity"
+                                        attr="dragToZoom.selection.fillOpacity"
+                                        type="number"
+                                        defaultVal="0.2"
+                                        :min="0.1"
+                                        :max="0.5"
+                                        :step="0.1"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="strokeOpacity"
+                                        attr="dragToZoom.selection.strokeOpacity"
+                                        type="number"
+                                        defaultVal="0.5"
+                                        :min="0"
+                                        :max="1"
+                                        :step="0.1"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="strokeWidth"
+                                        attr="dragToZoom.selection.strokeWidth"
+                                        type="number"
+                                        defaultVal="1"
+                                        :min="0"
+                                        :max="6"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="strokeDasharray"
+                                        attr="dragToZoom.selection.strokeDasharray"
+                                        type="text"
+                                        defaultVal="0"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                </BaseDetails>
+                            </BaseDetails>
                         </div>
                     </BaseDetails>
                 </code>
@@ -2916,6 +3020,12 @@ const customFormatCode =
                     ]"
                     root="userOptionsCallbacks"
                 />
+            </template>
+
+            <template #tab14>
+                <BaseZoomState component="VueUiQuickChart">
+                    <ZoomStateVueUiQuickChart />
+                </BaseZoomState>
             </template>
         </Box>
     </div>

@@ -30,6 +30,8 @@ import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
+import ZoomStateVueUiCandlestick from "./zoom-state/ZoomStateVueUiCandlestick.vue";
+import BaseZoomState from "../Base/BaseZoomState.vue";
 
 const mainConfig = useConfig();
 
@@ -85,8 +87,6 @@ function generateRandomCandlestickData({
     }
     return data;
 }
-
-console.log(generateRandomCandlestickData({ count: 6 }));
 
 const dataset = ref(generateRandomCandlestickData({ count: 100 }));
 
@@ -255,6 +255,17 @@ const config = ref({
                 stroke: "#6A6A6A",
                 strokeWidth: 1,
                 strokeDasharray: 3,
+            },
+            dragToZoom: {
+                show: true,
+                selection: {
+                    fill: "#6A6A6A",
+                    stroke: "#6A6A6A",
+                    fillOpacity: 0.2,
+                    strokeOpacity: 0.5,
+                    strokeWidth: 1,
+                    strokeDasharray: 0,
+                },
             },
             useDefaultFormat: false,
             timeFormat: "yyyy-MM-dd",
@@ -526,6 +537,17 @@ const darkModeConfig = ref({
                 stroke: "#6A6A6A",
                 strokeWidth: 1,
                 strokeDasharray: 3,
+            },
+            dragToZoom: {
+                show: true,
+                selection: {
+                    fill: "#CCCCCC",
+                    stroke: "#CCCCCC",
+                    fillOpacity: 0.2,
+                    strokeOpacity: 0.5,
+                    strokeWidth: 1,
+                    strokeDasharray: 0,
+                },
             },
             useDefaultFormat: false,
             timeFormat: "yyyy-MM-dd",
@@ -844,6 +866,7 @@ const customFormatCode =
             showTooltip
             showThemes
             showResponsive
+            showZoomState
             schema="vue_ui_candlestick"
             signInfo="positiveOnly"
         >
@@ -2380,6 +2403,135 @@ const customFormatCode =
                                         comment="Since v3.15.0"
                                     />
                                 </BaseDetails>
+                                <BaseDetails
+                                    attr="preview"
+                                    :level="3"
+                                    title="style.zoom.preview"
+                                >
+                                    <BaseAttr
+                                        name="enable"
+                                        attr="style.zoom.preview.enable"
+                                        type="checkbox"
+                                        defaultVal="true"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="fill"
+                                        attr="style.zoom.preview.fill"
+                                        type="color"
+                                        defaultVal="#CCCCCC50"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="stroke"
+                                        attr="style.zoom.preview.stroke"
+                                        type="color"
+                                        defaultVal="#6A6A6A"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="strokeWidth"
+                                        attr="style.zoom.preview.strokeWidth"
+                                        type="number"
+                                        defaultVal="2"
+                                        :min="0"
+                                        :max="12"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseAttr
+                                        name="strokeDasharray"
+                                        attr="style.zoom.preview.strokeDasharray"
+                                        type="number"
+                                        defaultVal="0"
+                                        :min="0"
+                                        :max="24"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                </BaseDetails>
+                                <BaseDetails
+                                    attr="dragToZoom"
+                                    :level="3"
+                                    title="style.zoom.dragToZoom"
+                                >
+                                    <BaseComment
+                                        >Drag-to-zoom since v3.26.0</BaseComment
+                                    >
+                                    <BaseAttr
+                                        name="show"
+                                        attr="style.zoom.dragToZoom.show"
+                                        type="checkbox"
+                                        defaultVal="false"
+                                        :light="mutableConfig"
+                                        :dark="mutableConfigDarkMode"
+                                    />
+                                    <BaseDetails
+                                        attr="selection"
+                                        :level="4"
+                                        title="style.zoom.dragToZoom.selection"
+                                    >
+                                        <BaseAttr
+                                            name="fill"
+                                            attr="style.zoom.dragToZoom.selection.fill"
+                                            type="color"
+                                            defaultVal="#1f77b4"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="stroke"
+                                            attr="style.zoom.dragToZoom.selection.stroke"
+                                            type="color"
+                                            defaultVal="#A1A1A1"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="fillOpacity"
+                                            attr="style.zoom.dragToZoom.selection.fillOpacity"
+                                            type="number"
+                                            defaultVal="0.2"
+                                            :min="0.1"
+                                            :max="0.5"
+                                            :step="0.1"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeOpacity"
+                                            attr="style.zoom.dragToZoom.selection.strokeOpacity"
+                                            type="number"
+                                            defaultVal="0.5"
+                                            :min="0"
+                                            :max="1"
+                                            :step="0.1"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeWidth"
+                                            attr="style.zoom.dragToZoom.selection.strokeWidth"
+                                            type="number"
+                                            defaultVal="1"
+                                            :min="0"
+                                            :max="6"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeDasharray"
+                                            attr="style.zoom.dragToZoom.selection.strokeDasharray"
+                                            type="text"
+                                            defaultVal="0"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
+                                </BaseDetails>
                             </BaseDetails>
                         </BaseDetails>
                         <BaseDetails attr="table" :level="1">
@@ -2935,6 +3087,12 @@ const customFormatCode =
                         'svg',
                     ]"
                 />
+            </template>
+
+            <template #tab14>
+                <BaseZoomState component="VueUiCandlestick">
+                    <ZoomStateVueUiCandlestick />
+                </BaseZoomState>
             </template>
         </Box>
     </div>

@@ -112,7 +112,6 @@ const config = computed(() => ({
             offsetY: -54,
         },
         zoom: {
-            // keepState: true,
             minimap: {
                 show: true,
             },
