@@ -1,7 +1,18 @@
 [
     {
+        "version": "v 3.26.1",
+        "date": "2026-10-03",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix area fill issue when scaleMin and scaleMax are set in config.",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.26.0",
-        "date": "2026-09-25",
+        "date": "2026-10-03",
         "updates": [
             {
                 "components": [

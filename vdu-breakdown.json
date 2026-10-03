@@ -1,32 +1,32 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 5199501,
-  "totalSize": "5.0 MB",
+  "totalBytes": 5301745,
+  "totalSize": "5.1 MB",
   "fileCount": 345,
   "byExtension": [
     {
       "extension": ".js",
       "files": 263,
-      "bytes": 4121311,
-      "size": "3.9 MB"
+      "bytes": 4211559,
+      "size": "4.0 MB"
     },
     {
       "extension": ".d.ts",
       "files": 77,
-      "bytes": 795280,
-      "size": "777 KB"
+      "bytes": 799885,
+      "size": "781 KB"
     },
     {
       "extension": ".css",
       "files": 1,
-      "bytes": 175512,
-      "size": "171 KB"
+      "bytes": 181938,
+      "size": "178 KB"
     },
     {
       "extension": ".md",
       "files": 1,
-      "bytes": 93344,
-      "size": "91 KB"
+      "bytes": 94310,
+      "size": "92 KB"
     },
     {
       "extension": ".txt",
@@ -37,7 +37,7 @@
     {
       "extension": ".json",
       "files": 1,
-      "bytes": 4012,
+      "bytes": 4011,
       "size": "3.9 KB"
     },
     {
@@ -51,28 +51,28 @@
     {
       "path": "dist/types/vue-data-ui.d.ts",
       "filename": "vue-data-ui",
-      "bytes": 593830,
-      "size": "580 KB",
+      "bytes": 597842,
+      "size": "584 KB",
       "extension": ".d.ts"
     },
     {
       "path": "dist/vue-ui-xy.js",
       "filename": "vue-ui-xy",
-      "bytes": 189387,
-      "size": "185 KB",
+      "bytes": 203624,
+      "size": "199 KB",
       "extension": ".js"
     },
     {
       "path": "dist/style.css",
       "filename": "style",
-      "bytes": 175512,
-      "size": "171 KB",
+      "bytes": 181938,
+      "size": "178 KB",
       "extension": ".css"
     },
     {
       "path": "dist/useConfig.js",
       "filename": "useConfig",
-      "bytes": 138927,
+      "bytes": 139715,
       "size": "136 KB",
       "extension": ".js"
     },
@@ -91,17 +91,31 @@
       "extension": ".js"
     },
     {
+      "path": "dist/vue-ui-stackline.js",
+      "filename": "vue-ui-stackline",
+      "bytes": 101725,
+      "size": "99 KB",
+      "extension": ".js"
+    },
+    {
       "path": "README.md",
       "filename": "README",
-      "bytes": 93344,
-      "size": "91 KB",
+      "bytes": 94310,
+      "size": "92 KB",
       "extension": ".md"
     },
     {
-      "path": "dist/vue-ui-stackline.js",
-      "filename": "vue-ui-stackline",
-      "bytes": 90049,
-      "size": "88 KB",
+      "path": "dist/vue-ui-quick-chart.js",
+      "filename": "vue-ui-quick-chart",
+      "bytes": 94179,
+      "size": "92 KB",
+      "extension": ".js"
+    },
+    {
+      "path": "dist/vue-ui-stackbar.js",
+      "filename": "vue-ui-stackbar",
+      "bytes": 93983,
+      "size": "92 KB",
       "extension": ".js"
     },
     {
@@ -109,20 +123,6 @@
       "filename": "vue-ui-dag",
       "bytes": 88864,
       "size": "87 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue-ui-stackbar.js",
-      "filename": "vue-ui-stackbar",
-      "bytes": 85666,
-      "size": "84 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue-ui-quick-chart.js",
-      "filename": "vue-ui-quick-chart",
-      "bytes": 83506,
-      "size": "82 KB",
       "extension": ".js"
     },
     {
@@ -140,6 +140,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/vue-ui-xy-canvas.js",
+      "filename": "vue-ui-xy-canvas",
+      "bytes": 76740,
+      "size": "75 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/vue-ui-skeleton.js",
       "filename": "vue-ui-skeleton",
       "bytes": 74505,
@@ -147,9 +154,16 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-xy-canvas.js",
-      "filename": "vue-ui-xy-canvas",
-      "bytes": 67841,
+      "path": "dist/vue-ui-candlestick.js",
+      "filename": "vue-ui-candlestick",
+      "bytes": 72056,
+      "size": "70 KB",
+      "extension": ".js"
+    },
+    {
+      "path": "dist/lib.js",
+      "filename": "lib",
+      "bytes": 67819,
       "size": "66 KB",
       "extension": ".js"
     },
@@ -161,13 +175,6 @@
       "extension": ".js"
     },
     {
-      "path": "dist/lib.js",
-      "filename": "lib",
-      "bytes": 67625,
-      "size": "66 KB",
-      "extension": ".js"
-    },
-    {
       "path": "dist/vue-ui-chestnut.js",
       "filename": "vue-ui-chestnut",
       "bytes": 67074,
@@ -175,10 +182,10 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-candlestick.js",
-      "filename": "vue-ui-candlestick",
-      "bytes": 64134,
-      "size": "63 KB",
+      "path": "dist/vue-ui-sparkline.js",
+      "filename": "vue-ui-sparkline",
+      "bytes": 66860,
+      "size": "65 KB",
       "extension": ".js"
     },
     {
@@ -186,6 +193,13 @@
       "filename": "vue-ui-quadrant",
       "bytes": 63761,
       "size": "62 KB",
+      "extension": ".js"
+    },
+    {
+      "path": "dist/vue-ui-donut-evolution.js",
+      "filename": "vue-ui-donut-evolution",
+      "bytes": 62262,
+      "size": "61 KB",
       "extension": ".js"
     },
     {
@@ -217,16 +231,16 @@
       "extension": ".js"
     },
     {
-      "path": "dist/BaseIcon.js",
-      "filename": "BaseIcon",
-      "bytes": 55385,
-      "size": "54 KB",
+      "path": "dist/SlicerPreview.js",
+      "filename": "SlicerPreview",
+      "bytes": 56013,
+      "size": "55 KB",
       "extension": ".js"
     },
     {
-      "path": "dist/SlicerPreview.js",
-      "filename": "SlicerPreview",
-      "bytes": 55050,
+      "path": "dist/BaseIcon.js",
+      "filename": "BaseIcon",
+      "bytes": 55385,
       "size": "54 KB",
       "extension": ".js"
     },
@@ -259,24 +273,10 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-donut-evolution.js",
-      "filename": "vue-ui-donut-evolution",
-      "bytes": 53188,
-      "size": "52 KB",
-      "extension": ".js"
-    },
-    {
       "path": "dist/vue-ui-nested-donuts.js",
       "filename": "vue-ui-nested-donuts",
       "bytes": 52872,
       "size": "52 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue-ui-sparkline.js",
-      "filename": "vue-ui-sparkline",
-      "bytes": 52087,
-      "size": "51 KB",
       "extension": ".js"
     },
     {
@@ -532,13 +532,6 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-data-ui.js",
-      "filename": "vue-data-ui",
-      "bytes": 17179,
-      "size": "17 KB",
-      "extension": ".js"
-    },
-    {
       "path": "dist/vue-ui-carousel-table.js",
       "filename": "vue-ui-carousel-table",
       "bytes": 17014,
@@ -576,7 +569,7 @@
     {
       "path": "dist/vue_ui_donut_evolution.js",
       "filename": "vue_ui_donut_evolution",
-      "bytes": 13995,
+      "bytes": 14562,
       "size": "14 KB",
       "extension": ".js"
     },
@@ -609,6 +602,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/vue_ui_xy.js",
+      "filename": "vue_ui_xy",
+      "bytes": 11135,
+      "size": "11 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/geoProjections.js",
       "filename": "geoProjections",
       "bytes": 11115,
@@ -616,10 +616,17 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue_ui_xy.js",
-      "filename": "vue_ui_xy",
-      "bytes": 9830,
-      "size": "9.6 KB",
+      "path": "dist/vue-data-ui.js",
+      "filename": "vue-data-ui",
+      "bytes": 10195,
+      "size": "10.0 KB",
+      "extension": ".js"
+    },
+    {
+      "path": "dist/vue_ui_stackline.js",
+      "filename": "vue_ui_stackline",
+      "bytes": 10057,
+      "size": "9.8 KB",
       "extension": ".js"
     },
     {
@@ -627,6 +634,20 @@
       "filename": "BaseDraggableDialog",
       "bytes": 9560,
       "size": "9.3 KB",
+      "extension": ".js"
+    },
+    {
+      "path": "dist/vue_ui_stackbar.js",
+      "filename": "vue_ui_stackbar",
+      "bytes": 9250,
+      "size": "9.0 KB",
+      "extension": ".js"
+    },
+    {
+      "path": "dist/vue_ui_xy_canvas.js",
+      "filename": "vue_ui_xy_canvas",
+      "bytes": 9192,
+      "size": "9.0 KB",
       "extension": ".js"
     },
     {
@@ -658,10 +679,10 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue_ui_stackline.js",
-      "filename": "vue_ui_stackline",
-      "bytes": 8540,
-      "size": "8.3 KB",
+      "path": "dist/vue_ui_candlestick.js",
+      "filename": "vue_ui_candlestick",
+      "bytes": 8588,
+      "size": "8.4 KB",
       "extension": ".js"
     },
     {
@@ -690,20 +711,6 @@
       "filename": "useTimeLabels",
       "bytes": 7757,
       "size": "7.6 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue_ui_stackbar.js",
-      "filename": "vue_ui_stackbar",
-      "bytes": 7733,
-      "size": "7.6 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue_ui_xy_canvas.js",
-      "filename": "vue_ui_xy_canvas",
-      "bytes": 7675,
-      "size": "7.5 KB",
       "extension": ".js"
     },
     {
@@ -745,13 +752,6 @@
       "path": "dist/patternUtils.js",
       "filename": "patternUtils",
       "bytes": 6761,
-      "size": "6.6 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue_ui_candlestick.js",
-      "filename": "vue_ui_candlestick",
-      "bytes": 6727,
       "size": "6.6 KB",
       "extension": ".js"
     },
@@ -910,6 +910,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/types/vue-ui-xy.d.ts",
+      "filename": "vue-ui-xy",
+      "bytes": 4757,
+      "size": "4.6 KB",
+      "extension": ".d.ts"
+    },
+    {
       "path": "dist/types/vue-ui-parallel-coordinate-plot.d.ts",
       "filename": "vue-ui-parallel-coordinate-plot",
       "bytes": 4745,
@@ -922,13 +929,6 @@
       "bytes": 4730,
       "size": "4.6 KB",
       "extension": ".js"
-    },
-    {
-      "path": "dist/types/vue-ui-xy.d.ts",
-      "filename": "vue-ui-xy",
-      "bytes": 4717,
-      "size": "4.6 KB",
-      "extension": ".d.ts"
     },
     {
       "path": "dist/vue_ui_chord.js",
@@ -994,6 +994,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/vue_ui_quick_chart.js",
+      "filename": "vue_ui_quick_chart",
+      "bytes": 4255,
+      "size": "4.2 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/vue_ui_flow.js",
       "filename": "vue_ui_flow",
       "bytes": 4246,
@@ -1015,6 +1022,13 @@
       "extension": ".d.ts"
     },
     {
+      "path": "dist/vue_ui_sparkline.js",
+      "filename": "vue_ui_sparkline",
+      "bytes": 4098,
+      "size": "4.0 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/types/vue-ui-horizontal-bar.d.ts",
       "filename": "vue-ui-horizontal-bar",
       "bytes": 4050,
@@ -1029,6 +1043,13 @@
       "extension": ".d.ts"
     },
     {
+      "path": "dist/types/vue-ui.d.ts",
+      "filename": "vue-ui",
+      "bytes": 4016,
+      "size": "3.9 KB",
+      "extension": ".d.ts"
+    },
+    {
       "path": "dist/vue_ui_molecule.js",
       "filename": "vue_ui_molecule",
       "bytes": 4012,
@@ -1038,7 +1059,7 @@
     {
       "path": "package.json",
       "filename": "package",
-      "bytes": 4012,
+      "bytes": 4011,
       "size": "3.9 KB",
       "extension": ".json"
     },
@@ -1052,7 +1073,7 @@
     {
       "path": "dist/types/vue-ui.d.ts",
       "filename": "vue-ui",
-      "bytes": 3938,
+      "bytes": 3912,
       "size": "3.8 KB",
       "extension": ".d.ts"
     },
@@ -1061,13 +1082,6 @@
       "filename": "vue-ui-history-plot",
       "bytes": 3885,
       "size": "3.8 KB",
-      "extension": ".d.ts"
-    },
-    {
-      "path": "dist/types/vue-ui.d.ts",
-      "filename": "vue-ui",
-      "bytes": 3834,
-      "size": "3.7 KB",
       "extension": ".d.ts"
     },
     {
@@ -1099,6 +1113,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/types/vue-ui-quick-chart.d.ts",
+      "filename": "vue-ui-quick-chart",
+      "bytes": 3707,
+      "size": "3.6 KB",
+      "extension": ".d.ts"
+    },
+    {
       "path": "dist/vue_ui_bullet.js",
       "filename": "vue_ui_bullet",
       "bytes": 3696,
@@ -1111,6 +1132,13 @@
       "bytes": 3694,
       "size": "3.6 KB",
       "extension": ".js"
+    },
+    {
+      "path": "dist/types/vue-ui-candlestick.d.ts",
+      "filename": "vue-ui-candlestick",
+      "bytes": 3677,
+      "size": "3.6 KB",
+      "extension": ".d.ts"
     },
     {
       "path": "dist/types/vue.d.ts",
@@ -1127,23 +1155,9 @@
       "extension": ".js"
     },
     {
-      "path": "dist/types/vue-ui-quick-chart.d.ts",
-      "filename": "vue-ui-quick-chart",
-      "bytes": 3629,
-      "size": "3.5 KB",
-      "extension": ".d.ts"
-    },
-    {
       "path": "dist/types/vue.d.ts",
       "filename": "vue",
       "bytes": 3621,
-      "size": "3.5 KB",
-      "extension": ".d.ts"
-    },
-    {
-      "path": "dist/types/vue-ui-candlestick.d.ts",
-      "filename": "vue-ui-candlestick",
-      "bytes": 3599,
       "size": "3.5 KB",
       "extension": ".d.ts"
     },
@@ -1162,13 +1176,6 @@
       "extension": ".d.ts"
     },
     {
-      "path": "dist/vue_ui_quick_chart.js",
-      "filename": "vue_ui_quick_chart",
-      "bytes": 3486,
-      "size": "3.4 KB",
-      "extension": ".js"
-    },
-    {
       "path": "dist/render-common.js",
       "filename": "render-common",
       "bytes": 3471,
@@ -1183,13 +1190,6 @@
       "extension": ".d.ts"
     },
     {
-      "path": "dist/vue_ui_sparkline.js",
-      "filename": "vue_ui_sparkline",
-      "bytes": 3434,
-      "size": "3.4 KB",
-      "extension": ".js"
-    },
-    {
       "path": "dist/vue_ui_3d_bar.js",
       "filename": "vue_ui_3d_bar",
       "bytes": 3426,
@@ -1202,6 +1202,13 @@
       "bytes": 3421,
       "size": "3.3 KB",
       "extension": ".js"
+    },
+    {
+      "path": "dist/types/vue-ui-donut.d.ts",
+      "filename": "vue-ui-donut",
+      "bytes": 3419,
+      "size": "3.3 KB",
+      "extension": ".d.ts"
     },
     {
       "path": "dist/types/vue-ui.d.ts",
@@ -1225,17 +1232,10 @@
       "extension": ".d.ts"
     },
     {
-      "path": "dist/types/vue-ui-donut.d.ts",
-      "filename": "vue-ui-donut",
-      "bytes": 3341,
-      "size": "3.3 KB",
-      "extension": ".d.ts"
-    },
-    {
       "path": "dist/types/vue-ui.d.ts",
       "filename": "vue-ui",
-      "bytes": 3291,
-      "size": "3.2 KB",
+      "bytes": 3339,
+      "size": "3.3 KB",
       "extension": ".d.ts"
     },
     {
@@ -1561,6 +1561,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/types/vue-ui.d.ts",
+      "filename": "vue-ui",
+      "bytes": 1760,
+      "size": "1.7 KB",
+      "extension": ".d.ts"
+    },
+    {
       "path": "dist/types/vue-ui-sparkstackbar.d.ts",
       "filename": "vue-ui-sparkstackbar",
       "bytes": 1736,
@@ -1594,13 +1601,6 @@
       "bytes": 1681,
       "size": "1.6 KB",
       "extension": ".js"
-    },
-    {
-      "path": "dist/types/vue-ui.d.ts",
-      "filename": "vue-ui",
-      "bytes": 1645,
-      "size": "1.6 KB",
-      "extension": ".d.ts"
     },
     {
       "path": "dist/A11yDataTable.js",
@@ -2459,8 +2459,8 @@
     {
       "path": "dist/package.js",
       "filename": "package",
-      "bytes": 74,
-      "size": "74 B",
+      "bytes": 73,
+      "size": "73 B",
       "extension": ".js"
     }
   ]
