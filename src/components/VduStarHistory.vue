@@ -278,6 +278,9 @@ const config = computed(() => ({
             preview: {
                 fill: isDarkMode.value ? "#CCCCCC10" : "#1A1A1A10",
             },
+            dragToZoom: {
+                show: true,
+            },
         },
     },
     line: {
