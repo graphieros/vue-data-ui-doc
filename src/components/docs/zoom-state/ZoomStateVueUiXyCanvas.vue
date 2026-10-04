@@ -106,7 +106,6 @@ const zoomState = ref(null);
             :selectedXIndex="selectedXIndex"
         />
         <VueUiXyCanvas
-            class="w-full"
             :dataset="datasets.B"
             :config
             v-model:zoom-state="zoomState"

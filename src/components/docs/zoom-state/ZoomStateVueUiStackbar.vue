@@ -146,7 +146,6 @@ function selectLegend(payload, from) {
         />
         <VueUiStackbar
             ref="B"
-            class="w-full"
             :dataset
             :config="configB"
             v-model:zoom-state="zoomState"
