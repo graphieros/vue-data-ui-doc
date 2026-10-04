@@ -15,12 +15,18 @@ const dataset = ref([
 
 const config = ref({
     style: {
-        chart: {
-            title: {
-                text: "Title",
-                subtitle: {
-                    text: "Subtitle",
-                },
+        title: {
+            text: "Title",
+            subtitle: {
+                text: "Subtitle",
+            },
+        },
+        zoom: {
+            minimap: {
+                show: true,
+            },
+            dragToZoom: {
+                show: true,
             },
         },
     },

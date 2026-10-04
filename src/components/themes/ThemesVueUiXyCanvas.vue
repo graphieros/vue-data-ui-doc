@@ -26,38 +26,27 @@ const config = ref({
     line: {
         strokeWidth: 4,
     },
-    chart: {
-        title: {
-            text: "Title",
-            subtitle: {
-                text: "Subtitle",
+    style: {
+        chart: {
+            aspectRatio: "16 / 9",
+            legend: {
+                position: "top",
             },
-        },
-        padding: {
-            bottom: 36,
-        },
-        labels: {
-            fontSize: 24,
-        },
-        grid: {
-            labels: {
-                fontSize: 24,
-                xAxisLabels: {
-                    values: [
-                        "JAN",
-                        "FEB",
-                        "MAR",
-                        "APR",
-                        "MAY",
-                        "JUN",
-                        "JUL",
-                        "AUG",
-                        "SEP",
-                        "OCT",
-                        "NOV",
-                        "DEC",
-                    ],
-                    fontSize: 24,
+            paddingProportions: {
+                bottom: 0,
+            },
+            title: {
+                text: "Title",
+                subtitle: {
+                    text: "Subtitle",
+                },
+            },
+            zoom: {
+                minimap: {
+                    show: true,
+                },
+                dragToZoom: {
+                    show: true,
                 },
             },
         },

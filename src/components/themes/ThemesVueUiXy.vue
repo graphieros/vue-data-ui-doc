@@ -71,8 +71,10 @@ const config = ref({
             },
         },
         zoom: {
-            focusOnDrag: true,
             minimap: {
+                show: true,
+            },
+            dragToZoom: {
                 show: true,
             },
         },
