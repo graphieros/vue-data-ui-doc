@@ -155,12 +155,14 @@ function selectLegend(payload, from) {
         />
     </div>
 
-    <!-- TODO: link -->
     <div class="mt-4">
         Extra code is required to sync the hover index and the legend filtering:
     </div>
 
-    <a href="/" target="_blank" class="underline text-app-blue mt-4">{{
-        caseStore.code[store.lang]
-    }}</a>
+    <a
+        href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/docs/zoom-state/ZoomStateVueUiStackline.vue"
+        target="_blank"
+        class="underline text-app-blue mt-4"
+        >{{ caseStore.code[store.lang] }}</a
+    >
 </template>

@@ -115,8 +115,10 @@ const zoomState = ref(null);
         />
     </div>
 
-    <!-- TODO: link -->
-    <a href="/" target="_blank" class="underline text-app-blue mt-4">{{
-        caseStore.code[store.lang]
-    }}</a>
+    <a
+        href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/docs/zoom-state/ZoomStateVueUiXyCanvas.vue"
+        target="_blank"
+        class="underline text-app-blue mt-4"
+        >{{ caseStore.code[store.lang] }}</a
+    >
 </template>

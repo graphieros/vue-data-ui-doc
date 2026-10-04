@@ -119,4 +119,10 @@ function selectLegend(payload, from) {
             @selectLegend="(payload) => selectLegend(payload, 'B')"
         />
     </div>
+    <a
+        href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/docs/zoom-state/ZoomStateVueUiDonutEvolution.vue"
+        target="_blank"
+        class="underline text-app-blue mt-4"
+        >{{ caseStore.code[store.lang] }}</a
+    >
 </template>
