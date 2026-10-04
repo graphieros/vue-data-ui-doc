@@ -1,13 +1,13 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 5301745,
+  "totalBytes": 5301688,
   "totalSize": "5.1 MB",
   "fileCount": 345,
   "byExtension": [
     {
       "extension": ".js",
       "files": 263,
-      "bytes": 4211559,
+      "bytes": 4211502,
       "size": "4.0 MB"
     },
     {
@@ -128,7 +128,7 @@
     {
       "path": "dist/vue-ui-scatter.js",
       "filename": "vue-ui-scatter",
-      "bytes": 80109,
+      "bytes": 80137,
       "size": "78 KB",
       "extension": ".js"
     },
@@ -336,16 +336,16 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-label.js",
-      "filename": "vue-ui-label",
-      "bytes": 46378,
+      "path": "dist/vue-ui-chord.js",
+      "filename": "vue-ui-chord",
+      "bytes": 46309,
       "size": "45 KB",
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-chord.js",
-      "filename": "vue-ui-chord",
-      "bytes": 46309,
+      "path": "dist/vue-ui-label.js",
+      "filename": "vue-ui-label",
+      "bytes": 46293,
       "size": "45 KB",
       "extension": ".js"
     },

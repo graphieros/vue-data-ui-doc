@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.26.3",
+        "date": "2026-10-04",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Improve plot behavior on hover in performance mode.",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 3.26.2",
         "date": "2026-10-04",
         "updates": [
