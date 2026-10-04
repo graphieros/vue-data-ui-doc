@@ -3,7 +3,6 @@ import { ref, computed } from "vue";
 import { createNumbers } from "../../maker/lib";
 import { useMainStore } from "../../../stores";
 import { useCaseStore } from "../../../stores/cases";
-import { mergeConfigs } from "vue-data-ui/utils";
 import VueUiXyCanvas from "vue-data-ui/vue-ui-xy-canvas";
 
 const store = useMainStore();

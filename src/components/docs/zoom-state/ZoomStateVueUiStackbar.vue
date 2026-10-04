@@ -2,7 +2,6 @@
 import { ref, computed, useTemplateRef } from "vue";
 import { useMainStore } from "../../../stores";
 import { useCaseStore } from "../../../stores/cases";
-import VueUiStackline from "vue-data-ui/vue-ui-stackline";
 import { createNumbers } from "../../maker/lib";
 import { mergeConfigs } from "vue-data-ui/utils";
 import VueUiStackbar from "vue-data-ui/vue-ui-stackbar";

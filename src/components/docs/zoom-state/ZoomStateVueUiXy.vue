@@ -4,7 +4,6 @@ import { createNumbers } from "../../maker/lib";
 import VueUiXy from "vue-data-ui/vue-ui-xy";
 import { useMainStore } from "../../../stores";
 import { useCaseStore } from "../../../stores/cases";
-import { mergeConfigs } from "vue-data-ui/utils";
 
 const store = useMainStore();
 const caseStore = useCaseStore();

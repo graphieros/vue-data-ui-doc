@@ -104,7 +104,6 @@ const zoomState = ref(null);
             :selectedIndex="selectedXIndex"
         />
         <VueUiSparkline
-            class="w-full"
             :dataset="datasets.B"
             :config="configB"
             v-model:zoom-state="zoomState"
