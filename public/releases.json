@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.26.2",
+        "date": "2026-10-04",
+        "updates": [
+            {
+                "component": "VueUiLabel",
+                "description": "Prevent event bubbling when dragging the label box.",
+                "link": "/docs#vue-ui-label"
+            }
+        ]
+    },
+    {
         "version": "v 3.26.1",
         "date": "2026-10-03",
         "updates": [
