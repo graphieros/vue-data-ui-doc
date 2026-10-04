@@ -201,11 +201,6 @@ const labels = [
 ];
 
 const showComments = ref(false);
-const labelStep = ref(0);
-
-watch(showComments, () => {
-    labelStep.value += 1;
-});
 
 function getLabel(label, svg) {
     const plots = svg.data[0].plots;
@@ -284,7 +279,6 @@ function getLabel(label, svg) {
             :dataset="datasetFileCount"
             :config="configFileCount"
             :selectedXIndex
-            :key="`fc_${labelStep}`"
         >
             <template #reset-action="{ reset }">
                 <button
@@ -299,7 +293,7 @@ function getLabel(label, svg) {
                 <template v-if="showComments">
                     <VueUiLabel
                         v-for="label in labels"
-                        :key="`file_count_label_${label.version}_${labelStep}`"
+                        :key="`file_count_label_${label.version}`"
                         v-bind="getLabel(label, svg)"
                     />
                 </template>
