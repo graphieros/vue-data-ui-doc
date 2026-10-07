@@ -39,6 +39,7 @@ import { COLOR_PICKER_PALETTE } from "../../consts.js";
 import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 import BaseZoomState from "../Base/BaseZoomState.vue";
 import ZoomStateVueUiXy from "./zoom-state/ZoomStateVueUiXy.vue";
+import TricksVueUiXy from "./tricks/TricksVueUiXy.vue";
 
 const mainConfig = useConfig();
 
@@ -1620,6 +1621,7 @@ const customFormatCode =
             showCallbacks
             showSsr
             showZoomState
+            showTricks
             schema="vue_ui_xy"
             signInfo="both"
         >
@@ -5728,6 +5730,10 @@ const customFormatCode =
 
             <template #tab12>
                 <SsrGeneration component="VueUiXy" />
+            </template>
+
+            <template #tab13>
+                <TricksVueUiXy />
             </template>
 
             <template #tab14>
