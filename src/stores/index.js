@@ -1890,6 +1890,17 @@ export const useMainStore = defineStore("main", {
                     ar: "التبديل إلى الوضع الداكن",
                 },
                 menu: {
+                    typesDirectory: {
+                        en: "TS type directory",
+                        fr: "Répertoire des types TS",
+                        pt: "Diretório de tipos TS",
+                        de: "TS-Typenverzeichnis",
+                        zh: "TS 类型目录",
+                        ja: "TS型ディレクトリ",
+                        es: "Directorio de tipos TS",
+                        ko: "TS 타입 디렉터리",
+                        ar: "دليل أنواع TS",
+                    },
                     installationComment: {
                         en: "Integrate the library",
                         fr: "Intégrer la bibliothèque",

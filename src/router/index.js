@@ -118,6 +118,11 @@ const routes = [
         path: "/:catchAll(.*)",
         component: NotFound,
     },
+    {
+        path: "/types",
+        name: "Type Directory",
+        component: () => import("../views/TypeDirectory.vue"),
+    },
 ];
 
 const router = createRouter({

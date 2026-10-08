@@ -1531,6 +1531,14 @@ function handleSearchEnter() {
                     </ul>
                 </div>
 
+                <RouterLink to="/types">
+                    <button
+                        class="border w-full my-2 rounded-full py-2 bg-gradient-to-br from-app-blue to-app-green hover:from-app-green hover:to-app-blue text-black font-inter-medium shadow-md"
+                    >
+                        {{ translations.menu.typesDirectory[store.lang] }}
+                    </button>
+                </RouterLink>
+
                 <Dropdown
                     v-for="(menu, i) in sideMenuItems"
                     :key="menu.title"
