@@ -234,6 +234,7 @@ watch(
 // Replace (rather than push) on every change to avoid one history entry per keystroke.
 let urlSyncTimer;
 let applyingRoute = false;
+let resettingDirectory = false;
 
 watch(
     () => [route.query.typeSearch, route.query.typeFilter, route.query.type],
@@ -245,10 +246,16 @@ watch(
             ? urlFilter
             : "all";
         const match = byFullName.value.get(urlType)?.[0];
-        if (match && match.id !== selectedId.value) {
-            selectedId.value = match.id;
-            history.value = [match.id];
-            historyIndex.value = 0;
+        // A bare /types route must restore the initial root declaration.
+        const targetId =
+            match?.id ??
+            (!urlSearch && !urlFilter && !urlType
+                ? (entries.value[0]?.id ?? null)
+                : selectedId.value);
+        if (targetId !== selectedId.value) {
+            selectedId.value = targetId;
+            history.value = targetId === null ? [] : [targetId];
+            historyIndex.value = targetId === null ? -1 : 0;
             copied.value = false;
         }
         // A synchronous watcher runs after this callback, once the updates settle.
@@ -257,9 +264,18 @@ watch(
 );
 
 watch(
+    search,
+    (value, previous) => {
+        if (applyingRoute) return;
+        if (!value.trim() && previous.trim()) resetDirectory();
+    },
+    { flush: "sync" },
+);
+
+watch(
     [search, activeFilter, selectedId],
     () => {
-        if (applyingRoute) return;
+        if (applyingRoute || resettingDirectory) return;
         clearTimeout(urlSyncTimer);
         urlSyncTimer = setTimeout(() => {
             const query = { ...route.query };
@@ -268,7 +284,13 @@ watch(
             if (activeFilter.value !== "all")
                 query.typeFilter = activeFilter.value;
             else delete query.typeFilter;
-            if (selected.value) query.type = selected.value.fullName;
+            if (
+                selected.value &&
+                (selectedId.value !== entries.value[0]?.id ||
+                    search.value.trim() ||
+                    activeFilter.value !== "all")
+            )
+                query.type = selected.value.fullName;
             else delete query.type;
 
             if (
@@ -282,6 +304,29 @@ watch(
     },
     { flush: "sync" },
 );
+
+async function resetDirectory() {
+    // A queued URL update from a previous selection must never undo Reset.
+    clearTimeout(urlSyncTimer);
+    resettingDirectory = true;
+    applyingRoute = true;
+    search.value = "";
+    activeFilter.value = "all";
+    collapsed.value = new Set();
+    const rootId = entries.value[0]?.id ?? null;
+    selectedId.value = rootId;
+    history.value = rootId === null ? [] : [rootId];
+    historyIndex.value = rootId === null ? -1 : 0;
+    copied.value = false;
+    applyingRoute = false;
+
+    try {
+        await router.replace({ path: "/types", query: {}, hash: "" });
+    } finally {
+        // Release after the router has committed the reset navigation.
+        resettingDirectory = false;
+    }
+}
 
 onBeforeUnmount(() => clearTimeout(urlSyncTimer));
 
@@ -303,6 +348,7 @@ function toggleGroup(kind) {
 }
 function navigate(id) {
     if (!byId.value.has(id) || selectedId.value === id) return;
+    clearTimeout(urlSyncTimer);
     selectedId.value = id;
     history.value = [...history.value.slice(0, historyIndex.value + 1), id];
     historyIndex.value = history.value.length - 1;
@@ -585,6 +631,13 @@ async function copyDeclaration() {
 
         <div class="td-layout">
             <aside class="td-sidebar" :aria-label="t('declarations')">
+                <button
+                    type="button"
+                    class="td-reset-button"
+                    @click="resetDirectory"
+                >
+                    {{ t("resetDirectory") }}
+                </button>
                 <label class="td-search-label" for="td-search">{{
                     t("searchDeclarations")
                 }}</label>
@@ -851,6 +904,30 @@ async function copyDeclaration() {
     padding: 16px 0;
     max-height: 700px;
     overflow-y: auto;
+}
+.td-reset-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: calc(100% - 28px);
+    margin: 0 14px 18px;
+    padding: 9px 12px;
+    border: 1px solid var(--td-border);
+    border-radius: 6px;
+    background: var(--td-bg);
+    color: var(--td-text);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.td-reset-button:hover {
+    border-color: var(--td-accent);
+}
+.td-reset-button:focus-visible {
+    outline: 2px solid var(--td-accent);
+    outline-offset: 2px;
 }
 .td-search-label {
     font-size: 10px;

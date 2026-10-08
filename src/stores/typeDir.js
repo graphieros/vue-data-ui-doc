@@ -343,5 +343,16 @@ export const useTypeDirStore = defineStore("typeDir", {
             ko: "파일을 읽을 수 없습니다.",
             ar: "تعذّرت قراءة الملف.",
         },
+        resetDirectory: {
+            en: "Reset directory",
+            fr: "Réinitialiser le répertoire",
+            pt: "Redefinir diretório",
+            de: "Verzeichnis zurücksetzen",
+            zh: "重置目录",
+            ja: "ディレクトリをリセット",
+            es: "Restablecer directorio",
+            ko: "디렉터리 초기화",
+            ar: "إعادة تعيين الدليل",
+        },
     }),
 });
