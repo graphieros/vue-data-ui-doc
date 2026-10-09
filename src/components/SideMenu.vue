@@ -907,41 +907,57 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-sparkline",
                     componentName: "Sparkline",
                     icon: "chartSparkline",
+                    description:
+                        translations.value.docs.tooltips.donut[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-sparkbar",
                     componentName: "Sparkbar",
                     icon: "chartSparkbar",
+                    description:
+                        translations.value.docs.tooltips.sparkbar[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-sparkstackbar",
                     componentName: "SparkStackbar",
                     icon: "chartSparkStackbar",
+                    description:
+                        translations.value.docs.tooltips.stackbar[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-sparkhistogram",
                     componentName: "SparkHistogram",
                     icon: "chartSparkHistogram",
+                    description:
+                        translations.value.docs.tooltips.histogram[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-sparkgauge",
                     componentName: "Sparkgauge",
                     icon: "chartGauge",
+                    description:
+                        translations.value.docs.tooltips.gauge[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-spark-trend",
                     componentName: "SparkTrend",
                     icon: "trend",
+                    description:
+                        translations.value.docs.tooltips.trend[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-gizmo",
                     componentName: "Gizmo",
                     icon: "battery",
+                    description:
+                        translations.value.docs.tooltips.gizmo[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-kpi",
                     componentName: "Kpi",
                     icon: "kpiBox",
+                    description:
+                        translations.value.docs.tooltips.kpi[store.lang],
                 },
             ],
             icon: "chartSparkline",
@@ -953,66 +969,100 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-quick-chart",
                     componentName: "QuickChart",
                     icon: "vueDataUi",
+                    description:
+                        translations.value.docs.tooltips.quickChart[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-xy",
                     componentName: "Xy",
                     icon: "chartLine",
+                    description:
+                        translations.value.docs.tooltips.xy[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-xy-canvas",
                     componentName: "XyCanvas",
                     icon: "chartLine",
+                    description:
+                        translations.value.docs.tooltips.xyCanvas[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-horizontal-bar",
                     componentName: "HorizontalBar",
                     icon: "chartVerticalBar",
+                    description:
+                        translations.value.docs.tooltips.verticalBar[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-parallel-coordinate-plot",
                     componentName: "ParallelCoordinatePlot",
                     icon: "chartParallelCoordinatePlot",
+                    description:
+                        translations.value.docs.tooltips.pcp[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-candlestick",
                     componentName: "Candlestick",
                     icon: "chartCandlestick",
+                    description:
+                        translations.value.docs.tooltips.candlestick[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-age-pyramid",
                     componentName: "AgePyramid",
                     icon: "chartAgePyramid",
+                    description:
+                        translations.value.docs.tooltips.agePyramid[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-stackbar",
                     componentName: "Stackbar",
                     icon: "chartStackbar",
+                    description:
+                        translations.value.docs.tooltips.stackbarBig[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-stackline",
                     componentName: "Stackline",
                     icon: "chartStackline",
+                    description:
+                        translations.value.docs.tooltips.stackline[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-funnel",
                     componentName: "Funnel",
                     icon: "chartFunnel",
+                    description:
+                        translations.value.docs.tooltips.funnel[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-history-plot",
                     componentName: "HistoryPlot",
                     icon: "chartHistoryPlot",
+                    description:
+                        translations.value.docs.tooltips.historyPlot[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-ridgeline",
                     componentName: "Ridgeline",
                     icon: "chartRidgeline",
+                    description:
+                        translations.value.docs.tooltips.ridgeline[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-bump",
                     componentName: "Bump",
                     icon: "chartBump",
+                    description:
+                        translations.value.docs.tooltips.bump[store.lang],
                 },
             ],
             icon: "chartLine",
@@ -1024,46 +1074,68 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-donut",
                     componentName: "Donut",
                     icon: "chartDonut",
+                    description:
+                        translations.value.docs.tooltips.donut[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-nested-donuts",
                     componentName: "NestedDonuts",
                     icon: "chartNestedDonuts",
+                    description:
+                        translations.value.docs.tooltips.nestedDonuts[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-waffle",
                     componentName: "Waffle",
                     icon: "chartWaffle",
+                    description:
+                        translations.value.docs.tooltips.waffle[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-heatmap",
                     componentName: "Heatmap",
                     icon: "chartHeatmap",
+                    description:
+                        translations.value.docs.tooltips.heatmap[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-treemap",
                     componentName: "Treemap",
                     icon: "chartTreemap",
+                    description:
+                        translations.value.docs.tooltips.treemap[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-rings",
                     componentName: "Rings",
                     icon: "chartRings",
+                    description:
+                        translations.value.docs.tooltips.rings[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-galaxy",
                     componentName: "Galaxy",
                     icon: "chartGalaxy",
+                    description:
+                        translations.value.docs.tooltips.galaxy[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-donut-evolution",
                     componentName: "DonutEvolution",
                     icon: "chartDonutEvolution",
+                    description:
+                        translations.value.docs.tooltips.donutEvolution[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-circle-pack",
                     componentName: "CirclePack",
                     icon: "chartCirclePack",
+                    description:
+                        translations.value.docs.tooltips.circlePack[store.lang],
                 },
             ],
             icon: "chartDonut",
@@ -1075,36 +1147,52 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-gauge",
                     componentName: "Gauge",
                     icon: "chartGauge",
+                    description:
+                        translations.value.docs.tooltips.gauge[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-bullet",
                     componentName: "Bullet",
                     icon: "chartBullet",
+                    description:
+                        translations.value.docs.tooltips.bullet[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-onion",
                     componentName: "Onion",
                     icon: "chartOnion",
+                    description:
+                        translations.value.docs.tooltips.onion[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-wheel",
                     componentName: "Wheel",
                     icon: "chartWheel",
+                    description:
+                        translations.value.docs.tooltips.wheel[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-tiremarks",
                     componentName: "Tiremarks",
                     icon: "chartTiremarks",
+                    description:
+                        translations.value.docs.tooltips.tiremarks[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-thermometer",
                     componentName: "Thermometer",
                     icon: "chartThermometer",
+                    description:
+                        translations.value.docs.tooltips.thermometer[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-timer",
                     componentName: "Timer",
                     icon: "lap",
+                    description:
+                        translations.value.docs.tooltips.timer[store.lang],
                 },
             ],
             icon: "chartGauge",
@@ -1116,16 +1204,24 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-word-cloud",
                     componentName: "WordCloud",
                     icon: "chartWordCloud",
+                    description:
+                        translations.value.docs.tooltips.wordCloud[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-relation-circle",
                     componentName: "RelationCircle",
                     icon: "chartRelationCircle",
+                    description:
+                        translations.value.docs.tooltips.relationCircle[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-chord",
                     componentName: "Chord",
                     icon: "chartChord",
+                    description:
+                        translations.value.docs.tooltips.chord[store.lang],
                 },
             ],
             icon: "chartWordCloud",
@@ -1137,16 +1233,22 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-dag",
                     componentName: "Dag",
                     icon: "chartDag",
+                    description:
+                        translations.value.docs.tooltips.dag[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-flow",
                     componentName: "Flow",
                     icon: "chartFlow",
+                    description:
+                        translations.value.docs.tooltips.flow[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-molecule",
                     componentName: "Molecule",
                     icon: "chartCluster",
+                    description:
+                        translations.value.docs.tooltips.molecule[store.lang],
                 },
             ],
             icon: "chartDag",
@@ -1158,11 +1260,15 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-radar",
                     componentName: "Radar",
                     icon: "chartRadar",
+                    description:
+                        translations.value.docs.tooltips.radar[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-mood-radar",
                     componentName: "MoodRadar",
                     icon: "chartMoodRadar",
+                    description:
+                        translations.value.docs.tooltips.moodRadar[store.lang],
                 },
             ],
             icon: "chartRadar",
@@ -1174,36 +1280,50 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-quadrant",
                     componentName: "Quadrant",
                     icon: "chartQuadrant",
+                    description:
+                        translations.value.docs.tooltips.quadrant[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-chestnut",
                     componentName: "Chestnut",
                     icon: "chartChestnut",
+                    description:
+                        translations.value.docs.tooltips.chestnut[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-scatter",
                     componentName: "Scatter",
                     icon: "chartScatter",
+                    description:
+                        translations.value.docs.tooltips.scatter[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-strip-plot",
                     componentName: "StripPlot",
                     icon: "chartStripPlot",
+                    description:
+                        translations.value.docs.tooltips.stripPlot[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-dumbbell",
                     componentName: "Dumbbell",
                     icon: "chartDumbbell",
+                    description:
+                        translations.value.docs.tooltips.dumbbell[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-world",
                     componentName: "World",
                     icon: "world",
+                    description:
+                        translations.value.docs.tooltips.world[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-geo",
                     componentName: "Geo",
                     icon: "chartGeo",
+                    description:
+                        translations.value.docs.tooltips.geo[store.lang],
                 },
             ],
             icon: "chartScatter",
@@ -1215,6 +1335,8 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-3d-bar",
                     componentName: "3dBar",
                     icon: "chart3dBar",
+                    description:
+                        translations.value.docs.tooltips.bar3d[store.lang],
                 },
             ],
             icon: "chart3dBar",
@@ -1226,21 +1348,35 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-table-sparkline",
                     componentName: "TableSparkline",
                     icon: "chartTableSparkline",
+                    description:
+                        translations.value.docs.tooltips.sparklineTable[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-table-heatmap",
                     componentName: "TableHeatmap",
                     icon: "chartTable",
+                    description:
+                        translations.value.docs.tooltips.tableHeatmap[
+                            store.lang
+                        ],
                 },
                 {
                     route: "/docs#vue-ui-table",
                     componentName: "Table",
                     icon: "chartTable",
+                    description:
+                        translations.value.docs.tooltips.table[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-carousel-table",
                     componentName: "CarouselTable",
                     icon: "carouselTable",
+                    description:
+                        translations.value.docs.tooltips.carouselTable[
+                            store.lang
+                        ],
                 },
             ],
             icon: "chartTable",
@@ -1252,11 +1388,15 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-rating",
                     componentName: "Rating",
                     icon: "star",
+                    description:
+                        translations.value.docs.comments.rating.p1[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-smiley",
                     componentName: "Smiley",
                     icon: "smiley",
+                    description:
+                        translations.value.docs.comments.smiley.p1[store.lang],
                 },
             ],
             icon: "starFill",
@@ -1268,6 +1408,8 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-hill",
                     componentName: "Hill",
                     icon: "chartHill",
+                    description:
+                        translations.value.docs.tooltips.hill[store.lang],
                 },
             ],
             icon: "monitor",
@@ -1279,46 +1421,64 @@ const sideMenuItems = computed(() => {
                     route: "/docs#vue-ui-label",
                     componentName: "Label",
                     icon: "labelOpen",
+                    description:
+                        translations.value.docs.tooltips.label[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-accordion",
                     componentName: "Accordion",
                     icon: "accordion",
+                    description:
+                        translations.value.docs.tooltips.accordion[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-skeleton",
                     componentName: "Skeleton",
                     icon: "skeleton",
+                    description:
+                        translations.value.docs.tooltips.skeleton[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-dashboard",
                     componentName: "Dashboard",
                     icon: "dashboard",
+                    description:
+                        translations.value.docs.tooltips.dashboard[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-annotator",
                     componentName: "Annotator",
                     icon: "annotator",
+                    description:
+                        translations.value.docs.tooltips.annotator[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-icon",
                     componentName: "Icon",
                     icon: "icons",
+                    description:
+                        translations.value.docs.tooltips.icon[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-digits",
                     componentName: "Digits",
                     icon: "digit8",
+                    description:
+                        translations.value.docs.tooltips.digits[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-cursor",
                     componentName: "Cursor",
                     icon: "cursor",
+                    description:
+                        translations.value.docs.tooltips.cursor[store.lang],
                 },
                 {
                     route: "/docs#vue-ui-mini-loader",
                     componentName: "MiniLoader",
                     icon: "chartWheel",
+                    description:
+                        translations.value.docs.tooltips.miniLoader[store.lang],
                 },
                 {
                     route: "/docs#utility-functions",
@@ -1552,6 +1712,7 @@ function handleSearchEnter() {
                     :title="menu.title"
                     :items="menu.items"
                     :icon="menu.icon"
+                    :description="menu.description"
                     @close="closeIfOpen"
                 />
 

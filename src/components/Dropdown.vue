@@ -23,6 +23,10 @@ const props = defineProps({
         type: String,
         default: "",
     },
+    description: {
+        type: String,
+        default: "",
+    },
 });
 
 const emit = defineEmits(["close"]);
@@ -125,6 +129,7 @@ function M(_) {
                                 :itsRoute="item.route"
                                 :componentName="item.componentName"
                                 :icon="item.icon"
+                                :description="item.description"
                                 @close="close"
                                 @scrollToTop="scrollToTop"
                             />
