@@ -1,6 +1,10 @@
 <script setup>
 import { ref, computed } from "vue";
 import { adaptColorToBackground } from "./maker/lib";
+import { useMainStore } from "../stores";
+
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const props = defineProps({
     value: {
@@ -22,6 +26,10 @@ const props = defineProps({
     buttonColor: {
         type: String,
         default: "#5f8aee",
+    },
+    rangeColor: {
+        type: String,
+        default: "#42d392",
     },
     labelId: {
         type: String,
@@ -65,8 +73,21 @@ const valueRatio = computed(
         >
             <div
                 :style="{
+                    width: `100%`,
+                    background: isDarkMode ? '#1A1A1A' : '#E1E5E8',
+                    height: '5px',
+                    position: 'absolute',
+                    top: '-3px',
+                    borderRadius: '3px',
+                    border: isDarkMode
+                        ? '0.25px solid #4A4A4A'
+                        : '0.25px solid #CCCCCC',
+                }"
+            />
+            <div
+                :style="{
                     width: `${valueRatio * 100}%`,
-                    background: buttonColor,
+                    background: rangeColor,
                     height: '3px',
                     position: 'absolute',
                     top: '-2px',
@@ -93,7 +114,7 @@ const valueRatio = computed(
             class="btn-left w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]"
             @click="decrement"
         >
-            -
+            <VueUiIcon name="minus" stroke="#FFFFFF" />
         </button>
         <input
             :aria-labelledby="labelId"
@@ -114,7 +135,7 @@ const valueRatio = computed(
             class="btn-right w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]"
             @click="increment"
         >
-            +
+            <VueUiIcon name="plus" stroke="#FFFFFF" />
         </button>
     </div>
 </template>
