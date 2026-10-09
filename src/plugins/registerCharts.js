@@ -1,0 +1,71 @@
+import { defineAsyncComponent } from "vue";
+import "vue-data-ui/style.css";
+
+const chartLoaders = {
+    // The universal component is exported only from the package root.
+    VueDataUi: () => import("vue-data-ui").then(({ VueDataUi }) => VueDataUi),
+
+    VueUiXy: () => import("vue-data-ui/vue-ui-xy"),
+    VueUiTable: () => import("vue-data-ui/vue-ui-table"),
+    VueUiDonut: () => import("vue-data-ui/vue-ui-donut"),
+    VueUiWaffle: () => import("vue-data-ui/vue-ui-waffle"),
+    VueUiRadar: () => import("vue-data-ui/vue-ui-radar"),
+    VueUiQuadrant: () => import("vue-data-ui/vue-ui-quadrant"),
+    VueUiGauge: () => import("vue-data-ui/vue-ui-gauge"),
+    VueUiChestnut: () => import("vue-data-ui/vue-ui-chestnut"),
+    VueUiOnion: () => import("vue-data-ui/vue-ui-onion"),
+    VueUiVerticalBar: () => import("vue-data-ui/vue-ui-vertical-bar"),
+    VueUiHorizontalBar: () => import("vue-data-ui/vue-ui-horizontal-bar"),
+    VueUiRating: () => import("vue-data-ui/vue-ui-rating"),
+    VueUiSkeleton: () => import("vue-data-ui/vue-ui-skeleton"),
+    VueUiSparkline: () => import("vue-data-ui/vue-ui-sparkline"),
+    VueUiHeatmap: () => import("vue-data-ui/vue-ui-heatmap"),
+    VueUiScatter: () => import("vue-data-ui/vue-ui-scatter"),
+    VueUiCandlestick: () => import("vue-data-ui/vue-ui-candlestick"),
+    VueUiAgePyramid: () => import("vue-data-ui/vue-ui-age-pyramid"),
+    VueUiSparkbar: () => import("vue-data-ui/vue-ui-sparkbar"),
+    VueUiDashboard: () => import("vue-data-ui/vue-ui-dashboard"),
+    VueUiAnnotator: () => import("vue-data-ui/vue-ui-annotator"),
+    VueUiSmiley: () => import("vue-data-ui/vue-ui-smiley"),
+    VueUiRelationCircle: () => import("vue-data-ui/vue-ui-relation-circle"),
+    VueUiThermometer: () => import("vue-data-ui/vue-ui-thermometer"),
+    VueUiSparkStackbar: () => import("vue-data-ui/vue-ui-sparkstackbar"),
+    VueUiSparkHistogram: () => import("vue-data-ui/vue-ui-sparkhistogram"),
+    VueUiRings: () => import("vue-data-ui/vue-ui-rings"),
+    VueUiWheel: () => import("vue-data-ui/vue-ui-wheel"),
+    VueUiTiremarks: () => import("vue-data-ui/vue-ui-tiremarks"),
+    VueUiDonutEvolution: () => import("vue-data-ui/vue-ui-donut-evolution"),
+    VueUiIcon: () => import("vue-data-ui/vue-ui-icon"),
+    VueUiMoodRadar: () => import("vue-data-ui/vue-ui-mood-radar"),
+    VueUi3dBar: () => import("vue-data-ui/vue-ui-3d-bar"),
+    VueUiDigits: () => import("vue-data-ui/vue-ui-digits"),
+    VueUiMolecule: () => import("vue-data-ui/vue-ui-molecule"),
+    VueUiTableSparkline: () => import("vue-data-ui/vue-ui-table-sparkline"),
+    Arrow: () => import("vue-data-ui/arrow"),
+    VueUiMiniLoader: () => import("vue-data-ui/vue-ui-mini-loader"),
+    VueUiNestedDonuts: () => import("vue-data-ui/vue-ui-nested-donuts"),
+    VueUiSparkgauge: () => import("vue-data-ui/vue-ui-sparkgauge"),
+    VueUiQuickChart: () => import("vue-data-ui/vue-ui-quick-chart"),
+    VueUiStripPlot: () => import("vue-data-ui/vue-ui-strip-plot"),
+    VueUiTreemap: () => import("vue-data-ui/vue-ui-treemap"),
+    VueUiWordCloud: () => import("vue-data-ui/vue-ui-word-cloud"),
+    VueUiXyCanvas: () => import("vue-data-ui/vue-ui-xy-canvas"),
+    VueUiCarouselTable: () => import("vue-data-ui/vue-ui-carousel-table"),
+    VueUiGizmo: () => import("vue-data-ui/vue-ui-gizmo"),
+    VueUiStackbar: () => import("vue-data-ui/vue-ui-stackbar"),
+    VueUiPattern: () => import("vue-data-ui/vue-ui-pattern"),
+    VueUiWorld: () => import("vue-data-ui/vue-ui-world"),
+    VueUiRidgeline: () => import("vue-data-ui/vue-ui-ridgeline"),
+    VueUiChord: () => import("vue-data-ui/vue-ui-chord"),
+    VueUiStackline: () => import("vue-data-ui/vue-ui-stackline"),
+    VueUiDag: () => import("vue-data-ui/vue-ui-dag"),
+    VueUiGeo: () => import("vue-data-ui/vue-ui-geo"),
+    VueUiBump: () => import("vue-data-ui/vue-ui-bump"),
+    VueUiHill: () => import("vue-data-ui/vue-ui-hill"),
+};
+
+export function registerCharts(app) {
+    for (const [name, loader] of Object.entries(chartLoaders)) {
+        app.component(name, defineAsyncComponent(loader));
+    }
+}

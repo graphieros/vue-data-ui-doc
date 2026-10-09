@@ -1,7 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "../views/Home.vue";
-import NotFound from "../views/NotFound.vue";
-import SearchPage from "../views/SearchPage.vue";
 
 const routes = [
     {
@@ -12,7 +10,7 @@ const routes = [
     {
         path: "/search",
         name: "Search",
-        component: SearchPage,
+        component: () => import("../views/SearchPage.vue"),
         props: (route) => ({ query: route.query.q }),
     },
     {
@@ -116,7 +114,7 @@ const routes = [
     },
     {
         path: "/:catchAll(.*)",
-        component: NotFound,
+        component: () => import("../views/NotFound.vue"),
     },
     {
         path: "/types",

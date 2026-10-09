@@ -11,8 +11,6 @@ import { Menu2Icon, XIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
-import ChartMaker from "./ChartMaker.vue";
-import releases from "../../public/releases.json";
 import HeaderDropdownItem from "./HeaderDropdownItem.vue";
 import BaseDropdown from "./BaseDropdown.vue";
 import vClickOutside from "../directives/vClickOutside";
@@ -21,6 +19,7 @@ import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { createUid } from "../components/maker/lib";
 import IconSettings from "./IconSettings.vue";
 import BaseCard from "./BaseCard.vue";
+import PACK from "../../package.json";
 
 const router = useRouter();
 const store = useMainStore();
@@ -47,6 +46,10 @@ function useMenu() {
     isOpen.value = !isOpen.value;
 }
 
+const currentVersion = computed(() =>
+    PACK.dependencies["vue-data-ui"].replaceAll("^", ""),
+);
+
 const lastVersion = computed(() => {
     console.log(`
 
@@ -55,14 +58,14 @@ const lastVersion = computed(() => {
   \\ \\  / /\\ \\
    \\ \\/ /
     \\  /
-     \\/ ${releases[0].version}
+     \\/ ${currentVersion.value}
 
 
 Vue Data UI is an open source library.\n\n
 Contributions are welcome.\n\n
 Feel free to make it better with us ^^
      `);
-    return releases[0].version.replace("v", "").split("").slice(1);
+    return currentVersion.value.replace("v", "").split("").slice(1);
 });
 
 const digitsConfigVersion = computed(() => {
@@ -75,12 +78,6 @@ const digitsConfigVersion = computed(() => {
         },
     };
 });
-
-const chartMkr = ref(null);
-
-function openChartMaker() {
-    chartMkr.value.openDialog();
-}
 
 function updateTheme() {
     if (localStorage.theme === "dark") {
@@ -317,7 +314,6 @@ function getHighlightStyle(item) {
 </script>
 
 <template>
-    <ChartMaker ref="chartMkr" />
     <div
         v-if="currentRoute === '/'"
         class="fixed bottom-0 left-0 w-full h-[40px] bg-app-green-light dark:bg-app-blue hidden sm:flex z-[2147483647] place-items-center justify-center"
@@ -347,7 +343,7 @@ function getHighlightStyle(item) {
                             >Vue Data UI</span
                         >
                         <div class="mt-0.5 font-mono dark:text-app-green">
-                            {{ releases[0].version.replaceAll("v", "") }}
+                            {{ currentVersion.replaceAll("v", "") }}
                         </div>
                     </div>
                 </div>
