@@ -111,13 +111,25 @@ const thermoConfig = computed(() => {
         title="GitHub repository. Leave a star to support us :)"
         href="https://github.com/graphieros/vue-data-ui"
         target="_blank"
-        class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[155px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#fdd663] hover:shadow-md bg-gradient-to-b from-[#f7e2a3] to-[#fdd663]"
+        class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[155px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#fdd663] hover:shadow-md bg-gradient-to-b from-[#f7e2a3] to-[#fdd663] group"
     >
         <BrandGithubFilledIcon class="text-black" size="24" />
         <StarFilledIcon
             class="text-black dark:text-[#fdd663] absolute top-0 -left-4"
             size="14"
         />
+        <svg
+            class="opacity-0 group-hover:opacity-100 transition-opacity absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            viewBox="0 0 20 20"
+        >
+            <path
+                d="M5 5A1 1 0 005 10 1 1 0 005 5M15 5A1 1 0 0015 10 1 1 0 0015 5"
+                fill="none"
+                stroke="#f7e2a3"
+            />
+            <circle cx="5.5" cy="7" r="0.5" fill="white" />
+            <circle cx="15.5" cy="7" r="0.5" fill="white" />
+        </svg>
         <div class="w-[40px] absolute -top-6" v-if="stars">
             <VueDataUi
                 component="VueUiDigits"
