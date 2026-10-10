@@ -1227,7 +1227,9 @@ const cellKpiConfig = computed(() => ({
         <div
             class="flex flex-row max-w-[1200px] mx-auto relative p-4 bg-gray-100 dark:bg-[#2A2A2A]"
         >
-            <div class="w-full max-w-[400px] p-4 bg-white dark:bg-[#2A2A2A]">
+            <div
+                class="w-full max-w-[400px] p-4 bg-white dark:bg-[#2A2A2A] relative"
+            >
                 <canvas
                     ref="canvasEl"
                     class="block w-full aspect-square touch-none"
@@ -1238,15 +1240,15 @@ const cellKpiConfig = computed(() => ({
                     @pointercancel="onPointerUp"
                     @lostpointercapture="onPointerUp"
                 />
+                <SkullIcon
+                    v-if="hasStalled"
+                    class="animate-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center"
+                    size="64"
+                />
             </div>
             <div class="bg-white dark:bg-[#2A2A2A] w-full p-2 rounded-r-lg">
                 <VueUiXyCanvas :dataset="chartDataset" :config="chartConfig" />
             </div>
-            <SkullIcon
-                v-if="hasStalled"
-                class="animate-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center"
-                size="64"
-            />
         </div>
     </BaseCard>
 
