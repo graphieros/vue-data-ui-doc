@@ -54,9 +54,14 @@ let rafId = 0;
 let lastTickTime = 0;
 let lastUiTime = -Infinity;
 
+// Simulation pixels remain board-sized; only the visible canvas is high-DPI.
 let ctx = null;
+let bitmapCanvas = null;
+let bitmapCtx = null;
 let imageData = null;
 let pixels = null;
+let canvasResizeObserver = null;
+let gridUnitsPerCssPixel = 1;
 const littleEndian = new Uint8Array(new Uint32Array([1]).buffer)[0] === 1;
 let palette = { dead: 0, stable: 0, dynamic: 0 };
 
@@ -381,7 +386,7 @@ function isVisibleLiveCell(index) {
 }
 
 function draw() {
-    if (!ctx || !pixels || !imageData) return;
+    if (!ctx || !bitmapCtx || !bitmapCanvas || !pixels || !imageData) return;
 
     const dead = palette.dead;
     const stable = palette.stable;
@@ -396,9 +401,11 @@ function draw() {
             : dead;
     }
 
-    // One native-resolution upload: browser/CSS scales it without an offscreen
-    // canvas, per-frame allocations, or resizing a multi-megapixel bitmap.
-    ctx.putImageData(imageData, 0, 0);
+    // Keep the pixel simulation at grid resolution and upscale with nearest
+    // neighbor sampling. The visible canvas is sized for the device's DPI so
+    // vector overlays (the dashed hull) render sharply even on small grids.
+    bitmapCtx.putImageData(imageData, 0, 0);
+    ctx.drawImage(bitmapCanvas, 0, 0, ctx.canvas.width, ctx.canvas.height);
     drawLiveCellHull();
 }
 
@@ -435,31 +442,66 @@ function drawLiveCellHull() {
     if (!hull) return;
     const path = new Path2D(`M${hull.trim().replace(/\s+/g, " L")}Z`);
 
-    // Canvas pixel uploads replace the previous outline, so redraw after
-    // putImageData to keep this overlay synced with every simulation step.
+    // The hull is expressed in grid-cell coordinates. Scale the path to the
+    // high-DPI display buffer while preserving a CSS-pixel stroke/dash size.
+    const scale = ctx.canvas.width / boardSize;
+    const cssPixelInGridUnits = gridUnitsPerCssPixel;
     ctx.save();
+    ctx.setTransform(scale, 0, 0, scale, 0, 0);
     ctx.strokeStyle = "#ff3700";
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 1.5 * cssPixelInGridUnits;
     ctx.lineJoin = "round";
     ctx.fillStyle = "#42d39210";
     ctx.fill(path);
-    ctx.setLineDash([4, 3]);
+    ctx.setLineDash([4 * cssPixelInGridUnits, 3 * cssPixelInGridUnits]);
     ctx.stroke(path);
     ctx.restore();
 }
 
 function resizeCanvas() {
     const canvas = canvasEl.value;
-    if (!canvas || !ctx) return;
-    const resized = canvas.width !== boardSize || canvas.height !== boardSize;
-    if (resized) {
-        canvas.width = boardSize;
-        canvas.height = boardSize;
+    if (!canvas || !ctx) return false;
+
+    // Limit DPR to 2 to keep the display upload inexpensive, especially
+    // while running many generations per second.
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const displaySize = canvas.getBoundingClientRect().width || boardSize;
+    gridUnitsPerCssPixel = boardSize / displaySize;
+    const resolution = Math.max(boardSize, Math.round(displaySize * dpr));
+
+    let resized = false;
+    if (canvas.width !== resolution || canvas.height !== resolution) {
+        canvas.width = resolution;
+        canvas.height = resolution;
+        resized = true;
     }
-    if (resized || !imageData) {
-        imageData = ctx.createImageData(boardSize, boardSize);
+
+    if (!bitmapCanvas) {
+        bitmapCanvas = document.createElement("canvas");
+        bitmapCtx = bitmapCanvas.getContext("2d", { alpha: false });
+    }
+
+    // Only reallocate simulation pixels when the number of cells changes.
+    if (
+        bitmapCanvas.width !== boardSize ||
+        bitmapCanvas.height !== boardSize ||
+        !imageData
+    ) {
+        bitmapCanvas.width = boardSize;
+        bitmapCanvas.height = boardSize;
+        imageData = bitmapCtx.createImageData(boardSize, boardSize);
         pixels = new Uint32Array(imageData.data.buffer);
+        resized = true;
     }
+
+    // Resizing a canvas resets its 2D context state.
+    ctx.imageSmoothingEnabled = false;
+    return resized;
+}
+
+function onCanvasDisplayResize() {
+    // Re-render only if the backing store resolution actually changed.
+    if (resizeCanvas()) draw();
 }
 
 function previousBoard(stepsBack) {
@@ -899,12 +941,24 @@ onMounted(() => {
     resizeCanvas();
     draw();
     publishUi(true);
+
+    // CSS layout and device-pixel ratio can change independently of SIZE.
+    if (typeof ResizeObserver !== "undefined" && canvasEl.value) {
+        canvasResizeObserver = new ResizeObserver(onCanvasDisplayResize);
+        canvasResizeObserver.observe(canvasEl.value);
+    }
+    window.addEventListener("resize", onCanvasDisplayResize, { passive: true });
     void loadCompletedRuns();
 });
 
 onBeforeUnmount(() => {
     stopAnimation();
+    canvasResizeObserver?.disconnect();
+    canvasResizeObserver = null;
+    window.removeEventListener("resize", onCanvasDisplayResize);
     ctx = null;
+    bitmapCtx = null;
+    bitmapCanvas = null;
     imageData = null;
     pixels = null;
 });
@@ -1349,9 +1403,3 @@ const cellKpiConfig = computed(() => ({
         </section>
     </BaseCard>
 </template>
-
-<style scoped>
-canvas {
-    image-rendering: pixelated;
-}
-</style>
