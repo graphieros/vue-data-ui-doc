@@ -1,511 +1,912 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
-import { VueUiKpi, VueUiXyCanvas, getCumulativeMedian } from "vue-data-ui";
+import {
+    ref,
+    shallowRef,
+    computed,
+    onMounted,
+    onBeforeUnmount,
+    watch,
+} from "vue";
+import { VueUiKpi, VueUiXyCanvas } from "vue-data-ui";
+import { giftWrap } from "../components/maker/lib.js";
 import "vue-data-ui/style.css";
 import { useMainStore } from "../stores";
 import { SkullIcon } from "vue-tabler-icons";
 import BaseCard from "../components/BaseCard.vue";
 import BaseDigit from "../components/Base/BaseDigit.vue";
+import GameOfLifeScatter from "../components/special/GameOfLifeScatter.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const isRunning = ref(false);
-const RAF = ref(null);
 const delay = ref(0);
-const generations = ref(0);
 const SIZE = ref(200);
-const size = computed(() => ({ x: SIZE.value, y: SIZE.value }));
-const width = computed(() => size.value.x);
-const height = computed(() => size.value.y);
-const dataset = ref([]);
-const canvasEl = ref(null);
-let ctx = null;
-let off = null;
-let offCtx = null;
-const current = ref(makeCells(width.value, height.value, false));
-const next = ref(makeCells(width.value, height.value, false));
-
+const generations = ref(0);
 const livingCount = ref(0);
-
-const HISTORY_DEPTH = 16;
-const history = ref([]);
-
-// per-cell "age" of unchanged alive state
-const STABLE_THRESHOLD = 4; // generations before we consider a cell "stale"
-const stableAge = ref(makeStableAge(width.value, height.value));
-
-// per-cell oscillator mask: 1 = locally period-2 oscillator, 0 = not
-const oscillatorMask = ref(new Uint8Array(width.value * height.value));
-
 const hasStalled = ref(false);
+const canvasEl = ref(null);
 
+// Keep the hot simulation state completely outside Vue's reactivity system.
+// Vue only receives UI snapshots, not a new board on every iteration.
+const HISTORY_DEPTH = 16;
+const STABLE_THRESHOLD = 4;
+const UI_INTERVAL_MS = 30;
+const LIVE_CHART_POINTS = 301;
+const FULL_CHART_POINTS = 10000;
+
+let boardSize = SIZE.value;
+let current = new Uint8Array(boardSize * boardSize);
+let next = new Uint8Array(current.length);
+let stableAge = new Uint16Array(current.length);
+let oscillatorMask = new Uint8Array(current.length);
+let history = Array.from(
+    { length: HISTORY_DEPTH },
+    () => new Uint8Array(current.length),
+);
+let historyLength = 0;
+let historyWrite = 0;
+
+let generationNumber = 0;
+let liveNumber = 0;
+let maxLiving = 0;
+let rafId = 0;
 let lastTickTime = 0;
+let lastUiTime = -Infinity;
 
-function makeCells(w, h, rand = false) {
-    const arr = new Uint8Array(w * h);
-    if (rand) {
-        for (let i = 0; i < arr.length; i += 1) {
-            arr[i] = Math.random() > 0.91 ? 1 : 0;
+let ctx = null;
+let imageData = null;
+let pixels = null;
+const littleEndian = new Uint8Array(new Uint32Array([1]).buffer)[0] === 1;
+let palette = { dead: 0, stable: 0, dynamic: 0 };
+
+// History is kept as plain numbers. The chart only sees capped, sampled views.
+const livingSeries = [];
+const medianSeries = [];
+const lowerHeap = []; // Max heap, values <= current median
+const upperHeap = []; // Min heap, values >= current median
+const hasChartData = ref(false);
+const chartMax = ref(100);
+const isHistorySampled = ref(false);
+const chartDataset = shallowRef([]);
+
+// A run is recorded only when the simulation stops by itself (extinction of
+// active cells or a repeated board). Pausing, resetting, changing size, or
+// generating a new board never creates a completed-run record.
+//
+// IndexedDB stores the full per-generation history separately from the table
+// summaries, so loading the table never copies large histories into Vue.
+const RUNS_DB_NAME = "game-of-life-completed-runs";
+const RUNS_DB_VERSION = 1;
+const RUN_SUMMARIES_STORE = "summaries";
+const RUN_DETAILS_STORE = "details";
+const completedRuns = shallowRef([]);
+const loadingCompletedRuns = ref(true);
+const runsStorageError = ref("");
+const numberFormatter = new Intl.NumberFormat();
+
+let runsDbPromise = null;
+let nextTemporaryRunId = -1;
+const unsavedRunDetails = new Map();
+let runStartedAt = "";
+let runInitialPopulation = 0;
+let initialRunBoard = null;
+let activeRunMilliseconds = 0;
+let activeRunStartTime = 0;
+let runWasEdited = false;
+
+function openRunsDb() {
+    if (runsDbPromise) return runsDbPromise;
+    if (typeof indexedDB === "undefined") {
+        return Promise.reject(new Error("IndexedDB is not available"));
+    }
+    runsDbPromise = new Promise((resolve, reject) => {
+        const request = indexedDB.open(RUNS_DB_NAME, RUNS_DB_VERSION);
+        request.onupgradeneeded = () => {
+            const db = request.result;
+            if (!db.objectStoreNames.contains(RUN_SUMMARIES_STORE)) {
+                db.createObjectStore(RUN_SUMMARIES_STORE, {
+                    keyPath: "id",
+                    autoIncrement: true,
+                });
+            }
+            if (!db.objectStoreNames.contains(RUN_DETAILS_STORE)) {
+                db.createObjectStore(RUN_DETAILS_STORE, { keyPath: "id" });
+            }
+        };
+        request.onsuccess = () => {
+            const db = request.result;
+            db.onversionchange = () => {
+                db.close();
+                runsDbPromise = null;
+            };
+            resolve(db);
+        };
+        request.onerror = () => reject(request.error);
+        request.onblocked = () =>
+            reject(new Error("The completed-run database is blocked"));
+    }).catch((error) => {
+        runsDbPromise = null;
+        throw error;
+    });
+    return runsDbPromise;
+}
+
+async function loadCompletedRuns() {
+    try {
+        const db = await openRunsDb();
+        const saved = await new Promise((resolve, reject) => {
+            const transaction = db.transaction(RUN_SUMMARIES_STORE, "readonly");
+            const request = transaction
+                .objectStore(RUN_SUMMARIES_STORE)
+                .getAll();
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+        const merged = new Map(
+            [...saved, ...completedRuns.value].map((run) => [run.id, run]),
+        );
+        completedRuns.value = [...merged.values()].sort((a, b) =>
+            b.completedAt.localeCompare(a.completedAt),
+        );
+    } catch (error) {
+        runsStorageError.value =
+            "Run history is available for this page only; browser storage is unavailable.";
+        console.warn("Failed to load Game of Life run history:", error);
+    } finally {
+        loadingCompletedRuns.value = false;
+    }
+}
+
+async function storeRun(summary, details) {
+    const db = await openRunsDb();
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(
+            [RUN_SUMMARIES_STORE, RUN_DETAILS_STORE],
+            "readwrite",
+        );
+        let savedId;
+        transaction.oncomplete = () => resolve(savedId);
+        transaction.onerror = () => reject(transaction.error);
+        transaction.onabort = () =>
+            reject(transaction.error || new Error("Run storage was aborted"));
+        const request = transaction
+            .objectStore(RUN_SUMMARIES_STORE)
+            .add(summary);
+        request.onsuccess = () => {
+            savedId = request.result;
+            transaction
+                .objectStore(RUN_DETAILS_STORE)
+                .put({ id: savedId, ...details });
+        };
+    });
+}
+
+function resetRunTracking() {
+    runStartedAt = "";
+    runInitialPopulation = 0;
+    initialRunBoard = null;
+    activeRunMilliseconds = 0;
+    activeRunStartTime = 0;
+    runWasEdited = false;
+}
+
+function finishActiveRunInterval() {
+    if (activeRunStartTime) {
+        activeRunMilliseconds += performance.now() - activeRunStartTime;
+        activeRunStartTime = 0;
+    }
+}
+
+function recordCompletedRun(reason) {
+    if (!runStartedAt) return;
+
+    const completedAt = new Date().toISOString();
+    const summary = {
+        startedAt: runStartedAt,
+        completedAt,
+        gridSize: boardSize,
+        generations: generationNumber,
+        initialPopulation: runInitialPopulation,
+        finalPopulation: countAlive(current),
+        peakActive: maxLiving,
+        medianActive: medianSeries[medianSeries.length - 1] ?? 0,
+        activeMilliseconds: Math.round(activeRunMilliseconds),
+        reason,
+        editedDuringRun: runWasEdited,
+    };
+    // Preserve every recorded generation, even though the chart uses a
+    // downsampled view. The initial/final boards enable later reconstruction.
+    const details = {
+        activeCellsByGeneration: Uint32Array.from(livingSeries),
+        cumulativeMedianByGeneration: Float64Array.from(medianSeries),
+        initialBoard: initialRunBoard || new Uint8Array(0),
+        finalBoard: current.slice(),
+    };
+
+    // Show the result immediately; replace its temporary ID after the
+    // asynchronous IndexedDB transaction has committed successfully.
+    const temporaryId = nextTemporaryRunId--;
+    unsavedRunDetails.set(temporaryId, details);
+    completedRuns.value = [
+        { id: temporaryId, ...summary },
+        ...completedRuns.value,
+    ];
+    void storeRun(summary, details)
+        .then((id) => {
+            unsavedRunDetails.delete(temporaryId);
+            completedRuns.value = completedRuns.value.map((run) =>
+                run.id === temporaryId ? { ...run, id } : run,
+            );
+        })
+        .catch((error) => {
+            runsStorageError.value =
+                "Some runs could not be saved to browser storage. Unsaved runs remain available until this page is closed.";
+            console.warn("Failed to save Game of Life run:", error);
+        });
+}
+
+function formatRunNumber(value) {
+    return numberFormatter.format(value);
+}
+
+function formatRunDuration(milliseconds) {
+    if (milliseconds < 1000) return `${milliseconds} ms`;
+    const seconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const remainder = seconds % 60;
+    return minutes
+        ? `${minutes}m ${String(remainder).padStart(2, "0")}s`
+        : `${(milliseconds / 1000).toFixed(1)}s`;
+}
+
+function formatRunDate(iso) {
+    return new Date(iso).toLocaleString();
+}
+
+async function downloadRunData(run) {
+    try {
+        let details = unsavedRunDetails.get(run.id);
+        if (!details) {
+            const db = await openRunsDb();
+            details = await new Promise((resolve, reject) => {
+                const transaction = db.transaction(
+                    RUN_DETAILS_STORE,
+                    "readonly",
+                );
+                const request = transaction
+                    .objectStore(RUN_DETAILS_STORE)
+                    .get(run.id);
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
         }
+        if (!details) throw new Error("The full run data was not found");
+
+        const { id, ...summary } = run;
+        const payload = {
+            id: id > 0 ? id : null,
+            ...summary,
+            activeCellsByGeneration: Array.from(
+                details.activeCellsByGeneration,
+            ),
+            cumulativeMedianByGeneration: Array.from(
+                details.cumulativeMedianByGeneration,
+            ),
+            initialBoard: Array.from(details.initialBoard),
+            finalBoard: Array.from(details.finalBoard),
+        };
+        const blob = new Blob([JSON.stringify(payload)], {
+            type: "application/json",
+        });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = `game-of-life-${run.gridSize}x${run.gridSize}-${run.generations}-generations.json`;
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (error) {
+        runsStorageError.value = "The selected run could not be exported.";
+        console.warn("Failed to export Game of Life run:", error);
     }
-    return arr;
 }
 
-function makeStableAge(w, h) {
-    return new Uint16Array(w * h);
-}
+const isClearingRuns = ref(false);
 
-function idx(x, y) {
-    return y * width.value + x;
-}
-
-function inBounds(x, y) {
-    return x >= 0 && y >= 0 && x < width.value && y < height.value;
-}
-
-function neighborsCount(x, y, grid) {
-    let sum = 0;
-    const xm1 = x - 1,
-        xp1 = x + 1,
-        ym1 = y - 1,
-        yp1 = y + 1;
-    if (inBounds(xm1, ym1)) sum += grid[idx(xm1, ym1)];
-    if (inBounds(x, ym1)) sum += grid[idx(x, ym1)];
-    if (inBounds(xp1, ym1)) sum += grid[idx(xp1, ym1)];
-    if (inBounds(xm1, y)) sum += grid[idx(xm1, y)];
-    if (inBounds(xp1, y)) sum += grid[idx(xp1, y)];
-    if (inBounds(xm1, yp1)) sum += grid[idx(xm1, yp1)];
-    if (inBounds(x, yp1)) sum += grid[idx(x, yp1)];
-    if (inBounds(xp1, yp1)) sum += grid[idx(xp1, yp1)];
-    return sum;
-}
-
-function isBoardEmpty1D(grid) {
-    for (let i = 0; i < grid.length; i += 1) {
-        if (grid[i] !== 0) return false;
+async function clearCompletedRuns() {
+    if (!window.confirm("Delete all completed runs? This cannot be undone.")) {
+        return;
     }
-    return true;
+
+    isClearingRuns.value = true;
+
+    try {
+        const db = await openRunsDb();
+
+        await new Promise((resolve, reject) => {
+            const transaction = db.transaction(
+                [RUN_SUMMARIES_STORE, RUN_DETAILS_STORE],
+                "readwrite",
+            );
+
+            transaction.objectStore(RUN_SUMMARIES_STORE).clear();
+            transaction.objectStore(RUN_DETAILS_STORE).clear();
+
+            transaction.oncomplete = resolve;
+            transaction.onerror = () => reject(transaction.error);
+            transaction.onabort = () => reject(transaction.error);
+        });
+
+        completedRuns.value = [];
+        unsavedRunDetails.clear();
+        runsStorageError.value = "";
+    } catch (error) {
+        runsStorageError.value = "Failed to clear completed runs.";
+        console.error(error);
+    } finally {
+        isClearingRuns.value = false;
+    }
+}
+
+function packedRgb(r, g, b) {
+    return littleEndian
+        ? ((255 << 24) | (b << 16) | (g << 8) | r) >>> 0
+        : ((r << 24) | (g << 16) | (b << 8) | 255) >>> 0;
+}
+
+function updatePalette() {
+    palette = isDarkMode.value
+        ? {
+              dead: packedRgb(42, 42, 42),
+              stable: packedRgb(74, 74, 74),
+              dynamic: packedRgb(66, 211, 146),
+          }
+        : {
+              dead: packedRgb(255, 255, 255),
+              stable: packedRgb(200, 200, 200),
+              dynamic: packedRgb(95, 138, 238),
+          };
+}
+
+// Match the cells rendered in the dynamic/live color, not all occupied cells.
+// Occupied but stable/oscillating cells are rendered grey and are excluded.
+function isVisibleLiveCell(index) {
+    return (
+        current[index] === 1 &&
+        stableAge[index] < STABLE_THRESHOLD &&
+        oscillatorMask[index] === 0
+    );
+}
+
+function draw() {
+    if (!ctx || !pixels || !imageData) return;
+
+    const dead = palette.dead;
+    const stable = palette.stable;
+    const dynamic = palette.dynamic;
+    const length = current.length;
+
+    for (let i = 0; i < length; i += 1) {
+        pixels[i] = current[i]
+            ? isVisibleLiveCell(i)
+                ? dynamic
+                : stable
+            : dead;
+    }
+
+    // One native-resolution upload: browser/CSS scales it without an offscreen
+    // canvas, per-frame allocations, or resizing a multi-megapixel bitmap.
+    ctx.putImageData(imageData, 0, 0);
+    drawLiveCellHull();
+}
+
+function drawLiveCellHull() {
+    // One hull for ALL dynamically live (green/blue) cells, regardless of
+    // whether their groups are connected. Do not flood-fill or create a hull
+    // per component. Grey stable/oscillating cells do not contribute vertices.
+    //
+    // Only the leftmost and rightmost live cells in each row can contribute
+    // to the global convex hull. This reduces giftWrap input to <= 4 * SIZE
+    // corners, while covering the full area of the contributing cell squares.
+    const points = [];
+    const size = boardSize;
+    for (let y = 0; y < size; y += 1) {
+        const row = y * size;
+        let left = 0;
+        while (left < size && !isVisibleLiveCell(row + left)) left += 1;
+        if (left === size) continue;
+
+        let right = size - 1;
+        while (right > left && !isVisibleLiveCell(row + right)) right -= 1;
+        points.push(
+            { x: left, y },
+            { x: right + 1, y },
+            { x: right + 1, y: y + 1 },
+            { x: left, y: y + 1 },
+        );
+    }
+    if (!points.length) return;
+
+    // giftWrap is invoked once, with vertices belonging ONLY to live cells.
+    // The result is a single, closed convex path around the entire live set.
+    const hull = giftWrap({ series: points });
+    if (!hull) return;
+    const path = new Path2D(`M${hull.trim().replace(/\s+/g, " L")}Z`);
+
+    // Canvas pixel uploads replace the previous outline, so redraw after
+    // putImageData to keep this overlay synced with every simulation step.
+    ctx.save();
+    ctx.strokeStyle = "#ff3700";
+    ctx.lineWidth = 1;
+    ctx.lineJoin = "round";
+    ctx.fillStyle = "#42d39210";
+    ctx.fill(path);
+    ctx.setLineDash([4, 3]);
+    ctx.stroke(path);
+    ctx.restore();
+}
+
+function resizeCanvas() {
+    const canvas = canvasEl.value;
+    if (!canvas || !ctx) return;
+    const resized = canvas.width !== boardSize || canvas.height !== boardSize;
+    if (resized) {
+        canvas.width = boardSize;
+        canvas.height = boardSize;
+    }
+    if (resized || !imageData) {
+        imageData = ctx.createImageData(boardSize, boardSize);
+        pixels = new Uint32Array(imageData.data.buffer);
+    }
+}
+
+function previousBoard(stepsBack) {
+    if (stepsBack > historyLength) return null;
+    return history[(historyWrite - stepsBack + HISTORY_DEPTH) % HISTORY_DEPTH];
 }
 
 function recordHistory() {
-    if (history.value.length >= HISTORY_DEPTH) {
-        history.value.shift();
-    }
-    history.value.push(current.value.slice());
+    history[historyWrite].set(current);
+    historyWrite = (historyWrite + 1) % HISTORY_DEPTH;
+    if (historyLength < HISTORY_DEPTH) historyLength += 1;
 }
 
 function boardsEqual(a, b) {
-    if (!a || !b || a.length !== b.length) return false;
     for (let i = 0; i < a.length; i += 1) {
         if (a[i] !== b[i]) return false;
     }
     return true;
 }
 
-// detect if the current board matches any earlier board in history
-// => still life or oscillator (period <= HISTORY_DEPTH - 1)
 function hasGlobalLoop() {
-    const hist = history.value;
-    const len = hist.length;
-    if (len < 2) return false;
-
-    const cur = hist[len - 1];
-    for (let k = 1; k < len; k += 1) {
-        const past = hist[len - 1 - k];
-        if (boardsEqual(cur, past)) {
-            return true;
-        }
+    // The old 16-snapshot buffer only compared against the preceding 15.
+    // Compare before overwriting the oldest snapshot to preserve that rule.
+    const checks = Math.min(historyLength, HISTORY_DEPTH - 1);
+    for (let k = 1; k <= checks; k += 1) {
+        if (boardsEqual(current, previousBoard(k))) return true;
     }
     return false;
 }
 
-// if last 4 states are 0,1,0,1 or 1,0,1,0 => mark as local period-2 oscillator.
-function computeOscillatorMask() {
-    const hist = history.value;
-    const len = hist.length;
-    const cells = current.value.length;
+function heapPush(heap, value, isMax) {
+    let i = heap.length;
+    heap.push(value);
+    while (i > 0) {
+        const parent = (i - 1) >> 1;
+        if (isMax ? heap[parent] >= value : heap[parent] <= value) break;
+        heap[i] = heap[parent];
+        i = parent;
+    }
+    heap[i] = value;
+}
 
-    let mask = oscillatorMask.value;
-    if (mask.length !== cells) {
-        mask = new Uint8Array(cells);
-        oscillatorMask.value = mask;
+function heapPop(heap, isMax) {
+    const root = heap[0];
+    const last = heap.pop();
+    if (heap.length === 0) return root;
+
+    let i = 0;
+    while (2 * i + 1 < heap.length) {
+        let child = 2 * i + 1;
+        if (
+            child + 1 < heap.length &&
+            (isMax
+                ? heap[child + 1] > heap[child]
+                : heap[child + 1] < heap[child])
+        ) {
+            child += 1;
+        }
+        if (isMax ? last >= heap[child] : last <= heap[child]) break;
+        heap[i] = heap[child];
+        i = child;
+    }
+    heap[i] = last;
+    return root;
+}
+
+function addChartValue(value) {
+    if (!lowerHeap.length || value <= lowerHeap[0]) {
+        heapPush(lowerHeap, value, true);
     } else {
-        mask.fill(0);
+        heapPush(upperHeap, value, false);
     }
 
-    if (len < 4) return;
+    if (lowerHeap.length > upperHeap.length + 1) {
+        heapPush(upperHeap, heapPop(lowerHeap, true), false);
+    } else if (upperHeap.length > lowerHeap.length) {
+        heapPush(lowerHeap, heapPop(upperHeap, false), true);
+    }
 
-    const g0 = hist[len - 4];
-    const g1 = hist[len - 3];
-    const g2 = hist[len - 2];
-    const g3 = hist[len - 1];
+    livingSeries.push(value);
+    medianSeries.push(
+        lowerHeap.length === upperHeap.length
+            ? (lowerHeap[0] + upperHeap[0]) / 2
+            : lowerHeap[0],
+    );
+    if (value > maxLiving) maxLiving = value;
+}
 
-    for (let i = 0; i < cells; i += 1) {
-        const a = g0[i],
-            b = g1[i],
-            c = g2[i],
-            d = g3[i];
-        if (
-            (a === 0 && b === 1 && c === 0 && d === 1) ||
-            (a === 1 && b === 0 && c === 1 && d === 0)
-        ) {
-            mask[i] = 1;
+function sampledFullHistory() {
+    const n = livingSeries.length;
+    if (n <= FULL_CHART_POINTS) {
+        return [livingSeries.slice(), medianSeries.slice()];
+    }
+
+    // Preserve the beginning, end, and local minima/maxima rather than
+    // feeding tens of thousands of points into the chart renderer.
+    const values = [livingSeries[0]];
+    const medians = [medianSeries[0]];
+    const bucketCount = Math.floor((FULL_CHART_POINTS - 2) / 2);
+    for (let bucket = 0; bucket < bucketCount; bucket += 1) {
+        const begin = 1 + Math.floor((bucket * (n - 2)) / bucketCount);
+        const end = 1 + Math.floor(((bucket + 1) * (n - 2)) / bucketCount);
+        let minIndex = begin;
+        let maxIndex = begin;
+        for (let i = begin + 1; i < end; i += 1) {
+            if (livingSeries[i] < livingSeries[minIndex]) minIndex = i;
+            if (livingSeries[i] > livingSeries[maxIndex]) maxIndex = i;
         }
+        const first = Math.min(minIndex, maxIndex);
+        const last = Math.max(minIndex, maxIndex);
+        values.push(livingSeries[first]);
+        medians.push(medianSeries[first]);
+        if (last !== first) {
+            values.push(livingSeries[last]);
+            medians.push(medianSeries[last]);
+        }
+    }
+    values.push(livingSeries[n - 1]);
+    medians.push(medianSeries[n - 1]);
+    return [values, medians];
+}
+
+function publishUi(force = false, now = performance.now()) {
+    if (!force && now - lastUiTime < UI_INTERVAL_MS) return;
+    lastUiTime = now;
+    generations.value = generationNumber;
+    livingCount.value = liveNumber;
+    hasChartData.value = livingSeries.length > 0;
+    chartMax.value = livingSeries.length ? maxLiving : 100;
+
+    const fullHistory = !isRunning.value || hasStalled.value;
+    const [live, medians] = fullHistory
+        ? sampledFullHistory()
+        : [
+              livingSeries.slice(-LIVE_CHART_POINTS),
+              medianSeries.slice(-LIVE_CHART_POINTS),
+          ];
+    isHistorySampled.value =
+        fullHistory && livingSeries.length > FULL_CHART_POINTS;
+    chartDataset.value = [
+        {
+            name: "Generations",
+            series: live,
+            type: "line",
+            smooth: true,
+            dataLabels: false,
+            color: isDarkMode.value ? "#42d392" : "#5f8aee",
+            useArea: true,
+        },
+        {
+            name: "Cumulative median",
+            series: medians,
+            type: "line",
+            smooth: true,
+            color: "#ff3700",
+            useArea: false,
+        },
+    ];
+}
+
+function resetChart() {
+    generationNumber = 0;
+    maxLiving = 0;
+    livingSeries.length = 0;
+    medianSeries.length = 0;
+    lowerHeap.length = 0;
+    upperHeap.length = 0;
+}
+
+function fillRandom(grid) {
+    for (let i = 0; i < grid.length; i += 1) {
+        grid[i] = Math.random() > 0.91 ? 1 : 0;
     }
 }
 
-/* ---------- simulation step ---------- */
+function countAlive(grid) {
+    let count = 0;
+    for (let i = 0; i < grid.length; i += 1) count += grid[i];
+    return count;
+}
+
+function createBoard(random = false) {
+    boardSize = SIZE.value;
+    const cells = boardSize * boardSize;
+    if (current.length !== cells) {
+        current = new Uint8Array(cells);
+        next = new Uint8Array(cells);
+        stableAge = new Uint16Array(cells);
+        oscillatorMask = new Uint8Array(cells);
+        history = Array.from(
+            { length: HISTORY_DEPTH },
+            () => new Uint8Array(cells),
+        );
+    } else {
+        current.fill(0);
+        next.fill(0);
+        stableAge.fill(0);
+        oscillatorMask.fill(0);
+    }
+    historyLength = 0;
+    historyWrite = 0;
+    if (random) fillRandom(current);
+    liveNumber = random ? countAlive(current) : 0;
+    hasStalled.value = false;
+    resetRunTracking();
+    resetChart();
+    resizeCanvas();
+    draw();
+    publishUi(true);
+}
 
 function step() {
-    const w = width.value;
-    const h = height.value;
-    const src = current.value;
-    let dst = next.value;
-
-    if (dst.length !== src.length) {
-        next.value = makeCells(w, h, false);
-        dst = next.value;
-    }
-
-    let ageArr = stableAge.value;
-    if (ageArr.length !== src.length) {
-        ageArr = makeStableAge(w, h);
-        stableAge.value = ageArr;
-    }
-
-    for (let y = 0; y < h; y += 1) {
-        const rowBase = y * w;
-        for (let x = 0; x < w; x += 1) {
-            const i = rowBase + x;
-            const live = src[i];
-            const n = neighborsCount(x, y, src);
-
-            const newVal = (live ? n === 2 || n === 3 : n === 3) ? 1 : 0;
-            dst[i] = newVal;
-
-            if (newVal === 1) {
-                if (newVal === live) {
-                    // alive and unchanged
-                    ageArr[i] = Math.min(ageArr[i] + 1, 65535);
-                } else {
-                    // newly alive or revived
-                    ageArr[i] = 0;
-                }
-            } else {
-                // dead cell => no age
-                ageArr[i] = 0;
-            }
-        }
-    }
-
-    current.value = dst;
-    next.value = src;
-    generations.value += 1;
-
-    recordHistory();
-    computeOscillatorMask();
-
-    const grid = current.value;
-    const osc = oscillatorMask.value;
+    const src = current;
+    const dst = next;
+    const size = boardSize;
+    const older3 = previousBoard(3);
+    const older2 = previousBoard(2);
+    const older1 = previousBoard(1);
     let dynamicLiving = 0;
 
-    for (let i = 0; i < grid.length; i += 1) {
-        if (grid[i] === 1 && ageArr[i] < STABLE_THRESHOLD && !osc[i]) {
-            dynamicLiving += 1;
+    // Rolling 3-column sum: three new reads per cell instead of testing all
+    // eight neighbors with eight bounds checks for every cell.
+    for (let y = 0; y < size; y += 1) {
+        const row = y * size;
+        const above = row - size;
+        const below = row + size;
+        const hasAbove = y > 0;
+        const hasBelow = y + 1 < size;
+        let left = 0;
+        let center =
+            src[row] +
+            (hasAbove ? src[above] : 0) +
+            (hasBelow ? src[below] : 0);
+
+        for (let x = 0; x < size; x += 1) {
+            const i = row + x;
+            const nextX = x + 1;
+            const right =
+                nextX < size
+                    ? src[i + 1] +
+                      (hasAbove ? src[above + nextX] : 0) +
+                      (hasBelow ? src[below + nextX] : 0)
+                    : 0;
+            const alive = src[i];
+            const neighbors = left + center + right - alive;
+            const newAlive =
+                neighbors === 3 || (alive === 1 && neighbors === 2) ? 1 : 0;
+            dst[i] = newAlive;
+
+            const age =
+                newAlive && alive
+                    ? stableAge[i] < 65535
+                        ? stableAge[i] + 1
+                        : 65535
+                    : 0;
+            stableAge[i] = age;
+
+            // For g0,g1,g2,g3: local period-2 means g0=g2, g1=g3, g0!=g1.
+            // Compute the mask and dynamic count in this same simulation pass.
+            const oscillates =
+                older3 !== null &&
+                older3[i] === older1[i] &&
+                older2[i] === newAlive &&
+                older3[i] !== older2[i];
+            oscillatorMask[i] = oscillates ? 1 : 0;
+            if (newAlive && age < STABLE_THRESHOLD && !oscillates) {
+                dynamicLiving += 1;
+            }
+
+            left = center;
+            center = right;
         }
     }
 
-    livingCount.value = dynamicLiving;
-    dataset.value.push({
-        period: generations.value,
-        value: dynamicLiving,
-    });
+    current = dst;
+    next = src;
+    generationNumber += 1;
+    liveNumber = dynamicLiving;
+    addChartValue(dynamicLiving);
 
-    const inLoop = hasGlobalLoop();
-
-    // game is "stalled" when:
-    // - no dynamic cells left, OR
-    // - board completely empty, OR
-    // - we are in a repeated board state (still life / oscillator)
-    if (dynamicLiving === 0 || isBoardEmpty1D(grid) || inLoop) {
+    // Save ONLY naturally completed runs, not pauses, resets or RAND actions.
+    const noActiveCells = dynamicLiving === 0;
+    const repeatedBoard = !noActiveCells && hasGlobalLoop();
+    recordHistory();
+    if (noActiveCells || repeatedBoard) {
         hasStalled.value = true;
-        pause();
-        livingCount.value = 0;
-    } else {
-        hasStalled.value = false;
+        liveNumber = 0;
+        stopAnimation();
+        recordCompletedRun(
+            noActiveCells ? "No active cells" : "Repeated board",
+        );
     }
 }
 
-const median = computed(() =>
-    getCumulativeMedian({ values: dataset.value.map((d) => d.value) }),
-);
+function loop(timestamp) {
+    rafId = 0;
+    if (!isRunning.value) return;
 
-function start() {
-    if (isRunning.value) return;
-
-    if (hasStalled.value || livingCount.value === 0) {
-        hasStalled.value = false;
-        makeRand();
-
-        let sum = 0;
-        const grid = current.value;
-        for (let i = 0; i < grid.length; i += 1) sum += grid[i];
-        livingCount.value = sum;
+    if (!lastTickTime || timestamp - lastTickTime >= delay.value) {
+        step();
+        draw();
+        lastTickTime = timestamp;
+        publishUi(!isRunning.value, timestamp);
     }
+    // Do not schedule a stray frame after the simulation stalls or pauses.
+    if (isRunning.value) rafId = requestAnimationFrame(loop);
+}
 
-    isRunning.value = true;
-    lastTickTime = 0;
-    RAF.value = requestAnimationFrame(loop);
+function stopAnimation() {
+    finishActiveRunInterval();
+    isRunning.value = false;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = 0;
 }
 
 function pause() {
-    isRunning.value = false;
-    if (RAF.value) cancelAnimationFrame(RAF.value);
-    RAF.value = null;
-}
-
-function clearChart() {
-    generations.value = 0;
-    dataset.value = [];
-    median.value = [];
+    stopAnimation();
+    publishUi(true);
 }
 
 function reset() {
-    pause();
-    current.value = makeCells(width.value, height.value, false);
-    next.value = makeCells(width.value, height.value, false);
-    stableAge.value = makeStableAge(width.value, height.value);
-    oscillatorMask.value = new Uint8Array(width.value * height.value);
-    draw();
-    clearChart();
-    livingCount.value = 0;
-    history.value = [];
-    hasStalled.value = false;
+    stopAnimation();
+    createBoard(false);
 }
 
 function makeRand() {
-    pause();
-    current.value = makeCells(width.value, height.value, true);
-    next.value = makeCells(width.value, height.value, false);
-    stableAge.value = makeStableAge(width.value, height.value);
-    oscillatorMask.value = new Uint8Array(width.value * height.value);
-    draw();
-    clearChart();
-    recomputeLivingCount();
-    history.value = [];
-    hasStalled.value = false;
+    stopAnimation();
+    createBoard(true);
 }
 
-function setCellByClientPos(clientX, clientY) {
+function start() {
     if (isRunning.value) return;
-    const el = canvasEl.value;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = Math.floor((clientX - rect.left) * (width.value / rect.width));
-    const y = Math.floor((clientY - rect.top) * (height.value / rect.height));
-    if (!inBounds(x, y)) return;
-
-    const clone = new Uint8Array(current.value);
-    const i = idx(x, y);
-    const prev = clone[i];
-    const nextVal = prev ? 0 : 1;
-    clone[i] = nextVal;
-
-    current.value = clone;
-    livingCount.value += nextVal - prev;
-
-    history.value = [];
+    if (hasStalled.value || liveNumber === 0) makeRand();
+    if (!runStartedAt) {
+        runStartedAt = new Date().toISOString();
+        runInitialPopulation = countAlive(current);
+        initialRunBoard = current.slice();
+    }
     hasStalled.value = false;
-    stableAge.value[i] = 0;
-    oscillatorMask.value[i] = 0;
+    isRunning.value = true;
+    activeRunStartTime = performance.now();
+    lastTickTime = 0;
+    publishUi(true);
+    rafId = requestAnimationFrame(loop);
+}
 
+let painting = false;
+let pointerId = null;
+let paintValue = 1;
+let lastPaintedIndex = -1;
+
+function cellIndexFromPointer(event) {
+    const canvas = canvasEl.value;
+    if (!canvas) return -1;
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return -1;
+    const x = Math.floor(
+        ((event.clientX - rect.left) / rect.width) * boardSize,
+    );
+    const y = Math.floor(
+        ((event.clientY - rect.top) / rect.height) * boardSize,
+    );
+    if (x < 0 || y < 0 || x >= boardSize || y >= boardSize) return -1;
+    return y * boardSize + x;
+}
+
+function paintCell(index) {
+    if (index < 0 || index === lastPaintedIndex) return;
+    lastPaintedIndex = index;
+    if (current[index] === paintValue) return;
+    liveNumber += paintValue - current[index];
+    current[index] = paintValue;
+    if (runStartedAt) runWasEdited = true;
+    stableAge[index] = 0;
+    oscillatorMask[index] = 0;
+    hasStalled.value = false;
+    // All older boards become invalid once the user edits the grid.
+    historyLength = 0;
+    historyWrite = 0;
     draw();
+    publishUi();
 }
 
-function loop(ts) {
-    if (!isRunning.value) return;
-    if (lastTickTime === 0 || ts - lastTickTime >= delay.value) {
-        step();
-        draw();
-        lastTickTime = ts;
-    }
-    RAF.value = requestAnimationFrame(loop);
+function onPointerDown(event) {
+    if (
+        isRunning.value ||
+        painting ||
+        (event.pointerType === "mouse" && event.button !== 0)
+    )
+        return;
+    const index = cellIndexFromPointer(event);
+    if (index < 0) return;
+    painting = true;
+    pointerId = event.pointerId;
+    lastPaintedIndex = -1;
+    paintValue = current[index] ? 0 : 1;
+    liveNumber = countAlive(current);
+    canvasEl.value.setPointerCapture(event.pointerId);
+    paintCell(index);
 }
 
-const livingColor = computed(() => {
-    if (isDarkMode.value) {
-        return {
-            r: 74,
-            g: 74,
-            b: 74,
-            a: 255,
-        };
-    } else {
-        return {
-            r: 200,
-            g: 200,
-            b: 200,
-            a: 255,
-        };
+function onPointerMove(event) {
+    if (!painting || event.pointerId !== pointerId) return;
+    paintCell(cellIndexFromPointer(event));
+}
+
+function onPointerUp(event) {
+    if (!painting || event.pointerId !== pointerId) return;
+    painting = false;
+    pointerId = null;
+    lastPaintedIndex = -1;
+    if (canvasEl.value?.hasPointerCapture(event.pointerId)) {
+        canvasEl.value.releasePointerCapture(event.pointerId);
     }
+    publishUi(true);
+}
+
+watch(SIZE, () => {
+    stopAnimation();
+    painting = false;
+    pointerId = null;
+    createBoard(false);
 });
 
-const deadColor = computed(() => {
-    if (isDarkMode.value) {
-        return {
-            r: 42,
-            g: 42,
-            b: 42,
-            a: 255,
-        };
-    } else {
-        return {
-            r: 255,
-            g: 255,
-            b: 255,
-            a: 255,
-        };
-    }
-});
-
-function recomputeLivingCount() {
-    const grid = current.value;
-    let sum = 0;
-    for (let i = 0; i < grid.length; i += 1) sum += grid[i];
-    livingCount.value = sum;
-}
-
-function draw() {
-    if (!ctx || !offCtx) return;
-    const w = width.value;
-    const h = height.value;
-
-    if (off.width !== w || off.height !== h) {
-        off.width = w;
-        off.height = h;
-    }
-
-    const img = offCtx.createImageData(w, h);
-    const data = img.data;
-    const grid = current.value;
-
-    const ageArr = stableAge.value;
-    const osc = oscillatorMask.value;
-
-    // color for "real" live cells (dynamic, non-stale, non-oscillator)
-    const dynamicColor = isDarkMode.value
-        ? { r: 66, g: 211, b: 146, a: 255 }
-        : { r: 95, g: 138, b: 238, a: 255 };
-
-    for (let i = 0, p = 0; i < grid.length; i += 1, p += 4) {
-        const alive = grid[i] === 1;
-
-        let color;
-
-        if (
-            alive &&
-            ageArr.length === grid.length &&
-            osc.length === grid.length &&
-            ageArr[i] < STABLE_THRESHOLD &&
-            !osc[i]
-        ) {
-            color = dynamicColor;
-        } else if (alive) {
-            color = livingColor.value;
-        } else {
-            color = deadColor.value;
-        }
-
-        data[p] = color.r;
-        data[p + 1] = color.g;
-        data[p + 2] = color.b;
-        data[p + 3] = color.a;
-    }
-
-    offCtx.putImageData(img, 0, 0);
-
-    const cssW = w * 2;
-    const cssH = h * 2;
-    const dpr = 5;
-
-    canvasEl.value.width = Math.floor(cssW * dpr);
-    canvasEl.value.height = Math.floor(cssH * dpr);
-
-    ctx.save();
-    ctx.imageSmoothingEnabled = false;
-    ctx.clearRect(0, 0, canvasEl.value.width, canvasEl.value.height);
-    ctx.scale(dpr, dpr);
-    ctx.drawImage(off, 0, 0, cssW, cssH);
-    ctx.restore();
-}
-
-function initCanvases() {
-    const el = canvasEl.value;
-    ctx = el.getContext("2d", { alpha: false });
-    off = document.createElement("canvas");
-    offCtx = off.getContext("2d", { alpha: false });
+watch(isDarkMode, () => {
+    updatePalette();
     draw();
-}
+    publishUi(true);
+});
 
 onMounted(() => {
-    initCanvases();
-
-    const onClick = (e) => setCellByClientPos(e.clientX, e.clientY);
-    canvasEl.value.addEventListener("click", onClick);
-
-    let dragging = false;
-    const onDown = (e) => {
-        dragging = true;
-        setCellByClientPos(e.clientX, e.clientY);
-    };
-    const onMove = (e) => {
-        if (dragging) setCellByClientPos(e.clientX, e.clientY);
-    };
-    const onUp = () => {
-        dragging = false;
-    };
-
-    canvasEl.value.addEventListener("mousedown", onDown);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
-
-    const onTouch = (e) => {
-        const t = e.touches[0] || e.changedTouches[0];
-        setCellByClientPos(t.clientX, t.clientY);
-    };
-    canvasEl.value.addEventListener("touchstart", onTouch, { passive: true });
-    canvasEl.value.addEventListener("touchmove", onTouch, { passive: true });
-
-    onBeforeUnmount(() => {
-        pause();
-        canvasEl.value?.removeEventListener("click", onClick);
-        canvasEl.value?.removeEventListener("mousedown", onDown);
-        window.removeEventListener("mousemove", onMove);
-        window.removeEventListener("mouseup", onUp);
-        canvasEl.value?.removeEventListener("touchstart", onTouch);
-        canvasEl.value?.removeEventListener("touchmove", onTouch);
-        ctx = null;
-        off = null;
-        offCtx = null;
+    ctx = canvasEl.value?.getContext("2d", {
+        alpha: false,
+        desynchronized: true,
     });
-});
-
-watch([width, height], () => {
-    pause();
-    current.value = makeCells(width.value, height.value, false);
-    next.value = makeCells(width.value, height.value, false);
-    stableAge.value = makeStableAge(width.value, height.value);
-    oscillatorMask.value = new Uint8Array(width.value * height.value);
+    updatePalette();
+    resizeCanvas();
     draw();
-    livingCount.value = 0;
-    history.value = [];
-    hasStalled.value = false;
+    publishUi(true);
+    void loadCompletedRuns();
 });
 
-const max = computed(() => {
-    if (!dataset.value.length) return 100;
-    return Math.max(...dataset.value.map((d) => d.value));
+onBeforeUnmount(() => {
+    stopAnimation();
+    ctx = null;
+    imageData = null;
+    pixels = null;
 });
 
 const chartConfig = computed(() => {
@@ -523,7 +924,7 @@ const chartConfig = computed(() => {
                 aspectRatio: "16 / 9",
                 stacked: false,
                 stackGap: 20,
-                scale: { ticks: 10, min: null, max: null },
+                scale: { ticks: 10, min: null, max: chartMax.value },
                 selector: {
                     show: false,
                 },
@@ -537,9 +938,11 @@ const chartConfig = computed(() => {
                 title: {
                     text:
                         (hasStalled.value || !isRunning.value) &&
-                        dataset.value.length > 0
-                            ? "Full history"
-                            : dataset.value.length === 0
+                        hasChartData.value
+                            ? isHistorySampled.value
+                                ? "Full history (sampled)"
+                                : "Full history"
+                            : !hasChartData.value
                               ? "Click start to play"
                               : "Running...",
                     color: isDarkMode.value ? "#8A8A8A" : "#4A4A4A",
@@ -554,7 +957,7 @@ const chartConfig = computed(() => {
                         axisName: "Live cells",
                         axisLabels: {
                             show: true,
-                            fontSizeRatio: 1,
+                            fontSizeRatio: 0.7,
                             color: isDarkMode.value ? "#6A6A6A" : "#4A4A4A",
                             offsetX: 0,
                             rounding: 1,
@@ -695,6 +1098,11 @@ const kpiConfig = computed(() => {
         };
     }
 });
+
+const cellKpiConfig = computed(() => ({
+    ...kpiConfig.value,
+    title: "Cell count",
+}));
 </script>
 
 <template>
@@ -706,13 +1114,7 @@ const kpiConfig = computed(() => {
             class="flex flex-row align-center gap-4 flex-wrap justify-center max-w-[1200px] mx-auto p-2 bg-gray-100 dark:bg-[#2A2A2A]"
         >
             <VueUiKpi :dataset="generations" :config="kpiConfig" />
-            <VueUiKpi
-                :dataset="livingCount"
-                :config="{
-                    ...kpiConfig,
-                    title: 'Cell count',
-                }"
-            />
+            <VueUiKpi :dataset="livingCount" :config="cellKpiConfig" />
 
             <div class="flex flex-row align-center gap-4 self-center">
                 <button
@@ -745,11 +1147,11 @@ const kpiConfig = computed(() => {
             <label class="py-2 flex flex-col gap-2">
                 Delay (ms):
                 <input
+                    v-model.number="delay"
                     type="range"
                     class="accent-app-blue"
                     min="0"
                     max="200"
-                    v-model.number="delay"
                 />
                 <BaseDigit :value="delay" />
             </label>
@@ -757,12 +1159,12 @@ const kpiConfig = computed(() => {
             <label class="py-2 flex flex-col gap-2">
                 Size:
                 <input
+                    v-model.number="SIZE"
                     type="range"
                     class="accent-app-blue"
-                    :min="100"
-                    :max="300"
-                    :step="10"
-                    v-model.number="SIZE"
+                    :min="50"
+                    :max="500"
+                    :step="50"
                 />
                 <BaseDigit :value="SIZE" />
             </label>
@@ -771,53 +1173,20 @@ const kpiConfig = computed(() => {
         <div
             class="flex flex-row max-w-[1200px] mx-auto relative p-4 bg-gray-100 dark:bg-[#2A2A2A]"
         >
-            <canvas
-                ref="canvasEl"
-                class="w-full max-w-[400px] border border-[#CCCCCC] dark:border-[#4A4A4A] rounded-l-lg p-4 bg-white dark:bg-[#2A2A2A]"
-            />
-            <div
-                class="bg-white dark:bg-[#2A2A2A] w-full border border-[#CCCCCC] dark:border-[#4A4A4A] p-2 rounded-r-lg"
-            >
-                <VueUiXyCanvas
-                    :dataset="[
-                        {
-                            name: 'Generations',
-                            series:
-                                hasStalled || !isRunning
-                                    ? dataset.map((d) => d.value)
-                                    : dataset.map((d) => d.value).slice(-301),
-                            type: 'line',
-                            smooth: true,
-                            dataLabels: false,
-                            color: isDarkMode ? '#42d392' : '#5f8aee',
-                            useArea: true,
-                        },
-                        {
-                            name: 'Cumulative median',
-                            series:
-                                hasStalled || !isRunning
-                                    ? median
-                                    : median.slice(-301),
-                            type: 'line',
-                            smooth: true,
-                            color: '#ff3700',
-                            useArea: false,
-                        },
-                    ]"
-                    :config="{
-                        ...chartConfig,
-                        style: {
-                            ...chartConfig.style,
-                            chart: {
-                                ...chartConfig.style.chart,
-                                scale: {
-                                    ...chartConfig.style.chart.scale,
-                                    max,
-                                },
-                            },
-                        },
-                    }"
+            <div class="w-full max-w-[400px] p-4 bg-white dark:bg-[#2A2A2A]">
+                <canvas
+                    ref="canvasEl"
+                    class="block w-full aspect-square touch-none"
+                    aria-label="Game of Life grid. Drag to draw or erase cells."
+                    @pointerdown="onPointerDown"
+                    @pointermove="onPointerMove"
+                    @pointerup="onPointerUp"
+                    @pointercancel="onPointerUp"
+                    @lostpointercapture="onPointerUp"
                 />
+            </div>
+            <div class="bg-white dark:bg-[#2A2A2A] w-full p-2 rounded-r-lg">
+                <VueUiXyCanvas :dataset="chartDataset" :config="chartConfig" />
             </div>
             <SkullIcon
                 v-if="hasStalled"
@@ -826,20 +1195,163 @@ const kpiConfig = computed(() => {
             />
         </div>
     </BaseCard>
+
+    <BaseCard class="max-w-[1200px] mx-auto mt-6 mb-12">
+        <section class="p-4 bg-gray-100 dark:bg-[#2A2A2A]">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+                <h2 class="font-inter-medium text-xl">
+                    Completed runs ({{ formatRunNumber(completedRuns.length) }})
+                </h2>
+                <span class="text-sm text-gray-500 dark:text-gray-400">
+                    Recorded on natural completion only
+                </span>
+
+                <button
+                    type="button"
+                    class="rounded px-4 py-2 border border-app-red text-app-red hover:bg-red-700 hover:text-white disabled:opacity-50"
+                    :disabled="isClearingRuns || loadingCompletedRuns"
+                    @click="clearCompletedRuns"
+                >
+                    {{ isClearingRuns ? "Clearing..." : "Clear history" }}
+                </button>
+            </div>
+            <p
+                v-if="runsStorageError"
+                role="status"
+                class="text-sm text-red-600 dark:text-red-400 mb-3"
+            >
+                {{ runsStorageError }}
+            </p>
+
+            <div class="grid grid-cols-1 gap-4" v-if="completedRuns.length">
+                <div class="p-2">
+                    <GameOfLifeScatter :data="completedRuns" />
+                </div>
+            </div>
+
+            <div
+                class="overflow-x-auto rounded bg-white dark:bg-[#222222] h-screen max-h-[500px]"
+            >
+                <table
+                    class="w-full text-sm text-left tabular-nums whitespace-nowrap"
+                >
+                    <thead
+                        class="border-b border-gray-200 dark:border-gray-700"
+                    >
+                        <tr>
+                            <th scope="col" class="px-3 py-3 font-semibold">
+                                Completed
+                            </th>
+                            <th scope="col" class="px-3 py-3 font-semibold">
+                                Grid size
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-3 py-3 font-semibold text-right"
+                            >
+                                Generations
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-3 py-3 font-semibold text-right"
+                            >
+                                Initial population
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-3 py-3 font-semibold text-right"
+                            >
+                                Peak active
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-3 py-3 font-semibold text-right"
+                            >
+                                Median active
+                            </th>
+                            <th scope="col" class="px-3 py-3 font-semibold">
+                                Duration
+                            </th>
+                            <th scope="col" class="px-3 py-3 font-semibold">
+                                Stopped by
+                            </th>
+                            <th scope="col" class="px-3 py-3 font-semibold">
+                                Data
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            v-if="loadingCompletedRuns && !completedRuns.length"
+                        >
+                            <td
+                                colspan="10"
+                                class="p-5 text-center text-gray-500"
+                            >
+                                Loading completed runs…
+                            </td>
+                        </tr>
+                        <tr v-else-if="!completedRuns.length">
+                            <td
+                                colspan="10"
+                                class="p-5 text-center text-gray-500"
+                            >
+                                No completed runs yet. Run the simulation until
+                                it stops on its own.
+                            </td>
+                        </tr>
+                        <tr
+                            v-for="run in completedRuns"
+                            :key="run.id"
+                            class="border-t border-gray-100 dark:border-gray-700"
+                        >
+                            <td class="px-3 py-3">
+                                {{ formatRunDate(run.completedAt) }}
+                            </td>
+                            <td class="px-3 py-3">
+                                {{ run.gridSize }} × {{ run.gridSize }}
+                            </td>
+                            <td class="px-3 py-3 text-right">
+                                {{ formatRunNumber(run.generations) }}
+                            </td>
+                            <td class="px-3 py-3 text-right">
+                                {{ formatRunNumber(run.initialPopulation) }}
+                            </td>
+                            <td class="px-3 py-3 text-right">
+                                {{ formatRunNumber(run.peakActive) }}
+                            </td>
+                            <td class="px-3 py-3 text-right">
+                                {{ formatRunNumber(run.medianActive) }}
+                            </td>
+                            <td class="px-3 py-3">
+                                {{ formatRunDuration(run.activeMilliseconds) }}
+                            </td>
+                            <td class="px-3 py-3">{{ run.reason }}</td>
+                            <td class="px-3 py-3">
+                                <button
+                                    type="button"
+                                    class="underline underline-offset-2 text-blue-600 dark:text-blue-300"
+                                    :aria-label="`Download full data for ${run.gridSize} by ${run.gridSize} run with ${run.generations} generations`"
+                                    @click="downloadRunData(run)"
+                                >
+                                    JSON
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                Saved in this browser. JSON includes every generation's
+                active-cell count and cumulative median, plus the initial and
+                final boards. Paused and abandoned runs are not recorded.
+            </p>
+        </section>
+    </BaseCard>
 </template>
 
 <style scoped>
-.canvas-wrap {
-    border: 1px solid #6a6a6a;
-    margin-top: 8px;
-    padding: 24px;
-}
-
 canvas {
-    width: 100%;
-}
-
-.board {
-    display: block;
+    image-rendering: pixelated;
 }
 </style>

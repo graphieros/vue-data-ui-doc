@@ -484,6 +484,68 @@ export function createNumbers({
     return numbers;
 }
 
+export function giftWrap({ series }) {
+    if (!Array.isArray(series) || series.length === 0) return "";
+
+    const pts = Array.from(
+        new Map(
+            series
+                .filter(
+                    (p) => p && Number.isFinite(p.x) && Number.isFinite(p.y),
+                )
+                .map((p) => [`${p.x},${p.y}`, { x: +p.x, y: +p.y }]),
+        ).values(),
+    );
+    if (pts.length === 0) return "";
+    if (pts.length === 1)
+        return `${Math.round(pts[0].x)},${Math.round(pts[0].y)} `;
+
+    const dist2 = (a, b) => {
+        const dx = a.x - b.x,
+            dy = a.y - b.y;
+        return dx * dx + dy * dy;
+    };
+    const cross = (o, a, b) =>
+        (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+
+    let start = pts[0];
+    for (const p of pts) {
+        if (p.x < start.x || (p.x === start.x && p.y < start.y)) start = p;
+    }
+
+    const hull = [start];
+    let endpoint = start;
+
+    const maxSteps = pts.length + 2;
+    let steps = 0;
+
+    while (true) {
+        if (++steps > maxSteps) break;
+        let candidate = pts[0] === endpoint ? pts[1] : pts[0];
+        for (const p of pts) {
+            if (p === endpoint || p === candidate) continue;
+            const c = cross(endpoint, candidate, p);
+            if (c < 0) continue;
+            if (c > 0) {
+                candidate = p;
+            } else {
+                if (dist2(endpoint, p) > dist2(endpoint, candidate)) {
+                    candidate = p;
+                }
+            }
+        }
+        if (candidate === start) break;
+        hull.push(candidate);
+        endpoint = candidate;
+    }
+
+    let result = "";
+    for (const p of hull) {
+        result += `${Math.round(p.x)},${Math.round(p.y)} `;
+    }
+    return result;
+}
+
 const lib = {
     adaptColorToBackground,
     copyComponent,
@@ -496,6 +558,7 @@ const lib = {
     jsonToJsObject,
     fillEmptyDays,
     createNumbers,
+    giftWrap,
 };
 
 export default lib;
