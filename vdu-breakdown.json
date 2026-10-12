@@ -1,19 +1,19 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 5301688,
+  "totalBytes": 5302371,
   "totalSize": "5.1 MB",
   "fileCount": 345,
   "byExtension": [
     {
       "extension": ".js",
       "files": 263,
-      "bytes": 4211502,
+      "bytes": 4211856,
       "size": "4.0 MB"
     },
     {
       "extension": ".d.ts",
       "files": 77,
-      "bytes": 799885,
+      "bytes": 800215,
       "size": "781 KB"
     },
     {
@@ -37,7 +37,7 @@
     {
       "extension": ".json",
       "files": 1,
-      "bytes": 4011,
+      "bytes": 4010,
       "size": "3.9 KB"
     },
     {
@@ -51,7 +51,7 @@
     {
       "path": "dist/types/vue-data-ui.d.ts",
       "filename": "vue-data-ui",
-      "bytes": 597842,
+      "bytes": 598172,
       "size": "584 KB",
       "extension": ".d.ts"
     },
@@ -163,7 +163,7 @@
     {
       "path": "dist/lib.js",
       "filename": "lib",
-      "bytes": 67819,
+      "bytes": 67937,
       "size": "66 KB",
       "extension": ".js"
     },
@@ -252,16 +252,16 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-strip-plot.js",
-      "filename": "vue-ui-strip-plot",
-      "bytes": 54162,
+      "path": "dist/vue-ui-heatmap.js",
+      "filename": "vue-ui-heatmap",
+      "bytes": 54252,
       "size": "53 KB",
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-heatmap.js",
-      "filename": "vue-ui-heatmap",
-      "bytes": 54016,
+      "path": "dist/vue-ui-strip-plot.js",
+      "filename": "vue-ui-strip-plot",
+      "bytes": 54162,
       "size": "53 KB",
       "extension": ".js"
     },
@@ -1059,7 +1059,7 @@
     {
       "path": "package.json",
       "filename": "package",
-      "bytes": 4011,
+      "bytes": 4010,
       "size": "3.9 KB",
       "extension": ".json"
     },

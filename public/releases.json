@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.26.4",
+        "date": "2026-10-11",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Fix some properties not applied",
+                "link": "/docs#vue-ui-heatmap"
+            }
+        ]
+    },
+    {
         "version": "v 3.26.3",
         "date": "2026-10-04",
         "updates": [
