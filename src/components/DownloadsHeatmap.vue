@@ -91,7 +91,7 @@ const heatmap = computed(() => {
     );
 
     // Anchor the grid to the current UTC week to match npm's daily reporting.
-    // Weeks run Monday -> Sunday.
+    // Weeks run from Monday to Sunday.
     const today = toUtcDay(new Date());
     const daysSinceMonday =
         (today.getUTCDay() - MONDAY_INDEX + DAYS_PER_WEEK) % DAYS_PER_WEEK;
@@ -112,7 +112,7 @@ const heatmap = computed(() => {
         };
     });
 
-    // Keep rows in the same chronological order as each Monday -> Sunday week.
+    // Keep rows in the same chronological order as each Monday to Sunday week.
     const dataset = WEEK_DAYS.map((name, dayIndex) => ({
         name,
         values: weeks.map((week) => {
