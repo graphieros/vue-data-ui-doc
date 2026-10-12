@@ -32,6 +32,12 @@ function formatDate(date) {
     return date.toISOString().slice(0, 10);
 }
 
+function toUtcDay(date) {
+    return new Date(
+        Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()),
+    );
+}
+
 const downloadsFormatter = new Intl.NumberFormat("en-US");
 const tooltipDateFormatter = new Intl.DateTimeFormat("en-US", {
     weekday: "long",
@@ -84,13 +90,9 @@ const heatmap = computed(() => {
         sortedData.map((item) => [item.period, Number(item.value)]),
     );
 
-    // Anchor the grid to the viewer's current calendar week.
-    // Weeks run Monday -> Sunday, so on a Sunday the rightmost column still
-    // contains the preceding Saturday and today's Sunday.
-    const now = new Date();
-    const today = new Date(
-        Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()),
-    );
+    // Anchor the grid to the current UTC week to match npm's daily reporting.
+    // Weeks run Monday -> Sunday.
+    const today = toUtcDay(new Date());
     const daysSinceMonday =
         (today.getUTCDay() - MONDAY_INDEX + DAYS_PER_WEEK) % DAYS_PER_WEEK;
     const currentWeekStart = addDays(today, -daysSinceMonday);
@@ -205,8 +207,8 @@ const config = computed(() => {
                     },
                     colors: {
                         hot: isDarkMode.value ? "#42d392" : "#1f77b4",
-                        cold: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
-                        underlayer: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                        cold: isDarkMode.value ? "#2A2A2A" : "#f3f4f6",
+                        underlayer: isDarkMode.value ? "#2A2A2A" : "#f3f4f6",
                     },
                     spacing: 0,
                     selected: {
@@ -222,7 +224,7 @@ const config = computed(() => {
                         color: isDarkMode.value ? "#BBBBBB" : "#1A1A1A",
                         bold: false,
                         offsetX: 0,
-                        offsetY: 0,
+                        offsetY: 12,
                         showOnlyAtModulo: 1,
                         autoRotate: {
                             enable: false,
@@ -235,7 +237,7 @@ const config = computed(() => {
                         color: isDarkMode.value ? "#BBBBBB" : "#1A1A1A",
                         bold: false,
                         offsetY: 0,
-                        offsetX: 0,
+                        offsetX: 10,
                     },
                 },
             },
@@ -278,17 +280,10 @@ const config = computed(() => {
     };
 });
 
-function getNpmFukkupPathCoords(cell, isLastWeek = false) {
+function getZeroDayCrossPath(cell) {
     const cx = cell.x + cell.width / 2;
     const cy = cell.y + cell.height / 2;
-    const cross = isLastWeek
-        ? "q4 0 4-3c0-3-8-3-8 0m4 3 0 2m0 2a1 1 0 000 2 1 1 0 000-2"
-        : "-6-6m6 6 6 6m0-12-12 12";
-    return `m${cx} ${cy}${cross}`;
-}
-
-function isLastWeek(colIndex) {
-    return colIndex >= 51;
+    return `m${cx} ${cy}-6-6m6 6 6 6m0-12-12 12`;
 }
 
 function getMonthKey(date) {
@@ -304,173 +299,37 @@ function getCellDate(cell) {
     return addDays(parseUtcDate(weekStartValue), cell.rowIndex);
 }
 
-function getPointKey(point) {
-    return `${point.x.toFixed(6)}:${point.y.toFixed(6)}`;
-}
-
-function simplifyContour(points) {
-    if (points.length < 4) return points;
-
-    const firstKey = getPointKey(points[0]);
-    const lastKey = getPointKey(points[points.length - 1]);
-    const ring = firstKey === lastKey ? points.slice(0, -1) : points.slice();
-    const epsilon = 0.000001;
-
-    return ring.filter((point, index) => {
-        const previous = ring[(index - 1 + ring.length) % ring.length];
-        const next = ring[(index + 1) % ring.length];
-
-        const vertical =
-            Math.abs(previous.x - point.x) < epsilon &&
-            Math.abs(point.x - next.x) < epsilon;
-
-        const horizontal =
-            Math.abs(previous.y - point.y) < epsilon &&
-            Math.abs(point.y - next.y) < epsilon;
-
-        return !vertical && !horizontal;
-    });
-}
-
-function getMonthOutline(cells) {
-    const occupied = new Set(
-        cells.map((cell) => `${cell.rowIndex}:${cell.columnIndex}`),
+function isPastZeroDay(cell) {
+    const date = getCellDate(cell);
+    return (
+        cell.datapoint.value === 0 &&
+        date !== null &&
+        date < toUtcDay(new Date())
     );
-
-    const edges = [];
-
-    function addEdge(x1, y1, x2, y2) {
-        edges.push({
-            start: { x: x1, y: y1 },
-            end: { x: x2, y: y2 },
-        });
-    }
-
-    for (const cell of cells) {
-        const row = cell.rowIndex;
-        const column = cell.columnIndex;
-
-        const x1 = cell.x;
-        const y1 = cell.y;
-        const x2 = cell.x + cell.width;
-        const y2 = cell.y + cell.height;
-
-        // Clockwise edges. Only exposed edges are retained.
-
-        if (!occupied.has(`${row - 1}:${column}`)) {
-            addEdge(x1, y1, x2, y1);
-        }
-
-        if (!occupied.has(`${row}:${column + 1}`)) {
-            addEdge(x2, y1, x2, y2);
-        }
-
-        if (!occupied.has(`${row + 1}:${column}`)) {
-            addEdge(x2, y2, x1, y2);
-        }
-
-        if (!occupied.has(`${row}:${column - 1}`)) {
-            addEdge(x1, y2, x1, y1);
-        }
-    }
-
-    const outgoing = new Map();
-
-    edges.forEach((edge, index) => {
-        const key = getPointKey(edge.start);
-
-        if (!outgoing.has(key)) {
-            outgoing.set(key, []);
-        }
-
-        outgoing.get(key).push(index);
-    });
-
-    const used = new Set();
-    const contours = [];
-
-    for (let index = 0; index < edges.length; index += 1) {
-        if (used.has(index)) continue;
-
-        const startEdge = edges[index];
-        const startKey = getPointKey(startEdge.start);
-        const points = [startEdge.start];
-        let currentIndex = index;
-
-        while (currentIndex !== undefined) {
-            const edge = edges[currentIndex];
-
-            used.add(currentIndex);
-            points.push(edge.end);
-
-            const endKey = getPointKey(edge.end);
-
-            if (endKey === startKey) {
-                break;
-            }
-
-            currentIndex = outgoing
-                .get(endKey)
-                ?.find((candidateIndex) => !used.has(candidateIndex));
-        }
-
-        if (getPointKey(points[points.length - 1]) === startKey) {
-            contours.push(simplifyContour(points));
-        }
-    }
-
-    const formatCoordinate = (value) => Number(value.toFixed(3));
-
-    return contours
-        .map((points) => {
-            if (!points.length) return "";
-
-            const [first, ...rest] = points;
-
-            const commands = rest
-                .map(
-                    (point) =>
-                        `L ${formatCoordinate(point.x)} ${formatCoordinate(point.y)}`,
-                )
-                .join(" ");
-
-            return [
-                `M ${formatCoordinate(first.x)} ${formatCoordinate(first.y)}`,
-                commands,
-                "Z",
-            ]
-                .filter(Boolean)
-                .join(" ");
-        })
-        .join(" ");
 }
 
 function getMonthPaths(cells) {
-    const months = new Map();
+    if (!cells?.length) return [];
 
-    for (const cell of cells ?? []) {
+    const top = Math.min(...cells.map((cell) => cell.y));
+    const bottom = Math.max(...cells.map((cell) => cell.y + cell.height));
+
+    return cells.flatMap((cell) => {
         const date = getCellDate(cell);
-        if (!date) continue;
+        if (!date || date.getUTCDate() !== 1) return [];
 
-        const key = getMonthKey(date);
+        if (cell.columnIndex === 0 && cell.rowIndex === 0) return [];
 
-        if (!months.has(key)) {
-            months.set(key, {
-                key,
-                date,
-                cells: [],
-            });
-        }
+        const left = cell.x;
+        const right = cell.x + cell.width;
 
-        months.get(key).cells.push(cell);
-    }
+        const d =
+            cell.rowIndex === 0
+                ? `M ${left} ${top} V ${bottom}`
+                : `M ${right} ${top} V ${cell.y} H ${left} V ${bottom}`;
 
-    return Array.from(months.values())
-        .sort((a, b) => a.date - b.date)
-        .map((month) => ({
-            key: month.key,
-            d: getMonthOutline(month.cells),
-        }));
+        return [{ key: getMonthKey(date), d }];
+    });
 }
 </script>
 
@@ -481,7 +340,7 @@ function getMonthPaths(cells) {
             <template #svg="{ svg }">
                 <template v-for="cell in svg.cells" :key="cell.datapoint.id">
                     <g
-                        v-if="cell.datapoint.value === 0"
+                        v-if="isPastZeroDay(cell)"
                         :style="{
                             pointerEvents: 'none',
                         }"
@@ -491,37 +350,14 @@ function getMonthPaths(cells) {
                             :y="cell.y + 2"
                             :width="cell.width - 4"
                             :height="cell.height - 4"
-                            :fill="
-                                isLastWeek(cell.columnIndex)
-                                    ? isDarkMode
-                                        ? '#1A1A1A'
-                                        : '#CCCCCC'
-                                    : isDarkMode
-                                      ? '#ff3700'
-                                      : '#a32300'
-                            "
+                            :fill="isDarkMode ? '#ff3700' : '#a32300'"
                         />
 
                         <path
-                            :d="
-                                getNpmFukkupPathCoords(
-                                    cell,
-                                    isLastWeek(cell.columnIndex),
-                                )
-                            "
-                            :stroke="
-                                isLastWeek(cell.columnIndex)
-                                    ? isDarkMode
-                                        ? '#ff8c00'
-                                        : '#1A1A1A'
-                                    : isDarkMode
-                                      ? '#ff8c00'
-                                      : '#ffb152'
-                            "
+                            :d="getZeroDayCrossPath(cell)"
+                            :stroke="isDarkMode ? '#ff8c00' : '#ffb152'"
                             stroke-linecap="round"
-                            :stroke-width="
-                                isLastWeek(cell.columnIndex) ? 1.5 : 2
-                            "
+                            stroke-width="2"
                             fill="none"
                         />
                     </g>
@@ -594,27 +430,7 @@ function getMonthPaths(cells) {
                         />
                     </div>
                     <span class="text-xs">
-                        Days when npm downloads were not recorded
-                    </span>
-                </div>
-                <div class="flex flew-row mt-2 pl-2 items-center gap-2">
-                    <div
-                        class="h-2.5 w-2.5 bg-[#CCCCCC] dark:bg-black relative flex"
-                    >
-                        <svg
-                            viewBox="2 1 18 18"
-                            class="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                        >
-                            <path
-                                d="M11 10Q15 10 15 7C15 4 7 4 7 7M11 10 11 12M11 14A1 1 0 0011 16 1 1 0 0011 14"
-                                fill="none"
-                                :stroke="isDarkMode ? '#ff8c00' : '#1A1A1A'"
-                                stroke-width="2"
-                            />
-                        </svg>
-                    </div>
-                    <span class="text-xs">
-                        Days in the current week with 0 downloads
+                        Days with missing or anomalous download counts
                     </span>
                 </div>
             </template>
