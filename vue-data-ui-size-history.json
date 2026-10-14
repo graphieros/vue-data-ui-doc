@@ -1,8 +1,8 @@
 {
   "package": "vue-data-ui",
-  "generatedAt": "2026-10-11T15:19:41.706Z",
-  "versionCount": 1273,
-  "successfulCount": 1273,
+  "generatedAt": "2026-10-14T05:39:11.782Z",
+  "versionCount": 1274,
+  "successfulCount": 1274,
   "failedCount": 0,
   "versions": [
     {
@@ -16550,6 +16550,19 @@
       "registryUnpackedBytes": 5302371,
       "shasum": "7043114803ed9aae290c9e9fae2ee76b9957d388",
       "integrity": "sha512-jmojTRXV3q60w01wJmjaPaE4yiP9IQxlMRj2nznzheqpbcaLFAqydGAloJCQmmFm0Hen+BWzsvrvyg+VgnPQAQ==",
+      "license": "MIT"
+    },
+    {
+      "version": "3.26.5",
+      "totalBytes": 5305482,
+      "totalSize": "5.1 MB",
+      "fileCount": 345,
+      "tarballBytes": 1115512,
+      "tarballSize": "1.1 MB",
+      "publishedAt": "2026-10-14T05:25:24.353Z",
+      "registryUnpackedBytes": 5305482,
+      "shasum": "583266954e67ed77e5c88cdab65d6281ecc268af",
+      "integrity": "sha512-sh3uJXv85jBgXWeY7PiffZBgofC98jG0cZErts0vKwMGx97rbhMwq5uehjFXDl5Voo5Jfl36xSP5bO7UubLeAQ==",
       "license": "MIT"
     }
   ]

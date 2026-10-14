@@ -1,19 +1,19 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 5302371,
+  "totalBytes": 5305482,
   "totalSize": "5.1 MB",
   "fileCount": 345,
   "byExtension": [
     {
       "extension": ".js",
       "files": 263,
-      "bytes": 4211856,
+      "bytes": 4215053,
       "size": "4.0 MB"
     },
     {
       "extension": ".d.ts",
       "files": 77,
-      "bytes": 800215,
+      "bytes": 800129,
       "size": "781 KB"
     },
     {
@@ -51,7 +51,7 @@
     {
       "path": "dist/types/vue-data-ui.d.ts",
       "filename": "vue-data-ui",
-      "bytes": 598172,
+      "bytes": 598086,
       "size": "584 KB",
       "extension": ".d.ts"
     },
@@ -98,6 +98,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/vue-ui-stackbar.js",
+      "filename": "vue-ui-stackbar",
+      "bytes": 97158,
+      "size": "95 KB",
+      "extension": ".js"
+    },
+    {
       "path": "README.md",
       "filename": "README",
       "bytes": 94310,
@@ -108,13 +115,6 @@
       "path": "dist/vue-ui-quick-chart.js",
       "filename": "vue-ui-quick-chart",
       "bytes": 94179,
-      "size": "92 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue-ui-stackbar.js",
-      "filename": "vue-ui-stackbar",
-      "bytes": 93983,
       "size": "92 KB",
       "extension": ".js"
     },
@@ -163,7 +163,7 @@
     {
       "path": "dist/lib.js",
       "filename": "lib",
-      "bytes": 67937,
+      "bytes": 67959,
       "size": "66 KB",
       "extension": ".js"
     },
