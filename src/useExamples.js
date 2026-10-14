@@ -9806,26 +9806,89 @@ export default function useExamples() {
                     ar: "شريط مكدس أفقي موزع",
                 },
             },
-            // STACKBAR MIXED
+            // STACKBAR ROUNDED CORNERS VERTICAL
             {
-                dataset: DATASET_STACKBAR_MIXED.value,
-                config: {
-                    ...CONFIG_STACKBAR_BASE.value,
-                    style: {
-                        ...CONFIG_STACKBAR_BASE.value.style,
-                        chart: {
-                            ...CONFIG_STACKBAR_BASE.value.style.chart,
-                            grid: {
-                                ...CONFIG_STACKBAR_BASE.value.style.chart.grid,
-                                x: {
-                                    ...CONFIG_STACKBAR_BASE.value.style.chart
-                                        .grid.x,
-                                    showHorizontalLines: true,
+                dataset: DATASET_STACKBAR_BASIC.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                bars: {
+                                    borderRadius: 12,
                                 },
                             },
                         },
                     },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-rounded-corners-vertical",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Vertical stacked bar with rounded corners",
+                    fr: "Barre empilée verticale avec coins arrondis",
+                    pt: "Barra empilhada vertical com cantos arredondados",
+                    de: "Vertikaler gestapelter Balken mit abgerundeten Ecken",
+                    zh: "带圆角的垂直堆叠条形图",
+                    ja: "角丸の縦型積み上げ棒グラフ",
+                    es: "Barra apilada vertical con esquinas redondeadas",
+                    ko: "모서리가 둥근 세로 누적 막대 그래프",
+                    ar: "شريط عمودي مكدس بزوايا مستديرة",
                 },
+            },
+            // STACKBAR ROUNDED CORNERS HORIZONTAL
+            {
+                dataset: DATASET_STACKBAR_BASIC.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        orientation: "horizontal",
+                        style: {
+                            chart: {
+                                bars: {
+                                    borderRadius: 12,
+                                },
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-rounded-corners-horizontal",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Horizontal stacked bar with rounded corners",
+                    fr: "Barre empilée horizontale avec coins arrondis",
+                    pt: "Barra empilhada horizontal com cantos arredondados",
+                    de: "Horizontaler gestapelter Balken mit abgerundeten Ecken",
+                    zh: "带圆角的水平堆叠条形图",
+                    ja: "角丸の横型積み上げ棒グラフ",
+                    es: "Barra apilada horizontal con esquinas redondeadas",
+                    ko: "모서리가 둥근 가로 누적 막대 그래프",
+                    ar: "شريط أفقي مكدس بزوايا مستديرة",
+                },
+            },
+            // STACKBAR MIXED
+            {
+                dataset: DATASET_STACKBAR_MIXED.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                grid: {
+                                    x: {
+                                        linesColor: isDarkMode.value
+                                            ? "#6A6A6A"
+                                            : "#E1E5E8",
+                                        showHorizontalLines: true,
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }),
                 component: "VueUiStackbar",
                 icon: "chartStackbar",
                 id: "stack-bar-mixed",

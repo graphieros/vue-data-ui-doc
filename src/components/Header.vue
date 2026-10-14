@@ -311,6 +311,11 @@ function getHighlightStyle(item) {
         return {};
     }
 }
+
+const displayedVersion = computed(() => {
+    if (currentVersion.value.includes(".tgz")) return currentVersion.value;
+    return currentVersion.value.replaceAll("v", "");
+});
 </script>
 
 <template>
@@ -344,7 +349,7 @@ function getHighlightStyle(item) {
                             >Vue Data UI</span
                         >
                         <div class="mt-0.5 font-mono dark:text-app-green">
-                            {{ currentVersion.replaceAll("v", "") }}
+                            {{ displayedVersion }}
                         </div>
                     </div>
                 </div>

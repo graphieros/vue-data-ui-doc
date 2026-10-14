@@ -1,11 +1,26 @@
 ## Fixes
 
-### `VueUiHeatmap`:
+- Prevent crashes when `null` is provided instead of an expected string in all components that use the `createTSpans`, `createTSpansFromLineBreaksOnX` and `createTSpansFromLineBreaksOnY` internal utilities.
 
-- some config properties were not applied:
-    - `yAxis.offsetX`
-    - `xAxis.offsetY`
+For example, the following dataset provided to VueUiHorizontalBar will not crash the component anymore:
 
-- expose cells data in the config `events.datapointEnter` event
+```ts
+const dataset = computed<VueUiHorizontalBarDatasetItem[]>(() => {
+    return [
+        {
+            name: null, // will show a TS error, but your backend might not care
+            value: 100,
+        },
+        {
+            name: "Series B",
+            value: 200,
+        },
+    ];
+});
+```
 
-- allow any type of color format passed to the `cells.color.hot` and `cells.color.cold` config properties
+## Improvements
+
+- `VueUiStackbar`:
+    - apply `bars.borderRadius` only to external segments
+    - apply `bars.borderRadius` to the bars in the minimap

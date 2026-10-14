@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 3.26.5",
+        "date": "2026-10-14",
+        "updates": [
+            {
+                "component": "VueUiStackbar",
+                "description": "Apply bars.borderRadius only to external corners, and to the bars in the minimap.",
+                "link": "/docs#vue-ui-stackbar"
+            },
+            {
+                "component": "",
+                "description": "Prevent crashes when null is provided instead of an expected string in all components that use the createTSpans internal utilities",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.26.4",
         "date": "2026-10-11",
         "updates": [

@@ -11,17 +11,8 @@ export function createUid() {
     );
 }
 
-export function getValueByPath(referenceObject, path) {
-    const pathArray = path.split(".");
-    let currentObject = referenceObject;
-    for (const attr of pathArray) {
-        if (currentObject.hasOwnProperty(attr)) {
-            currentObject = currentObject[attr];
-        } else {
-            return undefined;
-        }
-    }
-    return currentObject;
+export function getValueByPath(obj, path) {
+    return path.split(".").reduce((acc, key) => acc?.[key], obj);
 }
 
 export function convertArrayToObject(configArray) {
