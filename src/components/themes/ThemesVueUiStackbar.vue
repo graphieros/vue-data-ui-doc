@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import BaseThemeUnit from "./BaseThemeUnit.vue";
 
+const props = defineProps({
+    isWaterfall: Boolean,
+});
+
 const dataset = ref([
     {
         name: "Serie 1",
@@ -18,6 +22,50 @@ const dataset = ref([
     {
         name: "Serie 4",
         series: [25, 23, 9, 13, 25, 31],
+    },
+]);
+
+const datasetWaterfall = ref([
+    {
+        name: "Revenue breakdown",
+        type: "waterfall",
+        series: [
+            {
+                name: "Initial revenue",
+                type: "total",
+                series: [
+                    { name: "Product A", value: 250 },
+                    { name: "Product B", value: 150 },
+                    { name: "Product C", value: 100 },
+                ],
+            },
+            {
+                name: "Growth",
+                type: "change",
+                series: [
+                    { name: "Product A", value: 80 },
+                    { name: "Product B", value: 40 },
+                    { name: "Product C", value: 30 },
+                ],
+            },
+            {
+                name: "Expenses",
+                type: "change",
+                series: [
+                    { name: "Product A", value: -60 },
+                    { name: "Product B", value: -40 },
+                ],
+            },
+            {
+                name: "Final revenue",
+                type: "total",
+                series: [
+                    { name: "Product A", value: 270 },
+                    { name: "Product B", value: 150 },
+                    { name: "Product C", value: 130 },
+                ],
+            },
+        ],
     },
 ]);
 
@@ -38,7 +86,7 @@ const config = ref({
 <template>
     <BaseThemeUnit
         :config="config"
-        :dataset="dataset"
+        :dataset="isWaterfall ? datasetWaterfall : dataset"
         component="VueUiStackbar"
         componentTheme="vue_ui_stackbar"
     />

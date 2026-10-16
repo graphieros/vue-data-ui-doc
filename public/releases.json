@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.27.0",
+        "date": "2026-10-16",
+        "updates": [
+            {
+                "component": "VueUiStackbar",
+                "description": "Add new waterfall variant",
+                "link": "/docs#vue-ui-stackbar"
+            }
+        ]
+    },
+    {
         "version": "v 3.26.5",
         "date": "2026-10-14",
         "updates": [

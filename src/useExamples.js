@@ -2899,6 +2899,86 @@ export default function useExamples() {
         };
     });
 
+    const CONFIG_WATERFALL_VARIANT = computed(() => ({
+        bars: {
+            gapRatio: 0.5,
+            borderRadius: 0,
+            strokeWidth: 1,
+            stroke: colors.value.bg,
+            gradient: { show: true, intensity: 20 },
+        },
+        colors: {
+            useSeriesColor: true,
+            positive: "#36A783",
+            negative: "#E76F51",
+            total: "#4C7899",
+            subtotal: "#8192B0",
+            neutral: "#A3A3A3",
+        },
+        connectors: {
+            show: true,
+            stroke: "#8B8B8B",
+            strokeWidth: 1,
+            strokeDasharray: "3 3",
+            adaptToRadius: false,
+            inset: 0,
+        },
+        categoryLabels: {
+            show: true,
+            fontSize: 14,
+            color: colors.value.textColor,
+            bold: false,
+            rotation: 0,
+            offsetY: 0,
+        },
+        segmentLabels: {
+            show: true,
+            fontSize: 14,
+            bold: false,
+            color: colors.value.textColor,
+            adaptColorToBackground: true,
+            minHeight: 14,
+            minWidth: 26,
+            showZero: false,
+            prefix: "",
+            suffix: "",
+            rounding: 0,
+            formatter: null,
+        },
+        stepLabels: {
+            show: true,
+            fontSize: 14,
+            color: colors.value.textColor,
+            bold: false,
+            prefix: "",
+            suffix: "",
+            rounding: 0,
+            offset: 0,
+            showPlusSign: false,
+            showZero: true,
+            useBalanceForTotals: true,
+            formatter: null,
+        },
+        tooltip: {
+            showBalance: true,
+            showChange: true,
+            showStart: false,
+            balanceTranslation: "Balance",
+            changeTranslation: "Change",
+            startTranslation: "Previous balance",
+            totalTranslation: "Total",
+            subtotalTranslation: "Subtotal",
+            rounding: 0,
+        },
+        table: {
+            showKind: true,
+            showBalance: true,
+            kindTranslation: "Type",
+            balanceTranslation: "Balance",
+            changeTranslation: "Change",
+        },
+    }));
+
     const DATASET_STACKBAR_BASIC = ref([
         {
             name: "Serie 1",
@@ -2933,6 +3013,562 @@ export default function useExamples() {
         {
             name: "Serie 4",
             series: [-25, -23, -9, -13, -25, -31],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_SIMPLE_INCREASE = ref([
+        {
+            name: "Simple increase",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [{ name: "Revenue", value: 120 }],
+                },
+                {
+                    name: "Sales",
+                    type: "change",
+                    series: [{ name: "Revenue", value: 35 }],
+                },
+                {
+                    name: "Growth",
+                    type: "change",
+                    series: [{ name: "Revenue", value: 20 }],
+                },
+                {
+                    name: "Closing",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_SIMPLE_DECREASE = ref([
+        {
+            name: "Simple decrease",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [{ name: "Revenue", value: 240 }],
+                },
+                {
+                    name: "Taxes",
+                    type: "change",
+                    series: [{ name: "Revenue", value: -60 }],
+                },
+                {
+                    name: "Costs",
+                    type: "change",
+                    series: [{ name: "Revenue", value: -95 }],
+                },
+                {
+                    name: "Closing",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_STACKED_POSITIVE = ref([
+        {
+            name: "Stacked positive changes",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [
+                        { name: "Product A", value: 80 },
+                        { name: "Product B", value: 60 },
+                        { name: "Product C", value: 40 },
+                    ],
+                },
+                {
+                    name: "New customers",
+                    type: "change",
+                    series: [
+                        { name: "Product A", value: 30 },
+                        { name: "Product B", value: 25 },
+                        { name: "Product C", value: 20 },
+                    ],
+                },
+                {
+                    name: "Upselling",
+                    type: "change",
+                    series: [
+                        { name: "Product A", value: 15 },
+                        { name: "Product B", value: 15 },
+                        { name: "Product C", value: 10 },
+                    ],
+                },
+                {
+                    name: "Total",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_STACKED_NEGATIVE = ref([
+        {
+            name: "Stacked negative changes",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Revenue",
+                    type: "total",
+                    series: [
+                        { name: "Product A", value: 200 },
+                        { name: "Product B", value: 150 },
+                        { name: "Product C", value: 150 },
+                    ],
+                },
+                {
+                    name: "Refunds",
+                    type: "change",
+                    series: [
+                        { name: "Product A", value: -35 },
+                        { name: "Product B", value: -20 },
+                        { name: "Product C", value: -15 },
+                    ],
+                },
+                {
+                    name: "Operating costs",
+                    type: "change",
+                    series: [
+                        { name: "Product A", value: -90 },
+                        { name: "Product B", value: -60 },
+                        { name: "Product C", value: -30 },
+                    ],
+                },
+                {
+                    name: "Net revenue",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_MIXED_SINGLE_STEP = ref([
+        {
+            name: "Mixed positive and negative segments",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [{ name: "A", value: 120 }],
+                },
+                {
+                    name: "Adjustments",
+                    type: "change",
+                    series: [
+                        { name: "A", value: -80 },
+                        { name: "B", value: 40 },
+                    ],
+                },
+                {
+                    name: "Corrections",
+                    type: "change",
+                    series: [
+                        { name: "A", value: 20 },
+                        { name: "B", value: -10 },
+                        { name: "C", value: 5 },
+                    ],
+                },
+                {
+                    name: "Final",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_ZERO_CHANGE_VISIBLE_SEGMENTS = ref([
+        {
+            name: "Zero net change",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [{ name: "A", value: 200 }],
+                },
+                {
+                    name: "Compensating changes",
+                    type: "change",
+                    series: [
+                        { name: "A", value: -70 },
+                        { name: "B", value: 45 },
+                        { name: "C", value: 25 },
+                    ],
+                },
+                {
+                    name: "Final",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_AUTO_SUBTOTALS_AND_TOTALS = ref([
+        {
+            name: "Automatic totals and subtotals",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [
+                        { name: "A", value: 150 },
+                        { name: "B", value: 100 },
+                    ],
+                },
+                {
+                    name: "Income",
+                    type: "change",
+                    series: [{ name: "A", value: 40 }],
+                },
+                {
+                    name: "Intermediate subtotal",
+                    type: "subtotal",
+                },
+                {
+                    name: "Expenses",
+                    type: "change",
+                    series: [{ name: "A", value: -55 }],
+                },
+                {
+                    name: "Final total",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_EXPLICIT_RESET = ref([
+        {
+            name: "Absolute reset",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [{ name: "A", value: 120 }],
+                },
+                {
+                    name: "Growth",
+                    type: "change",
+                    series: [{ name: "A", value: 60 }],
+                },
+                {
+                    name: "Revised total",
+                    type: "total",
+                    series: [
+                        { name: "A", value: 100 },
+                        { name: "B", value: 50 },
+                    ],
+                },
+                {
+                    name: "New business",
+                    type: "change",
+                    series: [{ name: "B", value: 25 }],
+                },
+                {
+                    name: "Final",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_SUBTOTAL_BREAKDOWN = ref([
+        {
+            name: "Subtotal with breakdown",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [
+                        { name: "A", value: 120 },
+                        { name: "B", value: 80 },
+                    ],
+                },
+                {
+                    name: "Growth",
+                    type: "change",
+                    series: [
+                        { name: "A", value: 50 },
+                        { name: "B", value: 25 },
+                    ],
+                },
+                {
+                    name: "Adjusted subtotal",
+                    type: "subtotal",
+                    series: [
+                        { name: "A", value: 150 },
+                        { name: "B", value: 100 },
+                    ],
+                },
+                {
+                    name: "Expenses",
+                    type: "change",
+                    series: [{ name: "A", value: -40 }],
+                },
+                {
+                    name: "Final",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_NEGATIVE_START_BALANCE = ref([
+        {
+            name: "Negative starting balance",
+            type: "waterfall",
+            startValue: -100,
+            series: [
+                {
+                    name: "Opening loss",
+                    type: "total",
+                },
+                {
+                    name: "Recovery",
+                    type: "change",
+                    series: [{ name: "A", value: 40 }],
+                },
+                {
+                    name: "Unexpected costs",
+                    type: "change",
+                    series: [{ name: "A", value: -80 }],
+                },
+                {
+                    name: "Investment",
+                    type: "change",
+                    series: [{ name: "A", value: 170 }],
+                },
+                {
+                    name: "Closing",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_CROSSING_ZERO = ref([
+        {
+            name: "Crossing zero",
+            type: "waterfall",
+            startValue: 40,
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                },
+                {
+                    name: "Loss",
+                    type: "change",
+                    series: [{ name: "A", value: -100 }],
+                },
+                {
+                    name: "Recovery",
+                    type: "change",
+                    series: [{ name: "A", value: 120 }],
+                },
+                {
+                    name: "Final",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_NEGATIVE_TOTAL_BREAKDOWN = ref([
+        {
+            name: "Negative absolute total",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Initial debt",
+                    type: "total",
+                    series: [
+                        { name: "Debt A", value: -60 },
+                        { name: "Debt B", value: -40 },
+                    ],
+                },
+                {
+                    name: "Repayment",
+                    type: "change",
+                    series: [
+                        { name: "Debt A", value: 20 },
+                        { name: "Debt B", value: 10 },
+                    ],
+                },
+                {
+                    name: "Remaining debt",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_MIXED_INSIDE_ABSOLUTE_TOTAL = ref([
+        {
+            name: "Diverging absolute total",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Gross position",
+                    type: "total",
+                    series: [
+                        { name: "Assets", value: 200 },
+                        { name: "Liabilities", value: -60 },
+                        { name: "Adjustments", value: 40 },
+                    ],
+                },
+                {
+                    name: "Depreciation",
+                    type: "change",
+                    series: [{ name: "Assets", value: -50 }],
+                },
+                {
+                    name: "Net position",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_SPARSE_AND_ZERO_SEGMENTS = ref([
+        {
+            name: "Sparse segment distribution",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    type: "total",
+                    series: [
+                        { name: "A", value: 100 },
+                        { name: "B", value: 50 },
+                    ],
+                },
+                {
+                    name: "New segment",
+                    type: "change",
+                    series: [{ name: "C", value: 35 }],
+                },
+                {
+                    name: "Losses",
+                    type: "change",
+                    series: [{ name: "A", value: -40 }],
+                },
+                {
+                    name: "No changes",
+                    type: "change",
+                    series: [
+                        { name: "A", value: 0 },
+                        { name: "B", value: 0 },
+                        { name: "C", value: 0 },
+                    ],
+                },
+                {
+                    name: "Closing",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_CUSTOM = ref([
+        {
+            name: "Custom labels and colors",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    label: "Opening balance",
+                    type: "total",
+                    series: [
+                        {
+                            key: "north",
+                            name: "North",
+                            label: "Northern region",
+                            value: 60,
+                            color: "#FF8000",
+                        },
+                        {
+                            key: "south",
+                            name: "South",
+                            label: "Southern region",
+                            value: 40,
+                            color: "#327F9C",
+                        },
+                    ],
+                },
+                {
+                    name: "Sales",
+                    label: "New sales",
+                    type: "change",
+                    series: [
+                        { key: "north", name: "North", value: 10 },
+                        { key: "south", name: "South", value: 15 },
+                    ],
+                },
+                {
+                    name: "Adjustments",
+                    type: "change",
+
+                    series: [
+                        {
+                            key: "north",
+                            name: "North",
+                            value: -20,
+                            color: "#E76F51",
+                        },
+                        {
+                            key: "south",
+                            name: "South",
+                            value: 5,
+                            color: "#36A783",
+                        },
+                    ],
+                },
+                {
+                    name: "Final",
+                    label: "Final balance",
+                    type: "total",
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_STACKBAR_WATERFALL_OMITTED_STEP_TYPES = ref([
+        {
+            name: "Inferred step types",
+            type: "waterfall",
+            series: [
+                {
+                    name: "Opening",
+                    series: [{ name: "A", value: 100 }],
+                },
+                {
+                    name: "Sales",
+                    series: [{ name: "A", value: 25, color: "#36A783" }],
+                },
+                {
+                    name: "Refunds",
+                    series: [{ name: "A", value: -10, color: "#E76F51" }],
+                },
+                {
+                    name: "Closing",
+                    type: "total",
+                },
+            ],
         },
     ]);
 
@@ -10010,6 +10646,504 @@ export default function useExamples() {
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
                     ar: "استخدام نمط مخصص",
+                },
+            },
+            // STACKBAR WATERFALL SIMPLE INCREASE
+            {
+                dataset: DATASET_STACKBAR_WATERFALL_SIMPLE_INCREASE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: mergeConfigs({
+                                    defaultConfig:
+                                        CONFIG_WATERFALL_VARIANT.value,
+                                    userConfig: {
+                                        colors: {
+                                            useSeriesColor: false,
+                                        },
+                                    },
+                                }),
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-simple-increase",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, simple increase. One segment per step, only positive changes.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL SIMPLE DECREASE
+            {
+                dataset: DATASET_STACKBAR_WATERFALL_SIMPLE_DECREASE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: mergeConfigs({
+                                    defaultConfig:
+                                        CONFIG_WATERFALL_VARIANT.value,
+                                    userConfig: {
+                                        colors: {
+                                            useSeriesColor: false,
+                                        },
+                                    },
+                                }),
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-simple-decrease",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, simple decrease. One segment per step, only negative changes.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL STACKED POSITIVE
+            {
+                dataset: DATASET_STACKBAR_WATERFALL_STACKED_POSITIVE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-stacked-positive",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, several segments stacked in the same positive direction.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL STACKED NEGATIVE
+            {
+                dataset: DATASET_STACKBAR_WATERFALL_STACKED_NEGATIVE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-stacked-negative",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, several segments stacked in the same negative direction.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL MIXED SIGNS IN A SINGLE STEP
+            {
+                dataset: DATASET_STACKBAR_WATERFALL_MIXED_SINGLE_STEP.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-mixed-signs-single-step",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, mixed signs in a single step: positives above the incoming balance, negatives below it.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL ZERO CHANGE VISIBLE SEGMENTS
+            {
+                dataset: DATASET_STACKBAR_ZERO_CHANGE_VISIBLE_SEGMENTS.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-zero-change-visible-seg",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, zero net change with visible segments.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL AUTO SUBTOTALS AND TOTALS
+            {
+                dataset: DATASET_STACKBAR_AUTO_SUBTOTALS_AND_TOTALS.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-auto-totals",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, where both types work explicitely supplied segments.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL EXPLICIT RESET
+            {
+                dataset: DATASET_STACKBAR_EXPLICIT_RESET.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-explicit-reset",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, explicit balance reset. Notice how the revised total replaces 180 with 150.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL ADJUSTED SUBTOTAL WITH BREAKDOWN
+            {
+                dataset: DATASET_STACKBAR_SUBTOTAL_BREAKDOWN.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-subtotal-breakdown",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall. A subtotal with a provided series resets the balance.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL NEGATIVE START BALANCE
+            {
+                dataset: DATASET_STACKBAR_NEGATIVE_START_BALANCE.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: mergeConfigs({
+                                    defaultConfig:
+                                        CONFIG_WATERFALL_VARIANT.value,
+                                    userConfig: {
+                                        colors: {
+                                            useSeriesColor: false,
+                                        },
+                                    },
+                                }),
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-neg-start",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall. Starts below zero and eventually becomes positive.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL CROSSING ZERO BOTH DIRECTIONS
+            {
+                dataset: DATASET_STACKBAR_CROSSING_ZERO.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: mergeConfigs({
+                                    defaultConfig:
+                                        CONFIG_WATERFALL_VARIANT.value,
+                                    userConfig: {
+                                        colors: {
+                                            useSeriesColor: false,
+                                        },
+                                    },
+                                }),
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-crossing-zero",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, crosing zero in both directions",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL NEGATIVE TOTAL BREAKDOWN
+            {
+                dataset: DATASET_STACKBAR_NEGATIVE_TOTAL_BREAKDOWN.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-negatove-breakdown",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, negative total with breakdown",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL MIXED SIGNS INSIDE ABSOLUTE TOTAL
+            {
+                dataset:
+                    DATASET_STACKBAR_WATERFALL_MIXED_INSIDE_ABSOLUTE_TOTAL.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-mixed-total",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, positive and negative segments diverge from zero.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL SPARSE AND ZERO SEGMENTS
+            {
+                dataset:
+                    DATASET_STACKBAR_WATERFALL_SPARSE_AND_ZERO_SEGMENTS.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-sparse-and-zero",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, different segment groups appear at different steps.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL CUSTOM
+            {
+                dataset: DATASET_STACKBAR_WATERFALL_CUSTOM.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-custom",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, per-segment and per-step customization",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
+                },
+            },
+            // STACKBAR WATERFALL OMITTED STEP TYPES
+            {
+                dataset: DATASET_STACKBAR_WATERFALL_OMITTED_STEP_TYPES.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                waterfall: CONFIG_WATERFALL_VARIANT.value,
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-waterfall-omitted-steps",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stackbar waterfall, omitted step types: first step defaults to total, following steps default to change.",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    ja: "",
+                    es: "",
+                    ko: "",
+                    ar: "",
                 },
             },
             // NESTED DONUTS BASIC

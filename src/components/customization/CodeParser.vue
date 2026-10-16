@@ -213,6 +213,11 @@ const config = computed(() => {
             "VueUiHillConfig",
             "VueUiHillDatasetItem",
             "VueUiDagFocusOnNodeOptions",
+            "VueUiStackbarStandardDatasetItem",
+            "VueUiStackbarWaterfallDatasetItem",
+            "VueUiStackbarWaterfallKind",
+            "VueUiStackbarDatasetItemWaterfallSeries",
+            "VueUiStackbarWaterfallSegment",
 
             // components
             "VueUiSparkline",

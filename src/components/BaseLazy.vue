@@ -17,10 +17,10 @@ const props = defineProps({
         },
     },
     once: { type: Boolean, default: false },
-    root: { type: [String, HTMLElement], default: null },
+    root: { type: [String, Object], default: null },
     tag: { type: String, default: "div" },
     enabled: { type: Boolean, default: true },
-    visibleRatioEnter: { type: Number, default: 0.1 },
+    visibleRatioEnter: { type: Number, default: 0 },
     visibleRatioExit: { type: Number, default: 0.0 },
     leaveDelay: { type: Number, default: 50 },
 });
@@ -34,11 +34,13 @@ let hasLoadedOnce = false;
 let leaveTimer = null;
 
 const resolvedRoot = computed(() => {
-    if (!props.root) return null;
-    if (props.root instanceof HTMLElement) return props.root;
+    if (typeof document === "undefined" || !props.root) return null;
+    if (typeof props.root !== "string") {
+        return props.root instanceof Element ? props.root : null;
+    }
     try {
         const el = document.querySelector(props.root);
-        return el instanceof HTMLElement ? el : null;
+        return el instanceof Element ? el : null;
     } catch {
         return null;
     }
@@ -81,8 +83,9 @@ function handleLeave() {
 }
 
 function createObserver() {
+    if (props.once && hasLoadedOnce) return;
+
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-        // SSR or unsupported: reveal immediately
         reveal();
         return;
     }
@@ -90,32 +93,35 @@ function createObserver() {
 
     destroyObserver();
 
+    const thresholds = [
+        0,
+        ...(Array.isArray(props.threshold)
+            ? props.threshold
+            : [props.threshold]),
+        props.visibleRatioEnter,
+        props.visibleRatioExit,
+    ].filter((value) => Number.isFinite(value) && value >= 0 && value <= 1);
+
     observer = new IntersectionObserver(
-        (entries) => {
-            const entry = entries[0];
-            const ratio = entry.intersectionRatio ?? 0;
-            if (ratio >= props.visibleRatioEnter) {
+        ([entry]) => {
+            if (!entry) return;
+            const ratio = entry.intersectionRatio;
+
+            if (entry.isIntersecting) clearLeaveTimer();
+
+            if (entry.isIntersecting && ratio >= props.visibleRatioEnter) {
                 handleEnter();
-            } else if (ratio <= props.visibleRatioExit) {
+            } else if (
+                !entry.isIntersecting ||
+                ratio <= props.visibleRatioExit
+            ) {
                 handleLeave();
             }
         },
         {
             root: resolvedRoot.value,
             rootMargin: props.bounds,
-            threshold: Array.isArray(props.threshold)
-                ? props.threshold
-                : Array.from(
-                      new Set(
-                          [
-                              props.threshold,
-                              props.visibleRatioEnter,
-                              props.visibleRatioExit,
-                          ]
-                              .flat()
-                              .filter((v) => typeof v === "number"),
-                      ),
-                  ).sort((a, b) => a - b),
+            threshold: [...new Set(thresholds)].sort((a, b) => a - b),
         },
     );
 

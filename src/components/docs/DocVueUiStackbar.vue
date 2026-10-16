@@ -87,6 +87,52 @@ const dataset = ref([
     },
 ]);
 
+const datasetWaterfall = ref([
+    {
+        name: "Revenue breakdown",
+        type: "waterfall",
+        series: [
+            {
+                name: "Initial revenue",
+                type: "total",
+                series: [
+                    { name: "Product A", value: 250, color: "#FF8000" },
+                    { name: "Product B", value: 150, color: "#A3D22D" },
+                    { name: "Product C", value: 100, color: "#327F9C" },
+                ],
+            },
+            {
+                name: "Growth",
+                type: "change",
+                series: [
+                    { name: "Product A", value: 80 },
+                    { name: "Product B", value: 40 },
+                    { name: "Product C", value: 30 },
+                ],
+            },
+            {
+                name: "Expenses",
+                type: "change",
+                series: [
+                    { name: "Product A", value: -60 },
+                    { name: "Product B", value: -40 },
+                ],
+            },
+            {
+                name: "Final revenue",
+                type: "total",
+                series: [
+                    { name: "Product A", value: 270 },
+                    { name: "Product B", value: 150 },
+                    { name: "Product C", value: 130 },
+                ],
+            },
+        ],
+    },
+]);
+
+const isWaterfall = ref(false);
+
 const config = ref({
     devHints: { enable: false },
     debug: false,
@@ -207,6 +253,67 @@ const config = ref({
                     show: false,
                     backgroundColor: "#E1E5E8",
                     color: "#1A1A1A",
+                },
+            },
+            waterfall: {
+                bars: {
+                    gapRatio: 0.5,
+                    borderRadius: 0,
+                    strokeWidth: 1,
+                    stroke: "#F3F4F6",
+                    gradient: { show: true, intensity: 20 },
+                },
+                colors: {
+                    useSeriesColor: true,
+                    positive: "#36A783",
+                    negative: "#E76F51",
+                    total: "#4C7899",
+                    subtotal: "#8192B0",
+                    neutral: "#A3A3A3",
+                },
+                connectors: {
+                    show: true,
+                    stroke: "#8B8B8B",
+                    strokeWidth: 1,
+                    strokeDasharray: "3 3",
+                    adaptToRadius: false,
+                    inset: 0,
+                },
+                categoryLabels: {
+                    show: true,
+                    fontSize: 14,
+                    color: "#1A1A1A",
+                    bold: false,
+                    rotation: 0,
+                    offsetY: 0,
+                },
+                segmentLabels: {
+                    show: true,
+                    fontSize: 14,
+                    bold: false,
+                    color: "#1A1A1A",
+                    adaptColorToBackground: true,
+                    minHeight: 14,
+                    minWidth: 26,
+                    showZero: false,
+                    prefix: "",
+                    suffix: "",
+                    rounding: 0,
+                    formatter: null,
+                },
+                stepLabels: {
+                    show: true,
+                    fontSize: 14,
+                    color: "#1A1A1A",
+                    bold: false,
+                    prefix: "",
+                    suffix: "",
+                    rounding: 0,
+                    offset: 0,
+                    showPlusSign: false,
+                    showZero: true,
+                    useBalanceForTotals: true,
+                    formatter: null,
                 },
             },
             zoom: {
@@ -536,6 +643,67 @@ const darkModeConfig = ref({
                     color: "#CCCCCC",
                 },
             },
+            waterfall: {
+                bars: {
+                    gapRatio: 0.5,
+                    borderRadius: 0,
+                    strokeWidth: 1,
+                    stroke: "#2A2A2A",
+                    gradient: { show: true, intensity: 20 },
+                },
+                colors: {
+                    useSeriesColor: true,
+                    positive: "#36A783",
+                    negative: "#E76F51",
+                    total: "#4C7899",
+                    subtotal: "#8192B0",
+                    neutral: "#A3A3A3",
+                },
+                connectors: {
+                    show: true,
+                    stroke: "#8B8B8B",
+                    strokeWidth: 1,
+                    strokeDasharray: "3 3",
+                    adaptToRadius: false,
+                    inset: 0,
+                },
+                categoryLabels: {
+                    show: true,
+                    fontSize: 14,
+                    color: "#CCCCCC",
+                    bold: false,
+                    rotation: 0,
+                    offsetY: 0,
+                },
+                segmentLabels: {
+                    show: true,
+                    fontSize: 14,
+                    bold: false,
+                    color: "#CCCCCC",
+                    adaptColorToBackground: true,
+                    minHeight: 14,
+                    minWidth: 26,
+                    showZero: false,
+                    prefix: "",
+                    suffix: "",
+                    rounding: 0,
+                    formatter: null,
+                },
+                stepLabels: {
+                    show: true,
+                    fontSize: 14,
+                    color: "#CCCCCC",
+                    bold: false,
+                    prefix: "",
+                    suffix: "",
+                    rounding: 0,
+                    offset: 0,
+                    showPlusSign: false,
+                    showZero: true,
+                    useBalanceForTotals: true,
+                    formatter: null,
+                },
+            },
             zoom: {
                 show: true,
                 autoFit: true,
@@ -854,15 +1022,51 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `type VueUiStackbarDatasetItem = {
-    name: string
-    series: number[]
-    color?: string
-    [key: string]: any // Recoverable through the #svg slot
-}`;
+    return `
+    type VueUiStackbarDatasetItem =
+        | VueUiStackbarStandardDatasetItem // default
+        | VueUiStackbarWaterfallDatasetItem; // waterfall variant
+
+    // Default stackbar layout
+    type VueUiStackbarStandardDatasetItem = {
+        [key: string]: any;
+        name: string;
+        series: Array<number | null>;
+        color?: string;
+    };
+
+    // Waterfall variant (since v3.27.0)
+    type VueUiStackbarWaterfallDatasetItem = {
+        [key: string]: any;
+        name: string;
+        type: 'waterfall';
+        startValue?: number;
+        series: VueUiStackbarDatasetItemWaterfallSeries[];
+        color?: string;
+    };
+
+    type VueUiStackbarDatasetItemWaterfallSeries = {
+        name?: string;
+        label?: string;
+        type?: VueUiStackbarWaterfallKind;
+        color?: string;
+        series?: VueUiStackbarWaterfallSegment[];
+    };
+    
+    type VueUiStackbarWaterfallKind = 'total' | 'subtotal' | 'change';
+
+    type VueUiStackbarWaterfallSegment = {
+        key?: string | number;
+        id?: string | number;
+        name?: string;
+        label?: string;
+        value: number;
+        color?: string;
+    };`;
 });
 
-const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
+const codeDataset = ref(`// Default standard stackbar layout
+const dataset: VueUiStackbarDatasetItem[] = [
     {
         name: "Serie 1",
         series: [19, 20.07, 30, 40, 50, 60],
@@ -879,6 +1083,51 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
         name: "Serie 4",
         series: [25, 23, 9, 13, 25, 31],
 
+    },
+]`);
+
+const codeDatasetWaterfall = ref(`// Waterfall dataset variant (since v3.27.0)
+const dataset: VueUiStackbarDatasetItem[] = [
+    {
+        name: "Revenue breakdown",
+        type: "waterfall",
+        series: [
+            {
+                name: "Initial revenue",
+                type: "total",
+                series: [
+                    { name: "Product A", value: 250, color: "#FF8000" },
+                    { name: "Product B", value: 150, color: "#A3D22D" },
+                    { name: "Product C", value: 100, color: "#327F9C" },
+                ],
+            },
+            {
+                name: "Growth",
+                type: "change",
+                series: [
+                    { name: "Product A", value: 80 },
+                    { name: "Product B", value: 40 },
+                    { name: "Product C", value: 30 },
+                ],
+            },
+            {
+                name: "Expenses",
+                type: "change",
+                series: [
+                    { name: "Product A", value: -60 },
+                    { name: "Product B", value: -40 },
+                ],
+            },
+            {
+                name: "Final revenue",
+                type: "total",
+                series: [
+                    { name: "Product A", value: 270 },
+                    { name: "Product B", value: 150 },
+                    { name: "Product C", value: 130 },
+                ],
+            },
+        ],
     },
 ]`);
 
@@ -997,6 +1246,30 @@ const customFormatCode =
     const content = "My custom content";
     return \`<div>\${content}</div>\`;
 }`);
+
+const waterfallSwitch = ref({
+    fr: "Voir la variante en cascade",
+    en: "View waterfall variant",
+    pt: "Ver variante em cascata",
+    de: "Wasserfallvariante anzeigen",
+    zh: "查看瀑布图变体",
+    ja: "ウォーターフォールチャートのバリエーションを見る",
+    es: "Ver variante de cascada",
+    ko: "워터폴 차트 변형 보기",
+    ar: "عرض نوع المخطط الشلالي",
+});
+
+const waterfallExplain = ref({
+    fr: "Cette section de la configuration est disponible lorsque le jeu de données est structuré pour un graphique en cascade. Consultez l'onglet des données pour plus d'informations.",
+    en: "This section of the configuration is available when the dataset is configured for a waterfall chart. See the dataset tab for more information.",
+    pt: "Esta seção da configuração está disponível quando o conjunto de dados está estruturado para um gráfico em cascata. Consulte a aba de dados para mais informações.",
+    de: "Dieser Konfigurationsabschnitt ist verfügbar, wenn der Datensatz für ein Wasserfalldiagramm strukturiert ist. Weitere Informationen finden Sie auf der Registerkarte „Datensatz“.",
+    zh: "当数据集按照瀑布图的要求进行配置时，此配置部分才可用。有关更多信息，请参阅数据集选项卡。",
+    ja: "この設定セクションは、データセットがウォーターフォールチャート用に構成されている場合に利用できます。詳細については、データセットタブをご覧ください。",
+    es: "Esta sección de la configuración está disponible cuando el conjunto de datos está estructurado para un gráfico de cascada. Consulta la pestaña de datos para obtener más información.",
+    ko: "이 설정 섹션은 데이터셋이 워터폴 차트에 맞게 구성된 경우에 사용할 수 있습니다. 자세한 내용은 데이터셋 탭을 참조하세요.",
+    ar: "يتوفر قسم الإعدادات هذا عندما تكون مجموعة البيانات مهيأة لمخطط شلالي. راجع علامة تبويب مجموعة البيانات لمزيد من المعلومات.",
+});
 </script>
 
 <template>
@@ -1023,9 +1296,19 @@ const customFormatCode =
                     copyToClipboard(isDarkMode ? darkModeConfig : config)
                 "
             >
+                <label class="w-full flex flex-row justify-center mb-2 gap-2">
+                    <input type="checkbox" v-model="isWaterfall" />
+                    <span
+                        >{{ waterfallSwitch[store.lang] }}
+                        <code class="text-xs text-gray-500"
+                            >(v3.27.0+)</code
+                        ></span
+                    >
+                </label>
+
                 <BaseCard>
                     <VueUiStackbar
-                        :dataset="dataset"
+                        :dataset="isWaterfall ? datasetWaterfall : dataset"
                         :config="
                             isDarkMode ? mutableConfigDarkMode : mutableConfig
                         "
@@ -1033,7 +1316,7 @@ const customFormatCode =
                     />
                 </BaseCard>
             </DocSnapper>
-            <BaseRandomButton @click="randomizeData" />
+            <BaseRandomButton v-if="!isWaterfall" @click="randomizeData" />
         </div>
 
         <div class="w-full flex justify-center mt-6">
@@ -1042,22 +1325,7 @@ const customFormatCode =
             />
         </div>
 
-        <div
-            class="w-full mt-6 pt-6 border-t border-gray-500 max-w-[600px] mx-auto"
-        >
-            <div dir="auto">
-                {{ innerTranslations.distributed[store.lang] }}
-            </div>
-            <code class="mt-4 flex flex-row place-items-center gap-4">
-                <BaseAttr
-                    name="distributed"
-                    attr="style.chart.bars.distributed"
-                    type="checkbox"
-                    defaultVal="false"
-                    :light="mutableConfig"
-                    :dark="mutableConfigDarkMode"
-                />
-            </code>
+        <div class="w-full pt-6 pb-4 max-w-[600px] mx-auto">
             <code class="mt-4 flex flex-row place-items-center gap-4">
                 <BaseAttr
                     name="orientation"
@@ -1071,6 +1339,23 @@ const customFormatCode =
                     comment="Since v2.3.45"
                 />
             </code>
+            <template v-if="!isWaterfall">
+                <div dir="auto" class="mt-6 pt-4 border-t border-gray-500">
+                    {{ innerTranslations.distributed[store.lang] }}
+                </div>
+                <code
+                    class="mt-4 flex flex-row place-items-center gap-4 border-b border-gray-500 pb-4"
+                >
+                    <BaseAttr
+                        name="distributed"
+                        attr="style.chart.bars.distributed"
+                        type="checkbox"
+                        defaultVal="false"
+                        :light="mutableConfig"
+                        :dark="mutableConfigDarkMode"
+                    />
+                </code>
+            </template>
         </div>
 
         <Rater itemId="vue_ui_stackbar" />
@@ -1107,6 +1392,15 @@ const customFormatCode =
                         language="typescript"
                         @copy="store.copy()"
                         :content="codeDataset"
+                        :title="translations.docs.example[store.lang]"
+                    />
+                </div>
+
+                <div class="w-full overflow-x-auto mt-6">
+                    <CodeParser
+                        language="typescript"
+                        @copy="store.copy()"
+                        :content="codeDatasetWaterfall"
                         :title="translations.docs.example[store.lang]"
                     />
                 </div>
@@ -1572,6 +1866,514 @@ const customFormatCode =
                                         />
                                     </BaseDetails>
                                 </BaseDetails>
+
+                                <BaseDetails
+                                    attr="waterfall"
+                                    :level="3"
+                                    title="style.chart.waterfall"
+                                >
+                                    <BaseComment>{{
+                                        waterfallExplain[store.lang]
+                                    }}</BaseComment>
+                                    <BaseDetails
+                                        attr="bars"
+                                        :level="4"
+                                        title="style.chart.waterfall.bars"
+                                    >
+                                        <BaseAttr
+                                            name="gapRatio"
+                                            attr="style.chart.waterfall.bars.gapRatio"
+                                            type="number"
+                                            defaultVal="0.5"
+                                            :min="0"
+                                            :max="1"
+                                            :step="0.1"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="borderRadius"
+                                            attr="style.chart.waterfall.bars.borderRadius"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="0"
+                                            :max="36"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeWidth"
+                                            attr="style.chart.waterfall.bars.strokeWidth"
+                                            type="number"
+                                            defaultVal="1"
+                                            :min="0"
+                                            :max="12"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="stroke"
+                                            attr="style.chart.waterfall.bars.stroke"
+                                            type="color"
+                                            defaultVal="#FFFFFF"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseDetails
+                                            attr="gradient"
+                                            :level="5"
+                                            title="style.chart.waterfall.bars.gradient"
+                                        >
+                                            <BaseAttr
+                                                name="show"
+                                                attr="style.chart.waterfall.bars.gradient.show"
+                                                type="checkbox"
+                                                defaultVal="true"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                            <BaseAttr
+                                                name="intensity"
+                                                attr="style.chart.waterfall.bars.gradient.intensity"
+                                                type="range"
+                                                defaultVal="20"
+                                                :min="0"
+                                                :max="99"
+                                                :light="mutableConfig"
+                                                :dark="mutableConfigDarkMode"
+                                            />
+                                        </BaseDetails>
+                                    </BaseDetails>
+                                    <BaseDetails
+                                        attr="colors"
+                                        :level="4"
+                                        title="style.chart.waterfall.colors"
+                                    >
+                                        <BaseAttr
+                                            name="useSeriesColor"
+                                            attr="style.chart.waterfall.colors.useSeriesColor"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="positive"
+                                            attr="style.chart.waterfall.colors.positive"
+                                            type="color"
+                                            defaultVal="#36A783"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="negative"
+                                            attr="style.chart.waterfall.colors.negative"
+                                            type="color"
+                                            defaultVal="#E76F51"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="total"
+                                            attr="style.chart.waterfall.colors.total"
+                                            type="color"
+                                            defaultVal="#4C7899"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="subtotal"
+                                            attr="style.chart.waterfall.colors.subtotal"
+                                            type="color"
+                                            defaultVal="#8192B0"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="neutral"
+                                            attr="style.chart.waterfall.colors.neutral"
+                                            type="color"
+                                            defaultVal="#A3A3A3"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
+                                    <BaseDetails
+                                        attr="connectors"
+                                        :level="4"
+                                        title="style.chart.waterfall.connectors"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.chart.waterfall.connectors.show"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="stroke"
+                                            attr="style.chart.waterfall.connectors.stroke"
+                                            type="color"
+                                            defaultVal="#888888"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeWidth"
+                                            attr="style.chart.waterfall.connectors.strokeWidth"
+                                            type="number"
+                                            defaultVal="1"
+                                            :min="0"
+                                            :max="6"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="strokeDasharray"
+                                            attr="style.chart.waterfall.connectors.strokeDasharray"
+                                            type="text"
+                                            defaultVal="3 3"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="adaptToRadius"
+                                            attr="style.chart.waterfall.connectors.adaptToRadius"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="inset"
+                                            attr="style.chart.waterfall.connectors.inset"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="-50"
+                                            :max="50"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
+                                    <BaseDetails
+                                        attr="categoryLabels"
+                                        :level="4"
+                                        title="style.chart.waterfall.categoryLabels"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.chart.waterfall.categoryLabels.show"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="fontSize"
+                                            attr="style.chart.waterfall.categoryLabels.fontSize"
+                                            type="number"
+                                            defaultVal="14"
+                                            :min="8"
+                                            :max="42"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="color"
+                                            attr="style.chart.waterfall.categoryLabels.color"
+                                            type="color"
+                                            defaultVal="#2D353C"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="bold"
+                                            attr="style.chart.waterfall.categoryLabels.bold"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="rotation"
+                                            attr="style.chart.waterfall.categoryLabels.rotation"
+                                            type="range"
+                                            defaultVal="0"
+                                            :min="-90"
+                                            :max="90"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="offsetY"
+                                            attr="style.chart.waterfall.categoryLabels.offsetY"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="-50"
+                                            :max="50"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                    </BaseDetails>
+                                    <BaseDetails
+                                        attr="segmentLabels"
+                                        :level="4"
+                                        title="style.chart.waterfall.segmentLabels"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.chart.waterfall.segmentLabels.show"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="fontSize"
+                                            attr="style.chart.waterfall.segmentLabels.fontSize"
+                                            type="number"
+                                            defaultVal="14"
+                                            :min="8"
+                                            :max="42"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="bold"
+                                            attr="style.chart.waterfall.segmentLabels.bold"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="color"
+                                            attr="style.chart.waterfall.segmentLabels.color"
+                                            type="color"
+                                            defaultVal="#2D353C"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="adaptColorToBackground"
+                                            attr="style.chart.waterfall.segmentLabels.adaptColorToBackground"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="minHeight"
+                                            attr="style.chart.waterfall.segmentLabels.minHeight"
+                                            type="number"
+                                            defaultVal="14"
+                                            :min="0"
+                                            :max="42"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="minWidth"
+                                            attr="style.chart.waterfall.segmentLabels.minWidth"
+                                            type="number"
+                                            defaultVal="26"
+                                            :min="0"
+                                            :max="64"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="showZero"
+                                            attr="style.chart.waterfall.segmentLabels.showZero"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="prefix"
+                                            attr="style.chart.waterfall.segmentLabels.prefix"
+                                            type="text"
+                                            defaultVal="''"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="suffix"
+                                            attr="style.chart.waterfall.segmentLabels.suffix"
+                                            type="text"
+                                            defaultVal="''"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="rounding"
+                                            attr="style.chart.waterfall.segmentLabels.rounding"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="0"
+                                            :max="6"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <div
+                                            class="flex flex-row gap-2 place-items-center"
+                                        >
+                                            <BaseAttr
+                                                inactive
+                                                name="formatter"
+                                                defaultVal="null"
+                                                :comment="
+                                                    translations.formatterLink[
+                                                        store.lang
+                                                    ]
+                                                "
+                                            />
+                                            <div class="min-w-[200px]">
+                                                <BaseTabLink
+                                                    :action="
+                                                        () =>
+                                                            goToPage(
+                                                                '/customization#formatter',
+                                                            )
+                                                    "
+                                                    icon="cursor"
+                                                >
+                                                    Go to page
+                                                </BaseTabLink>
+                                            </div>
+                                        </div>
+                                    </BaseDetails>
+                                    <BaseDetails
+                                        attr="stepLabels"
+                                        :level="4"
+                                        title="style.chart.waterfall.stepLabels"
+                                    >
+                                        <BaseAttr
+                                            name="show"
+                                            attr="style.chart.waterfall.stepLabels.show"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="fontSize"
+                                            attr="style.chart.waterfall.stepLabels.fontSize"
+                                            type="number"
+                                            defaultVal="14"
+                                            :min="8"
+                                            :max="42"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="color"
+                                            attr="style.chart.waterfall.stepLabels.color"
+                                            type="color"
+                                            defaultVal="#2D353C"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="bold"
+                                            attr="style.chart.waterfall.stepLabels.bold"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="prefix"
+                                            attr="style.chart.waterfall.stepLabels.prefix"
+                                            type="text"
+                                            defaultVal="''"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="suffix"
+                                            attr="style.chart.waterfall.stepLabels.suffix"
+                                            type="text"
+                                            defaultVal="''"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="rounding"
+                                            attr="style.chart.waterfall.stepLabels.rounding"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="0"
+                                            :max="6"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="offset"
+                                            attr="style.chart.waterfall.stepLabels.offset"
+                                            type="number"
+                                            defaultVal="0"
+                                            :min="-50"
+                                            :max="50"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="showPlusSign"
+                                            attr="style.chart.waterfall.stepLabels.showPlusSign"
+                                            type="checkbox"
+                                            defaultVal="false"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="showZero"
+                                            attr="style.chart.waterfall.stepLabels.showZero"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <BaseAttr
+                                            name="useBalanceForTotals"
+                                            attr="style.chart.waterfall.stepLabels.useBalanceForTotals"
+                                            type="checkbox"
+                                            defaultVal="true"
+                                            :light="mutableConfig"
+                                            :dark="mutableConfigDarkMode"
+                                        />
+                                        <div
+                                            class="flex flex-row gap-2 place-items-center"
+                                        >
+                                            <BaseAttr
+                                                inactive
+                                                name="formatter"
+                                                defaultVal="null"
+                                                :comment="
+                                                    translations.formatterLink[
+                                                        store.lang
+                                                    ]
+                                                "
+                                            />
+                                            <div class="min-w-[200px]">
+                                                <BaseTabLink
+                                                    :action="
+                                                        () =>
+                                                            goToPage(
+                                                                '/customization#formatter',
+                                                            )
+                                                    "
+                                                    icon="cursor"
+                                                >
+                                                    Go to page
+                                                </BaseTabLink>
+                                            </div>
+                                        </div>
+                                    </BaseDetails>
+                                </BaseDetails>
+
                                 <BaseDetails
                                     attr="zoom"
                                     :level="3"
@@ -3695,7 +4497,7 @@ const customFormatCode =
                 />
             </template>
             <template #tab6>
-                <ThemesVueUiStackbar />
+                <ThemesVueUiStackbar :is-waterfall="isWaterfall" />
             </template>
             <template #tab7>
                 <ResponsiveUnit height="500px">

@@ -1,3 +1,13 @@
+## Improvements & new features
+
+### `VueUiStackbar`:
+
+- apply `bars.borderRadius` only to external segments
+- apply `bars.borderRadius` to the bars in the minimap
+- new waterfall variant
+
+(example & links)
+
 ## Fixes
 
 - Prevent crashes when `null` is provided instead of an expected string in all components that use the `createTSpans`, `createTSpansFromLineBreaksOnX` and `createTSpansFromLineBreaksOnY` internal utilities.
@@ -18,9 +28,3 @@ const dataset = computed<VueUiHorizontalBarDatasetItem[]>(() => {
     ];
 });
 ```
-
-## Improvements
-
-- `VueUiStackbar`:
-    - apply `bars.borderRadius` only to external segments
-    - apply `bars.borderRadius` to the bars in the minimap
