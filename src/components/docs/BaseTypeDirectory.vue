@@ -1,13 +1,12 @@
 <script setup>
 import { computed, ref, shallowRef, watch, onBeforeUnmount } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import * as ts from "typescript";
 import { useMainStore } from "../../stores/index";
 import { useTypeDirStore } from "../../stores/typeDir";
 import BaseCard from "../BaseCard.vue";
 
 const props = defineProps({
-    source: { type: String, default: "", required: true },
+    documentation: { type: Object, required: true },
     filename: { type: String, default: "types.d.ts" },
     showGlobalLink: { type: Boolean, default: true },
     outSearch: { type: String, default: "" },
@@ -84,7 +83,9 @@ const visibleGroups = computed(() => {
             continue;
         if (
             term &&
-            !`${item.fullName} ${item.description}`.toLowerCase().includes(term)
+            !`${item.fullName} ${item.description} ${(item.entryPoints || []).map((p) => `${p.entryPoint} ${p.name}`).join(" ")}`
+                .toLowerCase()
+                .includes(term)
         )
             continue;
         groups.get(item.kind)?.push(item);
@@ -100,106 +101,9 @@ const visibleGroups = computed(() => {
         .filter((g) => g.items.length);
 });
 
-function kindOf(node) {
-    if (ts.isInterfaceDeclaration(node)) return "interface";
-    if (ts.isTypeAliasDeclaration(node)) return "type";
-    if (ts.isClassDeclaration(node)) return "class";
-    if (ts.isEnumDeclaration(node)) return "enum";
-    if (ts.isFunctionDeclaration(node)) return "function";
-    if (ts.isModuleDeclaration(node)) return "namespace";
-    if (ts.isVariableStatement(node)) return "variable";
-    return null;
-}
-
-function docText(node) {
-    return (node.jsDoc || [])
-        .map((doc) => {
-            if (typeof doc.comment === "string") return doc.comment;
-            if (Array.isArray(doc.comment))
-                return doc.comment.map((part) => part.text || "").join("");
-            return "";
-        })
-        .filter(Boolean)
-        .join("\n\n");
-}
-function hasExport(node) {
-    return !!node.modifiers?.some(
-        (mod) =>
-            mod.kind === ts.SyntaxKind.ExportKeyword ||
-            mod.kind === ts.SyntaxKind.DefaultKeyword,
-    );
-}
-
-function parse(content, filename) {
-    const sf = ts.createSourceFile(
-        filename,
-        content,
-        ts.ScriptTarget.Latest,
-        true,
-        ts.ScriptKind.TS,
-    );
-    const out = [];
-    function add(
-        node,
-        declarationNode,
-        kind,
-        name,
-        path,
-        exported,
-        extra = {},
-    ) {
-        const position = sf.getLineAndCharacterOfPosition(
-            declarationNode.getStart(sf),
-        );
-        out.push({
-            id: out.length + 1,
-            kind,
-            name,
-            fullName: [...path, name].filter(Boolean).join("."),
-            depth: path.length,
-            exported,
-            description: docText(node),
-            fileName: filename,
-            line: position.line + 1,
-            code: declarationNode.getText(sf),
-            node: declarationNode,
-            sourceFile: sf,
-            path: [...path],
-            ...extra,
-        });
-    }
-    function visit(node, path = [], inheritedExport = false) {
-        const kind = kindOf(node);
-        if (kind === "variable") {
-            node.declarationList.declarations.forEach((decl) => {
-                add(
-                    node,
-                    decl,
-                    kind,
-                    decl.name.getText(sf),
-                    path,
-                    inheritedExport || hasExport(node),
-                );
-            });
-            return;
-        }
-        if (kind) {
-            const name = node.name?.getText(sf) || "default";
-            const exported = inheritedExport || hasExport(node);
-            add(node, node, kind, name, path, exported);
-            if (kind === "namespace" && node.body)
-                visit(node.body, [...path, name], exported);
-            return;
-        }
-        ts.forEachChild(node, (child) => visit(child, path, inheritedExport));
-    }
-    visit(sf);
-    return out;
-}
-
-function load(content, filename) {
+function load(data, filename) {
     try {
-        entries.value = parse(content, filename);
+        entries.value = data;
         activeFilename.value = filename;
         parseError.value = "";
         const requestedType = queryValue(route.query.type);
@@ -225,8 +129,8 @@ function load(content, filename) {
     }
 }
 watch(
-    () => [props.source, props.filename],
-    ([source, filename]) => load(source, filename),
+    () => [props.documentation, props.filename],
+    ([documentation, filename]) => load(documentation.entries, filename),
     { immediate: true },
 );
 
@@ -334,7 +238,17 @@ async function onFileChange(event) {
     const file = event.target.files?.[0];
     if (!file) return;
     try {
-        load(await file.text(), file.name);
+        const { parse, renderParts, formatDeclaration } =
+            await import("../../typeDocumentation.js");
+        const parsed = parse(await file.text(), file.name);
+        load(parsed, file.name);
+        entries.value = parsed.map((entry) => {
+            const { node, sourceFile, ...data } = entry;
+            return formatDeclaration({
+                ...data,
+                parts: renderParts(entry, resolveReference),
+            });
+        });
     } catch (error) {
         parseError.value = error?.message || t("readError");
     }
@@ -376,169 +290,7 @@ function resolveReference(text, entry) {
     return matches.length === 1 ? matches[0] : null;
 }
 
-// Collect AST token positions, not regex matches, to avoid false links in comments/string literals.
-function referenceSpans(entry) {
-    if (!entry) return [];
-    const spans = [];
-    const base = entry.node.getStart(entry.sourceFile);
-    function register(typeName) {
-        const target = resolveReference(
-            typeName.getText(entry.sourceFile),
-            entry,
-        );
-        if (!target) return;
-        const start = typeName.getStart(entry.sourceFile) - base;
-        const end = typeName.getEnd() - base;
-        spans.push({
-            start,
-            end,
-            targetId: target.id,
-            targetName: target.fullName,
-        });
-    }
-    function visit(node) {
-        if (ts.isTypeReferenceNode(node)) {
-            register(node.typeName);
-        } else if (ts.isExpressionWithTypeArguments(node)) {
-            register(node.expression);
-        } else if (ts.isTypeQueryNode(node)) {
-            register(node.exprName);
-        }
-        ts.forEachChild(node, visit);
-    }
-    visit(entry.node);
-    return spans
-        .sort((a, b) => a.start - b.start || b.end - a.end)
-        .filter(
-            (span, index, all) =>
-                !all.slice(0, index).some((other) => span.start < other.end),
-        );
-}
-// Collect property names from the AST so keys are distinct from their value types.
-function propertySpans(entry) {
-    const spans = [];
-    const base = entry.node.getStart(entry.sourceFile);
-    function visit(node) {
-        if (
-            (ts.isPropertySignature(node) ||
-                ts.isPropertyDeclaration(node) ||
-                ts.isPropertyAssignment(node) ||
-                ts.isMethodSignature(node) ||
-                ts.isMethodDeclaration(node) ||
-                ts.isEnumMember(node)) &&
-            node.name
-        ) {
-            spans.push({
-                start: node.name.getStart(entry.sourceFile) - base,
-                end: node.name.getEnd() - base,
-            });
-        }
-        ts.forEachChild(node, visit);
-    }
-    visit(entry.node);
-    return spans;
-}
-
-const VALUE_KEYWORDS = new Set([
-    ts.SyntaxKind.StringKeyword,
-    ts.SyntaxKind.NumberKeyword,
-    ts.SyntaxKind.BooleanKeyword,
-    ts.SyntaxKind.AnyKeyword,
-    ts.SyntaxKind.UnknownKeyword,
-    ts.SyntaxKind.NeverKeyword,
-    ts.SyntaxKind.VoidKeyword,
-    ts.SyntaxKind.UndefinedKeyword,
-    ts.SyntaxKind.NullKeyword,
-    ts.SyntaxKind.ObjectKeyword,
-]);
-
-function syntaxClass(kind, isProperty) {
-    if (isProperty) return "key";
-    if (
-        kind === ts.SyntaxKind.StringLiteral ||
-        kind === ts.SyntaxKind.NoSubstitutionTemplateLiteral ||
-        kind === ts.SyntaxKind.TemplateHead ||
-        kind === ts.SyntaxKind.TemplateMiddle ||
-        kind === ts.SyntaxKind.TemplateTail
-    )
-        return "string";
-    if (
-        kind === ts.SyntaxKind.NumericLiteral ||
-        kind === ts.SyntaxKind.BigIntLiteral ||
-        kind === ts.SyntaxKind.TrueKeyword ||
-        kind === ts.SyntaxKind.FalseKeyword
-    )
-        return "literal";
-    if (
-        kind === ts.SyntaxKind.SingleLineCommentTrivia ||
-        kind === ts.SyntaxKind.MultiLineCommentTrivia
-    )
-        return "comment";
-    if (VALUE_KEYWORDS.has(kind)) return "type";
-    if (kind >= ts.SyntaxKind.FirstKeyword && kind <= ts.SyntaxKind.LastKeyword)
-        return "keyword";
-    return "plain";
-}
-
-const codeParts = computed(() => {
-    if (!selected.value) return [];
-    const entry = selected.value;
-    const code = entry.code;
-    const links = referenceSpans(entry);
-    const properties = propertySpans(entry);
-    const parts = [];
-
-    // Scan the complete source, so comments, strings and token offsets remain accurate.
-    const scanner = ts.createScanner(
-        ts.ScriptTarget.Latest,
-        false,
-        ts.LanguageVariant.Standard,
-        code,
-    );
-    const tokens = [];
-    let kind;
-    while ((kind = scanner.scan()) !== ts.SyntaxKind.EndOfFileToken) {
-        const start = scanner.getTokenPos();
-        const end = scanner.getTextPos();
-        tokens.push({
-            start,
-            end,
-            kind: syntaxClass(
-                kind,
-                properties.some(
-                    (span) => start >= span.start && end <= span.end,
-                ),
-            ),
-        });
-    }
-
-    // Preserve one clickable element per reference, even for qualified names.
-    let cursor = 0;
-    function addTokens(start, end) {
-        for (const token of tokens) {
-            if (token.end <= start || token.start >= end) continue;
-            const from = Math.max(start, token.start);
-            const to = Math.min(end, token.end);
-            if (to > from)
-                parts.push({
-                    text: code.slice(from, to),
-                    syntax: token.kind,
-                });
-        }
-    }
-    for (const link of links) {
-        if (link.start < cursor || link.end > code.length) continue;
-        addTokens(cursor, link.start);
-        parts.push({
-            text: code.slice(link.start, link.end),
-            targetId: link.targetId,
-            targetName: link.targetName,
-        });
-        cursor = link.end;
-    }
-    addTokens(cursor, code.length);
-    return parts;
-});
+const codeParts = computed(() => selected.value?.parts || []);
 const references = computed(() => {
     const ids = new Set(
         codeParts.value
@@ -592,7 +344,9 @@ async function copyDeclaration() {
                         >
                     </h2>
                 </div>
-                <p>{{ activeFilename }}</p>
+                <code class="text-xs text-gray-500 dark:text-gray-400">{{
+                    activeFilename
+                }}</code>
 
                 <div
                     class="flex flex-row gap-2 items-center mt-2 text-app-blue-dark-mid dark:text-app-blue hover:underline"

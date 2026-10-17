@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.27.1",
+        "date": "2026-10-17",
+        "updates": [
+            {
+                "component": "Package optimization",
+                "description": "Reduce package size by -1.5 MB",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.27.0",
         "date": "2026-10-16",
         "updates": [

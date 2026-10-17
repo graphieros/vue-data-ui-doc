@@ -327,6 +327,7 @@ const displayedVersion = computed(() => {
         <span class="ml-2">{{ isDarkMode ? "🤍" : "❤️" }}</span>
     </div>
     <header
+        id="app-header"
         data-cy="app-header"
         tabindex="1"
         class="z-[2147483647] sticky top-0 w-full font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none"

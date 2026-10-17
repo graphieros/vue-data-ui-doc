@@ -95,6 +95,7 @@ const KPIS = computed(() => {
 
 <template>
     <footer
+        id="app-footer"
         class="w-full fixed bottom-0 left-0 h-[64px] font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-t dark:border-[#2A2A2A] transition-all flex place-items-center justify-between pl-6"
         style="z-index: 1000"
     >

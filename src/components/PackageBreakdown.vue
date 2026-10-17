@@ -39,7 +39,6 @@ function buildDataset() {
         .filter((group) => group.name !== "[no extension]")
         .map((group, i) => ({
             ...group,
-            color: PALETTE[i % PALETTE.length],
             children: group.children.sort((a, b) => b.value - a.value),
         }))
         .sort((a, b) => b.value - a.value);

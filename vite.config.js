@@ -3,6 +3,8 @@ import vue from "@vitejs/plugin-vue";
 import { resolve } from "node:path";
 import fs from "node:fs";
 
+import { typeDocumentationPlugin } from "./scripts/type-documentation.js";
+
 const isolationHeaders = {
     "Cross-Origin-Opener-Policy": "same-origin",
     "Cross-Origin-Embedder-Policy": "credentialless",
@@ -12,6 +14,7 @@ const isolationHeaders = {
 export default defineConfig({
     plugins: [
         vue(),
+        typeDocumentationPlugin(),
         {
             name: "copy-llms-file",
             closeBundle() {
