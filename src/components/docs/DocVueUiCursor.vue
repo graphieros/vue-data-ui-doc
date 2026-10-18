@@ -1,4 +1,6 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiCursorConfigFields from "./configuration/VueUiCursorConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
@@ -8,8 +10,6 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import { useConfigCode } from "../../useConfigCode";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 
 const mainConfig = useConfig();
@@ -32,69 +32,40 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
-const config = ref({
-    bubbleEffect: true,
-    bubbleEffectColor: "#FFFFFF",
-    bubbleEffectOpacity: 0.1,
-    centerCircleColor: "#FFFFFF",
-    centerCircleDasharray: 0,
-    centerCircleOpacity: 0,
-    centerCircleRadius: 50,
-    centerCircleStroke: "#1A1A1A",
-    centerCircleStrokeWidth: 0.5,
-    coordinatesColor: "#1A1A1A",
-    coordinatesFontSize: 10,
-    coordinatesOffset: 0,
-    crosshairDasharray: 0,
-    crosshairStroke: "#1A1A1A",
-    crosshairStrokeWidth: 0.5,
-    intersectCirclesFill: "#1A1A1A",
-    intersectCirclesRadius: 2,
-    isLoading: false,
-    parentId: "",
-    showCenterCircle: true,
-    showCoordinates: true,
-    showCrosshair: true,
-    showIntersectCircles: true,
-    useWaveOnClick: true,
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            bubbleEffect: true,
+            bubbleEffectColor: "#FFFFFF",
+            bubbleEffectOpacity: 0.1,
+            centerCircleColor: "#FFFFFF",
+            centerCircleDasharray: 0,
+            centerCircleOpacity: 0,
+            centerCircleRadius: 50,
+            centerCircleStroke: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            centerCircleStrokeWidth: 0.5,
+            coordinatesColor: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            coordinatesFontSize: 10,
+            coordinatesOffset: 0,
+            crosshairDasharray: 0,
+            crosshairStroke: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            crosshairStrokeWidth: 0.5,
+            intersectCirclesFill: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            intersectCirclesRadius: 2,
+            isLoading: false,
+            parentId: "",
+            showCenterCircle: true,
+            showCoordinates: true,
+            showCrosshair: true,
+            showIntersectCircles: true,
+            useWaveOnClick: true,
+        }),
+    set: configState.set,
 });
 
-const darkModeConfig = ref({
-    bubbleEffect: true,
-    bubbleEffectColor: "#FFFFFF",
-    bubbleEffectOpacity: 0.1,
-    centerCircleColor: "#FFFFFF",
-    centerCircleDasharray: 0,
-    centerCircleOpacity: 0,
-    centerCircleRadius: 50,
-    centerCircleStroke: "#CCCCCC",
-    centerCircleStrokeWidth: 0.5,
-    coordinatesColor: "#CCCCCC",
-    coordinatesFontSize: 10,
-    coordinatesOffset: 0,
-    crosshairDasharray: 0,
-    crosshairStroke: "#CCCCCC",
-    crosshairStrokeWidth: 0.5,
-    intersectCirclesFill: "#CCCCCC",
-    intersectCirclesRadius: 2,
-    isLoading: false,
-    parentId: "",
-    showCenterCircle: true,
-    showCoordinates: true,
-    showCrosshair: true,
-    showIntersectCircles: true,
-    useWaveOnClick: true,
-});
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -129,11 +100,7 @@ const { configCode, showAllConfig } = useConfigCode();
 
 <template>
     <div>
-        <VueDataUi
-            component="VueUiCursor"
-            v-if="isActive"
-            :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-        />
+        <VueDataUi component="VueUiCursor" v-if="isActive" :config="config" />
         <div style="min-height: 100vh">
             <BaseDocTitle name="VueUiCursor" />
 
@@ -169,11 +136,7 @@ const { configCode, showAllConfig } = useConfigCode();
                         {{ translations.docs.reset[store.lang] }}
                     </button>
                     <button
-                        @click="
-                            copyToClipboard(
-                                isDarkMode ? darkModeConfig : config,
-                            )
-                        "
+                        @click="copyToClipboard(config)"
                         class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"
                     >
                         <CopyIcon />
@@ -187,10 +150,7 @@ const { configCode, showAllConfig } = useConfigCode();
                     {{ translations.docs.comments.noDataset[store.lang] }}
                 </template>
                 <template #tab1>
-                    <BaseCopyConfig
-                        :config="isDarkMode ? darkModeConfig : config"
-                        @reset="resetDefault"
-                    />
+                    <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                     <div class="mt-4">
                         TS type:
@@ -203,232 +163,10 @@ const { configCode, showAllConfig } = useConfigCode();
                     </div>
 
                     <code ref="configCode">
-                        <BaseDetails
-                            attr="const config: VueUiCursorConfig"
-                            equal
-                        >
-                            <BaseAttr
-                                name="bubbleEffect"
-                                attr="bubbleEffect"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="bubbleEffectColor"
-                                attr="bubbleEffectColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="bubbleEffectOpacity"
-                                attr="bubbleEffectOpacity"
-                                type="range"
-                                defaultVal="0.1"
-                                :min="0"
-                                :max="1"
-                                :step="0.01"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-
-                            <BaseAttr
-                                name="showCenterCircle"
-                                attr="showCenterCircle"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="centerCircleColor"
-                                attr="circleCenterColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="centerCircleDasharray"
-                                attr="centerCircleDasharray"
-                                type="range"
-                                defaultVal="0"
-                                :min="0"
-                                :max="100"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="centerCircleOpacity"
-                                attr="centerCircleOpacity"
-                                type="range"
-                                defaultVal="0"
-                                :min="0"
-                                :max="1"
-                                :step="0.01"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="centerCircleRadius"
-                                attr="centerCircleRadius"
-                                type="range"
-                                defaultVal="50"
-                                :min="20"
-                                :max="100"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="centerCircleStroke"
-                                attr="centerCircleStroke"
-                                type="color"
-                                defaultVal="#CCCCCC"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="centerCircleStrokeWidth"
-                                attr="centerCircleStrokeWidth"
-                                type="range"
-                                defaultVal="0.5"
-                                :min="0"
-                                :max="24"
-                                :step="0.1"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-
-                            <BaseAttr
-                                name="showCoordinates"
-                                attr="showCoordinates"
-                                type="checkbox"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="coordinatesColor"
-                                attr="coordinatesColor"
-                                type="color"
-                                defaultVal="#CCCCCC"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="coordinatesFontSize"
-                                attr="coordinatesFontSize"
-                                type="range"
-                                defaultVal="10"
-                                :min="8"
-                                :max="42"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="coordinatesOffset"
-                                attr="coordinatesOffset"
-                                type="range"
-                                defaultVal="0"
-                                :min="-100"
-                                :max="100"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-
-                            <BaseAttr
-                                name="showCrosshair"
-                                attr="showCrosshair"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="crosshairDasharray"
-                                attr="crosshairDasharray"
-                                type="range"
-                                defaultVal="0"
-                                :min="0"
-                                :max="100"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="crosshairStroke"
-                                attr="crosshairStroke"
-                                type="color"
-                                defaultVal="#CCCCCC"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="crosshairStrokeWidth"
-                                attr="crosshairStrokeWidth"
-                                type="range"
-                                defaultVal="0.5"
-                                :min="0"
-                                :max="24"
-                                :step="0.1"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-
-                            <BaseAttr
-                                name="showIntersectCircles"
-                                attr="showIntersectCircles"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="intersectCirclesFill"
-                                attr="intersectCirclesFill"
-                                type="color"
-                                defaultVal="#CCCCCC"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="intersectCirclesRadius"
-                                attr="intersectCirclesRadius"
-                                type="range"
-                                defaultVal="2"
-                                :min="0"
-                                :max="24"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="isLoading"
-                                attr="isLoading"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                inactive
-                                name="parentId"
-                                attr="parentId"
-                                type="text"
-                                defaultVal="''"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                comment="Use an id to only show the cursor on a specific element"
-                            />
-                            <BaseAttr
-                                name="useWaveOnClick"
-                                attr="useWaveOnClick"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
+                        <VueUiCursorConfigFields
+                            :config="config"
+                            :context="{}"
+                        />
                     </code>
                 </template>
             </Box>

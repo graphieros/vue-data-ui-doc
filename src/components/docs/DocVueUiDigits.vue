@@ -1,4 +1,6 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiDigitsConfigFields from "./configuration/VueUiDigitsConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
@@ -11,8 +13,6 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import { useConfigCode } from "../../useConfigCode";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 
 const mainConfig = useConfig();
@@ -39,40 +39,25 @@ const isDarkMode = computed(() => {
 
 const dataset = ref(299792458);
 
-const config = ref({
-    devHints: { enable: false },
-    height: "100%",
-    width: null,
-    backgroundColor: "#F3F4F6",
-    digits: {
-        color: "#2D353C",
-        skeletonColor: "#e1e5e8",
-        thickness: 1,
-    },
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            devHints: { enable: false },
+            height: "100%",
+            width: null,
+            backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+            digits: {
+                color: isDarkMode.value ? "#42d392" : "#2D353C",
+                skeletonColor: isDarkMode.value ? "#3A3A3A" : "#e1e5e8",
+                thickness: 1,
+            },
+        }),
+    set: configState.set,
 });
-
-const darkModeConfig = ref({
-    devHints: { enable: false },
-    height: "100%",
-    width: null,
-    backgroundColor: "#2A2A2A",
-    digits: {
-        color: "#42d392",
-        skeletonColor: "#3A3A3A",
-        thickness: 1,
-    },
-});
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -123,9 +108,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="
-                    copyToClipboard(isDarkMode ? darkModeConfig : config)
-                "
+                @copyToClipboard="copyToClipboard(config)"
             >
                 <BaseCard>
                     <div
@@ -134,11 +117,7 @@ const { configCode, showAllConfig } = useConfigCode();
                     >
                         <VueUiDigits
                             :dataset="dataset"
-                            :config="
-                                isDarkMode
-                                    ? mutableConfigDarkMode
-                                    : mutableConfig
-                            "
+                            :config="config"
                             :key="key"
                         />
                     </div>
@@ -166,10 +145,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
 </pre>
             </template>
             <template #tab1>
-                <BaseCopyConfig
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                    @reset="resetDefault"
-                />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -182,71 +158,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                 </div>
 
                 <code ref="configCode">
-                    <BaseDetails attr="const config: VueUiDigitsConfig" equal>
-                        <BaseDetails attr="devHints" :level="1">
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                        <BaseAttr
-                            name="height"
-                            attr="height"
-                            type="text"
-                            defaultVal="'100%'"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseAttr
-                            name="width"
-                            attr="width"
-                            type="text"
-                            defaultVal="null"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseAttr
-                            name="backgroundColor"
-                            attr="backgroundColor"
-                            type="color"
-                            defaultVal="#FFFFFF"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseDetails attr="digits">
-                            <BaseAttr
-                                name="color"
-                                attr="digits.color"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="skeletonColor"
-                                attr="digits.skeletonColor"
-                                type="color"
-                                defaultVal="#E1E5E8"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="thickness"
-                                attr="digits.thickness"
-                                type="range"
-                                defaultVal="1"
-                                :min="0.1"
-                                :max="3"
-                                :step="0.1"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiDigitsConfigFields :config="config" :context="{}" />
                 </code>
             </template>
         </Box>

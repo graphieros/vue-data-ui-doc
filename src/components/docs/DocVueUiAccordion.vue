@@ -1,12 +1,12 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiAccordionConfigFields from "./configuration/VueUiAccordionConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
@@ -34,51 +34,31 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
-const config = ref({
-    open: false,
-    maxHeight: 2000,
-    head: {
-        useArrowSlot: false,
-        backgroundColor: "#e1e5e8",
-        color: "#2D353C",
-        iconColor: "#5f8bee",
-        padding: "12px 6px",
-        icon: "arrowRight",
-        iconSize: 20,
-    },
-    body: {
-        backgroundColor: "#e1e5e8",
-        color: "#2D353C",
-    },
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            open: false,
+            maxHeight: 2000,
+            head: {
+                useArrowSlot: false,
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#e1e5e8",
+                color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
+                iconColor: "#5f8bee",
+                padding: "12px 6px",
+                icon: "arrowRight",
+                iconSize: 20,
+            },
+            body: {
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#e1e5e8",
+                color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
+            },
+        }),
+    set: configState.set,
 });
 
-const darkModeConfig = ref({
-    open: false,
-    maxHeight: 2000,
-    head: {
-        useArrowSlot: false,
-        backgroundColor: "#2A2A2A",
-        color: "#CCCCCC",
-        iconColor: "#5f8bee",
-        padding: "12px 6px",
-        icon: "arrowRight",
-        iconSize: 20,
-    },
-    body: {
-        backgroundColor: "#2A2A2A",
-        color: "#CCCCCC",
-    },
-});
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -162,20 +142,14 @@ const slotContent = ref(`
                     {{ translations.docs.reset[store.lang] }}
                 </button>
                 <button
-                    @click="
-                        copyToClipboard(isDarkMode ? darkModeConfig : config)
-                    "
+                    @click="copyToClipboard(config)"
                     class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"
                 >
                     <CopyIcon />
                     {{ translations.docs.copyThisConfig[store.lang] }}
                 </button>
             </div>
-            <VueDataUi
-                component="VueUiAccordion"
-                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                :key="key"
-            >
+            <VueDataUi component="VueUiAccordion" :config="config" :key="key">
                 <template #title="{ color }">
                     <div :style="{ color }">Title</div>
                 </template>
@@ -204,7 +178,7 @@ const slotContent = ref(`
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
             <template #tab1>
-                <BaseCopyConfig :config="mutableConfig" @reset="resetDefault" />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -217,106 +191,10 @@ const slotContent = ref(`
                 </div>
 
                 <code ref="configCode">
-                    <BaseDetails attr="const config:VueUiAccordionConfig" equal>
-                        <BaseAttr
-                            name="open"
-                            attr="open"
-                            type="checkbox"
-                            defaultVal="false"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                            @change="forceChartUpdate()"
-                        />
-                        <BaseAttr
-                            name="maxHeight"
-                            attr="maxHeight"
-                            type="number"
-                            defaultVal="2000"
-                            :min="2000"
-                            :max="20000"
-                            :step="100"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseDetails attr="head" :level="1">
-                            <BaseAttr
-                                name="useArrowSlot"
-                                attr="head.useArrowSlot"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="backgroundColor"
-                                attr="head.backgroundColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="color"
-                                attr="head.color"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="iconColor"
-                                attr="head.iconColor"
-                                type="color"
-                                defaultVal="#5F8BEE"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="padding"
-                                attr="head.padding"
-                                type="text"
-                                defaultVal="12px 6px"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="icon"
-                                attr="head.icon"
-                                defaultVal="'arrowRight'"
-                                type="text"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="iconSize"
-                                attr="head.iconSize"
-                                defaultVal="20"
-                                type="number"
-                                :min="8"
-                                :max="42"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                        <BaseDetails attr="body" :level="1">
-                            <BaseAttr
-                                name="backgroundColor"
-                                attr="body.backgroundColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="color"
-                                attr="body.color"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiAccordionConfigFields
+                        :config="config"
+                        :context="{ forceChartUpdate }"
+                    />
                 </code>
             </template>
             <template #tab3>

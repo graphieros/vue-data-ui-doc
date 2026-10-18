@@ -1,4 +1,6 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiAnnotatorConfigFields from "./configuration/VueUiAnnotatorConfigFields.vue";
 import { ref, computed, watch, nextTick, onBeforeMount, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon, InfoTriangleIcon } from "vue-tabler-icons";
@@ -9,8 +11,6 @@ import SuspenseWrapper from "../SuspenseWrapper.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import { useConfigCode } from "../../useConfigCode";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
@@ -34,87 +34,98 @@ watch(
     },
 );
 
-const config = computed(() => ({
-    devHints: { enable: false },
-    alwaysVisible: false,
-    style: {
-        backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
-        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-        fontFamily: "inherit",
-        showPrint: true,
-        showSave: true,
-        showTooltips: true,
-        showImage: true,
-        buttons: {
-            borderRadius: 6,
-            controls: {
-                backgroundColor: isDarkMode.value ? "#4A4A4A" : "#F3F4F6",
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            devHints: { enable: false },
+            alwaysVisible: false,
+            style: {
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
                 color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-                border: "1px solid #5A5A5A",
-                selected: {
-                    backgroundColor: isDarkMode.value ? "#5f8aee" : "#2D353C",
-                    color: "#fafafa",
-                    border: "1px solid #CCCCCC",
+                fontFamily: "inherit",
+                showPrint: true,
+                showSave: true,
+                showTooltips: true,
+                showImage: true,
+                buttons: {
+                    borderRadius: 6,
+                    controls: {
+                        backgroundColor: isDarkMode.value
+                            ? "#4A4A4A"
+                            : "#F3F4F6",
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        border: "1px solid #5A5A5A",
+                        selected: {
+                            backgroundColor: isDarkMode.value
+                                ? "#5f8aee"
+                                : "#2D353C",
+                            color: "#fafafa",
+                            border: "1px solid #CCCCCC",
+                        },
+                    },
+                    shapes: {
+                        backgroundColor: isDarkMode.value
+                            ? "#4A4A4A"
+                            : "#F3F4F6",
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        border: "1px solid #5A5A5A",
+                        selected: {
+                            backgroundColor: isDarkMode.value
+                                ? "#CCCCCC"
+                                : "#2D353C",
+                            color: isDarkMode.value ? "#1A1A1A" : "#FAFAFA",
+                            border: "1px solid #CCCCCC",
+                        },
+                    },
+                },
+                tooltips: {
+                    backgroundColor: isDarkMode.value ? "#4A4A4A" : "#F3F4F6",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    border: "1px solid #5A5A5A",
+                    borderRadius: 6,
+                    boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
                 },
             },
-            shapes: {
-                backgroundColor: isDarkMode.value ? "#4A4A4A" : "#F3F4F6",
-                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-                border: "1px solid #5A5A5A",
-                selected: {
-                    backgroundColor: isDarkMode.value ? "#CCCCCC" : "#2D353C",
-                    color: isDarkMode.value ? "#1A1A1A" : "#FAFAFA",
-                    border: "1px solid #CCCCCC",
-                },
+            translations: {
+                colorAlpha: "Color alpha",
+                dashedLines: "Dashed lines",
+                filled: "Filled",
+                fontSize: "Font size",
+                thickness: "Thickness",
+                title: "Annotations",
+                tooltipGroup: "Select & group",
+                tooltipDelete: "Delete",
+                tooltipMove: "Move",
+                tooltipResize: "Resize",
+                tooltipBringToFront: "Bring to front",
+                tooltipBringToBack: "Bring to back",
+                tooltipDuplicate: "Duplicate",
+                tooltipUndo: "Undo last shape",
+                tooltipRedo: "Redo last shape",
+                tooltipPdf: "Save pdf",
+                tooltipSave: "Save annotations",
+                tooltipShapeCircle: "Draw circle",
+                tooltipShapeRect: "Draw rect",
+                tooltipShapeArrow: "Draw arrow",
+                tooltipShapeFreehand: "Freehand line",
+                tooltipShapeText: "Text mode",
+                tooltipShapeTextLeft: "Align left",
+                tooltipShapeTextCenter: "Align center",
+                tooltipShapeTextRight: "Align right",
+                tooltipShapeTextBullet: "Bullet points",
+                tooltipShapeTextBold: "Bold",
+                tooltipShapeTextItalic: "Italic",
+                tooltipShapeTextUnderline: "Underlined",
+                tooltipShapeColor: "Color",
+                tooltipImage: "Download PNG",
             },
-        },
-        tooltips: {
-            backgroundColor: isDarkMode.value ? "#4A4A4A" : "#F3F4F6",
-            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-            border: "1px solid #5A5A5A",
-            borderRadius: 6,
-            boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
-        },
-    },
-    translations: {
-        colorAlpha: "Color alpha",
-        dashedLines: "Dashed lines",
-        filled: "Filled",
-        fontSize: "Font size",
-        thickness: "Thickness",
-        title: "Annotations",
-        tooltipGroup: "Select & group",
-        tooltipDelete: "Delete",
-        tooltipMove: "Move",
-        tooltipResize: "Resize",
-        tooltipBringToFront: "Bring to front",
-        tooltipBringToBack: "Bring to back",
-        tooltipDuplicate: "Duplicate",
-        tooltipUndo: "Undo last shape",
-        tooltipRedo: "Redo last shape",
-        tooltipPdf: "Save pdf",
-        tooltipSave: "Save annotations",
-        tooltipShapeCircle: "Draw circle",
-        tooltipShapeRect: "Draw rect",
-        tooltipShapeArrow: "Draw arrow",
-        tooltipShapeFreehand: "Freehand line",
-        tooltipShapeText: "Text mode",
-        tooltipShapeTextLeft: "Align left",
-        tooltipShapeTextCenter: "Align center",
-        tooltipShapeTextRight: "Align right",
-        tooltipShapeTextBullet: "Bullet points",
-        tooltipShapeTextBold: "Bold",
-        tooltipShapeTextItalic: "Italic",
-        tooltipShapeTextUnderline: "Underlined",
-        tooltipShapeColor: "Color",
-        tooltipImage: "Download PNG",
-    },
-}));
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
+        }),
+    set: configState.set,
+});
 
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
+    configState.reset();
 }
 function forceChartUpdate() {
     key.value += 1;
@@ -257,7 +268,7 @@ const exampleTemplate = ref(`<VueUiAnnotator
                 <SuspenseWrapper :width="200" :height="200">
                     <VueUiAnnotator
                         :dataset="{ shapes, lastSelectedShape }"
-                        :config="mutableConfig"
+                        :config="config"
                         @toggleOpenState="toggleOpenState"
                         @saveAnnotations="saveAnnotations"
                     >
@@ -434,7 +445,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
                 </div>
             </template>
             <template #tab1>
-                <BaseCopyConfig :config="mutableConfig" @reset="resetDefault" />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -447,519 +458,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
                 </div>
 
                 <code ref="configCode">
-                    <BaseDetails
-                        attr="const config: VueUiAnnotatorConfig"
-                        equal
-                    >
-                        <BaseDetails attr="devHints" :level="1">
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                        </BaseDetails>
-                        <BaseAttr
-                            name="alwaysVisible"
-                            attr="alwaysVisible"
-                            type="checkbox"
-                            defaultVal="false"
-                            :light="mutableConfig"
-                            :dark="mutableConfig"
-                        />
-                        <BaseDetails attr="style" :level="1">
-                            <BaseAttr
-                                name="backgroundColor"
-                                attr="style.backgroundColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="color"
-                                attr="style.color"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                inactive
-                                name="fontFamily"
-                                attr="style.fontFamily"
-                                defaultVal="'inherit'"
-                            />
-                            <BaseAttr
-                                name="showPrint"
-                                attr="style.showPrint"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="showSave"
-                                attr="style.showSave"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="showImage"
-                                attr="style.showImage"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="showTooltips"
-                                attr="style.showTooltips"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseDetails
-                                attr="buttons"
-                                :level="2"
-                                title="style.buttons"
-                            >
-                                <BaseAttr
-                                    name="borderRadius"
-                                    attr="style.buttons.borderRadius"
-                                    type="range"
-                                    defaultVal="6"
-                                    :min="0"
-                                    :max="12"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfig"
-                                />
-                                <BaseDetails
-                                    attr="controls"
-                                    :level="3"
-                                    title="style.buttons.controls"
-                                >
-                                    <BaseAttr
-                                        name="backgroundColor"
-                                        attr="style.buttons.controls.backgroundColor"
-                                        defaultVal="#FFFFFF"
-                                        type="color"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfig"
-                                    />
-                                    <BaseAttr
-                                        name="color"
-                                        attr="style.buttons.controls.color"
-                                        defaultVal="#2D353C"
-                                        type="color"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfig"
-                                    />
-                                    <BaseAttr
-                                        name="border"
-                                        attr="style.buttons.controls.border"
-                                        defaultVal="'1px solid #262626'"
-                                        type="text"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfig"
-                                    />
-                                    <BaseDetails
-                                        attr="selected"
-                                        :level="4"
-                                        title="style.buttons.controls.selected"
-                                    >
-                                        <BaseAttr
-                                            name="backgroundColor"
-                                            attr="style.buttons.controls.selected.backgroundColor"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfig"
-                                        />
-                                        <BaseAttr
-                                            name="color"
-                                            attr="style.buttons.controls.selected.color"
-                                            type="color"
-                                            defaultVal="#FAFAFA"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfig"
-                                        />
-                                        <BaseAttr
-                                            name="border"
-                                            attr="style.buttons.controls.selected.border"
-                                            defaultVal="'1px solid #CCCCCC'"
-                                            type="text"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfig"
-                                        />
-                                    </BaseDetails>
-                                </BaseDetails>
-                                <BaseDetails
-                                    attr="shapes"
-                                    :level="3"
-                                    title="style.buttons.shapes"
-                                >
-                                    <BaseAttr
-                                        name="backgroundColor"
-                                        attr="style.buttons.shapes.backgroundColor"
-                                        defaultVal="#FFFFFF"
-                                        type="color"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfig"
-                                    />
-                                    <BaseAttr
-                                        name="color"
-                                        attr="style.buttons.shapes.color"
-                                        defaultVal="#2D353C"
-                                        type="color"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfig"
-                                    />
-                                    <BaseAttr
-                                        name="border"
-                                        attr="style.buttons.shapes.border"
-                                        defaultVal="'1px solid #262626'"
-                                        type="text"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfig"
-                                    />
-                                    <BaseDetails
-                                        attr="selected"
-                                        :level="4"
-                                        title="style.buttons.shapes.selected"
-                                    >
-                                        <BaseAttr
-                                            name="backgroundColor"
-                                            attr="style.buttons.shapes.selected.backgroundColor"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfig"
-                                        />
-                                        <BaseAttr
-                                            name="color"
-                                            attr="style.buttons.shapes.selected.color"
-                                            type="color"
-                                            defaultVal="#FAFAFA"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfig"
-                                        />
-                                        <BaseAttr
-                                            name="border"
-                                            attr="style.buttons.shapes.selected.border"
-                                            defaultVal="'1px solid #CCCCCC'"
-                                            type="text"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfig"
-                                        />
-                                    </BaseDetails>
-                                </BaseDetails>
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="tooltips"
-                                :level="2"
-                                title="style.tooltips"
-                            >
-                                <BaseAttr
-                                    name="backgroundColor"
-                                    attr="style.tooltips.backgroundColor"
-                                    type="color"
-                                    defaultVal="#FAFAFA"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfig"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="style.tooltips.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfig"
-                                />
-                                <BaseAttr
-                                    name="borderRadius"
-                                    attr="style.tooltips.borderRadius"
-                                    type="range"
-                                    :min="0"
-                                    :max="12"
-                                    defaultVal="6"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfig"
-                                />
-                                <BaseAttr
-                                    name="border"
-                                    attr="style.tooltips.border"
-                                    type="text"
-                                    defaultVal="'1 px solid #CCCCCC'"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfig"
-                                />
-                                <BaseAttr
-                                    name="boxShadow"
-                                    attr="style.tooltips.boxShadow"
-                                    type="text"
-                                    defaultVal="'0 6px 12px -6px rgba(0,0,0,0.2)'"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfig"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="translations" :level="1">
-                            <BaseAttr
-                                name="colorAlpha"
-                                attr="translations.colorAlpha"
-                                type="text"
-                                defaultVal="Color alpha"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="dashedLines"
-                                attr="translations.dashedLines"
-                                type="text"
-                                defaultVal="Dashed lines"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="filled"
-                                attr="translations.filled"
-                                type="text"
-                                defaultVal="Filled"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="fontSize"
-                                attr="translations.fontSize"
-                                type="text"
-                                defaultVal="Font size"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="thickness"
-                                attr="translations.thickness"
-                                type="text"
-                                defaultVal="Thickness"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="title"
-                                attr="translations.title"
-                                type="text"
-                                defaultVal="Annotations"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipGroup"
-                                attr="translations.tooltipGroup"
-                                type="text"
-                                defaultVal="Select & group"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipDelete"
-                                attr="translations.tooltipDelete"
-                                type="text"
-                                defaultVal="Delete"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipMove"
-                                attr="translations.tooltipMove"
-                                type="text"
-                                defaultVal="Move"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipResize"
-                                attr="translations.tooltipResize"
-                                type="text"
-                                defaultVal="Resize"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipBringToFront"
-                                attr="translations.tooltipBringToFront"
-                                type="text"
-                                defaultVal="Bring to front"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipBringToBack"
-                                attr="translations.tooltipBringToBack"
-                                type="text"
-                                defaultVal="Bring to back"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipDuplicate"
-                                attr="translations.tooltipDuplicate"
-                                type="text"
-                                defaultVal="Duplicate"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipUndo"
-                                attr="translations.tooltipUndo"
-                                type="text"
-                                defaultVal="Undo last shape"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipRedo"
-                                attr="translations.tooltipRedo"
-                                type="text"
-                                defaultVal="Redo last shape"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipPdf"
-                                attr="translations.tooltipPdf"
-                                type="text"
-                                defaultVal="Save pdf"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipSave"
-                                attr="translations.tooltipSave"
-                                type="text"
-                                defaultVal="Save annotations"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeCircle"
-                                attr="translations.tooltipShapeCircle"
-                                type="text"
-                                defaultVal="Draw circle"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeRect"
-                                attr="translations.tooltipShapeRect"
-                                type="text"
-                                defaultVal="Draw rect"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeArrow"
-                                attr="translations.tooltipShapeArrow"
-                                type="text"
-                                defaultVal="Draw arrow"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeFreehand"
-                                attr="translations.tooltipShapeFreehand"
-                                type="text"
-                                defaultVal="Freehand line"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeText"
-                                attr="translations.tooltipShapeText"
-                                type="text"
-                                defaultVal="Text mode"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeTextLeft"
-                                attr="translations.tooltipShapeTextLeft"
-                                type="text"
-                                defaultVal="Align left"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeTextCenter"
-                                attr="translations.tooltipShapeTextCenter"
-                                type="text"
-                                defaultVal="Align center"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeTextRight"
-                                attr="translations.tooltipShapeTextRight"
-                                type="text"
-                                defaultVal="Align right"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeTextBullet"
-                                attr="translations.tooltipShapeTextBullet"
-                                type="text"
-                                defaultVal="Bullet points"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeTextBold"
-                                attr="translations.tooltipShapeTextBold"
-                                type="text"
-                                defaultVal="Bold"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeTextItalic"
-                                attr="translations.tooltipShapeTextItalic"
-                                type="text"
-                                defaultVal="Italic"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeTextUnderline"
-                                attr="translations.tooltipShapeTextUnderline"
-                                type="text"
-                                defaultVal="Underlined"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipShapeColor"
-                                attr="translations.tooltipShapeColor"
-                                type="text"
-                                defaultVal="Color"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                            <BaseAttr
-                                name="tooltipImage"
-                                attr="translations.tooltipImage"
-                                type="text"
-                                defaultVal="Download PNG"
-                                :light="mutableConfig"
-                                :dark="mutableConfig"
-                            />
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiAnnotatorConfigFields
+                        :config="config"
+                        :context="{}"
+                    />
                 </code>
             </template>
             <template #tab2>

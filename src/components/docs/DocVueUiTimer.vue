@@ -1,12 +1,11 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiTimerConfigFields from "./configuration/VueUiTimerConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
-import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import useMobile from "../../useMobile";
@@ -42,188 +41,99 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
-const config = ref({
-    devHints: { enable: false },
-    type: "stopwatch",
-    responsive: false,
-    responsiveProportionalSizing: true,
-    useCursorPointer: false,
-    style: {
-        backgroundColor: "#F3F4F6",
-        fontFamily: "inherit",
-        height: 300,
-        width: 300,
-        title: {
-            text: "Title",
-            color: "#2D353C",
-            fontSize: 20,
-            bold: true,
-            textAlign: "center",
-            paddingLeft: 0,
-            paddingRight: 0,
-            subtitle: {
-                color: "#A1A1A1",
-                text: "Subtitle",
-                fontSize: 16,
-                bold: false,
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            devHints: { enable: false },
+            type: "stopwatch",
+            responsive: false,
+            responsiveProportionalSizing: true,
+            useCursorPointer: false,
+            style: {
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                fontFamily: "inherit",
+                height: 300,
+                width: 300,
+                title: {
+                    text: "Title",
+                    color: isDarkMode.value ? "#FAFAFA" : "#2D353C",
+                    fontSize: 20,
+                    bold: true,
+                    textAlign: "center",
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    subtitle: {
+                        color: "#A1A1A1",
+                        text: "Subtitle",
+                        fontSize: 16,
+                        bold: false,
+                    },
+                },
             },
-        },
-    },
-    stopwatch: {
-        showHours: false,
-        showHundredth: true,
-        cycleSeconds: 5,
-        track: {
-            radiusRatio: 1,
-            stroke: "#e1e5e8",
-            fill: "#F3F4F6",
-            strokeWidth: 2,
-        },
-        tracker: {
-            radiusRatio: 1,
-            stroke: "#F3F4F6",
-            strokeWidth: 1,
-            fill: "#5f8aee",
-            gradient: {
-                show: true,
-                color: "#F3F4F6",
+            stopwatch: {
+                showHours: false,
+                showHundredth: true,
+                cycleSeconds: 5,
+                track: {
+                    radiusRatio: 1,
+                    stroke: isDarkMode.value ? "#5A5A5A" : "#e1e5e8",
+                    fill: isDarkMode.value ? "#1A1A1A" : "#F3F4F6",
+                    strokeWidth: 2,
+                },
+                tracker: {
+                    radiusRatio: 1,
+                    stroke: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                    strokeWidth: 1,
+                    fill: isDarkMode.value ? "#42d392" : "#5f8aee",
+                    gradient: {
+                        show: true,
+                        color: isDarkMode.value ? "#FFFFFF" : "#F3F4F6",
+                    },
+                    aura: {
+                        show: true,
+                        radiusRatio: 1,
+                        fill: isDarkMode.value ? "#42d392" : "#5f8aee",
+                        stroke: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                        strokeWidth: 0,
+                    },
+                },
+                cycleTrack: {
+                    show: true,
+                    stroke: isDarkMode.value ? "#42d392" : "#5f8aee",
+                    strokeWidth: 4,
+                },
+                label: {
+                    fontSize: 24,
+                    color: isDarkMode.value ? "#42d392" : "#2D353C",
+                    bold: false,
+                },
+                legend: {
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                    buttons: {
+                        start: true,
+                        pause: true,
+                        reset: true,
+                        restart: true,
+                        lap: true,
+                        iconColor: isDarkMode.value ? "#42d392" : "#1A1A1A",
+                    },
+                    buttonTitles: {
+                        start: "Start",
+                        pause: "Pause",
+                        resume: "Resume",
+                        reset: "Reset",
+                        restart: "Restart",
+                        lap: "Lap",
+                    },
+                },
             },
-            aura: {
-                show: true,
-                radiusRatio: 1,
-                fill: "#5f8aee",
-                stroke: "#F3F4F6",
-                strokeWidth: 0,
-            },
-        },
-        cycleTrack: {
-            show: true,
-            stroke: "#5f8aee",
-            strokeWidth: 4,
-        },
-        label: {
-            fontSize: 24,
-            color: "#2D353C",
-            bold: false,
-        },
-        legend: {
-            backgroundColor: "#F3F4F6",
-            buttons: {
-                start: true,
-                pause: true,
-                reset: true,
-                restart: true,
-                lap: true,
-                iconColor: "#1A1A1A",
-            },
-            buttonTitles: {
-                start: "Start",
-                pause: "Pause",
-                resume: "Resume",
-                reset: "Reset",
-                restart: "Restart",
-                lap: "Lap",
-            },
-        },
-    },
+        }),
+    set: configState.set,
 });
-
-const darkModeConfig = ref({
-    devHints: { enable: false },
-    type: "stopwatch",
-    responsive: false,
-    useCursorPointer: false,
-    responsiveProportionalSizing: true,
-    style: {
-        backgroundColor: "#2A2A2A",
-        fontFamily: "inherit",
-        height: 300,
-        width: 300,
-        title: {
-            text: "Title",
-            color: "#FAFAFA",
-            fontSize: 20,
-            bold: true,
-            textAlign: "center",
-            paddingLeft: 0,
-            paddingRight: 0,
-            subtitle: {
-                color: "#A1A1A1",
-                text: "Subtitle",
-                fontSize: 16,
-                bold: false,
-            },
-        },
-    },
-    stopwatch: {
-        showHours: false,
-        showHundredth: true,
-        cycleSeconds: 5,
-        track: {
-            radiusRatio: 1,
-            stroke: "#5A5A5A",
-            fill: "#1A1A1A",
-            strokeWidth: 2,
-        },
-        tracker: {
-            radiusRatio: 1,
-            stroke: "#2A2A2A",
-            strokeWidth: 1,
-            fill: "#42d392",
-            gradient: {
-                show: true,
-                color: "#FFFFFF",
-            },
-            aura: {
-                show: true,
-                radiusRatio: 1,
-                fill: "#42d392",
-                stroke: "#2A2A2A",
-                strokeWidth: 0,
-            },
-        },
-        cycleTrack: {
-            show: true,
-            stroke: "#42d392",
-            strokeWidth: 4,
-        },
-        label: {
-            fontSize: 24,
-            color: "#42d392",
-            bold: false,
-        },
-        legend: {
-            backgroundColor: "#2A2A2A",
-            buttons: {
-                start: true,
-                pause: true,
-                reset: true,
-                restart: true,
-                lap: true,
-                iconColor: "#42d392",
-            },
-            buttonTitles: {
-                start: "Start",
-                pause: "Pause",
-                resume: "Resume",
-                reset: "Reset",
-                restart: "Restart",
-                lap: "Lap",
-            },
-        },
-    },
-});
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -282,9 +192,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="
-                    copyToClipboard(isDarkMode ? darkModeConfig : config)
-                "
+                @copyToClipboard="copyToClipboard(config)"
             >
                 <BaseCard>
                     <VueDataUi
@@ -293,9 +201,7 @@ const { configCode, showAllConfig } = useConfigCode();
                         @restart="timerLaps = []"
                         ref="timer"
                         component="VueUiTimer"
-                        :config="
-                            isDarkMode ? mutableConfigDarkMode : mutableConfig
-                        "
+                        :config="config"
                         :key="key"
                     />
                     <div class="flex flex-col py-6" v-if="timerLaps.length">
@@ -316,12 +222,7 @@ const { configCode, showAllConfig } = useConfigCode();
             }}</template>
             <template #tab1>
                 <div class="w-full overflow-x-auto">
-                    <BaseCopyConfig
-                        :config="
-                            isDarkMode ? mutableConfigDarkMode : mutableConfig
-                        "
-                        @reset="resetDefault"
-                    />
+                    <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                     <div class="mt-4">
                         TS type:
@@ -334,574 +235,10 @@ const { configCode, showAllConfig } = useConfigCode();
                     </div>
 
                     <code ref="configCode">
-                        <BaseDetails
-                            attr="const config: VueUiTimerConfig"
-                            equal
-                        >
-                            <BaseDetails attr="devHints" :level="1">
-                                <BaseAttr
-                                    name="enable"
-                                    attr="devHints.enable"
-                                    type="checkbox"
-                                    defaultVal="false"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseAttr
-                                inactive
-                                name="responsive"
-                                defaultVal="false"
-                                :comment="translations.responsive[store.lang]"
-                            />
-                            <BaseAttr
-                                inactive
-                                name="responsiveProportionalSizing"
-                                defaultVal="true"
-                                :comment="
-                                    translations.responsiveProportionalSizing[
-                                        store.lang
-                                    ]
-                                "
-                            />
-                            <BaseAttr
-                                name="useCursorPointer"
-                                attr="useCursorPointer"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseDetails attr="style" :level="1">
-                                <span>fontFamily: "inherit",</span>
-                                <BaseAttr
-                                    name="backgroundColor"
-                                    attr="style.backgroundColor"
-                                    type="color"
-                                    defaultVal="#FFFFFF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="height"
-                                    attr="style.height"
-                                    type="number"
-                                    defaultVal="300"
-                                    :min="100"
-                                    :max="1000"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="width"
-                                    attr="style.width"
-                                    type="number"
-                                    defaultVal="300"
-                                    :min="100"
-                                    :max="1000"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseDetails
-                                    attr="title"
-                                    :level="2"
-                                    title="style.title"
-                                >
-                                    <BaseAttr
-                                        name="color"
-                                        attr="style.title.color"
-                                        type="color"
-                                        defaultVal="#2D353C"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="text"
-                                        attr="style.title.text"
-                                        type="text"
-                                        defaultVal="''"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="fontSize"
-                                        attr="style.title.fontSize"
-                                        type="number"
-                                        defaultVal="20"
-                                        :min="8"
-                                        :max="42"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="bold"
-                                        attr="style.title.bold"
-                                        type="checkbox"
-                                        defaultVal="true"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="textAlign"
-                                        attr="style.title.textAlign"
-                                        type="select"
-                                        defaultVal="center"
-                                        :options="['left', 'center', 'right']"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="paddingLeft"
-                                        attr="style.title.paddingLeft"
-                                        type="number"
-                                        defaultVal="0"
-                                        :min="0"
-                                        :max="100"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="paddingRight"
-                                        attr="style.title.paddingRight"
-                                        type="number"
-                                        defaultVal="0"
-                                        :min="0"
-                                        :max="100"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseDetails
-                                        attr="subtitle"
-                                        :level="3"
-                                        title="style.title.subtitle"
-                                    >
-                                        <BaseAttr
-                                            name="color"
-                                            attr="style.title.subtitle.color"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                            @change="forceChartUpdate()"
-                                        />
-                                        <BaseAttr
-                                            name="text"
-                                            attr="style.title.subtitle.text"
-                                            type="text"
-                                            defaultVal="''"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                            @change="forceChartUpdate()"
-                                        />
-                                        <BaseAttr
-                                            name="fontSize"
-                                            attr="style.title.subtitle.fontSize"
-                                            type="number"
-                                            defaultVal="20"
-                                            :min="8"
-                                            :max="42"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                            @change="forceChartUpdate()"
-                                        />
-                                        <BaseAttr
-                                            name="bold"
-                                            attr="style.title.subtitle.bold"
-                                            type="checkbox"
-                                            defaultVal="false"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                            @change="forceChartUpdate()"
-                                        />
-                                    </BaseDetails>
-                                </BaseDetails>
-                            </BaseDetails>
-                            <BaseDetails attr="stopwatch" :level="1">
-                                <BaseAttr
-                                    name="showHours"
-                                    attr="stopwatch.showHours"
-                                    type="checkbox"
-                                    defaultVal="false"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="showHundredth"
-                                    attr="stopwatch.showHundredth"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="cycleSeconds"
-                                    attr="stopwatch.cycleSeconds"
-                                    type="number"
-                                    defaultVal="5"
-                                    :min="1"
-                                    :max="60"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseDetails
-                                    attr="track"
-                                    :level="2"
-                                    title="stopwatch.track"
-                                >
-                                    <BaseAttr
-                                        name="radiusRatio"
-                                        attr="stopwatch.track.radiusRatio"
-                                        type="range"
-                                        defaultVal="1"
-                                        :min="0.4"
-                                        :max="1"
-                                        :step="0.01"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="stroke"
-                                        attr="stopwatch.track.stroke"
-                                        type="color"
-                                        defaultVal="#E1E5E8"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="strokeWidth"
-                                        attr="stopwatch.track.strokeWidth"
-                                        type="range"
-                                        defaultVal="2"
-                                        :min="0"
-                                        :max="24"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="fill"
-                                        attr="stopwatch.track.fill"
-                                        type="color"
-                                        defaultVal="#FFFFFF"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                </BaseDetails>
-                                <BaseDetails
-                                    attr="tracker"
-                                    :level="2"
-                                    title="stopwatch.tracker"
-                                >
-                                    <BaseAttr
-                                        name="radiusRatio"
-                                        attr="stopwatch.tracker.radiusRatio"
-                                        type="range"
-                                        defaultVal="1"
-                                        :min="0.4"
-                                        :max="2"
-                                        :step="0.01"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="stroke"
-                                        attr="stopwatch.tracker.stroke"
-                                        type="color"
-                                        defaultVal="#FFFFFF"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="strokeWidth"
-                                        attr="stopwatch.tracker.strokeWidth"
-                                        type="number"
-                                        defaultVal="1"
-                                        :min="0"
-                                        :max="12"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="fill"
-                                        attr="stopwatch.tracker.fill"
-                                        type="color"
-                                        defaultVal="#2D353C"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseDetails
-                                        attr="gradient"
-                                        :level="3"
-                                        title="stopwatch.tracker.gradient"
-                                    >
-                                        <BaseAttr
-                                            name="show"
-                                            attr="stopwatch.tracker.gradient.show"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="color"
-                                            attr="stopwatch.tracker.gradient.color"
-                                            type="color"
-                                            defaultVal="#FFFFFF"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="aura"
-                                        :level="3"
-                                        title="stopwatch.tracker.aura"
-                                    >
-                                        <BaseAttr
-                                            name="show"
-                                            attr="stopwatch.tracker.aura.show"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="radiusRatio"
-                                            attr="stopwatch.tracker.aura.radiusRatio"
-                                            type="range"
-                                            defaultVal="1"
-                                            :min="0.4"
-                                            :max="3"
-                                            :step="0.01"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                            @change="forceChartUpdate()"
-                                        />
-                                        <BaseAttr
-                                            name="fill"
-                                            attr="stopwatch.tracker.aura.fill"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="stroke"
-                                            attr="stopwatch.tracker.aura.stroke"
-                                            type="color"
-                                            defaultVal="#FFFFFF"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="strokeWidth"
-                                            attr="stopwatch.tracker.aura.strokeWidth"
-                                            type="number"
-                                            defaultVal="0"
-                                            :min="0"
-                                            :max="12"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                    </BaseDetails>
-                                </BaseDetails>
-                                <BaseDetails
-                                    attr="cycleTrack"
-                                    :level="2"
-                                    title="stopwatch.cycleTrack"
-                                >
-                                    <BaseAttr
-                                        name="show"
-                                        attr="stopwatch.cycleTrack.show"
-                                        type="checkbox"
-                                        defaultVal="true"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="stroke"
-                                        attr="stopwatch.cycleTrack.stroke"
-                                        type="color"
-                                        defaultVal="#2D353C"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="strokeWidth"
-                                        attr="stopwatch.cycleTrack.strokeWidth"
-                                        type="number"
-                                        defaultVal="3"
-                                        :min="0"
-                                        :max="24"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                </BaseDetails>
-                                <BaseDetails
-                                    attr="label"
-                                    :level="2"
-                                    title="stopwatch.label"
-                                >
-                                    <BaseAttr
-                                        name="fontSize"
-                                        attr="stopwatch.label.fontSize"
-                                        type="number"
-                                        defaultVal="24"
-                                        :min="8"
-                                        :max="64"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="color"
-                                        attr="stopwatch.label.color"
-                                        type="color"
-                                        defaultVal="#2D353C"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="bold"
-                                        attr="stopwatch.label.bold"
-                                        type="checkbox"
-                                        defaultVal="false"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                </BaseDetails>
-                                <BaseDetails
-                                    attr="legend"
-                                    :level="2"
-                                    title="stopwatch.legend"
-                                >
-                                    <BaseAttr
-                                        name="backgroundColor"
-                                        attr="stopwatch.legend.backgroundColor"
-                                        type="color"
-                                        defaultVal="#FFFFFF"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseDetails
-                                        attr="buttons"
-                                        :level="3"
-                                        title="stopwatch.legend.buttons"
-                                    >
-                                        <BaseAttr
-                                            name="start"
-                                            attr="stopwatch.legend.buttons.start"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="pause"
-                                            attr="stopwatch.legend.buttons.pause"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="reset"
-                                            attr="stopwatch.legend.buttons.reset"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="restart"
-                                            attr="stopwatch.legend.buttons.restart"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="lap"
-                                            attr="stopwatch.legend.buttons.lap"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="iconColor"
-                                            attr="stopwatch.legend.buttons.iconColor"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="buttonTitles"
-                                        :level="3"
-                                        title="stopwatch.legend.buttonTitles"
-                                    >
-                                        <BaseAttr
-                                            name="start"
-                                            attr="stopwatch.legend.buttonTitles.start"
-                                            type="text"
-                                            defaultVal="Start"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="pause"
-                                            attr="stopwatch.legend.buttonTitles.pause"
-                                            type="text"
-                                            defaultVal="Pause"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="resume"
-                                            attr="stopwatch.legend.buttonTitles.resume"
-                                            type="text"
-                                            defaultVal="Resume"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="reset"
-                                            attr="stopwatch.legend.buttonTitles.reset"
-                                            type="text"
-                                            defaultVal="Reset"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="restart"
-                                            attr="stopwatch.legend.buttonTitles.restart"
-                                            type="text"
-                                            defaultVal="Restart"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="lap"
-                                            attr="stopwatch.legend.buttonTitles.lap"
-                                            type="text"
-                                            defaultVal="Lap"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                    </BaseDetails>
-                                </BaseDetails>
-                            </BaseDetails>
-                        </BaseDetails>
+                        <VueUiTimerConfigFields
+                            :config="config"
+                            :context="{ forceChartUpdate, store, translations }"
+                        />
                     </code>
                 </div>
             </template>

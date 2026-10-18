@@ -1,13 +1,13 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiLabelConfigFields from "./configuration/VueUiLabelConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
-import BaseAttr from "../BaseAttr.vue";
 import BaseCard from "../BaseCard.vue";
-import BaseDetails from "../BaseDetails.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
@@ -80,158 +80,79 @@ const configLine = computed(() => {
     };
 });
 
-const config = ref({
-    theme: "",
-    a11y: {
-        translations: {
-            keyboardNavigation:
-                "Use the arrow keys to move this label. Hold Shift while pressing an arrow key to move it by a larger step.",
-        },
-    },
-    title: {
-        text: "",
-        color: "#1A1A1A",
-        fontSize: 24,
-        lineHeight: 24,
-        bold: false,
-        textAlign: "left",
-        gap: 6,
-        marker: {
-            color: null,
-            shape: "circle",
-            beforeText: true,
-            size: 14,
-            offsetY: 0,
-        },
-    },
-    content: {
-        text: "",
-        color: "#1A1A1A",
-        fontSize: 20,
-        lineHeight: 20,
-        bold: false,
-        textAlign: "left",
-    },
-    position: "top",
-    box: {
-        show: true,
-        backgroundColor: "#FFFFFFDD",
-        borderColor: "#6A6A6A",
-        borderRadius: 3,
-        borderWidth: 1,
-        maxWidth: 256,
-        padding: {
-            top: 12,
-            right: 12,
-            bottom: 12,
-            left: 12,
-        },
-    },
-    drag: {
-        enable: true,
-        handlePosition: "left",
-        handleWidth: 24,
-        iconSize: 24,
-        showSeparator: false,
-        iconColor: "#1A1A1A",
-        iconOpacity: 0.6,
-    },
-    link: {
-        show: true,
-        stroke: "#6A6A6A",
-        strokeWidth: 1,
-        strokeDasharray: "0",
-        length: 60,
-        targetPlot: {
-            show: true,
-            radius: 2,
-            stroke: "#FFFFFF",
-            strokeWidth: 1,
-        },
-    },
-    overflow: false,
-    overlap: false,
-    collisionGap: 0,
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            theme: "",
+            a11y: {
+                translations: {
+                    keyboardNavigation:
+                        "Use the arrow keys to move this label. Hold Shift while pressing an arrow key to move it by a larger step.",
+                },
+            },
+            title: {
+                text: "",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                fontSize: 24,
+                lineHeight: 24,
+                bold: false,
+                textAlign: "left",
+                gap: 6,
+                marker: {
+                    color: null,
+                    shape: "circle",
+                    beforeText: true,
+                    size: 14,
+                    offsetY: 0,
+                },
+            },
+            content: {
+                text: "",
+                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                fontSize: 20,
+                lineHeight: 20,
+                bold: false,
+                textAlign: "left",
+            },
+            position: "top",
+            box: {
+                show: true,
+                backgroundColor: isDarkMode.value ? "#3A3A3ADD" : "#FFFFFFDD",
+                borderColor: "#6A6A6A",
+                borderRadius: 3,
+                borderWidth: 1,
+                maxWidth: 256,
+                padding: { top: 12, right: 12, bottom: 12, left: 12 },
+            },
+            drag: {
+                enable: true,
+                handlePosition: "left",
+                handleWidth: 24,
+                iconSize: 24,
+                showSeparator: false,
+                iconColor: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                iconOpacity: 0.6,
+            },
+            link: {
+                show: true,
+                stroke: "#6A6A6A",
+                strokeWidth: 1,
+                strokeDasharray: "0",
+                length: 60,
+                targetPlot: {
+                    show: true,
+                    radius: 2,
+                    stroke: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                    strokeWidth: 1,
+                },
+            },
+            overflow: false,
+            overlap: false,
+            collisionGap: 0,
+        }),
+    set: configState.set,
 });
-
-const darkModeConfig = ref({
-    theme: "",
-    a11y: {
-        translations: {
-            keyboardNavigation:
-                "Use the arrow keys to move this label. Hold Shift while pressing an arrow key to move it by a larger step.",
-        },
-    },
-    title: {
-        text: "",
-        color: "#CCCCCC",
-        fontSize: 24,
-        lineHeight: 24,
-        bold: false,
-        textAlign: "left",
-        gap: 6,
-        marker: {
-            color: null,
-            shape: "circle",
-            beforeText: true,
-            size: 14,
-            offsetY: 0,
-        },
-    },
-    content: {
-        text: "",
-        color: "#CCCCCC",
-        fontSize: 20,
-        lineHeight: 20,
-        bold: false,
-        textAlign: "left",
-    },
-    position: "top",
-    box: {
-        show: true,
-        backgroundColor: "#3A3A3ADD",
-        borderColor: "#6A6A6A",
-        borderRadius: 3,
-        borderWidth: 1,
-        maxWidth: 256,
-        padding: {
-            top: 12,
-            right: 12,
-            bottom: 12,
-            left: 12,
-        },
-    },
-    drag: {
-        enable: true,
-        handlePosition: "left",
-        handleWidth: 24,
-        iconSize: 24,
-        showSeparator: false,
-        iconColor: "#CCCCCC",
-        iconOpacity: 0.6,
-    },
-    link: {
-        show: true,
-        stroke: "#6A6A6A",
-        strokeWidth: 1,
-        strokeDasharray: "0",
-        length: 60,
-        targetPlot: {
-            show: true,
-            radius: 2,
-            stroke: "#1A1A1A",
-            strokeWidth: 1,
-        },
-    },
-    overflow: false,
-    overlap: false,
-    collisionGap: 0,
-});
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 
 const datasetLine = computed(() => [
     {
@@ -244,13 +165,9 @@ const datasetLine = computed(() => [
                 index: 11,
                 title: "We are so back",
                 content: "The future looks bright from up there.",
-                shape: isDarkMode.value
-                    ? mutableConfigDarkMode.value.title.marker.shape
-                    : mutableConfig.value.title.marker.shape,
+                shape: config.value.title.marker.shape,
                 color: "#00DDAA",
-                position: isDarkMode.value
-                    ? mutableConfigDarkMode.value.position
-                    : mutableConfig.value.position,
+                position: config.value.position,
             },
         ],
     },
@@ -264,30 +181,21 @@ const datasetLine = computed(() => [
                 index: 7,
                 title: "Alert",
                 content: "A sudden drop occurred here.",
-                shape: isDarkMode.value
-                    ? mutableConfigDarkMode.value.title.marker.shape
-                    : mutableConfig.value.title.marker.shape,
+                shape: config.value.title.marker.shape,
                 color: "#FFAA00",
-                position: isDarkMode.value
-                    ? mutableConfigDarkMode.value.position
-                    : mutableConfig.value.position,
+                position: config.value.position,
             },
         ],
     },
 ]);
 
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function getLabelConfig(label) {
     return mergeConfigs({
-        defaultConfig: isDarkMode.value
-            ? mutableConfigDarkMode.value
-            : mutableConfig.value,
+        defaultConfig: config.value,
         userConfig: {
             position: label.position,
             title: {
@@ -385,9 +293,7 @@ function goToPage(route) {
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="
-                    copyToClipboard(isDarkMode ? darkModeConfig : config)
-                "
+                @copyToClipboard="copyToClipboard(config)"
             >
                 <BaseCard>
                     <VueUiXy :config="configLine" :dataset="datasetLine">
@@ -430,10 +336,7 @@ function goToPage(route) {
             </template>
 
             <template #tab1>
-                <BaseCopyConfig
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                    @reset="resetDefault"
-                />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
                 <div class="my-4">
                     TS type: <code class="text-app-blue">VueUiLabelConfig</code>
                 </div>
@@ -443,504 +346,7 @@ function goToPage(route) {
                     <input type="checkbox" v-model="showAllConfig" />
                 </div>
                 <code ref="configCode">
-                    <BaseDetails attr="const config: VueUiLabelConfig" equal>
-                        <BaseAttr
-                            inactive
-                            name="theme"
-                            defaultVal="''"
-                            comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete' | 'minimal' | 'minimalDark'"
-                        />
-                        <BaseAttr
-                            name="overflow"
-                            attr="overflow"
-                            type="checkbox"
-                            defaultVal="false"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseAttr
-                            name="overlap"
-                            attr="overlap"
-                            type="checkbox"
-                            defaultVal="false"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseAttr
-                            name="collisionGap"
-                            attr="collisionGap"
-                            type="number"
-                            defaultVal="0"
-                            :min="0"
-                            :max="100"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseAttr
-                            name="position"
-                            attr="position"
-                            type="select"
-                            :options="[
-                                'auto',
-                                'top',
-                                'right',
-                                'bottom',
-                                'left',
-                            ]"
-                            defaultVal="auto"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseDetails attr="a11y" title="a11y" :level="1">
-                            <BaseDetails
-                                attr="translations"
-                                title="a11y.translations"
-                                :level="2"
-                            >
-                                <BaseAttr
-                                    name="keyboardNavigation"
-                                    attr="a11y.translations.keyboardNavigation"
-                                    type="text"
-                                    defaultVal="Use the arrow keys to move this label. Hold Shift while pressing an arrow key to move it by a larger step."
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="title" name="title" :level="1">
-                            <BaseAttr
-                                inactive
-                                name="text"
-                                attr="title.text"
-                                type="text"
-                                defaultVal="''"
-                            />
-                            <BaseAttr
-                                name="color"
-                                attr="title.color"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="fontSize"
-                                attr="title.fontSize"
-                                defaultVal="14"
-                                type="number"
-                                :min="8"
-                                :max="42"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="lineHeight"
-                                attr="title.lineHeight"
-                                defaultVal="14"
-                                type="number"
-                                :min="8"
-                                :max="42"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="bold"
-                                attr="title.bold"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="textAlign"
-                                attr="title.textAlign"
-                                type="select"
-                                defaultVal="left"
-                                :options="['left', 'center', 'right']"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="gap"
-                                attr="title.gap"
-                                defaultVal="6"
-                                type="number"
-                                :min="0"
-                                :max="100"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseDetails
-                                attr="marker"
-                                title="title.marker"
-                                :level="2"
-                            >
-                                <BaseAttr
-                                    name="color"
-                                    attr="title.marker.color"
-                                    type="color"
-                                    defaultVal="null"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="shape"
-                                    attr="title.marker.shape"
-                                    type="select"
-                                    :options="[
-                                        'circle',
-                                        'triangle',
-                                        'square',
-                                        'diamond',
-                                        'pentagon',
-                                        'hexagon',
-                                    ]"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="beforeText"
-                                    attr="title.marker.beforeText"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="size"
-                                    attr="title.marker.size"
-                                    type="number"
-                                    defaultVal="14"
-                                    :min="0"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="offsetY"
-                                    attr="title.marker.offsetY"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="-42"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="content" title="content" :level="1">
-                            <BaseAttr
-                                inactive
-                                name="text"
-                                attr="content.text"
-                                type="text"
-                                defaultVal="''"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="color"
-                                attr="content.color"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="fontSize"
-                                attr="content.fontSize"
-                                type="number"
-                                defaultVal="12"
-                                :min="8"
-                                :max="42"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="lineHeight"
-                                attr="content.lineHeight"
-                                type="number"
-                                defaultVal="12"
-                                :min="8"
-                                :max="42"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="bold"
-                                attr="content.bold"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="textAlign"
-                                attr="content.textAlign"
-                                defaultVal="left"
-                                type="select"
-                                :options="['left', 'center', 'right']"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                        <BaseDetails attr="link" title="link" :level="1">
-                            <BaseAttr
-                                name="show"
-                                attr="link.show"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="stroke"
-                                attr="link.stroke"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="strokeWidth"
-                                attr="link.strokeWidth"
-                                type="number"
-                                :min="0"
-                                :max="6"
-                                defaultVal="1"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="strokeDasharray"
-                                attr="link.strokeDasharray"
-                                type="text"
-                                defaultVal="'0'"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="length"
-                                attr="link.length"
-                                defaultVal="20"
-                                type="number"
-                                :min="0"
-                                :max="100"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseDetails
-                                attr="targetPlot"
-                                title="link.targetPlot"
-                                :level="2"
-                            >
-                                <BaseAttr
-                                    name="show"
-                                    attr="link.targetPlot.show"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="radius"
-                                    attr="link.targetPlot.radius"
-                                    type="number"
-                                    defaultVal="2"
-                                    :min="0"
-                                    :max="12"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="stroke"
-                                    attr="link.targetPlot.stroke"
-                                    type="color"
-                                    defaultVal="#FFFFFF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="strokeWidth"
-                                    attr="link.targetPlot.strokeWidth"
-                                    type="number"
-                                    defaultVal="1"
-                                    :min="0"
-                                    :max="12"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="box" title="box" :level="1">
-                            <BaseAttr
-                                name="show"
-                                attr="box.show"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="backgroundColor"
-                                attr="box.backgroundColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="borderColor"
-                                attr="box.borderColor"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="borderWidth"
-                                attr="box.borderWidth"
-                                type="number"
-                                defaultVal="1"
-                                :min="0"
-                                :max="6"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="borderRadius"
-                                attr="box.borderRadius"
-                                type="number"
-                                defaultVal="3"
-                                :min="0"
-                                :max="24"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="maxWidth"
-                                attr="box.maxWidth"
-                                type="number"
-                                :min="100"
-                                :max="400"
-                                :step="10"
-                                defaultVal="200"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseDetails
-                                attr="padding"
-                                title="box.padding"
-                                :level="2"
-                            >
-                                <BaseAttr
-                                    name="top"
-                                    attr="box.padding.top"
-                                    type="number"
-                                    defaultVal="8"
-                                    :min="0"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="right"
-                                    attr="box.padding.right"
-                                    type="number"
-                                    defaultVal="8"
-                                    :min="0"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="bottom"
-                                    attr="box.padding.bottom"
-                                    type="number"
-                                    defaultVal="8"
-                                    :min="0"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="left"
-                                    attr="box.padding.left"
-                                    type="number"
-                                    defaultVal="8"
-                                    :min="0"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="drag" title="drag" :level="1">
-                            <BaseAttr
-                                name="enable"
-                                attr="drag.enable"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="handlePosition"
-                                attr="drag.handlePosition"
-                                type="select"
-                                defaultVal="left"
-                                :options="['top', 'right', 'bottom', 'left']"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="handleWidth"
-                                attr="drag.handleWidth"
-                                type="number"
-                                defaultVal="18"
-                                :min="8"
-                                :max="64"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="iconSize"
-                                attr="drag.iconSize"
-                                type="number"
-                                defaultVal="16"
-                                :min="12"
-                                :max="24"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="showSeparator"
-                                attr="drag.showSeparator"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="iconColor"
-                                attr="drag.iconColor"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="iconOpacity"
-                                attr="drag.iconOpacity"
-                                type="number"
-                                :min="0.1"
-                                :max="1"
-                                :step="0.1"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiLabelConfigFields :config="config" :context="{}" />
                 </code>
             </template>
 

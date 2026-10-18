@@ -1,4 +1,6 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiTableHeatmapConfigFields from "./configuration/VueUiTableHeatmapConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import {
@@ -10,9 +12,6 @@ import {
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
-import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import Rater from "../Rater.vue";
@@ -21,13 +20,11 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
-import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
-import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 
 const mainConfig = useConfig();
 
@@ -84,147 +81,74 @@ const dataset = ref([
     },
 ]);
 
-const config = ref({
-    debug: false,
-    devHints: { enable: false },
-    style: {
-        backgroundColor: "#F3F4F6",
-        color: "#2D353C",
-        fontFamily: "inherit",
-        shapeSize: 14,
-        heatmapColors: {
-            useIndividualScale: false,
-            min: "#FFFFFF",
-            max: "#5f8bee",
-        },
-    },
-    table: {
-        responsiveBreakpoint: 400,
-        borderWidth: 1,
-        showSum: true,
-        showAverage: true,
-        showMedian: true,
-        head: {
-            backgroundColor: "#F3F4F6",
-            values: [
-                "",
-                "JAN",
-                "FEB",
-                "MAR",
-                "APR",
-                "MAY",
-                "JUN",
-                "JUL",
-                "TOTAL",
-                "AVG",
-                "MED",
-            ],
-        },
-    },
-    userOptions: {
-        annotatorPalette: COLOR_PICKER_PALETTE,
-        show: true,
-        showOnChartHover: false,
-        keepStateOnChartLeave: true,
-        position: "right",
-        useCursorPointer: false,
-        buttons: {
-            pdf: true,
-            img: true,
-            csv: true,
-            fullscreen: true,
-        },
-        buttonTitles: {
-            open: "Open options",
-            close: "Close options",
-            pdf: "Download PDF",
-            csv: "Download CSV",
-            img: "Download PNG",
-            fullscreen: "Toggle fullscreen",
-        },
-        print: {
-            scale: 2,
-            orientation: "auto",
-            overflowTolerance: 0.2,
-        },
-    },
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            debug: false,
+            devHints: { enable: false },
+            style: {
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
+                fontFamily: "inherit",
+                shapeSize: 14,
+                heatmapColors: {
+                    useIndividualScale: false,
+                    min: "#FFFFFF",
+                    max: "#5f8bee",
+                },
+            },
+            table: {
+                responsiveBreakpoint: 400,
+                borderWidth: 1,
+                showSum: true,
+                showAverage: true,
+                showMedian: true,
+                head: {
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                    values: [
+                        "",
+                        "JAN",
+                        "FEB",
+                        "MAR",
+                        "APR",
+                        "MAY",
+                        "JUN",
+                        "JUL",
+                        "TOTAL",
+                        "AVG",
+                        "MED",
+                    ],
+                },
+            },
+            userOptions: {
+                annotatorPalette: COLOR_PICKER_PALETTE,
+                show: true,
+                showOnChartHover: false,
+                keepStateOnChartLeave: true,
+                position: isDarkMode.value ? "left" : "right",
+                useCursorPointer: false,
+                buttons: { pdf: true, img: true, csv: true, fullscreen: true },
+                buttonTitles: {
+                    open: "Open options",
+                    close: "Close options",
+                    pdf: "Download PDF",
+                    csv: "Download CSV",
+                    img: "Download PNG",
+                    fullscreen: "Toggle fullscreen",
+                },
+                print: {
+                    scale: 2,
+                    orientation: "auto",
+                    overflowTolerance: 0.2,
+                },
+            },
+        }),
+    set: configState.set,
 });
 
-const darkModeConfig = ref({
-    debug: false,
-    devHints: { enable: false },
-    style: {
-        backgroundColor: "#2A2A2A",
-        color: "#CCCCCC",
-        fontFamily: "inherit",
-        shapeSize: 14,
-        heatmapColors: {
-            useIndividualScale: false,
-            min: "#FFFFFF",
-            max: "#5f8bee",
-        },
-    },
-    table: {
-        responsiveBreakpoint: 400,
-        borderWidth: 1,
-        showSum: true,
-        showAverage: true,
-        showMedian: true,
-        head: {
-            backgroundColor: "#2A2A2A",
-            values: [
-                "",
-                "JAN",
-                "FEB",
-                "MAR",
-                "APR",
-                "MAY",
-                "JUN",
-                "JUL",
-                "TOTAL",
-                "AVG",
-                "MED",
-            ],
-        },
-    },
-    userOptions: {
-        annotatorPalette: COLOR_PICKER_PALETTE,
-        show: true,
-        showOnChartHover: false,
-        keepStateOnChartLeave: true,
-        position: "left",
-        useCursorPointer: false,
-        buttons: {
-            pdf: true,
-            img: true,
-            csv: true,
-            fullscreen: true,
-        },
-        buttonTitles: {
-            open: "Open options",
-            close: "Close options",
-            pdf: "Download PDF",
-            csv: "Download CSV",
-            img: "Download PNG",
-            fullscreen: "Toggle fullscreen",
-        },
-        print: {
-            scale: 2,
-            orientation: "auto",
-            overflowTolerance: 0.2,
-        },
-    },
-});
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -389,11 +313,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                         <VueDataUi
                             component="VueUiTableHeatmap"
                             :dataset="dataset"
-                            :config="
-                                isDarkMode
-                                    ? mutableConfigDarkMode
-                                    : mutableConfig
-                            "
+                            :config="config"
                             :key="key"
                         >
                             <template #caption>
@@ -533,10 +453,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                     configType="VueUiTableHeatmapConfig"
                 />
 
-                <BaseCopyConfig
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                    @reset="resetDefault"
-                />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -549,324 +466,10 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                 </div>
 
                 <code ref="configCode">
-                    <BaseDetails
-                        attr="const config: VueUiTableHeatmapConfig"
-                        equal
-                    >
-                        <BaseAttr inactive name="debug" defaultVal="false," />
-                        <BaseDetails attr="devHints" :level="1">
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                        <BaseDetails attr="style" :level="1">
-                            <BaseAttr
-                                name="backgroundColor"
-                                attr="style.backgroundColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="color"
-                                attr="style.color"
-                                type="color"
-                                defaultVal="#2D353C"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <span>fontFamily: "inherit",</span>
-                            <BaseAttr
-                                name="shapeSize"
-                                attr="style.shapeSize"
-                                type="number"
-                                defaultVal="14"
-                                :min="8"
-                                :max="42"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseDetails
-                                attr="heatmapColors"
-                                :level="2"
-                                title="style.heatmapColors"
-                            >
-                                <BaseAttr
-                                    name="useIndividualScale"
-                                    attr="style.heatmapColors.useIndividualScale"
-                                    type="checkbox"
-                                    defaultVal="false"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="min"
-                                    attr="style.heatmapColors.min"
-                                    type="color"
-                                    defaultVal="#FFFFFF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="max"
-                                    attr="style.heatmapColors.max"
-                                    type="color"
-                                    defaultVal="#5F8BEE"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="table" :level="1">
-                            <BaseAttr
-                                name="responsiveBreakpoint"
-                                attr="table.responsiveBreakpoint"
-                                type="number"
-                                defaultVal="400"
-                                :min="300"
-                                :max="800"
-                                :step="10"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="borderWidth"
-                                attr="table.borderWidth"
-                                type="number"
-                                defaultVal="1"
-                                :min="0"
-                                :max="12"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="showSum"
-                                attr="table.showSum"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="showAverage"
-                                attr="table.showAverage"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="showMedian"
-                                attr="table.showMedian"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseDetails
-                                attr="head"
-                                :level="2"
-                                title="table.head"
-                            >
-                                <BaseAttr
-                                    name="backgroundColor"
-                                    attr="table.head.backgroundColor"
-                                    type="color"
-                                    defaultVal="#FFFFFF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <span
-                                    >values: [],
-                                    <BaseComment>String[]</BaseComment></span
-                                >
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="userOptions" :level="1">
-                            <BaseAttr
-                                name="show"
-                                attr="userOptions.show"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="showOnChartHover"
-                                attr="userOptions.showOnChartHover"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="keepStateOnChartLeave"
-                                attr="userOptions.keepStateOnChartLeave"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="position"
-                                attr="userOptions.position"
-                                type="select"
-                                defaultVal="right"
-                                :options="['right', 'left']"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="useCursorPointer"
-                                attr="userOptions.useCursorPointer"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttrAnnotatorPalette />
-                            <BaseDetails
-                                attr="buttons"
-                                :level="2"
-                                title="userOptions.buttons"
-                            >
-                                <BaseAttr
-                                    name="pdf"
-                                    attr="userOptions.buttons.pdf"
-                                    type="checkbox"
-                                    defaultval="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="img"
-                                    attr="userOptions.buttons.img"
-                                    type="checkbox"
-                                    defaultval="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="csv"
-                                    attr="userOptions.buttons.csv"
-                                    type="checkbox"
-                                    defaultval="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fullscreen"
-                                    attr="userOptions.buttons.fullscreen"
-                                    type="checkbox"
-                                    defaultval="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="buttonTitles"
-                                :level="2"
-                                title="userOptions.buttonTitles"
-                            >
-                                <BaseAttr
-                                    name="open"
-                                    attr="userOptions.buttonTitles.open"
-                                    type="text"
-                                    defaultVal="Open options"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="close"
-                                    attr="userOptions.buttonTitles.close"
-                                    type="text"
-                                    defaultVal="Close options"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="pdf"
-                                    attr="userOptions.buttonTitles.pdf"
-                                    type="text"
-                                    defaultVal="Download PDF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="img"
-                                    attr="userOptions.buttonTitles.img"
-                                    type="text"
-                                    defaultVal="Download PNG"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="csv"
-                                    attr="userOptions.buttonTitles.csv"
-                                    type="text"
-                                    defaultVal="Download CSV"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fullscreen"
-                                    attr="userOptions.buttonTitles.fullscreen"
-                                    type="text"
-                                    defaultVal="Toggle fullscreen"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="callbacks"
-                                :level="2"
-                                title="userOptions.callbacks"
-                            >
-                                <BaseTabLink
-                                    :action="() => setActiveTab(11)"
-                                    icon="lambda"
-                                >
-                                    Check out 'callbacks' tab
-                                </BaseTabLink>
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="print"
-                                :level="2"
-                                title="userOptions.print"
-                            >
-                                <BaseAttr
-                                    name="scale"
-                                    attr="userOptions.print.scale"
-                                    type="number"
-                                    :min="1"
-                                    :max="5"
-                                    defaultVal="2"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    comment="Set print quality (higher = larger file)"
-                                />
-                                <BaseAttr
-                                    inactive
-                                    name="orientation"
-                                    defaultVal="auto"
-                                    comment="'auto' | 'l' | 'p'"
-                                />
-                                <BaseAttr
-                                    inactive
-                                    name="overflowTolerance"
-                                    defaultVal="0.2"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiTableHeatmapConfigFields
+                        :config="config"
+                        :context="{ forceChartUpdate, setActiveTab }"
+                    />
                 </code>
             </template>
 

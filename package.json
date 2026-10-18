@@ -9,6 +9,7 @@
         "build": "vite build",
         "preview": "vite preview",
         "test": "npx cypress open",
+        "test:doc-bindings": "node --test tests/doc-config-bindings.test.js tests/docs-config-rollout.test.js tests/doc-config-state.test.js",
         "test:types": "node --test tests/type-documentation.test.js",
         "upgrade": "node upgrade.cjs",
         "site": "node publish-site.cjs",

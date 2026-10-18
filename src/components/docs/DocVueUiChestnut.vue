@@ -1,13 +1,12 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiChestnutConfigFields from "./configuration/VueUiChestnutConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import ThemesVueUiChestnut from "../themes/ThemesVueUiChestnut.vue";
 import { useConfig } from "../../assets/useConfig";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
-import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
@@ -21,14 +20,12 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
-import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
-import BaseAttrAnnotatorPalette from "../BaseAttrAnnotatorPalette.vue";
 
 const mainConfig = useConfig();
 
@@ -259,439 +256,234 @@ const dataset = ref([
     },
 ]);
 
-const config = ref({
-    devHints: { enable: false },
-    debug: false,
-    loading: false,
-    a11y: {
-        translations: {
-            keyboardNavigation:
-                "Use the left and right, or up and down arrow keys to move between datapoints",
-            tableAvailable: "A data table for this chart is available below.",
-            tableCaption: "Chart data table",
-        },
-    },
-    style: {
-        fontFamily: "inherit",
-        chart: {
-            backgroundColor: "#F3F4F6",
-            color: "#1A1A1A",
-            layout: {
-                grandTotal: {
-                    show: true,
-                    fontSize: 20,
-                    bold: true,
-                    suffix: "",
-                    prefix: "",
-                    roundingValue: 0,
-                    color: "#1A1A1A",
-                    text: "Grand total",
-                    offsetY: 0,
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            devHints: { enable: false },
+            debug: false,
+            loading: false,
+            a11y: {
+                translations: {
+                    keyboardNavigation:
+                        "Use the left and right, or up and down arrow keys to move between datapoints",
+                    tableAvailable:
+                        "A data table for this chart is available below.",
+                    tableCaption: "Chart data table",
                 },
-                roots: {
-                    stroke: "#F3F4F6",
-                    strokeWidth: 5,
-                    useGradient: true,
-                    gradientIntensity: 20,
-                    underlayerColor: "#FFFFFF",
-                    labels: {
-                        show: true,
-                        fontSize: 16,
-                        adaptColorToBackground: true,
-                        color: "#1A1A1A",
-                        bold: true,
-                        roundingValue: 0,
-                        prefix: "",
-                        suffix: "",
-                        name: {
-                            color: "#1A1A1A",
-                            fontSize: 16,
-                            bold: true,
-                        },
-                    },
-                },
-                verticalSeparator: {
-                    stroke: "#F3F4F6",
-                    strokeWidth: 5,
-                },
-                links: {
-                    opacity: 20,
-                },
-                branches: {
-                    stroke: "#F3F4F6",
-                    strokeWidth: 0,
-                    borderRadius: 6,
-                    useGradient: true,
-                    gradientIntensity: 20,
-                    underlayerColor: "#FFFFFF",
-                    widthRatio: 1.5,
-                    labels: {
-                        show: true,
-                        fontSize: 14,
-                        color: "#1A1A1A",
-                        bold: true,
-                        dataLabels: {
+            },
+            style: {
+                fontFamily: "inherit",
+                chart: {
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    layout: {
+                        grandTotal: {
                             show: true,
-                            hideUnderValue: 5,
-                            fontSize: 14,
-                            roundingValue: 0,
-                            roundingPercentage: 0,
-                            prefix: "",
+                            fontSize: 20,
+                            bold: true,
                             suffix: "",
+                            prefix: "",
+                            roundingValue: 0,
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                            text: "Grand total",
+                            offsetY: 0,
                         },
-                    },
-                },
-                nuts: {
-                    offsetX: 20,
-                    useGradient: true,
-                    gradientIntensity: 30,
-                    selected: {
-                        useMotion: true,
-                        useGradient: true,
-                        gradientIntensity: 20,
-                        roundingValue: 0,
-                        roundingPercentage: 0,
-                        labels: {
-                            dataLabels: {
-                                hideUnderValue: 5,
-                                color: "#1A1A1A",
-                                fontSize: 12,
-                                bold: false,
+                        roots: {
+                            stroke: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                            strokeWidth: 5,
+                            useGradient: true,
+                            gradientIntensity: 20,
+                            underlayerColor: "#FFFFFF",
+                            labels: {
+                                show: true,
+                                fontSize: 16,
+                                adaptColorToBackground: true,
+                                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                                bold: true,
+                                roundingValue: 0,
                                 prefix: "",
                                 suffix: "",
-                            },
-                            core: {
-                                total: {
-                                    color: "#1A1A1A",
-                                    fontSize: 24,
-                                    bold: false,
-                                },
-                                value: {
-                                    color: "#1A1A1A",
-                                    fontSize: 24,
+                                name: {
+                                    color: isDarkMode.value
+                                        ? "#CCCCCC"
+                                        : "#1A1A1A",
+                                    fontSize: 16,
                                     bold: true,
+                                },
+                            },
+                        },
+                        verticalSeparator: {
+                            stroke: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                            strokeWidth: 5,
+                        },
+                        links: { opacity: 20 },
+                        branches: {
+                            stroke: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                            strokeWidth: 0,
+                            borderRadius: 6,
+                            useGradient: true,
+                            gradientIntensity: isDarkMode.value ? 30 : 20,
+                            underlayerColor: isDarkMode.value
+                                ? "#2A2A2A"
+                                : "#FFFFFF",
+                            widthRatio: 1.5,
+                            labels: {
+                                show: true,
+                                fontSize: 14,
+                                color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                                bold: true,
+                                dataLabels: {
+                                    show: true,
+                                    hideUnderValue: 5,
+                                    fontSize: 14,
+                                    roundingValue: 0,
+                                    roundingPercentage: 0,
                                     prefix: "",
                                     suffix: "",
                                 },
                             },
                         },
-                    },
-                },
-                legend: {
-                    fontSize: 16,
-                    color: "#1A1A1A",
-                    roundingValue: 0,
-                    roundingPercentage: 0,
-                    prefix: "",
-                    suffix: "",
-                },
-                title: {
-                    color: "#1A1A1A",
-                    fontSize: 20,
-                    text: "Title",
-                    bold: true,
-                    offsetY: 0,
-                    subtitle: {
-                        text: "Subtitle",
-                        color: "#565656",
-                        bold: false,
-                        fontSize: 16,
-                        offsetY: 0,
-                    },
-                },
-            },
-        },
-    },
-    table: {
-        show: false,
-        useDialog: false,
-        responsiveBreakpoint: 400,
-        th: {
-            backgroundColor: "#F3F4F6",
-            color: "#1A1A1A",
-            outline: "none",
-            translations: {
-                rootName: "root name",
-                rootValue: "root value",
-                rootToTotal: "%/total",
-                branchName: "branch name",
-                branchValue: "branch value",
-                branchToRoot: "%/root",
-                branchToTotal: "%/total",
-                nutName: "nut name",
-                nutValue: "nut value",
-                nutToBranch: "%/branch",
-                nutToRoot: "%/root",
-                nutToTotal: "%/total",
-            },
-        },
-        td: {
-            backgroundColor: "#F3F4F6",
-            color: "#1A1A1A",
-            outline: "none",
-            roundingValue: 0,
-            roundingPercentage: 0,
-        },
-    },
-    userOptions: {
-        annotatorPalette: COLOR_PICKER_PALETTE,
-        show: true,
-        position: "right",
-        showOnChartHover: false,
-        keepStateOnChartLeave: true,
-        useCursorPointer: false,
-        buttons: {
-            pdf: true,
-            img: true,
-            csv: true,
-            table: true,
-            fullscreen: true,
-            annotator: true,
-        },
-        buttonTitles: {
-            open: "Open options",
-            close: "Close options",
-            pdf: "Download PDF",
-            csv: "Download CSV",
-            img: "Download PNG",
-            table: "Toggle table",
-            fullscreen: "Toggle fullscreen",
-            annotator: "Toggle annotator",
-        },
-        print: {
-            scale: 2,
-            orientation: "auto",
-            overflowTolerance: 0.2,
-        },
-    },
-    translations: {
-        total: "Total",
-        proportionToTree: "of grand total",
-        of: "of",
-    },
-});
-
-const darkModeConfig = ref({
-    devHints: { enable: false },
-    debug: false,
-    loading: false,
-    a11y: {
-        translations: {
-            keyboardNavigation:
-                "Use the left and right, or up and down arrow keys to move between datapoints",
-            tableAvailable: "A data table for this chart is available below.",
-            tableCaption: "Chart data table",
-        },
-    },
-    style: {
-        fontFamily: "inherit",
-        chart: {
-            backgroundColor: "#2A2A2A",
-            color: "#CCCCCC",
-            layout: {
-                grandTotal: {
-                    show: true,
-                    fontSize: 20,
-                    bold: true,
-                    suffix: "",
-                    prefix: "",
-                    roundingValue: 0,
-                    color: "#CCCCCC",
-                    text: "Grand total",
-                    offsetY: 0,
-                },
-                roots: {
-                    stroke: "#2A2A2A",
-                    strokeWidth: 5,
-                    useGradient: true,
-                    gradientIntensity: 20,
-                    underlayerColor: "#FFFFFF",
-                    labels: {
-                        show: true,
-                        fontSize: 16,
-                        adaptColorToBackground: true,
-                        color: "#CCCCCC",
-                        bold: true,
-                        roundingValue: 0,
-                        prefix: "",
-                        suffix: "",
-                        name: {
-                            color: "#CCCCCC",
-                            fontSize: 16,
-                            bold: true,
+                        nuts: {
+                            offsetX: 20,
+                            useGradient: true,
+                            gradientIntensity: 30,
+                            selected: {
+                                useMotion: true,
+                                useGradient: true,
+                                gradientIntensity: isDarkMode.value ? 40 : 20,
+                                roundingValue: 0,
+                                roundingPercentage: 0,
+                                labels: {
+                                    dataLabels: {
+                                        hideUnderValue: 5,
+                                        color: isDarkMode.value
+                                            ? "#CCCCCC"
+                                            : "#1A1A1A",
+                                        fontSize: 12,
+                                        bold: false,
+                                        prefix: "",
+                                        suffix: "",
+                                    },
+                                    core: {
+                                        total: {
+                                            color: isDarkMode.value
+                                                ? "#CCCCCC"
+                                                : "#1A1A1A",
+                                            fontSize: 24,
+                                            bold: false,
+                                        },
+                                        value: {
+                                            color: isDarkMode.value
+                                                ? "#FAFAFA"
+                                                : "#1A1A1A",
+                                            fontSize: 24,
+                                            bold: true,
+                                            prefix: "",
+                                            suffix: "",
+                                        },
+                                    },
+                                },
+                            },
                         },
-                    },
-                },
-                verticalSeparator: {
-                    stroke: "#2A2A2A",
-                    strokeWidth: 5,
-                },
-                links: {
-                    opacity: 20,
-                },
-                branches: {
-                    stroke: "#2A2A2A",
-                    strokeWidth: 0,
-                    borderRadius: 6,
-                    useGradient: true,
-                    gradientIntensity: 30,
-                    underlayerColor: "#2A2A2A",
-                    widthRatio: 1.5,
-                    labels: {
-                        show: true,
-                        fontSize: 14,
-                        color: "#CCCCCC",
-                        bold: true,
-                        dataLabels: {
-                            show: true,
-                            hideUnderValue: 5,
-                            fontSize: 14,
+                        legend: {
+                            fontSize: 16,
+                            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                             roundingValue: 0,
                             roundingPercentage: 0,
                             prefix: "",
                             suffix: "",
                         },
-                    },
-                },
-                nuts: {
-                    offsetX: 20,
-                    useGradient: true,
-                    gradientIntensity: 30,
-                    selected: {
-                        useMotion: true,
-                        useGradient: true,
-                        gradientIntensity: 40,
-                        roundingValue: 0,
-                        roundingPercentage: 0,
-                        labels: {
-                            dataLabels: {
-                                hideUnderValue: 5,
-                                color: "#CCCCCC",
-                                fontSize: 12,
+                        title: {
+                            color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A",
+                            fontSize: 20,
+                            text: "Title",
+                            bold: true,
+                            offsetY: 0,
+                            subtitle: {
+                                text: "Subtitle",
+                                color: isDarkMode.value ? "#CCCCCC" : "#565656",
                                 bold: false,
-                                prefix: "",
-                                suffix: "",
-                            },
-                            core: {
-                                total: {
-                                    color: "#CCCCCC",
-                                    fontSize: 24,
-                                    bold: false,
-                                },
-                                value: {
-                                    color: "#FAFAFA",
-                                    fontSize: 24,
-                                    bold: true,
-                                    prefix: "",
-                                    suffix: "",
-                                },
+                                fontSize: 16,
+                                offsetY: 0,
                             },
                         },
                     },
                 },
-                legend: {
-                    fontSize: 16,
-                    color: "#CCCCCC",
-                    roundingValue: 0,
-                    roundingPercentage: 0,
-                    prefix: "",
-                    suffix: "",
-                },
-                title: {
-                    color: "#FAFAFA",
-                    fontSize: 20,
-                    text: "Title",
-                    bold: true,
-                    offsetY: 0,
-                    subtitle: {
-                        text: "Subtitle",
-                        color: "#CCCCCC",
-                        bold: false,
-                        fontSize: 16,
-                        offsetY: 0,
+            },
+            table: {
+                show: false,
+                useDialog: false,
+                responsiveBreakpoint: 400,
+                th: {
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    outline: "none",
+                    translations: {
+                        rootName: "root name",
+                        rootValue: "root value",
+                        rootToTotal: "%/total",
+                        branchName: "branch name",
+                        branchValue: "branch value",
+                        branchToRoot: "%/root",
+                        branchToTotal: "%/total",
+                        nutName: "nut name",
+                        nutValue: "nut value",
+                        nutToBranch: "%/branch",
+                        nutToRoot: "%/root",
+                        nutToTotal: "%/total",
                     },
                 },
+                td: {
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : "#F3F4F6",
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    outline: "none",
+                    roundingValue: 0,
+                    roundingPercentage: 0,
+                },
             },
-        },
-    },
-    table: {
-        show: false,
-        useDialog: false,
-        responsiveBreakpoint: 400,
-        th: {
-            backgroundColor: "#2A2A2A",
-            color: "#CCCCCC",
-            outline: "none",
+            userOptions: {
+                annotatorPalette: COLOR_PICKER_PALETTE,
+                show: true,
+                position: "right",
+                showOnChartHover: false,
+                keepStateOnChartLeave: true,
+                useCursorPointer: false,
+                buttons: {
+                    pdf: true,
+                    img: true,
+                    csv: true,
+                    table: true,
+                    fullscreen: true,
+                    annotator: true,
+                },
+                buttonTitles: {
+                    open: "Open options",
+                    close: "Close options",
+                    pdf: "Download PDF",
+                    csv: "Download CSV",
+                    img: "Download PNG",
+                    table: "Toggle table",
+                    fullscreen: "Toggle fullscreen",
+                    annotator: "Toggle annotator",
+                },
+                print: {
+                    scale: 2,
+                    orientation: "auto",
+                    overflowTolerance: 0.2,
+                },
+            },
             translations: {
-                rootName: "root name",
-                rootValue: "root value",
-                rootToTotal: "%/total",
-                branchName: "branch name",
-                branchValue: "branch value",
-                branchToRoot: "%/root",
-                branchToTotal: "%/total",
-                nutName: "nut name",
-                nutValue: "nut value",
-                nutToBranch: "%/branch",
-                nutToRoot: "%/root",
-                nutToTotal: "%/total",
+                total: "Total",
+                proportionToTree: "of grand total",
+                of: "of",
             },
-        },
-        td: {
-            backgroundColor: "#2A2A2A",
-            color: "#CCCCCC",
-            outline: "none",
-            roundingValue: 0,
-            roundingPercentage: 0,
-        },
-    },
-    userOptions: {
-        annotatorPalette: COLOR_PICKER_PALETTE,
-        show: true,
-        showOnChartHover: false,
-        keepStateOnChartLeave: true,
-        position: "right",
-        useCursorPointer: false,
-        buttons: {
-            pdf: true,
-            img: true,
-            csv: true,
-            table: true,
-            fullscreen: true,
-            annotator: true,
-        },
-        buttonTitles: {
-            open: "Open options",
-            close: "Close options",
-            pdf: "Download PDF",
-            csv: "Download CSV",
-            img: "Download PNG",
-            table: "Toggle table",
-            fullscreen: "Toggle fullscreen",
-            annotator: "Toggle annotator",
-        },
-        print: {
-            scale: 2,
-            orientation: "auto",
-            overflowTolerance: 0.2,
-        },
-    },
-    translations: {
-        total: "Total",
-        proportionToTree: "of grand total",
-        of: "of",
-    },
+        }),
+    set: configState.set,
 });
 
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -843,16 +635,12 @@ function goToPage(route) {
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="
-                    copyToClipboard(isDarkMode ? darkModeConfig : config)
-                "
+                @copyToClipboard="copyToClipboard(config)"
             >
                 <BaseCard>
                     <VueUiChestnut
                         :dataset="dataset"
-                        :config="
-                            isDarkMode ? mutableConfigDarkMode : mutableConfig
-                        "
+                        :config="config"
                         :key="key"
                     />
                 </BaseCard>
@@ -901,10 +689,7 @@ function goToPage(route) {
                     configType="VueUiChestnutConfig"
                 />
 
-                <BaseCopyConfig
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                    @reset="resetDefault"
-                />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -917,1599 +702,16 @@ function goToPage(route) {
                 </div>
 
                 <code ref="configCode">
-                    <BaseDetails attr="const config: VueUiChestnutConfig" equal>
-                        <BaseAttr inactive name="debug" defaultVal="false" />
-                        <BaseDetails attr="devHints" :level="1">
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                        <BaseAttr
-                            name="loading"
-                            attr="loading"
-                            type="checkbox"
-                            defaultVal="false"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <span
-                            >theme: "",
-                            <BaseComment
-                                >"dark" | "celebration" | "celebrationNight" |
-                                "zen" | "hack" | "concrete" | ""</BaseComment
-                            ></span
-                        >
-                        <span
-                            >customPalette: [];
-                            <BaseComment>string[]</BaseComment></span
-                        >
-                        <BaseDetails attr="a11y" :level="1">
-                            <BaseDetails
-                                attr="translations"
-                                :level="2"
-                                title="a11y.translations"
-                            >
-                                <BaseAttr
-                                    name="keyboardNavigation"
-                                    attr="a11y.translations.keyboardNavigation"
-                                    type="text"
-                                    defaultVal="'Use the left and right arrow keys to move between data points.'"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="tableAvailable"
-                                    attr="a11y.translations.tableAvailable"
-                                    type="text"
-                                    defaultVal="'A data table for this chart is available below.'"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="tableCaption"
-                                    attr="a11y.translations.tableCaption"
-                                    type="text"
-                                    defaultVal="'Chart data table'"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="style" :level="1">
-                            <span>fontFamily: "inherit",</span>
-                            <BaseDetails
-                                attr="chart"
-                                :level="2"
-                                title="style.chart"
-                            >
-                                <BaseAttr
-                                    name="backgroundColor"
-                                    attr="style.chart.backgroundColor"
-                                    type="color"
-                                    defaultVal="#FFFFFF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="style.chart.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseDetails
-                                    attr="layout"
-                                    :level="3"
-                                    title="style.chart.layout"
-                                >
-                                    <BaseDetails
-                                        attr="branches"
-                                        :level="4"
-                                        title="style.chart.layout.branches"
-                                    >
-                                        <BaseAttr
-                                            name="stroke"
-                                            attr="style.chart.layout.branches.stroke"
-                                            type="color"
-                                            defaultVal="#FFFFFF"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="strokeWidth"
-                                            attr="style.chart.layout.branches.strokeWidth"
-                                            type="number"
-                                            defaultVal="0"
-                                            :min="0"
-                                            :max="24"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="borderRadius"
-                                            attr="style.chart.layout.branches.borderRadius"
-                                            type="number"
-                                            defaultVal="6"
-                                            :min="0"
-                                            :max="24"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="useGradient"
-                                            attr="style.chart.layout.branches.useGradient"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="gradientIntensity"
-                                            attr="style.chart.layout.branches.gradientIntensity"
-                                            type="range"
-                                            defaultVal="20"
-                                            :min="0"
-                                            :max="100"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="underlayerColor"
-                                            attr="style.chart.layout.branches.underlayerColor"
-                                            type="color"
-                                            defaultVal="#FFFFFF"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="widthRatio"
-                                            attr="style.chart.layout.branches.widthRatio"
-                                            type="range"
-                                            defaultVal="1.5"
-                                            :min="0.1"
-                                            :max="1.8"
-                                            :step="0.1"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseDetails
-                                            attr="labels"
-                                            :level="5"
-                                            title="style.chart.layout.branches.labels"
-                                        >
-                                            <BaseAttr
-                                                name="show"
-                                                attr="style.chart.layout.branches.labels.show"
-                                                type="checkbox"
-                                                defaultVal="true"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="fontSize"
-                                                attr="style.chart.layout.branches.labels.fontSize"
-                                                type="number"
-                                                defaultVal="14"
-                                                :min="8"
-                                                :max="42"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="color"
-                                                attr="style.chart.layout.branches.labels.color"
-                                                type="color"
-                                                defaultVal="#2D353C"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="bold"
-                                                attr="style.chart.layout.branches.labels.bold"
-                                                type="checkbox"
-                                                defaultVal="true"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseDetails
-                                                attr="dataLabels"
-                                                :level="6"
-                                                title="style.chart.layout.branches.labels.dataLabels"
-                                            >
-                                                <BaseAttr
-                                                    name="show"
-                                                    attr="style.chart.layout.branches.labels.dataLabels.show"
-                                                    type="checkbox"
-                                                    defaultVal="true"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="hideUnderValue"
-                                                    attr="style.chart.layout.branches.labels.dataLabels.hideUnderValue"
-                                                    type="number"
-                                                    defaultVal="5"
-                                                    :min="1"
-                                                    :max="20"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="fontSize"
-                                                    attr="style.chart.layout.branches.labels.dataLabels.fontSize"
-                                                    type="number"
-                                                    defaultVal="14"
-                                                    :min="8"
-                                                    :max="42"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="roundingValue"
-                                                    attr="style.chart.layout.branches.labels.dataLabels.roundingValue"
-                                                    type="number"
-                                                    defaultVal="0"
-                                                    :min="0"
-                                                    :max="6"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="roundingPercentage"
-                                                    attr="style.chart.layout.branches.labels.dataLabels.roundingPercentage"
-                                                    type="number"
-                                                    defaultVal="0"
-                                                    :min="0"
-                                                    :max="6"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="prefix"
-                                                    attr="style.chart.layout.branches.labels.dataLabels.prefix"
-                                                    type="text"
-                                                    defaultVal="''"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="suffix"
-                                                    attr="style.chart.layout.branches.labels.dataLabels.suffix"
-                                                    type="text"
-                                                    defaultVal="''"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <div
-                                                    class="flex flex-row gap-2 place-items-center"
-                                                >
-                                                    <BaseAttr
-                                                        inactive
-                                                        name="formatter"
-                                                        defaultVal="null"
-                                                        :comment="
-                                                            translations
-                                                                .formatterLink[
-                                                                store.lang
-                                                            ]
-                                                        "
-                                                    />
-                                                    <div class="min-w-[200px]">
-                                                        <BaseTabLink
-                                                            :action="
-                                                                () =>
-                                                                    goToPage(
-                                                                        '/customization#formatter',
-                                                                    )
-                                                            "
-                                                            icon="cursor"
-                                                        >
-                                                            Go to page
-                                                        </BaseTabLink>
-                                                    </div>
-                                                </div>
-                                            </BaseDetails>
-                                        </BaseDetails>
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="grandTotal"
-                                        :level="4"
-                                        title="style.chart.layout.grandTotal"
-                                    >
-                                        <BaseAttr
-                                            name="show"
-                                            attr="style.chart.layout.grandTotal.show"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="fontSize"
-                                            attr="style.chart.layout.grandTotal.fontSize"
-                                            type="number"
-                                            defaultVal="20"
-                                            :min="8"
-                                            :max="42"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="bold"
-                                            attr="style.chart.layout.grandTotal.bold"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="prefix"
-                                            attr="style.chart.layout.grandTotal.prefix"
-                                            type="text"
-                                            defaultVal="''"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="suffix"
-                                            attr="style.chart.layout.grandTotal.suffix"
-                                            type="text"
-                                            defaultVal="''"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="roundingValue"
-                                            attr="style.chart.layout.grandTotal.roundingValue"
-                                            type="number"
-                                            :min="0"
-                                            :max="6"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="color"
-                                            attr="style.chart.layout.grandTotal.color"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="text"
-                                            attr="style.chart.layout.grandTotal.text"
-                                            type="text"
-                                            defaultVal="'Grand total'"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="offsetY"
-                                            attr="style.chart.layout.grandTotal.offsetY"
-                                            type="number"
-                                            defaultVal="0"
-                                            :min="-100"
-                                            :max="100"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <div
-                                            class="flex flex-row gap-2 place-items-center"
-                                        >
-                                            <BaseAttr
-                                                inactive
-                                                name="formatter"
-                                                defaultVal="null"
-                                                :comment="
-                                                    translations.formatterLink[
-                                                        store.lang
-                                                    ]
-                                                "
-                                            />
-                                            <div class="min-w-[200px]">
-                                                <BaseTabLink
-                                                    :action="
-                                                        () =>
-                                                            goToPage(
-                                                                '/customization#formatter',
-                                                            )
-                                                    "
-                                                    icon="cursor"
-                                                >
-                                                    Go to page
-                                                </BaseTabLink>
-                                            </div>
-                                        </div>
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="legend"
-                                        :level="4"
-                                        title="style.chart.layout.legend"
-                                    >
-                                        <BaseAttr
-                                            name="fontSize"
-                                            attr="style.chart.layout.legend.fontSize"
-                                            type="number"
-                                            defaultVal="16"
-                                            :min="8"
-                                            :max="42"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="color"
-                                            attr="style.chart.layout.legend.color"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="roundingValue"
-                                            attr="style.chart.layout.legend.roundingValue"
-                                            type="number"
-                                            defaultVal="0"
-                                            :min="0"
-                                            :max="6"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="roundingPercentage"
-                                            attr="style.chart.layout.legend.roundingPercentage"
-                                            type="number"
-                                            defaultVal="0"
-                                            :min="0"
-                                            :max="6"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="prefix"
-                                            attr="style.chart.layout.legend.prefix"
-                                            type="text"
-                                            defaultVal="''"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="suffix"
-                                            attr="style.chart.layout.legend.suffix"
-                                            type="text"
-                                            defaultVal="''"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="links"
-                                        :level="4"
-                                        title="style.chart.layout.links"
-                                    >
-                                        <BaseAttr
-                                            name="opacity"
-                                            attr="style.chart.layout.links.opacity"
-                                            type="range"
-                                            defaultVal="10"
-                                            :min="0"
-                                            :max="100"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="nuts"
-                                        :level="4"
-                                        title="style.chart.layout.nuts"
-                                    >
-                                        <BaseAttr
-                                            name="offsetX"
-                                            attr="style.chart.layout.nuts.offsetX"
-                                            type="number"
-                                            defaultVal="20"
-                                            :min="-100"
-                                            :max="100"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="useGradient"
-                                            attr="style.chart.layout.nuts.useGradient"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="gradientIntensity"
-                                            attr="style.chart.layout.nuts.gradientIntensity"
-                                            type="range"
-                                            defaultVal="30"
-                                            :min="0"
-                                            :max="100"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseDetails
-                                            attr="selected"
-                                            :level="5"
-                                            title="style.chart.layout.nuts.selected"
-                                        >
-                                            <BaseAttr
-                                                name="useMotion"
-                                                attr="style.chart.layout.nuts.selected.useMotion"
-                                                type="checkbox"
-                                                defaultVal="true"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="useGradient"
-                                                attr="style.chart.layout.nuts.selected.useGradient"
-                                                type="checkbox"
-                                                defaultVal="true"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="gradientIntensity"
-                                                attr="style.chart.layout.nuts.selected.gradientIntensity"
-                                                type="range"
-                                                defaultVal="40"
-                                                :min="0"
-                                                :max="100"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="roundingValue"
-                                                attr="style.chart.layout.nuts.selected.roundingValue"
-                                                type="number"
-                                                defaultVal="0"
-                                                :min="0"
-                                                :max="6"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="roundingPercentage"
-                                                attr="style.chart.layout.nuts.selected.roundingPercentage"
-                                                type="number"
-                                                defaultVal="0"
-                                                :min="0"
-                                                :max="6"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseDetails
-                                                attr="labels"
-                                                :level="6"
-                                                title="style.chart.layout.nuts.selected.labels"
-                                            >
-                                                <BaseDetails
-                                                    attr="core"
-                                                    :level="7"
-                                                    title="style.chart.layout.nuts.selected.labels.core"
-                                                >
-                                                    <BaseDetails
-                                                        attr="total"
-                                                        :level="8"
-                                                        title="style.chart.layout.nuts.selected.labels.core.total"
-                                                    >
-                                                        <BaseAttr
-                                                            name="color"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.total.color"
-                                                            type="color"
-                                                            defaultVal="#2D353C"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                        <BaseAttr
-                                                            name="fontSize"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.total.fontSize"
-                                                            type="number"
-                                                            defaultVal="24"
-                                                            :min="8"
-                                                            :max="42"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                        <BaseAttr
-                                                            name="bold"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.total.bold"
-                                                            type="checkbox"
-                                                            defaultVal="true"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                    </BaseDetails>
-                                                    <BaseDetails
-                                                        attr="value"
-                                                        :level="8"
-                                                        title="style.chart.layout.nuts.selected.labels.core.value"
-                                                    >
-                                                        <BaseAttr
-                                                            name="color"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.value.color"
-                                                            type="color"
-                                                            defaultVal="#2D353C"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                        <BaseAttr
-                                                            name="fontSize"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.value.fontSize"
-                                                            type="number"
-                                                            defaultVal="24"
-                                                            :min="8"
-                                                            :max="42"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                        <BaseAttr
-                                                            name="bold"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.value.bold"
-                                                            type="checkbox"
-                                                            defaultVal="true"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                        <BaseAttr
-                                                            name="prefix"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.value.prefix"
-                                                            type="text"
-                                                            defaultVal="''"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                        <BaseAttr
-                                                            name="suffix"
-                                                            attr="style.chart.layout.nuts.selected.labels.core.value.suffix"
-                                                            type="text"
-                                                            defaultVal="''"
-                                                            :light="
-                                                                mutableConfig
-                                                            "
-                                                            :dark="
-                                                                mutableConfigDarkMode
-                                                            "
-                                                        />
-                                                    </BaseDetails>
-                                                </BaseDetails>
-                                                <BaseDetails
-                                                    attr="dataLabels"
-                                                    :level="7"
-                                                    title="style.chart.layout.nuts.selected.labels.dataLabels"
-                                                >
-                                                    <BaseAttr
-                                                        name="hideUnderValue"
-                                                        attr="style.chart.layout.nuts.selected.labels.dataLabels.hideUnderValue"
-                                                        type="number"
-                                                        defaultVal="5"
-                                                        :min="1"
-                                                        :max="20"
-                                                        :light="mutableConfig"
-                                                        :dark="
-                                                            mutableConfigDarkMode
-                                                        "
-                                                    />
-                                                    <BaseAttr
-                                                        name="color"
-                                                        attr="style.chart.layout.nuts.selected.labels.dataLabels.color"
-                                                        type="color"
-                                                        defaultVal="#2D353C"
-                                                        :light="mutableConfig"
-                                                        :dark="
-                                                            mutableConfigDarkMode
-                                                        "
-                                                    />
-                                                    <BaseAttr
-                                                        name="fontSize"
-                                                        attr="style.chart.layout.nuts.selected.labels.dataLabels.fontSize"
-                                                        type="number"
-                                                        defaultVal="12"
-                                                        :min="8"
-                                                        :max="42"
-                                                        :light="mutableConfig"
-                                                        :dark="
-                                                            mutableConfigDarkMode
-                                                        "
-                                                    />
-                                                    <BaseAttr
-                                                        name="bold"
-                                                        attr="style.chart.layout.nuts.selected.labels.dataLabels.bold"
-                                                        type="checkbox"
-                                                        defaultVal="true"
-                                                        :light="mutableConfig"
-                                                        :dark="
-                                                            mutableConfigDarkMode
-                                                        "
-                                                    />
-                                                    <BaseAttr
-                                                        name="prefix"
-                                                        attr="style.chart.layout.nuts.selected.labels.dataLabels.prefix"
-                                                        type="text"
-                                                        defaultVal="''"
-                                                        :light="mutableConfig"
-                                                        :dark="
-                                                            mutableConfigDarkMode
-                                                        "
-                                                    />
-                                                    <BaseAttr
-                                                        name="suffix"
-                                                        attr="style.chart.layout.nuts.selected.labels.dataLabels.suffix"
-                                                        type="text"
-                                                        defaultVal="''"
-                                                        :light="mutableConfig"
-                                                        :dark="
-                                                            mutableConfigDarkMode
-                                                        "
-                                                    />
-                                                    <div
-                                                        class="flex flex-row gap-2 place-items-center"
-                                                    >
-                                                        <BaseAttr
-                                                            inactive
-                                                            name="formatter"
-                                                            defaultVal="null"
-                                                            :comment="
-                                                                translations
-                                                                    .formatterLink[
-                                                                    store.lang
-                                                                ]
-                                                            "
-                                                        />
-                                                        <div
-                                                            class="min-w-[200px]"
-                                                        >
-                                                            <BaseTabLink
-                                                                :action="
-                                                                    () =>
-                                                                        goToPage(
-                                                                            '/customization#formatter',
-                                                                        )
-                                                                "
-                                                                icon="cursor"
-                                                            >
-                                                                Go to page
-                                                            </BaseTabLink>
-                                                        </div>
-                                                    </div>
-                                                </BaseDetails>
-                                            </BaseDetails>
-                                        </BaseDetails>
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="roots"
-                                        :level="4"
-                                        title="style.chart.layout.roots"
-                                    >
-                                        <BaseAttr
-                                            name="stroke"
-                                            attr="style.chart.layout.roots.stroke"
-                                            type="color"
-                                            defaultVal="#FFFFFF"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="strokeWidth"
-                                            attr="style.chart.layout.roots.strokeWidth"
-                                            type="number"
-                                            defaultVal="5"
-                                            :min="0"
-                                            :max="64"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="useGradient"
-                                            attr="style.chart.layout.roots.useGradient"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="gradientIntensity"
-                                            attr="style.chart.layout.roots.gradientIntensity"
-                                            type="range"
-                                            defaultVal="20"
-                                            :min="0"
-                                            :max="100"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="underlayerColor"
-                                            attr="style.chart.layout.roots.underlayerColor"
-                                            type="color"
-                                            defaultVal="#FFFFFF"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseDetails
-                                            attr="labels"
-                                            :level="5"
-                                            title="style.chart.layout.roots.labels"
-                                        >
-                                            <BaseAttr
-                                                name="show"
-                                                attr="style.chart.layout.roots.labels.show"
-                                                type="checkbox"
-                                                defaultVal="true"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="fontSize"
-                                                attr="style.chart.layout.roots.labels.fontSize"
-                                                type="number"
-                                                defaultVal="16"
-                                                :min="8"
-                                                :max="42"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="adaptColorToBackground"
-                                                attr="style.chart.layout.roots.labels.adaptColorToBackground"
-                                                type="checkbox"
-                                                defaultVal="true"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="color"
-                                                attr="style.chart.layout.roots.labels.color"
-                                                type="color"
-                                                defaultVal="#FFFFFF"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="bold"
-                                                attr="style.chart.layout.roots.labels.bold"
-                                                type="checkbox"
-                                                defaultVal="true"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="roundingValue"
-                                                attr="style.chart.layout.roots.labels.roundingValue"
-                                                type="number"
-                                                defaultVal="0"
-                                                :min="0"
-                                                :max="6"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="prefix"
-                                                attr="style.chart.layout.roots.labels.prefix"
-                                                type="text"
-                                                defaultVal="''"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="suffix"
-                                                attr="style.chart.layout.roots.labels.suffix"
-                                                type="text"
-                                                defaultVal="''"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <div
-                                                class="flex flex-row gap-2 place-items-center"
-                                            >
-                                                <BaseAttr
-                                                    inactive
-                                                    name="formatter"
-                                                    defaultVal="null"
-                                                    :comment="
-                                                        translations
-                                                            .formatterLink[
-                                                            store.lang
-                                                        ]
-                                                    "
-                                                />
-                                                <div class="min-w-[200px]">
-                                                    <BaseTabLink
-                                                        :action="
-                                                            () =>
-                                                                goToPage(
-                                                                    '/customization#formatter',
-                                                                )
-                                                        "
-                                                        icon="cursor"
-                                                    >
-                                                        Go to page
-                                                    </BaseTabLink>
-                                                </div>
-                                            </div>
-                                            <BaseDetails
-                                                attr="name"
-                                                :level="6"
-                                                title="style.chart.layout.roots.labels.name"
-                                            >
-                                                <BaseAttr
-                                                    name="color"
-                                                    attr="style.chart.layout.roots.labels.name.color"
-                                                    type="color"
-                                                    defaultVal="#2D353C"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="fontSize"
-                                                    attr="style.chart.layout.roots.labels.name.fontSize"
-                                                    type="number"
-                                                    defaultVal="16"
-                                                    :min="8"
-                                                    :max="42"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                                <BaseAttr
-                                                    name="bold"
-                                                    attr="style.chart.layout.roots.labels.name.bold"
-                                                    type="checkbox"
-                                                    defaultVal="true"
-                                                    :light="mutableConfig"
-                                                    :dark="
-                                                        mutableConfigDarkMode
-                                                    "
-                                                />
-                                            </BaseDetails>
-                                        </BaseDetails>
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="title"
-                                        :level="4"
-                                        title="style.chart.layout.title"
-                                    >
-                                        <BaseAttr
-                                            name="text"
-                                            attr="style.chart.layout.title.text"
-                                            type="text"
-                                            defaultVal="''"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="color"
-                                            attr="style.chart.layout.title.color"
-                                            type="color"
-                                            defaultVal="#2D353C"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="fontSize"
-                                            attr="style.chart.layout.title.fontSize"
-                                            type="number"
-                                            defaultVal="20"
-                                            :min="8"
-                                            :max="42"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="bold"
-                                            attr="style.chart.layout.title.bold"
-                                            type="checkbox"
-                                            defaultVal="true"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="offsetY"
-                                            attr="style.chart.layout.title.offsetY"
-                                            type="number"
-                                            defaultVal="0"
-                                            :min="-100"
-                                            :max="100"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseDetails
-                                            attr="subtitle"
-                                            :level="5"
-                                            title="style.chart.layout.title.subtitle"
-                                        >
-                                            <BaseAttr
-                                                name="text"
-                                                attr="style.chart.layout.title.subtitle.text"
-                                                type="text"
-                                                defaultVal="''"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="color"
-                                                attr="style.chart.layout.title.subtitle.color"
-                                                type="color"
-                                                defaultVal="#CCCCCC"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="fontSize"
-                                                attr="style.chart.layout.title.subtitle.fontSize"
-                                                type="number"
-                                                defaultVal="16"
-                                                :min="8"
-                                                :max="42"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="bold"
-                                                attr="style.chart.layout.title.subtitle.bold"
-                                                type="checkbox"
-                                                defaultVal="false"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                            <BaseAttr
-                                                name="offsetY"
-                                                attr="style.chart.layout.title.subtitle.offsetY"
-                                                type="number"
-                                                defaultVal="0"
-                                                :min="-100"
-                                                :max="100"
-                                                :light="mutableConfig"
-                                                :dark="mutableConfigDarkMode"
-                                            />
-                                        </BaseDetails>
-                                    </BaseDetails>
-                                    <BaseDetails
-                                        attr="verticalSeparator"
-                                        :level="4"
-                                        title="style.chart.layout.verticalSeparator"
-                                    >
-                                        <BaseAttr
-                                            name="stroke"
-                                            attr="style.chart.layout.verticalSeparator.stroke"
-                                            type="color"
-                                            defaultVal="#FFFFFF"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                        <BaseAttr
-                                            name="strokeWidth"
-                                            attr="style.chart.layout.verticalSeparator.strokeWidth"
-                                            type="number"
-                                            defaultVal="5"
-                                            :min="0"
-                                            :max="24"
-                                            :light="mutableConfig"
-                                            :dark="mutableConfigDarkMode"
-                                        />
-                                    </BaseDetails>
-                                </BaseDetails>
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="table" :level="1">
-                            <BaseAttr
-                                name="show"
-                                attr="table.show"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="useDialog"
-                                attr="table.useDialog"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                comment="since v3.1.0"
-                            />
-                            <BaseAttr
-                                name="responsiveBreakpoint"
-                                attr="table.responsiveBreakpoint"
-                                type="number"
-                                defaultVal="400"
-                                :min="300"
-                                :max="800"
-                                :step="10"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseDetails attr="th" :level="2" title="table.th">
-                                <BaseAttr
-                                    name="backgroundColor"
-                                    attr="table.th.backgroundColor"
-                                    type="color"
-                                    defaultVal="#FAFAFA"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="table.th.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="outline"
-                                    attr="table.th.outline"
-                                    type="text"
-                                    defaultVal="none"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseDetails
-                                    attr="translations"
-                                    :level="3"
-                                    title="table.th.translations"
-                                >
-                                    <BaseAttr
-                                        name="rootName"
-                                        attr="table.th.translations.rootName"
-                                        type="text"
-                                        defaultVal="root name"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="rootValue"
-                                        attr="table.th.translations.rootValue"
-                                        type="text"
-                                        defaultVal="root value"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="rootToTotal"
-                                        attr="table.th.translations.rootToTotal"
-                                        type="text"
-                                        defaultVal="%/total"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="branchName"
-                                        attr="table.th.translations.branchName"
-                                        type="text"
-                                        defaultVal="branch name"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="branchValue"
-                                        attr="table.th.translations.branchValue"
-                                        type="text"
-                                        defaultVal="branch value"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="branchToRoot"
-                                        attr="table.th.translations.branchToRoot"
-                                        type="text"
-                                        defaultVal="%/root"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="branchToTotal"
-                                        attr="table.th.translations.branchToTotal"
-                                        type="text"
-                                        defaultVal="%/total"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="nutName"
-                                        attr="table.th.translations.nutName"
-                                        type="text"
-                                        defaultVal="nut name"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="nutValue"
-                                        attr="table.th.translations.nutValue"
-                                        type="text"
-                                        defaultVal="nut value"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="nutToBranch"
-                                        attr="table.th.translations.nutToBranch"
-                                        type="text"
-                                        defaultVal="%/branch"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="nutToRoot"
-                                        attr="table.th.translations.nutToRoot"
-                                        type="text"
-                                        defaultVal="%/root"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                    <BaseAttr
-                                        name="nutToTotal"
-                                        attr="table.th.translations.nutToTotal"
-                                        type="text"
-                                        defaultVal="%/total"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                        @change="forceChartUpdate()"
-                                    />
-                                </BaseDetails>
-                            </BaseDetails>
-                            <BaseDetails attr="td" :level="2" title="table.td">
-                                <BaseAttr
-                                    name="backgroundColor"
-                                    attr="table.td.backgroundColor"
-                                    type="color"
-                                    defaultVal="#FAFAFA"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="table.td.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="outline"
-                                    attr="table.td.outline"
-                                    type="text"
-                                    defaultVal="none"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="roundingValue"
-                                    attr="table.td.roundingValue"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="0"
-                                    :max="6"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="roundingPercentage"
-                                    attr="table.td.roundingPercentage"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="0"
-                                    :max="6"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseDetails attr="translations" :level="1">
-                            <BaseAttr
-                                name="total"
-                                attr="translations.total"
-                                type="text"
-                                defaultVal="Total"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="proportionToTree"
-                                attr="translations.proportionToTree"
-                                type="text"
-                                defaultVal="of grand total"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="of"
-                                attr="translations.of"
-                                type="text"
-                                defaultVal="of"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                        </BaseDetails>
-                        <BaseDetails attr="userOptions" :level="1">
-                            <BaseAttr
-                                name="show"
-                                attr="userOptions.show"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="showOnChartHover"
-                                attr="userOptions.showOnChartHover"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="keepStateOnChartLeave"
-                                attr="userOptions.keepStateOnChartLeave"
-                                type="checkbox"
-                                defaultVal="true"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="position"
-                                attr="userOptions.position"
-                                type="select"
-                                defaultVal="right"
-                                :options="['right', 'left']"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="useCursorPointer"
-                                attr="userOptions.useCursorPointer"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttrAnnotatorPalette />
-                            <BaseDetails
-                                attr="buttons"
-                                :level="2"
-                                title="userOptions.buttons"
-                            >
-                                <BaseAttr
-                                    name="pdf"
-                                    attr="userOptions.buttons.pdf"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="img"
-                                    attr="userOptions.buttons.img"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="csv"
-                                    attr="userOptions.buttons.csv"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="table"
-                                    attr="userOptions.buttons.table"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fullscreen"
-                                    attr="userOptions.buttons.fullscreen"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="annotator"
-                                    attr="userOptions.buttons.annotator"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="buttonTitles"
-                                :level="2"
-                                title="userOptions.buttonTitles"
-                            >
-                                <BaseAttr
-                                    name="open"
-                                    attr="userOptions.buttonTitles.open"
-                                    type="text"
-                                    defaultVal="Open options"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="close"
-                                    attr="userOptions.buttonTitles.close"
-                                    type="text"
-                                    defaultVal="Close options"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="pdf"
-                                    attr="userOptions.buttonTitles.pdf"
-                                    type="text"
-                                    defaultVal="Download PDF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="csv"
-                                    attr="userOptions.buttonTitles.csv"
-                                    type="text"
-                                    defaultVal="Download CSV"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="img"
-                                    attr="userOptions.buttonTitles.img"
-                                    type="text"
-                                    defaultVal="Download PNG"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="table"
-                                    attr="userOptions.buttonTitles.table"
-                                    type="text"
-                                    defaultVal="Toggle table"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fullscreen"
-                                    attr="userOptions.buttonTitles.fullscreen"
-                                    type="text"
-                                    defaultVal="Toggle fullscreen"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="annotator"
-                                    attr="userOptions.buttonTitles.annotator"
-                                    type="text"
-                                    defaultVal="Toggle annotator"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="callbacks"
-                                :level="2"
-                                title="userOptions.callbacks"
-                            >
-                                <BaseTabLink
-                                    :action="() => setActiveTab(11)"
-                                    icon="lambda"
-                                >
-                                    Check out 'callbacks' tab
-                                </BaseTabLink>
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="print"
-                                :level="2"
-                                title="userOptions.print"
-                            >
-                                <BaseAttr
-                                    name="scale"
-                                    attr="userOptions.print.scale"
-                                    type="number"
-                                    :min="1"
-                                    :max="5"
-                                    defaultVal="2"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    comment="Set print quality (higher = larger file)"
-                                />
-                                <BaseAttr
-                                    inactive
-                                    name="orientation"
-                                    defaultVal="auto"
-                                    comment="'auto' | 'l' | 'p'"
-                                />
-                                <BaseAttr
-                                    inactive
-                                    name="overflowTolerance"
-                                    defaultVal="0.2"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiChestnutConfigFields
+                        :config="config"
+                        :context="{
+                            forceChartUpdate,
+                            goToPage,
+                            setActiveTab,
+                            store,
+                            translations,
+                        }"
+                    />
                 </code>
 
                 <div class="overflow-w-auto"></div>

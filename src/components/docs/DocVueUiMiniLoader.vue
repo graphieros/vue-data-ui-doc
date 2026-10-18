@@ -1,4 +1,5 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
@@ -34,39 +35,42 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
-const config = ref({
-    devHints: { enable: false },
-    type: "onion",
-    onion: {
-        gutterColor: "#CCCCCC",
-        gutterOpacity: 0.3,
-        gutterBlur: 0,
-        trackHueRotate: 360,
-        trackBlur: 1,
-        trackColor: "#42d392",
-    },
-    line: {
-        gutterColor: "#CCCCCC",
-        gutterOpacity: 0.3,
-        gutterBlur: 0,
-        trackHueRotate: 360,
-        trackBlur: 1,
-        trackColor: "#42d392",
-    },
-    bar: {
-        gutterColor: "#CCCCCC",
-        gutterOpacity: 0.3,
-        gutterBlur: 0,
-        trackHueRotate: 360,
-        trackBlur: 1,
-        trackColor: "#42d392",
-    },
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            devHints: { enable: false },
+            type: "onion",
+            onion: {
+                gutterColor: "#CCCCCC",
+                gutterOpacity: 0.3,
+                gutterBlur: 0,
+                trackHueRotate: 360,
+                trackBlur: 1,
+                trackColor: "#42d392",
+            },
+            line: {
+                gutterColor: "#CCCCCC",
+                gutterOpacity: 0.3,
+                gutterBlur: 0,
+                trackHueRotate: 360,
+                trackBlur: 1,
+                trackColor: "#42d392",
+            },
+            bar: {
+                gutterColor: "#CCCCCC",
+                gutterOpacity: 0.3,
+                gutterBlur: 0,
+                trackHueRotate: 360,
+                trackBlur: 1,
+                trackColor: "#42d392",
+            },
+        }),
+    set: configState.set,
 });
 
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -115,23 +119,21 @@ function fixChart() {
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="
-                    copyToClipboard(isDarkMode ? darkModeConfig : config)
-                "
+                @copyToClipboard="copyToClipboard(config)"
             >
                 <BaseCard>
                     <div
                         class="flex flex-row gap-6 place-items-center justify-center max-w-[300px] mx-auto"
                     >
                         <VueUiMiniLoader
-                            :config="{ ...mutableConfig, type: 'line' }"
+                            :config="{ ...config, type: 'line' }"
                             :key="key"
                         />
                         <VueUiMiniLoader
-                            :config="{ ...mutableConfig, type: 'bar' }"
+                            :config="{ ...config, type: 'bar' }"
                             :key="key"
                         />
-                        <VueUiMiniLoader :config="mutableConfig" :key="key" />
+                        <VueUiMiniLoader :config="config" :key="key" />
                     </div>
                 </BaseCard>
             </DocSnapper>
@@ -142,7 +144,7 @@ function fixChart() {
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
             <template #tab1>
-                <BaseCopyConfig :config="mutableConfig" @reset="resetDefault" />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -153,28 +155,28 @@ function fixChart() {
 const <span class="text-black dark:text-app-blue">config: VueUiMiniLoaderConfig</span> = {
     type: "line" | "bar" | "onion", (default: "onion")
     line: {
-        gutterColor: <input type="color" v-model="mutableConfig.line.gutterColor">, (default: "#CCCCCC")
-        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.line.gutterOpacity">, (default: 0.3)
-        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.line.gutterBlur">, (default: 0)
-        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.line.trackHueRotate">, (default: 20)
-        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.line.trackBlur">, (default: 1)
-        trackColor: <input type="color" v-model="mutableConfig.line.trackColor">, (default: "#42d392")
+        gutterColor: <input type="color" v-model="config.line.gutterColor">, (default: "#CCCCCC")
+        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="config.line.gutterOpacity">, (default: 0.3)
+        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="config.line.gutterBlur">, (default: 0)
+        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="config.line.trackHueRotate">, (default: 20)
+        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="config.line.trackBlur">, (default: 1)
+        trackColor: <input type="color" v-model="config.line.trackColor">, (default: "#42d392")
     },
     bar: {
-        gutterColor: <input type="color" v-model="mutableConfig.onion.gutterColor">, (default: "#CCCCCC")
-        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.bar.gutterOpacity">, (default: 0.3)
-        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.bar.gutterBlur">, (default: 0)
-        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.bar.trackHueRotate">, (default: 20)
-        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.bar.trackBlur">, (default: 1)
-        trackColor: <input type="color" v-model="mutableConfig.bar.trackColor">, (default: "#42d392")
+        gutterColor: <input type="color" v-model="config.onion.gutterColor">, (default: "#CCCCCC")
+        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="config.bar.gutterOpacity">, (default: 0.3)
+        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="config.bar.gutterBlur">, (default: 0)
+        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="config.bar.trackHueRotate">, (default: 20)
+        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="config.bar.trackBlur">, (default: 1)
+        trackColor: <input type="color" v-model="config.bar.trackColor">, (default: "#42d392")
     },
     onion: {
-        gutterColor: <input type="color" v-model="mutableConfig.onion.gutterColor">, (default: "#CCCCCC")
-        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.onion.gutterOpacity">, (default: 0.3)
-        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.onion.gutterBlur">, (default: 0)
-        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.onion.trackHueRotate">, (default: 20)
-        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.onion.trackBlur">, (default: 1)
-        trackColor: <input type="color" v-model="mutableConfig.onion.trackColor">, (default: "#42d392")
+        gutterColor: <input type="color" v-model="config.onion.gutterColor">, (default: "#CCCCCC")
+        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="config.onion.gutterOpacity">, (default: 0.3)
+        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="config.onion.gutterBlur">, (default: 0)
+        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="config.onion.trackHueRotate">, (default: 20)
+        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="config.onion.trackBlur">, (default: 1)
+        trackColor: <input type="color" v-model="config.onion.trackColor">, (default: "#42d392")
     },
 }
 </code>

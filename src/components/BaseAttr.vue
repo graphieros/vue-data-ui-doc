@@ -11,6 +11,8 @@ import { createUid } from "./maker/lib";
 import useAttrMapping from "../useAttrMapping";
 
 const props = defineProps({
+    binding: { type: Object, default: null },
+    config: { type: Object, default: null },
     light: {
         type: Object,
         default() {
@@ -106,26 +108,27 @@ function setNestedAttribute(obj, path, value) {
     });
 }
 
-const targetObject = computed(() =>
-    isDarkMode.value ? props.dark : props.light,
-);
-
 function updateSelectValue(event) {
     const value = event.target.value;
-    setNestedAttribute(targetObject.value, props.attr, value);
     nestedAttribute.value = value;
     emit("change");
 }
 
 const nestedAttribute = computed({
     get() {
+        if (props.binding) return props.binding.value;
         return getNestedAttribute(
-            isDarkMode.value ? props.dark : props.light,
+            props.config || (isDarkMode.value ? props.dark : props.light),
             props.attr,
         );
     },
     set(value) {
-        const targetObject = isDarkMode.value ? props.dark : props.light;
+        if (props.binding) {
+            props.binding.value = value;
+            return;
+        }
+        const targetObject =
+            props.config || (isDarkMode.value ? props.dark : props.light);
         setNestedAttribute(targetObject, props.attr, value);
     },
 });
@@ -142,10 +145,6 @@ function resetValue() {
 watch(
     () => store.isDarkMode,
     (_val) => {
-        nestedAttribute.value = getNestedAttribute(
-            isDarkMode.value ? props.dark : props.light,
-            props.attr,
-        );
         initialValue.value = nestedAttribute.value;
     },
 );

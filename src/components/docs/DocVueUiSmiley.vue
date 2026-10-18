@@ -1,15 +1,13 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiSmileyConfigFields from "./configuration/VueUiSmileyConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
-import BaseColorInfo from "../BaseColorInfo.vue";
-import BaseComment from "../BaseComment.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
@@ -41,129 +39,90 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
-const config = ref({
-    debug: false,
-    devHints: { enable: false },
-    readonly: false,
-    style: {
-        fontFamily: "inherit",
-        itemSize: 32,
-        backgroundColor: "#f3f4f6",
-        colors: {
-            activeReadonly: [
-                "#e20001",
-                "#ff9f03",
-                "#ffd004",
-                "#61c900",
-                "#059f00",
-            ],
-            active: ["#e20001", "#ff9f03", "#ffd004", "#61c900", "#059f00"],
-            inactive: ["#CCCCCC", "#CCCCCC", "#CCCCCC", "#CCCCCC", "#CCCCCC"],
-        },
-        icons: {
-            filled: false,
-            useGradient: true,
-        },
-        title: {
-            textAlign: "center",
-            fontSize: 20,
-            color: "#2D353C",
-            bold: true,
-            text: "Title",
-            offsetY: 6,
-            subtitle: {
-                fontSize: 14,
-                color: "#CCCCCC",
-                bold: false,
-                text: "Subtitle",
-                offsetY: 12,
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            debug: false,
+            devHints: { enable: false },
+            readonly: false,
+            style: {
+                fontFamily: "inherit",
+                itemSize: 32,
+                backgroundColor: isDarkMode.value ? "#2A2A2A" : "#f3f4f6",
+                colors: {
+                    activeReadonly: [
+                        "#e20001",
+                        "#ff9f03",
+                        "#ffd004",
+                        "#61c900",
+                        "#059f00",
+                    ],
+                    active: [
+                        "#e20001",
+                        "#ff9f03",
+                        "#ffd004",
+                        "#61c900",
+                        "#059f00",
+                    ],
+                    inactive: isDarkMode.value
+                        ? [
+                              "#565656",
+                              "#565656",
+                              "#565656",
+                              "#565656",
+                              "#565656",
+                          ]
+                        : [
+                              "#CCCCCC",
+                              "#CCCCCC",
+                              "#CCCCCC",
+                              "#CCCCCC",
+                              "#CCCCCC",
+                          ],
+                },
+                icons: { filled: false, useGradient: true },
+                title: {
+                    textAlign: "center",
+                    fontSize: 20,
+                    color: isDarkMode.value ? "#FAFAFA" : "#2D353C",
+                    bold: true,
+                    text: "Title",
+                    offsetY: 6,
+                    subtitle: {
+                        fontSize: 14,
+                        color: "#CCCCCC",
+                        bold: false,
+                        text: "Subtitle",
+                        offsetY: 12,
+                    },
+                },
+                rating: {
+                    show: true,
+                    fontSize: 28,
+                    bold: true,
+                    roundingValue: 1,
+                    position: "bottom",
+                    offsetY: 0,
+                    offsetX: 0,
+                    formatter: isDarkMode.value ? undefined : null,
+                },
+                tooltip: {
+                    show: true,
+                    fontSize: 14,
+                    offsetY: 0,
+                    color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
+                    bold: true,
+                    backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                    borderColor: "#e1e5e8",
+                    borderRadius: 4,
+                    boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
+                    formatter: isDarkMode.value ? undefined : null,
+                    roundingValue: isDarkMode.value ? undefined : 0,
+                },
             },
-        },
-        rating: {
-            show: true,
-            fontSize: 28,
-            bold: true,
-            roundingValue: 1,
-            position: "bottom",
-            offsetY: 0,
-            offsetX: 0,
-            formatter: null,
-        },
-        tooltip: {
-            show: true,
-            fontSize: 14,
-            offsetY: 0,
-            color: "#2D353C",
-            bold: true,
-            backgroundColor: "#FFFFFF",
-            borderColor: "#e1e5e8",
-            borderRadius: 4,
-            boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
-            formatter: null,
-            roundingValue: 0,
-        },
-    },
-});
-
-const darkModeConfig = ref({
-    debug: false,
-    devHints: { enable: false },
-    readonly: false,
-    style: {
-        fontFamily: "inherit",
-        itemSize: 32,
-        backgroundColor: "#2A2A2A",
-        colors: {
-            activeReadonly: [
-                "#e20001",
-                "#ff9f03",
-                "#ffd004",
-                "#61c900",
-                "#059f00",
-            ],
-            active: ["#e20001", "#ff9f03", "#ffd004", "#61c900", "#059f00"],
-            inactive: ["#565656", "#565656", "#565656", "#565656", "#565656"],
-        },
-        icons: {
-            filled: false,
-            useGradient: true,
-        },
-        title: {
-            textAlign: "center",
-            fontSize: 20,
-            color: "#FAFAFA",
-            bold: true,
-            text: "Title",
-            offsetY: 6,
-            subtitle: {
-                fontSize: 14,
-                color: "#CCCCCC",
-                bold: false,
-                text: "Subtitle",
-                offsetY: 12,
-            },
-        },
-        rating: {
-            show: true,
-            fontSize: 28,
-            bold: true,
-            roundingValue: 1,
-            position: "bottom",
-            offsetY: 0,
-            offsetX: 0,
-        },
-        tooltip: {
-            show: true,
-            fontSize: 14,
-            offsetY: 0,
-            color: "#CCCCCC",
-            bold: true,
-            backgroundColor: "#1A1A1A",
-            borderColor: "#e1e5e8",
-            borderRadius: 4,
-            boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
-        },
-    },
+        }),
+    set: configState.set,
 });
 
 const dataset = ref({
@@ -179,17 +138,10 @@ const dataset = ref({
 
 const mode = ref("active");
 
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
-    mutableConfig.value.readonly = mode.value === "readonly";
-    mutableConfigDarkMode.value.readonly = mode.value === "readonly";
+    configState.reset();
+    config.value.readonly = mode.value === "readonly";
+
     forceChartUpdate();
 }
 
@@ -219,8 +171,8 @@ function fixChart() {
 }
 
 function setReadonly(isTrue) {
-    mutableConfig.value.readonly = isTrue;
-    mutableConfigDarkMode.value.readonly = isTrue;
+    config.value.readonly = isTrue;
+
     key.value += 1;
 }
 
@@ -283,9 +235,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
-                @copyToClipboard="
-                    copyToClipboard(isDarkMode ? darkModeConfig : config)
-                "
+                @copyToClipboard="copyToClipboard(config)"
             >
                 <BaseCard>
                     <div class="flex flex-row gap-6 justify-center my-4">
@@ -325,9 +275,7 @@ const { configCode, showAllConfig } = useConfigCode();
                     <VueUiSmiley
                         ref="rating"
                         :dataset="dataset"
-                        :config="
-                            isDarkMode ? mutableConfigDarkMode : mutableConfig
-                        "
+                        :config="config"
                         :key="key"
                         @rate="showRating"
                     />
@@ -379,10 +327,7 @@ const { configCode, showAllConfig } = useConfigCode();
                     configType="VueUiSmileyConfig"
                 />
 
-                <BaseCopyConfig
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                    @reset="resetDefault"
-                />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -395,450 +340,16 @@ const { configCode, showAllConfig } = useConfigCode();
                 </div>
 
                 <code ref="configCode">
-                    <BaseDetails attr="const config:VueUiSmileyConfig" equal>
-                        <BaseAttr inactive name="debug" defaultVal="false," />
-                        <span
-                            >readonly:
-                            {{ mode === "readonly" ? "true" : "false" }},
-                            <span
-                                dir="auto"
-                                class="pl-2 text-gray-600 dark:text-gray-400"
-                            >
-                                <span class="text-xs">{{
-                                    defaultValueTranslation[store.lang]
-                                }}</span>
-                                <span
-                                    dir="ltr"
-                                    class="text-black dark:text-white pl-1"
-                                    >false</span
-                                ></span
-                            ></span
-                        >
-                        <BaseDetails attr="devHints" :level="1">
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                        <BaseDetails attr="style" :level="1">
-                            <span>fontFamily: "inherit",</span>
-                            <BaseAttr
-                                name="itemSize"
-                                attr="style.itemSize"
-                                type="number"
-                                defaultVal="32"
-                                :min="24"
-                                :max="64"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseAttr
-                                name="backgroundColor"
-                                attr="style.backgroundColor"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                                @change="forceChartUpdate()"
-                            />
-                            <BaseDetails
-                                attr="colors"
-                                :level="2"
-                                title="style.colors"
-                            >
-                                <span
-                                    >activeReadonly: [<br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#E20001"</span
-                                        ><BaseColorInfo color="#E20001" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#ff9f03"</span
-                                        ><BaseColorInfo color="#ff9f03" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#ffd004"</span
-                                        ><BaseColorInfo color="#ffd004" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#61c900"</span
-                                        ><BaseColorInfo color="#61c900" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#059f00"</span
-                                        ><BaseColorInfo color="#059f00" /></span
-                                    ><br />
-                                    ],</span
-                                >
-                                <span
-                                    >active: [<br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#E20001"</span
-                                        ><BaseColorInfo color="#E20001" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#ff9f03"</span
-                                        ><BaseColorInfo color="#ff9f03" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#ffd004"</span
-                                        ><BaseColorInfo color="#ffd004" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#61c900"</span
-                                        ><BaseColorInfo color="#61c900" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#059f00"</span
-                                        ><BaseColorInfo color="#059f00" /></span
-                                    ><br />
-                                    ],</span
-                                >
-                                <span
-                                    >inactive: [<br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#e1e5e8"</span
-                                        ><BaseColorInfo color="#e1e5e8" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#e1e5e8"</span
-                                        ><BaseColorInfo color="#e1e5e8" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#e1e5e8"</span
-                                        ><BaseColorInfo color="#e1e5e8" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#e1e5e8"</span
-                                        ><BaseColorInfo color="#e1e5e8" /></span
-                                    ><br />
-                                    <span
-                                        ><span class="ml-4 mr-2">"#e1e5e8"</span
-                                        ><BaseColorInfo color="#e1e5e8" /></span
-                                    ><br />
-                                    ],</span
-                                >
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="icons"
-                                :level="2"
-                                title="style.icons"
-                            >
-                                <BaseAttr
-                                    name="filled"
-                                    attr="style.icons.filled"
-                                    type="checkbox"
-                                    defaultVal="false"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="useGradient"
-                                    attr="style.icons.useGradient"
-                                    type="checkbox"
-                                    defaultVal="false"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="title"
-                                :level="2"
-                                title="style.title"
-                            >
-                                <BaseAttr
-                                    name="textAlign"
-                                    attr="style.title.textAlign"
-                                    type="select"
-                                    defaultVal="center"
-                                    :options="['left', 'center', 'right']"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fontSize"
-                                    attr="style.title.fontSize"
-                                    type="number"
-                                    defaultVal="20"
-                                    :min="8"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="style.title.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="bold"
-                                    attr="style.title.bold"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="text"
-                                    attr="style.title.text"
-                                    type="text"
-                                    defaultVal="''"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="offsetY"
-                                    attr="style.title.offsetY"
-                                    type="number"
-                                    defaultVal="6"
-                                    :min="-100"
-                                    :max="100"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseDetails
-                                    attr="subtitle"
-                                    :level="3"
-                                    title="style.title.subtitle"
-                                >
-                                    <BaseAttr
-                                        name="fontSize"
-                                        attr="style.title.subtitle.fontSize"
-                                        type="number"
-                                        defaultVal="20"
-                                        :min="8"
-                                        :max="42"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="color"
-                                        attr="style.title.subtitle.color"
-                                        type="color"
-                                        defaultVal="#2D353C"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="bold"
-                                        attr="style.title.subtitle.bold"
-                                        type="checkbox"
-                                        defaultVal="true"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="text"
-                                        attr="style.title.subtitle.text"
-                                        type="text"
-                                        defaultVal="''"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                    <BaseAttr
-                                        name="offsetY"
-                                        attr="style.title.subtitle.offsetY"
-                                        type="number"
-                                        defaultVal="6"
-                                        :min="-100"
-                                        :max="100"
-                                        :light="mutableConfig"
-                                        :dark="mutableConfigDarkMode"
-                                    />
-                                </BaseDetails>
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="rating"
-                                :level="2"
-                                title="style.rating"
-                            >
-                                <BaseAttr
-                                    name="show"
-                                    attr="style.rating.show"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fontSize"
-                                    attr="style.rating.fontSize"
-                                    type="number"
-                                    defaultVal="28"
-                                    :min="8"
-                                    :max="100"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="bold"
-                                    attr="style.rating.bold"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="roundingValue"
-                                    attr="style.rating.roundingValue"
-                                    type="number"
-                                    defaultVal="1"
-                                    :min="0"
-                                    :max="6"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="position"
-                                    attr="style.rating.position"
-                                    type="select"
-                                    defaultVal="bottom"
-                                    :options="[
-                                        'top',
-                                        'right',
-                                        'bottom',
-                                        'left',
-                                    ]"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="offsetY"
-                                    attr="style.rating.offsetY"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="-100"
-                                    :max="100"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="offsetX"
-                                    attr="style.rating.offsetX"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="-100"
-                                    :max="100"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <span
-                                    >formatter: null,
-                                    <BaseComment>{{
-                                        translations.formatterLink[store.lang]
-                                    }}</BaseComment></span
-                                >
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="tooltip"
-                                :level="2"
-                                title="style.tooltip"
-                            >
-                                <BaseAttr
-                                    name="show"
-                                    attr="style.tooltip.show"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fontSize"
-                                    attr="style.tooltip.fontSize"
-                                    type="number"
-                                    defaultVal="14"
-                                    :min="8"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="offsetY"
-                                    attr="style.tooltip.offsetY"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="-100"
-                                    :max="100"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="style.tooltip.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="bold"
-                                    attr="style.tooltip.bold"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="backgroundColor"
-                                    attr="style.tooltip.backgroundColor"
-                                    type="color"
-                                    defaultVal="#FFFFFF"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="borderColor"
-                                    attr="style.tooltip.borderColor"
-                                    type="color"
-                                    defaultVal="#E1E5E8"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="borderRadius"
-                                    attr="style.tooltip.borderRadius"
-                                    type="number"
-                                    defaultVal="4"
-                                    :min="0"
-                                    :max="12"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="boxShadow"
-                                    attr="style.tooltip.boxShadow"
-                                    type="text"
-                                    defaultVal="0 6px 12px -6px rgba(0,0,0,0.2)"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="roundingValue"
-                                    attr="style.tooltip.roundingValue"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="0"
-                                    :max="6"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <span
-                                    >formatter: null,
-                                    <BaseComment>{{
-                                        translations.formatterLink[store.lang]
-                                    }}</BaseComment></span
-                                >
-                            </BaseDetails>
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiSmileyConfigFields
+                        :config="config"
+                        :context="{
+                            defaultValueTranslation,
+                            forceChartUpdate,
+                            mode,
+                            store,
+                            translations,
+                        }"
+                    />
                 </code>
             </template>
 

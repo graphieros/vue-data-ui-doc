@@ -1,13 +1,12 @@
 <script setup>
+import { useDocConfigState } from "../../useDocConfigState";
+import VueUiSparkgaugeConfigFields from "./configuration/VueUiSparkgaugeConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import ThemesVueUiSparkgauge from "../themes/ThemesVueUiSparkgauge.vue";
 import { useConfig } from "../../assets/useConfig";
-import BaseDetails from "../BaseDetails.vue";
-import BaseAttr from "../BaseAttr.vue";
-import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseRandomButton from "../BaseRandomButton.vue";
@@ -20,7 +19,6 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import { useRouter } from "vue-router";
-import BaseTabLink from "../BaseTabLink.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
@@ -68,126 +66,68 @@ const dataset3 = ref({
     title: "KPI 3",
 });
 
-const config = ref({
-    devHints: { enable: false },
-    debug: false,
-    loading: false,
-    style: {
-        fontFamily: "inherit",
-        background: "#F3F4F6",
-        height: 84,
-        basePosition: 72,
-        animation: {
-            show: true,
-            speedMs: 150,
-        },
-        title: {
-            show: true,
-            fontSize: 12,
-            position: "bottom",
-            textAlign: "center",
-            bold: false,
-            color: "#1A1A1A",
-        },
-        dataLabel: {
-            fontSize: 36,
-            autoColor: true,
-            color: "#1A1A1A",
-            offsetY: -2,
-            bold: true,
-            rounding: 0,
-            prefix: "",
-            suffix: "",
-        },
-        colors: {
-            min: lang.value === "zh" ? "#00FF00" : "#FF0000",
-            max: lang.value === "zh" ? "#FF0000" : "#00FF00",
-            showGradient: true,
-        },
-        track: {
-            autoColor: true,
-            color: "#5f8bee",
-            strokeLinecap: "round",
-        },
-        gutter: {
-            color: "#E1E5E8",
-            strokeLinecap: "round",
-        },
-    },
+const configState = useDocConfigState(isDarkMode);
+const config = computed({
+    get: () =>
+        configState.get({
+            devHints: { enable: false },
+            debug: false,
+            loading: false,
+            style: {
+                fontFamily: "inherit",
+                background: isDarkMode.value ? "#1A1A1A00" : "#F3F4F6",
+                height: 84,
+                basePosition: 72,
+                animation: { show: true, speedMs: 150 },
+                title: {
+                    show: true,
+                    fontSize: 12,
+                    position: "bottom",
+                    textAlign: "center",
+                    bold: false,
+                    color: isDarkMode.value ? "#8A8A8A" : "#1A1A1A",
+                },
+                dataLabel: {
+                    fontSize: 36,
+                    autoColor: true,
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    offsetY: -2,
+                    bold: true,
+                    rounding: 0,
+                    prefix: "",
+                    suffix: "",
+                },
+                colors: {
+                    min: lang.value === "zh" ? "#00FF00" : "#FF0000",
+                    max: lang.value === "zh" ? "#FF0000" : "#00FF00",
+                    showGradient: true,
+                },
+                track: {
+                    autoColor: true,
+                    color: "#5f8bee",
+                    strokeLinecap: "round",
+                },
+                gutter: {
+                    color: isDarkMode.value ? "#3A3A3A" : "#E1E5E8",
+                    strokeLinecap: "round",
+                },
+            },
+        }),
+    set: configState.set,
 });
-
-const darkModeConfig = ref({
-    devHints: { enable: false },
-    debug: false,
-    loading: false,
-    style: {
-        fontFamily: "inherit",
-        background: "#1A1A1A00",
-        height: 84,
-        basePosition: 72,
-        animation: {
-            show: true,
-            speedMs: 150,
-        },
-        title: {
-            show: true,
-            fontSize: 12,
-            position: "bottom",
-            textAlign: "center",
-            bold: false,
-            color: "#8A8A8A",
-        },
-        dataLabel: {
-            fontSize: 36,
-            autoColor: true,
-            color: "#CCCCCC",
-            offsetY: -2,
-            bold: true,
-            rounding: 0,
-            prefix: "",
-            suffix: "",
-        },
-        colors: {
-            min: lang.value === "zh" ? "#00FF00" : "#FF0000",
-            max: lang.value === "zh" ? "#FF0000" : "#00FF00",
-            showGradient: true,
-        },
-        track: {
-            autoColor: true,
-            color: "#5f8bee",
-            strokeLinecap: "round",
-        },
-        gutter: {
-            color: "#3A3A3A",
-            strokeLinecap: "round",
-        },
-    },
-});
-
-const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableConfigDarkMode = ref(
-    JSON.parse(JSON.stringify(darkModeConfig.value)),
-);
 
 watch(
     () => lang.value,
     (v) => {
-        mutableConfig.value.style.colors.min =
-            v === "zh" ? "#00FF00" : "#FF0000";
-        mutableConfig.value.style.colors.max =
-            v === "zh" ? "#FF0000" : "#00FF00";
-        mutableConfigDarkMode.value.style.colors.min =
-            v === "zh" ? "#00FF00" : "#FF0000";
-        mutableConfigDarkMode.value.style.colors.max =
-            v === "zh" ? "#FF0000" : "#00FF00";
+        config.value.style.colors.min = v === "zh" ? "#00FF00" : "#FF0000";
+        config.value.style.colors.max = v === "zh" ? "#FF0000" : "#00FF00";
+        config.value.style.colors.min = v === "zh" ? "#00FF00" : "#FF0000";
+        config.value.style.colors.max = v === "zh" ? "#FF0000" : "#00FF00";
     },
 );
 
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(
-        JSON.stringify(darkModeConfig.value),
-    );
+    configState.reset();
 }
 
 function forceChartUpdate() {
@@ -278,18 +218,12 @@ function goToPage(route) {
                     :disabled="!isFixed || isMobile"
                     @fixChart="fixChart"
                     @resetDefault="resetDefault"
-                    @copyToClipboard="
-                        copyToClipboard(isDarkMode ? darkModeConfig : config)
-                    "
+                    @copyToClipboard="copyToClipboard(config)"
                 >
                     <BaseCard>
                         <VueUiSparkgauge
                             :dataset="dataset3"
-                            :config="
-                                isDarkMode
-                                    ? mutableConfigDarkMode
-                                    : mutableConfig
-                            "
+                            :config="config"
                             :key="`gauge_3_${key}`"
                         />
                     </BaseCard>
@@ -330,10 +264,7 @@ function goToPage(route) {
                     configType="VueUiSparkgaugeConfig"
                 />
 
-                <BaseCopyConfig
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                    @reset="resetDefault"
-                />
+                <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
                     TS type:
@@ -346,329 +277,15 @@ function goToPage(route) {
                 </div>
 
                 <code ref="configCode">
-                    <BaseDetails
-                        attr="const config: VueUiSparkgaugeConfig"
-                        equal
-                    >
-                        <BaseDetails attr="devHints" :level="1">
-                            <BaseAttr
-                                name="enable"
-                                attr="devHints.enable"
-                                type="checkbox"
-                                defaultVal="false"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                        </BaseDetails>
-                        <BaseAttr inactive name="debug" defaultVal="false" />
-                        <BaseAttr
-                            name="loading"
-                            attr="loading"
-                            type="checkbox"
-                            defaultVal="false"
-                            :light="mutableConfig"
-                            :dark="mutableConfigDarkMode"
-                        />
-                        <BaseAttr
-                            inactive
-                            name="theme"
-                            defaultVal="''"
-                            comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"
-                        />
-                        <BaseDetails attr="style" level="1">
-                            <BaseAttr
-                                inactive
-                                name="fontFamily"
-                                defaultVal="'inherit'"
-                            />
-                            <BaseAttr
-                                name="background"
-                                attr="style.background"
-                                type="color"
-                                defaultVal="#FFFFFF"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="height"
-                                attr="style.height"
-                                type="number"
-                                defaultVal="84"
-                                :min="84"
-                                :max="150"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseAttr
-                                name="basePosition"
-                                attr="style.basePosition"
-                                type="number"
-                                defaultVal="72"
-                                :min="72"
-                                :max="150"
-                                :light="mutableConfig"
-                                :dark="mutableConfigDarkMode"
-                            />
-                            <BaseDetails
-                                attr="animation"
-                                :level="2"
-                                title="style.animation"
-                            >
-                                <BaseAttr
-                                    name="show"
-                                    attr="style.animation.show"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                                <BaseAttr
-                                    name="speedMs"
-                                    attr="style.animation.speedMs"
-                                    type="number"
-                                    defaultVal="150"
-                                    :min="10"
-                                    :max="500"
-                                    :step="10"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                    @change="forceChartUpdate()"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="colors"
-                                :level="2"
-                                title="style.colors"
-                            >
-                                <BaseAttr
-                                    name="min"
-                                    attr="style.colors.min"
-                                    type="color"
-                                    defaultVal="#DC3912"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="max"
-                                    attr="style.colors.max"
-                                    type="color"
-                                    defaultVal="#2CA02C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="showGradient"
-                                    attr="style.colors.showGradient"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="dataLabel"
-                                :level="2"
-                                title="style.dataLabel"
-                            >
-                                <BaseAttr
-                                    name="fontSize"
-                                    attr="style.dataLabel.fontSize"
-                                    type="number"
-                                    defaultVal="20"
-                                    :min="8"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="autoColor"
-                                    attr="style.dataLabel.autoColor"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="style.dataLabel.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="offsetY"
-                                    attr="style.dataLabel.offsetY"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="-100"
-                                    :max="100"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="bold"
-                                    attr="style.dataLabel.bold"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="rounding"
-                                    attr="style.dataLabel.rounding"
-                                    type="number"
-                                    defaultVal="0"
-                                    :min="0"
-                                    :max="6"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="prefix"
-                                    attr="style.dataLabel.prefix"
-                                    type="text"
-                                    defaultVal="''"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="suffix"
-                                    attr="style.dataLabel.suffix"
-                                    type="text"
-                                    defaultVal="''"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <div
-                                    class="flex flex-row gap-2 place-items-center"
-                                >
-                                    <BaseAttr
-                                        inactive
-                                        name="formatter"
-                                        defaultVal="null"
-                                        :comment="
-                                            translations.formatterLink[
-                                                store.lang
-                                            ]
-                                        "
-                                    />
-                                    <div class="min-w-[200px]">
-                                        <BaseTabLink
-                                            :action="
-                                                () =>
-                                                    goToPage(
-                                                        '/customization#formatter',
-                                                    )
-                                            "
-                                            icon="cursor"
-                                        >
-                                            Go to page
-                                        </BaseTabLink>
-                                    </div>
-                                </div>
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="gutter"
-                                :level="2"
-                                title="style.gutter"
-                            >
-                                <BaseAttr
-                                    name="color"
-                                    attr="style.gutter.color"
-                                    type="color"
-                                    defaultVal="#E1E5E8"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="strokeLinecap"
-                                    attr="style.gutter.strokeLinecap"
-                                    type="select"
-                                    defaultVal="round"
-                                    :options="['round', 'square', 'butt']"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="title"
-                                :level="2"
-                                title="style.title"
-                            >
-                                <BaseAttr
-                                    name="show"
-                                    attr="style.title.show"
-                                    type="checkbox"
-                                    defaultVal="true"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="fontSize"
-                                    attr="style.title.fontSize"
-                                    type="number"
-                                    defaultVal="12"
-                                    :min="8"
-                                    :max="42"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="position"
-                                    attr="style.title.position"
-                                    type="select"
-                                    defaultVal="top"
-                                    :options="['top', 'bottom']"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="textAlign"
-                                    attr="style.title.textAlign"
-                                    type="select"
-                                    defaultVal="center"
-                                    :options="['left', 'center', 'right']"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="bold"
-                                    attr="style.title.bold"
-                                    type="checkbox"
-                                    defaultVal="false"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                                <BaseAttr
-                                    name="color"
-                                    attr="style.title.color"
-                                    type="color"
-                                    defaultVal="#2D353C"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                            <BaseDetails
-                                attr="track"
-                                :level="2"
-                                title="style.track"
-                            >
-                                <!-- <BaseAttr name="autoColor" attr="style.track.autoColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                <BaseAttr name="color" attr="style.track.color" type="color" defaultVal="#5F88EE" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/> -->
-                                <BaseAttr
-                                    name="strokeLinecap"
-                                    attr="style.track.strokeLinecap"
-                                    type="select"
-                                    defaultVal="round"
-                                    :options="['round', 'square', 'butt']"
-                                    :light="mutableConfig"
-                                    :dark="mutableConfigDarkMode"
-                                />
-                            </BaseDetails>
-                        </BaseDetails>
-                    </BaseDetails>
+                    <VueUiSparkgaugeConfigFields
+                        :config="config"
+                        :context="{
+                            forceChartUpdate,
+                            goToPage,
+                            store,
+                            translations,
+                        }"
+                    />
                 </code>
 
                 <div class="overflow-w-auto"></div>
