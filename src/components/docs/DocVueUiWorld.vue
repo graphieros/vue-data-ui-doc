@@ -532,7 +532,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
             showPatterns
             schema="vue_ui_world"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 You can also use this component without a dataset, it will just
                 show the naked map.
                 <div class="w-full overflow-x-auto">
@@ -552,7 +552,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 />
             </template>
 
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiWorld"
                     configType="VueUiWorldConfig"
@@ -582,7 +582,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiWorld"
                     :names="['selectLegend', 'selectDatapoint', 'copyAlt']"
@@ -667,7 +667,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiWorld"
                     :types="[
@@ -692,7 +692,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
             </template>
 
             <!-- TOOLTIP -->
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -714,7 +714,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 />
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueDataUi
                     component="VueUiWorld"
                     :dataset="dataset"
@@ -732,7 +732,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 </VueDataUi>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

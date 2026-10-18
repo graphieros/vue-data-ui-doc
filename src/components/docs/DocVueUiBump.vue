@@ -428,7 +428,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
             schema="vue_ui_bump"
             signInfo="both"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -448,7 +448,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint component="VueUiBump" configType="VueUiBumpConfig" />
 
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
@@ -474,7 +474,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits component="VueUiBump" :names="['copyAlt']" />
                 <ExposedMethods
                     component="VueUiBump"
@@ -489,7 +489,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiBump"
                     :types="[
@@ -511,11 +511,11 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiBump />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueDataUi
@@ -531,13 +531,13 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                 </ResponsiveUnit>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="style.chart.layout.timeLabels.datetimeFormatter"
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

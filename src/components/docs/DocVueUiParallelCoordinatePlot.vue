@@ -476,7 +476,7 @@ const customFormatCode =
             schema="vue_ui_parallel_coordinate_plot"
             signInfo="both"
         >
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -497,7 +497,7 @@ const customFormatCode =
                     />
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiParallelCoordinatePlot"
                     configType="VueUiParallelCoordinatePlotConfig"
@@ -532,7 +532,7 @@ const customFormatCode =
             </template>
 
             <!-- EMITS -->
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiParallelCoordinatePlot"
                     :names="['selectLegend', 'selectDatapoint', 'copyAlt']"
@@ -634,7 +634,7 @@ const customFormatCode =
             </template>
 
             <!-- SLOTS -->
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiParallelCoordinatePlot"
                     :types="[
@@ -661,7 +661,7 @@ const customFormatCode =
             </template>
 
             <!-- TOOLTIP -->
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -684,11 +684,11 @@ const customFormatCode =
             </template>
 
             <!-- THEMES -->
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiParallelCoordinatePlot />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueDataUi
@@ -704,7 +704,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

@@ -512,7 +512,7 @@ const customFormatCode =
             schema="vue_ui_donut"
             signInfo="positiveOrNegativeOnly"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -533,7 +533,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiDonut"
                     configType="VueUiDonutConfig"
@@ -563,7 +563,7 @@ const customFormatCode =
                 </code>
             </template>
 
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiDonut"
                     :names="['selectDatapoint', 'selectLegend', 'copyAlt']"
@@ -651,7 +651,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiDonut"
                     :types="[
@@ -679,7 +679,7 @@ const customFormatCode =
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -701,15 +701,15 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <UcDonut />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiDonut />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueDataUi
@@ -725,7 +725,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueDataUi
                     component="VueUiDonut"
                     :dataset="mutableDataset"
@@ -757,7 +757,7 @@ const customFormatCode =
                 </VueDataUi>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -773,7 +773,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab12>
+            <template #ssr>
                 <SsrGeneration component="VueUiDonut" />
             </template>
         </Box>

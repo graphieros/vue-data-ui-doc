@@ -319,10 +319,10 @@ function fixChart() {
         </div>
 
         <Box :activeTab="1">
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">

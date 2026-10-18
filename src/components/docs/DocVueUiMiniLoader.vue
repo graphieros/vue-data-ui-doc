@@ -140,10 +140,10 @@ function fixChart() {
         </div>
 
         <Box :activeTab="1">
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
-            <template #tab1>
+            <template #configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">

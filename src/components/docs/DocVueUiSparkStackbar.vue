@@ -278,7 +278,7 @@ function goToPage(route) {
             schema="vue_ui_sparkstackbar"
             signInfo="positiveOrNegativeOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -303,7 +303,7 @@ function goToPage(route) {
                     </div>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiSparkStackbar"
                     configType="VueUiSparkStackbarConfig"
@@ -333,7 +333,7 @@ function goToPage(route) {
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiSparkStackbar"
                     :names="['selectDatapoint', 'selectLegend']"
@@ -341,7 +341,7 @@ function goToPage(route) {
                 <ExposedMethods component="VueUiSparkStackbar" showHideSeries />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiSparkStackbar"
                     :types="[
@@ -360,7 +360,7 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiSparkStackbar />
             </template>
         </Box>

@@ -383,7 +383,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
             showResponsive
             schema="vue_ui_geo"
         >
-            <template #tab0>
+            <template #dataset>
                 The component also works without dataset.
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
@@ -406,7 +406,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint component="VueUiGeo" configType="VueUiGeoConfig" />
 
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
@@ -426,7 +426,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits component="VueUiGeo" :names="['copyAlt']" />
 
                 <ExposedMethods
@@ -447,7 +447,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiGeo"
                     :types="[
@@ -471,11 +471,11 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiGeo />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueUiGeo
@@ -489,7 +489,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

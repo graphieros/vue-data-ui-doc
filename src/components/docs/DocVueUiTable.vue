@@ -637,7 +637,7 @@ const { configCode, showAllConfig } = useConfigCode();
         <Rater itemId="vue_ui_table" />
 
         <Box showEmits :showDatetimeFormatter="true">
-            <template #tab2>
+            <template #events-and-methods>
                 <p class="mb-4">{{ pageEventDescription[store.lang] }}</p>
                 <CodeParser
                     language="javascript"
@@ -651,7 +651,7 @@ const { configCode, showAllConfig } = useConfigCode();
                     :content="pageChangeCodeTemplate"
                 />
             </template>
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
                     TS type:
@@ -856,7 +856,7 @@ const { configCode, showAllConfig } = useConfigCode();
     </pre>
                 </div>
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
@@ -873,7 +873,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 </code>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="style.chart.layout.datetimeFormatter"
                 >

@@ -593,7 +593,7 @@ const datapointSlot = ref(`
             schema="vue_ui_quadrant"
             signInfo="both"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -614,7 +614,7 @@ const datapointSlot = ref(`
                 </div>
             </template>
 
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiQuadrant"
                     configType="VueUiQuadrantConfig"
@@ -648,7 +648,7 @@ const datapointSlot = ref(`
                 </div>
             </template>
 
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiQuadrant"
                     :names="[
@@ -741,7 +741,7 @@ const datapointSlot = ref(`
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiQuadrant"
                     :types="[
@@ -804,7 +804,7 @@ const datapointSlot = ref(`
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -826,11 +826,11 @@ const datapointSlot = ref(`
                 />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiQuadrant />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit width="300px">
                     <template #chart>
                         <VueUiQuadrant
@@ -845,7 +845,7 @@ const datapointSlot = ref(`
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

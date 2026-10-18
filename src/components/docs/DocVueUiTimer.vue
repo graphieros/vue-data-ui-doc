@@ -217,10 +217,10 @@ const { configCode, showAllConfig } = useConfigCode();
         <Rater itemId="vue_ui_timer" />
 
         <Box showEmits showSlots :activeTab="1">
-            <template #tab0>{{
+            <template #dataset>{{
                 translations.docs.comments.noDataset[store.lang]
             }}</template>
-            <template #tab1>
+            <template #configuration>
                 <div class="w-full overflow-x-auto">
                     <BaseCopyConfig :config="config" @reset="resetDefault" />
 
@@ -243,7 +243,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 </div>
             </template>
             <!-- EMITS -->
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiTimer"
                     :names="['start', 'pause', 'reset', 'restart', 'lap']"
@@ -254,7 +254,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 />
             </template>
             <!-- SLOTS -->
-            <template #tab3>
+            <template #slots>
                 <BaseSlotsImplementationLink
                     link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-timer.vue"
                 />

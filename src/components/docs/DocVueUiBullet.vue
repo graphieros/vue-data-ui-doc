@@ -317,7 +317,7 @@ function goToPage(route) {
             signInfo="both"
             schema="vue_ui_bullet"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -338,7 +338,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiBullet"
                     configType="VueUiBulletConfig"
@@ -369,7 +369,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits component="VueUiBullet" :names="['copyAlt']" />
                 <ExposedMethods
                     component="VueUiBullet"
@@ -445,7 +445,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiBullet"
                     :types="[
@@ -466,11 +466,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiBullet />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="248px" minHeight="150px">
                     <template #chart>
                         <VueDataUi
@@ -485,11 +485,11 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <UcBullet />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="['annotator', 'fullscreen', 'img', 'pdf', 'svg']"
                 />

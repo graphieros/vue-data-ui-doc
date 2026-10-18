@@ -563,7 +563,7 @@ const customFormatCode =
             schema="vue_ui_candlestick"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
@@ -601,7 +601,7 @@ const customFormatCode =
                     />
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiCandlestick"
                     configType="VueUiCandlestickConfig"
@@ -631,7 +631,7 @@ const customFormatCode =
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiCandlestick"
                     :names="['selectX', 'copyAlt']"
@@ -649,7 +649,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiCandlestick"
                     :types="[
@@ -725,7 +725,7 @@ const customFormatCode =
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -747,11 +747,11 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiCandlestick />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiCandlestick
@@ -766,7 +766,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -781,7 +781,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab14>
+            <template #zoom-state>
                 <BaseZoomState component="VueUiCandlestick">
                     <ZoomStateVueUiCandlestick />
                 </BaseZoomState>

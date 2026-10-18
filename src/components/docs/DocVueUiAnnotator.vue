@@ -304,7 +304,7 @@ const exampleTemplate = ref(`<VueUiAnnotator
         </div>
 
         <Box showEmits showSlots>
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiAnnotator"
                     :types="[
@@ -338,7 +338,7 @@ const exampleTemplate = ref(`<VueUiAnnotator
                 />
             </template>
 
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}<br />
                 {{
                     translations.docs.comments.annotator.datastructure[
@@ -444,7 +444,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
 </pre>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
@@ -464,7 +464,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <div>
                     <code><b>@toggleOpenState</b></code>
                 </div>

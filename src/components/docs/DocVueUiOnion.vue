@@ -480,7 +480,7 @@ const customFormatCode =
             schema="vue_ui_onion"
             signInfo="positiveOnly"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -500,7 +500,7 @@ const customFormatCode =
                     />
                 </div>
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiOnion"
                     configType="VueUiOnionConfig"
@@ -532,7 +532,7 @@ const customFormatCode =
 
                 <div class="overflow-w-auto"></div>
             </template>
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiOnion"
                     :names="['selectLegend', 'copyAlt']"
@@ -619,7 +619,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiOnion"
                     :types="[
@@ -644,7 +644,7 @@ const customFormatCode =
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -666,11 +666,11 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiOnion />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit width="300px">
                     <template #chart>
                         <VueUiOnion
@@ -685,7 +685,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

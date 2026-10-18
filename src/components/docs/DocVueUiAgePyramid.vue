@@ -435,7 +435,7 @@ const customFormatCode =
             schema="vue_ui_age_pyramid"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <CodeParser
                     language="typescript"
                     @copy="store.copy()"
@@ -468,7 +468,7 @@ const customFormatCode =
 </pre>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiAgePyramid"
                     configType="VueUiAgePyramidConfig"
@@ -499,7 +499,7 @@ const customFormatCode =
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiAgePyramid"
                     :names="['copyAlt']"
@@ -516,7 +516,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiAgePyramid"
                     :types="[
@@ -540,7 +540,7 @@ const customFormatCode =
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -562,11 +562,11 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiAgePyramid />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiAgePyramid
@@ -581,7 +581,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

@@ -823,7 +823,7 @@ function goToPage(route) {
             schema="vue_ui_ridgeline"
             signInfo="both"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -843,7 +843,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiRidgeline"
                     configType="VueUiRidgelineConfig"
@@ -874,7 +874,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiRidgeline"
                     :names="[
@@ -898,7 +898,7 @@ function goToPage(route) {
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiRidgeline"
                     :types="[
@@ -922,11 +922,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiRidgeline />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueDataUi
@@ -942,7 +942,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueDataUi
                     component="VueUiRidgeline"
                     :dataset="dataset"
@@ -962,13 +962,13 @@ function goToPage(route) {
                 </VueDataUi>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="style.chart.xAxis.labels.datetimeFormatter"
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

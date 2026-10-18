@@ -448,7 +448,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
             schema="vue_ui_flow"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <CodeParser
                     language="typescript"
                     @copy="store.copy()"
@@ -468,7 +468,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
             </template>
 
             <!-- CONFIG -->
-            <template #tab1>
+            <template #configuration>
                 <DebugHint component="VueUiFlow" configType="VueUiFlowConfig" />
 
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
@@ -502,7 +502,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits component="VueUiFlow" :names="['copyAlt']" />
                 <ExposedMethods
                     component="VueUiFlow"
@@ -585,7 +585,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
             </template>
 
             <!-- SLOTS -->
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiFlow"
                     :types="[
@@ -610,7 +610,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -633,11 +633,11 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
             </template>
 
             <!-- THEMES -->
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiFlow />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="400px" minHeight="300px">
                     <template #chart>
                         <VueDataUi
@@ -652,7 +652,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

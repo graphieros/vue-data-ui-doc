@@ -607,7 +607,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
         <BaseMigrationInfo debug />
 
         <Box ref="box" showEmits showSlots showTooltip showCallbacks>
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -629,7 +629,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                     </div>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiMolecule"
                     configType="VueUiMoleculeConfig"
@@ -659,7 +659,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiMolecule"
                     :names="['selectNode', 'copyAlt']"
@@ -744,7 +744,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
     </pre>
                 </div>
             </template>
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiMolecule"
                     :types="[
@@ -766,7 +766,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -788,7 +788,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

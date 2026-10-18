@@ -162,7 +162,7 @@ function fixChart() {
         <Rater itemId="vue_ui_kpi" />
 
         <Box showSlots schema="vue_ui_kpi">
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="my-4">
                     TS type: <code class="text-app-green">number</code>
@@ -177,7 +177,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint component="VueUiKpi" configType="VueUiKpiConfig" />
 
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
@@ -199,7 +199,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                 </code>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiKpi"
                     :types="[

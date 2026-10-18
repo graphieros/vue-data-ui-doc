@@ -273,7 +273,7 @@ const { configCode, showAllConfig } = useConfigCode();
         </div>
 
         <Box showEmits showSlots showUseCases>
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -307,7 +307,7 @@ const { configCode, showAllConfig } = useConfigCode();
                     />
                 </div>
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiRating"
                     configType="VueUiRatingConfig"
@@ -339,7 +339,7 @@ const { configCode, showAllConfig } = useConfigCode();
                     />
                 </code>
             </template>
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <div><code>@rate</code></div>
                 <div class="text-gray-400 pl-5 mb-6">
                     {{ translations.docs.emits.rating.rate[store.lang] }}
@@ -418,7 +418,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiRating"
                     :types="['layer-under', 'layer-above']"
@@ -431,7 +431,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <UcRating />
             </template>
         </Box>

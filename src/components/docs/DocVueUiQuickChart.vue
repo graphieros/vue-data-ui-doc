@@ -1003,7 +1003,7 @@ const customFormatCode =
             showZoomState
             schema="vue_ui_quick_chart"
         >
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
                     TS type:
@@ -1043,7 +1043,7 @@ const customFormatCode =
                     </div>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiQuickChart"
                     configType="VueUiQuickChartConfig"
@@ -1079,14 +1079,14 @@ const customFormatCode =
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiQuickChart"
                     :names="['selectDatapoint', 'selectLegend', 'copyAlt']"
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiQuickChart"
                     :types="[
@@ -1109,7 +1109,7 @@ const customFormatCode =
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -1131,11 +1131,11 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiQuickChart />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiQuickChart
@@ -1151,11 +1151,11 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc path="datetimeFormatter" />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -1169,7 +1169,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab14>
+            <template #zoom-state>
                 <BaseZoomState component="VueUiQuickChart">
                     <ZoomStateVueUiQuickChart />
                 </BaseZoomState>

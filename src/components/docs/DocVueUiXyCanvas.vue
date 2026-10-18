@@ -568,7 +568,7 @@ const customFormatCode =
             schema="vue_ui_xy_canvas"
             signInfo="both"
         >
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -591,7 +591,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <div class="w-full overflow-x-auto">
                     <DebugHint
                         component="VueUiXyCanvas"
@@ -626,7 +626,7 @@ const customFormatCode =
             </template>
 
             <!-- EMITS -->
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiXyCanvas"
                     :names="['selectLegend', 'selectX', 'copyAlt']"
@@ -715,7 +715,7 @@ const customFormatCode =
             </template>
 
             <!-- SLOTS -->
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiXyCanvas"
                     :types="[
@@ -740,7 +740,7 @@ const customFormatCode =
             </template>
 
             <!-- TOOLTIP -->
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -763,16 +763,16 @@ const customFormatCode =
             </template>
 
             USE CASES
-            <template #tab5>
+            <template #use-cases>
                 <ucXyCanvas />
             </template>
 
             <!-- THEMES -->
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiXyCanvas />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueDataUi
@@ -792,13 +792,13 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="style.chart.grid.x.timeLabels.datetimeFormatter"
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -815,7 +815,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab14>
+            <template #zoom-state>
                 <BaseZoomState component="VueUiXyCanvas">
                     <ZoomStateVueUiXyCanvas />
                 </BaseZoomState>

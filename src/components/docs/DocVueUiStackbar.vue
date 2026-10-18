@@ -976,7 +976,7 @@ const waterfallExplain = ref({
             schema="vue_ui_stackbar"
             signInfo="both"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -1006,7 +1006,7 @@ const waterfallExplain = ref({
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiStackbar"
                     configType="VueUiStackbarConfig"
@@ -1039,7 +1039,7 @@ const waterfallExplain = ref({
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiStackbar"
                     :names="[
@@ -1131,7 +1131,7 @@ const waterfallExplain = ref({
     </pre>
                 </div>
             </template>
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiStackbar"
                     :types="[
@@ -1191,7 +1191,7 @@ const waterfallExplain = ref({
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -1212,10 +1212,10 @@ const waterfallExplain = ref({
                     content=".vue-data-ui-custom-tooltip{ }"
                 />
             </template>
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiStackbar :is-waterfall="isWaterfall" />
             </template>
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueDataUi
@@ -1231,7 +1231,7 @@ const waterfallExplain = ref({
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueUiStackbar :dataset="dataset" :config="config" :key="key">
                     <template #pattern="{ seriesIndex, patternId }">
                         <VueUiPattern
@@ -1264,13 +1264,13 @@ const waterfallExplain = ref({
                 </VueUiStackbar>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="style.chart.grid.x.timeLabels.datetimeFormatter"
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -1286,7 +1286,7 @@ const waterfallExplain = ref({
                 />
             </template>
 
-            <template #tab14>
+            <template #zoom-state>
                 <BaseZoomState component="VueUiStackbar">
                     <ZoomStateVueUiStackbar />
                 </BaseZoomState>

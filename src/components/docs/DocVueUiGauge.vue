@@ -408,7 +408,7 @@ function goToPage(route) {
             :showPatterns="false"
             schema="vue_ui_gauge"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -435,7 +435,7 @@ function goToPage(route) {
                     />
                 </div>
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiGauge"
                     configType="VueUiGaugeConfig"
@@ -466,7 +466,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits component="VueUiGauge" :names="['copyAlt']" />
                 <ExposedMethods
                     component="VueUiGauge"
@@ -475,7 +475,7 @@ function goToPage(route) {
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiGauge"
                     :types="[
@@ -497,11 +497,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiGauge />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiGauge
@@ -516,7 +516,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueUiGauge
                     :dataset="{ ...dataset2, value: 42 }"
                     :config="
@@ -641,7 +641,7 @@ function goToPage(route) {
                 </VueUiGauge>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="['annotator', 'fullscreen', 'img', 'pdf', 'svg']"
                 />

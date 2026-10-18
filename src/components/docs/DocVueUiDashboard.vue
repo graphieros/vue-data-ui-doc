@@ -257,7 +257,7 @@ const { configCode, showAllConfig } = useConfigCode();
         </Suspense>
 
         <Box showEmits showSlots>
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
                     TS type:
@@ -317,7 +317,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
 </pre>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
@@ -337,7 +337,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <div>
                     <code><b>@change</b></code>
                 </div>
@@ -379,7 +379,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
 </code>
 </pre>
             </template>
-            <template #tab3>
+            <template #slots>
                 <BaseSlotsImplementationLink
                     link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-dashboard.vue"
                 />

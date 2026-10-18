@@ -483,7 +483,7 @@ const customFormatCode =
         schema="vue_ui_circle_pack"
         signInfo="positiveOnly"
     >
-        <template #tab0>
+        <template #dataset>
             <div class="w-full overflow-x-auto">
                 <CodeParser
                     language="typescript"
@@ -504,7 +504,7 @@ const customFormatCode =
             </div>
         </template>
 
-        <template #tab1>
+        <template #configuration>
             <DebugHint
                 component="VueUiCirclePack"
                 configType="VueUiCirclePackConfig"
@@ -535,7 +535,7 @@ const customFormatCode =
             </code>
         </template>
 
-        <template #tab2>
+        <template #events-and-methods>
             <ComponentEmits
                 component="VueUiCirclePack"
                 :names="['selectDatapoint', 'copyAlt']"
@@ -621,7 +621,7 @@ const customFormatCode =
             </div>
         </template>
 
-        <template #tab3>
+        <template #slots>
             <BaseSlotDocumenter
                 componentName="VueUiCirclePack"
                 :types="[
@@ -648,7 +648,7 @@ const customFormatCode =
             </BaseSlotDocumenter>
         </template>
 
-        <template #tab4>
+        <template #custom-tooltip>
             <h3 class="mb-4">{{ translations.customFormat[store.lang] }}</h3>
             <code class="text-gray-500 dark:text-[#8A8A8A]"
                 >config.style.chart.tooltip.customFormat</code
@@ -666,11 +666,11 @@ const customFormatCode =
             />
         </template>
 
-        <template #tab6>
+        <template #themes>
             <ThemesVueUiCirclePack :dataset="dataset" />
         </template>
 
-        <template #tab7>
+        <template #responsive>
             <ResponsiveUnit height="500px">
                 <template #chart>
                     <VueDataUi
@@ -682,7 +682,7 @@ const customFormatCode =
             </ResponsiveUnit>
         </template>
 
-        <template #tab8>
+        <template #patterns>
             <VueDataUi
                 component="VueUiCirclePack"
                 :dataset="mutableDataset"
@@ -701,7 +701,7 @@ const customFormatCode =
             </VueDataUi>
         </template>
 
-        <template #tab11>
+        <template #callbacks>
             <UserOptionCallbacks
                 :items="[
                     'annotator',

@@ -659,7 +659,7 @@ const customFormatCode =
             schema="vue_ui_scatter"
             signInfo="both"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -679,7 +679,7 @@ const customFormatCode =
                     />
                 </div>
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiScatter"
                     configType="VueUiScatterConfig"
@@ -724,7 +724,7 @@ const customFormatCode =
                     />
                 </code>
             </template>
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiScatter"
                     :names="['selectLegend', 'copyAlt']"
@@ -811,7 +811,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiScatter"
                     :types="[
@@ -886,7 +886,7 @@ const customFormatCode =
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -908,15 +908,15 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <uc-scatter />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiScatter />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiScatter
@@ -931,7 +931,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

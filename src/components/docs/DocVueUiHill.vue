@@ -501,7 +501,7 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
             schema="vue_ui_hill"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -522,7 +522,7 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint component="VueUiHill" configType="VueUiHillConfig" />
 
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
@@ -543,7 +543,7 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiHill"
                     getImage
@@ -572,7 +572,7 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiHill"
                     :withSvgContent="false"
@@ -594,11 +594,11 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiHill />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

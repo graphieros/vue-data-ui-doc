@@ -401,7 +401,7 @@ function goToPage(route) {
             schema="vue_ui_dumbbell"
             signInfo="both"
         >
-            <template #tab0>
+            <template #dataset>
                 <div>
                     <div class="w-full overflow-x-auto">
                         <CodeParser
@@ -422,7 +422,7 @@ function goToPage(route) {
                     </div>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiDumbbell"
                     configType="VueUiDumbbellConfig"
@@ -453,7 +453,7 @@ function goToPage(route) {
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiDumbbell"
                     :names="['selectDatapoint', 'copyAlt']"
@@ -537,7 +537,7 @@ function goToPage(route) {
                     />
                 </div>
             </template>
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiDumbbell"
                     :types="[
@@ -559,11 +559,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiDumbbell />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueDataUi
@@ -579,7 +579,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

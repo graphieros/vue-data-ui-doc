@@ -407,7 +407,7 @@ const customFormatCode =
             schema="vue_ui_rings"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -429,7 +429,7 @@ const customFormatCode =
                     </div>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiRings"
                     configType="VueUiRingsConfig"
@@ -460,7 +460,7 @@ const customFormatCode =
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiRings"
                     :names="['selectLegend', 'copyAlt']"
@@ -547,7 +547,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiRings"
                     :types="[
@@ -572,7 +572,7 @@ const customFormatCode =
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -594,11 +594,11 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiRings />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiRings
@@ -613,7 +613,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueUiRings :dataset="dataset" :config="config" :key="key">
                     <template #pattern="{ seriesIndex, patternId }">
                         <VueUiPattern
@@ -660,7 +660,7 @@ const customFormatCode =
                 </VueUiRings>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

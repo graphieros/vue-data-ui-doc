@@ -544,7 +544,7 @@ function goToPage(route) {
             showResponsive
             schema="vue_ui_dag"
         >
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -566,7 +566,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint component="VueUiDag" configType="VueUiDagConfig" />
 
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
@@ -587,7 +587,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiDag"
                     :names="[
@@ -634,7 +634,7 @@ function goToPage(route) {
                 </ExposedMethods>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiDag"
                     :types="[
@@ -660,11 +660,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiDag />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueUiDag
@@ -678,7 +678,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

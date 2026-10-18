@@ -535,7 +535,7 @@ function goToPage(route) {
             schema="vue_ui_donut_evolution"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -556,7 +556,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiDonutEvolution"
                     configType="VueUiDonutEvolutionConfig"
@@ -588,7 +588,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiDonutEvolution"
                     :names="['selectLegend', 'copyAlt']"
@@ -675,7 +675,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiDonutEvolution"
                     :types="[
@@ -698,11 +698,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiDonutEvolution />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="600px">
                     <template #chart>
                         <VueDataUi
@@ -717,13 +717,13 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter"
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -737,7 +737,7 @@ function goToPage(route) {
                 />
             </template>
 
-            <template #tab14>
+            <template #zoom-state>
                 <BaseZoomState component="VueUiDonutEvolution">
                     <ZoomStateVueUiDonutEvolution />
                 </BaseZoomState>

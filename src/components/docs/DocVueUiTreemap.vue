@@ -562,7 +562,7 @@ const customFormatCode =
             schema="vue_ui_treemap"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -583,7 +583,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiTreemap"
                     configType="VueUiTreemapConfig"
@@ -615,7 +615,7 @@ const customFormatCode =
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiTreemap"
                     :names="['selectLegend', 'selectDatapoint', 'copyAlt']"
@@ -702,7 +702,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiTreemap"
                     :types="[
@@ -730,7 +730,7 @@ const customFormatCode =
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -752,15 +752,15 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <uc-treemap />
             </template>
 
-            <!-- <template #tab6>
+            <!-- <template #themes>
                 <ThemesVueUiTreemap />
             </template> -->
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueDataUi
@@ -776,7 +776,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

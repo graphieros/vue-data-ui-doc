@@ -309,7 +309,7 @@ function goToPage(route) {
             schema="vue_ui_mood_radar"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -329,7 +329,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiMoodRadar"
                     configType="VueUiMoodRadarConfig"
@@ -361,7 +361,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiMoodRadar"
                     :names="['copyAlt']"
@@ -445,7 +445,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiMoodRadar"
                     :types="[
@@ -467,11 +467,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiMoodRadar />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px" minHeight="300px">
                     <template #chart>
                         <VueDataUi
@@ -486,7 +486,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

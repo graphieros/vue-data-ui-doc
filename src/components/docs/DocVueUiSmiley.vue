@@ -284,7 +284,7 @@ const { configCode, showAllConfig } = useConfigCode();
         </div>
 
         <Box showEmits>
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -321,7 +321,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiSmiley"
                     configType="VueUiSmileyConfig"
@@ -353,7 +353,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 </code>
             </template>
 
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <div><code>@rate</code></div>
                 <div class="text-gray-400 pl-5 mb-6">
                     {{ translations.docs.emits.rating.rate[store.lang] }}

@@ -238,7 +238,7 @@ function goToPage(route) {
         <BaseMigrationInfo debug />
 
         <Box ref="box" showThemes showSlots schema="vue_ui_sparkgauge">
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -258,7 +258,7 @@ function goToPage(route) {
                     />
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiSparkgauge"
                     configType="VueUiSparkgaugeConfig"
@@ -291,7 +291,7 @@ function goToPage(route) {
                 <div class="overflow-w-auto"></div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiSparkgauge"
                     :types="['source', 'chart-background']"
@@ -304,7 +304,7 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiSparkgauge />
             </template>
         </Box>

@@ -210,7 +210,7 @@ function goToPage(route) {
             schema="vue_ui_spark_trend"
             signInfo="both"
         >
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="border-b my-6 pb-6 border-gray-700">
                     TS type: <code class="text-app-green">number[]</code>
@@ -224,7 +224,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
 </pre>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiSparkTrend"
                     configType="VueUiSparkTrendConfig"
@@ -255,7 +255,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                 </code>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiSparkTrend"
                     :types="['source', 'chart-background']"
@@ -268,11 +268,11 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiSparkTrend />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="200px" width="300px" minHeight="64px">
                     <template #chart>
                         <VueDataUi

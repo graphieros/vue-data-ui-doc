@@ -416,7 +416,7 @@ function goToPage(route) {
             schema="vue_ui_3d_bar"
             signInfo="positiveOrNegativeOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="w-full overflow-x-auto mb-6 border-gray-700">
                     Percentage mode:
@@ -496,7 +496,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
 </pre>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUi3dBar"
                     configType="VueUi3dBarConfig"
@@ -526,14 +526,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ExposedMethods
                     component="VueUi3dBar"
                     getImage
                     :names="['generatePdf', 'generateImage', 'generateSvg']"
                 />
             </template>
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUi3dBar"
                     :types="[
@@ -554,11 +554,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUi3dBar />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="450px" minHeight="300px" width="300px">
                     <template #chart>
                         <VueDataUi
@@ -573,7 +573,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

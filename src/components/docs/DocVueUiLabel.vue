@@ -325,7 +325,7 @@ function goToPage(route) {
         <Rater itemId="vue_ui_label" />
 
         <Box ref="box" showEmits showSlots showThemes showUseCases>
-            <template #tab0>
+            <template #dataset>
                 <CodeParser
                     language="typescript"
                     @copy="store.copy()"
@@ -335,7 +335,7 @@ function goToPage(route) {
                 />
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
                 <div class="my-4">
                     TS type: <code class="text-app-blue">VueUiLabelConfig</code>
@@ -350,7 +350,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiLabel"
                     :names="[
@@ -367,7 +367,7 @@ function goToPage(route) {
                 <ExposedMethods component="VueUiLabel" :names="['reorder']" />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiLabel"
                     :types="[
@@ -379,11 +379,11 @@ function goToPage(route) {
                 />
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <UcLabel />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiLabel />
             </template>
         </Box>

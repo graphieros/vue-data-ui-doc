@@ -1084,7 +1084,7 @@ const customFormatCode =
             schema="vue_ui_xy"
             signInfo="both"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -1107,7 +1107,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <div class="w-full overflow-x-auto">
                     <DebugHint component="VueUiXy" configType="VueUiXyConfig" />
 
@@ -1139,7 +1139,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiXy"
                     :names="[
@@ -1236,7 +1236,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiXy"
                     :types="[
@@ -1309,7 +1309,7 @@ const customFormatCode =
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -1331,15 +1331,15 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <uc-xy />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiXy />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="600px">
                     <template #chart>
                         <VueUiXy
@@ -1360,7 +1360,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueUiXy
                     :dataset="patternDataset"
                     :config="{
@@ -1395,11 +1395,11 @@ const customFormatCode =
                 </VueUiXy>
             </template>
 
-            <template #tab9>
+            <template #css-overrides>
                 <BaseCssOverride :content="cssContent" />
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="chart.grid.labels.xAxisLabels.datetimeFormatter"
                 >
@@ -1414,7 +1414,7 @@ const customFormatCode =
                 </DatetimeFormatterDoc>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -1432,15 +1432,15 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab12>
+            <template #ssr>
                 <SsrGeneration component="VueUiXy" />
             </template>
 
-            <template #tab13>
+            <template #tips-and-tricks>
                 <TricksVueUiXy />
             </template>
 
-            <template #tab14>
+            <template #zoom-state>
                 <BaseZoomState component="VueUiXy">
                     <ZoomStateVueUiXy />
                 </BaseZoomState>

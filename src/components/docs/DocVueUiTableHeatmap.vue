@@ -426,7 +426,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                 <InfoTriangleFilledIcon />
                 {{ translations.slots.warning[store.lang] }}
             </template>
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -447,7 +447,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiTableHeatmap"
                     configType="VueUiTableHeatmapConfig"
@@ -473,7 +473,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                 </code>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotsImplementationLink
                     link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-table-heatmap.vue"
                 />
@@ -493,7 +493,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="['csv', 'fullscreen', 'img', 'pdf']"
                 />

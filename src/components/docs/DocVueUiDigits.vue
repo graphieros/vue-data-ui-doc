@@ -136,7 +136,7 @@ const { configCode, showAllConfig } = useConfigCode();
         </div>
 
         <Box>
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.example[store.lang] }} :
                 <pre>
 <code>
@@ -144,7 +144,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
 </code>
 </pre>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">

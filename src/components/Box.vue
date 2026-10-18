@@ -8,6 +8,26 @@ import useMobile from "../useMobile";
 import IconSettings from "./IconSettings.vue";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 
+defineSlots<{
+    "title"?: () => unknown;
+    "warning"?: () => unknown;
+    "dataset"?: () => unknown;
+    "configuration"?: () => unknown;
+    "events-and-methods"?: () => unknown;
+    "slots"?: () => unknown;
+    "custom-tooltip"?: () => unknown;
+    "use-cases"?: () => unknown;
+    "themes"?: () => unknown;
+    "responsive"?: () => unknown;
+    "patterns"?: () => unknown;
+    "css-overrides"?: () => unknown;
+    "datetime-formatter"?: () => unknown;
+    "callbacks"?: () => unknown;
+    "ssr"?: () => unknown;
+    "tips-and-tricks"?: () => unknown;
+    "zoom-state"?: () => unknown;
+}>();
+
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
@@ -570,34 +590,34 @@ function selectTabFromMini(order) {
 
         <div v-show="activeTab === 0">
             <BaseSignInfo :type="signInfo" />
-            <slot name="tab0" />
+            <slot name="dataset" />
         </div>
         <div v-show="activeTab === 1">
-            <slot name="tab1" />
+            <slot name="configuration" />
         </div>
         <div v-show="activeTab === 2">
-            <slot name="tab2" />
+            <slot name="events-and-methods" />
         </div>
         <div v-show="activeTab === 3">
-            <slot name="tab3" />
+            <slot name="slots" />
         </div>
         <div v-show="activeTab === 4">
-            <slot name="tab4" />
+            <slot name="custom-tooltip" />
         </div>
         <div v-show="activeTab === 5">
-            <slot name="tab5" />
+            <slot name="use-cases" />
         </div>
         <div v-show="activeTab === 6">
-            <slot name="tab6" />
+            <slot name="themes" />
         </div>
         <div v-if="activeTab === 7">
-            <slot name="tab7" />
+            <slot name="responsive" />
         </div>
         <div v-if="activeTab === 8">
             <div v-if="patternTranslations" class="mb-8">
                 {{ patternTranslations.description[store.lang] }}
             </div>
-            <slot name="tab8" />
+            <slot name="patterns" />
 
             <div
                 v-if="patternTranslations && patternTranslations.moreInfo"
@@ -613,22 +633,22 @@ function selectTabFromMini(order) {
             </div>
         </div>
         <div v-if="activeTab === 9">
-            <slot name="tab9" />
+            <slot name="css-overrides" />
         </div>
         <div v-if="activeTab === 10">
-            <slot name="tab10" />
+            <slot name="datetime-formatter" />
         </div>
         <div v-if="activeTab === 11">
-            <slot name="tab11" />
+            <slot name="callbacks" />
         </div>
         <div v-if="activeTab === 12">
-            <slot name="tab12" />
+            <slot name="ssr" />
         </div>
         <div v-if="activeTab === 13">
-            <slot name="tab13" />
+            <slot name="tips-and-tricks" />
         </div>
         <div v-if="activeTab === 14">
-            <slot name="tab14" />
+            <slot name="zoom-state" />
         </div>
     </div>
 </template>

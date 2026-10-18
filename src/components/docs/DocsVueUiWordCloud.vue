@@ -364,7 +364,7 @@ function goToPage(route) {
             showResponsive
             schema="vue_ui_word_cloud"
         >
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -392,7 +392,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiWordCloud"
                     configType="VueUiWordCloudConfig"
@@ -423,7 +423,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiWordCloud"
                     :names="['copyAlt']"
@@ -507,7 +507,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiWordCloud"
                     :types="[
@@ -532,11 +532,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiWordCloud />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueDataUi
@@ -553,7 +553,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

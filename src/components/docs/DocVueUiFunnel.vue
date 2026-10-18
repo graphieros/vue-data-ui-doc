@@ -334,7 +334,7 @@ function goToPage(route) {
             schema="vue_ui_funnel"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b my-6 border-gray-700"
                 >
@@ -354,7 +354,7 @@ function goToPage(route) {
                 />
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiFunnel"
                     configType="VueUiFunnelConfig"
@@ -386,7 +386,7 @@ function goToPage(route) {
             </template>
 
             <!--EMITS-->
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits component="VueUiFunnel" :names="['copyAlt']" />
                 <ExposedMethods
                     component="VueUiFunnel"
@@ -461,7 +461,7 @@ function goToPage(route) {
             </template>
 
             <!--SLOTS-->
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiFunnel"
                     :types="['svg', 'watermark', 'source', 'chart-background']"
@@ -475,11 +475,11 @@ function goToPage(route) {
             </template>
 
             <!--THEMES-->
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiFunnel />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueDataUi
@@ -495,7 +495,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

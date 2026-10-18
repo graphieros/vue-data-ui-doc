@@ -294,7 +294,7 @@ function goToPage(route) {
         <Rater itemId="vue_ui_table_sparkline" />
 
         <Box ref="box" showEmits showSlots showCallbacks signInfo="both">
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -317,7 +317,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiTableSparkline"
                     configType="VueUiTableSparklineConfig"
@@ -348,7 +348,7 @@ function goToPage(route) {
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiTableSparkline"
                     :names="['copyAlt']"
@@ -365,7 +365,7 @@ function goToPage(route) {
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiTableSparkline"
                     :types="['source', 'user-menu']"
@@ -378,7 +378,7 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="['csv', 'fullscreen', 'img', 'pdf']"
                 />

@@ -397,7 +397,7 @@ const customFormatCode =
             schema="vue_ui_waffle"
             signInfo="positiveOrNegativeOnly"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -420,7 +420,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiWaffle"
                     configType="VueUiWaffleConfig"
@@ -452,7 +452,7 @@ const customFormatCode =
                 </code>
             </template>
 
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiWaffle"
                     :names="['selectLegend', 'copyAlt']"
@@ -539,7 +539,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiWaffle"
                     :types="[
@@ -563,7 +563,7 @@ const customFormatCode =
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -584,11 +584,11 @@ const customFormatCode =
                     content=".vue-data-ui-custom-tooltip{ }"
                 />
             </template>
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiWaffle />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiWaffle
@@ -603,7 +603,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <div class="w-full mx-auto max-w-[500px]">
                     <VueUiWaffle :dataset="dataset" :config="config" :key="key">
                         <template #pattern="{ seriesIndex, patternId }">
@@ -633,7 +633,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

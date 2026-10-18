@@ -410,7 +410,7 @@ function goToPage(route) {
             schema="vue_ui_sparkhistogram"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -433,7 +433,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiSparkHistogram"
                     configType="VueUiSparkHistogramConfig"
@@ -464,14 +464,14 @@ function goToPage(route) {
                     />
                 </code>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiSparkHistogram"
                     :names="['selectDatapoint']"
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiSparkHistogram"
                     :types="['hint', 'source', 'chart-background']"
@@ -484,11 +484,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiSparkHistogram />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="250px" minHeight="200px">
                     <template #chart>
                         <VueDataUi

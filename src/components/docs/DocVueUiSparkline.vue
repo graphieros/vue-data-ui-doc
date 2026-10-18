@@ -446,7 +446,7 @@ const prefersReduced = ref({
             schema="vue_ui_sparkline"
             signInfo="both"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -472,7 +472,7 @@ const prefersReduced = ref({
                     </div>
                 </div>
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <div class="w-full overflow-x-auto">
                     <DebugHint
                         component="VueUiSparkline"
@@ -505,14 +505,14 @@ const prefersReduced = ref({
                 </div>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiSparkline"
                     :names="['selectDatapoint', 'hoverIndex']"
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiSparkline"
                     :types="[
@@ -531,15 +531,15 @@ const prefersReduced = ref({
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab5>
+            <template #use-cases>
                 <ucSparkline />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiSparkline />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit minHeight="100px" height="150px">
                     <template #chart>
                         <VueUiSparkline
@@ -554,13 +554,13 @@ const prefersReduced = ref({
                 </ResponsiveUnit>
             </template>
 
-            <template #tab10>
+            <template #datetime-formatter>
                 <DatetimeFormatterDoc
                     path="style.dataLabel.datetimeFormatter"
                 />
             </template>
 
-            <template #tab14>
+            <template #zoom-state>
                 <BaseZoomState component="VueUiSparkline">
                     <ZoomStateVueUiSparkline />
                 </BaseZoomState>

@@ -142,7 +142,7 @@ function goToPage(route) {
         </div>
 
         <Box ref="box" schema="vue_ui_gizmo" signInfo="positiveOnly">
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="my-4">
                     TS type:
@@ -157,7 +157,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGizmoDataset</s
 </pre>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiGizmo"
                     configType="VueUiGizmoConfig"

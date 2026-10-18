@@ -174,10 +174,10 @@ const slotContent = ref(`
         </div>
 
         <Box :activeTab="1" showSlots>
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
-            <template #tab1>
+            <template #configuration>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">
@@ -197,7 +197,7 @@ const slotContent = ref(`
                     />
                 </code>
             </template>
-            <template #tab3>
+            <template #slots>
                 <ul class="mb-6">
                     <li>#arrow</li>
                     <li>#title</li>

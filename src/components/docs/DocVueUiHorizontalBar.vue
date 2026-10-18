@@ -527,7 +527,7 @@ const customFormatCode =
             schema="vue_ui_horizontal_bar"
             signInfo="both"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -549,7 +549,7 @@ const customFormatCode =
                     />
                 </div>
             </template>
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiHorizontalBar"
                     configType="VueUiHorizontalBarConfig"
@@ -581,7 +581,7 @@ const customFormatCode =
                 </code>
                 <div class="overflow-x-auto"></div>
             </template>
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiHorizontalBar"
                     :names="['selectDatapoint', 'selectLegend', 'copyAlt']"
@@ -669,7 +669,7 @@ const customFormatCode =
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiHorizontalBar"
                     :types="[
@@ -694,7 +694,7 @@ const customFormatCode =
                     </template>
                 </BaseSlotDocumenter>
             </template>
-            <template #tab4>
+            <template #custom-tooltip>
                 <h3 class="mb-4">
                     {{ translations.customFormat[store.lang] }}
                 </h3>
@@ -716,11 +716,11 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiVerticalBar />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiVerticalBar
@@ -735,7 +735,7 @@ const customFormatCode =
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueUiVerticalBar
                     :dataset="dataset"
                     :config="config"
@@ -753,7 +753,7 @@ const customFormatCode =
                 </VueUiVerticalBar>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',
@@ -769,7 +769,7 @@ const customFormatCode =
                 />
             </template>
 
-            <template #tab13>
+            <template #tips-and-tricks>
                 <TricksVueUiHorizontalBar />
             </template>
         </Box>

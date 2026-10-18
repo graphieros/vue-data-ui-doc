@@ -313,7 +313,7 @@ const slotCode = computed(() => {
             schema="vue_ui_carousel_table"
             hideSchemaDisclaimer
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -335,7 +335,7 @@ const slotCode = computed(() => {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiCarouselTable"
                     configType="VueUiCarouselTableConfig"
@@ -360,7 +360,7 @@ const slotCode = computed(() => {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiCarouselTable"
                     :names="['copyAlt']"
@@ -380,7 +380,7 @@ const slotCode = computed(() => {
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotsImplementationLink
                     link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-carousel-table.vue"
                 />
@@ -409,7 +409,7 @@ const slotCode = computed(() => {
                 />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="['csv', 'fullscreen', 'img', 'pdf']"
                 />

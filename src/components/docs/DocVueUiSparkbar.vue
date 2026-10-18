@@ -247,7 +247,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
             schema="vue_ui_sparkbar"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -266,7 +266,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
                     </div>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <div class="w-full overflow-x-auto">
                     <DebugHint
                         component="VueUiSparkbar"
@@ -294,14 +294,14 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
                 </div>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits
                     component="VueUiSparkbar"
                     :names="['selectDatapoint']"
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiSparkbar"
                     :types="['title', 'data-label', 'source']"
@@ -314,7 +314,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiSparkbar />
             </template>
         </Box>

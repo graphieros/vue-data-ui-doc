@@ -660,7 +660,7 @@ function goToPage(route) {
             schema="vue_ui_chestnut"
             signInfo="positiveOnly"
         >
-            <template v-slot:tab0>
+            <template v-slot:dataset>
                 <div
                     class="w-full overflow-x-auto border-b mb-6 border-gray-700"
                 >
@@ -683,7 +683,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template v-slot:tab1>
+            <template v-slot:configuration>
                 <DebugHint
                     component="VueUiChestnut"
                     configType="VueUiChestnutConfig"
@@ -717,7 +717,7 @@ function goToPage(route) {
                 <div class="overflow-w-auto"></div>
             </template>
 
-            <template v-slot:tab2>
+            <template v-slot:events-and-methods>
                 <ComponentEmits
                     component="VueUiChestnut"
                     :names="[
@@ -808,7 +808,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiChestnut"
                     :types="[
@@ -830,11 +830,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiChestnut />
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

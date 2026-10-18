@@ -336,7 +336,7 @@ function goToPage(route) {
             signInfo="positiveOnly"
             schema="vue_ui_chord"
         >
-            <template #tab0>
+            <template #dataset>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
                         language="typescript"
@@ -356,7 +356,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiChord"
                     configType="VueUiChordConfig"
@@ -381,7 +381,7 @@ function goToPage(route) {
                 </code>
             </template>
 
-            <template #tab2>
+            <template #events-and-methods>
                 <div>
                     <ComponentEmits
                         component="VueUiChord"
@@ -407,7 +407,7 @@ function goToPage(route) {
                 </div>
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiChord"
                     :types="[
@@ -430,11 +430,11 @@ function goToPage(route) {
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiChord />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueDataUi
@@ -450,7 +450,7 @@ function goToPage(route) {
                 </ResponsiveUnit>
             </template>
 
-            <template #tab8>
+            <template #patterns>
                 <VueDataUi
                     component="VueUiChord"
                     :dataset="dataset"
@@ -494,7 +494,7 @@ function goToPage(route) {
                 </VueDataUi>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="[
                         'annotator',

@@ -267,7 +267,7 @@ function goToPage(route) {
             schema="vue_ui_wheel"
             signInfo="positiveOnly"
         >
-            <template #tab0>
+            <template #dataset>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
                     TS type:
@@ -295,7 +295,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
 </pre>
                 </div>
             </template>
-            <template #tab1>
+            <template #configuration>
                 <DebugHint
                     component="VueUiWheel"
                     configType="VueUiWheelConfig"
@@ -327,7 +327,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
 
                 <div class="overflow-w-auto"></div>
             </template>
-            <template #tab2>
+            <template #events-and-methods>
                 <ComponentEmits component="VueUiWheel" :names="['copyAlt']" />
                 <ExposedMethods
                     component="VueUiWheel"
@@ -336,7 +336,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 />
             </template>
 
-            <template #tab3>
+            <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiWheel"
                     :types="[
@@ -356,11 +356,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 </BaseSlotDocumenter>
             </template>
 
-            <template #tab6>
+            <template #themes>
                 <ThemesVueUiWheel />
             </template>
 
-            <template #tab7>
+            <template #responsive>
                 <ResponsiveUnit>
                     <template #chart>
                         <VueUiWheel
@@ -375,7 +375,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 </ResponsiveUnit>
             </template>
 
-            <template #tab11>
+            <template #callbacks>
                 <UserOptionCallbacks
                     :items="['annotator', 'fullscreen', 'img', 'pdf', 'svg']"
                 />
