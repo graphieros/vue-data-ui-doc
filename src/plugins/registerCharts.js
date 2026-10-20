@@ -58,6 +58,7 @@ const chartLoaders = {
     VueUiRidgeline: () => import("vue-data-ui/vue-ui-ridgeline"),
     VueUiChord: () => import("vue-data-ui/vue-ui-chord"),
     VueUiStackline: () => import("vue-data-ui/vue-ui-stackline"),
+    VueUiGraph: () => import("vue-data-ui/vue-ui-graph"),
     VueUiDag: () => import("vue-data-ui/vue-ui-dag"),
     VueUiGeo: () => import("vue-data-ui/vue-ui-geo"),
     VueUiBump: () => import("vue-data-ui/vue-ui-bump"),

@@ -528,6 +528,13 @@ export default function useCharts() {
                 taxinomy: ["uiTools"],
                 singleTaxinomy: "uiTools",
             },
+            VueUiGraph: {
+                icon: "chartGraph",
+                link: "/docs#vue-ui-graph",
+                description: translations.value.docs.tooltips.graph[store.lang],
+                taxinomy: ["relationships"],
+                singleTaxinomy: "relationships",
+            },
             VueUiDag: {
                 icon: "chartDag",
                 link: "/docs#vue-ui-dag",

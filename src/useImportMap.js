@@ -66,6 +66,7 @@ export function useImportMap(c) {
         VueUiRidgeline: "vue-ui-ridgeline",
         VueUiChord: "vue-ui-chord",
         VueUiStackline: "vue-ui-stackline",
+        VueUiGraph: "vue-ui-graph",
         VueUiDag: "vue-ui-dag",
         VueUiGeo: "vue-ui-geo",
         VueUiBump: "vue-ui-bump",
@@ -95,6 +96,7 @@ export function useImportMap(c) {
         VueUiCirclePack:
             ", type VueUiCirclePackDatasetItem, type VueUiCirclePackConfig",
         VueUiCursor: ", type VueUiCursorConfig",
+        VueUiGraph: ", type VueUiGraphDataset, type VueUiGraphConfig",
         VueUiDag: ", type VueUiDagDataset, type VueUiDagConfig",
         VueUiDashboard:
             ", type VueUiDashboardElement, type VueUiDashboardConfig",
@@ -197,6 +199,7 @@ export function useImportMap(c) {
         VueUiChord: "VueUiChordDataset",
         VueUiCirclePack: "VueUiCirclePackDatasetItem[]",
         VueUiCursor: "",
+        VueUiGraph: "VueUiGraphDataset",
         VueUiDag: "VueUiDagDataset",
         VueUiDashboard: "VueUiDashboardElement[]",
         VueUiDigits: "",
@@ -273,6 +276,7 @@ export function useImportMap(c) {
         VueUiChord: "VueUiChordConfig",
         VueUiCirclePack: "VueUiCirclePackConfig",
         VueUiCursor: "VueUiCursorConfig",
+        VueUiGraph: "VueUiGraphConfig",
         VueUiDag: "VueUiDagConfig",
         VueUiDashboard: "VueUiDashboardConfig",
         VueUiDigits: "VueUiDigitsConfig",

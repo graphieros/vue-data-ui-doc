@@ -66,6 +66,7 @@ export function useIconMapUnderscore(componentName) {
         vue_ui_ridgeline: "chartRidgeline",
         vue_ui_chord: "chartChord",
         vue_ui_stackline: "chartStackline",
+        vue_ui_graph: "chartGraph",
         vue_ui_dag: "chartDag",
         vue_ui_geo: "chartGeo",
         vue_ui_bump: "chartBump",

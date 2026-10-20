@@ -12,6 +12,7 @@ import useAttrMapping from "../useAttrMapping";
 
 const props = defineProps({
     binding: { type: Object, default: null },
+    compact: { type: Boolean, default: false },
     config: { type: Object, default: null },
     light: {
         type: Object,
@@ -173,11 +174,12 @@ const translatedTooltip = computed(() => {
 
 <template>
     <div
-        :class="`relative min-h-[32px] py-1 ${indent ? 'ml-6' : ''}`"
+        :class="`relative min-h-[32px] py-1 ${compact ? 'text-xs' : ''} ${indent ? 'ml-6' : ''}`"
         @mouseenter="isSelected = true"
         @mouseout="isSelected = false"
     >
         <FlexibleTooltip
+            :class="compact ? 'w-full' : ''"
             position="top"
             :mute="!translatedTooltip"
             :content="translatedTooltip"
@@ -185,9 +187,16 @@ const translatedTooltip = computed(() => {
             opacity="group-hover:opacity-[0.9]"
         >
             <div
-                class="flex flex-row flex-wrap gap-2 align-center place-items-center"
+                :class="
+                    compact
+                        ? 'flex flex-col gap-1 items-stretch'
+                        : 'flex flex-row flex-wrap gap-2 align-center place-items-center'
+                "
             >
-                <label :for="`i_${id}`" :id="id" class="pr-1"
+                <label
+                    :for="`i_${id}`"
+                    :id="id"
+                    :class="compact ? 'pr-7' : 'pr-1'"
                     >{{ name }}:</label
                 >
                 <span v-if="inactive" class="ml-1">
@@ -262,10 +271,10 @@ const translatedTooltip = computed(() => {
                     </template>
                     <template v-if="type === 'range'">
                         <div
-                            class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md dark:border-t dark:border-[#6A6A6A]"
+                            :class="`inline-flex place-items-center justify-center gap-2 relative bg-[#1A1A1A10] dark:bg-[#FFFFFF10] rounded-full shadow-md dark:border-t dark:border-[#6A6A6A] ${compact ? 'h-[28px] px-2 py-1 w-full' : 'h-[32px] p-2'}`"
                         >
                             <div
-                                class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums"
+                                :class="`text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg text-center text-white tabular-nums ${compact ? 'min-w-[42px]' : 'min-w-[64px]'}`"
                             >
                                 {{ nestedAttribute }}
                             </div>
@@ -274,7 +283,8 @@ const translatedTooltip = computed(() => {
                                 :aria-labelledby="id"
                                 :title="nestedAttribute"
                                 type="range"
-                                v-model="nestedAttribute"
+                                v-model.number="nestedAttribute"
+                                :class="compact ? 'w-full min-w-0' : ''"
                                 :min="min"
                                 :max="max"
                                 :step="step"
@@ -312,7 +322,7 @@ const translatedTooltip = computed(() => {
                     <span
                         dir="auto"
                         class="pl-2 text-gray-600 dark:text-gray-400"
-                        v-if="!rgba"
+                        v-if="!rgba && !compact"
                     >
                         <span class="text-xs">{{
                             defaultValueTranslation[store.lang]
@@ -334,7 +344,7 @@ const translatedTooltip = computed(() => {
             </div>
             <Transition name="fade">
                 <button
-                    class="h-[24px] w-[24px] absolute flex -left-[26px] top-1/2 -translate-y-1/2 place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white dark:border-black"
+                    :class="`h-[24px] w-[24px] absolute flex place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white dark:border-black ${compact ? 'right-0 -top-1' : '-left-[26px] top-1/2 -translate-y-1/2'}`"
                     v-if="showResetButton && type !== 'checkbox' && !inactive"
                     @click="resetValue"
                 >

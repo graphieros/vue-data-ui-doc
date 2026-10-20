@@ -228,6 +228,9 @@ const DocVueUiRidgeline = defineAsyncComponent(
 const DocVueUiChord = defineAsyncComponent(
     () => import("../components/docs/DocVueUiChord.vue"),
 );
+const DocVueUiGraph = defineAsyncComponent(
+    () => import("../components/docs/DocVueUiGraph.vue"),
+);
 const DocVueUiDag = defineAsyncComponent(
     () => import("../components/docs/DocVueUiDag.vue"),
 );
@@ -1044,6 +1047,14 @@ const selectedConfig = computed(() => {
                     v-if="
                         router.currentRoute.value.fullPath ===
                         '/docs#vue-ui-chord'
+                    "
+                />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiGraph
+                    v-if="
+                        router.currentRoute.value.fullPath ===
+                        '/docs#vue-ui-graph'
                     "
                 />
             </Transition>

@@ -342,6 +342,11 @@ const charts = ref({
         icon: "chartCirclePack",
         link: "/docs#vue-ui-circle-pack",
     },
+    VueUiGraph: {
+        name: "VueUiGraph",
+        icon: "chartGraph",
+        link: "/docs#vue-ui-graph",
+    },
     VueUiDag: { name: "VueUiDag", icon: "chartDag", link: "/docs#vue-ui-dag" },
     VueUiGeo: { name: "VueUiGeo", icon: "chartGeo", link: "/docs#vue-ui-geo" },
     VueUiBump: {
@@ -514,7 +519,13 @@ const items = ref([
     {
         name: "zoom",
         icon: "zoomLock",
-        charts: ["VueUiWordCloud", "VueUiMolecule", "VueUiDag", "VueUiGeo"],
+        charts: [
+            "VueUiGraph",
+            "VueUiWordCloud",
+            "VueUiMolecule",
+            "VueUiDag",
+            "VueUiGeo",
+        ],
     },
 ]);
 </script>

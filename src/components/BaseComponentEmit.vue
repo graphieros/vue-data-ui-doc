@@ -34,9 +34,15 @@ const noArgs = [
     "zoomReset",
 ];
 
+const hasNoArgs = computed(() =>
+    props.component === "VueUiGraph"
+        ? props.name === "layoutStart"
+        : noArgs.includes(props.name),
+);
+
 const contentScript = computed(
-    () => `function ${props.name}(${noArgs.includes(props.name) ? "" : `args${emitTypeDef.value ? `: ${emitTypeDef.value}` : ""}`}) {
-    ${noArgs.includes(props.name) ? "// do something" : "console.log({ args });"}
+    () => `function ${props.name}(${hasNoArgs.value ? "" : `args${emitTypeDef.value ? `: ${emitTypeDef.value}` : ""}`}) {
+    ${hasNoArgs.value ? "// do something" : "console.log({ args });"}
 }`,
 );
 </script>

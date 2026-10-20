@@ -1,3 +1,4 @@
+import { graphDataset, createGraphConfig } from "./components/docs/graph";
 import { ref, computed } from "vue";
 import { useMainStore } from "./stores";
 import { getCumulativeAverage, mergeConfigs } from "vue-data-ui";
@@ -6643,6 +6644,363 @@ export default function useExamples() {
 
     const examples = computed(() => {
         return [
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-basic",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {},
+                }),
+                description: {
+                    en: "Interactive network",
+                    fr: "Réseau interactif",
+                    pt: "Rede interativa",
+                    de: "Interaktives Netzwerk",
+                    zh: "交互式网络",
+                    ja: "インタラクティブなネットワーク",
+                    es: "Red interactiva",
+                    ko: "대화형 네트워크",
+                    ar: "شبكة تفاعلية",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-directed",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {
+                        style: {
+                            chart: {
+                                links: {
+                                    arrows: { show: false, showOnHover: true },
+                                    pulses: { show: true },
+                                },
+                            },
+                        },
+                    },
+                }),
+                description: {
+                    en: "Directed links and pulses",
+                    fr: "Liens orientés et impulsions",
+                    pt: "Ligações direcionadas e pulsos",
+                    de: "Gerichtete Verbindungen und Impulse",
+                    zh: "有向连接和脉冲",
+                    ja: "有向リンクとパルス",
+                    es: "Enlaces dirigidos y pulsos",
+                    ko: "방향성 링크와 펄스",
+                    ar: "روابط موجهة ونبضات",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-hover-arrows",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {
+                        style: {
+                            chart: {
+                                links: {
+                                    arrows: { show: false, showOnHover: true },
+                                },
+                            },
+                        },
+                    },
+                }),
+                description: {
+                    en: "Arrows on node hover",
+                    fr: "Flèches au survol des nœuds",
+                    pt: "Setas ao passar o cursor sobre os nós",
+                    de: "Pfeile beim Überfahren von Knoten",
+                    zh: "悬停节点时显示箭头",
+                    ja: "ノードのホバー時に矢印を表示",
+                    es: "Flechas al pasar el cursor sobre los nodos",
+                    ko: "노드에 마우스를 올리면 화살표 표시",
+                    ar: "أسهم عند تمرير المؤشر فوق العقد",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-uniform",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {
+                        style: {
+                            chart: {
+                                nodes: {
+                                    sizeByValue: false,
+                                    sizeByDegree: false,
+                                },
+                                links: { widthByValue: false },
+                            },
+                        },
+                    },
+                }),
+                description: {
+                    en: "Uniform node sizes and link widths",
+                    fr: "Taille des nœuds et épaisseur des liens uniformes",
+                    pt: "Tamanhos de nós e larguras de ligações uniformes",
+                    de: "Einheitliche Knotengrößen und Verbindungsbreiten",
+                    zh: "统一的节点大小和连接宽度",
+                    ja: "均一なノードサイズとリンク幅",
+                    es: "Tamaños de nodos y anchos de enlaces uniformes",
+                    ko: "균일한 노드 크기와 링크 너비",
+                    ar: "أحجام عقد وعروض روابط موحدة",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-static",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {
+                        interaction: { drag: { enabled: false } },
+                        animation: { enabled: false },
+                    },
+                }),
+                description: {
+                    en: "Layout without dragging",
+                    fr: "Disposition sans déplacement des nœuds",
+                    pt: "Layout sem arrastar",
+                    de: "Layout ohne Ziehen",
+                    zh: "禁用拖动的布局",
+                    ja: "ドラッグなしのレイアウト",
+                    es: "Diseño sin arrastrar",
+                    ko: "드래그 없는 레이아웃",
+                    ar: "تخطيط دون سحب",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-compact",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {
+                        layout: {
+                            chargeStrength: -18,
+                            linkDistance: 28,
+                            linkStrength: 0.24,
+                            centerStrength: 0.08,
+                            collisionPadding: 1,
+                            iterations: 600,
+                        },
+                    },
+                }),
+                description: {
+                    en: "Compact layout",
+                    fr: "Disposition compacte",
+                    pt: "Layout compacto",
+                    de: "Kompaktes Layout",
+                    zh: "紧凑布局",
+                    ja: "コンパクトなレイアウト",
+                    es: "Diseño compacto",
+                    ko: "조밀한 레이아웃",
+                    ar: "تخطيط متقارب",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-spacious",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {
+                        layout: {
+                            chargeStrength: -200,
+                            linkDistance: 120,
+                            linkStrength: 0.06,
+                            centerStrength: 0.008,
+                            collisionPadding: 8,
+                            iterations: 600,
+                        },
+                    },
+                }),
+                description: {
+                    en: "Spacious layout",
+                    fr: "Disposition espacée",
+                    pt: "Layout espaçado",
+                    de: "Weitläufiges Layout",
+                    zh: "宽松布局",
+                    ja: "ゆったりしたレイアウト",
+                    es: "Diseño espaciado",
+                    ko: "넓은 레이아웃",
+                    ar: "تخطيط متباعد",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-clustered",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(
+                        isDarkMode.value,
+                        store.lang,
+                    ),
+                    userConfig: {
+                        layout: {
+                            chargeStrength: -60,
+                            linkDistance: 60,
+                            linkStrength: 0.12,
+                            centerStrength: 0.025,
+                            clusterStrength: 0.2,
+                            collisionPadding: 3,
+                            iterations: 600,
+                        },
+                    },
+                }),
+                description: {
+                    en: "Layout clustered by group",
+                    fr: "Disposition regroupée par groupe",
+                    pt: "Layout agrupado por grupo",
+                    de: "Layout nach Gruppen",
+                    zh: "按组聚类布局",
+                    ja: "グループ別のクラスターレイアウト",
+                    es: "Diseño agrupado por grupo",
+                    ko: "그룹별 군집 레이아웃",
+                    ar: "تخطيط مجمع حسب المجموعة",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-node-glow",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(true, store.lang),
+                    userConfig: {
+                        style: {
+                            chart: {
+                                nodes: {
+                                    glow: { show: true, blur: 9, opacity: 0.8 },
+                                },
+                            },
+                        },
+                    },
+                }),
+                description: {
+                    en: "Node glow",
+                    fr: "Lueur des nœuds",
+                    pt: "Brilho dos nós",
+                    de: "Leuchtende Knoten",
+                    zh: "节点辉光",
+                    ja: "ノードのグロー",
+                    es: "Resplandor de nodos",
+                    ko: "노드 발광",
+                    ar: "توهج العقد",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-link-glow",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(true, store.lang),
+                    userConfig: {
+                        style: {
+                            chart: {
+                                links: { glow: true, opacity: 0.8, width: 2 },
+                            },
+                        },
+                    },
+                }),
+                description: {
+                    en: "Link glow",
+                    fr: "Lueur des liens",
+                    pt: "Brilho das ligações",
+                    de: "Leuchtende Verbindungen",
+                    zh: "连接辉光",
+                    ja: "リンクのグロー",
+                    es: "Resplandor de enlaces",
+                    ko: "링크 발광",
+                    ar: "توهج الروابط",
+                },
+            },
+            {
+                component: "VueUiGraph",
+                icon: "chartGraph",
+                link: "vue-ui-graph",
+                id: "graph-glow-pulses",
+                dataset: graphDataset,
+                config: mergeConfigs({
+                    defaultConfig: createGraphConfig(true, store.lang),
+                    userConfig: {
+                        style: {
+                            chart: {
+                                nodes: {
+                                    glow: { show: true, blur: 8, opacity: 0.7 },
+                                },
+                                links: {
+                                    glow: true,
+                                    opacity: 0.7,
+                                    width: 1.5,
+                                    pulses: {
+                                        show: true,
+                                        colorBySource: true,
+                                        radius: 3,
+                                        duration: 2400,
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }),
+                description: {
+                    en: "Node and link glow with animated pulses",
+                    fr: "Lueur des nœuds et liens avec impulsions animées",
+                    pt: "Brilho dos nós e ligações com pulsos animados",
+                    de: "Leuchtende Knoten und Verbindungen mit animierten Impulsen",
+                    zh: "节点和连接辉光与动画脉冲",
+                    ja: "ノードとリンクのグローとアニメーションパルス",
+                    es: "Resplandor de nodos y enlaces con pulsos animados",
+                    ko: "노드와 링크 발광 및 애니메이션 펄스",
+                    ar: "توهج العقد والروابط مع نبضات متحركة",
+                },
+            },
             // GEO FRANCE
             {
                 dataset: DATASET_GEO_FRANCE.value,

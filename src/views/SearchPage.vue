@@ -195,6 +195,7 @@ const iconMap = ref({
     VueUiWorld: "world",
     VueUiCarouselTable: "carouselTable",
     VueUiStackline: "chartStackline",
+    VueUiGraph: "chartGraph",
     VueUiDag: "chartDag",
     VueUiGeo: "chartGeo",
     VueUiBump: "chartBump",

@@ -227,6 +227,21 @@ export function useMenuItems() {
             hasLegend: true,
         },
         {
+            name: "Graph",
+            icon: "chartGraph",
+            tooltip: translations.value.docs.tooltips.graph[store.lang],
+            link: "/docs#vue-ui-graph",
+            type: "graphs",
+            thumb: new URL("../assets/thumb_graph.svg", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_graph_light.svg",
+                import.meta.url,
+            ).href,
+            hasSlot: true,
+            hasTableCss: false,
+            hasLegend: false,
+        },
+        {
             name: "Dag",
             icon: "chartDag",
             tooltip: translations.value.docs.tooltips.dag[store.lang],

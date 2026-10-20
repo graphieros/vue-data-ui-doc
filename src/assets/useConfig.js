@@ -55,6 +55,7 @@ export const CONFIG_COMPONENTS = Object.freeze([
     "vue_ui_ridgeline",
     "vue_ui_chord",
     "vue_ui_stackline",
+    "vue_ui_graph",
     "vue_ui_dag",
     "vue_ui_geo",
     "vue_ui_bump",

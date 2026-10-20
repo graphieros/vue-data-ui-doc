@@ -169,6 +169,18 @@ const categories = computed(() => {
             raterId: "vue_ui_world",
         },
         {
+            link: "vue-ui-graph",
+            icon: "chartGraph",
+            component: "VueUiGraph",
+            thumb: new URL("../assets/thumb_graph.svg", import.meta.url).href,
+            thumbLight: new URL(
+                "../assets/thumb_graph_light.svg",
+                import.meta.url,
+            ).href,
+            description: translations.value.docs.tooltips.graph,
+            raterId: "vue_ui_graph",
+        },
+        {
             link: "vue-ui-dag",
             icon: "chartDag",
             component: "VueUiDag",

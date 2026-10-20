@@ -20,6 +20,13 @@ const props = defineProps({
 const params = computed(() => {
     return (
         {
+            ...(props.component === "VueUiGraph"
+                ? {
+                      focusNode: '"A"',
+                      toggleFullscreen: "true",
+                      generateSvg: "{ isCb: false }",
+                  }
+                : {}),
             focusLocation: "[-12, 24], { animated: true }",
         }[props.name] ?? ""
     );

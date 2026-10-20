@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
+import { graphTranslations } from "../translations/graph.js";
+import { createGraphSlotSnippets } from "./graphSlotSnippets.js";
 import { useMainStore } from "../stores";
 import { CopyIcon } from "vue-tabler-icons";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
@@ -27,6 +29,9 @@ const store = useMainStore();
 const translations = computed(() => store.translations);
 
 const items = computed(() => {
+    const graphSlotSnippets = createGraphSlotSnippets(
+        graphTranslations[store.lang] || graphTranslations.en,
+    );
     return [
         {
             names: ["hint"],
@@ -1001,7 +1006,27 @@ const items = computed(() => {
     </${props.componentName}>
             `,
         },
-    ];
+    ]
+        .concat(
+            props.componentName === "VueUiGraph"
+                ? [
+                      {
+                          names: ["skeleton"],
+                          description:
+                              translations.value.slots.graphSkeleton[
+                                  store.lang
+                              ],
+                          snippet: graphSlotSnippets.skeleton,
+                      },
+                  ]
+                : [],
+        )
+        .map((item) =>
+            props.componentName === "VueUiGraph" &&
+            graphSlotSnippets[item.names[0]]
+                ? { ...item, snippet: graphSlotSnippets[item.names[0]] }
+                : item,
+        );
 });
 
 function isVisible(tags) {

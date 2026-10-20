@@ -1,4 +1,13 @@
 const mapping = {
+    VueUiGraph: {
+        selectNode: "VueUiGraphNode | null",
+        hoverNode: "VueUiGraphNode | null",
+        zoom: "VueUiGraphViewport",
+        zoomReset: "VueUiGraphViewport",
+        layoutStart: "",
+        layoutEnd: "VueUiGraphDataset",
+        copyAlt: "AltCopyArgs<VueUiGraphDataset, VueUiGraphConfig>",
+    },
     VueUiHill: {
         edit: "VueUiHillFormattedDatasetItem[]",
         save: "VueUiHillFormattedDatasetItem[]",

@@ -1,7 +1,7 @@
 # Configuration defaults in the documentation
 
 The source of truth is the installed `vue-data-ui` package. The docs currently
-install `3.27.1-beta.0` through `file:vdu2.tgz`; upgrading the local library
+install `3.27.1` through `file:vdu.tgz`; upgrading the local library
 repository alone does not update the docs dependency.
 
 ## Integration
@@ -16,7 +16,7 @@ The accessible library source confirms that `src/getVueDataUiConfig.js` delegate
 to `src/useConfig.js`, which is also used by chart implementations. No library
 changes or internal runtime imports are needed.
 
-Each `useConfig()` call returns an enumerable collection with the same 69 keys.
+Each `useConfig()` call returns an enumerable collection with the documented component keys.
 A key's first read calls the public factory and replaces its accessor with a
 normal writable property. Subsequent reads retain object identity. Options are
 captured when the collection is created. No defaults are cached across consumers
@@ -151,3 +151,104 @@ All consumers below retain their existing imports and now use the adapter:
 - `src/views/Docs.vue`
 - `src/views/Home.vue`
 - `src/views/Versions.vue`
+
+## Object-binding configuration editors
+
+All 66 existing primary documentation configuration editors use a pair of files
+under `src/components/docs/configuration/`: a `vue-ui-…-config.js` metadata factory
+and a `VueUi…ConfigFields.vue` component. The pages keep their demo state, chart callbacks, and navigation. Each page
+authors one writable computed `config`, with theme differences expressed inline
+as `isDarkMode.value ? darkValue : lightValue`. Their
+`configCode` containers remain in place for the existing tree toggle.
+
+`DocConfigFields.vue` recursively renders the metadata with `BaseDetails` and
+`BaseAttr`. Rich content preserves comments, text, containers, formatter/tab
+links, icon/color previews, and annotator palettes. Molecule's native color
+inputs and QuickChart's conditional palette previews retain their handlers and
+conditional rendering. Factories receive the page context explicitly; no page
+state is moved into a global registry.
+
+`useDocConfigBindings` delegates to the public `useObjectBindings` composable.
+Each access verifies that a binding exists before reading the library proxy, so
+unknown paths cannot invoke its state-mutating fallback. The migrated editors
+explicitly allow indexed arrays, including MoodRadar's smiley colors. The
+existing XY binding context remains compatible with its original options.
+
+Some legacy demo presets omit fields that their controls document. The new
+editors complete only missing documented leaf values from fresh public
+`getVueDataUiConfig` defaults. `completeDocConfig` validates the entire pending
+set before changing anything, clones inserted values, preserves existing demo
+values, and runs again on preset replacement. Optional public properties with no
+runtime default can declare `initialValue` in their metadata. Library defaults
+are never modified. Unknown paths still fail with a diagnostic.
+
+The rollout corrected stale paths where a supported destination was clear,
+including misspellings, misplaced axis-label fields, Flow node labels, Chord
+markers, Scatter selector controls, and minimap height paths. The unknown
+`BaeAttr` tag in Scatter was corrected to a real field. Existing rows for absent
+library options remain visible as inactive reference rows rather than creating
+unsupported config properties. These rows are marked `unsupported` in metadata:
+
+| Component                 | Inactive reference row                            |
+| ------------------------- | ------------------------------------------------- |
+| Bump, Stackbar, Stackline | `style.chart.title.show`                          |
+| Chord                     | `table.td.roundingValue`                          |
+| Donut                     | A formatter description with no editable path     |
+| HistoryPlot               | `style.chart.tooltip.showValue`, `showPercentage` |
+| Scatter                   | `table.td.roundingPercentage`                     |
+| Waffle                    | `style.chart.layout.labels.dataLabels.oneLine`    |
+
+`BaseAttr` accepts a binding ref or a single active `config` object. Older
+`light`/`dark`/`attr` consumers remain supported for separate examples. Field
+components now take one `config` prop instead of separate light/dark props. Defaults shown in the documentation remain presentation
+metadata and can differ from the demo's current values.
+
+Run `npm run test:doc-bindings` for both the focused binding regressions and the
+full rollout checks. The 83 tests cover editor coverage, actual light/dark demo
+presets, resets, missing-path protection, library-default isolation, indexed
+arrays, navigation metadata, and language changes. The fixture helper evaluates
+only trusted local preset initializers; it does not mount the application, run
+lifecycle hooks, or fetch remote data.
+
+The production build passed. New metadata, renderer, helper, and test lint checks
+are clean; the docs-wide lint check reports two existing escaping warnings in
+Stackbar/Stackline example strings. Browser interaction and visual regression
+checks were not performed. Installed package files were not changed.
+
+## Writable computed demo configuration
+
+All 68 chart docs with a main configuration, plus the JSON accordion helper,
+now author one computed `config` with `get` and `set`. The getter passes the
+single preset object to `useDocConfigState`; only differing light/dark values
+use theme ternaries. The old `darkModeConfig`, `mutableConfig`, and
+`mutableConfigDarkMode` declarations and consumers have been removed. Icon docs
+already use individual props and need no configuration object.
+
+`useDocConfigState` stores editable state separately from the authored preset,
+retains edits per theme, and supports whole-object replacement through the
+computed setter, including before its first read. When reactive preset inputs
+such as Skeleton's type change, unchanged defaults follow the new preset while
+edited values remain. Callback functions are preserved during cloning. Full
+reset discards edits for both themes and uses the current reactive preset.
+
+Reset handlers now call `configState.reset()`. The chart, copy actions, metadata
+context, and controls share the same active computed config. Identical native
+input pairs that only differed by their old light/dark target were consolidated.
+Unused Donut auxiliary preset pairs were removed. The JSON accordion helper now
+obtains the theme from the main store, and Skeleton's type uses the selected
+string directly in either theme.
+
+A temporary comparison checked all 138 pre/post-refactor theme presets across
+69 components; values match, with the intentional Skeleton type correction.
+Seven state regressions cover nested edits, root assignment, dependency changes,
+callbacks, resets, binding compatibility, component coverage, and Skeleton type
+changes, alongside the existing 76 editor/binding regressions.
+
+## VueUiGraph
+
+`DocVueUiGraph.vue` uses the shared config state and binding components. Its
+editable scalar fields are derived from the public graph defaults in
+`components/docs/graph.js`. Arrays, callbacks and skeleton objects can be supplied
+in application code. The same defaults populate `MakerGraph.vue`, whose graph
+dataset and configuration are saved independently under `graphDataset` and
+`graphConfig`. Node removal also removes its incident links.

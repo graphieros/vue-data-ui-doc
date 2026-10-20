@@ -621,6 +621,355 @@
             }
         ]
     },
+    "vue_ui_graph": {
+        "name": "VueUiGraph",
+        "icon": "chartGraph",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-graph",
+        "path": "/docs#vue-ui-graph",
+        "description": "graph",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "responsive": true,
+        "props": ["dataset", "config"],
+        "types": {
+            "config": "VueUiGraphConfig",
+            "dataset": "VueUiGraphDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "nodes": [
+                        {
+                            "id": "A",
+                            "label": "Node A",
+                            "group": "Group 1",
+                            "value": 60
+                        },
+                        {
+                            "id": "B",
+                            "label": "Node B",
+                            "group": "Group 1",
+                            "value": 25
+                        },
+                        {
+                            "id": "C",
+                            "label": "Node C",
+                            "group": "Group 1",
+                            "value": 15
+                        },
+                        {
+                            "id": "D",
+                            "label": "Node D",
+                            "group": "Group 2",
+                            "value": 50
+                        },
+                        {
+                            "id": "E",
+                            "label": "Node E",
+                            "group": "Group 2",
+                            "value": 30
+                        },
+                        {
+                            "id": "F",
+                            "label": "Node F",
+                            "group": "Group 2",
+                            "value": 20
+                        }
+                    ],
+                    "links": [
+                        {
+                            "source": "A",
+                            "target": "B",
+                            "value": 3
+                        },
+                        {
+                            "source": "A",
+                            "target": "C",
+                            "value": 2
+                        },
+                        {
+                            "source": "B",
+                            "target": "C",
+                            "value": 1
+                        },
+                        {
+                            "source": "A",
+                            "target": "D",
+                            "value": 5,
+                            "directed": true
+                        },
+                        {
+                            "source": "D",
+                            "target": "E",
+                            "value": 3
+                        },
+                        {
+                            "source": "D",
+                            "target": "F",
+                            "value": 2
+                        }
+                    ]
+                },
+                "config": {}
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "svg",
+                "description": "Triggers svg download.",
+                "icon": "svg"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
+            },
+            {
+                "name": "Zoom",
+                "description": "Toggles the pan zoom lock feature",
+                "icon": "zoomLock"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectNode",
+                "description": "Selected node, or null when cleared."
+            },
+            {
+                "name": "hoverNode",
+                "description": "Hovered node, or null when leaving."
+            },
+            {
+                "name": "zoom",
+                "description": "Current viewport { x, y, k }."
+            },
+            {
+                "name": "zoomReset",
+                "description": "Viewport after resetting zoom."
+            },
+            {
+                "name": "layoutStart",
+                "description": "Force simulation started."
+            },
+            {
+                "name": "layoutEnd",
+                "description": "Dataset after the layout simulation ends."
+            },
+            {
+                "name": "copyAlt",
+                "description": "Accessible chart description and dataset."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "zoomIn",
+                "description": "Zoom in."
+            },
+            {
+                "name": "zoomOut",
+                "description": "Zoom out."
+            },
+            {
+                "name": "resetZoom",
+                "description": "Reset zoom."
+            },
+            {
+                "name": "fitToView",
+                "description": "Fit all nodes in the viewport."
+            },
+            {
+                "name": "focusNode",
+                "description": "Center the viewport on the given node id."
+            },
+            {
+                "name": "resetLayout",
+                "description": "Restart the force layout."
+            },
+            {
+                "name": "getData",
+                "description": "Return the graph dataset."
+            },
+            {
+                "name": "getImage",
+                "description": "Return chart image data."
+            },
+            {
+                "name": "generateImage",
+                "description": "Download PNG."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Download PDF."
+            },
+            {
+                "name": "generateSvg",
+                "description": "Download SVG."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Export CSV."
+            },
+            {
+                "name": "toggleTable",
+                "description": "Toggle data table."
+            },
+            {
+                "name": "toggleFullscreen",
+                "description": "Set fullscreen state."
+            },
+            {
+                "name": "toggleZoom",
+                "description": "Toggle zoom lock."
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Toggle tooltip."
+            },
+            {
+                "name": "toggleAnnotator",
+                "description": "Toggle annotation tools."
+            },
+            {
+                "name": "copyAlt",
+                "description": "Copy accessible chart description."
+            }
+        ],
+        "slots": [
+            {
+                "name": "source",
+                "description": "add a chart caption or data source attribution"
+            },
+            {
+                "name": "skeleton",
+                "description": "customize the graph loading placeholder"
+            },
+            {
+                "name": "svg",
+                "description": "inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "menuIcon",
+                "description": "customize the chart's context menu open/close icon"
+            },
+            {
+                "name": "optionPdf",
+                "description": "customize the context menu pdf icon"
+            },
+            {
+                "name": "optionImg",
+                "description": "customize the context menu image icon"
+            },
+            {
+                "name": "optionSvg",
+                "description": "customize the context menu svg icon"
+            },
+            {
+                "name": "optionFullscreen",
+                "description": "customize the context menu fullscreen icon"
+            },
+            {
+                "name": "optionAnnotator",
+                "description": "customize the context menu annotator icon"
+            },
+            {
+                "name": "optionZoom",
+                "description": "customize the context menu zoom lock icon"
+            },
+            {
+                "name": "annotator-action-close",
+                "description": "customize the annotator sub-menu close icon"
+            },
+            {
+                "name": "annotator-action-color",
+                "description": "customize the annotator sub-menu color palette icon"
+            },
+            {
+                "name": "annotator-action-draw",
+                "description": "customize the annotator sub-menu draw/text icons"
+            },
+            {
+                "name": "annotator-action-undo",
+                "description": "customize the annotator sub-menu undo icon"
+            },
+            {
+                "name": "annotator-action-redo",
+                "description": "customize the annotator sub-menu redo icon"
+            },
+            {
+                "name": "annotator-action-delete",
+                "description": "customize the annotator sub-menu delete icon"
+            },
+            {
+                "name": "node",
+                "description": "customize the node content"
+            },
+            {
+                "name": "tooltip",
+                "description": "Custom node tooltip."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Content before node tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Content after node tooltip."
+            },
+            {
+                "name": "chart-background",
+                "description": "Background SVG content."
+            },
+            {
+                "name": "watermark",
+                "description": "Chart watermark."
+            },
+            {
+                "name": "hint",
+                "description": "Accessibility hint."
+            },
+            {
+                "name": "optionCsv",
+                "description": "CSV menu icon."
+            },
+            {
+                "name": "optionTable",
+                "description": "Table menu icon."
+            },
+            {
+                "name": "optionTooltip",
+                "description": "Tooltip menu icon."
+            },
+            {
+                "name": "optionAltCopy",
+                "description": "Alt text menu icon."
+            },
+            {
+                "name": "custom-menu-before",
+                "description": "Content before menu options."
+            },
+            {
+                "name": "custom-menu-after",
+                "description": "Content after menu options."
+            }
+        ]
+    },
     "vue_ui_dag": {
         "name": "VueUiDag",
         "icon": "chartDag",

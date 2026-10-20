@@ -10,6 +10,7 @@
         "preview": "vite preview",
         "test": "npx cypress open",
         "test:doc-bindings": "node --test tests/doc-config-bindings.test.js tests/docs-config-rollout.test.js tests/doc-config-state.test.js",
+        "test:graph": "node --test tests/graph-documentation.test.js",
         "test:types": "node --test tests/type-documentation.test.js",
         "upgrade": "node upgrade.cjs",
         "site": "node publish-site.cjs",
@@ -29,7 +30,7 @@
         "prismjs": "^1.29.0",
         "ssh2": "^1.16.0",
         "vue": "^3.5.43",
-        "vue-data-ui": "^3.27.1",
+        "vue-data-ui": "^3.28.0",
         "vue-hi-code": "^1.5.4",
         "vue-router": "^4.5.1",
         "vue-tabler-icons": "^2.21.0"

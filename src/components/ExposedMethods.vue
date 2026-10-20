@@ -30,6 +30,31 @@ const translations = computed(() => store.translations);
 
 const methodMap = computed(() => {
     return {
+        fitToView: {
+            name: "fitToView",
+            description:
+                translations.value.docs.emits.graph.fitToView[store.lang],
+        },
+        focusNode: {
+            name: "focusNode",
+            description:
+                translations.value.docs.emits.graph.focusNode[store.lang],
+        },
+        resetLayout: {
+            name: "resetLayout",
+            description:
+                translations.value.docs.emits.graph.resetLayout[store.lang],
+        },
+        toggleZoom: {
+            name: "toggleZoom",
+            description:
+                translations.value.docs.emits.graph.toggleZoom[store.lang],
+        },
+        copyAlt: {
+            name: "copyAlt",
+            description:
+                translations.value.docs.emits.graph.copyAlt[store.lang],
+        },
         generatePdf: {
             name: "generatePdf",
             description: translations.value.docs.emits.generatePdf[store.lang],

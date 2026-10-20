@@ -80,6 +80,7 @@ const icons = ref([
     "chartGalaxy",
     "chartGauge",
     "chartGeo",
+    "chartGraph",
     "chartHeatmap",
     "chartHill",
     "chartHistoryPlot",

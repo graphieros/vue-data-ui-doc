@@ -50,6 +50,25 @@ const emitMap = computed(() => ({
         description: translations.value.docs.emits.hoverIndex[store.lang],
     },
 
+    // Graph event payloads differ from other charts with similarly named events.
+    hoverNode: {
+        name: "hoverNode",
+        description: translations.value.docs.emits.graph.hoverNode[store.lang],
+    },
+    zoom: {
+        name: "zoom",
+        description: translations.value.docs.emits.graph.zoom[store.lang],
+    },
+    layoutStart: {
+        name: "layoutStart",
+        description:
+            translations.value.docs.emits.graph.layoutStart[store.lang],
+    },
+    layoutEnd: {
+        name: "layoutEnd",
+        description: translations.value.docs.emits.graph.layoutEnd[store.lang],
+    },
+
     // VueUiTimer specials
     start: {
         name: "start",
@@ -202,6 +221,10 @@ const emitMap = computed(() => ({
         v-for="name in names"
         :component
         :name
-        :description="emitMap[name].description"
+        :description="
+            component === 'VueUiGraph' && translations.docs.emits.graph[name]
+                ? translations.docs.emits.graph[name][store.lang]
+                : emitMap[name].description
+        "
     />
 </template>

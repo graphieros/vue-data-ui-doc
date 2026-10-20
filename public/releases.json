@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.0",
+        "date": "2026-10-20",
+        "updates": [
+            {
+                "component": "VueUiGraph",
+                "description": "Add new component",
+                "link": "/docs#vue-ui-graph"
+            }
+        ]
+    },
+    {
         "version": "v 3.27.1",
         "date": "2026-10-17",
         "updates": [

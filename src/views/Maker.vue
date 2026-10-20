@@ -19,6 +19,9 @@ import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import IconBlocks from "../components/IconBlocks.vue";
 
+const MakerGraph = defineAsyncComponent(
+    () => import("../components/maker/MakerGraph.vue"),
+);
 const MakerXy = defineAsyncComponent(
     () => import("../components/maker/MakerXy.vue"),
 );
@@ -557,6 +560,14 @@ const options = ref([
         icon: "chartChord",
         thumb: new URL("../assets/thumb_chord_light.png", import.meta.url).href,
         description: translations.value.docs.tooltips.chord,
+    },
+    {
+        component: markRaw(MakerGraph),
+        key: "vue_ui_graph",
+        name: "VueUiGraph",
+        icon: "chartGraph",
+        thumb: new URL("../assets/thumb_graph_light.svg", import.meta.url).href,
+        description: translations.value.docs.tooltips.graph,
     },
     {
         component: markRaw(MakerDag),

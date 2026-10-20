@@ -655,6 +655,17 @@ const smallMenu = ref([
         component: "Geo",
     },
     {
+        route: "/docs#vue-ui-graph",
+        icon: "chartGraph",
+        cssClasses: "",
+        isSelected: isSelected,
+        tooltipContent: "Graph",
+        thumb: new URL("../assets/thumb_graph.svg", import.meta.url).href,
+        thumbLight: new URL("../assets/thumb_graph_light.svg", import.meta.url)
+            .href,
+        component: "Graph",
+    },
+    {
         route: "/docs#vue-ui-dag",
         icon: "chartDag",
         cssClasses: "",
@@ -1229,6 +1240,13 @@ const sideMenuItems = computed(() => {
         {
             title: translations.value.sideMenu.graphs[store.lang],
             items: [
+                {
+                    route: "/docs#vue-ui-graph",
+                    componentName: "Graph",
+                    icon: "chartGraph",
+                    description:
+                        translations.value.docs.tooltips.graph[store.lang],
+                },
                 {
                     route: "/docs#vue-ui-dag",
                     componentName: "Dag",

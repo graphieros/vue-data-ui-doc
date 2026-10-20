@@ -169,7 +169,7 @@ test("component docs expose one writable computed config without legacy aliases"
             file,
         );
     }
-    assert.equal(count, 68);
+    assert.equal(count, 69);
 });
 
 test("Skeleton follows its selected type in either theme", async () => {
