@@ -907,6 +907,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiStackline"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'tooltip-before',

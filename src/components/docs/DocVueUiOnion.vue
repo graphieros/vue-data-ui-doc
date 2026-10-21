@@ -623,6 +623,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiOnion"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

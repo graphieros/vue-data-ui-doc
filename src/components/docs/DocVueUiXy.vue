@@ -1240,6 +1240,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiXy"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

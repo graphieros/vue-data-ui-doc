@@ -902,6 +902,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiRidgeline"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

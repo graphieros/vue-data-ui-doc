@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.1",
+        "date": "2026-10-21",
+        "updates": [
+            {
+                "component": "All charts with svg slot",
+                "description": "Add new #svg-underlayer slot with the same scope as the #svg slot",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.28.0",
         "date": "2026-10-20",
         "updates": [

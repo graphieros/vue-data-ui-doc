@@ -653,6 +653,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiCandlestick"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

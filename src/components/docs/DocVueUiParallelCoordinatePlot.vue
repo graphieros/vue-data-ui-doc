@@ -638,6 +638,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiParallelCoordinatePlot"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'plot-comment',

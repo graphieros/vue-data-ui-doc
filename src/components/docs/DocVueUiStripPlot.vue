@@ -680,6 +680,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiStripPlot"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'tooltip-before',

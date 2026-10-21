@@ -673,6 +673,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiHorizontalBar"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

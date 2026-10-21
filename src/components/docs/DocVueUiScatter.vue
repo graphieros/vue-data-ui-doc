@@ -815,6 +815,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiScatter"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

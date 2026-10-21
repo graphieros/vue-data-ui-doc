@@ -449,6 +449,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiMoodRadar"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

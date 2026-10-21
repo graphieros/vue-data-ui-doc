@@ -1161,6 +1161,17 @@ export const useMainStore = defineStore("main", {
                     },
                 },
                 slots: {
+                    svgUnderlayer: {
+                        en: "Inject SVG elements beneath the chart data. This slot receives the same scope as the svg slot.",
+                        fr: "Insérez des éléments SVG sous les données du graphique. Ce slot reçoit les mêmes données que le slot svg.",
+                        pt: "Insira elementos SVG abaixo dos dados do gráfico. Este slot recebe os mesmos dados que o slot svg.",
+                        de: "Fügen Sie SVG-Elemente unter den Diagrammdaten ein. Dieser Slot erhält dieselben Daten wie der svg-Slot.",
+                        zh: "在图表数据下方插入 SVG 元素。此插槽接收与 svg 插槽相同的数据。",
+                        ja: "グラフのデータの背面に SVG 要素を挿入します。このスロットは svg スロットと同じデータを受け取ります。",
+                        es: "Inserte elementos SVG debajo de los datos del gráfico. Este slot recibe los mismos datos que el slot svg.",
+                        ko: "차트 데이터 뒤에 SVG 요소를 삽입합니다. 이 슬롯은 svg 슬롯과 같은 데이터를 받습니다.",
+                        ar: "أدرج عناصر SVG أسفل بيانات الرسم البياني. تتلقى هذه الفتحة نفس بيانات فتحة svg.",
+                    },
                     graphSkeleton: {
                         en: "Customize the graph loading placeholder.",
                         fr: "Personnalise le contenu de chargement du graphe.",

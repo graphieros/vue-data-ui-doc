@@ -532,8 +532,8 @@ export default function useCharts() {
                 icon: "chartGraph",
                 link: "/docs#vue-ui-graph",
                 description: translations.value.docs.tooltips.graph[store.lang],
-                taxinomy: ["relationships"],
-                singleTaxinomy: "relationships",
+                taxinomy: ["hierarchy"],
+                singleTaxinomy: "hierarchy",
             },
             VueUiDag: {
                 icon: "chartDag",

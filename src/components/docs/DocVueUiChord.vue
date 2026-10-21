@@ -411,6 +411,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiChord"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

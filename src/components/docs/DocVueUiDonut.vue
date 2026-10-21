@@ -655,6 +655,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiDonut"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'dataLabel',

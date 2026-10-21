@@ -13,6 +13,13 @@ export function createGraphSlotSnippets(text = graphTranslations.en) {
             :stroke-width="selected || hovered ? 3 : 1" />
         <title>{{ node.label || node.id }}</title>
     </template>`),
+        "svg-underlayer":
+            wrap(`    <template #svg-underlayer="{ nodes, links, config, viewport }">
+        <!-- ${text.underlayerComment} -->
+        <circle v-for="node in nodes" :key="node.id"
+            :cx="node.x" :cy="node.y" :r="(node.radius || 7) + 8"
+            :fill="config.style.chart.color" opacity="0.08" />
+    </template>`),
         svg: wrap(`    <template #svg="{ nodes, links, config, viewport }">
         <!-- ${text.overlayComment} -->
         <text x="12" y="24" :fill="config.style.chart.color">

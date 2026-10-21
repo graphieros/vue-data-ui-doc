@@ -511,6 +511,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiWordCloud"
                     :types="[
+                    'svg-underlayer',
                         'hint',
                         'svg',
                         'tooltip-before',

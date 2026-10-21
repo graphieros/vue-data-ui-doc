@@ -551,6 +551,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiRings"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

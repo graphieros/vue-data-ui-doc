@@ -338,6 +338,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
                 <BaseSlotDocumenter
                     componentName="VueUiThermometer"
                     :types="[
+                        'svg-underlayer',
                         'svg',
                         'watermark',
                         'source',

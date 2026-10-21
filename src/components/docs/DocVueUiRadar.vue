@@ -653,6 +653,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiRadar"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

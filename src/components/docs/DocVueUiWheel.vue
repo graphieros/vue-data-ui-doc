@@ -340,6 +340,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 <BaseSlotDocumenter
                     componentName="VueUiWheel"
                     :types="[
+                        'svg-underlayer',
                         'svg',
                         'watermark',
                         'source',

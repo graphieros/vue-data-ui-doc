@@ -541,6 +541,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiDumbbell"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

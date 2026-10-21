@@ -679,6 +679,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiDonutEvolution"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

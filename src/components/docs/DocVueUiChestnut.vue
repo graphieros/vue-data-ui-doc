@@ -812,6 +812,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiChestnut"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

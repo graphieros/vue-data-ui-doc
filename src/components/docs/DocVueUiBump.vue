@@ -493,6 +493,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                 <BaseSlotDocumenter
                     componentName="VueUiBump"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'time-label',

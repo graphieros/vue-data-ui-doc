@@ -543,6 +543,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiWaffle"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'cell',

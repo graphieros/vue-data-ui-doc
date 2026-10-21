@@ -501,6 +501,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiRelationCircle"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'watermark',

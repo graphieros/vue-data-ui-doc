@@ -313,6 +313,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
                 <BaseSlotDocumenter
                     componentName="VueUiTiremarks"
                     :types="[
+                        'svg-underlayer',
                         'svg',
                         'watermark',
                         'source',

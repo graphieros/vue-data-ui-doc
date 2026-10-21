@@ -46,6 +46,17 @@ const items = computed(() => {
             `,
         },
         {
+            names: ["svg-underlayer"],
+            description: translations.value.slots.svgUnderlayer[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #svg-underlayer="{ svg }">
+            ${props.withSvgContent ? `<circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="red"/>` : `<!-- Use custom svg elements with the data provided by the slot -->`}
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
             names: ["svg"],
             description: translations.value.slots.presentation[store.lang],
             freestyle: translations.value.slots.freestyle[store.lang],

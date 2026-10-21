@@ -706,6 +706,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiTreemap"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'rect',

@@ -1135,6 +1135,7 @@ const waterfallExplain = ref({
                 <BaseSlotDocumenter
                     componentName="VueUiStackbar"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'tooltip-before',

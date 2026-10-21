@@ -449,6 +449,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiBullet"
                     :types="[
+                        'svg-underlayer',
                         'svg',
                         'legend',
                         'watermark',

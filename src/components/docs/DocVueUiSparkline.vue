@@ -516,6 +516,7 @@ const prefersReduced = ref({
                 <BaseSlotDocumenter
                     componentName="VueUiSparkline"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'before',

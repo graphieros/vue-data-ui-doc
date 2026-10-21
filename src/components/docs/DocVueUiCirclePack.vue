@@ -625,6 +625,7 @@ const customFormatCode =
             <BaseSlotDocumenter
                 componentName="VueUiCirclePack"
                 :types="[
+                    'svg-underlayer',
                     'hint',
                     'svg',
                     'tooltip-before',

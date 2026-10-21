@@ -669,6 +669,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiHistoryPlot"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

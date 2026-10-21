@@ -52,6 +52,8 @@ export const graphTranslations = {
         layoutControlsTitle: "Layout controls",
         layoutControlsDescription:
             "Adjust the forces and spacing to explore different layouts. Hover over a control for details, or reset it with its reset button.",
+        underlayerComment:
+            "Inject SVG elements beneath the chart data. This slot receives the same scope as the svg slot.",
     },
     fr: {
         fitToView: "Ajuster à la vue",
@@ -108,6 +110,8 @@ export const graphTranslations = {
         layoutControlsTitle: "Réglages de disposition",
         layoutControlsDescription:
             "Ajustez les forces et les espacements pour explorer différentes dispositions. Survolez un réglage pour en savoir plus, ou utilisez son bouton de réinitialisation.",
+        underlayerComment:
+            "Insérez des éléments SVG sous les données du graphique. Ce slot reçoit les mêmes données que le slot svg.",
     },
     pt: {
         fitToView: "Ajustar à vista",
@@ -163,6 +167,8 @@ export const graphTranslations = {
         layoutControlsTitle: "Controles de layout",
         layoutControlsDescription:
             "Ajuste as forças e o espaçamento para explorar diferentes layouts. Passe o cursor sobre um controle para ver detalhes ou use seu botão de redefinição.",
+        underlayerComment:
+            "Insira elementos SVG abaixo dos dados do gráfico. Este slot recebe os mesmos dados que o slot svg.",
     },
     de: {
         fitToView: "In Ansicht einpassen",
@@ -220,6 +226,8 @@ export const graphTranslations = {
         layoutControlsTitle: "Layoutsteuerung",
         layoutControlsDescription:
             "Passen Sie Kräfte und Abstände an, um verschiedene Layouts zu erkunden. Zeigen Sie auf einen Regler für Details oder nutzen Sie dessen Zurücksetzen-Schaltfläche.",
+        underlayerComment:
+            "Fügen Sie SVG-Elemente unter den Diagrammdaten ein. Dieser Slot erhält dieselben Daten wie der svg-Slot.",
     },
     zh: {
         fitToView: "适应视口",
@@ -271,6 +279,8 @@ export const graphTranslations = {
         layoutControlsTitle: "布局控件",
         layoutControlsDescription:
             "调整力和间距以探索不同布局。将鼠标悬停在控件上查看说明，或使用其重置按钮恢复。",
+        underlayerComment:
+            "在图表数据下方插入 SVG 元素。此插槽接收与 svg 插槽相同的数据。",
     },
     ja: {
         fitToView: "全体を表示",
@@ -326,6 +336,8 @@ export const graphTranslations = {
         layoutControlsTitle: "レイアウトの調整",
         layoutControlsDescription:
             "力と間隔を調整して配置の変化を試せます。各コントロールにホバーすると説明が表示され、リセットボタンで元に戻せます。",
+        underlayerComment:
+            "グラフのデータの背面に SVG 要素を挿入します。このスロットは svg スロットと同じデータを受け取ります。",
     },
     es: {
         fitToView: "Ajustar a la vista",
@@ -381,6 +393,8 @@ export const graphTranslations = {
         layoutControlsTitle: "Controles de diseño",
         layoutControlsDescription:
             "Ajuste las fuerzas y el espaciado para explorar distintos diseños. Pase el cursor sobre un control para ver detalles o use su botón de restablecimiento.",
+        underlayerComment:
+            "Inserte elementos SVG debajo de los datos del gráfico. Este slot recibe los mismos datos que el slot svg.",
     },
     ko: {
         fitToView: "화면에 맞추기",
@@ -435,6 +449,8 @@ export const graphTranslations = {
         layoutControlsTitle: "레이아웃 조절",
         layoutControlsDescription:
             "힘과 간격을 조정하여 다양한 레이아웃을 살펴보세요. 조절기에 마우스를 올리면 설명이 표시되며 초기화 버튼으로 되돌릴 수 있습니다.",
+        underlayerComment:
+            "차트 데이터 뒤에 SVG 요소를 삽입합니다. 이 슬롯은 svg 슬롯과 같은 데이터를 받습니다.",
     },
     ar: {
         fitToView: "ملاءمة العرض",
@@ -486,5 +502,7 @@ export const graphTranslations = {
         layoutControlsTitle: "عناصر التحكم في التخطيط",
         layoutControlsDescription:
             "اضبط القوى والتباعد لاستكشاف تخطيطات مختلفة. مرّر المؤشر فوق عنصر التحكم لعرض التفاصيل أو استخدم زر إعادة الضبط الخاص به.",
+        underlayerComment:
+            "أدرج عناصر SVG أسفل بيانات الرسم البياني. تتلقى هذه الفتحة نفس بيانات فتحة svg.",
     },
 };

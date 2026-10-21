@@ -509,6 +509,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiGalaxy"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

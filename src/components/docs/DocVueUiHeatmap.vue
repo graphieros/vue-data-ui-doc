@@ -507,6 +507,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiHeatmap"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'tooltip-before',

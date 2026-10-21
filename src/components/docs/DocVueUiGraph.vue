@@ -234,6 +234,7 @@ const tooltipCode = computed(
             <BaseSlotDocumenter
                 componentName="VueUiGraph"
                 :types="[
+                    'svg-underlayer',
                     'hint',
                     'node',
                     'svg',

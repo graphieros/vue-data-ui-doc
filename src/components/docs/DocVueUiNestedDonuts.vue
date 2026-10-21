@@ -592,6 +592,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiNestedDonuts"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

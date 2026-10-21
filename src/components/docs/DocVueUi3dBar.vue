@@ -537,6 +537,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                 <BaseSlotDocumenter
                     componentName="VueUi3dBar"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'watermark',

@@ -589,6 +589,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
                 <BaseSlotDocumenter
                     componentName="VueUiFlow"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'tooltip-before',

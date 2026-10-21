@@ -745,6 +745,7 @@ const datapointSlot = ref(`
                 <BaseSlotDocumenter
                     componentName="VueUiQuadrant"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

@@ -63,6 +63,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -342,6 +346,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -555,6 +563,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -853,6 +865,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "source",
                 "description": "add a chart caption or data source attribution"
             },
@@ -1138,6 +1154,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -1286,6 +1306,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -1663,6 +1687,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -1881,6 +1909,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -2054,6 +2086,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -2300,6 +2336,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -2529,6 +2569,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -2706,6 +2750,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -2991,6 +3039,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -3243,6 +3295,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -3593,6 +3649,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -3842,6 +3902,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -4074,6 +4138,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -4250,6 +4318,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -4442,6 +4514,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -4723,6 +4799,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -4978,6 +5058,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -5154,6 +5238,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -5304,6 +5392,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -5697,6 +5789,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -5893,6 +5989,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -6335,6 +6435,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -6570,6 +6674,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -6829,6 +6937,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -7053,6 +7165,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -7524,6 +7640,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -7754,6 +7874,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -8009,6 +8133,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -8209,6 +8337,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -8731,6 +8863,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -8983,6 +9119,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -9168,6 +9308,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -9376,6 +9520,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -9582,6 +9730,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -9723,6 +9875,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -9943,6 +10099,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -10232,6 +10392,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -10443,6 +10607,10 @@
         ],
         "slots": [
             {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
+            {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
             },
@@ -10641,6 +10809,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -10875,6 +11047,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "svg",
                 "description": "inject any svg element on the top layer of the chart."
@@ -11118,6 +11294,10 @@
             }
         ],
         "slots": [
+            {
+                "name": "svg-underlayer",
+                "description": "inject SVG elements beneath the chart data; receives the same scope as the svg slot"
+            },
             {
                 "name": "legend",
                 "description": "create a custom legend."

@@ -464,7 +464,13 @@ function goToPage(route) {
             <template #slots>
                 <BaseSlotDocumenter
                     componentName="VueUiFunnel"
-                    :types="['svg', 'watermark', 'source', 'chart-background']"
+                    :types="[
+                        'svg-underlayer',
+                        'svg',
+                        'watermark',
+                        'source',
+                        'chart-background',
+                    ]"
                 >
                     <template #top>
                         <BaseSlotsImplementationLink

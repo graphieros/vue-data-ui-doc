@@ -479,6 +479,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiGauge"
                     :types="[
+                        'svg-underlayer',
                         'svg',
                         'legend',
                         'watermark',

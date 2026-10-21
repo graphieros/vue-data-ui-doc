@@ -520,6 +520,7 @@ const customFormatCode =
                 <BaseSlotDocumenter
                     componentName="VueUiAgePyramid"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'legend',

@@ -638,6 +638,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiDag"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'background-pattern',
                         'svg',

@@ -577,6 +577,7 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
                     componentName="VueUiHill"
                     :withSvgContent="false"
                     :types="[
+                        'svg-underlayer',
                         'svg',
                         'analysis',
                         'watermark',

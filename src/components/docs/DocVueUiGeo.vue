@@ -451,6 +451,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 <BaseSlotDocumenter
                     componentName="VueUiGeo"
                     :types="[
+                        'svg-underlayer',
                         'hint',
                         'datapoint',
                         'svg',
