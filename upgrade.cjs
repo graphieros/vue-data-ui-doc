@@ -29,5 +29,5 @@ console.log(
     `vue-data-ui v${packageJson.dependencies["vue-data-ui"]} upgrading...`,
 );
 
-execCommand("npm i");
-execCommand("npm run dev");
+execCommand("pnpm install");
+execCommand("pnpm dev");

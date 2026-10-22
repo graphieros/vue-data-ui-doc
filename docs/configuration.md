@@ -54,11 +54,11 @@ it is not required for this refactor.
 ## Upgrade and validation
 
 1. Replace/install the library tarball using the project's normal dependency workflow.
-2. Run `npm run test:config`. It checks every default and color option against
+2. Run `pnpm test:doc-bindings`. It checks every default and color option against
    the public API, stable reads, nested isolation, Vue edits/resets, and key coverage.
 3. Review additions/removals in the public component key contract and update the
    inventory and corresponding documentation deliberately.
-4. Run `npm run lint` and `npm run build`, then review representative editors in
+4. Run `pnpm lint` and `pnpm build`, then review representative editors in
    the browser. Library default changes now propagate directly to default displays,
    copy actions and search without editing any docs-side defaults.
 
@@ -66,8 +66,8 @@ Validation for this refactor: all five focused tests passed, and a temporary
 pre-refactor baseline comparison confirmed equality for all 69 configurations.
 Lint exited successfully with warnings in existing files; targeted lint was clean.
 The production build passed with large-chunk warnings. There is no configured
-project typecheck script or tsconfig, so no project typecheck was run. The existing
-Cypress suite consists of scaffold examples; browser interaction was not tested.
+project typecheck script or tsconfig, so no project typecheck was run.
+Browser interaction was not tested.
 Build output was regenerated in `dist` by the normal build script.
 
 ## Existing consumers
@@ -203,7 +203,7 @@ unsupported config properties. These rows are marked `unsupported` in metadata:
 components now take one `config` prop instead of separate light/dark props. Defaults shown in the documentation remain presentation
 metadata and can differ from the demo's current values.
 
-Run `npm run test:doc-bindings` for both the focused binding regressions and the
+Run `pnpm test:doc-bindings` for both the focused binding regressions and the
 full rollout checks. The 83 tests cover editor coverage, actual light/dark demo
 presets, resets, missing-path protection, library-default isolation, indexed
 arrays, navigation metadata, and language changes. The fixture helper evaluates

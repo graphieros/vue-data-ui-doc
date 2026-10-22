@@ -91,7 +91,7 @@ root-qualified query names, `/types`, query filters, history controls, copy,
 local-file import, and visual structure remain supported. The copy's module
 container is retained for existing root URLs.
 
-Run `npm run test:types` for focused regressions. `npm run dev` and `npm run build`
+Run `pnpm test:types` for focused regressions. `pnpm dev` and `pnpm build`
 automatically generate documentation; no generated declaration/JSON artifact
 needs updating or committing. Existing resolved declarations and the package
 manifest are polled in development, including under Vite's normally ignored

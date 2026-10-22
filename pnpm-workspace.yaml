@@ -1,0 +1,10 @@
+minimumReleaseAgeExclude:
+  # This documentation site needs to consume its own library's new releases immediately.
+  - vue-data-ui
+
+allowBuilds:
+  # SSH dependencies build native helpers.
+  ssh2: true
+  cpu-features: true
+  # core-js only prints a donation message.
+  core-js: false
