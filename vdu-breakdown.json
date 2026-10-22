@@ -1,8 +1,8 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 3891709,
+  "totalBytes": 3891911,
   "totalSize": "3.7 MB",
-  "fileCount": 357,
+  "fileCount": 359,
   "byExtension": [
     {
       "extension": ".js",
@@ -12,8 +12,8 @@
     },
     {
       "extension": ".d.ts",
-      "files": 78,
-      "bytes": 459021,
+      "files": 79,
+      "bytes": 459067,
       "size": "448 KB"
     },
     {
@@ -37,14 +37,20 @@
     {
       "extension": ".json",
       "files": 1,
-      "bytes": 4011,
-      "size": "3.9 KB"
+      "bytes": 4121,
+      "size": "4.0 KB"
     },
     {
       "extension": "[no extension]",
       "files": 1,
       "bytes": 1075,
       "size": "1.0 KB"
+    },
+    {
+      "extension": ".ts",
+      "files": 1,
+      "bytes": 46,
+      "size": "46 B"
     }
   ],
   "files": [
@@ -777,6 +783,13 @@
       "extension": ".js"
     },
     {
+      "path": "package.json",
+      "filename": "package",
+      "bytes": 4121,
+      "size": "4.0 KB",
+      "extension": ".json"
+    },
+    {
       "path": "dist/HillActions.js",
       "filename": "HillActions",
       "bytes": 4041,
@@ -789,13 +802,6 @@
       "bytes": 4012,
       "size": "3.9 KB",
       "extension": ".js"
-    },
-    {
-      "path": "package.json",
-      "filename": "package",
-      "bytes": 4011,
-      "size": "3.9 KB",
-      "extension": ".json"
     },
     {
       "path": "dist/vue_ui_history_plot.js",
@@ -2539,6 +2545,20 @@
       "bytes": 58,
       "size": "58 B",
       "extension": ".js"
+    },
+    {
+      "path": "dist/style.css.d.ts",
+      "filename": "style.css",
+      "bytes": 46,
+      "size": "46 B",
+      "extension": ".d.ts"
+    },
+    {
+      "path": "dist/style.d.css.ts",
+      "filename": "style.d.css",
+      "bytes": 46,
+      "size": "46 B",
+      "extension": ".ts"
     },
     {
       "path": "dist/package.js",

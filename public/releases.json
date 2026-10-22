@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.2",
+        "date": "2026-10-22",
+        "updates": [
+            {
+                "component": "Technical release",
+                "description": "Improve stylesheet import compatibility with TypeScript, Vue, and modern bundlers by adding CSS export conditions and generating stylesheet type declarations during the build. Also standardize LF line endings.",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.28.1",
         "date": "2026-10-21",
         "updates": [
