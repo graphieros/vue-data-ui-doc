@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.3",
+        "date": "2026-10-23",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Reactivity optimization",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.28.2",
         "date": "2026-10-22",
         "updates": [
