@@ -45,14 +45,14 @@ function goToProfile() {
 
 <template>
     <div
-        class="ml-12 sm:mx-auto w-full max-w-[1000px] px-12 sm:px-20"
+        class="mx-auto w-full min-w-0 max-w-[1000px] px-4 sm:px-20"
         dir="auto"
     >
         <a href="https://agentscan.tools/" target="_blank">
             <div
-                class="mt-8 w-full max-w-[800px] text-[18px] pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-4 place-items-center"
+                class="mt-8 w-full max-w-[800px] text-sm sm:text-[18px] sm:pl-4 mb-3 sm:mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-3 sm:gap-4 items-start sm:items-center"
             >
-                <div class="w-[24px] h-[24px]">
+                <div class="w-[24px] h-[24px] shrink-0">
                     <VueUiIcon
                         name="externalLink"
                         :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
@@ -63,10 +63,10 @@ function goToProfile() {
         </a>
 
         <div
-            class="bg-gray-100 dark:bg-[#0B0B0B] pt-6 pb-0 px-12 font-[Roboto] w-full"
+            class="bg-gray-100 dark:bg-[#0B0B0B] pt-6 pb-2 sm:pb-0 px-4 sm:px-12 font-[Roboto] w-full rounded-2xl sm:rounded-none"
         >
-            <div class="flex flex-col gap-2 items-center">
-                <a href="https://agentscan.tools/" target="_blank">
+            <div class="flex flex-col gap-2 items-center min-w-0">
+                <a href="https://agentscan.tools/" target="_blank" class="text-center sm:text-start">
                     <div class="flex flex-row gap-2 justify-center mb-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -90,27 +90,27 @@ function goToProfile() {
                         </span>
                     </div>
                     <span
-                        class="text-[#57606a] dark:text-[#808080] font-[OpenSans]"
+                        class="text-sm sm:text-base leading-relaxed text-[#57606a] dark:text-[#808080] font-[OpenSans]"
                         >An open experiment in detecting automation patterns on
                         GitHub</span
                     >
                 </a>
 
                 <div
-                    class="github-input-wrapper my-4 font-[OpenSans] w-full h-[48px] rounded-full border border-[#3A3A3A] flex items-center pl-4 pr-6"
+                    class="github-input-wrapper my-4 font-[OpenSans] w-full h-[48px] rounded-full border border-[#3A3A3A] flex items-center gap-1 sm:gap-0 pl-4 pr-1 sm:pr-6"
                 >
                     <input
                         v-model="username"
                         type="text"
                         :placeholder="placeholder[store.lang]"
-                        class="github-input flex-1 bg-transparent border-none outline-none placeholder:text-[#57606a] dark:placeholder:text-[#808080]"
+                        class="github-input min-w-0 flex-1 bg-transparent border-none outline-none placeholder:text-[#57606a] dark:placeholder:text-[#808080]"
                         @keyup.enter="goToProfile"
                     />
 
                     <button
                         @click="username = ''"
                         v-if="!!username"
-                        class="ml-4 text-white cursor-pointer bg-transparent border-none outline-none"
+                        class="h-10 w-10 sm:h-auto sm:w-auto sm:ml-4 shrink-0 flex items-center justify-center text-white cursor-pointer bg-transparent border-none outline-none"
                     >
                         <VueUiIcon
                             name="close"
@@ -120,7 +120,7 @@ function goToProfile() {
 
                     <button
                         type="button"
-                        class="ml-4 text-white cursor-pointer bg-transparent border-none outline-none"
+                        class="h-10 w-10 sm:h-auto sm:w-auto sm:ml-4 shrink-0 flex items-center justify-center text-white cursor-pointer bg-transparent border-none outline-none"
                         @click="goToProfile"
                     >
                         <svg

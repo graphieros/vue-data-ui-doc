@@ -668,7 +668,9 @@ const crumbs = computed(() => {
 
     <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
 
-    <div class="w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]">
+    <div
+        class="chart-builder w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]"
+    >
         <div
             class="w-full flex flex-row gap-4 place-items-center justify-center my-12 mt-20"
         >
@@ -969,6 +971,11 @@ const crumbs = computed(() => {
 </template>
 
 <style>
+.chart-builder details[open] + .vue-ui-accordion-content {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
 .vue-data-ui-tooltip {
     font-family: Inter;
 }

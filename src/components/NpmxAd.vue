@@ -44,12 +44,12 @@ const vduIsOnNpmx = shallowRef({
 </script>
 
 <template>
-    <div class="ml-12 sm:mx-auto max-w-[1000px] px-12 sm:px-20" dir="auto">
+    <div class="mx-auto w-full min-w-0 max-w-[1000px] px-4 sm:px-20" dir="auto">
         <a href="https://npmx.dev/" target="_blank">
             <div
-                class="mt-8 w-full max-w-[800px] text-[18px] pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-4 place-items-center"
+                class="mt-8 w-full max-w-[800px] text-sm sm:text-[18px] sm:pl-4 mb-3 sm:mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-3 sm:gap-4 items-start sm:items-center"
             >
-                <div class="w-[24px] h-[24px]">
+                <div class="w-[24px] h-[24px] shrink-0">
                     <VueUiIcon
                         name="externalLink"
                         :stroke="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
@@ -59,7 +59,9 @@ const vduIsOnNpmx = shallowRef({
             </div>
         </a>
 
-        <div class="bg-gray-100 dark:bg-[#2A2A2A] py-4 px-2">
+        <div
+            class="bg-gray-100 dark:bg-[#2A2A2A] p-4 sm:py-4 sm:px-2 rounded-2xl sm:rounded-none"
+        >
             <a href="https://npmx.dev/" target="_blank">
                 <div
                     class="flex flex-row gap-2 place-items-center justify-start"
@@ -83,11 +85,11 @@ const vduIsOnNpmx = shallowRef({
                         </div>
                     </div>
                 </div>
-                <p class="font-inter-medium text-gray-500 px-4">
+                <p class="font-inter-medium text-gray-500 sm:px-4 text-sm sm:text-base leading-relaxed">
                     {{ tagLine[store.lang] }}
                 </p>
                 <div
-                    class="font-inter-medium px-4 mt-2"
+                    class="font-inter-medium sm:px-4 mt-3 sm:mt-2 text-sm sm:text-base leading-relaxed"
                     v-html="npmx_what_we_are[store.lang]"
                 />
             </a>

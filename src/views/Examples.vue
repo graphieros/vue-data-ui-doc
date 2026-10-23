@@ -124,7 +124,7 @@ const menuItems = computed(() => [
 
     <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
 
-    <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
+    <div class="my-12 w-full mx-auto text-center max-w-[1200px]">
         <div
             class="w-full flex flex-row gap-4 place-items-center justify-center my-12"
         >

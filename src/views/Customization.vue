@@ -249,7 +249,7 @@ watch(() => router.currentRoute.value, updateCrumb, {
                     :href="item.link"
                 >
                     <button
-                        :class="`relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${isSelected(item, index) ? 'bg-gradient-to-b from-[#efb376] to-[#de8b37] dark:from-[#de8b3770] dark:to-[#de8b3720]' : 'bg-white dark:bg-[#de8b3715] hover:bg-[#FBFBFB] dark:hover:bg-[#de8b3730] '} transition-colors`"
+                        :class="`relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg p-2 flex flex-col place-items-center justify-between ${isSelected(item, index) ? 'bg-gradient-to-b from-[#f18a5e] to-[#de6937] dark:from-[#de693780] dark:to-[#de693720] text-white' : 'bg-white dark:bg-[#de693715] hover:bg-[#FBFBFB] dark:hover:bg-[#de693730]'} transition-colors`"
                         @click="selectedMenu = item.name"
                     >
                         <div
@@ -262,11 +262,7 @@ watch(() => router.currentRoute.value, updateCrumb, {
                                 v-else
                                 :is="item.icon"
                                 :color="
-                                    isDarkMode
-                                        ? item.name === 'experiments'
-                                            ? '#fdd663'
-                                            : '#de8b37'
-                                        : '#1A1A1A'
+                                    isSelected(item, index) ? '#FFFFFF' : '#de6937'
                                 "
                                 :size="isMobile ? 22 : 32"
                                 :stroke-width="1.5"

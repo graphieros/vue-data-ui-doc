@@ -157,7 +157,7 @@ const universalComponentTemplateContent = computed(() => {
             />
         </div>
         <div
-            class="w-full flex flex-row gap-4 place-items-center justify-center my-12"
+            class="w-full flex flex-row flex-wrap gap-4 px-4 place-items-center justify-center my-12"
         >
             <div class="relative w-[80px] h-[80px]">
                 <VueUiIcon
@@ -216,7 +216,7 @@ const universalComponentTemplateContent = computed(() => {
             >
         </div>
 
-        <BaseCard class="max-w-[1400px] max-12 mt-6">
+        <BaseCard class="w-full min-w-0 max-w-[1400px] overflow-x-auto mt-6">
             <div class="text-left">
                 <VueHiCode
                     :content="mainCodeContent"

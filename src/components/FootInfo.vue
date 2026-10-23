@@ -26,6 +26,9 @@ function isSelected(route) {
 }
 
 const isMenuOpen = computed(() => store.isMenuOpen);
+const hasSideMenu = computed(() =>
+    ["/docs", "/search", "/universal-component"].includes(currentRoute.value),
+);
 
 const menuItems = computed(() => {
     return [
@@ -138,7 +141,16 @@ const fncsy = ref({
 s
 <template>
     <div
-        :class="`flex-col mt-12 justify-center py-12 border-t ${isDarkMode ? 'bg-[#1A1A1A] border-[#2A2A2A]' : 'bg-gray-300'}   ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`"
+        class="flex-col mt-12 justify-center py-12 border-t"
+        :class="[
+            isDarkMode ? 'bg-[#1A1A1A] border-[#2A2A2A]' : 'bg-gray-300',
+            hasSideMenu && isMenuOpen ? 'hidden sm:flex' : 'flex',
+            hasSideMenu
+                ? isMenuOpen
+                    ? 'sm:pl-[348px] sm:pr-[48px]'
+                    : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'
+                : '',
+        ]"
     >
         <div
             v-if="!isMobile"

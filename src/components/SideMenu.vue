@@ -23,6 +23,14 @@ const translations = computed(() => store.translations);
 
 const isOpen = ref(window.innerWidth > 768);
 
+watch(
+    isOpen,
+    (open) => {
+        store.isMenuOpen = open;
+    },
+    { immediate: true },
+);
+
 const emit = defineEmits(["toggle"]);
 
 onMounted(() => {

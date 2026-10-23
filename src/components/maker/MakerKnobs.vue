@@ -344,8 +344,3 @@ watch(
     </div>
 </template>
 
-<style>
-.vue-ui-accordion-content {
-    overflow: visible !important;
-}
-</style>

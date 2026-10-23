@@ -96,14 +96,14 @@ const KPIS = computed(() => {
 <template>
     <footer
         id="app-footer"
-        class="w-full fixed bottom-0 left-0 h-[64px] font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-t dark:border-[#2A2A2A] transition-all flex place-items-center justify-between pl-6"
+        class="w-full fixed bottom-0 left-0 h-[64px] font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-t dark:border-[#2A2A2A] transition-all flex place-items-center justify-between gap-3 pl-3 sm:pl-6"
         style="z-index: 1000"
     >
         <DeepSearch :fixed="false" />
         <!-- <div class="w-[64px]">
             <BaseSignature :color="isDarkMode ? '#3A3A3A' : '#CCCCCC'" :strokeWidth="7"/>
         </div> -->
-        <div class="flex flex-col gap-2">
+        <div class="flex shrink-0 flex-col gap-2">
             <div class="pr-1 font-satoshi" style="align-self: flex-end">
                 <VueDataUi
                     v-if="currentStars"
