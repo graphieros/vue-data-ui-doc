@@ -1,12 +1,23 @@
 [
     {
+        "version": "v 3.28.4",
+        "date": "2026-10-23",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "SSR version (createStaticVueUiDonut): remove DOM dependency from static Donut connectors and add SSR coverage",
+                "link": "/docs#vue-ui-donut"
+            }
+        ]
+    },
+    {
         "version": "v 3.28.3",
         "date": "2026-10-23",
         "updates": [
             {
                 "component": "VueUiXy",
                 "description": "Reactivity optimization",
-                "link": ""
+                "link": "/docs#vue-ui-xy"
             }
         ]
     },
