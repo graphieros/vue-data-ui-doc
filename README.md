@@ -20,18 +20,6 @@ Contributions are welcome:)
 
 ### Development
 
-Use Node.js 22.13.0 or newer and **pnpm 12.15.0**, pinned in
-`package.json`. Use pnpm for all repository commands.
-
-Install the pinned pnpm release on macOS/Linux with the official installer:
-
-```sh
-curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=12.15.0 sh -
-```
-
-On Windows, use the [official installation instructions](https://pnpm.io/installation)
-and select version 12.15.0. Confirm `pnpm --version` prints `12.15.0`.
-
 ```sh
 pnpm install
 pnpm dev
@@ -51,23 +39,6 @@ pnpm test:types
 `pnpm test` runs all three Node.js regression suites above.
 `pnpm lint:fix` applies lint fixes and
 `pnpm pretty` formats the repository.
-
-For automation and deployment, install pnpm 12.15.0, run
-`pnpm install --frozen-lockfile`, then `pnpm build`; deploy `dist/`.
-If caching dependencies, cache the path returned by `pnpm store path`, keyed
-by `pnpm-lock.yaml`. Keep the lockfile updated with dependency changes.
-
-`pnpm-workspace.yaml` approves only the SSH native build scripts.
-The informational core-js script is disabled.
-Review new dependency build scripts individually before approving them.
-
-pnpm's default 24-hour release-age policy remains enabled for dependencies.
-`vue-data-ui` is excluded so this documentation site can use new library releases
-immediately.
-
-`pnpm run upgrade` runs the existing library patch-version update utility, installs
-dependencies, and starts development. `pnpm site` runs the local deployment
-script when it is available (the deployment script is excluded from the repository).
 
 ### Translations
 
