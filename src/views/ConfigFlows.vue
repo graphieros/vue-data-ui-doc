@@ -35,6 +35,7 @@ const crumbs = ref([
 
 const flows = useFlows();
 const selectedComponent = ref("vue_ui_xy");
+const treeRenderer = ref("VueUiGraph");
 
 const options = Object.entries({
     vue_ui_bullet: "chartBullet",
@@ -68,7 +69,6 @@ const options = Object.entries({
     vue_ui_relation_circle: "chartRelationCircle",
     vue_ui_rings: "chartRings",
     vue_ui_scatter: "chartScatter",
-    vue_ui_screenshot: "screenshot",
     vue_ui_skeleton: "skeleton",
     vue_ui_smiley: "smiley",
     vue_ui_sparkhistogram: "chartSparkHistogram",
@@ -188,7 +188,9 @@ const DAG_OBJ = computed(() => {
             class="w-full flex flex-col gap-4 place-items-center justify-center my-3"
         >
             <VueUiIcon
-                name="chartDag"
+                :name="
+                    treeRenderer === 'VueUiGraph' ? 'chartGraph' : 'chartDag'
+                "
                 :size="64"
                 :strokeWidth="0.8"
                 class="hidden md:block"
@@ -199,7 +201,12 @@ const DAG_OBJ = computed(() => {
             </h1>
             <article>
                 <p class="text-md">
-                    {{ description[store.lang] }}
+                    {{
+                        description[store.lang].replace(
+                            "VueUiDag",
+                            treeRenderer,
+                        )
+                    }}
                 </p>
             </article>
         </div>
@@ -276,17 +283,47 @@ const DAG_OBJ = computed(() => {
             </div>
         </div>
 
+        <fieldset class="flex flex-wrap justify-center gap-3 mb-6 px-4">
+            <legend class="text-center text-sm mb-3">Tree display</legend>
+            <label
+                v-for="renderer in ['VueUiDag', 'VueUiGraph']"
+                :key="renderer"
+                class="cursor-pointer"
+            >
+                <input
+                    v-model="treeRenderer"
+                    type="radio"
+                    name="tree-renderer"
+                    :value="renderer"
+                    class="sr-only peer"
+                />
+                <span
+                    class="block rounded-full border border-gray-400 px-4 py-2 text-sm peer-checked:bg-app-blue peer-checked:text-white peer-checked:border-app-blue peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-app-blue"
+                >
+                    {{ renderer }}
+                </span>
+            </label>
+        </fieldset>
+
         <div
             style="
                 min-width: 300px;
                 max-width: 90%;
+                height: calc(100vh - 140px);
+                height: calc(100dvh - 140px);
+                max-height: calc(100vh - 140px);
+                max-height: calc(100dvh - 140px);
                 resize: both;
                 overflow: auto;
                 background: transparent;
             "
             class="mx-auto"
         >
-            <BaseConfigViewer :config="DAG_OBJ" />
+            <BaseConfigViewer
+                :config="DAG_OBJ"
+                :renderer="treeRenderer"
+                fit-container
+            />
         </div>
     </div>
 </template>

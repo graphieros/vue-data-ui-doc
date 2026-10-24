@@ -3,6 +3,15 @@ import { ref, computed, onMounted, watch, shallowRef, nextTick } from "vue";
 import { useMainStore } from "../../stores";
 
 const props = defineProps({
+    fitContainer: {
+        type: Boolean,
+        default: false,
+    },
+    renderer: {
+        type: String,
+        default: "VueUiDag",
+        validator: (value) => ["VueUiDag", "VueUiGraph"].includes(value),
+    },
     config: {
         type: Object,
         default() {
@@ -212,6 +221,56 @@ function objectToDag(input, options) {
 }
 
 const datasetDag = shallowRef(null);
+const datasetGraph = computed(() => {
+    const edges = datasetDag.value?.edges ?? [];
+    const childrenById = new Map();
+    for (const edge of edges) {
+        if (!childrenById.has(edge.from)) childrenById.set(edge.from, []);
+        childrenById.get(edge.from).push(edge.to);
+    }
+
+    const descendantCounts = new Map();
+    function countDescendants(id) {
+        if (!descendantCounts.has(id)) {
+            const count = (childrenById.get(id) ?? []).reduce(
+                (total, childId) => total + 1 + countDescendants(childId),
+                0,
+            );
+            descendantCounts.set(id, count);
+        }
+        return descendantCounts.get(id);
+    }
+
+    const nodes = datasetDag.value?.nodes ?? [];
+    const maxDescendants = Math.max(
+        1,
+        ...nodes.map((node) => countDescendants(node.id)),
+    );
+
+    return {
+        nodes: nodes.map((node) => {
+            const descendants = countDescendants(node.id);
+            return {
+                id: node.id,
+                label: node.label,
+                group: node.depth,
+                value: descendants,
+                // Size from the entire subtree, including every nested generation
+                radius: 4 + 14 * Math.sqrt(descendants / maxDescendants),
+                metadata: {
+                    path: node.path,
+                    value: node.valuePreview,
+                    descendants,
+                },
+            };
+        }),
+        links: edges.map((edge) => ({
+            source: edge.from,
+            target: edge.to,
+            directed: true,
+        })),
+    };
+});
 const ready = ref(false);
 const step = ref(0);
 
@@ -284,17 +343,68 @@ const cfg = computed(() => {
         },
     };
 });
+
+const graphConfig = computed(() => ({
+    theme: isDarkMode.value ? "dark" : "",
+    responsive: props.fitContainer,
+    layout: {
+        chargeStrength: -40,
+        linkDistance: 40,
+        linkStrength: 0.2,
+        centerStrength: 0.025,
+        collisionPadding: 2,
+        iterations: 450,
+    },
+    style: {
+        chart: {
+            width: 1200,
+            height: 800,
+            backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+            color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+            fontFamily: "Courier New",
+            nodes: {
+                sizeByValue: false,
+                sizeByDegree: false,
+                colorByGroup: true,
+                labels: {
+                    show: true,
+                    fontSize: 10,
+                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    maxCount: datasetGraph.value.nodes.length,
+                    minZoom: 0,
+                },
+            },
+            links: {
+                arrows: {
+                    show: false,
+                },
+                pulses: {
+                    showOnHover: true,
+                },
+            },
+        },
+    },
+    tooltip: { show: false, showMetadata: true },
+    userOptions: { buttons: { table: false } },
+}));
 </script>
 
 <template>
     <div
         class="border border-[#6A6A6A] p-2 bg-white dark:bg-[#1A1A1A] w-full h-full"
+        :class="{ 'min-h-0 overflow-auto': fitContainer }"
     >
         <VueUiDag
-            v-if="ready"
+            v-if="ready && renderer === 'VueUiDag'"
             :dataset="datasetDag"
             :config="cfg"
             :key="step"
+        />
+        <VueUiGraph
+            v-else-if="ready"
+            :dataset="datasetGraph"
+            :config="graphConfig"
+            :key="`graph_${step}`"
         />
     </div>
 </template>

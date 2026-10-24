@@ -15,9 +15,8 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const WEEK_COUNT = 52;
 const DAYS_PER_WEEK = 7;
-const MONDAY_INDEX = 1;
 const DAY_IN_MS = 24 * 60 * 60 * 1000;
-const WEEK_DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+const WEEK_DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 function parseUtcDate(value) {
     const [year, month, day] = value.split("-").map(Number);
@@ -91,11 +90,9 @@ const heatmap = computed(() => {
     );
 
     // Anchor the grid to the current UTC week to match npm's daily reporting.
-    // Weeks run from Monday to Sunday.
+    // Weeks run from Sunday to Saturday.
     const today = toUtcDay(new Date());
-    const daysSinceMonday =
-        (today.getUTCDay() - MONDAY_INDEX + DAYS_PER_WEEK) % DAYS_PER_WEEK;
-    const currentWeekStart = addDays(today, -daysSinceMonday);
+    const currentWeekStart = addDays(today, -today.getUTCDay());
     const firstWeekStart = addDays(
         currentWeekStart,
         -(WEEK_COUNT - 1) * DAYS_PER_WEEK,
@@ -112,7 +109,7 @@ const heatmap = computed(() => {
         };
     });
 
-    // Keep rows in the same chronological order as each Monday to Sunday week.
+    // Keep rows in the same chronological order as each Sunday to Saturday week.
     const dataset = WEEK_DAYS.map((name, dayIndex) => ({
         name,
         values: weeks.map((week) => {
@@ -363,7 +360,7 @@ function getMonthPaths(cells) {
                     </g>
                 </template>
 
-                <path
+                <!-- <path
                     v-for="month in getMonthPaths(svg.cells)"
                     :key="month.key"
                     :d="month.d"
@@ -372,7 +369,7 @@ function getMonthPaths(cells) {
                     stroke-width="1.25"
                     stroke-linejoin="round"
                     pointer-events="none"
-                />
+                /> -->
             </template>
             <template #tooltip="{ datapoint, seriesIndex, series }">
                 <div class="px-3 py-2 text-left">
