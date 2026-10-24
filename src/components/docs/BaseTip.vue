@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { VueUiAccordion } from "vue-data-ui";
+import { VueUiAccordion } from "vue-data-ui/vue-ui-accordion";
 import { useMainStore } from "../../stores";
 
 const store = useMainStore();

@@ -3,43 +3,51 @@
 @tailwind utilities;
 
 @font-face {
+    font-display: swap;
     font-family: "Satoshi";
-    src: url("./fonts/Satoshi-Medium.ttf");
+    src: url("./fonts/Satoshi-Medium.woff2");
 }
 
 @font-face {
+    font-display: swap;
     font-family: "SatoshiBold";
-    src: url("./fonts/Satoshi-Bold.ttf");
+    src: url("./fonts/Satoshi-Bold.woff2");
 }
 
 @font-face {
+    font-display: swap;
     font-family: "Inter";
-    src: url("./fonts/Inter.ttf");
+    src: url("./fonts/Inter.woff2");
 }
 
 @font-face {
+    font-display: swap;
     font-family: "InterBold";
-    src: url("./fonts/Inter-Bold.ttf");
+    src: url("./fonts/Inter-Bold.woff2");
 }
 
 @font-face {
+    font-display: swap;
     font-family: "InterMedium";
-    src: url("./fonts/Inter-Medium.ttf");
+    src: url("./fonts/Inter-Medium.woff2");
 }
 
 @font-face {
+    font-display: swap;
     font-family: "JetBrainsMono";
     src: url("./fonts/JetBrainsMono-Regular.woff2");
 }
 
 @font-face {
+    font-display: swap;
     font-family: "Roboto";
-    src: url("./fonts/Roboto-Regular.ttf");
+    src: url("./fonts/Roboto-Regular.woff2");
 }
 
 @font-face {
+    font-display: swap;
     font-family: "OpenSans";
-    src: url("./fonts/OpenSans-Regular.ttf");
+    src: url("./fonts/OpenSans-Regular.woff2");
 }
 
 * {

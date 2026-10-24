@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { getPalette } from "vue-data-ui";
+import { getPalette } from "vue-data-ui/utils";
 import { useMainStore } from "../stores";
 import BaseSpinner from "../components/BaseSpinner.vue";
 

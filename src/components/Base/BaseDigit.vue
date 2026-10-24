@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { VueUiDigits } from "vue-data-ui";
+import { VueUiDigits } from "vue-data-ui/vue-ui-digits";
 import { useMainStore } from "../../stores";
 
 const props = defineProps({

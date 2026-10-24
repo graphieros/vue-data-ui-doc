@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, defineAsyncComponent, watch } from "vue";
 import SideMenu from "../components/SideMenu.vue";
 import { useRouter } from "vue-router";
-import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui";
+import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui/utils";
 import {
     SquareRoundedLetterSIcon,
     SquareRoundedLetterTIcon,

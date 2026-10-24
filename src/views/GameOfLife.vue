@@ -7,7 +7,8 @@ import {
     onBeforeUnmount,
     watch,
 } from "vue";
-import { VueUiKpi, VueUiXyCanvas } from "vue-data-ui";
+import { VueUiKpi } from "vue-data-ui/vue-ui-kpi";
+import { VueUiXyCanvas } from "vue-data-ui/vue-ui-xy-canvas";
 import { giftWrap } from "../components/maker/lib.js";
 import "vue-data-ui/style.css";
 import { useMainStore } from "../stores";

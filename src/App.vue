@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, onBeforeUnmount, watch, ref } from "vue";
 import Header from "./components/Header.vue";
 import UpToTop from "./components/UpToTop.vue";
 import { useRoute, useRouter } from "vue-router";
@@ -9,6 +9,7 @@ import HelpCenter from "./components/helpCenter/HelpCenter.vue";
 import BaseFooter from "./components/BaseFooter.vue";
 import FootInfo from "./components/FootInfo.vue";
 import useFetch from "./useFetch";
+import { cachedJson } from "./cachedFetch.js";
 import BaseMessenger from "./components/BaseMessenger.vue";
 
 const store = useMainStore();
@@ -130,7 +131,6 @@ function fetchContributors() {
             if (![null, undefined].includes("contributors")) {
                 localStorage.contributors = JSON.stringify(
                     data?.filter((d) => !githubClankers.includes(d?.login)),
-                    showUnderlay,
                 );
             } else {
                 localStorage.setItem(
@@ -158,22 +158,9 @@ function fetchStarHistory() {
     });
 }
 
-onMounted(() => {
+function loadPrimaryStats() {
     fetchGithubStats();
-    fetchCliStats();
-    fetchNuxtStats();
-    fetchDocStats();
-    fetchContributors();
-    fetchStarHistory();
-
-    fetch(url.value, {
-        method: "GET",
-        mode: "cors",
-        cache: "default",
-    })
-        .then((response) => {
-            return response.json();
-        })
+    cachedJson(url.value)
         .then((json) => {
             store.downloads.lib = json.downloads;
             store.npmDownloadsHome = json.downloads
@@ -194,44 +181,56 @@ onMounted(() => {
                 })
                 .slice(0, -1)
                 .slice(-28);
-        });
-
-    fetch(url_cli.value, {
-        method: "GET",
-        mode: "cors",
-        cache: "default",
-    })
-        .then((response) => {
-            return response.json();
         })
+        .catch(console.error);
+}
+
+function loadSecondaryStats() {
+    fetchCliStats();
+    fetchNuxtStats();
+    fetchDocStats();
+    fetchContributors();
+    fetchStarHistory();
+    cachedJson(url_cli.value)
         .then((json) => {
             store.downloads.cli = json.downloads;
-        });
-
-    fetch(url_color_bridge.value, {
-        method: "GET",
-        mode: "cors",
-        cache: "default",
-    })
-        .then((response) => {
-            return response.json();
         })
+        .catch(console.error);
+
+    cachedJson(url_color_bridge.value)
         .then((json) => {
             store.downloads.color_bridge = json.downloads;
-        });
-
-    fetch(url_vue_hi_code.value, {
-        method: "GET",
-        mode: "cors",
-        cache: "default",
-    })
-        .then((response) => {
-            return response.json();
         })
+        .catch(console.error);
+
+    cachedJson(url_vue_hi_code.value)
         .then((json) => {
             store.downloads.hiCode = json.downloads;
-        });
+        })
+        .catch(console.error);
+}
+
+let idleHandle;
+let secondaryLoaded = false;
+onMounted(() => {
+    if ("requestIdleCallback" in window)
+        idleHandle = requestIdleCallback(loadPrimaryStats, { timeout: 1500 });
+    else idleHandle = setTimeout(loadPrimaryStats, 0);
 });
+onBeforeUnmount(() => {
+    if ("cancelIdleCallback" in window) cancelIdleCallback(idleHandle);
+    else clearTimeout(idleHandle);
+});
+watch(
+    () => route.name,
+    (name) => {
+        if (!secondaryLoaded && ["About", "Versions"].includes(name)) {
+            secondaryLoaded = true;
+            loadSecondaryStats();
+        }
+    },
+    { immediate: true },
+);
 
 const showUnderlay = computed(() => {
     return currentRoute.value === "/";

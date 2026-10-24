@@ -4,7 +4,7 @@ import { useMainStore } from "../stores";
 import colorBridge from "color-bridge";
 import { useMenuItems } from "./useMenuItems";
 import useMobile from "../useMobile";
-import { VueUiNestedDonuts } from "vue-data-ui";
+import { VueUiNestedDonuts } from "vue-data-ui/vue-ui-nested-donuts";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();

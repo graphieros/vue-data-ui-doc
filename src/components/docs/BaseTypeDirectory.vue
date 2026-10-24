@@ -75,19 +75,22 @@ const byShortName = computed(() => {
     return map;
 });
 const selected = computed(() => byId.value.get(selectedId.value) || null);
+const searchText = computed(
+    () =>
+        new Map(
+            entries.value.map((item) => [
+                item.id,
+                `${item.fullName} ${item.description} ${(item.entryPoints || []).map((p) => `${p.entryPoint} ${p.name}`).join(" ")}`.toLowerCase(),
+            ]),
+        ),
+);
 const visibleGroups = computed(() => {
     const term = search.value.trim().toLowerCase();
     const groups = new Map(GROUPS.map((g) => [g.kind, []]));
     for (const item of entries.value) {
         if (activeFilter.value !== "all" && activeFilter.value !== item.kind)
             continue;
-        if (
-            term &&
-            !`${item.fullName} ${item.description} ${(item.entryPoints || []).map((p) => `${p.entryPoint} ${p.name}`).join(" ")}`
-                .toLowerCase()
-                .includes(term)
-        )
-            continue;
+        if (term && !searchText.value.get(item.id).includes(term)) continue;
         groups.get(item.kind)?.push(item);
     }
     return GROUPS.filter(
@@ -210,6 +213,8 @@ watch(
 );
 
 async function resetDirectory() {
+    uploadRequest++;
+    uploadWorker?.terminate();
     // A queued URL update from a previous selection must never undo Reset.
     clearTimeout(urlSyncTimer);
     resettingDirectory = true;
@@ -234,23 +239,48 @@ async function resetDirectory() {
 
 onBeforeUnmount(() => clearTimeout(urlSyncTimer));
 
+let uploadWorker;
+let uploadRequest = 0;
+onBeforeUnmount(() => {
+    uploadRequest++;
+    uploadWorker?.terminate();
+});
+
 async function onFileChange(event) {
     const file = event.target.files?.[0];
     if (!file) return;
+    const request = ++uploadRequest;
+    uploadWorker?.terminate();
     try {
-        const { parse, renderParts, formatDeclaration } =
-            await import("../../typeDocumentation.js");
-        const parsed = parse(await file.text(), file.name);
-        load(parsed, file.name);
-        entries.value = parsed.map((entry) => {
-            const { node, sourceFile, ...data } = entry;
-            return formatDeclaration({
-                ...data,
-                parts: renderParts(entry, resolveReference),
-            });
-        });
+        const content = await file.text();
+        if (request !== uploadRequest) return;
+        let parsed;
+        if (typeof Worker === "undefined") {
+            const { prepareTypeDocumentation } =
+                await import("../../typeFileDocumentation.js");
+            parsed = prepareTypeDocumentation(content, file.name);
+        } else {
+            const worker = new Worker(
+                new URL(
+                    "../../workers/type-documentation.worker.js",
+                    import.meta.url,
+                ),
+                { type: "module" },
+            );
+            uploadWorker = worker;
+            parsed = await new Promise((resolve, reject) => {
+                worker.onmessage = ({ data }) =>
+                    data.error
+                        ? reject(new Error(data.error))
+                        : resolve(data.entries);
+                worker.onerror = (error) => reject(new Error(error.message));
+                worker.postMessage({ content, filename: file.name });
+            }).finally(() => worker.terminate());
+        }
+        if (request === uploadRequest) load(parsed, file.name);
     } catch (error) {
-        parseError.value = error?.message || t("readError");
+        if (request === uploadRequest)
+            parseError.value = error?.message || t("readError");
     }
     event.target.value = "";
 }
@@ -275,19 +305,6 @@ function goBack() {
 function goForward() {
     if (historyIndex.value < history.value.length - 1)
         selectedId.value = history.value[++historyIndex.value];
-}
-
-// Resolve an identifier against the nearest enclosing namespace, then globally.
-// Ambiguous unqualified names are intentionally left unlinked.
-function resolveReference(text, entry) {
-    const clean = text.replace(/\s/g, "");
-    for (let i = entry.path.length; i >= 0; i--) {
-        const name = [...entry.path.slice(0, i), clean].join(".");
-        const matches = byFullName.value.get(name) || [];
-        if (matches.length === 1) return matches[0];
-    }
-    const matches = byShortName.value.get(clean) || [];
-    return matches.length === 1 ? matches[0] : null;
 }
 
 const codeParts = computed(() => selected.value?.parts || []);

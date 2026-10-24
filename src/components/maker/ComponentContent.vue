@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, nextTick, watch } from "vue";
 import { useNestedProp } from "../../useNestedProp";
-import { getVueDataUiConfig } from "vue-data-ui";
+import { getVueDataUiConfig } from "vue-data-ui/utils";
 import { copyCode, jsonToJsObject } from "./lib";
 import { useMainStore } from "../../stores";
 import { CopyIcon, DatabaseIcon, RefreshDotIcon } from "vue-tabler-icons";

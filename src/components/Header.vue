@@ -120,11 +120,6 @@ function isSelected(route) {
 }
 
 onMounted(() => {
-    if (localStorage.vueDataUiLang) {
-        store.lang = localStorage.vueDataUiLang;
-    } else {
-        store.lang = "en";
-    }
     document.addEventListener("click", (e) => {
         const target = e.target;
         const isMenu = target.closest("#mainDropdown");
@@ -192,8 +187,12 @@ const selectedLanguage = computed({
         return store.lang;
     },
     set(val) {
-        localStorage.setItem("vueDataUiLang", val);
-        store.lang = val;
+        store
+            .setLanguage(val)
+            .then(() => {
+                localStorage.setItem("vueDataUiLang", store.lang);
+            })
+            .catch(console.error);
         return val;
     },
 });

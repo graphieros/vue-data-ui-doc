@@ -1,7 +1,15 @@
 <script setup>
-import { ref, computed, watch, nextTick, onMounted } from "vue";
+import {
+    ref,
+    computed,
+    watch,
+    nextTick,
+    onMounted,
+    shallowRef,
+    effectScope,
+} from "vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
-import useExamples from "../useExamples";
+import exampleLoaders from "virtual:examples/index";
 import { useMainStore } from "../stores";
 import BaseDocHeaderActions from "../components/BaseDocHeaderActions.vue";
 import BaseTabContainer from "../components/BaseTabContainer.vue";
@@ -24,10 +32,13 @@ import BaseSuspense from "../components/BaseSuspense.vue";
 import CopyLink from "../components/CopyLink.vue";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
-import { VueUiIcon } from "vue-data-ui";
+import { VueUiIcon } from "vue-data-ui/vue-ui-icon";
 import BaseDigit from "../components/Base/BaseDigit.vue";
 
-const { examples, curvedMarkers } = useExamples();
+const curvedMarkers = ref(false);
+const categoryExamples = shallowRef(null);
+const examples = computed(() => categoryExamples.value?.value ?? []);
+let categoryRequest = 0;
 const store = useMainStore();
 const makerStore = useMakerStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -35,17 +46,6 @@ const router = useRouter();
 const route = useRoute();
 const translations = computed(() => store.translations);
 const raterStep = ref(0);
-
-const key = ref(0);
-
-watch(
-    () => store.isDarkMode,
-    (val) => {
-        nextTick(() => {
-            key.value += 1;
-        });
-    },
-);
 
 const crumbs = ref([
     {
@@ -547,6 +547,38 @@ function updateHash(link) {
     setTimeout(updateCrumb, 100);
 }
 
+watch(
+    selectedLink,
+    async (category, _, onCleanup) => {
+        const request = ++categoryRequest;
+        let categoryScope;
+        let cancelled = false;
+        onCleanup(() => {
+            cancelled = true;
+            categoryScope?.stop();
+        });
+        categoryExamples.value = null;
+        const loader = exampleLoaders[category];
+        if (!loader) return;
+        try {
+            const { default: createCategory } = await loader();
+            if (cancelled || request !== categoryRequest) return;
+            categoryScope = effectScope();
+            categoryExamples.value = categoryScope.run(() =>
+                createCategory(curvedMarkers),
+            );
+        } catch (error) {
+            if (request === categoryRequest)
+                store.copy({
+                    message: "Unable to load examples. Please try again.",
+                    type: "error",
+                });
+            console.error(error);
+        }
+    },
+    { immediate: true },
+);
+
 const filteredExamples = computed(() => {
     return examples.value.filter((e) => e.link === selectedLink.value);
 });
@@ -804,7 +836,7 @@ function makeMapLinks({ data }) {
         >
             <div
                 v-for="(example, i) in filteredExamples"
-                :key="`${example.id}_${key}`"
+                :key="example.id"
                 class="flex-col inline-flex w-full"
                 :id="example.id"
             >

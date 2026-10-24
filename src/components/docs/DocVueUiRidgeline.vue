@@ -14,7 +14,7 @@ import Rater from "../Rater.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
-import { VueUiPattern } from "vue-data-ui";
+import { VueUiPattern } from "vue-data-ui/vue-ui-pattern";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import colorBridge from "color-bridge";

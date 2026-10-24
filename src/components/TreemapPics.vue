@@ -3,22 +3,22 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import CodeParser from "./customization/CodeParser.vue";
-import SUMMER1 from "../assets/treemap/summer1.png";
-import SUMMER2 from "../assets/treemap/summer2.png";
-import SUMMER3 from "../assets/treemap/summer3.png";
-import SUMMER4 from "../assets/treemap/summer4.png";
+import SUMMER1 from "../assets/treemap/summer1.webp";
+import SUMMER2 from "../assets/treemap/summer2.webp";
+import SUMMER3 from "../assets/treemap/summer3.webp";
+import SUMMER4 from "../assets/treemap/summer4.webp";
 
-import SPRING1 from "../assets/treemap/spring1.png";
-import SPRING2 from "../assets/treemap/spring2.png";
-import SPRING3 from "../assets/treemap/spring3.png";
+import SPRING1 from "../assets/treemap/spring1.webp";
+import SPRING2 from "../assets/treemap/spring2.webp";
+import SPRING3 from "../assets/treemap/spring3.webp";
 
-import FALL1 from "../assets/treemap/fall1.png";
-import FALL2 from "../assets/treemap/fall2.png";
-import FALL3 from "../assets/treemap/fall3.png";
+import FALL1 from "../assets/treemap/fall1.webp";
+import FALL2 from "../assets/treemap/fall2.webp";
+import FALL3 from "../assets/treemap/fall3.webp";
 
-import WINTER1 from "../assets/treemap/winter1.png";
-import WINTER2 from "../assets/treemap/winter2.png";
-import WINTER3 from "../assets/treemap/winter3.png";
+import WINTER1 from "../assets/treemap/winter1.webp";
+import WINTER2 from "../assets/treemap/winter2.webp";
+import WINTER3 from "../assets/treemap/winter3.webp";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);

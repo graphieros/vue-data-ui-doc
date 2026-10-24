@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
+import { createWordCloudDatasetFromPlainText } from "vue-data-ui/utils";
 import BaseThemeUnit from "./BaseThemeUnit.vue";
 
 const dataset = ref([

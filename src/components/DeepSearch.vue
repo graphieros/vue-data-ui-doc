@@ -1,14 +1,19 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import {
+    ref,
+    computed,
+    onMounted,
+    onUnmounted,
+    defineAsyncComponent,
+} from "vue";
 import { useMainStore } from "../stores";
 import { XIcon, InfoCircleIcon } from "vue-tabler-icons";
-import { useConfig } from "../assets/useConfig";
-import Prism from "prismjs";
+import allAttributes from "virtual:config-search-index";
 import { useRouter } from "vue-router";
 import vClickOutside from "../directives/vClickOutside";
-import CodeParser from "./customization/CodeParser.vue";
-
-const config = useConfig();
+const CodeParser = defineAsyncComponent(
+    () => import("./customization/CodeParser.vue"),
+);
 
 const store = useMainStore();
 const router = useRouter();
@@ -28,29 +33,6 @@ const hasResults = ref(false);
 const showSuggestions = ref(false);
 const canShowOutside = ref(true);
 const isClosing = ref(false);
-
-function flattenAttributes(obj) {
-    const attributes = [];
-
-    function flatten(obj, path = "") {
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                const newPath = path ? `${path}.${key}` : key;
-
-                const attribute = newPath.split(".").pop(); // Get only the attribute name
-                attributes.push(attribute);
-                if (typeof obj[key] === "object" && obj[key] !== null) {
-                    flatten(obj[key], newPath);
-                }
-            }
-        }
-    }
-
-    flatten(obj);
-    return attributes;
-}
-
-const allAttributes = flattenAttributes(config);
 
 const filteredSuggestions = computed(() => {
     return [
@@ -117,17 +99,12 @@ function clearSearch() {
     showSuggestions.value = false;
 }
 
-onMounted(() => {
-    window.Prism = window.Prism || {};
-    window.Prism.manual = true;
-    Prism.highlightAll();
+function handleEscape(event) {
+    if (event.key === "Escape") canShowOutside.value = true;
+}
 
-    document.addEventListener("keyup", (e) => {
-        e.preventDefault();
-        if (e.key === "Escape") {
-            canShowOutside.value = true;
-        }
-    });
+onMounted(() => {
+    document.addEventListener("keyup", handleEscape);
     document.addEventListener("keyup", handleArrowKeys);
 });
 
@@ -152,6 +129,7 @@ function handleArrowKeys(event) {
 
 onUnmounted(() => {
     document.removeEventListener("keyup", handleArrowKeys);
+    document.removeEventListener("keyup", handleEscape);
 });
 
 const accordionConfig = computed(() => {
@@ -200,12 +178,16 @@ function closeList() {
 <template>
     <div
         :class="`z-50 text-white ${
-            props.fixed ? 'fixed hidden sm:block w-fit' : 'min-w-0 flex-1 max-w-[368px]'
+            props.fixed
+                ? 'fixed hidden sm:block w-fit'
+                : 'min-w-0 flex-1 max-w-[368px]'
         } top-16 right-4 text-left`"
     >
         <form autocomplete="off" onsubmit="return false;">
             <div class="flex flex-row gap-2">
-                <div class="anim-wrapper min-w-0 flex-1 w-[280px] rounded-full -mt-[1px]">
+                <div
+                    class="anim-wrapper min-w-0 flex-1 w-[280px] rounded-full -mt-[1px]"
+                >
                     <input
                         @input="handleInput"
                         @click.stop="handleInput"

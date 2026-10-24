@@ -3,11 +3,13 @@ import { computed, watch, ref } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge";
-import { shiftColorHue, VueDataUi, VueUiSparkHistogram } from "vue-data-ui";
+import { shiftColorHue } from "vue-data-ui/utils";
+import { VueDataUi } from "vue-data-ui";
+import { VueUiSparkHistogram } from "vue-data-ui/vue-ui-sparkhistogram";
 import mockStats from "./mockStats.json";
 import { createUid, fillEmptyDays } from "./maker/lib";
 import BaseCard from "./BaseCard.vue";
-import { getCumulativeAverage } from "vue-data-ui";
+import { getCumulativeAverage } from "vue-data-ui/utils";
 import BumpStats from "./BumpStats.vue";
 import BaseSpinner from "./BaseSpinner.vue";
 

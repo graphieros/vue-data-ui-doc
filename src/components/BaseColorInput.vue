@@ -12,7 +12,7 @@ import { adaptColorToBackground } from "./maker/lib";
 import { convertColorToHex } from "../useNestedProp";
 import { useMainStore } from "../stores";
 import BaseCard from "./BaseCard.vue";
-import { getPalette } from "vue-data-ui";
+import { getPalette } from "vue-data-ui/utils";
 import ThemeTag from "./ThemeTag.vue";
 
 const props = defineProps({

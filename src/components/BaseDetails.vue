@@ -8,6 +8,7 @@ const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const props = defineProps({
+    lazy: { type: Boolean, default: false },
     attr: { type: String, default: "" },
     level: { type: [Number, String], default: "" },
     equal: { type: Boolean, default: false },
@@ -20,6 +21,7 @@ const det = ref(null);
 const panel = ref(null);
 const inner = ref(null);
 const isOpen = ref(false);
+const hasOpened = ref(false);
 const isSelected = ref(false);
 
 const translatedAttr = computed(() => useAttrMapping(props.attr));
@@ -93,12 +95,14 @@ onMounted(() => {
     if (!det.value || !panel.value) return;
 
     isOpen.value = !!det.value.open;
+    hasOpened.value = isOpen.value;
     panel.value.style.overflow = "hidden";
     panel.value.style.height = det.value.open ? "auto" : "0px";
 
     onToggle = async () => {
         isOpen.value = !!det.value.open;
         if (isOpen.value) {
+            hasOpened.value = true;
             await openWithAnimation();
         }
     };
@@ -143,7 +147,7 @@ onBeforeUnmount(() => {
             <div ref="panel" class="details-panel">
                 <div ref="inner" class="details-inner">
                     <code class="pl-6 flex flex-col mt-1">
-                        <slot />
+                        <slot v-if="!lazy || hasOpened" />
                     </code>
                     <span v-if="isOpen">{{ brackets ? "]" : "}" }}</span>
                 </div>

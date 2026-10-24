@@ -2,14 +2,14 @@
 import { ref, computed, onMounted, watch, nextTick } from "vue";
 import { useMainStore } from "../stores";
 import staticReleases from "../../public/releases.json";
-import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
+import { createWordCloudDatasetFromPlainText } from "vue-data-ui/utils";
 import { useConfig } from "../assets/useConfig";
 import { useIconMap, isValidComponent } from "../useIconMap";
 import updates from "../../public/releases.json";
 import GithubIssues from "../components/GithubIssues.vue";
 import { shiftHue } from "../components/maker/lib";
 import RepoStars from "../components/RepoStars.vue";
-import { darkenColor, lightenColor } from "vue-data-ui";
+import { darkenColor, lightenColor } from "vue-data-ui/utils";
 import Downloads from "../components/Downloads.vue";
 import { XIcon } from "vue-tabler-icons";
 import BaseCard from "../components/BaseCard.vue";

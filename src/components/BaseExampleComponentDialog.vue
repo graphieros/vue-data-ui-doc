@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import BaseDragElement from "./BaseDragElement.vue";
 import { useMainStore } from "../stores";
 import { copyCode, jsonToJsObject } from "./maker/lib";
-import { getVueDataUiConfig } from "vue-data-ui";
+import { getVueDataUiConfig } from "vue-data-ui/utils";
 import CodeParser from "./customization/CodeParser.vue";
 import { CopyIcon, XIcon } from "vue-tabler-icons";
 import { useNestedProp } from "../useNestedProp";

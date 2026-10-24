@@ -253,8 +253,10 @@ export function getEmitType({ componentName, emitName }) {
     return mapping?.[componentName]?.[emitName] ?? "";
 }
 
+const allTypes = Object.freeze(Object.values(mapping)
+    .flatMap(componentMapping => Object.values(componentMapping))
+    .filter(Boolean));
+
 export function getAllTypes() {
-    return Object.values(mapping)
-        .flatMap((componentMapping) => Object.values(componentMapping))
-        .filter(Boolean);
+    return allTypes;
 }

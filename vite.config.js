@@ -3,6 +3,9 @@ import vue from "@vitejs/plugin-vue";
 import { resolve } from "node:path";
 import fs from "node:fs";
 
+import { precompressAssetsPlugin } from "./scripts/precompress-assets.js";
+import { exampleModulesPlugin } from "./scripts/example-modules.js";
+import { configSearchIndexPlugin } from "./scripts/config-search-index.js";
 import { typeDocumentationPlugin } from "./scripts/type-documentation.js";
 
 const isolationHeaders = {
@@ -15,6 +18,9 @@ export default defineConfig({
     plugins: [
         vue(),
         typeDocumentationPlugin(),
+        configSearchIndexPlugin(),
+        exampleModulesPlugin(),
+        precompressAssetsPlugin(),
         {
             name: "copy-llms-file",
             closeBundle() {

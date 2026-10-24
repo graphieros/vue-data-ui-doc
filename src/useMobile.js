@@ -1,30 +1,39 @@
-import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
+// Components using the same breakpoints share one resize listener and reactive state.
+const breakpoints = new Map();
 export default function useMobile({ mobile = 800, tablet = 1200 } = {}) {
-    const isMobile = ref(window.innerWidth < mobile);
-    const isTablet = ref(
-        window.innerWidth >= mobile && window.innerWidth < tablet,
-    );
-
-    function setBreakpoints(e) {
-        isMobile.value = e.target.innerWidth < mobile;
-        isTablet.value =
-            e.target.innerWidth >= mobile && e.target.innerWidth < tablet;
+    const key = `${mobile}:${tablet}`;
+    if (!breakpoints.has(key)) {
+        const isMobile = ref(false);
+        const isTablet = ref(false);
+        const state = {
+            isMobile,
+            isTablet,
+            isDesktop: computed(() => !isMobile.value && !isTablet.value),
+            consumers: 0,
+            update() {
+                const width =
+                    typeof window === "undefined" ? tablet : window.innerWidth;
+                isMobile.value = width < mobile;
+                isTablet.value = width >= mobile && width < tablet;
+            },
+        };
+        breakpoints.set(key, state);
     }
-
-    const isDesktop = computed(() => !isMobile.value && !isTablet.value);
-
+    const state = breakpoints.get(key);
+    state.update();
     onMounted(() => {
-        window.addEventListener("resize", setBreakpoints);
+        if (state.consumers++ === 0)
+            window.addEventListener("resize", state.update, { passive: true });
     });
-
     onBeforeUnmount(() => {
-        window.removeEventListener("resize", setBreakpoints);
+        if (--state.consumers === 0)
+            window.removeEventListener("resize", state.update);
     });
-
     return {
-        isMobile,
-        isTablet,
-        isDesktop,
+        isMobile: state.isMobile,
+        isTablet: state.isTablet,
+        isDesktop: state.isDesktop,
     };
 }

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { getPalette } from "vue-data-ui";
+import { getPalette } from "vue-data-ui/utils";
 
 const props = defineProps({
     r: { type: Number, default: 255 },

@@ -9,7 +9,7 @@ import DocLink from "../components/DocLink.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import CodeParser from "../components/customization/CodeParser.vue";
 import FRANCE from "../resources/FRANCE.json";
-import { getVueDataUiConfig } from "vue-data-ui";
+import { getVueDataUiConfig } from "vue-data-ui/utils";
 import BaseConfigViewer from "../components/Base/BaseConfigViewer.vue";
 
 const store = useMainStore();

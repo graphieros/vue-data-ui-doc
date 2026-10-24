@@ -1,10 +1,10 @@
 <script setup>
-import { computed, ref, onMounted, onBeforeUnmount } from "vue";
+import { computed, ref, onMounted, onBeforeUnmount, watch } from "vue";
 import { BrandGithubFilledIcon, CheckIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, StarFilledIcon } from "vue-tabler-icons";
 import router from "../router";
-import staticReleases from "../../public/releases.json";
+import { cachedJson } from "../cachedFetch.js";
 import { useConfig } from "../assets/useConfig";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseBubbles from "../components/BaseBubbles.vue";
@@ -55,8 +55,17 @@ function generateSparkline() {
 }
 
 const timeout = ref(null);
+const animationActive = ref(true);
+let animationFrame;
+let heroObserver;
+let heroVisible = true;
+let heroResizeObserver;
+function updateAnimationVisibility() {
+    animationActive.value = heroVisible && !document.hidden;
+}
 
 function updateSparkline() {
+    if (!animationActive.value) return;
     const newVal = Math.round(Math.random() * 100);
     const newVal2 = Math.round(Math.random() * 100);
     sparklineDataset.value.push({
@@ -71,7 +80,7 @@ function updateSparkline() {
     sparklineDataset2.value = sparklineDataset2.value.slice(-12);
     clearTimeout(timeout.value);
     timeout.value = setTimeout(() => {
-        requestAnimationFrame(updateSparkline);
+        animationFrame = requestAnimationFrame(updateSparkline);
     }, 1000);
 }
 
@@ -99,37 +108,50 @@ function setFingerPosition(data) {
 }
 
 onMounted(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
+    heroResizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
             const { width, height } = entry.contentRect;
             viewBox.value = `0 0 ${width} ${height}`;
         }
     });
     if (resizeContainer.value) {
-        resizeObserver.observe(resizeContainer.value);
+        heroResizeObserver.observe(resizeContainer.value);
     }
 
-    fetch(versionsUrl.value, {
-        method: "GET",
-        cache: "default",
-    })
-        .then((response) => {
-            return response.json();
-        })
+    cachedJson(versionsUrl.value)
         .then((data) => {
             versionsList.value = data;
         })
-        .catch((err) => {
+        .catch(async (err) => {
             console.error(err.message);
-            versionsList.value = staticReleases;
+            versionsList.value = (
+                await import("../../public/releases.json")
+            ).default;
         });
 
-    requestAnimationFrame(updateSparkline);
+    animationFrame = requestAnimationFrame(updateSparkline);
     document.addEventListener("mousemove", getClientPosition);
-    document.addEventListener("touchmove", setFingerPosition);
+    document.addEventListener("touchmove", setFingerPosition, {
+        passive: true,
+    });
+    document.addEventListener("visibilitychange", updateAnimationVisibility);
+    if ("IntersectionObserver" in window && resizeContainer.value) {
+        heroObserver = new IntersectionObserver(([entry]) => {
+            heroVisible = entry.isIntersecting;
+            updateAnimationVisibility();
+        });
+        heroObserver.observe(resizeContainer.value);
+    }
+    updateAnimationVisibility();
+});
+watch(animationActive, (active) => {
+    clearTimeout(timeout.value);
+    cancelAnimationFrame(animationFrame);
+    if (active) animationFrame = requestAnimationFrame(updateSparkline);
 });
 
 function getClientPosition(e) {
+    if (!animationActive.value) return;
     clientPosition.value.x = e.clientX;
     clientPosition.value.y = e.clientY;
 }
@@ -555,6 +577,13 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
     window.removeEventListener("resize", updateSize);
+    document.removeEventListener("mousemove", getClientPosition);
+    document.removeEventListener("touchmove", setFingerPosition);
+    document.removeEventListener("visibilitychange", updateAnimationVisibility);
+    heroObserver?.disconnect();
+    heroResizeObserver?.disconnect();
+    clearTimeout(timeout.value);
+    cancelAnimationFrame(animationFrame);
 });
 </script>
 

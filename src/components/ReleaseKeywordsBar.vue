@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, useTemplateRef, nextTick } from "vue";
-import { VueUiHorizontalBar, VueUiAccordion } from "vue-data-ui";
+import { VueUiHorizontalBar } from "vue-data-ui/vue-ui-horizontal-bar";
+import { VueUiAccordion } from "vue-data-ui/vue-ui-accordion";
 import { useMainStore } from "../stores";
 
 const store = useMainStore();

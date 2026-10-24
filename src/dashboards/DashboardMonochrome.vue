@@ -1,10 +1,11 @@
 <script setup>
 import { ref, computed } from "vue";
-import { darkenColor, getPalette, VueUiHorizontalBar } from "vue-data-ui";
+import { darkenColor, getPalette } from "vue-data-ui/utils";
+import { VueUiHorizontalBar } from "vue-data-ui/vue-ui-horizontal-bar";
 import { useMainStore } from "../stores";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseCard from "../components/BaseCard.vue";
-import { lightenColor } from "vue-data-ui";
+import { lightenColor } from "vue-data-ui/utils";
 import BaseColorInput from "../components/BaseColorInput.vue";
 import { adaptColorToBackground } from "../components/maker/lib";
 import { convertColorToHex } from "../components/maker/lib";

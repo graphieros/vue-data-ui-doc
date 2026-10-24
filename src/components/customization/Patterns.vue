@@ -6,7 +6,7 @@ import CodeParser from "./CodeParser.vue";
 import FlexibleTooltip from "../FlexibleTooltip.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseButton from "../Base/BaseButton.vue";
-import { VueUiPatternSeed } from "vue-data-ui";
+import { VueUiPatternSeed } from "vue-data-ui/vue-ui-pattern-seed";
 import BaseDocTitle from "../BaseDocTitle.vue";
 
 const store = useMainStore();

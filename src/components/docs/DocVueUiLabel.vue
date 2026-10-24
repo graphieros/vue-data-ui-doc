@@ -19,7 +19,7 @@ import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
 import VueUiLabel from "vue-data-ui/vue-ui-label";
-import { mergeConfigs } from "vue-data-ui";
+import { mergeConfigs } from "vue-data-ui/utils";
 import CodeParser from "../customization/CodeParser.vue";
 import { useRouter } from "vue-router";
 import ComponentEmits from "../ComponentEmits.vue";

@@ -6,7 +6,7 @@ import ComponentsTable from "../docs/ComponentsTable.vue";
 import { CheckIcon } from "vue-tabler-icons";
 import FlexibleTooltip from "../FlexibleTooltip.vue";
 import { useFeatures } from "../../useFeatures";
-import { VueUiIcon } from "vue-data-ui";
+import { VueUiIcon } from "vue-data-ui/vue-ui-icon";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);

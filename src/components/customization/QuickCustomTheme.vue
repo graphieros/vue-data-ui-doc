@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import BaseCard from "../BaseCard.vue";
-import { getVueDataUiConfig, mergeConfigs } from "vue-data-ui";
+import { getVueDataUiConfig, mergeConfigs } from "vue-data-ui/utils";
 import CodeParser from "./CodeParser.vue";
 import { useMainStore } from "../../stores";
 import BaseColorInput from "../BaseColorInput.vue";

@@ -5,7 +5,7 @@ import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
+import { createWordCloudDatasetFromPlainText } from "vue-data-ui/utils";
 import ThemesVueUiWordCloud from "../themes/ThemesVueUiWordCloud.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfig } from "../../assets/useConfig";

@@ -46,6 +46,7 @@ const emit = defineEmits(["refresh-chart"]);
         </component>
         <BaseDetails
             v-else-if="field.children"
+            lazy
             v-bind="getConfigControlProps(field)"
         >
             <DocConfigFields

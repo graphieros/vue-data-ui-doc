@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { useMainStore } from "../stores";
-import { VueUiIcon } from "vue-data-ui";
+import { VueUiIcon } from "vue-data-ui/vue-ui-icon";
 
 const store = useMainStore();
 const isCopy = computed(() => store.isCopy);

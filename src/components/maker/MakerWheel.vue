@@ -12,7 +12,7 @@ import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
 import BaseButton from "../Base/BaseButton.vue";
-import { VueUiDigits } from "vue-data-ui";
+import { VueUiDigits } from "vue-data-ui/vue-ui-digits";
 import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();

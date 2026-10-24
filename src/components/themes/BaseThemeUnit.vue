@@ -4,7 +4,7 @@ import { useMainStore } from "../../stores";
 import CodeParser from "../customization/CodeParser.vue";
 import ThemeTag from "../ThemeTag.vue";
 import { CopyIcon } from "vue-tabler-icons";
-import { getThemeConfig } from "vue-data-ui";
+import { getThemeConfig } from "vue-data-ui/utils";
 import VueUiLabel from "vue-data-ui/vue-ui-label";
 
 const props = defineProps({

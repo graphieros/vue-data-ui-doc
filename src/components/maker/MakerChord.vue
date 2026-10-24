@@ -13,7 +13,7 @@ import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 import useMaker from "./useMaker.js";
-import { getPalette } from "vue-data-ui";
+import { getPalette } from "vue-data-ui/utils";
 import BaseButton from "../Base/BaseButton.vue";
 import BaseCard from "../BaseCard.vue";
 

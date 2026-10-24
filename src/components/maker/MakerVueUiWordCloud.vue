@@ -7,7 +7,7 @@ import { useDefaultDataStore } from "../../stores/defaultData";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
-import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
+import { createWordCloudDatasetFromPlainText } from "vue-data-ui/utils";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";

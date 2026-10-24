@@ -1,4 +1,7 @@
+import { cachedJson } from "./cachedFetch.js";
 import { useMainStore } from "./stores";
+
+let activeRequests = 0;
 
 export default async function useFetch({
     url,
@@ -8,22 +11,18 @@ export default async function useFetch({
 }) {
     const store = useMainStore();
 
+    activeRequests++;
     store.isFetching = true;
 
-    return fetch(url)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
+    return cachedJson(url)
         .then(_then)
         .catch((error) => {
             console.error(`There was a problem fetching data:`, error);
-            _onError && _onError();
+            _onError?.();
         })
         .finally(() => {
-            store.isFetching = false;
+            activeRequests--;
+            store.isFetching = activeRequests > 0;
             _finally();
         });
 }

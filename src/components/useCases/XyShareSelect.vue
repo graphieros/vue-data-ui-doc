@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
-import { mergeConfigs } from "vue-data-ui";
+import { mergeConfigs } from "vue-data-ui/utils";
 import { createNumbers } from "../maker/lib";
 
 const store = useMainStore();

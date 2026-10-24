@@ -28,7 +28,9 @@ const isDarkMode = computed(() => store.isDarkMode);
         </a>
         <a href="https://www.cockpit-itsm.com/" target="_blank">
             <img
-                src="../assets/cockpit-banner.png"
+                loading="lazy"
+                decoding="async"
+                src="../assets/cockpit-banner.webp"
                 alt="Cockpit ITSM banner"
                 width="100%"
                 class="mx-auto block w-full rounded-2xl sm:rounded-none"

@@ -2,7 +2,7 @@
 import { ref, computed, toRef } from "vue";
 import { adaptColorToBackground } from "../maker/lib";
 import { useMainStore } from "../../stores";
-import { getPalette } from "vue-data-ui";
+import { getPalette } from "vue-data-ui/utils";
 import ConfirmCopy from "../ConfirmCopy.vue";
 import CodeParser from "./CodeParser.vue";
 import ColorBridgeIcon from "../maker/ColorBridgeIcon.vue";

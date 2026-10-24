@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { PlusIcon, MinusIcon } from "vue-tabler-icons";
-import { getVueDataUiConfig } from "vue-data-ui";
+import { getVueDataUiConfig } from "vue-data-ui/utils";
 
 const store = useMainStore();
 

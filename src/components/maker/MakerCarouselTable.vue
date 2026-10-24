@@ -8,7 +8,7 @@ import { useDefaultDataStore } from "../../stores/defaultData";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
-import { VueUiCarouselTable } from "vue-data-ui";
+import { VueUiCarouselTable } from "vue-data-ui/vue-ui-carousel-table";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";

@@ -71,12 +71,16 @@ const vduIsOnNpmx = shallowRef({
                     >
                         <div class="flex flex-row gap-2 place-items-center">
                             <img
+                loading="lazy"
+                decoding="async"
                                 class="hidden dark:block"
                                 src="../assets/npmx_logo_dark.png"
                                 alt="Npmx logo"
                                 width="136px"
                             />
                             <img
+                loading="lazy"
+                decoding="async"
                                 class="dark:hidden"
                                 src="../assets/npmx_logo_light.png"
                                 alt="Npmx logo"

@@ -1,29 +1,30 @@
 import { graphDataset, createGraphConfig } from "./components/docs/graph";
-import { ref, computed } from "vue";
+import { ref, shallowRef, computed } from "vue";
 import { useMainStore } from "./stores";
-import { getCumulativeAverage, mergeConfigs } from "vue-data-ui";
+import { getCumulativeAverage, mergeConfigs } from "vue-data-ui/utils";
+import { useExampleTicker } from "./performance/useExampleTicker.js";
 import { shiftHue } from "./components/maker/lib";
 import FRANCE from "../src/resources/FRANCE.json";
 import CHINA from "../src/resources/CHINA.json";
 import BRAZIL from "../src/resources/BRAZIL.json";
 import ITALY from "../src/resources/ITALY.json";
 
-import SUMMER1 from "./assets/treemap/summer1.png";
-import SUMMER2 from "./assets/treemap/summer2.png";
-import SUMMER3 from "./assets/treemap/summer3.png";
-import SUMMER4 from "./assets/treemap/summer4.png";
+import SUMMER1 from "./assets/treemap/summer1.webp";
+import SUMMER2 from "./assets/treemap/summer2.webp";
+import SUMMER3 from "./assets/treemap/summer3.webp";
+import SUMMER4 from "./assets/treemap/summer4.webp";
 
-import SPRING1 from "./assets/treemap/spring1.png";
-import SPRING2 from "./assets/treemap/spring2.png";
-import SPRING3 from "./assets/treemap/spring3.png";
+import SPRING1 from "./assets/treemap/spring1.webp";
+import SPRING2 from "./assets/treemap/spring2.webp";
+import SPRING3 from "./assets/treemap/spring3.webp";
 
-import FALL1 from "./assets/treemap/fall1.png";
-import FALL2 from "./assets/treemap/fall2.png";
-import FALL3 from "./assets/treemap/fall3.png";
+import FALL1 from "./assets/treemap/fall1.webp";
+import FALL2 from "./assets/treemap/fall2.webp";
+import FALL3 from "./assets/treemap/fall3.webp";
 
-import WINTER1 from "./assets/treemap/winter1.png";
-import WINTER2 from "./assets/treemap/winter2.png";
-import WINTER3 from "./assets/treemap/winter3.png";
+import WINTER1 from "./assets/treemap/winter1.webp";
+import WINTER2 from "./assets/treemap/winter2.webp";
+import WINTER3 from "./assets/treemap/winter3.webp";
 
 export default function useExamples() {
     const store = useMainStore();
@@ -66,7 +67,7 @@ export default function useExamples() {
     });
 
     //-------------- VUE-UI-CIRCLE-PACK --------------//
-    const DATASET_CIRCLE_PACK_SIMPLE = ref([
+    const DATASET_CIRCLE_PACK_SIMPLE = shallowRef([
         { name: "A", value: 100 },
         { name: "B", value: 90 },
         { name: "C", value: 80 },
@@ -81,7 +82,7 @@ export default function useExamples() {
         { name: "L", value: 2.5 },
     ]);
 
-    const DATASET_CIRCLE_PACK_NESTED = ref([
+    const DATASET_CIRCLE_PACK_NESTED = shallowRef([
         {
             name: "A",
             value: 42,
@@ -193,7 +194,7 @@ export default function useExamples() {
     }));
 
     //-------------- VUE-UI-RINGS --------------//
-    const DATASET_RINGS_BASIC = ref([
+    const DATASET_RINGS_BASIC = shallowRef([
         {
             name: "Series A",
             values: [32],
@@ -253,7 +254,7 @@ export default function useExamples() {
 
     //-------------- VUE-UI-BUMP --------------//
 
-    const DATASET_BUMP_DEFAULT = ref([
+    const DATASET_BUMP_DEFAULT = shallowRef([
         {
             name: "Series A",
             values: [120, 135, 155, 175, 210, 245, 275, 305, 330, 350],
@@ -704,7 +705,7 @@ export default function useExamples() {
     }));
 
     //-------------- VUE-UI-DAG --------------//
-    const DATASET_DAG_BASIC = ref({
+    const DATASET_DAG_BASIC = shallowRef({
         nodes: [
             { id: "A", label: "A" },
             { id: "B", label: "B" },
@@ -722,7 +723,7 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_DAG_SPECIAL = ref({
+    const DATASET_DAG_SPECIAL = shallowRef({
         nodes: [
             { id: "A", label: "A" },
             { id: "B", label: "B" },
@@ -745,7 +746,7 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_DAG_ANIMATED = ref({
+    const DATASET_DAG_ANIMATED = shallowRef({
         nodes: [
             { id: "A", label: "A", backgroundColor: "#5f8aee" },
             { id: "B", label: "B", backgroundColor: "#5f8aee" },
@@ -768,7 +769,7 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_DAG_CUSTOM = ref({
+    const DATASET_DAG_CUSTOM = shallowRef({
         nodes: [
             { id: "A", label: "Computer", icon: "computer", color: "#ff3700" },
             { id: "B", label: "Home", icon: "home", color: "#1d915d" },
@@ -848,7 +849,7 @@ export default function useExamples() {
     }));
 
     //-------------- VUE-UI-RIDGELINE --------------//
-    let to_ridgeline = ref(null);
+    const ridgelineTicker = useExampleTicker();
 
     const YOINK = ref([
         {
@@ -1015,17 +1016,15 @@ export default function useExamples() {
                 ds.datapoints[0].values.push(20 + Math.random() * seed * 50);
             });
 
-            to_ridgeline.value = setTimeout(() => {
-                raf.value = requestAnimationFrame(anim);
-            }, 250);
+
         }
 
-        anim();
+        ridgelineTicker.start(anim);
 
         return YOINK.value;
     });
 
-    const DATASET_RIDGELINE = ref([
+    const DATASET_RIDGELINE = shallowRef([
         {
             name: "Moscow",
             datapoints: [
@@ -1181,7 +1180,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_RIDGELINE_MULTIPLE = ref([
+    const DATASET_RIDGELINE_MULTIPLE = shallowRef([
         {
             name: "Moscow (cold: 1985, hot: 2020)",
             datapoints: [
@@ -1440,7 +1439,7 @@ export default function useExamples() {
     ]);
 
     //-------------- VUE-UI-WORLD --------------//
-    const DATASET_WORLD = ref({
+    const DATASET_WORLD = shallowRef({
         AFG: { value: 12.8 },
         ALB: { value: 13.5 },
         DZA: { value: 22.2 },
@@ -1685,7 +1684,7 @@ export default function useExamples() {
         120, 130, 80, 90, 78, 100, 110, 120, 115, 100, 80, 105,
     ]);
 
-    const DATASET_XY_CONTINUOUS = ref([
+    const DATASET_XY_CONTINUOUS = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1734,7 +1733,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_ESTIMATES = ref([
+    const DATASET_XY_ESTIMATES = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1744,7 +1743,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_ESTIMATES_SMOOTH = ref([
+    const DATASET_XY_ESTIMATES_SMOOTH = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1764,7 +1763,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_SINUSOID2 = ref([
+    const DATASET_XY_SINUSOID2 = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1773,7 +1772,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_SINUSOID2_AREA = ref([
+    const DATASET_XY_SINUSOID2_AREA = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1783,7 +1782,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_SINUSOID2_SMOOTH = ref([
+    const DATASET_XY_SINUSOID2_SMOOTH = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1793,7 +1792,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_SINUSOID2_SMOOTH_AREA = ref([
+    const DATASET_XY_SINUSOID2_SMOOTH_AREA = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1804,7 +1803,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_INTERLINE = ref([
+    const DATASET_XY_INTERLINE = shallowRef([
         {
             name: "Performance",
             type: "line",
@@ -1818,7 +1817,7 @@ export default function useExamples() {
             series: [10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10],
         },
     ]);
-    const DATASET_XY_INTERLINE_SMOOTH = ref([
+    const DATASET_XY_INTERLINE_SMOOTH = shallowRef([
         {
             name: "Performance",
             type: "line",
@@ -1835,7 +1834,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_INTERLINE_STEPPER = ref([
+    const DATASET_XY_INTERLINE_STEPPER = shallowRef([
         {
             name: "Performance",
             type: "line",
@@ -1852,7 +1851,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_WITH_NULL = ref([
+    const DATASET_XY_WITH_NULL = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -1907,8 +1906,7 @@ export default function useExamples() {
         },
     ]);
 
-    const raf = ref(null);
-    const to = ref(null);
+    const xyTicker = useExampleTicker();
 
     const DATASET_XY_LIVE_DATA = computed(() => {
         const ds = LIVESET.value;
@@ -1919,12 +1917,10 @@ export default function useExamples() {
             ds2.shift();
             ds.push(Math.random() * 100);
             ds2.push(Math.random() * 60);
-            to.value = setTimeout(() => {
-                raf.value = requestAnimationFrame(anim);
-            }, 250);
+
         }
 
-        anim();
+        xyTicker.start(anim);
 
         return [
             {
@@ -1950,7 +1946,7 @@ export default function useExamples() {
         ];
     });
 
-    const DATASET_XY_DUAL = ref([
+    const DATASET_XY_DUAL = shallowRef([
         {
             name: "Serie 1",
             type: "bar",
@@ -2027,7 +2023,7 @@ export default function useExamples() {
         });
     }
 
-    const DATASET_XY_COMMENTS_TRENDS = ref([
+    const DATASET_XY_COMMENTS_TRENDS = shallowRef([
         {
             name: "Series 1",
             type: "line",
@@ -2113,7 +2109,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_BASIC_MULTIBAR = ref([
+    const DATASET_XY_BASIC_MULTIBAR = shallowRef([
         {
             name: "Serie 1",
             type: "bar",
@@ -2134,7 +2130,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_SINUSOID = ref([
+    const DATASET_XY_SINUSOID = shallowRef([
         {
             name: "Serie 1",
             type: "line",
@@ -2168,7 +2164,7 @@ export default function useExamples() {
     //     return result;
     // }
 
-    const DATASET_XY_LTTB = ref([
+    const DATASET_XY_LTTB = shallowRef([
         {
             name: "Serie",
             type: "line",
@@ -2179,7 +2175,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_GROUPS = ref([
+    const DATASET_XY_GROUPS = shallowRef([
         {
             name: "Pizza satisfaction",
             type: "bar",
@@ -2226,7 +2222,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_XY_SHAPES = ref([
+    const DATASET_XY_SHAPES = shallowRef([
         {
             name: "Stars",
             type: "line",
@@ -2629,7 +2625,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_SPARKLINE = ref([
+    const DATASET_SPARKLINE = shallowRef([
         { period: "T1", value: 55 },
         { period: "T0", value: 89 },
         { period: "T3", value: 21 },
@@ -2653,7 +2649,7 @@ export default function useExamples() {
         { period: "T19", value: 55 },
     ]);
 
-    const DATASET_SPARKLINE_WITH_NULLS = ref([
+    const DATASET_SPARKLINE_WITH_NULLS = shallowRef([
         { period: "T1", value: 55 },
         { period: "T0", value: 89 },
         { period: "T3", value: 21 },
@@ -2766,7 +2762,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_STACKLINE_BASIC = ref([
+    const DATASET_STACKLINE_BASIC = shallowRef([
         {
             name: "Serie 1",
             series: [19, 20.07, 30, 40, 50, 60, 12, 20, 25, 19],
@@ -2789,7 +2785,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKLINE_MIXED = ref([
+    const DATASET_STACKLINE_MIXED = shallowRef([
         {
             name: "Serie A",
             series: [13, 8, 9, 13, 25, 27],
@@ -2980,7 +2976,7 @@ export default function useExamples() {
         },
     }));
 
-    const DATASET_STACKBAR_BASIC = ref([
+    const DATASET_STACKBAR_BASIC = shallowRef([
         {
             name: "Serie 1",
             series: [19, 20.07, 30, 40, 50, 60, 12, 20, 25, 19],
@@ -2998,7 +2994,7 @@ export default function useExamples() {
             series: [25, 23, 9, 13, 25, 31, 19, 13, 12, 14],
         },
     ]);
-    const DATASET_STACKBAR_MIXED = ref([
+    const DATASET_STACKBAR_MIXED = shallowRef([
         {
             name: "Serie 1",
             series: [-19, -20.07, -30, -40, -50, -60],
@@ -3017,7 +3013,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_SIMPLE_INCREASE = ref([
+    const DATASET_STACKBAR_WATERFALL_SIMPLE_INCREASE = shallowRef([
         {
             name: "Simple increase",
             type: "waterfall",
@@ -3045,7 +3041,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_SIMPLE_DECREASE = ref([
+    const DATASET_STACKBAR_WATERFALL_SIMPLE_DECREASE = shallowRef([
         {
             name: "Simple decrease",
             type: "waterfall",
@@ -3073,7 +3069,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_STACKED_POSITIVE = ref([
+    const DATASET_STACKBAR_WATERFALL_STACKED_POSITIVE = shallowRef([
         {
             name: "Stacked positive changes",
             type: "waterfall",
@@ -3113,7 +3109,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_STACKED_NEGATIVE = ref([
+    const DATASET_STACKBAR_WATERFALL_STACKED_NEGATIVE = shallowRef([
         {
             name: "Stacked negative changes",
             type: "waterfall",
@@ -3153,7 +3149,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_MIXED_SINGLE_STEP = ref([
+    const DATASET_STACKBAR_WATERFALL_MIXED_SINGLE_STEP = shallowRef([
         {
             name: "Mixed positive and negative segments",
             type: "waterfall",
@@ -3188,7 +3184,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_ZERO_CHANGE_VISIBLE_SEGMENTS = ref([
+    const DATASET_STACKBAR_ZERO_CHANGE_VISIBLE_SEGMENTS = shallowRef([
         {
             name: "Zero net change",
             type: "waterfall",
@@ -3215,7 +3211,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_AUTO_SUBTOTALS_AND_TOTALS = ref([
+    const DATASET_STACKBAR_AUTO_SUBTOTALS_AND_TOTALS = shallowRef([
         {
             name: "Automatic totals and subtotals",
             type: "waterfall",
@@ -3250,7 +3246,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_EXPLICIT_RESET = ref([
+    const DATASET_STACKBAR_EXPLICIT_RESET = shallowRef([
         {
             name: "Absolute reset",
             type: "waterfall",
@@ -3286,7 +3282,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_SUBTOTAL_BREAKDOWN = ref([
+    const DATASET_STACKBAR_SUBTOTAL_BREAKDOWN = shallowRef([
         {
             name: "Subtotal with breakdown",
             type: "waterfall",
@@ -3328,7 +3324,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_NEGATIVE_START_BALANCE = ref([
+    const DATASET_STACKBAR_NEGATIVE_START_BALANCE = shallowRef([
         {
             name: "Negative starting balance",
             type: "waterfall",
@@ -3361,7 +3357,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_CROSSING_ZERO = ref([
+    const DATASET_STACKBAR_CROSSING_ZERO = shallowRef([
         {
             name: "Crossing zero",
             type: "waterfall",
@@ -3389,7 +3385,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_NEGATIVE_TOTAL_BREAKDOWN = ref([
+    const DATASET_STACKBAR_NEGATIVE_TOTAL_BREAKDOWN = shallowRef([
         {
             name: "Negative absolute total",
             type: "waterfall",
@@ -3418,7 +3414,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_MIXED_INSIDE_ABSOLUTE_TOTAL = ref([
+    const DATASET_STACKBAR_WATERFALL_MIXED_INSIDE_ABSOLUTE_TOTAL = shallowRef([
         {
             name: "Diverging absolute total",
             type: "waterfall",
@@ -3445,7 +3441,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_SPARSE_AND_ZERO_SEGMENTS = ref([
+    const DATASET_STACKBAR_WATERFALL_SPARSE_AND_ZERO_SEGMENTS = shallowRef([
         {
             name: "Sparse segment distribution",
             type: "waterfall",
@@ -3485,7 +3481,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_CUSTOM = ref([
+    const DATASET_STACKBAR_WATERFALL_CUSTOM = shallowRef([
         {
             name: "Custom labels and colors",
             type: "waterfall",
@@ -3548,7 +3544,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_STACKBAR_WATERFALL_OMITTED_STEP_TYPES = ref([
+    const DATASET_STACKBAR_WATERFALL_OMITTED_STEP_TYPES = shallowRef([
         {
             name: "Inferred step types",
             type: "waterfall",
@@ -3612,7 +3608,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_NESTED_DONUTS_BASIC = ref([
+    const DATASET_NESTED_DONUTS_BASIC = shallowRef([
         {
             name: "Group 1",
             series: [
@@ -3649,7 +3645,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_NESTED_DONUTS_QUAD = ref([
+    const DATASET_NESTED_DONUTS_QUAD = shallowRef([
         {
             name: "Group 1",
             series: [
@@ -3720,7 +3716,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_NESTED_DONUTS_BREADKDOWN = ref([
+    const DATASET_NESTED_DONUTS_BREADKDOWN = shallowRef([
         {
             name: "Group 2",
             series: [
@@ -3890,7 +3886,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_HORIZONTAL_BAR_LONG = ref([
+    const DATASET_HORIZONTAL_BAR_LONG = shallowRef([
         {
             name: "This name is really long\nand spans on two lines",
             value: 100,
@@ -3917,7 +3913,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_VERTICAL_BAR_BASE = ref([
+    const DATASET_VERTICAL_BAR_BASE = shallowRef([
         {
             name: "Parent 1",
             children: [
@@ -3962,7 +3958,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_VERTICAL_BAR_MIXED = ref([
+    const DATASET_VERTICAL_BAR_MIXED = shallowRef([
         {
             name: "Parent 1",
             children: [
@@ -4099,7 +4095,7 @@ export default function useExamples() {
         return arr;
     }
 
-    const DATASET_HEATMAP_BASE = ref([
+    const DATASET_HEATMAP_BASE = shallowRef([
         { name: "SUN", values: makeHeatmapDs(24, 10) },
         { name: "MON", values: makeHeatmapDs(24, 110) },
         { name: "TUE", values: makeHeatmapDs(24, 100) },
@@ -4141,7 +4137,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_GAUGE_BASIC = ref({
+    const DATASET_GAUGE_BASIC = shallowRef({
         value: 7,
         series: [
             { from: 0, to: 4, color: "#c96747", name: "Critical" },
@@ -4150,7 +4146,7 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_GAUGE_MIXED = ref({
+    const DATASET_GAUGE_MIXED = shallowRef({
         value: -20,
         series: [
             { from: -100, to: 0, color: "#c96747", name: "Critical" },
@@ -4158,12 +4154,12 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_GAUGE_SINGLE = ref({
+    const DATASET_GAUGE_SINGLE = shallowRef({
         value: 66,
         series: [{ from: 0, to: 100, name: "CURRENT SATISFACTION" }],
     });
 
-    const DATASET_GAUGE_SINGLE_TEXT = ref({
+    const DATASET_GAUGE_SINGLE_TEXT = shallowRef({
         value: 66,
         series: [
             { from: 0, to: 50, color: "#c96747", name: "CRITICAL" },
@@ -4171,7 +4167,7 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_GAUGE_EMOJIS = ref({
+    const DATASET_GAUGE_EMOJIS = shallowRef({
         value: 3.5,
         series: [
             { from: 0, to: 1, color: "#c95247", name: "😧" },
@@ -4222,7 +4218,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_ONION_BASE = ref([
+    const DATASET_ONION_BASE = shallowRef([
         {
             name: "Serie 1",
             percentage: 21,
@@ -4804,7 +4800,7 @@ export default function useExamples() {
         return arr;
     }
 
-    const DATASET_SCATTER_SMALL = ref([
+    const DATASET_SCATTER_SMALL = shallowRef([
         {
             name: "Series A",
             values: [
@@ -4857,7 +4853,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_SCATTER_BASIC = ref([
+    const DATASET_SCATTER_BASIC = shallowRef([
         {
             name: "Serie",
             values: makeScatterSet({
@@ -4869,14 +4865,14 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_SCATTER_LARGE = ref([
+    const DATASET_SCATTER_LARGE = shallowRef([
         {
             name: "Big data",
             values: makeScatterBigData(),
         },
     ]);
 
-    const DATASET_SCATTER_BUBBLE = ref([
+    const DATASET_SCATTER_BUBBLE = shallowRef([
         {
             name: "Serie",
             values: makeScatterSet({
@@ -4889,7 +4885,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_SCATTER_MULTIPLE = ref([
+    const DATASET_SCATTER_MULTIPLE = shallowRef([
         {
             name: "Serie1",
             color: "#1f77b4",
@@ -4912,7 +4908,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_SCATTER_SHAPES = ref([
+    const DATASET_SCATTER_SHAPES = shallowRef([
         {
             name: "Serie1",
             color: "#1f77b4",
@@ -5034,7 +5030,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_WHEEL_BASIC = ref({
+    const DATASET_WHEEL_BASIC = shallowRef({
         percentage: 80,
     });
 
@@ -5080,7 +5076,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_SPARKHISTOGRAM_BASE = ref([
+    const DATASET_SPARKHISTOGRAM_BASE = shallowRef([
         {
             value: 1.2,
             valueLabel: "20%",
@@ -5244,7 +5240,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_QUADRANT_TECH = ref([
+    const DATASET_QUADRANT_TECH = shallowRef([
         {
             name: "China",
             shape: "circle",
@@ -5273,7 +5269,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_QUADRANT_BASE = ref([
+    const DATASET_QUADRANT_BASE = shallowRef([
         {
             name: "Startups",
             shape: "circle",
@@ -5357,7 +5353,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_RADAR_BASE = ref({
+    const DATASET_RADAR_BASE = shallowRef({
         categories: [{ name: "Single category" }],
         series: [
             {
@@ -5393,7 +5389,7 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_RADAR_MULTIPLE = ref({
+    const DATASET_RADAR_MULTIPLE = shallowRef({
         categories: [
             { name: "Category 1" },
             { name: "Category 2" },
@@ -5489,7 +5485,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_STRIP_PLOT_BASIC = ref([
+    const DATASET_STRIP_PLOT_BASIC = shallowRef([
         {
             name: "Asia",
             plots: [
@@ -5600,7 +5596,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_BULLET_BASIC = ref({
+    const DATASET_BULLET_BASIC = shallowRef({
         value: 80,
         target: 75,
         segments: [
@@ -5649,7 +5645,7 @@ export default function useExamples() {
         };
     });
 
-    const DATASET_BULLET_COLORS = ref({
+    const DATASET_BULLET_COLORS = shallowRef({
         value: 80,
         target: 75,
         segments: [
@@ -5674,7 +5670,7 @@ export default function useExamples() {
         ],
     });
 
-    const DATASET_BULLET_MIXED = ref({
+    const DATASET_BULLET_MIXED = shallowRef({
         value: 42,
         target: 30,
         segments: [
@@ -5700,7 +5696,7 @@ export default function useExamples() {
     });
 
     //-------------- VUE-UI-FUNNEL --------------//
-    const DATASET_FUNNEL_BASIC = ref([
+    const DATASET_FUNNEL_BASIC = shallowRef([
         {
             name: "Lead",
             value: 8249,
@@ -5723,7 +5719,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_FUNNEL_COLORS = ref([
+    const DATASET_FUNNEL_COLORS = shallowRef([
         {
             name: "Lead",
             value: 8249,
@@ -5795,7 +5791,7 @@ export default function useExamples() {
     });
 
     //-------------- VUE-UI-TREEMAP --------------//
-    const DATASET_TREEMAP_BASIC = ref([
+    const DATASET_TREEMAP_BASIC = shallowRef([
         {
             name: "Parent 1",
             value: 100,
@@ -6087,7 +6083,7 @@ export default function useExamples() {
     });
 
     //-------------- VUE-UI-HISTORY-MAP --------------//
-    const DATASET_HISTORY_PLOT_BASIC = ref([
+    const DATASET_HISTORY_PLOT_BASIC = shallowRef([
         {
             name: "2024",
             values: [
@@ -6108,7 +6104,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_HISTORY_PLOT_TEMPERATURE = ref([
+    const DATASET_HISTORY_PLOT_TEMPERATURE = shallowRef([
         {
             name: "2024",
             values: [
@@ -6137,7 +6133,7 @@ export default function useExamples() {
         },
     ]);
 
-    const DATASET_HISTORY_PLOT_SMOOTH = ref([
+    const DATASET_HISTORY_PLOT_SMOOTH = shallowRef([
         {
             name: "2024",
             values: [
@@ -6564,7 +6560,7 @@ export default function useExamples() {
 
     // CHORD
 
-    const DATASET_CHORD_BASIC = ref({
+    const DATASET_CHORD_BASIC = shallowRef({
         matrix: [
             //        DEU  JPN  GBR  FRA  IND  CHN
             /* DEU */ [0, 90, 100, 120, 60, 140],

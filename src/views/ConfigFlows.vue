@@ -6,7 +6,7 @@ import BaseDropdown from "../components/BaseDropdown.vue";
 import { useMakerStore } from "../stores/maker";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import BaseConfigViewer from "../components/Base/BaseConfigViewer.vue";
-import { getVueDataUiConfig } from "vue-data-ui";
+import { getVueDataUiConfig } from "vue-data-ui/utils";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
