@@ -1,0 +1,122 @@
+/* Scoped from prismjs/themes/prism-tomorrow.css. */
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+.maker-code-dark :deep(code[class*="language-"]),
+.maker-code-dark :deep(pre[class*="language-"]) {
+    color: #ccc;
+    background: none;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+/* Code blocks */
+.maker-code-dark :deep(pre[class*="language-"]) {
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+}
+
+.maker-code-dark :deep(:not(pre) > code[class*="language-"]),
+.maker-code-dark :deep(pre[class*="language-"]) {
+    background: #2d2d2d;
+}
+
+/* Inline code */
+.maker-code-dark :deep(:not(pre) > code[class*="language-"]) {
+    padding: 0.1em;
+    border-radius: 0.3em;
+    white-space: normal;
+}
+
+.maker-code-dark :deep(.token.comment),
+.maker-code-dark :deep(.token.block-comment),
+.maker-code-dark :deep(.token.prolog),
+.maker-code-dark :deep(.token.doctype),
+.maker-code-dark :deep(.token.cdata) {
+    color: #999;
+}
+
+.maker-code-dark :deep(.token.punctuation) {
+    color: #ccc;
+}
+
+.maker-code-dark :deep(.token.tag),
+.maker-code-dark :deep(.token.attr-name),
+.maker-code-dark :deep(.token.namespace),
+.maker-code-dark :deep(.token.deleted) {
+    color: #e2777a;
+}
+
+.maker-code-dark :deep(.token.function-name) {
+    color: #6196cc;
+}
+
+.maker-code-dark :deep(.token.boolean),
+.maker-code-dark :deep(.token.number),
+.maker-code-dark :deep(.token.function) {
+    color: #f08d49;
+}
+
+.maker-code-dark :deep(.token.property),
+.maker-code-dark :deep(.token.class-name),
+.maker-code-dark :deep(.token.constant),
+.maker-code-dark :deep(.token.symbol) {
+    color: #f8c555;
+}
+
+.maker-code-dark :deep(.token.selector),
+.maker-code-dark :deep(.token.important),
+.maker-code-dark :deep(.token.atrule),
+.maker-code-dark :deep(.token.keyword),
+.maker-code-dark :deep(.token.builtin) {
+    color: #cc99cd;
+}
+
+.maker-code-dark :deep(.token.string),
+.maker-code-dark :deep(.token.char),
+.maker-code-dark :deep(.token.attr-value),
+.maker-code-dark :deep(.token.regex),
+.maker-code-dark :deep(.token.variable) {
+    color: #7ec699;
+}
+
+.maker-code-dark :deep(.token.operator),
+.maker-code-dark :deep(.token.entity),
+.maker-code-dark :deep(.token.url) {
+    color: #67cdcc;
+}
+
+.maker-code-dark :deep(.token.important),
+.maker-code-dark :deep(.token.bold) {
+    font-weight: bold;
+}
+.maker-code-dark :deep(.token.italic) {
+    font-style: italic;
+}
+
+.maker-code-dark :deep(.token.entity) {
+    cursor: help;
+}
+
+.maker-code-dark :deep(.token.inserted) {
+    color: green;
+}

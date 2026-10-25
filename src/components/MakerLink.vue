@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick } from "vue";
+import { computed } from "vue";
 import { useMainStore } from "../stores";
 import { ToolIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
@@ -27,15 +27,11 @@ const props = defineProps({
 });
 
 function returnToMaker() {
-    if (!localStorage.currentChart) {
-        localStorage.setItem("currentChart", props.to);
-    } else {
-        localStorage.currentChart = props.to;
-    }
-    nextTick(() => {
-        router.push({ path: "/chart-builder" });
-        window.scrollTo(0, 0);
-    });
+    router
+        .push({ path: "/chart-builder", query: { component: props.to } })
+        .then(() => {
+            window.scrollTo(0, 0);
+        });
 }
 </script>
 

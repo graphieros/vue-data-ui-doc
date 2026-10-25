@@ -35,7 +35,7 @@ export const defaultDataStackbar = {
             key: "style.chart.grid.x.timeLabels.values",
             def: ["JAN", "FEB", "MAR"],
             type: "none",
-            label: "fontSize",
+            label: "xAxisLabel",
         },
         {
             key: "orientation",

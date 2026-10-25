@@ -527,7 +527,11 @@ function setPalette(p) {
                         class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md dark:border-t dark:border-[#6A6A6A]"
                     >
                         <input
-                            aria-label="Alpha channel"
+                            :aria-label="
+                                store.translations.builder2.alphaChannel[
+                                    store.lang
+                                ]
+                            "
                             type="range"
                             class="w-full accent-app-blue"
                             v-model="alpha"
@@ -546,7 +550,9 @@ function setPalette(p) {
                     class="text-xs h-[36px] w-[200px]"
                     v-model="colorValue"
                     @input="updateColorFromInput"
-                    placeholder="Enter RGBA / HSLA / HEX"
+                    :placeholder="
+                        store.translations.builder2.colorPlaceholder[store.lang]
+                    "
                 />
             </div>
             <slot name="after" />

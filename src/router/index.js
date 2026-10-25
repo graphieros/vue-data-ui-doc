@@ -44,9 +44,14 @@ const routes = [
         component: () => import("../views/Customization.vue"),
     },
     {
+        path: "/chart-builder2",
+        name: "Maker2",
+        redirect: { name: "Maker" },
+    },
+    {
         path: "/chart-builder",
         name: "Maker",
-        component: () => import("../views/Maker.vue"),
+        component: () => import("../views/Maker2.vue"),
     },
     {
         path: "/examples",
