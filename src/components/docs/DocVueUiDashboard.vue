@@ -26,6 +26,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 
 const mainConfig = useConfig();
@@ -380,6 +381,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
 </pre>
             </template>
             <template #slots>
+                <BaseSlotDocumenter
+                    componentName="VueUiDashboard"
+                    :types="['annotator-actions']"
+                />
                 <BaseSlotsImplementationLink
                     link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-dashboard.vue"
                 />

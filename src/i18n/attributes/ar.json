@@ -811,5 +811,7 @@
     "digits": "أرقام",
     "shadowForce": "قوة الظل",
     "animationFrameMs": "إطار التحريك (ملليثانية)",
-    "zoomRatio": "نسبة التكبير"
+    "zoomRatio": "نسبة التكبير",
+    "followZoom": "اتباع التكبير والتحريك",
+    "showGroupActions": "إظهار إجراءات التجميع"
 }

@@ -636,8 +636,21 @@ const items = computed(() => {
             <MyColorIcon :color="color"/>
         </template>
         <template #annotator-action-draw="{ mode }">
-            <MyDrawIcon v-if="mode === 'draw'"/>
-            <MyTextIcon v-else/>
+            <MyArrowIcon v-if="mode === 'arrow'"/>
+            <MyTextIcon v-else-if="mode === 'text'"/>
+            <MyLineIcon v-else-if="mode === 'line'"/>
+            <MyDrawIcon v-else/>
+        </template>
+        <!-- Visible when userOptions.annotator.showGroupActions is true (default).
+             XY: chart.userOptions.annotator; Quick Chart: userOptionsAnnotator. -->
+        <template #annotator-action-select-multiple="{ isSelecting }">
+            <MySelectMultipleIcon :active="isSelecting"/>
+        </template>
+        <template #annotator-action-group="{ disabled }">
+            <MyGroupIcon :disabled="disabled"/>
+        </template>
+        <template #annotator-action-ungroup="{ disabled }">
+            <MyUngroupIcon :disabled="disabled"/>
         </template>
         <template #annotator-action-undo="{ disabled }">
             <MyUndoIcon/>

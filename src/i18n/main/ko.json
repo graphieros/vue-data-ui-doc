@@ -191,7 +191,7 @@
         "backgroundPattern": "SVG 요소를 사용하여 배경 패턴을 사용자 지정하려면 이 슬롯을 사용하세요",
         "tooltipMidpoint": "이 슬롯을 사용하여 중점 툴팁 내용을 커스터마이즈합니다.",
         "groupLabel": "이 슬롯을 사용하여 그룹 레이블을 사용자 지정합니다",
-        "annotatorActions": "제공된 슬롯을 사용하여 주석 메뉴의 내용을 사용자 지정할 수 있습니다.",
+        "annotatorActions": "이 슬롯으로 주석 버튼 내용을 사용자 지정합니다. select-multiple은 isSelecting을, group과 ungroup은 disabled를 받습니다. showGroupActions가 true(기본값)이면 그룹 컨트롤이 표시됩니다.",
         "userMenu": "제공된 슬롯을 사용하여 차트의 컨텍스트 메뉴 내용을 사용자 지정할 수 있습니다.",
         "freestyle": "#svg 슬롯에서 노출된 데이터를 통해 차트에 정밀한 콘텐츠를 주입하기 위한 더욱 세밀한 제어가 가능합니다.",
         "areaGradient": "useArea가 true로 설정된 라인 타입에 사용자 지정 SVG linearGradient를 적용하려면 이 슬롯을 사용하세요",

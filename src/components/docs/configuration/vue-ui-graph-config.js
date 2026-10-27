@@ -74,6 +74,18 @@ const NUMBER_CONTROLS = {
 };
 
 function controlProps(path, name, type) {
+    if (path === "userOptions.annotator.showGroupActions")
+        return {
+            type,
+            tooltip:
+                "Show multi-selection, group and ungroup actions independently of followZoom.",
+        };
+    if (path === "userOptions.annotator.followZoom")
+        return {
+            type,
+            tooltip:
+                "Anchor annotations to chart coordinates so they follow zoom and pan.",
+        };
     if (SELECT_OPTIONS[path])
         return { type: "select", options: SELECT_OPTIONS[path] };
     if (type === "text" && /(?:color|stroke)$/i.test(name)) {
@@ -130,7 +142,9 @@ export function createVueUiGraphConfigFields() {
         parent.push({
             name,
             attr: path,
-            defaultVal: JSON.stringify(value),
+            defaultVal: JSON.stringify(
+                path === "userOptions.annotator.followZoom" ? true : value,
+            ),
             ...controlProps(path, name, type),
         });
     }

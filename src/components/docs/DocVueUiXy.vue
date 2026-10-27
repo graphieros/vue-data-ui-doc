@@ -535,6 +535,7 @@ const config = computed({
                     smoothSnapThreshold: 0.25,
                 },
                 userOptions: {
+                    annotator: { showGroupActions: true, followZoom: true },
                     annotatorPalette: COLOR_PICKER_PALETTE,
                     useCursorPointer: false,
                     print: {

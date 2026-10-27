@@ -31,6 +31,13 @@ export const defaultDataHill = {
     ],
     model: [
         {
+            key: "userOptions.annotator.showGroupActions",
+            def: true,
+            type: "checkbox",
+            label: "showGroupActions",
+            category: "userOptions",
+        },
+        {
             key: "loading",
             def: false,
             type: "checkbox",

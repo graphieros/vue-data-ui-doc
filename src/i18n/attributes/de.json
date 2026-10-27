@@ -811,5 +811,7 @@
     "digits": "Ziffern",
     "shadowForce": "Schattenstärke",
     "animationFrameMs": "Animationsbild (ms)",
-    "zoomRatio": "Zoom-Verhältnis"
+    "zoomRatio": "Zoom-Verhältnis",
+    "followZoom": "Zoom und Verschiebung folgen",
+    "showGroupActions": "Gruppenaktionen anzeigen"
 }

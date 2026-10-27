@@ -191,7 +191,7 @@
         "backgroundPattern": "Utilisez ce slot pour personnaliser le motif de fond à l’aide d’éléments SVG",
         "tooltipMidpoint": "Utilisez ce slot pour personnaliser le contenu de l’infobulle du point médian.",
         "groupLabel": "Utilisez ce slot pour personnaliser le libellé du groupe",
-        "annotatorActions": "Le contenu du menu d’annotation peut être personnalisé à l’aide des slots fournis.",
+        "annotatorActions": "Personnalisez le contenu des boutons de l’annotateur avec ces slots. select-multiple reçoit isSelecting ; group et ungroup reçoivent disabled. Les contrôles de groupe sont affichés si showGroupActions vaut true (par défaut).",
         "userMenu": "Le contenu du menu contextuel du graphique peut être personnalisé à l’aide des slots fournis.",
         "freestyle": "Un contrôle encore plus précis peut être obtenu à partir des données exposées du slot #svg, afin d’injecter un contenu précis dans le graphique.",
         "areaGradient": "Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de lignes lorsque useArea est défini sur true",

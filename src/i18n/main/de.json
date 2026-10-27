@@ -191,7 +191,7 @@
         "backgroundPattern": "Verwenden Sie diesen Slot, um das Hintergrundmuster mithilfe von SVG-Elementen anzupassen",
         "tooltipMidpoint": "Verwenden Sie diesen Slot, um den Inhalt der Tooltip des Mittelpunktes anzupassen.",
         "groupLabel": "Verwenden Sie diesen Slot, um die Gruppenbezeichnung anzupassen",
-        "annotatorActions": "Der Inhalt des Anmerkungsmenüs kann mit den bereitgestellten Slots angepasst werden.",
+        "annotatorActions": "Passen Sie den Inhalt der Anmerkungsschaltflächen mit diesen Slots an. select-multiple erhält isSelecting; group und ungroup erhalten disabled. Gruppenaktionen werden angezeigt, wenn showGroupActions true ist (Standard).",
         "userMenu": "Der Inhalt des Kontextmenüs des Diagramms kann mit den bereitgestellten Slots angepasst werden.",
         "freestyle": "Noch mehr Kontrolle kann über die bereitgestellten Daten des #svg-Slots erlangt werden, um präzisen Inhalt in das Diagramm einzufügen.",
         "areaGradient": "Verwende diesen Slot, um ein benutzerdefiniertes SVG-linearGradient bei Linientypen zu verwenden, wenn useArea auf true gesetzt ist",

@@ -811,5 +811,7 @@
     "digits": "桁数",
     "shadowForce": "シャドウ強度",
     "animationFrameMs": "アニメーションフレーム (ms)",
-    "zoomRatio": "ズーム比率"
+    "zoomRatio": "ズーム比率",
+    "followZoom": "ズームとパンに追従",
+    "showGroupActions": "グループ操作を表示"
 }

@@ -811,5 +811,7 @@
     "digits": "chiffres",
     "shadowForce": "force de l’ombre",
     "animationFrameMs": "image d’animation (ms)",
-    "zoomRatio": "rapport de zoom"
+    "zoomRatio": "rapport de zoom",
+    "followZoom": "Suivre le zoom et le déplacement",
+    "showGroupActions": "Afficher les actions de groupe"
 }

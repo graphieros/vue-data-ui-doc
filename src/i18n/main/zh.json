@@ -191,7 +191,7 @@
         "backgroundPattern": "使用此插槽通过 SVG 元素自定义背景图案",
         "tooltipMidpoint": "使用此插槽自定义中点提示内容。",
         "groupLabel": "使用此插槽自定义组标签",
-        "annotatorActions": "可以使用提供的插槽自定义注释菜单的内容。",
+        "annotatorActions": "使用这些插槽自定义注释工具的按钮内容。select-multiple 接收 isSelecting；group 和 ungroup 接收 disabled。showGroupActions 为 true（默认值）时显示分组控件。",
         "userMenu": "可以使用提供的插槽自定义图表的上下文菜单内容。",
         "freestyle": "通过 #svg 插槽公开的数据，可以获得更多控制，以将精确的内容注入图表中。",
         "areaGradient": "在 useArea 设为 true 的折线类型上使用此插槽以应用自定义 SVG linearGradient",

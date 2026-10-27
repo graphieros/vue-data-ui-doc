@@ -191,7 +191,7 @@
         "backgroundPattern": "SVG 要素を使用して背景パターンをカスタマイズするには、このスロットを使用してください",
         "tooltipMidpoint": "このスロットを使用して中点ツールチップの内容をカスタマイズします。",
         "groupLabel": "このスロットを使用してグループラベルをカスタマイズします",
-        "annotatorActions": "提供されたスロットを使用して、アノテーターメニューの内容をカスタマイズできます。",
+        "annotatorActions": "これらのスロットで注釈ボタンの内容をカスタマイズできます。select-multiple は isSelecting、group と ungroup は disabled を受け取ります。showGroupActions が true（既定値）の場合、グループ操作が表示されます。",
         "userMenu": "提供されたスロットを使用して、チャートのコンテキストメニューの内容をカスタマイズできます。",
         "freestyle": "#svg スロットで公開されているデータから、チャートに正確なコンテンツを挿入するために、さらに詳細な制御が可能です。",
         "areaGradient": "useArea が true のラインタイプにカスタム SVG linearGradient を適用するためにこのスロットを使用します",

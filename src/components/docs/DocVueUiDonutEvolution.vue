@@ -380,6 +380,7 @@ const config = computed({
                 },
             },
             userOptions: {
+                annotator: { showGroupActions: true, followZoom: true },
                 annotatorPalette: COLOR_PICKER_PALETTE,
                 show: true,
                 showOnChartHover: false,

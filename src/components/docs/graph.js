@@ -426,6 +426,7 @@ export const graphDataset = {
 export function createGraphConfig(isDark = false, lang = "en") {
     const config = getVueDataUiConfig("vue_ui_graph");
     config.devHints = { enable: false };
+    config.userOptions.annotator.followZoom = true;
     // Keep the website's large branches closer together while retaining node spacing.
     Object.assign(config.layout, {
         chargeStrength: -45,

@@ -90,14 +90,25 @@ export function modelFromConfig(config, reference) {
 }
 
 export function restoreConfigModel(base, saved) {
-    const byKey = new Map(saved.map((knob) => [knob.key, knob]));
     const keys = new Set(base.map((knob) => knob.key));
+    // Older zoom models stored the dash-pattern input under the width key.
+    const restored = saved.map((knob) => {
+        if (
+            knob.type === "text" &&
+            knob.key.endsWith(".selection.strokeWidth")
+        ) {
+            const dashKey = knob.key.replace(/strokeWidth$/, "strokeDasharray");
+            if (keys.has(dashKey)) return { ...knob, key: dashKey };
+        }
+        return knob;
+    });
+    const byKey = new Map(restored.map((knob) => [knob.key, knob]));
     return [
         ...base.map((knob) =>
             byKey.has(knob.key)
                 ? { ...knob, def: byKey.get(knob.key).def }
                 : knob,
         ),
-        ...saved.filter((knob) => !keys.has(knob.key)),
+        ...restored.filter((knob) => !keys.has(knob.key)),
     ];
 }

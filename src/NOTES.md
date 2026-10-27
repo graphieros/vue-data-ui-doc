@@ -1,30 +1,39 @@
-## Improvements & new features
+## Built-in annotator improvements
 
-### `VueUiStackbar`:
+### Annotations follow zoom and pan
 
-- apply `bars.borderRadius` only to external segments
-- apply `bars.borderRadius` to the bars in the minimap
-- new waterfall variant
+On supported charts, annotations now follow the chart’s coordinates when zooming or panning, while retaining their displayed size. This feature is enabled by default. Set `followZoom: false` to opt out.
+`VueUiXyCanvas` is excluded.
 
-(example & links)
+### Grouping and ungrouping annotations
 
-## Fixes
+You can now **group annotation** elements so they move together.
+For example, separate text and arrow annotations have independent anchors. When zooming, their spacing can change. Grouping them gives them a shared anchor and preserves their relative spacing.
 
-- Prevent crashes when `null` is provided instead of an expected string in all components that use the `createTSpans`, `createTSpansFromLineBreaksOnX` and `createTSpansFromLineBreaksOnY` internal utilities.
+Grouping is available in every built-in annotator, independently of `followZoom`. It adds three buttons:
 
-For example, the following dataset provided to VueUiHorizontalBar will not crash the component anymore:
+1. **Select multiple**: enabled when at least two annotations exist; toggles multi-selection mode.
+2. **Group**: enabled when at least two annotations are selected.
+3. **Ungroup**: enabled when an annotation group is selected.
+   Set showGroupActions to false to hide these controls and disable multi-selection.
 
-```ts
-const dataset = computed<VueUiHorizontalBarDatasetItem[]>(() => {
-    return [
-        {
-            name: null, // will show a TS error, but your backend might not care
-            value: 100,
-        },
-        {
-            name: "Series B",
-            value: 200,
-        },
-    ];
-});
+Both options default to true:
+
+```js
+// Most charts
+userOptions: {
+    annotator: {
+        followZoom: true,
+        showGroupActions: true,
+    },
+}
+```
+
+For `VueUiQuickChart`, use:
+
+```js
+userOptionsAnnotator: {
+    followZoom: true,
+    showGroupActions: true,
+}
 ```

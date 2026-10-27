@@ -199,6 +199,7 @@ const config = computed({
                 activationDelayMs: 300,
             },
             userOptions: {
+                annotator: { showGroupActions: true, followZoom: true },
                 annotatorPalette: COLOR_PICKER_PALETTE,
                 show: true,
                 showOnChartHover: false,

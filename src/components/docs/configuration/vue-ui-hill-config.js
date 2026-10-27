@@ -6,6 +6,27 @@ export function createVueUiHillConfigFields({ goToPage, store, translations }) {
             equal: true,
             children: [
                 {
+                    attr: "userOptions",
+                    level: 1,
+                    children: [
+                        {
+                            attr: "annotator",
+                            level: 2,
+                            title: "userOptions.annotator",
+                            children: [
+                                {
+                                    name: "showGroupActions",
+                                    attr: "userOptions.annotator.showGroupActions",
+                                    type: "checkbox",
+                                    defaultVal: "true",
+                                    tooltip:
+                                        "Show multi-selection, group and ungroup actions independently of followZoom.",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
                     attr: "devHints",
                     level: 1,
                     children: [

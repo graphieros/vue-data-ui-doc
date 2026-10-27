@@ -1797,6 +1797,29 @@ export function createVueUiXyConfigFields(
                     title: "chart.userOptions",
                     children: [
                         {
+                            attr: "annotator",
+                            level: 3,
+                            title: "chart.userOptions.annotator",
+                            children: [
+                                {
+                                    name: "showGroupActions",
+                                    attr: "chart.userOptions.annotator.showGroupActions",
+                                    type: "checkbox",
+                                    defaultVal: "true",
+                                    tooltip:
+                                        "Show multi-selection, group and ungroup actions independently of followZoom.",
+                                },
+                                {
+                                    name: "followZoom",
+                                    attr: "chart.userOptions.annotator.followZoom",
+                                    type: "checkbox",
+                                    defaultVal: "true",
+                                    tooltip:
+                                        "Anchor annotations to chart coordinates so they follow zoom and pan.",
+                                },
+                            ],
+                        },
+                        {
                             name: "show",
                             attr: "chart.userOptions.show",
                             type: "checkbox",

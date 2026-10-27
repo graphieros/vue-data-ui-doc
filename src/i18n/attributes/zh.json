@@ -811,5 +811,7 @@
     "digits": "数字位数",
     "shadowForce": "阴影强度",
     "animationFrameMs": "动画帧 (毫秒)",
-    "zoomRatio": "缩放比例"
+    "zoomRatio": "缩放比例",
+    "followZoom": "跟随缩放和平移",
+    "showGroupActions": "显示分组操作"
 }

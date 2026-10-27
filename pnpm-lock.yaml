@@ -188,8 +188,8 @@ importers:
         specifier: ^3.5.43
         version: 3.5.43(typescript@5.9.3)
       vue-data-ui:
-        specifier: ^3.28.4
-        version: 3.28.4(jspdf@4.2.1)(vue@3.5.43(typescript@5.9.3))
+        specifier: ^3.28.5
+        version: 3.28.5(jspdf@4.2.1)(vue@3.5.43(typescript@5.9.3))
       vue-hi-code:
         specifier: ^1.5.4
         version: 1.5.4(typescript@5.9.3)
@@ -1157,8 +1157,8 @@ packages:
       yaml:
         optional: true
 
-  vue-data-ui@3.28.4:
-    resolution: {integrity: sha512-lRmxt8eZeajQdNmUyv5x5GNzkCFewLWNL/OAGpUCICEhQjyKB2X3+KzGV7R5LrhvN2OVxzc8oAL5/ymBPePjTQ==}
+  vue-data-ui@3.28.5:
+    resolution: {integrity: sha512-fyrnC3xOysboRaI7XtdTq8/F1dFhyqO/fAriRNycvBluj1ycZodZbqCnzloFlb/1Hkd55nLxJUcoHMHESG3oBw==}
     peerDependencies:
       jspdf: '>=3.0.1'
       vue: '>=3.3.0'
@@ -1968,7 +1968,7 @@ snapshots:
       fsevents: 2.3.3
       jiti: 1.21.7
 
-  vue-data-ui@3.28.4(jspdf@4.2.1)(vue@3.5.43(typescript@5.9.3)):
+  vue-data-ui@3.28.5(jspdf@4.2.1)(vue@3.5.43(typescript@5.9.3)):
     dependencies:
       vue: 3.5.43(typescript@5.9.3)
     optionalDependencies:

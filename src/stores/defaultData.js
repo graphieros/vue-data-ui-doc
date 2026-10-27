@@ -26,6 +26,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -767,6 +774,20 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 },
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
+                        key: "userOptions.annotator.followZoom",
+                        def: true,
+                        type: "checkbox",
+                        label: "followZoom",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -1460,6 +1481,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     colors: ["#1f77b4", "#aec7e8", "#ff7f0e"],
                 },
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -2195,6 +2223,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -3287,6 +3322,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 },
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -3888,6 +3930,20 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     { name: "Datapoint J", value: 10.345, color: null },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
+                        key: "userOptions.annotator.followZoom",
+                        def: true,
+                        type: "checkbox",
+                        label: "followZoom",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -4597,6 +4653,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -5746,6 +5809,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "useCssAnimation",
                         def: true,
                         type: "checkbox",
@@ -6361,6 +6431,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     ],
                 },
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -6981,6 +7058,20 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
+                        key: "userOptions.annotator.followZoom",
+                        def: true,
+                        type: "checkbox",
+                        label: "followZoom",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -7855,7 +7946,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "zoom",
                     },
                     {
-                        key: "style.chart.zoom.dragToZoom.selection.strokeWidth",
+                        key: "style.chart.zoom.dragToZoom.selection.strokeDasharray",
                         type: "text",
                         def: "0",
                         label: [
@@ -9118,6 +9209,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -10007,6 +10105,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -10649,6 +10754,20 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "chart.userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
+                        key: "chart.userOptions.annotator.followZoom",
+                        def: true,
+                        type: "checkbox",
+                        label: "followZoom",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -10882,7 +11001,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         type: "number",
                         min: 0,
                         max: 12,
-                        label: ["zoom", "preview", "is", "strokeWidth"],
+                        label: ["zoom", "preview", "border", "is", "thickness"],
                         category: "zoom",
                     },
                     {
@@ -10891,7 +11010,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         type: "number",
                         min: 0,
                         max: 12,
-                        label: ["zoom", "preview", "border", "is", "thickness"],
+                        label: [
+                            "zoom",
+                            "preview",
+                            "border",
+                            "is",
+                            "strokeDasharray",
+                        ],
                         category: "zoom",
                     },
                     {
@@ -10946,7 +11071,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "zoom",
                     },
                     {
-                        key: "chart.zoom.dragToZoom.selection.strokeWidth",
+                        key: "chart.zoom.dragToZoom.selection.strokeDasharray",
                         type: "text",
                         def: "0",
                         label: [
@@ -12639,6 +12764,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -13974,6 +14106,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -14960,6 +15099,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -15790,6 +15936,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -16464,6 +16617,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -17339,6 +17499,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -18418,6 +18585,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 dataset: { percentage: 95.555 },
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -18930,6 +19104,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 dataset: { percentage: 95.555 },
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -19402,6 +19583,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -20355,6 +20543,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -21441,6 +21636,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -22848,7 +23050,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "zoom",
                     },
                     {
-                        key: "style.zoom.selection.strokeWidth",
+                        key: "style.zoom.selection.strokeDasharray",
                         type: "text",
                         def: "0",
                         label: [
@@ -24214,6 +24416,20 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
+                        key: "userOptions.annotator.followZoom",
+                        def: true,
+                        type: "checkbox",
+                        label: "followZoom",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -24411,7 +24627,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "general",
                     },
                     {
-                        key: "style.chart.zoom.dragToZoom.selection.strokeWidth",
+                        key: "style.chart.zoom.dragToZoom.selection.strokeDasharray",
                         type: "text",
                         def: "0",
                         label: [
@@ -25195,6 +25411,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -25938,6 +26161,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -27338,6 +27568,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -28054,6 +28291,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 },
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -28560,6 +28804,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -28898,6 +29149,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 },
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -29251,6 +29509,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     ],
                 },
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -29806,6 +30071,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,
@@ -30998,6 +31270,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 ],
                 model: [
                     {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
                         key: "debug",
                         def: false,
                         type: "checkbox",
@@ -31861,6 +32140,13 @@ export const useDefaultDataStore = defineStore("defaultData", {
                     },
                 ],
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
                     {
                         key: "type",
                         def: "classic",
@@ -32901,6 +33187,20 @@ export const useDefaultDataStore = defineStore("defaultData", {
                 dataset:
                     "Curabitur rhoncus tortor vel quam tempor, non placerat metus aliquet. Morbi malesuada id ex a pellentesque. Nam consectetur molestie mauris vitae volutpat. Aliquam efficitur ac nulla efficitur cursus. Nullam accumsan nisi et purus vehicula efficitur. Integer rutrum leo urna, et dictum magna iaculis et. Proin eget velit eget urna volutpat gravida. Nulla suscipit gravida tempus. Phasellus sodales, neque vel lacinia euismod, tortor nunc condimentum ipsum, sit amet ornare dui neque non ex. In quis viverra tortor, a elementum ex. Donec vitae diam purus. Cras mollis neque vel leo congue, at sagittis lorem eleifend. Sed porta nulla nisl, in hendrerit ipsum egestas vitae. Phasellus et dolor convallis lectus varius tincidunt eu vel mauris. Praesent iaculis vestibulum arcu, eu dictum lectus feugiat a.",
                 model: [
+                    {
+                        key: "userOptions.annotator.showGroupActions",
+                        def: true,
+                        type: "checkbox",
+                        label: "showGroupActions",
+                        category: "userOptions",
+                    },
+                    {
+                        key: "userOptions.annotator.followZoom",
+                        def: true,
+                        type: "checkbox",
+                        label: "followZoom",
+                        category: "userOptions",
+                    },
                     {
                         key: "debug",
                         def: false,

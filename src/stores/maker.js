@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { graphMakerTranslations } from "../translations/graphMaker.js";
 
 export const useMakerStore = defineStore("maker", {
     state: () => {
@@ -691,6 +692,19 @@ export const useMakerStore = defineStore("maker", {
                     },
                 },
                 labels: {
+                    strokeDasharray: {
+                        en: "Dash pattern",
+                        fr: "Motif de tirets",
+                        pt: "Padrão de traços",
+                        de: "Strichmuster",
+                        zh: "虚线模式",
+                        ja: "破線パターン",
+                        es: "Patrón de guiones",
+                        ko: "대시 패턴",
+                        ar: "نمط الشرطات",
+                    },
+                    showGroupActions: graphMakerTranslations.showGroupActions,
+                    followZoom: graphMakerTranslations.followZoom,
                     muted: {
                         en: "Muted",
                         fr: "Atténué",

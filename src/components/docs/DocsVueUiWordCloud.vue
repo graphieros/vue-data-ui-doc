@@ -102,6 +102,7 @@ const config = computed({
             animationDelayMs: 20,
             quality: "fast",
             userOptions: {
+                annotator: { showGroupActions: true, followZoom: true },
                 show: true,
                 showOnChartHover: false,
                 keepStateOnChartLeave: true,
@@ -511,7 +512,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiWordCloud"
                     :types="[
-                    'svg-underlayer',
+                        'svg-underlayer',
                         'hint',
                         'svg',
                         'tooltip-before',

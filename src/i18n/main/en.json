@@ -191,7 +191,7 @@
         "backgroundPattern": "Use this slot to customize the background pattern using svg elements",
         "tooltipMidpoint": "Use this slot to customize the midpoint tooltip content",
         "groupLabel": "Use this slot to customize the group label",
-        "annotatorActions": "The content of the annotator menu can be customized using the provided slots.",
+        "annotatorActions": "Customize annotator button content with these slots. select-multiple receives isSelecting; group and ungroup receive disabled. Group controls are shown when showGroupActions is true (default).",
         "userMenu": "The content of the chart's context menu can be customized using the provided slots.",
         "freestyle": "Even more control can be obtained from the exposed data of the #svg slot, to inject precise content into the chart.",
         "areaGradient": "Use this slot to apply a custom svg linearGradient on line types with useArea set to true",

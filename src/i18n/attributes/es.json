@@ -811,5 +811,7 @@
     "digits": "dígitos",
     "shadowForce": "intensidad de sombra",
     "animationFrameMs": "fotograma de animación (ms)",
-    "zoomRatio": "proporción de zoom"
+    "zoomRatio": "proporción de zoom",
+    "followZoom": "Seguir zoom y desplazamiento",
+    "showGroupActions": "Mostrar acciones de grupo"
 }

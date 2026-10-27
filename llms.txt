@@ -230,3 +230,20 @@ The CLI will generate a Vue single-file component pre-populated with:
 - A template ready to render the selected chart.
 
 This tool helps maintain consistency and speeds up development by providing a reliable boilerplate.
+
+
+## Built-in chart annotator
+
+Enable the annotator button with `userOptions.buttons.annotator`. Supported charts anchor annotations to chart coordinates by default (`userOptions.annotator.followZoom: true`). Set it to `false` to disable zoom and pan following. For VueUiXy use `chart.userOptions.annotator.followZoom`; for VueUiQuickChart use `userOptionsAnnotator.followZoom` and `userOptionsButtons.annotator`.
+
+Zoom-following annotations are supported by VueUiXy, VueUiCandlestick, VueUiStackbar, VueUiStackline, VueUiDonutEvolution, VueUiQuickChart, VueUiGraph, VueUiDag, VueUiGeo, VueUiTreemap, VueUiCirclePack, VueUiMolecule and VueUiWordCloud. Annotations follow chart zoom and pan. Select an annotation to edit its color and size, drag to move it, or drag line and arrow endpoints. On all charts using PenAndPaper, activate multiple selection or Shift-click annotations, then group two or more to move or delete them together. Select a group and ungroup it to edit individual members. Color and size controls are disabled for groups and multiple selections. Undo and redo cover drawing, editing, movement, grouping and ungrouping.
+
+Customize toolbar content with these slots (the built-in buttons retain their actions):
+- `annotator-action-draw`: `{ mode }`, where mode is `'arrow' | 'text' | 'line' | 'draw'`.
+- `annotator-action-select-multiple`: `{ isSelecting: boolean }`.
+- `annotator-action-group` and `annotator-action-ungroup`: `{ disabled: boolean }`.
+- `annotator-action-color`: `{ color }`; undo, redo and delete slots receive `{ disabled }`; `annotator-action-close` has no scope.
+
+Selection and grouping are independent of followZoom. `userOptions.annotator.showGroupActions` defaults to `true`; set it to `false` to hide these controls and disable multiple selection. For XY use `chart.userOptions.annotator.showGroupActions`; for Quick Chart use `userOptionsAnnotator.showGroupActions`. These APIs belong to the built-in chart annotator; VueUiAnnotator has its own configuration and slots.
+
+VueUiIcon includes `group`, `ungroup`, `selectMultiple` and `selectMultipleActive`.

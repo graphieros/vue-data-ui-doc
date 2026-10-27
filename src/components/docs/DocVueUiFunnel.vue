@@ -465,6 +465,7 @@ function goToPage(route) {
                 <BaseSlotDocumenter
                     componentName="VueUiFunnel"
                     :types="[
+                        'annotator-actions',
                         'svg-underlayer',
                         'svg',
                         'watermark',

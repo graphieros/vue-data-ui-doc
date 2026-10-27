@@ -18,6 +18,20 @@ export const defaultDataStackbar = {
     ],
     model: [
         {
+            key: "userOptions.annotator.showGroupActions",
+            def: true,
+            type: "checkbox",
+            label: "showGroupActions",
+            category: "userOptions",
+        },
+        {
+            key: "userOptions.annotator.followZoom",
+            def: true,
+            type: "checkbox",
+            label: "followZoom",
+            category: "userOptions",
+        },
+        {
             key: "debug",
             def: false,
             type: "checkbox",
@@ -837,7 +851,7 @@ export const defaultDataStackbar = {
             category: "zoom",
         },
         {
-            key: "style.chart.zoom.dragToZoom.selection.strokeWidth",
+            key: "style.chart.zoom.dragToZoom.selection.strokeDasharray",
             type: "text",
             def: "0",
             label: ["drag-to-zoom", "border", "is", "strokeDasharray"],

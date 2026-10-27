@@ -1,4 +1,26 @@
 export const graphMakerTranslations = {
+    showGroupActions: {
+        en: "Show group actions",
+        fr: "Afficher les actions de groupe",
+        pt: "Mostrar ações de grupo",
+        de: "Gruppenaktionen anzeigen",
+        zh: "显示分组操作",
+        ja: "グループ操作を表示",
+        es: "Mostrar acciones de grupo",
+        ko: "그룹 동작 표시",
+        ar: "إظهار إجراءات التجميع",
+    },
+    followZoom: {
+        en: "Follow zoom and pan",
+        fr: "Suivre le zoom et le déplacement",
+        pt: "Acompanhar zoom e deslocamento",
+        de: "Zoom und Verschiebung folgen",
+        zh: "跟随缩放和平移",
+        ja: "ズームとパンに追従",
+        es: "Seguir zoom y desplazamiento",
+        ko: "확대/축소 및 이동 따라가기",
+        ar: "اتباع التكبير والتحريك",
+    },
     graphButtons: {
         en: "Buttons",
         fr: "Boutons",

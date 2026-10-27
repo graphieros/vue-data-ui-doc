@@ -245,9 +245,13 @@ test("all XY fields bind to the actual light/dark presets and installed defaults
     assert.equal(
         flattenFields(fields).filter((field) => field.name && !field.component)
             .length,
-        360,
+        362,
     );
-    assert.equal(allPaths.length, 301);
+    assert.equal(allPaths.length, 303);
+    assert.ok(
+        allPaths.includes("chart.userOptions.annotator.showGroupActions"),
+    );
+    assert.ok(allPaths.includes("chart.userOptions.annotator.followZoom"));
     try {
         const bindings = scope.run(() =>
             useDocConfigBindings(

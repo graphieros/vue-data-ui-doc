@@ -811,5 +811,7 @@
     "digits": "",
     "shadowForce": "",
     "animationFrameMs": "",
-    "zoomRatio": ""
+    "zoomRatio": "",
+    "followZoom": "확대/축소 및 이동 따라가기",
+    "showGroupActions": "그룹 동작 표시"
 }

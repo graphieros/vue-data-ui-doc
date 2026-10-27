@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.5",
+        "date": "2026-10-27",
+        "updates": [
+            {
+                "component": "Built-in chart annotator",
+                "description": "Add follow-zoom and grouping/ungrouping features",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.28.4",
         "date": "2026-10-23",
         "updates": [

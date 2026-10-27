@@ -1297,6 +1297,21 @@ export function createVueUiChestnutConfigFields({
                     level: 1,
                     children: [
                         {
+                            attr: "annotator",
+                            level: 2,
+                            title: "userOptions.annotator",
+                            children: [
+                                {
+                                    name: "showGroupActions",
+                                    attr: "userOptions.annotator.showGroupActions",
+                                    type: "checkbox",
+                                    defaultVal: "true",
+                                    tooltip:
+                                        "Show multi-selection, group and ungroup actions independently of followZoom.",
+                                },
+                            ],
+                        },
+                        {
                             name: "show",
                             attr: "userOptions.show",
                             type: "checkbox",

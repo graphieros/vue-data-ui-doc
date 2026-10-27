@@ -16,6 +16,33 @@ const isolationHeaders = {
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
+        {
+            name: "reload-maker-definitions",
+            handleHotUpdate({ file, server }) {
+                // Pinia retains existing state when a Vue page hot-reloads.
+                // Maker models and translations are static store state, so a
+                // page reload is required to initialize their updated values.
+                const definitions = [
+                    resolve(import.meta.dirname, "src/stores/defaultData.js"),
+                    resolve(import.meta.dirname, "src/stores/maker.js"),
+                    resolve(
+                        import.meta.dirname,
+                        "src/translations/graphMaker.js",
+                    ),
+                ];
+                const chunks = resolve(
+                    import.meta.dirname,
+                    "src/stores/chunks",
+                );
+                if (
+                    definitions.includes(file) ||
+                    file.startsWith(`${chunks}/`)
+                ) {
+                    server.ws.send({ type: "full-reload" });
+                    return [];
+                }
+            },
+        },
         vue(),
         typeDocumentationPlugin(),
         configSearchIndexPlugin(),

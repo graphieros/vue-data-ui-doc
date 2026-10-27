@@ -601,6 +601,29 @@ export function createVueUiQuickChartConfigFields({
                     options: ["right", "left"],
                 },
                 {
+                    attr: "userOptionsAnnotator",
+                    level: 1,
+                    title: "userOptionsAnnotator",
+                    children: [
+                        {
+                            name: "showGroupActions",
+                            attr: "userOptionsAnnotator.showGroupActions",
+                            type: "checkbox",
+                            defaultVal: "true",
+                            tooltip:
+                                "Show multi-selection, group and ungroup actions independently of followZoom.",
+                        },
+                        {
+                            name: "followZoom",
+                            attr: "userOptionsAnnotator.followZoom",
+                            type: "checkbox",
+                            defaultVal: "true",
+                            tooltip:
+                                "Anchor annotations to chart coordinates so they follow zoom and pan.",
+                        },
+                    ],
+                },
+                {
                     attr: "userOptionsButtons",
                     level: 1,
                     children: [
