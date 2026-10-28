@@ -1,20 +1,20 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 3913471,
+  "totalBytes": 3919456,
   "totalSize": "3.7 MB",
   "fileCount": 360,
   "byExtension": [
     {
       "extension": ".js",
       "files": 275,
-      "bytes": 3152650,
+      "bytes": 3154033,
       "size": "3.0 MB"
     },
     {
       "extension": ".d.ts",
       "files": 79,
-      "bytes": 460029,
-      "size": "449 KB"
+      "bytes": 464631,
+      "size": "454 KB"
     },
     {
       "extension": ".css",
@@ -57,8 +57,8 @@
     {
       "path": "dist/types/vue-data-ui.d.ts",
       "filename": "vue-data-ui",
-      "bytes": 392930,
-      "size": "384 KB",
+      "bytes": 395290,
+      "size": "386 KB",
       "extension": ".d.ts"
     },
     {
@@ -99,7 +99,7 @@
     {
       "path": "dist/vue-ui-stackbar.js",
       "filename": "vue-ui-stackbar",
-      "bytes": 86859,
+      "bytes": 87109,
       "size": "85 KB",
       "extension": ".js"
     },
@@ -671,16 +671,16 @@
       "extension": ".js"
     },
     {
-      "path": "dist/useTimeLabels.js",
-      "filename": "useTimeLabels",
-      "bytes": 6031,
+      "path": "dist/vue-data-ui.js",
+      "filename": "vue-data-ui",
+      "bytes": 6052,
       "size": "5.9 KB",
       "extension": ".js"
     },
     {
-      "path": "dist/vue-data-ui.js",
-      "filename": "vue-data-ui",
-      "bytes": 6029,
+      "path": "dist/useTimeLabels.js",
+      "filename": "useTimeLabels",
+      "bytes": 6031,
       "size": "5.9 KB",
       "extension": ".js"
     },
@@ -727,6 +727,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/useParentSize.js",
+      "filename": "useParentSize",
+      "bytes": 5212,
+      "size": "5.1 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/patternUtils.js",
       "filename": "patternUtils",
       "bytes": 5113,
@@ -769,11 +776,11 @@
       "extension": ".js"
     },
     {
-      "path": "dist/useTooltipPosition.js",
-      "filename": "useTooltipPosition",
-      "bytes": 4134,
-      "size": "4.0 KB",
-      "extension": ".js"
+      "path": "dist/types/composables.d.ts",
+      "filename": "composables",
+      "bytes": 4168,
+      "size": "4.1 KB",
+      "extension": ".d.ts"
     },
     {
       "path": "dist/vue_ui_quadrant.js",
@@ -1138,13 +1145,6 @@
       "bytes": 2017,
       "size": "2.0 KB",
       "extension": ".js"
-    },
-    {
-      "path": "dist/types/composables.d.ts",
-      "filename": "composables",
-      "bytes": 1926,
-      "size": "1.9 KB",
-      "extension": ".d.ts"
     },
     {
       "path": "dist/Arrow.js",
@@ -1910,6 +1910,13 @@
       "extension": ".d.ts"
     },
     {
+      "path": "dist/composables.js",
+      "filename": "composables",
+      "bytes": 159,
+      "size": "159 B",
+      "extension": ".js"
+    },
+    {
       "path": "dist/rolldown-runtime.js",
       "filename": "rolldown-runtime",
       "bytes": 158,
@@ -1971,13 +1978,6 @@
       "bytes": 128,
       "size": "128 B",
       "extension": ".d.ts"
-    },
-    {
-      "path": "dist/composables.js",
-      "filename": "composables",
-      "bytes": 127,
-      "size": "127 B",
-      "extension": ".js"
     },
     {
       "path": "dist/types/vue.d.ts",

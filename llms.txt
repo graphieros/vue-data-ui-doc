@@ -247,3 +247,21 @@ Customize toolbar content with these slots (the built-in buttons retain their ac
 Selection and grouping are independent of followZoom. `userOptions.annotator.showGroupActions` defaults to `true`; set it to `false` to hide these controls and disable multiple selection. For XY use `chart.userOptions.annotator.showGroupActions`; for Quick Chart use `userOptionsAnnotator.showGroupActions`. These APIs belong to the built-in chart annotator; VueUiAnnotator has its own configuration and slots.
 
 VueUiIcon includes `group`, `ungroup`, `selectMultiple` and `selectMultipleActive`.
+
+
+## useParentSize composable
+
+Import `useParentSize` from `vue-data-ui/composables` (also exported from `vue-data-ui`). Call in Vue setup with a native element template ref. It measures that element's `parentElement`, not the element itself; chart component instances are not accepted. The target can be an HTMLElement, null, undefined, ref, computed ref or getter.
+
+Returns `{ width, height, stop }`. Dimensions are `ComputedRef<number | undefined>` in pixels, initially undefined until a parent exists. Use `.value` in scripts. Options are an object whose individual properties accept values, refs or getters:
+
+- `scale`: default 1.
+- `offsetWidth`, `offsetHeight`: default 0 pixels.
+- `maxWidth`, `maxHeight`: final caps, defaulting to window.innerWidth/innerHeight. Only finite, non-negative maximums are accepted; invalid maximums fall back to the viewport.
+- `observe`: default true; uses ResizeObserver on the parent's border-box.
+
+Each dimension is `Math.min((parentSize + offset) * scale, maxSize)`. Measurements use getBoundingClientRect(), including rendered borders/transforms. There is no lower clamp. Give the parent independent, definite dimensions, especially a height, to avoid child/parent growth feedback.
+
+A changed target ref or observe option remeasures the parent and rebinds observation. observe:false still measures once but does not track subsequent parent resizes. Without ResizeObserver only that measurement is available; window resize updates viewport caps, not the raw parent measurement. Cleanup is automatic on scope disposal. Outside a Vue scope, call stop() manually. stop() disconnects tracking but preserves the last measurement; reactive options can still recalculate it. To restart, create a new instance.
+
+SSR-safe: no parent means undefined dimensions, and no viewport cap applies on the server. For VueUiXy, use a computed config with `responsive:false`, `chart.width: width.value ?? 600` and `chart.height: height.value ?? 360`. Other charts use their own width/height configuration paths. Keep the measured target in a separately sized parent.

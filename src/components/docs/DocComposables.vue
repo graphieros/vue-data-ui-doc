@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, useTemplateRef } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCard from "../BaseCard.vue";
+import UseParentSizeDocs from "./composables/UseParentSizeDocs.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import { useTooltipPosition } from "vue-data-ui/composables";
 
@@ -147,5 +148,7 @@ const config = computed(() => ({
                 <VueUiXy ref="chartRef" :dataset :config />
             </div>
         </BaseCard>
+
+        <UseParentSizeDocs />
     </div>
 </template>
