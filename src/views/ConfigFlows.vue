@@ -322,6 +322,7 @@ const DAG_OBJ = computed(() => {
             <BaseConfigViewer
                 :config="DAG_OBJ"
                 :renderer="treeRenderer"
+                :playback-controls="treeRenderer === 'VueUiGraph'"
                 fit-container
             />
         </div>

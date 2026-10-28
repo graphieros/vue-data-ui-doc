@@ -1,8 +1,10 @@
 <script setup>
 import { ref, computed, onMounted, watch, shallowRef, nextTick } from "vue";
 import { useMainStore } from "../../stores";
+import { useConfigTreePlayback } from "./useConfigTreePlayback.js";
 
 const props = defineProps({
+    playbackControls: { type: Boolean, default: false },
     fitContainer: {
         type: Boolean,
         default: false,
@@ -271,6 +273,13 @@ const datasetGraph = computed(() => {
         })),
     };
 });
+const playback = useConfigTreePlayback(datasetGraph);
+const { status: playbackStatus, visibleCount, visibleDataset } = playback;
+watch(
+    [() => props.renderer, () => props.playbackControls],
+    () => playback.reset(),
+    { flush: "sync" },
+);
 const ready = ref(false);
 const step = ref(0);
 
@@ -392,19 +401,71 @@ const graphConfig = computed(() => ({
 <template>
     <div
         class="border border-[#6A6A6A] p-2 bg-white dark:bg-[#1A1A1A] w-full h-full"
-        :class="{ 'min-h-0 overflow-auto': fitContainer }"
+        :class="{ 'flex flex-col min-h-0 overflow-auto': fitContainer }"
     >
-        <VueUiDag
-            v-if="ready && renderer === 'VueUiDag'"
-            :dataset="datasetDag"
-            :config="cfg"
-            :key="step"
-        />
-        <VueUiGraph
-            v-else-if="ready"
-            :dataset="datasetGraph"
-            :config="graphConfig"
-            :key="`graph_${step}`"
-        />
+        <div
+            v-if="playbackControls && renderer === 'VueUiGraph'"
+            class="flex flex-wrap items-center justify-center gap-3 pb-3 shrink-0"
+            role="group"
+            aria-label="Tree playback"
+        >
+            <button
+                v-for="control in [
+                    {
+                        label: 'PLAY',
+                        action: playback.play,
+                        disabled:
+                            playbackStatus === 'playing' ||
+                            !datasetGraph.nodes.length,
+                        title: 'Start or resume from the root',
+                    },
+                    {
+                        label: 'PAUSE',
+                        action: playback.pause,
+                        disabled: playbackStatus !== 'playing',
+                        title: 'Pause at the current node',
+                    },
+                    {
+                        label: 'STOP',
+                        action: playback.stop,
+                        disabled:
+                            playbackStatus === 'stopped' ||
+                            !datasetGraph.nodes.length,
+                        title: 'Stop and return to the root',
+                    },
+                    {
+                        label: 'RESET',
+                        action: playback.reset,
+                        disabled: playbackStatus === 'idle',
+                        title: 'Restore the complete tree',
+                    },
+                ]"
+                :key="control.label"
+                type="button"
+                :disabled="control.disabled || !ready"
+                :title="control.title"
+                class="rounded border border-gray-400 px-4 py-2 text-sm hover:bg-app-blue hover:text-white disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-app-blue"
+                @click="control.action()"
+            >
+                {{ control.label }}
+            </button>
+            <span class="text-sm tabular-nums"
+                >{{ visibleCount }} / {{ datasetGraph.nodes.length }}</span
+            >
+        </div>
+        <div :class="{ 'flex-1 min-h-0': fitContainer }">
+            <VueUiDag
+                v-if="ready && renderer === 'VueUiDag'"
+                :dataset="datasetDag"
+                :config="cfg"
+                :key="step"
+            />
+            <VueUiGraph
+                v-else-if="ready"
+                :dataset="playbackControls ? visibleDataset : datasetGraph"
+                :config="graphConfig"
+                :key="`graph_${step}`"
+            />
+        </div>
     </div>
 </template>
