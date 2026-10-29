@@ -26,6 +26,7 @@ import BaseAttr from "../BaseAttr.vue";
 import { graphLayoutHints } from "../../translations/graphLayout.js";
 import { createVueUiGraphConfigFields } from "./configuration/vue-ui-graph-config.js";
 import Rater from "../Rater.vue";
+import GraphPlaybackUseCase from "../useCases/GraphPlaybackUseCase.vue";
 const store = useMainStore();
 const text = computed(
     () => graphTranslations[store.lang] || graphTranslations.en,
@@ -173,6 +174,7 @@ const tooltipCode = computed(
         showTooltip
         showThemes
         showResponsive
+        showUseCases
     >
         <template #dataset>
             <p class="my-4">{{ text.datasetHelp }}</p>
@@ -253,6 +255,7 @@ const tooltipCode = computed(
         <template #custom-tooltip
             ><CodeParser language="javascript" :content="tooltipCode"
         /></template>
+        <template #use-cases><GraphPlaybackUseCase /></template>
         <template #themes><ThemesVueUiGraph /></template>
         <template #responsive
             ><ResponsiveUnit height="500px"
