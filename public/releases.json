@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.7",
+        "date": "2026-10-29",
+        "updates": [
+            {
+                "component": "All components",
+                "description": "Improve fullscreen layout",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.28.6",
         "date": "2026-10-28",
         "updates": [

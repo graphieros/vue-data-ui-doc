@@ -1,13 +1,13 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 3919456,
-  "totalSize": "3.7 MB",
+  "totalBytes": 4013605,
+  "totalSize": "3.8 MB",
   "fileCount": 360,
   "byExtension": [
     {
       "extension": ".js",
       "files": 275,
-      "bytes": 3154033,
+      "bytes": 3159967,
       "size": "3.0 MB"
     },
     {
@@ -19,8 +19,8 @@
     {
       "extension": ".css",
       "files": 1,
-      "bytes": 184477,
-      "size": "180 KB"
+      "bytes": 272692,
+      "size": "266 KB"
     },
     {
       "extension": ".md",
@@ -64,14 +64,14 @@
     {
       "path": "dist/style.css",
       "filename": "style",
-      "bytes": 184477,
-      "size": "180 KB",
+      "bytes": 272692,
+      "size": "266 KB",
       "extension": ".css"
     },
     {
       "path": "dist/vue-ui-xy.js",
       "filename": "vue-ui-xy",
-      "bytes": 153956,
+      "bytes": 154074,
       "size": "150 KB",
       "extension": ".js"
     },
@@ -127,8 +127,8 @@
     {
       "path": "dist/vue-ui-dag.js",
       "filename": "vue-ui-dag",
-      "bytes": 65910,
-      "size": "64 KB",
+      "bytes": 66497,
+      "size": "65 KB",
       "extension": ".js"
     },
     {
@@ -148,7 +148,7 @@
     {
       "path": "dist/vue-ui-xy-canvas.js",
       "filename": "vue-ui-xy-canvas",
-      "bytes": 56947,
+      "bytes": 57301,
       "size": "56 KB",
       "extension": ".js"
     },
@@ -167,16 +167,16 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-graph.js",
-      "filename": "vue-ui-graph",
-      "bytes": 54197,
+      "path": "dist/vue-ui-candlestick.js",
+      "filename": "vue-ui-candlestick",
+      "bytes": 54309,
       "size": "53 KB",
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-candlestick.js",
-      "filename": "vue-ui-candlestick",
-      "bytes": 54182,
+      "path": "dist/vue-ui-graph.js",
+      "filename": "vue-ui-graph",
+      "bytes": 54197,
       "size": "53 KB",
       "extension": ".js"
     },
@@ -232,14 +232,14 @@
     {
       "path": "dist/SlicerPreview.js",
       "filename": "SlicerPreview",
-      "bytes": 42300,
+      "bytes": 42415,
       "size": "41 KB",
       "extension": ".js"
     },
     {
       "path": "dist/vue-ui-hill.js",
       "filename": "vue-ui-hill",
-      "bytes": 41829,
+      "bytes": 41841,
       "size": "41 KB",
       "extension": ".js"
     },
@@ -267,7 +267,7 @@
     {
       "path": "dist/vue-ui-3d-bar.js",
       "filename": "vue-ui-3d-bar",
-      "bytes": 39510,
+      "bytes": 39522,
       "size": "39 KB",
       "extension": ".js"
     },
@@ -400,7 +400,7 @@
     {
       "path": "dist/vue-ui-bump.js",
       "filename": "vue-ui-bump",
-      "bytes": 28030,
+      "bytes": 28032,
       "size": "27 KB",
       "extension": ".js"
     },
@@ -430,6 +430,13 @@
       "filename": "useChartExport",
       "bytes": 23383,
       "size": "23 KB",
+      "extension": ".js"
+    },
+    {
+      "path": "dist/UserOptions.js",
+      "filename": "UserOptions",
+      "bytes": 22648,
+      "size": "22 KB",
       "extension": ".js"
     },
     {
@@ -470,14 +477,7 @@
     {
       "path": "dist/vue-ui-molecule.js",
       "filename": "vue-ui-molecule",
-      "bytes": 18813,
-      "size": "18 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/UserOptions.js",
-      "filename": "UserOptions",
-      "bytes": 18341,
+      "bytes": 18847,
       "size": "18 KB",
       "extension": ".js"
     },
@@ -776,6 +776,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/usePanZoom.js",
+      "filename": "usePanZoom",
+      "bytes": 4278,
+      "size": "4.2 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/types/composables.d.ts",
       "filename": "composables",
       "bytes": 4168,
@@ -800,13 +807,6 @@
       "path": "dist/HillActions.js",
       "filename": "HillActions",
       "bytes": 4041,
-      "size": "3.9 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/usePanZoom.js",
-      "filename": "usePanZoom",
-      "bytes": 4012,
       "size": "3.9 KB",
       "extension": ".js"
     },
