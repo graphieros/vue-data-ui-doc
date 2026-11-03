@@ -40,6 +40,16 @@ const TAB = computed(() =>
 );
 
 const cb = ref({
+    analyze: `analyze: (result) => {
+            ${TAB.value}// Receives VueUiXyAnalysisResult when the user applies an analysis.
+            ${TAB.value}// Use it to populate your own report panel or statistics table, or save the results.
+            ${TAB.value}// Providing this callback replaces automatic annotation insertion.
+            ${TAB.value}console.log(result.scope, result.range, result.options);
+            ${TAB.value}console.log(result.seriesIds, result.appearance);
+            ${TAB.value}console.log(result.series, result.text);
+        ${TAB.value}},
+        ${TAB.value}`,
+
     animation: `animation: () => {
             ${TAB.value}// Do something
         ${TAB.value}},

@@ -813,5 +813,7 @@
     "animationFrameMs": "إطار التحريك (ملليثانية)",
     "zoomRatio": "نسبة التكبير",
     "followZoom": "اتباع التكبير والتحريك",
-    "showGroupActions": "إظهار إجراءات التجميع"
+    "showGroupActions": "إظهار إجراءات التجميع",
+    "useOutline": "إظهار حدود التعليقات",
+    "outlineThickness": "سماكة الحدود"
 }

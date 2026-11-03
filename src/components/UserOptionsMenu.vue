@@ -141,6 +141,17 @@ const t = ref({
         ko: "정렬 순서를 반전시킵니다",
         ar: "عكس ترتيب الفرز",
     },
+    analyze: {
+        en: "Analyze visible datapoints and add annotations, or pass the result to a custom callback",
+        fr: "Analyse les points visibles et ajoute des annotations, ou transmet le résultat à un callback",
+        pt: "Analisa os pontos visíveis e adiciona anotações, ou envia o resultado a um callback",
+        de: "Analysiert sichtbare Datenpunkte und ergänzt Anmerkungen oder übergibt das Ergebnis an einen Callback",
+        zh: "分析可见数据点并添加注释，或将结果传给自定义回调",
+        ja: "表示中のデータ点を分析し、注釈を追加するか結果をコールバックに渡します",
+        es: "Analiza los puntos visibles y añade anotaciones, o envía el resultado a un callback",
+        ko: "표시된 데이터 포인트를 분석해 주석을 추가하거나 결과를 콜백에 전달합니다",
+        ar: "يحلل النقاط المرئية ويضيف تعليقات أو يمرر النتيجة إلى دالة مخصصة",
+    },
     annotator: {
         en: "Opens the built-in annotator",
         fr: "Ouvre l'annotateur intégré",
@@ -511,6 +522,7 @@ const items = ref([
         icon: "sort",
         charts: ["VueUiVerticalBar"],
     },
+    { name: "analyze", icon: "analyze", charts: ["VueUiXy"] },
     {
         name: "annotator",
         icon: "annotator",

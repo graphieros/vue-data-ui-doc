@@ -31,9 +31,12 @@ const isDarkMode = computed(() => {
 
 const icons = ref([
     "aToZ",
+    "accessibility",
     "accordion",
     "addColumn",
     "addRow",
+    "analyze",
+    "annotation",
     "annotator",
     "annotatorDisabled",
     "apiStream",
@@ -165,6 +168,7 @@ const icons = ref([
     "exitFullscreen",
     "export",
     "externalLink",
+    "eye",
     "file",
     "fileCsv",
     "filePdf",
@@ -258,6 +262,7 @@ const icons = ref([
     "puzzleFill",
     "ratio",
     "recycle",
+    "refresh",
     "resize",
     "resizeTLBR",
     "resizeTRBL",

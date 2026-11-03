@@ -245,9 +245,14 @@ test("all XY fields bind to the actual light/dark presets and installed defaults
     assert.equal(
         flattenFields(fields).filter((field) => field.name && !field.component)
             .length,
-        362,
+        422,
     );
-    assert.equal(allPaths.length, 303);
+    assert.equal(allPaths.length, 362);
+    for (const property of ["useOutline", "outlineThickness", "outlineColor"])
+        assert.ok(allPaths.includes(`chart.userOptions.annotator.${property}`));
+    assert.ok(allPaths.includes("chart.userOptions.buttons.analyze"));
+    assert.ok(allPaths.includes("chart.userOptions.buttonTitles.analyze"));
+    assert.ok(allPaths.includes("analysis.options.trend"));
     assert.ok(
         allPaths.includes("chart.userOptions.annotator.showGroupActions"),
     );

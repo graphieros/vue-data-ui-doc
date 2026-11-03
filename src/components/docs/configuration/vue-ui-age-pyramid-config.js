@@ -1015,6 +1015,33 @@ export function createVueUiAgePyramidConfigFields({
                             title: "userOptions.annotator",
                             children: [
                                 {
+                                    name: "useOutline",
+                                    attr: "userOptions.annotator.useOutline",
+                                    type: "checkbox",
+                                    defaultVal: "true",
+                                    tooltip:
+                                        "Outline manual and analysis annotations for readability.",
+                                },
+                                {
+                                    name: "outlineThickness",
+                                    attr: "userOptions.annotator.outlineThickness",
+                                    type: "number",
+                                    min: 0,
+                                    max: 10,
+                                    step: 0.5,
+                                    defaultVal: "1",
+                                    tooltip: "Outline thickness in CSS pixels.",
+                                },
+                                {
+                                    name: "outlineColor",
+                                    attr: "userOptions.annotator.outlineColor",
+                                    type: "text",
+                                    nullable: true,
+                                    defaultVal: "null",
+                                    tooltip:
+                                        "CSS color, or leave empty to use the chart background color (null).",
+                                },
+                                {
                                     name: "showGroupActions",
                                     attr: "userOptions.annotator.showGroupActions",
                                     type: "checkbox",

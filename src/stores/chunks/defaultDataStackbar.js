@@ -18,6 +18,31 @@ export const defaultDataStackbar = {
     ],
     model: [
         {
+            key: "userOptions.annotator.useOutline",
+            def: true,
+            type: "checkbox",
+            label: "useOutline",
+            category: "userOptions",
+        },
+        {
+            key: "userOptions.annotator.outlineThickness",
+            def: 1,
+            type: "number",
+            min: 0,
+            max: 10,
+            step: 0.5,
+            label: "outlineThickness",
+            category: "userOptions",
+        },
+        {
+            key: "userOptions.annotator.outlineColor",
+            def: null,
+            type: "text",
+            nullable: true,
+            label: "outlineColor",
+            category: "userOptions",
+        },
+        {
             key: "userOptions.annotator.showGroupActions",
             def: true,
             type: "checkbox",

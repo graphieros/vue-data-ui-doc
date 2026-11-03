@@ -572,6 +572,13 @@ const items = computed(() => {
         <template #optionFullscreen="{ isFullscreen }">
             <MyFullscreenIcon/>
         </template>
+        ${
+            props.componentName === "VueUiXy"
+                ? `<template #optionAnalyze>
+            <MyAnalyzeIcon/>
+        </template>`
+                : ""
+        }
         <template #optionAnnotator="{ isAnnotator }">
             <MyPenIcon/>
         </template>
@@ -620,6 +627,18 @@ const items = computed(() => {
     <${props.componentName} :dataset="dataset" :config="config">
         <template #analysis="{ data }">
             <!-- Add a chart to analyze the data below the component -->
+        </template>
+    </${props.componentName}>
+            `,
+        },
+        {
+            names: ["analysis-action-color"],
+            description:
+                translations.value.slots.analysisActionColor[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #analysis-action-color="{ color }">
+            <VueUiIcon name="colorPicker" :stroke="color" />
         </template>
     </${props.componentName}>
             `,

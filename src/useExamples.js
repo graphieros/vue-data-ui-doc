@@ -1015,8 +1015,6 @@ export default function useExamples() {
                 ds.datapoints[0].values.shift();
                 ds.datapoints[0].values.push(20 + Math.random() * seed * 50);
             });
-
-
         }
 
         ridgelineTicker.start(anim);
@@ -1917,7 +1915,6 @@ export default function useExamples() {
             ds2.shift();
             ds.push(Math.random() * 100);
             ds2.push(Math.random() * 60);
-
         }
 
         xyTicker.start(anim);
@@ -2376,6 +2373,11 @@ export default function useExamples() {
                 },
                 labels: {
                     fontSize: 20,
+                },
+                userOptions: {
+                    buttons: {
+                        analyze: true,
+                    },
                 },
                 zoom: {
                     autoFit: true,

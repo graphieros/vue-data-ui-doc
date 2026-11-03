@@ -102,7 +102,13 @@ const config = computed({
             animationDelayMs: 20,
             quality: "fast",
             userOptions: {
-                annotator: { showGroupActions: true, followZoom: true },
+                annotator: {
+                    showGroupActions: true,
+                    followZoom: true,
+                    useOutline: true,
+                    outlineThickness: 1,
+                    outlineColor: null,
+                },
                 show: true,
                 showOnChartHover: false,
                 keepStateOnChartLeave: true,

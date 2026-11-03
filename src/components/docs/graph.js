@@ -470,6 +470,8 @@ export function graphConfigLeaves(config, prefix = "") {
         if (value && typeof value === "object" && !Array.isArray(value)) {
             return graphConfigLeaves(value, path);
         }
+        if (value === null && path === "userOptions.annotator.outlineColor")
+            return [{ path, value, type: "text" }];
         if (!["string", "number", "boolean"].includes(typeof value)) return [];
         return [
             {

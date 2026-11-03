@@ -606,6 +606,33 @@ export function createVueUiQuickChartConfigFields({
                     title: "userOptionsAnnotator",
                     children: [
                         {
+                            name: "useOutline",
+                            attr: "userOptionsAnnotator.useOutline",
+                            type: "checkbox",
+                            defaultVal: "true",
+                            tooltip:
+                                "Outline manual and analysis annotations for readability.",
+                        },
+                        {
+                            name: "outlineThickness",
+                            attr: "userOptionsAnnotator.outlineThickness",
+                            type: "number",
+                            min: 0,
+                            max: 10,
+                            step: 0.5,
+                            defaultVal: "1",
+                            tooltip: "Outline thickness in CSS pixels.",
+                        },
+                        {
+                            name: "outlineColor",
+                            attr: "userOptionsAnnotator.outlineColor",
+                            type: "text",
+                            nullable: true,
+                            defaultVal: "null",
+                            tooltip:
+                                "CSS color, or leave empty to use the chart background color (null).",
+                        },
+                        {
                             name: "showGroupActions",
                             attr: "userOptionsAnnotator.showGroupActions",
                             type: "checkbox",

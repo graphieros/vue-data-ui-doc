@@ -813,5 +813,7 @@
     "animationFrameMs": "",
     "zoomRatio": "",
     "followZoom": "확대/축소 및 이동 따라가기",
-    "showGroupActions": "그룹 동작 표시"
+    "showGroupActions": "그룹 동작 표시",
+    "useOutline": "주석 윤곽선 표시",
+    "outlineThickness": "윤곽선 두께"
 }

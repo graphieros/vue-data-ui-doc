@@ -27,6 +27,7 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseTextCopy from "../BaseTextCopy.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import XyAnalysisGuide from "./XyAnalysisGuide.vue";
 import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import ComponentEmits from "../ComponentEmits.vue";
@@ -203,6 +204,7 @@ const config = computed({
             theme: "",
             debug: false,
             loading: false,
+            analysis: mainConfig.vue_ui_xy.analysis,
             a11y: {
                 translations: {
                     keyboardNavigation:
@@ -535,7 +537,13 @@ const config = computed({
                     smoothSnapThreshold: 0.25,
                 },
                 userOptions: {
-                    annotator: { showGroupActions: true, followZoom: true },
+                    annotator: {
+                        showGroupActions: true,
+                        followZoom: true,
+                        useOutline: true,
+                        outlineThickness: 1,
+                        outlineColor: null,
+                    },
                     annotatorPalette: COLOR_PICKER_PALETTE,
                     useCursorPointer: false,
                     print: {
@@ -548,6 +556,7 @@ const config = computed({
                     keepStateOnChartLeave: true,
                     position: "right",
                     buttons: {
+                        analyze: true,
                         tooltip: true,
                         pdf: true,
                         img: true,
@@ -559,6 +568,7 @@ const config = computed({
                         annotator: true,
                     },
                     buttonTitles: {
+                        analyze: "Analyze dataset",
                         open: "Open options",
                         close: "Close options",
                         tooltip: "Toggle tooltip",
@@ -1259,6 +1269,7 @@ const customFormatCode =
                         'bar-gradient',
                         'user-menu',
                         'annotator-actions',
+                        'analysis-action-color',
                     ]"
                 >
                     <template #top>
@@ -1417,8 +1428,10 @@ const customFormatCode =
             </template>
 
             <template #callbacks>
+                <XyAnalysisGuide />
                 <UserOptionCallbacks
                     :items="[
+                        'analyze',
                         'annotator',
                         'csv',
                         'fullscreen',

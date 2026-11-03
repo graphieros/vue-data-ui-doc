@@ -181,7 +181,13 @@ const configState = useDocConfigState(isDarkMode);
 const config = computed({
     get: () =>
         configState.get({
-            userOptionsAnnotator: { showGroupActions: true, followZoom: true },
+            userOptionsAnnotator: {
+                showGroupActions: true,
+                followZoom: true,
+                useOutline: true,
+                outlineThickness: 1,
+                outlineColor: null,
+            },
             annotatorPalette: COLOR_PICKER_PALETTE,
             devHints: { enable: false },
             a11y: {

@@ -124,7 +124,13 @@ const config = computed({
                 },
             },
             userOptions: {
-                annotator: { showGroupActions: true, followZoom: true },
+                annotator: {
+                    showGroupActions: true,
+                    followZoom: true,
+                    useOutline: true,
+                    outlineThickness: 1,
+                    outlineColor: null,
+                },
                 annotatorPalette: COLOR_PICKER_PALETTE,
                 show: true,
                 showOnChartHover: false,

@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.8",
+        "date": "2026-11-03",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Add optional analysis annotations",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 3.28.7",
         "date": "2026-10-29",
         "updates": [

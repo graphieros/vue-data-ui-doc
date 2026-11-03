@@ -129,6 +129,7 @@ export function getGraphMakerPresentation(path) {
 }
 
 export function getGraphMakerControlType(path, type) {
+    if (path === "userOptions.annotator.outlineColor") return "text";
     return /(?:color|stroke)$/i.test(path.split(".").at(-1)) && type === "text"
         ? "color"
         : type;

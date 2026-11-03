@@ -11,6 +11,7 @@ import { createUid } from "./maker/lib";
 import useAttrMapping from "../useAttrMapping";
 
 const props = defineProps({
+    nullable: { type: Boolean, default: false },
     binding: { type: Object, default: null },
     compact: { type: Boolean, default: false },
     config: { type: Object, default: null },
@@ -124,6 +125,7 @@ const nestedAttribute = computed({
         );
     },
     set(value) {
+        if (props.nullable && value === "") value = null;
         if (props.binding) {
             props.binding.value = value;
             return;

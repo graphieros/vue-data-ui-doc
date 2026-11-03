@@ -813,5 +813,7 @@
     "animationFrameMs": "Animationsbild (ms)",
     "zoomRatio": "Zoom-Verhältnis",
     "followZoom": "Zoom und Verschiebung folgen",
-    "showGroupActions": "Gruppenaktionen anzeigen"
+    "showGroupActions": "Gruppenaktionen anzeigen",
+    "useOutline": "Anmerkungsumrisse anzeigen",
+    "outlineThickness": "Umrissstärke"
 }

@@ -813,5 +813,7 @@
     "animationFrameMs": "fotograma de animación (ms)",
     "zoomRatio": "proporción de zoom",
     "followZoom": "Seguir zoom y desplazamiento",
-    "showGroupActions": "Mostrar acciones de grupo"
+    "showGroupActions": "Mostrar acciones de grupo",
+    "useOutline": "Mostrar contornos de anotaciones",
+    "outlineThickness": "Grosor del contorno"
 }

@@ -1,3 +1,6 @@
+import { createXyAnalysisConfigFields } from "./xy-analysis-config.js";
+import { xyAnalysisOptIn } from "../../../translations/xyAnalysis.js";
+
 // Authored presentation metadata; editable values remain in the page's demo presets.
 export function createVueUiXyConfigFields(
     translations,
@@ -5,6 +8,11 @@ export function createVueUiXyConfigFields(
     { locales = [], goToPage = () => {}, setActiveTab = () => {} } = {},
 ) {
     return [
+        {
+            component: "BaseComment",
+            children: [{ text: xyAnalysisOptIn[lang] || xyAnalysisOptIn.en }],
+        },
+        createXyAnalysisConfigFields(locales, lang),
         {
             attr: "devHints",
             level: 1,
@@ -1802,6 +1810,33 @@ export function createVueUiXyConfigFields(
                             title: "chart.userOptions.annotator",
                             children: [
                                 {
+                                    name: "useOutline",
+                                    attr: "chart.userOptions.annotator.useOutline",
+                                    type: "checkbox",
+                                    defaultVal: "true",
+                                    tooltip:
+                                        "Outline manual and analysis annotations for readability.",
+                                },
+                                {
+                                    name: "outlineThickness",
+                                    attr: "chart.userOptions.annotator.outlineThickness",
+                                    type: "number",
+                                    min: 0,
+                                    max: 10,
+                                    step: 0.5,
+                                    defaultVal: "1",
+                                    tooltip: "Outline thickness in CSS pixels.",
+                                },
+                                {
+                                    name: "outlineColor",
+                                    attr: "chart.userOptions.annotator.outlineColor",
+                                    type: "text",
+                                    nullable: true,
+                                    defaultVal: "null",
+                                    tooltip:
+                                        "CSS color, or leave empty to use the chart background color (null).",
+                                },
+                                {
                                     name: "showGroupActions",
                                     attr: "chart.userOptions.annotator.showGroupActions",
                                     type: "checkbox",
@@ -1856,6 +1891,12 @@ export function createVueUiXyConfigFields(
                             level: 3,
                             title: "chart.userOptions.buttons",
                             children: [
+                                {
+                                    name: "analyze",
+                                    attr: "chart.userOptions.buttons.analyze",
+                                    type: "checkbox",
+                                    defaultVal: "false",
+                                },
                                 {
                                     name: "tooltip",
                                     attr: "chart.userOptions.buttons.tooltip",
@@ -1917,6 +1958,12 @@ export function createVueUiXyConfigFields(
                             level: 3,
                             title: "chart.userOptions.buttonTitles",
                             children: [
+                                {
+                                    name: "analyze",
+                                    attr: "chart.userOptions.buttonTitles.analyze",
+                                    type: "text",
+                                    defaultVal: "Analyze dataset",
+                                },
                                 {
                                     name: "open",
                                     attr: "chart.userOptions.buttonTitles.open",

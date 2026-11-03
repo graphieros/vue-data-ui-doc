@@ -191,6 +191,7 @@
         "backgroundPattern": "Verwenden Sie diesen Slot, um das Hintergrundmuster mithilfe von SVG-Elementen anzupassen",
         "tooltipMidpoint": "Verwenden Sie diesen Slot, um den Inhalt der Tooltip des Mittelpunktes anzupassen.",
         "groupLabel": "Verwenden Sie diesen Slot, um die Gruppenbezeichnung anzupassen",
+        "analysisActionColor": "Passen Sie das Farbauswahlsymbol im Analysedialog an. Erhält die ausgewählte Farbe als { color }.",
         "annotatorActions": "Passen Sie den Inhalt der Anmerkungsschaltflächen mit diesen Slots an. select-multiple erhält isSelecting; group und ungroup erhalten disabled. Gruppenaktionen werden angezeigt, wenn showGroupActions true ist (Standard).",
         "userMenu": "Der Inhalt des Kontextmenüs des Diagramms kann mit den bereitgestellten Slots angepasst werden.",
         "freestyle": "Noch mehr Kontrolle kann über die bereitgestellten Daten des #svg-Slots erlangt werden, um präzisen Inhalt in das Diagramm einzufügen.",

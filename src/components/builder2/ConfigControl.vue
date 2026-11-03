@@ -12,6 +12,13 @@ const props = defineProps({
     labelId: String,
 });
 
+const textValue = computed({
+    get: () => props.knob.def ?? "",
+    set: (value) => {
+        props.knob.def = props.knob.nullable && value === "" ? null : value;
+    },
+});
+
 const type = computed(() => {
     // A few existing models misspell checkbox. Preserve their boolean controls.
     if (["checkbox", "chekbox", "chexkbox"].includes(props.knob.type))
@@ -104,7 +111,7 @@ function setJson(event) {
         />
         <input
             v-else-if="type !== 'none'"
-            v-model="knob.def"
+            v-model="textValue"
             type="text"
             :aria-labelledby="labelId"
         />

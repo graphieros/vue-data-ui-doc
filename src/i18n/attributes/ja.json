@@ -813,5 +813,7 @@
     "animationFrameMs": "アニメーションフレーム (ms)",
     "zoomRatio": "ズーム比率",
     "followZoom": "ズームとパンに追従",
-    "showGroupActions": "グループ操作を表示"
+    "showGroupActions": "グループ操作を表示",
+    "useOutline": "注釈の輪郭を表示",
+    "outlineThickness": "輪郭の太さ"
 }

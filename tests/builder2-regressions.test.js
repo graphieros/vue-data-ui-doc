@@ -274,6 +274,9 @@ test("annotation toggles survive maker chart switches and reset to library defau
         assert.deepEqual(state.config.value.chart.userOptions.annotator, {
             showGroupActions: false,
             followZoom: false,
+            useOutline: true,
+            outlineThickness: 1,
+            outlineColor: null,
         });
         state.route.query.component = "VueUiDonut";
         await vue.nextTick();
@@ -282,11 +285,17 @@ test("annotation toggles survive maker chart switches and reset to library defau
         assert.deepEqual(state.config.value.chart.userOptions.annotator, {
             showGroupActions: false,
             followZoom: false,
+            useOutline: true,
+            outlineThickness: 1,
+            outlineColor: null,
         });
         state.reset();
         assert.deepEqual(state.config.value.chart.userOptions.annotator, {
             showGroupActions: true,
             followZoom: true,
+            useOutline: true,
+            outlineThickness: 1,
+            outlineColor: null,
         });
     } finally {
         state.stop();
@@ -354,4 +363,71 @@ test("zoom width and dash-pattern controls have independent paths, labels and sa
     assert.equal(checked, 5);
     for (const lang of ["en", "fr", "pt", "de", "zh", "ja", "es", "ko", "ar"])
         assert.ok(labels.strokeDasharray[lang], lang);
+});
+
+test("maker outline options preserve defaults, custom colors and null reset values", async () => {
+    const { getVueDataUiConfig } = await import("vue-data-ui/utils");
+    const defaults = builderDefaults(rawDefaults, false, "en");
+    let charts = 0;
+    for (const chart of catalog) {
+        const model = defaults[chart.key].model;
+        const group = model.find((knob) =>
+            knob.key.endsWith(".annotator.showGroupActions"),
+        );
+        if (!group) continue;
+        charts++;
+        const prefix = group.key.replace(/showGroupActions$/, "");
+        for (const [property, original, edited, type] of [
+            ["useOutline", true, false, "checkbox"],
+            ["outlineThickness", 1, 3, "number"],
+            ["outlineColor", null, "#ff00aa", "text"],
+        ]) {
+            const key = prefix + property;
+            const knob = model.find((entry) => entry.key === key);
+            assert.ok(knob, `${chart.name}: ${key}`);
+            assert.equal(knob.def, original);
+            assert.equal(knob.type, type);
+            assert.equal(
+                key
+                    .split(".")
+                    .reduce(
+                        (value, part) => value[part],
+                        getVueDataUiConfig(chart.key),
+                    ),
+                original,
+            );
+            const editedModel = configHelpers.restoreConfigModel(model, [
+                { ...knob, def: edited },
+            ]);
+            const config = convertArrayToObject(editedModel);
+            assert.equal(
+                key.split(".").reduce((value, part) => value[part], config),
+                edited,
+            );
+            if (property === "outlineColor") {
+                assert.equal(knob.nullable, true);
+                const controlSource = parse(
+                    fs.readFileSync(
+                        "src/components/builder2/ConfigControl.vue",
+                        "utf8",
+                    ),
+                ).descriptor.scriptSetup.content;
+                const reactiveKnob = vue.reactive({ ...knob });
+                const binding = evaluate(
+                    controlSource,
+                    {
+                        computed: vue.computed,
+                        defineProps: () => ({ knob: reactiveKnob }),
+                        useBuilderTranslations: () => (key) => key,
+                    },
+                    "textValue",
+                );
+                binding.value = edited;
+                assert.equal(reactiveKnob.def, edited);
+                binding.value = "";
+                assert.equal(reactiveKnob.def, null);
+            }
+        }
+    }
+    assert.equal(charts, 39);
 });

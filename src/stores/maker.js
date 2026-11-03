@@ -692,6 +692,10 @@ export const useMakerStore = defineStore("maker", {
                     },
                 },
                 labels: {
+                    analyze: graphMakerTranslations.analyze,
+                    useOutline: graphMakerTranslations.useOutline,
+                    outlineThickness: graphMakerTranslations.outlineThickness,
+                    outlineColor: graphMakerTranslations.outlineColor,
                     strokeDasharray: {
                         en: "Dash pattern",
                         fr: "Motif de tirets",

@@ -12,6 +12,7 @@ const SELECT_OPTIONS = {
 
 // Units and bounds are presentation metadata; values still come from the library.
 const NUMBER_CONTROLS = {
+    "userOptions.annotator.outlineThickness": { min: 0, max: 10, step: 0.5 },
     "style.chart.width": { min: 100, max: 2000, step: 10 },
     "style.chart.height": { min: 100, max: 2000, step: 10 },
     "style.chart.padding": { min: 0, max: 100, step: 0.5 },
@@ -74,6 +75,13 @@ const NUMBER_CONTROLS = {
 };
 
 function controlProps(path, name, type) {
+    if (path === "userOptions.annotator.outlineColor")
+        return {
+            type: "text",
+            nullable: true,
+            tooltip:
+                "CSS color, or leave empty to use the chart background color (null).",
+        };
     if (path === "userOptions.annotator.showGroupActions")
         return {
             type,

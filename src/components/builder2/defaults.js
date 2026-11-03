@@ -31,6 +31,12 @@ export function builderDefaults(defaults, dark, lang) {
             model: graphConfigLeaves(createGraphConfig(dark, lang)).map(
                 ({ path, value, type }) => ({
                     key: path,
+                    ...(path === "userOptions.annotator.outlineColor"
+                        ? { nullable: true }
+                        : {}),
+                    ...(path === "userOptions.annotator.outlineThickness"
+                        ? { min: 0, max: 10, step: 0.5 }
+                        : {}),
                     def: value,
                     type: getGraphMakerControlType(path, type),
                     ...getGraphMakerPresentation(path),
