@@ -2507,9 +2507,13 @@ const digitsConfigVersion = computed(() => {
                     >
                         <ul>
                             <li v-for="log in filteredVersions" :class="`mb-4`">
-                                <BaseCard type="light">
+                                <BaseCard
+                                    type="light"
+                                    padding="py-2 px-0"
+                                    rounding="rounded"
+                                >
                                     <div
-                                        class="pt-2 pb-4 mb-6 font-inter-medium text-xl border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums"
+                                        class="pt-2 pb-2 mb-6 font-inter-medium border-b border-gray-300 dark:border-[#5A5A5A] text-[#8A8A8A] mx-6 tabular-nums w-fit"
                                     >
                                         {{ log.date }} |
                                         <span
@@ -2517,6 +2521,7 @@ const digitsConfigVersion = computed(() => {
                                             >{{ log.version }}</span
                                         ><br />
                                     </div>
+
                                     <div class="pl-6" v-if="log.updates">
                                         <template v-for="update in log.updates">
                                             <div
@@ -2530,13 +2535,14 @@ const digitsConfigVersion = computed(() => {
                                                 >
                                                     <a
                                                         v-for="c in update.components"
-                                                        class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2"
+                                                        class="font-inter-medium text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2"
                                                         :href="
                                                             useImportMap(c)
                                                                 .docLink
                                                         "
                                                     >
                                                         <VueUiIcon
+                                                            :size="18"
                                                             :name="
                                                                 useIconMap(c)
                                                             "
@@ -2552,7 +2558,7 @@ const digitsConfigVersion = computed(() => {
 
                                                 <template v-else>
                                                     <a
-                                                        class="font-inter-medium text-xl text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2"
+                                                        class="font-inter-medium text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2"
                                                         v-if="
                                                             update.component &&
                                                             update.link
@@ -2560,6 +2566,7 @@ const digitsConfigVersion = computed(() => {
                                                         :href="update.link"
                                                     >
                                                         <VueUiIcon
+                                                            :size="18"
                                                             :name="
                                                                 useIconMap(
                                                                     update.component,
@@ -2579,9 +2586,10 @@ const digitsConfigVersion = computed(() => {
                                                         v-else-if="
                                                             update.component
                                                         "
-                                                        class="font-inter-medium text-xl text-app-blue flex flex-row gap-2 flex-wrap"
+                                                        class="font-inter-medium text-app-blue flex flex-row gap-2 flex-wrap"
                                                     >
                                                         <VueUiIcon
+                                                            :size="18"
                                                             :name="
                                                                 useIconMap(
                                                                     update.component,
