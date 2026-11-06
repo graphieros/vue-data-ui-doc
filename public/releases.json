@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.28.12",
+        "date": "2026-11-06",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Add optional config.sorted property",
+                "link": "/docs#vue-ui-donut"
+            }
+        ]
+    },
+    {
         "version": "v 3.28.10",
         "date": "2026-11-06",
         "updates": [
