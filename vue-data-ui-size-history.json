@@ -1,8 +1,8 @@
 {
   "package": "vue-data-ui",
-  "generatedAt": "2026-11-03T06:17:11.786Z",
-  "versionCount": 1285,
-  "successfulCount": 1285,
+  "generatedAt": "2026-11-06T10:40:08.701Z",
+  "versionCount": 1290,
+  "successfulCount": 1290,
   "failedCount": 0,
   "versions": [
     {
@@ -16657,6 +16657,19 @@
       "license": "MIT"
     },
     {
+      "version": "3.28.4",
+      "totalBytes": 3892343,
+      "totalSize": "3.7 MB",
+      "fileCount": 359,
+      "tarballBytes": 995729,
+      "tarballSize": "972 KB",
+      "publishedAt": "2026-10-23T16:38:25.822Z",
+      "registryUnpackedBytes": 3892343,
+      "shasum": "c9d44f4d5be7a9537492bd043f5a272b39622fa4",
+      "integrity": "sha512-lRmxt8eZeajQdNmUyv5x5GNzkCFewLWNL/OAGpUCICEhQjyKB2X3+KzGV7R5LrhvN2OVxzc8oAL5/ymBPePjTQ==",
+      "license": "MIT"
+    },
+    {
       "version": "3.28.5",
       "totalBytes": 3913471,
       "totalSize": "3.7 MB",
@@ -16706,6 +16719,58 @@
       "registryUnpackedBytes": 4049282,
       "shasum": "0c73a82905aebad5aaf7db8a631d770d7e1e7bc6",
       "integrity": "sha512-zPHEEa7oBsIfb9EBnSlyoI1k9D6T2v3EQhu7li03Fc4jpSkpF56fHjOG4Mb/AvhvO6THN5Fa90DyeKT3UnESig==",
+      "license": "MIT"
+    },
+    {
+      "version": "3.28.9",
+      "totalBytes": 4049308,
+      "totalSize": "3.9 MB",
+      "fileCount": 361,
+      "tarballBytes": 1019217,
+      "tarballSize": "995 KB",
+      "publishedAt": "2026-11-03T09:22:24.693Z",
+      "registryUnpackedBytes": 4049308,
+      "shasum": "331328785761447dac172a6d3c1cffeb0d05617c",
+      "integrity": "sha512-UQl0ju0odr5FG4kJa7BXrd6ldQ1ZhLYTbSy6T5n26T6Nl8aecSAfqVywG19frtbIYaKr2kJ9AS7ZPLkXoPHlnw==",
+      "license": "MIT"
+    },
+    {
+      "version": "3.28.10",
+      "totalBytes": 3995435,
+      "totalSize": "3.8 MB",
+      "fileCount": 362,
+      "tarballBytes": 1014808,
+      "tarballSize": "991 KB",
+      "publishedAt": "2026-11-06T05:22:24.530Z",
+      "registryUnpackedBytes": 3995435,
+      "shasum": "9d7fbfcfe9136fafa584cdaf4d2552313c7ca2ff",
+      "integrity": "sha512-oGxdYtp/b+ssWiqv+t2GBsO8p9qfEuY+TG2d856UXRJSPu+YhGvdAdjtFPZoUDHVdYIJddqh6wLkCzISrorzOA==",
+      "license": "MIT"
+    },
+    {
+      "version": "3.28.11",
+      "totalBytes": 3987437,
+      "totalSize": "3.8 MB",
+      "fileCount": 362,
+      "tarballBytes": 1014602,
+      "tarballSize": "991 KB",
+      "publishedAt": "2026-11-06T08:07:40.158Z",
+      "registryUnpackedBytes": 3987437,
+      "shasum": "82f94839b979b658a77e839bec959a8990878dc7",
+      "integrity": "sha512-iBnnNbavMEdDeLspe3K7rZ1CkRg7WaKGOQ+8nLPnbghqG6NzMIouD1cw/PVCR/2mHgQ/LiLuTmpmZb9RAg+P2w==",
+      "license": "MIT"
+    },
+    {
+      "version": "3.28.12",
+      "totalBytes": 3987318,
+      "totalSize": "3.8 MB",
+      "fileCount": 362,
+      "tarballBytes": 1014480,
+      "tarballSize": "991 KB",
+      "publishedAt": "2026-11-06T09:07:27.829Z",
+      "registryUnpackedBytes": 3987318,
+      "shasum": "888924722234507befb6e8549b135db0ffe34f50",
+      "integrity": "sha512-m+oe4BVerMFKO4jMnWnK8IHWnsw7UkYEteidLXW5dmF4wT6besdcrRwTZ//Q4EJpFp1P14E6wtjOwiSXCoZd5g==",
       "license": "MIT"
     }
   ]
