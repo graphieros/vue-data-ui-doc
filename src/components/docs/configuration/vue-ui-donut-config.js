@@ -32,6 +32,14 @@ export function createVueUiDonutConfigFields({
                 },
                 { inactive: true, name: "debug", defaultVal: "false" },
                 {
+                    name: "sorted",
+                    attr: "sorted",
+                    type: "checkbox",
+                    defaultVal: "true",
+                    comment:
+                        "Sort series by total value, largest first. Set to false to preserve dataset order.",
+                },
+                {
                     name: "loading",
                     attr: "loading",
                     defaultVal: "false",

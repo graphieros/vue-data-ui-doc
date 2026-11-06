@@ -78,6 +78,7 @@ const config = computed({
         configState.get({
             devHints: { enable: false },
             type: "classic",
+            sorted: true,
             responsive: false,
             useBlurOnHover: true,
             useCssAnimation: true,
