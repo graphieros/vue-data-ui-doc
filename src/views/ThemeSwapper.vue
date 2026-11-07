@@ -1,5 +1,13 @@
 <script setup>
-import { ref, computed, onMounted, watch } from "vue";
+import {
+    ref,
+    computed,
+    onMounted,
+    watch,
+    provide,
+    defineAsyncComponent,
+} from "vue";
+import { dashboardThemeKey } from "../components/themes/dashboardTheme";
 import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
@@ -64,6 +72,35 @@ const crumbs = ref([
 ]);
 
 const currentTheme = ref("default");
+provide(dashboardThemeKey, currentTheme);
+
+// Reuse the documentation datasets while showing only the selected theme.
+const additionalCharts = [
+    {
+        name: "VueUiOnion",
+        component: defineAsyncComponent(
+            () => import("../components/themes/ThemesVueUiOnion.vue"),
+        ),
+    },
+    {
+        name: "VueUiGauge",
+        component: defineAsyncComponent(
+            () => import("../components/themes/ThemesVueUiGauge.vue"),
+        ),
+    },
+    {
+        name: "VueUiHistoryPlot",
+        component: defineAsyncComponent(
+            () => import("../components/themes/ThemesVueUiHistoryPlot.vue"),
+        ),
+    },
+    {
+        name: "VueUiGraph",
+        component: defineAsyncComponent(
+            () => import("../components/themes/ThemesVueUiGraph.vue"),
+        ),
+    },
+];
 
 watch(
     () => router.currentRoute.value,
@@ -603,6 +640,29 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                         :config="CONFIG_WORD_CLOUD"
                         :key="`wordcloud_${step}`"
                     />
+                </BaseCard>
+                <BaseCard
+                    v-for="chart in additionalCharts"
+                    :key="chart.name"
+                    class="w-full min-w-0"
+                    :backgroundColor="background[currentTheme]"
+                >
+                    <h2
+                        class="text-sm mb-3"
+                        :style="{
+                            color: [
+                                'dark',
+                                'minimalDark',
+                                'celebrationNight',
+                                'hack',
+                            ].includes(currentTheme)
+                                ? '#CCCCCC'
+                                : '#1A1A1A',
+                        }"
+                    >
+                        {{ chart.name }}
+                    </h2>
+                    <component :is="chart.component" />
                 </BaseCard>
             </div>
         </BaseCard>

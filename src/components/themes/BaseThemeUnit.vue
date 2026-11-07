@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, inject } from "vue";
+import { dashboardThemeKey } from "./dashboardTheme";
 import { useMainStore } from "../../stores";
 import CodeParser from "../customization/CodeParser.vue";
 import ThemeTag from "../ThemeTag.vue";
@@ -27,6 +28,7 @@ const props = defineProps({
 });
 
 const store = useMainStore();
+const dashboardTheme = inject(dashboardThemeKey, null);
 
 const translations = computed(() => {
     return {
@@ -145,7 +147,15 @@ const isCustom = computed(() => ["VueUiLabel"].includes(props.component));
 </script>
 
 <template>
+    <VueDataUi
+        v-if="dashboardTheme"
+        :key="dashboardTheme"
+        :component="component"
+        :dataset="dataset"
+        :config="{ ...config, theme: dashboardTheme }"
+    />
     <div
+        v-else
         class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-start w-full p-4 bg-gray-150 dark:bg-[#3A3A3A] rounded-md"
     >
         <div
