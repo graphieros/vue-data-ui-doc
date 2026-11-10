@@ -426,6 +426,19 @@ test("displayed defaults follow the installed package without modifying metadata
 });
 
 for (const [component, paths] of [
+    [
+        "Stackline",
+        [
+            "style.chart.timeTag.show",
+            "style.chart.timeTag.backgroundColor",
+            "style.chart.timeTag.color",
+            "style.chart.timeTag.fontSize",
+            "style.chart.timeTag.circleMarker.radius",
+            "style.chart.timeTag.circleMarker.color",
+            "style.chart.timeTag.useDefaultFormat",
+            "style.chart.timeTag.timeFormat",
+        ],
+    ],
     ["Table", ["style.chart.layout.bar.strokeWidth"]],
     ["Dashboard", ["allowPrint"]],
 ]) {

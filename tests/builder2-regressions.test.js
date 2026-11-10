@@ -431,3 +431,69 @@ test("maker outline options preserve defaults, custom colors and null reset valu
     }
     assert.equal(charts, 39);
 });
+
+test("Stackline time tag settings preview, export, persist and reset", async () => {
+    const { getVueDataUiConfig } = await import("vue-data-ui/utils");
+    const original = getVueDataUiConfig("vue_ui_stackline").style.chart.timeTag;
+    const edited = {
+        show: true,
+        backgroundColor: "#123456",
+        color: "#ffffff",
+        fontSize: 18,
+        circleMarker: { radius: 5, color: "#abcdef" },
+        useDefaultFormat: false,
+        timeFormat: "yyyy-MM-dd",
+    };
+    const state = maker("VueUiStackline");
+    const flatten = (value, prefix = "") =>
+        Object.entries(value).flatMap(([key, value]) => {
+            const path = prefix ? `${prefix}.${key}` : key;
+            return value && typeof value === "object"
+                ? flatten(value, path)
+                : [[path, value]];
+        });
+    try {
+        for (const [path, value] of flatten(edited)) {
+            const key = `style.chart.timeTag.${path}`;
+            const knob = state.model.value.find((knob) => knob.key === key);
+            assert.ok(knob, key);
+            assert.equal(
+                knob.def,
+                path.split(".").reduce((value, key) => value[key], original),
+            );
+            knob.def = value;
+        }
+        await vue.nextTick();
+        assert.deepEqual(state.config.value.style.chart.timeTag, edited);
+        assert.deepEqual(
+            state.largePreviewConfig.value.style.chart.timeTag,
+            edited,
+        );
+        const { configCode } = generateCode(
+            "VueUiStackline",
+            state.dataset.value,
+            state.config.value,
+            { computed: false },
+        );
+        const exported = new Function("ref", `${configCode}; return config;`)(
+            (value) => value,
+        );
+        assert.deepEqual(exported.style.chart.timeTag, edited);
+        state.route.query.component = "VueUiDonut";
+        await vue.nextTick();
+        state.route.query.component = "VueUiStackline";
+        await vue.nextTick();
+        assert.deepEqual(state.config.value.style.chart.timeTag, edited);
+        state.reset();
+        for (const [path] of flatten(edited)) {
+            const read = (value) =>
+                path.split(".").reduce((value, key) => value[key], value);
+            assert.equal(
+                read(state.config.value.style.chart.timeTag),
+                read(original),
+            );
+        }
+    } finally {
+        state.stop();
+    }
+});

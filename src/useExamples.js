@@ -10628,6 +10628,7 @@ export default function useExamples() {
                     userConfig: {
                         style: {
                             chart: {
+                                timeTag: { show: true },
                                 title: {
                                     text: "Title",
                                     subtitle: {

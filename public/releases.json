@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.29.1",
+        "date": "2026-11-10",
+        "updates": [
+            {
+                "component": "VueUiStackline",
+                "description": "Add optional timeTag config property",
+                "link": "/docs#vue-ui-stackline"
+            }
+        ]
+    },
+    {
         "version": "v 3.29.0",
         "date": "2026-11-10",
         "updates": [

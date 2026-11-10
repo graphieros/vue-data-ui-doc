@@ -261,6 +261,105 @@ export function createVueUiStacklineConfigFields({
                                     ],
                                 },
                                 {
+                                    attr: "timeTag",
+                                    level: 2,
+                                    title: "style.chart.timeTag",
+                                    children: [
+                                        {
+                                            name: "show",
+                                            attr: "style.chart.timeTag.show",
+                                            type: "checkbox",
+                                            defaultVal: "false",
+                                        },
+                                        {
+                                            name: "backgroundColor",
+                                            attr: "style.chart.timeTag.backgroundColor",
+                                            type: "color",
+                                            defaultVal: "#e1e5e8",
+                                        },
+                                        {
+                                            name: "color",
+                                            attr: "style.chart.timeTag.color",
+                                            type: "color",
+                                            defaultVal: "#2D353C",
+                                        },
+                                        {
+                                            name: "fontSize",
+                                            attr: "style.chart.timeTag.fontSize",
+                                            type: "number",
+                                            defaultVal: "12",
+                                            min: 8,
+                                            max: 42,
+                                        },
+                                        {
+                                            attr: "circleMarker",
+                                            level: 3,
+                                            title: "style.chart.timeTag.circleMarker",
+                                            children: [
+                                                {
+                                                    name: "radius",
+                                                    attr: "style.chart.timeTag.circleMarker.radius",
+                                                    type: "number",
+                                                    defaultVal: "3",
+                                                    min: 0,
+                                                    max: 12,
+                                                },
+                                                {
+                                                    name: "color",
+                                                    attr: "style.chart.timeTag.circleMarker.color",
+                                                    type: "color",
+                                                    defaultVal: "#2D353C",
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            name: "useDefaultFormat",
+                                            attr: "style.chart.timeTag.useDefaultFormat",
+                                            type: "checkbox",
+                                            defaultVal: "true",
+                                        },
+                                        {
+                                            name: "timeFormat",
+                                            attr: "style.chart.timeTag.timeFormat",
+                                            type: "text",
+                                            defaultVal: "yyyy-MM-dd HH:mm:ss",
+                                            comment:
+                                                "Used when style.chart.grid.x.timeLabels.datetimeFormatter.enable is true and useDefaultFormat is false",
+                                        },
+                                        {
+                                            component: "div",
+                                            class: "flex flex-row gap-2 place-items-center",
+                                            children: [
+                                                {
+                                                    inactive: true,
+                                                    name: "customFormat",
+                                                    defaultVal: "null",
+                                                    comment:
+                                                        "Return a string from ({ absoluteIndex, seriesIndex, datapoint, config }) => string. Takes precedence over timeFormat; null uses the time label.",
+                                                },
+                                                {
+                                                    component: "div",
+                                                    class: "min-w-[200px]",
+                                                    children: [
+                                                        {
+                                                            component:
+                                                                "BaseTabLink",
+                                                            action: () =>
+                                                                setActiveTab(4),
+                                                            icon: "tooltip",
+                                                            children: [
+                                                                {
+                                                                    text: " Check out 'Custom tooltip' tab ",
+                                                                },
+                                                            ],
+                                                        },
+                                                    ],
+                                                },
+                                            ],
+                                        },
+                                    ],
+                                },
+                                {
                                     attr: "title",
                                     level: 2,
                                     title: "style.chart.title",
