@@ -1,7 +1,7 @@
 # Configuration defaults in the documentation
 
 The source of truth is the installed `vue-data-ui` package. The docs currently
-install `3.27.1` through `file:vdu.tgz`; upgrading the local library
+install `3.28.12` through `file:vdu2.tgz`; upgrading the local library
 repository alone does not update the docs dependency.
 
 ## Integration
@@ -200,8 +200,10 @@ unsupported config properties. These rows are marked `unsupported` in metadata:
 
 `BaseAttr` accepts a binding ref or a single active `config` object. Older
 `light`/`dark`/`attr` consumers remain supported for separate examples. Field
-components now take one `config` prop instead of separate light/dark props. Defaults shown in the documentation remain presentation
-metadata and can differ from the demo's current values.
+components now take one `config` prop instead of separate light/dark props. Displayed defaults are resolved by `withConfigDefaults` from the installed
+package for every configuration editor. Metadata provides fallback text only for
+options without a runtime default and unsupported reference rows. Demo values
+remain independent of these default labels.
 
 Run `pnpm test:doc-bindings` for both the focused binding regressions and the
 full rollout checks. The 83 tests cover editor coverage, actual light/dark demo

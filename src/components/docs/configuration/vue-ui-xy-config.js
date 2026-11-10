@@ -1,5 +1,6 @@
 import { createXyAnalysisConfigFields } from "./xy-analysis-config.js";
 import { xyAnalysisOptIn } from "../../../translations/xyAnalysis.js";
+import { xyScales } from "../../../translations/xyScales.js";
 
 // Authored presentation metadata; editable values remain in the page's demo presets.
 export function createVueUiXyConfigFields(
@@ -101,6 +102,14 @@ export function createVueUiXyConfigFields(
             attr: "a11y",
             level: 1,
             children: [
+                {
+                    name: "includeTable",
+                    attr: "a11y.includeTable",
+                    type: "checkbox",
+                    defaultVal: "false",
+                    comment:
+                        "Include a hidden data table for screen readers. Opt-in; independent of the visible table and its menu button.",
+                },
                 {
                     attr: "translations",
                     level: 2,
@@ -878,6 +887,35 @@ export function createVueUiXyConfigFields(
                                     level: 4,
                                     title: "chart.grid.labels.yAxis",
                                     children: [
+                                        {
+                                            name: "scale",
+                                            attr: "chart.grid.labels.yAxis.scale",
+                                            type: "select",
+                                            options: [
+                                                "linear",
+                                                "log",
+                                                "symlog",
+                                            ],
+                                            defaultVal: "linear",
+                                            comment: ["linear", "log", "symlog"]
+                                                .map(
+                                                    (scale) =>
+                                                        (xyScales[lang] ||
+                                                            xyScales.en)[scale],
+                                                )
+                                                .join(" "),
+                                        },
+                                        {
+                                            name: "symlogConstant",
+                                            attr: "chart.grid.labels.yAxis.symlogConstant",
+                                            type: "number",
+                                            defaultVal: "1",
+                                            min: 0.001,
+                                            step: 0.1,
+                                            comment: (
+                                                xyScales[lang] || xyScales.en
+                                            ).constant,
+                                        },
                                         {
                                             name: "position",
                                             attr: "chart.grid.labels.yAxis.position",

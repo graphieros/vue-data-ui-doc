@@ -5,6 +5,7 @@ import { useDocConfigBindings } from "../../../useDocConfigBindings";
 import {
     getEditableConfigPaths,
     getConfigInitialValues,
+    withConfigDefaults,
 } from "./configFields.js";
 import DocConfigFields from "./DocConfigFields.vue";
 import { createVueUiBumpConfigFields } from "./vue-ui-bump-config.js";
@@ -12,7 +13,12 @@ const props = defineProps({
     config: { type: Object, required: true },
     context: { type: Object, required: true },
 });
-const fields = computed(() => createVueUiBumpConfigFields(props.context));
+const fields = computed(() =>
+    withConfigDefaults(
+        createVueUiBumpConfigFields(props.context),
+        getVueDataUiConfig("vue_ui_bump"),
+    ),
+);
 const activeConfig = computed(() => props.config);
 const bindings = useDocConfigBindings(
     activeConfig,

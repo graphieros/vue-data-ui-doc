@@ -410,6 +410,7 @@ const config = computed({
                             : "#FFFFFF",
                         axis: { stroke: "#ccd1d4", strokeWidth: 2 },
                         bar: {
+                            strokeWidth: 0,
                             fill: "#42d392",
                             stroke: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
                         },

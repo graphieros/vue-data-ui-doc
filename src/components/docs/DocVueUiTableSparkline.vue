@@ -174,7 +174,7 @@ const config = computed({
                     overflowTolerance: 0.2,
                 },
             },
-            formater: isDarkMode.value ? null : undefined,
+            formatter: isDarkMode.value ? null : undefined,
         }),
     set: configState.set,
 });

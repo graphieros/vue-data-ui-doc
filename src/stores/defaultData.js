@@ -5474,7 +5474,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         def: "#1A1A1A",
                         type: "color",
                         label: ["plots", "label", "is", "textColor"],
-                        cateory: "datapoints",
+                        category: "datapoints",
                     },
                     {
                         key: "style.chart.plots.labels.bold",
@@ -6091,7 +6091,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "padding",
                     },
                     {
-                        key: "style.chart.padding.botoom",
+                        key: "style.chart.padding.bottom",
                         def: 24,
                         type: "number",
                         min: 0,
@@ -11494,7 +11494,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "general",
                     },
                     {
-                        key: "chart.timeTag.backgoundColor",
+                        key: "chart.timeTag.backgroundColor",
                         def: "#e1e5e8",
                         type: "color",
                         label: ["time tag", "is", "backgroundColor"],
@@ -18727,7 +18727,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "legend",
                     },
                     {
-                        key: "style.chart.legend.fondSize",
+                        key: "style.chart.legend.fontSize",
                         def: 14,
                         type: "number",
                         min: 6,
@@ -29357,7 +29357,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "legend",
                     },
                     {
-                        key: "style.chart.legend.roundingpercentage",
+                        key: "style.chart.legend.roundingPercentage",
                         def: 0,
                         type: "number",
                         min: 0,
@@ -30331,7 +30331,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "general",
                     },
                     {
-                        key: "useCssAnmation",
+                        key: "useCssAnimation",
                         def: true,
                         type: "checkbox",
                         label: "useCssAnimation",
@@ -33045,7 +33045,7 @@ export const useDefaultDataStore = defineStore("defaultData", {
                         category: "general",
                     },
                     {
-                        key: "useCssAnmation",
+                        key: "useCssAnimation",
                         def: true,
                         type: "checkbox",
                         label: "useCssAnimation",

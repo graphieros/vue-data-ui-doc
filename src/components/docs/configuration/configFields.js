@@ -34,3 +34,38 @@ export function getConfigInitialValues(fields) {
         })),
     );
 }
+
+/** Read displayed defaults from the same public config used by the charts. */
+export function withConfigDefaults(fields, defaults, parentPath = "") {
+    return fields.map((field) => {
+        const path = field.attr?.startsWith("const ")
+            ? ""
+            : field.title ||
+              (field.attr?.includes(".")
+                  ? field.attr
+                  : [parentPath, field.attr || field.name]
+                        .filter(Boolean)
+                        .join("."));
+        const result = { ...field };
+        if (field.children) {
+            result.children = withConfigDefaults(
+                field.children,
+                defaults,
+                path,
+            );
+        } else if (Object.hasOwn(field, "defaultVal") && !field.unsupported) {
+            const value = path
+                .split(".")
+                .reduce((value, key) => value?.[key], defaults);
+            if (value !== undefined) {
+                result.defaultVal =
+                    typeof value === "string"
+                        ? value || "''"
+                        : typeof value === "function"
+                          ? String(value)
+                          : JSON.stringify(value);
+            }
+        }
+        return result;
+    });
+}

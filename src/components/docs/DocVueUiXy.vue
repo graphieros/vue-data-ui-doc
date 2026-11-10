@@ -206,6 +206,7 @@ const config = computed({
             loading: false,
             analysis: mainConfig.vue_ui_xy.analysis,
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right arrow keys to move between data points.",
@@ -416,6 +417,8 @@ const config = computed({
                         },
                         zeroLine: { show: true },
                         yAxis: {
+                            scale: "linear",
+                            symlogConstant: 1,
                             reverse: false,
                             position: "left",
                             commonScaleSteps: 10,

@@ -2740,7 +2740,7 @@ export default function useExamples() {
                         text: "Title",
                         color: colors.value.textColor,
                         textAlign: "left",
-                        paddintLeft: 24,
+                        paddingLeft: 24,
                         subtitle: {
                             text: "Subtitle",
                         },
@@ -2786,6 +2786,23 @@ export default function useExamples() {
             shape: "star",
         },
     ]);
+
+    const DATASET_STACKLINE_500 = shallowRef(
+        Array.from({ length: 5 }, (_, seriesIndex) => ({
+            name: `Series ${seriesIndex + 1}`,
+            series: Array.from({ length: 500 }, (_, index) =>
+                Number(
+                    (
+                        40 +
+                        seriesIndex * 12 +
+                        18 * Math.sin(index / 18 + seriesIndex) +
+                        8 * Math.cos(index / 7 + seriesIndex * 2) +
+                        index / 20
+                    ).toFixed(2),
+                ),
+            ),
+        })),
+    );
 
     const DATASET_STACKLINE_MIXED = shallowRef([
         {
@@ -2877,7 +2894,7 @@ export default function useExamples() {
                         text: "Title",
                         color: colors.value.textColor,
                         textAlign: "left",
-                        paddintLeft: 24,
+                        paddingLeft: 24,
                         subtitle: {
                             text: "Subtitle",
                         },
@@ -3594,7 +3611,7 @@ export default function useExamples() {
                         text: "Title",
                         color: colors.value.textColor,
                         textAlign: "left",
-                        paddintLeft: 24,
+                        paddingLeft: 24,
                         subtitle: {
                             text: "Subtitle",
                         },
@@ -3824,7 +3841,7 @@ export default function useExamples() {
                         text: "Title",
                         color: colors.value.textColor,
                         textAlign: "left",
-                        paddintLeft: 24,
+                        paddingLeft: 24,
                         subtitle: {
                             text: "Subtitle",
                         },
@@ -3878,7 +3895,7 @@ export default function useExamples() {
                         text: "Title",
                         color: colors.value.textColor,
                         textAlign: "left",
-                        paddintLeft: 24,
+                        paddingLeft: 24,
                         subtitle: {
                             text: "Subtitle",
                         },
@@ -4072,7 +4089,7 @@ export default function useExamples() {
                     text: "Title",
                     color: colors.value.textColor,
                     textAlign: "left",
-                    paddintLeft: 24,
+                    paddingLeft: 24,
                     subtitle: {
                         text: "Subtitle",
                     },
@@ -4129,7 +4146,7 @@ export default function useExamples() {
                         text: "Title",
                         color: colors.value.textColor,
                         textAlign: "left",
-                        paddintLeft: 24,
+                        paddingLeft: 24,
                         subtitle: {
                             text: "Subtitle",
                         },
@@ -4154,11 +4171,6 @@ export default function useExamples() {
             { from: -100, to: 0, color: "#c96747", name: "Critical" },
             { from: 0, to: 100, color: "#54b840", name: "Nominal" },
         ],
-    });
-
-    const DATASET_GAUGE_SINGLE = shallowRef({
-        value: 66,
-        series: [{ from: 0, to: 100, name: "CURRENT SATISFACTION" }],
     });
 
     const DATASET_GAUGE_SINGLE_TEXT = shallowRef({
@@ -4204,7 +4216,7 @@ export default function useExamples() {
                         text: "Title",
                         color: colors.value.textColor,
                         textAlign: "left",
-                        paddintLeft: 24,
+                        paddingLeft: 24,
                         subtitle: {
                             text: "Subtitle",
                         },
@@ -9428,6 +9440,129 @@ export default function useExamples() {
                     ar: "سلاسل مستمرة على المحور x مع محور y معكوس وتحديد بواسطة المؤشر المتقاطع",
                 },
             },
+            // XY LOG SCALE
+            {
+                dataset: [
+                    {
+                        name: "Series A",
+                        type: "line",
+                        series: [
+                            0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1, 5, 10, 50,
+                            100, 500, 1000, 5000, 10000, 50000, 100000, 500000,
+                        ],
+                    },
+                ],
+                config: mergeConfigs({
+                    defaultConfig: BASE_XY_CONFIG.value,
+                    userConfig: {
+                        line: {
+                            labels: {
+                                rounding: 3,
+                                formatter: ({ value }) =>
+                                    new Intl.NumberFormat("en", {
+                                        notation: "compact",
+                                        maximumFractionDigits: 3,
+                                    }).format(value),
+                            },
+                        },
+                        chart: {
+                            tooltip: { roundingValue: 3 },
+                            zoom: { show: true, minimap: { show: true } },
+                            grid: {
+                                showHorizontalLines: true,
+                                labels: {
+                                    yAxis: {
+                                        scale: "log",
+                                        rounding: 3,
+                                        formatter: ({ value }) =>
+                                            new Intl.NumberFormat("en", {
+                                                notation: "compact",
+                                                maximumFractionDigits: 3,
+                                            }).format(value),
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-log-scale",
+                link: "vue-ui-xy",
+                description: {
+                    en: "Logarithmic scale for positive values across several orders of magnitude",
+                    fr: "Échelle logarithmique pour des valeurs positives sur plusieurs ordres de grandeur",
+                    pt: "Escala logarítmica para valores positivos em várias ordens de grandeza",
+                    de: "Logarithmische Skala für positive Werte über mehrere Größenordnungen",
+                    zh: "跨越多个数量级的正值的对数刻度",
+                    ja: "複数の桁にわたる正の値の対数スケール",
+                    es: "Escala logarítmica para valores positivos de varios órdenes de magnitud",
+                    ko: "여러 자릿수 범위의 양수 값을 위한 로그 스케일",
+                    ar: "مقياس لوغاريتمي للقيم الموجبة عبر عدة مراتب حجمية",
+                },
+            },
+            // XY SYMLOG SCALE
+            {
+                dataset: [
+                    {
+                        name: "Series A",
+                        type: "line",
+                        series: [
+                            -10000, -3000, -1000, -100, -10, -1, -0.1, -0.01, 0,
+                            0.01, 0.1, 1, 10, 100, 1000, 3000, 10000,
+                        ],
+                    },
+                ],
+                config: mergeConfigs({
+                    defaultConfig: BASE_XY_CONFIG.value,
+                    userConfig: {
+                        line: {
+                            labels: {
+                                rounding: 3,
+                                formatter: ({ value }) =>
+                                    new Intl.NumberFormat("en", {
+                                        notation: "compact",
+                                        maximumFractionDigits: 3,
+                                    }).format(value),
+                            },
+                        },
+                        chart: {
+                            tooltip: { roundingValue: 3 },
+                            zoom: { show: true, minimap: { show: true } },
+                            grid: {
+                                showHorizontalLines: true,
+                                labels: {
+                                    yAxis: {
+                                        scale: "symlog",
+                                        symlogConstant: 1,
+                                        rounding: 3,
+                                        formatter: ({ value }) =>
+                                            new Intl.NumberFormat("en", {
+                                                notation: "compact",
+                                                maximumFractionDigits: 3,
+                                            }).format(value),
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiXy",
+                icon: "chartLine",
+                id: "xy-symlog-scale",
+                link: "vue-ui-xy",
+                description: {
+                    en: "Symlog scale for negative, zero and positive values across a wide range",
+                    fr: "Échelle symlog pour des valeurs négatives, nulles et positives sur une large plage",
+                    pt: "Escala symlog para valores negativos, zero e positivos em uma ampla faixa",
+                    de: "Symlog-Skala für negative Werte, null und positive Werte über einen weiten Bereich",
+                    zh: "适用于大范围负值、零和正值的对称对数刻度",
+                    ja: "広範囲の負の値、ゼロ、正の値に対応するsymlogスケール",
+                    es: "Escala symlog para valores negativos, cero y positivos en un amplio rango",
+                    ko: "넓은 범위의 음수, 0 및 양수 값을 위한 symlog 스케일",
+                    ar: "مقياس symlog للقيم السالبة والصفر والموجبة عبر نطاق واسع",
+                },
+            },
             // DONUT BASIC
             {
                 dataset: DATASET_DONUT_BASIC.value,
@@ -10483,6 +10618,54 @@ export default function useExamples() {
                     es: "Gráfico de líneas apiladas básico",
                     ko: "기본 누적 선형 차트",
                     ar: "مخطط خطي مكدس أساسي",
+                },
+            },
+            // STACKLINE 500 DATAPOINTS PER SERIES
+            {
+                dataset: DATASET_STACKLINE_500.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKLINE_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                title: {
+                                    text: "Title",
+                                    subtitle: {
+                                        text: "Subtitle",
+                                    },
+                                },
+                                grid: {
+                                    x: {
+                                        timeLabels: {
+                                            values: Array.from(
+                                                { length: 500 },
+                                                (_, index) => `T${index + 1}`,
+                                            ),
+                                        },
+                                    },
+                                },
+                                lines: {
+                                    smooth: true,
+                                    useArea: true,
+                                },
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackline",
+                icon: "chartStackline",
+                id: "stack-line-500-datapoints",
+                link: "vue-ui-stackline",
+                description: {
+                    en: "5 series with 500 datapoints each",
+                    fr: "5 séries de 500 points chacune",
+                    pt: "5 séries com 500 pontos cada",
+                    de: "5 Serien mit jeweils 500 Datenpunkten",
+                    zh: "5 个系列，每个系列 500 个数据点",
+                    ja: "各500データポイントの5系列",
+                    es: "5 series con 500 puntos cada una",
+                    ko: "각각 500개 데이터 포인트를 포함한 5개 시리즈",
+                    ar: "5 سلاسل، كل منها تحتوي على 500 نقطة بيانات",
                 },
             },
             // STACKLINE DISTRIBUTED

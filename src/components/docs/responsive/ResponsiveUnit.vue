@@ -35,7 +35,7 @@ const codeContent = ref(`const config = ref({
     <div class="w-full h-[2000px]">
         <div class="pb-8">
             {{ translations.responsiveUnitPresentation[store.lang] }}
-            <code>reponsive: true</code>
+            <code>responsive: true</code>
             <CodeParser
                 class="my-6"
                 :content="codeContent"

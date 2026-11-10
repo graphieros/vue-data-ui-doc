@@ -5,6 +5,7 @@ import { useDocConfigBindings } from "../../../useDocConfigBindings";
 import {
     getEditableConfigPaths,
     getConfigInitialValues,
+    withConfigDefaults,
 } from "./configFields.js";
 import DocConfigFields from "./DocConfigFields.vue";
 import { createVueUiHillConfigFields } from "./vue-ui-hill-config.js";
@@ -12,7 +13,12 @@ const props = defineProps({
     config: { type: Object, required: true },
     context: { type: Object, required: true },
 });
-const fields = computed(() => createVueUiHillConfigFields(props.context));
+const fields = computed(() =>
+    withConfigDefaults(
+        createVueUiHillConfigFields(props.context),
+        getVueDataUiConfig("vue_ui_hill"),
+    ),
+);
 const activeConfig = computed(() => props.config);
 const bindings = useDocConfigBindings(
     activeConfig,

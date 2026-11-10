@@ -996,7 +996,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
-        "reponsive": true,
+        "responsive": true,
         "props": ["dataset", "config"],
         "types": {
             "config": "VueUiDagConfig",

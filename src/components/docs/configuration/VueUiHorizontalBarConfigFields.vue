@@ -5,6 +5,7 @@ import { useDocConfigBindings } from "../../../useDocConfigBindings";
 import {
     getEditableConfigPaths,
     getConfigInitialValues,
+    withConfigDefaults,
 } from "./configFields.js";
 import DocConfigFields from "./DocConfigFields.vue";
 import { createVueUiHorizontalBarConfigFields } from "./vue-ui-horizontal-bar-config.js";
@@ -13,7 +14,10 @@ const props = defineProps({
     context: { type: Object, required: true },
 });
 const fields = computed(() =>
-    createVueUiHorizontalBarConfigFields(props.context),
+    withConfigDefaults(
+        createVueUiHorizontalBarConfigFields(props.context),
+        getVueDataUiConfig("vue_ui_horizontal_bar"),
+    ),
 );
 const activeConfig = computed(() => props.config);
 const bindings = useDocConfigBindings(

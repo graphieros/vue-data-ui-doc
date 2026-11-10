@@ -888,7 +888,7 @@ export const defaultDataHill = {
             category: "labels",
         },
         {
-            key: "style.chart.layout.labels.item.strokeWdith",
+            key: "style.chart.layout.labels.item.strokeWidth",
             type: "number",
             def: 5,
             min: 0,

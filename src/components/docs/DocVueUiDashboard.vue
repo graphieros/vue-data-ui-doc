@@ -54,6 +54,7 @@ const config = computed({
         configState.get({
             devHints: { enable: false },
             locked: false,
+            allowPrint: false,
             style: {
                 board: {
                     backgroundColor: "#FFFFFF",

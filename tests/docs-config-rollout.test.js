@@ -140,9 +140,11 @@ for (const { file, source } of pages.filter(
                     // Reading must never trigger the library's missing-path fallback.
                     void bindings[path].value;
                 }
-                const editable = paths.find(
-                    (path) => typeof bindings[path].value === "boolean",
-                );
+                const editable = paths.includes("a11y.includeTable")
+                    ? "a11y.includeTable"
+                    : paths.find(
+                          (path) => typeof bindings[path].value === "boolean",
+                      );
                 if (editable) {
                     const initial = bindings[editable].value;
                     bindings[editable].value = !initial;

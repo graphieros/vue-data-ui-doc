@@ -90,6 +90,15 @@ function createAltTextAndCopy({ dataset: dst, config: cfg }) {
 }
 
 const snippets = computed(() => ({
+    hiddenTable: `const config = computed(() => ({
+    a11y: {
+        includeTable: true,
+        translations: {
+            tableAvailable: 'A data table for this chart is available below.',
+            tableCaption: 'Chart data table'
+        }
+    }
+}))`,
     replaceQueries: `// replaceQueries("Example of {name} chart with maximum value '{max}'", { name: "XY", max: "100" })
 function replaceQueries(template, values) {
     if (typeof template !== 'string' || !values) return '';
@@ -141,6 +150,9 @@ const dataset = shallowRef([
 
 const config = computed(() => ({
     theme: isDarkMode.value ? "dark" : "",
+    a11y: {
+        includeTable: true,
+    },
     chart: {
         backgroundColor: isDarkMode.value ? "#3A3A3A" : "#f9fafb",
         grid: {
@@ -211,6 +223,26 @@ function listenTo(isOpen) {
         </div>
 
         <div class="flex flex-col gap-6">
+            <BaseCard>
+                <article dir="auto">
+                    <h2 class="text-left font-inter-medium text-xl">
+                        {{ translations.a11y.hidden_table_title[store.lang] }}
+                    </h2>
+                    <p class="text-left my-4 max-w-[80ch]">
+                        {{
+                            translations.a11y.hidden_table_description[
+                                store.lang
+                            ]
+                        }}
+                    </p>
+                </article>
+                <CodeParser
+                    language="javascript"
+                    :content="snippets.hiddenTable"
+                    class="text-left"
+                    @copy="store.copy"
+                />
+            </BaseCard>
             <!-- COPY ALT EXAMPLE -->
             <BaseCard>
                 <article dir="auto">

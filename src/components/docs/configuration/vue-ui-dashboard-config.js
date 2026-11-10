@@ -18,6 +18,12 @@ export function createVueUiDashboardConfigFields({ forceChartUpdate }) {
                     ],
                 },
                 {
+                    name: "allowPrint",
+                    attr: "allowPrint",
+                    type: "checkbox",
+                    defaultVal: "false",
+                },
+                {
                     name: "locked",
                     attr: "locked",
                     type: "checkbox",

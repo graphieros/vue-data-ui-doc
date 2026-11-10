@@ -5,6 +5,7 @@ import { useDocConfigBindings } from "../../../useDocConfigBindings";
 import {
     getEditableConfigPaths,
     getConfigInitialValues,
+    withConfigDefaults,
 } from "./configFields.js";
 import DocConfigFields from "./DocConfigFields.vue";
 import { createVueUiSparkStackbarConfigFields } from "./vue-ui-spark-stackbar-config.js";
@@ -13,7 +14,10 @@ const props = defineProps({
     context: { type: Object, required: true },
 });
 const fields = computed(() =>
-    createVueUiSparkStackbarConfigFields(props.context),
+    withConfigDefaults(
+        createVueUiSparkStackbarConfigFields(props.context),
+        getVueDataUiConfig("vue_ui_sparkstackbar"),
+    ),
 );
 const activeConfig = computed(() => props.config);
 const bindings = useDocConfigBindings(

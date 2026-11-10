@@ -115,6 +115,14 @@ export function createVueUiStacklineConfigFields({
                     level: 1,
                     children: [
                         {
+                            name: "includeTable",
+                            attr: "a11y.includeTable",
+                            type: "checkbox",
+                            defaultVal: "false",
+                            comment:
+                                "Include a hidden data table for screen readers. Opt-in; independent of the visible table and its menu button.",
+                        },
+                        {
                             attr: "translations",
                             level: 2,
                             title: "a11y.translations",
@@ -1136,6 +1144,22 @@ export function createVueUiStacklineConfigFields({
                                             level: 4,
                                             title: "style.chart.lines.dot",
                                             children: [
+                                                {
+                                                    name: "show",
+                                                    attr: "style.chart.lines.dot.show",
+                                                    type: "checkbox",
+                                                    defaultVal: "true",
+                                                    comment:
+                                                        "Show permanent dots when the visible series length is below hideAboveMaxSerieLength.",
+                                                },
+                                                {
+                                                    name: "showOnHover",
+                                                    attr: "style.chart.lines.dot.showOnHover",
+                                                    type: "checkbox",
+                                                    defaultVal: "true",
+                                                    comment:
+                                                        "Show hover dots when permanent dots are hidden, including above hideAboveMaxSerieLength.",
+                                                },
                                                 {
                                                     name: "hideAboveMaxSerieLength",
                                                     attr: "style.chart.lines.dot.hideAboveMaxSerieLength",

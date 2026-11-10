@@ -5,6 +5,7 @@ import { useDocConfigBindings } from "../../../useDocConfigBindings";
 import {
     getEditableConfigPaths,
     getConfigInitialValues,
+    withConfigDefaults,
 } from "./configFields.js";
 import DocConfigFields from "./DocConfigFields.vue";
 import { createVueUi3dBarConfigFields } from "./vue-ui-3d-bar-config.js";
@@ -12,7 +13,12 @@ const props = defineProps({
     config: { type: Object, required: true },
     context: { type: Object, required: true },
 });
-const fields = computed(() => createVueUi3dBarConfigFields(props.context));
+const fields = computed(() =>
+    withConfigDefaults(
+        createVueUi3dBarConfigFields(props.context),
+        getVueDataUiConfig("vue_ui_3d_bar"),
+    ),
+);
 const activeConfig = computed(() => props.config);
 const bindings = useDocConfigBindings(
     activeConfig,

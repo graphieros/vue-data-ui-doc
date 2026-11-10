@@ -94,6 +94,7 @@ const config = computed({
             responsive: false,
             type: "line",
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right arrow keys to move between data points.",
@@ -131,7 +132,7 @@ const config = computed({
                         color: isDarkMode.value ? "#aec7e880" : "#aec7e8",
                         radius: isDarkMode.value ? 2 : 3,
                         durationMs: 4000,
-                        easeing: "ease-in-out",
+                        easing: "ease-in-out",
                         cubicBezier: [0.45, 0.45, 0.55, 0.55],
                         trail: { show: true, length: 12, opacity: 0.5 },
                     },

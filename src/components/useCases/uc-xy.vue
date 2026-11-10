@@ -9,6 +9,8 @@ import "prismjs/themes/prism-okaidia.css";
 import XyShareSelect from "./XyShareSelect.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import Tchernob from "./Tchernob.vue";
+import XyScaleComparison from "./XyScaleComparison.vue";
+import { xyScales } from "../../translations/xyScales.js";
 
 onMounted(() => {
     window.Prism = window.Prism || {};
@@ -121,10 +123,47 @@ const shareXCodeJs = ref(`
             userConfig: {} // specific config for this chart
         })
     });`);
+const useCaseLinks = computed(() => [
+    {
+        id: "xy-case-scales",
+        label: (xyScales[store.lang] || xyScales.en).title,
+    },
+    { id: "xy-case-share", label: shareX.value[store.lang] },
+    { id: "xy-case-timeline", label: "Timeline" },
+    { id: "xy-case-fixed", label: cases.XY_FIXED_SCALE.title[store.lang] },
+    { id: "xy-case-axes", label: cases.XY_MULTIPLE_Y_AXES.title[store.lang] },
+    { id: "xy-case-stacked", label: cases.XY_STACKED.title[store.lang] },
+    {
+        id: "xy-case-autoscale",
+        label: cases.XY_STACKED_AUTOSCALE.title[store.lang],
+    },
+]);
+
+function jumpToUseCase(id) {
+    document.getElementById(id)?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+        block: "start",
+    });
+}
 </script>
 
 <template>
-    <UseCaseTitle>
+    <nav aria-label="VueUiXy use cases" class="flex flex-wrap gap-2 mb-8">
+        <button
+            v-for="item in useCaseLinks"
+            :key="item.id"
+            type="button"
+            :aria-controls="item.id"
+            class="rounded-full border border-gray-300 dark:border-gray-600 px-3 py-1 text-sm hover:bg-gray-100 dark:hover:bg-[#3A3A3A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-app-blue"
+            @click="jumpToUseCase(item.id)"
+        >
+            {{ item.label }}
+        </button>
+    </nav>
+    <XyScaleComparison id="xy-case-scales" class="scroll-mt-40" />
+    <UseCaseTitle id="xy-case-share" class="scroll-mt-40">
         <template #title>
             <div>
                 <div class="w-full mb-2">
@@ -178,7 +217,7 @@ const shareXCodeJs = ref(`
 
     <hr class="mt-4 mb-8" />
 
-    <UseCaseTitle>
+    <UseCaseTitle id="xy-case-timeline" class="scroll-mt-40">
         <template #title>
             <div>
                 <div class="w-full mb-2">Timeline example</div>
@@ -201,7 +240,7 @@ const shareXCodeJs = ref(`
 
     <hr class="mt-4 mb-8" />
 
-    <UseCaseTitle>
+    <UseCaseTitle id="xy-case-fixed" class="scroll-mt-40">
         <template #title>
             {{ cases.XY_FIXED_SCALE.title[store.lang] }}
         </template>
@@ -257,7 +296,7 @@ const shareXCodeJs = ref(`
 
     <hr class="mt-4 mb-8" />
 
-    <UseCaseTitle>
+    <UseCaseTitle id="xy-case-axes" class="scroll-mt-40">
         <template #title>
             {{ cases.XY_MULTIPLE_Y_AXES.title[store.lang] }}
         </template>
@@ -316,7 +355,7 @@ const shareXCodeJs = ref(`
 
     <hr class="mt-4 mb-8" />
 
-    <UseCaseTitle>
+    <UseCaseTitle id="xy-case-stacked" class="scroll-mt-40">
         <template #title>
             {{ cases.XY_STACKED.title[store.lang] }}
         </template>
@@ -375,7 +414,7 @@ const shareXCodeJs = ref(`
 
     <hr class="mt-4 mb-8" />
 
-    <UseCaseTitle>
+    <UseCaseTitle id="xy-case-autoscale" class="scroll-mt-40">
         <template #title>
             {{ cases.XY_STACKED_AUTOSCALE.title[store.lang] }}
         </template>

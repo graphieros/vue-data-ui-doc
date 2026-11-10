@@ -502,7 +502,7 @@ export function createVueUiBulletConfigFields({
                                             defaultVal: "true",
                                         },
                                         {
-                                            name: "ontTop",
+                                            name: "onTop",
                                             attr: "style.chart.target.onTop",
                                             type: "checkbox",
                                             defaultVal: "true",

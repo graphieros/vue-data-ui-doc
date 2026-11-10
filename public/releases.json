@@ -1,5 +1,226 @@
 [
     {
+        "version": "v 3.29.0",
+        "date": "2026-11-10",
+        "updates": [
+            {
+                "component": "All components",
+                "description": "Hidden accessibility tables are now opt-in with a11y.includeTable: true (default false). Improve loading recovery, runtime sizing, reduced-motion animations, and custom tooltip formatting.",
+                "link": ""
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Add chart.grid.labels.yAxis.scale (linear, log, symlog) and symlogConstant. Fix reversed-axis bars, area baselines, nonlinear interline areas, minimaps, and overlapping symlog tick labels.",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Add config.sorted (default true); set false to preserve dataset order. Fix sorting and legend state, duplicate names, zero-value animations, and single-series polar click indices.",
+                "link": "/docs#vue-ui-donut"
+            },
+            {
+                "component": "VueUiStackline",
+                "description": "Add style.chart.lines.dot.show and showOnHover (both default true). Improve large-dataset rendering while retaining every datapoint and custom time-label position. Fix zoomed tooltip dates, external selection, single-point labels, keyboard tooltips, and CSV series alignment.",
+                "link": "/docs#vue-ui-stackline"
+            },
+            {
+                "component": "VueUiTreemap",
+                "description": "Honor style.chart.layout.sorted for root layout; set false to preserve root dataset order.",
+                "link": "/docs#vue-ui-treemap"
+            },
+            {
+                "component": "VueUiDashboard",
+                "description": "Add explicit defaults and types for allowPrint and userOptions.annotatorPalette. Improve mouse and touch dragging, resizing, board bounds, nested controls, locking, and hover menus. Emit one layout change per changed gesture and preserve item placement during chart-prop updates.",
+                "link": "/docs#vue-ui-dashboard"
+            },
+            {
+                "component": "VueUiTable",
+                "description": "Add explicit style.chart.layout.bar.strokeWidth default and type (default 0). Restore configured even-row text colors after deselecting a numeric cell.",
+                "link": "/docs#vue-ui-table"
+            },
+            {
+                "component": "VueUiRings",
+                "description": "Grow entry animations from a shared bottom baseline. Include original absoluteValues in getData(). Preserve hidden series and selection during updates, fix zero-total rendering, and honor configured CSV headers.",
+                "link": "/docs#vue-ui-rings"
+            },
+            {
+                "component": "VueUiHorizontalBar",
+                "description": "Supply datapoint in datapointEnter payloads while retaining the legacy datpoint alias. Apply configured value prefixes and suffixes to accessibility output.",
+                "link": "/docs#vue-ui-horizontal-bar"
+            },
+            {
+                "component": "VueUiQuickChart",
+                "description": "Supply datapoint to bar tooltip formatters while retaining the legacy point alias. Fix sorting and legend state, duplicate names, and zero-value hide/restore animations.",
+                "link": "/docs#vue-ui-quick-chart"
+            },
+            {
+                "component": "VueUiParallelCoordinatePlot",
+                "description": "Use original group indices for tooltip formatter and slot seriesIndex; event callback indices still identify visible groups. Fix constant-axis scales, missing table/CSV values, and selection when groups are hidden or reordered.",
+                "link": "/docs#vue-ui-parallel-coordinate-plot"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Report absolute datapoint indices in datapointLeave. Keep the detail dialog synchronized with data and zoom, preserve hidden series, and correct zoomed table/CSV period labels and the final visible X-axis label.",
+                "link": "/docs#vue-ui-donut-evolution"
+            },
+            {
+                "component": "VueUiBump",
+                "description": "Report source period indices in click callbacks and correct value-mode hover payloads. Keep missing values unranked and unplotted, fix series-name labels and tie-breaking, and preserve table/CSV period headers when axis labels are hidden.",
+                "link": "/docs#vue-ui-bump"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Preserve input root order in getData(). Fix invalid geometry for zero or malformed values and table/CSV grouping for equally named roots or branches. Apply configured detail rounding to accessibility output.",
+                "link": "/docs#vue-ui-chestnut"
+            },
+            {
+                "component": "VueUiSparkline",
+                "description": "Correct pulse types to use easing and cubic-bezier, and include the supported steps easing mode.",
+                "link": "/docs#vue-ui-sparkline"
+            },
+            {
+                "component": "Configuration types",
+                "description": "Add missing declarations for existing zoom, legend, accessibility, StripPlot, Skeleton, Sparkhistogram, Stackbar, Stackline, WordCloud, and Geo tooltip options. Correct Hill paths to a11y.translations.topOfHill and style.chart.layout.labels.item.useSerieColor, and World table columns to table.columnNames.value.",
+                "link": "/docs"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Correct zoomed tooltip dates and external selection alignment. Use translations.last for CSV closing-price headers.",
+                "link": "/docs#vue-ui-candlestick"
+            },
+            {
+                "component": "VueUiStackbar",
+                "description": "Correct zoomed tooltip dates, external selection alignment, negative and zero total-label positions, and category/series alignment in CSV exports.",
+                "link": "/docs#vue-ui-stackbar"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Fix interaction when enabling performance mode after mounting, coordinate selector formatting with hidden scale labels, perfect-fit plot visibility, and minimum-coordinate label rounding. Fix CSV exports for empty series or hidden correlation lines and the fallback filename.",
+                "link": "/docs#vue-ui-scatter"
+            },
+            {
+                "component": "VueUiHeatmap",
+                "description": "Fix keyboard interaction with tooltips disabled, selection after dataset changes, and labels remaining hidden or rotated after cells are removed.",
+                "link": "/docs#vue-ui-heatmap"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Correct zero-only axis projection and zoom behavior after dimension changes.",
+                "link": "/docs#vue-ui-quadrant"
+            },
+            {
+                "component": "VueUiGauge",
+                "description": "Fix negative and equal-bound ranges, runtime pointer and track settings, and label fitting.",
+                "link": "/docs#vue-ui-gauge"
+            },
+            {
+                "component": "VueUiNestedDonuts",
+                "description": "Fix keyboard navigation across rings, ring-specific tooltip totals, duplicate-name totals, and custom legends when the built-in legend is hidden.",
+                "link": "/docs#vue-ui-nested-donuts"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Preserve hidden series and selection during data or configuration updates, refresh tooltips, and fix zero-total rendering.",
+                "link": "/docs#vue-ui-onion"
+            },
+            {
+                "component": "VueUiGalaxy",
+                "description": "Preserve hidden series and selection during updates, refresh tooltips, fix zero-total rendering, and honor configured CSV headers.",
+                "link": "/docs#vue-ui-galaxy"
+            },
+            {
+                "component": "VueUiHistoryPlot",
+                "description": "Preserve hidden series and selection during updates, refresh tooltips, and fix zero-range rendering.",
+                "link": "/docs#vue-ui-history-plot"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Preserve hidden categories and selection during updates and refresh tooltips. Prevent infinite target percentages when targets are zero or omitted.",
+                "link": "/docs#vue-ui-radar"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Fix empty and all-zero datasets, rapid legend toggles, and selectLegend events when animation is disabled.",
+                "link": "/docs#vue-ui-waffle"
+            },
+            {
+                "component": "VueUiFlow",
+                "description": "Fix layout dependence on edge order, cyclic graphs, category legend filtering, and node names matching JavaScript prototype properties.",
+                "link": "/docs#vue-ui-flow"
+            },
+            {
+                "component": "VueUiDumbbell",
+                "description": "Apply end-label formatting and positioning settings. Handle progression when the starting value is zero or missing.",
+                "link": "/docs#vue-ui-dumbbell"
+            },
+            {
+                "component": "VueUiChord",
+                "description": "Fix nested matrix updates, missing labels and colors, keyboard activation after filtering, and rotation resets during unrelated configuration changes.",
+                "link": "/docs#vue-ui-chord"
+            },
+            {
+                "component": "VueUiCirclePack",
+                "description": "Fix selection after hierarchy updates, custom label colors, tooltip smoothing settings, and runtime zoom-speed changes. Honor configured CSV headers.",
+                "link": "/docs#vue-ui-circle-pack"
+            },
+            {
+                "component": "VueUiCarouselTable",
+                "description": "Fix data updates, pause behavior, font settings, and scrolling speed across display refresh rates. Include every body row in CSV exports.",
+                "link": "/docs#vue-ui-carousel-table"
+            },
+            {
+                "component": "VueUiBullet",
+                "description": "Fix invalid geometry for zero or malformed values and animation behavior with late-loaded data.",
+                "link": "/docs#vue-ui-bullet"
+            },
+            {
+                "component": "VueUiFunnel",
+                "description": "Fix invalid geometry for zero or malformed values and animation behavior with late-loaded data.",
+                "link": "/docs#vue-ui-funnel"
+            },
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Fix invalid geometry for zero or malformed values, totals in tables and exports, late-loaded animations, and the fallback CSV filename.",
+                "link": "/docs#vue-ui-age-pyramid"
+            },
+            {
+                "component": "VueUi3dBar",
+                "description": "Fix invalid geometry for zero or malformed values, late-loaded animations, and click/keyboard selection without mutating input data.",
+                "link": "/docs#vue-ui-3d-bar"
+            },
+            {
+                "component": "VueUiDag",
+                "description": "Preserve camera, zoom, and selection during unrelated updates.",
+                "link": "/docs#vue-ui-dag"
+            },
+            {
+                "component": "VueUiGeo",
+                "description": "Preserve camera, zoom, and selection during unrelated updates. Handle point coordinates and default radii consistently across dataset formats and supply correct territory tooltip slot data.",
+                "link": "/docs#vue-ui-geo"
+            },
+            {
+                "component": "VueUiDigits",
+                "description": "Fix very small and very large finite numbers. Display and announce zero for nonfinite values.",
+                "link": "/docs#vue-ui-digits"
+            },
+            {
+                "component": "VueUiWordCloud",
+                "description": "Fix asynchronous layout updates, font-aware word collisions, in-place edits, selection after relayout, and keyboard activation with tooltips disabled. Honor configured CSV headers.",
+                "link": "/docs#vue-ui-word-cloud"
+            },
+            {
+                "component": "VueUiSparkHistogram",
+                "description": "Use a11y.translations.label for accessibility-table label headers.",
+                "link": "/docs#vue-ui-sparkhistogram"
+            },
+            {
+                "component": "VueUiAnnotator",
+                "description": "Keep saved annotation snapshots independent of later edits. Add undo support for duplication, layer changes, keyboard deletion, and style controls. Fix grouped resizing, duplicated arrows, pointer cancellation, and PDF export completion.",
+                "link": "/docs#vue-ui-annotator"
+            }
+        ]
+    },
+    {
         "version": "v 3.28.12",
         "date": "2026-11-06",
         "updates": [

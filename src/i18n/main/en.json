@@ -66,6 +66,8 @@
     },
     "slotImplementation": "View an example implementation of the component with all its slots",
     "a11y": {
+        "hidden_table_title": "Hidden data tables for screen readers",
+        "hidden_table_description": "Supported charts can include a hidden data table for screen readers. This is opt-in: a11y.includeTable defaults to false. Set it to true to include the table. This setting is independent of the visible table and its menu button; keyboard navigation, chart descriptions and exports remain available.",
         "config_pointer_comment": "In most components, the attribute is placed inside `userOptions`",
         "cursor_pointer": "Opt-in 'cursor pointer'",
         "cursor_pointer_updated_at": "`false` by default since v3.15.0",

@@ -92,6 +92,7 @@ const config = computed({
             useCssAnimation: true,
             orientation: isDarkMode.value ? undefined : "vertical",
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right arrow keys to move between data points.",
@@ -323,6 +324,8 @@ const config = computed({
                             color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
                         },
                         dot: {
+                            show: true,
+                            showOnHover: true,
                             hideAboveMaxSerieLength: 62,
                             useSerieColor: true,
                             fill: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",

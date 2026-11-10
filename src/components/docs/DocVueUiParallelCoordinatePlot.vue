@@ -104,6 +104,7 @@ const config = computed({
             useCssAnimation: true,
             customPalette: [],
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right, or up and down arrow keys to move between datapoints",

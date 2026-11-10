@@ -245,9 +245,16 @@ test("all XY fields bind to the actual light/dark presets and installed defaults
     assert.equal(
         flattenFields(fields).filter((field) => field.name && !field.component)
             .length,
-        422,
+        425,
     );
-    assert.equal(allPaths.length, 362);
+    assert.equal(allPaths.length, 365);
+    assert.ok(allPaths.includes("a11y.includeTable"));
+    assert.ok(allPaths.includes("chart.grid.labels.yAxis.scale"));
+    assert.ok(allPaths.includes("chart.grid.labels.yAxis.symlogConstant"));
+    const scaleField = flattenFields(fields).find(
+        (field) => field.attr === "chart.grid.labels.yAxis.scale",
+    );
+    assert.deepEqual(scaleField.options, ["linear", "log", "symlog"]);
     for (const property of ["useOutline", "outlineThickness", "outlineColor"])
         assert.ok(allPaths.includes(`chart.userOptions.annotator.${property}`));
     assert.ok(allPaths.includes("chart.userOptions.buttons.analyze"));
@@ -279,11 +286,20 @@ test("all XY fields bind to the actual light/dark presets and installed defaults
             );
         }
         bindings["chart.backgroundColor"].value = "#123456";
+        bindings["chart.grid.labels.yAxis.scale"].value = "log";
+        assert.equal(light.value.chart.grid.labels.yAxis.scale, "log");
         bindings["table.showSum"].value = false;
         assert.equal(light.value.chart.backgroundColor, "#123456");
         assert.equal(light.value.table.showSum, false);
         isDark.value = true;
         await nextTick();
+        assert.equal(bindings["chart.grid.labels.yAxis.scale"].value, "linear");
+        bindings["chart.grid.labels.yAxis.scale"].value = "symlog";
+        bindings["chart.grid.labels.yAxis.symlogConstant"].value = 10;
+        assert.equal(dark.value.chart.grid.labels.yAxis.scale, "symlog");
+        assert.equal(dark.value.chart.grid.labels.yAxis.symlogConstant, 10);
+        assert.equal(light.value.chart.grid.labels.yAxis.scale, "log");
+        assert.equal(light.value.chart.grid.labels.yAxis.symlogConstant, 1);
         for (const path of allPaths)
             assert.notEqual(bindings[path].value, undefined, `Dark: ${path}`);
         bindings["bar.labels.rotation"].value = 30;
@@ -357,3 +373,118 @@ test("empty translated text and rich content never request editable bindings", (
         ["chart.legend.show"],
     );
 });
+
+test("displayed defaults follow the installed package without modifying metadata", async () => {
+    const { withConfigDefaults } =
+        await import("../src/components/docs/configuration/configFields.js");
+    const defaults = getVueDataUiConfig("vue_ui_xy");
+    const fields = [
+        {
+            attr: "const config: VueUiXyConfig",
+            children: [
+                { name: "loading", attr: "loading", defaultVal: "stale" },
+                {
+                    attr: "chart.userOptions",
+                    children: [
+                        { name: "show", inactive: true, defaultVal: "stale" },
+                        {
+                            name: "absent",
+                            defaultVal: "reference",
+                            unsupported: true,
+                        },
+                    ],
+                },
+            ],
+        },
+    ];
+    const result = withConfigDefaults(fields, defaults)[0].children;
+    assert.equal(result[0].defaultVal, JSON.stringify(defaults.loading));
+    assert.equal(
+        result[1].children[0].defaultVal,
+        JSON.stringify(defaults.chart.userOptions.show),
+    );
+    assert.equal(result[1].children[1].defaultVal, "reference");
+    assert.equal(fields[0].children[0].defaultVal, "stale");
+    assert.equal(
+        withConfigDefaults([{ attr: "value", defaultVal: "old" }], {
+            value: null,
+        })[0].defaultVal,
+        "null",
+    );
+    assert.equal(
+        withConfigDefaults([{ attr: "value", defaultVal: "old" }], {
+            value: "",
+        })[0].defaultVal,
+        "''",
+    );
+    assert.equal(
+        withConfigDefaults([{ attr: "value", defaultVal: "old" }], {
+            value: [1, 2],
+        })[0].defaultVal,
+        "[1,2]",
+    );
+});
+
+for (const [component, paths] of [
+    ["Table", ["style.chart.layout.bar.strokeWidth"]],
+    ["Dashboard", ["allowPrint"]],
+]) {
+    test(`${component}: new package options appear in controls, exported presets and editable bindings`, async () => {
+        const slug = component.toLowerCase();
+        const module = await import(
+            `../src/components/docs/configuration/vue-ui-${slug}-config.js`
+        );
+        const fields = module[`createVueUi${component}ConfigFields`]({
+            forceChartUpdate() {},
+            setActiveTab() {},
+            store: { lang: "en" },
+            translations,
+        });
+        const controls = flattenFields(fields);
+        const defaults = getVueDataUiConfig(`vue_ui_${slug}`);
+        const source = fs.readFileSync(
+            new URL(
+                `../src/components/docs/DocVueUi${component}.vue`,
+                import.meta.url,
+            ),
+            "utf8",
+        );
+        const read = (value, path) =>
+            path.split(".").reduce((value, key) => value?.[key], value);
+        for (const dark of [false, true]) {
+            const active = evaluatePage(source, dark).get("config");
+            const original = JSON.parse(JSON.stringify(active.value));
+            const scope = effectScope();
+            try {
+                const bindings = scope.run(() =>
+                    useDocConfigBindings(active, paths),
+                );
+                for (const path of paths) {
+                    const control = controls.find(
+                        (field) => field.attr === path,
+                    );
+                    assert.ok(control && !control.inactive, path);
+                    assert.equal(
+                        read(original, path),
+                        read(defaults, path),
+                        path,
+                    );
+                    const value = bindings[path].value;
+                    const next =
+                        typeof value === "boolean" ? !value : value + 1;
+                    bindings[path].value = next;
+                    assert.equal(
+                        read(JSON.parse(JSON.stringify(active.value)), path),
+                        next,
+                    );
+                }
+                active.value = original;
+                await nextTick();
+                for (const path of paths)
+                    assert.equal(bindings[path].value, read(defaults, path));
+            } finally {
+                scope.stop();
+            }
+        }
+    });
+}

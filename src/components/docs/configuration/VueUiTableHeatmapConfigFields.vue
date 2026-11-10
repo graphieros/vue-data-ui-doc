@@ -5,6 +5,7 @@ import { useDocConfigBindings } from "../../../useDocConfigBindings";
 import {
     getEditableConfigPaths,
     getConfigInitialValues,
+    withConfigDefaults,
 } from "./configFields.js";
 import DocConfigFields from "./DocConfigFields.vue";
 import { createVueUiTableHeatmapConfigFields } from "./vue-ui-table-heatmap-config.js";
@@ -13,7 +14,10 @@ const props = defineProps({
     context: { type: Object, required: true },
 });
 const fields = computed(() =>
-    createVueUiTableHeatmapConfigFields(props.context),
+    withConfigDefaults(
+        createVueUiTableHeatmapConfigFields(props.context),
+        getVueDataUiConfig("vue_ui_table_heatmap"),
+    ),
 );
 const activeConfig = computed(() => props.config);
 const bindings = useDocConfigBindings(

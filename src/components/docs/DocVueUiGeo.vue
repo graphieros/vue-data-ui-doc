@@ -119,6 +119,7 @@ const config = computed({
             projection: currentProjection.value,
             theme: "",
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right, or up and down arrow keys to move between datapoints",

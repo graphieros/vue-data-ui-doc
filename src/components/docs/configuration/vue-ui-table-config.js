@@ -770,6 +770,15 @@ export function createVueUiTableConfigFields(_context) {
                                                     type: "color",
                                                     defaultVal: "#FFFFFF",
                                                 },
+                                                {
+                                                    name: "strokeWidth",
+                                                    attr: "style.chart.layout.bar.strokeWidth",
+                                                    type: "number",
+                                                    min: 0,
+                                                    max: 20,
+                                                    step: 0.5,
+                                                    defaultVal: "0",
+                                                },
                                             ],
                                         },
                                         {
@@ -885,7 +894,7 @@ export function createVueUiTableConfigFields(_context) {
                                                     max: 6,
                                                 },
                                                 {
-                                                    name: "stokeDasharray",
+                                                    name: "strokeDasharray",
                                                     attr: "style.chart.layout.progression.strokeDasharray",
                                                     type: "number",
                                                     defaultVal: "4",

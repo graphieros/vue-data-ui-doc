@@ -191,6 +191,7 @@ const config = computed({
             annotatorPalette: COLOR_PICKER_PALETTE,
             devHints: { enable: false },
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right arrow keys to move between data points.",

@@ -142,6 +142,7 @@ const config = computed({
             zoomAnimationFrames: 20,
             zoomEnabled: true,
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right, or up and down arrow keys to move between datapoints",

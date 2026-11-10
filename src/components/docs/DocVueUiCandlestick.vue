@@ -105,6 +105,7 @@ const config = computed({
                 activationDelayMs: 300,
             },
             a11y: {
+                includeTable: false,
                 translations: {
                     keyboardNavigation:
                         "Use the left and right arrow keys to move between data points.",

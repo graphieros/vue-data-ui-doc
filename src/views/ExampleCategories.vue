@@ -45,6 +45,17 @@ const isDarkMode = computed(() => store.isDarkMode);
 const router = useRouter();
 const route = useRoute();
 const translations = computed(() => store.translations);
+const jumpToExampleLabel = {
+    en: "Jump to example:",
+    fr: "Aller à un exemple :",
+    pt: "Ir para um exemplo:",
+    de: "Zu einem Beispiel springen:",
+    zh: "跳转到示例：",
+    ja: "サンプルに移動：",
+    es: "Ir a un ejemplo:",
+    ko: "예제로 이동:",
+    ar: "الانتقال إلى مثال:",
+};
 const raterStep = ref(0);
 
 const crumbs = ref([
@@ -583,6 +594,17 @@ const filteredExamples = computed(() => {
     return examples.value.filter((e) => e.link === selectedLink.value);
 });
 
+const selectedExample = ref(null);
+const exampleOptions = computed(() =>
+    filteredExamples.value.map((example, index) => ({
+        id: example.id,
+        label: `${index + 1}. ${example.description[store.lang] || example.description.en}`,
+    })),
+);
+watch(selectedLink, () => {
+    selectedExample.value = null;
+});
+
 const hoveredLink = ref(null);
 
 const dialogExample = ref(null);
@@ -611,6 +633,19 @@ function scrollToId(id, { smooth = true, offset = 0 } = {}) {
     });
 
     return true;
+}
+
+async function jumpToExample(id) {
+    await router.push({
+        path: route.path,
+        query: { ...route.query, next: id },
+        hash: `#${selectedLink.value}`,
+    });
+    await nextTick();
+    scrollToId(id, {
+        smooth: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        offset: 380,
+    });
 }
 
 async function maybeScrollToNextTag() {
@@ -830,6 +865,35 @@ function makeMapLinks({ data }) {
     />
 
     <div class="min-h-[1000px]">
+        <div
+            v-if="filteredExamples.length"
+            class="w-full max-w-[1400px] mx-auto px-4 sm:px-16 mb-6"
+        >
+            <label for="exampleJumpSelect" class="block text-xs mb-2">
+                {{ jumpToExampleLabel[store.lang] || jumpToExampleLabel.en }}
+            </label>
+            <BaseDropdown
+                id="exampleJumpSelect"
+                v-model:value="selectedExample"
+                :options="exampleOptions"
+                option-target="id"
+                additional-option-target="label"
+                :search="true"
+                @change="jumpToExample"
+            >
+                <template #selected="{ selectedOption }">
+                    <span class="block truncate text-start">
+                        {{
+                            selectedOption?.label ||
+                            translations.menu.examples[store.lang]
+                        }}
+                    </span>
+                </template>
+                <template #option="{ option }">
+                    <span class="block text-start">{{ option.label }}</span>
+                </template>
+            </BaseDropdown>
+        </div>
         <!-- EXAMPLES DISPLAY -->
         <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 sm:mt-6"
@@ -848,9 +912,8 @@ function makeMapLinks({ data }) {
                     </template>
                     <BaseCard
                         :focused="
-                            router.currentRoute.value.fullPath.endsWith(
-                                `categories?next=${example.id}#${example.link}`,
-                            )
+                            route.query.next === example.id &&
+                            route.hash === `#${example.link}`
                         "
                     >
                         <div

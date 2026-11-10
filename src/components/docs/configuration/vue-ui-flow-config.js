@@ -99,6 +99,14 @@ export function createVueUiFlowConfigFields({
                     level: 1,
                     children: [
                         {
+                            name: "includeTable",
+                            attr: "a11y.includeTable",
+                            type: "checkbox",
+                            defaultVal: "false",
+                            comment:
+                                "Include a hidden data table for screen readers. Opt-in; independent of the visible table and its menu button.",
+                        },
+                        {
                             attr: "translations",
                             level: 2,
                             title: "a11y.translations",
@@ -259,7 +267,7 @@ export function createVueUiFlowConfigFields({
                                             defaultVal: "#FFFFFF",
                                         },
                                         {
-                                            name: "strokeWdith",
+                                            name: "strokeWidth",
                                             attr: "style.chart.nodes.strokeWidth",
                                             type: "number",
                                             defaultVal: "1",
