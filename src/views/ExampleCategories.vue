@@ -11,6 +11,7 @@ import {
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import exampleLoaders from "virtual:examples/index";
 import { preloadChart } from "../plugins/registerCharts.js";
+import { chartFrameStyle } from "../performance/exampleLayout.js";
 import { useMainStore } from "../stores";
 import BaseDocHeaderActions from "../components/BaseDocHeaderActions.vue";
 import BaseTabContainer from "../components/BaseTabContainer.vue";
@@ -38,6 +39,7 @@ import BaseDigit from "../components/Base/BaseDigit.vue";
 
 const curvedMarkers = ref(false);
 const categoryExamples = shallowRef(null);
+const categoryLoading = ref(false);
 const examples = computed(() => categoryExamples.value?.value ?? []);
 let categoryRequest = 0;
 const store = useMainStore();
@@ -71,7 +73,6 @@ const crumbs = ref([
 ]);
 
 function updateCrumb() {
-    window.scrollTo(0, 0);
     function capitalizeFirstLetter(val) {
         return String(val).charAt(0).toUpperCase() + String(val).slice(1);
     }
@@ -560,6 +561,7 @@ function prefetchCategory(category) {
 }
 
 function updateHash(link) {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     router.push({ path: route.path, hash: link ? `#${link}` : "" });
     selectedLink.value = link;
     selectedType.value = categories.value.find((c) => c.link === link);
@@ -576,14 +578,17 @@ watch(
             cancelled = true;
             categoryScope?.stop();
         });
-        categoryExamples.value = null;
+        categoryLoading.value = true;
         const selectedCategory = categories.value.find(
             (item) => item.link === category,
         );
         if (selectedCategory)
             preloadChart(selectedCategory.component).catch(() => {});
         const loader = exampleLoaders[category];
-        if (!loader) return;
+        if (!loader) {
+            categoryLoading.value = false;
+            return;
+        }
         try {
             const { default: createCategory } = await loader();
             if (cancelled || request !== categoryRequest) return;
@@ -598,13 +603,17 @@ watch(
                     type: "error",
                 });
             console.error(error);
+        } finally {
+            if (request === categoryRequest) categoryLoading.value = false;
         }
     },
     { immediate: true },
 );
 
 const filteredExamples = computed(() => {
-    return examples.value.filter((e) => e.link === selectedLink.value);
+    // Each module contains one category. Retain its cards until the next import
+    // finishes so the document cannot collapse or clamp the scroll position.
+    return examples.value;
 });
 
 const selectedExample = ref(null);
@@ -881,7 +890,8 @@ function makeMapLinks({ data }) {
 
     <div class="min-h-[1000px]">
         <div
-            v-if="filteredExamples.length"
+            :class="{ invisible: !filteredExamples.length }"
+            :inert="categoryLoading || !filteredExamples.length"
             class="w-full max-w-[1400px] mx-auto px-4 sm:px-16 mb-6"
         >
             <label for="exampleJumpSelect" class="block text-xs mb-2">
@@ -911,8 +921,19 @@ function makeMapLinks({ data }) {
         </div>
         <!-- EXAMPLES DISPLAY -->
         <div
+            :aria-busy="categoryLoading"
+            :inert="categoryLoading"
+            :class="{ 'opacity-50': categoryLoading }"
             class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 sm:mt-6"
         >
+            <template v-if="!filteredExamples.length">
+                <BaseCard
+                    v-for="index in 2"
+                    :key="index"
+                    class="min-h-[700px]"
+                    aria-hidden="true"
+                />
+            </template>
             <div
                 v-for="(example, i) in filteredExamples"
                 :key="example.id"
@@ -921,11 +942,10 @@ function makeMapLinks({ data }) {
             >
                 <BaseLazy once>
                     <template #placeholder>
-                        <BaseCard>
-                            <div class="w-full h-[700px]" />
-                        </BaseCard>
+                        <BaseCard class="min-h-[700px]" aria-hidden="true" />
                     </template>
                     <BaseCard
+                        class="min-h-[700px]"
                         :focused="
                             route.query.next === example.id &&
                             route.hash === `#${example.link}`
@@ -1090,7 +1110,10 @@ function makeMapLinks({ data }) {
 
                         <BaseSuspense>
                             <template #default>
-                                <div class="w-full p-4 example-wrapper">
+                                <div
+                                    class="w-full p-4 example-wrapper"
+                                    :style="chartFrameStyle(example)"
+                                >
                                     <component
                                         :is="example.component"
                                         :dataset="example.dataset"
@@ -2368,9 +2391,11 @@ function makeMapLinks({ data }) {
                                 </div>
                             </template>
                             <template #fallback>
-                                <BaseCard>
-                                    <div class="w-full h-[500px]">Lorem</div>
-                                </BaseCard>
+                                <div
+                                    class="w-full p-4 example-wrapper"
+                                    :style="chartFrameStyle(example)"
+                                    aria-hidden="true"
+                                />
                             </template>
                         </BaseSuspense>
                     </BaseCard>
