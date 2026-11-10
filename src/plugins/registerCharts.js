@@ -63,10 +63,32 @@ const chartLoaders = {
     VueUiGeo: () => import("vue-data-ui/vue-ui-geo"),
     VueUiBump: () => import("vue-data-ui/vue-ui-bump"),
     VueUiHill: () => import("vue-data-ui/vue-ui-hill"),
+    VueUiBullet: () => import("vue-data-ui/vue-ui-bullet"),
+    VueUiFunnel: () => import("vue-data-ui/vue-ui-funnel"),
+    VueUiHistoryPlot: () => import("vue-data-ui/vue-ui-history-plot"),
+    VueUiCirclePack: () => import("vue-data-ui/vue-ui-circle-pack"),
 };
 
+// Share in-flight imports between prefetching and async component rendering.
+const pendingCharts = new Map();
+export function preloadChart(name) {
+    const loader = chartLoaders[name];
+    if (!loader) return Promise.reject(new Error(`Unknown chart: ${name}`));
+    if (!pendingCharts.has(name)) {
+        const pending = loader().catch((error) => {
+            pendingCharts.delete(name);
+            throw error;
+        });
+        pendingCharts.set(name, pending);
+    }
+    return pendingCharts.get(name);
+}
+
 export function registerCharts(app) {
-    for (const [name, loader] of Object.entries(chartLoaders)) {
-        app.component(name, defineAsyncComponent(loader));
+    for (const name of Object.keys(chartLoaders)) {
+        app.component(
+            name,
+            defineAsyncComponent(() => preloadChart(name)),
+        );
     }
 }

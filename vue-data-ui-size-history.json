@@ -1,8 +1,8 @@
 {
   "package": "vue-data-ui",
-  "generatedAt": "2026-11-06T10:40:08.701Z",
-  "versionCount": 1290,
-  "successfulCount": 1290,
+  "generatedAt": "2026-11-10T10:04:09.494Z",
+  "versionCount": 1292,
+  "successfulCount": 1292,
   "failedCount": 0,
   "versions": [
     {
@@ -16771,6 +16771,32 @@
       "registryUnpackedBytes": 3987318,
       "shasum": "888924722234507befb6e8549b135db0ffe34f50",
       "integrity": "sha512-m+oe4BVerMFKO4jMnWnK8IHWnsw7UkYEteidLXW5dmF4wT6besdcrRwTZ//Q4EJpFp1P14E6wtjOwiSXCoZd5g==",
+      "license": "MIT"
+    },
+    {
+      "version": "3.29.0",
+      "totalBytes": 3947208,
+      "totalSize": "3.8 MB",
+      "fileCount": 366,
+      "tarballBytes": 1022987,
+      "tarballSize": "999 KB",
+      "publishedAt": "2026-11-10T06:13:03.552Z",
+      "registryUnpackedBytes": 3947208,
+      "shasum": "f89b2accf5f69aa5ef2d559c90341f177896d89e",
+      "integrity": "sha512-+Ay/VuB7TacWjlnVllA44fGRodNsxwGpocVcxU5SiRwpFuxwicamXIHkgaG98pyii0H8sYMI2lEG1kJbJcHVPA==",
+      "license": "MIT"
+    },
+    {
+      "version": "3.29.1",
+      "totalBytes": 3949886,
+      "totalSize": "3.8 MB",
+      "fileCount": 366,
+      "tarballBytes": 1022870,
+      "tarballSize": "999 KB",
+      "publishedAt": "2026-11-10T08:05:02.681Z",
+      "registryUnpackedBytes": 3949886,
+      "shasum": "28f87c8a663eea7f8ebc7287f5514fd787cd6c8f",
+      "integrity": "sha512-jEYmsZH94Pv6bHWlDf3tgzvJdCAxcNSLuL/4GuwQ5TrXHLmvwXxcID7HYyDbGnQUwXXMIBqrWD96qTZnoc+cbg==",
       "license": "MIT"
     }
   ]

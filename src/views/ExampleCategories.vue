@@ -10,6 +10,7 @@ import {
 } from "vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import exampleLoaders from "virtual:examples/index";
+import { preloadChart } from "../plugins/registerCharts.js";
 import { useMainStore } from "../stores";
 import BaseDocHeaderActions from "../components/BaseDocHeaderActions.vue";
 import BaseTabContainer from "../components/BaseTabContainer.vue";
@@ -551,6 +552,13 @@ onMounted(() => {
     }
 });
 
+function prefetchCategory(category) {
+    if (!category) return;
+    // Prefetch failures remain retryable when the category is selected.
+    exampleLoaders[category.link]?.().catch(() => {});
+    preloadChart(category.component).catch(() => {});
+}
+
 function updateHash(link) {
     router.push({ path: route.path, hash: link ? `#${link}` : "" });
     selectedLink.value = link;
@@ -569,6 +577,11 @@ watch(
             categoryScope?.stop();
         });
         categoryExamples.value = null;
+        const selectedCategory = categories.value.find(
+            (item) => item.link === category,
+        );
+        if (selectedCategory)
+            preloadChart(selectedCategory.component).catch(() => {});
         const loader = exampleLoaders[category];
         if (!loader) return;
         try {
@@ -704,6 +717,8 @@ function makeMapLinks({ data }) {
                     >
                         <button
                             @click="updateHash(category.link)"
+                            @pointerenter="prefetchCategory(category)"
+                            @focus="prefetchCategory(category)"
                             :class="`p-2 flex flex-col place-items-center justify-center h-full w-full rounded-2xl border ${selectedLink === category.link ? 'border-app-blue' : 'border-transparent'}`"
                         >
                             <img
@@ -1076,8 +1091,8 @@ function makeMapLinks({ data }) {
                         <BaseSuspense>
                             <template #default>
                                 <div class="w-full p-4 example-wrapper">
-                                    <VueDataUi
-                                        :component="example.component"
+                                    <component
+                                        :is="example.component"
                                         :dataset="example.dataset"
                                         :config="example.config"
                                     >
@@ -2349,7 +2364,7 @@ function makeMapLinks({ data }) {
                                                 </div>
                                             </div>
                                         </template>
-                                    </VueDataUi>
+                                    </component>
                                 </div>
                             </template>
                             <template #fallback>
