@@ -1,3 +1,4 @@
+import { copySelection, writeClipboardText } from "../../clipboard.js";
 import { isRef } from "vue";
 
 export function createUid() {
@@ -48,7 +49,7 @@ export function copyComponent(id, store) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -67,13 +68,13 @@ export function copyText(text, parent) {
     parent.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     parent.removeChild(selBox);
 }
 
 export async function copyCode(str) {
     try {
-        await navigator.clipboard.writeText(str);
+        await writeClipboardText(str);
         console.log("Content copied to clipboard!");
     } catch (err) {
         console.error("Failed to copy text: ", err);

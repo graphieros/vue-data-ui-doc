@@ -1,5 +1,12 @@
 <script setup>
-import { computed, onMounted, onBeforeUnmount, watch, ref } from "vue";
+import {
+    computed,
+    onMounted,
+    onBeforeUnmount,
+    watch,
+    ref,
+    nextTick,
+} from "vue";
 import Header from "./components/Header.vue";
 import UpToTop from "./components/UpToTop.vue";
 import { useRoute, useRouter } from "vue-router";
@@ -11,6 +18,13 @@ import FootInfo from "./components/FootInfo.vue";
 import useFetch from "./useFetch";
 import { cachedJson } from "./cachedFetch.js";
 import BaseMessenger from "./components/BaseMessenger.vue";
+import ConfirmCopy from "./components/ConfirmCopy.vue";
+import { installCopyFeedbackTracking } from "./clipboard.js";
+
+import { readStoredJson, writeStorage } from "./storage.js";
+import { chunkFailure } from "./router";
+import { updateMetadata } from "./navigation/metadata.js";
+import { navigationMessage } from "./navigation/messages.js";
 
 const store = useMainStore();
 const router = useRouter();
@@ -53,38 +67,21 @@ function fetchGithubStats() {
         url: "https://api.github.com/repos/graphieros/vue-data-ui",
         _then: (data) => {
             store.stars = data.stargazers_count;
-            if (![null, undefined].includes(localStorage.stars)) {
-                localStorage.stars = data.stargazers_count;
-            } else {
-                localStorage.setItem("stars", data.stargazers_count);
-            }
-
+            writeStorage("stars", data.stargazers_count);
             store.issues = data.open_issues_count;
-            if (![null, undefined].includes(localStorage.issues)) {
-                localStorage.issues = data.open_issues_count;
-            } else {
-                localStorage.setItem("issues", data.open_issues_count);
-            }
-
+            writeStorage("issues", data.open_issues_count);
             store.pack = data;
-            if (![null, undefined].includes(localStorage.pack)) {
-                localStorage.pack = JSON.stringify(data);
-            } else {
-                localStorage.setItem("pack", JSON.stringify(data));
-            }
+            writeStorage("pack", JSON.stringify(data));
 
             store.repos.library = data;
         },
         _onError: () => {
-            if (![null, undefined].includes(localStorage.stars)) {
-                store.stars = Number(localStorage.stars);
-            }
-            if (![null, undefined].includes(localStorage.issues)) {
-                store.issues = Number(localStorage.issues);
-            }
-            if (![null, undefined].includes(localStorage.pack)) {
-                store.pack = JSON.parse(localStorage.pack);
-                store.repos.library = JSON.parse(localStorage.pack);
+            store.stars = Number(readStoredJson("stars", 0)) || 0;
+            store.issues = Number(readStoredJson("issues", 0)) || 0;
+            const pack = readStoredJson("pack", {});
+            if (pack && typeof pack === "object" && !Array.isArray(pack)) {
+                store.pack = pack;
+                store.repos.library = pack;
             }
         },
     });
@@ -128,23 +125,13 @@ function fetchContributors() {
             store.contributors = data?.filter(
                 (d) => !githubClankers.includes(d?.login),
             );
-            if (![null, undefined].includes("contributors")) {
-                localStorage.contributors = JSON.stringify(
-                    data?.filter((d) => !githubClankers.includes(d?.login)),
-                );
-            } else {
-                localStorage.setItem(
-                    "contributors",
-                    JSON.stringify(
-                        data?.filter((d) => !githubClankers.includes(d?.login)),
-                    ),
-                );
-            }
+            writeStorage("contributors", JSON.stringify(store.contributors));
         },
         _onError: () => {
-            if (![null, undefined].includes(localStorage.contributors)) {
-                store.contributors = JSON.parse(localStorage.contributors);
-            }
+            const contributors = readStoredJson("contributors", []);
+            store.contributors = Array.isArray(contributors)
+                ? contributors
+                : [];
         },
     });
 }
@@ -211,13 +198,16 @@ function loadSecondaryStats() {
 }
 
 let idleHandle;
+let stopCopyFeedbackTracking;
 let secondaryLoaded = false;
 onMounted(() => {
+    stopCopyFeedbackTracking = installCopyFeedbackTracking(document);
     if ("requestIdleCallback" in window)
         idleHandle = requestIdleCallback(loadPrimaryStats, { timeout: 1500 });
     else idleHandle = setTimeout(loadPrimaryStats, 0);
 });
 onBeforeUnmount(() => {
+    stopCopyFeedbackTracking?.();
     if ("cancelIdleCallback" in window) cancelIdleCallback(idleHandle);
     else clearTimeout(idleHandle);
 });
@@ -232,12 +222,34 @@ watch(
     { immediate: true },
 );
 
+watch(
+    () => route.fullPath,
+    () => updateMetadata(route, document),
+    { immediate: true },
+);
+watch(
+    () => route.path,
+    async (_path, previous) => {
+        if (!previous) return;
+        await nextTick();
+        if (!document.querySelector("dialog[open], [aria-modal='true']")) {
+            document.getElementById("vdui")?.focus({ preventScroll: true });
+        }
+    },
+);
+function retryPage() {
+    window.location.assign(chunkFailure.value);
+}
+
 const showUnderlay = computed(() => {
     return currentRoute.value === "/";
 });
 </script>
 
 <template>
+    <a class="skip-link" href="#vdui">{{
+        navigationMessage("skip", store.lang)
+    }}</a>
     <Header />
     <HelpCenter v-if="!['Home', 'Versions', 'Maker'].includes(route.name)" />
     <div v-if="showUnderlay && !isDarkMode"></div>
@@ -245,9 +257,24 @@ const showUnderlay = computed(() => {
     <div v-if="showUnderlay && isDarkMode" class="underlay-paper--dark"></div>
     <div
         id="vdui"
+        tabindex="-1"
         class="font-inter bg-gray-200 dark:bg-black text-black dark:text-slate-300 transition-colors mb-[60px]"
     >
-        <router-view />
+        <div
+            v-if="chunkFailure"
+            class="p-8 text-center"
+            role="alert"
+            dir="auto"
+        >
+            <p>{{ navigationMessage("loadError", store.lang) }}</p>
+            <button
+                class="mt-4 rounded border border-current px-4 py-2"
+                @click="retryPage"
+            >
+                {{ navigationMessage("retry", store.lang) }}
+            </button>
+        </div>
+        <router-view v-if="!chunkFailure" />
         <UpToTop />
         <GithubButton v-if="route.name !== 'Home'" />
         <FootInfo
@@ -258,9 +285,28 @@ const showUnderlay = computed(() => {
     <!-- <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/> -->
     <BaseFooter v-if="!['/'].includes(currentRoute)" />
     <BaseMessenger />
+    <ConfirmCopy />
 </template>
 
 <style>
+.skip-link {
+    position: fixed;
+    top: 8px;
+    inset-inline-start: 8px;
+    z-index: 10000;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #fff;
+    color: #111;
+    transform: translateY(-200%);
+}
+.skip-link:focus {
+    transform: translateY(0);
+}
+#vdui:focus {
+    outline: none;
+}
+
 .vue-data-ui-tooltip {
     font-family: Inter;
 }

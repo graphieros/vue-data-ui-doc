@@ -243,7 +243,7 @@ const config = computed(() => {
 </script>
 
 <template>
-    <div class="flex flex-row align-center justify-center">
+    <div dir="ltr" class="flex flex-row align-center justify-center">
         <VueDataUi component="VueUiDonut" :dataset="dataset" :config="config">
             <template #svg="{ svg }">
                 <foreignObject

@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiCirclePackConfigFields from "./configuration/VueUiCirclePackConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -335,7 +337,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -452,7 +454,7 @@ const customFormatCode =
             @copyToClipboard="copyToClipboard(config)"
         >
             <BaseCard>
-                <div class="w-full">
+                <div dir="ltr" class="w-full">
                     <VueDataUi
                         component="VueUiCirclePack"
                         :dataset="mutableDataset"
@@ -565,7 +567,7 @@ const customFormatCode =
 
             <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                 <div><code>getData</code></div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{ translations.docs.emits.xy.getData[store.lang] }}
                 </div>
                 <pre>
@@ -694,22 +696,24 @@ const customFormatCode =
         </template>
 
         <template #patterns>
-            <VueDataUi
-                component="VueUiCirclePack"
-                :dataset="mutableDataset"
-                :config="config"
-                :key="key"
-            >
-                <template #pattern="{ seriesIndex, patternId }">
-                    <VueUiPattern
-                        :id="patternId"
-                        name="maze"
-                        stroke="#FFFFFF20"
-                        :strokeWidth="3"
-                        :scale="0.4"
-                    />
-                </template>
-            </VueDataUi>
+            <div dir="ltr" style="height: inherit">
+                <VueDataUi
+                    component="VueUiCirclePack"
+                    :dataset="mutableDataset"
+                    :config="config"
+                    :key="key"
+                >
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern
+                            :id="patternId"
+                            name="maze"
+                            stroke="#FFFFFF20"
+                            :strokeWidth="3"
+                            :scale="0.4"
+                        />
+                    </template>
+                </VueDataUi>
+            </div>
         </template>
 
         <template #callbacks>

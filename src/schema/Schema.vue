@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../clipboard.js";
+
 import { ref, computed, onMounted } from "vue";
 import db from "./index.json";
 import BaseText from "./BaseText.vue";
@@ -65,7 +67,7 @@ function copyToClipboard(el) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -174,7 +176,7 @@ const datasetRefContent = computed(() => {
             <div class="bg-black text-gray-400 p-2 sm:p-6 rounded relative">
                 <button
                     title="Copy"
-                    class="text-[#6A6A6A] absolute right-4 top-4"
+                    class="text-[#6A6A6A] absolute end-4 top-4"
                     @click="copyContent"
                 >
                     <CopyIcon />
@@ -210,7 +212,7 @@ const datasetRefContent = computed(() => {
             class="schema table-auto border-collapse border border-slate-500 my-4 w-full"
         >
             <caption
-                class="caption-top py-4 text-left text-xl font-inter-medium"
+                class="caption-top py-4 text-start text-xl font-inter-medium"
             >
                 <div class="flex flex-row place-items-center gap-2">
                     <VueUiIcon
@@ -328,7 +330,7 @@ const datasetRefContent = computed(() => {
 
         <div
             v-if="selectedComponent.hasLttb"
-            class="mt-6 bg-[#42d39230] dark:bg-[#42d39210] py-2 px-4 border-l-2 border-app-green font-black"
+            class="mt-6 bg-[#42d39230] dark:bg-[#42d39210] py-2 px-4 border-s-2 border-app-green font-black"
             dir="auto"
         >
             {{ translations.lttb[store.lang] }}
@@ -339,7 +341,7 @@ const datasetRefContent = computed(() => {
             class="table-auto border-collapse border border-slate-500 my-4 w-full"
         >
             <caption
-                class="caption-top py-4 text-left text-xl font-inter-medium"
+                class="caption-top py-4 text-start text-xl font-inter-medium"
             >
                 <div class="flex flex-row place-items-center gap-2">
                     <VueUiIcon
@@ -384,7 +386,7 @@ const datasetRefContent = computed(() => {
             class="table-auto border-collapse border border-slate-500 my-4 w-full"
         >
             <caption
-                class="caption-top py-4 text-left text-xl font-inter-medium"
+                class="caption-top py-4 text-start text-xl font-inter-medium"
             >
                 <div class="flex flex-row place-items-center gap-2">
                     <VueUiIcon
@@ -424,7 +426,7 @@ const datasetRefContent = computed(() => {
             class="table-auto border-collapse border border-slate-500 my-4 w-full"
         >
             <caption
-                class="caption-top py-4 text-left text-xl font-inter-medium"
+                class="caption-top py-4 text-start text-xl font-inter-medium"
             >
                 <div class="flex flex-row place-items-center gap-2">
                     <VueUiIcon
@@ -464,7 +466,7 @@ const datasetRefContent = computed(() => {
             class="table-auto border-collapse border border-slate-500 my-4 w-full"
         >
             <caption
-                class="caption-top py-4 text-left text-xl font-inter-medium"
+                class="caption-top py-4 text-start text-xl font-inter-medium"
             >
                 <div class="flex flex-row place-items-center gap-2">
                     <VueUiIcon
@@ -509,6 +511,7 @@ const datasetRefContent = computed(() => {
             </div>
         </div>
         <div
+            dir="ltr"
             :class="`w-full mx-auto p-4 bg-white ${selectedComponent.chartSize ? `max-w-[${selectedComponent.chartSize}px]` : ''}`"
             v-for="example in selectedComponent.examples"
         >

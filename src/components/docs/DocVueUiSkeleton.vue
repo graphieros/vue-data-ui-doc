@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
@@ -224,7 +226,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -260,11 +262,11 @@ function fixChart() {
                     @copyToClipboard="copyToClipboard(config)"
                     @change="forceChartUpdate"
                 >
-                    <BaseCard>
+                    <BaseCard dir="ltr">
                         <div
                             class="flex flex-col gap-1 justify-center place-items-center mt-6 mb-6"
                         >
-                            <label for="skeletons" class="text-xs text-left"
+                            <label for="skeletons" class="text-xs text-start"
                                 >Select skeleton type:</label
                             >
                             <BaseDropdown

@@ -213,7 +213,7 @@ defineExpose({
 </script>
 
 <template>
-    <div class="w-full">
+    <div dir="ltr" class="w-full">
         <!-- <VueUi3dBar component="VueUi3dBar" :config="config" :dataset="dataset" /> -->
         <VueDataUi component="VueUi3dBar" :config="config" :dataset="dataset" />
     </div>

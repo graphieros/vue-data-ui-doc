@@ -145,38 +145,51 @@ function formatNumber(value) {
 
 <template>
     <section class="game-of-life-scatter max-w-[500px]">
-        <VueUiScatter v-if="pointCount" :dataset="dataset" :config="config">
-            <template #tooltip="{ datapoint }">
-                <div v-if="datapoint?.v" class="game-of-life-scatter__tooltip">
-                    <strong>{{ datapoint.v.name }}</strong>
-                    <span>{{ datapoint.v.reason }}</span>
-                    <span
-                        >Initial density: {{ datapoint.v.x.toFixed(2) }}%</span
+        <div v-if="pointCount" dir="ltr" style="height: inherit">
+            <VueUiScatter :dataset="dataset" :config="config">
+                <template #tooltip="{ datapoint }">
+                    <div
+                        v-if="datapoint?.v"
+                        class="game-of-life-scatter__tooltip"
                     >
-                    <span>Generations: {{ formatNumber(datapoint.v.y) }}</span>
-                    <span
-                        >Grid: {{ datapoint.v.gridSize }} ×
-                        {{ datapoint.v.gridSize }}</span
-                    >
-                    <span
-                        >Initial population:
-                        {{ formatNumber(datapoint.v.initialPopulation) }}</span
-                    >
-                    <span
-                        >Final population:
-                        {{ formatNumber(datapoint.v.finalPopulation) }}</span
-                    >
-                    <span
-                        >Peak active:
-                        {{ formatNumber(datapoint.v.peakActive) }}</span
-                    >
-                    <span
-                        >Median active:
-                        {{ formatNumber(datapoint.v.medianActive) }}</span
-                    >
-                </div>
-            </template>
-        </VueUiScatter>
+                        <strong>{{ datapoint.v.name }}</strong>
+                        <span>{{ datapoint.v.reason }}</span>
+                        <span
+                            >Initial density:
+                            {{ datapoint.v.x.toFixed(2) }}%</span
+                        >
+                        <span
+                            >Generations:
+                            {{ formatNumber(datapoint.v.y) }}</span
+                        >
+                        <span
+                            >Grid: {{ datapoint.v.gridSize }} ×
+                            {{ datapoint.v.gridSize }}</span
+                        >
+                        <span
+                            >Initial population:
+                            {{
+                                formatNumber(datapoint.v.initialPopulation)
+                            }}</span
+                        >
+                        <span
+                            >Final population:
+                            {{
+                                formatNumber(datapoint.v.finalPopulation)
+                            }}</span
+                        >
+                        <span
+                            >Peak active:
+                            {{ formatNumber(datapoint.v.peakActive) }}</span
+                        >
+                        <span
+                            >Median active:
+                            {{ formatNumber(datapoint.v.medianActive) }}</span
+                        >
+                    </div>
+                </template>
+            </VueUiScatter>
+        </div>
         <p v-else class="game-of-life-scatter__empty">
             No completed runs to display yet.
         </p>
@@ -194,7 +207,7 @@ function formatNumber(value) {
     flex-direction: column;
     gap: 3px;
     padding: 4px 6px;
-    text-align: left;
+    text-align: start;
 }
 
 .game-of-life-scatter__tooltip strong {

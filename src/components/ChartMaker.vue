@@ -167,13 +167,13 @@ function deleteValueFromSeries({ id, index, key = "values" }) {
         class="fixed p-6 glass h-screen w-full max-w-[800px] rounded-lg bg-[#e1e5e890] dark:bg-[#2A2A2AAF] text-black dark:text-gray-300 border dark:border-app-green overflow-hidden"
         style="width: calc(100% - 48px); max-width: 1200px"
     >
-        <button @click="closeDialog" class="absolute top-6 right-6">
+        <button @click="closeDialog" class="absolute top-6 end-6">
             <VueUiIcon
                 name="close"
                 :stroke="isDarkMode ? '#ff6400' : '#1A1A1A'"
             />
         </button>
-        <h4 class="text-3xl absolute top-6 left-6">Chart maker</h4>
+        <h4 class="text-3xl absolute top-6 start-6">Chart maker</h4>
         <div
             class="w-full overflow-y-auto mt-[64px]"
             style="height: calc(100% - 64px)"
@@ -184,7 +184,7 @@ function deleteValueFromSeries({ id, index, key = "values" }) {
                     <select
                         style="
                             outline: 1px solid #42d392 !important;
-                            margin-left: 1px;
+                            margin-inline-start: 1px;
                         "
                         id="chartType"
                         v-model="selectedChart"
@@ -192,7 +192,7 @@ function deleteValueFromSeries({ id, index, key = "values" }) {
                         @change="nuke"
                     >
                         <option
-                            class="text-left"
+                            class="text-start"
                             v-for="option in options"
                             :value="option"
                         >
@@ -207,6 +207,7 @@ function deleteValueFromSeries({ id, index, key = "values" }) {
                     />
                 </div>
                 <div
+                    dir="ltr"
                     class="w-full max-w-[500px]"
                     v-if="
                         datasetItems.length > 0 && datasetItems[0].series.length
@@ -239,45 +240,45 @@ function deleteValueFromSeries({ id, index, key = "values" }) {
                             name="close"
                             stroke="#ff6400"
                             :size="18"
-                            class="cursor-pointer absolute top-1 left-1"
+                            class="cursor-pointer absolute top-1 start-1"
                         />
                     </button>
                     <table>
                         <thead>
                             <tr>
-                                <th class="text-left text-xs h-[40px]">
+                                <th class="text-start text-xs h-[40px]">
                                     Color
                                 </th>
-                                <th class="text-left text-xs">Serie name</th>
-                                <th class="text-left text-xs">Type</th>
-                                <th class="text-left text-xs">Labels</th>
+                                <th class="text-start text-xs">Serie name</th>
+                                <th class="text-start text-xs">Type</th>
+                                <th class="text-start text-xs">Labels</th>
                                 <th
                                     v-if="datasetItems[i].type !== 'bar'"
-                                    class="text-left text-xs"
+                                    class="text-start text-xs"
                                 >
                                     Tag
                                 </th>
                                 <th
                                     v-if="datasetItems[i].type !== 'bar'"
-                                    class="text-left text-xs"
+                                    class="text-start text-xs"
                                 >
                                     Area
                                 </th>
                                 <th
                                     v-if="datasetItems[i].type !== 'bar'"
-                                    class="text-left text-xs"
+                                    class="text-start text-xs"
                                 >
                                     Smooth
                                 </th>
                                 <th
                                     v-if="datasetItems[i].type !== 'bar'"
-                                    class="text-left text-xs"
+                                    class="text-start text-xs"
                                 >
                                     Dashed
                                 </th>
                                 <th
                                     v-if="datasetItems[i].type !== 'bar'"
-                                    class="text-left text-xs"
+                                    class="text-start text-xs"
                                 >
                                     Shape
                                 </th>
@@ -389,14 +390,14 @@ function deleteValueFromSeries({ id, index, key = "values" }) {
                                                 name="close"
                                                 stroke="#ff6400"
                                                 :size="18"
-                                                class="cursor-pointer absolute -top-2 left-1"
+                                                class="cursor-pointer absolute -top-2 start-1"
                                             />
                                         </button>
                                     </div>
                                 </td>
                                 <td>
                                     <button
-                                        class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center"
+                                        class="ms-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center"
                                         @click="
                                             pushValueToSeries({
                                                 value: 0,

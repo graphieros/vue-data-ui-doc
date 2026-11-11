@@ -3,7 +3,6 @@ import { computed, onMounted, ref } from "vue";
 import { useMainStore } from "../stores";
 import router from "../router";
 import ChartSeeker from "../components/ChartSeeker.vue";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 import colorBridge from "color-bridge";
 import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css";
@@ -144,11 +143,11 @@ const universalComponentTemplateContent = computed(() => {
         class="flex flex-col place-content-center place-items-center text-center mb-12 z-10"
     >
         <div
-            class="fixed top-0 left-0 h-screen w-screen z-0 pointer-events-none"
+            class="fixed top-0 start-0 h-screen w-screen z-0 pointer-events-none"
             style="opacity: 0.4"
         >
             <div
-                class="absolute top-0 left-0 w-full h-full"
+                class="absolute top-0 start-0 w-full h-full"
                 :style="
                     isDarkMode
                         ? 'background:radial-gradient(at top left, #5f8bee, transparent) !important'
@@ -217,7 +216,7 @@ const universalComponentTemplateContent = computed(() => {
         </div>
 
         <BaseCard class="w-full min-w-0 max-w-[1400px] overflow-x-auto mt-6">
-            <div class="text-left">
+            <div class="text-start">
                 <VueHiCode
                     :content="mainCodeContent"
                     language="javascript"
@@ -226,7 +225,7 @@ const universalComponentTemplateContent = computed(() => {
                 />
             </div>
 
-            <div class="text-left mt-6">
+            <div class="text-start mt-6">
                 <VueHiCode
                     :content="componentContent"
                     language="javascript"
@@ -236,7 +235,7 @@ const universalComponentTemplateContent = computed(() => {
                 />
             </div>
 
-            <div class="text-left mt-6">
+            <div class="text-start mt-6">
                 <VueHiCode
                     :content="universalComponentContent"
                     language="javascript"
@@ -245,7 +244,7 @@ const universalComponentTemplateContent = computed(() => {
                     title="MyUniversalChart.vue"
                 />
             </div>
-            <div class="text-left mt-6">
+            <div class="text-start mt-6">
                 <VueHiCode
                     :content="universalComponentTemplateContent"
                     language="html"
@@ -281,11 +280,10 @@ const universalComponentTemplateContent = computed(() => {
         </div>
 
         <div class="px-16 w-full">
-            <div class="text-left font-mono">Stackblitz example</div>
+            <div class="text-start font-mono">Stackblitz example</div>
             <div id="stackblitz" class="w-full mx-auto min-h-[1000px] mt-6" />
         </div>
 
         <ChartSeeker class="mt-12 z-10 max-w-[800px]" />
-        <ConfirmCopy />
     </div>
 </template>

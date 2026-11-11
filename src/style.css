@@ -108,7 +108,7 @@ html.dark select {
 html.dark input[type="number"],
 html.dark input[type="text"] {
     border-radius: 6px;
-    padding-left: 8px;
+    padding-inline-start: 8px;
 }
 
 .numinput {
@@ -177,7 +177,7 @@ input[type="checkbox"]::before {
     border-radius: 1.2rem !important;
     position: absolute;
     top: 0.2rem;
-    left: 0.2rem;
+    inset-inline-start: 0.2rem;
     box-shadow: 0px 1px 3px #0003;
     transition: 0.15s linear transform;
     transform: translateX(0rem);
@@ -193,7 +193,7 @@ input[type="checkbox"]:checked::before {
     align-items: center;
     justify-content: center;
     color: #1a1a1a;
-    transform: translateX(1.1rem);
+    transform: translateX(calc(1.1rem * var(--ui-direction, 1)));
     box-shadow: -2px 0px 10px #2f4c91;
 }
 
@@ -224,7 +224,7 @@ input[type="checkbox"]:checked::before {
     border-radius: 1.2rem !important;
     position: absolute;
     top: 0.2rem;
-    left: 0.2rem;
+    inset-inline-start: 0.2rem;
     box-shadow: 0px 1px 3px #0003;
     transition: 0.15s linear transform;
     transform: translateX(0rem);
@@ -241,7 +241,7 @@ input[type="checkbox"]:checked::before {
     align-items: center;
     justify-content: center;
     color: #1a1a1a;
-    transform: translateX(1.1rem);
+    transform: translateX(calc(1.1rem * var(--ui-direction, 1)));
     box-shadow: -2px -2px 10px #2f4c91;
 }
 

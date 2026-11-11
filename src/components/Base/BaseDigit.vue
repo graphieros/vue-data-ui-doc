@@ -44,7 +44,7 @@ const config = computed(() => {
 </script>
 
 <template>
-    <div :class="wrapperClass">
+    <div dir="ltr" :class="wrapperClass">
         <VueUiDigits :dataset="value" :config="config" />
     </div>
 </template>

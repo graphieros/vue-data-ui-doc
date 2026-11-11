@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
@@ -87,7 +89,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -123,6 +125,7 @@ function fixChart() {
             >
                 <BaseCard>
                     <div
+                        dir="ltr"
                         class="flex flex-row gap-6 place-items-center justify-center max-w-[300px] mx-auto"
                     >
                         <VueUiMiniLoader

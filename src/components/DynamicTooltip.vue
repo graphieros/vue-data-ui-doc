@@ -59,7 +59,7 @@ const position = computed(() => {
                 viewBox="0 0 10 18"
                 height="18"
                 width="12"
-                class="absolute -left-[10px] top-1/2 -translate-y-1/2"
+                class="absolute -start-[10px] top-1/2 -translate-y-1/2"
             >
                 <path
                     d="M 0,9 10,0 10,18Z"

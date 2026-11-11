@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiFunnelConfigFields from "./configuration/VueUiFunnelConfigFields.vue";
 import { ref, computed, onMounted } from "vue";
@@ -228,7 +230,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -286,7 +288,7 @@ function goToPage(route) {
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiFunnel" />
 
         <BaseDocDescription
@@ -309,7 +311,7 @@ function goToPage(route) {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueDataUi
                         component="VueUiFunnel"
                         :dataset="dataset"
@@ -397,7 +399,7 @@ function goToPage(route) {
                 />
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">
+                    <div class="text-gray-400 ps-5 mb-4">
                         {{ translations.docs.emits.xy.getData[store.lang] }}
                     </div>
                     <pre>

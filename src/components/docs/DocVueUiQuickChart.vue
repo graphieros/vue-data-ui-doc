@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiQuickChartConfigFields from "./configuration/VueUiQuickChartConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -403,7 +405,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -575,7 +577,7 @@ const customFormatCode =
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiQuickChart" />
 
         <BaseDocDescription
@@ -588,7 +590,7 @@ const customFormatCode =
         />
 
         <div
-            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-full'}`"
+            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] start-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-full'}`"
         >
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
                 <button
@@ -607,7 +609,7 @@ const customFormatCode =
             </div>
         </div>
         <div class="grid md:grid-cols-2 gap-4">
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <Suspense>
                     <template #default>
                         <VueUiQuickChart
@@ -666,7 +668,7 @@ const customFormatCode =
                                         componentSnippets.longArray,
                                     )
                                 "
-                                class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
+                                class="absolute top-3 end-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
                             >
                                 <VueUiIcon name="copy" :size="20" />
                             </button>
@@ -707,7 +709,7 @@ const customFormatCode =
                 </VueDataUi>
             </BaseCard>
 
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <Suspense>
                     <template #default>
                         <VueUiQuickChart
@@ -762,7 +764,7 @@ const customFormatCode =
                                         componentSnippets.shortArray,
                                     )
                                 "
-                                class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
+                                class="absolute top-3 end-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
                             >
                                 <VueUiIcon name="copy" :size="20" />
                             </button>
@@ -803,7 +805,7 @@ const customFormatCode =
                 </VueDataUi>
             </BaseCard>
 
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <Suspense>
                     <template #default>
                         <VueUiQuickChart
@@ -858,7 +860,7 @@ const customFormatCode =
                                         componentSnippets.lines,
                                     )
                                 "
-                                class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
+                                class="absolute top-3 end-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
                             >
                                 <VueUiIcon name="copy" :size="20" />
                             </button>
@@ -899,7 +901,7 @@ const customFormatCode =
                 </VueDataUi>
             </BaseCard>
 
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <Suspense>
                     <template #default>
                         <VueUiQuickChart
@@ -954,7 +956,7 @@ const customFormatCode =
                                         componentSnippets.donut,
                                     )
                                 "
-                                class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
+                                class="absolute top-3 end-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md"
                             >
                                 <VueUiIcon name="copy" :size="20" />
                             </button>

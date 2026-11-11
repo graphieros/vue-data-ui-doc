@@ -474,7 +474,6 @@ export default function useFlows() {
                 bar: "root",
                 line: "root",
                 plot: "root",
-                table: "root",
                 showTable: "root",
 
                 // chart → direct props
@@ -482,18 +481,14 @@ export default function useFlows() {
                 backgroundColor: "chart",
                 color: "chart",
                 height: "chart",
-                width: "chart",
                 zoom: "chart",
-                padding: "chart",
                 highlighter: "chart",
                 highlightArea: "chart",
                 timeTag: "chart",
                 grid: "chart",
                 comments: "chart",
-                labels: "chart",
                 legend: "chart",
                 title: "chart",
-                tooltip: "chart",
                 userOptions: "chart",
 
                 // chart.zoom
@@ -506,13 +501,11 @@ export default function useFlows() {
                 left: "padding",
 
                 // chart.highlighter
-                opacity: "highlighter",
                 useLine: "highlighter",
                 lineDasharray: "highlighter",
                 lineWidth: "highlighter",
 
                 // chart.highlightArea
-                show: "highlightArea",
                 from: "highlightArea",
                 to: "highlightArea",
                 opacity: "highlightArea",
@@ -520,30 +513,22 @@ export default function useFlows() {
 
                 // chart.highlightArea.caption
                 text: "caption",
-                fontSize: "caption",
                 bold: "caption",
-                offsetY: "caption",
-                width: "caption",
                 padding: "caption",
                 textAlign: "caption",
 
                 // chart.timeTag
-                show: "timeTag",
-                fontSize: "timeTag",
                 circleMarker: "timeTag",
 
                 // chart.timeTag.circleMarker
-                radius: "circleMarker",
 
                 // chart.grid
                 showVerticalLines: "grid",
                 showHorizontalLines: "grid",
                 position: "grid",
                 frame: "grid",
-                labels: "grid",
 
                 // chart.grid.frame
-                strokeWidth: "frame",
                 strokeLinecap: "frame",
                 strokeLinejoin: "frame",
                 strokeDasharray: "frame",
@@ -619,12 +604,10 @@ export default function useFlows() {
 
                 // bar.border
                 useSerieColor: "border",
-                strokeWidth: "border",
 
                 // bar.labels
                 show: "bar.labels",
                 offsetY: "bar.labels",
-                rounding: "bar.labels",
 
                 // bar.serieName
                 useAbbreviation: "bar.serieName",
@@ -826,12 +809,9 @@ export default function useFlows() {
                 nodeCategories: "config",
                 nodeCategoryColors: "config",
                 style: "config",
-                table: "config",
 
                 // userOptions
-                show: "userOptions",
                 showOnChartHover: "userOptions",
-                position: "userOptions",
                 buttons: "userOptions",
                 buttonTitles: "userOptions",
 
@@ -842,15 +822,12 @@ export default function useFlows() {
                 table: "userOptionsButtons",
                 fullscreen: "userOptionsButtons",
                 annotator: "userOptionsButtons",
-                tooltip: "userOptionsButtons",
 
                 // style
                 fontFamily: "style",
                 chart: "style",
 
                 // chart
-                backgroundColor: "chart",
-                color: "chart",
                 padding: "chart",
                 title: "chart",
                 tooltip: "chart",
@@ -867,14 +844,9 @@ export default function useFlows() {
                 // title
                 text: "chartTitle",
                 subtitle: "chartTitle",
-                cy: "chartTitle",
                 // subtitle.text lives under the same category
 
                 // tooltip
-                show: "chartTooltip",
-                fontSize: "chartTooltip",
-                backgroundColor: "chartTooltip",
-                color: "chartTooltip",
                 borderColor: "chartTooltip",
                 borderWidth: "chartTooltip",
                 borderRadius: "chartTooltip",
@@ -889,10 +861,6 @@ export default function useFlows() {
                 percentOfTotal: "chartTooltipTranslations",
 
                 // legend
-                show: "chartLegend",
-                backgroundColor: "chartLegend",
-                color: "chartLegend",
-                fontSize: "chartLegend",
                 paddingBottom: "chartLegend",
                 paddingTop: "chartLegend",
                 bold: "chartLegend",
@@ -901,10 +869,7 @@ export default function useFlows() {
                 // nodes
                 gap: "chartNodes",
                 minHeight: "chartNodes",
-                width: "chartNodes",
                 labels: "chartNodes",
-                stroke: "chartNodes",
-                strokeWidth: "chartNodes",
 
                 // labels
                 fontSize: "chartLabels",
@@ -937,9 +902,6 @@ export default function useFlows() {
                 value: "tableColumnNames",
 
                 // th
-                backgroundColor: "tableTh",
-                color: "tableTh",
-                outline: "tableTh",
 
                 // td
                 backgroundColor: "tableTd",

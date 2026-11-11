@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiKpiConfigFields from "./configuration/VueUiKpiConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
@@ -100,7 +102,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -129,7 +131,7 @@ function fixChart() {
             :configSource="mainConfig.vue_ui_kpi"
         />
 
-        <div class="transition-all mx-auto w-full sm:w-1/2">
+        <div dir="ltr" class="transition-all mx-auto w-full sm:w-1/2">
             <DocSnapper
                 component="vue_ui_kpi"
                 :config="{

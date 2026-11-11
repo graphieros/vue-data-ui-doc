@@ -519,7 +519,7 @@ const wheelConfig = computed(() => {
 <template>
     <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
     <div
-        class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto"
+        class="flex flex-col place-content-center place-items-center text-start mt-12 w-5/6 sm:w-1/2 mx-auto"
     >
         <div
             class="w-full flex flex-row gap-4 place-items-center justify-center mt-12"
@@ -561,7 +561,7 @@ const wheelConfig = computed(() => {
             <Suspense>
                 <template #default>
                     <div class="flex flex-col">
-                        <div class="mx-auto max-w-[300px] w-full">
+                        <div dir="ltr" class="mx-auto max-w-[300px] w-full">
                             <a
                                 title="GitHub repository. Leave a star to support us :)"
                                 href="https://github.com/graphieros/vue-data-ui"
@@ -751,6 +751,7 @@ const wheelConfig = computed(() => {
             class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12"
         >
             <div
+                dir="ltr"
                 v-for="skeleton in skeletonsDarkMode.slice(3, skeletons.length)"
                 class="max-w-1/3"
             >
@@ -762,6 +763,7 @@ const wheelConfig = computed(() => {
             class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12"
         >
             <div
+                dir="ltr"
                 v-for="skeleton in skeletons.slice(3, skeletons.length)"
                 class="max-w-1/3"
             >

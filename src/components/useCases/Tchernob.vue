@@ -298,7 +298,7 @@ function view(i) {
         <div class="flex flex-col sm:flex-row gap-6">
             <div class="w-full sm:w-3/5">
                 <BaseCard>
-                    <div class="flex flex-col gap-6">
+                    <div dir="ltr" class="flex flex-col gap-6">
                         <div class="flex flex-col gap-2">
                             <label
                                 v-for="(knob, i) in knobs"
@@ -339,7 +339,7 @@ function view(i) {
             </div>
             <BaseCard class="w-full sm:w-2/5">
                 <div
-                    class="flex flex-col gap-6 max-h-[500px] overflow-auto px-2 pr-3 py-2"
+                    class="flex flex-col gap-6 max-h-[500px] overflow-auto px-2 pe-3 py-2"
                     ref="timelineContainer"
                 >
                     <BaseCard

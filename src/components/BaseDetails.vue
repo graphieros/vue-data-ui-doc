@@ -116,17 +116,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div :class="`relative mt-2 ${indent ? 'ml-6' : ''}`">
+    <div :class="`relative mt-2 ${indent ? 'ms-6' : ''}`">
         <details
             ref="det"
             :style="level ? `margin-left:0px` : ''"
-            :class="`border-l ${isSelected ? 'border-app-blue dark:border-app-green' : 'border-gray-500'} rounded-md pl-2 bg-[#1A1A1A05] dark:bg-[#FFFFFF05] mb-2 shadow`"
+            :class="`border-s ${isSelected ? 'border-app-blue dark:border-app-green' : 'border-gray-500'} rounded-md ps-2 bg-[#1A1A1A05] dark:bg-[#FFFFFF05] mb-2 shadow`"
         >
             <summary
                 @click="onSummaryClick"
                 @mouseenter="isSelected = true"
                 @mouseout="isSelected = false"
-                class="cursor-pointer -ml-2 pl-2 font-black hover:bg-[#5f8aee20] hover:dark:bg-gradient-to-r dark:hover:from-[#42d39220] dark:hover:to-transparent transition-colors"
+                class="cursor-pointer -ms-2 ps-2 font-black hover:bg-[#5f8aee20] hover:dark:bg-gradient-to-r dark:hover:from-[#42d39220] dark:hover:to-transparent transition-colors"
             >
                 {{ attr }}
                 <i class="text-gray-500" v-if="translatedAttr"
@@ -146,7 +146,7 @@ onBeforeUnmount(() => {
 
             <div ref="panel" class="details-panel">
                 <div ref="inner" class="details-inner">
-                    <code class="pl-6 flex flex-col mt-1">
+                    <code class="ps-6 flex flex-col mt-1">
                         <slot v-if="!lazy || hasOpened" />
                     </code>
                     <span v-if="isOpen">{{ brackets ? "]" : "}" }}</span>
@@ -157,12 +157,12 @@ onBeforeUnmount(() => {
         <Transition name="fade">
             <div
                 v-if="isSelected && title"
-                class="text-black dark:text-gray-300 hidden sm:flex -top-10 left-0 place-items-center justify-center absolute z-10 bg-white shadow-xl dark:bg-black-100 text-xs text-left px-4 py-1 rounded-full border-2 border-black dark:border-app-green"
+                class="text-black dark:text-gray-300 hidden sm:flex -top-10 start-0 place-items-center justify-center absolute z-10 bg-white shadow-xl dark:bg-black-100 text-xs text-start px-4 py-1 rounded-full border-2 border-black dark:border-app-green"
             >
                 {{ title }}
                 <svg
                     v-if="isOpen"
-                    class="absolute -left-4 top-1/2"
+                    class="absolute -start-4 top-1/2"
                     viewBox="0 0 64 64"
                     height="50"
                     width="50"
@@ -189,7 +189,7 @@ onBeforeUnmount(() => {
                 </svg>
                 <svg
                     v-else
-                    class="absolute -left-4 top-1/2"
+                    class="absolute -start-4 top-1/2"
                     viewBox="0 0 64 64"
                     height="50"
                     width="50"

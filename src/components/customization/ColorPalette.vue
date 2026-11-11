@@ -1,9 +1,10 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { ref, computed, toRef } from "vue";
 import { adaptColorToBackground } from "../maker/lib";
 import { useMainStore } from "../../stores";
 import { getPalette } from "vue-data-ui/utils";
-import ConfirmCopy from "../ConfirmCopy.vue";
 import CodeParser from "./CodeParser.vue";
 import ColorBridgeIcon from "../maker/ColorBridgeIcon.vue";
 import { useFeatures } from "../../useFeatures";
@@ -75,7 +76,7 @@ function copyContent(color) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -159,15 +160,13 @@ const description = ref({
 </script>
 
 <template>
-    <ConfirmCopy />
-
     <div
-        class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 max-w-[1200px] mx-auto mb-12"
+        class="flex flex-col place-content-center place-items-center text-start mt-12 w-5/6 max-w-[1200px] mx-auto mb-12"
     >
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
 
         <BaseCard v-for="palette in Object.keys(codeContent)" class="my-4">
-            <h2 class="mb-2 font-inter-medium text-xl pl-2">
+            <h2 class="mb-2 font-inter-medium text-xl ps-2">
                 <div class="flex flex-row gap-2 align-center">
                     <VueUiIcon
                         name="colorPicker"
@@ -196,11 +195,11 @@ const description = ref({
                         @click="() => copyContent(color)"
                     >
                         {{ color.toUpperCase() }}
-                        <div class="absolute top-0 left-1 text-xs">
+                        <div class="absolute top-0 start-1 text-xs">
                             {{ i }}
                         </div>
                         <div
-                            class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"
+                            class="absolute top-2 start-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"
                         />
                     </div>
                 </div>

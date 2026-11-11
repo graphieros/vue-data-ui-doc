@@ -50,7 +50,7 @@ function goToProfile() {
     >
         <a href="https://agentscan.tools/" target="_blank">
             <div
-                class="mt-8 w-full max-w-[800px] text-sm sm:text-[18px] sm:pl-4 mb-3 sm:mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-3 sm:gap-4 items-start sm:items-center"
+                class="mt-8 w-full max-w-[800px] text-sm sm:text-[18px] sm:ps-4 mb-3 sm:mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-3 sm:gap-4 items-start sm:items-center"
             >
                 <div class="w-[24px] h-[24px] shrink-0">
                     <VueUiIcon
@@ -97,7 +97,7 @@ function goToProfile() {
                 </a>
 
                 <div
-                    class="github-input-wrapper my-4 font-[OpenSans] w-full h-[48px] rounded-full border border-[#3A3A3A] flex items-center gap-1 sm:gap-0 pl-4 pr-1 sm:pr-6"
+                    class="github-input-wrapper my-4 font-[OpenSans] w-full h-[48px] rounded-full border border-[#3A3A3A] flex items-center gap-1 sm:gap-0 ps-4 pe-1 sm:pe-6"
                 >
                     <input
                         v-model="username"
@@ -110,7 +110,7 @@ function goToProfile() {
                     <button
                         @click="username = ''"
                         v-if="!!username"
-                        class="h-10 w-10 sm:h-auto sm:w-auto sm:ml-4 shrink-0 flex items-center justify-center text-white cursor-pointer bg-transparent border-none outline-none"
+                        class="h-10 w-10 sm:h-auto sm:w-auto sm:ms-4 shrink-0 flex items-center justify-center text-white cursor-pointer bg-transparent border-none outline-none"
                     >
                         <VueUiIcon
                             name="close"
@@ -120,7 +120,7 @@ function goToProfile() {
 
                     <button
                         type="button"
-                        class="h-10 w-10 sm:h-auto sm:w-auto sm:ml-4 shrink-0 flex items-center justify-center text-white cursor-pointer bg-transparent border-none outline-none"
+                        class="h-10 w-10 sm:h-auto sm:w-auto sm:ms-4 shrink-0 flex items-center justify-center text-white cursor-pointer bg-transparent border-none outline-none"
                         @click="goToProfile"
                     >
                         <svg

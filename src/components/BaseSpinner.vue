@@ -65,7 +65,7 @@ const fadeStyle = computed(() => ({
     height: 120px;
     border-radius: 50%;
     display: inline-block;
-    border-right: 4px solid transparent;
+    border-inline-end: 4px solid transparent;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
 }
@@ -79,7 +79,7 @@ const fadeStyle = computed(() => ({
     height: 120px;
     border-radius: 50%;
     border-bottom: 4px solid #42d392;
-    border-left: 4px solid transparent;
+    border-inline-start: 4px solid transparent;
 }
 
 @keyframes rotation {

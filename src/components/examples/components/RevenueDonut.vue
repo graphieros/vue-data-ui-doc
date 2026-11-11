@@ -190,7 +190,7 @@ defineExpose({
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <VueDataUi component="VueUiDonut" :config="config" :dataset="dataset" />
     </div>
 </template>

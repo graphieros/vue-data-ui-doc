@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiBumpConfigFields from "./configuration/VueUiBumpConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -306,7 +308,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -385,7 +387,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiBump" />
 
         <BaseDocDescription
@@ -408,7 +410,7 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiBump :dataset="dataset" :config="config" :key="key" />
                 </BaseCard>
             </DocSnapper>

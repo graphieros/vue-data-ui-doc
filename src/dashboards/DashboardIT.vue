@@ -164,7 +164,7 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
         class="flex flex-row flex-wrap max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A] font-inter-bold"
     >
         <div class="flex w-full mx-auto px-4" id="it-chart">
-            <div class="w-full p-2 rounded shadow-md font-inter-bold">
+            <div dir="ltr" class="w-full p-2 rounded shadow-md font-inter-bold">
                 <VueDataUi
                     component="VueUiXy"
                     :dataset="DATASET_XY_IT_SPENDING"
@@ -218,6 +218,7 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
             </div>
         </div>
         <div
+            dir="ltr"
             class="flex-1 min-w-[300px] p-4 bg-[#FAFAFA] dark:bg-[#4A4A4A] rounded shadow-md"
         >
             <VueDataUi
@@ -266,6 +267,7 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
         </div>
 
         <div
+            dir="ltr"
             class="flex-1 min-w-[300px] p-4 bg-[#FAFAFA] dark:bg-[#4A4A4A] rounded shadow-md"
         >
             <VueDataUi
@@ -313,6 +315,7 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
         </div>
 
         <div
+            dir="ltr"
             class="flex-1 min-w-[300px] p-4 bg-[#FAFAFA] dark:bg-[#4A4A4A] rounded shadow-md"
         >
             <VueDataUi

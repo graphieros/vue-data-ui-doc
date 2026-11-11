@@ -155,5 +155,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiNestedDonuts :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiNestedDonuts :config="config" :dataset="dataset" />
+    </div>
 </template>

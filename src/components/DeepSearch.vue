@@ -5,12 +5,14 @@ import {
     onMounted,
     onUnmounted,
     defineAsyncComponent,
+    useId,
 } from "vue";
 import { useMainStore } from "../stores";
 import { XIcon, InfoCircleIcon } from "vue-tabler-icons";
 import allAttributes from "virtual:config-search-index";
 import { useRouter } from "vue-router";
 import vClickOutside from "../directives/vClickOutside";
+import { navigationMessage } from "../navigation/messages.js";
 const CodeParser = defineAsyncComponent(
     () => import("./customization/CodeParser.vue"),
 );
@@ -27,6 +29,7 @@ const props = defineProps({
 
 const isDarkMode = computed(() => store.isDarkMode);
 
+const suggestionId = useId();
 const searchTerm = ref("");
 const currentResults = ref([]);
 const hasResults = ref(false);
@@ -51,9 +54,8 @@ const filteredSuggestions = computed(() => {
 });
 
 function handleInput() {
-    if (searchTerm.value.length > 2) {
-        showSuggestions.value = true;
-    }
+    selectedIndex.value = -1;
+    showSuggestions.value = searchTerm.value.length > 2;
 }
 
 function selectSuggestion(suggestion) {
@@ -100,35 +102,38 @@ function clearSearch() {
 }
 
 function handleEscape(event) {
-    if (event.key === "Escape") canShowOutside.value = true;
+    if (event.key === "Escape") {
+        canShowOutside.value = true;
+        showSuggestions.value = false;
+        selectedIndex.value = -1;
+    }
 }
 
 onMounted(() => {
     document.addEventListener("keyup", handleEscape);
-    document.addEventListener("keyup", handleArrowKeys);
 });
 
 const selectedIndex = ref(-1);
 
 function handleArrowKeys(event) {
-    if (showSuggestions.value && ["ArrowUp", "ArrowDown"].includes(event.key)) {
-        if (event.key === "ArrowUp") {
-            selectedIndex.value -= 1;
-        } else if (event.key === "ArrowDown") {
-            selectedIndex.value += 1;
-        }
-
-        const selection = document.getElementById(
-            `suggestion-${selectedIndex.value}`,
-        );
-        if (selection) {
-            selection.focus();
-        }
+    if (!showSuggestions.value || !filteredSuggestions.value.length) return;
+    if (["ArrowUp", "ArrowDown"].includes(event.key)) {
+        event.preventDefault();
+        const last = filteredSuggestions.value.length - 1;
+        selectedIndex.value =
+            event.key === "ArrowUp"
+                ? Math.max(0, selectedIndex.value - 1)
+                : Math.min(last, selectedIndex.value + 1);
+        document
+            .getElementById(`${suggestionId}-${selectedIndex.value}`)
+            ?.scrollIntoView({ block: "nearest" });
+    } else if (event.key === "Enter" && selectedIndex.value >= 0) {
+        event.preventDefault();
+        selectSuggestion(filteredSuggestions.value[selectedIndex.value]);
     }
 }
 
 onUnmounted(() => {
-    document.removeEventListener("keyup", handleArrowKeys);
     document.removeEventListener("keyup", handleEscape);
 });
 
@@ -181,9 +186,13 @@ function closeList() {
             props.fixed
                 ? 'fixed hidden sm:block w-fit'
                 : 'min-w-0 flex-1 max-w-[368px]'
-        } top-16 right-4 text-left`"
+        } top-16 end-4 text-start`"
     >
-        <form autocomplete="off" onsubmit="return false;">
+        <form
+            autocomplete="off"
+            @submit.prevent="search"
+            @keydown="handleArrowKeys"
+        >
             <div class="flex flex-row gap-2">
                 <div
                     class="anim-wrapper min-w-0 flex-1 w-[280px] rounded-full -mt-[1px]"
@@ -192,19 +201,35 @@ function closeList() {
                         @input="handleInput"
                         @click.stop="handleInput"
                         type="text"
-                        class="font-inter-medium inner p-2 !pl-4 h-[36px] !rounded-full text-black dark:text-[#CCCCCC] focus:outline-app-blue w-[280px] bg-white dark:bg-[#2A2A2A] shadow-[inset_0_2px_6px_#8A8A8A,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_#000000,0_4px_6px_rgba(0,0,0,0.5)]"
-                        style="text-align: left !important"
+                        class="font-inter-medium inner p-2 !ps-4 h-[36px] !rounded-full text-black dark:text-[#CCCCCC] focus:outline-app-blue w-[280px] bg-white dark:bg-[#2A2A2A] shadow-[inset_0_2px_6px_#8A8A8A,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_#000000,0_4px_6px_rgba(0,0,0,0.5)]"
+                        style="text-align: start !important"
                         v-model="searchTerm"
                         :placeholder="
                             store.translations.search.placeholder[store.lang]
                         "
-                        list="attrSearch"
+                        role="combobox"
+                        :aria-label="
+                            store.translations.search.placeholder[store.lang]
+                        "
+                        :aria-expanded="
+                            showSuggestions && !!filteredSuggestions.length
+                        "
+                        :aria-controls="`${suggestionId}-list`"
+                        :aria-activedescendant="
+                            showSuggestions && selectedIndex >= 0
+                                ? `${suggestionId}-${selectedIndex}`
+                                : undefined
+                        "
+                        aria-autocomplete="list"
                     />
                 </div>
                 <button
                     :disabled="!searchTerm"
                     class="h-[36px] w-[36px] shrink-0 flex place-items-center justify-center rounded-full dark:bg-[#2A2A2A] hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:border-app-green text-black dark:text-app-green dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
-                    @click="search"
+                    type="submit"
+                    :aria-label="
+                        store.translations.search.placeholder[store.lang]
+                    "
                 >
                     <VueUiIcon
                         name="magnify"
@@ -215,6 +240,8 @@ function closeList() {
                 <button
                     v-if="searchTerm || showSuggestions"
                     class="h-[36px] w-[36px] shrink-0 flex place-items-center justify-center rounded-full dark:bg-[#2A2A2A] hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                    type="button"
+                    :aria-label="navigationMessage('clearSearch', store.lang)"
                     @click="clearSearch"
                 >
                     <XIcon />
@@ -222,20 +249,28 @@ function closeList() {
             </div>
             <div
                 v-if="showSuggestions && filteredSuggestions.length"
-                class="font-inter-medium text-[14px] absolute top-0 -mt-[330px] left-7 rounded-t-lg tabular-nums bg-white dark:bg-[#3A3A3A] text-black dark:text-[#CCCCCC] w-fit px-2 py-1"
+                class="font-inter-medium text-[14px] absolute top-0 -mt-[330px] start-7 rounded-t-lg tabular-nums bg-white dark:bg-[#3A3A3A] text-black dark:text-[#CCCCCC] w-fit px-2 py-1"
             >
                 {{ filteredSuggestions.length }} results
             </div>
             <ul
                 v-if="showSuggestions && filteredSuggestions.length"
+                :id="`${suggestionId}-list`"
+                role="listbox"
                 v-click-outside="closeList"
                 class="absolute bg-white dark:bg-black-100 border border-gray-300 top-0 -mt-[300px] rounded-md shadow-lg z-10 h-[300px] overflow-auto min-w-[280px]"
             >
                 <li
-                    tabindex="0"
+                    tabindex="-1"
                     v-for="(suggestion, i) in filteredSuggestions"
-                    :id="`suggestion-${i}`"
+                    :key="suggestion"
+                    role="option"
+                    :aria-selected="i === selectedIndex"
+                    :id="`${suggestionId}-${i}`"
                     class="px-2 py-1 cursor-pointer hover:bg-gray-200 dark:hover:bg-[#5f8aee30] text-black dark:text-gray-300 focus:bg-gray-200 dark:focus:bg-app-green dark:focus:text-black"
+                    :class="{
+                        'bg-gray-200 dark:bg-[#5f8aee30]': i === selectedIndex,
+                    }"
                     @click="selectSuggestion(suggestion)"
                     @keyup.enter="selectSuggestion(suggestion)"
                 >
@@ -260,19 +295,19 @@ function closeList() {
                     <span class="text-app-blue">{{ searchTerm }}</span>
                 </span>
             </div>
-            <button class="absolute top-2 right-2" @click="useModal('close')">
+            <button class="absolute top-2 end-2" @click="useModal('close')">
                 <XIcon class="text-black dark:text-app-green" />
             </button>
         </div>
 
-        <div class="w-full overflow-y-auto mt-12 max-h-[400px] pr-4">
+        <div class="w-full overflow-y-auto mt-12 max-h-[400px] pe-4">
             <form autocomplete="off" onsubmit="return false;">
                 <div class="flex flex-row gap-2">
                     <input
                         @input="handleInput"
                         type="text"
                         class="p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green"
-                        style="text-align: left !important"
+                        style="text-align: start !important"
                         v-model="searchTerm"
                         :placeholder="
                             store.translations.search.placeholder[store.lang]
@@ -309,7 +344,7 @@ function closeList() {
                                 ]
                             }}
                         </option>
-                        <option v-for="el in objNames" class="text-left">
+                        <option v-for="el in objNames" class="text-start">
                             {{ el }}
                         </option>
                     </select>
@@ -421,7 +456,7 @@ function closeList() {
         </div>
 
         <div
-            class="w-full flex place-items-center justify-end absolute bottom-6 right-6"
+            class="w-full flex place-items-center justify-end absolute bottom-6 end-6"
         >
             <button
                 class="h-[40px] px-6 rounded-lg border border-app-green text-black dark:text-app-green hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:text-white hover:dark:text-white transition-colors"

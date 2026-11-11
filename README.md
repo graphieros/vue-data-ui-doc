@@ -36,9 +36,15 @@ pnpm test:graph
 pnpm test:types
 ```
 
-`pnpm test` runs all three Node.js regression suites above.
+`pnpm test` runs the existing Node.js suites, including builder coverage. `pnpm lint` rejects duplicate object keys.
 `pnpm lint:fix` applies lint fixes and
 `pnpm pretty` formats the repository.
+
+The documentation chooser's “What would you like to display?” heading opens an
+optional guide based on data shape and visualization goal. The builder's “Get
+code” panel also offers “Share chart”. Chart data and configuration are encoded
+in the link fragment; opening a link creates a tab-local draft and leaves saved
+chart data intact. Large charts can still be exported with “Download”.
 
 ### Translations
 

@@ -69,7 +69,7 @@ const code = computed(
                 {{ translations.h3[store.lang] }}
             </h3>
         </div>
-        <p class="my-2 pl-10">{{ translations.p[store.lang] }}</p>
+        <p class="my-2 ps-10">{{ translations.p[store.lang] }}</p>
         <CodeParser
             language="typescript"
             :content="code"

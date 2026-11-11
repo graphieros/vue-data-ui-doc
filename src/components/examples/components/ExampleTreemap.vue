@@ -286,5 +286,11 @@ defineExpose({
 </script>
 
 <template>
-    <VueDataUi component="VueUiTreemap" :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueDataUi
+            component="VueUiTreemap"
+            :config="config"
+            :dataset="dataset"
+        />
+    </div>
 </template>

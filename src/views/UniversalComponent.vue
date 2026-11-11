@@ -62,16 +62,16 @@ const warning = ref({
 <template>
     <SideMenu @toggle="toggleMenu" />
     <div
-        :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`"
+        :class="`${isOpen ? 'ps-[348px] pe-[48px]' : 'ps-[59px] sm:ps-[109px] sm:pe-[59px]'} pt-9 overflow-x-hidden relative z-1`"
     >
         <BaseDocTitle name="VueDataUi" universal />
 
         <p
-            class="mx-auto max-w-[600px] text-md text-black dark:text-gray-500 mb-2 text-left px-4"
+            class="mx-auto max-w-[600px] text-md text-black dark:text-gray-500 mb-2 text-start px-4"
         >
             {{ translations.presentation[store.lang] }}
         </p>
-        <p class="mx-auto max-w-[600px] text-md mb-2 text-left px-4">
+        <p class="mx-auto max-w-[600px] text-md mb-2 text-start px-4">
             {{ translations.features[store.lang] }}
         </p>
 

@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import DocSnapper from "../DocSnapper.vue";
 import useMobile from "../../useMobile";
@@ -65,7 +67,7 @@ function copyToClipboard() {
     textarea.value = JSON.stringify(config.value);
     document.body.appendChild(textarea);
     textarea.select();
-    document.execCommand("copy");
+    copySelection();
     textarea.remove();
     store.copy();
 }
@@ -123,7 +125,7 @@ const tooltipCode = computed(
             @resetDefault="configState.reset()"
             @copyToClipboard="copyToClipboard"
         >
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <VueUiGraph
                     ref="chart"
                     :dataset="graphDataset"

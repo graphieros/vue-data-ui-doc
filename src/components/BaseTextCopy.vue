@@ -1,4 +1,6 @@
 <script setup>
+import { writeClipboardText, copySelection } from "../clipboard.js";
+
 import { ref } from "vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
@@ -33,7 +35,7 @@ async function copyToClipboard() {
         if (!text) throw new Error("Nothing to copy");
 
         if (navigator.clipboard?.writeText) {
-            await navigator.clipboard.writeText(text);
+            await writeClipboardText(text);
         } else {
             const ta = document.createElement("textarea");
             ta.value = text;
@@ -42,7 +44,7 @@ async function copyToClipboard() {
             ta.style.left = "-9999px";
             document.body.appendChild(ta);
             ta.select();
-            const ok = document.execCommand("copy");
+            const ok = copySelection();
             document.body.removeChild(ta);
             if (!ok) throw new Error("Copy command was blocked");
         }
@@ -73,6 +75,7 @@ function onLeave() {
             title="Copy"
             @mousedown.prevent
             @click.prevent="copyToClipboard"
+            data-copy-action="text"
         >
             <CopyIcon class="text-gray-400 dark:text-[#8A8A8A]" />
         </button>
@@ -114,6 +117,6 @@ function onLeave() {
 }
 
 .bct-content {
-    padding-right: 0.5rem;
+    padding-inline-end: 0.5rem;
 }
 </style>

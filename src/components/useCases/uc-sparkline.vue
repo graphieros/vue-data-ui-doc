@@ -34,7 +34,7 @@ const { SPARKLINE_SLOT_CONFIG, SPARKLINE_SLOT_DATASET } = useCase();
         </template>
     </UseCaseTitle>
 
-    <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
+    <div dir="ltr" class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
             component="VueUiSparkline"
             :dataset="SPARKLINE_SLOT_DATASET"
@@ -56,10 +56,7 @@ const { SPARKLINE_SLOT_CONFIG, SPARKLINE_SLOT_DATASET } = useCase();
                             Trend: {{ (trend * 100).toFixed(2) }}%
                         </div>
                     </div>
-                    <div
-                        class="w-full text-right text-app-blue"
-                        v-if="selected"
-                    >
+                    <div class="w-full text-end text-app-blue" v-if="selected">
                         <div>Period: {{ selected.period }}</div>
                         <div>Value: {{ selected.absoluteValue }}</div>
                     </div>

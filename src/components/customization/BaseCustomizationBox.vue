@@ -29,7 +29,7 @@ defineProps({
 </pre>
         </div>
 
-        <div class="w-full max-w-[600px]">
+        <div dir="ltr" class="w-full max-w-[600px]">
             <slot name="chart" />
         </div>
     </div>

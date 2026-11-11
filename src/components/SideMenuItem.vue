@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onBeforeUnmount } from "vue";
+import { computed, ref, onBeforeUnmount, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useMainStore } from "../stores";
 
@@ -59,7 +59,9 @@ function updateTooltipPosition() {
 
     tooltipPosition.value = {
         top: `${rect.top + rect.height / 2}px`,
-        left: `${rect.right + 12}px`,
+        left: `${store.lang === "ar" ? rect.left - 12 : rect.right + 12}px`,
+        transform:
+            store.lang === "ar" ? "translate(-100%, -50%)" : "translateY(-50%)",
     };
 }
 
@@ -79,6 +81,12 @@ function hideTooltip() {
     window.removeEventListener("resize", updateTooltipPosition);
 }
 
+watch(
+    () => store.lang,
+    () => {
+        if (isTooltipVisible.value) updateTooltipPosition();
+    },
+);
 onBeforeUnmount(hideTooltip);
 </script>
 
@@ -99,7 +107,7 @@ onBeforeUnmount(hideTooltip);
                 py-2
                 ${
                     isSelected(itsRoute)
-                        ? `shadow-[inset_0_1px_1px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_1px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)] ${isDarkMode ? 'border-r-2 border-app-blue' : ''}`
+                        ? `shadow-[inset_0_1px_1px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_1px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)] ${isDarkMode ? 'border-e-2 border-app-blue' : ''}`
                         : ''
                 }
                 ${
@@ -111,7 +119,7 @@ onBeforeUnmount(hideTooltip);
                 }
                 flex place-items-center transition-all
                 ${isDarkMode ? 'hover:bg-[#3A3A3A]' : 'hover:bg-gray-100'}
-                py-1 gap-1 pl-4
+                py-1 gap-1 ps-4
                 ${
                     isSelected(itsRoute)
                         ? 'text-app-blue dark:text-app-green hover:cursor-default font-bold'
@@ -131,27 +139,39 @@ onBeforeUnmount(hideTooltip);
             />
 
             <span
-                v-if="
-                    !['/docs#utility-functions', '/docs#composables'].includes(
+                class="inline-flex gap-1"
+                :dir="
+                    ['/docs#utility-functions', '/docs#composables'].includes(
                         itsRoute,
                     )
+                        ? 'auto'
+                        : 'ltr'
                 "
-                :class="`
+            >
+                <span
+                    v-if="
+                        ![
+                            '/docs#utility-functions',
+                            '/docs#composables',
+                        ].includes(itsRoute)
+                    "
+                    :class="`
                     text-gray-500
                     ${isDarkMode && isSelected(itsRoute) ? 'dark:text-app-blue-mid' : ''}
                 `"
-            >
-                VueUi
-            </span>
+                >
+                    VueUi
+                </span>
 
-            <span
-                :class="`
+                <span
+                    :class="`
                     text-gray-800
                     dark:text-gray-300
                     ${isSelected(itsRoute) ? 'font-inter-medium' : ''}
                 `"
-            >
-                {{ componentName }}
+                >
+                    {{ componentName }}
+                </span>
             </span>
         </button>
     </router-link>
@@ -169,7 +189,7 @@ onBeforeUnmount(hideTooltip);
 
             <span
                 aria-hidden="true"
-                class="absolute top-1/2 right-full -translate-y-1/2 border-[6px] border-transparent border-r-gray-100 dark:border-r-[#3A3A3A]"
+                class="absolute top-1/2 end-full -translate-y-1/2 border-[6px] border-transparent border-e-gray-100 dark:border-e-[#3A3A3A]"
             ></span>
         </div>
     </Teleport>
@@ -178,7 +198,7 @@ onBeforeUnmount(hideTooltip);
 <style>
 .is-item-selected {
     position: absolute;
-    right: 2px;
+    inset-inline-end: 2px;
     top: 0;
     height: 100%;
     width: 4px;

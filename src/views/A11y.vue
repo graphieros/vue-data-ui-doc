@@ -1,11 +1,12 @@
 <script setup>
+import { writeClipboardText, copySelection } from "../clipboard.js";
+
 import { ref, computed, shallowRef } from "vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import { useMainStore } from "../stores";
 import { useRouter } from "vue-router";
 import useMobile from "../useMobile";
 import BaseCard from "../components/BaseCard.vue";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
 import BaseArrow from "../components/Base/BaseArrow.vue";
 
@@ -32,7 +33,7 @@ async function copyToClipboard(text) {
 
     try {
         if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(String(text));
+            await writeClipboardText(String(text));
             return true;
         }
 
@@ -48,7 +49,7 @@ async function copyToClipboard(text) {
         textarea.focus();
         textarea.select();
 
-        const successful = document.execCommand("copy");
+        const successful = copySelection();
         document.body.removeChild(textarea);
 
         return successful;
@@ -86,7 +87,6 @@ function createAltTextAndCopy({ dataset: dst, config: cfg }) {
         endValue,
     });
     copyToClipboard(alt);
-    store.copy({ message: alt, type: "success" });
 }
 
 const snippets = computed(() => ({
@@ -225,10 +225,10 @@ function listenTo(isOpen) {
         <div class="flex flex-col gap-6">
             <BaseCard>
                 <article dir="auto">
-                    <h2 class="text-left font-inter-medium text-xl">
+                    <h2 class="text-start font-inter-medium text-xl">
                         {{ translations.a11y.hidden_table_title[store.lang] }}
                     </h2>
-                    <p class="text-left my-4 max-w-[80ch]">
+                    <p class="text-start my-4 max-w-[80ch]">
                         {{
                             translations.a11y.hidden_table_description[
                                 store.lang
@@ -239,28 +239,28 @@ function listenTo(isOpen) {
                 <CodeParser
                     language="javascript"
                     :content="snippets.hiddenTable"
-                    class="text-left"
+                    class="text-start"
                     @copy="store.copy"
                 />
             </BaseCard>
             <!-- COPY ALT EXAMPLE -->
             <BaseCard>
                 <article dir="auto">
-                    <h2 class="text-left font-inter-medium text-xl flex gap-2">
+                    <h2 class="text-start font-inter-medium text-xl flex gap-2">
                         <VueUiIcon
                             name="accessibility"
                             :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"
                         />
                         {{ translations.a11y.alt_menu[store.lang] }}
                     </h2>
-                    <p class="text-left my-4 max-w-[80ch]">
+                    <p class="text-start my-4 max-w-[80ch]">
                         {{
                             translations.a11y.copy_alt_text_description[
                                 store.lang
                             ]
                         }}
                     </p>
-                    <p class="text-left my-4 max-w-[80ch]">
+                    <p class="text-start my-4 max-w-[80ch]">
                         {{
                             translations.a11y.copy_alt_text_instructions[
                                 store.lang
@@ -271,6 +271,7 @@ function listenTo(isOpen) {
 
                 <div class="flex flex-col gap-4">
                     <BaseCard
+                        dir="ltr"
                         class="max-w-[500px] mx-auto relative"
                         type="light"
                     >
@@ -300,19 +301,19 @@ function listenTo(isOpen) {
                     <CodeParser
                         language="javascript"
                         :content="snippets.config"
-                        class="text-left"
+                        class="text-start"
                         @copy="store.copy"
                     />
                     <CodeParser
                         language="javascript"
                         :content="snippets.createAltTextAndCopy"
-                        class="text-left"
+                        class="text-start"
                         @copy="store.copy"
                     />
                     <CodeParser
                         language="javascript"
                         :content="snippets.replaceQueries"
-                        class="text-left"
+                        class="text-start"
                         @copy="store.copy"
                     />
                 </div>
@@ -321,14 +322,14 @@ function listenTo(isOpen) {
             <!-- CURSOR POINTER OR NOT EXAMPLE -->
             <BaseCard>
                 <article dir="auto">
-                    <h2 class="text-left font-inter-medium text-xl flex gap-2">
+                    <h2 class="text-start font-inter-medium text-xl flex gap-2">
                         <VueUiIcon
                             name="pointer"
                             :stroke="isDarkMode ? '#6A6A6A' : '#CCCCCC'"
                         />
                         {{ translations.a11y.cursor_pointer[store.lang] }}
                     </h2>
-                    <p class="text-left my-4 max-w-[80ch]">
+                    <p class="text-start my-4 max-w-[80ch]">
                         {{
                             translations.a11y.cursor_pointer_presentation[
                                 store.lang
@@ -339,13 +340,12 @@ function listenTo(isOpen) {
                 <CodeParser
                     language="javascript"
                     :content="snippets.config_pointer"
-                    class="text-left"
+                    class="text-start"
                     @copy="store.copy"
                 />
             </BaseCard>
         </div>
     </div>
-    <ConfirmCopy />
 </template>
 
 <style scoped>

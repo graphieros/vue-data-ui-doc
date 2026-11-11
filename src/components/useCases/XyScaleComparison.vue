@@ -84,11 +84,13 @@ const code = computed(
                 <span class="p-4 text-sm">{{ text[option] }}</span>
             </button>
         </div>
-        <VueUiXy
-            :key="`${scale}_${store.isDarkMode}`"
-            :dataset="dataset"
-            :config="config"
-        />
+        <div dir="ltr" style="height: inherit">
+            <VueUiXy
+                :key="`${scale}_${store.isDarkMode}`"
+                :dataset="dataset"
+                :config="config"
+            />
+        </div>
         <CodeParser
             :content="code"
             language="javascript"

@@ -12,21 +12,16 @@ import BackgroundPattern from "../components/BackgroundPattern.vue";
 import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import Fireworks from "../components/special/Fireworks.vue";
 import BaseNpmx from "../components/BaseNpmx.vue";
+import { writeStorage } from "../storage.js";
 import useMobile from "../useMobile.js";
 
 const configs = useConfig();
 
 const store = useMainStore();
 function changeTheme() {
-    if (localStorage.theme === "dark") {
-        localStorage.theme = "light";
-        document.documentElement.classList.remove("dark");
-        store.isDarkMode = false;
-    } else {
-        localStorage.theme = "dark";
-        document.documentElement.classList.add("dark");
-        store.isDarkMode = true;
-    }
+    store.isDarkMode = !store.isDarkMode;
+    document.documentElement.classList.toggle("dark", store.isDarkMode);
+    writeStorage("theme", store.isDarkMode ? "dark" : "light");
 }
 
 const { isMobile } = useMobile();
@@ -627,25 +622,27 @@ onBeforeUnmount(() => {
 
     <div
         ref="resizeContainer"
-        class="absolute top-0 left-0"
+        class="absolute top-0 start-0"
         style="width: 100%; height: 100%; overflow: hidden"
         @mousemove="setClientPosition($event)"
     >
         <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
 
-        <VueUiCarouselTable
-            :dataset="carouselDataset"
-            :config="carouselConfig"
-            class="hidden sm:block mt-14 pointer-events-none"
-        >
-            <template #td="{ td }">
-                <div
-                    class="flex flex-row place-items-center gap-4 justify-center"
-                >
-                    <CheckIcon class="text-app-green" /> {{ td }}
-                </div>
-            </template>
-        </VueUiCarouselTable>
+        <div dir="ltr">
+            <VueUiCarouselTable
+                :dataset="carouselDataset"
+                :config="carouselConfig"
+                class="hidden sm:block mt-14 pointer-events-none"
+            >
+                <template #td="{ td }">
+                    <div
+                        class="flex flex-row place-items-center gap-4 justify-center"
+                    >
+                        <CheckIcon class="text-app-green" /> {{ td }}
+                    </div>
+                </template>
+            </VueUiCarouselTable>
+        </div>
 
         <div
             :class="`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col ${isNarrow ? '' : 'lg:flex-row'} justify-center place-items-center sm:gap-[80px] w-full max-w-[1450px]`"
@@ -672,7 +669,7 @@ onBeforeUnmount(() => {
                     :title="componentsLen + ' components'"
                 >
                     {{ componentTranslation[store.lang] }}:
-                    <div class="h-[22px]">
+                    <div dir="ltr" class="h-[22px]">
                         <VueUiDigits
                             :dataset="componentsLen"
                             :config="{
@@ -703,7 +700,11 @@ onBeforeUnmount(() => {
                             <span style="letter-spacing: 1px">
                                 {{ translations.github[store.lang] }}
                             </span>
-                            <div class="w-[25px]" v-if="store.isFetching">
+                            <div
+                                dir="ltr"
+                                class="w-[25px]"
+                                v-if="store.isFetching"
+                            >
                                 <VueUiMiniLoader
                                     :config="{
                                         onion: {
@@ -718,6 +719,7 @@ onBeforeUnmount(() => {
                                 />
                             </div>
                             <div
+                                dir="ltr"
                                 class="flex flex-row gap-2 place-items-center"
                                 v-if="store.stars && !store.isFetching"
                             >
@@ -729,7 +731,7 @@ onBeforeUnmount(() => {
                                     <svg
                                         viewBox="0 0 20 20"
                                         height="16"
-                                        class="absolute top-[6px] left-1"
+                                        class="absolute top-[6px] start-1"
                                         v-if="specialOccasion"
                                     >
                                         <path
@@ -802,7 +804,7 @@ onBeforeUnmount(() => {
             >
                 <Suspense>
                     <template #default>
-                        <div>
+                        <div dir="ltr">
                             <VueUiDonut
                                 :dataset="datasetDonutMenu"
                                 :config="configDonutMenu"
@@ -852,11 +854,11 @@ onBeforeUnmount(() => {
                                         :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.patternIndex === 2 ? 'center' : plot.textAlign};`"
                                         :class="`
                       px-2 cursor-pointer
-                      ${plot.patternIndex === 0 ? 'mt-[50px] -ml-2' : ''}
-                      ${plot.patternIndex === 1 ? '-mt-[50px] -ml-2' : ''}
+                      ${plot.patternIndex === 0 ? 'mt-[50px] -ms-2' : ''}
+                      ${plot.patternIndex === 1 ? '-mt-[50px] -ms-2' : ''}
                       ${plot.patternIndex === 2 ? '-mt-[64px]' : ''}
-                      ${plot.patternIndex === 3 ? '-mt-[50px] -mr-2' : ''}
-                      ${plot.patternIndex === 4 ? 'mt-[32px] -mr-2 leading-3' : ''}
+                      ${plot.patternIndex === 3 ? '-mt-[50px] -me-2' : ''}
+                      ${plot.patternIndex === 4 ? 'mt-[32px] -me-2 leading-3' : ''}
                     `"
                                     >
                                         <div
@@ -880,7 +882,7 @@ onBeforeUnmount(() => {
                                         data-cy="app-logo"
                                         src="../assets/logo3.png"
                                         alt="vue data ui logo"
-                                        class="h-[48px] mx-auto logo-shape mt-2 ml-1"
+                                        class="h-[48px] mx-auto logo-shape mt-2 ms-1"
                                     />
                                 </div>
                             </div>
@@ -909,7 +911,7 @@ onBeforeUnmount(() => {
                         <span style="letter-spacing: 1px">
                             {{ translations.github[store.lang] }}
                         </span>
-                        <div class="w-[25px]" v-if="store.isFetching">
+                        <div dir="ltr" class="w-[25px]" v-if="store.isFetching">
                             <VueUiMiniLoader
                                 :config="{
                                     onion: {
@@ -924,6 +926,7 @@ onBeforeUnmount(() => {
                             />
                         </div>
                         <div
+                            dir="ltr"
                             class="flex flex-row gap-2 place-items-center"
                             v-if="store.stars && !store.isFetching"
                         >
@@ -935,7 +938,7 @@ onBeforeUnmount(() => {
                                 <svg
                                     viewBox="0 0 20 20"
                                     height="16"
-                                    class="absolute top-[6px] left-1"
+                                    class="absolute top-[6px] start-1"
                                     v-if="specialOccasion"
                                 >
                                     <path
@@ -964,7 +967,7 @@ onBeforeUnmount(() => {
         <button
             @click="changeTheme"
             id="themeToggle"
-            class="flex place-items-center place-content-end w-full py-1 pr-4 text-center absolute top-3 right-2"
+            class="flex place-items-center place-content-end w-full py-1 pe-4 text-center absolute top-3 end-2"
         >
             <BrightnessUpIcon v-if="isDarkMode" class="text-chalk" />
             <MoonIcon v-else class="text-board-2" />
@@ -973,7 +976,7 @@ onBeforeUnmount(() => {
         <svg
             :viewBox="viewBox"
             width="100%"
-            class="bg-transparent absolute top-0 left-0 user-position pointer-events-none"
+            class="bg-transparent absolute top-0 start-0 user-position pointer-events-none"
         >
             <line
                 :x1="clientPosition.x"
@@ -1043,6 +1046,7 @@ onBeforeUnmount(() => {
                 style="overflow: visible"
             >
                 <div
+                    dir="ltr"
                     style="transform: rotate(-90deg); height: 16px; width: 46px"
                 >
                     <VueUiDigits
@@ -1065,16 +1069,18 @@ onBeforeUnmount(() => {
                 height="16"
                 style="overflow: visible"
             >
-                <VueUiDigits
-                    :dataset="Number(clientPosition.x.toFixed(0))"
-                    :config="{
-                        ...digitConfigStars,
-                        digits: {
-                            color: isDarkMode ? '#616161' : '#8A8A8A',
-                            skeletonColor: 'transparent',
-                        },
-                    }"
-                />
+                <div dir="ltr" style="height: 16px; width: 46px">
+                    <VueUiDigits
+                        :dataset="Number(clientPosition.x.toFixed(0))"
+                        :config="{
+                            ...digitConfigStars,
+                            digits: {
+                                color: isDarkMode ? '#616161' : '#8A8A8A',
+                                skeletonColor: 'transparent',
+                            },
+                        }"
+                    />
+                </div>
             </foreignObject>
 
             <circle

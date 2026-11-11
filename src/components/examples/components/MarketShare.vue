@@ -124,5 +124,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiRings :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiRings :config="config" :dataset="dataset" />
+    </div>
 </template>

@@ -1,12 +1,8 @@
 <script setup>
-import {
-    ref,
-    computed,
-    onMounted,
-    defineAsyncComponent,
-    watch,
-    provide,
-} from "vue";
+import { copySelection } from "../clipboard.js";
+
+import { ref, computed, onMounted, watch, provide } from "vue";
+import { docComponents } from "../components/docs/registry.js";
 import SideMenu from "../components/SideMenu.vue";
 import { useRouter } from "vue-router";
 import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui/utils";
@@ -18,7 +14,6 @@ import {
 import { useMainStore } from "../stores";
 import Schema from "../schema/Schema.vue";
 import { useConfig } from "../assets/useConfig";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseMenuCategory from "../components/BaseMenuCategory.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import UserOptionsMenu from "../components/UserOptionsMenu.vue";
@@ -42,222 +37,80 @@ import {
     getDocHeaderName,
 } from "../performance/docHeader.js";
 
-const DocVueUiXy = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiXy.vue"),
-);
-const DocVueUiTable = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiTable.vue"),
-);
-const DocVueUiDonut = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiDonut.vue"),
-);
-const DocVueUiWaffle = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiWaffle.vue"),
-);
-const DocVueUiRadar = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiRadar.vue"),
-);
-const DocVueUiQuadrant = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiQuadrant.vue"),
-);
-const DocVueUiGauge = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiGauge.vue"),
-);
-const DocVueUiChestnut = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiChestnut.vue"),
-);
-const DocVueUiOnion = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiOnion.vue"),
-);
-const DocVueUiHorizontalBar = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiHorizontalBar.vue"),
-);
-const DocVueUiRating = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiRating.vue"),
-);
-const DocVueUiSkeleton = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSkeleton.vue"),
-);
-const DocVueUiSparkline = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSparkline.vue"),
-);
-const DocVueUiHeatmap = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiHeatmap.vue"),
-);
-const DocVueUiScatter = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiScatter.vue"),
-);
-const DocVueUiCandlestick = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiCandlestick.vue"),
-);
-const DocVueUiAgePyramid = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiAgePyramid.vue"),
-);
-const DocVueUiSparkbar = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSparkbar.vue"),
-);
-const DocVueUiDashboard = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiDashboard.vue"),
-);
-const DocVueUiAnnotator = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiAnnotator.vue"),
-);
-const DocVueUiSmiley = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSmiley.vue"),
-);
-const DocVueUiRelationCircle = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiRelationCircle.vue"),
-);
-const DocVueUiThermometer = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiThermometer.vue"),
-);
-const DocVueUiSparkStackbar = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSparkStackbar.vue"),
-);
-const DocVueUiSparkHistogram = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSparkHistogram.vue"),
-);
-const DocVueUiRings = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiRings.vue"),
-);
-const DocVueUiWheel = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiWheel.vue"),
-);
-const DocVueUiTiremarks = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiTiremarks.vue"),
-);
-const DocVueUiDonutEvolution = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiDonutEvolution.vue"),
-);
-const DocVueUiIcon = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiIcon.vue"),
-);
-const DocVueUiMoodRadar = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiMoodRadar.vue"),
-);
-const DocVueUi3dBar = defineAsyncComponent(
-    () => import("../components/docs/DocVueUi3dBar.vue"),
-);
-const DocVueUiDigits = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiDigits.vue"),
-);
-const DocVueUiMolecule = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiMolecule.vue"),
-);
-const DocVueUiTableSparkline = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiTableSparkline.vue"),
-);
-const DocVueUiMiniLoader = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiMiniLoader.vue"),
-);
-const DocVueUiNestedDonuts = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiNestedDonuts.vue"),
-);
-const DocVueUiSparkgauge = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSparkgauge.vue"),
-);
-const DocVueUiGalaxy = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiGalaxy.vue"),
-);
-const DocVueUiKpi = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiKpi.vue"),
-);
-const DocVueUiTreemap = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiTreemap.vue"),
-);
-const DocVueUiTableHeatmap = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiTableHeatmap.vue"),
-);
-const DocVueUiAccordion = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiAccordion.vue"),
-);
-const DocVueUiQuickChart = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiQuickChart.vue"),
-);
-const DocVueUiCursor = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiCursor.vue"),
-);
-const DocVueUiSparkTrend = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiSparkTrend.vue"),
-);
-const DocVueUiStripPlot = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiStripPlot.vue"),
-);
-const DocVueUiDumbbell = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiDumbbell.vue"),
-);
-const DocsVueUiWordCloud = defineAsyncComponent(
-    () => import("../components/docs/DocsVueUiWordCloud.vue"),
-);
-const DocVueUiXyCanvas = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiXyCanvas.vue"),
-);
-const DocVueUiFlow = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiFlow.vue"),
-);
-const DocVueUiParallelCoordinatePlot = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiParallelCoordinatePlot.vue"),
-);
-const DocVueUiTimer = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiTimer.vue"),
-);
-const DocVueUiCarouselTable = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiCarouselTable.vue"),
-);
-const DocVueUiGizmo = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiGizmo.vue"),
-);
-const DocVueUiStackbar = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiStackbar.vue"),
-);
-const DocVueUiStackline = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiStackline.vue"),
-);
-const DocVueUiBullet = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiBullet.vue"),
-);
-const DocVueUiFunnel = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiFunnel.vue"),
-);
-const DocVueUiHistoryPlot = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiHistoryPlot.vue"),
-);
-const DocUtilityFunctions = defineAsyncComponent(
-    () => import("../components/docs/DocUtilityFunctions.vue"),
-);
-const DocComposabled = defineAsyncComponent(
-    () => import("../components/docs/DocComposables.vue"),
-);
-const DocVueUiCirclePack = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiCirclePack.vue"),
-);
-const DocVueUiWorld = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiWorld.vue"),
-);
-const DocVueUiRidgeline = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiRidgeline.vue"),
-);
-const DocVueUiChord = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiChord.vue"),
-);
-const DocVueUiGraph = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiGraph.vue"),
-);
-const DocVueUiDag = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiDag.vue"),
-);
-const DocVueUiGeo = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiGeo.vue"),
-);
-const DocVueUiBump = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiBump.vue"),
-);
-const DocVueUiHill = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiHill.vue"),
-);
-const DocVueUiLabel = defineAsyncComponent(
-    () => import("../components/docs/DocVueUiLabel.vue"),
-);
+const {
+    DocVueUiXy,
+    DocVueUiTable,
+    DocVueUiDonut,
+    DocVueUiWaffle,
+    DocVueUiRadar,
+    DocVueUiQuadrant,
+    DocVueUiGauge,
+    DocVueUiChestnut,
+    DocVueUiOnion,
+    DocVueUiHorizontalBar,
+    DocVueUiRating,
+    DocVueUiSkeleton,
+    DocVueUiSparkline,
+    DocVueUiHeatmap,
+    DocVueUiScatter,
+    DocVueUiCandlestick,
+    DocVueUiAgePyramid,
+    DocVueUiSparkbar,
+    DocVueUiDashboard,
+    DocVueUiAnnotator,
+    DocVueUiSmiley,
+    DocVueUiRelationCircle,
+    DocVueUiThermometer,
+    DocVueUiSparkStackbar,
+    DocVueUiSparkHistogram,
+    DocVueUiRings,
+    DocVueUiWheel,
+    DocVueUiTiremarks,
+    DocVueUiDonutEvolution,
+    DocVueUiIcon,
+    DocVueUiMoodRadar,
+    DocVueUi3dBar,
+    DocVueUiDigits,
+    DocVueUiMolecule,
+    DocVueUiTableSparkline,
+    DocVueUiMiniLoader,
+    DocVueUiNestedDonuts,
+    DocVueUiSparkgauge,
+    DocVueUiGalaxy,
+    DocVueUiKpi,
+    DocVueUiTreemap,
+    DocVueUiTableHeatmap,
+    DocVueUiAccordion,
+    DocVueUiQuickChart,
+    DocVueUiCursor,
+    DocVueUiSparkTrend,
+    DocVueUiStripPlot,
+    DocVueUiDumbbell,
+    DocsVueUiWordCloud,
+    DocVueUiXyCanvas,
+    DocVueUiFlow,
+    DocVueUiParallelCoordinatePlot,
+    DocVueUiTimer,
+    DocVueUiCarouselTable,
+    DocVueUiGizmo,
+    DocVueUiStackbar,
+    DocVueUiStackline,
+    DocVueUiBullet,
+    DocVueUiFunnel,
+    DocVueUiHistoryPlot,
+    DocUtilityFunctions,
+    DocComposabled,
+    DocVueUiCirclePack,
+    DocVueUiWorld,
+    DocVueUiRidgeline,
+    DocVueUiChord,
+    DocVueUiGraph,
+    DocVueUiDag,
+    DocVueUiGeo,
+    DocVueUiBump,
+    DocVueUiHill,
+    DocVueUiLabel,
+} = docComponents;
 
 const mainConfig = useConfig();
 
@@ -310,7 +163,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -329,7 +182,7 @@ function copyContent() {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -526,11 +379,10 @@ const selectedConfig = computed(() => {
     <BaseCrumbs :tree="docsCrumbs" class="z-20" />
 
     <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
-    <ConfirmCopy />
     <SideMenu @toggle="toggleMenu" />
 
     <div
-        :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1 min-h-[3000px]`"
+        :class="`${isOpen ? 'ps-[348px] pe-[48px]' : 'ps-[59px] sm:ps-[109px] sm:pe-[59px]'} pt-9 overflow-x-hidden relative z-1 min-h-[3000px]`"
     >
         <div
             :class="`docs-content relative px-2 pt-6 sm:pt-0 ${isOpen ? `xl:w-5/6 hidden sm:block` : ''}`"
@@ -1035,7 +887,7 @@ const selectedConfig = computed(() => {
                     class="flex flex-col sm:flex-row place-items-center gap-2 justify-center w-full mx-auto"
                 >
                     <div
-                        class="font-inter-medium flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6 sm:pr-20 sm:ml-20"
+                        class="font-inter-medium flex flex-col gap-2 place-items-center place-content-center border-e border-gray-500 pe-6 sm:pe-20 sm:ms-20"
                         style="letter-spacing: -1px"
                     >
                         <div
@@ -1062,7 +914,7 @@ const selectedConfig = computed(() => {
                         <div class="mx-auto rounded-md py-1 px-6 sm:px-12">
                             <pre class="sm:-mt-0.5">
     <code class="text-gray-500 text-md relative">
-        <VueUiIcon :name="useIconMap(`VueUi${currentShowcase}`)" class="absolute top-1/2 animate-pulse sm:-left-14" :size="32" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
+        <VueUiIcon :name="useIconMap(`VueUi${currentShowcase}`)" class="absolute top-1/2 animate-pulse sm:-start-14" :size="32" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
     &lt;<span class="text-app-green-darker dark:text-app-green">VueUi{{ currentShowcase }}</span>
         <span class="text-app-blue-dark-mid dark:text-app-blue">:dataset</span>
         <span class="text-app-blue-dark-mid dark:text-app-blue">:config</span>
@@ -1094,7 +946,7 @@ const selectedConfig = computed(() => {
 
                 <div
                     dir="auto"
-                    class="w-full px-2 sm:px-0 max-w-[72ch] text-left mx-auto mb-12 mt-12 text-xs sm:text-lg"
+                    class="w-full px-2 sm:px-0 max-w-[72ch] text-start mx-auto mb-12 mt-12 text-xs sm:text-lg"
                 >
                     {{ translations.docs.p1[store.lang] }}
                 </div>
@@ -1107,7 +959,7 @@ const selectedConfig = computed(() => {
                     <div
                         class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center p-4 rounded-lg"
                     >
-                        <div class="w-full text-left text-lg">
+                        <div class="w-full text-start text-lg">
                             {{ translations.overview.title[store.lang] }}
                         </div>
                         <div
@@ -1137,7 +989,7 @@ const selectedConfig = computed(() => {
                                     <template #selected="{ selectedOption }">
                                         <div
                                             v-if="selectedOption"
-                                            class="text-left flex flex-row gap-2 place-items-center"
+                                            class="text-start flex flex-row gap-2 place-items-center"
                                         >
                                             <div
                                                 class="h-[24px] w-[24px] flex place-items-center"
@@ -1169,7 +1021,7 @@ const selectedConfig = computed(() => {
                                         #option="{ option, selected, current }"
                                     >
                                         <div
-                                            class="text-left flex flex-row gap-2 place-items-center"
+                                            class="text-start flex flex-row gap-2 place-items-center"
                                         >
                                             <div
                                                 class="h-[20px] w-[20px] flex place-items-center"
@@ -1264,7 +1116,7 @@ const selectedConfig = computed(() => {
                                     <template #selected="{ selectedOption }">
                                         <div
                                             v-if="selectedOption"
-                                            class="text-left flex flex-row gap-2 place-items-center"
+                                            class="text-start flex flex-row gap-2 place-items-center"
                                         >
                                             <div
                                                 class="h-[24px] w-[24px] flex place-items-center"
@@ -1296,7 +1148,7 @@ const selectedConfig = computed(() => {
                                         #option="{ option, selected, current }"
                                     >
                                         <div
-                                            class="text-left flex flex-row gap-2 place-items-center"
+                                            class="text-start flex flex-row gap-2 place-items-center"
                                         >
                                             <div
                                                 class="h-[20px] w-[20px] flex place-items-center"
@@ -1425,7 +1277,7 @@ const selectedConfig = computed(() => {
                                     <template #selected="{ selectedOption }">
                                         <div
                                             v-if="selectedOption"
-                                            class="text-left flex flex-row gap-2 place-items-center"
+                                            class="text-start flex flex-row gap-2 place-items-center"
                                         >
                                             <div
                                                 class="h-[24px] w-[24px] flex place-items-center"
@@ -1457,7 +1309,7 @@ const selectedConfig = computed(() => {
                                         #option="{ option, selected, current }"
                                     >
                                         <div
-                                            class="text-left flex flex-row gap-2 place-items-center"
+                                            class="text-start flex flex-row gap-2 place-items-center"
                                         >
                                             <div
                                                 class="h-[20px] w-[20px] flex place-items-center"

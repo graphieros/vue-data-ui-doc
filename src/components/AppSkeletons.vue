@@ -301,6 +301,7 @@ const skeletonsDM = [
         v-if="isDarkMode"
     >
         <div
+            dir="ltr"
             v-for="skeleton in skeletonsDM"
             :class="`max-w-1/3 skeleton ${skeleton.type === 'radar' ? 'radar' : ''}`"
         >
@@ -312,6 +313,7 @@ const skeletonsDM = [
         v-else
     >
         <div
+            dir="ltr"
             v-for="skeleton in skeletons"
             :class="`max-w-1/3 skeleton ${skeleton.type === 'radar' ? 'radar' : ''}`"
         >

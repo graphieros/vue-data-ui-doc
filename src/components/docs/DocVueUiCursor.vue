@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiCursorConfigFields from "./configuration/VueUiCursorConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -82,7 +84,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -99,7 +101,7 @@ const { configCode, showAllConfig } = useConfigCode();
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <VueDataUi component="VueUiCursor" v-if="isActive" :config="config" />
         <div style="min-height: 100vh">
             <BaseDocTitle name="VueUiCursor" />
@@ -126,7 +128,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 </button>
             </div>
             <div
-                :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`"
+                :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] start-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`"
             >
                 <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
                     <button

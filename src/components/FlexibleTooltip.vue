@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import { useMainStore } from "../stores";
 
 const props = defineProps({
     content: {
@@ -38,15 +39,24 @@ const props = defineProps({
 
 const emit = defineEmits(["click"]);
 
+const store = useMainStore();
+const resolvedPosition = computed(() => {
+    if (["inline-end", "right"].includes(props.position))
+        return store.lang === "ar" ? "left" : "right";
+    if (["inline-start", "left"].includes(props.position))
+        return store.lang === "ar" ? "right" : "left";
+    return props.position;
+});
+
 const tpClass = computed(() => {
-    if (props.position === "top") {
+    if (resolvedPosition.value === "top") {
         return `opacity-0 ${props.width} text-[#2A2A2A] bg-gray-100 dark:bg-[#3A3A3A] dark:text-gray-300 text-center text-xs py-2 absolute z-10 ${props.opacity} transition-opacity ${props.delay} bottom-[calc(100%_+6px)] left-1/2 -translate-x-1/2 px-3 pointer-events-none`;
-    } else if (props.position === "bottom" || !props.position) {
+    } else if (resolvedPosition.value === "bottom" || !resolvedPosition.value) {
         return `opacity-0 ${props.width} text-[#2A2A2A] bg-gray-100 ${props.alwaysBlue ? "dark:bg-app-blue dark:text-black" : "dark:bg-[#3A3A3A] dark:text-gray-300"} text-center text-xs py-2 absolute z-10 ${props.opacity} transition-opacity ${props.delay} top-full left-1/2 -translate-x-1/2 px-3 pointer-events-none mt-2`;
-    } else if (props.position === "right") {
+    } else if (resolvedPosition.value === "right") {
         return `opacity-0 ${props.width} text-[#2A2A2A] bg-gray-100 dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs py-2 absolute z-10 ${props.opacity} transition-opacity ${props.delay} top-1/2 left-full -translate-y-1/2 pointer-events-none ml-2`;
-    } else if (props.position === "left") {
-        return `opacity-0 ${props.width} text-[#2A2A2A] bg-gray-100 dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs py-2 absolute z-10 ${props.opacity} transition-opacity ${props.delay} top-1/2 right-full -translate-y-1/2 pointer-events-none ml-2`;
+    } else if (resolvedPosition.value === "left") {
+        return `opacity-0 ${props.width} text-[#2A2A2A] bg-gray-100 dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs py-2 absolute z-10 ${props.opacity} transition-opacity ${props.delay} top-1/2 right-full -translate-y-1/2 pointer-events-none mr-2`;
     }
 });
 </script>
@@ -55,6 +65,7 @@ const tpClass = computed(() => {
     <div :class="`group cursor-pointer relative inline-block overflow-visible`">
         <slot />
         <div
+            data-testid="flexible-tooltip"
             :class="
                 tpClass +
                 ' hidden group-hover:block sm:block shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] rounded-lg'
@@ -79,8 +90,8 @@ const tpClass = computed(() => {
                 </div>
             </div>
             <svg
-                v-if="position === 'top'"
-                :class="`absolute text-gray-100 ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 w-full left-0 top-full`"
+                v-if="resolvedPosition === 'top'"
+                :class="`absolute text-gray-100 ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 w-full start-0 top-full`"
                 x="0px"
                 y="0px"
                 viewBox="0 0 255 255"
@@ -89,8 +100,8 @@ const tpClass = computed(() => {
                 <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
             </svg>
             <svg
-                v-if="position === 'bottom'"
-                :class="`absolute text-gray-100 ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 w-full left-0 bottom-full`"
+                v-if="resolvedPosition === 'bottom'"
+                :class="`absolute text-gray-100 ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 w-full start-0 bottom-full`"
                 x="0px"
                 y="0px"
                 viewBox="0 0 255 255"
@@ -102,7 +113,7 @@ const tpClass = computed(() => {
                 />
             </svg>
             <svg
-                v-if="position === 'right'"
+                v-if="resolvedPosition === 'right'"
                 :class="`absolute text-gray-100 ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 top-1/2 -translate-y-1/2 -left-2 bottom-full`"
                 x="0px"
                 y="0px"
@@ -112,7 +123,7 @@ const tpClass = computed(() => {
                 <polygon class="fill-current" points="10,0 3,5 10,10" />
             </svg>
             <svg
-                v-if="position === 'left'"
+                v-if="resolvedPosition === 'left'"
                 :class="`absolute text-gray-100 ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 top-1/2 -translate-y-1/2 -right-2 bottom-full`"
                 x="0px"
                 y="0px"

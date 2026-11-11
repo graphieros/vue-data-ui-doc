@@ -32,7 +32,7 @@ function toTop() {
         <button
             @click="toTop"
             v-if="isScrolled"
-            class="hover:-translate-y-[2px] z-50 fixed bottom-20 right-2 rounded-full p-2 flex place-items-center justify-center topButton border border-app-blue dark:border-app-green hover:bg-[#5f8aee20] hover:dark:bg-[#42d39220] transition-all hover:shadow-md"
+            class="hover:-translate-y-[2px] z-50 fixed bottom-20 end-2 rounded-full p-2 flex place-items-center justify-center topButton border border-app-blue dark:border-app-green hover:bg-[#5f8aee20] hover:dark:bg-[#42d39220] transition-all hover:shadow-md"
         >
             <VueUiIcon
                 name="arrowTop"

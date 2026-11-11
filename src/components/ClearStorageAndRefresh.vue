@@ -3,6 +3,7 @@ import { computed, nextTick } from "vue";
 import { RefreshDotIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import { useMakerStore } from "../stores/maker";
+import { readStorage, removeStorage } from "../storage.js";
 
 const props = defineProps({
     keyConfig: String,
@@ -17,17 +18,17 @@ const makerTranslations = computed(() => {
 });
 
 const isStored = computed(() => {
-    return !!localStorage[props.keyConfig] || !!localStorage[props.keyDataset];
+    return !!readStorage(props.keyConfig) || !!readStorage(props.keyDataset);
 });
 
 function nuke() {
-    if (!!localStorage[props.keyConfig]) {
-        localStorage.removeItem(props.keyConfig);
+    if (readStorage(props.keyConfig)) {
+        removeStorage(props.keyConfig);
     }
-    if (!!localStorage[props.keyDataset]) {
-        localStorage.removeItem(props.keyDataset);
+    if (readStorage(props.keyDataset)) {
+        removeStorage(props.keyDataset);
         if (props.keyDataset === "radarDataset") {
-            localStorage.removeItem("radarCategories");
+            removeStorage("radarCategories");
         }
     }
     nextTick(() => location.reload());

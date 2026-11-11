@@ -1,4 +1,6 @@
 import { markRaw } from "vue";
+import { showLegacyCopyFeedback } from "../clipboard.js";
+import { applyDocumentLanguage } from "../i18n/document-direction.js";
 import { loadAttributeTranslations } from "../i18n/attribute-translations.js";
 import {
     loadMainTranslations,
@@ -153,8 +155,11 @@ export const useMainStore = defineStore("main", {
             if (this.languageRequest !== request) return;
             applyMainTranslations(this.translations, translations);
             this.lang = language;
+            if (typeof document !== "undefined") {
+                applyDocumentLanguage(document, language);
+            }
         },
-        copy({ message, type } = { message: "", type: "success" }) {
+        copy({ message, type = "success", target } = {}) {
             if (message) {
                 this.isMessage = true;
                 this.messages.push({
@@ -164,10 +169,7 @@ export const useMainStore = defineStore("main", {
                     type,
                 });
             } else {
-                this.isCopy = true;
-                setTimeout(() => {
-                    this.isCopy = false;
-                }, 1000);
+                showLegacyCopyFeedback(target);
             }
         },
         deleteMessage(id) {

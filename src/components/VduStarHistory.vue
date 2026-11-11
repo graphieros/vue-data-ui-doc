@@ -422,9 +422,10 @@ function firstLast(svg) {
 
 <template>
     <div
+        dir="ltr"
         :class="`p-4 bg-[#FFFFFF] dark:bg-[#1A1A1A] rounded-md mb-4 relative ${isDarkMode ? 'dark-mode' : 'light-mode'}`"
     >
-        <div class="absolute top-2 right-2 z-10 flex flex-row">
+        <div class="absolute top-2 end-2 z-10 flex flex-row">
             <button
                 @click="toggleZoom"
                 class="bg-[#FFFFFF] dark:bg-[#1A1A1A] text-[#3A3A3A] dark:text-[#8A8A8A] p-2 hover:bg-[#E1E5E8] dark:hover:bg-[#2A2A2A] transition-colors rounded w-10 flex align-center items-center justify-center"

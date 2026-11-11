@@ -47,7 +47,7 @@ const vduIsOnNpmx = shallowRef({
     <div class="mx-auto w-full min-w-0 max-w-[1000px] px-4 sm:px-20" dir="auto">
         <a href="https://npmx.dev/" target="_blank">
             <div
-                class="mt-8 w-full max-w-[800px] text-sm sm:text-[18px] sm:pl-4 mb-3 sm:mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-3 sm:gap-4 items-start sm:items-center"
+                class="mt-8 w-full max-w-[800px] text-sm sm:text-[18px] sm:ps-4 mb-3 sm:mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-3 sm:gap-4 items-start sm:items-center"
             >
                 <div class="w-[24px] h-[24px] shrink-0">
                     <VueUiIcon

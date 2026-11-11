@@ -18,7 +18,7 @@ const emit = defineEmits(["click"]);
         @click="emit('click')"
     >
         <svg
-            class="absolute top-0.5 right-0.5"
+            class="absolute top-0.5 end-0.5"
             v-if="selected"
             viewBox="0 0 10 10"
             height="8"

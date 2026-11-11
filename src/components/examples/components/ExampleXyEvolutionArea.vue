@@ -321,31 +321,33 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiXy :config="config" :dataset="dataset">
-        <template #bar-gradient="{ series, positiveId, negativeId }">
-            <linearGradient :id="positiveId" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" :stop-color="series.color" />
-                <stop
-                    offset="100%"
-                    :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'"
-                    stop-opacity="0"
-                />
-            </linearGradient>
-            <linearGradient :id="negativeId" x1="0" x2="0" y1="0" y2="1">
-                <stop
-                    offset="0%"
-                    :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'"
-                    stop-opacity="0"
-                />
-                <stop offset="100%" :stop-color="series.color" />
-            </linearGradient>
-        </template>
+    <div dir="ltr" style="height: inherit">
+        <VueUiXy :config="config" :dataset="dataset">
+            <template #bar-gradient="{ series, positiveId, negativeId }">
+                <linearGradient :id="positiveId" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" :stop-color="series.color" />
+                    <stop
+                        offset="100%"
+                        :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'"
+                        stop-opacity="0"
+                    />
+                </linearGradient>
+                <linearGradient :id="negativeId" x1="0" x2="0" y1="0" y2="1">
+                    <stop
+                        offset="0%"
+                        :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'"
+                        stop-opacity="0"
+                    />
+                    <stop offset="100%" :stop-color="series.color" />
+                </linearGradient>
+            </template>
 
-        <!-- <template #area-gradient="{ series, id }">
+            <!-- <template #area-gradient="{ series, id }">
             <linearGradient :id="id" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%" :stop-color="series.color" />
                 <stop offset="100%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0" />
             </linearGradient>
         </template> -->
-    </VueUiXy>
+        </VueUiXy>
+    </div>
 </template>

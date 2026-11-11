@@ -195,7 +195,7 @@ const configB = computed(() => {
     <div
         class="flex gap-2 flex-wrap align-center justify-around rounded p-2 pt-4 mb-4 bg-white dark:bg-[#2A2A2A]"
     >
-        <div class="w-full max-w-[400px]">
+        <div dir="ltr" class="w-full max-w-[400px]">
             <VueUiXy
                 :dataset="datasets.chartA"
                 :config="configA"
@@ -213,7 +213,7 @@ const configB = computed(() => {
                 </template>
             </VueUiXy>
         </div>
-        <div class="w-full max-w-[400px]">
+        <div dir="ltr" class="w-full max-w-[400px]">
             <VueUiXy
                 :dataset="datasets.chartB"
                 :config="configB"

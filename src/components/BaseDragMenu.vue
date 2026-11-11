@@ -60,16 +60,16 @@ onUnmounted(() => {
 <template>
     <div
         ref="draggableElement"
-        class="z-10 hidden sm:block fixed left-0 bg-gradient-to-br from-app-blue-light to-app-blue text-white p-4 rounded-r-[55px] shadow-md cursor-move select-none py-6"
+        class="z-10 hidden sm:block fixed start-0 bg-gradient-to-br from-app-blue-light to-app-blue text-white p-4 rounded-e-[55px] shadow-md cursor-move select-none py-6"
         @mousedown="startDrag"
         @touchstart="startDrag"
     >
         <GripVerticalIcon
-            class="absolute top-1/2 -translate-y-1/2 right-0 text-black"
+            class="absolute top-1/2 -translate-y-1/2 end-0 text-black"
             size="16"
         />
         <GripVerticalIcon
-            class="absolute top-1/2 -translate-y-1/2 right-0 text-white"
+            class="absolute top-1/2 -translate-y-1/2 end-0 text-white"
             size="18"
         />
         <BaseCard rounding="rounded-full" type="dark">

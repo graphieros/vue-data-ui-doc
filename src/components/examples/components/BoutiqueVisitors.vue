@@ -158,5 +158,7 @@ const dataset = computed(() => {
 </script>
 
 <template>
-    <VueUiSparkHistogram :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiSparkHistogram :config="config" :dataset="dataset" />
+    </div>
 </template>

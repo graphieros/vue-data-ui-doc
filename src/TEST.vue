@@ -349,6 +349,7 @@ function selectTimeLabel(selectedTimeLabel) {
 
 <template>
     <div
+        dir="ltr"
         :style="{ width: '600px' /** Set your styles for the chart wrapper */ }"
     >
         <VueDataUi

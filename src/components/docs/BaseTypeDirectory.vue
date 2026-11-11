@@ -1,4 +1,6 @@
 <script setup>
+import { writeClipboardText } from "../../clipboard.js";
+
 import { computed, ref, shallowRef, watch, onBeforeUnmount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useMainStore } from "../../stores/index";
@@ -53,7 +55,6 @@ const collapsed = ref(new Set());
 const selectedId = ref(null);
 const history = ref([]);
 const historyIndex = ref(-1);
-const copied = ref(false);
 
 const byId = computed(() => new Map(entries.value.map((e) => [e.id, e])));
 const byFullName = computed(() => {
@@ -163,7 +164,6 @@ watch(
             selectedId.value = targetId;
             history.value = targetId === null ? [] : [targetId];
             historyIndex.value = targetId === null ? -1 : 0;
-            copied.value = false;
         }
         // A synchronous watcher runs after this callback, once the updates settle.
         applyingRoute = false;
@@ -226,7 +226,7 @@ async function resetDirectory() {
     selectedId.value = rootId;
     history.value = rootId === null ? [] : [rootId];
     historyIndex.value = rootId === null ? -1 : 0;
-    copied.value = false;
+
     applyingRoute = false;
 
     try {
@@ -296,7 +296,6 @@ function navigate(id) {
     selectedId.value = id;
     history.value = [...history.value.slice(0, historyIndex.value + 1), id];
     historyIndex.value = history.value.length - 1;
-    copied.value = false;
 }
 function goBack() {
     if (historyIndex.value > 0)
@@ -319,11 +318,9 @@ const references = computed(() => {
 async function copyDeclaration() {
     if (!selected.value) return;
     try {
-        await navigator.clipboard.writeText(selected.value.code);
-        copied.value = true;
-        store.copy();
+        await writeClipboardText(selected.value.code);
     } catch {
-        copied.value = false;
+        // The shared clipboard helper displays the failure feedback.
     }
 }
 </script>
@@ -533,14 +530,15 @@ async function copyDeclaration() {
                             class="td-copy"
                             type="button"
                             @click="copyDeclaration"
+                            data-copy-action="type"
                         >
                             <div class="flex flex-row items-center gap-1">
                                 <VueUiIcon
-                                    :name="copied ? 'check' : 'copy'"
+                                    name="copy"
                                     :stroke="isDarkMode ? '#42d392' : '#3456a3'"
                                     :size="14"
                                 />
-                                {{ copied ? t("copied") : t("copyCode") }}
+                                {{ t("copyCode") }}
                             </div>
                         </button>
                     </div>
@@ -644,7 +642,7 @@ async function copyDeclaration() {
 }
 .td-count {
     font-size: 12px;
-    margin-left: 5px;
+    margin-inline-start: 5px;
     color: var(--td-muted);
     font-weight: 500;
 }
@@ -690,7 +688,7 @@ async function copyDeclaration() {
 }
 .td-sidebar {
     background: var(--td-panel);
-    border-right: 1px solid var(--td-border);
+    border-inline-end: 1px solid var(--td-border);
     padding: 16px 0;
     max-height: 700px;
     overflow-y: auto;
@@ -794,7 +792,7 @@ async function copyDeclaration() {
     border: 0;
     background: transparent;
     padding: 9px 14px;
-    text-align: left;
+    text-align: start;
     cursor: pointer;
 }
 .td-entry:hover {
@@ -803,7 +801,7 @@ async function copyDeclaration() {
 .td-selected {
     background: var(--td-highlight);
     color: var(--td-accent);
-    border-left: 3px solid var(--td-accent);
+    border-inline-start: 3px solid var(--td-accent);
 }
 .td-entry-name {
     white-space: nowrap;
@@ -990,7 +988,7 @@ async function copyDeclaration() {
         grid-template-columns: 1fr;
     }
     .td-sidebar {
-        border-right: 0;
+        border-inline-end: 0;
         border-bottom: 1px solid var(--td-border);
         max-height: 290px;
     }

@@ -1166,6 +1166,7 @@ const cellKpiConfig = computed(() => ({
     </h1>
     <BaseCard class="max-w-[1200px] mx-auto">
         <div
+            dir="ltr"
             class="flex flex-row align-center gap-4 flex-wrap justify-center max-w-[1200px] mx-auto p-2 bg-gray-100 dark:bg-[#2A2A2A]"
         >
             <VueUiKpi :dataset="generations" :config="kpiConfig" />
@@ -1247,7 +1248,10 @@ const cellKpiConfig = computed(() => ({
                     size="64"
                 />
             </div>
-            <div class="bg-white dark:bg-[#2A2A2A] w-full p-2 rounded-r-lg">
+            <div
+                dir="ltr"
+                class="bg-white dark:bg-[#2A2A2A] w-full p-2 rounded-e-lg"
+            >
                 <VueUiXyCanvas :dataset="chartDataset" :config="chartConfig" />
             </div>
         </div>
@@ -1290,7 +1294,7 @@ const cellKpiConfig = computed(() => ({
                 class="overflow-x-auto rounded bg-white dark:bg-[#222222] h-screen max-h-[500px]"
             >
                 <table
-                    class="w-full text-sm text-left tabular-nums whitespace-nowrap"
+                    class="w-full text-sm text-start tabular-nums whitespace-nowrap"
                 >
                     <thead
                         class="border-b border-gray-200 dark:border-gray-700"
@@ -1304,25 +1308,25 @@ const cellKpiConfig = computed(() => ({
                             </th>
                             <th
                                 scope="col"
-                                class="px-3 py-3 font-semibold text-right"
+                                class="px-3 py-3 font-semibold text-end"
                             >
                                 Generations
                             </th>
                             <th
                                 scope="col"
-                                class="px-3 py-3 font-semibold text-right"
+                                class="px-3 py-3 font-semibold text-end"
                             >
                                 Initial population
                             </th>
                             <th
                                 scope="col"
-                                class="px-3 py-3 font-semibold text-right"
+                                class="px-3 py-3 font-semibold text-end"
                             >
                                 Peak active
                             </th>
                             <th
                                 scope="col"
-                                class="px-3 py-3 font-semibold text-right"
+                                class="px-3 py-3 font-semibold text-end"
                             >
                                 Median active
                             </th>
@@ -1368,16 +1372,16 @@ const cellKpiConfig = computed(() => ({
                             <td class="px-3 py-3">
                                 {{ run.gridSize }} × {{ run.gridSize }}
                             </td>
-                            <td class="px-3 py-3 text-right">
+                            <td class="px-3 py-3 text-end">
                                 {{ formatRunNumber(run.generations) }}
                             </td>
-                            <td class="px-3 py-3 text-right">
+                            <td class="px-3 py-3 text-end">
                                 {{ formatRunNumber(run.initialPopulation) }}
                             </td>
-                            <td class="px-3 py-3 text-right">
+                            <td class="px-3 py-3 text-end">
                                 {{ formatRunNumber(run.peakActive) }}
                             </td>
-                            <td class="px-3 py-3 text-right">
+                            <td class="px-3 py-3 text-end">
                                 {{ formatRunNumber(run.medianActive) }}
                             </td>
                             <td class="px-3 py-3">

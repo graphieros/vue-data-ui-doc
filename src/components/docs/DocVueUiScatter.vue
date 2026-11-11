@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiScatterConfigFields from "./configuration/VueUiScatterConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
@@ -227,7 +229,6 @@ const config = computed({
                         },
                     },
                     dataLabels: {
-                        reverseAxisLabels: isDarkMode.value ? undefined : false,
                         xAxis: {
                             name: "xAxis",
                             show: true,
@@ -425,7 +426,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -607,7 +608,7 @@ const customFormatCode =
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiScatter" />
 
         <BaseDocDescription
@@ -630,7 +631,7 @@ const customFormatCode =
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiScatter
                         :dataset="dataset"
                         :config="config"
@@ -689,7 +690,7 @@ const customFormatCode =
                 <div class="flex gap-2">
                     <button
                         @click="resetDefault"
-                        class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all"
+                        class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange me-4 transition-all"
                     >
                         {{ translations.docs.reset[store.lang] }}
                     </button>
@@ -733,7 +734,7 @@ const customFormatCode =
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">
+                    <div class="text-gray-400 ps-5 mb-4">
                         {{ translations.docs.emits.xy.getData[store.lang] }}
                     </div>
                     <pre>
@@ -846,7 +847,7 @@ const customFormatCode =
                                 language="html"
                                 :content="freestyleTemplate"
                             />
-                            <div class="p-4 bg-white">
+                            <div dir="ltr" class="p-4 bg-white">
                                 <VueUiScatter
                                     :dataset="[
                                         {

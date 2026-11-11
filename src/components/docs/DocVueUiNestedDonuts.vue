@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiNestedDonutsConfigFields from "./configuration/VueUiNestedDonutsConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -349,7 +351,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -395,7 +397,7 @@ const customFormatCode =
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiNestedDonuts" />
 
         <BaseDocDescription
@@ -418,7 +420,7 @@ const customFormatCode =
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiNestedDonuts
                         :dataset="dataset"
                         :config="config"
@@ -525,7 +527,7 @@ const customFormatCode =
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">
+                    <div class="text-gray-400 ps-5 mb-4">
                         {{ translations.docs.emits.xy.getData[store.lang] }}
                     </div>
                     <pre>

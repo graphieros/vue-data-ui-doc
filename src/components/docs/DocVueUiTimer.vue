@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiTimerConfigFields from "./configuration/VueUiTimerConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -150,7 +152,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -194,7 +196,7 @@ const { configCode, showAllConfig } = useConfigCode();
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueDataUi
                         @lap="updateLaps"
                         @reset="timerLaps = []"

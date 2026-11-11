@@ -48,6 +48,7 @@ const codeContent = ref(`const config = ref({
             </div>
         </div>
         <div
+            dir="ltr"
             class="responsive-unit border-2 border-dashed border-app-green"
             :style="`height:${height};width:${width};min-width:${minWidth};min-height:${minHeight}`"
         >

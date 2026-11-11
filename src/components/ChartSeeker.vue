@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, nextTick } from "vue";
+import { ref, computed, nextTick, defineAsyncComponent } from "vue";
 import useCharts from "../useCharts";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { useMainStore } from "../stores";
@@ -7,6 +7,21 @@ import { TerminalIcon } from "vue-tabler-icons";
 import BaseCard from "./BaseCard.vue";
 
 const store = useMainStore();
+const ChartGuide = defineAsyncComponent(() => import("./ChartGuide.vue"));
+const guideOpen = ref(false);
+const guideTrigger = ref(null);
+async function closeGuide() {
+    guideOpen.value = false;
+    await nextTick();
+    // Restore after the browser has finished dismissing the native modal.
+    requestAnimationFrame(() => {
+        if (
+            guideTrigger.value?.isConnected &&
+            !guideTrigger.value.closest("dialog:not([open])")
+        )
+            guideTrigger.value.focus({ preventScroll: true });
+    });
+}
 const isDarkMode = computed(() => store.isDarkMode);
 
 const emit = defineEmits(["click"]);
@@ -88,7 +103,18 @@ const selectedIndex = ref(null);
     <BaseCard class="w-full max-w-[1000px] mx-auto">
         <div>
             <div class="pb-2">
-                <h3 class="p-4 pb-1 text-lg" dir="auto">{{ title }}</h3>
+                <h3 class="p-4 pb-1 text-lg" dir="auto">
+                    <button
+                        type="button"
+                        class="text-start hover:underline focus-visible:outline focus-visible:outline-app-blue"
+                        aria-haspopup="dialog"
+                        data-testid="open-chart-guide"
+                        ref="guideTrigger"
+                        @click="guideOpen = true"
+                    >
+                        {{ title }}
+                    </button>
+                </h3>
                 <div
                     class="flex flex-row flex-wrap gap-2 p-2 rounded-md mx-2 bg-gray-100 dark:bg-[#2A2A2A]"
                 >
@@ -171,7 +197,7 @@ const selectedIndex = ref(null);
                         >
                             <TerminalIcon />
                         </div>
-                        <div dir="auto" class="text-left">
+                        <div dir="auto" class="text-start">
                             {{ cli }}
                         </div>
                     </button>
@@ -218,5 +244,10 @@ const selectedIndex = ref(null);
                 </VueDataUi>
             </div>
         </div>
+        <ChartGuide
+            v-if="guideOpen"
+            @close="closeGuide"
+            @choose="emit('click')"
+        />
     </BaseCard>
 </template>

@@ -145,7 +145,7 @@ const exampleStyle = `.chart-container {
             <h3 class="text-lg font-bold">{{ text.options }}</h3>
             <p>{{ text.reactivity }}</p>
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse" dir="auto">
+                <table class="w-full text-start border-collapse" dir="auto">
                     <thead>
                         <tr>
                             <th scope="col">{{ text.property }}</th>
@@ -237,7 +237,7 @@ const exampleStyle = `.chart-container {
                 <code>height: {{ formatSize(height) }}</code>
             </div>
             <div class="parent-size-demo bg-gray-100 dark:bg-[#1A1A1A]">
-                <div ref="parent-size-target" class="chart-host">
+                <div dir="ltr" ref="parent-size-target" class="chart-host">
                     <VueUiXy :dataset="dataset" :config="config" />
                 </div>
             </div>

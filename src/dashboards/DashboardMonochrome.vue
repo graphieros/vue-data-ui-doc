@@ -535,12 +535,13 @@ const translations = ref({
                                 class="h-full flex flex-col place-items-center justify-center p-4"
                             >
                                 <p
-                                    class="text-left w-full p-3 font-inter-medium"
+                                    class="text-start w-full p-3 font-inter-medium"
                                     :style="{ color: colors.TEXT_PRIMARY }"
                                 >
                                     Title
                                 </p>
                                 <div
+                                    dir="ltr"
                                     class="h-full w-full flex place-items-center"
                                 >
                                     <VueUiSparkline
@@ -563,12 +564,13 @@ const translations = ref({
                                 class="h-full flex flex-col place-items-center justify-between p-4"
                             >
                                 <p
-                                    class="text-left w-full p-3 font-inter-medium"
+                                    class="text-start w-full p-3 font-inter-medium"
                                     :style="{ color: colors.TEXT_PRIMARY }"
                                 >
                                     Title
                                 </p>
                                 <div
+                                    dir="ltr"
                                     class="h-full w-full flex place-items-center"
                                 >
                                     <VueUiSparkStackbar
@@ -588,10 +590,11 @@ const translations = ref({
                     <Suspense>
                         <template #default>
                             <div
+                                dir="ltr"
                                 class="h-full flex flex-col place-items-center justify-center p-4"
                             >
                                 <p
-                                    class="text-left w-full p-3 font-inter-medium"
+                                    class="text-start w-full p-3 font-inter-medium"
                                     :style="{ color: colors.TEXT_PRIMARY }"
                                 >
                                     Title
@@ -614,10 +617,11 @@ const translations = ref({
                 <Suspense>
                     <template #default>
                         <div
+                            dir="ltr"
                             class="h-full flex flex-col place-items-center justify-center p-4"
                         >
                             <p
-                                class="text-left w-full p-3 font-inter-medium"
+                                class="text-start w-full p-3 font-inter-medium"
                                 :style="{ color: colors.TEXT_PRIMARY }"
                             >
                                 Title
@@ -639,10 +643,11 @@ const translations = ref({
                 <Suspense>
                     <template #default>
                         <div
+                            dir="ltr"
                             class="h-full w-full flex flex-col place-items-center justify-center p-4"
                         >
                             <p
-                                class="text-left w-full p-3 font-inter-medium"
+                                class="text-start w-full p-3 font-inter-medium"
                                 :style="{ color: colors.TEXT_PRIMARY }"
                             >
                                 Title
@@ -664,10 +669,11 @@ const translations = ref({
                 <Suspense>
                     <template #default>
                         <div
+                            dir="ltr"
                             class="h-full w-full flex flex-col place-items-center justify-center p-4"
                         >
                             <p
-                                class="text-left w-full p-3 font-inter-medium"
+                                class="text-start w-full p-3 font-inter-medium"
                                 :style="{ color: colors.TEXT_PRIMARY }"
                             >
                                 Title

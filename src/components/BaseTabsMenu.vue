@@ -39,6 +39,7 @@ const selectedIndexOnLoad = computed(() => {
             <div
                 v-for="(item, index) in items"
                 :key="index"
+                :data-tab-order="item.order"
                 :style="{
                     color: isDarkMode ? item.color : '#2A2A2A',
                     background:

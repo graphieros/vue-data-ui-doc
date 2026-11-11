@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiDigitsConfigFields from "./configuration/VueUiDigitsConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -74,7 +76,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -112,6 +114,7 @@ const { configCode, showAllConfig } = useConfigCode();
             >
                 <BaseCard>
                     <div
+                        dir="ltr"
                         style="height: 64px"
                         class="mx-auto flex justify-center"
                     >

@@ -35,7 +35,6 @@ import {
 } from "vue-tabler-icons";
 import Patterns from "../components/customization/Patterns.vue";
 import ColorBridgeIcon from "../components/maker/ColorBridgeIcon.vue";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseCard from "../components/BaseCard.vue";
 import BasePageMenu from "../components/BasePageMenu.vue";
 import useMobile from "../useMobile";
@@ -262,7 +261,9 @@ watch(() => router.currentRoute.value, updateCrumb, {
                                 v-else
                                 :is="item.icon"
                                 :color="
-                                    isSelected(item, index) ? '#FFFFFF' : '#de6937'
+                                    isSelected(item, index)
+                                        ? '#FFFFFF'
+                                        : '#de6937'
                                 "
                                 :size="isMobile ? 22 : 32"
                                 :stroke-width="1.5"
@@ -270,7 +271,7 @@ watch(() => router.currentRoute.value, updateCrumb, {
                         </div>
                         <ExternalLinkIcon
                             v-if="item.name === 'colorBridge'"
-                            class="absolute top-1 right-1"
+                            class="absolute top-1 end-1"
                             :size="18"
                         />
                         <div
@@ -314,5 +315,4 @@ watch(() => router.currentRoute.value, updateCrumb, {
     <ComposedComponents v-if="currentRoute === '/customization#experiments'" />
 
     <ChartSeeker class="mt-12" />
-    <ConfirmCopy />
 </template>

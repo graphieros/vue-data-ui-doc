@@ -164,7 +164,7 @@ const waffleCode = ref(`  <VueUiWaffle
 <template>
     <BaseCustomizationBox :title="`VueUiWaffle #cell slot`">
         <template #before>
-            <p class="text-left" dir="auto">
+            <p class="text-start" dir="auto">
                 {{ translations.customization.otherSlots.waffle[store.lang] }}
             </p>
         </template>

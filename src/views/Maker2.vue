@@ -21,6 +21,8 @@ import DataField from "../components/builder2/DataField.vue";
 import BaseCard from "../components/BaseCard.vue";
 import VueUiIcon from "vue-data-ui/vue-ui-icon";
 import IconBlocks from "../components/IconBlocks.vue";
+import { decodeSharedChart } from "../components/builder2/share.js";
+import { navigationMessage } from "../navigation/messages.js";
 
 const t = useBuilderTranslations();
 const store = useMainStore();
@@ -53,6 +55,7 @@ const knobSearch = ref("");
 const dataset = ref([]);
 const model = ref([]);
 const status = ref("");
+const sharedDraft = ref(false);
 
 const revision = ref(0);
 const jsonMode = ref(false);
@@ -126,6 +129,7 @@ const knobs = computed(() =>
 
 function load() {
     loading = true;
+    sharedDraft.value = false;
     const base = defaults[current.value.key];
     dataset.value = clone(base.dataset);
     model.value = clone(base.model);
@@ -180,6 +184,10 @@ watch(
     [dataset, model],
     () => {
         if (loading) return;
+        if (sharedDraft.value) {
+            status.value = "sharedDraft";
+            return;
+        }
         try {
             localStorage.setItem(
                 prefix + current.value.key,
@@ -192,6 +200,45 @@ watch(
     },
     { deep: true, flush: "sync" },
 );
+
+function openSharedChart() {
+    let shared;
+    try {
+        shared = decodeSharedChart(route.hash || "");
+        if (!shared) return;
+        const chart = catalog.find((c) => c.name === shared.component);
+        const base = defaults[chart.key];
+        if (
+            Array.isArray(shared.dataset) !== Array.isArray(base.dataset) ||
+            typeof shared.dataset !== typeof base.dataset
+        )
+            throw new Error("Invalid dataset");
+        const nextModel = modelFromConfig(shared.config, clone(base.model));
+        // Validate the full payload before switching charts or changing any draft.
+        selected.value = chart.key;
+        loading = true;
+        sharedDraft.value = true;
+        dataset.value = shared.dataset;
+        model.value = nextModel;
+        status.value = "sharedDraft";
+        revision.value++;
+    } catch {
+        status.value = "invalidShare";
+    } finally {
+        loading = false;
+    }
+}
+watch(() => route.hash, openSharedChart, { immediate: true });
+
+function statusText() {
+    return ["shared", "invalidShare", "sharedDraft", "shareTooLarge"].includes(
+        status.value,
+    )
+        ? navigationMessage(status.value, store.lang)
+        : status.value
+          ? t(status.value)
+          : "";
+}
 
 function editJson() {
     jsonDraft.value = JSON.stringify(dataset.value, null, 2);
@@ -403,7 +450,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                             </div>
                         </div>
                         <div class="preview-stage">
-                            <div class="preview-chart">
+                            <div dir="ltr" class="preview-chart">
                                 <ChartPreview
                                     :key="`${selected}-${revision}`"
                                     :component="current.name"
@@ -413,9 +460,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                             </div>
                         </div>
                         <div class="preview-footer">
-                            <span role="status">{{
-                                status ? t(status) : ""
-                            }}</span
+                            <span role="status">{{ statusText() }}</span
                             ><span>{{ t("liveChanges") }}</span>
                         </div>
                     </BaseCard>
@@ -477,7 +522,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                         <div
                             v-if="resetPending"
                             id="restore-example-confirm"
-                            class="reset-confirm border-l-2 border-app-warning mt-2"
+                            class="reset-confirm border-s-2 border-app-warning mt-2"
                         >
                             <VueUiIcon
                                 name="triangleExclamation"
@@ -535,6 +580,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                                     t("datasetJson")
                                 }}</label
                                 ><textarea
+                                    dir="ltr"
                                     id="builder-json"
                                     v-model="jsonDraft"
                                     class="code-input"
@@ -596,6 +642,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                                     >{{ t("configJson") }}</label
                                 >
                                 <textarea
+                                    dir="ltr"
                                     id="builder-config-json"
                                     v-model="configJsonDraft"
                                     class="code-input"
@@ -721,7 +768,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                     {{ t("closePreview") }}
                 </button>
             </header>
-            <div class="large-preview-stage">
+            <div dir="ltr" class="large-preview-stage">
                 <ChartPreview
                     v-if="largePreviewOpen"
                     :key="`large-${selected}-${revision}`"
@@ -856,7 +903,7 @@ h2 {
     margin: 3px 0;
     border: 1px solid transparent;
     border-radius: 8px;
-    text-align: left;
+    text-align: start;
     font-size: 12px;
 }
 .chart-option img {
@@ -875,7 +922,7 @@ h2 {
     color: var(--accent);
 }
 .selected-dot {
-    margin-left: auto;
+    margin-inline-start: auto;
     font-size: 9px;
 }
 .builder-main {
@@ -914,7 +961,7 @@ h2 {
 }
 
 .component-name {
-    margin-left: 14px;
+    margin-inline-start: 14px;
     font-size: 11px;
 }
 .preview-stage {
@@ -1168,7 +1215,7 @@ pre:focus-visible {
     border-radius: 9px;
 }
 :deep(.data-group summary span) {
-    margin-left: 10px;
+    margin-inline-start: 10px;
     font-weight: 400;
 }
 :deep(.data-children) {
@@ -1177,7 +1224,7 @@ pre:focus-visible {
 :deep(.data-entry) {
     position: relative;
     min-width: 0;
-    padding-right: 25px;
+    padding-inline-end: 25px;
     margin-bottom: 8px;
 }
 :deep(.data-leaf) {
@@ -1217,7 +1264,7 @@ pre:focus-visible {
 }
 :deep(.remove-item) {
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     top: 8px;
     color: var(--muted);
     padding: 2px 5px;

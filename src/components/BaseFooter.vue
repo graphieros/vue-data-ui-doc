@@ -96,7 +96,7 @@ const KPIS = computed(() => {
 <template>
     <footer
         id="app-footer"
-        class="w-full fixed bottom-0 left-0 h-[64px] font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-t dark:border-[#2A2A2A] transition-all flex place-items-center justify-between gap-3 pl-3 sm:pl-6"
+        class="w-full fixed bottom-0 start-0 h-[64px] font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-t dark:border-[#2A2A2A] transition-all flex place-items-center justify-between gap-3 ps-3 sm:ps-6"
         style="z-index: 1000"
     >
         <DeepSearch :fixed="false" />
@@ -104,7 +104,11 @@ const KPIS = computed(() => {
             <BaseSignature :color="isDarkMode ? '#3A3A3A' : '#CCCCCC'" :strokeWidth="7"/>
         </div> -->
         <div class="flex shrink-0 flex-col gap-2">
-            <div class="pr-1 font-satoshi" style="align-self: flex-end">
+            <div
+                dir="ltr"
+                class="pe-1 font-satoshi"
+                style="align-self: flex-end"
+            >
                 <VueDataUi
                     v-if="currentStars"
                     component="VueUiGizmo"
@@ -112,7 +116,7 @@ const KPIS = computed(() => {
                     :config="gizmoConfig"
                 />
             </div>
-            <div class="flex flex-row gap-2 pr-3" style="align-self: flex-end">
+            <div class="flex flex-row gap-2 pe-3" style="align-self: flex-end">
                 <a
                     v-for="kpi in KPIS.filter((k) => k.key === 'forks_count')"
                     :href="kpi.link"
@@ -124,7 +128,7 @@ const KPIS = computed(() => {
                         :stroke="kpi.color"
                         :size="16"
                     />
-                    <div class="h-4">
+                    <div dir="ltr" class="h-4">
                         <VueUiDigits
                             :dataset="kpi.value"
                             :config="{

@@ -524,7 +524,7 @@ const code = ref(`<template>
                 :config="isDarkMode ? darkModeConfig : config"
             >
                 <template #source>
-                    <div class="text-xs text-left px-8 pb-6 text-gray-500">
+                    <div class="text-xs text-start px-8 pb-6 text-gray-500">
                         Source: Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Ullam, dolor animi earum at delectus,
                         quae, optio exercitationem velit odio veritatis

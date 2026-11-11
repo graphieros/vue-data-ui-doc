@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiTiremarksConfigFields from "./configuration/VueUiTiremarksConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
@@ -158,7 +160,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -190,7 +192,7 @@ function goToPage(route) {
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiTiremarks" />
 
         <BaseDocDescription
@@ -215,7 +217,7 @@ function goToPage(route) {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiTiremarks
                         :dataset="dataset"
                         :config="config"

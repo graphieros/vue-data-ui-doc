@@ -133,5 +133,7 @@ const dataset = computed(() => {
 </script>
 
 <template>
-    <VueUiSparkline :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiSparkline :config="config" :dataset="dataset" />
+    </div>
 </template>

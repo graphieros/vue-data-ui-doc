@@ -31,7 +31,7 @@ const { XY_CANVAS_DS, XY_CANVAS_CONFIG } = useCase();
             Performance with a dataset containing 20000 datapoints
         </template>
     </UseCaseTitle>
-    <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
+    <div dir="ltr" class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
             v-if="!!XY_CANVAS_DS"
             component="VueUiXyCanvas"

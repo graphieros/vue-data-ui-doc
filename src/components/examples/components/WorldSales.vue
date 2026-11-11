@@ -364,5 +364,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiChestnut :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiChestnut :config="config" :dataset="dataset" />
+    </div>
 </template>

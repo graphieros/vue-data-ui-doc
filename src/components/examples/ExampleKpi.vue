@@ -78,6 +78,7 @@ const tableConfig = computed(() => {
 
 <template>
     <div
+        dir="ltr"
         class="max-w-[1200px] mx-auto flex gap-4 flex-wrap mt-12 justify-center"
     >
         <VueDataUi
@@ -103,7 +104,7 @@ const tableConfig = computed(() => {
                 </div>
             </template>
             <template #comment-after>
-                <div class="w-[200px]">
+                <div dir="ltr" class="w-[200px]">
                     <VueDataUi
                         component="VueUiSparkline"
                         :dataset="[
@@ -183,7 +184,7 @@ const tableConfig = computed(() => {
             </template>
 
             <template #comment-after>
-                <div class="w-full max-w-[300px] mt-2">
+                <div dir="ltr" class="w-full max-w-[300px] mt-2">
                     <VueDataUi
                         component="VueUiSparkStackbar"
                         :dataset="sparkstackDataset"
@@ -252,7 +253,7 @@ const tableConfig = computed(() => {
             </template>
 
             <template #comment-after>
-                <div class="w-full max-w-[300px]">
+                <div dir="ltr" class="w-full max-w-[300px]">
                     <VueDataUi
                         component="VueUiSparkHistogram"
                         :dataset="[
@@ -306,6 +307,7 @@ const tableConfig = computed(() => {
     </div>
 
     <div
+        dir="ltr"
         class="max-w-[927px] mx-auto bg-white dark:bg-[#2A2A2A] mt-4 rounded p-2 shadow-md relative"
     >
         <VueDataUi
@@ -316,7 +318,7 @@ const tableConfig = computed(() => {
             <template #caption>
                 <div
                     style="width: 100%; height: 40px"
-                    class="pb-8 font-black text-[#3A3A3A] dark:text-gray-400 text-left pl-2"
+                    class="pb-8 font-black text-[#3A3A3A] dark:text-gray-400 text-start ps-2"
                 >
                     Average basket 2024 in $
                 </div>

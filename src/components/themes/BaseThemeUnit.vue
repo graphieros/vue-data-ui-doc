@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection, getCopyFeedbackTarget } from "../../clipboard.js";
+
 import { ref, computed, inject } from "vue";
 import { dashboardThemeKey } from "./dashboardTheme";
 import { useMainStore } from "../../stores";
@@ -125,6 +127,7 @@ const themes = computed(() => {
 });
 
 async function copyToClipboard(theme) {
+    const copyTarget = getCopyFeedbackTarget();
     const thisConf = await getThemeConfig(props.componentTheme);
     if (thisConf[theme.name]) {
         const conf = thisConf[theme.name];
@@ -137,7 +140,7 @@ async function copyToClipboard(theme) {
         document.body.appendChild(selBox);
         selBox.focus();
         selBox.select();
-        document.execCommand("copy");
+        copySelection(copyTarget);
         document.body.removeChild(selBox);
         store.copy();
     }
@@ -147,80 +150,84 @@ const isCustom = computed(() => ["VueUiLabel"].includes(props.component));
 </script>
 
 <template>
-    <VueDataUi
-        v-if="dashboardTheme"
-        :key="dashboardTheme"
-        :component="component"
-        :dataset="dataset"
-        :config="{ ...config, theme: dashboardTheme }"
-    />
-    <div
-        v-else
-        class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-start w-full p-4 bg-gray-150 dark:bg-[#3A3A3A] rounded-md"
-    >
+    <div dir="ltr" style="height: inherit">
+        <VueDataUi
+            v-if="dashboardTheme"
+            :key="dashboardTheme"
+            :component="component"
+            :dataset="dataset"
+            :config="{ ...config, theme: dashboardTheme }"
+        />
         <div
-            class="w-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] p-4 rounded-xl"
-            v-for="theme in themes"
+            v-else
+            class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-start w-full p-4 bg-gray-150 dark:bg-[#3A3A3A] rounded-md"
         >
-            <ThemeTag :type="theme.name" />
-            <template v-if="isCustom">
-                <svg
-                    v-if="props.component === 'VueUiLabel'"
-                    viewBox="0 0 500 500"
-                    :style="{
-                        width: '100%',
-                        backgroundColor: [
-                            '',
-                            'default',
-                            'minimal',
-                            'concrete',
-                            'zen',
-                            'celebration',
-                        ].includes(theme.name)
-                            ? '#FFFFFF'
-                            : '#1A1A1A',
-                    }"
-                    class="border border-gray-400 border-dashed"
-                >
-                    <VueUiLabel
-                        :config="{
-                            ...props.config,
-                            theme: theme.name,
+            <div
+                dir="ltr"
+                class="w-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] p-4 rounded-xl"
+                v-for="theme in themes"
+            >
+                <ThemeTag :type="theme.name" />
+                <template v-if="isCustom">
+                    <svg
+                        v-if="props.component === 'VueUiLabel'"
+                        viewBox="0 0 500 500"
+                        :style="{
+                            width: '100%',
+                            backgroundColor: [
+                                '',
+                                'default',
+                                'minimal',
+                                'concrete',
+                                'zen',
+                                'celebration',
+                            ].includes(theme.name)
+                                ? '#FFFFFF'
+                                : '#1A1A1A',
                         }"
-                        :dataset="props.dataset"
-                    />
-                </svg>
-            </template>
-            <VueDataUi
-                v-else
-                :component="component"
-                :dataset="dataset"
-                :config="{ ...config, theme: theme.name }"
-            />
-            <template v-if="theme.name !== 'default'">
-                <div class="bg-gray-150 dark:bg-[#3A3A3A] py-4 rounded-b">
-                    <div class="pl-3 mb-2">
-                        {{ translations.usage[store.lang] }}
+                        class="border border-gray-400 border-dashed"
+                    >
+                        <VueUiLabel
+                            :config="{
+                                ...props.config,
+                                theme: theme.name,
+                            }"
+                            :dataset="props.dataset"
+                        />
+                    </svg>
+                </template>
+                <VueDataUi
+                    v-else
+                    :component="component"
+                    :dataset="dataset"
+                    :config="{ ...config, theme: theme.name }"
+                />
+                <template v-if="theme.name !== 'default'">
+                    <div class="bg-gray-150 dark:bg-[#3A3A3A] py-4 rounded-b">
+                        <div class="ps-3 mb-2">
+                            {{ translations.usage[store.lang] }}
+                        </div>
+                        <CodeParser
+                            :content="code.replace('#THEME#', theme.name)"
+                            language="javascript"
+                            @copy="store.copy()"
+                        />
                     </div>
-                    <CodeParser
-                        :content="code.replace('#THEME#', theme.name)"
-                        language="javascript"
-                        @copy="store.copy()"
-                    />
-                </div>
-                <button
-                    dir="auto"
-                    class="mt-2 w-full py-2 px-6 rounded-full opacity-90 hover:opacity-100 transition-opacity flex flex-row place-items-center flex-wrap gap-2 justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
-                    :style="{
-                        backgroundColor: theme.backgroundColor,
-                        color: theme.color,
-                    }"
-                    @click="copyToClipboard(theme)"
-                >
-                    <CopyIcon :color="theme.accent" />
-                    {{ translations.copyTheme[store.lang] }}
-                </button>
-            </template>
+                    <button
+                        dir="auto"
+                        class="mt-2 w-full py-2 px-6 rounded-full opacity-90 hover:opacity-100 transition-opacity flex flex-row place-items-center flex-wrap gap-2 justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                        :style="{
+                            backgroundColor: theme.backgroundColor,
+                            color: theme.color,
+                        }"
+                        @click="copyToClipboard(theme)"
+                        data-copy-action="theme"
+                    >
+                        <CopyIcon :color="theme.accent" />
+                        {{ translations.copyTheme[store.lang] }}
+                    </button>
+                </template>
+            </div>
         </div>
     </div>
 </template>

@@ -1,18 +1,20 @@
 <template>
-    <!-- Manage conditional settings depending on the loading state -->
-    <!-- For example: no need to show tooltip, user options or other interactive items in the loading state -->
-    <VueDataUi
-        component="VueUiDonut"
-        :dataset="loading ? loadingDataset : loadedDataset"
-        :config="config"
-    >
-        <!-- Use the watermark slot to display additional loading information, or a loading animation -->
-        <template #watermark v-if="loading">
-            <div>
-                <BaseBubbles class="mt-5" randomColor stroke="#FFFFFF40" />
-            </div>
-        </template>
-    </VueDataUi>
+    <div dir="ltr" style="height: inherit">
+        <!-- Manage conditional settings depending on the loading state -->
+        <!-- For example: no need to show tooltip, user options or other interactive items in the loading state -->
+        <VueDataUi
+            component="VueUiDonut"
+            :dataset="loading ? loadingDataset : loadedDataset"
+            :config="config"
+        >
+            <!-- Use the watermark slot to display additional loading information, or a loading animation -->
+            <template #watermark v-if="loading">
+                <div>
+                    <BaseBubbles class="mt-5" randomColor stroke="#FFFFFF40" />
+                </div>
+            </template>
+        </VueDataUi>
+    </div>
 </template>
 
 <script setup>

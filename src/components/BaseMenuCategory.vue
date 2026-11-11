@@ -49,17 +49,17 @@ defineProps({
                     {{ item.name }}
                     <SquareRoundedLetterSIcon
                         v-if="item.hasSlot"
-                        class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue"
+                        class="bg-white dark:bg-black rounded-md absolute -top-1 end-0 text-app-blue"
                         size="16"
                     />
                     <SquareRoundedLetterTIcon
                         v-if="item.hasTableCss"
-                        class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green"
+                        class="bg-white dark:bg-black rounded-md absolute top-4 end-0 text-app-green"
                         size="16"
                     />
                     <SquareRoundedLetterLIcon
                         v-if="item.hasLegend"
-                        class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange"
+                        class="bg-white dark:bg-black rounded-md absolute top-9 end-0 text-app-orange"
                         size="16"
                     />
                 </template>

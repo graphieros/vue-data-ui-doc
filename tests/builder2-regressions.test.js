@@ -4,13 +4,15 @@ import fs from "node:fs";
 import ts from "typescript";
 import * as vue from "vue";
 import { parse, compileScript } from "@vue/compiler-sfc";
-import { defaultDataHill } from "../src/stores/chunks/defaultDataHill.js";
-import { defaultDataStackbar } from "../src/stores/chunks/defaultDataStackbar.js";
+import { createPinia } from "pinia";
+import { useDefaultDataStore } from "../src/stores/defaultData.js";
 import * as graph from "../src/components/docs/graph.js";
 import * as graphMaker from "../src/components/maker/graphMaker.js";
 import * as datasetHelpers from "../src/components/builder2/dataset.js";
 import * as configHelpers from "../src/components/builder2/config.js";
 import { convertArrayToObject } from "../src/components/maker/lib.js";
+import { decodeSharedChart } from "../src/components/builder2/share.js";
+import { navigationMessage } from "../src/navigation/messages.js";
 import { catalog } from "../src/components/builder2/catalog.js";
 import { datasetOptions } from "../src/components/builder2/datasetOptions.js";
 import { generateCode } from "../src/components/builder2/code.js";
@@ -32,15 +34,7 @@ function evaluate(source, scope, result) {
         ...Object.values(scope),
     );
 }
-const rawDefaults = evaluate(
-    fs.readFileSync("src/stores/defaultData.js", "utf8"),
-    {
-        defineStore: (_name, options) => options.state,
-        defaultDataHill,
-        defaultDataStackbar,
-    },
-    "useDefaultDataStore()",
-);
+const rawDefaults = useDefaultDataStore(createPinia()).$state;
 const builderDefaults = evaluate(
     fs.readFileSync("src/components/builder2/defaults.js", "utf8"),
     { ...datasetHelpers, ...graph, ...graphMaker },
@@ -76,6 +70,8 @@ function maker(component) {
                     translations: {},
                 }),
                 useRoute: () => route,
+                decodeSharedChart,
+                navigationMessage,
                 useDefaultDataStore: () => rawDefaults,
                 useMakerStore: () => ({ translations: { labels: {} } }),
                 localStorage: {

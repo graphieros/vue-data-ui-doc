@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiGizmoConfigFields from "./configuration/VueUiGizmoConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -81,7 +83,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -134,7 +136,8 @@ function goToPage(route) {
             >
                 <BaseCard>
                     <div
-                        class="w-full flex place-items-center justify-center pl-3 py-3"
+                        dir="ltr"
+                        class="w-full flex place-items-center justify-center ps-3 py-3"
                     >
                         <VueUiGizmo :dataset="dataset" :config="config" />
                     </div>

@@ -367,7 +367,7 @@ const code = ref(`&lt;script setup&gt;
             </div>
         </template>
     </UseCaseTitle>
-    <div class="treemap-pics">
+    <div dir="ltr" class="treemap-pics">
         <VueUiTreemap :dataset="dataset" :config="config">
             <template #rect="{ rect }">
                 <div style="height: 100%; width: 100%">

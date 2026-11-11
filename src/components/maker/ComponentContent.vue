@@ -1,4 +1,5 @@
 <script setup>
+import { readStorage, removeStorage } from "../../storage.js";
 import { ref, computed, nextTick, watch } from "vue";
 import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui/utils";
@@ -119,11 +120,11 @@ function copyComponent() {
 }
 
 function nuke() {
-    if (!!localStorage[props.keyConfig]) {
-        localStorage.removeItem(props.keyConfig);
+    if (readStorage(props.keyConfig)) {
+        removeStorage(props.keyConfig);
     }
-    if (!!localStorage[props.keyDataset]) {
-        localStorage.removeItem(props.keyDataset);
+    if (readStorage(props.keyDataset)) {
+        removeStorage(props.keyDataset);
     }
     nextTick(() => location.reload());
 }
@@ -361,7 +362,7 @@ function toggleStorage() {
             </div>
             <button
                 @click="copyComponent"
-                class="cursor-pointer absolute top-4 right-4 flex flex-row place-items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors"
+                class="cursor-pointer absolute top-4 end-4 flex flex-row place-items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors"
             >
                 <CopyIcon class="text-app-blue" />
             </button>

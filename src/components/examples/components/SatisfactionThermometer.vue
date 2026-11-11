@@ -34,18 +34,20 @@ const config = computed(() => {
 </script>
 
 <template>
-    <VueDataUi
-        component="VueUiThermometer"
-        :dataset="{
-            value: averageRating,
-            from: 0,
-            to: 5,
-            steps: 5,
-            colors: {
-                from: '#42d392',
-                to: '#42d392',
-            },
-        }"
-        :config="thermoConfig"
-    />
+    <div dir="ltr" style="height: inherit">
+        <VueDataUi
+            component="VueUiThermometer"
+            :dataset="{
+                value: averageRating,
+                from: 0,
+                to: 5,
+                steps: 5,
+                colors: {
+                    from: '#42d392',
+                    to: '#42d392',
+                },
+            }"
+            :config="thermoConfig"
+        />
+    </div>
 </template>

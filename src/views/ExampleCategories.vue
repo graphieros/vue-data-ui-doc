@@ -29,7 +29,6 @@ import {
 } from "vue-tabler-icons";
 import FlexibleTooltip from "../components/FlexibleTooltip.vue";
 import BaseExampleComponentDialog from "../components/BaseExampleComponentDialog.vue";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 import { useMakerStore } from "../stores/maker";
 import BaseCard from "../components/BaseCard.vue";
 import BaseLazy from "../components/BaseLazy.vue";
@@ -716,7 +715,7 @@ function makeMapLinks({ data }) {
 
     <!-- CHART TYPE SELECTION -->
     <div
-        class="fixed top-[87px] left-0 w-full bg-[#F2F3F6] dark:bg-[#232323] z-50 py-4 drop-shadow-md"
+        class="fixed top-[87px] start-0 w-full bg-[#F2F3F6] dark:bg-[#232323] z-50 py-4 drop-shadow-md"
     >
         <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-12">
             <BaseTabContainer :selected-index-on-load="selectedOrder">
@@ -745,7 +744,7 @@ function makeMapLinks({ data }) {
                         <Transition name="fade">
                             <div
                                 style="width: calc(100% - 2px)"
-                                class="text-shadow-md absolute top-0 left-[1px] pointer-events-none bg-[#1A1A1A10] dark:bg-[#FFFFFF10] h-full flex place-items-end justify-center"
+                                class="text-shadow-md absolute top-0 start-[1px] pointer-events-none bg-[#1A1A1A10] dark:bg-[#FFFFFF10] h-full flex place-items-end justify-center"
                                 v-if="
                                     (hoveredLink &&
                                         hoveredLink.link === category.link) ||
@@ -803,7 +802,7 @@ function makeMapLinks({ data }) {
                 <template #selected="{ selectedOption }">
                     <div
                         v-if="selectedOption"
-                        class="text-left flex flex-row gap-2 place-items-center"
+                        class="text-start flex flex-row gap-2 place-items-center"
                     >
                         <div class="h-[24px] w-[24px] flex place-items-center">
                             <VueUiIcon
@@ -824,7 +823,7 @@ function makeMapLinks({ data }) {
                 </template>
                 <template #option="{ option, selected, current }">
                     <div
-                        class="text-left flex flex-row gap-2 place-items-center"
+                        class="text-start flex flex-row gap-2 place-items-center"
                     >
                         <div class="h-[20px] w-[20px] flex place-items-center">
                             <VueUiIcon
@@ -1098,7 +1097,7 @@ function makeMapLinks({ data }) {
                             </RouterLink>
                             <div
                                 v-if="example.toggleCurvedMarkers"
-                                class="mt-2 text-right"
+                                class="mt-2 text-end"
                             >
                                 <label>
                                     {{
@@ -1117,6 +1116,7 @@ function makeMapLinks({ data }) {
                         <BaseSuspense>
                             <template #default>
                                 <div
+                                    dir="ltr"
                                     class="w-full p-4 example-wrapper"
                                     :style="chartFrameStyle(example)"
                                 >
@@ -1137,7 +1137,7 @@ function makeMapLinks({ data }) {
                                                 style="
                                                     width: 100%;
                                                     height: 100%;
-                                                    text-align: left;
+                                                    text-align: start;
                                                     padding: 6px 12px;
                                                 "
                                             >
@@ -1837,7 +1837,11 @@ function makeMapLinks({ data }) {
                                                     height: 100%;
                                                 "
                                             >
-                                                <div style="margin-left: -12px">
+                                                <div
+                                                    style="
+                                                        margin-inline-start: -12px;
+                                                    "
+                                                >
                                                     <svg
                                                         v-if="
                                                             datapoint.name.toUpperCase() ===
@@ -2421,8 +2425,6 @@ function makeMapLinks({ data }) {
         :example="dialogExample"
         @close="closeDialogExample"
     />
-
-    <ConfirmCopy />
 </template>
 
 <style>

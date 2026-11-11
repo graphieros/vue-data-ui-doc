@@ -1618,27 +1618,33 @@ function handleSearchEnter() {
 
 <template>
     <button
-        class="fixed left-[282px] top-[73px] z-30 rounded-full bg-gray-200 dark:bg-[#2A2A2A] hover:bg-gray-100 dark:hover:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+        class="fixed start-[282px] top-[73px] z-30 rounded-full bg-gray-200 dark:bg-[#2A2A2A] hover:bg-gray-100 dark:hover:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
         v-if="isOpen"
+        data-testid="side-menu-toggle"
         @click="toggle"
     >
-        <ChevronLeftIcon class="text-black dark:text-app-blue" />
+        <component
+            :is="store.lang === 'ar' ? ChevronRightIcon : ChevronLeftIcon"
+            class="text-black dark:text-app-blue"
+        />
     </button>
 
     <button
-        class="fixed left-[42px] top-[73px] z-30 rounded-full bg-gray-200 dark:bg-[#2A2A2A] hover:bg-gray-100 dark:hover:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+        class="fixed start-[42px] top-[73px] z-30 rounded-full bg-gray-200 dark:bg-[#2A2A2A] hover:bg-gray-100 dark:hover:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
         v-if="!isOpen"
+        data-testid="side-menu-toggle"
         @click="toggle"
     >
-        <ChevronRightIcon
+        <component
+            :is="store.lang === 'ar' ? ChevronLeftIcon : ChevronRightIcon"
             class="text-black dark:text-app-blue animate-ping sm:animate-none"
         />
     </button>
 
     <aside
-        :class="`transition-all fixed left-0 top-[49px] ${
+        :class="`transition-all fixed start-0 top-[49px] ${
             isOpen ? 'w-[300px]' : 'w-[59px]'
-        } h-[calc(100svh_-_114px)] bg-gray-300 dark:bg-black overflow-y-auto overflow-x-hidden border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-20`"
+        } h-[calc(100svh_-_114px)] bg-gray-300 dark:bg-black overflow-y-auto overflow-x-hidden border-e dark:border-[#2A2A2A] p-6 shadow-2xl z-20`"
     >
         <template v-if="isOpen">
             <div class="mt-8 flex flex-col gap-3">
@@ -1647,14 +1653,14 @@ function handleSearchEnter() {
                     <VueUiIcon
                         name="magnify"
                         :stroke="isDarkMode ? '#83a4f2' : '#8A8A8A'"
-                        class="absolute top-3 left-3"
+                        class="absolute top-3 start-3"
                         :size="20"
                     />
                     <input
                         ref="componentSearch"
                         v-model="searchInputQuery"
                         type="text"
-                        class="w-full !rounded-full border border-gray-400 dark:border-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] px-4 py-2.5 !pl-12 text-sm outline-none focus:ring-2 focus:ring-app-blue"
+                        class="w-full !rounded-full border border-gray-400 dark:border-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] px-4 py-2.5 !ps-12 text-sm outline-none focus:ring-2 focus:ring-app-blue"
                         :placeholder="
                             translations.sideMenu.searchPlaceholder[store.lang]
                         "
@@ -1666,7 +1672,7 @@ function handleSearchEnter() {
                     />
                     <button
                         v-if="searchInputQuery"
-                        class="absolute top-[7px] right-3 rounded-full w-7 h-7 flex items-center hover:bg-white hover:shadow transition-all dark:hover:bg-[#3A3A3A] p-1 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                        class="absolute top-[7px] end-3 rounded-full w-7 h-7 flex items-center hover:bg-white hover:shadow transition-all dark:hover:bg-[#3A3A3A] p-1 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                         @click="searchInputQuery = ''"
                     >
                         <VueUiIcon
@@ -1678,7 +1684,7 @@ function handleSearchEnter() {
 
                     <ul
                         v-if="isSearchMenuOpen && filteredSideMenuItems.length"
-                        class="absolute left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-2xl border border-gray-300 dark:border-[#3A3A3A] bg-white dark:bg-[#151515] shadow-xl z-40"
+                        class="absolute start-0 end-0 mt-1 max-h-72 overflow-y-auto rounded-2xl border border-gray-300 dark:border-[#3A3A3A] bg-white dark:bg-[#151515] shadow-xl z-40"
                     >
                         <li
                             v-for="(item, index) in filteredSideMenuItems"
@@ -1708,7 +1714,7 @@ function handleSearchEnter() {
                                     >
                                 </div>
                                 <span
-                                    class="text-xs text-gray-500 dark:text-gray-400 pl-6"
+                                    class="text-xs text-gray-500 dark:text-gray-400 ps-6"
                                 >
                                     {{ item.groupTitle }}
                                 </span>

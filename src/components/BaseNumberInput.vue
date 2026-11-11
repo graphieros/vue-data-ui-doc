@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { adaptColorToBackground } from "./maker/lib";
 import { useMainStore } from "../stores";
+import { navigationMessage } from "../navigation/messages.js";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -61,12 +62,16 @@ const valueRatio = computed(
 </script>
 
 <template>
-    <div class="inline-flex flex-row place-items-center relative">
+    <div
+        class="number-input inline-flex flex-row place-items-center relative"
+        :dir="store.lang === 'ar' ? 'rtl' : 'ltr'"
+        data-testid="number-input"
+    >
         <div
             style="
                 position: absolute;
                 top: 0;
-                left: 24px;
+                inset-inline-start: 24px;
                 width: calc(100% - 48px);
                 pointer-events: none;
             "
@@ -77,6 +82,7 @@ const valueRatio = computed(
                     background: isDarkMode ? '#1A1A1A' : '#E1E5E8',
                     height: '5px',
                     position: 'absolute',
+                    insetInlineStart: 0,
                     top: '-3px',
                     borderRadius: '3px',
                     border: isDarkMode
@@ -90,6 +96,7 @@ const valueRatio = computed(
                     background: rangeColor,
                     height: '3px',
                     position: 'absolute',
+                    insetInlineStart: 0,
                     top: '-2px',
                     borderRadius: '3px',
                 }"
@@ -100,6 +107,7 @@ const valueRatio = computed(
                     background: buttonColor,
                     height: '24px',
                     position: 'absolute',
+                    insetInlineStart: 0,
                     top: '2px',
                     borderRadius: '3px',
                     opacity: 0.2,
@@ -111,14 +119,17 @@ const valueRatio = computed(
                 background: buttonColor,
                 color: adaptColorToBackground(buttonColor),
             }"
-            class="btn-left w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]"
+            class="btn-start w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]"
+            data-number-action="decrement"
+            :aria-label="navigationMessage('numberDecrement', store.lang)"
             @click="decrement"
         >
             <VueUiIcon name="minus" stroke="#FFFFFF" />
         </button>
         <input
             :aria-labelledby="labelId"
-            class="numinput pl-2 min-w-[74px] max-w-[120px] tabular-nums"
+            class="numinput px-2 min-w-[74px] max-w-[120px] tabular-nums"
+            dir="ltr"
             type="number"
             :min="min"
             :max="max"
@@ -132,7 +143,9 @@ const valueRatio = computed(
                 background: buttonColor,
                 color: adaptColorToBackground(buttonColor),
             }"
-            class="btn-right w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]"
+            class="btn-end w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]"
+            data-number-action="increment"
+            :aria-label="navigationMessage('numberIncrement', store.lang)"
             @click="increment"
         >
             <VueUiIcon name="plus" stroke="#FFFFFF" />
@@ -145,10 +158,21 @@ button {
     font-weight: bold;
 }
 
-.btn-left {
-    border-radius: 12px 0 0 12px;
+.btn-start {
+    border-start-start-radius: 12px;
+    border-end-start-radius: 12px;
 }
-.btn-right {
-    border-radius: 0 12px 12px 0;
+.btn-end {
+    border-start-end-radius: 12px;
+    border-end-end-radius: 12px;
+}
+.number-input[dir="rtl"] .numinput {
+    appearance: textfield;
+    text-align: right;
+}
+.number-input[dir="rtl"] .numinput::-webkit-inner-spin-button,
+.number-input[dir="rtl"] .numinput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 </style>

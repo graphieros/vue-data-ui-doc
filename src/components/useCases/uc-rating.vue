@@ -118,7 +118,7 @@ const description = ref({
     <div>
         <h3 dir="auto" class="px-6">{{ description[store.lang] }}</h3>
         <!-- EXAMPLE 1: using SVG to display a growing range -->
-        <div class="p-4 pt-12">
+        <div dir="ltr" class="p-4 pt-12">
             <VueUiRating
                 :dataset="dataset"
                 :config="config"
@@ -246,7 +246,7 @@ const description = ref({
         </div>
 
         <!-- EXAMPLE 2: using individual icons for each rating unit -->
-        <div class="p-4 pt-12">
+        <div dir="ltr" class="p-4 pt-12">
             <VueUiRating
                 :dataset="dataset"
                 :config="config"

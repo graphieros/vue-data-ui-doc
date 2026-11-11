@@ -176,7 +176,7 @@ const translatedTooltip = computed(() => {
 
 <template>
     <div
-        :class="`relative min-h-[32px] py-1 ${compact ? 'text-xs' : ''} ${indent ? 'ml-6' : ''}`"
+        :class="`relative min-h-[32px] py-1 ${compact ? 'text-xs' : ''} ${indent ? 'ms-6' : ''}`"
         @mouseenter="isSelected = true"
         @mouseout="isSelected = false"
     >
@@ -198,10 +198,10 @@ const translatedTooltip = computed(() => {
                 <label
                     :for="`i_${id}`"
                     :id="id"
-                    :class="compact ? 'pr-7' : 'pr-1'"
+                    :class="compact ? 'pe-7' : 'pe-1'"
                     >{{ name }}:</label
                 >
-                <span v-if="inactive" class="ml-1">
+                <span v-if="inactive" class="ms-1">
                     <slot name="inactive-default-val">
                         {{ defaultVal }}
                     </slot>
@@ -241,7 +241,7 @@ const translatedTooltip = computed(() => {
                             </template>
                             <template #after>
                                 <div
-                                    class="pl-2 text-gray-600 dark:text-gray-400 flex flex-row place-items-center align-center"
+                                    class="ps-2 text-gray-600 dark:text-gray-400 flex flex-row place-items-center align-center"
                                     dir="auto"
                                 >
                                     <span class="text-xs">{{
@@ -249,10 +249,10 @@ const translatedTooltip = computed(() => {
                                     }}</span>
                                     <span
                                         dir="ltr"
-                                        class="text-black dark:text-white pl-1"
+                                        class="text-black dark:text-white ps-1"
                                         >{{ defaultVal }}</span
                                     >
-                                    <span class="ml-4">
+                                    <span class="ms-4">
                                         <BaseColorInfo
                                             v-if="type === 'color'"
                                             :color="defaultVal"
@@ -323,7 +323,7 @@ const translatedTooltip = computed(() => {
                     </template>
                     <span
                         dir="auto"
-                        class="pl-2 text-gray-600 dark:text-gray-400"
+                        class="ps-2 text-gray-600 dark:text-gray-400"
                         v-if="!rgba && !compact"
                     >
                         <span class="text-xs">{{
@@ -331,10 +331,10 @@ const translatedTooltip = computed(() => {
                         }}</span>
                         <span
                             dir="ltr"
-                            class="text-black dark:text-white pl-1"
+                            class="text-black dark:text-white ps-1"
                             >{{ defaultVal }}</span
                         >
-                        <span class="ml-4">
+                        <span class="ms-4">
                             <BaseColorInfo
                                 v-if="type === 'color'"
                                 :color="defaultVal"
@@ -346,7 +346,7 @@ const translatedTooltip = computed(() => {
             </div>
             <Transition name="fade">
                 <button
-                    :class="`h-[24px] w-[24px] absolute flex place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white dark:border-black ${compact ? 'right-0 -top-1' : '-left-[26px] top-1/2 -translate-y-1/2'}`"
+                    :class="`h-[24px] w-[24px] absolute flex place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white dark:border-black ${compact ? 'end-0 -top-1' : '-start-[26px] top-1/2 -translate-y-1/2'}`"
                     v-if="showResetButton && type !== 'checkbox' && !inactive"
                     @click="resetValue"
                 >

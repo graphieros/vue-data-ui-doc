@@ -1,27 +1,29 @@
 <template>
-    <!-- Manage conditional settings depending on the loading state -->
-    <!-- For example: no need to show tooltip, user options or other interactive items in the loading state -->
-    <VueDataUi
-        component="VueUiXy"
-        :dataset="dataset"
-        :config="{
-            ...config,
-            bar: {
-                ...config.line,
-                labels: {
-                    ...config.line.labels,
-                    show: !loading,
+    <div dir="ltr" style="height: inherit">
+        <!-- Manage conditional settings depending on the loading state -->
+        <!-- For example: no need to show tooltip, user options or other interactive items in the loading state -->
+        <VueDataUi
+            component="VueUiXy"
+            :dataset="dataset"
+            :config="{
+                ...config,
+                bar: {
+                    ...config.line,
+                    labels: {
+                        ...config.line.labels,
+                        show: !loading,
+                    },
                 },
-            },
-        }"
-    >
-        <!-- Use the watermark slot to display additional loading information, or a spinner -->
-        <template #watermark v-if="loading && !randomizedLoadingData">
-            <div>
-                <BaseSpinner />
-            </div>
-        </template>
-    </VueDataUi>
+            }"
+        >
+            <!-- Use the watermark slot to display additional loading information, or a spinner -->
+            <template #watermark v-if="loading && !randomizedLoadingData">
+                <div>
+                    <BaseSpinner />
+                </div>
+            </template>
+        </VueDataUi>
+    </div>
 </template>
 
 <script setup>

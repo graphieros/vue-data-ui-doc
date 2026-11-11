@@ -47,7 +47,7 @@ const config = ref({});
     <div
         class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center w-full p-4 bg-gray-200 dark:bg-[#3A3A3A] rounded-md"
     >
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="default" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -60,7 +60,7 @@ const config = ref({});
                 :config="{ ...config, theme: '' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="dark" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -73,7 +73,7 @@ const config = ref({});
                 :config="{ ...config, theme: 'dark' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="zen" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -86,7 +86,7 @@ const config = ref({});
                 :config="{ ...config, theme: 'zen' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="concrete" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -99,7 +99,7 @@ const config = ref({});
                 :config="{ ...config, theme: 'concrete' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="hack" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -112,7 +112,7 @@ const config = ref({});
                 :config="{ ...config, theme: 'hack' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="celebration" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -125,7 +125,7 @@ const config = ref({});
                 :config="{ ...config, theme: 'celebration' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="celebrationNight" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -138,7 +138,7 @@ const config = ref({});
                 :config="{ ...config, theme: 'celebrationNight' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="minimal" />
             <VueDataUi
                 component="VueUiQuickChart"
@@ -151,7 +151,7 @@ const config = ref({});
                 :config="{ ...config, theme: 'minimal' }"
             />
         </div>
-        <div class="w-full shadow-md">
+        <div dir="ltr" class="w-full shadow-md">
             <ThemeTag type="minimalDark" />
             <VueDataUi
                 component="VueUiQuickChart"

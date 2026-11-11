@@ -1,4 +1,6 @@
 <script setup>
+import { writeClipboardText } from "../clipboard.js";
+
 import { useMainStore } from "../stores";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { CopyIcon } from "vue-tabler-icons";
@@ -17,20 +19,23 @@ const props = defineProps({
 const store = useMainStore();
 
 function copyColor() {
-    navigator.clipboard
-        .writeText(JSON.stringify(props.color))
+    writeClipboardText(JSON.stringify(props.color))
         .then(() => {
             store.copy();
         })
         .catch((_err) => {
             console.warn(`${props.color} could not be copied to the clipboard`);
         });
-    store.copy();
 }
 </script>
 
 <template>
-    <span class="relative" @click="copyColor">
+    <span
+        class="relative"
+        data-copy-feedback-anchor
+        data-copy-action="color"
+        @click="copyColor"
+    >
         <FlexibleTooltip
             :position="tooltipPosition"
             :content="color"

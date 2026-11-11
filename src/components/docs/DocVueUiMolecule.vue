@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiMoleculeConfigFields from "./configuration/VueUiMoleculeConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -393,7 +395,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -604,7 +606,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
         />
 
         <div class="mx-auto w-full sm:w-1/2">
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <VueUiMolecule :dataset="dataset" :config="config" :key="key" />
             </BaseCard>
         </div>
@@ -686,7 +688,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">
+                    <div class="text-gray-400 ps-5 mb-4">
                         {{ translations.docs.emits.xy.getData[store.lang] }}
                     </div>
                     <pre>

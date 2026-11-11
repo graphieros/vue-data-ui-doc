@@ -779,7 +779,7 @@ function freestyle({ drawingArea, data }) {
 </script>
 
 <template>
-    <div class="flex flex-col p-4 rounded bg-white dark:bg-[#2A2A2A]">
+    <div dir="ltr" class="flex flex-col p-4 rounded bg-white dark:bg-[#2A2A2A]">
         <div class="flex flex-col gap-1 pt-2 mb-2">
             <label
                 for="period"
@@ -889,7 +889,7 @@ function freestyle({ drawingArea, data }) {
                 />
             </template>
             <template #source>
-                <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+                <div class="text-xs text-gray-500 text-start mt-3 ps-2">
                     Source: api.npmjs.org
                 </div>
             </template>

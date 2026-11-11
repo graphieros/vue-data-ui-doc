@@ -29,18 +29,20 @@ watch(
 </script>
 
 <template>
-    <p v-if="error" role="alert">
-        {{ t("previewError") }}
-    </p>
-    <HillPreview
-        v-else-if="component === 'VueUiHill'"
-        :dataset="dataset"
-        :config="config"
-    />
-    <VueDataUi
-        v-else
-        :component="component"
-        :dataset="dataset"
-        :config="config"
-    />
+    <div dir="ltr" style="height: inherit">
+        <p v-if="error" role="alert">
+            {{ t("previewError") }}
+        </p>
+        <HillPreview
+            v-else-if="component === 'VueUiHill'"
+            :dataset="dataset"
+            :config="config"
+        />
+        <VueDataUi
+            v-else
+            :component="component"
+            :dataset="dataset"
+            :config="config"
+        />
+    </div>
 </template>

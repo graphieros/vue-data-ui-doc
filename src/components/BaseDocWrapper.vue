@@ -33,7 +33,7 @@ const translations = computed(() => store.translations);
             {{ subtitle }} {{ updateKey }}
         </p>
         <div
-            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-2/3'}`"
+            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] start-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-2/3'}`"
         >
             <button
                 @click="callbacks.fixChart"
@@ -43,7 +43,7 @@ const translations = computed(() => store.translations);
                 <div v-else class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible" />
                     <div
-                        class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded"
+                        class="text-black dark:text-gray-300 hidden peer-hover:flex start-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-start w-[180px] p-2 rounded"
                     >
                         {{ hintPin[store.lang] }}
                     </div>

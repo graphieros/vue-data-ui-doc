@@ -245,7 +245,7 @@ function jumpToUseCase(id) {
             {{ cases.XY_FIXED_SCALE.title[store.lang] }}
         </template>
     </UseCaseTitle>
-    <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
+    <div dir="ltr" class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
             component="VueUiXy"
             :dataset="XY_FIXED_SCALE_DATASET"
@@ -304,7 +304,7 @@ function jumpToUseCase(id) {
             {{ cases.XY_MULTIPLE_Y_AXES.description[store.lang] }}
         </template>
     </UseCaseTitle>
-    <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
+    <div dir="ltr" class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
             component="VueUiXy"
             :dataset="XY_MULTIPLE_Y_AXES_DATASET"
@@ -363,7 +363,7 @@ function jumpToUseCase(id) {
             {{ cases.XY_STACKED.description[store.lang] }}
         </template>
     </UseCaseTitle>
-    <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
+    <div dir="ltr" class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
             component="VueUiXy"
             :dataset="XY_STACKED_DATASET"
@@ -422,7 +422,7 @@ function jumpToUseCase(id) {
             {{ cases.XY_STACKED_AUTOSCALE.description[store.lang] }}
         </template>
     </UseCaseTitle>
-    <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
+    <div dir="ltr" class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
             component="VueUiXy"
             :dataset="XY_STACKED_DATASET_WITH_AUTOSCALE"

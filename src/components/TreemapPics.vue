@@ -71,7 +71,7 @@ const dataset = computed(() => {
 </script>
 
 <template>
-    <div class="flex flex-col gap-4 treem">
+    <div dir="ltr" class="flex flex-col gap-4 treem">
         <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="config">
             <template #rect="{ rect }">
                 <div

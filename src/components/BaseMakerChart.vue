@@ -44,7 +44,7 @@ const translations = computed(() => makerStore.translations);
                     </button>
 
                     <button
-                        class="flex flex-row gap-2 place-items-center ml-4 py-1 px-4 rounded-full border bg-gradient-to-br from-app-gold to-app-orange transition-all text-black opacity-80 hover:opacity-100"
+                        class="flex flex-row gap-2 place-items-center ms-4 py-1 px-4 rounded-full border bg-gradient-to-br from-app-gold to-app-orange transition-all text-black opacity-80 hover:opacity-100"
                         @click="emit('resetModel')"
                     >
                         <RefreshDotIcon />
@@ -56,7 +56,7 @@ const translations = computed(() => makerStore.translations);
         </BaseDragElement>
         <div
             v-else
-            :class="`${expandedWidth} transition-all ${isFixed ? `fixed top-[88px] right-2 z-20 ${fixedWidth}` : `w-full mx-auto ${expandedWidth}`}`"
+            :class="`${expandedWidth} transition-all ${isFixed ? `fixed top-[88px] end-2 z-20 ${fixedWidth}` : `w-full mx-auto ${expandedWidth}`}`"
         >
             <BaseCard>
                 <div
@@ -71,7 +71,7 @@ const translations = computed(() => makerStore.translations);
                     </button>
 
                     <button
-                        class="flex flex-row gap-2 place-items-center ml-4 py-1 px-4 rounded-full border bg-gradient-to-br from-app-gold to-app-orange transition-all text-black opacity-80 hover:opacity-100"
+                        class="flex flex-row gap-2 place-items-center ms-4 py-1 px-4 rounded-full border bg-gradient-to-br from-app-gold to-app-orange transition-all text-black opacity-80 hover:opacity-100"
                         @click="emit('resetModel')"
                     >
                         <RefreshDotIcon />

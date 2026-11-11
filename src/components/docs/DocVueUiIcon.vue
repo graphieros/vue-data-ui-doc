@@ -5,7 +5,6 @@ import { useMainStore } from "../../stores";
 import { copyText } from "../maker/lib";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
-import ConfirmCopy from "../ConfirmCopy.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseDocDescription from "../BaseDocDescription.vue";
 import BaseAutoComplete from "../Base/BaseAutoComplete.vue";
@@ -652,7 +651,7 @@ const fancyAnimExample =
                     {{ selectedIcon }}
                 </div>
                 <button
-                    class="absolute top-2 right-2"
+                    class="absolute top-2 end-2"
                     @click="useModal('close')"
                 >
                     <XIcon class="text-black dark:text-app-green" />
@@ -660,13 +659,13 @@ const fancyAnimExample =
             </div>
 
             <button
-                class="absolute top-1/3 left-6 -translate-y-2/3"
+                class="absolute top-1/3 start-6 -translate-y-2/3"
                 @click="previous"
             >
                 <VueUiIcon name="arrowLeft" stroke="#6A6A6A" />
             </button>
             <button
-                class="absolute top-1/3 right-6 -translate-y-2/3"
+                class="absolute top-1/3 end-6 -translate-y-2/3"
                 @click="next"
             >
                 <VueUiIcon name="arrowRight" stroke="#6A6A6A" />
@@ -688,7 +687,6 @@ const fancyAnimExample =
                     @copy="store.copy()"
                 />
             </div>
-            <ConfirmCopy />
         </dialog>
     </div>
 </template>

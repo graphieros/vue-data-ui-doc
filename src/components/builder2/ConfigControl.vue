@@ -104,6 +104,7 @@ function setJson(event) {
             </option>
         </select>
         <textarea
+            dir="ltr"
             v-else-if="type === 'json'"
             :value="JSON.stringify(knob.def)"
             :aria-labelledby="labelId"
@@ -166,7 +167,7 @@ function setJson(event) {
 .range-control output {
     font-size: 12px;
     min-width: 32px;
-    text-align: right;
+    text-align: end;
     font-variant-numeric: tabular-nums;
 }
 .range-control input {

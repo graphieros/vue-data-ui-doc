@@ -111,6 +111,7 @@ const waffles = computed(() => {
     </div>
     <div class="w-full flex flex-row flex-wrap gap-1 justify-center px-6 my-12">
         <div
+            dir="ltr"
             class="w-[100px] sm:w-[200px] flex flex-col"
             v-for="(waffle, i) in waffles"
             :key="`waffle_${i}`"

@@ -226,7 +226,7 @@ const DAG_OBJ = computed(() => {
                     <template #selected="{ selectedOption }">
                         <div
                             v-if="selectedOption"
-                            class="text-left flex flex-row gap-2 place-items-center"
+                            class="text-start flex flex-row gap-2 place-items-center"
                         >
                             <div
                                 class="h-[24px] w-[24px] flex place-items-center"
@@ -246,7 +246,7 @@ const DAG_OBJ = computed(() => {
                     </template>
                     <template #option="{ option, selected, current }">
                         <div
-                            class="text-left flex flex-row gap-2 place-items-center"
+                            class="text-start flex flex-row gap-2 place-items-center"
                         >
                             <div
                                 class="h-[20px] w-[20px] flex place-items-center"

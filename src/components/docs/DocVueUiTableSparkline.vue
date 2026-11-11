@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiTableSparklineConfigFields from "./configuration/VueUiTableSparklineConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -93,7 +95,6 @@ const config = computed({
             colNames: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN"],
             prefix: "",
             suffix: "",
-            formatter: isDarkMode.value ? undefined : null,
             sortedDataColumnIndices: [0, 1, 2, 3, 4, 5],
             sortedSeriesName: true,
             sortedSum: true,
@@ -197,7 +198,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -273,11 +274,11 @@ function goToPage(route) {
         />
 
         <div
-            :class="`transition-all mx-auto no-style ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] left-0 z-50 border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px]'}`"
+            :class="`transition-all mx-auto no-style ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] start-0 z-50 border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px]'}`"
         >
             <Suspense>
                 <template #default>
-                    <BaseCard>
+                    <BaseCard dir="ltr">
                         <VueUiTableSparkline
                             :dataset="dataset"
                             :config="config"

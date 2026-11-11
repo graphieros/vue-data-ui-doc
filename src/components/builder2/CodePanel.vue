@@ -1,10 +1,13 @@
 <script setup>
 import { useBuilderTranslations } from "./translations";
-import { computed, reactive } from "vue";
+import { computed, reactive, onBeforeUnmount } from "vue";
 import { generateCode } from "./code";
 import { highlightVue } from "./highlight";
 import { useMainStore } from "../../stores";
+import CopyFeedbackMessage from "../CopyFeedbackMessage.vue";
 import BaseCard from "../BaseCard.vue";
+import { sharedChartUrl } from "./share.js";
+import { navigationMessage } from "../../navigation/messages.js";
 
 const store = useMainStore();
 const t = useBuilderTranslations();
@@ -15,6 +18,61 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["status"]);
+const actions = [
+    {
+        key: "code",
+        label: "copyComponent",
+        copied: "copiedComponent",
+        primary: true,
+        testId: "copy-component",
+    },
+    {
+        key: "configCode",
+        label: "copyConfig",
+        copied: "copiedConfig",
+        testId: "copy-config",
+    },
+    {
+        key: "datasetCode",
+        label: "copyDataset",
+        copied: "copiedDataset",
+        testId: "copy-dataset",
+    },
+    { key: "download", label: "download", testId: "download-chart" },
+    { key: "share", testId: "share-chart" },
+];
+const feedback = reactive({});
+const feedbackTimers = new Map();
+let feedbackRevision = 0;
+function clearFeedback(action) {
+    clearTimeout(feedbackTimers.get(action));
+    feedbackTimers.delete(action);
+    delete feedback[action];
+}
+function showFeedback(action, key, error = false, navigation = false) {
+    clearFeedback(action);
+    feedback[action] = { key, error, navigation, revision: ++feedbackRevision };
+    feedbackTimers.set(
+        action,
+        setTimeout(() => clearFeedback(action), 2500),
+    );
+}
+function feedbackText(action) {
+    const entry = feedback[action];
+    return entry
+        ? entry.navigation
+            ? navigationMessage(entry.key, store.lang)
+            : t(entry.key)
+        : "";
+}
+function runAction(action) {
+    if (action.key === "share") return share();
+    if (action.key === "download") return download();
+    return copy(action.key, action.copied);
+}
+onBeforeUnmount(() => {
+    for (const timer of feedbackTimers.values()) clearTimeout(timer);
+});
 
 const options = reactive({
     computed: true,
@@ -39,23 +97,61 @@ function toggleTreeshaken() {
 }
 
 async function copy(key, label) {
+    clearFeedback(key);
     try {
         await navigator.clipboard.writeText(output.value[key]);
+        showFeedback(key, label);
         emit("status", label);
     } catch {
+        showFeedback(key, "clipboardUnavailable", true);
         emit("status", "clipboardUnavailable");
     }
 }
 
+async function share() {
+    clearFeedback("share");
+    try {
+        const url = sharedChartUrl(window.location.href, props);
+        await navigator.clipboard.writeText(url);
+        showFeedback("share", "shared", false, true);
+        emit("status", "shared");
+    } catch (error) {
+        showFeedback(
+            "share",
+            error.message === "Shared chart is too large"
+                ? "shareTooLarge"
+                : "shareFailed",
+            true,
+            true,
+        );
+        // Keep the draft and existing export actions available if the link is too large
+        // or clipboard access is unavailable.
+        emit(
+            "status",
+            error.message === "Shared chart is too large"
+                ? "shareTooLarge"
+                : "clipboardUnavailable",
+        );
+    }
+}
+
 function download() {
-    const url = URL.createObjectURL(
-        new Blob([output.value.code], { type: "text/plain" }),
-    );
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${props.component}Example.vue`;
-    link.click();
-    URL.revokeObjectURL(url);
+    clearFeedback("download");
+    let url;
+    try {
+        url = URL.createObjectURL(
+            new Blob([output.value.code], { type: "text/plain" }),
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `${props.component}Example.vue`;
+        link.click();
+        showFeedback("download", "downloadStarted", false, true);
+    } catch {
+        showFeedback("download", "downloadFailed", true, true);
+    } finally {
+        if (url) URL.revokeObjectURL(url);
+    }
 }
 </script>
 
@@ -102,90 +198,58 @@ function download() {
         {{ t("universalNote") }}
     </p>
     <div class="code-actions">
-        <button
-            class="builder-button primary"
-            @click="copy('code', 'copiedComponent')"
-        >
-            <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
+        <div v-for="action in actions" :key="action.key" class="code-action">
+            <button
+                class="builder-button"
+                :class="{ primary: action.primary }"
+                :data-testid="action.testId"
+                @click="runAction(action)"
             >
-                <rect x="8" y="8" width="12" height="13" rx="2" />
-                <path
-                    d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
-                />
-            </svg>
-            {{ t("copyComponent") }}
-        </button>
-        <button
-            class="builder-button"
-            @click="copy('configCode', 'copiedConfig')"
-        >
-            <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
+                <svg
+                    v-if="action.key !== 'share'"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path
+                        v-if="action.key === 'download'"
+                        d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"
+                    />
+                    <template v-else>
+                        <rect x="8" y="8" width="12" height="13" rx="2" />
+                        <path
+                            d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
+                        />
+                    </template>
+                </svg>
+                {{
+                    action.key === "share"
+                        ? navigationMessage("share", store.lang)
+                        : t(action.label)
+                }}
+            </button>
+            <span
+                class="share-feedback"
+                role="status"
+                aria-atomic="true"
+                :data-testid="`${action.key}-feedback`"
             >
-                <rect x="8" y="8" width="12" height="13" rx="2" />
-                <path
-                    d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
+                <CopyFeedbackMessage
+                    v-if="feedback[action.key]"
+                    :key="feedback[action.key].revision"
+                    class="share-feedback-message"
+                    :message="feedbackText(action.key)"
+                    :error="feedback[action.key].error"
+                    :dark="store.isDarkMode"
                 />
-            </svg>
-            {{ t("copyConfig") }}
-        </button>
-        <button
-            class="builder-button"
-            @click="copy('datasetCode', 'copiedDataset')"
-        >
-            <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-            >
-                <rect x="8" y="8" width="12" height="13" rx="2" />
-                <path
-                    d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
-                />
-            </svg>
-            {{ t("copyDataset") }}
-        </button>
-        <button class="builder-button" @click="download">
-            <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-            >
-                <path
-                    d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"
-                />
-            </svg>
-            {{ t("download") }}
-        </button>
+            </span>
+        </div>
     </div>
     <BaseCard>
         <div :class="store.isDarkMode ? 'maker-code-dark' : 'maker-code-light'">
@@ -215,6 +279,20 @@ function download() {
 }
 .code-actions {
     flex-wrap: wrap;
+}
+.code-action {
+    position: relative;
+    display: inline-flex;
+}
+.share-feedback {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: min(180px, calc(100vw - 64px));
+    z-index: 10;
+    pointer-events: none;
 }
 .universal-note {
     margin-bottom: 16px;

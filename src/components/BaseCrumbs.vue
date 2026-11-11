@@ -43,14 +43,14 @@ const validLinks = computed(() => {
             gap-3 
             fixed 
             top-[55px] 
-            ${props.noMargin ? 'left-0' : isMenuOpen ? 'left-[300px]' : 'left-[60px]'}
+            ${props.noMargin ? 'start-0' : isMenuOpen ? 'start-[300px]' : 'start-[60px]'}
             text-xs 
             place-items-center 
             bg-[#FAFAFA] 
             dark:bg-[#2A2A2A] 
-            w-full 
+            w-auto end-0
             py-2
-            pl-4
+            ps-4
             shadow
             `"
         v-if="tree.length"
@@ -87,7 +87,7 @@ const validLinks = computed(() => {
             </div>
             <VueUiIcon
                 v-if="i < validLinks - 1 && validLinks > 1"
-                name="arrowRight"
+                :name="store.lang === 'ar' ? 'arrowLeft' : 'arrowRight'"
                 :stroke="isDarkMode ? '#abc2f6' : '#5f8aee'"
                 :size="12"
             />

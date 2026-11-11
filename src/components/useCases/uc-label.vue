@@ -181,7 +181,7 @@ const seeHow = ref({
             >{{ seeHow[store.lang] }}</a
         >
     </div>
-    <div class="bg-white p-4 rounded">
+    <div dir="ltr" class="bg-white p-4 rounded">
         <VueUiXy
             :dataset="datasetLine"
             :config="configLine"
@@ -209,11 +209,11 @@ const seeHow = ref({
                 <div class="relative w-full">
                     <input
                         v-model="inputs.title"
-                        class="w-full bg-white dark:bg-[#3A3A3A] pl-2 pr-6"
+                        class="w-full bg-white dark:bg-[#3A3A3A] ps-2 pe-6"
                     />
                     <button
                         @click="inputs.title = ''"
-                        class="absolute top-1/2 right-2 -translate-y-1/2"
+                        class="absolute top-1/2 end-2 -translate-y-1/2"
                         v-if="inputs.title"
                     >
                         <VueUiIcon
@@ -264,11 +264,11 @@ const seeHow = ref({
                 <div class="relative v-full">
                     <textarea
                         v-model="inputs.content"
-                        class="w-full bg-white dark:bg-[#3A3A3A] rounded-md border border-gray-200 dark:border-gray-600 pl-2 pr-6"
+                        class="w-full bg-white dark:bg-[#3A3A3A] rounded-md border border-gray-200 dark:border-gray-600 ps-2 pe-6"
                     />
                     <button
                         @click="inputs.content = ''"
-                        class="absolute top-4 right-2 -translate-y-1/2"
+                        class="absolute top-4 end-2 -translate-y-1/2"
                         v-if="inputs.content"
                     >
                         <VueUiIcon

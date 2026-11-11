@@ -102,7 +102,7 @@ const codeModel = computed(
         </div>
 
         <div
-            class="w-full bg-[#ff8c0030] p-4 rounded border-l border-app-warning my-4 flex flex-row flex-wrap gap-4 align-center font-inter-medium"
+            class="w-full bg-[#ff8c0030] p-4 rounded border-s border-app-warning my-4 flex flex-row flex-wrap gap-4 align-center font-inter-medium"
         >
             <div class="w-5 h-5">
                 <VueUiIcon name="triangleExclamation" stroke="#ff8c00" />

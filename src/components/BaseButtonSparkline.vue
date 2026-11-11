@@ -59,7 +59,7 @@ function open(state) {
 </script>
 
 <template>
-    <div class="flex flex-col">
+    <div dir="ltr" class="flex flex-col">
         <BasePopoverButton
             :buttonClass="`${buttonClass} ${isOpen ? 'rounded-t-md' : 'rounded-md shadow-lg'}`"
             :popoverClass="popoverClass"
@@ -70,7 +70,7 @@ function open(state) {
                 <div
                     class="w-[200px] h-[40px] py-2 tabular-nums flex flex-row gap-2 justify-between px-3 place-items-center"
                 >
-                    <label class="text-xs absolute top-0.5 left-3">{{
+                    <label class="text-xs absolute top-0.5 start-3">{{
                         title
                     }}</label>
                     <span class="text-sm mt-3"

@@ -46,7 +46,7 @@ const { isMobile } = useMobile();
                         :size="12"
                         :stroke-width="2"
                         :stroke="isDarkMode ? '#8A8A8A' : '#CCCCCC'"
-                        class="absolute top-[4px] right-[4px]"
+                        class="absolute top-[4px] end-[4px]"
                     />
                     <BrandGithubFilledIcon class="z-10" />
                 </button>

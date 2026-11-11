@@ -295,7 +295,7 @@ function goToPage(route) {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiXy :config="configLine" :dataset="datasetLine">
                         <template #svg="{ svg }">
                             <g

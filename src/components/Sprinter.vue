@@ -70,7 +70,9 @@ const dataset = computed(() => {
 </script>
 
 <template>
-    <VueUiSparkgauge :config="config" :dataset="dataset" id="sprinter" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiSparkgauge :config="config" :dataset="dataset" id="sprinter" />
+    </div>
 </template>
 
 <style>

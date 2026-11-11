@@ -29,7 +29,7 @@ function updateColor() {
     <div>
         <div class="text-blue-label text-sm mb-1">{{ label }}</div>
         <div
-            class="pl-[6px] w-[96px] rounded-md border border-light-grey h-[32px] relative flex flex-row gap-[12px] place-items-center"
+            class="ps-[6px] w-[96px] rounded-md border border-light-grey h-[32px] relative flex flex-row gap-[12px] place-items-center"
         >
             <div class="flex flex-row gap-[6px] place-items-center">
                 <div
@@ -47,7 +47,7 @@ function updateColor() {
             <input
                 type="color"
                 v-model="currentColor"
-                class="absolute top-0 left-0 z-10"
+                class="absolute top-0 start-0 z-10"
                 :name="name"
                 @input="updateColor"
             />

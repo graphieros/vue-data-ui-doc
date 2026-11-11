@@ -1,3 +1,5 @@
+import { readStorage, writeStorage } from "./storage.js";
+
 const requests = new Map();
 const memory = new Map();
 
@@ -5,9 +7,9 @@ const memory = new Map();
 export async function cachedJson(url, { ttl = 5 * 60 * 1000 } = {}) {
     const key = `vdu:stats:${url}`;
     let cached = memory.get(key);
-    if (!cached && typeof sessionStorage !== "undefined") {
+    if (!cached) {
         try {
-            cached = JSON.parse(sessionStorage.getItem(key));
+            cached = JSON.parse(readStorage(key, null, "sessionStorage"));
         } catch {
             /* Storage is optional. */
         }
@@ -21,7 +23,7 @@ export async function cachedJson(url, { ttl = 5 * 60 * 1000 } = {}) {
             const entry = { time: Date.now(), value };
             memory.set(key, entry);
             try {
-                sessionStorage.setItem(key, JSON.stringify(entry));
+                writeStorage(key, JSON.stringify(entry), "sessionStorage");
             } catch {
                 /* Private mode / quota. */
             }

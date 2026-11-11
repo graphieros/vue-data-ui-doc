@@ -228,7 +228,7 @@ const commonButtonStyle =
 </script>
 
 <template>
-    <div class="text-left mt-12 w-5/6 mx-auto mb-12 max-w-[1200px]">
+    <div class="text-start mt-12 w-5/6 mx-auto mb-12 max-w-[1200px]">
         If you prefer not to use the charts' built-in user options menu, but
         need to create your own:
 
@@ -276,7 +276,7 @@ const commonButtonStyle =
                             @click="toggleTooltip"
                             :size="12"
                             padding="p-3"
-                            tw="rounded-r-[0px]"
+                            tw="rounded-e-[0px]"
                             :color="commonButtonStyle"
                             tooltip="Show tooltip"
                         >
@@ -368,7 +368,7 @@ const commonButtonStyle =
                             @click="toggleAnnotator"
                             :size="12"
                             padding="p-3"
-                            tw="rounded-l-[0]"
+                            tw="rounded-s-[0]"
                             :color="commonButtonStyle"
                             tooltip="Toggle annotator"
                         >
@@ -384,7 +384,7 @@ const commonButtonStyle =
                     </div>
                 </BaseCard>
 
-                <BaseCard type="light">
+                <BaseCard dir="ltr" type="light">
                     <VueUiDonut
                         ref="donutChart"
                         :dataset="dataset"

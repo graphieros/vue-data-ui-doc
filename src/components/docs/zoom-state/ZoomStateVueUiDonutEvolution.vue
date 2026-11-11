@@ -102,6 +102,7 @@ function selectLegend(payload, from) {
 
 <template>
     <div
+        dir="ltr"
         class="mb-4 grid grid-cols-1 lg:grid-cols-2 gap-8 p-2 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-lg"
     >
         <VueUiDonutEvolution

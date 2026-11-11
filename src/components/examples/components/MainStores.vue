@@ -236,5 +236,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiQuadrant :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiQuadrant :config="config" :dataset="dataset" />
+    </div>
 </template>

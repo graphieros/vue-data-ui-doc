@@ -1,4 +1,7 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
+import { readStoredJson, writeStorage } from "../../storage.js";
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiAnnotatorConfigFields from "./configuration/VueUiAnnotatorConfigFields.vue";
 import { ref, computed, watch, nextTick, onBeforeMount, onMounted } from "vue";
@@ -141,7 +144,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -173,32 +176,34 @@ const shapes = ref([]);
 const lastSelectedShape = ref(undefined);
 
 onBeforeMount(() => {
-    if (localStorage.getItem("vue-data-ui-annotator") === null) {
-        localStorage.setItem(
+    const saved = readStoredJson("vue-data-ui-annotator");
+    if (
+        saved &&
+        Array.isArray(saved.shapes) &&
+        (saved.lastSelectedShape === undefined ||
+            typeof saved.lastSelectedShape === "object")
+    ) {
+        shapes.value = saved.shapes;
+        lastSelectedShape.value = saved.lastSelectedShape;
+    } else {
+        shapes.value = initShapes.value;
+        lastSelectedShape.value = initLastSelectedShape.value;
+        writeStorage(
             "vue-data-ui-annotator",
             JSON.stringify({
                 shapes: initShapes.value,
                 lastSelectedShape: initLastSelectedShape.value,
             }),
         );
-        shapes.value = initShapes.value;
-        lastSelectedShape.value = initLastSelectedShape.value;
-    } else {
-        shapes.value = JSON.parse(
-            localStorage.getItem("vue-data-ui-annotator"),
-        ).shapes;
-        lastSelectedShape.value = JSON.parse(
-            localStorage.getItem("vue-data-ui-annotator"),
-        ).lastSelectedShape;
     }
 });
 
 function saveAnnotations({ shapes, lastSelectedShape }) {
     console.log("VueUiAnnotator docs - saved shapes: ", shapes);
-    localStorage["vue-data-ui-annotator"] = JSON.stringify({
-        shapes,
-        lastSelectedShape,
-    });
+    writeStorage(
+        "vue-data-ui-annotator",
+        JSON.stringify({ shapes, lastSelectedShape }),
+    );
 }
 
 const { configCode, showAllConfig } = useConfigCode();
@@ -264,7 +269,7 @@ const exampleTemplate = ref(`<VueUiAnnotator
                 }}
             </div>
 
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <SuspenseWrapper :width="200" :height="200">
                     <VueUiAnnotator
                         :dataset="{ shapes, lastSelectedShape }"
@@ -468,7 +473,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
                 <div>
                     <code><b>@toggleOpenState</b></code>
                 </div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{
                         translations.docs.comments.annotator.emits
                             .toggleOpenState[store.lang]
@@ -484,7 +489,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
                 <div class="border-t border-gray-500 pt-4">
                     <code><b>@saveAnnotations</b></code>
                 </div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{
                         translations.docs.comments.annotator.emits
                             .saveAnnotations[store.lang]
@@ -498,7 +503,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
     }
 </code>
 </pre>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{
                         translations.docs.comments.annotator.emits.calledWhen[
                             store.lang

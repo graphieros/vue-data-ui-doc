@@ -2,7 +2,6 @@
 import { onMounted, onBeforeUnmount, ref } from "vue";
 import BaseTypeDirectory from "../components/docs/BaseTypeDirectory.vue";
 import generated from "virtual:vue-data-ui-types";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 const chromeHeight = ref(0);
 let chromeObserver;
 onMounted(() => {
@@ -52,7 +51,6 @@ const documentation = {
         :filename="`vue-data-ui ${documentation.version}`"
         theme="auto"
     />
-    <ConfirmCopy />
 </template>
 
 <style scoped>

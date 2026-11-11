@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiTableHeatmapConfigFields from "./configuration/VueUiTableHeatmapConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -165,7 +167,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -305,9 +307,9 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
         />
 
         <div
-            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px]'}`"
+            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] start-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px]'}`"
         >
-            <BaseCard>
+            <BaseCard dir="ltr">
                 <Suspense>
                     <template #default>
                         <VueDataUi
@@ -319,7 +321,7 @@ const codeSlots = ref(`<VueUiTableHeatmap :dataset="dataset" :config="config">
                             <template #caption>
                                 <div
                                     style="width: 100%; height: 40px"
-                                    class="pb-8 font-black text-2xl text-left pl-2"
+                                    class="pb-8 font-black text-2xl text-start ps-2"
                                 >
                                     TITLE
                                 </div>

@@ -79,5 +79,7 @@ const dataset = computed(() => {
 </script>
 
 <template>
-    <VueUiWheel :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiWheel :config="config" :dataset="dataset" />
+    </div>
 </template>

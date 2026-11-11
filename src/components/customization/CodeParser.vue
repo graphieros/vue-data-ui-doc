@@ -4,6 +4,7 @@ import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css";
 import { useMainStore } from "../../stores";
 import { getAllTypes } from "../../emit-mapping";
+import { getCopyFeedbackTarget } from "../../clipboard.js";
 
 const props = defineProps({
     content: {
@@ -45,6 +46,15 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["copy"]);
+let copyTarget;
+function captureCopy(event) {
+    if (event.target.closest?.(".code-copy"))
+        copyTarget = getCopyFeedbackTarget();
+}
+function onCopy(content) {
+    store.copy({ target: copyTarget });
+    emit("copy", content);
+}
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -323,10 +333,12 @@ watch(
 
 <template>
     <div
+        dir="ltr"
         :class="`relative flex flex-row w-full place-items-center ${tw}`"
         :style="{
             pointerEvents: noPointerEvents ? 'none' : 'all',
         }"
+        @click.capture="captureCopy"
     >
         <slot name="color" />
         <VueHiCode
@@ -335,7 +347,7 @@ watch(
             :content="content"
             :language="language"
             v-bind="config"
-            @copy="emit('copy')"
+            @copy="onCopy"
         />
     </div>
 </template>

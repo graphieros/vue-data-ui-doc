@@ -405,7 +405,7 @@ function selectNode(node) {
 </script>
 
 <template>
-    <div class="w-full">
+    <div dir="ltr" class="w-full">
         <VueUiMolecule
             :dataset="dataset"
             :config="config"

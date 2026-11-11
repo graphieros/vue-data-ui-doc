@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiHillConfigFields from "./configuration/VueUiHillConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -401,7 +403,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -487,7 +489,7 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiHill :dataset :config="config" @save="save" />
                 </BaseCard>
             </DocSnapper>

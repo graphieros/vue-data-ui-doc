@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiSparklineConfigFields from "./configuration/VueUiSparklineConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
@@ -244,7 +246,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -376,7 +378,7 @@ const prefersReduced = ref({
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiSparkline" />
 
         <BaseDocDescription
@@ -399,7 +401,7 @@ const prefersReduced = ref({
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiSparkline
                         :dataset="dataset"
                         :config="config"

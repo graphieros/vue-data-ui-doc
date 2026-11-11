@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores/index";
 import { useMakerStore } from "../../stores/maker";
-import { XIcon, CopyIcon, CheckIcon } from "vue-tabler-icons";
+import { XIcon, CopyIcon } from "vue-tabler-icons";
 import { copyText } from "../maker/lib";
 import FlexibleTooltip from "../FlexibleTooltip.vue";
 
@@ -48,16 +48,12 @@ const dialogContent = computed(() => {
     `;
 });
 
-const isCopied = ref(false);
-
 function copy() {
     copyText(
         dialogContent.value.replaceAll("<br>", ""),
         document.getElementById(props.id),
     );
-    isCopied.value = true;
     setTimeout(() => {
-        isCopied.value = false;
         useModal("close");
     }, 1000);
 }
@@ -84,7 +80,7 @@ function copy() {
         :id="props.id"
         class="glass fixed h-screen max-h-[700px] w-full max-w-[900px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]"
     >
-        <button class="absolute top-2 right-2" @click="useModal('close')">
+        <button class="absolute top-2 end-2" @click="useModal('close')">
             <XIcon class="text-black dark:text-app-green" />
         </button>
         <div class="flex flex-row gap-4 place-items-center mb-6">
@@ -95,11 +91,6 @@ function copy() {
             >
                 <CopyIcon
                     class="cursor-pointer text-black dark:text-app-green"
-                    v-if="!isCopied"
-                />
-                <CheckIcon
-                    v-else
-                    class="text-black dark:text-app-green cursor-pointer animate-ping"
                 />
                 <span class="text-black dark:text-app-green">
                     &lt;{{ componentName }} /&gt;

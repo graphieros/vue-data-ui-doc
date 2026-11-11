@@ -1,4 +1,10 @@
 <script setup>
+import {
+    writeClipboardText,
+    copySelection,
+    getCopyFeedbackTarget,
+} from "../clipboard.js";
+
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { LinkIcon } from "vue-tabler-icons";
@@ -18,15 +24,12 @@ const props = defineProps({
 const store = useMainStore();
 
 async function copyToClipboard(conf) {
+    const target = getCopyFeedbackTarget();
     const text =
         typeof conf === "string" ? conf : JSON.stringify(conf, null, 2);
     if (window.isSecureContext && navigator.clipboard?.writeText) {
         try {
-            await navigator.clipboard.writeText(text);
-            store.copy({
-                message: props.enableMessenger ? text : "",
-                type: "success",
-            });
+            await writeClipboardText(text, target);
             return true;
         } catch (err) {
             console.warn("Clipboard API failed, using fallback:", err);
@@ -46,14 +49,10 @@ async function copyToClipboard(conf) {
         textarea.select();
         textarea.setSelectionRange(0, textarea.value.length);
 
-        const ok = document.execCommand("copy");
+        const ok = copySelection(target);
         document.body.removeChild(textarea);
 
         if (ok) {
-            store.copy({
-                message: props.enableMessenger ? text : "",
-                type: "success",
-            });
             return true;
         }
         console.error("document.execCommand('copy') returned false");
@@ -82,6 +81,7 @@ const tooltipContent = ref({
         <button
             class="p-2 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors"
             @click="copyToClipboard(link)"
+            data-copy-action="link"
         >
             <LinkIcon />
         </button>

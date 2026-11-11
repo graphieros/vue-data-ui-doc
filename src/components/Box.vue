@@ -489,14 +489,19 @@ function selectTabFromMini(order) {
     <Transition name="fade">
         <div
             v-if="!isMobile"
-            :class="`fixed top-[100px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-20 flex flex-col gap-2.5 p-2 transition-all`"
+            :dir="store.lang === 'ar' ? 'rtl' : 'ltr'"
+            data-testid="box-mini-menu"
+            :class="`fixed top-[100px] ${isMenuOpen ? 'start-[300px]' : 'start-[60px]'} z-20 flex flex-col gap-2.5 p-2 transition-all`"
         >
             <FlexibleTooltip
                 v-for="tab in menuItems"
-                position="right"
+                position="inline-end"
                 :content="tab.name"
             >
                 <button
+                    :data-tab-order="tab.order"
+                    :aria-label="tab.name"
+                    :aria-pressed="activeTab === tab.order"
                     @click="() => selectTabFromMini(tab.order)"
                     :class="`p-2 hover:bg-[#FAFAFA] dark:hover:bg-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] rounded-full hover:bg-gradient-to-tl transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
                     :style="{
@@ -523,10 +528,12 @@ function selectTabFromMini(order) {
                     />
                     <div
                         v-if="activeTab === tab.order"
-                        class="absolute -right-2 top-1/2 -translate-y-1/2"
+                        class="absolute -end-2 top-1/2 -translate-y-1/2"
                     >
                         <VueUiIcon
-                            name="arrowLeft"
+                            :name="
+                                store.lang === 'ar' ? 'arrowRight' : 'arrowLeft'
+                            "
                             :stroke="isDarkMode ? tab.color : '#2A2A2A'"
                             :size="10"
                         />
@@ -538,7 +545,7 @@ function selectTabFromMini(order) {
 
     <div
         v-if="schema"
-        class="rounded-xl pl-4 my-6 relative overflow-x-auto dark:bg-[#242424] bg-gradient-to-br from-transparent to-[#5F8BEE20] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+        class="rounded-xl ps-4 my-6 relative overflow-x-auto dark:bg-[#242424] bg-gradient-to-br from-transparent to-[#5F8BEE20] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
     >
         <VueUiAccordion :config="isDarkMode ? darkModeConfig : config">
             <template #title="{ color }">
@@ -560,6 +567,8 @@ function selectTabFromMini(order) {
 
     <div
         ref="boxWrapper"
+        :dir="store.lang === 'ar' ? 'rtl' : 'ltr'"
+        :data-active-tab="activeTab"
         class="p-6 rounded-xl my-6 relative overflow-x-auto bg-gray-100 dark:bg-[#242424] scroll-mt-8 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
     >
         <h2 class="mb-6 flex flex-row place-items-center gap-3" dir="auto">

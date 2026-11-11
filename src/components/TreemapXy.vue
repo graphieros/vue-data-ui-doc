@@ -344,10 +344,11 @@ const code = ref(`<VueUiTreemap :dataset="dataset" :config="config">
 </script>
 
 <template>
-    <div class="flex flex-col gap-4">
+    <div dir="ltr" class="flex flex-col gap-4">
         <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="config">
             <template #rect="{ rect }">
                 <div
+                    dir="ltr"
                     :style="{ width: '100%', height: '100%' }"
                     xmlns="http://www.w3.org/1999/xhtml"
                     v-if="sparklines[rect.name]?.dataset"

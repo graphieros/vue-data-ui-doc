@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiDagConfigFields from "./configuration/VueUiDagConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted, useTemplateRef } from "vue";
@@ -388,7 +390,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -416,7 +418,7 @@ function goToPage(route) {
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiDag" />
         <BaseDocDescription
             :text="translations.docs.tooltips.dag[store.lang]"
@@ -438,7 +440,7 @@ function goToPage(route) {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiDag
                         ref="chartRef"
                         :dataset="dataset"
@@ -481,9 +483,9 @@ function goToPage(route) {
                 >
                     <div class="font-inter-medium text-xl mb-2">
                         <code>focusOnNode</code>
-                        <span class="text-gray-500 pl-2">options</span>
+                        <span class="text-gray-500 ps-2">options</span>
                     </div>
-                    <div class="absolute top-2 right-2">
+                    <div class="absolute top-2 end-2">
                         <button @click="closeDetails">
                             <VueUiIcon
                                 name="close"

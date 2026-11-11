@@ -1877,7 +1877,7 @@ const currentTab = ref("heatmap");
                 class="w-full mt-6"
                 type="light"
             >
-                <div class="p-4">
+                <div dir="ltr" class="p-4">
                     <VueUiSparkHistogram
                         :dataset="sparkHistogramDataset"
                         :config="sparkHistogramConfig"
@@ -1893,7 +1893,7 @@ const currentTab = ref("heatmap");
                 <Suspense>
                     <template #default>
                         <div>
-                            <div class="p-4">
+                            <div dir="ltr" class="p-4">
                                 <div class="flex flex-col gap-2 mb-4">
                                     <label>
                                         Cut null values
@@ -1914,7 +1914,7 @@ const currentTab = ref("heatmap");
                                         </button>
                                         <select
                                             v-model="selectedComponent"
-                                            class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner w-full max-w-[250px]"
+                                            class="p-1 ps-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner w-full max-w-[250px]"
                                         >
                                             <option>All components</option>
                                             <option
@@ -1942,7 +1942,7 @@ const currentTab = ref("heatmap");
                                     :config="xyConfigCumAvg"
                                 />
                             </div>
-                            <div class="p-4">
+                            <div dir="ltr" class="p-4">
                                 <VueUiStackline
                                     :dataset="stackData"
                                     :config="stacklineConfig"
@@ -1964,7 +1964,7 @@ const currentTab = ref("heatmap");
                 class="w-full mt-6"
                 type="light"
             >
-                <div class="p-4">
+                <div dir="ltr" class="p-4">
                     <VueUiVerticalBar
                         :dataset="verticalBarDataset"
                         :config="verticalBarConfig"
@@ -1977,12 +1977,12 @@ const currentTab = ref("heatmap");
                 class="w-full mt-6"
                 type="light"
             >
-                <div class="p-4">
+                <div dir="ltr" class="p-4">
                     <div class="text-center text-xl">
                         Ratings breakdown ({{ stats.length }} votes)
                     </div>
                     <div class="flex flex-row place-items-center gap-2">
-                        <div class="w-full">
+                        <div dir="ltr" class="w-full">
                             <VueUiGauge
                                 :dataset="gaugeDataset"
                                 :config="{
@@ -2044,7 +2044,7 @@ const currentTab = ref("heatmap");
                                 }"
                             />
                         </div>
-                        <div class="w-full">
+                        <div dir="ltr" class="w-full">
                             <VueUiMoodRadar
                                 :dataset="radarDataset"
                                 :config="radarConfig"
@@ -2101,7 +2101,7 @@ const currentTab = ref("heatmap");
                 class="w-full mt-6"
                 type="light"
             >
-                <div class="p-4">
+                <div dir="ltr" class="p-4">
                     <VueDataUi
                         component="VueUiHeatmap"
                         :dataset="heatmapDataset"
@@ -2117,7 +2117,7 @@ const currentTab = ref("heatmap");
                 class="w-full mt-6"
                 type="light"
             >
-                <div class="p-4">
+                <div dir="ltr" class="p-4">
                     <VueDataUi
                         component="VueUiTreemap"
                         :dataset="treemapDataset"

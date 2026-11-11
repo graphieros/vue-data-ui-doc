@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiDashboardConfigFields from "./configuration/VueUiDashboardConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted, markRaw } from "vue";
@@ -105,7 +107,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -224,7 +226,7 @@ const { configCode, showAllConfig } = useConfigCode();
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiDashboard" />
 
         <BaseDocDescription
@@ -244,7 +246,10 @@ const { configCode, showAllConfig } = useConfigCode();
                     :key="key"
                 >
                     <template #content="{ item }">
-                        <div style="padding: 12px; width: 100%; height: 100%">
+                        <div
+                            dir="ltr"
+                            style="padding: 12px; width: 100%; height: 100%"
+                        >
                             <component
                                 :is="item.component"
                                 v-bind="item.props"
@@ -343,14 +348,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
                 <div>
                     <code><b>@change</b></code>
                 </div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{ translations.docs.emits.dashboard.change[store.lang] }}
                 </div>
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <code><b>toggleLock</b></code>
                 </div>
-                <div class="text-gray-400 pl-5">
+                <div class="text-gray-400 ps-5">
                     {{
                         translations.docs.emits.dashboard.toggleLock[store.lang]
                     }}

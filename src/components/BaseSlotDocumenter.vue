@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../clipboard.js";
+
 import { ref, computed } from "vue";
 import { graphTranslations } from "../translations/graph.js";
 import { createGraphSlotSnippets } from "./graphSlotSnippets.js";
@@ -1090,7 +1092,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -1131,14 +1133,14 @@ function copyToClipboard(conf) {
                     </div>
                 </div>
                 <div
-                    class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6"
+                    class="ps-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pe-6"
                 >
                     {{ item.description }}
                 </div>
                 <div
                     class="bg-gray-200 dark:bg-[#1A1A1A] overflow-auto rounded-b-2xl relative shadow"
                 >
-                    <div class="absolute top-1 right-1">
+                    <div class="absolute top-1 end-1">
                         <FlexibleTooltip
                             position="left"
                             :content="translations.clickToCopy[store.lang]"

@@ -85,7 +85,7 @@ const linksTranslations = computed(() => {
 <template>
     <button
         @click="openHelpCenter"
-        class="fixed z-50 right-2 top-[92px] flex place-items-center justify-center rounded-full bg-gradient-to-b from-[#ffa793] to-[#dd7963] h-[42px] w-[42px] hover:-translate-y-[2px] transition-all"
+        class="fixed z-50 end-2 top-[92px] flex place-items-center justify-center rounded-full bg-gradient-to-b from-[#ffa793] to-[#dd7963] h-[42px] w-[42px] hover:-translate-y-[2px] transition-all"
     >
         <VueUiIcon name="circleQuestion" stroke="#1A1A1A" />
         <div class="absolute -bottom-5 text-xs text-app-orange">HELP</div>
@@ -96,14 +96,14 @@ const linksTranslations = computed(() => {
         ref="helpCenter"
         class="shadow-xl fixed p-6 glass h-screen w-full max-w-[1000px] max-h-[764px] rounded-lg bg-[#e1e5e8] dark:bg-[#2A2A2A] text-black dark:text-gray-300 border border-app-orange overflow-hidden"
     >
-        <button @click="closeDialog" class="absolute top-6 right-6 z-50">
+        <button @click="closeDialog" class="absolute top-6 end-6 z-50">
             <VueUiIcon
                 name="close"
                 :stroke="isDarkMode ? '#ff6400' : '#1A1A1A'"
             />
         </button>
         <div
-            class="w-full flex place-items-center gap-4 px-10 absolute top-6 left-0 text-app-orange"
+            class="w-full flex place-items-center gap-4 px-10 absolute top-6 start-0 text-app-orange"
         >
             <VueUiIcon name="circleQuestion" stroke="#FF6400" />
             {{ help.title[store.lang] }}
@@ -147,7 +147,7 @@ const linksTranslations = computed(() => {
         </div>
 
         <div
-            class="w-full flex place-items-center justify-end absolute bottom-6 right-6 gap-4"
+            class="w-full flex place-items-center justify-end absolute bottom-6 end-6 gap-4"
         >
             <button
                 class="h-[40px] px-6 rounded-lg border border-app-orange text-black dark:text-app-orange hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:text-white hover:dark:text-white transition-colors"

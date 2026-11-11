@@ -74,7 +74,7 @@ const config = computed(() => ({
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <details ref="detailsRef">
             <summary class="select-none cursor-pointer">
                 View keywords as horizontal bars

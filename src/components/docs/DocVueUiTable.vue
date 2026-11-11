@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiTableConfigFields from "./configuration/VueUiTableConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
@@ -508,7 +510,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -619,7 +621,7 @@ const { configCode, showAllConfig } = useConfigCode();
             :configSource="mainConfig.vue_ui_table"
         />
 
-        <BaseCard>
+        <BaseCard dir="ltr">
             <Suspense>
                 <template #default>
                     <VueUiTable

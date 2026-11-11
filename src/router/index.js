@@ -1,5 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "../views/Home.vue";
+import { ref } from "vue";
+import { createChunkRecovery } from "../navigation/chunkRecovery.js";
 
 const routes = [
     {
@@ -11,7 +13,6 @@ const routes = [
         path: "/search",
         name: "Search",
         component: () => import("../views/SearchPage.vue"),
-        props: (route) => ({ query: route.query.q }),
     },
     {
         path: "/installation",
@@ -94,15 +95,6 @@ const routes = [
         component: () => import("../views/LoadingStates.vue"),
     },
     {
-        path: "/docs",
-        redirect: (to) => {
-            if (to.hash === "#vue-ui-vertical-bar") {
-                return { path: "/docs", hash: "#vue-ui-horizontal-bar" };
-            }
-            return true;
-        },
-    },
-    {
         path: "/examples/themes",
         name: "Built-in themes",
         component: () => import("../views/ThemeSwapper.vue"),
@@ -131,50 +123,47 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) return savedPosition;
+        if (to.path !== from.path) return { top: 0 };
+        // Documentation owns its hash-driven component navigation.
+    },
 });
 
 let lastTargetFullPath = null;
 
 router.beforeEach((to, from, next) => {
+    if (to.path === "/docs" && to.hash === "#vue-ui-vertical-bar") {
+        next({
+            path: to.path,
+            query: to.query,
+            hash: "#vue-ui-horizontal-bar",
+            replace: true,
+        });
+        return;
+    }
     lastTargetFullPath = to.fullPath;
     next();
 });
 
-let chunkReloadedOnce = false;
-
+export const chunkFailure = ref(null);
+const recoverChunk = createChunkRecovery({
+    reload: (target) => window.location.assign(target),
+    failed: (_error, target) => {
+        chunkFailure.value = target;
+    },
+});
 router.onError((error) => {
-    const message = (error && error.message) || "";
-
-    const chunkFailedPatterns = [
-        /Loading chunk \d+ failed/i,
-        /ChunkLoadError/i,
-        /Failed to fetch dynamically imported module/i,
-        /Failed to load module script/i,
-        /Importing a module script failed/i,
-    ];
-
-    const isChunkError = chunkFailedPatterns.some((pattern) =>
-        pattern.test(message),
-    );
-
-    if (!isChunkError) {
-        return;
-    }
-
-    if (chunkReloadedOnce) {
-        console.error("Chunk load error occurred again after reload.", error);
-        return;
-    }
-
-    chunkReloadedOnce = true;
-
-    const targetUrl =
+    recoverChunk(
+        error,
         lastTargetFullPath ||
-        window.location.pathname +
-            window.location.search +
-            window.location.hash;
-
-    window.location.assign(targetUrl);
+            window.location.pathname +
+                window.location.search +
+                window.location.hash,
+    );
+});
+router.afterEach((_to, _from, failure) => {
+    if (!failure) chunkFailure.value = null;
 });
 
 export default router;

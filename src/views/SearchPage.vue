@@ -1,12 +1,11 @@
 <script setup>
-import { ref, onMounted, watch, computed, nextTick } from "vue";
+import { ref, watch, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { searchInConfig } from "../searchHelper";
 import { useMainStore } from "../stores";
 import SideMenu from "../components/SideMenu.vue";
 import { FilterXIcon, ZoomCancelIcon } from "vue-tabler-icons";
 import CodeParser from "../components/customization/CodeParser.vue";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseCard from "../components/BaseCard.vue";
 import BaseTextCopy from "../components/BaseTextCopy.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
@@ -14,12 +13,22 @@ import BaseDropdown from "../components/BaseDropdown.vue";
 const store = useMainStore();
 const route = useRoute();
 const router = useRouter();
-const searchTerm = computed(() => route.query.q || "");
+const queryString = (value) =>
+    typeof value === "string"
+        ? value
+        : Array.isArray(value) && typeof value[0] === "string"
+          ? value[0]
+          : "";
+const searchTerm = computed(() => queryString(route.query.q));
 
-const selectedComponent = ref("Filter by component");
-
-onMounted(() => {
-    selectedComponent.value = route.query.f || "Filter by component";
+const selectedComponent = computed({
+    get: () => queryString(route.query.f) || "Filter by component",
+    set: (value) => {
+        const query = { ...route.query };
+        if (!value || value === "Filter by component") delete query.f;
+        else query.f = value;
+        router.replace({ query });
+    },
 });
 
 const searchResults = ref([]);
@@ -27,10 +36,6 @@ const hasResults = ref(false);
 const translations = computed(() => store.translations);
 const isDarkMode = computed(() => store.isDarkMode);
 const componentSearch = ref(null);
-
-const props = defineProps({
-    query: String,
-});
 
 function performSearch() {
     if (searchTerm.value) {
@@ -44,14 +49,7 @@ function performSearch() {
     window.scrollTo({ top: 0 });
 }
 
-watch(searchTerm, (newTerm) => {
-    router.replace({ query: { q: newTerm } });
-    performSearch();
-});
-
-onMounted(() => {
-    performSearch();
-});
+watch(searchTerm, performSearch, { immediate: true });
 
 const accordionConfig = computed(() => {
     return {
@@ -93,24 +91,8 @@ const availableComponents = computed(() => [
     ...new Set(searchResults.value.map((r) => r.componentName)),
 ]);
 
-function filterComponents(v) {
-    nextTick(() => {
-        router.replace({
-            query: {
-                q: searchTerm.value,
-                f: v.target.value,
-            },
-        });
-    });
-}
-
-function clearFilter(v) {
+function clearFilter() {
     selectedComponent.value = "Filter by component";
-    router.replace({
-        query: {
-            q: searchTerm.value,
-        },
-    });
     if (componentSearch.value) {
         componentSearch.value.clearSearch();
     }
@@ -121,7 +103,7 @@ const filteredResults = computed(() => {
         !selectedComponent.value ||
         selectedComponent.value === "Filter by component"
     )
-        return searchResults.value.sort((a, b) =>
+        return [...searchResults.value].sort((a, b) =>
             a.componentName.localeCompare(b.componentName),
         );
     return searchResults.value.filter(
@@ -231,17 +213,13 @@ ${indentSpace}}`;
 
     return formatValue(json, indent);
 }
-
-function updateSelectedComponent(c) {
-    selectedComponent.value = c;
-}
 </script>
 
 <template>
     <SideMenu @toggle="toggleMenu" />
     <div
         v-if="!hasResults"
-        :class="`mx-auto max-w-[1200px] h-screen ${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] pr-12 sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`"
+        :class="`mx-auto max-w-[1200px] h-screen ${isOpen ? 'ps-[348px] pe-[48px]' : 'ps-[59px] sm:ps-[109px] pe-12 sm:pe-[59px]'} pt-9 overflow-x-hidden relative z-1`"
     >
         <h1 class="text-2xl border-b border-gray-600 pb-10" dir="auto">
             {{ translations.noResultsFor[store.lang] }}
@@ -253,7 +231,7 @@ function updateSelectedComponent(c) {
     </div>
     <div
         v-else
-        :class="`mx-auto max-w-[1200px] min-h-screen ${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] pr-12 sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`"
+        :class="`mx-auto max-w-[1200px] min-h-screen ${isOpen ? 'ps-[348px] pe-[48px]' : 'ps-[59px] sm:ps-[109px] pe-12 sm:pe-[59px]'} pt-9 overflow-x-hidden relative z-1`"
     >
         <h1 class="text-2xl mb-6" dir="auto">
             {{ translations.searchResultFor[store.lang] }}
@@ -264,10 +242,7 @@ function updateSelectedComponent(c) {
         <div class="flex flex-row gap-2 mb-12">
             <BaseDropdown
                 ref="componentSearch"
-                v-if="
-                    (searchTerm || showSuggestions) &&
-                    availableComponents.length > 1
-                "
+                v-if="searchTerm && availableComponents.length > 1"
                 :options="[
                     {
                         name: 'Filter by component',
@@ -281,7 +256,6 @@ function updateSelectedComponent(c) {
                     })),
                 ]"
                 v-model:value="selectedComponent"
-                @change="updateSelectedComponent"
                 background="bg-white dark:bg-[#1A1A1A]"
                 option-target="name"
                 additional-option-target="name"
@@ -290,7 +264,7 @@ function updateSelectedComponent(c) {
                 <template #selected="{ selectedOption }">
                     <div
                         v-if="selectedOption"
-                        class="text-left flex flex-row gap-2 place-items-center"
+                        class="text-start flex flex-row gap-2 place-items-center"
                     >
                         <div class="h-[24px] w-[24px] flex place-items-center">
                             <VueUiIcon
@@ -326,7 +300,7 @@ function updateSelectedComponent(c) {
                 </template>
                 <template #option="{ option, selected, current }">
                     <div
-                        class="text-left flex flex-row gap-2 place-items-center"
+                        class="text-start flex flex-row gap-2 place-items-center"
                     >
                         <div class="h-[20px] w-[20px] flex place-items-center">
                             <VueUiIcon
@@ -428,13 +402,13 @@ function updateSelectedComponent(c) {
 
                     <template #content>
                         <div class="flex flex-col w-full">
-                            <div class="pl-6">
+                            <div class="ps-6">
                                 Type:
                                 <code class="text-app-blue">{{
                                     res.type
                                 }}</code>
                             </div>
-                            <div class="pl-6">
+                            <div class="ps-6">
                                 {{
                                     translations.search.defaultValue[store.lang]
                                 }}
@@ -455,14 +429,14 @@ function updateSelectedComponent(c) {
                                     >
                                         <div
                                             :style="`background:${res.value}`"
-                                            class="h-10 w-10 rounded-full border border-gray-400 mr-6"
+                                            class="h-10 w-10 rounded-full border border-gray-400 me-6"
                                         />
                                     </template>
                                 </CodeParser>
                             </div>
                             <router-link :to="`/docs#${res.route}`">
                                 <div
-                                    class="hover:underline dark:text-app-green font-black mt-2 pl-6"
+                                    class="hover:underline dark:text-app-green font-black mt-2 ps-6"
                                 >
                                     {{
                                         translations.search.viewComponent[
@@ -477,5 +451,4 @@ function updateSelectedComponent(c) {
             </BaseCard>
         </div>
     </div>
-    <ConfirmCopy />
 </template>

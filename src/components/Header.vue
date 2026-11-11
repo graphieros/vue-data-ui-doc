@@ -19,6 +19,7 @@ import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { createUid } from "../components/maker/lib";
 import IconSettings from "./IconSettings.vue";
 import BaseCard from "./BaseCard.vue";
+import { readStorage, writeStorage } from "../storage.js";
 import PACK from "../../package.json";
 
 const router = useRouter();
@@ -29,11 +30,11 @@ onMounted(() => {
     const ua = navigator.userAgent;
     store.isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/Edg/.test(ua);
 
-    if (!localStorage.visitor) {
-        localStorage.setItem("visitor", createUid());
+    if (!readStorage("visitor")) {
+        writeStorage("visitor", createUid());
     }
-    if (!localStorage.votes) {
-        localStorage.setItem("votes", JSON.stringify([]));
+    if (!readStorage("votes")) {
+        writeStorage("votes", JSON.stringify([]));
     }
 });
 
@@ -80,15 +81,9 @@ const digitsConfigVersion = computed(() => {
 });
 
 function updateTheme() {
-    if (localStorage.theme === "dark") {
-        localStorage.theme = "light";
-        document.documentElement.classList.remove("dark");
-        store.isDarkMode = false;
-    } else {
-        localStorage.theme = "dark";
-        document.documentElement.classList.add("dark");
-        store.isDarkMode = true;
-    }
+    store.isDarkMode = !store.isDarkMode;
+    document.documentElement.classList.toggle("dark", store.isDarkMode);
+    writeStorage("theme", store.isDarkMode ? "dark" : "light");
 }
 
 function changeTheme() {
@@ -106,15 +101,6 @@ const currentRoute = computed(() => {
     return router.currentRoute.value.path;
 });
 
-watch(
-    () => currentRoute.value,
-    (nr, or) => {
-        if (nr !== or) {
-            window.scrollTo(0, 0);
-        }
-    },
-);
-
 function isSelected(route) {
     return currentRoute.value === route;
 }
@@ -129,18 +115,12 @@ onMounted(() => {
             isOpen.value = false;
         }
     });
-    if (localStorage.theme) {
-        store.isDarkMode = localStorage.theme === "dark";
-    } else {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            document.documentElement.classList.add("dark");
-            store.isDarkMode = true;
-            localStorage.setItem("theme", "dark");
-        } else {
-            store.isDarkMode = false;
-            localStorage.setItem("theme", "light");
-        }
-    }
+    const theme = readStorage("theme");
+    store.isDarkMode = theme
+        ? theme === "dark"
+        : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.classList.toggle("dark", store.isDarkMode);
+    writeStorage("theme", store.isDarkMode ? "dark" : "light");
 });
 
 async function fetchRatings() {
@@ -190,7 +170,7 @@ const selectedLanguage = computed({
         store
             .setLanguage(val)
             .then(() => {
-                localStorage.setItem("vueDataUiLang", store.lang);
+                writeStorage("vueDataUiLang", store.lang);
             })
             .catch(console.error);
         return val;
@@ -320,10 +300,10 @@ const displayedVersion = computed(() => {
 <template>
     <div
         v-if="currentRoute === '/'"
-        class="fixed bottom-0 left-0 w-full h-[40px] bg-app-green-light dark:bg-app-blue hidden sm:flex z-[2147483647] place-items-center justify-center"
+        class="fixed bottom-0 start-0 w-full h-[40px] bg-app-green-light dark:bg-app-blue hidden sm:flex z-[2147483647] place-items-center justify-center"
     >
         {{ message[store.lang] }}
-        <span class="ml-2">{{ isDarkMode ? "🤍" : "❤️" }}</span>
+        <span class="ms-2">{{ isDarkMode ? "🤍" : "❤️" }}</span>
     </div>
     <header
         id="app-header"
@@ -336,6 +316,7 @@ const displayedVersion = computed(() => {
                 <div class="flex flex-row gap-3">
                     <div
                         data-cy="header-app-name"
+                        dir="ltr"
                         class="flex flex-row gap-3 w-full whitespace-nowrap align-center"
                     >
                         <img
@@ -411,7 +392,7 @@ const displayedVersion = computed(() => {
                         >
                             <kbd>Esc</kbd>
                             <div
-                                class="fixed -top-1 left-0 py-3 w-full text-center font-inter-bold"
+                                class="fixed -top-1 start-0 py-3 w-full text-center font-inter-bold"
                             >
                                 {{ detailedDoc[store.lang] }}
                             </div>
@@ -419,7 +400,7 @@ const displayedVersion = computed(() => {
                                 v-for="menu in simpleMenu"
                                 class="flex flex-col bg-gray-100 dark:bg-[#2A2A2A] pt-2 rounded-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] pb-2"
                             >
-                                <div class="text-s mb-4 font-inter-medium pl-2">
+                                <div class="text-s mb-4 font-inter-medium ps-2">
                                     {{ menu.category }}
                                 </div>
                                 <FlexibleTooltip
@@ -447,7 +428,7 @@ const displayedVersion = computed(() => {
                                         @click="closeDocsMenu"
                                     >
                                         <div
-                                            class="flex flex-row place-items-center py-1 gap-2 relative pl-2"
+                                            class="flex flex-row place-items-center py-1 gap-2 relative ps-2"
                                             :style="{
                                                 ...getHighlightStyle(item),
                                             }"
@@ -644,7 +625,7 @@ const displayedVersion = computed(() => {
                 </button>
                 <div
                     id="mainDropdown"
-                    class="absolute top-full mt-2 right-0 rounded-lg w-[14rem] text-right"
+                    class="absolute top-full mt-2 end-0 rounded-lg w-[14rem] text-end"
                     v-if="isOpen"
                 >
                     <BaseCard type="dark">
@@ -723,7 +704,7 @@ kbd {
     position: absolute;
     background: radial-gradient(at top left, #aaaaaa, #dddddd);
     border: 1px solid #808080;
-    border-right: 4px solid #606060;
+    border-inline-end: 4px solid #606060;
     border-bottom: 4px solid #606060;
     border-radius: 7px;
     color: #000000;

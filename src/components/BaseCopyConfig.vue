@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../clipboard.js";
+
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 
@@ -21,7 +23,7 @@ function copyToClipboard() {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -33,7 +35,7 @@ function copyToClipboard() {
     >
         <button
             @click="emit('reset')"
-            class="flex place-items-center gap-2 text-black dark:text-[#CCCCCC] rounded-md border border-gray-400 dark:border-none dark:border-[#6A6A6A] py-2 px-4 pr-5 dark:bg-[#3A3A3A] dark:hover:bg-[#ff660050] hover:bg-white hover:shadow-xl hover:border-app-orange transition-all"
+            class="flex place-items-center gap-2 text-black dark:text-[#CCCCCC] rounded-md border border-gray-400 dark:border-none dark:border-[#6A6A6A] py-2 px-4 pe-5 dark:bg-[#3A3A3A] dark:hover:bg-[#ff660050] hover:bg-white hover:shadow-xl hover:border-app-orange transition-all"
         >
             <VueUiIcon
                 name="revert"
@@ -44,7 +46,8 @@ function copyToClipboard() {
         </button>
         <button
             @click="copyToClipboard()"
-            class="flex place-items-center gap-2 text-black dark:text-[#CCCCCC] rounded-md border border-gray-400 dark:border-none dark:border-[#6A6A6A] py-2 px-4 pr-5 dark:bg-[#3A3A3A] dark:hover:bg-[#5f8aee50] hover:bg-white hover:shadow-xl hover:border-app-blue transition-all"
+            data-copy-action="config"
+            class="flex place-items-center gap-2 text-black dark:text-[#CCCCCC] rounded-md border border-gray-400 dark:border-none dark:border-[#6A6A6A] py-2 px-4 pe-5 dark:bg-[#3A3A3A] dark:hover:bg-[#5f8aee50] hover:bg-white hover:shadow-xl hover:border-app-blue transition-all"
         >
             <VueUiIcon
                 name="copy"

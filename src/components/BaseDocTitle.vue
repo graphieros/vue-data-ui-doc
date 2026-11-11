@@ -59,13 +59,13 @@ const showHeader = props.layoutOwned || !layoutTitle?.value;
             </BaseTextCopy>
         </h1>
         <div v-if="!!imp" class="w-fit max-w-full mx-auto imp mb-2">
-            <span v-if="imp.treeshaken" class="block text-xs leading-4 pl-4">
+            <span v-if="imp.treeshaken" class="block text-xs leading-4 ps-4">
                 Treeshaken import (since v3.2.0)
             </span>
             <CodeParser
                 language="javascript"
                 :content="imp.treeshaken || imp.treeshaken"
-                tw="mr-8"
+                tw="me-8"
                 @copy="store.copy()"
             />
         </div>

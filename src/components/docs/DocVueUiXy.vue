@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
@@ -710,7 +712,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -1020,7 +1022,7 @@ const customFormatCode =
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiXy" />
 
         <BaseDocDescription :text="translations.docs.tooltips.xy[store.lang]" />
@@ -1043,7 +1045,7 @@ const customFormatCode =
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiXy
                         :dataset="mutableDataset"
                         :config="config"
@@ -1186,7 +1188,7 @@ const customFormatCode =
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">
+                    <div class="text-gray-400 ps-5 mb-4">
                         {{ translations.docs.emits.xy.getData[store.lang] }}
                     </div>
                     <pre>
@@ -1284,7 +1286,11 @@ const customFormatCode =
                     </template>
 
                     <template #after="item">
-                        <div v-if="item.names.includes('svg')" class="p-6">
+                        <div
+                            dir="ltr"
+                            v-if="item.names.includes('svg')"
+                            class="p-6"
+                        >
                             {{ item.freestyle }}
                             <CodeParser
                                 language="javascript"

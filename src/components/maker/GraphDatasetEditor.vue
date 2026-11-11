@@ -155,7 +155,7 @@ function changeDirected(link, value) {
                     @click="tab = name"
                 >
                     {{ text[name] }}
-                    <span class="ml-1 text-xs tabular-nums">{{
+                    <span class="ms-1 text-xs tabular-nums">{{
                         dataset[name].length
                     }}</span>
                 </button>

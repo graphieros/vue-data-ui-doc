@@ -1,4 +1,6 @@
 <script setup>
+import { writeClipboardText, copySelection } from "../../clipboard.js";
+
 import { ref, computed, shallowRef } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
@@ -815,7 +817,7 @@ async function copyToClipboard(text) {
         if (!text) throw new Error("Nothing to copy");
 
         if (navigator.clipboard?.writeText) {
-            await navigator.clipboard.writeText(text);
+            await writeClipboardText(text);
         } else {
             const ta = document.createElement("textarea");
             ta.value = text;
@@ -824,7 +826,7 @@ async function copyToClipboard(text) {
             ta.style.left = "-9999px";
             document.body.appendChild(ta);
             ta.select();
-            const ok = document.execCommand("copy");
+            const ok = copySelection();
             document.body.removeChild(ta);
             if (!ok) throw new Error("Copy command was blocked");
         }
@@ -843,7 +845,7 @@ function copyPattern(index) {
 </script>
 
 <template>
-    <div class="px-4 max-w-[1000px] mx-auto mt-4 mb-8" dir="auto">
+    <div class="px-4 max-w-[1000px] mx-auto mt-4 mb-8" dir="ltr">
         <div
             class="flex flex-row place-items-center justify-center gap-6 flex-wrap p-4"
             dir="auto"
@@ -1072,6 +1074,7 @@ function copyPattern(index) {
 
                 <div class="flex flex-wrap gap-2 align-center justify-center">
                     <div
+                        dir="ltr"
                         v-for="(pattern, i) in Number(patternPool)"
                         class="flex flex-col"
                     >
@@ -1080,6 +1083,7 @@ function copyPattern(index) {
                         </span>
                         <button
                             @click="copyPattern(i)"
+                            data-copy-action="pattern"
                             class="border border-transparent hover:border-[#1A1A1A] dark:hover:border-[#CCCCCC]"
                         >
                             <svg viewBox="0 0 100 100" height="100" width="100">
@@ -1416,7 +1420,7 @@ function copyPattern(index) {
 
             <div class="mt-6">
                 VueUiPattern props:
-                <ul class="list-disc pl-4 mt-2">
+                <ul class="list-disc ps-4 mt-2">
                     <li class="flex gap-2 my-1">
                         <div
                             class="rounded-full bg-app-orange text-black px-3 text-xs flex place-items-center"

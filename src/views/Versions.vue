@@ -2166,7 +2166,8 @@ const digitsConfigVersion = computed(() => {
     />
 
     <div
-        class="carousel hidden sm:block fixed top-[55px] left-0 w-full"
+        dir="ltr"
+        class="carousel hidden sm:block fixed top-[55px] start-0 w-full"
         style="z-index: 10"
     >
         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig">
@@ -2218,6 +2219,7 @@ const digitsConfigVersion = computed(() => {
             <div class="mx-auto max-w-[800px] px-6">
                 <BaseCard>
                     <div
+                        dir="ltr"
                         class="pt-2 flex flex-row flex-wrap align-center gap-4 justify-center place-content-center"
                     >
                         <button
@@ -2252,7 +2254,7 @@ const digitsConfigVersion = computed(() => {
                                 >
                                     <template #title>
                                         <div
-                                            class="absolute top-[21px] right-6 flex-row place-items-center gap-2"
+                                            class="absolute top-[21px] end-6 flex-row place-items-center gap-2"
                                             style="transform: scale(1.5, 1.5)"
                                         >
                                             <VueUiIcon
@@ -2268,7 +2270,7 @@ const digitsConfigVersion = computed(() => {
                                 </VueDataUi>
                             </a>
                             <div
-                                class="absolute -top-4 left-0 text-xs text-gray-600 dark:text-[#9A9A9A]"
+                                class="absolute -top-4 start-0 text-xs text-gray-600 dark:text-[#9A9A9A]"
                             >
                                 {{ kpi.displayName }}
                             </div>
@@ -2289,14 +2291,14 @@ const digitsConfigVersion = computed(() => {
                         Changelog
                     </div>
 
-                    <div class="flex flex-row gap-2 mb-2 pl-4">
-                        <label class="text-gray-500 dark:text-[#8A8A8A] mr-2">
+                    <div class="flex flex-row gap-2 mb-2 ps-4">
+                        <label class="text-gray-500 dark:text-[#8A8A8A] me-2">
                             Filter by version
                             <input
                                 type="checkbox"
                                 v-model="enableSem"
                                 @change="resetSem"
-                                class="ml-2"
+                                class="ms-2"
                             />
                         </label>
                         <template v-if="enableSem">
@@ -2336,7 +2338,7 @@ const digitsConfigVersion = computed(() => {
                     </div>
 
                     <div
-                        class="flex flex-col sm:flex-row sm:place-items-center gap-2 mb-2 pl-4"
+                        class="flex flex-col sm:flex-row sm:place-items-center gap-2 mb-2 ps-4"
                         v-if="!enableSem"
                     >
                         <label
@@ -2365,7 +2367,7 @@ const digitsConfigVersion = computed(() => {
                                 <template #selected="{ selectedOption }">
                                     <div
                                         v-if="selectedOption"
-                                        class="text-left flex flex-row gap-2 place-items-center overflow-x-hidden"
+                                        class="text-start flex flex-row gap-2 place-items-center overflow-x-hidden"
                                     >
                                         <div
                                             class="h-[24px] w-[24px] flex place-items-center"
@@ -2394,7 +2396,7 @@ const digitsConfigVersion = computed(() => {
                                     </div>
                                     <div
                                         v-else
-                                        class="text-left flex flex-row gap-2 place-items-center"
+                                        class="text-start flex flex-row gap-2 place-items-center"
                                     >
                                         <div
                                             class="h-[24px] w-[24px] flex place-items-center"
@@ -2417,7 +2419,7 @@ const digitsConfigVersion = computed(() => {
                                     #option="{ option, selected, current }"
                                 >
                                     <div
-                                        class="text-left flex flex-row gap-2 place-items-center"
+                                        class="text-start flex flex-row gap-2 place-items-center"
                                     >
                                         <div
                                             class="h-[20px] w-[20px] flex place-items-center"
@@ -2474,7 +2476,7 @@ const digitsConfigVersion = computed(() => {
 
                     <div
                         v-if="!enableSem"
-                        class="flex flex-row place-items-center gap-2 mb-6 pl-4 tabular-nums"
+                        class="flex flex-row place-items-center gap-2 mb-6 ps-4 tabular-nums"
                     >
                         <span class="text-gray-500 dark:text-[#8A8A8A]"
                             >Logs:</span
@@ -2489,7 +2491,7 @@ const digitsConfigVersion = computed(() => {
                             !enableSem &&
                             versionComponent === 'vue_ui_vertical_bar'
                         "
-                        class="flex flex-row gap-2 place-items-center pl-4 mb-6"
+                        class="flex flex-row gap-2 place-items-center ps-4 mb-6"
                     >
                         <VueUiIcon
                             name="circleExclamation"
@@ -2522,7 +2524,7 @@ const digitsConfigVersion = computed(() => {
                                         ><br />
                                     </div>
 
-                                    <div class="pl-6" v-if="log.updates">
+                                    <div class="ps-6" v-if="log.updates">
                                         <template v-for="update in log.updates">
                                             <div
                                                 :class="`text-gray-500 dark:text-[#CCCCCC]`"
@@ -2605,7 +2607,7 @@ const digitsConfigVersion = computed(() => {
                                                     </span>
                                                 </template>
 
-                                                <div class="pl-8">
+                                                <div class="ps-8">
                                                     {{ update.description }}
                                                 </div>
                                             </div>
@@ -2621,7 +2623,7 @@ const digitsConfigVersion = computed(() => {
 
             <div class="max-w-[800px] mx-auto px-6">
                 <BaseCard class="mx-auto mt-6 max-w-[800px]">
-                    <div class="max-w-[600px] mx-auto tabular-nums">
+                    <div dir="ltr" class="max-w-[600px] mx-auto tabular-nums">
                         <VueUiSkeleton
                             v-if="isLoadingLine"
                             :config="sparklineSkeletonConfig"
@@ -2665,7 +2667,7 @@ const digitsConfigVersion = computed(() => {
                             "
                         >
                             <template #source>
-                                <div class="text-xs text-gray-500 text-right">
+                                <div class="text-xs text-gray-500 text-end">
                                     Source:
                                     <a
                                         class="text-app-blue underline"
@@ -2745,7 +2747,7 @@ const digitsConfigVersion = computed(() => {
                             "
                         >
                             <template #source>
-                                <div class="text-xs text-gray-500 text-right">
+                                <div class="text-xs text-gray-500 text-end">
                                     Source:
                                     <a
                                         class="text-app-blue underline"
@@ -2767,6 +2769,7 @@ const digitsConfigVersion = computed(() => {
                 </BaseCard>
 
                 <BaseCard
+                    dir="ltr"
                     class="max-w-[800px] mx-auto mt-6"
                     v-if="!!data && !isLoadingLine"
                 >
@@ -2789,7 +2792,7 @@ const digitsConfigVersion = computed(() => {
                         :key="`histostep_${step}`"
                     >
                         <template #source>
-                            <div class="text-xs text-gray-500 text-left">
+                            <div class="text-xs text-gray-500 text-start">
                                 Source:
                                 <a class="text-app-blue underline" :href="url"
                                     >api.npmjs.org</a
@@ -2810,7 +2813,7 @@ const digitsConfigVersion = computed(() => {
                     v-if="sparklineReleases.length"
                 >
                     <div style="height: 48px" />
-                    <div class="w-full" v-if="showWC">
+                    <div dir="ltr" class="w-full" v-if="showWC">
                         <VueDataUi
                             v-if="done"
                             component="VueUiCirclePack"
@@ -2825,7 +2828,7 @@ const digitsConfigVersion = computed(() => {
                         >
                             <template #source>
                                 <div
-                                    class="text-xs text-gray-500 text-right mt-3 pl-2"
+                                    class="text-xs text-gray-500 text-end mt-3 ps-2"
                                 >
                                     Source: Vue Data UI
                                 </div>
@@ -2836,6 +2839,7 @@ const digitsConfigVersion = computed(() => {
                 </BaseCard>
 
                 <BaseCard
+                    dir="ltr"
                     class="mx-auto max-w-[800px] mt-6"
                     v-if="!isLoadingLine && !!data"
                 >

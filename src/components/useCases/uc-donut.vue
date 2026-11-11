@@ -34,6 +34,7 @@ const { DONUT_PIE_CONFIG, DONUT_PIE_DATASET } = useCase();
         </template>
     </UseCaseTitle>
     <div
+        dir="ltr"
         class="w-full bg-gray-50 dark:bg-[#2A2A2A] rounded-xl p-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
     >
         <VueDataUi

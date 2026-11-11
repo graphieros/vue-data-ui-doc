@@ -71,6 +71,7 @@ function open(state) {
                         </div>
                     </div>
                     <div
+                        dir="ltr"
                         :style="{
                             transform: 'scale(0.7, 0.7)',
                             pointerEvents: 'none',
@@ -85,7 +86,7 @@ function open(state) {
                 </div>
             </template>
             <template #popover-content>
-                <div>
+                <div dir="ltr">
                     <VueUiGauge :dataset="datasetGauge" :config="configGauge" />
                     <VueUiXy :dataset="datasetXy" :config="configXy" />
                 </div>

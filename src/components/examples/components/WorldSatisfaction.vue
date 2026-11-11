@@ -120,5 +120,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiGauge :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiGauge :config="config" :dataset="dataset" />
+    </div>
 </template>

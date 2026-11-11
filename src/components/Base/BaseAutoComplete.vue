@@ -198,7 +198,7 @@ onBeforeUnmount(() => {
         <VueUiIcon
             name="magnify"
             :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
-            class="absolute top-1/2 -translate-y-1/2 left-2.5"
+            class="absolute top-1/2 -translate-y-1/2 start-2.5"
             :size="20"
         />
 
@@ -206,7 +206,7 @@ onBeforeUnmount(() => {
             :id="inputId"
             ref="inputElement"
             type="search"
-            class="input pl-6 !rounded-md"
+            class="input ps-6 !rounded-md"
             :placeholder="placeholder"
             autocomplete="off"
             role="combobox"

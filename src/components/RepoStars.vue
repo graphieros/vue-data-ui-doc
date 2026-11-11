@@ -175,26 +175,28 @@ const config = computed(() => {
 </script>
 
 <template>
-    <VueDataUi
-        component="VueUiVerticalBar"
-        :dataset="dataset"
-        :config="config"
-        v-if="hasAccess"
-    >
-        <!-- Use slots here in template tags. Official Vue slots documentation https://vuejs.org/guide/components/slots -->
-        <!-- Documentation on Vue Data UI slots, check the slots tab at https://vue-data-ui.graphieros.com/docs#vue-ui-vertical-bar -->
+    <div dir="ltr" style="height: inherit" v-if="hasAccess">
+        <VueDataUi
+            component="VueUiVerticalBar"
+            :dataset="dataset"
+            :config="config"
+            v-if="hasAccess"
+        >
+            <!-- Use slots here in template tags. Official Vue slots documentation https://vuejs.org/guide/components/slots -->
+            <!-- Documentation on Vue Data UI slots, check the slots tab at https://vue-data-ui.graphieros.com/docs#vue-ui-vertical-bar -->
 
-        <!-- #source slot: display the source for your data -->
-        <template #source>
-            <div class="text-xs text-gray-500 text-left">
-                Source:
-                <a
-                    class="text-app-blue underline"
-                    href="https://github.com/graphieros"
-                    target="_blank"
-                    >GitHub</a
-                >
-            </div>
-        </template>
-    </VueDataUi>
+            <!-- #source slot: display the source for your data -->
+            <template #source>
+                <div class="text-xs text-gray-500 text-start">
+                    Source:
+                    <a
+                        class="text-app-blue underline"
+                        href="https://github.com/graphieros"
+                        target="_blank"
+                        >GitHub</a
+                    >
+                </div>
+            </template>
+        </VueDataUi>
+    </div>
 </template>

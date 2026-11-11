@@ -331,7 +331,7 @@ function getMonthPaths(cells) {
 </script>
 
 <template>
-    <BaseCard v-if="data" class="max-w-[800px] mx-auto mt-6">
+    <BaseCard dir="ltr" v-if="data" class="max-w-[800px] mx-auto mt-6">
         <VueUiSkeleton v-if="isLoading" :config="skeletonConfig" />
         <VueUiHeatmap v-else :dataset :config>
             <template #svg="{ svg }">
@@ -372,7 +372,7 @@ function getMonthPaths(cells) {
                 /> -->
             </template>
             <template #tooltip="{ datapoint, seriesIndex, series }">
-                <div class="px-3 py-2 text-left">
+                <div class="px-3 py-2 text-start">
                     <div
                         class="mt-0.5 text-sm font-semibold text-gray-900 dark:text-gray-100"
                     >
@@ -408,13 +408,13 @@ function getMonthPaths(cells) {
                 </div>
             </template>
             <template #source>
-                <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+                <div class="text-xs text-gray-500 text-start mt-3 ps-2">
                     Source:
                     <a class="text-app-blue underline" :href="url">
                         api.npmjs.org
                     </a>
                 </div>
-                <div class="flex flew-row mt-2 pl-2 items-center gap-2">
+                <div class="flex flew-row mt-2 ps-2 items-center gap-2">
                     <div
                         class="h-2.5 w-2.5 bg-app-red-dark dark:bg-app-red relative flex"
                     >

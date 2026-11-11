@@ -230,12 +230,12 @@ const description = ref({
                 class="flex flex-row gap-2 place-items-center"
             >
                 <div
-                    class="w-[100px] text-right text-black dark:text-[#CCCCCC]"
+                    class="w-[100px] text-end text-black dark:text-[#CCCCCC]"
                     :style="`margin-bottom:${i === 0 ? '-40px' : '0'}`"
                 >
                     {{ item.title }}
                 </div>
-                <div class="w-full">
+                <div dir="ltr" class="w-full">
                     <VueDataUi
                         component="VueUiBullet"
                         :dataset="item.dataset"

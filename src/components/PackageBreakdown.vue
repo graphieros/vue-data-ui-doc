@@ -115,7 +115,7 @@ const treemapConfig = computed(() => ({
 </script>
 
 <template>
-    <div class="p-2 bg-[#F3F4F6] dark:bg-[#1A1A1A] rounded-2xl mb-4">
+    <div dir="ltr" class="p-2 bg-[#F3F4F6] dark:bg-[#1A1A1A] rounded-2xl mb-4">
         <VueUiCirclePack :dataset="dataset" :config="config" />
         <VueUiTreemap :dataset :config="treemapConfig" />
     </div>

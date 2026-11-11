@@ -204,14 +204,14 @@ defineExpose({
                         <input
                             ref="rootInput"
                             class="dd-search-input peer w-full h-[36px] transition-colors"
-                            style="padding-left: 36px"
+                            style="padding-inline-start: 36px"
                             type="text"
                             v-model="searchModel"
                         />
                         <VueUiIcon
                             name="magnify"
                             :stroke="isDarkMode ? '#83a4f2' : '#1A1A1A'"
-                            class="absolute left-4"
+                            class="absolute start-4"
                             :size="20"
                         />
                         <button

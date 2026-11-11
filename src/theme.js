@@ -1,7 +1,9 @@
+import { readStorage } from "./storage.js";
+
+const theme = readStorage("theme");
 if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    theme === "dark" ||
+    (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
 ) {
     document.documentElement.classList.add("dark");
 } else {

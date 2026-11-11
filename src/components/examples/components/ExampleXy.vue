@@ -208,5 +208,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiXy :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiXy :config="config" :dataset="dataset" />
+    </div>
 </template>

@@ -1,36 +1,100 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import { useMainStore } from "../stores";
-import { VueUiIcon } from "vue-data-ui/vue-ui-icon";
+import { copyFeedbacks } from "../clipboard.js";
+import { navigationMessage } from "../navigation/messages.js";
+import CopyFeedbackMessage from "./CopyFeedbackMessage.vue";
 
 const store = useMainStore();
-const isCopy = computed(() => store.isCopy);
-const isDarkMode = computed(() => store.isDarkMode);
-const translations = computed(() => store.translations);
+const viewport = ref({
+    width: document.documentElement.clientWidth,
+    height: window.innerHeight,
+});
+const positions = computed(() => {
+    return copyFeedbacks.map((entry) => {
+        const rect = entry.target?.isConnected
+            ? entry.target.getBoundingClientRect()
+            : null;
+        const { width, height } = viewport.value;
+        const half = Math.min(180, width - 16) / 2;
+        return {
+            ...entry,
+            x: Math.max(
+                half + 8,
+                Math.min(
+                    width - half - 8,
+                    rect ? rect.left + rect.width / 2 : width / 2,
+                ),
+            ),
+            y: Math.min(height - 8, Math.max(72, rect ? rect.top - 4 : 88)),
+        };
+    });
+});
+function refreshPosition() {
+    viewport.value = {
+        width: document.documentElement.clientWidth,
+        height: window.innerHeight,
+    };
+}
+function openPopover(element) {
+    if (!element) return;
+    // Native popovers stay above modal dialogs without moving focus or adding layout wrappers.
+    try {
+        element.showPopover?.();
+    } catch {
+        element.removeAttribute("popover");
+    }
+}
+onMounted(() => {
+    window.addEventListener("scroll", refreshPosition, {
+        capture: true,
+        passive: true,
+    });
+    window.addEventListener("resize", refreshPosition);
+});
+onBeforeUnmount(() => {
+    window.removeEventListener("scroll", refreshPosition, true);
+    window.removeEventListener("resize", refreshPosition);
+});
 </script>
-
 <template>
-    <div
-        style="z-index: 10000000"
-        v-if="isCopy"
-        class="origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col place-items-center gap-2"
-    >
+    <Teleport to="body">
         <div
-            style="z-index: 10000000"
-            v-if="isCopy"
-            class="animate-ping h-[80px] w-[80px] flex place-items-center place-content-center dark:bg-black rounded-full bg-white shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+            v-for="entry in positions"
+            :key="entry.id"
+            :ref="openPopover"
+            popover="manual"
+            role="status"
+            aria-atomic="true"
+            class="copy-feedback-anchor"
+            data-testid="copy-feedback"
+            :style="{ left: `${entry.x}px`, top: `${entry.y}px` }"
         >
-            <VueUiIcon
-                name="circleCheck"
-                :size="62"
-                :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"
-                :stroke-width="1"
+            <CopyFeedbackMessage
+                :message="
+                    entry.error
+                        ? navigationMessage('copyFailed', store.lang)
+                        : store.translations.clipboard[store.lang]
+                "
+                :error="entry.error"
+                :dark="store.isDarkMode"
             />
         </div>
-        <span
-            class="animate-ping text-black dark:text-app-green bg-white dark:bg-black px-4 py-2 mt-12 rounded-full"
-        >
-            {{ translations.clipboard[store.lang] }}
-        </span>
-    </div>
+    </Teleport>
 </template>
+<style scoped>
+.copy-feedback-anchor {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: visible;
+    width: max-content;
+    max-width: min(180px, calc(100vw - 16px));
+    transform: translate(-50%, -100%);
+    z-index: 10000000;
+    pointer-events: none;
+}
+</style>

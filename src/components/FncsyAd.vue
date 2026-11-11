@@ -137,9 +137,9 @@ const soMuchMore = ref({
 </script>
 
 <template>
-    <div class="ml-12 sm:mx-auto max-w-[1000px] px-12 sm:px-20" dir="auto">
+    <div class="ms-12 sm:mx-auto max-w-[1000px] px-12 sm:px-20" dir="auto">
         <div
-            class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-2 place-items-center"
+            class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold ps-4 mb-4 text-[#4A4A4A] dark:text-[#CCCCCC] flex flex-row gap-2 place-items-center"
         >
             <VueUiIcon
                 name="externalLink"
@@ -183,7 +183,7 @@ const soMuchMore = ref({
                     >
                         <div class="flex flex-row gap-2 place-items-center">
                             <span class="text-[24px] sm:text-[32px]"> 🎮 </span>
-                            <code class="text-left text-sm">
+                            <code class="text-start text-sm">
                                 {{ pixel[store.lang] }}
                             </code>
                         </div>
@@ -195,7 +195,7 @@ const soMuchMore = ref({
                     >
                         <div class="flex flex-row gap-2 place-items-center">
                             <span class="text-[24px] sm:text-[32px]"> 🕵️ </span>
-                            <code class="text-left text-sm">
+                            <code class="text-start text-sm">
                                 {{ stegano[store.lang] }}
                             </code>
                         </div>
@@ -207,7 +207,7 @@ const soMuchMore = ref({
                     >
                         <div class="flex flex-row gap-2 place-items-center">
                             <span class="text-[24px] sm:text-[32px]"> 🔗 </span>
-                            <code class="text-left text-sm">
+                            <code class="text-start text-sm">
                                 {{ broken[store.lang] }}
                             </code>
                         </div>
@@ -216,7 +216,7 @@ const soMuchMore = ref({
 
                 <div class="w-full mx-auto text-sm">
                     <a href="https://fncsy.com/" target="_blank">
-                        <code class="text-left" v-html="fncsy[store.lang]" />
+                        <code class="text-start" v-html="fncsy[store.lang]" />
                     </a>
                 </div>
             </div>

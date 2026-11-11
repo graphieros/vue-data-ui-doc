@@ -2,6 +2,8 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import BaseBubbles from "./BaseBubbles.vue";
+import { readStorage, readStoredJson, writeStorage } from "../storage.js";
+import { createUid } from "./maker/lib.js";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -27,14 +29,13 @@ function submitRating() {
         return;
     }
 
-    if (!localStorage.visitor) {
-        localStorage.setItem("visitor", createUid());
-    }
+    const visitor = readStorage("visitor") || createUid();
+    writeStorage("visitor", visitor);
 
     const requestData = {
         item_id: props.itemId,
         rating: rating.value,
-        user_id: localStorage.getItem("visitor"),
+        user_id: visitor,
     };
 
     fetch(apiUrl, {
@@ -48,13 +49,14 @@ function submitRating() {
         .then((_data) => {
             done.value = true;
             setTimeout(() => {
-                const votes = JSON.parse(localStorage.votes);
+                const stored = readStoredJson("votes", []);
+                const votes = Array.isArray(stored) ? stored : [];
                 votes.push({
                     itemId: props.itemId,
                     rating: rating.value,
                 });
 
-                localStorage.setItem("votes", JSON.stringify(votes));
+                writeStorage("votes", JSON.stringify(votes));
                 visible.value = false;
             }, 2000);
         })
@@ -96,9 +98,9 @@ function setRating(v) {
 }
 
 const alreadyRated = computed(() => {
-    const votes = JSON.parse(localStorage.votes);
+    const votes = readStoredJson("votes", []);
     if (!votes || !Array.isArray(votes)) return false;
-    return votes.map((v) => v.itemId).includes(props.itemId);
+    return votes.some((v) => v?.itemId === props.itemId);
 });
 
 const labels = computed(() => {
@@ -143,6 +145,7 @@ const labels = computed(() => {
 <template>
     <Transition name="fade">
         <div
+            dir="ltr"
             v-if="!alreadyRated && visible && store.ratings.show"
             class="relative w-fit flex flex-col justify-center place-items-center gap-3 mx-auto my-4 bg-gray-100 dark:bg-[#242424] p-4 rounded-xl shadow-md shadow[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
         >

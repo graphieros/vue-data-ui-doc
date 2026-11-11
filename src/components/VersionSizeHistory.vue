@@ -258,7 +258,7 @@ function getLabel(label, svg) {
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <VueUiXy
             v-model:zoom-state="zoomState"
             :dataset="datasetPackageSize"

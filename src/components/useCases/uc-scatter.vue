@@ -69,7 +69,7 @@ const config = ref({
             {{ cases.SCATTER_LARGE.description[store.lang] }}
         </template>
     </UseCaseTitle>
-    <div class="w-full rounded p-4 bg-white">
+    <div dir="ltr" class="w-full rounded p-4 bg-white">
         <VueDataUi
             component="VueUiScatter"
             :dataset="SCATTER_LARGE_DATASET"

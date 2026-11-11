@@ -407,6 +407,7 @@ function setPalette(p) {
                         @keydown.esc="close"
                     >
                         <input
+                            dir="ltr"
                             ref="myColorInput"
                             type="color"
                             v-model="hexColor"
@@ -440,7 +441,7 @@ function setPalette(p) {
                                             <button
                                                 v-for="p in themePalettes"
                                                 @click="setPalette(p)"
-                                                class="pl-1 pr-2 bg-white shadow-md dark:bg-[#5A5A5A] text-black dark:text-[#FFFFFF] rounded-full flex flex-row place-items-center gap-1"
+                                                class="ps-1 pe-2 bg-white shadow-md dark:bg-[#5A5A5A] text-black dark:text-[#FFFFFF] rounded-full flex flex-row place-items-center gap-1"
                                                 :style="{
                                                     outline:
                                                         selectedPalette ===
@@ -499,7 +500,7 @@ function setPalette(p) {
                                             </div>
                                             <div />
                                             <div
-                                                class="absolute -top-3 -right-3 bg-white dark:bg-[#2A2A2A] shadow-md rounded-full"
+                                                class="absolute -top-3 -end-3 bg-white dark:bg-[#2A2A2A] shadow-md rounded-full"
                                             >
                                                 <button
                                                     @click="close"
@@ -527,6 +528,7 @@ function setPalette(p) {
                         class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md dark:border-t dark:border-[#6A6A6A]"
                     >
                         <input
+                            dir="ltr"
                             :aria-label="
                                 store.translations.builder2.alphaChannel[
                                     store.lang
@@ -543,6 +545,7 @@ function setPalette(p) {
                     </div>
                 </div>
                 <input
+                    dir="ltr"
                     v-if="withTextInput"
                     :aria-labelledby="labelId"
                     :id="id"

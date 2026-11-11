@@ -16,7 +16,6 @@ import { useMainStore } from "../stores";
 import BaseCard from "../components/BaseCard.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
 import { useRoute, useRouter } from "vue-router";
-import ConfirmCopy from "../components/ConfirmCopy.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -543,7 +542,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                         class="w-full"
                         :backgroundColor="background[currentTheme]"
                     >
-                        <div class="flex items-center h-full w-full">
+                        <div dir="ltr" class="flex items-center h-full w-full">
                             <VueUiSparkline
                                 :dataset="DATASET_SPARKLINE"
                                 :config="CONFIG_SPARKLINE"
@@ -555,7 +554,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                         class="w-full"
                         :backgroundColor="background[currentTheme]"
                     >
-                        <div class="flex items-center h-full w-full">
+                        <div dir="ltr" class="flex items-center h-full w-full">
                             <VueUiSparkStackbar
                                 :dataset="DATASET_SPARKSTACKBAR"
                                 :config="CONFIG_SPARKSTACKBAR"
@@ -567,7 +566,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                         class="w-full"
                         :backgroundColor="background[currentTheme]"
                     >
-                        <div class="flex items-center h-full w-full">
+                        <div dir="ltr" class="flex items-center h-full w-full">
                             <VueUiSparkline
                                 :dataset="DATASET_SPARKLINE_BAR"
                                 :config="CONFIG_SPARKLINE_BAR"
@@ -577,6 +576,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                 </div>
 
                 <BaseCard
+                    dir="ltr"
                     class="w-full"
                     :backgroundColor="background[currentTheme]"
                 >
@@ -588,6 +588,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                 </BaseCard>
 
                 <BaseCard
+                    dir="ltr"
                     class="w-full"
                     :backgroundColor="background[currentTheme]"
                 >
@@ -599,6 +600,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                 </BaseCard>
 
                 <BaseCard
+                    dir="ltr"
                     class="w-full"
                     :backgroundColor="background[currentTheme]"
                 >
@@ -610,6 +612,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                 </BaseCard>
 
                 <BaseCard
+                    dir="ltr"
                     class="w-full"
                     :backgroundColor="background[currentTheme]"
                 >
@@ -621,6 +624,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                 </BaseCard>
 
                 <BaseCard
+                    dir="ltr"
                     class="w-full"
                     :backgroundColor="background[currentTheme]"
                 >
@@ -632,6 +636,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                 </BaseCard>
 
                 <BaseCard
+                    dir="ltr"
                     class="w-full"
                     :backgroundColor="background[currentTheme]"
                 >
@@ -642,6 +647,7 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
                     />
                 </BaseCard>
                 <BaseCard
+                    dir="ltr"
                     v-for="chart in additionalCharts"
                     :key="chart.name"
                     class="w-full min-w-0"
@@ -667,5 +673,4 @@ const CONFIG_SPARKSTACKBAR = computed(() => {
             </div>
         </BaseCard>
     </div>
-    <ConfirmCopy />
 </template>

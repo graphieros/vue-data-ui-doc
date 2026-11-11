@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiGeoConfigFields from "./configuration/VueUiGeoConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -276,7 +278,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -352,7 +354,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiGeo" />
         <BaseDocDescription
             :text="translations.docs.tooltips.geo[store.lang]"
@@ -372,7 +374,7 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiGeo :dataset="dataset" :config="config" :key="key" />
                 </BaseCard>
             </DocSnapper>

@@ -44,7 +44,7 @@ const emit = defineEmits(["resetDefault", "copyToClipboard", "fixChart"]);
             <button
                 v-if="isFixed"
                 @click="emit('fixChart')"
-                class="p-2 text-gray-500 dark:text-gray-400 rounded-full hover:bg-gray-50 dark:hover:bg-[#3A3A3A] mb-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] bg-gray-100 dark:bg-[#2A2A2A] transition-colors absolute top-4 left-4"
+                class="p-2 text-gray-500 dark:text-gray-400 rounded-full hover:bg-gray-50 dark:hover:bg-[#3A3A3A] mb-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] bg-gray-100 dark:bg-[#2A2A2A] transition-colors absolute top-4 start-4"
             >
                 <PinnedOffIcon :size="20" />
             </button>

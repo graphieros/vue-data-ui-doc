@@ -102,6 +102,7 @@ const loadingStates = ref({
     <div class="mx-auto max-w-[1000px] mb-12" dir="auto">
         {{ localTranslations.defaultLook[store.lang] }}
         <div
+            dir="ltr"
             class="mt-4 w-full max-w-[400px] mx-auto p-4 rounded bg-white dark:bg-[#1A1A1A]"
         >
             <VueUiXy />

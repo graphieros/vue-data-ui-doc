@@ -147,8 +147,8 @@ s
             hasSideMenu && isMenuOpen ? 'hidden sm:flex' : 'flex',
             hasSideMenu
                 ? isMenuOpen
-                    ? 'sm:pl-[348px] sm:pr-[48px]'
-                    : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'
+                    ? 'sm:ps-[348px] sm:pe-[48px]'
+                    : 'ps-[59px] sm:ps-[109px] sm:pe-[59px]'
                 : '',
         ]"
     >

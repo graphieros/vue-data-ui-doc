@@ -178,7 +178,7 @@ const CONFIG_VERTICAL_BAR = computed(() => {
     <div
         class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A] min-h-[520px]"
     >
-        <div class="w-full h-full bg-[#f6f6fb]">
+        <div dir="ltr" class="w-full h-full bg-[#f6f6fb]">
             <Suspense>
                 <template #default>
                     <VueDataUi
@@ -200,7 +200,7 @@ const CONFIG_VERTICAL_BAR = computed(() => {
                             </div>
                         </template>
                         <template #source>
-                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                            <div class="text-xs px-4 text-start text-[#8A8A8A]">
                                 Source: UN WPP (2024); HMD (2024); Zijdeman et
                                 al. (2015); Riley (2005)
                             </div>
@@ -213,7 +213,7 @@ const CONFIG_VERTICAL_BAR = computed(() => {
             </Suspense>
         </div>
 
-        <div class="w-full h-full bg-[#f6f6fb]">
+        <div dir="ltr" class="w-full h-full bg-[#f6f6fb]">
             <Suspense>
                 <template #default>
                     <VueDataUi
@@ -235,7 +235,7 @@ const CONFIG_VERTICAL_BAR = computed(() => {
                             </div>
                         </template>
                         <template #source>
-                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                            <div class="text-xs px-4 text-start text-[#8A8A8A]">
                                 Source: UN, World Population Prospects (2024)
                             </div>
                         </template>

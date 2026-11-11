@@ -159,7 +159,7 @@ onUnmounted(() => {
     <div
         ref="draggableElement"
         :class="[
-            'hidden min-w-[300px] sm:flex fixed left-0 flex-col',
+            'hidden min-w-[300px] sm:flex fixed start-0 flex-col',
             backgroundColor,
             'px-5 pt-12 rounded cursor-move select-none',
             props.resizable ? 'resize overflow-hidden' : '',
@@ -175,7 +175,7 @@ onUnmounted(() => {
         <div class="relative flex-none">
             <BaseClip
                 v-if="clip"
-                tw="w-[20px] absolute -top-[58px] right-0 z-100"
+                tw="w-[20px] absolute -top-[58px] end-0 z-100"
                 :color="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
             />
             <slot name="header" />

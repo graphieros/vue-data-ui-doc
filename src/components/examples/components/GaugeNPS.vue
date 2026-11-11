@@ -59,7 +59,7 @@ const config = computed(() => {
 </script>
 
 <template>
-    <div style="width: 100px">
+    <div dir="ltr" style="width: 100px">
         <VueUiSparkgauge :config="config" :dataset="dataset" />
     </div>
 </template>

@@ -139,5 +139,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiWaffle :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiWaffle :config="config" :dataset="dataset" />
+    </div>
 </template>

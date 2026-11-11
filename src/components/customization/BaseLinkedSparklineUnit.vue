@@ -82,7 +82,8 @@ const config = computed(() => {
 
 <template>
     <div
-        :class="`flex flex-row pl-4 py-1 max-w-[400px] rounded`"
+        dir="ltr"
+        :class="`flex flex-row ps-4 py-1 max-w-[400px] rounded`"
         :style="{
             background: `radial-gradient(at bottom left, ${color}, ${gradient})`,
         }"

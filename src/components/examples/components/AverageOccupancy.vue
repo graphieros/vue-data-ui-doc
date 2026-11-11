@@ -144,5 +144,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiOnion :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiOnion :config="config" :dataset="dataset" />
+    </div>
 </template>

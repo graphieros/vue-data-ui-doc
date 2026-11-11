@@ -549,14 +549,14 @@ const code = ref(`<template>
             >
                 <template #tooltip-before>
                     <div
-                        class="text-xs max-w-[200px] text-left border-b pb-2 mb-2"
+                        class="text-xs max-w-[200px] text-start border-b pb-2 mb-2"
                     >
                         This comment was added inside the #tooltip-before slot.
                     </div>
                 </template>
                 <template #tooltip-after="{ datapoint }">
-                    <div class="w-full max-w-[200px]">
-                        <div class="text-xs max-w-[200px] text-left pb-2 mb-2">
+                    <div dir="ltr" class="w-full max-w-[200px]">
+                        <div class="text-xs max-w-[200px] text-start pb-2 mb-2">
                             This comment and chart are added inside the
                             #tooltip-after slot.
                         </div>

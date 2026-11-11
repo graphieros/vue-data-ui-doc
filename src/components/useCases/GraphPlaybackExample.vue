@@ -111,7 +111,7 @@ const config = computed(() => ({
             <span>{{ count }} / {{ nodes.length }}</span>
         </div>
 
-        <div style="height: 500px; width: 100%">
+        <div dir="ltr" style="height: 500px; width: 100%">
             <VueUiGraph :dataset="dataset" :config="config" />
         </div>
     </div>

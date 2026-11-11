@@ -20,7 +20,7 @@ const animationOffset = computed(() =>
 
 <template>
     <svg
-        :class="`overflow-visible [transform-box:fill-box] origin-center pointer-events-none absolute right-12 ${animated ? 'animation-hounce' : ''}`"
+        :class="`overflow-visible [transform-box:fill-box] origin-center pointer-events-none absolute end-12 ${animated ? 'animation-hounce' : ''}`"
         width="100"
         viewBox="0 0 100 10"
         :style="{

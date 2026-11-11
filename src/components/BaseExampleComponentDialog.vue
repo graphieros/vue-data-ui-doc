@@ -92,7 +92,7 @@ function copyComponent() {
         >
             <template #header>
                 <button
-                    class="absolute -top-8 -right-2 hover:bg-gray-200 dark:hover:bg-[#FFFFFF20] transition-colors rounded-full p-1"
+                    class="absolute -top-8 -end-2 hover:bg-gray-200 dark:hover:bg-[#FFFFFF20] transition-colors rounded-full p-1"
                     @click="emit('close')"
                 >
                     <XIcon />
@@ -100,7 +100,7 @@ function copyComponent() {
 
                 <BaseButton
                     @click="copyComponent"
-                    tw="py-1 px-2 absolute -top-12 left-1 !h-12 !w-12"
+                    tw="py-1 px-2 absolute -top-12 start-1 !h-12 !w-12"
                     fab
                 >
                     <VueUiIcon name="copy" stroke="#3A4063" />
@@ -118,7 +118,7 @@ function copyComponent() {
                             <VueUiIcon
                                 :name="example.icon"
                                 :stroke="isDarkMode ? '#5F8aee' : '#2A2A2A'"
-                                class="mr-2"
+                                class="me-2"
                             />
                             <span class="text-gray-500 text-xl">VueUi</span
                             ><span class="text-app-blue text-xl">
@@ -167,7 +167,7 @@ function copyComponent() {
                     </div>
                     <button
                         @click="copyComponent"
-                        class="cursor-pointer absolute top-4 right-4 flex items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors"
+                        class="cursor-pointer absolute top-4 end-4 flex items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors"
                     >
                         <CopyIcon class="text-app-blue" />
                     </button>

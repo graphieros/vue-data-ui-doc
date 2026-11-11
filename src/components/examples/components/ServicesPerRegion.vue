@@ -161,5 +161,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiRadar :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiRadar :config="config" :dataset="dataset" />
+    </div>
 </template>

@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../clipboard.js";
+
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { BrandGithubFilledIcon, CopyIcon } from "vue-tabler-icons";
@@ -63,7 +65,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -80,6 +82,7 @@ function copyToClipboard(conf) {
             >
                 <button
                     @click="copyToClipboard(configSource)"
+                    data-copy-action="default-config"
                     class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors"
                 >
                     <CopyIcon />
@@ -95,6 +98,7 @@ function copyToClipboard(conf) {
             >
                 <button
                     @click="copyToClipboard(customConfig)"
+                    data-copy-action="config"
                     class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors"
                 >
                     <VueUiIcon
@@ -113,6 +117,7 @@ function copyToClipboard(conf) {
             >
                 <button
                     @click="copyToClipboard(customDataset)"
+                    data-copy-action="dataset"
                     class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors"
                 >
                     <VueUiIcon

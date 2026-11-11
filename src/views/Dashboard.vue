@@ -822,11 +822,11 @@ const charts = computed(() => {
 <template>
     <div class="mx-auto w-5/6 mt-12">
         <div
-            class="fixed top-0 left-0 h-screen w-screen z-0"
+            class="fixed top-0 start-0 h-screen w-screen z-0"
             style="opacity: 0.4"
         >
             <div
-                class="absolute top-0 left-0 w-full h-full"
+                class="absolute top-0 start-0 w-full h-full"
                 :style="
                     isDarkMode
                         ? 'background:radial-gradient(#5f8bee, transparent) !important'
@@ -842,7 +842,7 @@ const charts = computed(() => {
                 <div
                     :class="`${chart.cols === 'all' ? 'lg:col-span-3' : ''} z-20 h-full self-center flex place-items-center place-content-center ${chart.padding} ${isDarkMode ? 'bg-black' : 'bg-white'}`"
                 >
-                    <div class="w-full">
+                    <div dir="ltr" class="w-full">
                         <component
                             :is="chart.component"
                             :dataset="chart.dataset"

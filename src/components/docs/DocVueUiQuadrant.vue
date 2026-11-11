@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiQuadrantConfigFields from "./configuration/VueUiQuadrantConfigFields.vue";
 import { ref, computed, nextTick, watch, onMounted } from "vue";
@@ -403,7 +405,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -542,7 +544,7 @@ const datapointSlot = ref(`
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiQuadrant" />
 
         <BaseDocDescription
@@ -565,7 +567,7 @@ const datapointSlot = ref(`
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiQuadrant
                         :dataset="mutableDataset"
                         :config="config"
@@ -678,7 +680,7 @@ const datapointSlot = ref(`
                     <div class="pt-6 border-t border-gray-700">
                         <code><b>getData</b></code>
                     </div>
-                    <div class="text-gray-400 pl-5 mb-4">
+                    <div class="text-gray-400 ps-5 mb-4">
                         {{ translations.docs.emits.xy.getData[store.lang] }}
                     </div>
                     <pre>
@@ -779,14 +781,14 @@ const datapointSlot = ref(`
                                 </div>
                             </div>
                             <div
-                                class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6"
+                                class="ps-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pe-6"
                             >
                                 {{ translations.slots.datapoint[store.lang] }}
                             </div>
                             <div
                                 class="bg-gray-200 dark:bg-[#1A1A1A] overflow-auto rounded-b-2xl relative shadow"
                             >
-                                <div class="absolute top-1 right-1">
+                                <div class="absolute top-1 end-1">
                                     <button
                                         class="flex place-items-center justify-center p-1 rounded-full hover:bg-[#42d39230] transition-colors"
                                         @click="

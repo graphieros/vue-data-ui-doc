@@ -2,7 +2,6 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import CodeParser from "./CodeParser.vue";
-import ConfirmCopy from "../ConfirmCopy.vue";
 import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
@@ -446,7 +445,7 @@ const codeWatermarkPrintOnly = ref(`<!-- ${comment2.value[store.lang]} -->
                 <div class="my-6" dir="auto">
                     {{ title[store.lang] }}
                 </div>
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiDonut
                         :dataset="dataset"
                         :config="isDarkMode ? darkModeConfig : config"
@@ -480,5 +479,4 @@ const codeWatermarkPrintOnly = ref(`<!-- ${comment2.value[store.lang]} -->
             <BaseSpinner />
         </template>
     </Suspense>
-    <ConfirmCopy />
 </template>

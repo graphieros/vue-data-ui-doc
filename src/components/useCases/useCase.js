@@ -600,10 +600,6 @@ export function useCase() {
                     selector: {
                         color: textColor.value,
                     },
-                    tooltip: {
-                        backgroundColor: bgColor.value,
-                        color: textColor.value,
-                    },
                     legend: {
                         backgroundColor: bgColor.value,
                         color: textColor.value,

@@ -74,30 +74,32 @@ const inactiveDataset = computed(() => {
 </script>
 
 <template>
-    <VueDataUi
-        component="VueUiWaffle"
-        :dataset="active ? dataset : inactiveDataset"
-        :config="config"
-    >
-        <template #cell="{ cell, isSelected }">
-            <div
-                class="flex place-items-center justify-center h-full w-full bg-app-blue-light"
-                v-if="cell.name === 'Users'"
-            >
-                <UserIcon class="text-app-blue" :size="32" />
-            </div>
-            <div
-                class="flex place-items-center justify-center h-full w-full bg-app-orange-light"
-                v-if="cell.name === 'Viewers'"
-            >
-                <EyeIcon class="text-app-orange" :size="32" />
-            </div>
-            <div
-                class="flex place-items-center justify-center h-full w-full bg-app-green-light"
-                v-if="cell.name === 'Subscribers'"
-            >
-                <UserPlusIcon class="text-app-green-dark" :size="32" />
-            </div>
-        </template>
-    </VueDataUi>
+    <div dir="ltr" style="height: inherit">
+        <VueDataUi
+            component="VueUiWaffle"
+            :dataset="active ? dataset : inactiveDataset"
+            :config="config"
+        >
+            <template #cell="{ cell, isSelected }">
+                <div
+                    class="flex place-items-center justify-center h-full w-full bg-app-blue-light"
+                    v-if="cell.name === 'Users'"
+                >
+                    <UserIcon class="text-app-blue" :size="32" />
+                </div>
+                <div
+                    class="flex place-items-center justify-center h-full w-full bg-app-orange-light"
+                    v-if="cell.name === 'Viewers'"
+                >
+                    <EyeIcon class="text-app-orange" :size="32" />
+                </div>
+                <div
+                    class="flex place-items-center justify-center h-full w-full bg-app-green-light"
+                    v-if="cell.name === 'Subscribers'"
+                >
+                    <UserPlusIcon class="text-app-green-dark" :size="32" />
+                </div>
+            </template>
+        </VueDataUi>
+    </div>
 </template>

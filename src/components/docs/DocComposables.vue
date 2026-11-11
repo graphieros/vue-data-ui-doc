@@ -143,6 +143,7 @@ const config = computed(() => ({
             </div>
             <CodeParser language="typescript" :content="codeScript" />
             <div
+                dir="ltr"
                 class="max-w-[700px] mx-auto mt-4 p-4 rounded-md bg-white dark:bg-[#1A1A1A] shadow-md"
             >
                 <VueUiXy ref="chartRef" :dataset :config />

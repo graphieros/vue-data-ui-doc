@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiStackbarConfigFields from "./configuration/VueUiStackbarConfigFields.vue";
 import { ref, watch, computed, onMounted } from "vue";
@@ -549,7 +551,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -887,7 +889,7 @@ const waterfallExplain = ref({
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <BaseDocTitle name="VueUiStackbar" />
 
         <BaseDocDescription
@@ -920,7 +922,7 @@ const waterfallExplain = ref({
                     >
                 </label>
 
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiStackbar
                         :dataset="isWaterfall ? datasetWaterfall : dataset"
                         :config="config"
@@ -1076,7 +1078,7 @@ const waterfallExplain = ref({
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">
+                    <div class="text-gray-400 ps-5 mb-4">
                         {{ translations.docs.emits.xy.getData[store.lang] }}
                     </div>
                     <pre>
@@ -1166,7 +1168,11 @@ const waterfallExplain = ref({
                         />
                     </template>
                     <template #after="item">
-                        <div v-if="item.names.includes('svg')" class="p-6">
+                        <div
+                            dir="ltr"
+                            v-if="item.names.includes('svg')"
+                            class="p-6"
+                        >
                             {{ item.freestyle }}
                             <CodeParser
                                 language="javascript"

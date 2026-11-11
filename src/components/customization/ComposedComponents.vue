@@ -413,7 +413,7 @@ const max = computed(() => {
             </h2>
         </div>
 
-        <div class="flex flex-row gap-4 flex-wrap justify-center">
+        <div dir="ltr" class="flex flex-row gap-4 flex-wrap justify-center">
             <BaseButtonSparklineFree
                 :buttonClass="`bg-gradient-to-b from-[#DDDDDD] to-[#EEEEEE] dark:from-[#1A1A1A] dark:to-[#2A2A2A] text-black transition-all`"
                 popoverClass="rounded-b-md py-1 bg-[#EEEEEE] dark:bg-[#2A2A2A] shadow-md"
@@ -422,7 +422,7 @@ const max = computed(() => {
                 style="z-index: 1"
             >
                 <template #button-content>
-                    <div class="relative w-full h-full">
+                    <div dir="ltr" class="relative w-full h-full">
                         <VueDataUi
                             component="VueUiOnion"
                             :config="onionConfig"
@@ -432,7 +432,7 @@ const max = computed(() => {
                             v-if="![null, undefined].includes(selectedIndex)"
                         >
                             <div
-                                class="absolute left-0 top-[150px] flex flex-col w-full"
+                                class="absolute start-0 top-[150px] flex flex-col w-full"
                             >
                                 <span
                                     class="text-[#8A8A8A] text-xs text-center w-full pt-2"
@@ -479,7 +479,7 @@ const max = computed(() => {
                         }"
                         :dataset="sparklineDatasetUsers"
                         @hoverIndex="hoverIndex"
-                        class="-ml-1"
+                        class="-ms-1"
                         :selectedIndex="selectedIndex"
                     />
                     <VueUiSparkline
@@ -498,7 +498,7 @@ const max = computed(() => {
                         }"
                         :dataset="sparklineDatasetViewers"
                         @hoverIndex="hoverIndex"
-                        class="-ml-1"
+                        class="-ms-1"
                         :selectedIndex="selectedIndex"
                     />
                     <VueUiSparkline
@@ -512,7 +512,7 @@ const max = computed(() => {
                         }"
                         :dataset="sparklineDatasetSubscribers"
                         @hoverIndex="hoverIndex"
-                        class="-ml-1"
+                        class="-ms-1"
                         :selectedIndex="selectedIndex"
                     />
                 </template>

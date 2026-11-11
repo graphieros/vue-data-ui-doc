@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiCarouselTableConfigFields from "./configuration/VueUiCarouselTableConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -203,7 +205,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -279,7 +281,7 @@ const slotCode = computed(() => {
         />
 
         <BaseCard>
-            <div :class="`transition-all mx-auto w-full overflow`">
+            <div dir="ltr" :class="`transition-all mx-auto w-full overflow`">
                 <Suspense>
                     <template #default>
                         <VueUiCarouselTable
@@ -386,19 +388,19 @@ const slotCode = computed(() => {
                 />
 
                 <div><code>#caption</code></div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{ translations.slots.caption[store.lang] }}
                 </div>
                 <div><code>#th</code></div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{ translations.slots.th[store.lang] }}
                 </div>
                 <div><code>#td</code></div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{ translations.slots.td[store.lang] }}
                 </div>
                 <div><code>#source</code></div>
-                <div class="text-gray-400 pl-5 mb-4">
+                <div class="text-gray-400 ps-5 mb-4">
                     {{ translations.slots.source[store.lang] }}
                 </div>
 

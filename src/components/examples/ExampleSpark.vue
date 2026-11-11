@@ -341,7 +341,7 @@ const trendConfig = computed(() => {
                         />
                     </div>
 
-                    <BaseCard type="light">
+                    <BaseCard dir="ltr" type="light">
                         <VueUiCarouselTable
                             :dataset="carouselDataset"
                             :config="carouselConfig"
@@ -366,7 +366,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Respondents<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -405,7 +405,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Respondents<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -444,7 +444,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Respondents<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -691,6 +691,7 @@ const trendConfig = computed(() => {
 
                     <BaseCard type="light">
                         <div
+                            dir="ltr"
                             class="flex flex-row gap-4 justify-between place-items-center mt-2"
                         >
                             <VueDataUi
@@ -715,6 +716,7 @@ const trendConfig = computed(() => {
 
                     <BaseCard type="light">
                         <div
+                            dir="ltr"
                             class="flex flex-row gap-4 justify-between place-items-center mt-2"
                         >
                             <VueDataUi
@@ -739,6 +741,7 @@ const trendConfig = computed(() => {
 
                     <BaseCard type="light">
                         <div
+                            dir="ltr"
                             class="flex flex-row gap-4 justify-between place-items-center mt-2"
                         >
                             <VueDataUi
@@ -767,7 +770,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Targets<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -797,7 +800,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Targets<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -827,7 +830,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Targets<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -859,7 +862,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Avg. clients per hour<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -889,7 +892,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Avg. clients per hour<span
                                         class="text-gray-500 dark:text-gray-500"
@@ -919,7 +922,7 @@ const trendConfig = computed(() => {
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col">
                                 <div
-                                    class="font-[InterMedium] text-xl lg:text-3xl text-left"
+                                    class="font-[InterMedium] text-xl lg:text-3xl text-start"
                                 >
                                     Avg. clients per hour<span
                                         class="text-gray-500 dark:text-gray-500"

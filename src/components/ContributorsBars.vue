@@ -71,7 +71,7 @@ const config = computed(() => {
 </script>
 
 <template>
-    <div class="w-full mt-6 max-w-[600px] mx-auto">
+    <div dir="ltr" class="w-full mt-6 max-w-[600px] mx-auto">
         <VueDataUi
             component="VueUiHorizontalBar"
             :dataset="dataset"

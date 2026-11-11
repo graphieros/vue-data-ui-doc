@@ -111,11 +111,11 @@ const thermoConfig = computed(() => {
         title="GitHub repository. Leave a star to support us :)"
         href="https://github.com/graphieros/vue-data-ui"
         target="_blank"
-        class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[155px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#fdd663] hover:shadow-md bg-gradient-to-b from-[#f7e2a3] to-[#fdd663] group"
+        class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[155px] end-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#fdd663] hover:shadow-md bg-gradient-to-b from-[#f7e2a3] to-[#fdd663] group"
     >
         <BrandGithubFilledIcon class="text-black" size="24" />
         <StarFilledIcon
-            class="text-black dark:text-[#fdd663] absolute top-0 -left-4"
+            class="text-black dark:text-[#fdd663] absolute top-0 -start-4"
             size="14"
         />
         <svg
@@ -130,7 +130,7 @@ const thermoConfig = computed(() => {
             <circle cx="5.5" cy="7" r="0.5" fill="white" />
             <circle cx="15.5" cy="7" r="0.5" fill="white" />
         </svg>
-        <div class="w-[40px] absolute -top-6" v-if="stars">
+        <div dir="ltr" class="w-[40px] absolute -top-6" v-if="stars">
             <VueDataUi
                 component="VueUiDigits"
                 :dataset="stars"
@@ -140,80 +140,82 @@ const thermoConfig = computed(() => {
     </a>
 
     <div
-        class="w-[60px] h-[35px] fixed right-1 bottom-[122px]"
+        class="w-[60px] h-[35px] fixed end-1 bottom-[122px]"
         v-if="store.npmDownloads.length"
     >
-        <VueUiSparkline
-            :dataset="store.npmDownloads"
-            :config="{
-                responsive: true,
-                type: 'line',
-                style: {
-                    scaleMax: maxDownload,
-                    backgroundColor: '#FFFFFF00',
-                    chartWidth: 300,
-                    dataLabel: { show: false },
-                    title: { show: false },
-                    padding: {
-                        top: 12,
-                        right: 4,
-                        left: 4,
-                        bottom: 6,
-                    },
-                    line: {
-                        strokeWidth: 1.6,
-                        pulse: {
-                            show: true,
-                            radius: 0.8,
-                            color: isDarkMode ? '#fdd663' : '#1A1A1A',
-                            trail: {
+        <div dir="ltr" class="w-full h-full">
+            <VueUiSparkline
+                :dataset="store.npmDownloads"
+                :config="{
+                    responsive: true,
+                    type: 'line',
+                    style: {
+                        scaleMax: maxDownload,
+                        backgroundColor: '#FFFFFF00',
+                        chartWidth: 300,
+                        dataLabel: { show: false },
+                        title: { show: false },
+                        padding: {
+                            top: 12,
+                            right: 4,
+                            left: 4,
+                            bottom: 6,
+                        },
+                        line: {
+                            strokeWidth: 1.6,
+                            pulse: {
                                 show: true,
-                                length: 45,
+                                radius: 0.8,
+                                color: isDarkMode ? '#fdd663' : '#1A1A1A',
+                                trail: {
+                                    show: true,
+                                    length: 45,
+                                },
                             },
                         },
+                        plot: {
+                            show: true,
+                            radius: isDarkMode ? 2 : 3,
+                            stroke: isDarkMode ? '#fdd663' : '#FFFFFF',
+                        },
+                        tooltip: {
+                            show: true,
+                            fontSize: 8,
+                            backgroundOpacity: 0,
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                        },
+                        verticalIndicator: {
+                            show: true,
+                            strokeWidth: 1,
+                            strokeDasharray: 2,
+                            color: isDarkMode ? '#fdd663' : '#8A8A8A',
+                        },
                     },
-                    plot: {
-                        show: true,
-                        radius: isDarkMode ? 2 : 3,
-                        stroke: isDarkMode ? '#fdd663' : '#FFFFFF',
-                    },
-                    tooltip: {
-                        show: true,
-                        fontSize: 8,
-                        backgroundOpacity: 0,
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                    },
-                    verticalIndicator: {
-                        show: true,
-                        strokeWidth: 1,
-                        strokeDasharray: 2,
-                        color: isDarkMode ? '#fdd663' : '#8A8A8A',
-                    },
-                },
-            }"
-        >
-            <template #tooltip="{ period, absoluteValue }">
-                <div class="flex flex-nowrap">
-                    {{ months[period.split("-")[1]] }}
-                    {{ Number(period.split("-")[2]) }}:
-                    {{ absoluteValue }}
-                </div>
-            </template>
-        </VueUiSparkline>
+                }"
+            >
+                <template #tooltip="{ period, absoluteValue }">
+                    <div class="flex flex-nowrap">
+                        {{ months[period.split("-")[1]] }}
+                        {{ Number(period.split("-")[2]) }}:
+                        {{ absoluteValue }}
+                    </div>
+                </template>
+            </VueUiSparkline>
+        </div>
     </div>
 
     <a
         v-if="issues"
         href="https://github.com/graphieros/vue-data-ui/issues"
         target="_blank"
-        class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[235px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#5f8aee] hover:shadow-md bg-gradient-to-b from-[#8eabed] to-[#5f8aee]"
+        class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[235px] end-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#5f8aee] hover:shadow-md bg-gradient-to-b from-[#8eabed] to-[#5f8aee]"
     >
         <BrandGithubFilledIcon class="text-black" size="24" />
         <ToolIcon
-            class="text-black dark:text-[#28292a] absolute top-0 -left-4"
+            class="text-black dark:text-[#28292a] absolute top-0 -start-4"
             size="14"
         />
-        <div class="w-[10px] absolute -top-6">
+        <div dir="ltr" class="w-[10px] absolute -top-6">
             <VueDataUi
                 component="VueUiDigits"
                 :dataset="issues"

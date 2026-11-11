@@ -215,6 +215,7 @@ const presentation = ref({
                     </BaseButton>
                 </div>
                 <BaseCard
+                    dir="ltr"
                     class="w-full h-fit sm:w-1/2 flex flex-row place-items-center justify-center"
                     :style="`backgroundColor: ${knobs.colorBackground} !important;`"
                 >

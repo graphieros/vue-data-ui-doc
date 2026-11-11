@@ -1,0 +1,18 @@
+/* Technical content keeps its reading order inside the RTL interface.
+   Charts are protected by explicit dir="ltr" attributes on their wrapper divs. */
+:where([dir="rtl"]) {
+    --ui-direction: -1;
+}
+:where([dir="ltr"]) {
+    --ui-direction: 1;
+}
+html[dir="rtl"] :where(pre, code, kbd, samp, .code-input) {
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: left;
+}
+html[dir="rtl"] :where(input[type="number"], output) {
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: right;
+}

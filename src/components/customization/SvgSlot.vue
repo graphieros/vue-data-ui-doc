@@ -3,7 +3,6 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 import CodeParser from "./CodeParser.vue";
-import ConfirmCopy from "../ConfirmCopy.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -296,7 +295,7 @@ const contentImage = ref(`<template>
             <VueUiXy :dataset="xyDataset" :config="xyConfig">
                 <template #svg>
                     <foreignObject :x="50" :y="0" height="320" width="360">
-                        <div class="w-full">
+                        <div dir="ltr" class="w-full">
                             <VueUiDonut
                                 :dataset="donutDataset"
                                 :config="donutConfig"
@@ -352,7 +351,7 @@ import { Arrow } from "vue-data-ui"
                 </summary>
                 <div class="px-4 py-2 bg-gray-100 dark:bg-[#2A2A2A]">
                     <h5>Props :</h5>
-                    <ul class="pl-3">
+                    <ul class="ps-3">
                         <li>
                             <code>markerEnd?: boolean;</code> (default: true)
                         </li>

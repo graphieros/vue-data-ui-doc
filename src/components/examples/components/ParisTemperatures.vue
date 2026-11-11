@@ -182,5 +182,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiHeatmap :config="config" :dataset="usableHeatmapData" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiHeatmap :config="config" :dataset="usableHeatmapData" />
+    </div>
 </template>

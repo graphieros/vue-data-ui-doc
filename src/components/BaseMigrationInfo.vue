@@ -175,43 +175,43 @@ const translations = computed(() => {
                 <div class="w-full p-4 text-black dark:text-white">
                     <ul>
                         <li
-                            class="border-l-2 border-app-green pl-4 mb-4"
+                            class="border-s-2 border-app-green ps-4 mb-4"
                             v-if="padding"
                         >
                             {{ translations.padding[store.lang] }}
                         </li>
                         <li
-                            class="border-l-2 border-app-green pl-4 mb-4"
+                            class="border-s-2 border-app-green ps-4 mb-4"
                             v-if="debug"
                         >
                             {{ translations.debug[store.lang] }}
                         </li>
                         <li
-                            class="border-l-2 border-app-green pl-4 mb-4"
+                            class="border-s-2 border-app-green ps-4 mb-4"
                             v-if="cssAnimation"
                         >
                             {{ translations.cssAnimation[store.lang] }}
                         </li>
                         <li
-                            class="border-l-2 border-app-green pl-4 mb-4"
+                            class="border-s-2 border-app-green ps-4 mb-4"
                             v-if="zoomPreview"
                         >
                             {{ translations.zoomPreview[store.lang] }}
                         </li>
                         <li
-                            class="border-l-2 border-app-green pl-4 mb-4"
+                            class="border-s-2 border-app-green ps-4 mb-4"
                             v-if="autoRotate"
                         >
                             {{ translations.autoRotate[store.lang] }}
                         </li>
                         <li
-                            class="border-l-2 border-app-green pl-4 mb-4"
+                            class="border-s-2 border-app-green ps-4 mb-4"
                             v-if="xyTransitions"
                         >
                             {{ translations.xyTransitions[store.lang] }}
                         </li>
                         <li
-                            class="border-l-2 border-app-green pl-4 mb-4"
+                            class="border-s-2 border-app-green ps-4 mb-4"
                             v-if="heatmapSize"
                         >
                             {{ translations.heatmapSize[store.lang] }}

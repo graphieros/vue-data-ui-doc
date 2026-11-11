@@ -171,7 +171,7 @@ const config = computed(() => ({
 </script>
 
 <template>
-    <div>
+    <div dir="ltr">
         <VueUiBump :dataset="dataset" :config="config" />
     </div>
 </template>

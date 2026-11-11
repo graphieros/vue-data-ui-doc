@@ -121,10 +121,12 @@ const inactiveDataset = computed(() => {
 </script>
 
 <template>
-    <VueDataUi
-        component="VueUiDonut"
-        :dataset="active ? dataset : inactiveDataset"
-        :config="config"
-    >
-    </VueDataUi>
+    <div dir="ltr" style="height: inherit">
+        <VueDataUi
+            component="VueUiDonut"
+            :dataset="active ? dataset : inactiveDataset"
+            :config="config"
+        >
+        </VueDataUi>
+    </div>
 </template>

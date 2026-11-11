@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
         <TransitionGroup
             name="toast"
             tag="div"
-            class="fixed bottom-0 left-0 z-[2147483647] p-6 flex flex-col gap-3 pointer-events-none"
+            class="fixed bottom-0 start-0 z-[2147483647] p-6 flex flex-col gap-3 pointer-events-none"
             aria-live="polite"
         >
             <BaseCard
@@ -147,16 +147,16 @@ onBeforeUnmount(() => {
             >
                 <CheckIcon
                     v-if="message.type === 'success'"
-                    class="absolute left-3 top-1/2 -translate-y-1/2 opacity-80 text-app-green-dark"
+                    class="absolute start-3 top-1/2 -translate-y-1/2 opacity-80 text-app-green-dark"
                     stroke-width="3"
                 />
                 <ExclamationCircleIcon
                     v-else-if="message.type === 'error'"
-                    class="absolute left-3 top-1/2 -translate-y-1/2 opacity-80 text-app-red"
+                    class="absolute start-3 top-1/2 -translate-y-1/2 opacity-80 text-app-red"
                 />
 
                 <button
-                    class="absolute right-2 top-2 grid place-items-center h-7 w-7 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] bg-app-green-light dark:bg-[#3A3A3A] dark:shadow-[inset_0_2px_2px_#87e6bb,0_4px_6px_rgba(0,0,0,0.1)] hover:dark:bg-[#2A2A2A] transition-colors"
+                    class="absolute end-2 top-2 grid place-items-center h-7 w-7 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] bg-app-green-light dark:bg-[#3A3A3A] dark:shadow-[inset_0_2px_2px_#87e6bb,0_4px_6px_rgba(0,0,0,0.1)] hover:dark:bg-[#2A2A2A] transition-colors"
                     @click="deleteMessage(message)"
                     aria-label="Dismiss notification"
                 >
@@ -167,13 +167,13 @@ onBeforeUnmount(() => {
                     />
                 </button>
 
-                <p class="text-xs leading-tight pl-2 pr-8">
+                <p class="text-xs leading-tight ps-2 pe-8">
                     {{ message.content }}
                 </p>
 
                 <!-- Progress bar -->
                 <div
-                    class="absolute left-0 bottom-0 h-[6px] w-full overflow-hidden rounded-b-xl"
+                    class="absolute start-0 bottom-0 h-[6px] w-full overflow-hidden rounded-b-xl"
                     :class="
                         message.type === 'error'
                             ? 'bg-red-500/10'

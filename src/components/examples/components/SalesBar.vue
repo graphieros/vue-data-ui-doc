@@ -212,5 +212,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiVerticalBar :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiVerticalBar :config="config" :dataset="dataset" />
+    </div>
 </template>

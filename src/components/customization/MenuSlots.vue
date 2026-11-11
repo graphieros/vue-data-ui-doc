@@ -45,7 +45,7 @@ const code3 = ref(`<VueUiXy :config="config" :dataset="dataset">
 </script>
 
 <template>
-    <div class="text-left mt-12 w-5/6 mx-auto mb-12 max-w-[1200px]">
+    <div class="text-start mt-12 w-5/6 mx-auto mb-12 max-w-[1200px]">
         Config also allows you to hide some actions.<br />
         The example below illustrates all the possible options.<br />
         <span class="text-orange-500"

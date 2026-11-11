@@ -24,7 +24,7 @@ function scrollToTop() {
 <template>
     <div class="overflow-visible relative w-fit">
         <router-link :to="route" @click="scrollToTop">
-            <div :class="`-ml-2 my-4 ${index === 0 ? 'mt-12' : ''} relative`">
+            <div :class="`-ms-2 my-4 ${index === 0 ? 'mt-12' : ''} relative`">
                 <VueUiIcon
                     :name="icon"
                     :size="20"

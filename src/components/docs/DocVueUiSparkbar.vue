@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiSparkbarConfigFields from "./configuration/VueUiSparkbarConfigFields.vue";
 import { ref, computed, watch, nextTick, onMounted } from "vue";
@@ -147,7 +149,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -227,7 +229,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard>
+                <BaseCard dir="ltr">
                     <VueUiSparkbar
                         :dataset="dataset"
                         :config="config"

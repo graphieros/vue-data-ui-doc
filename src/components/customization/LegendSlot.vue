@@ -131,11 +131,11 @@ const config = computed(() => {
 </pre>
         </template>
         <template #chart>
-            <div class="pr-[140px] bg-white p-2">
+            <div dir="ltr" class="pe-[140px] bg-white p-2">
                 <VueUiXy :dataset="dataset" :config="config">
                     <template #legend="{ legend }">
                         <div
-                            class="absolute -right-[125px] bottom-[18px] flex flex-col gap-2 p-2 border shadow"
+                            class="absolute -end-[125px] bottom-[18px] flex flex-col gap-2 p-2 border shadow"
                         >
                             <div
                                 v-for="datapoint in legend"

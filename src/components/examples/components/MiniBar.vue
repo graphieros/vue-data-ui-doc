@@ -86,5 +86,7 @@ const dataset = computed(() => {
 </script>
 
 <template>
-    <VueUiSparkbar :config="config" :dataset="dataset" />
+    <div dir="ltr" style="height: inherit">
+        <VueUiSparkbar :config="config" :dataset="dataset" />
+    </div>
 </template>

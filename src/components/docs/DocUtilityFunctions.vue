@@ -451,7 +451,7 @@ const comments = ref({
         ar: "تحويل القيم غير الصالحة إلى صفر",
     },
     averageWindow: {
-        en: "Bidirectional moving average. Blends a trailing (left-anchored) and leading (right-anchored) average by position so transitions from both fixed endpoints are smooth. First and last points are preserved.",
+        en: "Bidirectional moving average. Blends a trailing (start-anchored) and leading (end-anchored) average by position so transitions from both fixed endpoints are smooth. First and last points are preserved.",
         fr: "Moyenne mobile bidirectionnelle. Combine une moyenne rétrospective (ancrée à gauche) et une moyenne prospective (ancrée à droite) selon la position afin d'assurer des transitions fluides depuis les deux extrémités fixes. Les premier et dernier points sont conservés.",
         pt: "Média móvel bidirecional. Combina uma média retroativa (ancorada à esquerda) e uma média antecipada (ancorada à direita) conforme a posição, garantindo transições suaves a partir de ambas as extremidades fixas. O primeiro e o último pontos são preservados.",
         de: "Bidirektionaler gleitender Durchschnitt. Kombiniert einen nachlaufenden (links verankerten) und einen vorlaufenden (rechts verankerten) Durchschnitt positionsabhängig, sodass Übergänge von beiden festen Endpunkten aus glatt verlaufen. Der erste und letzte Punkt bleiben erhalten.",
@@ -681,12 +681,12 @@ onBeforeUnmount(() => {
 
 <template>
     <div
-        :class="`hidden lg:block fixed top-[82px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-10 p-4 bg-[#FAFAFA] dark:bg-[#3A3A3A] shadow-md`"
+        :class="`hidden lg:block fixed top-[82px] ${isMenuOpen ? 'start-[300px]' : 'start-[60px]'} z-10 p-4 bg-[#FAFAFA] dark:bg-[#3A3A3A] shadow-md`"
         :style="{
             width: isMenuOpen ? 'calc(100vw - 300px)' : 'calc(100vw - 60px)',
         }"
     >
-        <div class="flex flex-row flex-wrap gap-2 leading-[1px] pr-12 text-xs">
+        <div class="flex flex-row flex-wrap gap-2 leading-[1px] pe-12 text-xs">
             <div
                 :class="`hover:shadow-md font-mono p-2 rounded-full transition-all ${link === activeSectionId ? 'bg-app-blue text-[#1A1A1A] shadow-md' : 'bg-gray-200 dark:bg-[#4A4A4A] hover:bg-gray-100 dark:hover:bg-[#5A5A5A]'}`"
                 v-for="link in utilityMenu"
@@ -817,6 +817,7 @@ onBeforeUnmount(() => {
                         </label>
                     </div>
                     <div
+                        dir="ltr"
                         class="mx-auto max-w-[600px] p-4 bg-white dark:bg-[#1A1A1A] rounded mb-4"
                     >
                         <VueUiXy
@@ -873,7 +874,7 @@ onBeforeUnmount(() => {
                 />
             </div>
 
-            <div class="mx-auto max-w-[300px] my-4">
+            <div dir="ltr" class="mx-auto max-w-[300px] my-4">
                 <label class="flex flex-row gap-2">
                     Background color:
                     <input

@@ -1,4 +1,6 @@
 <script setup>
+import { copySelection } from "../../clipboard.js";
+
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiAccordionConfigFields from "./configuration/VueUiAccordionConfigFields.vue";
 import { ref, watch, nextTick, computed, onMounted } from "vue";
@@ -75,7 +77,7 @@ function copyToClipboard(conf) {
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand("copy");
+    copySelection();
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -132,7 +134,8 @@ const slotContent = ref(`
         />
 
         <div
-            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[600px]'}`"
+            dir="ltr"
+            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] start-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[600px]'}`"
         >
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
                 <button
