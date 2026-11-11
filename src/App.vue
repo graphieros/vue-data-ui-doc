@@ -223,7 +223,7 @@ watch(
 );
 
 watch(
-    () => route.fullPath,
+    [() => route.fullPath, () => route.name],
     () => updateMetadata(route, document),
     { immediate: true },
 );
