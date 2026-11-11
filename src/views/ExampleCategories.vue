@@ -11,7 +11,10 @@ import {
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import exampleLoaders from "virtual:examples/index";
 import { preloadChart } from "../plugins/registerCharts.js";
-import { chartFrameStyle } from "../performance/exampleLayout.js";
+import {
+    chartFrameStyle,
+    exampleCardStyle,
+} from "../performance/exampleLayout.js";
 import { useMainStore } from "../stores";
 import BaseDocHeaderActions from "../components/BaseDocHeaderActions.vue";
 import BaseTabContainer from "../components/BaseTabContainer.vue";
@@ -930,7 +933,7 @@ function makeMapLinks({ data }) {
                 <BaseCard
                     v-for="index in 2"
                     :key="index"
-                    class="min-h-[700px]"
+                    :style="exampleCardStyle(selectedType?.component)"
                     aria-hidden="true"
                 />
             </template>
@@ -942,10 +945,13 @@ function makeMapLinks({ data }) {
             >
                 <BaseLazy once>
                     <template #placeholder>
-                        <BaseCard class="min-h-[700px]" aria-hidden="true" />
+                        <BaseCard
+                            :style="exampleCardStyle(example.component)"
+                            aria-hidden="true"
+                        />
                     </template>
                     <BaseCard
-                        class="min-h-[700px]"
+                        :style="exampleCardStyle(example.component)"
                         :focused="
                             route.query.next === example.id &&
                             route.hash === `#${example.link}`

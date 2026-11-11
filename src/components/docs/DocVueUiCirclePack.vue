@@ -443,6 +443,8 @@ const customFormatCode =
 
     <div :class="`transition-all mx-auto w-full sm:w-2/3 pb-12`">
         <DocSnapper
+            component="vue_ui_circle_pack"
+            :config="config"
             :isFixed="isFixed"
             :disabled="!isFixed || isMobile"
             @fixChart="fixChart"

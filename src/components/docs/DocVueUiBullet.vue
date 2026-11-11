@@ -279,6 +279,8 @@ function goToPage(route) {
 
         <div :class="`transition-all mx-auto w-full sm:w-3/4`">
             <DocSnapper
+                component="vue_ui_bullet"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

@@ -207,6 +207,8 @@ function goToPage(route) {
             :class="`transition-all mx-auto ${config.style.chart.layout.display === 'vertical' ? 'max-w-[100px]' : 'max-w-[500px]'}`"
         >
             <DocSnapper
+                component="vue_ui_tiremarks"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

@@ -364,6 +364,8 @@ const codeDataset = ref(`const dataset: VueUiGeoDatasetItem[] = [
 
         <div :class="`mx-auto max-w-[600px]`">
             <DocSnapper
+                component="vue_ui_geo"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

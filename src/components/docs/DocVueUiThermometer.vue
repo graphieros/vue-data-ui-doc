@@ -223,6 +223,8 @@ function goToPage(route) {
 
         <div :class="`transition-all mx-auto max-w-[250px]`">
             <DocSnapper
+                component="vue_ui_thermometer"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

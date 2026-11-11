@@ -479,6 +479,8 @@ const codeDataset = ref(`const dataset: VueUiHillDatasetItem[] = [
 
         <div :class="`transition-all mx-auto w-full max-w-[800px]`">
             <DocSnapper
+                component="vue_ui_hill"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

@@ -400,6 +400,8 @@ const codeDataset = ref(`const dataset: VueUiBumpDatasetItem[] = [
 
         <div :class="`mx-auto max-w-[600px]`">
             <DocSnapper
+                component="vue_ui_bump"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

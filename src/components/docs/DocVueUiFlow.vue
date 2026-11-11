@@ -417,6 +417,8 @@ const customFormatCode = ref(`customFormat: ({ datapoint }) => {
 
         <div :class="`transition-all mx-auto w-full`">
             <DocSnapper
+                component="vue_ui_flow"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

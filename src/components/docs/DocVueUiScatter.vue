@@ -290,9 +290,7 @@ const config = computed({
                                 },
                             },
                         },
-                        reverseAxisLabels: isDarkMode.value
-                            ? false
-                            : undefined,
+                        reverseAxisLabels: isDarkMode.value ? false : undefined,
                     },
                 },
                 title: {
@@ -624,6 +622,8 @@ const customFormatCode =
 
         <div :class="`transition-all mx-auto w-full sm:w-2/3`">
             <DocSnapper
+                component="vue_ui_scatter"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

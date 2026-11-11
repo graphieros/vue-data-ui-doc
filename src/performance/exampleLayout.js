@@ -1,5 +1,17 @@
+const compactCharts = new Set([
+    "VueUiSparkline",
+    "VueUiSparkHistogram",
+    "VueUiBullet",
+    "VueUiHeatmap",
+]);
+
 /** Reserve the same chart area before and after an async example resolves. */
+export function exampleCardStyle(component) {
+    return { minHeight: compactCharts.has(component) ? "320px" : "700px" };
+}
+
 export function chartFrameStyle(example) {
+    if (compactCharts.has(example.component)) return { minHeight: "160px" };
     const config = example.config || {};
     const chart =
         config.chart ||

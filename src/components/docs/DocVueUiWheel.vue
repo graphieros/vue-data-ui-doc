@@ -232,6 +232,8 @@ function goToPage(route) {
 
         <div :class="`transition-all mx-auto max-w-[450px]`">
             <DocSnapper
+                component="vue_ui_wheel"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

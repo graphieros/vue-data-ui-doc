@@ -131,6 +131,11 @@ function fixChart() {
 
         <div class="transition-all mx-auto w-full sm:w-1/2">
             <DocSnapper
+                component="vue_ui_kpi"
+                :config="{
+                    ...config,
+                    valueFontSize: isFixed ? 28 : config.valueFontSize,
+                }"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

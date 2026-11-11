@@ -372,6 +372,8 @@ function goToPage(route) {
 
         <div :class="`mx-auto max-w-[400px]`">
             <DocSnapper
+                component="vue_ui_3d_bar"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

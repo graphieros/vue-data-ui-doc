@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick, onUnmounted } from "vue";
+import { VueUiAccordion } from "vue-data-ui/vue-ui-accordion";
 import { useMainStore } from "../stores";
 import Schema from "../schema/Schema.vue";
 import BaseTabsMenu from "./BaseTabsMenu.vue";
@@ -9,21 +10,21 @@ import IconSettings from "./IconSettings.vue";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 
 defineSlots<{
-    "title"?: () => unknown;
-    "warning"?: () => unknown;
-    "dataset"?: () => unknown;
-    "configuration"?: () => unknown;
+    title?: () => unknown;
+    warning?: () => unknown;
+    dataset?: () => unknown;
+    configuration?: () => unknown;
     "events-and-methods"?: () => unknown;
-    "slots"?: () => unknown;
+    slots?: () => unknown;
     "custom-tooltip"?: () => unknown;
     "use-cases"?: () => unknown;
-    "themes"?: () => unknown;
-    "responsive"?: () => unknown;
-    "patterns"?: () => unknown;
+    themes?: () => unknown;
+    responsive?: () => unknown;
+    patterns?: () => unknown;
     "css-overrides"?: () => unknown;
     "datetime-formatter"?: () => unknown;
-    "callbacks"?: () => unknown;
-    "ssr"?: () => unknown;
+    callbacks?: () => unknown;
+    ssr?: () => unknown;
     "tips-and-tricks"?: () => unknown;
     "zoom-state"?: () => unknown;
 }>();
@@ -539,10 +540,7 @@ function selectTabFromMini(order) {
         v-if="schema"
         class="rounded-xl pl-4 my-6 relative overflow-x-auto dark:bg-[#242424] bg-gradient-to-br from-transparent to-[#5F8BEE20] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
     >
-        <VueDataUi
-            component="VueUiAccordion"
-            :config="isDarkMode ? darkModeConfig : config"
-        >
+        <VueUiAccordion :config="isDarkMode ? darkModeConfig : config">
             <template #title="{ color }">
                 <div :style="`color:${color}`">
                     {{ translations.quickOverview[store.lang] }}
@@ -557,7 +555,7 @@ function selectTabFromMini(order) {
                     />
                 </div>
             </template>
-        </VueDataUi>
+        </VueUiAccordion>
     </div>
 
     <div

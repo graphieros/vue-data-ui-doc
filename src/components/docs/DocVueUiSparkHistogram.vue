@@ -376,6 +376,8 @@ function goToPage(route) {
 
         <div :class="`transition-all mx-auto sm:w-full max-w-[600px]`">
             <DocSnapper
+                component="vue_ui_sparkhistogram"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

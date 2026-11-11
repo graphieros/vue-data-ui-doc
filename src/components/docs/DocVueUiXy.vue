@@ -1035,6 +1035,8 @@ const customFormatCode =
             :class="`doc-whart-wrapper transition-all mx-auto w-full sm:w-2/3`"
         >
             <DocSnapper
+                component="vue_ui_xy"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

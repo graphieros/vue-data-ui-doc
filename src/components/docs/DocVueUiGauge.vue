@@ -364,6 +364,8 @@ function goToPage(route) {
         <div class="w-full sm:w-3/4 mx-auto flex flex-row gap-2">
             <div :class="`transition-all mx-auto w-full`">
                 <DocSnapper
+                    component="vue_ui_gauge"
+                    :config="config"
                     :isFixed="isFixed"
                     :disabled="!isFixed || isMobile"
                     @fixChart="fixChart"

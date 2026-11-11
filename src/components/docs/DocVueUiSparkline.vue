@@ -391,6 +391,8 @@ const prefersReduced = ref({
 
         <div :class="`transition-all mx-auto w-full sm:w-1/2`">
             <DocSnapper
+                component="vue_ui_sparkline"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

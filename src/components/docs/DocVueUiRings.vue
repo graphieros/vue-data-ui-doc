@@ -371,6 +371,8 @@ const customFormatCode =
 
         <div :class="`transition-all mx-auto max-w-[400px]`">
             <DocSnapper
+                component="vue_ui_rings"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

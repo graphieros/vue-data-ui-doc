@@ -399,6 +399,8 @@ const customFormatCode =
 
         <div :class="`transition-all mx-auto`">
             <DocSnapper
+                component="vue_ui_heatmap"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

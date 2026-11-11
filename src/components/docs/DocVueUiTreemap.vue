@@ -532,6 +532,8 @@ const customFormatCode =
 
         <div :class="`transition-all mx-auto w-full sm:w-3/4`">
             <DocSnapper
+                component="vue_ui_treemap"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

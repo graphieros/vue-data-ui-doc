@@ -115,6 +115,8 @@ const tooltipCode = computed(
     />
     <div class="transition-all mx-auto w-full sm:w-1/2 min-w-[300px]">
         <DocSnapper
+            component="vue_ui_graph"
+            :config="config"
             :isFixed="isFixed"
             :disabled="!isFixed || isMobile"
             @fixChart="fixChart"

@@ -505,6 +505,8 @@ const customFormatCode =
 
         <div :class="`transition-all mx-auto w-full sm:w-1/2`">
             <DocSnapper
+                component="vue_ui_strip_plot"
+                :config="config"
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"

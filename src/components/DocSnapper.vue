@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
+import { getVueDataUiConfig } from "vue-data-ui/utils";
+import { docPreviewStyle } from "../performance/docPreviewLayout.js";
 import { useMainStore } from "../stores";
 import useMobile from "../useMobile";
 import BaseSpinner from "./BaseSpinner.vue";
@@ -14,6 +16,8 @@ const hintPin = computed(() => store.hints.pin);
 const isDarkMode = computed(() => store.isDarkMode);
 
 const props = defineProps({
+    component: { type: String, default: "" },
+    config: { type: Object, default: () => ({}) },
     disabled: {
         type: Boolean,
         default: true,
@@ -23,6 +27,13 @@ const props = defineProps({
         default: false,
     },
 });
+
+const defaults = computed(() =>
+    props.component ? getVueDataUiConfig(props.component) : {},
+);
+const previewStyle = computed(() =>
+    docPreviewStyle(props.config, defaults.value),
+);
 
 const emit = defineEmits(["resetDefault", "copyToClipboard", "fixChart"]);
 </script>
@@ -85,13 +96,24 @@ const emit = defineEmits(["resetDefault", "copyToClipboard", "fixChart"]);
             </div>
         </template>
 
-        <Suspense>
-            <template #default>
-                <slot />
-            </template>
-            <template #fallback>
-                <BaseSpinner />
-            </template>
-        </Suspense>
+        <div class="doc-preview-container">
+            <div :style="previewStyle">
+                <Suspense>
+                    <template #default>
+                        <slot />
+                    </template>
+                    <template #fallback>
+                        <BaseSpinner />
+                    </template>
+                </Suspense>
+            </div>
+        </div>
     </Teleport>
 </template>
+
+<style scoped>
+.doc-preview-container {
+    container-type: inline-size;
+    width: 100%;
+}
+</style>

@@ -329,6 +329,15 @@ function goToPage(route) {
 
         <div :class="`transition-all mx-auto w-full sm:w-1/2`">
             <DocSnapper
+                component="vue_ui_word_cloud"
+                :config="
+                    isDarkMode
+                        ? {
+                              ...config,
+                              theme: selectedTheme,
+                          }
+                        : { ...config, theme: selectedTheme }
+                "
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
                 @fixChart="fixChart"
