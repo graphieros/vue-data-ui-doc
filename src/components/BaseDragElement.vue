@@ -176,7 +176,7 @@ onUnmounted(() => {
             <BaseClip
                 v-if="clip"
                 tw="w-[20px] absolute -top-[58px] end-0 z-100"
-                :color="isDarkMode ? '#6A6A6A' : '#8A8A8A'"
+                :color="isDarkMode ? '#8A8A8A' : '#CCCCCC'"
             />
             <slot name="header" />
             <GripHorizontalIcon
