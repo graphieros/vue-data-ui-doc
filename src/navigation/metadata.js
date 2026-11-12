@@ -33,6 +33,8 @@ export function routeMetadata(route) {
 }
 
 export function updateMetadata(route, document) {
+    // The initial router location has no matched records while navigation resolves.
+    if (!route.matched.length) return;
     const metadata = routeMetadata(route);
     document.title = metadata.title;
     for (const [attribute, name, content] of [
