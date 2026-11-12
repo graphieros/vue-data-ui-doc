@@ -66,6 +66,8 @@
     },
     "slotImplementation": "Consulta un ejemplo de implementación del componente con todos sus slots",
     "a11y": {
+        "hidden_table_title": "Tablas de datos ocultas para lectores de pantalla",
+        "hidden_table_description": "Los gráficos compatibles pueden incluir una tabla de datos oculta para lectores de pantalla. Esta función requiere activación explícita: a11y.includeTable es false por defecto. Establécelo en true para incluir la tabla. Este ajuste es independiente de la tabla visible y de su botón de menú; la navegación con teclado, las descripciones de los gráficos y las exportaciones siguen disponibles.",
         "config_pointer_comment": "En la mayoría de los componentes, el atributo se coloca dentro de `userOptions`",
         "cursor_pointer": "Activar \"cursor: pointer\"",
         "cursor_pointer_updated_at": "`false` por defecto desde la v3.15.0",
@@ -162,7 +164,7 @@
         "tooltips": {
             "addCategory": "Añadir una categoría",
             "addDataset": "Agregar conjunto de datos",
-            "addData": "Add data",
+            "addData": "Añadir datos",
             "delete": "Borrar"
         }
     },
@@ -220,7 +222,7 @@
         "warning": "Este componente funciona con 'slots'. Consulte la pestaña 'slots' para ver un ejemplo.",
         "resetButton": "Este componente contiene un control deslizante de zoom, cuyo botón de reinicio se puede personalizar a través de la ranura #reset-action.",
         "donutDataLabels": "Se pueden obtener etiquetas de datos personalizadas utilizando la ranura con alcance #dataLabel. Puedes colocar lo que quieras dentro de esta ranura (icono, imagen, otro gráfico...).",
-        "rect": "Este componente contiene una ranura #rect para personalizar el contenido de las celdas del mapa de árbol. Asegúrese de configurar la opción de configuración style.chart.layout.labels.showDefaultLabels en 'falso'.",
+        "rect": "Este componente contiene un slot #rect para personalizar el contenido de las celdas del treemap. Establece style.chart.layout.labels.showDefaultLabels en false.",
         "tooltip": "Este componente contiene espacios #tooltip-before #tooltip y #tooltip-after, para personalizar el contenido de la información sobre herramientas. A través de estas ranuras, puede inyectar imágenes, gráficos, texto, etc.",
         "legendDetail": "Este componente contiene una ranura #legend que puede utilizar para personalizar su propia leyenda. La ranura proporciona datos formateados que puede utilizar para facilitar el proceso.",
         "legend": "Los componentes marcados con este ícono proporcionan una ranura #legend para crear su propia leyenda personalizada.",
@@ -234,7 +236,7 @@
         "viewComponentCode": "Ver código de componente",
         "viewComponent": "Ver componente",
         "defaultValue": "Valor por defecto",
-        "close": "Cerca",
+        "close": "Cerrar",
         "term": "Resultados para",
         "placeholder": "Configuración... ej: 'tootlip'"
     },
@@ -276,11 +278,11 @@
         "source": "Puedes usar el espacio #source para añadir una leyenda de fuente a tu gráfico. Este espacio está disponible en todos los componentes de gráficos.",
         "palette": "La paleta de colores predeterminada contiene los siguientes 40 colores, a los que se puede acceder mediante el método getPalette que puede importar desde vue-data-ui:",
         "otherSlots": {
-            "waffle": "El contenido de la celda se puede personalizar configurando config.useCustomCells en \"verdadero\" y usando la ranura #cell."
+            "waffle": "Puedes personalizar el contenido de las celdas estableciendo config.useCustomCells en true y utilizando el slot #cell."
         },
         "tooltipSlot": "Para personalizar aún más el contenido de la información sobre herramientas, las ranuras #tooltip-before y #tooltip-after están disponibles en los siguientes componentes (que también se pueden usar en el componente universal VueDataUi):",
         "legendAllowed": "El slot #legend está habilitado para los siguientes componentes:",
-        "legend": "La mayoría de los gráficos tienen una ranura '#leyenda', a partir de la cual se puede crear una leyenda personalizada. La ranura proporciona los datos formateados necesarios para facilitar el proceso.",
+        "legend": "La mayoría de los gráficos tienen un slot #legend para crear una leyenda personalizada. El slot proporciona los datos formateados necesarios para facilitar el proceso.",
         "p1": "La mayoría de los gráficos tienen una ranura '#svg' que puede utilizar para insertar cualquier contenido que desee, como comentarios, descripciones e incluso otros gráficos. La ranura proporciona las dimensiones del svg, para que puedas colocar tus elementos exactamente donde los necesites. Esta página le muestra cómo hacerlo.",
         "comment": "Inyectando un comentario",
         "otherChart": "Inyectando otro gráfico",
@@ -290,8 +292,8 @@
     "installation": {
         "tsUsers": "Para usuarios de TypeScript: los tipos están disponibles en el archivo 'vue-data-ui.d.ts' en la carpeta de tipos del paquete.",
         "comments": {
-            "or": "O, desde la versión 2.0.38, puede usar el contenedor universal agregando el nombre del componente en los accesorios:",
-            "universalComponent": "Desde la versión 2.0.38, se puede utilizar el componente universal \"VueDataUi\", en lugar de importar componentes individuales. Sólo tienes que especificar el nombre del componente en los accesorios:",
+            "or": "O, desde la v2.0.38, puedes usar el contenedor universal indicando el nombre del componente en las props:",
+            "universalComponent": "Desde la v2.0.38, puedes usar el componente universal VueDataUi en lugar de importar componentes individuales. Solo tienes que indicar el nombre del componente en las props:",
             "includeCss": "Incluir el CSS. Si está utilizando Nuxt, se recomienda incluir esta importación solo directamente en los componentes que la necesiten y no en la configuración de Nuxt.",
             "global": "Puede declarar los componentes de la interfaz de usuario de Vue Data globalmente",
             "import": "O puedes importar sólo lo que necesitas en tus archivos",
@@ -317,14 +319,14 @@
             "hill": "Componente interactivo de gráfico de colina para visualizar y editar el progreso de varios elementos desde “por hacer” hasta “completado”.",
             "bump": "Visualice las posiciones de clasificación a lo largo del tiempo.",
             "geo": "Renderiza cualquier mapa GeoJSON y muestra puntos de datos personalizados con interacción completa y control de zoom.",
-            "graph": "Explore relaciones con un grafo interactivo dirigido por fuerzas.",
+            "graph": "Explora las relaciones de una red con un grafo interactivo dirigido por fuerzas. Arrastra nodos, ajusta el zoom y resalta los nodos vecinos conectados.",
             "dag": "Visualice cualquier estructura de grafo dirigido, incluidos flujos de trabajo o arquitecturas de sistema, incluso cuando existen ciclos.",
             "historyPlot": "Visualiza el viaje dinámico de dos variables a lo largo del tiempo, donde cada punto cuenta una historia de cambio y conexión en un espacio bidimensional.",
             "funnel": "Resalta la progresión de la pérdida que ocurre en cada etapa de un proceso.",
             "bullet": "Una alternativa eficiente en espacio a los gráficos de indicador.",
             "stackline": "Visualiza los totales acumulativos en líneas apiladas para comparar fácilmente las partes de un todo entre diferentes categorías.",
             "stackbarBig": "Visualiza los totales acumulativos en barras apiladas, para comparar fácilmente partes de un todo a través de diferentes categorías.",
-            "carouselTable": "Un componente de mesa flexible con funciones de carrusel. La animación es voluntaria y se detiene cuando el usuario se desplaza sobre la mesa.",
+            "carouselTable": "Un componente de tabla flexible con funciones de carrusel. La animación requiere activación explícita y se pausa al pasar el cursor sobre la tabla.",
             "timer": "Un componente de cronómetro magnífico y personalizable",
             "pcp": "Cada punto de datos se representa como una línea que atraviesa una serie de ejes paralelos, correspondientes a una variable o dimensión específica. Esta disposición permite la exploración de relaciones, tendencias y variaciones que podrían quedar ocultas en los datos sin procesar.",
             "chord": "Revelar patrones de flujo o conectividad en datos de matriz o red complejos con un gráfico circular que utiliza arcos para cada categoría y cintas para codificar la fuerza y la dirección de las relaciones entre ellas.",
@@ -466,7 +468,7 @@
             "screenshot": {
                 "postImage": "en modo publicación, devuelve los datos de la imagen actual:",
                 "shoot": "llame a este método para abrir el componente",
-                "close": "call this method to close the component"
+                "close": "Llama a este método para cerrar el componente."
             },
             "hill": {
                 "edit": "Se emite al hacer clic en el botón de edición.",
@@ -491,7 +493,7 @@
             "quadrant": {
                 "selectLegend": "devuelve las categorías visibles actuales con sus elementos al seleccionar/deseleccionar la leyenda:",
                 "selectPlot": "devuelve los datos del gráfico seleccionado al hacer clic:",
-                "selectSide": "devuelve los datos de todas las parcelas ubicadas en el área al hacer clic en una etiqueta de esquina:"
+                "selectSide": "Devuelve los datos de todos los puntos de datos del área al hacer clic en una etiqueta de esquina:"
             },
             "chestnut": {
                 "selectRoot": "devuelve los datos raíz seleccionados",
@@ -513,11 +515,11 @@
             "sparkbar": {
                 "target": "Establecer un objetivo individual. La longitud de la barra será la relación entre su valor y este objetivo."
             },
-            "quickChartKeys": "Puede proporcionar una serie simple de números. Dependiendo de su longitud, se generará un gráfico de líneas o de barras. El umbral entre barra y línea es gestionable en las opciones de configuración. También puede proporcionar una variedad de objetos. Estos son los conjuntos de claves aceptadas para nombres de series y datos:",
+            "quickChartKeys": "Puedes proporcionar un array de números. Según su longitud, se generará un gráfico de líneas o de barras. Puedes ajustar el umbral entre ambos en las opciones de configuración. También puedes proporcionar un array de objetos. Estas son las claves aceptadas para los nombres de las series y sus datos:",
             "quickChart": "La forma del conjunto de datos es muy flexible. A partir de él se calculará el gráfico más adaptado (ya sea un gráfico de líneas, de barras o de anillos).",
             "scatterWeight": "Para crear un gráfico de burbujas. Si no se usa, el radio de los puntos de datos usará config.style.layout.plots.radius",
             "bar3d": {
-                "mode": "El \"modo de pila\" se obtiene proporcionando una matriz de \"serie\" en el conjunto de datos."
+                "mode": "El modo apilado se obtiene proporcionando un array \"series\" en el conjunto de datos."
             },
             "relationCircle": {
                 "limit": "Número de elementos a mostrar (básicamente divide la matriz de 0 a n)",
@@ -532,7 +534,7 @@
             "yourConfigHere": "Su configuración aquí",
             "yourDatasetHere": "Su conjunto de datos aquí",
             "xy": {
-                "showSerieName": "Muestra el nombre de la serie al final del inicio de un punto de datos de 'líne' o 'plot'.",
+                "showSerieName": "Muestra el nombre de la serie al principio o al final de una serie de tipo 'line' o 'plot'.",
                 "autoScaling": "En modo apilado, intentará armonizar la escala con los valores mínimo y máximo del punto de datos.",
                 "temperatureColors": "Solo para tipos de línea. Establezca un arreglo de colores para usar un degradado en la línea.",
                 "dashIndices": "Mostrar los segmentos como líneas discontinuas para los índices proporcionados. Solo para tipos de línea",
@@ -540,9 +542,9 @@
                 "scaleMin": "Establecer el valor mínimo para una escala individual",
                 "scaleMax": "Establezca el valor máximo para una escala individual (puede actuar como una especie de compensación Y)",
                 "individualScales": "Es posible visualizar todas las series con su escala individual, para mostrar correlaciones entre series con diferentes magnitudes. Se recomienda utilizar esta opción de configuración cuando el conjunto de datos presenta una cantidad limitada de puntos de datos, para evitar obstaculizar la legibilidad del gráfico.",
-                "scaleSteps": "Disponible desde la v2.1.52, para definir el número de sangrías en una escala individual.",
-                "scaleLabel": "Disponible desde v2.1.52, para especificar una etiqueta para básculas individuales.",
-                "shape": "Disponible desde la v.1.9.17 para tipos de línea y gráfico. El valor predeterminado es 'círcle'",
+                "scaleSteps": "Disponible desde la v2.1.52 para definir el número de divisiones de una escala individual.",
+                "scaleLabel": "Disponible desde la v2.1.52 para especificar una etiqueta para cada escala individual.",
+                "shape": "Disponible desde la v1.9.17 para los tipos 'line' y 'plot'. El valor predeterminado es 'circle'.",
                 "smooth2": "Disponible desde la v.1.9.0 para tipos de línea, en modo SVG.",
                 "smooth": "Desde la versión 1.9.0, puede establecer esta propiedad en tipos de líneas para hacerlas curvas.",
                 "useStepper": "Desde la versión 3.18.0, establezca esta propiedad en true para mostrar líneas con escalones (en forma de escalera).",
@@ -556,8 +558,8 @@
                     "drawbacks": "Desventajas",
                     "svgAdvantage": "<ul class=\"pl-4\"><li class=\"list-disc\">Vectorizado: la calidad de los gráficos sigue siendo la misma en todas las escalas.</li><li class=\"list-disc\">Accesibilidad: los lectores de pantalla pueden detectar nodos de texto.</li><li class=\"list-disc\">Depuración más sencilla, ya que los nodos son parte del DOM</li></ul>",
                     "svgDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">El rendimiento disminuye con la cantidad de nodos para pintar en el HTML</li><li class=\"list-disc\">El renderizado PDF se puede impredecible en cuanto a fuentes y estilos</li></ul>",
-                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Rendimiento estable: solo un nodo en el DOM.</li><li class=\"list-disc\">La representación del PDF es idéntica.< /li><li class=\"list-disc\">Se puede copiar y pegar como imagen</li></ul>",
-                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">La calidad de la imagen no escala</li><li class=\"list-disc\">Los lectores de pantalla no pueden acceder a los elementos de texto</li ><li class=\"list-disc\">Depuración más difícil ya que el nodo está vacío en el DOM.</li></ul>"
+                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Rendimiento estable: solo un nodo en el DOM.</li><li class=\"list-disc\">La representación del PDF es idéntica.</li><li class=\"list-disc\">Se puede copiar y pegar como imagen</li></ul>",
+                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">La calidad de la imagen no escala</li><li class=\"list-disc\">Los lectores de pantalla no pueden acceder a los elementos de texto</li><li class=\"list-disc\">Depuración más difícil ya que el nodo está vacío en el DOM.</li></ul>"
                 },
                 "type": "Los siguientes atributos son opcionales:",
                 "color": "Si no se proporciona, la paleta predeterminada se utilizará de forma predeterminada.",
@@ -589,7 +591,7 @@
             "onion": {
                 "optionalDisplay": "Opcional, muestra el valor en la etiqueta de datos.",
                 "prefix": "Opcional, muestre un símbolo como prefijo antes del valor en la etiqueta de datos",
-                "suffix": "Opcional, muestre un símbolo como sufijo antes del valor en la etiqueta de datos",
+                "suffix": "Opcional: muestra un símbolo como sufijo después del valor en la etiqueta de datos.",
                 "gradient": "funciona mejor sobre un fondo blanco por ahora"
             },
             "verticalBar": {
@@ -609,7 +611,7 @@
                 "body": "cada fila está representada en un objeto, lo que deja espacio para más configuraciones en el futuro",
                 "td": "Cada elemento de la matriz se coloca en el mismo orden que las columnas.",
                 "warning1": "¡Requiere una matriz vacía en las matrices 'td' del body!",
-                "warning2": "observe la cadena vacía, debido a una configuración de la columna con isPercentage = true y percentTo establecido en otra columna",
+                "warning2": "Observa la cadena vacía: la columna está configurada con isPercentage = true y percentageTo apunta a otra columna.",
                 "fewRows": "Algunas filas como ejemplo."
             },
             "rating": {

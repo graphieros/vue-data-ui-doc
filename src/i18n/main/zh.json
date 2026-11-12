@@ -66,6 +66,8 @@
     },
     "slotImplementation": "查看包含所有插槽的组件实现示例",
     "a11y": {
+        "hidden_table_title": "供屏幕阅读器使用的隐藏数据表",
+        "hidden_table_description": "支持此功能的图表可以包含供屏幕阅读器使用的隐藏数据表。此功能需要手动启用：a11y.includeTable 的默认值为 false，将其设置为 true 即可包含该数据表。此设置独立于可见数据表及其菜单按钮；键盘导航、图表描述和导出功能仍然可用。",
         "config_pointer_comment": "在大多数组件中，该属性放置在 `userOptions` 内部",
         "cursor_pointer": "启用“cursor: pointer”",
         "cursor_pointer_updated_at": "自 v3.15.0 起默认值为 `false`",
@@ -127,7 +129,7 @@
         "icon": "图标",
         "userOptions": "用户选项",
         "themes": "主题",
-        "component": "成分",
+        "component": "组件",
         "description": "描述",
         "features": "特征",
         "exposedMethods": "暴露方法",
@@ -153,7 +155,7 @@
         "charts3d": "3D图表",
         "tables": "数据表",
         "rating": "评分",
-        "utilities": "公用事业"
+        "utilities": "工具"
     },
     "maker": {
         "labels": {
@@ -252,7 +254,7 @@
     },
     "tagline": "一个赋予用户权力的数据可视化 Vue3 组件库，用于巧妙地叙述数据故事。",
     "github": "Github",
-    "lightMode": "切换到灯光模式",
+    "lightMode": "切换到浅色模式",
     "darkMode": "切换到深色模式",
     "menu": {
         "typesDirectory": "TS 类型目录",
@@ -324,7 +326,7 @@
             "bullet": "一种节省空间的仪表图替代方案。",
             "stackline": "通过堆叠折线可视化累计总量，以便轻松比较不同类别中整体的各个部分。",
             "stackbarBig": "在堆叠条形图上可视化累积总数，轻松比较不同类别的部分。",
-            "carouselTable": "具有轮播功能的灵活表格组件。动画是可选的，当用户将鼠标悬停在桌子上时会暂停。",
+            "carouselTable": "具有轮播功能的灵活表格组件。动画是可选的，当用户将鼠标悬停在表格上时会暂停。",
             "timer": "一个华丽且可定制的秒表组件",
             "pcp": "每个数据点都被描述为穿过一系列平行轴的线，对应于特定的变量或维度。这种安排允许探索原始数据中可能隐藏的关系、趋势和变化。",
             "chord": "通过使用圆形图表来揭示复杂矩阵或网络数据中的流动或连接模式，该图表为每个类别使用弧，并使用带状图编码它们之间关系的强度和方向。",
@@ -374,11 +376,11 @@
             "chestnut": "表示从一般基础到详细细分的嵌套信息",
             "onion": "在单个可视化中比较多个类别或组的值",
             "verticalBar": "比较不同的分类或离散变量，并可选择显示其细分",
-            "heatmap": "通过观察细胞颜色在每个轴上的变化来显示两个变量之间的关系和模式",
+            "heatmap": "通过观察单元格颜色在每个轴上的变化来显示两个变量之间的关系和模式",
             "scatter": "从大型数据集中揭示两个变量之间的相关性",
             "candlestick": "根据过去的模式确定可能的价格变动",
             "agePyramid": "显示人口的组成方式及其变化情况",
-            "sparkline": "在微小的折线图上可视化进化",
+            "sparkline": "使用迷你折线图展示变化趋势",
             "sparkbar": "使用迷你水平条形图展示 KPI 表现",
             "table": "强大的动态表，允许用户选择数据并计算总和、平均值，并根据他们的选择可视化图表",
             "rating": "用于对评级结果进行评级或可视化的经典评级组件。控制要显示的星星数量及其形状",
@@ -528,11 +530,11 @@
                 "p1": "用于评分或显示评分结果的组件。"
             },
             "noDataset": "无需数据集",
-            "optional": "选修的",
+            "optional": "可选",
             "yourConfigHere": "你的配置在这里",
             "yourDatasetHere": "您的数据集位于此处",
             "xy": {
-                "showSerieName": "line“线”plot“图”数据点的开头末尾显示系列名称。",
+                "showSerieName": "在 'line' 或 'plot' 类型系列的起点或终点显示系列名称。",
                 "autoScaling": "在堆叠模式下，将尝试将比例与数据点的最小值和最大值协调一致",
                 "temperatureColors": "仅适用于折线类型。设置一个颜色数组以在路径上使用渐变效果。",
                 "dashIndices": "将指定索引的线段显示为虚线。仅适用于折线类型",
@@ -540,7 +542,7 @@
                 "scaleMin": "设置单个比例的最小值",
                 "scaleMax": "设置单个比例的最大值（可以起到类似 Y 偏移量的作用）",
                 "individualScales": "可以显示所有系列及其各自的比例，以显示不同量级的系列之间的相关性。当数据集提供有限数量的数据点时，建议使用此配置选项，以避免影响图表的可读性。",
-                "scaleSteps": "自 v2.1.52 起可用，用于定义单个比例中的缩进数量。",
+                "scaleSteps": "自 v2.1.52 起可用，用于定义单个刻度范围的分段数量。",
                 "scaleLabel": "自 v2.1.52 起可用，用于为各个比例指定标签。",
                 "shape": "自 v.1.9.17 起可用于线条和绘图类型。默认为“circle”",
                 "smooth2": "自 v.1.9.0 起适用于 SVG 模式下的线型。",
@@ -556,8 +558,8 @@
                     "drawbacks": "缺点",
                     "svgAdvantage": "<ul class=\"pl-4\"><li class=\"list-disc\">矢量化：图形质量在所有比例下保持不变。</li><li class=\"list-disc\">可访问性：屏幕阅读器可以检测到文本节点。</li><li class=\"list-disc\">更容易调试，因为节点是 DOM 的一部分</li></ul>",
                     "svgDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">性能随着 HTML 上绘制的节点数量的增加而降低</li><li class=\"list-disc\">PDF 渲染可能会字体和样式不可预测</li></ul>",
-                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">性能稳定：DOM 中只有一个节点。</li><li class=\"list-disc\">PDF 渲染完全相同。< /li><li class=\"list-disc\">可以复制粘贴为图像</li></ul>",
-                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">图像质量无法缩放</li><li class=\"list-disc\">屏幕阅读器无法访问文本元素</li ><li class=\"list-disc\">由于 DOM 中的节点为空，调试更加困难。</li></ul>"
+                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">性能稳定：DOM 中只有一个节点。</li><li class=\"list-disc\">PDF 渲染完全相同。</li><li class=\"list-disc\">可以复制粘贴为图像</li></ul>",
+                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">图像质量无法缩放</li><li class=\"list-disc\">屏幕阅读器无法访问文本元素</li><li class=\"list-disc\">由于 DOM 中的节点为空，调试更加困难。</li></ul>"
                 },
                 "type": "以下属性是可选的：",
                 "color": "如果未提供，将默认使用默认调色板",
@@ -589,19 +591,19 @@
             "onion": {
                 "optionalDisplay": "可选，在数据标签中显示值",
                 "prefix": "可选，在数据标签中的值之前显示一个符号作为前缀",
-                "suffix": "可选，在数据标签中的值之前显示一个符号作为后缀",
+                "suffix": "可选，在数据标签中的值之后显示一个符号作为后缀",
                 "gradient": "目前在白色背景上效果最好"
             },
             "verticalBar": {
                 "breakdown": "使用此属性来细分系列"
             },
             "candlestick": {
-                "order": "必须严格遵守此命令 :"
+                "order": "必须严格遵循以下顺序："
             },
             "agePyramid": {
                 "start": "从最早的年份开始",
                 "arrayOfEach": "每个数组按顺序包含：",
-                "cols": "年 |年龄 |女性人数 |人数"
+                "cols": "年份 | 年龄 | 女性人数 | 男性人数"
             },
             "table": {
                 "header": "使用单独的对象配置每一列",

@@ -66,6 +66,8 @@
     },
     "slotImplementation": "Veja um exemplo de implementação do componente com todos os seus slots",
     "a11y": {
+        "hidden_table_title": "Tabelas de dados ocultas para leitores de tela",
+        "hidden_table_description": "Os gráficos compatíveis podem incluir uma tabela de dados oculta para leitores de tela. Este recurso precisa ser ativado explicitamente: a11y.includeTable é false por padrão. Defina como true para incluir a tabela. Esta configuração é independente da tabela visível e de seu botão no menu; a navegação por teclado, as descrições dos gráficos e as exportações continuam disponíveis.",
         "config_pointer_comment": "Na maioria dos componentes, o atributo é colocado dentro de `userOptions`",
         "cursor_pointer": "Ativar o \"cursor pointer\"",
         "cursor_pointer_updated_at": "`false` por padrão desde a v3.15.0",
@@ -291,7 +293,7 @@
         "tsUsers": "Para usuários TypeScript: os tipos estão disponíveis no arquivo 'vue-data-ui.d.ts' na pasta de tipos do package.",
         "comments": {
             "or": "Ou, desde a v.2.0.38 você pode usar o wrapper universal, adicionando o nome do componente nas propriedades:",
-            "universalComponent": "Desde a v.2.0.38, o componente universal \"VueDataUi\" pode ser utilizado, em vez de importar componentes individuais. Você só precisa especificar o nome do componente nos adereços:",
+            "universalComponent": "Desde a v2.0.38, você pode usar o componente universal VueDataUi em vez de importar componentes individuais. Basta especificar o nome do componente nas props:",
             "includeCss": "Incluir o CSS. Se você estiver usando Nuxt, recomenda-se incluir este import apenas diretamente nos componentes que precisam dele, e não na configuração do Nuxt.",
             "global": "Você pode declarar componentes Vue Data UI globalmente",
             "import": "Ou você pode importar apenas o que precisa em seus arquivos",
@@ -317,14 +319,14 @@
             "hill": "Componente interativo de gráfico de colina para visualizar e editar o progresso de vários itens de “a fazer” até “concluído”.",
             "bump": "Visualize as posições de classificação ao longo do tempo.",
             "geo": "Renderize qualquer mapa GeoJSON e plote pontos de dados personalizados com interação completa e controle de zoom.",
-            "graph": "Explore relações em um grafo interativo com simulação de forças.",
+            "graph": "Explore as relações de uma rede com um grafo interativo com simulação de forças. Arraste nós, ajuste o zoom e destaque os nós vizinhos conectados.",
             "dag": "Visualize qualquer estrutura de grafo direcionado, incluindo fluxos de trabalho ou arquiteturas de sistema, mesmo quando há ciclos.",
             "historyPlot": "Visualize a jornada dinâmica de duas variáveis ao longo do tempo, com cada ponto contando uma história de mudança e conexão em um espaço bidimensional.",
             "funnel": "Destaca a progressão da perda que ocorre em cada etapa de um processo.",
             "bullet": "Uma alternativa compacta aos gráficos de medidor.",
             "stackline": "Visualize totais cumulativos em linhas empilhadas para comparar facilmente partes de um todo em diferentes categorias.",
             "stackbarBig": "Visualize totais cumulativos em barras empilhadas, para comparar facilmente partes de um todo em diferentes categorias.",
-            "carouselTable": "Um componente de tabela flexível com recursos de carrossel. A animação é opcional e pausa quando o usuário passa o mouse sobre a mesa.",
+            "carouselTable": "Um componente de tabela flexível com recursos de carrossel. A animação precisa ser ativada explicitamente e pausa quando o usuário passa o cursor sobre a tabela.",
             "timer": "Um componente de cronômetro lindo e personalizável",
             "pcp": "Cada ponto de dados é representado como uma linha que atravessa uma série de eixos paralelos, correspondendo a uma variável ou dimensão específica. Esse arranjo permite a exploração de relacionamentos, tendências e variações que podem estar obscurecidas nos dados brutos.",
             "chord": "Revelar padrões de fluxo ou conectividade em dados matriciais ou de rede complexos com um gráfico circular que usa arcos para cada categoria e fitas para codificar a força e a direção dos relacionamentos entre elas.",
@@ -491,11 +493,11 @@
             "quadrant": {
                 "selectLegend": "retorna as categorias visíveis atuais com seus itens ao selecionar/desmarcar a legenda:",
                 "selectPlot": "retorna os dados do gráfico selecionado ao clicar:",
-                "selectSide": "retorna os dados de todas as parcelas localizadas na área ao clicar em um rótulo de canto:"
+                "selectSide": "Retorna os dados de todos os pontos de dados da área ao clicar em um rótulo de canto:"
             },
             "chestnut": {
                 "selectRoot": "retorna os dados raiz selecionados",
-                "selectBranch": "retorna os dados da filial selecionada",
+                "selectBranch": "Retorna os dados do ramo selecionado.",
                 "selectNut": "retorna os dados do gráfico de rosca selecionado"
             },
             "onion": {
@@ -511,13 +513,13 @@
         "example": "Exemplo",
         "comments": {
             "sparkbar": {
-                "target": "Defina uma meta individual. O comprimento da barra será a razão enqtre seu valor e esse alvo."
+                "target": "Defina uma meta individual. O comprimento da barra será a razão entre seu valor e essa meta."
             },
-            "quickChartKeys": "Você pode fornecer uma matriz simples de números. Dependendo do seu comprimento, será gerado um gráfico de linhas ou de barras. O limite entre a barra e a linha é gerenciável nas opções de configuração. Você também pode fornecer uma variedade de objetos. Aqui estão os conjuntos de chaves aceitas para nomes de séries e dados:",
+            "quickChartKeys": "Você pode fornecer um array de números. Dependendo do seu comprimento, será gerado um gráfico de linhas ou de barras. O limite entre ambos pode ser ajustado nas opções de configuração. Você também pode fornecer um array de objetos. Estas são as chaves aceitas para os nomes das séries e seus dados:",
             "quickChart": "A forma do conjunto de dados é muito flexível. O gráfico mais adaptado será calculado a partir dele (um gráfico de linhas, barras ou rosca).",
             "scatterWeight": "Para criar um gráfico de bolhas. Se não for usado, o raio dos pontos de dados usará config.style.layout.plots.radius",
             "bar3d": {
-                "mode": "O \"modo pilha\" é obtido fornecendo uma matriz \"série\" no conjunto de dados."
+                "mode": "O modo empilhado é obtido fornecendo um array \"series\" no conjunto de dados."
             },
             "relationCircle": {
                 "limit": "Número de itens a serem exibidos (basicamente divide o array de 0 a n)",
@@ -532,7 +534,7 @@
             "yourConfigHere": "Sua configuração aqui",
             "yourDatasetHere": "Sua dataset aqui",
             "xy": {
-                "showSerieName": "Exibe o nome da série no final do início de um ponto de dados de 'line' ou 'plot'.",
+                "showSerieName": "Exibe o nome da série no início ou no fim de uma série do tipo 'line' ou 'plot'.",
                 "autoScaling": "No modo empilhado, tentará harmonizar a escala com os valores mínimo e máximo do ponto de dados",
                 "temperatureColors": "Apenas para tipos de linha. Defina um array de cores para usar um gradiente no traçado.",
                 "dashIndices": "Exibir segmentos como linhas tracejadas para os índices fornecidos. Apenas para tipos de linha",
@@ -540,8 +542,8 @@
                 "scaleMin": "Defina o valor mínimo para uma escala individual",
                 "scaleMax": "Defina o valor máximo para uma escala individual (pode funcionar como uma espécie de deslocamento Y)",
                 "individualScales": "É possível visualizar todas as séries com sua escala individual, para mostrar correlações entre séries com diferentes magnitudes. Recomenda-se utilizar esta opção de configuração quando o conjunto de dados apresentar um número limitado de pontos de dados, para não prejudicar a legibilidade do gráfico.",
-                "scaleSteps": "Disponível desde a v2.1.52, para definir o número de recuos em uma escala individual.",
-                "scaleLabel": "Disponível desde a v2.1.52, para especificar um rótulo para balanças individuais.",
+                "scaleSteps": "Disponível desde a v2.1.52 para definir o número de divisões de uma escala individual.",
+                "scaleLabel": "Disponível desde a v2.1.52 para especificar um rótulo para cada escala individual.",
                 "shape": "Disponível desde v.1.9.17 para tipos de linha e plotagem. O padrão é 'circle'",
                 "smooth2": "Disponível desde a v.1.9.0 para tipos de linha, no modo SVG.",
                 "smooth": "Desde a versão 1.9.0, você pode definir esta propriedade em tipos de linha para torná-los curvos.",
@@ -556,8 +558,8 @@
                     "drawbacks": "Desvantagens",
                     "svgAdvantage": "<ul class=\"pl-4\"><li class=\"list-disc\">Vetorizado: a qualidade gráfica permanece a mesma em todas as escalas.</li><li class=\"list-disc\">Acessibilidade: nós de texto podem ser detectados por leitores de tela.</li><li class=\"list-disc\">Depuração mais fácil, pois os nós fazem parte do DOM</li></ul>",
                     "svgDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">O desempenho diminui com o número de nós a serem pintados no HTML</li><li class=\"list-disc\">A renderização de PDF pode ser imprevisível para fontes e estilos</li></ul>",
-                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Desempenho estável: apenas um nó no DOM.</li><li class=\"list-disc\">A renderização do PDF é idêntica.< /li><li class=\"list-disc\">Pode ser copiado e colado como uma imagem</li></ul>",
-                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">A qualidade da imagem não aumenta</li><li class=\"list-disc\">Os elementos de texto não são acessíveis aos leitores de tela</li ><li class=\"list-disc\">Depuração mais difícil porque o nó está vazio no DOM.</li></ul>"
+                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Desempenho estável: apenas um nó no DOM.</li><li class=\"list-disc\">A renderização do PDF é idêntica.</li><li class=\"list-disc\">Pode ser copiado e colado como uma imagem</li></ul>",
+                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">A qualidade da imagem não aumenta</li><li class=\"list-disc\">Os elementos de texto não são acessíveis aos leitores de tela</li><li class=\"list-disc\">Depuração mais difícil porque o nó está vazio no DOM.</li></ul>"
                 },
                 "type": "Os seguintes atributos são opcionais:",
                 "color": "o padrão será a paleta padrão se não for fornecida",
@@ -589,7 +591,7 @@
             "onion": {
                 "optionalDisplay": "Opcional, exiba o valor no dataLabel",
                 "prefix": "Opcional, exiba um símbolo como prefixo antes do valor no rótulo de dados",
-                "suffix": "Opcional, exiba um símbolo como sufixo antes do valor no rótulo de dados",
+                "suffix": "Opcional: exiba um símbolo como sufixo após o valor no rótulo de dados.",
                 "gradient": "funciona melhor em um fundo branco por enquanto"
             },
             "verticalBar": {
@@ -613,7 +615,7 @@
                 "fewRows": "Algumas linhas como exemplo"
             },
             "rating": {
-                "readonly": "somenta leitura",
+                "readonly": "somente leitura",
                 "active": "ativo",
                 "p1": "Um componente para avaliar ou exibir resultados de classificação. Mostra estrelas por padrão e você pode usar uma imagem se preferir. Você pode exibir quantas estrelas quiser.",
                 "p2": "No modo ativo, a classificação pode ser modificada pelo usuário. No modo somente leitura, apenas exibe a classificação.",
@@ -632,7 +634,7 @@
             "screenshot": {
                 "tryIt": "Tente",
                 "yourScreeshot": "Sua captura de tela aparecerá aqui",
-                "p1": "Um composto para capturar capturas de tela na página atual, com 2 modos: baixar ou post",
+                "p1": "Um componente para fazer capturas de tela na página atual, com dois modos: baixar ou post.",
                 "refresh": "Atualize para ver suas alterações",
                 "metadata": "No modo post, os seguintes metadados também serão fornecidos:",
                 "quality": "não configure muito alto se você se preocupa com o tamanho da imagem",

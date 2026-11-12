@@ -66,6 +66,8 @@
     },
     "slotImplementation": "Voir un exemple d’implémentation du composant avec tous ses slots",
     "a11y": {
+        "hidden_table_title": "Tableaux de données masqués pour les lecteurs d’écran",
+        "hidden_table_description": "Les graphiques compatibles peuvent inclure un tableau de données masqué pour les lecteurs d’écran. Cette fonction doit être activée explicitement : a11y.includeTable vaut false par défaut. Définissez cette option sur true pour inclure le tableau. Ce réglage est indépendant du tableau visible et de son bouton de menu ; la navigation au clavier, les descriptions des graphiques et les exports restent disponibles.",
         "config_pointer_comment": "Dans la plupart des composants, l’attribut est placé à l’intérieur de `userOptions`",
         "cursor_pointer": "Activer le « cursor pointer »",
         "cursor_pointer_updated_at": "`false` par défaut depuis la v3.15.0",
@@ -136,7 +138,7 @@
         "title": "Présentation rapide des composants"
     },
     "wordCloud": {
-        "dataset": "Vous pouvez transmettre du texte brut dans le prop de l'ensemble de données. Le composant calculera le nombre de mots. Vous pouvez également importer la méthode « createWordCloudDatasetFromPlainText » depuis « vue-data-ui » pour convertir le texte brut en un objet d'ensemble de données à transmettre à l'accessoire « dataset »."
+        "dataset": "Vous pouvez transmettre du texte brut à la prop dataset. Le composant calcule les occurrences de chaque mot. Vous pouvez aussi importer la fonction createWordCloudDatasetFromPlainText depuis vue-data-ui pour convertir du texte brut en un objet à transmettre à la prop dataset."
     },
     "sideMenu": {
         "graphs": "Graphes",
@@ -250,7 +252,7 @@
     "nuxt": {
         "implementation": "Si vous utilisez Nuxt, un exemple d'installation est fourni dans ce dépôt Github"
     },
-    "tagline": "Bibliothèque de composants Vue3 de visualisation de données pour une data storytelling éloquente.",
+    "tagline": "Une bibliothèque de composants Vue3 de visualisation de données qui donne aux utilisateurs les moyens de raconter leurs données de manière expressive.",
     "github": "Github repo",
     "lightMode": "Passer en thème clair",
     "darkMode": "Passer en thème sombre",
@@ -281,7 +283,7 @@
         "tooltipSlot": "Pour personnaliser davantage le contenu des info-bulles, les emplacements #tooltip-before et #tooltip-after sont mis à disposition sur les composants suivants (qui peuvent également être utilisés sur le composant universel VueDataUi):",
         "legendAllowed": "Le slot #legend est activé pour les composants suivants :",
         "legend": "La plupart des graphiques disposent d'un slot « #legend », à partir duquel une légende personnalisée peut être créée. L'emplacement fournit les données formatées nécessaires pour faciliter le processus.",
-        "p1": "La plupart des graphiques disposent d'un emplacement « #svg » que vous pouvez utiliser pour injecter le contenu de votre choix, tel que des commentaires, des descriptions et même d'autres graphiques. La fente fournit les dimensions du svg, vous pouvez donc positionner vos éléments exactement là où vous en avez besoin. Cette page vous montre comment procéder.",
+        "p1": "La plupart des graphiques disposent d’un slot #svg pour insérer le contenu de votre choix : commentaires, descriptions ou même d’autres graphiques. Le slot fournit les dimensions du SVG pour positionner vos éléments avec précision. Cette page vous montre comment procéder.",
         "comment": "Injecter un commentaire",
         "otherChart": "Injecter un autre graphique",
         "arrow": "Injection d'un élément flèche",
@@ -290,10 +292,10 @@
     "installation": {
         "tsUsers": "Typescript: les types sont disponibles dans le fichier 'vue-data-ui.d.ts' dans le dossier 'types' du package.",
         "comments": {
-            "or": "Ou, depuis la version 2.0.38, vous pouvez utiliser le wrapper universel, en ajoutant le nom du composant dans les accessoires :",
+            "or": "Ou, depuis la v2.0.38, utilisez le wrapper universel en indiquant le nom du composant dans les props :",
             "universalComponent": "Depuis la v.2.0.38, le composant universel \"VueDataUi\" peut être utilisé au lieu d'importer des composants individuels. Il vous suffit de préciser le nom du composant dans les props :",
             "includeCss": "Inclure le CSS. Si vous utilisez Nuxt, il est recommandé d'inclure cet import uniquement dans les composants qui en ont besoin, et non dans la configuration Nuxt.",
-            "global": "Vous pouvez importer les composants Vue Data UI globalement",
+            "global": "Vous pouvez enregistrer les composants Vue Data UI globalement.",
             "import": "Ou vous pouvez juste importer les composants dont vous avez besoin",
             "types": "Si vous utilisez Typescript, vous pouvez coller le fichier vue-data-ui.d.ts dans votre dossier src et importer les types de cette façon :"
         }
@@ -348,14 +350,14 @@
             "molecule": "Visualisez une arborescence de nœuds imbriquée",
             "digits": "Afficher les chiffres avec un affichage électronique classique",
             "bar3d": "Visualisez les pourcentages avec une barre 3D",
-            "ridgeline": "Tracés linéaires combinés par empilement vertical pour permettre une visualisation facile des changements dans l'espace ou dans le temps. Les parcelles se chevauchent souvent légèrement pour permettre aux changements d'être plus clairement contrastés.",
+            "ridgeline": "Des courbes empilées verticalement permettent de visualiser facilement les changements dans l’espace ou dans le temps. Elles se chevauchent souvent légèrement pour mieux faire ressortir les différences.",
             "world": "Une carte du monde interactive qui met en surbrillance les pays et affiche des infobulles personnalisées avec des données par pays.",
             "circlePack": "Représentez efficacement des données hiérarchiques, avec chaque valeur proportionnellement mise à l'échelle dans un arrangement visuel intuitif de cercles imbriqués.",
             "moodRadar": "Visualisez les statistiques de notation sur un graphique radar coloré et expressif",
             "iconSpecial": "Autres icônes disponibles :",
             "iconUserOptions": "Icônes utilisées dans les menus d'options:",
             "icon": "Une collection d'icônes fabriquées à la main, idéale si vous choisissez de masquer le menu d'options utilisateur intégré et de créer le vôtre.",
-            "donutEvolution": "Une fusion de graphiques en courbes et en anneaux, pour visualiser la croissance et les proportions en une apartmentseule fois",
+            "donutEvolution": "Une fusion de graphiques en courbes et en anneaux pour visualiser la croissance et les proportions en une seule fois.",
             "tiremarks": "Visualisez un pourcentage grâce à une disposition dynamique semblable à des marques de pneu",
             "wheel": "Visualisez un pourcentage grâce à une disposition dynamique de type roue",
             "rings": "Visualisez les proportions relatives avec une belle disposition concentrique",
@@ -491,7 +493,7 @@
             "quadrant": {
                 "selectLegend": "renvoie les catégories actuellement visibles avec leurs éléments lors de la sélection/désélection de la légende :",
                 "selectPlot": "renvoie les données du tracé sélectionné au clic :",
-                "selectSide": "renvoie les données de toutes les parcelles situées sur la zone au clic d'une étiquette de coin :"
+                "selectSide": "Renvoie les données de tous les points situés dans la zone lors du clic sur une étiquette de coin :"
             },
             "chestnut": {
                 "selectRoot": "renvoie les données racine sélectionnées",
@@ -517,7 +519,7 @@
             "quickChart": "La forme de l'ensemble de données est très flexible. Le graphique le plus adapté sera calculé à partir de celui-ci (soit un graphique en courbes, en barres ou en anneau).",
             "scatterWeight": "Pour créer un graphique à bulles. S'il n'est pas utilisé, le rayon des points de données utilisera config.style.layout.plots.radius",
             "bar3d": {
-                "mode": "Le \"mode pile\" est obtenu en fournissant un tableau \"série\" dans l'ensemble de données."
+                "mode": "Le mode empilé s’obtient en fournissant un tableau « series » dans le jeu de données."
             },
             "relationCircle": {
                 "limit": "Nombre d'éléments à afficher (coupe essentiellement le tableau de 0 à n)",
@@ -532,7 +534,7 @@
             "yourConfigHere": "Votre config ici",
             "yourDatasetHere": "Votre dataset ici",
             "xy": {
-                "showSerieName": "Afficher le nom de la série à la fin ou au début d'un point de données « line » ou « plot ».",
+                "showSerieName": "Afficher le nom de la série au début ou à la fin d’une série de type « line » ou « plot ».",
                 "autoScaling": "En mode empilé, tentera d'harmoniser l'échelle avec les valeurs min et max du point de données",
                 "temperatureColors": "Uniquement pour les types ligne. Définissez un tableau de couleurs pour utiliser un dégradé sur le tracé.",
                 "dashIndices": "Afficher les segments en lignes pointillées pour les indices fournis. Uniquement pour les types ligne",
@@ -540,7 +542,7 @@
                 "scaleMin": "Définir la valeur minimale pour une échelle individuelle",
                 "scaleMax": "Définir la valeur maximale pour une échelle individuelle (peut agir comme une sorte de décalage Y)",
                 "individualScales": "Il est possible d'afficher toutes les séries avec leur échelle individuelle, pour montrer les corrélations entre des séries de différentes magnitudes. Il est recommandé d'utiliser cette option de configuration lorsque l'ensemble de données présente un nombre limité de points de données, pour éviter de gêner la lisibilité du graphique.",
-                "scaleSteps": "Disponible depuis la v2.1.52, pour définir le nombre d'indentations dans une échelle individuelle.",
+                "scaleSteps": "Disponible depuis la v2.1.52 pour définir le nombre de divisions d’une échelle individuelle.",
                 "scaleLabel": "Disponible depuis la v2.1.52, pour spécifier une étiquette pour les échelles individuelles.",
                 "shape": "Disponible depuis la v.1.9.17 pour les types de lignes et de tracés. La valeur par défaut est 'circle'",
                 "smooth2": "Disponible depuis la v.1.9.0 pour les types lignes, en mode SVG.",
@@ -556,8 +558,8 @@
                     "drawbacks": "Inconvénients",
                     "svgAdvantage": "<ul class=\"pl-4\"><li class=\"list-disc\">Vectorisé : la qualité graphique reste la même à toutes les échelles.</li><li class=\"list-disc\">Accessibilité : les nœuds de texte peuvent être détectés par les lecteurs d'écran.</li><li class=\"list-disc\">Débogage plus facile, car les nœuds font partie du DOM</li></ul>",
                     "svgDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">Les performances diminuent avec le nombre de nœuds à peindre sur le HTML</li><li class=\"list-disc\">Le rendu PDF peut être imprévisible pour les polices et le style</li></ul>",
-                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Performances stables : un seul nœud dans le DOM.</li><li class=\"list-disc\">Le rendu PDF est identique.< /li><li class=\"list-disc\">Peut être copié-collé sous forme d'image</li></ul>",
-                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">La qualité de l'image n'est pas adaptée</li><li class=\"list-disc\">Les éléments de texte ne sont pas accessibles aux lecteurs d'écran</li ><li class=\"list-disc\">Débogage plus difficile car le nœud est vide dans le DOM.</li></ul>"
+                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Performances stables : un seul nœud dans le DOM.</li><li class=\"list-disc\">Le rendu PDF est identique.</li><li class=\"list-disc\">Peut être copié-collé sous forme d'image</li></ul>",
+                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">La qualité de l'image n'est pas adaptée</li><li class=\"list-disc\">Les éléments de texte ne sont pas accessibles aux lecteurs d'écran</li><li class=\"list-disc\">Débogage plus difficile car le nœud est vide dans le DOM.</li></ul>"
                 },
                 "type": "Les attributs suivants sont optionnels:",
                 "color": "Si elle n'est pas fournie, la palette par défaut sera utilisée par défaut",
@@ -589,7 +591,7 @@
             "onion": {
                 "optionalDisplay": "Facultatif, affichez la valeur dans le dataLabel",
                 "prefix": "Facultatif, afficher un symbole comme préfixe avant la valeur dans l'étiquette de données",
-                "suffix": "Facultatif, afficher un symbole comme suffixe avant la valeur dans l'étiquette de données",
+                "suffix": "Facultatif : afficher un symbole comme suffixe après la valeur dans l’étiquette de données.",
                 "gradient": "fonctionne mieux sur un fond blanc pour le moment"
             },
             "verticalBar": {
@@ -609,7 +611,7 @@
                 "body": "chaque ligne est représentée dans un objet, laissant la place à d'autres configurations à l'avenir",
                 "td": "Chaque élément du tableau est placé dans le même ordre que les colonnes",
                 "warning1": "nécessite un tableau vide dans les tableaux body 'td' !",
-                "warning2": "remarquez la chaîne vide, en raison d'une configuration de la colonne avec isPercentage = true et percentTo défini sur une autre colonne",
+                "warning2": "Remarquez la chaîne vide : cette colonne est configurée avec isPercentage = true et percentageTo pointe vers une autre colonne.",
                 "fewRows": "Quelques lignes à titre d'exemple"
             },
             "rating": {

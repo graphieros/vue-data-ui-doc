@@ -66,6 +66,8 @@
     },
     "slotImplementation": "Sehen Sie sich ein Beispiel für die Implementierung der Komponente mit all ihren Slots an",
     "a11y": {
+        "hidden_table_title": "Verborgene Datentabellen für Screenreader",
+        "hidden_table_description": "Unterstützte Diagramme können eine verborgene Datentabelle für Screenreader enthalten. Diese Funktion muss ausdrücklich aktiviert werden: a11y.includeTable ist standardmäßig false. Setzen Sie den Wert auf true, um die Tabelle einzubinden. Diese Einstellung ist unabhängig von der sichtbaren Tabelle und ihrer Menüschaltfläche; Tastaturnavigation, Diagrammbeschreibungen und Exporte bleiben verfügbar.",
         "config_pointer_comment": "In den meisten Komponenten wird das Attribut innerhalb von `userOptions` platziert",
         "cursor_pointer": "„Cursor: Pointer“ aktivieren",
         "cursor_pointer_updated_at": "`false` ist seit v3.15.0 der Standardwert",
@@ -136,7 +138,7 @@
         "title": "Schneller Komponentenüberblick"
     },
     "wordCloud": {
-        "dataset": "Sie können einfachen Text an die Dataset-Requisite übergeben. Die Komponente berechnet die Wortanzahl. Sie können auch die Methode „createWordCloudDatasetFromPlainText“ aus „vue-data-ui“ importieren, um einfachen Text in ein Datensatzobjekt umzuwandeln und ihn an die Requisite „dataset“ zu übergeben."
+        "dataset": "Sie können Klartext an die Prop dataset übergeben. Die Komponente berechnet die Worthäufigkeiten. Sie können auch die Funktion createWordCloudDatasetFromPlainText aus vue-data-ui importieren, um Klartext in ein Datensatzobjekt für die Prop dataset umzuwandeln."
     },
     "sideMenu": {
         "graphs": "Graphen",
@@ -153,7 +155,7 @@
         "charts3d": "3d-Diagramme",
         "tables": "Datentabellen",
         "rating": "Bewertung",
-        "utilities": "Nützlichkeit"
+        "utilities": "Werkzeuge"
     },
     "maker": {
         "labels": {
@@ -252,7 +254,7 @@
     },
     "tagline": "Eine benutzerfreundliche Datenvisualisierungs-Bibliothek mit Vue3-Komponenten für aussagekräftige Datenpräsentation.",
     "github": "Github-Repository",
-    "lightMode": "Wechseln Sie in den Lichtmodus",
+    "lightMode": "Zum hellen Modus wechseln",
     "darkMode": "Wechseln Sie in den Dunkelmodus",
     "menu": {
         "typesDirectory": "TS-Typenverzeichnis",
@@ -290,8 +292,8 @@
     "installation": {
         "tsUsers": "Für TypeScript-Benutzer: Typen sind in der Datei vue-data-ui.d.ts im Typenordner des Pakets verfügbar.",
         "comments": {
-            "or": "Oder Sie können seit Version 2.0.38 den Universal-Wrapper verwenden, indem Sie den Komponentennamen in den Requisiten hinzufügen:",
-            "universalComponent": "Seit v.2.0.38 kann anstelle des Imports einzelner Komponenten die universelle Komponente „VueDataUi“ verwendet werden. Sie müssen lediglich den Komponentennamen in den Requisiten angeben:",
+            "or": "Oder verwenden Sie seit v2.0.38 den universellen Wrapper, indem Sie den Komponentennamen in den Props angeben:",
+            "universalComponent": "Seit v2.0.38 können Sie die universelle Komponente VueDataUi verwenden, anstatt einzelne Komponenten zu importieren. Geben Sie dazu den Komponentennamen in den Props an:",
             "includeCss": "CSS einbinden. Wenn Sie Nuxt verwenden, wird empfohlen, diesen Import nur direkt in die Komponenten einzubinden, die ihn benötigen, und nicht in der Nuxt-Konfiguration.",
             "global": "Sie können Vue Data-UI-Komponenten global deklarieren",
             "import": "Oder Sie importieren genau das, was Sie in Ihren Dateien benötigen",
@@ -317,14 +319,14 @@
             "hill": "Interaktive Hill-Chart-Komponente zur Visualisierung und Bearbeitung des Fortschritts mehrerer Elemente von „zu erledigen“ bis „erledigt“.",
             "bump": "Visualisieren Sie Rangpositionen im Zeitverlauf.",
             "geo": "Beliebige GeoJSON-Karten darstellen und benutzerdefinierte Datenpunkte mit vollständiger Interaktion und Zoom-Steuerung visualisieren.",
-            "graph": "Erkunden Sie Beziehungen mit einem interaktiven kraftbasierten Graphen.",
+            "graph": "Erkunden Sie Netzwerkbeziehungen mit einem interaktiven kraftbasierten Graphen. Verschieben Sie Knoten, zoomen Sie und heben Sie verbundene Nachbarknoten hervor.",
             "dag": "Visualisieren Sie jede gerichtete Graphstruktur, einschließlich Workflows oder Systemarchitekturen, selbst wenn Zyklen vorhanden sind.",
             "historyPlot": "Visualisieren Sie die dynamische Reise von zwei Variablen im Laufe der Zeit, wobei jeder Punkt eine Geschichte von Veränderung und Verbindung im zweidimensionalen Raum erzählt.",
             "funnel": "Hervorhebung des Fortschritts der Abnutzung, die in jeder Phase eines Prozesses auftritt.",
             "bullet": "Eine platzsparende Alternative zu Tachodiagrammen.",
             "stackline": "Visualisieren Sie kumulative Summen auf gestapelten Linien, um Teile eines Ganzen über verschiedene Kategorien hinweg einfach zu vergleichen.",
             "stackbarBig": "Visualisieren Sie kumulative Summen auf gestapelten Balken, um Teile eines Ganzen in verschiedenen Kategorien leicht zu vergleichen.",
-            "carouselTable": "Eine flexible Tischkomponente mit Karussellfunktionen. Die Animation ist optional und wird angehalten, wenn der Benutzer mit der Maus über den Tisch fährt.",
+            "carouselTable": "Eine flexible Tabellenkomponente mit Karussellfunktionen. Die Animation muss ausdrücklich aktiviert werden und pausiert, wenn der Mauszeiger über der Tabelle liegt.",
             "timer": "Eine wunderschöne und anpassbare Stoppuhrkomponente",
             "pcp": "Jeder Datenpunkt wird als Linie dargestellt, die eine Reihe paralleler Achsen durchquert und einer bestimmten Variablen oder Dimension entspricht. Diese Anordnung ermöglicht die Untersuchung von Beziehungen, Trends und Variationen, die in Rohdaten möglicherweise verdeckt sind.",
             "chord": "Zeigt Fluss- oder Konnektivitätsmuster in komplexen Matrix- oder Netzwerkdaten mithilfe eines Kreisdiagramms, das Bögen für jede Kategorie und Bänder verwendet, um die Stärke und Richtung der Beziehungen zwischen ihnen zu kodieren.",
@@ -456,7 +458,7 @@
             "resumeAnimation": "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation fortzusetzen, nachdem sie angehalten wurde.",
             "toggleAnimation": "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation umzuschalten.",
             "generateImage": "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um sie als PNG-Bild herunterzuladen. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
-            "generateSvg": "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um sie als PNG-Bild herunterzuladen. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
+            "generateSvg": "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um das Diagramm als SVG-Bild herunterzuladen. Dies ist besonders nützlich, wenn die Benutzeroptionen ausgeblendet sind.",
             "generatePdf": "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um als PDF zu drucken. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
             "generateCsv": "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um eine CSV-Extraktion zu generieren. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
             "dashboard": {
@@ -486,12 +488,12 @@
                 "selectTimeLabel": "gibt die Daten zurück, die mit dem ausgewählten Zeitlabel verknüpft sind",
                 "selectLegend": "gibt die aktuell sichtbare Zeile zurück, wenn die Legende ausgewählt/abgewählt wird:",
                 "selectX": "gibt die aktuell sichtbare Reihe am ausgewählten x-Index zurück, wenn auf das Diagramm geklickt wird:",
-                "getData": ""
+                "getData": "Rufen Sie diese Methode aus der übergeordneten Komponente auf, um den vollständig formatierten Datensatz abzurufen."
             },
             "quadrant": {
-                "selectLegend": "Rufen Sie diese Methode vom übergeordneten Element aus auf, um den vollständig formatierten Datensatz abzurufen.",
+                "selectLegend": "Gibt beim Auswählen oder Abwählen der Legende die aktuell sichtbaren Kategorien mit ihren Einträgen zurück:",
                 "selectPlot": "gibt beim Anklicken die Daten des ausgewählten Diagramms zurück:",
-                "selectSide": "Gibt die Daten aller Parzellen zurück, die sich in dem Gebiet befinden, wenn Sie auf eine Eckbeschriftung klicken:"
+                "selectSide": "Gibt beim Klicken auf eine Eckbeschriftung die Daten aller Datenpunkte im zugehörigen Bereich zurück:"
             },
             "chestnut": {
                 "selectRoot": "gibt die ausgewählten Stammdaten zurück",
@@ -517,7 +519,7 @@
             "quickChart": "Die Form des Datensatzes ist sehr flexibel. Daraus wird das am besten geeignete Diagramm berechnet (entweder ein Linien-, Balken- oder Donutdiagramm).",
             "scatterWeight": "So erstellen Sie ein Blasendiagramm. Wenn nicht verwendet, verwendet der Datenpunktradius config.style.layout.plots.radius",
             "bar3d": {
-                "mode": "Der „Stapelmodus“ wird durch die Bereitstellung eines „Serien“-Arrays im Datensatz erreicht."
+                "mode": "Der Stapelmodus wird durch ein „series“-Array im Datensatz aktiviert."
             },
             "relationCircle": {
                 "limit": "Anzahl der anzuzeigenden Elemente (unterteilt das Array grundsätzlich von 0 bis n)",
@@ -532,7 +534,7 @@
             "yourConfigHere": "Ihre Konfiguration hier",
             "yourDatasetHere": "Ihr Datensatz hier",
             "xy": {
-                "showSerieName": "Zeigt den Namen der Serie am Ende oder Anfang eines „line“- oder „plot“-Datenpunkts an.",
+                "showSerieName": "Den Seriennamen am Anfang oder Ende einer Serie vom Typ „line“ oder „plot“ anzeigen.",
                 "autoScaling": "Im gestapelten Modus wird versucht, die Skala an die Min.- und Max.-Werte des Datenpunkts anzupassen",
                 "temperatureColors": "Nur für Linientypen. Legen Sie ein Array von Farben fest, um einen Farbverlauf auf der Linie zu verwenden.",
                 "dashIndices": "Segmente für die angegebenen Indizes als gestrichelte Linien anzeigen. Nur für Linientypen",
@@ -540,7 +542,7 @@
                 "scaleMin": "Legen Sie den Mindestwert für eine einzelne Skala fest",
                 "scaleMax": "Legen Sie den Maximalwert für eine einzelne Skala fest (kann wie eine Art Offset-Y wirken)",
                 "individualScales": "Es ist möglich, alle Serien mit ihrer individuellen Skala anzuzeigen, um Korrelationen zwischen Serien mit unterschiedlichen Größenordnungen anzuzeigen. Es wird empfohlen, diese Konfigurationsoption zu verwenden, wenn der Datensatz eine begrenzte Anzahl von Datenpunkten aufweist, um die Lesbarkeit des Diagramms nicht zu beeinträchtigen.",
-                "scaleSteps": "Verfügbar seit v2.1.52, um die Anzahl der Einrückungen in einer einzelnen Skala zu definieren.",
+                "scaleSteps": "Seit v2.1.52 verfügbar, um die Anzahl der Unterteilungen einer individuellen Skala festzulegen.",
                 "scaleLabel": "Verfügbar seit v2.1.52, um eine Beschriftung für einzelne Skalen festzulegen.",
                 "shape": "Verfügbar seit Version 1.9.17 für Linien- und Plottypen. Standardmäßig ist „circle“",
                 "smooth2": "Verfügbar seit Version 1.9.0 für Linientypen im SVG-Modus.",
@@ -556,8 +558,8 @@
                     "drawbacks": "Nachteile",
                     "svgAdvantage": "<ul class=\"pl-4\"><li class=\"list-disc\">Vektorisiert: Die Grafikqualität bleibt in allen Maßstäben gleich.</li><li class=\"list-disc\">Zugänglichkeit: Textknoten können von Screenreadern erkannt werden.</li><li class=\"list-disc\">Einfacheres Debuggen, da Knoten Teil des DOM sind</li></ul>",
                     "svgDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">Die Leistung nimmt mit der Anzahl der Knoten ab, die auf der HTML-Seite gezeichnet werden sollen.</li><li class=\"list-disc\">PDF-Rendering kann durchgeführt werden unvorhersehbar für Schriftarten und Stil</li></ul>",
-                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Stabile Leistung: nur ein Knoten im DOM.</li><li class=\"list-disc\">PDF-Rendering ist identisch.< /li><li class=\"list-disc\">Kann als Bild kopiert und eingefügt werden</li></ul>",
-                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">Bildqualität lässt sich nicht skalieren</li><li class=\"list-disc\">Textelemente sind für Screenreader nicht zugänglich</li ><li class=\"list-disc\">Schwierigeres Debuggen, da der Knoten im DOM leer ist.</li></ul>"
+                    "canvasAdvantages": "<ul class=\"pl-4\"><li class=\"list-disc\">Stabile Leistung: nur ein Knoten im DOM.</li><li class=\"list-disc\">PDF-Rendering ist identisch.</li><li class=\"list-disc\">Kann als Bild kopiert und eingefügt werden</li></ul>",
+                    "canvasDrawbacks": "<ul class=\"pl-4\"><li class=\"list-disc\">Bildqualität lässt sich nicht skalieren</li><li class=\"list-disc\">Textelemente sind für Screenreader nicht zugänglich</li><li class=\"list-disc\">Schwierigeres Debuggen, da der Knoten im DOM leer ist.</li></ul>"
                 },
                 "type": "Die folgenden Attribute sind optional:",
                 "color": "Wenn nicht angegeben, wird standardmäßig die Standardpalette verwendet",
@@ -589,7 +591,7 @@
             "onion": {
                 "optionalDisplay": "Optional können Sie den Wert im dataLabel anzeigen",
                 "prefix": "Optional können Sie ein Symbol als Präfix vor dem Wert in der Datenbeschriftung anzeigen",
-                "suffix": "Optional können Sie ein Symbol als Suffix vor dem Wert in der Datenbeschriftung anzeigen",
+                "suffix": "Optional: Ein Symbol als Suffix nach dem Wert in der Datenbeschriftung anzeigen.",
                 "gradient": "funktioniert derzeit am besten auf einem weißen Hintergrund"
             },
             "verticalBar": {
@@ -608,8 +610,8 @@
                 "reference": "Verweis auf den Namen einer anderen numerischen Spalte",
                 "body": "Jede Zeile wird in einem Objekt dargestellt, sodass Raum für weitere Konfigurationen in der Zukunft bleibt",
                 "td": "Jedes Element des Arrays wird in derselben Reihenfolge wie die Spalten platziert",
-                "warning1": "",
-                "warning2": "erfordert ein leeres Array in den Körper-'td'-Arrays!",
+                "warning1": "Erfordert ein leeres Array in den „td“-Arrays des Tabellenkörpers!",
+                "warning2": "Beachten Sie die leere Zeichenfolge: Für diese Spalte ist isPercentage = true gesetzt und percentageTo verweist auf eine andere Spalte.",
                 "fewRows": "Ein paar Zeilen als Beispiel"
             },
             "rating": {
@@ -647,7 +649,7 @@
             "annotator": {
                 "emits": {
                     "toggleOpenState": "Gibt das folgende Objekt an die übergeordnete Komponente aus, wenn das Akkordeon geöffnet oder geschlossen wird:",
-                    "saveAnnotations": "Gibt die Sammlung der aktuell auf dem Annotator gezeichneten Elemente an die übergeordnete Komponente aus, sodass sie gespeichert und später wieder in die Dataset-Komponentenstütze eingefügt werden können. Emit gibt die folgenden Attribute zurück:",
+                    "saveAnnotations": "Gibt die aktuell im Annotator gezeichneten Elemente an die übergeordnete Komponente aus, damit sie gespeichert und später wieder an die Prop dataset übergeben werden können. Das Ereignis liefert die folgenden Attribute:",
                     "calledWhen": "Dieses Emit wird aufgerufen, wenn der Benutzer auf die Schaltfläche „Speichern“ klickt, sofern die Schaltfläche angezeigt wird, indem config.style.showSave auf „true“ gesetzt wird."
                 },
                 "description": "Fügen Sie allen gesloteten Inhalten Anmerkungen hinzu und speichern Sie diese. Es funktioniert mit allen Vue Data-UI-Diagrammen, aber auch mit jedem Div-, SVG- und Canvas-Element, das Sie darin platzieren.",

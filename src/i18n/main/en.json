@@ -534,7 +534,7 @@
             "yourConfigHere": "Your config here",
             "yourDatasetHere": "Your dataset here",
             "xy": {
-                "showSerieName": "Display the name of the series at the end of start of a 'line' or 'plot' datapoint.",
+                "showSerieName": "Display the series name at the start or end of a 'line' or 'plot' series.",
                 "autoScaling": "In stacked mode, will attempt to harmonize the scale to the datapoint's min & max values",
                 "temperatureColors": "For line types only. Set an array of colors to use a gradient on the path.",
                 "dashIndices": "Display segments as dashed lines for the provided indices. For line types only",
@@ -542,7 +542,7 @@
                 "scaleMin": "Set the minimum value for an individual scale",
                 "scaleMax": "Set the max value for an individual scale (can act like an offset Y of sorts)",
                 "individualScales": "It is possible to display all series with their indivudual scale, to show correlations between series with different magnitudes. It is recommended to use this config option when the dataset presents a limited number of datapoints, to avoid hindering the chart's readability.",
-                "scaleSteps": "Available since v2.1.52, to define the number of indentations in an individual scale.",
+                "scaleSteps": "Available since v2.1.52, to define the number of divisions in an individual scale.",
                 "scaleLabel": "Available since v2.1.52, to specify a label for individual scales.",
                 "shape": "Available since v.1.9.17 for line and plot types. Defaults to 'circle'",
                 "smooth2": "Available since v.1.9.0 for line types, in SVG mode.",
@@ -591,7 +591,7 @@
             "onion": {
                 "optionalDisplay": "Optional, display the value in the dataLabel",
                 "prefix": "Optional, display a symbol as a prefix before the value in the data label",
-                "suffix": "Optional, display a symbol as a suffix before the value in the data label",
+                "suffix": "Optional, display a symbol as a suffix after the value in the data label",
                 "gradient": "works best on a white background for now"
             },
             "verticalBar": {
