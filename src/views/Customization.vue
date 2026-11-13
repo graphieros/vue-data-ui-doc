@@ -312,7 +312,7 @@ watch(() => router.currentRoute.value, updateCrumb, {
     <LabelFormatter v-if="currentRoute === '/customization#formatter'" />
     <SourceSlot v-if="currentRoute === '/customization#source'" />
     <Patterns v-if="currentRoute === '/customization#patterns'" />
-    <ComposedComponents v-if="currentRoute === '/customization#experiments'" />
+    <ComposedComponents v-if="selectedMenu === 'experiments'" />
 
     <ChartSeeker class="mt-12" />
 </template>

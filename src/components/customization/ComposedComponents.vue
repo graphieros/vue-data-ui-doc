@@ -1,17 +1,146 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch, nextTick } from "vue";
+import { useRoute } from "vue-router";
 import BasePopoverButton from "../BasePopoverButton.vue";
 import { useMainStore } from "../../stores";
 import { UserIcon, EyeIcon, UserPlusIcon } from "vue-tabler-icons";
 import BaseButtonSparkline from "../BaseButtonSparkline.vue";
 import BaseButtonSparklineFree from "../BaseButtonSparklineFree.vue";
 import LinkedSparklines from "./LinkedSparklines.vue";
+import KpiTable from "./KpiTable.vue";
+import RegionExplorer from "./RegionExplorer.vue";
+import { additionalComponentIdeas } from "./additionalComponentIdeas";
 
 const store = useMainStore();
+const route = useRoute();
 const isDarkMode = computed(() => store.isDarkMode);
+
+const ideaDefinitions = [
+    { id: "idea-button-sparkline" },
+    { id: "idea-chart-popover" },
+    { id: "idea-linked-sparklines" },
+    { id: "idea-sparklines-waffle" },
+    { id: "idea-sparklines-donut" },
+    { id: "idea-kpi-table" },
+    ...additionalComponentIdeas.map((idea) => ({
+        ...idea,
+        component: RegionExplorer,
+    })),
+];
+
+const summaryTitles = {
+    en: [
+        "KPI buttons with sparklines",
+        "Chart button with a popover",
+        "Linked sparklines",
+        "Sparklines with a waffle chart",
+        "Sparklines with a donut chart",
+        "KPI table with gauges",
+    ],
+    fr: [
+        "Boutons KPI avec mini-graphes",
+        "Bouton graphique avec popover",
+        "Mini-graphes liés",
+        "Mini-graphes et graphique en mosaïque",
+        "Mini-graphes et graphique en anneau",
+        "Tableau de KPI avec jauges",
+    ],
+    pt: [
+        "Botões de KPI com minigráficos",
+        "Botão de gráfico com popover",
+        "Minigráficos vinculados",
+        "Minigráficos com gráfico waffle",
+        "Minigráficos com gráfico de rosca",
+        "Tabela de KPIs com medidores",
+    ],
+    de: [
+        "KPI-Schaltflächen mit Sparklines",
+        "Diagrammschaltfläche mit Popover",
+        "Verknüpfte Sparklines",
+        "Sparklines mit Waffeldiagramm",
+        "Sparklines mit Ringdiagramm",
+        "KPI-Tabelle mit Messanzeigen",
+    ],
+    zh: [
+        "带迷你折线图的 KPI 按钮",
+        "带弹出框的图表按钮",
+        "联动迷你折线图",
+        "迷你折线图与华夫图",
+        "迷你折线图与环形图",
+        "带仪表的 KPI 表格",
+    ],
+    ja: [
+        "ミニ折れ線グラフ付き KPI ボタン",
+        "ポップオーバー付きチャートボタン",
+        "連動するミニ折れ線グラフ",
+        "ミニ折れ線グラフとワッフルチャート",
+        "ミニ折れ線グラフとドーナツチャート",
+        "ゲージ付き KPI テーブル",
+    ],
+    es: [
+        "Botones de KPI con minigráficos",
+        "Botón de gráfico con popover",
+        "Minigráficos vinculados",
+        "Minigráficos con gráfico waffle",
+        "Minigráficos con gráfico de anillos",
+        "Tabla de KPI con indicadores",
+    ],
+    ko: [
+        "미니 차트가 있는 KPI 버튼",
+        "팝오버가 있는 차트 버튼",
+        "연동 미니 선 차트",
+        "미니 선 차트와 와플 차트",
+        "미니 선 차트와 도넛 차트",
+        "게이지가 있는 KPI 테이블",
+    ],
+    ar: [
+        "أزرار مؤشرات أداء مع مخططات مصغرة",
+        "زر مخطط مع نافذة منبثقة",
+        "مخططات خطية مصغرة مترابطة",
+        "مخططات مصغرة مع مخطط وافل",
+        "مخططات مصغرة مع مخطط دونات",
+        "جدول مؤشرات أداء مع مقاييس",
+    ],
+};
+
+const ideas = computed(() => {
+    const titles = summaryTitles[store.lang] || summaryTitles.en;
+    return ideaDefinitions.map((idea, index) => ({
+        ...idea,
+        number: idea.number || index + 1,
+        title: titles[index] || idea.title[store.lang] || idea.title.en,
+    }));
+});
+
+async function scrollToIdea(id) {
+    if (!ideaDefinitions.some((idea) => idea.id === id)) return;
+    await nextTick();
+    const heading = document.getElementById(id);
+    if (!heading) return;
+    heading.focus({ preventScroll: true });
+    heading.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "instant"
+            : "smooth",
+        block: "start",
+    });
+}
+
+watch(() => route.query.idea, scrollToIdea, { immediate: true, flush: "post" });
 
 const translations = computed(() => {
     return {
+        summary: {
+            en: "Explore the component ideas",
+            fr: "Explorer les idées de composants",
+            pt: "Explore as ideias de componentes",
+            de: "Komponentenideen entdecken",
+            zh: "探索组件创意",
+            ja: "コンポーネントのアイデアを見る",
+            es: "Explora las ideas de componentes",
+            ko: "컴포넌트 아이디어 살펴보기",
+            ar: "استكشف أفكار المكونات",
+        },
         ideas: {
             en: "This section is designed to provide ideas on how to use components out of the box, or compose them in an original fashion.",
             fr: "Cette section est conçue pour fournir des idées sur la façon d'utiliser les composants tels quels ou de les composer de manière originale.",
@@ -78,6 +207,17 @@ const translations = computed(() => {
             ko: "이 구성 요소는 일련의 스파크라인으로 구성되며, 마우스오버 시 현재 선택된 인덱스에 의해 연결되고, 선택된 인덱스에서 모든 시리즈의 분포를 보여주는 도넛 차트를 포함합니다.",
             ar: "يتكون هذا المكون من سلسلة من الرسوم البيانية الصغيرة المرتبطة بالمؤشر المحدد حاليًا عند تحريك الماوس فوقها، مع رسم بياني دائري يوضح توزيع جميع السلاسل عند المؤشر المحدد.",
         },
+        kpiTable: {
+            en: "A KPI table with a VueUiGizmo gauge in each row to show progress toward a target.",
+            fr: "Un tableau de KPI avec une jauge VueUiGizmo dans chaque ligne pour afficher la progression vers un objectif.",
+            pt: "Uma tabela de KPIs com um medidor VueUiGizmo em cada linha para mostrar o progresso em relação à meta.",
+            de: "Eine KPI-Tabelle mit einer VueUiGizmo-Anzeige in jeder Zeile, die den Fortschritt zum Ziel zeigt.",
+            zh: "一个 KPI 表格，每行使用 VueUiGizmo 仪表展示目标达成进度。",
+            ja: "各行の VueUiGizmo ゲージで目標達成状況を示す KPI テーブルです。",
+            es: "Una tabla de KPI con un indicador VueUiGizmo en cada fila para mostrar el progreso hacia un objetivo.",
+            ko: "각 행의 VueUiGizmo 게이지로 목표 달성 현황을 보여주는 KPI 테이블입니다.",
+            ar: "جدول مؤشرات أداء يتضمن مقياس VueUiGizmo في كل صف لعرض التقدم نحو الهدف.",
+        },
         seeHowItsMade: {
             en: "See how it is made",
             fr: "Découvrez comment c'est fait",
@@ -104,7 +244,7 @@ const sparklineConfigUsers = computed(() => {
             animation: { show: true, animationFrames: 360 },
             fontFamily: "inherit",
             backgroundColor: "transparent",
-            line: { color: "#5f8bee", strokeWidth: 3, smooth: true },
+            line: { color: "#5f8bee", strokeWidth: 1, smooth: true },
             bar: { borderRadius: 3, color: "#5f8bee" },
             zeroLine: { color: "#2D353C", strokeWidth: 1 },
             plot: { show: true, radius: 8, stroke: "#FFFFFF", strokeWidth: 1 },
@@ -154,7 +294,7 @@ const sparklineConfigViewers = computed(() => {
             animation: { show: true, animationFrames: 360 },
             fontFamily: "inherit",
             backgroundColor: "transparent",
-            line: { color: "#ff6600", strokeWidth: 3, smooth: true },
+            line: { color: "#ff6600", strokeWidth: 1, smooth: true },
             bar: { borderRadius: 3, color: "#ff6600" },
             zeroLine: { color: "#2D353C", strokeWidth: 1 },
             plot: { show: true, radius: 8, stroke: "#FFFFFF", strokeWidth: 1 },
@@ -204,7 +344,7 @@ const sparklineConfigSubscribers = computed(() => {
             animation: { show: true, animationFrames: 360 },
             fontFamily: "inherit",
             backgroundColor: "transparent",
-            line: { color: "#42d392", strokeWidth: 3, smooth: true },
+            line: { color: "#42d392", strokeWidth: 1, smooth: true },
             bar: { borderRadius: 3, color: "#42d392" },
             zeroLine: { color: "#2D353C", strokeWidth: 1 },
             plot: { show: true, radius: 8, stroke: "#FFFFFF", strokeWidth: 1 },
@@ -336,6 +476,40 @@ const max = computed(() => {
         {{ translations.ideas[store.lang] }}
     </h1>
 
+    <nav
+        aria-labelledby="ideas-summary-title"
+        class="mx-auto max-w-[1000px] p-4 my-6"
+        dir="auto"
+    >
+        <h2 id="ideas-summary-title" class="text-base font-semibold mb-2">
+            {{ translations.summary[store.lang] }}
+        </h2>
+        <ol class="grid gap-x-5 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
+            <li v-for="idea in ideas" :key="idea.id">
+                <RouterLink
+                    :to="{
+                        query: { ...route.query, idea: idea.id },
+                        hash: '#experiments',
+                    }"
+                    @click.left.exact="
+                        route.query.idea === idea.id && scrollToIdea(idea.id)
+                    "
+                    class="flex h-full items-center gap-2 rounded px-2 py-1.5 text-sm transition-colors hover:bg-gray-100 dark:hover:bg-[#242424] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-app-blue"
+                >
+                    <span
+                        aria-hidden="true"
+                        class="text-app-blue text-xs tabular-nums w-5 shrink-0"
+                        >{{ idea.number }}</span
+                    >
+                    <span class="flex-1 text-start">{{ idea.title }}</span>
+                    <span aria-hidden="true" class="text-app-blue text-xs"
+                        >↓</span
+                    >
+                </RouterLink>
+            </li>
+        </ol>
+    </nav>
+
     <!-- 1 -->
     <!-- KPI in a button with sparkline in popover -->
     <div class="mx-auto max-w-[1000px] p-4 rounded">
@@ -343,7 +517,12 @@ const max = computed(() => {
             class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6"
         >
             <div class="text-app-blue text-[52px]">1</div>
-            <h2 dir="auto">
+            <h2
+                id="idea-button-sparkline"
+                tabindex="-1"
+                class="scroll-mt-8"
+                dir="auto"
+            >
                 {{ translations.buttonSparkline[store.lang] }}
                 <a
                     href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/BaseButtonSparkline.vue"
@@ -401,7 +580,12 @@ const max = computed(() => {
             class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6"
         >
             <div class="text-app-blue text-[52px]">2</div>
-            <h2 dir="auto">
+            <h2
+                id="idea-chart-popover"
+                tabindex="-1"
+                class="scroll-mt-8"
+                dir="auto"
+            >
                 {{ translations.buttonSparklineOnion[store.lang] }}
                 <a
                     href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/ComposedComponents.vue"
@@ -527,7 +711,12 @@ const max = computed(() => {
             class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6"
         >
             <div class="text-app-blue text-[52px]">3</div>
-            <h2 dir="auto">
+            <h2
+                id="idea-linked-sparklines"
+                tabindex="-1"
+                class="scroll-mt-8"
+                dir="auto"
+            >
                 {{ translations.linkedSparklines[store.lang] }}
                 <a
                     href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/LinkedSparklines.vue"
@@ -551,7 +740,12 @@ const max = computed(() => {
             class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6"
         >
             <div class="text-app-blue text-[52px]">4</div>
-            <h2 dir="auto">
+            <h2
+                id="idea-sparklines-waffle"
+                tabindex="-1"
+                class="scroll-mt-8"
+                dir="auto"
+            >
                 {{ translations.linkedSparklinesWithWaffle[store.lang] }}
                 <a
                     href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/LinkedSparklines.vue"
@@ -575,7 +769,12 @@ const max = computed(() => {
             class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6"
         >
             <div class="text-app-blue text-[52px]">5</div>
-            <h2 dir="auto">
+            <h2
+                id="idea-sparklines-donut"
+                tabindex="-1"
+                class="scroll-mt-8"
+                dir="auto"
+            >
                 {{ translations.linkedSparklinesWithDonut[store.lang] }}
                 <a
                     href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/LinkedSparklines.vue"
@@ -591,4 +790,65 @@ const max = computed(() => {
             <LinkedSparklines donut />
         </div>
     </div>
+
+    <!-- 6 -->
+    <!-- KPI table with gauges -->
+    <div class="mx-auto max-w-[1000px] p-4 rounded">
+        <div
+            class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6"
+        >
+            <div class="text-app-blue text-[52px]">6</div>
+            <h2
+                id="idea-kpi-table"
+                tabindex="-1"
+                class="scroll-mt-8"
+                dir="auto"
+            >
+                {{ translations.kpiTable[store.lang] }}
+                <a
+                    href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/KpiTable.vue"
+                    target="_blank"
+                    class="text-app-blue underline"
+                >
+                    {{ translations.seeHowItsMade[store.lang] }}
+                </a>
+            </h2>
+        </div>
+        <KpiTable />
+    </div>
+    <section
+        v-for="idea in ideas.slice(6)"
+        :key="idea.id"
+        class="mx-auto max-w-[1000px] p-4 rounded"
+    >
+        <div class="flex gap-6 items-start py-6">
+            <div
+                class="text-app-blue text-[52px] leading-none"
+                aria-hidden="true"
+            >
+                {{ idea.number }}
+            </div>
+            <div class="min-w-0">
+                <h2
+                    :id="idea.id"
+                    tabindex="-1"
+                    class="scroll-mt-8 text-xl font-semibold"
+                    dir="auto"
+                >
+                    {{ idea.title }}
+                </h2>
+                <p class="mt-2 max-w-[70ch]" dir="auto">
+                    {{ idea.description[store.lang] || idea.description.en }}
+                </p>
+                <a
+                    :href="`https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/${idea.file}`"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block mt-2 text-app-blue underline"
+                    >{{ translations.seeHowItsMade[store.lang] }}</a
+                >
+            </div>
+        </div>
+        <component :is="idea.component" />
+    </section>
 </template>
