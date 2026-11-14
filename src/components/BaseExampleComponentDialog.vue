@@ -41,9 +41,10 @@ const finalConfig = computed(() => {
 const imp = useImportMap(props.example?.component);
 
 const generatedScript = computed(() => {
-    return `import { computed } from "vue";
+    return `import { computed${props.example.worldDemo ? ", ref" : ""} } from "vue";
 ${props.example.pattern || props.example.multiPattern ? `import { VueUiPattern } from "vue-data-ui/vue-ui-pattern";` : ""}
 ${imp.treeshaken}
+${props.example.points ? 'import type { VueUiWorldPoint } from "vue-data-ui";' : ""}
 import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
 const config = computed<${imp.configType}>(() => {
@@ -53,6 +54,25 @@ const config = computed<${imp.configType}>(() => {
 const dataset = computed<${imp.datasetType}>(() => {
     return ${typeof props.example.dataset === "string" ? `"${props.example.dataset}"` : jsonToJsObject(props.example.dataset)}
 });
+${
+    props.example.points
+        ? `
+const points: VueUiWorldPoint[] = ${jsonToJsObject(props.example.points)};
+`
+        : ""
+}
+${
+    props.example.worldDemo
+        ? `
+const chart = ref<InstanceType<typeof ${props.example.component}> | null>(null);
+const selectedCountries = ref<string[]>(${JSON.stringify(props.example.selectedCountries || [])});
+const lastEvent = ref<unknown>(null);
+function recordEvent(name: string, payload: unknown) {
+    lastEvent.value = { event: name, payload };
+}
+`
+        : ""
+}
 `;
 });
 
@@ -60,10 +80,35 @@ const generatedTemplate = computed(() => {
     return `<template>
     <!-- Using a wrapper div is optional -->
     <div :style="{ width: '600px'}">
-        <${props.example.component} :config="config" :dataset="dataset">
+        ${props.example.worldDemo?.actions?.map((action) => `<button type="button" @click='chart?.${action.method}(${(action.args || []).map((arg) => JSON.stringify(arg)).join(", ")})'>${action.label}</button>`).join("\n        ") || ""}
+        <${props.example.component} :config="config" :dataset="dataset"${props.example.points ? ' :points="points"' : ""}${
+            props.example.worldDemo
+                ? `
+            ref="chart"
+            v-model:selectedCountries="selectedCountries"
+            @update:selectedCountries="recordEvent('update:selectedCountries', $event)"
+            @selectPoint="recordEvent('selectPoint', $event)"
+            @viewChange="recordEvent('viewChange', $event)"`
+                : ""
+        }>
             <!-- SLOTS -->
             ${props.example.slot || ""}
+            ${
+                props.example.worldDemo?.tooltip
+                    ? `<template #tooltip="{ kind, datapoint }">
+                <div style="padding: 12px">
+                    <strong>{{ datapoint.name }}</strong>
+                    <div>{{ kind === 'point' ? 'Point marker' : 'Country' }}</div>
+                    <div v-if="kind === 'country'">{{ datapoint.code }} · {{ datapoint.valueStatus }}</div>
+                    <div>Value: {{ datapoint.value ?? 'Missing' }}</div>
+                    <div v-if="kind === 'point'">{{ datapoint.coordinates.join(', ') }}</div>
+                </div>
+            </template>`
+                    : ""
+            }
         </${props.example.component}>
+        ${props.example.worldDemo?.selection ? '<p>Selected countries: {{ selectedCountries.join(", ") || "None" }}</p>' : ""}
+        ${props.example.worldDemo?.events ? "<pre>{{ JSON.stringify(lastEvent, null, 2) }}</pre>" : ""}
     </div>
 </template>`;
 });

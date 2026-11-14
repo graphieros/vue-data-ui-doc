@@ -30,6 +30,68 @@ export function createVueUiWorldConfigFields({
                     defaultVal: "false",
                 },
                 {
+                    name: "theme",
+                    attr: "theme",
+                    type: "select",
+                    defaultVal: "null",
+                    options: [
+                        "",
+                        "dark",
+                        "zen",
+                        "concrete",
+                        "hack",
+                        "celebration",
+                        "celebrationNight",
+                        "minimal",
+                        "minimalDark",
+                    ],
+                },
+                {
+                    name: "normalizeCountryCodes",
+                    attr: "normalizeCountryCodes",
+                    type: "checkbox",
+                    defaultVal: "null",
+                },
+                {
+                    inactive: true,
+                    name: "countryNames",
+                    defaultVal: "{}",
+                    comment:
+                        "Record<string, string>: override country display names by code.",
+                },
+                {
+                    inactive: true,
+                    name: "countryNameFormatter",
+                    defaultVal: "null",
+                    comment:
+                        "({ code, name, feature }) => string; customize country display names.",
+                },
+                {
+                    attr: "selection",
+                    title: "selection",
+                    level: 1,
+                    children: [
+                        {
+                            name: "enabled",
+                            attr: "selection.enabled",
+                            type: "checkbox",
+                            defaultVal: "null",
+                        },
+                        {
+                            name: "multiple",
+                            attr: "selection.multiple",
+                            type: "checkbox",
+                            defaultVal: "null",
+                        },
+                        {
+                            name: "color",
+                            attr: "selection.color",
+                            type: "color",
+                            defaultVal: "null",
+                        },
+                    ],
+                },
+                {
                     name: "projection",
                     attr: "projection",
                     type: "select",
@@ -87,6 +149,244 @@ export function createVueUiWorldConfigFields({
                             level: 2,
                             title: "style.chart",
                             children: [
+                                {
+                                    attr: "zoom",
+                                    title: "style.chart.zoom",
+                                    level: 3,
+                                    children: [
+                                        {
+                                            name: "show",
+                                            attr: "style.chart.zoom.show",
+                                            type: "checkbox",
+                                            defaultVal: "null",
+                                        },
+                                        {
+                                            name: "minZoom",
+                                            attr: "style.chart.zoom.minZoom",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: 1,
+                                            max: 20,
+                                        },
+                                        {
+                                            name: "maxZoom",
+                                            attr: "style.chart.zoom.maxZoom",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: 1,
+                                            max: 100,
+                                        },
+                                        {
+                                            name: "region",
+                                            attr: "style.chart.zoom.region",
+                                            type: "select",
+                                            defaultVal: "null",
+                                            nullable: true,
+                                            options: [
+                                                null,
+                                                "africa",
+                                                "europe",
+                                                "asia",
+                                                "northAmerica",
+                                                "southAmerica",
+                                                "oceania",
+                                            ],
+                                        },
+                                        {
+                                            inactive: true,
+                                            name: "countries",
+                                            defaultVal: "[]",
+                                            comment:
+                                                "string[]: country codes to fit in the initial view.",
+                                        },
+                                    ],
+                                },
+                                {
+                                    attr: "points",
+                                    title: "style.chart.points",
+                                    level: 3,
+                                    children: [
+                                        {
+                                            name: "show",
+                                            attr: "style.chart.points.show",
+                                            type: "checkbox",
+                                            defaultVal: "null",
+                                        },
+                                        {
+                                            name: "radius",
+                                            attr: "style.chart.points.radius",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: 0,
+                                            max: 50,
+                                        },
+                                        {
+                                            name: "maxRadius",
+                                            attr: "style.chart.points.maxRadius",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: 0,
+                                            max: 100,
+                                        },
+                                        {
+                                            name: "color",
+                                            attr: "style.chart.points.color",
+                                            type: "color",
+                                            defaultVal: "null",
+                                        },
+                                        {
+                                            name: "stroke",
+                                            attr: "style.chart.points.stroke",
+                                            type: "color",
+                                            defaultVal: "null",
+                                        },
+                                        {
+                                            name: "strokeWidth",
+                                            attr: "style.chart.points.strokeWidth",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: 0,
+                                            max: 10,
+                                            step: 0.5,
+                                        },
+                                        {
+                                            name: "opacity",
+                                            attr: "style.chart.points.opacity",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: 0,
+                                            max: 1,
+                                            step: 0.1,
+                                        },
+                                    ],
+                                },
+                                {
+                                    attr: "colorScale",
+                                    title: "style.chart.colorScale",
+                                    level: 3,
+                                    children: [
+                                        {
+                                            name: "type",
+                                            attr: "style.chart.colorScale.type",
+                                            type: "select",
+                                            defaultVal: "null",
+                                            options: [
+                                                "linear",
+                                                "log",
+                                                "quantile",
+                                                "threshold",
+                                                "diverging",
+                                            ],
+                                        },
+                                        {
+                                            inactive: true,
+                                            name: "domain",
+                                            defaultVal: "null",
+                                            comment:
+                                                "[number, number] | null: explicit range; null derives the domain from data.",
+                                        },
+                                        {
+                                            name: "center",
+                                            attr: "style.chart.colorScale.center",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: -10000,
+                                            max: 10000,
+                                        },
+                                        {
+                                            name: "middleColor",
+                                            attr: "style.chart.colorScale.middleColor",
+                                            type: "color",
+                                            defaultVal: "null",
+                                        },
+                                        {
+                                            name: "quantileSteps",
+                                            attr: "style.chart.colorScale.quantileSteps",
+                                            type: "number",
+                                            defaultVal: "null",
+                                            min: 2,
+                                            max: 20,
+                                        },
+                                        {
+                                            inactive: true,
+                                            name: "thresholds",
+                                            defaultVal: "[]",
+                                            comment:
+                                                "number[]: boundaries for the threshold scale.",
+                                        },
+                                        {
+                                            inactive: true,
+                                            name: "colors",
+                                            defaultVal: "[]",
+                                            comment:
+                                                "string[]: custom scale colors.",
+                                        },
+                                        {
+                                            attr: "legend",
+                                            title: "style.chart.colorScale.legend",
+                                            level: 4,
+                                            children: [
+                                                {
+                                                    name: "show",
+                                                    attr: "style.chart.colorScale.legend.show",
+                                                    type: "checkbox",
+                                                    defaultVal: "null",
+                                                },
+                                                {
+                                                    name: "position",
+                                                    attr: "style.chart.colorScale.legend.position",
+                                                    type: "select",
+                                                    defaultVal: "null",
+                                                    options: ["top", "bottom"],
+                                                },
+                                                {
+                                                    name: "title",
+                                                    attr: "style.chart.colorScale.legend.title",
+                                                    type: "text",
+                                                    defaultVal: "null",
+                                                },
+                                                {
+                                                    name: "fontSize",
+                                                    attr: "style.chart.colorScale.legend.fontSize",
+                                                    type: "number",
+                                                    defaultVal: "null",
+                                                    min: 6,
+                                                    max: 40,
+                                                },
+                                                {
+                                                    attr: "gradient",
+                                                    title: "style.chart.colorScale.legend.gradient",
+                                                    level: 5,
+                                                    children: [
+                                                        {
+                                                            name: "borderRadius",
+                                                            attr: "style.chart.colorScale.legend.gradient.borderRadius",
+                                                            type: "number",
+                                                            defaultVal: "null",
+                                                            min: 0,
+                                                            max: 20,
+                                                        },
+                                                        {
+                                                            name: "height",
+                                                            attr: "style.chart.colorScale.legend.gradient.height",
+                                                            type: "number",
+                                                            defaultVal: "null",
+                                                            min: 1,
+                                                            max: 50,
+                                                        },
+                                                    ],
+                                                },
+                                                {
+                                                    inactive: true,
+                                                    name: "formatter",
+                                                    defaultVal: "null",
+                                                    comment:
+                                                        "(value: number) => string | number",
+                                                },
+                                            ],
+                                        },
+                                    ],
+                                },
                                 {
                                     name: "backgroundColor",
                                     type: "color",
@@ -322,6 +622,12 @@ export function createVueUiWorldConfigFields({
                                             attr: "style.chart.territory.stroke",
                                             type: "color",
                                             defaultVal: "#666666",
+                                        },
+                                        {
+                                            name: "invalidColor",
+                                            attr: "style.chart.territory.invalidColor",
+                                            type: "color",
+                                            defaultVal: "null",
                                         },
                                         {
                                             name: "emptyColor",
@@ -742,6 +1048,14 @@ export function createVueUiWorldConfigFields({
                             title: "userOptions.annotator",
                             children: [
                                 {
+                                    name: "followZoom",
+                                    attr: "userOptions.annotator.followZoom",
+                                    type: "checkbox",
+                                    defaultVal: "true",
+                                    tooltip:
+                                        "Keep annotations aligned with the map while zooming and panning.",
+                                },
+                                {
                                     name: "useOutline",
                                     attr: "userOptions.annotator.useOutline",
                                     type: "checkbox",
@@ -852,6 +1166,18 @@ export function createVueUiWorldConfigFields({
                                     defaultVal: "true",
                                 },
                                 {
+                                    name: "svg",
+                                    attr: "userOptions.buttons.svg",
+                                    type: "checkbox",
+                                    defaultVal: "null",
+                                },
+                                {
+                                    name: "zoom",
+                                    attr: "userOptions.buttons.zoom",
+                                    type: "checkbox",
+                                    defaultVal: "null",
+                                },
+                                {
                                     name: "annotator",
                                     attr: "userOptions.buttons.annotator",
                                     type: "checkbox",
@@ -911,6 +1237,18 @@ export function createVueUiWorldConfigFields({
                                     attr: "userOptions.buttonTitles.fullscreen",
                                     type: "text",
                                     defaultVal: "Toggle fullscreen",
+                                },
+                                {
+                                    name: "svg",
+                                    attr: "userOptions.buttonTitles.svg",
+                                    type: "text",
+                                    defaultVal: "null",
+                                },
+                                {
+                                    name: "zoom",
+                                    attr: "userOptions.buttonTitles.zoom",
+                                    type: "text",
+                                    defaultVal: "null",
                                 },
                                 {
                                     name: "annotator",

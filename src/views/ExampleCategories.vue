@@ -9,6 +9,7 @@ import {
     effectScope,
 } from "vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
+import WorldFeatureExample from "../components/examples/components/WorldFeatureExample.vue";
 import exampleLoaders from "virtual:examples/index";
 import { preloadChart } from "../plugins/registerCharts.js";
 import {
@@ -1121,7 +1122,21 @@ function makeMapLinks({ data }) {
                                     :style="chartFrameStyle(example)"
                                 >
                                     <component
-                                        :is="example.component"
+                                        :is="
+                                            example.worldDemo
+                                                ? WorldFeatureExample
+                                                : example.component
+                                        "
+                                        v-bind="
+                                            example.worldDemo
+                                                ? {
+                                                      demo: example.worldDemo,
+                                                      points: example.points,
+                                                      selectedCountries:
+                                                          example.selectedCountries,
+                                                  }
+                                                : {}
+                                        "
                                         :dataset="example.dataset"
                                         :config="example.config"
                                     >

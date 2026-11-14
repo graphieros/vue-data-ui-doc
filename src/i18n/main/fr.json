@@ -310,6 +310,24 @@
         "alp": "Alec Lloyd Probert est un développeur front-end, ancien data analyste, passionné par la visualisation de données et VueJs."
     },
     "docs": {
+        "worldProjections": {
+            "label": "Projection",
+            "descriptions": {
+                "aitoff": "Une projection de compromis elliptique pour les cartes du monde.",
+                "azimuthalEquidistant": "Conserve les distances et les directions mesurées depuis le centre de la carte.",
+                "bonne": "Une projection pseudoconique équivalente aux parallèles courbes.",
+                "equirectangular": "Une projection cylindrique avec une grille régulière de latitude et longitude.",
+                "gallPeters": "Une projection cylindrique équivalente aux parallèles standards à 45° nord et sud.",
+                "globe": "Une vue orthographique présentant un hémisphère comme un globe.",
+                "hammer": "Une projection elliptique équivalente aux parallèles courbes.",
+                "mercator": "Une projection cylindrique conservant les angles locaux, mais agrandissant les régions polaires.",
+                "mollweide": "Une projection elliptique équivalente aux parallèles droits.",
+                "robinson": "Une projection mondiale de compromis aux parallèles droits et aux méridiens courbes.",
+                "sinusoidal": "Une projection équivalente aux méridiens sinusoïdaux et aux parallèles droits.",
+                "vanDerGrinten": "Une projection circulaire du monde qui agrandit fortement les régions polaires.",
+                "winkelTripel": "Une projection de compromis combinant les coordonnées d’Aitoff et de l’équirectangulaire."
+            }
+        },
         "props": "2 props sont requises",
         "dataset": "dataset",
         "config": "config",

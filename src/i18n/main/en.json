@@ -310,6 +310,24 @@
         "alp": "Alec Lloyd Probert is a front-end developer, formerly a data analyst, with a strong passion for data visualization and VueJs."
     },
     "docs": {
+        "worldProjections": {
+            "label": "Projection",
+            "descriptions": {
+                "aitoff": "An elliptical compromise projection for world maps.",
+                "azimuthalEquidistant": "Preserves distances and directions measured from the map center.",
+                "bonne": "An equal-area pseudoconic projection with curved parallels.",
+                "equirectangular": "A cylindrical projection with a regular latitude–longitude grid.",
+                "gallPeters": "A cylindrical equal-area projection with standard parallels at 45° north and south.",
+                "globe": "An orthographic view showing one hemisphere as a globe.",
+                "hammer": "An elliptical equal-area projection with curved parallels.",
+                "mercator": "A cylindrical projection preserving local angles while enlarging polar areas.",
+                "mollweide": "An elliptical equal-area projection with straight parallels.",
+                "robinson": "A compromise world projection with straight parallels and curved meridians.",
+                "sinusoidal": "An equal-area projection with sinusoidal meridians and straight parallels.",
+                "vanDerGrinten": "A circular world projection that strongly exaggerates polar areas.",
+                "winkelTripel": "A compromise projection averaging Aitoff and equirectangular coordinates."
+            }
+        },
         "props": "2 props are required",
         "dataset": "dataset",
         "config": "config",

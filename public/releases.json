@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.29.2",
+        "date": "2026-11-14",
+        "updates": [
+            {
+                "component": "VueUiWorld",
+                "description": "Add zoom controls, country selection, point markers, color scales, custom country names and themes.",
+                "link": "/docs#vue-ui-world"
+            }
+        ]
+    },
+    {
         "version": "v 3.29.1",
         "date": "2026-11-10",
         "updates": [

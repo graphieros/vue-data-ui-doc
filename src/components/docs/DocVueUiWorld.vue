@@ -3,8 +3,16 @@ import { copySelection } from "../../clipboard.js";
 
 import { useDocConfigState } from "../../useDocConfigState";
 import VueUiWorldConfigFields from "./configuration/VueUiWorldConfigFields.vue";
-import { ref, watch, nextTick, computed, onMounted } from "vue";
+import {
+    ref,
+    watch,
+    nextTick,
+    computed,
+    onMounted,
+    onBeforeUnmount,
+} from "vue";
 import Box from "../Box.vue";
+import BaseThemeUnit from "../themes/BaseThemeUnit.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
@@ -21,6 +29,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseSpinner from "../BaseSpinner.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseDocDescription from "../BaseDocDescription.vue";
@@ -250,20 +259,6 @@ const dataset = ref({
 
 const currentProjection = ref("globe");
 
-// aitoff: { width: width || 1000, height: height || 500},
-//         azimuthalEquidistant: { width: width || 1000, height: height || 1000},
-//         bonne: { width: width || 1000, height: height || 1000},
-//         equirectangular: { width: width || 1000, height: height || 700 },
-//         gallPeters: { width: width || 1000, height: height || 800},
-//         globe: { width: width || 1000, height: height || 1000},
-//         hammer: { width: width || 1000, height: height || 500},
-//         mercator: { width: width || 1000, height: height || 750 },
-//         mollweide: { width: width || 1000, height: height || 600},
-//         robinson: { width: width || 1000, height: height || 600 },
-//         sinusoidal: { width: width || 1000, height: height || 500},
-//         vanDerGrinten: { width: width || 1000, height: height || 1000},
-//         winkelTripel: { width: width || 1000, height: height || 1000},
-
 const projections = ref([
     "aitoff",
     "azimuthalEquidistant",
@@ -280,6 +275,31 @@ const projections = ref([
     "winkelTripel",
 ]);
 
+// Source definitions for the short, translated projection descriptions.
+const projectionSources = {
+    aitoff: "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/aitoff.html",
+    azimuthalEquidistant:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/azimuthal-equidistant.html",
+    bonne: "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/bonne.html",
+    equirectangular:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/equidistant-cylindrical.html",
+    gallPeters: "https://www.giss.nasa.gov/tools/gprojector/help/projections/",
+    globe: "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/orthographic.html",
+    hammer: "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/hammer.html",
+    mercator:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/mercator.html",
+    mollweide:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/mollweide.html",
+    robinson:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/robinson.html",
+    sinusoidal:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/sinusoidal.html",
+    vanDerGrinten:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/van-der-grinten-i.html",
+    winkelTripel:
+        "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/winkel-tripel.html",
+};
+
 const configState = useDocConfigState(isDarkMode);
 const config = computed({
     get: () =>
@@ -287,6 +307,7 @@ const config = computed({
             devHints: { enable: false },
             debug: false,
             loading: false,
+            theme: "",
             projection: currentProjection.value,
             style: {
                 fontFamily: "inherit",
@@ -444,7 +465,7 @@ function fixChart() {
 const dsTypeCode = computed(() => {
     return `type VueUiWorldDataset = {
     [key: string]: {
-        value: number
+        value?: number | null
         category?: string
         color?: string
     }
@@ -459,11 +480,44 @@ const codeDataset = ref(`const dataset: VueUiWorldDataset = {
 
 const { configCode, showAllConfig } = useConfigCode();
 
-function setProjection(p) {
-    config.value.projection = p;
+const previewContainer = ref(null);
+const previewHeight = ref(null);
+const projectionLoading = ref(false);
+let projectionChange = 0;
+let projectionFrame = null;
 
-    currentProjection.value = p;
+watch(
+    () => config.value.projection,
+    () => {
+        // Read the previous chart before Vue replaces its keyed component.
+        projectionChange += 1;
+        cancelAnimationFrame(projectionFrame);
+        previewHeight.value =
+            previewContainer.value?.getBoundingClientRect().height ?? null;
+        projectionLoading.value = true;
+    },
+    { flush: "pre" },
+);
+
+async function revealProjection() {
+    const change = projectionChange;
+    if (!projectionLoading.value) return;
+    await nextTick();
+    if (change !== projectionChange) return;
+    projectionFrame = requestAnimationFrame(() => {
+        if (change !== projectionChange) return;
+        previewHeight.value = null;
+        // Give the loaded chart a frame to lay out before fading it in.
+        projectionFrame = requestAnimationFrame(() => {
+            if (change === projectionChange) projectionLoading.value = false;
+        });
+    });
 }
+
+onBeforeUnmount(() => {
+    projectionChange += 1;
+    cancelAnimationFrame(projectionFrame);
+});
 
 const box = ref(null);
 
@@ -508,14 +562,72 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(config)"
             >
-                <BaseCard dir="ltr">
-                    <VueDataUi
-                        component="VueUiWorld"
-                        :dataset="dataset"
-                        :config="config"
+                <BaseSpinner :visible="projectionLoading" :duration="0" />
+                <div
+                    ref="previewContainer"
+                    class="world-preview"
+                    :class="{ 'world-preview-loading': projectionLoading }"
+                    :style="
+                        previewHeight === null
+                            ? undefined
+                            : {
+                                  height: `${previewHeight}px`,
+                                  overflow: 'hidden',
+                              }
+                    "
+                >
+                    <BaseCard dir="ltr">
+                        <Suspense @resolve="revealProjection">
+                            <VueDataUi
+                                :key="config.projection"
+                                component="VueUiWorld"
+                                :dataset="dataset"
+                                :config="config"
+                            />
+                        </Suspense>
+                    </BaseCard>
+                </div>
+                <div class="flex justify-center items-center gap-2 mt-4">
+                    <label for="world-projection">{{
+                        translations.docs.worldProjections.label[store.lang]
+                    }}</label>
+                    <select
+                        id="world-projection"
+                        aria-describedby="world-projection-description"
+                        v-model="config.projection"
+                        class="bg-white dark:bg-[#3A3A3A] rounded p-2"
                     >
-                    </VueDataUi>
-                </BaseCard>
+                        <option
+                            v-for="projection in projections"
+                            :key="projection"
+                            :value="projection"
+                        >
+                            {{ projection }}
+                        </option>
+                    </select>
+                </div>
+                <p
+                    id="world-projection-description"
+                    dir="auto"
+                    aria-live="polite"
+                    class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400"
+                >
+                    {{
+                        translations.docs.worldProjections.descriptions[
+                            config.projection
+                        ][store.lang]
+                    }}
+                    <a
+                        :href="projectionSources[config.projection]"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-app-blue underline ms-1 whitespace-nowrap"
+                        >{{
+                            config.projection === "gallPeters" ? "NASA" : "Esri"
+                        }}
+                        ↗</a
+                    >
+                </p>
             </DocSnapper>
         </div>
 
@@ -529,6 +641,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
 
         <Box
             ref="box"
+            showThemes
             showEmits
             showSlots
             showTooltip
@@ -548,6 +661,39 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                         class="my-6"
                     />
                 </div>
+                <p class="my-4">
+                    Use ISO alpha-3 country codes as keys. Enable
+                    <code>normalizeCountryCodes</code> to accept alpha-2 and
+                    lowercase codes. Missing or null values represent missing
+                    data; invalid values use
+                    <code>style.chart.territory.invalidColor</code>. Returned
+                    countries include
+                    <code>valueStatus: 'valid' | 'missing' | 'invalid'</code>.
+                </p>
+                <p class="my-4">
+                    Pass point markers through the optional
+                    <code>points: VueUiWorldPoint[]</code> prop. Coordinates are
+                    longitude, latitude in degrees. Bind country selection with
+                    <code>v-model:selectedCountries</code> and enable
+                    <code>config.selection.enabled</code>.
+                </p>
+                <CodeParser
+                    language="typescript"
+                    :content="`type VueUiWorldPoint = {
+    id?: string | number;
+    name?: string;
+    coordinates: [number, number]; // [longitude, latitude]
+    value?: number;
+    radius?: number;
+    color?: string;
+};
+
+// Example props:
+const points: VueUiWorldPoint[] = [
+    { name: 'Paris', coordinates: [2.3522, 48.8566], value: 100 }
+];
+const selectedCountries = ref(['FRA']);`"
+                />
                 <CodeParser
                     language="typescript"
                     @copy="store.copy()"
@@ -586,7 +732,43 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 </code>
             </template>
 
+            <template #themes>
+                <BaseThemeUnit
+                    component="VueUiWorld"
+                    componentTheme="vue_ui_world"
+                    :dataset="dataset"
+                    :config="{
+                        projection: config.projection,
+                        style: {
+                            chart: {
+                                title: { text: 'GDP per country' },
+                                dataLabels: { prefix: '$', suffix: 'bn' },
+                            },
+                        },
+                    }"
+                />
+            </template>
+
             <template #events-and-methods>
+                <CodeParser
+                    language="typescript"
+                    :content="`// Additional events
+'update:selectedCountries': (codes: string[]) => void;
+selectPoint: (point: VueUiWorldPoint) => void;
+viewChange: (view: VueUiWorldView) => void;
+
+// VueUiWorldView contains projection, center: [longitude, latitude],
+// zoom, and viewBox: { minX, minY, width, height, str }.
+
+// Methods on the chart ref
+focusCountry(code: string): boolean;
+fitCountries(codes: string[]): boolean;
+resetView(animated?: boolean): void;
+resetZoom(animated?: boolean): void;
+zoomIn(): void;
+zoomOut(): void;
+clearSelection(): void;`"
+                />
                 <ComponentEmits
                     component="VueUiWorld"
                     :names="['selectLegend', 'selectDatapoint', 'copyAlt']"
@@ -613,9 +795,9 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
             const config = ref({
                 <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
             });
-            const dataset = ref([
+            const dataset = ref({
                 <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
-            ]);
+            });
 
         <span class="text-gray-400">&lt;/script&gt;</span>
 
@@ -645,9 +827,9 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                         config: {
                             <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
                         },
-                        dataset: [
+                        dataset: {
                             <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
-                        ]
+                        }
                     }
                 },
                 async mounted () {
@@ -666,6 +848,10 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                             'generateImage',
                             'generateSvg',
                             'toggleTable',
+                            'toggleTooltip',
+                            'toggleZoom',
+                            'toggleAnnotator',
+                            'toggleFullscreen',
                         ]"
                     />
                 </div>
@@ -675,6 +861,7 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                 <BaseSlotDocumenter
                     componentName="VueUiWorld"
                     :types="[
+                        'reset-action',
                         'svg-underlayer',
                         'svg',
                         'tooltip-before',
@@ -689,6 +876,14 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                     ]"
                 >
                     <template #top>
+                        <p class="my-4">
+                            Tooltip slots expose
+                            <code>{ kind, datapoint, series, config }</code>:
+                            <code>kind</code> is <code>'country'</code> or
+                            <code>'point'</code>. The
+                            <code>optionZoom</code> slot exposes
+                            <code>{ toggleZoom, isZoomLocked }</code>.
+                        </p>
                         <BaseSlotsImplementationLink
                             link="https://github.com/graphieros/vue-data-ui/blob/master/ts-playground/src/components/charts/ts-vue-ui-world.vue"
                         />
@@ -710,6 +905,13 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                     :content="customFormatCode"
                 />
 
+                <p class="my-4">
+                    Tooltip slots receive
+                    <code>{ kind, datapoint, series, config }</code>. When
+                    <code>kind</code> is <code>country</code>, datapoint and
+                    series contain countries; when it is <code>point</code>,
+                    they contain point markers.
+                </p>
                 <h3 class="my-4">
                     {{ translations.customFormatCss[store.lang] }}
                 </h3>
@@ -748,9 +950,28 @@ const customFormatCode = ref(`customFormat: ({ datapoint, series, config }) => {
                         'table',
                         'tooltip',
                         'svg',
+                        'zoom',
                     ]"
                 />
             </template>
         </Box>
     </div>
 </template>
+
+<style scoped>
+.world-preview {
+    opacity: 1;
+    transition: opacity 200ms ease;
+}
+
+.world-preview-loading {
+    opacity: 0;
+    transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .world-preview {
+        transition: none;
+    }
+}
+</style>

@@ -600,6 +600,21 @@ const wheelConfig = computed(() => {
             </Suspense>
         </div>
 
+        <a href="https://gitranks.com/repo/graphieros/vue-data-ui">
+            <picture>
+                <source
+                    media="(prefers-color-scheme: dark)"
+                    srcset="
+                        https://gitranks.com/badge/repo/graphieros/vue-data-ui/starred-by-card.svg?theme=dark
+                    "
+                />
+                <img
+                    src="https://gitranks.com/badge/repo/graphieros/vue-data-ui/starred-by-card.svg?theme=light"
+                    alt="graphieros/vue-data-ui on GitRanks: starred by top developers"
+                />
+            </picture>
+        </a>
+
         <BaseSponsorCard card tw="mt-10 mb-4 w-full" />
 
         <!-- <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors"

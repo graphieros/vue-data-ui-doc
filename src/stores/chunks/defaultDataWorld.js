@@ -39,6 +39,13 @@ export function createVueUiWorldDefaults() {
                 category: "userOptions",
             },
             {
+                key: "userOptions.annotator.followZoom",
+                def: true,
+                type: "checkbox",
+                label: "followZoom",
+                category: "userOptions",
+            },
+            {
                 key: "debug",
                 def: false,
                 type: "checkbox",

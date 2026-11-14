@@ -310,6 +310,24 @@
         "alp": "Alec Lloyd Probert 是一名前端开发人员和前数据分析师，对数据可视化和 VueJs 充满热情。"
     },
     "docs": {
+        "worldProjections": {
+            "label": "投影",
+            "descriptions": {
+                "aitoff": "用于世界地图的椭圆形折衷投影。",
+                "azimuthalEquidistant": "保持从地图中心测量的距离和方向。",
+                "bonne": "纬线弯曲的伪圆锥等积投影。",
+                "equirectangular": "采用规则经纬网格的圆柱投影。",
+                "gallPeters": "以南北纬45°为标准纬线的圆柱等积投影。",
+                "globe": "将一个半球显示为球体的正射投影。",
+                "hammer": "纬线弯曲的椭圆形等积投影。",
+                "mercator": "保持局部角度但放大极地面积的圆柱投影。",
+                "mollweide": "纬线平直的椭圆形等积投影。",
+                "robinson": "纬线平直、经线弯曲的世界地图折衷投影。",
+                "sinusoidal": "经线呈正弦曲线、纬线平直的等积投影。",
+                "vanDerGrinten": "将世界绘为圆形、显著放大极地面积的投影。",
+                "winkelTripel": "对艾托夫与等距圆柱投影坐标取平均的折衷投影。"
+            }
+        },
         "props": "需要2个属性",
         "dataset": "数据集",
         "config": "配置",
