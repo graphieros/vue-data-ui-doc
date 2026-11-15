@@ -26,6 +26,7 @@ dist-ssr
 
 # Jobs & scripts
 publish-site.cjs
+publish-site-old.cjs
 stars-cron.cjs
 run-stars-now.cjs
 backend/

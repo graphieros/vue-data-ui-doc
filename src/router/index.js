@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "../views/Home.vue";
-import { ref } from "vue";
-import { createChunkRecovery } from "../navigation/chunkRecovery.js";
+import { chunkFailure, recoverChunk } from "../navigation/siteUpdates.js";
+export { chunkFailure } from "../navigation/siteUpdates.js";
 
 const routes = [
     {
@@ -146,13 +146,6 @@ router.beforeEach((to, from, next) => {
     next();
 });
 
-export const chunkFailure = ref(null);
-const recoverChunk = createChunkRecovery({
-    reload: (target) => window.location.assign(target),
-    failed: (_error, target) => {
-        chunkFailure.value = target;
-    },
-});
 router.onError((error) => {
     recoverChunk(
         error,

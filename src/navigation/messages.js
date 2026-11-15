@@ -1,4 +1,26 @@
 const messages = {
+    updateAvailable: [
+        "A website update is available.",
+        "Une mise à jour du site est disponible.",
+        "Uma atualização do site está disponível.",
+        "Eine Website-Aktualisierung ist verfügbar.",
+        "网站有可用更新。",
+        "サイトの更新があります。",
+        "Hay una actualización del sitio disponible.",
+        "웹사이트 업데이트가 있습니다.",
+        "يتوفر تحديث للموقع.",
+    ],
+    update: [
+        "Update",
+        "Mettre à jour",
+        "Atualizar",
+        "Aktualisieren",
+        "更新",
+        "更新",
+        "Actualizar",
+        "업데이트",
+        "تحديث",
+    ],
     numberIncrement: [
         "Increase value",
         "Augmenter la valeur",

@@ -753,13 +753,13 @@ const wheelConfig = computed(() => {
             <SatisfactionStats />
         </BaseCard>
 
-        <BaseCard class="w-full mb-4">
+        <!-- <BaseCard class="w-full mb-4">
             <img
                 class="rounded-md"
                 width="100%"
                 :src="`https://npmx.dev/api/embed/downloads.svg?packages=vue-data-ui&metric=downloads&mode=${isDarkMode ? 'dark' : 'light'}&granularity=weekly&locale=en-GB&accent=oklch%280.792+0.153+166.95%29&yLabel=Weekly+Downloads`"
             />
-        </BaseCard>
+        </BaseCard> -->
 
         <div
             v-if="isDarkMode"

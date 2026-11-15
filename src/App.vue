@@ -22,7 +22,11 @@ import ConfirmCopy from "./components/ConfirmCopy.vue";
 import { installCopyFeedbackTracking } from "./clipboard.js";
 
 import { readStoredJson, writeStorage } from "./storage.js";
-import { chunkFailure } from "./router";
+import {
+    chunkFailure,
+    updateAvailable,
+    reloadPage,
+} from "./navigation/siteUpdates.js";
 import { updateMetadata } from "./navigation/metadata.js";
 import { navigationMessage } from "./navigation/messages.js";
 
@@ -238,7 +242,7 @@ watch(
     },
 );
 function retryPage() {
-    window.location.assign(chunkFailure.value);
+    reloadPage(chunkFailure.value);
 }
 
 const showUnderlay = computed(() => {
@@ -251,6 +255,20 @@ const showUnderlay = computed(() => {
         navigationMessage("skip", store.lang)
     }}</a>
     <Header />
+    <div
+        v-if="updateAvailable"
+        class="fixed bottom-4 sm:bottom-[76px] end-16 z-[2147483647] flex max-w-[calc(100vw-2rem)] items-center gap-3 rounded-xl border border-gray-200 bg-white/95 pl-3 pr-2 py-2 font-inter text-xs text-gray-600 shadow-md backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/95 dark:text-gray-300"
+        role="status"
+        dir="auto"
+    >
+        <span>{{ navigationMessage("updateAvailable", store.lang) }}</span>
+        <button
+            class="shrink-0 rounded-lg bg-gray-100 px-3 py-2 font-medium text-gray-800 transition-colors hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
+            @click="reloadPage()"
+        >
+            {{ navigationMessage("update", store.lang) }}
+        </button>
+    </div>
     <HelpCenter v-if="!['Home', 'Versions', 'Maker'].includes(route.name)" />
     <div v-if="showUnderlay && !isDarkMode"></div>
 
@@ -274,7 +292,7 @@ const showUnderlay = computed(() => {
                 {{ navigationMessage("retry", store.lang) }}
             </button>
         </div>
-        <router-view v-if="!chunkFailure" />
+        <router-view />
         <UpToTop />
         <GithubButton v-if="route.name !== 'Home'" />
         <FootInfo

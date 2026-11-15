@@ -1,3 +1,4 @@
+import { installUpdateChecks } from "./navigation/siteUpdates.js";
 import { createApp } from "vue";
 import "./style.css";
 import "./rtl.css";
@@ -7,6 +8,8 @@ import { createPinia } from "pinia";
 import { useMainStore } from "./stores/index.js";
 import { registerCharts } from "./plugins/registerCharts.js";
 import { readStorage } from "./storage.js";
+
+installUpdateChecks();
 
 const pinia = createPinia();
 
