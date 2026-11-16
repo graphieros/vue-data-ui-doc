@@ -252,7 +252,7 @@
     "nuxt": {
         "implementation": "如果您使用 Nuxt，则此 Github 存储库中提供了安装示例"
     },
-    "tagline": "一个赋予用户权力的数据可视化 Vue3 组件库，用于巧妙地叙述数据故事。",
+    "tagline": "一个 Vue 3 组件库，让数据可视化更具表现力。",
     "github": "Github",
     "lightMode": "切换到浅色模式",
     "darkMode": "切换到深色模式",

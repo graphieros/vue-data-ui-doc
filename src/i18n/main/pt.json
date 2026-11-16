@@ -252,7 +252,7 @@
     "nuxt": {
         "implementation": "Se você estiver usando Nuxt, um exemplo de instalação é fornecido neste repositório Github"
     },
-    "tagline": "Uma biblioteca de componentes Vue3 para visualização de dados, capacitando o usuário para contar histórias de dados eloquentes.",
+    "tagline": "Uma biblioteca de componentes Vue 3 para criar visualizações de dados expressivas.",
     "github": "Github repo",
     "lightMode": "Mudar para o modo claro",
     "darkMode": "Mudar para o modo escuro",
