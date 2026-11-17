@@ -104,3 +104,32 @@ test("builder recovery keeps editor mounted and requires confirmation before rel
         globalThis.sessionStorage = oldStorage;
     }
 });
+test("manual reload bypasses cached HTML and preserves the route, query and anchor", () => {
+    const original = globalThis.window;
+    const navigations = [];
+    globalThis.window = {
+        location: {
+            pathname: "/docs",
+            href: "https://example.com/docs?lang=fr&_vdu_update=old#config",
+            assign: (target) => navigations.push(target),
+        },
+    };
+    try {
+        reloadPage();
+        const url = new URL(navigations[0]);
+        assert.equal(url.pathname, "/docs");
+        assert.equal(url.searchParams.get("lang"), "fr");
+        assert.equal(url.hash, "#config");
+        assert.match(url.searchParams.get("_vdu_update"), /^\d+$/);
+        assert.equal(url.searchParams.getAll("_vdu_update").length, 1);
+
+        reloadPage("/other?lang=en#example");
+        const target = new URL(navigations[1]);
+        assert.equal(target.pathname, "/other");
+        assert.equal(target.searchParams.get("lang"), "en");
+        assert.equal(target.hash, "#example");
+        assert.ok(target.searchParams.has("_vdu_update"));
+    } finally {
+        globalThis.window = original;
+    }
+});

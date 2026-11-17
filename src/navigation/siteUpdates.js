@@ -15,7 +15,9 @@ export function reloadPage(target = window.location.href) {
         )
     )
         return;
-    window.location.assign(target);
+    const url = new URL(target, window.location.href);
+    url.searchParams.set("_vdu_update", String(Date.now()));
+    window.location.assign(url.href);
 }
 const recover = createChunkRecovery({
     reload: (target) => {
