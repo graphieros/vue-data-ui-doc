@@ -24,9 +24,15 @@ const type = computed(() => {
     if (["checkbox", "chekbox", "chexkbox"].includes(props.knob.type))
         return "checkbox";
     if (
-        ["color", "number", "range", "select", "text", "string"].includes(
-            props.knob.type,
-        )
+        [
+            "color",
+            "number",
+            "range",
+            "select",
+            "text",
+            "string",
+            "json",
+        ].includes(props.knob.type)
     )
         return props.knob.type;
     if (props.knob.def !== null && typeof props.knob.def === "object")

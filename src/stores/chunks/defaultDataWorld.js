@@ -1,3 +1,16 @@
+function worldControls(prefix, category, fields) {
+    return fields.map(([key, def, type, settings = {}]) => ({
+        key: prefix ? `${prefix}.${key}` : key,
+        def,
+        type,
+        label: (prefix ? `${prefix}.${key}` : key)
+            .replace(/^style\.chart\./, "")
+            .split("."),
+        category,
+        ...settings,
+    }));
+}
+
 // A fresh value for each Pinia store instance, matching the original state factory.
 export function createVueUiWorldDefaults() {
     return {
@@ -6,6 +19,130 @@ export function createVueUiWorldDefaults() {
             USA: { value: 90, category: "USA", color: "blue" },
         },
         model: [
+            ...worldControls("", "general", [
+                ["devHints.enable", false, "checkbox"],
+                ["customPalette", [], "json"],
+                ["normalizeCountryCodes", false, "checkbox"],
+                ["countryNames", {}, "json"],
+            ]),
+            ...worldControls("selection", "general", [
+                ["enabled", false, "checkbox"],
+                ["multiple", false, "checkbox"],
+                ["color", "#333333", "color"],
+            ]),
+            ...worldControls("style.chart.zoom", "zoom", [
+                ["show", false, "checkbox"],
+                ["minZoom", 1, "number", { min: 1, max: 20, step: 0.1 }],
+                ["maxZoom", 20, "number", { min: 1, max: 100, step: 0.1 }],
+                [
+                    "region",
+                    null,
+                    "select",
+                    {
+                        options: [
+                            null,
+                            "africa",
+                            "europe",
+                            "asia",
+                            "northAmerica",
+                            "southAmerica",
+                            "oceania",
+                        ],
+                    },
+                ],
+                ["countries", [], "json"],
+            ]),
+            ...worldControls("style.chart.globe", "general", [
+                ["center.x", 0, "number", { min: -500, max: 500 }],
+                ["center.y", 0, "number", { min: -500, max: 500 }],
+                ["waterColor", "#1f77b4", "color"],
+            ]),
+            ...worldControls("style.chart.points", "general", [
+                ["show", true, "checkbox"],
+                ["radius", 5, "number", { min: 0, max: 50 }],
+                ["maxRadius", 25, "number", { min: 0, max: 100 }],
+                ["color", "#1f77b4", "color"],
+                ["stroke", "#FFFFFF", "color"],
+                ["strokeWidth", 1, "number", { min: 0, max: 10, step: 0.5 }],
+                ["opacity", 0.8, "number", { min: 0, max: 1, step: 0.1 }],
+            ]),
+            ...worldControls("style.chart.colorScale", "general", [
+                [
+                    "type",
+                    "linear",
+                    "select",
+                    {
+                        options: [
+                            "linear",
+                            "log",
+                            "quantile",
+                            "threshold",
+                            "diverging",
+                        ],
+                    },
+                ],
+                ["domain", null, "json"],
+                ["center", 0, "number", { min: -10000, max: 10000 }],
+                ["middleColor", "#FFFFFF", "color"],
+                ["quantileSteps", 5, "number", { min: 2, max: 20 }],
+                ["thresholds", [], "json"],
+                ["colors", [], "json"],
+            ]),
+            ...worldControls("style.chart.colorScale.legend", "legend", [
+                ["show", false, "checkbox"],
+                [
+                    "position",
+                    "bottom",
+                    "select",
+                    { options: ["top", "bottom"] },
+                ],
+                ["title", "", "text"],
+                ["fontSize", 12, "number", { min: 6, max: 40 }],
+                ["gradient.borderRadius", 3, "number", { min: 0, max: 20 }],
+                ["gradient.height", 12, "number", { min: 1, max: 50 }],
+            ]),
+            ...worldControls("style.chart.territory", "general", [
+                ["invalidColor", "#E0E0E0", "color"],
+            ]),
+            ...worldControls("style.chart.tooltip", "tooltip", [
+                ["show", true, "checkbox"],
+                ["showMinimap", true, "checkbox"],
+                ["color", "#2D353C", "color"],
+                ["backgroundColor", "#FFFFFF", "color"],
+                ["fontSize", 14, "number", { min: 6, max: 48 }],
+                ["borderRadius", 4, "number", { min: 0, max: 30 }],
+                ["borderColor", "#e1e5e8", "color"],
+                ["borderWidth", 1, "number", { min: 0, max: 10 }],
+                ["backgroundOpacity", 100, "number", { min: 0, max: 100 }],
+                [
+                    "position",
+                    "center",
+                    "select",
+                    { options: ["center", "left", "right"] },
+                ],
+                ["offsetX", 0, "number", { min: -500, max: 500 }],
+                ["offsetY", 24, "number", { min: -500, max: 500 }],
+                ["smooth", true, "checkbox"],
+                ["backdropFilter", true, "checkbox"],
+                ["smoothForce", 0.18, "number", { min: 0, max: 1, step: 0.01 }],
+                [
+                    "smoothSnapThreshold",
+                    0.25,
+                    "number",
+                    { min: 0, max: 10, step: 0.01 },
+                ],
+                ["teleportTo", "body", "text"],
+            ]),
+            ...worldControls("userOptions.buttons", "userOptions", [
+                ["tooltip", true, "checkbox"],
+                ["svg", true, "checkbox"],
+                ["zoom", true, "checkbox"],
+            ]),
+            ...worldControls("userOptions.buttonTitles", "userOptions", [
+                ["tooltip", "Toggle tooltip", "text"],
+                ["svg", "Download SVG", "text"],
+                ["zoom", "Toggle zoom lock", "text"],
+            ]),
             {
                 key: "userOptions.annotator.useOutline",
                 def: true,
