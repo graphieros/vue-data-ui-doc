@@ -81,14 +81,11 @@ export function createVueUiWordCloudConfigFields({
                     },
                 },
                 {
+                    inactive: true,
                     name: "quality",
-                    attr: "quality",
-                    type: "select",
                     defaultVal: "fast",
-                    options: ["fast", "balanced", "precise"],
-                    onChange: (..._args) => {
-                        return forceChartUpdate();
-                    },
+                    comment:
+                        "Deprecated since v3.29.3: quality no longer affects word placement. Retained for compatibility; glyph packing uses one placement strategy.",
                 },
                 {
                     attr: "a11y",
@@ -159,15 +156,10 @@ export function createVueUiWordCloudConfigFields({
                     ],
                 },
                 {
+                    inactive: true,
                     name: "animationDelayMs",
-                    attr: "animationDelayMs",
-                    type: "range",
                     defaultVal: "20",
-                    min: 0,
-                    max: 100,
-                    onChange: (..._args) => {
-                        return forceChartUpdate();
-                    },
+                    comment: "Deprecated.",
                 },
                 {
                     attr: "style",
@@ -441,6 +433,47 @@ export function createVueUiWordCloudConfigFields({
                                             onChange: (..._args) => {
                                                 return forceChartUpdate();
                                             },
+                                        },
+                                        {
+                                            inactive: true,
+                                            name: "angles",
+                                            defaultVal: "[0]",
+                                            comment:
+                                                "Since v3.29.3. number[] — Allowed rotations in degrees, e.g. [0, -90] or [-45, 0, 45].",
+                                        },
+                                        {
+                                            name: "randomizeAngles",
+                                            attr: "style.chart.words.randomizeAngles",
+                                            type: "checkbox",
+                                            defaultVal: "false",
+                                            comment:
+                                                "Since v3.29.3. Pick seeded random angles instead of alternating through angles.",
+                                        },
+                                        {
+                                            name: "randomness",
+                                            attr: "style.chart.words.randomness",
+                                            type: "number",
+                                            defaultVal: "0.2",
+                                            min: 0,
+                                            max: 1,
+                                            step: 0.05,
+                                            comment:
+                                                "Since v3.29.3. Scatter from 0 (centered) to 1 (full canvas).",
+                                        },
+                                        {
+                                            name: "seed",
+                                            attr: "style.chart.words.seed",
+                                            type: "number",
+                                            defaultVal: "42",
+                                            step: 1,
+                                            comment:
+                                                "Since v3.29.3. Seed for reproducible layouts and angle choices.",
+                                        },
+                                        {
+                                            inactive: true,
+                                            name: "packingWeight",
+                                            defaultVal: "1",
+                                            comment: "Deprecated.",
                                         },
                                         {
                                             name: "proximity",

@@ -138,6 +138,12 @@
         "title": "빠른 구성 요소 개요"
     },
     "wordCloud": {
+        "tryAngles": "단어 각도 변경:",
+        "horizontal": "가로",
+        "horizontalAndVertical": "가로 및 세로",
+        "diagonal": "대각선",
+        "slightTilt": "약간 기울임",
+        "since": "도입 버전:",
         "dataset": "dataset prop에 일반 텍스트를 전달할 수 있습니다. 컴포넌트는 각 단어의 출현 횟수를 계산합니다. vue-data-ui에서 createWordCloudDatasetFromPlainText 함수를 가져와 일반 텍스트를 dataset prop에 전달할 데이터셋 객체로 변환할 수도 있습니다."
     },
     "sideMenu": {

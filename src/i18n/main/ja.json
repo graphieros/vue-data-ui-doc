@@ -138,6 +138,12 @@
         "title": "コンポーネントの簡単な概要"
     },
     "wordCloud": {
+        "tryAngles": "単語の角度を試す：",
+        "horizontal": "横書き",
+        "horizontalAndVertical": "横書きと縦書き",
+        "diagonal": "斜め",
+        "slightTilt": "わずかな傾き",
+        "since": "導入バージョン：",
         "dataset": "プレーンテキストをデータセットプロップに渡すことができます。コンポーネントは単語数を計算します。また、「vue-data-ui」から「createWordCloudDatasetFromPlainText」メソッドをインポートして、プレーン テキストをデータセット オブジェクトに変換し、「dataset」プロパティに渡すこともできます。"
     },
     "sideMenu": {

@@ -102,8 +102,6 @@ const config = computed({
                 force: 0.0006,
             }),
             useCssAnimation: true,
-            animationDelayMs: 20,
-            quality: "fast",
             userOptions: {
                 annotator: {
                     showGroupActions: true,
@@ -173,6 +171,10 @@ const config = computed({
                         minFontSize: 20,
                         bold: false,
                         proximity: 0,
+                        angles: [0],
+                        randomizeAngles: false,
+                        randomness: 0.2,
+                        seed: 42,
                         color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
                         usePalette: true,
                         hoverOpacity: 0.5,
@@ -276,6 +278,8 @@ const { configCode, showAllConfig } = useConfigCode();
 const dsTypeCode = ref(`type VueUiWordCloudDatasetItem = {
     name: string
     value: number
+    color?: string
+    [key: string]: any
 }`);
 
 const codeDataset1 = ref(`const dataset: VueUiWordCloudDatasetItem[] = [
@@ -290,9 +294,9 @@ const codeDataset2 = computed(() => {
     return `
     // ${translations.value.wordCloud.dataset[store.lang]}
     
-    import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
+    import { createWordCloudDatasetFromPlainText } from "vue-data-ui/utils";
 
-    const plainText = "orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar pretium venenatis. Donec imperdiet elit id porttitor tristique. Aenean ac commodo justo. Vestibulum placerat molestie nisl, sit amet lacinia nulla posuere quis. Aenean ullamcorper eu ex vitae facilisis. Aliquam erat volutpat. Proin nunc felis, porttitor quis commodo lacinia, gravida sed orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus mattis vitae tellus ac luctus. Vestibulum faucibus sem nec varius eleifend. In gravida venenatis ipsum sit amet ultricies.";
+    const plainText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar pretium venenatis. Donec imperdiet elit id porttitor tristique. Aenean ac commodo justo. Vestibulum placerat molestie nisl, sit amet lacinia nulla posuere quis. Aenean ullamcorper eu ex vitae facilisis. Aliquam erat volutpat. Proin nunc felis, porttitor quis commodo lacinia, gravida sed orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus mattis vitae tellus ac luctus. Vestibulum faucibus sem nec varius eleifend. In gravida venenatis ipsum sit amet ultricies.";
 
     const dataset = createWordCloudDatasetFromPlainText(plainText)
         .sort((a, b) => b.value - a.value);
@@ -362,6 +366,42 @@ function goToPage(route) {
                     />
                 </BaseCard>
             </DocSnapper>
+            <label
+                class="flex flex-wrap items-center justify-center gap-2 my-4"
+            >
+                {{ translations.wordCloud.tryAngles[store.lang] }}
+                <select
+                    v-model="config.style.chart.words.angles"
+                    class="bg-white dark:bg-[#2A2A2A] border rounded p-1"
+                >
+                    <option :value="[0]">
+                        [0] -
+                        {{ translations.wordCloud.horizontal[store.lang] }}
+                    </option>
+                    <option :value="[0, -90]">
+                        [0, -90] -
+                        {{
+                            translations.wordCloud.horizontalAndVertical[
+                                store.lang
+                            ]
+                        }}
+                    </option>
+                    <option :value="[-45, 0, 45]">
+                        [-45, 0, 45] -
+                        {{ translations.wordCloud.diagonal[store.lang] }}
+                    </option>
+                    <option :value="[-20, 0, 20]">
+                        [-20, 0, 20] -
+                        {{ translations.wordCloud.slightTilt[store.lang] }}
+                    </option>
+                </select>
+                <span class="text-sm text-gray-500"
+                    >{{
+                        translations.wordCloud.since[store.lang]
+                    }}
+                    v3.29.3</span
+                >
+            </label>
         </div>
 
         <div class="w-full flex justify-center mt-6">
@@ -417,6 +457,18 @@ function goToPage(route) {
                     configType="VueUiWordCloudConfig"
                 />
 
+                <p class="my-4">
+                    Set <code>style.chart.words.angles</code> to allowed
+                    rotations in degrees: <code>[0]</code> for horizontal words,
+                    <code>[0, -90]</code> for horizontal and vertical words, or
+                    <code>[-45, 0, 45]</code> for diagonal words. The package
+                    defaults to <code>[0]</code>. Enable
+                    <code>randomizeAngles</code> to pick seeded random angles
+                    instead of alternating through the list.
+                    <code>randomness</code> controls scatter from 0 (centered)
+                    to 1 (full canvas); <code>seed</code> makes the layout and
+                    angle choices reproducible.
+                </p>
                 <BaseCopyConfig :config="config" @reset="resetDefault" />
 
                 <div class="mt-4">

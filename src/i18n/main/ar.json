@@ -138,6 +138,12 @@
         "title": "نظرة سريعة على المكونات"
     },
     "wordCloud": {
+        "tryAngles": "جرّب زوايا الكلمات:",
+        "horizontal": "أفقي",
+        "horizontalAndVertical": "أفقي ورأسي",
+        "diagonal": "قطري",
+        "slightTilt": "ميل طفيف",
+        "since": "منذ",
         "dataset": "يمكنك تمرير نص عادي إلى خاصية مجموعة البيانات (dataset prop). سيقوم المكون بحساب عدد الكلمات. يمكنك أيضًا استيراد الطريقة 'createWordCloudDatasetFromPlainText' من 'vue-data-ui' لتحويل النص العادي إلى كائن مجموعة بيانات (dataset object) لتمريره إلى خاصية 'dataset' (prop)"
     },
     "sideMenu": {

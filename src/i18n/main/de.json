@@ -138,6 +138,12 @@
         "title": "Schneller Komponentenüberblick"
     },
     "wordCloud": {
+        "tryAngles": "Wortwinkel ausprobieren:",
+        "horizontal": "Horizontal",
+        "horizontalAndVertical": "Horizontal und vertikal",
+        "diagonal": "Diagonal",
+        "slightTilt": "Leicht geneigt",
+        "since": "seit",
         "dataset": "Sie können Klartext an die Prop dataset übergeben. Die Komponente berechnet die Worthäufigkeiten. Sie können auch die Funktion createWordCloudDatasetFromPlainText aus vue-data-ui importieren, um Klartext in ein Datensatzobjekt für die Prop dataset umzuwandeln."
     },
     "sideMenu": {

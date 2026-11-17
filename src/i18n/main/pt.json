@@ -138,6 +138,12 @@
         "title": "Visão geral rápida dos componentes"
     },
     "wordCloud": {
+        "tryAngles": "Experimente os ângulos das palavras:",
+        "horizontal": "Horizontal",
+        "horizontalAndVertical": "Horizontal e vertical",
+        "diagonal": "Diagonal",
+        "slightTilt": "Leve inclinação",
+        "since": "desde",
         "dataset": "Você pode passar texto simples para o conjunto de dados. O componente calculará a contagem de palavras. Você também pode importar o método 'createWordCloudDatasetFromPlainText' de 'vue-data-ui' para converter texto simples em um objeto de conjunto de dados para passar para a propriedade 'dataset'."
     },
     "sideMenu": {

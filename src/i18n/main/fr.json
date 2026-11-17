@@ -138,6 +138,12 @@
         "title": "Présentation rapide des composants"
     },
     "wordCloud": {
+        "tryAngles": "Essayez les angles des mots :",
+        "horizontal": "Horizontal",
+        "horizontalAndVertical": "Horizontal et vertical",
+        "diagonal": "Diagonal",
+        "slightTilt": "Légère inclinaison",
+        "since": "depuis",
         "dataset": "Vous pouvez transmettre du texte brut à la prop dataset. Le composant calcule les occurrences de chaque mot. Vous pouvez aussi importer la fonction createWordCloudDatasetFromPlainText depuis vue-data-ui pour convertir du texte brut en un objet à transmettre à la prop dataset."
     },
     "sideMenu": {

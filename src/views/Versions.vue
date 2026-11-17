@@ -1549,6 +1549,7 @@ const wordCloudConfig = computed(() => {
                     color: isDarkMode.value ? "#8A8A8A" : "#3A3A3A",
                     usePalette: true,
                     selectedStroke: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
+                    angles: [30, 0, -30],
                 },
                 tooltip: {
                     backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",

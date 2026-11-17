@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.29.3",
+        "date": "2026-11-17",
+        "updates": [
+            {
+                "component": "VueUiWordCloud",
+                "description": "Add optional angles, improve performance",
+                "link": "/docs#vue-ui-word-cloud"
+            }
+        ]
+    },
+    {
         "version": "v 3.29.2",
         "date": "2026-11-14",
         "updates": [

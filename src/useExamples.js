@@ -13638,6 +13638,145 @@ export default function useExamples() {
                     ar: "مع خلفية مخصصة",
                 },
             },
+            {
+                dataset: DATASET_WORDCLOUD_ENGLISH.value,
+                config: {
+                    ...CONFIG_WORD_WLOUD_BASIC.value,
+                    style: {
+                        ...CONFIG_WORD_WLOUD_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
+                            words: {
+                                ...CONFIG_WORD_WLOUD_BASIC.value.style.chart
+                                    .words,
+                                angles: [0],
+                                randomizeAngles: false,
+                                randomness: 0.2,
+                                seed: 42,
+                            },
+                        },
+                    },
+                },
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-angles-horizontal",
+                link: "vue-ui-word-cloud",
+                description: {
+                    en: "Horizontal words: angles [0]",
+                    fr: "Mots horizontaux : angles [0]",
+                    pt: "Palavras horizontais: angles [0]",
+                    de: "Horizontale Wörter: angles [0]",
+                    zh: "水平词语：angles [0]",
+                    ja: "横書き：angles [0]",
+                    es: "Palabras horizontales: angles [0]",
+                    ko: "가로 단어: angles [0]",
+                    ar: "كلمات أفقية: angles [0]",
+                },
+            },
+            {
+                dataset: DATASET_WORDCLOUD_ENGLISH.value,
+                config: {
+                    ...CONFIG_WORD_WLOUD_BASIC.value,
+                    style: {
+                        ...CONFIG_WORD_WLOUD_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
+                            words: {
+                                ...CONFIG_WORD_WLOUD_BASIC.value.style.chart
+                                    .words,
+                                angles: [0, -90],
+                                randomizeAngles: false,
+                                randomness: 0.2,
+                                seed: 42,
+                            },
+                        },
+                    },
+                },
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-angles-orthogonal",
+                link: "vue-ui-word-cloud",
+                description: {
+                    en: "Alternating horizontal and vertical words: angles [0, -90]",
+                    fr: "Alternance de mots horizontaux et verticaux : angles [0, -90]",
+                    pt: "Palavras horizontais e verticais alternadas: angles [0, -90]",
+                    de: "Abwechselnd horizontale und vertikale Wörter: angles [0, -90]",
+                    zh: "交替水平和垂直词语：angles [0, -90]",
+                    ja: "横書きと縦書きを交互に配置：angles [0, -90]",
+                    es: "Palabras horizontales y verticales alternadas: angles [0, -90]",
+                    ko: "가로 및 세로 단어 교대: angles [0, -90]",
+                    ar: "كلمات أفقية ورأسية بالتناوب: angles [0, -90]",
+                },
+            },
+            {
+                dataset: DATASET_WORDCLOUD_ENGLISH.value,
+                config: {
+                    ...CONFIG_WORD_WLOUD_BASIC.value,
+                    style: {
+                        ...CONFIG_WORD_WLOUD_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
+                            words: {
+                                ...CONFIG_WORD_WLOUD_BASIC.value.style.chart
+                                    .words,
+                                angles: [-45, 0, 45],
+                                randomizeAngles: true,
+                                randomness: 0.2,
+                                seed: 42,
+                            },
+                        },
+                    },
+                },
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-angles-random-diagonal",
+                link: "vue-ui-word-cloud",
+                description: {
+                    en: "Seeded random diagonal words: angles [-45, 0, 45], seed 42",
+                    fr: "Mots diagonaux aléatoires reproductibles : angles [-45, 0, 45], seed 42",
+                    pt: "Palavras diagonais aleatórias reproduzíveis: angles [-45, 0, 45], seed 42",
+                    de: "Reproduzierbar zufällige diagonale Wörter: angles [-45, 0, 45], seed 42",
+                    zh: "可复现的随机斜向词语：angles [-45, 0, 45]，seed 42",
+                    ja: "再現可能なランダム斜め配置：angles [-45, 0, 45]、seed 42",
+                    es: "Palabras diagonales aleatorias reproducibles: angles [-45, 0, 45], seed 42",
+                    ko: "재현 가능한 무작위 대각선 단어: angles [-45, 0, 45], seed 42",
+                    ar: "كلمات قطرية عشوائية قابلة للتكرار: angles [-45, 0, 45], seed 42",
+                },
+            },
+            {
+                dataset: DATASET_WORDCLOUD_ENGLISH.value,
+                config: {
+                    ...CONFIG_WORD_WLOUD_BASIC.value,
+                    style: {
+                        ...CONFIG_WORD_WLOUD_BASIC.value.style,
+                        fontFamily: "JetBrainsMono, monospace",
+                        chart: {
+                            ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
+                            words: {
+                                ...CONFIG_WORD_WLOUD_BASIC.value.style.chart
+                                    .words,
+                                angles: [0, -90],
+                                seed: 42,
+                            },
+                        },
+                    },
+                },
+                component: "VueUiWordCloud",
+                icon: "chartWordCloud",
+                id: "word-cloud-monospace",
+                link: "vue-ui-word-cloud",
+                description: {
+                    en: "Word cloud with the JetBrains Mono font",
+                    fr: "Nuage de mots avec la police JetBrains Mono",
+                    pt: "Nuvem de palavras com a fonte JetBrains Mono",
+                    de: "Wortwolke mit der Schriftart JetBrains Mono",
+                    zh: "使用 JetBrains Mono 字体的词云",
+                    ja: "JetBrains Mono フォントのワードクラウド",
+                    es: "Nube de palabras con la fuente JetBrains Mono",
+                    ko: "JetBrains Mono 글꼴을 사용한 단어 구름",
+                    ar: "سحابة كلمات بخط JetBrains Mono",
+                },
+            },
             // WORD CLOUD CHINESE
             {
                 dataset: DATASET_WORDCLOUD_CHINESE.value,

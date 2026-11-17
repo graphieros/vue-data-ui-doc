@@ -138,6 +138,12 @@
         "title": "Descripción rápida de los componentes"
     },
     "wordCloud": {
+        "tryAngles": "Prueba los ángulos de las palabras:",
+        "horizontal": "Horizontal",
+        "horizontalAndVertical": "Horizontal y vertical",
+        "diagonal": "Diagonal",
+        "slightTilt": "Ligera inclinación",
+        "since": "desde",
         "dataset": "Puede pasar texto sin formato al dataset prop. El componente calculará el recuento de palabras. También puede importar el método 'createWordCloudDatasetFromPlainText' desde 'vue-data-ui' para convertir texto sin formato en un objeto de conjunto de datos para pasarlo a la prop 'dataset'."
     },
     "sideMenu": {

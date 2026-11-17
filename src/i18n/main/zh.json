@@ -138,6 +138,12 @@
         "title": "组件快速概览"
     },
     "wordCloud": {
+        "tryAngles": "尝试词语角度：",
+        "horizontal": "水平",
+        "horizontalAndVertical": "水平和垂直",
+        "diagonal": "对角线",
+        "slightTilt": "轻微倾斜",
+        "since": "始于",
         "dataset": "您可以将纯文本传递到 dataset 属性中。该组件将计算字数。您还可以从“vue-data-ui”导入方法“createWordCloudDatasetFromPlainText”，将纯文本转换为数据集对象以传递给“dataset”属性。"
     },
     "sideMenu": {

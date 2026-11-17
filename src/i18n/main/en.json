@@ -138,6 +138,12 @@
         "title": "Quick components overview"
     },
     "wordCloud": {
+        "tryAngles": "Try word angles:",
+        "horizontal": "Horizontal",
+        "horizontalAndVertical": "Horizontal and vertical",
+        "diagonal": "Diagonal",
+        "slightTilt": "Slight tilt",
+        "since": "since",
         "dataset": "You can pass plain text into the dataset prop. The component will compute the word counts. You can also import the method 'createWordCloudDatasetFromPlainText' from 'vue-data-ui' to convert plain text into a dataset object to pass to the 'dataset' prop."
     },
     "sideMenu": {
