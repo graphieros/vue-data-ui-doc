@@ -14,6 +14,7 @@ const props = defineProps({
     fieldOptions: { type: Object, default: () => ({}) },
     fieldPath: { type: String, default: "" },
     treemap: { type: Boolean, default: false },
+    dumbbell: { type: Boolean, default: false },
     parentColor: { type: String, default: "" },
     disabled: { type: Boolean, default: false },
     descriptionId: { type: String, default: undefined },
@@ -75,7 +76,7 @@ function add() {
     const example = props.modelValue.at(-1) ?? props.template?.[0] ?? 0;
     const item = JSON.parse(JSON.stringify(example));
     if (
-        props.treemap &&
+        (props.treemap || props.dumbbell) &&
         item &&
         typeof item === "object" &&
         !Array.isArray(item) &&
@@ -167,6 +168,7 @@ function remove(index) {
                     :field-key="array ? fieldKey || label : String(key)"
                     :field-options="fieldOptions"
                     :treemap="treemap"
+                    :dumbbell="dumbbell"
                     :removable="
                         treemap && array && value && typeof value === 'object'
                     "

@@ -252,7 +252,7 @@ test("maker annotation controls match chart documentation and export edited bool
             else zoomControls++;
         }
     }
-    assert.equal(groupControls, 40);
+    assert.equal(groupControls, 41);
     assert.equal(zoomControls, 10);
 });
 
@@ -425,7 +425,7 @@ test("maker outline options preserve defaults, custom colors and null reset valu
             }
         }
     }
-    assert.equal(charts, 40);
+    assert.equal(charts, 41);
 });
 
 test("Stackline time tag settings preview, export, persist and reset", async () => {

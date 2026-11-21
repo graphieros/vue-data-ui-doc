@@ -335,4 +335,11 @@ export const catalog = [
         icon: "chartTreemap",
         thumb: "thumb_treemap_light.png",
     },
+    {
+        key: "vue_ui_dumbbell",
+        name: "VueUiDumbbell",
+        descriptionKey: "dumbbell",
+        icon: "chartDumbbell",
+        thumb: "thumb_dumbbell_light.png",
+    },
 ];

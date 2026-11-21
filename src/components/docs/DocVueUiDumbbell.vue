@@ -368,6 +368,7 @@ function goToPage(route) {
 
         <BaseDocHeaderActions
             targetLink="vue-ui-dumbbell"
+            targetMaker="VueUiDumbbell"
             :configSource="mainConfig.vue_ui_dumbbell"
         />
 

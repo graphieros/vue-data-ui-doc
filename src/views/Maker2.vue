@@ -601,6 +601,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                                 v-else
                                 v-model="dataset"
                                 :treemap="current.key === 'vue_ui_treemap'"
+                                :dumbbell="current.key === 'vue_ui_dumbbell'"
                                 :field-options="datasetFieldOptions"
                                 :template="defaults[current.key].dataset"
                             />

@@ -134,6 +134,44 @@ test("Treemap builder defaults render nested data and export it", async () => {
     assert.ok(code.includes("Product A"));
 });
 
+test("Dumbbell maker defaults render and export with bounded numeric controls", async () => {
+    const { createSSRApp, h } = await import("vue");
+    const { renderToString } = await import("vue/server-renderer");
+    const { VueUiDumbbell } = await import("vue-data-ui/vue-ui-dumbbell");
+    const { createVueUiDumbbellDefaults } =
+        await import("../src/stores/chunks/defaultDataDumbbell.js");
+    const { convertArrayToObject } =
+        await import("../src/components/maker/lib.js");
+    const { dataset, model } = createVueUiDumbbellDefaults();
+    for (const control of model.filter((entry) => entry.type === "number")) {
+        assert.ok(
+            Number.isFinite(control.min) && Number.isFinite(control.max),
+            control.key,
+        );
+        assert.ok(
+            control.def >= control.min && control.def <= control.max,
+            control.key,
+        );
+    }
+    const config = convertArrayToObject(model);
+    const html = await renderToString(
+        createSSRApp({
+            render: () =>
+                h(VueUiDumbbell, {
+                    dataset,
+                    config: { ...config, userOptions: { show: false } },
+                }),
+        }),
+    );
+    assert.ok(html.includes("Sweden"));
+    assert.ok(!html.includes("NaN"));
+    const { code } = generateCode("VueUiDumbbell", dataset, config, {
+        treeshaken: true,
+    });
+    assert.ok(code.includes("vue-data-ui/vue-ui-dumbbell"));
+    assert.ok(code.includes("Sweden"));
+});
+
 test("Treemap older datasets gain editable colors without replacing chosen colors", async () => {
     const { editorDataset } =
         await import("../src/components/builder2/dataset.js");
