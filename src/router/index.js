@@ -15,6 +15,11 @@ const routes = [
         component: () => import("../views/SearchPage.vue"),
     },
     {
+        path: "/config-explorer",
+        name: "Config explorer",
+        component: () => import("../views/ConfigExplorerView.vue"),
+    },
+    {
         path: "/installation",
         name: "Installation",
         component: () => import("../views/Installation.vue"),

@@ -7,6 +7,8 @@ const descriptions = {
         "Install Vue Data UI and create your first Vue 3 chart with component imports and configuration examples.",
     Maker: "Build a Vue Data UI chart, edit its data and settings, and export a ready-to-use Vue component.",
     Search: "Find Vue Data UI configuration properties and filter results by component.",
+    "Config explorer":
+        "View component configuration properties as a graph and inspect their default values.",
     "Type Directory":
         "Browse Vue Data UI TypeScript types and component interfaces.",
 };

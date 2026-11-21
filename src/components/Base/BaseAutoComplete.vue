@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, onBeforeUnmount, ref } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import { useMainStore } from "../../stores";
 
 const props = defineProps({
@@ -24,7 +24,11 @@ const props = defineProps({
         type: String,
         default: "searchInput",
     },
+    showOnEmpty: { type: Boolean, default: false },
+    selectOnFocus: { type: Boolean, default: false },
+    noResultsText: { type: String, default: "" },
 });
+const emit = defineEmits(["select"]);
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -47,7 +51,7 @@ function normalizeText(value) {
 
 const suggestions = computed(() => {
     const query = normalizeText(model.value.trim());
-    if (!query) return [];
+    if (!query && !props.showOnEmpty) return [];
 
     return props.items
         .filter((item) => normalizeText(item).includes(query))
@@ -101,7 +105,7 @@ function highlightSuggestion(suggestion, query) {
 }
 
 function openIfHasSuggestions() {
-    isOpen.value = suggestions.value.length > 0;
+    isOpen.value = suggestions.value.length > 0 || !!props.noResultsText;
     if (!isOpen.value) activeIndex.value = -1;
 }
 
@@ -114,14 +118,17 @@ function selectSuggestion(index) {
     const value = suggestions.value[index];
     if (value == null) return;
     model.value = value;
+    emit("select", value);
     closeSuggestions();
 }
 
 function handleInput() {
+    activeIndex.value = -1;
     openIfHasSuggestions();
 }
 
 function handleFocus() {
+    if (props.selectOnFocus) inputElement.value?.select();
     openIfHasSuggestions();
 }
 
@@ -168,6 +175,7 @@ async function handleKeydown(event) {
     if (event.key === "Escape") {
         closeSuggestions();
     }
+    if (event.key === "Tab") closeSuggestions();
 }
 
 function scrollActiveIntoView() {
@@ -184,7 +192,7 @@ function handleDocumentClick(event) {
     if (!root.contains(event.target)) closeSuggestions();
 }
 
-document.addEventListener("click", handleDocumentClick);
+onMounted(() => document.addEventListener("click", handleDocumentClick));
 
 onBeforeUnmount(() => {
     document.removeEventListener("click", handleDocumentClick);
@@ -218,6 +226,7 @@ onBeforeUnmount(() => {
             @input="handleInput"
             @keydown="handleKeydown"
             @focus="handleFocus"
+            @blur="closeSuggestions"
         />
 
         <ul
@@ -226,6 +235,13 @@ onBeforeUnmount(() => {
             role="listbox"
             :aria-hidden="String(!isOpen)"
         >
+            <li
+                v-if="!suggestions.length && noResultsText"
+                class="px-3 py-2 text-sm text-gray-500 dark:text-gray-400"
+                role="presentation"
+            >
+                {{ noResultsText }}
+            </li>
             <li
                 v-for="(suggestion, index) in suggestions"
                 :key="suggestionKey(suggestion, index)"

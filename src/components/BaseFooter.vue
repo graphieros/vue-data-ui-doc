@@ -1,11 +1,21 @@
 <script setup>
 import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 import DeepSearch from "./DeepSearch.vue";
 import BaseSignature from "./BaseSignature.vue";
 import { useMainStore } from "../stores";
+import { configExplorerTranslations } from "../translations/configExplorer.js";
 
 const store = useMainStore();
+const route = useRoute();
 const isDarkMode = computed(() => store.isDarkMode);
+const configExplorerLabel = computed(
+    () =>
+        (
+            configExplorerTranslations[store.lang] ||
+            configExplorerTranslations.en
+        ).title,
+);
 
 const gizmoConfig = computed(() => {
     return {
@@ -99,7 +109,22 @@ const KPIS = computed(() => {
         class="w-full fixed bottom-0 start-0 h-[64px] font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-t dark:border-[#2A2A2A] transition-all flex place-items-center justify-between gap-3 ps-3 sm:ps-6"
         style="z-index: 1000"
     >
-        <DeepSearch :fixed="false" />
+        <div class="flex min-w-0 flex-1 items-center gap-4">
+            <DeepSearch :fixed="false" />
+            <RouterLink
+                v-if="route.name !== 'Config explorer'"
+                to="/config-explorer"
+                class="hidden h-[36px] shrink-0 items-center gap-2 rounded-full bg-gray-100 px-4 text-xs shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] transition-colors hover:bg-gray-200 hover:text-app-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-app-blue dark:bg-[#2A2A2A] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] dark:hover:bg-[#3A3A3A] md:inline-flex"
+                active-class="text-app-blue"
+            >
+                <VueUiIcon
+                    name="chartGraph"
+                    :size="18"
+                    stroke="currentColor"
+                />
+                {{ configExplorerLabel }}
+            </RouterLink>
+        </div>
         <!-- <div class="w-[64px]">
             <BaseSignature :color="isDarkMode ? '#3A3A3A' : '#CCCCCC'" :strokeWidth="7"/>
         </div> -->

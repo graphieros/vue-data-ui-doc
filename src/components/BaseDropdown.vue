@@ -45,6 +45,8 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    searchLabel: { type: String, default: "Search" },
+    clearSearchLabel: { type: String, default: "Clear search" },
 });
 
 const store = useMainStore();
@@ -172,6 +174,7 @@ defineExpose({
         }"
     >
         <button
+            :id="id"
             ref="button"
             :class="`dropdown-button ${background} border border-[#5f8aee50] hover:border-app-blue transition-colors !rounded-full`"
             :aria-haspopup="true"
@@ -207,6 +210,8 @@ defineExpose({
                             style="padding-inline-start: 36px"
                             type="text"
                             v-model="searchModel"
+                            :placeholder="searchLabel"
+                            :aria-label="searchLabel"
                         />
                         <VueUiIcon
                             name="magnify"
@@ -216,6 +221,7 @@ defineExpose({
                         />
                         <button
                             @click="searchModel = ''"
+                            :aria-label="clearSearchLabel"
                             :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`"
                         >
                             <XIcon
