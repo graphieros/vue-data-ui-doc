@@ -529,6 +529,7 @@ const customFormatCode =
 
         <BaseDocHeaderActions
             targetLink="vue-ui-treemap"
+            targetMaker="VueUiTreemap"
             :configSource="mainConfig.vue_ui_treemap"
         />
 

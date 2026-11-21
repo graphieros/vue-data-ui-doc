@@ -218,7 +218,7 @@ function openSharedChart() {
         selected.value = chart.key;
         loading = true;
         sharedDraft.value = true;
-        dataset.value = shared.dataset;
+        dataset.value = editorDataset(chart.key, shared.dataset);
         model.value = nextModel;
         status.value = "sharedDraft";
         revision.value++;
@@ -256,7 +256,7 @@ function applyJson() {
             parsed === null
         )
             throw new Error("datasetStructure");
-        dataset.value = parsed;
+        dataset.value = editorDataset(current.value.key, parsed);
         jsonError.value = "";
         jsonMode.value = false;
         revision.value++;
@@ -600,6 +600,7 @@ const thumbs = import.meta.glob("../assets/thumb_*", {
                                 :key="`${selected}-${revision}`"
                                 v-else
                                 v-model="dataset"
+                                :treemap="current.key === 'vue_ui_treemap'"
                                 :field-options="datasetFieldOptions"
                                 :template="defaults[current.key].dataset"
                             />
@@ -1207,6 +1208,7 @@ pre:focus-visible {
     min-width: 0;
 }
 :deep(.data-group summary) {
+    position: relative;
     cursor: pointer;
     padding: 12px;
     font-size: 12px;
@@ -1214,9 +1216,39 @@ pre:focus-visible {
     background: var(--surface-soft);
     border-radius: 9px;
 }
+:deep(.data-group summary:has(.item-header-remove)) {
+    padding-inline-end: 40px;
+}
+:deep(.item-header-remove) {
+    position: absolute;
+    inset-inline-end: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+    line-height: 1;
+}
+:deep(.item-header-remove:hover) {
+    color: #e36955;
+}
 :deep(.data-group summary span) {
     margin-inline-start: 10px;
     font-weight: 400;
+}
+:deep(.data-group summary .item-color-marker) {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    vertical-align: middle;
+}
+:deep(.data-group summary .item-name) {
+    margin-inline-start: 5px;
 }
 :deep(.data-children) {
     padding: 12px;
@@ -1227,6 +1259,9 @@ pre:focus-visible {
     padding-inline-end: 25px;
     margin-bottom: 8px;
 }
+:deep(.treemap-item-entry) {
+    padding-inline-end: 0;
+}
 :deep(.data-leaf) {
     display: flex;
     align-items: center;
@@ -1235,6 +1270,39 @@ pre:focus-visible {
     font-size: 12px;
     padding: 5px 0;
     overflow-wrap: anywhere;
+}
+:deep(.data-color-inherit) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+:deep(.data-locked-value .value-lock) {
+    position: absolute;
+    inset-inline-end: 35px;
+    top: 15px;
+    width: 16px;
+    height: 16px;
+    color: var(--muted);
+    pointer-events: none;
+}
+:deep(.data-locked-value input) {
+    padding-inline-end: 30px !important;
+}
+:deep(.value-lock-help) {
+    margin: 2px 0 0 auto;
+    width: 55%;
+    color: var(--muted);
+    font-size: 12px;
+}
+:deep(.data-color-inherit > .data-leaf) {
+    flex: 1;
+    min-width: 0;
+}
+:deep(.inherit-toggle) {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
 }
 :deep(.data-leaf input:not([type="checkbox"]):not([type="color"])),
 :deep(.data-leaf select) {

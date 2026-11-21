@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "Add child",
+        "treemapValueLocked": "Calculated from the values of its children.",
+        "inherit": "Inherit",
         "alphaChannel": "Alpha channel",
         "colorPlaceholder": "Enter RGBA / HSLA / HEX",
         "availableBuilders": "Available builders",

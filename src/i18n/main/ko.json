@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "하위 항목 추가",
+        "treemapValueLocked": "하위 항목의 값으로 계산됩니다.",
+        "inherit": "상속",
         "alphaChannel": "알파 채널",
         "colorPlaceholder": "RGBA / HSLA / HEX 입력",
         "availableBuilders": "사용 가능한 빌더",

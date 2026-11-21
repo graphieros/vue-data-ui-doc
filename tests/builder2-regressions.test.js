@@ -252,8 +252,8 @@ test("maker annotation controls match chart documentation and export edited bool
             else zoomControls++;
         }
     }
-    assert.equal(groupControls, 39);
-    assert.equal(zoomControls, 9);
+    assert.equal(groupControls, 40);
+    assert.equal(zoomControls, 10);
 });
 
 test("annotation toggles survive maker chart switches and reset to library defaults", async () => {
@@ -425,7 +425,7 @@ test("maker outline options preserve defaults, custom colors and null reset valu
             }
         }
     }
-    assert.equal(charts, 39);
+    assert.equal(charts, 40);
 });
 
 test("Stackline time tag settings preview, export, persist and reset", async () => {

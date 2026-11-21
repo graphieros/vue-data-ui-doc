@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "Untergeordnetes Element hinzufügen",
+        "treemapValueLocked": "Aus den Werten der untergeordneten Elemente berechnet.",
+        "inherit": "Übernehmen",
         "alphaChannel": "Alphakanal",
         "colorPlaceholder": "RGBA / HSLA / HEX eingeben",
         "availableBuilders": "Verfügbare Editoren",

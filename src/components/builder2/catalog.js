@@ -328,4 +328,11 @@ export const catalog = [
         icon: "chartHill",
         thumb: "thumb_hill_light.png",
     },
+    {
+        key: "vue_ui_treemap",
+        name: "VueUiTreemap",
+        descriptionKey: "treemap",
+        icon: "chartTreemap",
+        thumb: "thumb_treemap_light.png",
+    },
 ];

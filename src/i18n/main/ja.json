@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "子要素を追加",
+        "treemapValueLocked": "子要素の値から計算されます。",
+        "inherit": "継承",
         "alphaChannel": "アルファチャンネル",
         "colorPlaceholder": "RGBA / HSLA / HEX を入力",
         "availableBuilders": "利用可能なビルダー",

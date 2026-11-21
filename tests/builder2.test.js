@@ -93,6 +93,155 @@ test("Hill preview uses independent item value arrays, like the original maker",
     assert.deepEqual(input[1].values, [1]);
 });
 
+test("Treemap builder defaults render nested data and export it", async () => {
+    const { createSSRApp, h } = await import("vue");
+    const { renderToString } = await import("vue/server-renderer");
+    const { VueUiTreemap } = await import("vue-data-ui/vue-ui-treemap");
+    const { createVueUiTreemapDefaults } =
+        await import("../src/stores/chunks/defaultDataTreemap.js");
+    const { convertArrayToObject } =
+        await import("../src/components/maker/lib.js");
+    const { dataset, model } = createVueUiTreemapDefaults();
+    assert.ok(
+        dataset.every(
+            (item) => item.color && item.children.every((child) => child.color),
+        ),
+    );
+    for (const control of model.filter((entry) => entry.type === "number")) {
+        assert.ok(Number.isFinite(control.min), control.key);
+        assert.ok(Number.isFinite(control.max), control.key);
+        assert.ok(
+            control.def >= control.min && control.def <= control.max,
+            control.key,
+        );
+    }
+    const config = convertArrayToObject(model);
+    const html = await renderToString(
+        createSSRApp({
+            render: () =>
+                h(VueUiTreemap, {
+                    dataset,
+                    config: { ...config, userOptions: { show: false } },
+                }),
+        }),
+    );
+    assert.ok(html.includes("Product A"));
+    assert.ok(!html.includes("NaN"));
+    const { code } = generateCode("VueUiTreemap", dataset, config, {
+        treeshaken: true,
+    });
+    assert.ok(code.includes("vue-data-ui/vue-ui-treemap"));
+    assert.ok(code.includes("Product A"));
+});
+
+test("Treemap older datasets gain editable colors without replacing chosen colors", async () => {
+    const { editorDataset } =
+        await import("../src/components/builder2/dataset.js");
+    const input = [
+        {
+            name: "A",
+            value: 3,
+            color: "#123456",
+            children: [
+                { name: "B", value: 1 },
+                { name: "C", value: 2, color: "#abcdef" },
+            ],
+        },
+    ];
+    const result = editorDataset("vue_ui_treemap", input);
+    assert.equal(result[0].color, "#123456");
+    assert.equal(result[0].children[0].color, "#123456");
+    assert.equal(result[0].children[1].color, "#abcdef");
+    assert.equal(input[0].children[0].color, undefined);
+});
+
+test("Treemap inheritance resolves parent colors recursively without losing custom colors", () => {
+    const data = [
+        {
+            name: "Parent",
+            color: "#123456",
+            children: [
+                {
+                    name: "Child",
+                    color: "#abcdef",
+                    __inheritColor: true,
+                    children: [
+                        {
+                            name: "Grandchild",
+                            color: "#000000",
+                            __inheritColor: true,
+                        },
+                    ],
+                },
+            ],
+        },
+    ];
+    const resolved = chartDataset("vue_ui_treemap", data);
+    assert.equal(resolved[0].children[0].color, "#123456");
+    assert.equal(resolved[0].children[0].children[0].color, "#123456");
+    assert.equal(resolved[0].children[0].__inheritColor, undefined);
+    data[0].children[0].__inheritColor = false;
+    assert.equal(
+        chartDataset("vue_ui_treemap", data)[0].children[0].children[0].color,
+        "#abcdef",
+    );
+    assert.equal(data[0].children[0].color, "#abcdef");
+});
+
+test("Treemap child changes, additions and removals update ancestor totals", async () => {
+    const { updateTreemapNode } =
+        await import("../src/components/builder2/dataset.js");
+    const child = {
+        name: "Group",
+        value: 5,
+        children: [{ value: 2 }, { value: 3 }],
+    };
+    const root = { name: "Root", value: 9, children: [child, { value: 4 }] };
+    const changed = updateTreemapNode(child, "children", [
+        { value: 7 },
+        { value: 3 },
+    ]);
+    const updated = updateTreemapNode(root, "children", [
+        changed,
+        root.children[1],
+    ]);
+    assert.equal(changed.value, 10);
+    assert.equal(updated.value, 14);
+    assert.equal(
+        updateTreemapNode(changed, "children", [
+            ...changed.children,
+            { value: 6 },
+        ]).value,
+        16,
+    );
+    assert.equal(updateTreemapNode(changed, "children", []).value, 0);
+    assert.equal(root.value, 9);
+});
+
+test("Treemap leaves can gain children while preserving their value and inherited color", async () => {
+    const { addTreemapChild, updateTreemapNode } =
+        await import("../src/components/builder2/dataset.js");
+    const leaf = {
+        name: "Child",
+        value: 12,
+        color: "#123456",
+        __inheritColor: true,
+    };
+    const parent = addTreemapChild(leaf, "#abcdef");
+    assert.equal(parent.value, 12);
+    assert.deepEqual(parent.children[0], {
+        name: "Child name",
+        value: 12,
+        color: "#abcdef",
+        __inheritColor: true,
+    });
+    const deeper = addTreemapChild(parent.children[0], "#abcdef");
+    const updated = updateTreemapNode(parent, "children", [deeper]);
+    assert.equal(updated.value, 12);
+    assert.equal(updated.children[0].children[0].name, "Child name");
+    assert.equal(leaf.children, undefined);
+});
+
 test("Hill and Gauge render chart geometry with builder datasets", async () => {
     const { createSSRApp, h } = await import("vue");
     const { renderToString } = await import("vue/server-renderer");

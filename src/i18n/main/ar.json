@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "إضافة عنصر فرعي",
+        "treemapValueLocked": "تُحسب من قيم العناصر الفرعية.",
+        "inherit": "وراثة",
         "alphaChannel": "قناة ألفا",
         "colorPlaceholder": "أدخل RGBA / HSLA / HEX",
         "availableBuilders": "أدوات الإنشاء المتاحة",

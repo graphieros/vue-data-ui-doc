@@ -1,4 +1,5 @@
 import { createVueUiBumpDefaults } from "./chunks/defaultDataBump.js";
+import { createVueUiTreemapDefaults } from "./chunks/defaultDataTreemap.js";
 import { createVueUiDagDefaults } from "./chunks/defaultDataDag.js";
 import { createVueUiChordDefaults } from "./chunks/defaultDataChord.js";
 import { createVueUiRidgelineDefaults } from "./chunks/defaultDataRidgeline.js";
@@ -50,6 +51,7 @@ import { defaultDataStackbar } from "./chunks/defaultDataStackbar.js";
 export const useDefaultDataStore = defineStore("defaultData", {
     state: () => {
         return {
+            vue_ui_treemap: createVueUiTreemapDefaults(),
             vue_ui_hill: defaultDataHill,
             vue_ui_bump: createVueUiBumpDefaults(),
             vue_ui_dag: createVueUiDagDefaults(),

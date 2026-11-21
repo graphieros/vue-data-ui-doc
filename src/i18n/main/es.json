@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "Añadir elemento secundario",
+        "treemapValueLocked": "Calculado a partir de los valores de sus elementos secundarios.",
+        "inherit": "Heredar",
         "alphaChannel": "Canal alfa",
         "colorPlaceholder": "Introducir RGBA / HSLA / HEX",
         "availableBuilders": "Editores disponibles",

@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "Adicionar item filho",
+        "treemapValueLocked": "Calculado a partir dos valores dos seus itens filhos.",
+        "inherit": "Herdar",
         "alphaChannel": "Canal alfa",
         "colorPlaceholder": "Inserir RGBA / HSLA / HEX",
         "availableBuilders": "Editores disponíveis",

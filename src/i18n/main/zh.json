@@ -1,5 +1,8 @@
 {
     "builder2": {
+        "addChild": "添加子项",
+        "treemapValueLocked": "根据子项的值计算。",
+        "inherit": "继承",
         "alphaChannel": "透明度通道",
         "colorPlaceholder": "输入 RGBA / HSLA / HEX",
         "availableBuilders": "可用构建器",
