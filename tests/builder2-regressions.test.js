@@ -253,7 +253,7 @@ test("maker annotation controls match chart documentation and export edited bool
         }
     }
     assert.equal(groupControls, 39);
-    assert.equal(zoomControls, 8);
+    assert.equal(zoomControls, 9);
 });
 
 test("annotation toggles survive maker chart switches and reset to library defaults", async () => {

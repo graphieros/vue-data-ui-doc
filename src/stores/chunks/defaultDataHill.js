@@ -759,7 +759,7 @@ export const defaultDataHill = {
         },
         {
             key: "style.chart.layout.plots.dragMarker.positionIndicator.value.show",
-            type: "chekbox",
+            type: "checkbox",
             def: true,
             label: ["value", "is", "show"],
             category: "selector",
@@ -918,6 +918,7 @@ export const defaultDataHill = {
             min: 8,
             max: 42,
             label: ["phases", "is", "fontSize"],
+            category: "labels",
         },
         {
             key: "style.chart.layout.labels.phases.bold",
