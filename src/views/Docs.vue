@@ -125,6 +125,9 @@ const makerTranslations = computed(() => makerStore.translations);
 const isDarkMode = computed(() => store.isDarkMode);
 
 const router = useRouter();
+const docPath = computed(
+    () => router.currentRoute.value.path + router.currentRoute.value.hash,
+);
 const layoutTitle = computed(() =>
     getDocHeaderName(router.currentRoute.value.hash),
 );
@@ -390,480 +393,186 @@ const selectedConfig = computed(() => {
             <BaseDocTitle v-if="layoutTitle" :name="layoutTitle" layout-owned />
 
             <DocVueUiTableSparkline
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-table-sparkline'
-                "
+                v-if="docPath === '/docs#vue-ui-table-sparkline'"
             />
 
-            <DocVueUiXy
-                v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy'"
-            />
+            <DocVueUiXy v-if="docPath === '/docs#vue-ui-xy'" />
 
-            <DocVueUiTable
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-table'
-                "
-            />
+            <DocVueUiTable v-if="docPath === '/docs#vue-ui-table'" />
 
-            <DocVueUiDonut
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-donut'
-                "
-            />
+            <DocVueUiDonut v-if="docPath === '/docs#vue-ui-donut'" />
 
-            <DocVueUiWaffle
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-waffle'
-                "
-            />
+            <DocVueUiWaffle v-if="docPath === '/docs#vue-ui-waffle'" />
 
-            <DocVueUiRadar
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-radar'
-                "
-            />
+            <DocVueUiRadar v-if="docPath === '/docs#vue-ui-radar'" />
 
-            <DocVueUiQuadrant
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-quadrant'
-                "
-            />
+            <DocVueUiQuadrant v-if="docPath === '/docs#vue-ui-quadrant'" />
 
-            <DocVueUiGauge
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-gauge'
-                "
-            />
+            <DocVueUiGauge v-if="docPath === '/docs#vue-ui-gauge'" />
 
-            <DocVueUiChestnut
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-chestnut'
-                "
-            />
+            <DocVueUiChestnut v-if="docPath === '/docs#vue-ui-chestnut'" />
 
-            <DocVueUiOnion
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-onion'
-                "
-            />
+            <DocVueUiOnion v-if="docPath === '/docs#vue-ui-onion'" />
 
             <DocVueUiHorizontalBar
                 v-if="
                     [
                         '/docs#vue-ui-horizontal-bar',
                         '/docs#vue-ui-vertical-bar',
-                    ].includes(router.currentRoute.value.fullPath)
+                    ].includes(docPath)
                 "
             />
 
-            <DocVueUiRating
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-rating'
-                "
-            />
+            <DocVueUiRating v-if="docPath === '/docs#vue-ui-rating'" />
 
-            <DocVueUiSkeleton
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-skeleton'
-                "
-            />
+            <DocVueUiSkeleton v-if="docPath === '/docs#vue-ui-skeleton'" />
 
-            <DocVueUiSparkline
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-sparkline'
-                "
-            />
+            <DocVueUiSparkline v-if="docPath === '/docs#vue-ui-sparkline'" />
 
-            <DocVueUiHeatmap
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-heatmap'
-                "
-            />
+            <DocVueUiHeatmap v-if="docPath === '/docs#vue-ui-heatmap'" />
 
-            <DocVueUiScatter
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-scatter'
-                "
-            />
+            <DocVueUiScatter v-if="docPath === '/docs#vue-ui-scatter'" />
 
             <DocVueUiCandlestick
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-candlestick'
-                "
+                v-if="docPath === '/docs#vue-ui-candlestick'"
             />
 
-            <DocVueUiAgePyramid
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-age-pyramid'
-                "
-            />
+            <DocVueUiAgePyramid v-if="docPath === '/docs#vue-ui-age-pyramid'" />
 
-            <DocVueUiSparkbar
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-sparkbar'
-                "
-            />
+            <DocVueUiSparkbar v-if="docPath === '/docs#vue-ui-sparkbar'" />
 
-            <DocVueUiDashboard
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-dashboard'
-                "
-            />
+            <DocVueUiDashboard v-if="docPath === '/docs#vue-ui-dashboard'" />
 
-            <DocVueUiAnnotator
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-annotator'
-                "
-            />
+            <DocVueUiAnnotator v-if="docPath === '/docs#vue-ui-annotator'" />
 
-            <DocVueUiSmiley
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-smiley'
-                "
-            />
+            <DocVueUiSmiley v-if="docPath === '/docs#vue-ui-smiley'" />
 
-            <DocVueUiRings
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-rings'
-                "
-            />
+            <DocVueUiRings v-if="docPath === '/docs#vue-ui-rings'" />
 
             <DocVueUiRelationCircle
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-relation-circle'
-                "
+                v-if="docPath === '/docs#vue-ui-relation-circle'"
             />
 
             <DocVueUiThermometer
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-thermometer'
-                "
+                v-if="docPath === '/docs#vue-ui-thermometer'"
             />
 
             <DocVueUiSparkStackbar
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-sparkstackbar'
-                "
+                v-if="docPath === '/docs#vue-ui-sparkstackbar'"
             />
 
             <DocVueUiSparkHistogram
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-sparkhistogram'
-                "
+                v-if="docPath === '/docs#vue-ui-sparkhistogram'"
             />
 
-            <DocVueUiWheel
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-wheel'
-                "
-            />
+            <DocVueUiWheel v-if="docPath === '/docs#vue-ui-wheel'" />
 
-            <DocVueUiTiremarks
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-tiremarks'
-                "
-            />
+            <DocVueUiTiremarks v-if="docPath === '/docs#vue-ui-tiremarks'" />
 
             <DocVueUiDonutEvolution
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-donut-evolution'
-                "
+                v-if="docPath === '/docs#vue-ui-donut-evolution'"
             />
 
-            <DocVueUiIcon
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-icon'
-                "
-            />
+            <DocVueUiIcon v-if="docPath === '/docs#vue-ui-icon'" />
 
-            <DocVueUiMoodRadar
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-mood-radar'
-                "
-            />
+            <DocVueUiMoodRadar v-if="docPath === '/docs#vue-ui-mood-radar'" />
 
-            <DocVueUi3dBar
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-3d-bar'
-                "
-            />
+            <DocVueUi3dBar v-if="docPath === '/docs#vue-ui-3d-bar'" />
 
-            <DocVueUiDigits
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-digits'
-                "
-            />
+            <DocVueUiDigits v-if="docPath === '/docs#vue-ui-digits'" />
 
-            <DocVueUiMolecule
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-molecule'
-                "
-            />
+            <DocVueUiMolecule v-if="docPath === '/docs#vue-ui-molecule'" />
 
-            <DocVueUiMiniLoader
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-mini-loader'
-                "
-            />
+            <DocVueUiMiniLoader v-if="docPath === '/docs#vue-ui-mini-loader'" />
 
             <DocVueUiNestedDonuts
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-nested-donuts'
-                "
+                v-if="docPath === '/docs#vue-ui-nested-donuts'"
             />
 
-            <DocVueUiSparkgauge
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-sparkgauge'
-                "
-            />
+            <DocVueUiSparkgauge v-if="docPath === '/docs#vue-ui-sparkgauge'" />
 
-            <DocVueUiGalaxy
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-galaxy'
-                "
-            />
+            <DocVueUiGalaxy v-if="docPath === '/docs#vue-ui-galaxy'" />
 
-            <DocVueUiKpi
-                v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-kpi'"
-            />
+            <DocVueUiKpi v-if="docPath === '/docs#vue-ui-kpi'" />
 
-            <DocVueUiTreemap
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-treemap'
-                "
-            />
+            <DocVueUiTreemap v-if="docPath === '/docs#vue-ui-treemap'" />
 
             <DocVueUiTableHeatmap
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-table-heatmap'
-                "
+                v-if="docPath === '/docs#vue-ui-table-heatmap'"
             />
 
-            <DocVueUiAccordion
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-accordion'
-                "
-            />
+            <DocVueUiAccordion v-if="docPath === '/docs#vue-ui-accordion'" />
 
-            <DocVueUiQuickChart
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-quick-chart'
-                "
-            />
+            <DocVueUiQuickChart v-if="docPath === '/docs#vue-ui-quick-chart'" />
 
-            <DocVueUiCursor
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-cursor'
-                "
-            />
+            <DocVueUiCursor v-if="docPath === '/docs#vue-ui-cursor'" />
 
-            <DocVueUiSparkTrend
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-spark-trend'
-                "
-            />
+            <DocVueUiSparkTrend v-if="docPath === '/docs#vue-ui-spark-trend'" />
 
-            <DocVueUiStripPlot
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-strip-plot'
-                "
-            />
+            <DocVueUiStripPlot v-if="docPath === '/docs#vue-ui-strip-plot'" />
 
-            <DocVueUiDumbbell
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-dumbbell'
-                "
-            />
+            <DocVueUiDumbbell v-if="docPath === '/docs#vue-ui-dumbbell'" />
 
-            <DocsVueUiWordCloud
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-word-cloud'
-                "
-            />
+            <DocsVueUiWordCloud v-if="docPath === '/docs#vue-ui-word-cloud'" />
 
-            <DocVueUiXyCanvas
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-xy-canvas'
-                "
-            />
+            <DocVueUiXyCanvas v-if="docPath === '/docs#vue-ui-xy-canvas'" />
 
-            <DocVueUiFlow
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-flow'
-                "
-            />
+            <DocVueUiFlow v-if="docPath === '/docs#vue-ui-flow'" />
 
             <DocVueUiParallelCoordinatePlot
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-parallel-coordinate-plot'
-                "
+                v-if="docPath === '/docs#vue-ui-parallel-coordinate-plot'"
             />
 
-            <DocVueUiTimer
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-timer'
-                "
-            />
+            <DocVueUiTimer v-if="docPath === '/docs#vue-ui-timer'" />
 
             <DocVueUiCarouselTable
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-carousel-table'
-                "
+                v-if="docPath === '/docs#vue-ui-carousel-table'"
             />
 
-            <DocVueUiGizmo
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-gizmo'
-                "
-            />
+            <DocVueUiGizmo v-if="docPath === '/docs#vue-ui-gizmo'" />
 
             <DocVueUiStackbar
                 :key="`stackbar_${stackbarKey}`"
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-stackbar'
-                "
+                v-if="docPath === '/docs#vue-ui-stackbar'"
                 @forceDocReload="stackbarKey += 1"
             />
 
-            <DocVueUiStackline
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-stackline'
-                "
-            />
+            <DocVueUiStackline v-if="docPath === '/docs#vue-ui-stackline'" />
 
-            <DocVueUiBullet
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-bullet'
-                "
-            />
+            <DocVueUiBullet v-if="docPath === '/docs#vue-ui-bullet'" />
 
-            <DocVueUiFunnel
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-funnel'
-                "
-            />
+            <DocVueUiFunnel v-if="docPath === '/docs#vue-ui-funnel'" />
 
             <DocVueUiHistoryPlot
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-history-plot'
-                "
+                v-if="docPath === '/docs#vue-ui-history-plot'"
             />
 
-            <DocUtilityFunctions
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#utility-functions'
-                "
-            />
+            <DocUtilityFunctions v-if="docPath === '/docs#utility-functions'" />
 
-            <DocComposables
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#composables'
-                "
-            />
+            <DocComposables v-if="docPath === '/docs#composables'" />
 
-            <DocVueUiCirclePack
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-circle-pack'
-                "
-            />
+            <DocVueUiCirclePack v-if="docPath === '/docs#vue-ui-circle-pack'" />
 
-            <DocVueUiWorld
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-world'
-                "
-            />
+            <DocVueUiWorld v-if="docPath === '/docs#vue-ui-world'" />
 
-            <DocVueUiRidgeline
-                v-if="
-                    router.currentRoute.value.fullPath ===
-                    '/docs#vue-ui-ridgeline'
-                "
-            />
+            <DocVueUiRidgeline v-if="docPath === '/docs#vue-ui-ridgeline'" />
 
-            <DocVueUiChord
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-chord'
-                "
-            />
+            <DocVueUiChord v-if="docPath === '/docs#vue-ui-chord'" />
 
-            <DocVueUiGraph
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-graph'
-                "
-            />
+            <DocVueUiGraph v-if="docPath === '/docs#vue-ui-graph'" />
 
-            <DocVueUiDag
-                v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-dag'"
-            />
+            <DocVueUiDag v-if="docPath === '/docs#vue-ui-dag'" />
 
-            <DocVueUiGeo
-                v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-geo'"
-            />
+            <DocVueUiGeo v-if="docPath === '/docs#vue-ui-geo'" />
 
-            <DocVueUiBump
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-bump'
-                "
-            />
+            <DocVueUiBump v-if="docPath === '/docs#vue-ui-bump'" />
 
-            <DocVueUiHill
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-hill'
-                "
-            />
+            <DocVueUiHill v-if="docPath === '/docs#vue-ui-hill'" />
 
-            <DocVueUiLabel
-                v-if="
-                    router.currentRoute.value.fullPath === '/docs#vue-ui-label'
-                "
-            />
+            <DocVueUiLabel v-if="docPath === '/docs#vue-ui-label'" />
 
             <div
-                v-if="
-                    ['/docs', '/docs#list'].includes(
-                        router.currentRoute.value.fullPath,
-                    )
-                "
+                v-if="['/docs', '/docs#list'].includes(docPath)"
                 class="flex flex-col place-items-center place-content-center"
             >
                 <div
@@ -1526,23 +1235,14 @@ const selectedConfig = computed(() => {
                 />
             </div>
 
-            <UserOptionsMenu
-                v-if="
-                    ['/docs', '/docs#list'].includes(
-                        router.currentRoute.value.fullPath,
-                    )
-                "
-            />
+            <UserOptionsMenu v-if="['/docs', '/docs#list'].includes(docPath)" />
 
-            <!-- <DocsComponentMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)"/> -->
+            <!-- <DocsComponentMenu v-if="['/docs', '/docs#list'].includes(docPath)"/> -->
 
             <BaseDragElement
                 snap-on-resize
                 snap-on-load
-                v-show="
-                    store.docSnap &&
-                    router.currentRoute.value.fullPath.includes('/docs#vue')
-                "
+                v-show="store.docSnap && docPath.includes('/docs#vue')"
                 backgroundColor="bg-gray-150 dark:bg-[#242424]"
                 clip
                 :startTop="170"

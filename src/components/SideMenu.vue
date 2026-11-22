@@ -11,7 +11,7 @@ const router = useRouter();
 const componentSearch = ref(null);
 
 const currentRoute = computed(() => {
-    return router.currentRoute.value.fullPath;
+    return router.currentRoute.value.path + router.currentRoute.value.hash;
 });
 
 const store = useMainStore();
@@ -1735,11 +1735,7 @@ function handleSearchEnter() {
                     v-for="(menu, i) in sideMenuItems"
                     :key="menu.title"
                     :open="
-                        menu.items.some(
-                            (item) =>
-                                item.route ===
-                                router.currentRoute.value.fullPath,
-                        )
+                        menu.items.some((item) => item.route === currentRoute)
                     "
                     :title="menu.title"
                     :items="menu.items"
@@ -1755,7 +1751,7 @@ function handleSearchEnter() {
                     <button
                         :class="`w-full py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
         dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${
-            router.currentRoute.value.fullPath === '/universal-component'
+            currentRoute === '/universal-component'
                 ? isDarkMode
                     ? 'bg-gradient-to-r from-[#5f8aee50] to-[#5f8aee20] shadow'
                     : 'bg-app-blue-light'
@@ -1768,8 +1764,7 @@ function handleSearchEnter() {
                             <VueUiIcon
                                 name="vueDataUi"
                                 :stroke="`${
-                                    router.currentRoute.value.fullPath ===
-                                    '/universal-component'
+                                    currentRoute === '/universal-component'
                                         ? isDarkMode
                                             ? '#83a4f2'
                                             : '#5f8aee'
@@ -1779,8 +1774,7 @@ function handleSearchEnter() {
                             <div
                                 style="white-space: nowrap"
                                 :class="`${
-                                    router.currentRoute.value.fullPath ===
-                                    '/universal-component'
+                                    currentRoute === '/universal-component'
                                         ? 'font-inter-medium'
                                         : ''
                                 }`"

@@ -30,7 +30,7 @@ const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const currentRoute = computed(() => {
-    return router.currentRoute.value.fullPath;
+    return router.currentRoute.value.path + router.currentRoute.value.hash;
 });
 
 function isSelected(route) {

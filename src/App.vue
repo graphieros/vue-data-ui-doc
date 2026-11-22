@@ -37,7 +37,7 @@ const route = useRoute();
 const isDarkMode = computed(() => store.isDarkMode);
 
 const currentRoute = computed(() => {
-    return router.currentRoute.value.fullPath;
+    return router.currentRoute.value.path;
 });
 
 const start = ref("2023-07-25");

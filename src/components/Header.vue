@@ -279,7 +279,10 @@ const message = ref({
 });
 
 function getHighlightStyle(item) {
-    if (item.link === router.currentRoute.value.fullPath) {
+    if (
+        item.link ===
+        router.currentRoute.value.path + router.currentRoute.value.hash
+    ) {
         const color = isDarkMode.value ? "#42d392" : "#5f8aee";
         return {
             background: `${color}20`,
@@ -445,7 +448,7 @@ const displayedVersion = computed(() => {
                                                 />
                                             </div>
                                             <div
-                                                :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-inter-medium cursor-default hover:no-underline' : ''}`"
+                                                :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.path + router.currentRoute.value.hash ? 'dark:text-app-blue font-inter-medium cursor-default hover:no-underline' : ''}`"
                                             >
                                                 <span class="text-gray-500"
                                                     >VueUi</span
