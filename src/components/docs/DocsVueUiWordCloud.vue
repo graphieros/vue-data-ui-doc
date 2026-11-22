@@ -31,6 +31,11 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import UcWordCloud from "../useCases/uc-word-cloud.vue";
+import UcWordCloudTickets from "../useCases/uc-word-cloud-tickets.vue";
+import UcWordCloudReviews from "../useCases/uc-word-cloud-reviews.vue";
+import UcWordCloudSkills from "../useCases/uc-word-cloud-skills.vue";
+import UcWordCloudText from "../useCases/uc-word-cloud-text.vue";
 
 const mainConfig = useConfig();
 
@@ -417,6 +422,7 @@ function goToPage(route) {
         <Box
             ref="box"
             showSlots
+            showUseCases
             showEmits
             showThemes
             showCallbacks
@@ -602,6 +608,14 @@ function goToPage(route) {
                         />
                     </template>
                 </BaseSlotDocumenter>
+            </template>
+
+            <template #use-cases>
+                <UcWordCloud />
+                <UcWordCloudTickets />
+                <UcWordCloudReviews />
+                <UcWordCloudSkills />
+                <UcWordCloudText />
             </template>
 
             <template #themes>
