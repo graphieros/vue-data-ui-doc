@@ -29,6 +29,14 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import ParallelUseCaseCloud from "../useCases/uc-parallel-cloud.vue";
+import ParallelUseCaseVehicles from "../useCases/uc-parallel-vehicles.vue";
+import ParallelUseCaseServices from "../useCases/uc-parallel-services.vue";
+import ParallelUseCaseLaptops from "../useCases/uc-parallel-laptops.vue";
+import ParallelUseCaseBuildings from "../useCases/uc-parallel-buildings.vue";
+import ParallelUseCaseSports from "../useCases/uc-parallel-sports.vue";
+import ParallelUseCaseSuppliers from "../useCases/uc-parallel-suppliers.vue";
+import ParallelUseCaseCustomers from "../useCases/uc-parallel-customers.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 
 const mainConfig = useConfig();
@@ -471,6 +479,7 @@ const customFormatCode =
         <BaseMigrationInfo autoRotate cssAnimation debug padding />
 
         <Box
+            showUseCases
             ref="box"
             showEmits
             showSlots
@@ -690,6 +699,17 @@ const customFormatCode =
             </template>
 
             <!-- THEMES -->
+            <template #use-cases>
+                <ParallelUseCaseCloud />
+                <ParallelUseCaseVehicles />
+                <ParallelUseCaseServices />
+                <ParallelUseCaseLaptops />
+                <ParallelUseCaseBuildings />
+                <ParallelUseCaseSports />
+                <ParallelUseCaseSuppliers />
+                <ParallelUseCaseCustomers />
+            </template>
+
             <template #themes>
                 <ThemesVueUiParallelCoordinatePlot />
             </template>
