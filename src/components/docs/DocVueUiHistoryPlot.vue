@@ -29,6 +29,14 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import HistoryUseCaseServices from "../useCases/uc-history-services.vue";
+import HistoryUseCaseGrowth from "../useCases/uc-history-growth.vue";
+import HistoryUseCaseEnergy from "../useCases/uc-history-energy.vue";
+import HistoryUseCaseMarketing from "../useCases/uc-history-marketing.vue";
+import HistoryUseCaseManufacturing from "../useCases/uc-history-manufacturing.vue";
+import HistoryUseCaseExercise from "../useCases/uc-history-exercise.vue";
+import HistoryUseCaseWeather from "../useCases/uc-history-weather.vue";
+import HistoryUseCaseExperience from "../useCases/uc-history-experience.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 
 const mainConfig = useConfig();
@@ -518,6 +526,7 @@ const customFormatCode =
         <BaseMigrationInfo autoRotate cssAnimation debug padding />
 
         <Box
+            showUseCases
             ref="box"
             showEmits
             showCallbacks
@@ -719,6 +728,17 @@ const customFormatCode =
             </template>
 
             <!-- THEMES -->
+            <template #use-cases>
+                <HistoryUseCaseServices />
+                <HistoryUseCaseGrowth />
+                <HistoryUseCaseEnergy />
+                <HistoryUseCaseMarketing />
+                <HistoryUseCaseManufacturing />
+                <HistoryUseCaseExercise />
+                <HistoryUseCaseWeather />
+                <HistoryUseCaseExperience />
+            </template>
+
             <template #themes>
                 <ThemesVueUiHistoryPlot />
             </template>
