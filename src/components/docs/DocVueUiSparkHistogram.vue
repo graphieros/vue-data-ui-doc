@@ -27,6 +27,11 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import SparkUseCaseServiceDesk from "../useCases/uc-spark-histogram-service-desk.vue";
+import SparkUseCaseTraffic from "../useCases/uc-spark-histogram-traffic.vue";
+import SparkUseCaseEnergy from "../useCases/uc-spark-histogram-energy.vue";
+import SparkUseCaseCalls from "../useCases/uc-spark-histogram-calls.vue";
+import SparkUseCaseExercise from "../useCases/uc-spark-histogram-exercise.vue";
 
 const mainConfig = useConfig();
 
@@ -409,6 +414,7 @@ function goToPage(route) {
         <Box
             ref="box"
             showResponsive
+            showUseCases
             showEmits
             showThemes
             showSlots
@@ -487,6 +493,14 @@ function goToPage(route) {
                         />
                     </template>
                 </BaseSlotDocumenter>
+            </template>
+
+            <template #use-cases>
+                <SparkUseCaseServiceDesk />
+                <SparkUseCaseTraffic />
+                <SparkUseCaseEnergy />
+                <SparkUseCaseCalls />
+                <SparkUseCaseExercise />
             </template>
 
             <template #themes>
