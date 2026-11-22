@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.29.4",
+        "date": "2026-11-22",
+        "updates": [
+            {
+                "component": "VueUiGalaxy",
+                "description": "Add data labels and animation on legend filtering",
+                "link": "/docs#vue-ui-galaxy"
+            }
+        ]
+    },
+    {
         "version": "v 3.29.3",
         "date": "2026-11-17",
         "updates": [

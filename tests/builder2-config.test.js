@@ -6,6 +6,9 @@ import {
 } from "../src/components/builder2/config.js";
 import { convertArrayToObject } from "../src/components/maker/lib.js";
 
+import { getVueDataUiConfig } from "vue-data-ui/utils";
+import { createVueUiGalaxyDefaults } from "../src/stores/chunks/defaultDataGalaxy.js";
+
 const reference = [
     { key: "style.color", def: "#ffffff", type: "color", category: "general" },
     { key: "style.size", def: 12, type: "range", min: 0, max: 30, step: 1 },
@@ -76,4 +79,36 @@ test("configuration paths cannot modify object prototypes", () => {
         /Unsupported/,
     );
     assert.equal({}.polluted, undefined);
+});
+
+test("Galaxy maker exposes current label and outline controls", () => {
+    const { dataset, model } = createVueUiGalaxyDefaults();
+    const config = convertArrayToObject(model);
+    const defaults = getVueDataUiConfig("vue_ui_galaxy");
+    assert.ok(
+        dataset.some(
+            ({ values }) => values.reduce((sum, value) => sum + value, 0) === 3,
+        ),
+    );
+    assert.equal(
+        config.style.chart.layout.labels.dataLabels.show,
+        defaults.style.chart.layout.labels.dataLabels.show,
+    );
+    assert.equal(
+        config.style.chart.layout.labels.dataLabels.color,
+        defaults.style.chart.layout.labels.dataLabels.color,
+    );
+    assert.equal(
+        config.style.chart.layout.arcs.borderWidth,
+        defaults.style.chart.layout.arcs.borderWidth,
+    );
+    assert.equal(
+        model.find(({ key }) => key === "style.chart.layout.arcs.borderWidth")
+            .min,
+        0,
+    );
+    assert.equal(
+        config.userOptions.buttons.labels,
+        defaults.userOptions.buttons.labels,
+    );
 });

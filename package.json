@@ -29,17 +29,17 @@
         "@stackblitz/sdk": "^1.11.1",
         "color-bridge": "^2.1.0",
         "jspdf": "^4.2.1",
-        "pinia": "^4.0.0",
+        "pinia": "^4.1.0",
         "prismjs": "^1.29.0",
         "ssh2": "^1.16.0",
-        "vue": "^3.5.45",
-        "vue-data-ui": "3.29.3",
+        "vue": "^3.5.46",
+        "vue-data-ui": "3.29.4",
         "vue-hi-code": "^1.5.4",
         "vue-router": "^4.5.1",
         "vue-tabler-icons": "^2.21.0"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^6.0.10",
+        "@vitejs/plugin-vue": "^6.0.11",
         "autoprefixer": "^10.6.1",
         "baseline-browser-mapping": "^2.11.27",
         "oxlint": "^1.58.0",
@@ -47,7 +47,7 @@
         "prettier": "3.8.1",
         "tailwindcss": "^3.4.19",
         "typescript": "^5.6.2",
-        "vite": "8.3.6"
+        "vite": "8.3.8"
     },
     "packageManager": "pnpm@12.18.0",
     "engines": {

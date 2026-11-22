@@ -28,6 +28,14 @@ import ComponentEmits from "../ComponentEmits.vue";
 import BaseSlotsImplementationLink from "../Base/BaseSlotsImplementationLink.vue";
 import DebugHint from "../DebugHint.vue";
 import BaseCopyConfig from "../BaseCopyConfig.vue";
+import GalaxyUseCaseHousehold from "../useCases/uc-galaxy-household.vue";
+import GalaxyUseCaseServiceDesk from "../useCases/uc-galaxy-service-desk.vue";
+import GalaxyUseCaseEnergy from "../useCases/uc-galaxy-energy.vue";
+import GalaxyUseCaseCompany from "../useCases/uc-galaxy-company.vue";
+import GalaxyUseCaseMusic from "../useCases/uc-galaxy-music.vue";
+import GalaxyUseCaseSales from "../useCases/uc-galaxy-sales.vue";
+import GalaxyUseCaseTravel from "../useCases/uc-galaxy-travel.vue";
+import GalaxyUseCaseEmissions from "../useCases/uc-galaxy-emissions.vue";
 import { COLOR_PICKER_PALETTE } from "../../consts.js";
 
 const mainConfig = useConfig();
@@ -75,6 +83,8 @@ const config = computed({
             debug: false,
             loading: false,
             responsive: false,
+            useAnimation: true,
+            animationSpeed: 1,
             useCssAnimation: true,
             useBlurOnHover: true,
             a11y: {
@@ -101,7 +111,7 @@ const config = computed({
                     layout: {
                         arcs: {
                             strokeWidth: 24,
-                            borderWidth: 12,
+                            borderWidth: 4,
                             offsetX: 0,
                             offsetY: 0,
                             hoverEffect: { show: true, multiplicator: 1.1 },
@@ -115,6 +125,18 @@ const config = computed({
                         },
                         labels: {
                             dataLabels: {
+                                show: true,
+                                showName: true,
+                                showValue: true,
+                                showPercentage: true,
+                                hideUnderValue: 3,
+                                smallArcClusterThreshold: 8,
+                                smallArcClusterFontSize: 8,
+                                roundingValue: 0,
+                                roundingPercentage: 0,
+                                fontSize: 10,
+                                bold: true,
+                                color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
                                 showValueFirst: true,
                                 usePercentageParens: true,
                                 useValueParens: false,
@@ -360,6 +382,7 @@ const customFormatCode =
         <BaseMigrationInfo cssAnimation debug />
 
         <Box
+            showUseCases
             ref="box"
             showResponsive
             showEmits
@@ -392,6 +415,12 @@ const customFormatCode =
             </template>
 
             <template #configuration>
+                <p class="my-4">
+                    <code>useAnimation</code> animates changes to the Galaxy
+                    arcs. <code>animationSpeed</code> controls the speed: higher
+                    values make the animation faster. The default is
+                    <code>1</code>.
+                </p>
                 <DebugHint
                     component="VueUiGalaxy"
                     configType="VueUiGalaxyConfig"
@@ -556,6 +585,17 @@ const customFormatCode =
                     language="css"
                     content=".vue-data-ui-custom-tooltip{ }"
                 />
+            </template>
+
+            <template #use-cases>
+                <GalaxyUseCaseHousehold />
+                <GalaxyUseCaseServiceDesk />
+                <GalaxyUseCaseEnergy />
+                <GalaxyUseCaseCompany />
+                <GalaxyUseCaseMusic />
+                <GalaxyUseCaseSales />
+                <GalaxyUseCaseTravel />
+                <GalaxyUseCaseEmissions />
             </template>
 
             <template #themes>

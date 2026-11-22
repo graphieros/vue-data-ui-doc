@@ -1,25 +1,25 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 3874445,
+  "totalBytes": 3883570,
   "totalSize": "3.7 MB",
   "fileCount": 367,
   "byExtension": [
     {
       "extension": ".js",
       "files": 282,
-      "bytes": 3045775,
+      "bytes": 3054107,
       "size": "2.9 MB"
     },
     {
       "extension": ".d.ts",
       "files": 79,
-      "bytes": 472154,
-      "size": "461 KB"
+      "bytes": 472915,
+      "size": "462 KB"
     },
     {
       "extension": ".css",
       "files": 1,
-      "bytes": 275356,
+      "bytes": 275388,
       "size": "269 KB"
     },
     {
@@ -57,14 +57,14 @@
     {
       "path": "dist/types/vue-data-ui.d.ts",
       "filename": "vue-data-ui",
-      "bytes": 402630,
-      "size": "393 KB",
+      "bytes": 403391,
+      "size": "394 KB",
       "extension": ".d.ts"
     },
     {
       "path": "dist/style.css",
       "filename": "style",
-      "bytes": 275356,
+      "bytes": 275388,
       "size": "269 KB",
       "extension": ".css"
     },
@@ -85,7 +85,7 @@
     {
       "path": "dist/useConfig.js",
       "filename": "useConfig",
-      "bytes": 96990,
+      "bytes": 97218,
       "size": "95 KB",
       "extension": ".js"
     },
@@ -160,6 +160,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/lib.js",
+      "filename": "lib",
+      "bytes": 53644,
+      "size": "52 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/BaseIcon.js",
       "filename": "BaseIcon",
       "bytes": 53583,
@@ -171,13 +178,6 @@
       "filename": "vue-ui-scatter",
       "bytes": 52923,
       "size": "52 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/lib.js",
-      "filename": "lib",
-      "bytes": 52617,
-      "size": "51 KB",
       "extension": ".js"
     },
     {
@@ -335,6 +335,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/vue-ui-galaxy.js",
+      "filename": "vue-ui-galaxy",
+      "bytes": 33000,
+      "size": "32 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/vue-ui-dumbbell.js",
       "filename": "vue-ui-dumbbell",
       "bytes": 32954,
@@ -405,13 +412,6 @@
       "extension": ".js"
     },
     {
-      "path": "dist/vue-ui-galaxy.js",
-      "filename": "vue-ui-galaxy",
-      "bytes": 26144,
-      "size": "26 KB",
-      "extension": ".js"
-    },
-    {
       "path": "dist/vue-ui-mood-radar.js",
       "filename": "vue-ui-mood-radar",
       "bytes": 23691,
@@ -435,7 +435,7 @@
     {
       "path": "dist/UserOptions.js",
       "filename": "UserOptions",
-      "bytes": 22838,
+      "bytes": 22876,
       "size": "22 KB",
       "extension": ".js"
     },
@@ -1063,6 +1063,13 @@
       "extension": ".js"
     },
     {
+      "path": "dist/vue_ui_galaxy.js",
+      "filename": "vue_ui_galaxy",
+      "bytes": 2074,
+      "size": "2.0 KB",
+      "extension": ".js"
+    },
+    {
       "path": "dist/vue_ui_nested_donuts.js",
       "filename": "vue_ui_nested_donuts",
       "bytes": 2045,
@@ -1081,13 +1088,6 @@
       "filename": "vue_ui_graph",
       "bytes": 1972,
       "size": "1.9 KB",
-      "extension": ".js"
-    },
-    {
-      "path": "dist/vue_ui_galaxy.js",
-      "filename": "vue_ui_galaxy",
-      "bytes": 1891,
-      "size": "1.8 KB",
       "extension": ".js"
     },
     {

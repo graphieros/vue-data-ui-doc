@@ -1,61 +1,90 @@
-## VueUiWordCloud
+## VueUiGalaxy
 
-### Word rotation and repeatable layouts
+### Data labels on the spiral
 
-New options under `style.chart.words`:
+Galaxy now shows slice callouts by default. Each callout shows the value and percentage above the series name. Callouts use the active theme’s label color unless you set `dataLabels.color`.
 
-| Option            | Default | Behavior                                                                                                                                                                               |
-| ----------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `angles`          | `[0]`   | Allowed word rotations, in degrees. Words remain horizontal by default.                                                                                                                |
-| `randomizeAngles` | `false` | When `false`, assigns angles by cycling through `angles` in dataset order. When `true`, selects angles using the seeded random generator.                                              |
-| `randomness`      | `0.2`   | Controls the spread of starting positions: `0` starts all searches at the center; `1` allows starting positions throughout the chart. Final positions still depend on available space. |
-| `seed`            | `42`    | Controls repeatable placement and randomized angle selection. The same dataset, configuration, dimensions, fonts, and seed produce the same layout.                                    |
+By default, slices at or below 3% of the visible total have no label. Slices above 3% through 8% use compact callouts. Hovering a slice or its label highlights that slice and dims the other callouts. Hiding or restoring series in the legend updates the labels while keeping the SVG dimensions steady.
+
+This example shows percentages alone, changes the small-slice thresholds and adds the labels toggle to the chart menu.
+
+```vue
+<script setup>
+import { VueUiGalaxy } from "vue-data-ui";
+
+const dataset = [
+    { name: "Direct", values: [78] },
+    { name: "Search", values: [15] },
+    { name: "Referral", values: [7] },
+];
+
+const config = {
+    userOptions: {
+        buttons: { labels: true },
+    },
+    style: {
+        chart: {
+            layout: {
+                labels: {
+                    dataLabels: {
+                        show: true,
+                        showName: true,
+                        showValue: true,
+                        showPercentage: true,
+                        hideUnderValue: 3,
+                        smallArcClusterThreshold: 8,
+                        smallArcClusterFontSize: 8,
+                        roundingValue: 0,
+                        roundingPercentage: 0,
+                        fontSize: 10,
+                        bold: true,
+                        color: "#2D353C",
+                        showValueFirst: true,
+                        usePercentageParens: true,
+                        useValueParens: false,
+                        prefix: "",
+                        suffix: "",
+                        formatter: null,
+                    },
+                },
+            },
+        },
+    },
+};
+</script>
+
+<template>
+    <VueUiGalaxy :dataset="dataset" :config="config" />
+</template>
+```
+
+Set `style.chart.layout.labels.dataLabels.show` to `false` to start with callouts hidden. You can also call `toggleLabels()` on a chart component ref.
+
+### Legend animation and slice outlines
+
+When you a series through the legend, the remaining positive slices animate to their new lengths.
+Animation is enabled by default. `animationSpeed` is a multiplier, so `1` takes 200 ms and `2` takes 100 ms. The animation respects the system’s reduced-motion preference. Set `useAnimation: false` for immediate updates.
+
+Slice outlines now default to `4`. When a divider would cover a short slice, Galaxy reserves space for the dividers and allocates the remaining colored length in proportion to the data. If the dividers would take up the entire spiral, Galaxy narrows them.
+
+Use this config for faster legend transitions and no slice outlines.
 
 ```js
 const config = {
+    animationSpeed: 2, // or 0.5 if you prefer slower
     style: {
         chart: {
-            words: {
-                angles: [0, -90],
-                randomizeAngles: true,
-                randomness: 0.2,
-                seed: 42,
+            layout: {
+                arcs: { borderWidth: 0 },
             },
         },
     },
 };
 ```
 
-Example values for `angles`:
+### Tooltip, accessibility, table fixes
 
-| Appearance              | Value              |
-| ----------------------- | ------------------ |
-| Horizontal              | `[0]`              |
-| Horizontal and vertical | `[0, -90]`         |
-| 45° steps               | `[-45, 0, 45, 90]` |
-| Tilted                  | `[-20, 0, 20]`     |
-
-### Layout sizing behavior
-
-Words now retain their assigned font size and angle. The layout no longer shrinks individual words or enlarges the completed cloud. Words that cannot be placed at their assigned size and angle are omitted.
-
-To make room for more words, increase the chart dimensions or reduce the font-size range:
-
-```js
-const config = {
-    style: {
-        chart: {
-            width: 700,
-            height: 450,
-            words: {
-                minFontSize: 12,
-                maxFontSize: 48,
-            },
-        },
-    },
-};
-```
-
-### Deprecated option
-
-`quality` is deprecated. Existing values (`'fast'`, `'balanced'`, and `'precise'`) remain accepted but have no effect. Remove this property from your configuration; no replacement is required.
+- The default tooltip treats series names as plain text. Re-enabling tooltips restores the tooltip for the selected slice.
+- Loading placeholders no longer fire datapoint leave callbacks.
+- The chart’s accessible name follows the current title and subtitle.
+- The table shows a dash for the total percentage when the visible total is zero or the percentage is undefined.
