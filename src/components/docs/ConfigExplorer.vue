@@ -307,47 +307,51 @@ const graphConfig = computed(() => ({
                     <label :for="`${controlId}-property`">{{
                         text.property
                     }}</label>
-                    <BaseAutoComplete
-                        :key="component"
-                        v-model="propertyQuery"
-                        :items="propertyPaths"
-                        :input-id="`${controlId}-property`"
-                        :placeholder="text.searchProperty"
-                        :maximum-suggestions="30"
-                        :no-results-text="text.noProperties"
-                        show-on-empty
-                        select-on-focus
-                        @select="selectProperty"
-                    />
+                    <div class="explorer-property-controls">
+                        <BaseAutoComplete
+                            :key="component"
+                            v-model="propertyQuery"
+                            :items="propertyPaths"
+                            :input-id="`${controlId}-property`"
+                            :placeholder="text.searchProperty"
+                            :maximum-suggestions="30"
+                            :no-results-text="text.noProperties"
+                            show-on-empty
+                            select-on-focus
+                            @select="selectProperty"
+                        />
+                        <button
+                            type="button"
+                            class="explorer-drill-up transition-all"
+                            :disabled="!canDrillUp"
+                            :aria-label="`${text.drillUp}. ${text.levelsToRoot.replace('{count}', drillUpLevels.toLocaleString(store.lang))}`"
+                            @click="drillUp"
+                        >
+                            <VueUiIcon
+                                name="arrowTop"
+                                :size="16"
+                                :stroke="
+                                    store.isDarkMode ? '#CCCCCC' : '#3456a3'
+                                "
+                                aria-hidden="true"
+                            />
+                            {{ text.drillUp }}
+                            <span
+                                v-if="drillUpLevels > 0"
+                                class="explorer-depth-badge font-inter-bold shadow-md"
+                                aria-hidden="true"
+                                >{{
+                                    drillUpLevels.toLocaleString(store.lang)
+                                }}</span
+                            >
+                        </button>
+                    </div>
                 </div>
                 <div class="explorer-code-controls">
                     <label class="explorer-json-toggle">
                         <input v-model="json" type="checkbox" />
                         <span>{{ text.json }}</span>
                     </label>
-                    <button
-                        type="button"
-                        class="explorer-drill-up transition-all"
-                        :disabled="!canDrillUp"
-                        :aria-label="`${text.drillUp}. ${text.levelsToRoot.replace('{count}', drillUpLevels.toLocaleString(store.lang))}`"
-                        @click="drillUp"
-                    >
-                        <VueUiIcon
-                            name="arrowTop"
-                            :size="16"
-                            :stroke="store.isDarkMode ? '#CCCCCC' : '#3456a3'"
-                            aria-hidden="true"
-                        />
-                        {{ text.drillUp }}
-                        <span
-                            v-if="drillUpLevels > 0"
-                            class="explorer-depth-badge font-inter-bold shadow-md"
-                            aria-hidden="true"
-                            >{{
-                                drillUpLevels.toLocaleString(store.lang)
-                            }}</span
-                        >
-                    </button>
                 </div>
                 <nav
                     class="explorer-breadcrumbs"
@@ -399,6 +403,12 @@ const graphConfig = computed(() => ({
                         class="explorer-reset"
                         @click="resetGraphView"
                     >
+                        <VueUiIcon
+                            name="refresh"
+                            :size="16"
+                            :stroke="store.isDarkMode ? '#CCCCCC' : '#3456a3'"
+                            aria-hidden="true"
+                        />
                         {{ text.resetView }}
                     </button>
                 </div>
@@ -469,8 +479,18 @@ label {
     min-width: 0;
     padding: 16px;
 }
+.explorer-property-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 .explorer-property :deep(.autocomplete) {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
+}
+.explorer-property-controls .explorer-drill-up {
+    align-self: stretch;
+    flex-shrink: 0;
 }
 .explorer-property :deep(.input),
 .explorer-property :deep(.suggestions) {
@@ -544,6 +564,9 @@ label {
     color: #ccc;
 }
 .explorer-reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     margin-inline-start: auto;
     padding: 6px 10px;
     border-radius: 6px;
