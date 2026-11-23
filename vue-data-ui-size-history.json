@@ -1,8 +1,8 @@
 {
     "package": "vue-data-ui",
-    "generatedAt": "2026-11-14T08:10:24.452Z",
-    "versionCount": 1293,
-    "successfulCount": 1293,
+    "generatedAt": "2026-11-22T16:35:59.412Z",
+    "versionCount": 1296,
+    "successfulCount": 1296,
     "failedCount": 0,
     "versions": [
         {
@@ -16800,6 +16800,19 @@
             "license": "MIT"
         },
         {
+            "version": "3.29.2-beta.0",
+            "totalBytes": 3879283,
+            "totalSize": "3.7 MB",
+            "fileCount": 367,
+            "tarballBytes": 1029739,
+            "tarballSize": "1006 KB",
+            "publishedAt": "2026-11-14T07:34:25.935Z",
+            "registryUnpackedBytes": 3879283,
+            "shasum": "7266c7822f2692389be5aa03366a6e0766bcb187",
+            "integrity": "sha512-jJntEbnBqBTys8WJHWjRq9WCoDILh/vgqq3FMZZYoYUazeWTGRXsKmWwHqao0NpnEYuKHtQk2NyXFvJoCkqp4Q==",
+            "license": "MIT"
+        },
+        {
             "version": "3.29.2",
             "totalBytes": 3879269,
             "totalSize": "3.7 MB",
@@ -16810,6 +16823,32 @@
             "registryUnpackedBytes": 3879269,
             "shasum": "bd571ae147843180ebefe5e9d5406cc874797802",
             "integrity": "sha512-aoTfOTmL8usfu512tGyzJMFSyfAvndr5p4tDzVVfkP0IgzBPtgAwH87kv6GRFFWc77GIwPMVXp91QcwHL9NDVQ==",
+            "license": "MIT"
+        },
+        {
+            "version": "3.29.3",
+            "totalBytes": 3874445,
+            "totalSize": "3.7 MB",
+            "fileCount": 367,
+            "tarballBytes": 1026720,
+            "tarballSize": "1003 KB",
+            "publishedAt": "2026-11-17T05:29:44.764Z",
+            "registryUnpackedBytes": 3874445,
+            "shasum": "afcfe518f11fc09d16bc4f8bd42d44706b6be797",
+            "integrity": "sha512-kkH9t0ZH04upv+ZHIITbp/SFCHVaX6wDOeQx3SJ1GibQG7raIgo57UzviRuW/KyhHnGtdjLw4lPn4YbdYfz75g==",
+            "license": "MIT"
+        },
+        {
+            "version": "3.29.4",
+            "totalBytes": 3883570,
+            "totalSize": "3.7 MB",
+            "fileCount": 367,
+            "tarballBytes": 1031776,
+            "tarballSize": "1008 KB",
+            "publishedAt": "2026-11-22T15:41:23.365Z",
+            "registryUnpackedBytes": 3883570,
+            "shasum": "03c5f0b62ebdd6cca4414b507795bcc930f6dcc1",
+            "integrity": "sha512-3hp8C7yhjiiHa7iNLCsR6ZkRIjxpZeIpdpHn9RBU6lTKSmPEixIvlpRoHu2VDXmvrKwaT2xe2SrHG9CKt4C1Og==",
             "license": "MIT"
         }
     ]
