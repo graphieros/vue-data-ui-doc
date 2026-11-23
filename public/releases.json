@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.29.5",
+        "date": "2026-11-23",
+        "updates": [
+            {
+                "component": "All components with pdf generation",
+                "description": "Improve chart layout in PDF exports",
+                "link": ""
+            }
+        ]
+    },
+    {
         "version": "v 3.29.4",
         "date": "2026-11-22",
         "updates": [
