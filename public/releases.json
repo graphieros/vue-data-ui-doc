@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 3.29.6",
+        "date": "2026-11-24",
+        "updates": [
+            {
+                "component": "VueUiStackbar",
+                "description": "Add optional 3D cavalier perspective",
+                "link": "/docs#vue-ui-stackbar"
+            }
+        ]
+    },
+    {
         "version": "v 3.29.5",
         "date": "2026-11-23",
         "updates": [

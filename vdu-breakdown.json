@@ -1,25 +1,25 @@
 {
   "folder": "node_modules/vue-data-ui",
-  "totalBytes": 3883380,
+  "totalBytes": 3887133,
   "totalSize": "3.7 MB",
   "fileCount": 368,
   "byExtension": [
     {
       "extension": ".js",
       "files": 283,
-      "bytes": 3053783,
+      "bytes": 3057073,
       "size": "2.9 MB"
     },
     {
       "extension": ".d.ts",
       "files": 79,
-      "bytes": 473049,
+      "bytes": 473385,
       "size": "462 KB"
     },
     {
       "extension": ".css",
       "files": 1,
-      "bytes": 275388,
+      "bytes": 275515,
       "size": "269 KB"
     },
     {
@@ -57,14 +57,14 @@
     {
       "path": "dist/types/vue-data-ui.d.ts",
       "filename": "vue-data-ui",
-      "bytes": 403525,
+      "bytes": 403861,
       "size": "394 KB",
       "extension": ".d.ts"
     },
     {
       "path": "dist/style.css",
       "filename": "style",
-      "bytes": 275388,
+      "bytes": 275515,
       "size": "269 KB",
       "extension": ".css"
     },
@@ -85,15 +85,15 @@
     {
       "path": "dist/useConfig.js",
       "filename": "useConfig",
-      "bytes": 97218,
+      "bytes": 97303,
       "size": "95 KB",
       "extension": ".js"
     },
     {
       "path": "dist/vue-ui-stackbar.js",
       "filename": "vue-ui-stackbar",
-      "bytes": 78669,
-      "size": "77 KB",
+      "bytes": 81745,
+      "size": "80 KB",
       "extension": ".js"
     },
     {
@@ -771,8 +771,8 @@
     {
       "path": "dist/vue_ui_stackbar.js",
       "filename": "vue_ui_stackbar",
-      "bytes": 3904,
-      "size": "3.8 KB",
+      "bytes": 4033,
+      "size": "3.9 KB",
       "extension": ".js"
     },
     {

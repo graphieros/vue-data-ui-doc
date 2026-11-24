@@ -11504,6 +11504,46 @@ export default function useExamples() {
                     ar: "شريط مكدس أفقي موزع",
                 },
             },
+            // STACKBAR PERSPECTIVE
+            {
+                dataset: DATASET_STACKBAR_BASIC.value,
+                config: mergeConfigs({
+                    defaultConfig: CONFIG_STACKBAR_BASE.value,
+                    userConfig: {
+                        style: {
+                            chart: {
+                                bars: {
+                                    perspective: {
+                                        show: true,
+                                        direction: "right",
+                                        depth: 18,
+                                        floor: {
+                                            show: true,
+                                            color: "#2D353C",
+                                            opacity: 0.15,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }),
+                component: "VueUiStackbar",
+                icon: "chartStackbar",
+                id: "stack-bar-perspective",
+                link: "vue-ui-stackbar",
+                description: {
+                    en: "Stacked bars with perspective and a floor",
+                    fr: "Barres empilées en perspective avec un sol",
+                    pt: "Barras empilhadas em perspectiva com piso",
+                    de: "Gestapelte Balken mit Perspektive und Boden",
+                    zh: "带底面的透视堆叠柱状图",
+                    ja: "床面付きの遠近法の積み上げ棒グラフ",
+                    es: "Barras apiladas con perspectiva y suelo",
+                    ko: "바닥이 있는 원근 누적 막대 차트",
+                    ar: "أعمدة مكدسة بمنظور وأرضية",
+                },
+            },
             // STACKBAR ROUNDED CORNERS VERTICAL
             {
                 dataset: DATASET_STACKBAR_BASIC.value,

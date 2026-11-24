@@ -40,6 +40,48 @@ import BaseMenuPattern from "../components/BaseMenuPattern.vue";
 import { VueUiIcon } from "vue-data-ui/vue-ui-icon";
 import BaseDigit from "../components/Base/BaseDigit.vue";
 
+const stackbarPerspective = ref({});
+
+function hasStackbarPerspective(example) {
+    return (
+        stackbarPerspective.value[example.id] ??
+        Boolean(example.config?.style?.chart?.bars?.perspective?.show)
+    );
+}
+
+function exampleConfig(example) {
+    if (example.component !== "VueUiStackbar") {
+        return example.config;
+    }
+    const style = example.config?.style ?? {};
+    const chart = style.chart ?? {};
+    const bars = chart.bars ?? {};
+    const perspective = bars.perspective ?? {};
+    return {
+        ...example.config,
+        style: {
+            ...style,
+            chart: {
+                ...chart,
+                bars: {
+                    ...bars,
+                    perspective: {
+                        ...perspective,
+                        show: hasStackbarPerspective(example),
+                        floor: {
+                            ...perspective.floor,
+                            show: true,
+                            color:
+                                chart.color ??
+                                (isDarkMode.value ? "#CCCCCC" : "#2D353C"),
+                        },
+                    },
+                },
+            },
+        },
+    };
+}
+
 const curvedMarkers = ref(false);
 const categoryExamples = shallowRef(null);
 const categoryLoading = ref(false);
@@ -979,7 +1021,7 @@ function makeMapLinks({ data }) {
                                 </div>
                                 <BaseDocHeaderActions
                                     :defaultConfig="false"
-                                    :customConfig="example.config"
+                                    :customConfig="exampleConfig(example)"
                                     :customDataset="example.dataset"
                                     :targetDoc="example.link"
                                     justify="justify-start"
@@ -1097,6 +1139,24 @@ function makeMapLinks({ data }) {
                                 }}</a>
                             </RouterLink>
                             <div
+                                v-if="example.component === 'VueUiStackbar'"
+                                class="mt-2 text-end"
+                            >
+                                <label>
+                                    Perspective
+                                    <input
+                                        type="checkbox"
+                                        :checked="
+                                            hasStackbarPerspective(example)
+                                        "
+                                        @change="
+                                            stackbarPerspective[example.id] =
+                                                $event.target.checked
+                                        "
+                                    />
+                                </label>
+                            </div>
+                            <div
                                 v-if="example.toggleCurvedMarkers"
                                 class="mt-2 text-end"
                             >
@@ -1138,7 +1198,7 @@ function makeMapLinks({ data }) {
                                                 : {}
                                         "
                                         :dataset="example.dataset"
-                                        :config="example.config"
+                                        :config="exampleConfig(example)"
                                     >
                                         <template
                                             #group-label="{ group }"

@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import BaseThemeUnit from "./BaseThemeUnit.vue";
 
 const props = defineProps({
     isWaterfall: Boolean,
+    perspective: Boolean,
 });
 
 const dataset = ref([
@@ -69,9 +70,10 @@ const datasetWaterfall = ref([
     },
 ]);
 
-const config = ref({
+const config = computed(() => ({
     style: {
         chart: {
+            bars: { perspective: { show: props.perspective } },
             title: {
                 text: "Title",
                 subtitle: {
@@ -80,7 +82,7 @@ const config = ref({
             },
         },
     },
-});
+}));
 </script>
 
 <template>

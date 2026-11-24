@@ -417,6 +417,16 @@ const config = computed({
                         opacity: 5,
                     },
                     bars: {
+                        perspective: {
+                            show: false,
+                            direction: "right",
+                            depth: 12,
+                            floor: {
+                                show: true,
+                                color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
+                                opacity: 0.15,
+                            },
+                        },
                         gapRatio: 0.5,
                         distributed: false,
                         showDistributedPercentage: true,
@@ -566,6 +576,17 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode();
 
 const innerTranslations = ref({
+    perspective: {
+        en: "Perspective",
+        fr: "Perspective",
+        pt: "Perspectiva",
+        de: "Perspektive",
+        zh: "透视",
+        ja: "遠近法",
+        es: "Perspectiva",
+        ko: "원근감",
+        ar: "منظور",
+    },
     distributed: {
         en: "This bar chart has a config option to show distributed bars. In this mode, all bars take the full height of the chart, and show proportions of each datapoint.",
         fr: "Ce graphique à barres dispose d’une option de configuration pour afficher des barres réparties. Dans ce mode, toutes les barres occupent la pleine hauteur du graphique et montrent les proportions de chaque point de données.",
@@ -922,6 +943,17 @@ const waterfallExplain = ref({
                     >
                 </label>
 
+                <label class="w-full flex flex-row justify-center mb-2 gap-2">
+                    <input
+                        type="checkbox"
+                        v-model="config.style.chart.bars.perspective.show"
+                    />
+                    <span
+                        >{{ innerTranslations.perspective[store.lang] }}
+                        <code class="text-xs text-gray-500">(v3.29.6+)</code>
+                    </span>
+                </label>
+
                 <BaseCard dir="ltr">
                     <VueUiStackbar
                         :dataset="isWaterfall ? datasetWaterfall : dataset"
@@ -1230,7 +1262,10 @@ const waterfallExplain = ref({
                 />
             </template>
             <template #themes>
-                <ThemesVueUiStackbar :is-waterfall="isWaterfall" />
+                <ThemesVueUiStackbar
+                    :is-waterfall="isWaterfall"
+                    :perspective="config.style.chart.bars.perspective.show"
+                />
             </template>
             <template #responsive>
                 <ResponsiveUnit height="500px">

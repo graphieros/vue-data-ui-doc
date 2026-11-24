@@ -1533,6 +1533,63 @@ export function createVueUiStackbarConfigFields({
                                     title: "style.chart.bars",
                                     children: [
                                         {
+                                            attr: "perspective",
+                                            level: 4,
+                                            title: "style.chart.bars.perspective",
+                                            children: [
+                                                {
+                                                    name: "show",
+                                                    attr: "style.chart.bars.perspective.show",
+                                                    type: "checkbox",
+                                                    defaultVal: "false",
+                                                },
+                                                {
+                                                    name: "direction",
+                                                    attr: "style.chart.bars.perspective.direction",
+                                                    type: "select",
+                                                    defaultVal: "right",
+                                                    options: ["right", "left"],
+                                                },
+                                                {
+                                                    name: "depth",
+                                                    attr: "style.chart.bars.perspective.depth",
+                                                    type: "range",
+                                                    defaultVal: "12",
+                                                    min: 0,
+                                                    max: 100,
+                                                },
+                                                {
+                                                    attr: "floor",
+                                                    level: 5,
+                                                    title: "style.chart.bars.perspective.floor",
+                                                    children: [
+                                                        {
+                                                            name: "show",
+                                                            attr: "style.chart.bars.perspective.floor.show",
+                                                            type: "checkbox",
+                                                            defaultVal: "false",
+                                                        },
+                                                        {
+                                                            name: "color",
+                                                            attr: "style.chart.bars.perspective.floor.color",
+                                                            type: "color",
+                                                            defaultVal:
+                                                                "#2D353C",
+                                                        },
+                                                        {
+                                                            name: "opacity",
+                                                            attr: "style.chart.bars.perspective.floor.opacity",
+                                                            type: "range",
+                                                            defaultVal: "0.15",
+                                                            min: 0,
+                                                            max: 1,
+                                                            step: 0.01,
+                                                        },
+                                                    ],
+                                                },
+                                            ],
+                                        },
+                                        {
                                             name: "gapRatio",
                                             attr: "style.chart.bars.gapRatio",
                                             type: "range",
